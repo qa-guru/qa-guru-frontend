@@ -1,0 +1,14 @@
+{
+  "options": [
+    {
+      "label": "Java / Gradle / JUnit5 / Selenide / Rest-assured",
+      "value": "Java / Gradle / JUnit5 / Selenide / Rest-assured",
+      "id": "1"
+    },
+    {
+      "label": "Python / Pytest / Selene / Requests",
+      "value": "Python / Pytest / Selene / Requests",
+      "id": "2"
+    }
+  ]
+}

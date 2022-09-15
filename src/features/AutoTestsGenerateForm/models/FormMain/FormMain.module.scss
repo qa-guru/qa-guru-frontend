@@ -1,0 +1,17 @@
+.wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  grid-gap: 20px;
+  &__button {
+    width: 130px;
+    max-width: 100%;
+  }
+}
+
+.title {
+  width: 508px;
+  font-size: 35px;
+  font-weight: 700;
+}

@@ -1,0 +1,12 @@
+.box {
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid var(--gx-color-text-black);
+  margin-top: -16px;
+  background-color: #2b2b2b;
+}
+
+.title {
+  color: var(--gx-color-text-white) !important;
+  padding: 0 10px;
+}

@@ -1,0 +1,19 @@
+{
+  "options": [
+    {
+      "label": "Github",
+      "value": "Github",
+      "id": "1"
+    },
+    {
+      "label": "Gitlab",
+      "value": "Gitlab",
+      "id": "2"
+    },
+    {
+      "label": "Download.zip",
+      "value": "Download.zip",
+      "id": "3"
+    }
+  ]
+}

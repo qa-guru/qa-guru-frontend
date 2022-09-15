@@ -1,0 +1,25 @@
+.number {
+  font-size: 14px;
+  color: #4b4b4b;
+  background: #fffbed;
+  border: 1px solid #969696;
+  border-radius: 5px;
+  display: block;
+  min-width: 26px;
+  height: 24px;
+  text-align: center;
+  position: relative;
+  top: -4px;
+  right: 4px;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.title {
+  margin-left: 5px;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}

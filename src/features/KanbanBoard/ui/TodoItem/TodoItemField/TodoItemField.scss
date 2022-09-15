@@ -1,0 +1,13 @@
+.ctetextarea {
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.ctetext {
+  word-break: break-all;
+  &.-completed {
+    text-decoration: line-through;
+    color: #c8c8cd;
+  }
+}

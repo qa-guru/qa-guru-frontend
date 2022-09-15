@@ -1,0 +1,171 @@
+[
+  {
+    "title": "src/test",
+    "key": "0-0",
+    "children": [
+      {
+        "title": "java/cloud/autotests",
+        "key": "0-0-0",
+        "children": [
+          {
+            "title": "config",
+            "key": "0-0-0-0",
+            "children": [
+              {
+                "title": "demowebshop",
+                "key": "0-0-0-0-0",
+                "children": [
+                  {
+                    "title": "App.java",
+                    "key": "0-0-0-0-0-0-0",
+                    "isLeaf": true
+                  },
+                  {
+                    "title": "AppConfig.java",
+                    "key": "0-0-0-0-0-0-1",
+                    "isLeaf": true
+                  }
+                ]
+              },
+              { "title": "Project.java", "key": "0-0-0-0-1", "isLeaf": true },
+              {
+                "title": "ProjectConfig.java",
+                "key": "0-0-0-0-2",
+                "isLeaf": true
+              }
+            ]
+          },
+          {
+            "title": "docs",
+            "key": "0-0-0-1",
+            "children": [
+              {
+                "title": "CssXpathExamples.java",
+                "key": "0-0-0-1-0",
+                "isLeaf": true
+              },
+              {
+                "title": "AppConfig.java",
+                "key": "0-0-0-1-1",
+                "isLeaf": true
+              },
+              {
+                "title": "SelenideSnippets.java",
+                "key": "0-0-0-1-2",
+                "isLeaf": true
+              }
+            ]
+          },
+          {
+            "title": "helpers",
+            "key": "0-0-0-2",
+            "children": [
+              {
+                "title": "AllureAttachments.java",
+                "key": "0-0-0-2-0",
+                "isLeaf": true
+              },
+              {
+                "title": "AllureRestAssuredFilter.java",
+                "key": "0-0-0-2-1",
+                "isLeaf": true
+              },
+              {
+                "title": "DriverSettings.java",
+                "key": "0-0-0-2-2",
+                "isLeaf": true
+              },
+              {
+                "title": "DriverUtils.java",
+                "key": "0-0-0-2-3",
+                "isLeaf": true
+              }
+            ]
+          },
+          {
+            "title": "tests",
+            "key": "0-0-0-3",
+            "children": [
+              {
+                "title": "demowebshop",
+                "key": "0-0-0-3-0",
+                "children": [
+                  {
+                    "title": "LoginTests.java",
+                    "key": "0-0-0-3-0-0",
+                    "isLeaf": true
+                  }
+                ]
+              },
+              {
+                "title": "GeneratedTests.java",
+                "key": "0-0-0-3-1",
+                "isLeaf": true
+              },
+              { "title": "TestBase.java", "key": "0-0-0-3-2", "isLeaf": true }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "resources",
+        "key": "0-0-1",
+        "children": [
+          {
+            "title": "config",
+            "key": "0-0-1-0",
+            "children": [
+              {
+                "title": "demowebshop",
+                "key": "0-0-1-0-0",
+                "children": [
+                  {
+                    "title": "app.properties",
+                    "key": "0-0-1-0-0-0",
+                    "isLeaf": true
+                  }
+                ]
+              },
+              {
+                "title": "local.properties",
+                "key": "0-0-1-0-1",
+                "isLeaf": true
+              }
+            ]
+          },
+          {
+            "title": "tpl",
+            "key": "0-0-1-1",
+            "children": [
+              {
+                "title": "request.ftl",
+                "key": "0-0-1-1-0",
+                "isLeaf": true
+              },
+              {
+                "title": "response.ftl",
+                "key": "0-0-1-1-1",
+                "isLeaf": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": ".gitignore",
+        "key": "0",
+        "isLeaf": true
+      },
+      {
+        "title": "README.md",
+        "key": "1",
+        "isLeaf": true
+      },
+      {
+        "title": "build.gradle",
+        "key": "2",
+        "isLeaf": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "options": [
+    {
+      "label": "Jenkins",
+      "value": "Jenkins",
+      "id": "1"
+    },
+    {
+      "label": "Github Actions",
+      "value": "Github Actions",
+      "id": "2"
+    },
+    {
+      "label": "Gitlab Runner",
+      "value": "Gitlab Runner",
+      "id": "3"
+    }
+  ]
+}

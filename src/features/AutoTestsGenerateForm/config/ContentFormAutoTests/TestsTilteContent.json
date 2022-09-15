@@ -1,0 +1,9 @@
+{
+  "options": [
+    {
+      "label": "Check page title",
+      "value": true,
+      "id": "1"
+    }
+  ]
+}

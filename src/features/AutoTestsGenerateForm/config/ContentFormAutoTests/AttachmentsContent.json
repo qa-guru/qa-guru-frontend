@@ -1,0 +1,29 @@
+{
+  "options": [
+    {
+      "label": "Screenshots",
+      "value": "Screenshots",
+      "id": "1"
+    },
+    {
+      "label": "Video",
+      "value": "Video",
+      "id": "2"
+    },
+    {
+      "label": "Console logs",
+      "value": "Console logs",
+      "id": "3"
+    },
+    {
+      "label": "Network logs",
+      "value": "Network logs",
+      "id": "4"
+    },
+    {
+      "label": "Page source",
+      "value": "Page source",
+      "id": "5"
+    }
+  ]
+}

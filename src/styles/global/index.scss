@@ -1,0 +1,125 @@
+@import "./normalize.scss";
+@import "antd/dist/antd.min.css";
+
+body {
+  font-family: "Sora", sans-serif !important;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+:root {
+  --gx-color-header: #f9f9f9;
+  --gx-color-content-left: #ffffff;
+  --gx-color-content-right: #393939;
+  --gx-color-icon-header: #4b4b4b;
+  --gx-color-border-form-result: #979055;
+  --gx-color-text-form-result: #979055;
+  --gx-color-text-black: black;
+  --gx-color-text-white: white;
+  --gx-color-border-autotest-form: rgb(240, 237, 237);
+  --gx-color-border-autotest-plus: grey;
+  --gx-color-border-autotest-subtitle: #a9a9a9;
+  --gx-color-text-autotest-right: #e6daca;
+  --gx-color-text-autotest-orange: #cd5920;
+  --gx-color-practice-form-footer: #8e98a0;
+}
+
+//ant-design tabs
+.ant-tabs-top > .ant-tabs-nav::before,
+.ant-tabs-top > div > .ant-tabs-nav::before {
+  display: none;
+}
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+  background-color: black;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab {
+  background-color: black;
+  border: black;
+  color: white;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
+  background-color: #393939;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: white;
+  text-shadow: none;
+}
+
+//ant-design tree
+.ant-tree.ant-tree-directory .ant-tree-treenode:hover::before {
+  background-color: black;
+}
+.ant-tree.ant-tree-directory .ant-tree-treenode::before {
+  bottom: 3px;
+  top: 3px;
+}
+.ant-tree.ant-tree-directory .ant-tree-treenode-selected:hover::before,
+.ant-tree.ant-tree-directory .ant-tree-treenode-selected::before {
+  background-color: black;
+}
+.ant-tree .ant-tree-treenode {
+  padding: 0;
+}
+.ant-tree {
+  font-size: 13px;
+}
+.ant-tree-indent {
+  :nth-child(1n) {
+    width: 4px;
+  }
+}
+.ant-tree-switcher {
+  width: 5px;
+}
+
+//ant-design navbar
+.ant-layout-header {
+  background: white;
+}
+
+//ant-select
+.ant-select-arrow {
+  color: #fff;
+}
+
+//code-editor
+.cm-scroller {
+  background-color: #393939;
+}
+
+//kanban-board
+.react-kanban-column {
+  background: #555555;
+  &:nth-child(1) {
+    background: #888888;
+  }
+  &:nth-child(2) {
+    background: #2a8574;
+  }
+  &:nth-child(3) {
+    background: #296181;
+  }
+  &:nth-child(4) {
+    background: #a98320;
+  }
+}
+.react-kanban-card {
+  background: #6a6a6a;
+}
+.react-kanban-card__description {
+  color: #e6daca;
+}
+.react-kanban-card__title {
+  color: #e6daca;
+  border-bottom: 1px solid black;
+}
+.react-kanban-column-header {
+  color: #e6daca;
+}
+
+.ant-form-item-control-input {
+  min-height: 0;
+}

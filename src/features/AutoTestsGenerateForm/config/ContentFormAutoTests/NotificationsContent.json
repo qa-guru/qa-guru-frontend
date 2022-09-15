@@ -1,0 +1,34 @@
+{
+  "options": [
+    {
+      "label": "Email",
+      "value": "Email",
+      "id": "1"
+    },
+    {
+      "label": "Telegram",
+      "value": "Telegram",
+      "id": "2"
+    },
+    {
+      "label": "Slack",
+      "value": "Slack",
+      "id": "3"
+    },
+    {
+      "label": "Skype",
+      "value": "Skype",
+      "id": "4"
+    },
+    {
+      "label": "Mattermost",
+      "value": "Mattermost",
+      "id": "5"
+    },
+    {
+      "label": "Icq",
+      "value": "Icq",
+      "id": "6"
+    }
+  ]
+}

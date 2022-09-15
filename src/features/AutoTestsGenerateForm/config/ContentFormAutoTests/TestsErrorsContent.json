@@ -1,0 +1,9 @@
+{
+  "options": [
+    {
+      "label": "Check page console has no errors",
+      "value": true,
+      "id": "1"
+    }
+  ]
+}
