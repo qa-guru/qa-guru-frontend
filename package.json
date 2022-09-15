@@ -62,7 +62,7 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "husky": "cd .. && husky install frontend/.husky",
+    "husky": "husky install",
     "gen": "graphql-codegen --config codegen.yml"
   },
   "browserslist": {

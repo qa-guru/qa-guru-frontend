@@ -7,15 +7,20 @@ import { AppMenu } from "../Menu/Menu";
 import Logout from "../../features/Authorization/models/Logout/Logout";
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
   const showDrawer = () => {
-    setVisible(!visible);
+    setOpen(true);
   };
 
   const { pathname: location } = useLocation();
+
   useEffect(() => {
-    setVisible(false);
+    setOpen(false);
   }, [location]);
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -26,8 +31,8 @@ const Navbar = () => {
         title={"QA Guru"}
         placement="right"
         closable={true}
-        onClose={showDrawer}
-        visible={visible}
+        onClose={onClose}
+        open={open}
         style={{ zIndex: 99999 }}
       >
         <AppMenu />
