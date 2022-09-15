@@ -20,13 +20,11 @@ Make sure `JAVA_HOME` env variable points to correct JDK location
 ## Running frontend
 
 ```shell
-cd frontend
-npm run dev
+yarn run dev
 ```
 
 ## Running husky (frontend)
 
 ```shell
-cd frontend
 yarn run husky
 ```
