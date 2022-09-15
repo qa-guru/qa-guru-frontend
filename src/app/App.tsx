@@ -1,5 +1,6 @@
 import { AppRoutes } from "../routes/AppRoutes";
 import Navbar from "../widgets/Navbar/Navbar";
+
 import styles from "./App.module.scss";
 
 export const App = () => {
