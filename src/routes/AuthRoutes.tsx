@@ -14,7 +14,7 @@ const AuthRotes: React.FC = () => {
     <Routes>
       <Route path="/register" element={<Registration />} />
       <Route path="/authorization" element={<Authorization />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Authorization />} />
       <Route path="*" element={<Page404 />} />
       <Route path="practice-form" element={<PracticeForm />} />
       <Route path="kanban-board" element={<KanbanBoard />} />

@@ -7,15 +7,12 @@ import Navbar from "../widgets/Navbar/Navbar";
 import styles from "./App.module.scss";
 
 export const App = () => {
-  const { isSignedIn } = useAuth();
-  const { data } = usePersonQuery();
-
-  // const AuthRotes = lazy(() => import("../routes/AuthRoutes"));
-  // const OtherRoutes = lazy(() => import("./OtherRoutes"));
-
-  useEffect(() => {
-    console.log("init");
-  }, []);
+  const { isSignedIn, setIsSignedIn } = useAuth();
+  const { data } = usePersonQuery({
+    onCompleted: () => {
+      setIsSignedIn(true);
+    },
+  });
 
   return (
     <>
@@ -24,7 +21,7 @@ export const App = () => {
         <div>
           <Suspense fallback={<span>Loading....</span>}>
             {!isSignedIn && <AuthRotes />}
-            {/* {isSignedIn === false && <AuthRotes />} */}
+            {/* {data.person.role === 'manager' && <ManagerRoutes />} */}
             {/* <OtherRoutes /> */}
           </Suspense>
         </div>
