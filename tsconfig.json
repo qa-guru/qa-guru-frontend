@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // "typeRoots": ["./src/declarations"],
     "target": "ES2015", // Works in every modern browser
     "lib": [
       // Exclude ScriptHost
@@ -21,5 +22,5 @@
     "jsx": "react-jsx", // React 17 style of JSX transformation
     "experimentalDecorators": true // Because we are using MobX decorators
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }

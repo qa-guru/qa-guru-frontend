@@ -5,11 +5,11 @@ import { useIntl } from "react-intl";
 import { observer } from "mobx-react";
 import LogoutLocaleSelector from "../../ui/LogoutLocaleSelector/LogoutLocaleSelector";
 import LogoutButton from "../../ui/LogoutButton/LogoutButton";
-import { useAuthStore } from "../../context/AuthContext";
+import useAuth from "../../../../hooks/useAuth";
 
-const Logout = observer(() => {
+const Logout = () => {
   const intl = useIntl();
-  const authStore = useAuthStore();
+  const { logout } = useAuth();
 
   const showLogoutConfirm = useCallback(() => {
     Modal.confirm({
@@ -18,7 +18,7 @@ const Logout = observer(() => {
       cancelText: intl.formatMessage({ id: "common.cancel" }),
       onOk: async () => {
         try {
-          const response = await authStore.logout();
+          const response = await logout();
           if (response.status !== 200) {
             notification.error({
               message: intl.formatMessage({ id: "auth.logout.unknownError" }),
@@ -33,7 +33,7 @@ const Logout = observer(() => {
         }
       },
     });
-  }, [intl, authStore]);
+  }, [intl]);
 
   return (
     <>
@@ -41,6 +41,6 @@ const Logout = observer(() => {
       <LogoutButton showLogoutConfirm={showLogoutConfirm} />
     </>
   );
-});
+};
 
-export default Logout;
+export default observer(Logout);

@@ -20,6 +20,7 @@ axios.interceptors.response.use((response) => {
   }
   return response;
 });
+
 axios.defaults.withCredentials = !REQUEST_SAME_ORIGIN;
 
 const httpLink = createHttpLink({

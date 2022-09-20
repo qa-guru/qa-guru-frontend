@@ -423,6 +423,37 @@ export type UsersDto = {
   totalPages?: Maybe<Scalars["Int"]>;
 };
 
+export type PersonQueryVariables = Exact<{ [key: string]: never }>;
+
+export type PersonQuery = {
+  __typename?: "Query";
+  person?: {
+    __typename?: "PersonDto";
+    id?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    middleName?: string | null;
+    phoneNumber?: string | null;
+    avatarLocation?: string | null;
+  } | null;
+};
+
+export type PersonByUserIdQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type PersonByUserIdQuery = {
+  __typename?: "Query";
+  personByUserId?: {
+    __typename?: "PersonDto";
+    id?: string | null;
+    lastName?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    phoneNumber?: string | null;
+  } | null;
+};
+
 export type SignUpMutationVariables = Exact<{
   username: Scalars["String"];
   password: Scalars["String"];
@@ -438,6 +469,120 @@ export type SignUpMutation = {
   } | null;
 };
 
+export const PersonDocument = gql`
+  query Person {
+    person {
+      id
+      firstName
+      lastName
+      middleName
+      phoneNumber
+      avatarLocation
+    }
+  }
+`;
+
+/**
+ * __usePersonQuery__
+ *
+ * To run a query within a React component, call `usePersonQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePersonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePersonQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePersonQuery(
+  baseOptions?: Apollo.QueryHookOptions<PersonQuery, PersonQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<PersonQuery, PersonQueryVariables>(
+    PersonDocument,
+    options
+  );
+}
+export function usePersonLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PersonQuery, PersonQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<PersonQuery, PersonQueryVariables>(
+    PersonDocument,
+    options
+  );
+}
+export type PersonQueryHookResult = ReturnType<typeof usePersonQuery>;
+export type PersonLazyQueryHookResult = ReturnType<typeof usePersonLazyQuery>;
+export type PersonQueryResult = Apollo.QueryResult<
+  PersonQuery,
+  PersonQueryVariables
+>;
+export const PersonByUserIdDocument = gql`
+  query PersonByUserId($id: ID!) {
+    personByUserId(id: $id) {
+      id
+      lastName
+      firstName
+      middleName
+      phoneNumber
+    }
+  }
+`;
+
+/**
+ * __usePersonByUserIdQuery__
+ *
+ * To run a query within a React component, call `usePersonByUserIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePersonByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePersonByUserIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function usePersonByUserIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    PersonByUserIdQuery,
+    PersonByUserIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<PersonByUserIdQuery, PersonByUserIdQueryVariables>(
+    PersonByUserIdDocument,
+    options
+  );
+}
+export function usePersonByUserIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PersonByUserIdQuery,
+    PersonByUserIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<PersonByUserIdQuery, PersonByUserIdQueryVariables>(
+    PersonByUserIdDocument,
+    options
+  );
+}
+export type PersonByUserIdQueryHookResult = ReturnType<
+  typeof usePersonByUserIdQuery
+>;
+export type PersonByUserIdLazyQueryHookResult = ReturnType<
+  typeof usePersonByUserIdLazyQuery
+>;
+export type PersonByUserIdQueryResult = Apollo.QueryResult<
+  PersonByUserIdQuery,
+  PersonByUserIdQueryVariables
+>;
 export const SignUpDocument = gql`
   mutation SignUp($username: String!, $password: String!) {
     createUser(username: $username, password: $password) {

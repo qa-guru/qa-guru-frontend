@@ -1,0 +1,10 @@
+query Person {
+  person {
+    id
+    firstName
+    lastName
+    middleName
+    phoneNumber
+    avatarLocation
+  }
+}

@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState } from "react";
 import { Form, notification } from "antd";
 import axios from "axios";
 import { observer } from "mobx-react";
@@ -8,28 +8,27 @@ import UserName from "../../ui/UserName/UserName";
 import Password from "../../ui/Password/Password";
 import LoginButton from "../../ui/LoginButton/LoginButton";
 import LoginLocaleSelector from "../../ui/LoginLocaleSelector/LoginLocaleSelector";
-import { useAuthStore } from "../../context/AuthContext";
+import useAuth from "../../../../hooks/useAuth";
 
 const Login = () => {
   const intl = useIntl();
-  const authStore = useAuthStore();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [performingLoginRequest, setPerformingLoginRequest] = useState(false);
+  const { login } = useAuth();
 
   const doLogin = useCallback(async () => {
     setPerformingLoginRequest(true);
     try {
-      const response = await authStore.login(username, password);
-      switch (response.status) {
-        case 200:
-          break;
-        default:
-          notification.error({
-            message: intl.formatMessage({ id: "auth.login.unknownError" }),
-          });
-      }
+      const response = await login(username, password);
+      // switch (response.status) {
+      //   case 200:
+      //     break;
+      //   default:
+      //     notification.error({
+      //       message: intl.formatMessage({ id: "auth.login.unknownError" }),
+      //     });
+      // }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         switch (error.response?.data.status) {
@@ -46,7 +45,7 @@ const Login = () => {
       }
     }
     setPerformingLoginRequest(false);
-  }, [authStore, username, password, intl]);
+  }, [username, password, intl]);
 
   return (
     <div className={styles.login_form_container}>

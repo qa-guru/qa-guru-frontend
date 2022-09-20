@@ -5,20 +5,17 @@ import UserName from "../../ui/UserName/UserName";
 import Password from "../../ui/Password/Password";
 import LoginLocaleSelector from "../../ui/LoginLocaleSelector/LoginLocaleSelector";
 import styles from "./SignUp.module.scss";
-import { useSignUpMutation } from "../../../../generated/graphql";
 import SignUpButton from "../../ui/SignUpButton/SignUpButton";
-import { useNavigate } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [createUser] = useSignUpMutation();
-  let navigate = useNavigate();
+  const { signup, login } = useAuth();
 
   const onSubmit = async () => {
-    const response = await createUser({ variables: { password, username } });
-    navigate("/");
-    console.log(response);
+    await signup(password, username);
+    await login(username, password);
   };
 
   return (
