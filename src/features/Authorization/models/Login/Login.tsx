@@ -48,16 +48,14 @@ const Login = () => {
   }, [username, password, intl]);
 
   return (
-    <div className={styles.login_form_container}>
-      <div className={styles.login_form}>
-        <div className={styles.title}>QA Guru</div>
-        <Form layout="vertical" onFinish={doLogin}>
-          <UserName username={username} setUsername={setUsername} />
-          <Password password={password} setPassword={setPassword} />
-          <LoginLocaleSelector />
-          <LoginButton performingLoginRequest={performingLoginRequest} />
-        </Form>
-      </div>
+    <div className={styles.login_form}>
+      <div className={styles.title}>QA Guru</div>
+      <Form layout="vertical" onFinish={doLogin}>
+        <UserName username={username} setUsername={setUsername} />
+        <Password password={password} setPassword={setPassword} />
+        <LoginLocaleSelector />
+        <LoginButton performingLoginRequest={performingLoginRequest} />
+      </Form>
     </div>
   );
 };

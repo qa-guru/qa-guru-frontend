@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Authorization from "../screens/Authorization/Authorization";
 import React from "react";
+import Registration from "../screens/Registration/Registration";
 
 const AuthRotes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Authorization />} />
+      <Route path="/authorization" element={<Authorization />} />
+      <Route path="/register" element={<Registration />} />
     </Routes>
   );
 };

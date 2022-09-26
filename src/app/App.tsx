@@ -17,7 +17,7 @@ export const App = () => {
     },
     onError: (err: any) => {
       setIsSignedIn(false);
-      navigate("/");
+      navigate("/authorization");
     },
   });
 
