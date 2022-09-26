@@ -1,30 +1,35 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, useNavigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { useNavigate } from "react-router-dom";
 import { usePersonQuery } from "../generated/graphql";
 import useAuth from "../hooks/useAuth";
-import AuthRotes from "../routes/AuthRoutes";
 import Navbar from "../widgets/Navbar/Navbar";
 import styles from "./App.module.scss";
 
+const AuthRotes = lazy(() => import("../routes/AuthRoutes"));
+const OtherRoutes = lazy(() => import("../routes/OtherRoutes"));
+
 export const App = () => {
   const { isSignedIn, setIsSignedIn } = useAuth();
+  let navigate = useNavigate();
   const { data } = usePersonQuery({
     onCompleted: () => {
       setIsSignedIn(true);
+    },
+    onError: (err: any) => {
+      setIsSignedIn(false);
+      navigate("/");
     },
   });
 
   return (
     <>
-      <Navbar />
+      {isSignedIn && <Navbar />}
       <main className={styles.main}>
-        <div>
-          <Suspense fallback={<span>Loading....</span>}>
-            {!isSignedIn && <AuthRotes />}
-            {/* {data.person.role === 'manager' && <ManagerRoutes />} */}
-            {/* <OtherRoutes /> */}
-          </Suspense>
-        </div>
+        <Suspense fallback={<span>Loading....</span>}>
+          {!isSignedIn && <AuthRotes />}
+          {isSignedIn && <OtherRoutes />}
+          {/* {data.person.role === 'manager' && <ManagerRoutes />} */}
+        </Suspense>
       </main>
     </>
   );

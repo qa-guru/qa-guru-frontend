@@ -21,14 +21,14 @@ const Login = () => {
     setPerformingLoginRequest(true);
     try {
       const response = await login(username, password);
-      // switch (response.status) {
-      //   case 200:
-      //     break;
-      //   default:
-      //     notification.error({
-      //       message: intl.formatMessage({ id: "auth.login.unknownError" }),
-      //     });
-      // }
+      switch (response.status) {
+        case 200:
+          break;
+        default:
+          notification.error({
+            message: intl.formatMessage({ id: "auth.login.unknownError" }),
+          });
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         switch (error.response?.data.status) {

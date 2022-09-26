@@ -9,7 +9,6 @@ import LessonScreen from "../screens/LessonScreen/LessonScreen";
 const OtherRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route path="*" element={<Page404 />} />
       <Route path="practice-form" element={<PracticeForm />} />
       <Route path="kanban-board" element={<KanbanBoard />} />
