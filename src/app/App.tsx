@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePersonQuery } from "../generated/graphql";
 import useAuth from "../hooks/useAuth";
-import Navbar from "../widgets/Navbar/Navbar";
+import Navbar from "../navbar/Navbar/Navbar";
 import styles from "./App.module.scss";
 
 const AuthRotes = lazy(() => import("../routes/AuthRoutes"));
@@ -15,7 +15,7 @@ export const App = () => {
     onCompleted: () => {
       setIsSignedIn(true);
     },
-    onError: (err: any) => {
+    onError: () => {
       setIsSignedIn(false);
       navigate("/authorization");
     },

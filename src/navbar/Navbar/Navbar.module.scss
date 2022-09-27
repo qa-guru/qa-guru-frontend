@@ -4,11 +4,7 @@
   right: 0px;
   top: 0px;
   background-color: var(--gx-color-content-right);
-}
-
-.menuButton {
-  font-size: 18px !important;
-  color: white !important;
-  transform: translateY(2px);
-  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
 }

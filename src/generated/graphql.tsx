@@ -39,20 +39,6 @@ export type ContentFileDto = {
   type?: Maybe<Scalars["String"]>;
 };
 
-export type HomeWorkDto = {
-  __typename?: "HomeWorkDto";
-  contentFiles?: Maybe<Array<Maybe<ContentFileDto>>>;
-  description?: Maybe<Scalars["String"]>;
-  id?: Maybe<Scalars["ID"]>;
-  subject?: Maybe<Scalars["String"]>;
-};
-
-export type HomeWorkInput = {
-  description?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["ID"]>;
-  subject?: InputMaybe<Scalars["String"]>;
-};
-
 export type HomeWorkSort = {
   field?: InputMaybe<HomeWorkSortField>;
   order?: InputMaybe<Order>;
@@ -63,9 +49,58 @@ export enum HomeWorkSortField {
   Subject = "SUBJECT",
 }
 
-export type HomeWorksDto = {
-  __typename?: "HomeWorksDto";
-  items?: Maybe<Array<Maybe<HomeWorkDto>>>;
+export type LectureDto = {
+  __typename?: "LectureDto";
+  contentFiles?: Maybe<Array<Maybe<ContentFileDto>>>;
+  description?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lectureHomeWorks?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  speakers?: Maybe<Array<Maybe<UserInfoDto>>>;
+  subject?: Maybe<Scalars["String"]>;
+};
+
+export type LectureHomeWorkDto = {
+  __typename?: "LectureHomeWorkDto";
+  contentFiles?: Maybe<Array<Maybe<ContentFileDto>>>;
+  description?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  subject?: Maybe<Scalars["String"]>;
+};
+
+export type LectureHomeWorkInput = {
+  description?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  subject?: InputMaybe<Scalars["String"]>;
+};
+
+export type LectureHomeWorksDto = {
+  __typename?: "LectureHomeWorksDto";
+  items?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  totalElements?: Maybe<Scalars["Long"]>;
+  totalPages?: Maybe<Scalars["Int"]>;
+};
+
+export type LectureInput = {
+  description?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  lectureHomeWorks?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  speakers?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  subject?: InputMaybe<Scalars["String"]>;
+};
+
+export type LectureSort = {
+  field?: InputMaybe<LectureSortField>;
+  order?: InputMaybe<Order>;
+};
+
+export enum LectureSortField {
+  CreationDate = "CREATION_DATE",
+  Subject = "SUBJECT",
+}
+
+export type LecturesDto = {
+  __typename?: "LecturesDto";
+  items?: Maybe<Array<Maybe<LectureDto>>>;
   totalElements?: Maybe<Scalars["Long"]>;
   totalPages?: Maybe<Scalars["Int"]>;
 };
@@ -77,21 +112,21 @@ export type Mutation = {
   createPurchase?: Maybe<PurchaseDto>;
   /** user section */
   createUser?: Maybe<UserDto>;
-  deleteHomeWork?: Maybe<Scalars["Void"]>;
-  deleteTask?: Maybe<Scalars["Void"]>;
+  deleteLecture?: Maybe<Scalars["Void"]>;
+  deleteLectureHomeWork?: Maybe<Scalars["Void"]>;
   deleteTraining?: Maybe<Scalars["Void"]>;
   deleteUser?: Maybe<Scalars["Void"]>;
-  removeTrainingTask?: Maybe<TrainingDto>;
-  /** homeWork section */
-  updateHomeWork?: Maybe<HomeWorkDto>;
+  removeTrainingLecture?: Maybe<TrainingDto>;
+  /** lecture section */
+  updateLecture?: Maybe<LectureDto>;
+  /** lectureHomeWork section */
+  updateLectureHomeWork?: Maybe<LectureHomeWorkDto>;
   /** person section */
   updatePerson?: Maybe<PersonDto>;
   updateRole?: Maybe<UserDto>;
-  /** task section */
-  updateTask?: Maybe<TaskDto>;
   /** training section */
   updateTraining?: Maybe<TrainingDto>;
-  updateTrainingTask?: Maybe<TrainingDto>;
+  updateTrainingLecture?: Maybe<TrainingDto>;
 };
 
 /** Mutation root */
@@ -106,12 +141,12 @@ export type MutationCreateUserArgs = {
 };
 
 /** Mutation root */
-export type MutationDeleteHomeWorkArgs = {
+export type MutationDeleteLectureArgs = {
   id: Scalars["ID"];
 };
 
 /** Mutation root */
-export type MutationDeleteTaskArgs = {
+export type MutationDeleteLectureHomeWorkArgs = {
   id: Scalars["ID"];
 };
 
@@ -126,14 +161,19 @@ export type MutationDeleteUserArgs = {
 };
 
 /** Mutation root */
-export type MutationRemoveTrainingTaskArgs = {
+export type MutationRemoveTrainingLectureArgs = {
   id: Scalars["ID"];
   trainingId: Scalars["ID"];
 };
 
 /** Mutation root */
-export type MutationUpdateHomeWorkArgs = {
-  input: HomeWorkInput;
+export type MutationUpdateLectureArgs = {
+  input: LectureInput;
+};
+
+/** Mutation root */
+export type MutationUpdateLectureHomeWorkArgs = {
+  input: LectureHomeWorkInput;
 };
 
 /** Mutation root */
@@ -148,19 +188,14 @@ export type MutationUpdateRoleArgs = {
 };
 
 /** Mutation root */
-export type MutationUpdateTaskArgs = {
-  input: TaskInput;
-};
-
-/** Mutation root */
 export type MutationUpdateTrainingArgs = {
   input: TrainingInput;
 };
 
 /** Mutation root */
-export type MutationUpdateTrainingTaskArgs = {
+export type MutationUpdateTrainingLectureArgs = {
   id: Scalars["ID"];
-  input: TrainingTaskInput;
+  input: TrainingLectureInput;
 };
 
 export enum Order {
@@ -202,16 +237,16 @@ export type PurchaseInput = {
 /** Query root */
 export type Query = {
   __typename?: "Query";
-  /** homeWork section */
-  homeWork?: Maybe<HomeWorkDto>;
-  homeWorks?: Maybe<HomeWorksDto>;
+  /** lectureHomeWork section */
+  homeWork?: Maybe<LectureHomeWorkDto>;
+  homeWorks?: Maybe<LectureHomeWorksDto>;
+  /** lecture section */
+  lecture?: Maybe<LectureDto>;
+  lectureHomeWorks?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  lectures?: Maybe<LecturesDto>;
   /** person section */
   person?: Maybe<PersonDto>;
   personByUserId?: Maybe<PersonDto>;
-  /** task section */
-  task?: Maybe<TaskDto>;
-  taskHomeWorks?: Maybe<Array<Maybe<HomeWorkDto>>>;
-  tasks?: Maybe<TasksDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
   trainings?: Maybe<TrainingsDto>;
@@ -233,25 +268,25 @@ export type QueryHomeWorksArgs = {
 };
 
 /** Query root */
-export type QueryPersonByUserIdArgs = {
-  id: Scalars["ID"];
-};
-
-/** Query root */
-export type QueryTaskArgs = {
+export type QueryLectureArgs = {
   id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
-export type QueryTaskHomeWorksArgs = {
+export type QueryLectureHomeWorksArgs = {
   id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
-export type QueryTasksArgs = {
+export type QueryLecturesArgs = {
   page: Scalars["Int"];
   size: Scalars["Int"];
-  sort?: InputMaybe<TaskSort>;
+  sort?: InputMaybe<LectureSort>;
+};
+
+/** Query root */
+export type QueryPersonByUserIdArgs = {
+  id: Scalars["ID"];
 };
 
 /** Query root */
@@ -278,41 +313,6 @@ export type QueryUsersArgs = {
   sort?: InputMaybe<UserSort>;
 };
 
-export type TaskDto = {
-  __typename?: "TaskDto";
-  contentFiles?: Maybe<Array<Maybe<ContentFileDto>>>;
-  description?: Maybe<Scalars["String"]>;
-  homeWorks?: Maybe<Array<Maybe<HomeWorkDto>>>;
-  id?: Maybe<Scalars["ID"]>;
-  speakers?: Maybe<Array<Maybe<UserInfoDto>>>;
-  subject?: Maybe<Scalars["String"]>;
-};
-
-export type TaskInput = {
-  description?: InputMaybe<Scalars["String"]>;
-  homeWorks?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  id?: InputMaybe<Scalars["ID"]>;
-  speakers?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  subject?: InputMaybe<Scalars["String"]>;
-};
-
-export type TaskSort = {
-  field?: InputMaybe<TaskSortField>;
-  order?: InputMaybe<Order>;
-};
-
-export enum TaskSortField {
-  CreationDate = "CREATION_DATE",
-  Subject = "SUBJECT",
-}
-
-export type TasksDto = {
-  __typename?: "TasksDto";
-  items?: Maybe<Array<Maybe<TaskDto>>>;
-  totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
-};
-
 export enum TechStack {
   Java = "JAVA",
   Python = "PYTHON",
@@ -321,8 +321,8 @@ export enum TechStack {
 export type TrainingDto = {
   __typename?: "TrainingDto";
   id: Scalars["ID"];
+  lectures?: Maybe<Array<Maybe<TrainingLectureDto>>>;
   name: Scalars["String"];
-  tasks?: Maybe<Array<Maybe<TrainingTaskDto>>>;
   techStack: TechStack;
 };
 
@@ -330,6 +330,20 @@ export type TrainingInput = {
   id?: InputMaybe<Scalars["ID"]>;
   name?: InputMaybe<Scalars["String"]>;
   techStack: TechStack;
+};
+
+export type TrainingLectureDto = {
+  __typename?: "TrainingLectureDto";
+  id?: Maybe<Scalars["ID"]>;
+  lastLecture?: Maybe<LectureDto>;
+  lecture?: Maybe<LectureDto>;
+  locking?: Maybe<Scalars["Boolean"]>;
+};
+
+export type TrainingLectureInput = {
+  lastLecture?: InputMaybe<Scalars["ID"]>;
+  lecture: Scalars["ID"];
+  locking?: InputMaybe<Scalars["Boolean"]>;
 };
 
 export type TrainingSort = {
@@ -354,20 +368,6 @@ export type TrainingTariffInput = {
   code?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
-};
-
-export type TrainingTaskDto = {
-  __typename?: "TrainingTaskDto";
-  id?: Maybe<Scalars["ID"]>;
-  lastTask?: Maybe<TaskDto>;
-  locking?: Maybe<Scalars["Boolean"]>;
-  task?: Maybe<TaskDto>;
-};
-
-export type TrainingTaskInput = {
-  last?: InputMaybe<Scalars["ID"]>;
-  locking?: InputMaybe<Scalars["Boolean"]>;
-  task: Scalars["ID"];
 };
 
 export type TrainingsDto = {
@@ -466,6 +466,22 @@ export type SignUpMutation = {
     id?: string | null;
     email?: string | null;
     roles?: Array<UserRole | null> | null;
+  } | null;
+};
+
+export type UpdatePersonMutationVariables = Exact<{
+  input: PersonInput;
+}>;
+
+export type UpdatePersonMutation = {
+  __typename?: "Mutation";
+  updatePerson?: {
+    __typename?: "PersonDto";
+    id?: string | null;
+    phoneNumber?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    middleName?: string | null;
   } | null;
 };
 
@@ -632,4 +648,58 @@ export type SignUpMutationResult = Apollo.MutationResult<SignUpMutation>;
 export type SignUpMutationOptions = Apollo.BaseMutationOptions<
   SignUpMutation,
   SignUpMutationVariables
+>;
+export const UpdatePersonDocument = gql`
+  mutation updatePerson($input: PersonInput!) {
+    updatePerson(input: $input) {
+      id
+      phoneNumber
+      firstName
+      lastName
+      middleName
+    }
+  }
+`;
+export type UpdatePersonMutationFn = Apollo.MutationFunction<
+  UpdatePersonMutation,
+  UpdatePersonMutationVariables
+>;
+
+/**
+ * __useUpdatePersonMutation__
+ *
+ * To run a mutation, you first call `useUpdatePersonMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdatePersonMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updatePersonMutation, { data, loading, error }] = useUpdatePersonMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdatePersonMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdatePersonMutation,
+    UpdatePersonMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdatePersonMutation,
+    UpdatePersonMutationVariables
+  >(UpdatePersonDocument, options);
+}
+export type UpdatePersonMutationHookResult = ReturnType<
+  typeof useUpdatePersonMutation
+>;
+export type UpdatePersonMutationResult =
+  Apollo.MutationResult<UpdatePersonMutation>;
+export type UpdatePersonMutationOptions = Apollo.BaseMutationOptions<
+  UpdatePersonMutation,
+  UpdatePersonMutationVariables
 >;

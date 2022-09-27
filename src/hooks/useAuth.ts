@@ -32,15 +32,13 @@ const useAuth = () => {
     return response;
   };
 
-  const signup = async (password: string, username: string) => {
-    const response = await createUser({
+  const signup = (password: string, username: string) => {
+    createUser({
       variables: { password, username },
       onCompleted: () => {
-        setIsSignedIn(true);
+        login(username, password);
       },
     });
-
-    return response;
   };
 
   return { login, logout, signup, isSignedIn, setIsSignedIn };

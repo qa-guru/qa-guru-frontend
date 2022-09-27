@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { Button, Drawer } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
-import { useLocation } from "react-router-dom";
+import { MenuOutlined, UserOutlined } from "@ant-design/icons";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import { AppMenu } from "../Menu/Menu";
 import Logout from "../../features/Authorization/models/Logout/Logout";
+import { LocaleSelector } from "../../i18n/localeSelector/LocaleSelector";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
+  };
+  let navigate = useNavigate();
+
+  const routeProfileScreen = () => {
+    navigate("/profile");
   };
 
   const { pathname: location } = useLocation();
@@ -24,9 +30,11 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <Button className={styles.menuButton} type="text" onClick={showDrawer}>
-        <MenuOutlined />
-      </Button>
+      <Button
+        onClick={routeProfileScreen}
+        shape="circle"
+        icon={<UserOutlined />}
+      />
       <Drawer
         title={"QA Guru"}
         placement="right"
@@ -37,6 +45,10 @@ const Navbar = () => {
       >
         <AppMenu />
       </Drawer>
+      <Button className={styles.menuButton} type="link" onClick={showDrawer}>
+        <MenuOutlined style={{ color: "white" }} />
+      </Button>
+      <LocaleSelector />
       <Logout />
     </nav>
   );
