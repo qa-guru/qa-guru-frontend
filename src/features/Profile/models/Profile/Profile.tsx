@@ -1,32 +1,25 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Form } from "antd";
-import React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useUpdatePersonMutation } from "../../../../api/mutation/updatePerson";
-import { PersonInput } from "../../../../generated/graphql";
-import { defaultValues } from "../../config/defaultValues";
-import ProfileFormViews from "../../ui/ProfileFormViews/ProfileFormViews";
+import { Avatar, Typography } from "antd";
+import { usePersonQuery } from "../../../../api/query/person";
+import styles from "./Profile.module.scss";
 
-const Profile: React.FC = () => {
-  const { handleSubmit, control } = useForm<PersonInput>({
-    defaultValues,
+const Profile = () => {
+  const { data, error } = usePersonQuery({
+    onError: () => {
+      console.log(error);
+    },
   });
-  const [updatePerson] = useUpdatePersonMutation();
-
-  const onSubmit: SubmitHandler<PersonInput> = (data) => {
-    updatePerson({
-      variables: { input: data },
-    });
-  };
 
   return (
-    <div>
-      <Avatar size={170} icon={<UserOutlined />} />
-      <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-        <ProfileFormViews control={control} />
-        <Button htmlType="submit">Submit</Button>
-      </Form>
-    </div>
+    <>
+      <Avatar size={150} icon={<UserOutlined />} />
+      <div className={styles.wrapp}>
+        <Typography></Typography>
+        <Typography>{data?.person?.firstName}</Typography>
+        <Typography>{data?.person?.middleName}</Typography>
+        <Typography>{data?.person?.phoneNumber}</Typography>
+      </div>
+    </>
   );
 };
 

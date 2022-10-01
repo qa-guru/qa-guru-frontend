@@ -6,22 +6,17 @@ import {
   LocaleConfigOption,
 } from "@amplicode/react";
 import { AntdConfigProvider } from "./AntdConfigProvider";
-import { DayjsProvider } from "./DayjsProvider";
 import enAntdLocale from "antd/es/locale/en_US";
 import ruAntdLocale from "antd/es/locale/ru_RU";
-import enDayjsLocale from "dayjs/locale/en";
-import ruDayjsLocale from "dayjs/locale/ru";
 
 export const localeConfigs: Record<string, LocaleConfigOption> = {
   en: {
     caption: "English",
     antdLocale: enAntdLocale,
-    // dayjsLocale: enDayjsLocale,
   },
   ru: {
     caption: "Русский",
     antdLocale: ruAntdLocale,
-    // dayjsLocale: ruDayjsLocale,
   },
 };
 
@@ -39,9 +34,7 @@ export function I18nProvider({ children }: I18nProviderProps) {
     >
       <StaticI18nMessagesProvider>
         <I18nApiProvider>
-          <AntdConfigProvider>
-            <DayjsProvider>{children}</DayjsProvider>
-          </AntdConfigProvider>
+          <AntdConfigProvider>{children}</AntdConfigProvider>
         </I18nApiProvider>
       </StaticI18nMessagesProvider>
     </I18nStoreProvider>

@@ -3,7 +3,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { nanoid } from "nanoid";
 import "./Tasks.scss";
 import { Task } from "./Task.types";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import InputField from "../../ui/InputField/InputField";
 import TodoNotAvaliable from "../../ui/TodoNotAvaliable/TodoNotAvaliable";
 import TodoAvaliable from "../../ui/TodoAvaliable/TodoAvaliable";

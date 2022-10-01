@@ -5,8 +5,8 @@ import useAuth from "../hooks/useAuth";
 import Navbar from "../navbar/Navbar/Navbar";
 import styles from "./App.module.scss";
 
-const AuthRotes = lazy(() => import("../routes/AuthRoutes"));
-const OtherRoutes = lazy(() => import("../routes/OtherRoutes"));
+const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
+const AppRoutes = lazy(() => import("../routes/AppRoutes"));
 
 export const App = () => {
   const { isSignedIn, setIsSignedIn } = useAuth();
@@ -26,8 +26,7 @@ export const App = () => {
       {isSignedIn && <Navbar />}
       <main className={styles.main}>
         <Suspense fallback={<span>Loading....</span>}>
-          {!isSignedIn && <AuthRotes />}
-          {isSignedIn && <OtherRoutes />}
+          {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
           {/* {data.person.role === 'manager' && <ManagerRoutes />} */}
         </Suspense>
       </main>

@@ -1,10 +1,11 @@
 import React from "react";
 import Ui from "../../../../shared/ui/Input";
-import { IProfileFormViews } from "./ProfileFormViews.types";
+import { IProfileEditFormViews } from "./ProfileEditFormViews.types";
+import styles from "./ProfileEditFormViews.module.scss";
 
-const ProfileFormViews: React.FC<IProfileFormViews> = ({ control }) => {
+const ProfileEditFormViews: React.FC<IProfileEditFormViews> = ({ control }) => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Ui.Text name="firstName" control={control} label="FirstName" />
       <Ui.Text name="lastName" control={control} label="LastName" />
       <Ui.Text name="middleName" control={control} label="MiddleName" />
@@ -13,4 +14,4 @@ const ProfileFormViews: React.FC<IProfileFormViews> = ({ control }) => {
   );
 };
 
-export default ProfileFormViews;
+export default ProfileEditFormViews;

@@ -3,7 +3,7 @@ import Authorization from "../screens/Authorization/Authorization";
 import React from "react";
 import Registration from "../screens/Registration/Registration";
 
-const AuthRotes: React.FC = () => {
+const AuthRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/authorization" element={<Authorization />} />
@@ -12,4 +12,4 @@ const AuthRotes: React.FC = () => {
   );
 };
 
-export default AuthRotes;
+export default AuthRoutes;

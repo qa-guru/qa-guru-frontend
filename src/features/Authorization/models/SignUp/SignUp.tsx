@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Form } from "antd";
-import { observer } from "mobx-react";
 import UserName from "../../ui/UserName/UserName";
 import Password from "../../ui/Password/Password";
 import styles from "./SignUp.module.scss";
@@ -40,4 +39,4 @@ const SignUp = () => {
   );
 };
 
-export default observer(SignUp);
+export default SignUp;

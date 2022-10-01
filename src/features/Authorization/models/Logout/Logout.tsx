@@ -2,7 +2,6 @@ import { Modal, notification } from "antd";
 import axios from "axios";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { observer } from "mobx-react";
 import LogoutButton from "../../ui/LogoutButton/LogoutButton";
 import useAuth from "../../../../hooks/useAuth";
 
@@ -41,4 +40,4 @@ const Logout = () => {
   );
 };
 
-export default observer(Logout);
+export default Logout;

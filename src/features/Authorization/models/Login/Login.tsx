@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { Form, notification } from "antd";
 import axios from "axios";
-import { observer } from "mobx-react";
 import { useIntl } from "react-intl";
 import styles from "./Login.module.scss";
 import UserName from "../../ui/UserName/UserName";
@@ -70,4 +69,4 @@ const Login = () => {
   );
 };
 
-export default observer(Login);
+export default Login;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Drawer } from "antd";
 import { MenuOutlined, UserOutlined } from "@ant-design/icons";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import { AppMenu } from "../Menu/Menu";
 import Logout from "../../features/Authorization/models/Logout/Logout";
@@ -29,28 +29,31 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={styles.navbar}>
-      <Button
-        onClick={routeProfileScreen}
-        shape="circle"
-        icon={<UserOutlined />}
-      />
-      <Drawer
-        title={"QA Guru"}
-        placement="right"
-        closable={true}
-        onClose={onClose}
-        open={open}
-        style={{ zIndex: 99999 }}
-      >
-        <AppMenu />
-      </Drawer>
-      <Button className={styles.menuButton} type="link" onClick={showDrawer}>
-        <MenuOutlined style={{ color: "white" }} />
-      </Button>
-      <LocaleSelector />
-      <Logout />
-    </nav>
+    <>
+      <nav className={styles.navbar}>
+        <Button
+          onClick={routeProfileScreen}
+          shape="circle"
+          icon={<UserOutlined />}
+        />
+        <Drawer
+          title={"QA Guru"}
+          placement="right"
+          closable={true}
+          onClose={onClose}
+          open={open}
+          style={{ zIndex: 99999 }}
+        >
+          <AppMenu />
+        </Drawer>
+        <Button className={styles.menuButton} type="link" onClick={showDrawer}>
+          <MenuOutlined style={{ color: "white" }} />
+        </Button>
+        <LocaleSelector />
+        <Logout />
+      </nav>
+      <Outlet />
+    </>
   );
 };
 
