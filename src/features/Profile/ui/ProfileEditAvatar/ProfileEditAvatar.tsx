@@ -34,19 +34,18 @@ const ProfileEditAvatar: React.FC = () => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <ImgCrop rotate>
-        <Upload
-          // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-          listType="picture-card"
-          fileList={fileList}
-          onChange={onChange}
-          onPreview={onPreview}
-        >
-          {fileList.length < 1 && "+ Upload"}
-        </Upload>
-      </ImgCrop>
-    </div>
+    <ImgCrop rotate>
+      <Upload
+        className={styles.wrapper}
+        // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        listType="picture-card"
+        fileList={fileList}
+        onChange={onChange}
+        onPreview={onPreview}
+      >
+        {fileList.length < 1 && "+ Upload"}
+      </Upload>
+    </ImgCrop>
   );
 };
 

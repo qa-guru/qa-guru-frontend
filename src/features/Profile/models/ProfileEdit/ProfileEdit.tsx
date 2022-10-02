@@ -7,8 +7,9 @@ import { defaultValues } from "../../config/defaultValues";
 import ProfileEditAvatar from "../../ui/ProfileEditAvatar/ProfileEditAvatar";
 import ProfileEditFormViews from "../../ui/ProfileEditFormViews/ProfileEditFormViews";
 import styles from "./ProfileEdit.module.scss";
+import { IProfileEdit } from "./ProfileEdit.types";
 
-const ProfileEdit: React.FC = () => {
+const ProfileEdit: React.FC<IProfileEdit> = ({ setProfileEdit }) => {
   const { handleSubmit, control } = useForm<PersonInput>({
     defaultValues,
   });
@@ -18,11 +19,11 @@ const ProfileEdit: React.FC = () => {
     updatePerson({
       variables: { input: data },
     });
+    setProfileEdit(false);
   };
 
   return (
     <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-      ProfileAvatar - not working
       <ProfileEditAvatar />
       <ProfileEditFormViews control={control} />
       <Button className={styles.btn} htmlType="submit">

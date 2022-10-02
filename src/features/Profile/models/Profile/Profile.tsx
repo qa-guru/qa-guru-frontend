@@ -16,6 +16,7 @@ const Profile = () => {
       <div className={styles.wrapp}>
         <Typography></Typography>
         <Typography>{data?.person?.firstName}</Typography>
+        <Typography>{data?.person?.lastName}</Typography>
         <Typography>{data?.person?.middleName}</Typography>
         <Typography>{data?.person?.phoneNumber}</Typography>
       </div>

@@ -4,12 +4,12 @@
   justify-content: center;
   height: 100vh;
   margin: 0 auto;
-  position: relative;
 }
 
 .edit {
   cursor: pointer;
   font-size: 25px;
-  display: flex;
-  justify-content: end;
+  width: min-content;
+  position: relative;
+  left: 180px;
 }

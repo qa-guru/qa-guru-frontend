@@ -8,13 +8,17 @@ const ProfileScreen: React.FC = () => {
   const [profileEdit, setProfileEdit] = useState(false);
 
   const onChangeProfileEdit = () => {
-    setProfileEdit(true);
+    profileEdit ? setProfileEdit(false) : setProfileEdit(true);
   };
 
   return (
     <div className={styles.wrapper}>
       <EditOutlined onClick={onChangeProfileEdit} className={styles.edit} />
-      {profileEdit ? <ProfileEdit /> : <Profile />}
+      {profileEdit ? (
+        <ProfileEdit setProfileEdit={setProfileEdit} />
+      ) : (
+        <Profile />
+      )}
     </div>
   );
 };
