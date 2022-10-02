@@ -12,7 +12,7 @@ const useAuth = () => {
 
     if (response.status === 200) {
       // тут стоит указать название ноды QL а не all
-      client.refetchQueries({ include: "all" });
+      client.refetchQueries({ include: ["Person"] });
     } else {
       console.log("error");
     }
@@ -24,7 +24,7 @@ const useAuth = () => {
     const response = await AuthService.logout();
 
     if (response.status === 200) {
-      client.refetchQueries({ include: "all" });
+      client.refetchQueries({ include: ["Person"] });
     } else {
       console.log("error");
     }
