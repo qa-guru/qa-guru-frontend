@@ -10,6 +10,7 @@ const Registration = () => {
   const onClick = () => {
     navigate("/authorization");
   };
+
   return (
     <div className={styles.wrapper}>
       <SignUp />

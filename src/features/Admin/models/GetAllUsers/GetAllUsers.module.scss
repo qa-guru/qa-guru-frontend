@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
+  align-items: center;
+}
+
+.wrapp {
+  padding: 25px;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}

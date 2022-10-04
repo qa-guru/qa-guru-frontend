@@ -7,16 +7,15 @@ const Profile = () => {
   const { data } = usePersonQuery();
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Avatar size={150} icon={<UserOutlined />} />
       <div className={styles.wrapp}>
-        <Typography></Typography>
         <Typography>{data?.person?.firstName}</Typography>
         <Typography>{data?.person?.lastName}</Typography>
         <Typography>{data?.person?.middleName}</Typography>
         <Typography>{data?.person?.phoneNumber}</Typography>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import { Subscribing } from "../../features/AutoTestsGenerateForm/models/Subscri
 import FormTitles from "../../features/AutoTestsGenerateForm/ui/FormTitles/FormTitles";
 import ContainerLeft from "../../shared/ui/Containers/ContainerLeft/ContainerLeft";
 import ContainerRight from "../../shared/ui/Containers/ContainerRight/ConteinerRight";
+import WrapperForContainers from "../../shared/ui/WrapperForContainers/WrapperForContainers";
 const { TabPane } = Tabs;
 
 const AutoTestsGenerateForm = () => {
@@ -15,19 +16,21 @@ const AutoTestsGenerateForm = () => {
         url={"http://localhost:8080/ws"}
         // url={'https://api.autotests.cloud'}
       > */}
-      <ContainerLeft>
-        <FormMain />
-      </ContainerLeft>
-      <ContainerRight>
-        <Tabs defaultActiveKey="2" type="card">
-          <TabPane tab="Documentation" key="1">
-            <FormTitles />
-          </TabPane>
-          <TabPane tab="Console output" key="2">
-            <Subscribing />
-          </TabPane>
-        </Tabs>
-      </ContainerRight>
+      <WrapperForContainers>
+        <ContainerLeft>
+          <FormMain />
+        </ContainerLeft>
+        <ContainerRight>
+          <Tabs defaultActiveKey="2" type="card">
+            <TabPane tab="Documentation" key="1">
+              <FormTitles />
+            </TabPane>
+            <TabPane tab="Console output" key="2">
+              <Subscribing />
+            </TabPane>
+          </Tabs>
+        </ContainerRight>
+      </WrapperForContainers>
       {/* </StompSessionProvider> */}
     </CountManualTestProvider>
   );
