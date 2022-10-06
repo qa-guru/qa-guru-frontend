@@ -4,11 +4,7 @@ import { usePersonQuery } from "../../../../api/query/person";
 import styles from "./Profile.module.scss";
 
 const Profile = () => {
-  const { data, error } = usePersonQuery({
-    onError: () => {
-      console.log(error);
-    },
-  });
+  const { data } = usePersonQuery();
 
   return (
     <>
