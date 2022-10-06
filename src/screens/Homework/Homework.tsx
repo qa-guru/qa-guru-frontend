@@ -1,25 +1,26 @@
-import Profile from "../../features/Profile/models/Profile/Profile";
-import ProfileEdit from "../../features/Profile/models/ProfileEdit/ProfileEdit";
+import { Typography } from "antd";
+import CreateHomework from "../../features/Homework/models/CreateHomework/CreateHomework";
 import ContainerLeft from "../../shared/ui/Containers/ContainerLeft/ContainerLeft";
 import ContainerRight from "../../shared/ui/Containers/ContainerRight/ConteinerRight";
 import WrapperForContainers from "../../shared/ui/WrapperForContainers/WrapperForContainers";
-import styles from "./ProfileScreen.module.scss";
+import styles from "./Homework.module.scss";
 
-const ProfileScreen: React.FC = () => {
+const { Title } = Typography;
+
+const Homework = () => {
   return (
     <WrapperForContainers>
       <ContainerLeft>
         <div className={styles.wrapper}>
-          <ProfileEdit />
+          <Title className={styles.title}>Create Homework</Title>
+          <CreateHomework />
         </div>
       </ContainerLeft>
       <ContainerRight>
-        <div className={styles.wrapper}>
-          <Profile />
-        </div>
+        <div>Hello</div>
       </ContainerRight>
     </WrapperForContainers>
   );
 };
 
-export default ProfileScreen;
+export default Homework;

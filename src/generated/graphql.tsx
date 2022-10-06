@@ -478,6 +478,20 @@ export type PersonByUserIdQuery = {
   } | null;
 };
 
+export type UpdateLectureHomeWorkMutationVariables = Exact<{
+  input: LectureHomeWorkInput;
+}>;
+
+export type UpdateLectureHomeWorkMutation = {
+  __typename?: "Mutation";
+  updateLectureHomeWork?: {
+    __typename?: "LectureHomeWorkDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: string | null;
+  } | null;
+};
+
 export type UpdatePersonMutationVariables = Exact<{
   input: PersonInput;
 }>;
@@ -749,6 +763,58 @@ export type PersonByUserIdLazyQueryHookResult = ReturnType<
 export type PersonByUserIdQueryResult = Apollo.QueryResult<
   PersonByUserIdQuery,
   PersonByUserIdQueryVariables
+>;
+export const UpdateLectureHomeWorkDocument = gql`
+  mutation updateLectureHomeWork($input: LectureHomeWorkInput!) {
+    updateLectureHomeWork(input: $input) {
+      id
+      subject
+      description
+    }
+  }
+`;
+export type UpdateLectureHomeWorkMutationFn = Apollo.MutationFunction<
+  UpdateLectureHomeWorkMutation,
+  UpdateLectureHomeWorkMutationVariables
+>;
+
+/**
+ * __useUpdateLectureHomeWorkMutation__
+ *
+ * To run a mutation, you first call `useUpdateLectureHomeWorkMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLectureHomeWorkMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLectureHomeWorkMutation, { data, loading, error }] = useUpdateLectureHomeWorkMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateLectureHomeWorkMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLectureHomeWorkMutation,
+    UpdateLectureHomeWorkMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLectureHomeWorkMutation,
+    UpdateLectureHomeWorkMutationVariables
+  >(UpdateLectureHomeWorkDocument, options);
+}
+export type UpdateLectureHomeWorkMutationHookResult = ReturnType<
+  typeof useUpdateLectureHomeWorkMutation
+>;
+export type UpdateLectureHomeWorkMutationResult =
+  Apollo.MutationResult<UpdateLectureHomeWorkMutation>;
+export type UpdateLectureHomeWorkMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLectureHomeWorkMutation,
+  UpdateLectureHomeWorkMutationVariables
 >;
 export const UpdatePersonDocument = gql`
   mutation updatePerson($input: PersonInput!) {

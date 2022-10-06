@@ -7,9 +7,8 @@ import { defaultValues } from "../../config/defaultValues";
 import ProfileEditAvatar from "../../ui/ProfileEditAvatar/ProfileEditAvatar";
 import ProfileEditFormViews from "../../ui/ProfileEditFormViews/ProfileEditFormViews";
 import styles from "./ProfileEdit.module.scss";
-import { IProfileEdit } from "./ProfileEdit.types";
 
-const ProfileEdit: React.FC<IProfileEdit> = ({ setProfileEdit }) => {
+const ProfileEdit: React.FC = () => {
   const { handleSubmit, control } = useForm<PersonInput>({
     defaultValues,
   });
@@ -19,7 +18,6 @@ const ProfileEdit: React.FC<IProfileEdit> = ({ setProfileEdit }) => {
     updatePerson({
       variables: { input: data },
     });
-    setProfileEdit(false);
   };
 
   return (
