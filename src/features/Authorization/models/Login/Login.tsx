@@ -21,14 +21,14 @@ const Login = () => {
     setPerformingLoginRequest(true);
     try {
       const response = await login(username, password);
-      // switch (response.status) {
-      //   case 200:
-      //     break;
-      //   default:
-      //     notification.error({
-      //       message: intl.formatMessage({ id: "auth.login.unknownError" }),
-      //     });
-      // }
+      switch (response.status) {
+        case 200:
+          break;
+        default:
+          notification.error({
+            message: intl.formatMessage({ id: "auth.login.unknownError" }),
+          });
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         switch (error.response?.data.status) {
@@ -48,16 +48,14 @@ const Login = () => {
   }, [username, password, intl]);
 
   return (
-    <div className={styles.login_form_container}>
-      <div className={styles.login_form}>
-        <div className={styles.title}>QA Guru</div>
-        <Form layout="vertical" onFinish={doLogin}>
-          <UserName username={username} setUsername={setUsername} />
-          <Password password={password} setPassword={setPassword} />
-          <LoginLocaleSelector />
-          <LoginButton performingLoginRequest={performingLoginRequest} />
-        </Form>
-      </div>
+    <div className={styles.login_form}>
+      <div className={styles.title}>QA Guru</div>
+      <Form layout="vertical" onFinish={doLogin}>
+        <UserName username={username} setUsername={setUsername} />
+        <Password password={password} setPassword={setPassword} />
+        <LoginLocaleSelector />
+        <LoginButton performingLoginRequest={performingLoginRequest} />
+      </Form>
     </div>
   );
 };

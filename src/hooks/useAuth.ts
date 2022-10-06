@@ -1,44 +1,30 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSignUpMutation } from "../api/mutation/signup";
-import { usePersonQuery } from "../api/query/person";
 import AuthService from "../api/rest/AuthService";
+import { client } from "../http";
 
 const useAuth = () => {
   const [createUser] = useSignUpMutation();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-
-  const { data, networkStatus, error, loading } = usePersonQuery({
-    skip: !isLoggedIn,
-    onCompleted: () => {
-      setIsSignedIn(true);
-      console.log(isSignedIn);
-    },
-  });
-
-  // useEffect(() => {
-  //   if (!loading && data !== undefined) {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, [networkStatus, error, loading]);
 
   const login = async (username: string, password: string) => {
     const response = await AuthService.login(username, password);
 
     if (response.status === 200) {
-      setIsLoggedIn(true);
+      // тут стоит указать название ноды QL а не all
+      client.refetchQueries({ include: "all" });
     } else {
       console.log("error");
     }
 
-    return { response };
+    return response;
   };
 
   const logout = async () => {
     const response = await AuthService.logout();
 
     if (response.status === 200) {
-      setIsLoggedIn(false);
+      client.refetchQueries({ include: "all" });
     } else {
       console.log("error");
     }
@@ -49,12 +35,15 @@ const useAuth = () => {
   const signup = async (password: string, username: string) => {
     const response = await createUser({
       variables: { password, username },
+      onCompleted: () => {
+        setIsSignedIn(true);
+      },
     });
 
     return response;
   };
 
-  return { login, logout, signup, setIsLoggedIn, isSignedIn };
+  return { login, logout, signup, isSignedIn, setIsSignedIn };
 };
 
 export default useAuth;
