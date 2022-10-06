@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.edit {
+  cursor: pointer;
+  font-size: 25px;
+  width: min-content;
+  position: relative;
+  left: 180px;
+}
