@@ -10,10 +10,18 @@ const Profile = () => {
     <div className={styles.wrapper}>
       <Avatar size={150} icon={<UserOutlined />} />
       <div className={styles.wrapp}>
-        <Typography>{data?.person?.firstName}</Typography>
-        <Typography>{data?.person?.lastName}</Typography>
-        <Typography>{data?.person?.middleName}</Typography>
-        <Typography>{data?.person?.phoneNumber}</Typography>
+        <Typography className={styles.text}>
+          {data?.person?.firstName}
+        </Typography>
+        <Typography className={styles.text}>
+          {data?.person?.lastName}
+        </Typography>
+        <Typography className={styles.text}>
+          {data?.person?.middleName}
+        </Typography>
+        <Typography className={styles.text}>
+          {data?.person?.phoneNumber}
+        </Typography>
       </div>
     </div>
   );
