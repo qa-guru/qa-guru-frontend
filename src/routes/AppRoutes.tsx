@@ -6,17 +6,19 @@ import AutoTestsGenerateForm from "../screens/AutoTestsGenerateForm/AutoTestsGen
 import LessonScreen from "../screens/LessonScreen/LessonScreen";
 import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 import { Home } from "../screens/Home/Home";
+import Admin from "../screens/Admin/Admin";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="*" element={<Page404 />} />
+      <Route path="/" element={<Home />} />
       <Route path="practice-form" element={<PracticeForm />} />
       <Route path="kanban-board" element={<KanbanBoard />} />
       <Route path="autotests-generate" element={<AutoTestsGenerateForm />} />
       <Route path="lesson" element={<LessonScreen />} />
       <Route path="profile" element={<ProfileScreen />} />
-      <Route path="home" element={<Home />} />
+      <Route path="admin" element={<Admin />} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   );
 };

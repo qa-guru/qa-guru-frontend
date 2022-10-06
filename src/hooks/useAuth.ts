@@ -1,20 +1,17 @@
 import { useState } from "react";
-import { useSignUpMutation } from "../api/mutation/signup";
+import { useCreateUserMutation } from "../api/mutation/createUser";
 import AuthService from "../api/rest/AuthService";
 import { client } from "../http";
 
 const useAuth = () => {
-  const [createUser] = useSignUpMutation();
+  const [createUser] = useCreateUserMutation();
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
 
   const login = async (username: string, password: string) => {
     const response = await AuthService.login(username, password);
 
     if (response.status === 200) {
-      // тут стоит указать название ноды QL а не all
       client.refetchQueries({ include: ["Person"] });
-    } else {
-      console.log("error");
     }
 
     return response;
@@ -25,8 +22,6 @@ const useAuth = () => {
 
     if (response.status === 200) {
       client.refetchQueries({ include: ["Person"] });
-    } else {
-      console.log("error");
     }
 
     return response;

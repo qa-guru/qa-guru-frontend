@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { usePersonQuery } from "../generated/graphql";
 import useAuth from "../hooks/useAuth";
 import Navbar from "../navbar/Navbar/Navbar";
-import styles from "./App.module.scss";
+import Spinner from "../shared/ui/Spinner/Spinner";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("../routes/AppRoutes"));
@@ -14,6 +14,7 @@ export const App = () => {
   const { data } = usePersonQuery({
     onCompleted: () => {
       setIsSignedIn(true);
+      navigate("/");
     },
     onError: () => {
       setIsSignedIn(false);
@@ -24,8 +25,8 @@ export const App = () => {
   return (
     <>
       {isSignedIn && <Navbar />}
-      <main className={styles.main}>
-        <Suspense fallback={<span>Loading....</span>}>
+      <main>
+        <Suspense fallback={<Spinner />}>
           {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
           {/* {data.person.role === 'manager' && <ManagerRoutes />} */}
         </Suspense>
