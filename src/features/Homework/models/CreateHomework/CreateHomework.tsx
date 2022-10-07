@@ -11,12 +11,12 @@ const CreateHomework: React.FC = () => {
   const { handleSubmit, control } = useForm<LectureHomeWorkInput>({
     defaultValues,
   });
-  // const [updateLectureHomeWork] = useUpdateLectureHomeWorkMutation();
+  const [updateLectureHomeWork] = useUpdateLectureHomeWorkMutation();
 
   const onSubmit: SubmitHandler<LectureHomeWorkInput> = (data) => {
-    // updateLectureHomeWork({
-    //   variables: { input: data },
-    // });
+    updateLectureHomeWork({
+      variables: { input: data },
+    });
   };
 
   return (

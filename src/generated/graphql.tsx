@@ -51,7 +51,6 @@ export enum HomeWorkSortField {
 
 export type LectureDto = {
   __typename?: "LectureDto";
-  contentFiles?: Maybe<Array<Maybe<ContentFileDto>>>;
   description?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["ID"]>;
   lectureHomeWorks?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
@@ -61,7 +60,6 @@ export type LectureDto = {
 
 export type LectureHomeWorkDto = {
   __typename?: "LectureHomeWorkDto";
-  contentFiles?: Maybe<Array<Maybe<ContentFileDto>>>;
   description?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["ID"]>;
   subject?: Maybe<Scalars["String"]>;
@@ -237,12 +235,12 @@ export type PurchaseInput = {
 /** Query root */
 export type Query = {
   __typename?: "Query";
-  /** lectureHomeWork section */
-  homeWork?: Maybe<LectureHomeWorkDto>;
-  homeWorks?: Maybe<LectureHomeWorksDto>;
   /** lecture section */
   lecture?: Maybe<LectureDto>;
-  lectureHomeWorks?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  /** lectureHomeWork section */
+  lectureHomeWork?: Maybe<LectureHomeWorkDto>;
+  lectureHomeWorks?: Maybe<LectureHomeWorksDto>;
+  lectureHomeWorksByLecture?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
   lectures?: Maybe<LecturesDto>;
   /** person section */
   person?: Maybe<PersonDto>;
@@ -256,24 +254,24 @@ export type Query = {
 };
 
 /** Query root */
-export type QueryHomeWorkArgs = {
+export type QueryLectureArgs = {
   id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
-export type QueryHomeWorksArgs = {
+export type QueryLectureHomeWorkArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
+/** Query root */
+export type QueryLectureHomeWorksArgs = {
   page: Scalars["Int"];
   size: Scalars["Int"];
   sort?: InputMaybe<HomeWorkSort>;
 };
 
 /** Query root */
-export type QueryLectureArgs = {
-  id?: InputMaybe<Scalars["ID"]>;
-};
-
-/** Query root */
-export type QueryLectureHomeWorksArgs = {
+export type QueryLectureHomeWorksByLectureArgs = {
   id?: InputMaybe<Scalars["ID"]>;
 };
 
