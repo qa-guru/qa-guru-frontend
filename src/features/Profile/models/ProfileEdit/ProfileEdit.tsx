@@ -7,6 +7,7 @@ import { defaultValues } from "../../config/defaultValues";
 import ProfileEditAvatar from "../../ui/ProfileEditAvatar/ProfileEditAvatar";
 import ProfileEditFormViews from "../../ui/ProfileEditFormViews/ProfileEditFormViews";
 import styles from "./ProfileEdit.module.scss";
+import { client } from "../../../../http";
 
 const ProfileEdit: React.FC = () => {
   const { handleSubmit, control } = useForm<PersonInput>({
@@ -17,6 +18,7 @@ const ProfileEdit: React.FC = () => {
   const onSubmit: SubmitHandler<PersonInput> = (data) => {
     updatePerson({
       variables: { input: data },
+      onCompleted: () => client.refetchQueries({ include: ["Person"] }),
     });
   };
 
