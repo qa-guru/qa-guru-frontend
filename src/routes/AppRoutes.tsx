@@ -8,6 +8,7 @@ import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 import { Home } from "../screens/Home/Home";
 import Admin from "../screens/Admin/Admin";
 import Homework from "../screens/Homework/Homework";
+import Lecture from "../screens/Lecture/Lecture";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path="admin" element={<Admin />} />
       <Route path="*" element={<Page404 />} />
       <Route path="homework" element={<Homework />} />
+      <Route path="lecture" element={<Lecture />} />
     </Routes>
   );
 };

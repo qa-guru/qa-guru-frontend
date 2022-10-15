@@ -1,3 +1,3 @@
-export interface WrapperForContainers {
-  children: JSX.Element | JSX.Element[] | undefined;
+export interface IWrapperForContainers {
+  children: JSX.Element | JSX.Element[];
 }

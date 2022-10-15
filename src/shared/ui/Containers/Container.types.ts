@@ -1,3 +1,3 @@
 export interface ContainerProps {
-  children: JSX.Element | JSX.Element[] | undefined;
+  children: JSX.Element | JSX.Element[];
 }

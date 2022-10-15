@@ -1,0 +1,24 @@
+mutation updateLecture($input: LectureInput!) {
+  updateLecture(input: $input) {
+    id
+    subject
+    description
+    speakers {
+      id
+      email
+      roles
+      person {
+        firstName
+        lastName
+        middleName
+        phoneNumber
+        avatarLocation
+      }
+    }
+    lectureHomeWorks {
+      id
+      subject
+      description
+    }
+  }
+}

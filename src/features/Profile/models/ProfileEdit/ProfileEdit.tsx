@@ -15,7 +15,7 @@ const ProfileEdit: React.FC = () => {
   const [updatePerson] = useUpdatePersonMutation();
 
   const onSubmit: SubmitHandler<PersonInput> = (data) => {
-    updatePerson({
+    const response = updatePerson({
       variables: { input: data },
     });
   };
