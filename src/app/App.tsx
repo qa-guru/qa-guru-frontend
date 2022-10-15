@@ -14,7 +14,6 @@ export const App = () => {
   const { data } = usePersonQuery({
     onCompleted: () => {
       setIsSignedIn(true);
-      navigate("/");
     },
     onError: () => {
       setIsSignedIn(false);

@@ -476,6 +476,40 @@ export type PersonByUserIdQuery = {
   } | null;
 };
 
+export type UpdateLectureMutationVariables = Exact<{
+  input: LectureInput;
+}>;
+
+export type UpdateLectureMutation = {
+  __typename?: "Mutation";
+  updateLecture?: {
+    __typename?: "LectureDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: string | null;
+    speakers?: Array<{
+      __typename?: "UserInfoDto";
+      id?: string | null;
+      email?: string | null;
+      roles?: Array<UserRole | null> | null;
+      person?: {
+        __typename?: "PersonDto";
+        firstName?: string | null;
+        lastName?: string | null;
+        middleName?: string | null;
+        phoneNumber?: string | null;
+        avatarLocation?: string | null;
+      } | null;
+    } | null> | null;
+    lectureHomeWorks?: Array<{
+      __typename?: "LectureHomeWorkDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: string | null;
+    } | null> | null;
+  } | null;
+};
+
 export type UpdateLectureHomeWorkMutationVariables = Exact<{
   input: LectureHomeWorkInput;
 }>;
@@ -761,6 +795,75 @@ export type PersonByUserIdLazyQueryHookResult = ReturnType<
 export type PersonByUserIdQueryResult = Apollo.QueryResult<
   PersonByUserIdQuery,
   PersonByUserIdQueryVariables
+>;
+export const UpdateLectureDocument = gql`
+  mutation updateLecture($input: LectureInput!) {
+    updateLecture(input: $input) {
+      id
+      subject
+      description
+      speakers {
+        id
+        email
+        roles
+        person {
+          firstName
+          lastName
+          middleName
+          phoneNumber
+          avatarLocation
+        }
+      }
+      lectureHomeWorks {
+        id
+        subject
+        description
+      }
+    }
+  }
+`;
+export type UpdateLectureMutationFn = Apollo.MutationFunction<
+  UpdateLectureMutation,
+  UpdateLectureMutationVariables
+>;
+
+/**
+ * __useUpdateLectureMutation__
+ *
+ * To run a mutation, you first call `useUpdateLectureMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLectureMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLectureMutation, { data, loading, error }] = useUpdateLectureMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateLectureMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLectureMutation,
+    UpdateLectureMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLectureMutation,
+    UpdateLectureMutationVariables
+  >(UpdateLectureDocument, options);
+}
+export type UpdateLectureMutationHookResult = ReturnType<
+  typeof useUpdateLectureMutation
+>;
+export type UpdateLectureMutationResult =
+  Apollo.MutationResult<UpdateLectureMutation>;
+export type UpdateLectureMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLectureMutation,
+  UpdateLectureMutationVariables
 >;
 export const UpdateLectureHomeWorkDocument = gql`
   mutation updateLectureHomeWork($input: LectureHomeWorkInput!) {

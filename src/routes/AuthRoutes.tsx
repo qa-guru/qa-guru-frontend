@@ -6,9 +6,9 @@ import Registration from "../screens/Registration/Registration";
 const AuthRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/authorization" element={<Authorization />} />
+      <Route path="/" element={<Authorization />} />
       <Route path="/register" element={<Registration />} />
-      <Route path="*" element={<Navigate to="/authorization" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };

@@ -8,7 +8,7 @@ const Registration = () => {
   let navigate = useNavigate();
 
   const onClick = () => {
-    navigate("/authorization");
+    navigate("/");
   };
 
   return (
