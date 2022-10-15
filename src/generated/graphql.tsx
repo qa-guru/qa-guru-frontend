@@ -555,6 +555,20 @@ export type UpdateRoleMutation = {
   } | null;
 };
 
+export type UpdateTrainingMutationVariables = Exact<{
+  input: TrainingInput;
+}>;
+
+export type UpdateTrainingMutation = {
+  __typename?: "Mutation";
+  updateTraining?: {
+    __typename?: "TrainingDto";
+    id: string;
+    name: string;
+    techStack: TechStack;
+  } | null;
+};
+
 export type UsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type UsersQuery = {
@@ -1023,6 +1037,58 @@ export type UpdateRoleMutationResult =
 export type UpdateRoleMutationOptions = Apollo.BaseMutationOptions<
   UpdateRoleMutation,
   UpdateRoleMutationVariables
+>;
+export const UpdateTrainingDocument = gql`
+  mutation updateTraining($input: TrainingInput!) {
+    updateTraining(input: $input) {
+      id
+      name
+      techStack
+    }
+  }
+`;
+export type UpdateTrainingMutationFn = Apollo.MutationFunction<
+  UpdateTrainingMutation,
+  UpdateTrainingMutationVariables
+>;
+
+/**
+ * __useUpdateTrainingMutation__
+ *
+ * To run a mutation, you first call `useUpdateTrainingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTrainingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTrainingMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >(UpdateTrainingDocument, options);
+}
+export type UpdateTrainingMutationHookResult = ReturnType<
+  typeof useUpdateTrainingMutation
+>;
+export type UpdateTrainingMutationResult =
+  Apollo.MutationResult<UpdateTrainingMutation>;
+export type UpdateTrainingMutationOptions = Apollo.BaseMutationOptions<
+  UpdateTrainingMutation,
+  UpdateTrainingMutationVariables
 >;
 export const UsersDocument = gql`
   query Users {

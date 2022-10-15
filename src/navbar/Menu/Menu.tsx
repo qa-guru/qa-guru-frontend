@@ -58,6 +58,10 @@ const menuItems: ItemType[] = [
     label: <Link to="lecture">Lecture</Link>,
     key: "lecture",
   },
+  {
+    label: <Link to="training">Training</Link>,
+    key: "training",
+  },
 ];
 
 export const AppMenu = () => {

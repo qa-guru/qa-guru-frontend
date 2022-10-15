@@ -9,6 +9,7 @@ import { Home } from "../screens/Home/Home";
 import Admin from "../screens/Admin/Admin";
 import Homework from "../screens/Homework/Homework";
 import Lecture from "../screens/Lecture/Lecture";
+import Training from "../screens/Training/Training";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
       <Route path="*" element={<Page404 />} />
       <Route path="homework" element={<Homework />} />
       <Route path="lecture" element={<Lecture />} />
+      <Route path="training" element={<Training />} />
     </Routes>
   );
 };

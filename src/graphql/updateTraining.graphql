@@ -1,0 +1,7 @@
+mutation updateTraining($input: TrainingInput!) {
+  updateTraining(input: $input) {
+    id
+    name
+    techStack
+  }
+}

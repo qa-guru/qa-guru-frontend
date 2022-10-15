@@ -1,0 +1,293 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+directive @javaType(name: String!) on SCALAR
+
+type ContentFileDto {
+  fileLocation: String
+  id: ID
+  name: String
+  size: Long
+  type: String
+}
+
+type LectureDto {
+  description: String
+  id: ID
+  lectureHomeWorks: [LectureHomeWorkDto]
+  speakers: [UserInfoDto]
+  subject: String
+}
+
+type LectureHomeWorkDto {
+  description: String
+  id: ID
+  subject: String
+}
+
+type LectureHomeWorksDto {
+  items: [LectureHomeWorkDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type LecturesDto {
+  items: [LectureDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+"Mutation root"
+type Mutation {
+  "purchase section"
+  createPurchase(input: PurchaseInput!): PurchaseDto
+  "user section"
+  createUser(password: String!, username: String!): UserDto
+  deleteLecture(id: ID!): Void
+  deleteLectureHomeWork(id: ID!): Void
+  deleteTraining(id: ID!): Void
+  deleteUser(id: ID!): Void
+  removeTrainingLecture(id: ID!, trainingId: ID!): TrainingDto
+  "lecture section"
+  updateLecture(input: LectureInput!): LectureDto
+  "lectureHomeWork section"
+  updateLectureHomeWork(input: LectureHomeWorkInput!): LectureHomeWorkDto
+  "person section"
+  updatePerson(input: PersonInput!): PersonDto
+  updateRole(id: ID!, roles: [UserRole]): UserDto
+  "training section"
+  updateTraining(input: TrainingInput!): TrainingDto
+  updateTrainingLecture(id: ID!, input: TrainingLectureInput!): TrainingDto
+}
+
+type PersonDto {
+  avatarLocation: String
+  firstName: String
+  id: ID
+  lastName: String
+  middleName: String
+  phoneNumber: String
+}
+
+type PurchaseDto {
+  id: ID
+  training: TrainingDto!
+  trainingTariff: TrainingTariffDto!
+  user: UserDto!
+}
+
+"Query root"
+type Query {
+  "lecture section"
+  lecture(id: ID): LectureDto
+  "lectureHomeWork section"
+  lectureHomeWork(id: ID): LectureHomeWorkDto
+  lectureHomeWorks(
+    page: Int!
+    size: Int!
+    sort: HomeWorkSort
+  ): LectureHomeWorksDto
+  lectureHomeWorksByLecture(id: ID): [LectureHomeWorkDto]
+  lectures(page: Int!, size: Int!, sort: LectureSort): LecturesDto
+  "person section"
+  person: PersonDto
+  personByUserId(id: ID!): PersonDto
+  "training section"
+  training(id: ID!): TrainingDto
+  trainings(page: Int!, size: Int!, sort: TrainingSort): TrainingsDto
+  "user section"
+  user(id: ID): UserDto
+  users(page: Int!, size: Int!, sort: UserSort): UsersDto
+}
+
+type TrainingDto {
+  id: ID!
+  lectures: [TrainingLectureDto]
+  name: String!
+  techStack: TechStack!
+}
+
+type TrainingLectureDto {
+  id: ID
+  lastLecture: LectureDto
+  lecture: LectureDto
+  locking: Boolean
+}
+
+type TrainingTariffDto {
+  code: String
+  description: String
+  id: ID
+  name: String
+}
+
+type TrainingsDto {
+  items: [TrainingDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type UserDto {
+  email: String
+  id: ID
+  roles: [UserRole]
+}
+
+type UserInfoDto {
+  email: String
+  id: ID
+  person: PersonDto
+  roles: [UserRole]
+}
+
+type UsersDto {
+  items: [UserInfoDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+enum HomeWorkSortField {
+  CREATION_DATE
+  SUBJECT
+}
+
+enum LectureSortField {
+  CREATION_DATE
+  SUBJECT
+}
+
+enum Order {
+  ASC
+  DESC
+}
+
+enum TechStack {
+  JAVA
+  PYTHON
+}
+
+enum TrainingSortField {
+  CREATION_DATE
+  NAME
+}
+
+enum UserRole {
+  ADMIN
+  LECTOR
+  MANAGER
+  MASTER
+  MENTOR
+  USER
+}
+
+enum UserSortField {
+  EMAIL
+  LAST_NAME
+  PHONE
+}
+
+"An arbitrary precision signed decimal"
+scalar BigDecimal
+
+"An arbitrary precision signed integer"
+scalar BigInteger
+
+"An RFC-3339 compliant Full Date Scalar"
+scalar Date
+
+"An RFC-3339 compliant DateTime Scalar"
+scalar DateTime
+
+"A local datetime string in 'full-date\"T\"partial-time' format RFC3339"
+scalar LocalDateTime
+
+"A local time string in 24-hr HH:mm[:ss[.SSS]] format"
+scalar LocalTime
+
+"A 64-bit signed integer"
+scalar Long
+
+"An RFC-3339 compliant Full Time Scalar"
+scalar Time
+
+"A number of milliseconds from start of UNIX epoch"
+scalar Timestamp
+
+"A Url scalar"
+scalar Url
+
+"Void"
+scalar Void
+
+input HomeWorkSort {
+  field: HomeWorkSortField
+  order: Order
+}
+
+input LectureHomeWorkInput {
+  description: String
+  id: ID
+  subject: String
+}
+
+input LectureInput {
+  description: String
+  id: ID
+  lectureHomeWorks: [String]
+  speakers: [String]
+  subject: String
+}
+
+input LectureSort {
+  field: LectureSortField
+  order: Order
+}
+
+input PersonInput {
+  firstName: String!
+  lastName: String!
+  middleName: String
+  phoneNumber: String!
+}
+
+input PurchaseInput {
+  trainingId: ID
+  trainingTariffId: ID
+  userId: ID
+}
+
+input TrainingInput {
+  id: ID
+  name: String
+  techStack: TechStack!
+}
+
+input TrainingLectureInput {
+  lastLecture: ID
+  lecture: ID!
+  locking: Boolean
+}
+
+input TrainingSort {
+  field: TrainingSortField
+  order: Order
+}
+
+input TrainingTariffInput {
+  code: String
+  description: String
+  name: String
+}
+
+input UserIdInput {
+  id: ID
+}
+
+input UserSort {
+  field: UserSortField
+  order: Order
+}
