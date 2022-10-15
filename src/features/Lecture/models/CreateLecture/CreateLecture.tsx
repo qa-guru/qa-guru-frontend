@@ -4,7 +4,7 @@ import { LectureInput } from "../../../../generated/graphql";
 import { useUpdateLectureMutation } from "../../../../api/mutation/updateLecture";
 import { Button, Form } from "antd";
 import Ui from "../../../../shared/ui/Input";
-import { defaultValues } from "../../config /defaultValues";
+import { defaultValues } from "../../config/defaultValues";
 import styles from "./CreateLecture.module.scss";
 
 const CreateLecture: React.FC = () => {
