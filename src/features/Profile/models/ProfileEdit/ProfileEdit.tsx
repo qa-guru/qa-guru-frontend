@@ -3,14 +3,18 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUpdatePersonMutation } from "../../../../api/mutation/updatePerson";
 import { PersonInput } from "../../../../generated/graphql";
-import { defaultValues } from "../../config/defaultValues";
 import ProfileEditAvatar from "../../ui/ProfileEditAvatar/ProfileEditAvatar";
 import ProfileEditFormViews from "../../ui/ProfileEditFormViews/ProfileEditFormViews";
 import styles from "./ProfileEdit.module.scss";
 
 const ProfileEdit: React.FC = () => {
   const { handleSubmit, control } = useForm<PersonInput>({
-    defaultValues,
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      middleName: "",
+      phoneNumber: "",
+    },
   });
   const [updatePerson] = useUpdatePersonMutation();
 

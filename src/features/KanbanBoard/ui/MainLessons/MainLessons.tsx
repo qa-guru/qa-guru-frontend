@@ -1,8 +1,9 @@
 import { Typography } from "antd";
 import React from "react";
 import styles from "./MainLessons.module.scss";
+import { IMainLessons } from "./MainLessons.types";
 
-const MainLessons: React.FC = ({ children }) => {
+const MainLessons: React.FC<IMainLessons> = ({ children }) => {
   return (
     <div>
       <Typography className={styles.main}>Main lessons</Typography>

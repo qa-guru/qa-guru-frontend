@@ -445,6 +445,54 @@ export type DeleteUserMutation = {
   deleteUser?: any | null;
 };
 
+export type LectureByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars["ID"]>;
+}>;
+
+export type LectureByIdQuery = {
+  __typename?: "Query";
+  lecture?: {
+    __typename?: "LectureDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: string | null;
+    speakers?: Array<{
+      __typename?: "UserInfoDto";
+      id?: string | null;
+      email?: string | null;
+      roles?: Array<UserRole | null> | null;
+      person?: {
+        __typename?: "PersonDto";
+        firstName?: string | null;
+        lastName?: string | null;
+        middleName?: string | null;
+        phoneNumber?: string | null;
+        avatarLocation?: string | null;
+      } | null;
+    } | null> | null;
+    lectureHomeWorks?: Array<{
+      __typename?: "LectureHomeWorkDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: string | null;
+    } | null> | null;
+  } | null;
+};
+
+export type LectureHomeWorkByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars["ID"]>;
+}>;
+
+export type LectureHomeWorkByIdQuery = {
+  __typename?: "Query";
+  lectureHomeWork?: {
+    __typename?: "LectureHomeWorkDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: string | null;
+  } | null;
+};
+
 export type PersonQueryVariables = Exact<{ [key: string]: never }>;
 
 export type PersonQuery = {
@@ -473,6 +521,37 @@ export type PersonByUserIdQuery = {
     firstName?: string | null;
     middleName?: string | null;
     phoneNumber?: string | null;
+  } | null;
+};
+
+export type TrainingByIdQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type TrainingByIdQuery = {
+  __typename?: "Query";
+  training?: {
+    __typename?: "TrainingDto";
+    id: string;
+    name: string;
+    techStack: TechStack;
+    lectures?: Array<{
+      __typename?: "TrainingLectureDto";
+      id?: string | null;
+      locking?: boolean | null;
+      lecture?: {
+        __typename?: "LectureDto";
+        id?: string | null;
+        subject?: string | null;
+        description?: string | null;
+      } | null;
+      lastLecture?: {
+        __typename?: "LectureDto";
+        id?: string | null;
+        subject?: string | null;
+        description?: string | null;
+      } | null;
+    } | null> | null;
   } | null;
 };
 
@@ -696,6 +775,141 @@ export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<
   DeleteUserMutation,
   DeleteUserMutationVariables
 >;
+export const LectureByIdDocument = gql`
+  query LectureById($id: ID) {
+    lecture(id: $id) {
+      id
+      subject
+      description
+      speakers {
+        id
+        email
+        roles
+        person {
+          firstName
+          lastName
+          middleName
+          phoneNumber
+          avatarLocation
+        }
+      }
+      lectureHomeWorks {
+        id
+        subject
+        description
+      }
+    }
+  }
+`;
+
+/**
+ * __useLectureByIdQuery__
+ *
+ * To run a query within a React component, call `useLectureByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLectureByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLectureByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLectureByIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    LectureByIdQuery,
+    LectureByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LectureByIdQuery, LectureByIdQueryVariables>(
+    LectureByIdDocument,
+    options
+  );
+}
+export function useLectureByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LectureByIdQuery,
+    LectureByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LectureByIdQuery, LectureByIdQueryVariables>(
+    LectureByIdDocument,
+    options
+  );
+}
+export type LectureByIdQueryHookResult = ReturnType<typeof useLectureByIdQuery>;
+export type LectureByIdLazyQueryHookResult = ReturnType<
+  typeof useLectureByIdLazyQuery
+>;
+export type LectureByIdQueryResult = Apollo.QueryResult<
+  LectureByIdQuery,
+  LectureByIdQueryVariables
+>;
+export const LectureHomeWorkByIdDocument = gql`
+  query LectureHomeWorkById($id: ID) {
+    lectureHomeWork(id: $id) {
+      id
+      subject
+      description
+    }
+  }
+`;
+
+/**
+ * __useLectureHomeWorkByIdQuery__
+ *
+ * To run a query within a React component, call `useLectureHomeWorkByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLectureHomeWorkByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLectureHomeWorkByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLectureHomeWorkByIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >(LectureHomeWorkByIdDocument, options);
+}
+export function useLectureHomeWorkByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >(LectureHomeWorkByIdDocument, options);
+}
+export type LectureHomeWorkByIdQueryHookResult = ReturnType<
+  typeof useLectureHomeWorkByIdQuery
+>;
+export type LectureHomeWorkByIdLazyQueryHookResult = ReturnType<
+  typeof useLectureHomeWorkByIdLazyQuery
+>;
+export type LectureHomeWorkByIdQueryResult = Apollo.QueryResult<
+  LectureHomeWorkByIdQuery,
+  LectureHomeWorkByIdQueryVariables
+>;
 export const PersonDocument = gql`
   query Person {
     person {
@@ -809,6 +1023,80 @@ export type PersonByUserIdLazyQueryHookResult = ReturnType<
 export type PersonByUserIdQueryResult = Apollo.QueryResult<
   PersonByUserIdQuery,
   PersonByUserIdQueryVariables
+>;
+export const TrainingByIdDocument = gql`
+  query TrainingById($id: ID!) {
+    training(id: $id) {
+      id
+      name
+      techStack
+      lectures {
+        id
+        lecture {
+          id
+          subject
+          description
+        }
+        locking
+        lastLecture {
+          id
+          subject
+          description
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useTrainingByIdQuery__
+ *
+ * To run a query within a React component, call `useTrainingByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useTrainingByIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    TrainingByIdQuery,
+    TrainingByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TrainingByIdQuery, TrainingByIdQueryVariables>(
+    TrainingByIdDocument,
+    options
+  );
+}
+export function useTrainingByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingByIdQuery,
+    TrainingByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TrainingByIdQuery, TrainingByIdQueryVariables>(
+    TrainingByIdDocument,
+    options
+  );
+}
+export type TrainingByIdQueryHookResult = ReturnType<
+  typeof useTrainingByIdQuery
+>;
+export type TrainingByIdLazyQueryHookResult = ReturnType<
+  typeof useTrainingByIdLazyQuery
+>;
+export type TrainingByIdQueryResult = Apollo.QueryResult<
+  TrainingByIdQuery,
+  TrainingByIdQueryVariables
 >;
 export const UpdateLectureDocument = gql`
   mutation updateLecture($input: LectureInput!) {

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import Text from "./Text/Text";
 import Radio from "./Radio/Radio";
 import Checkbox from "./Checkbox/Checkbox";
@@ -9,8 +8,10 @@ import SelectMultiple from "./SelectMultiple/SelectMultiple";
 import SelectCascader from "./SelectCascader/SelectCascader";
 import Slider from "./Slider/Slider";
 import FileUploud from "./FileUploud/FileUploud";
+import Select from "./Select/Select";
 
 export default {
+  Select,
   FileUploud,
   Text,
   Radio,
