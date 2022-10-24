@@ -1,9 +1,9 @@
 import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
-import { usePersonQuery } from "../generated/graphql";
 import useAuth from "../hooks/useAuth";
 import Navbar from "../navbar/Navbar/Navbar";
 import Spinner from "../shared/ui/Spinner/Spinner";
+import { usePersonQuery } from "../api/query/person";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("../routes/AppRoutes"));

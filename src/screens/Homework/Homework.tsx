@@ -1,23 +1,20 @@
-import { Typography } from "antd";
 import CreateHomework from "../../features/Homework/models/CreateHomework/CreateHomework";
 import ContainerLeft from "../../shared/ui/Containers/ContainerLeft/ContainerLeft";
 import ContainerRight from "../../shared/ui/Containers/ContainerRight/ConteinerRight";
 import WrapperForContainers from "../../shared/ui/WrapperForContainers/WrapperForContainers";
-import styles from "./Homework.module.scss";
-
-const { Title } = Typography;
+import GetHomework from "../../features/Homework/models/GetHomework/GetHomework";
+import { useState } from "react";
 
 const Homework = () => {
+  const [idHomework, setIdHomework] = useState("");
+
   return (
     <WrapperForContainers>
       <ContainerLeft>
-        <div className={styles.wrapper}>
-          <Title className={styles.title}>Create Homework</Title>
-          <CreateHomework />
-        </div>
+        <CreateHomework setIdHomework={setIdHomework} />
       </ContainerLeft>
       <ContainerRight>
-        <div>Hello</div>
+        <GetHomework idHomework={idHomework} />
       </ContainerRight>
     </WrapperForContainers>
   );

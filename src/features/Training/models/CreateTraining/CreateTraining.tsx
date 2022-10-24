@@ -1,16 +1,21 @@
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Button, Form, Select } from "antd";
+import { Button, Form, Select, Typography } from "antd";
 import Ui from "../../../../shared/ui/Input";
 import { TrainingInput } from "../../../../generated/graphql";
 import { useUpdateTrainingMutation } from "../../../../api/mutation/updateTraining";
 import styles from "./CreateTraining.module.scss";
-import { defaultValues } from "../../config/defaultValues";
-const { Option } = Select;
+import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
+import { ICreateTraining } from "./CreateTraining.types";
 
-const CreateTraining = () => {
+const { Option } = Select;
+const { Title } = Typography;
+
+const CreateTraining: React.FC<ICreateTraining> = ({ setIdTraining }) => {
   const { handleSubmit, control } = useForm<TrainingInput>({
-    defaultValues,
+    defaultValues: {
+      name: "",
+    },
   });
 
   const [updateTraining] = useUpdateTrainingMutation();
@@ -18,34 +23,32 @@ const CreateTraining = () => {
   const onSubmit: SubmitHandler<TrainingInput> = (data) => {
     updateTraining({
       variables: { input: data },
+    }).then((response) => {
+      if (response.data?.updateTraining?.id)
+        setIdTraining(response.data?.updateTraining?.id);
     });
   };
 
   return (
-    <Form
-      className={styles.form}
-      onFinish={handleSubmit(onSubmit)}
-      layout="vertical"
-    >
-      <Ui.Text name="name" control={control} label="Name" />
-      <Controller
-        name="techStack"
-        control={control}
-        render={({ field: { onChange, value } }) => (
-          <Select
-            onChange={onChange}
-            value={value}
-            placeholder="Select TechStack"
-          >
-            <Option value="JAVA">JAVA</Option>
-            <Option value="PYTHON">PYTHON</Option>
-          </Select>
-        )}
-      ></Controller>
-      <Button className={styles.btn} htmlType="submit">
-        Save
-      </Button>
-    </Form>
+    <LayoutOnCenter>
+      <Title className={styles.title}>Create Training</Title>
+      <Form
+        className={styles.form}
+        onFinish={handleSubmit(onSubmit)}
+        layout="vertical"
+      >
+        <Ui.Text name="name" control={control} label="Name" />
+        <Ui.Select
+          name="techStack"
+          control={control}
+          placeholder="Select TechStack"
+          content={["JAVA", "PYTHON"]}
+        />
+        <Button className={styles.btn} htmlType="submit">
+          Save
+        </Button>
+      </Form>
+    </LayoutOnCenter>
   );
 };
 
