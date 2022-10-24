@@ -493,6 +493,43 @@ export type LectureHomeWorkByIdQuery = {
   } | null;
 };
 
+export type LecturesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type LecturesQuery = {
+  __typename?: "Query";
+  lectures?: {
+    __typename?: "LecturesDto";
+    totalPages?: number | null;
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "LectureDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: string | null;
+      speakers?: Array<{
+        __typename?: "UserInfoDto";
+        id?: string | null;
+        email?: string | null;
+        roles?: Array<UserRole | null> | null;
+        person?: {
+          __typename?: "PersonDto";
+          firstName?: string | null;
+          lastName?: string | null;
+          middleName?: string | null;
+          phoneNumber?: string | null;
+          avatarLocation?: string | null;
+        } | null;
+      } | null> | null;
+      lectureHomeWorks?: Array<{
+        __typename?: "LectureHomeWorkDto";
+        id?: string | null;
+        subject?: string | null;
+        description?: string | null;
+      } | null> | null;
+    } | null> | null;
+  } | null;
+};
+
 export type PersonQueryVariables = Exact<{ [key: string]: never }>;
 
 export type PersonQuery = {
@@ -909,6 +946,81 @@ export type LectureHomeWorkByIdLazyQueryHookResult = ReturnType<
 export type LectureHomeWorkByIdQueryResult = Apollo.QueryResult<
   LectureHomeWorkByIdQuery,
   LectureHomeWorkByIdQueryVariables
+>;
+export const LecturesDocument = gql`
+  query Lectures {
+    lectures(page: 0, size: 10, sort: { field: SUBJECT }) {
+      items {
+        id
+        subject
+        description
+        speakers {
+          id
+          email
+          roles
+          person {
+            firstName
+            lastName
+            middleName
+            phoneNumber
+            avatarLocation
+          }
+        }
+        lectureHomeWorks {
+          id
+          subject
+          description
+        }
+      }
+      totalPages
+      totalElements
+    }
+  }
+`;
+
+/**
+ * __useLecturesQuery__
+ *
+ * To run a query within a React component, call `useLecturesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLecturesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLecturesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLecturesQuery(
+  baseOptions?: Apollo.QueryHookOptions<LecturesQuery, LecturesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LecturesQuery, LecturesQueryVariables>(
+    LecturesDocument,
+    options
+  );
+}
+export function useLecturesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LecturesQuery,
+    LecturesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LecturesQuery, LecturesQueryVariables>(
+    LecturesDocument,
+    options
+  );
+}
+export type LecturesQueryHookResult = ReturnType<typeof useLecturesQuery>;
+export type LecturesLazyQueryHookResult = ReturnType<
+  typeof useLecturesLazyQuery
+>;
+export type LecturesQueryResult = Apollo.QueryResult<
+  LecturesQuery,
+  LecturesQueryVariables
 >;
 export const PersonDocument = gql`
   query Person {

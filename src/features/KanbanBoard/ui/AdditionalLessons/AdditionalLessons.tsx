@@ -1,18 +1,8 @@
-import { ReactNode } from "react";
-import { Typography } from "antd";
-import styles from "./AdditionalLessons.module.scss";
+import React, { ReactNode } from "react";
+import { IAdditionalLessons } from "./AdditionalLessons.types";
 
-type IAdditionalLessons = {
-  children: ReactNode;
-};
-
-const AdditionalLessons = ({ children }: IAdditionalLessons) => {
-  return (
-    <div>
-      <Typography className={styles.additional}>Additional lessons</Typography>
-      <div className={styles.wrapp}>{children}</div>
-    </div>
-  );
+const AdditionalLessons: React.FC<IAdditionalLessons> = ({ children }) => {
+  return <div>{children}</div>;
 };
 
 export default AdditionalLessons;
