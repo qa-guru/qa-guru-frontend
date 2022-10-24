@@ -1,0 +1,28 @@
+query Lectures {
+  lectures(page: 0, size: 10, sort: { field: SUBJECT }) {
+    items {
+      id
+      subject
+      description
+      speakers {
+        id
+        email
+        roles
+        person {
+          firstName
+          lastName
+          middleName
+          phoneNumber
+          avatarLocation
+        }
+      }
+      lectureHomeWorks {
+        id
+        subject
+        description
+      }
+    }
+    totalPages
+    totalElements
+  }
+}

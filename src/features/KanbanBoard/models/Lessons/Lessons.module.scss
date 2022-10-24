@@ -9,3 +9,24 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
+
+.main {
+  font-size: 15px;
+  background: #cbd6d4;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.additional {
+  font-size: 15px;
+  background: #ffbaba;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.wrapp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}

@@ -1,20 +1,14 @@
 import { Typography } from "antd";
 import styles from "./LessonContent.module.scss";
+import React from "react";
+import { ILessonContent } from "./LessonContent.types";
 
-const LessonContent = () => {
+const LessonContent: React.FC<ILessonContent> = ({ description }) => {
   return (
     <ul className={styles.list}>
       <li>
-        <Typography>Разрабатываем и запускаем первый автотест</Typography>
-        <Typography className={styles.list_subtitle}>
-          Java / Gradle / JUnit5 / Selenide
-        </Typography>
-      </li>
-      <li>
-        <Typography>Разрабатываем и запускаем первый автотест</Typography>
-        <Typography className={styles.list_subtitle}>
-          Java / Gradle / JUnit5 / Selenide
-        </Typography>
+        <Typography>{description}</Typography>
+        {/*<Typography className={styles.list_subtitle}>{description}</Typography>*/}
       </li>
     </ul>
   );
