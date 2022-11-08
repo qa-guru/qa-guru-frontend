@@ -1,9 +1,9 @@
 import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Navbar from "../navbar/Navbar/Navbar";
+import Navbar from "../header/Navbar/Navbar";
+import { useUserQuery } from "../api/query/user";
 import Spinner from "../shared/ui/Spinner/Spinner";
-import { usePersonQuery } from "../api/query/person";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("../routes/AppRoutes"));
@@ -11,15 +11,21 @@ const AppRoutes = lazy(() => import("../routes/AppRoutes"));
 export const App = () => {
   const { isSignedIn, setIsSignedIn } = useAuth();
   let navigate = useNavigate();
-  const { data } = usePersonQuery({
+
+  const { data, loading } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
+      navigate("/");
     },
     onError: () => {
       setIsSignedIn(false);
-      navigate("/authorization");
+      navigate("authorization");
     },
   });
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -27,7 +33,6 @@ export const App = () => {
       <main>
         <Suspense fallback={<Spinner />}>
           {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
-          {/* {data.person.role === 'manager' && <ManagerRoutes />} */}
         </Suspense>
       </main>
     </>

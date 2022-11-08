@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputCheckbox from "../../shared/ui/Input/Checkbox/Checkbox";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputCheckbox from "../../shared/ui/InputRHF/Checkbox/Checkbox";
 
 const data = [
   {

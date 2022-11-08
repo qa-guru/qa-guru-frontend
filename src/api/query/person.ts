@@ -1,16 +1,11 @@
-import showErrorGraphQL from "../../error/showErrorGraphQL";
-import {
-  PersonQuery,
-  PersonQueryVariables,
-  usePersonQuery as _usePersonQuery,
-} from "../../generated/graphql";
-import * as Apollo from "@apollo/client";
-import { ApolloError } from "@apollo/client/errors";
+import { usePersonQuery as _usePersonQuery } from "../../generated/graphql";
+import { useSnackbar } from "notistack";
 
-const options = { onError: (error: ApolloError) => showErrorGraphQL(error) };
+export const usePersonQuery = () => {
+  const { enqueueSnackbar } = useSnackbar();
 
-export const usePersonQuery = (
-  baseOptions?: Apollo.QueryHookOptions<PersonQuery, PersonQueryVariables>
-) => {
-  return _usePersonQuery({ ...options, ...baseOptions });
+  return _usePersonQuery({
+    onError: (error) =>
+      error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
+  });
 };

@@ -1,7 +1,7 @@
 import { Typography } from "antd";
 import styles from "./Task.module.scss";
 import { Image } from "antd";
-import { Homework } from "../../../../assets";
+// import { Homework } from "../../../../assets";
 
 const { Link } = Typography;
 
@@ -32,7 +32,7 @@ const Task = () => {
         В поле ответа необходимо приложить скриншот пройденного автотеста.
       </Typography>
       <Typography>Пример</Typography>
-      <Image className={styles.image} src={Homework} />
+      {/*<Image className={styles.image} src={Homework} />*/}
     </div>
   );
 };

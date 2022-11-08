@@ -1,5 +1,5 @@
 @import "./normalize.scss";
-@import "antd/dist/antd.min.css";
+//@import "antd/dist/antd.min.css";
 
 body {
   font-family: "Sora", sans-serif !important;
@@ -75,7 +75,7 @@ body {
   width: 5px;
 }
 
-//ant-design navbar
+//ant-design header
 .ant-layout-header {
   background: white;
 }

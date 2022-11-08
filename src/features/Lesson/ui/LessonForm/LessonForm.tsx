@@ -1,7 +1,7 @@
 import { Button, Typography } from "antd";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Ui from "../../../../shared/ui/Input";
+import Ui from "../../../../shared/ui/InputRHF";
 
 const LessonForm = () => {
   const { handleSubmit, control } = useForm<any>({});

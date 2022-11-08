@@ -1,10 +1,8 @@
-import { Button, Form } from "antd";
-import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUpdatePersonMutation } from "../../../../api/mutation/updatePerson";
 import { PersonInput } from "../../../../generated/graphql";
-import ProfileEditAvatar from "../../ui/ProfileEditAvatar/ProfileEditAvatar";
 import ProfileEditFormViews from "../../ui/ProfileEditFormViews/ProfileEditFormViews";
+import { Button } from "@mui/material";
 import styles from "./ProfileEdit.module.scss";
 
 const ProfileEdit: React.FC = () => {
@@ -25,13 +23,12 @@ const ProfileEdit: React.FC = () => {
   };
 
   return (
-    <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-      <ProfileEditAvatar />
+    <form className={styles.form}>
       <ProfileEditFormViews control={control} />
-      <Button className={styles.btn} htmlType="submit">
+      <Button variant="contained" onClick={handleSubmit(onSubmit)}>
         Save
       </Button>
-    </Form>
+    </form>
   );
 };
 

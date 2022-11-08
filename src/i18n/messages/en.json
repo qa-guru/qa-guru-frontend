@@ -30,8 +30,6 @@
   "home.loggedInAs": "You are logged in as {username}",
   "filters.apply": "Apply",
   "filters.reset": "Reset",
-  "screen.PracticeForm": "Practice Form",
-  "screen.AutotestsGenerate": "Autotests Generate Form",
   "screen.KanbanBoard": "Kanban Board",
   "screen.Lesson": "Lesson"
 }

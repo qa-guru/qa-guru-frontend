@@ -34,8 +34,6 @@
 
   "filters.apply": "Применить",
   "filters.reset": "Сбросить",
-  "screen.PracticeForm": "Форма практики",
-  "screen.AutotestsGenerate": "Форма генерации автотестов",
   "screen.KanbanBoard": "Доска задач",
   "screen.Lesson": "Урок"
 }

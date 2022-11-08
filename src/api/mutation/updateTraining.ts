@@ -1,8 +1,11 @@
-import showErrorGraphQL from "../../error/showErrorGraphQL";
 import { useUpdateTrainingMutation as _useUpdateTrainingMutation } from "../../generated/graphql";
+import { useSnackbar } from "notistack";
 
 export const useUpdateTrainingMutation = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   return _useUpdateTrainingMutation({
-    onError: (error) => showErrorGraphQL(error),
+    onError: (error) =>
+      error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
   });
 };

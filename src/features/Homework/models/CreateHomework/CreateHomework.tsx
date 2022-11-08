@@ -1,14 +1,12 @@
-import { Button, Form, Typography } from "antd";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUpdateLectureHomeWorkMutation } from "../../../../api/mutation/updateLectureHomework";
 import { LectureHomeWorkInput } from "../../../../generated/graphql";
-import Ui from "../../../../shared/ui/Input";
-import styles from "./CreateHomework.module.scss";
+import RHF from "../../../../shared/ui/InputRHF";
 import { ICreateHomeWork } from "./CreateHomework.types";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
-
-const { Title } = Typography;
+import { Button, Typography } from "@mui/material";
+import styles from "./CreateHomework.module.scss";
 
 const CreateHomework: React.FC<ICreateHomeWork> = ({ setIdHomework }) => {
   const { handleSubmit, control } = useForm<LectureHomeWorkInput>({
@@ -30,18 +28,20 @@ const CreateHomework: React.FC<ICreateHomeWork> = ({ setIdHomework }) => {
 
   return (
     <LayoutOnCenter>
-      <Title className={styles.title}>Create Homework</Title>
-      <Form
-        className={styles.form}
-        onFinish={handleSubmit(onSubmit)}
-        layout="vertical"
-      >
-        <Ui.Text name="subject" control={control} label="Subject" />
-        <Ui.Text name="description" control={control} label="Description" />
-        <Button className={styles.btn} htmlType="submit">
+      <form className={styles.form}>
+        <Typography align="center" variant="h4" component="h4">
+          Create Homework
+        </Typography>
+        <RHF.InputTextField name="subject" control={control} label="Subject" />
+        <RHF.InputTextField
+          name="description"
+          control={control}
+          label="Description"
+        />
+        <Button variant="contained" onClick={handleSubmit(onSubmit)}>
           Save
         </Button>
-      </Form>
+      </form>
     </LayoutOnCenter>
   );
 };

@@ -28,11 +28,11 @@ const Lessons = () => {
           return (
             <>
               <AdditionalLessons>
-                <LessonItem
-                  key={lecture?.id}
-                  subject={lecture?.subject}
-                  description={lecture?.description}
-                />
+                {/*<LessonItem*/}
+                {/*  key={lecture?.id}*/}
+                {/*  subject={lecture?.subject}*/}
+                {/*  description={lecture?.description}*/}
+                {/*/>*/}
               </AdditionalLessons>
               <MainLessons>
                 <LessonItem

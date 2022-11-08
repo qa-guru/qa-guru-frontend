@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputSelectMultiple from "../../shared/ui/Input/SelectMultiple/SelectMultiple";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputSelectMultiple from "../../shared/ui/InputRHF/SelectMultiple/SelectMultiple";
 
 const data = [
   "Maths",

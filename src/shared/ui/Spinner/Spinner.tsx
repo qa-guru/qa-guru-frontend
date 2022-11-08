@@ -1,14 +1,14 @@
-import { Alert, Spin } from "antd";
 import React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import styles from "./Spinner.module.scss";
+import LayoutOnCenter from "../LayoutOnCenter/LayoutOnCenter";
 
-const Spinner: React.FC = () => (
-  <Spin tip="Loading...">
-    <Alert
-      message="Alert message title"
-      description="Further details about the context of this alert."
-      type="info"
-    />
-  </Spin>
-);
+const Spinner = () => {
+  return (
+    <div className={styles.spinner}>
+      <CircularProgress size={100} />
+    </div>
+  );
+};
 
 export default Spinner;

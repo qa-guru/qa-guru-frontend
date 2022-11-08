@@ -1,17 +1,12 @@
-import { Result, Spin } from "antd";
-import { FormattedMessage } from "react-intl";
-import { SmileOutlined } from "@ant-design/icons";
+import LayoutOnCenter from "../../shared/ui/LayoutOnCenter/LayoutOnCenter";
+import { Typography } from "@mui/material";
 
 export const Home = () => {
   return (
-    <Result
-      icon={<SmileOutlined />}
-      title={
-        <FormattedMessage
-          id="home.welcome"
-          values={{ appName: "Qaguru Application" }}
-        />
-      }
-    />
+    <LayoutOnCenter>
+      <Typography align="center" variant="h3" component="h3">
+        Hello in QA.GURU Application
+      </Typography>
+    </LayoutOnCenter>
   );
 };

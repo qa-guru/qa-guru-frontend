@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputSelectOption from "../../shared/ui/Input/SelectOption/SelectOption";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputSelectOption from "../../shared/ui/InputRHF/SelectOption/SelectOption";
 
 const data = [
   {

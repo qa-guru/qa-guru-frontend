@@ -11,7 +11,7 @@ const useAuth = () => {
     const response = await AuthService.login(username, password);
 
     if (response.status === 200) {
-      client.refetchQueries({ include: ["Person"] });
+      client.refetchQueries({ include: ["User"] });
     }
 
     return response;
@@ -21,7 +21,7 @@ const useAuth = () => {
     const response = await AuthService.logout();
 
     if (response.status === 200) {
-      client.refetchQueries({ include: ["Person"] });
+      client.refetchQueries({ include: ["User"] });
     }
 
     return response;
