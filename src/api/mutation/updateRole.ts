@@ -1,8 +1,11 @@
-import showErrorGraphQL from "../../error/showErrorGraphQL";
 import { useUpdateRoleMutation as _useUpdateRoleMutation } from "../../generated/graphql";
+import { useSnackbar } from "notistack";
 
 export const useUpdateRoleMutation = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   return _useUpdateRoleMutation({
-    onError: (error) => showErrorGraphQL(error),
+    onError: (error) =>
+      error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
   });
 };

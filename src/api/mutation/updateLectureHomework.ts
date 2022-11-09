@@ -1,13 +1,11 @@
-import showErrorGraphQL from "../../error/showErrorGraphQL";
 import { useUpdateLectureHomeWorkMutation as _useUpdateLectureHomeWorkMutation } from "../../generated/graphql";
-import { ApolloError } from "@apollo/client/errors";
-import * as Apollo from "@apollo/client";
-import { client } from "../../http";
-
-const options = {
-  onError: (error: ApolloError) => showErrorGraphQL(error),
-};
+import { useSnackbar } from "notistack";
 
 export const useUpdateLectureHomeWorkMutation = () => {
-  return _useUpdateLectureHomeWorkMutation({ ...options });
+  const { enqueueSnackbar } = useSnackbar();
+
+  return _useUpdateLectureHomeWorkMutation({
+    onError: (error) =>
+      error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
+  });
 };

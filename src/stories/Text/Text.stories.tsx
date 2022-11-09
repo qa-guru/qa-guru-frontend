@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputText from "../../shared/ui/Input/Text/Text";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputText from "../../shared/ui/InputRHF/InputTextField/InputTextField";
 
 export default {
-  title: "Inputs/Text",
+  title: "Inputs/InputTextField",
   component: InputText,
 };
 

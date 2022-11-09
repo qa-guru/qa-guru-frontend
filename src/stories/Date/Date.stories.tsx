@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputDate from "../../shared/ui/Input/Date/Date";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputDate from "../../shared/ui/InputRHF/Date/Date";
 
 export default {
   title: "Inputs/Date",

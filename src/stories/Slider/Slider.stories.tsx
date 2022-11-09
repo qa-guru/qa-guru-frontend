@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputSlider from "../../shared/ui/Input/Slider/Slider";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputSlider from "../../shared/ui/InputRHF/Slider/Slider";
 
 export default {
   title: "Inputs/Slider",

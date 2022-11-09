@@ -72,12 +72,12 @@ const Tasks: React.FC = () => {
       <div className="app">
         <div className="u-container -m0">
           <h1>Task Kanban</h1>
-          <InputField
-            todo={todo}
-            setTodo={setTodo}
-            setPriority={setPriority}
-            handleAdd={handleAdd}
-          />
+          {/*<InputField*/}
+          {/*  todo={todo}*/}
+          {/*  setTodo={setTodo}*/}
+          {/*  setPriority={setPriority}*/}
+          {/*  handleAdd={handleAdd}*/}
+          {/*/>*/}
           <div className="kanban">
             <TodoNotAvaliable
               setTodos={setTodos}

@@ -1,9 +1,8 @@
-import { CloseOutlined } from "@ant-design/icons";
-import { Button } from "antd";
 import React from "react";
 import { IDeleteUser } from "./DeleteUser.types";
 import { useDeleteUserMutation } from "../../../../generated/graphql";
 import { client } from "../../../../http";
+import { Button } from "@mui/material";
 
 const DeleteUser: React.FC<IDeleteUser> = ({ id }) => {
   const [deleteUser] = useDeleteUserMutation();
@@ -15,18 +14,10 @@ const DeleteUser: React.FC<IDeleteUser> = ({ id }) => {
         onCompleted: () => client.refetchQueries({ include: ["Users"] }),
       });
   };
-
   return (
-    <>
-      <Button
-        onClick={onDeleteUser}
-        type="dashed"
-        danger
-        icon={<CloseOutlined />}
-      >
-        Delete User
-      </Button>
-    </>
+    <Button variant="outlined" color="error" onClick={onDeleteUser}>
+      Delete User
+    </Button>
   );
 };
 

@@ -1,40 +1,53 @@
-import { useState } from "react";
-import { Form } from "antd";
-import UserName from "../../ui/UserName/UserName";
-import Password from "../../ui/Password/Password";
-import styles from "./SignUp.module.scss";
-import SignUpButton from "../../ui/SignUpButton/SignUpButton";
+import React, { useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
-import { LocaleSelector } from "../../../../i18n/localeSelector/LocaleSelector";
+import { Button, Typography } from "@mui/material";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ILoginForm } from "../Login/Login";
+import RHF from "../../../../shared/ui/InputRHF";
+import LocalSelector from "../../../../shared/ui/LocaleSelector/LocalSelector";
+import { useTranslation } from "react-i18next";
+import styles from "./SignUp.module.scss";
+
+export interface ISignUpForm {
+  password: string;
+  username: string;
+}
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { handleSubmit, control } = useForm<ISignUpForm>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
   const { signup } = useAuth();
+  const { t } = useTranslation();
 
-  const onSubmit = async () => {
-    await signup(password, username);
+  const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
+    await signup(data.password, data.username);
   };
 
   return (
     <div className={styles.login_form}>
-      <div className={styles.title}>QA Guru</div>
-      <Form layout="vertical">
-        <Form.Item>
-          <UserName username={username} setUsername={setUsername} />
-        </Form.Item>
-        <Form.Item>
-          <Password password={password} setPassword={setPassword} />
-        </Form.Item>
-        <Form.Item>
-          <div className={styles.language_switcher_container}>
-            <LocaleSelector />
-          </div>
-        </Form.Item>
-        <Form.Item>
-          <SignUpButton onSubmit={onSubmit} />
-        </Form.Item>
-      </Form>
+      <Typography align="center" variant="h4" component="h4">
+        QA Guru
+      </Typography>
+      <RHF.InputTextField
+        control={control}
+        name="username"
+        placeholder={t("email")}
+      />
+      <RHF.InputTextField
+        control={control}
+        name="password"
+        placeholder={t("password")}
+      />
+      <div className={styles.local}>
+        <LocalSelector />
+      </div>
+      <Button onClick={handleSubmit(onSubmit)} variant="contained">
+        {t("signup")}
+      </Button>
     </div>
   );
 };

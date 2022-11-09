@@ -1,28 +1,29 @@
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Typography } from "antd";
 import { usePersonQuery } from "../../../../api/query/person";
+import Spinner from "../../../../shared/ui/Spinner/Spinner";
 import styles from "./Profile.module.scss";
+import { Typography } from "@mui/material";
 
 const Profile = () => {
-  const { data } = usePersonQuery();
+  const { data, loading } = usePersonQuery();
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className={styles.wrapper}>
-      <Avatar size={150} icon={<UserOutlined />} />
-      <div className={styles.wrapp}>
-        <Typography className={styles.text}>
-          {data?.person?.firstName}
-        </Typography>
-        <Typography className={styles.text}>
-          {data?.person?.lastName}
-        </Typography>
-        <Typography className={styles.text}>
-          {data?.person?.middleName}
-        </Typography>
-        <Typography className={styles.text}>
-          {data?.person?.phoneNumber}
-        </Typography>
-      </div>
+      <Typography align="center" variant="h4" component="h4">
+        {data?.person?.firstName}
+      </Typography>
+      <Typography align="center" variant="h4" component="h4">
+        {data?.person?.lastName}
+      </Typography>
+      <Typography align="center" variant="h4" component="h4">
+        {data?.person?.middleName}
+      </Typography>
+      <Typography align="center" variant="h4" component="h4">
+        {data?.person?.phoneNumber}
+      </Typography>
     </div>
   );
 };

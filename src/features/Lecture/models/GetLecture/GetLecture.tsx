@@ -3,7 +3,7 @@ import { useLazyQuery } from "@apollo/client";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
 import { LectureByIdDocument } from "../../../../generated/graphql";
 import { IGetLecture } from "./GetLecture.types";
-import { Typography } from "antd";
+import { Typography } from "@mui/material";
 import styles from "./GetLecture.module.scss";
 
 const GetLecture: React.FC<IGetLecture> = ({ idLecture }) => {
@@ -17,11 +17,11 @@ const GetLecture: React.FC<IGetLecture> = ({ idLecture }) => {
 
   return (
     <LayoutOnCenter>
-      <Typography className={styles.title}>
-        {data?.lecture && data.lecture.subject}
+      <Typography align="center" variant="h4" component="h4">
+        {data?.lecture?.subject}
       </Typography>
-      <Typography className={styles.subtitle}>
-        {data?.lecture && data.lecture.description}
+      <Typography align="center" variant="h4" component="h4">
+        {data?.lecture?.description}
       </Typography>
     </LayoutOnCenter>
   );

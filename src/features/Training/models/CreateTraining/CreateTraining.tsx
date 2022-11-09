@@ -1,15 +1,12 @@
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Button, Form, Select, Typography } from "antd";
-import Ui from "../../../../shared/ui/Input";
+import RHF from "../../../../shared/ui/InputRHF";
 import { TrainingInput } from "../../../../generated/graphql";
 import { useUpdateTrainingMutation } from "../../../../api/mutation/updateTraining";
-import styles from "./CreateTraining.module.scss";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
 import { ICreateTraining } from "./CreateTraining.types";
-
-const { Option } = Select;
-const { Title } = Typography;
+import styles from "./CreateTraining.module.scss";
+import { Button, Typography } from "@mui/material";
 
 const CreateTraining: React.FC<ICreateTraining> = ({ setIdTraining }) => {
   const { handleSubmit, control } = useForm<TrainingInput>({
@@ -31,23 +28,22 @@ const CreateTraining: React.FC<ICreateTraining> = ({ setIdTraining }) => {
 
   return (
     <LayoutOnCenter>
-      <Title className={styles.title}>Create Training</Title>
-      <Form
-        className={styles.form}
-        onFinish={handleSubmit(onSubmit)}
-        layout="vertical"
-      >
-        <Ui.Text name="name" control={control} label="Name" />
-        <Ui.Select
+      <form className={styles.form}>
+        <Typography align="center" variant="h4" component="h4">
+          Create Training
+        </Typography>
+        <RHF.InputTextField name="name" control={control} label="Name" />
+        <RHF.Select
           name="techStack"
           control={control}
           placeholder="Select TechStack"
           content={["JAVA", "PYTHON"]}
+          defaultValue=""
         />
-        <Button className={styles.btn} htmlType="submit">
+        <Button variant="contained" onClick={handleSubmit(onSubmit)}>
           Save
         </Button>
-      </Form>
+      </form>
     </LayoutOnCenter>
   );
 };

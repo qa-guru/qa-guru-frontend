@@ -2,13 +2,11 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LectureInput } from "../../../../generated/graphql";
 import { useUpdateLectureMutation } from "../../../../api/mutation/updateLecture";
-import { Button, Form, Typography } from "antd";
-import Ui from "../../../../shared/ui/Input";
-import styles from "./CreateLecture.module.scss";
+import RHF from "../../../../shared/ui/InputRHF";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
 import { ICreateLecture } from "./CreateLecture.types";
-
-const { Title } = Typography;
+import styles from "./CreateLecture.module.scss";
+import { Button, Typography } from "@mui/material";
 
 const CreateLecture: React.FC<ICreateLecture> = ({ setIdLecture }) => {
   const { handleSubmit, control } = useForm<LectureInput>({
@@ -29,18 +27,20 @@ const CreateLecture: React.FC<ICreateLecture> = ({ setIdLecture }) => {
   };
   return (
     <LayoutOnCenter>
-      <Title className={styles.title}>Create Lecture</Title>
-      <Form
-        className={styles.form}
-        onFinish={handleSubmit(onSubmit)}
-        layout="vertical"
-      >
-        <Ui.Text name="subject" control={control} label="Subject" />
-        <Ui.Text name="description" control={control} label="Description" />
-        <Button className={styles.btn} htmlType="submit">
+      <form className={styles.form}>
+        <Typography align="center" variant="h4" component="h4">
+          Create Lecture
+        </Typography>
+        <RHF.InputTextField name="subject" control={control} label="Subject" />
+        <RHF.InputTextField
+          name="description"
+          control={control}
+          label="Description"
+        />
+        <Button variant="contained" onClick={handleSubmit(onSubmit)}>
           Save
         </Button>
-      </Form>
+      </form>
     </LayoutOnCenter>
   );
 };

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputTextArea from "../../shared/ui/Input/TextArea/TextArea";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputTextArea from "../../shared/ui/InputRHF/TextArea/TextArea";
 
 export default {
   title: "Inputs/TextArea",

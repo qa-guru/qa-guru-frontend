@@ -1,15 +1,27 @@
 import React from "react";
-import Ui from "../../../../shared/ui/Input";
+import RHF from "../../../../shared/ui/InputRHF";
 import { IProfileEditFormViews } from "./ProfileEditFormViews.types";
 import styles from "./ProfileEditFormViews.module.scss";
 
 const ProfileEditFormViews: React.FC<IProfileEditFormViews> = ({ control }) => {
   return (
     <div className={styles.wrapper}>
-      <Ui.Text name="firstName" control={control} label="FirstName" />
-      <Ui.Text name="lastName" control={control} label="LastName" />
-      <Ui.Text name="middleName" control={control} label="MiddleName" />
-      <Ui.Text name="phoneNumber" control={control} label="PhoneNumber" />
+      <RHF.InputTextField
+        name="firstName"
+        control={control}
+        label="FirstName"
+      />
+      <RHF.InputTextField name="lastName" control={control} label="LastName" />
+      <RHF.InputTextField
+        name="middleName"
+        control={control}
+        label="MiddleName"
+      />
+      <RHF.InputTextField
+        name="phoneNumber"
+        control={control}
+        label="PhoneNumber"
+      />
     </div>
   );
 };

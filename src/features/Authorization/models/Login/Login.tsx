@@ -1,71 +1,87 @@
-import { useCallback, useState } from "react";
-import { Form, notification } from "antd";
+import React, { useState } from "react";
 import axios from "axios";
-import { useIntl } from "react-intl";
-import styles from "./Login.module.scss";
-import UserName from "../../ui/UserName/UserName";
-import Password from "../../ui/Password/Password";
-import LoginButton from "../../ui/LoginButton/LoginButton";
 import useAuth from "../../../../hooks/useAuth";
-import { LocaleSelector } from "../../../../i18n/localeSelector/LocaleSelector";
+import RHF from "../../../../shared/ui/InputRHF";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
+import LocalSelector from "../../../../shared/ui/LocaleSelector/LocalSelector";
+import { Button, Typography } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import styles from "./Login.module.scss";
+
+export interface ILoginForm {
+  password: string;
+  username: string;
+}
 
 const Login = () => {
-  const intl = useIntl();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [performingLoginRequest, setPerformingLoginRequest] = useState(false);
-  const { login } = useAuth();
+  const { handleSubmit, control } = useForm<ILoginForm>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
 
-  const doLogin = useCallback(async () => {
-    setPerformingLoginRequest(true);
+  const { login } = useAuth();
+  const { enqueueSnackbar } = useSnackbar();
+  const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const doLogin: SubmitHandler<ILoginForm> = async (data) => {
     try {
-      const response = await login(username, password);
+      setIsLoading(true);
+      const response = await login(data.password, data.username);
       switch (response.status) {
         case 200:
+          setIsLoading(false);
           break;
         default:
-          notification.error({
-            message: intl.formatMessage({ id: "auth.login.unknownError" }),
-          });
+          setIsLoading(false);
+          enqueueSnackbar(t("login.unknownError"));
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         switch (error.response?.data.status) {
           case 401:
-            notification.error({
-              message: intl.formatMessage({ id: "auth.login.unauthorized" }),
-            });
+            setIsLoading(false);
+            enqueueSnackbar(t("login.unauthorized"));
             break;
           default:
-            notification.error({
-              message: intl.formatMessage({ id: "auth.login.unknownError" }),
-            });
+            setIsLoading(false);
+            enqueueSnackbar(t("login.unknownError"));
         }
       }
     }
-    setPerformingLoginRequest(false);
-  }, [username, password, intl]);
+  };
 
   return (
-    <div className={styles.login_form}>
-      <div className={styles.title}>QA Guru</div>
-      <Form layout="vertical" onFinish={doLogin}>
-        <Form.Item>
-          <UserName username={username} setUsername={setUsername} />
-        </Form.Item>
-        <Form.Item>
-          <Password password={password} setPassword={setPassword} />
-        </Form.Item>
-        <Form.Item>
-          <div className={styles.language_switcher_container}>
-            <LocaleSelector />
-          </div>
-        </Form.Item>
-        <Form.Item>
-          <LoginButton performingLoginRequest={performingLoginRequest} />
-        </Form.Item>
-      </Form>
-    </div>
+    <form className={styles.login_form}>
+      <Typography align="center" variant="h4" component="h4">
+        QA Guru
+      </Typography>
+      <RHF.InputTextField
+        control={control}
+        name="username"
+        placeholder={t("email")}
+      />
+      <RHF.InputTextField
+        control={control}
+        name="password"
+        placeholder={t("password")}
+      />
+      <div className={styles.local}>
+        <LocalSelector />
+      </div>
+      <Button
+        onClick={handleSubmit(doLogin)}
+        variant="contained"
+        disabled={isLoading && true}
+      >
+        {isLoading && <CircularProgress size={20} />}
+        {t("login")}
+      </Button>
+    </form>
   );
 };
 

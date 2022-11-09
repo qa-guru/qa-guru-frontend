@@ -1,4 +1,3 @@
-import showErrorGraphQL from "../../error/showErrorGraphQL";
 import {
   LectureByIdQuery,
   LectureByIdQueryVariables,
@@ -6,16 +5,19 @@ import {
 } from "../../generated/graphql";
 import { ApolloError } from "@apollo/client/errors";
 import * as Apollo from "@apollo/client";
+import { useSnackbar } from "notistack";
 
-const options = {
-  onError: (error: ApolloError) => showErrorGraphQL(error),
-};
-
-export const useLectureHomeWorkById = (
+export const useLectureById = (
   baseOptions?: Apollo.QueryHookOptions<
     LectureByIdQuery,
     LectureByIdQueryVariables
   >
 ) => {
-  return _useLectureByIdQuery({ ...options, ...baseOptions });
+  const { enqueueSnackbar } = useSnackbar();
+
+  return _useLectureByIdQuery({
+    onError: (error: ApolloError) =>
+      error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
+    ...baseOptions,
+  });
 };

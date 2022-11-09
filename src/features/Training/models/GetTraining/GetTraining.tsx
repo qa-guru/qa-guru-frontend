@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
-import { Typography } from "antd";
-import styles from "./GetTraining.module.scss";
 import { IGetTraining } from "./GetTraining.types";
 import { TrainingByIdDocument } from "../../../../generated/graphql";
+import styles from "./GetTraining.module.scss";
+import { Typography } from "@mui/material";
 
 const GetTraining: React.FC<IGetTraining> = ({ idTraining }) => {
   const [training, { data }] = useLazyQuery(TrainingByIdDocument);
@@ -12,16 +12,16 @@ const GetTraining: React.FC<IGetTraining> = ({ idTraining }) => {
   useEffect(() => {
     training({
       variables: { id: idTraining },
-    }).then((res) => console.log(res));
+    });
   }, [idTraining]);
 
   return (
     <LayoutOnCenter>
-      <Typography className={styles.title}>
-        {data?.training && data.training.name}
+      <Typography align="center" variant="h4" component="h4">
+        {data?.training?.name}
       </Typography>
-      <Typography className={styles.subtitle}>
-        {data?.training && data.training.techStack}
+      <Typography align="center" variant="h4" component="h4">
+        {data?.training?.techStack}
       </Typography>
     </LayoutOnCenter>
   );

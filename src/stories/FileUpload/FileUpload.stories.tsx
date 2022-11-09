@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputFileUploud from "../../shared/ui/Input/FileUploud/FileUploud";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputFileUploud from "../../shared/ui/InputRHF/FileUploud/FileUploud";
 
 export default {
   title: "Inputs/File",

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useForm } from "react-hook-form";
-import { IFormInputProps } from "../../shared/ui/Input/Input.types";
-import InputRadio from "../../shared/ui/Input/Radio/Radio";
+import { IFormInputProps } from "../../shared/ui/InputRHF/Input.types";
+import InputRadio from "../../shared/ui/InputRHF/Radio/Radio";
 
 const data = [
   {
