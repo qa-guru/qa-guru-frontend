@@ -2,7 +2,7 @@ import {
   UserQuery,
   UserQueryVariables,
   useUserQuery as _useUserQuery,
-} from "../../generated/graphql";
+} from "../../../generated/graphql";
 import * as Apollo from "@apollo/client";
 import { ApolloError } from "@apollo/client/errors";
 import { useSnackbar } from "notistack";

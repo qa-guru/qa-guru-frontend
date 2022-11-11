@@ -1,10 +1,10 @@
-import { useTrainingByIdQuery as _useTrainingByIdQuery } from "../../generated/graphql";
+import { useUpdateRoleMutation as _useUpdateRoleMutation } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
 
-export const useTrainingByIdQuery = () => {
+export const useUpdateRoleMutation = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return _useTrainingByIdQuery({
+  return _useUpdateRoleMutation({
     onError: (error) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
   });

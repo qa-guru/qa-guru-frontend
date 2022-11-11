@@ -3,7 +3,7 @@ import LessonItem from "../../ui/LessonItem/LessonItem";
 import AdditionalLessons from "../../ui/AdditionalLessons/AdditionalLessons";
 import MainLessons from "../../ui/MainLessons/MainLessons";
 import styles from "./Lessons.module.scss";
-import { useLecturesQuery } from "../../../../api/query/lectures";
+import { useLecturesQuery } from "../../../../api/graphql/lecture/lectures";
 import React from "react";
 import Spinner from "../../../../shared/ui/Spinner/Spinner";
 

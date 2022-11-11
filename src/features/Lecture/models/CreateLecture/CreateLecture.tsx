@@ -1,12 +1,12 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { LectureInput } from "../../../../generated/graphql";
-import { useUpdateLectureMutation } from "../../../../api/mutation/updateLecture";
+import { useUpdateLectureMutation } from "../../../../api/graphql/lecture/updateLecture";
 import RHF from "../../../../shared/ui/InputRHF";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
 import { ICreateLecture } from "./CreateLecture.types";
-import styles from "./CreateLecture.module.scss";
 import { Button, Typography } from "@mui/material";
+import styles from "./CreateLecture.module.scss";
 
 const CreateLecture: React.FC<ICreateLecture> = ({ setIdLecture }) => {
   const { handleSubmit, control } = useForm<LectureInput>({
@@ -25,6 +25,7 @@ const CreateLecture: React.FC<ICreateLecture> = ({ setIdLecture }) => {
         setIdLecture(response.data?.updateLecture?.id);
     });
   };
+
   return (
     <LayoutOnCenter>
       <form className={styles.form}>

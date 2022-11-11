@@ -1,8 +1,8 @@
 import React from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import RHF from "../../../../shared/ui/InputRHF";
 import { TrainingInput } from "../../../../generated/graphql";
-import { useUpdateTrainingMutation } from "../../../../api/mutation/updateTraining";
+import { useUpdateTrainingMutation } from "../../../../api/graphql/training/updateTraining";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
 import { ICreateTraining } from "./CreateTraining.types";
 import styles from "./CreateTraining.module.scss";

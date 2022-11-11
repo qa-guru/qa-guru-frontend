@@ -1,4 +1,4 @@
-import { useUpdateLectureMutation as _useUpdateLectureMutation } from "../../generated/graphql";
+import { useUpdateLectureMutation as _useUpdateLectureMutation } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
 
 export const useUpdateLectureMutation = () => {

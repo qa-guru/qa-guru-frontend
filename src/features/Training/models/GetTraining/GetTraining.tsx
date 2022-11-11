@@ -3,7 +3,6 @@ import { useLazyQuery } from "@apollo/client";
 import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter";
 import { IGetTraining } from "./GetTraining.types";
 import { TrainingByIdDocument } from "../../../../generated/graphql";
-import styles from "./GetTraining.module.scss";
 import { Typography } from "@mui/material";
 
 const GetTraining: React.FC<IGetTraining> = ({ idTraining }) => {

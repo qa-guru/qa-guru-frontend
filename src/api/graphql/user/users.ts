@@ -1,10 +1,10 @@
-import { usePersonQuery as _usePersonQuery } from "../../generated/graphql";
+import { useUsersQuery as _useUsersQuery } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
 
-export const usePersonQuery = () => {
+export const useUsersQuery = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return _usePersonQuery({
+  return _useUsersQuery({
     onError: (error) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
   });
