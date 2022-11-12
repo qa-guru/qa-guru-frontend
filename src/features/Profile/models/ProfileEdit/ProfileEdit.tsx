@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useUpdatePersonMutation } from "../../../../api/mutation/updatePerson";
+import { useUpdatePersonMutation } from "../../../../api/graphql/user/updatePerson";
 import { PersonInput } from "../../../../generated/graphql";
 import ProfileEditFormViews from "../../ui/ProfileEditFormViews/ProfileEditFormViews";
 import { Button } from "@mui/material";
@@ -18,7 +18,7 @@ const ProfileEdit: React.FC = () => {
   const [updatePerson] = useUpdatePersonMutation();
 
   const onSubmit: SubmitHandler<PersonInput> = (data) => {
-    const response = updatePerson({
+    updatePerson({
       variables: { input: data },
       onCompleted: () => client.refetchQueries({ include: ["Person"] }),
     });

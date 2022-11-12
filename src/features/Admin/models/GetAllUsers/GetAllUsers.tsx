@@ -1,5 +1,5 @@
 import React from "react";
-import { useUsersQuery } from "../../../../api/query/users";
+import { useUsersQuery } from "../../../../api/graphql/user/users";
 import DeleteUser from "../DeleteUser/DeleteUser";
 import UpdateRole from "../UpdateRole/UpdateRole";
 import styles from "./GetAllUsers.module.scss";

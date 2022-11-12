@@ -1,4 +1,4 @@
-import { usePersonQuery } from "../../../../api/query/person";
+import { usePersonQuery } from "../../../../api/graphql/user/person";
 import Spinner from "../../../../shared/ui/Spinner/Spinner";
 import styles from "./Profile.module.scss";
 import { Typography } from "@mui/material";

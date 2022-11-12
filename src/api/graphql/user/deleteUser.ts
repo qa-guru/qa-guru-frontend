@@ -1,10 +1,10 @@
-import { useUpdatePersonMutation as _useUpdatePersonMutation } from "../../generated/graphql";
+import { useDeleteUserMutation as _useDeleteUserMutation } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
 
-export const useUpdatePersonMutation = () => {
+export const useDeleteUserMutation = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return _useUpdatePersonMutation({
+  return _useDeleteUserMutation({
     onError: (error) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
   });

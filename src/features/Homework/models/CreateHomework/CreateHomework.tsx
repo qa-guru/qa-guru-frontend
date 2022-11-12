@@ -1,6 +1,6 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useUpdateLectureHomeWorkMutation } from "../../../../api/mutation/updateLectureHomework";
+import { useUpdateLectureHomeWorkMutation } from "../../../../api/graphql/homework/updateLectureHomework";
 import { LectureHomeWorkInput } from "../../../../generated/graphql";
 import RHF from "../../../../shared/ui/InputRHF";
 import { ICreateHomeWork } from "./CreateHomework.types";

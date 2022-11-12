@@ -1,5 +1,3 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
-
 schema {
   query: Query
   mutation: Mutation
@@ -7,257 +5,153 @@ schema {
 
 directive @javaType(name: String!) on SCALAR
 
-type ContentFileDto {
-  fileLocation: String
-  id: ID
-  name: String
-  size: Long
-  type: String
-}
-
-type LectureDto {
-  description: String
-  id: ID
-  lectureHomeWorks: [LectureHomeWorkDto]
-  speakers: [UserInfoDto]
-  subject: String
-}
-
-type LectureHomeWorkDto {
-  description: String
-  id: ID
-  subject: String
-}
-
-type LectureHomeWorksDto {
-  items: [LectureHomeWorkDto]
-  totalElements: Long
-  totalPages: Int
-}
-
-type LecturesDto {
-  items: [LectureDto]
-  totalElements: Long
-  totalPages: Int
-}
-
 "Mutation root"
 type Mutation {
-  "purchase section"
-  createPurchase(input: PurchaseInput!): PurchaseDto
-  "user section"
-  createUser(password: String!, username: String!): UserDto
-  deleteLecture(id: ID!): Void
-  deleteLectureHomeWork(id: ID!): Void
-  deleteTraining(id: ID!): Void
+  """
+  user section
+  """
+  createUser(username: String!, password: String!): UserDto
   deleteUser(id: ID!): Void
-  removeTrainingLecture(id: ID!, trainingId: ID!): TrainingDto
-  "lecture section"
-  updateLecture(input: LectureInput!): LectureDto
-  "lectureHomeWork section"
-  updateLectureHomeWork(input: LectureHomeWorkInput!): LectureHomeWorkDto
-  "person section"
-  updatePerson(input: PersonInput!): PersonDto
   updateRole(id: ID!, roles: [UserRole]): UserDto
-  "training section"
+  """
+  person section
+  """
+  updatePerson(input: PersonInput!): PersonDto
+  """
+  lecture section
+  """
+  updateLecture(input: LectureInput!): LectureDto
+  deleteLecture(id: ID!): Void
+  """
+  lectureHomeWork section
+  """
+  updateLectureHomeWork(input: LectureHomeWorkInput!): LectureHomeWorkDto
+  deleteLectureHomeWork(id: ID!): Void
+  """
+  training purchase section
+  """
+  updateTrainingPurchase(input: TrainingPurchaseInput!): TrainingPurchaseDto
+  """
+  training tariff
+  """
+  updateTrainingTariff(input: TrainingTariffInput!): TrainingTariffDto
+  deleteTrainingTariff(id: ID!): Void
+  """
+  training section
+  """
   updateTraining(input: TrainingInput!): TrainingDto
+  deleteTraining(id: ID!): Void
   updateTrainingLecture(id: ID!, input: TrainingLectureInput!): TrainingDto
-}
-
-type PersonDto {
-  avatarLocation: String
-  firstName: String
-  id: ID
-  lastName: String
-  middleName: String
-  phoneNumber: String
-}
-
-type PurchaseDto {
-  id: ID
-  training: TrainingDto!
-  trainingTariff: TrainingTariffDto!
-  user: UserDto!
+  removeTrainingLecture(id: ID!, trainingId: ID!): TrainingDto
+  """
+  studentHomeWork section
+  """
+  takeForReview(homeWorkId: ID!): StudentHomeWorkDto
+  approved(homeWorkId: ID!, resolution: String): StudentHomeWorkDto
+  notApproved(homeWorkId: ID!, resolution: String): StudentHomeWorkDto
 }
 
 "Query root"
 type Query {
-  "lecture section"
+  """
+  user section
+  """
+  user: UserDto
+  users(page: Int!, size: Int!, sort: UserSort): UsersDto
+  """
+  person section
+  """
+  person: PersonDto
+  personByUserId(id: ID!): PersonDto
+  """
+  lecture section
+  """
   lecture(id: ID): LectureDto
-  "lectureHomeWork section"
+  lectures(page: Int!, size: Int!, sort: LectureSort): LecturesDto
+  """
+  lectureHomeWork section
+  """
   lectureHomeWork(id: ID): LectureHomeWorkDto
   lectureHomeWorks(
     page: Int!
     size: Int!
     sort: HomeWorkSort
   ): LectureHomeWorksDto
-  lectureHomeWorksByLecture(id: ID): [LectureHomeWorkDto]
-  lectures(page: Int!, size: Int!, sort: LectureSort): LecturesDto
-  "person section"
-  person: PersonDto
-  personByUserId(id: ID!): PersonDto
-  "training section"
+  lectureHomeWorksByLectureId(lectureId: ID): [LectureHomeWorkDto]
+  """
+  purchase section
+  """
+  trainingPurchases: [TrainingPurchaseDto]
+  trainingPurchasesByUserId(userId: ID!): [TrainingPurchaseDto]
+  """
+  training tariff
+  """
+  trainingTariffs(
+    page: Int!
+    size: Int!
+    sort: TrainingTariffSort
+  ): TrainingTariffsDto
+  """
+  training section
+  """
   training(id: ID!): TrainingDto
   trainings(page: Int!, size: Int!, sort: TrainingSort): TrainingsDto
-  "user section"
-  user(id: ID): UserDto
-  users(page: Int!, size: Int!, sort: UserSort): UsersDto
+  """
+  studentHomeWork section
+  """
+  studentHomeWork(id: ID): StudentHomeWorkDto
+  studentHomeWorks(
+    page: Int!
+    size: Int!
+    sort: StudentHomeWorkSort
+  ): StudentHomeWorksDto
+  studentHomeWorksByLectureHomeWorkId(
+    page: Int!
+    size: Int!
+    sort: StudentHomeWorkSort
+    homeWorkId: ID
+  ): StudentHomeWorksDto
+  studentHomeWorksByStatus(
+    page: Int!
+    size: Int!
+    sort: StudentHomeWorkSort
+    status: StudentHomeWorkStatus
+  ): StudentHomeWorksDto
+}
+
+type TrainingPurchaseDto {
+  id: ID
+  user: UserInfoDto!
+  training: TrainingDto!
+  trainingTariff: TrainingTariffDto!
+}
+
+input TrainingPurchaseInput {
+  id: ID
+  userId: ID
+  trainingId: ID
+  trainingTariffId: ID
+}
+
+input TrainingTariffInput {
+  id: ID
+  name: String
+  code: String
+  description: String
+}
+
+type TrainingTariffDto {
+  id: ID
+  name: String
+  code: String
+  description: String
 }
 
 type TrainingDto {
   id: ID!
-  lectures: [TrainingLectureDto]
   name: String!
   techStack: TechStack!
-}
-
-type TrainingLectureDto {
-  id: ID
-  lastLecture: LectureDto
-  lecture: LectureDto
-  locking: Boolean
-}
-
-type TrainingTariffDto {
-  code: String
-  description: String
-  id: ID
-  name: String
-}
-
-type TrainingsDto {
-  items: [TrainingDto]
-  totalElements: Long
-  totalPages: Int
-}
-
-type UserDto {
-  email: String
-  id: ID
-  roles: [UserRole]
-}
-
-type UserInfoDto {
-  email: String
-  id: ID
-  person: PersonDto
-  roles: [UserRole]
-}
-
-type UsersDto {
-  items: [UserInfoDto]
-  totalElements: Long
-  totalPages: Int
-}
-
-enum HomeWorkSortField {
-  CREATION_DATE
-  SUBJECT
-}
-
-enum LectureSortField {
-  CREATION_DATE
-  SUBJECT
-}
-
-enum Order {
-  ASC
-  DESC
-}
-
-enum TechStack {
-  JAVA
-  PYTHON
-}
-
-enum TrainingSortField {
-  CREATION_DATE
-  NAME
-}
-
-enum UserRole {
-  ADMIN
-  LECTOR
-  MANAGER
-  MASTER
-  MENTOR
-  USER
-}
-
-enum UserSortField {
-  EMAIL
-  LAST_NAME
-  PHONE
-}
-
-"An arbitrary precision signed decimal"
-scalar BigDecimal
-
-"An arbitrary precision signed integer"
-scalar BigInteger
-
-"An RFC-3339 compliant Full Date Scalar"
-scalar Date
-
-"An RFC-3339 compliant DateTime Scalar"
-scalar DateTime
-
-"A local datetime string in 'full-date\"T\"partial-time' format RFC3339"
-scalar LocalDateTime
-
-"A local time string in 24-hr HH:mm[:ss[.SSS]] format"
-scalar LocalTime
-
-"A 64-bit signed integer"
-scalar Long
-
-"An RFC-3339 compliant Full Time Scalar"
-scalar Time
-
-"A number of milliseconds from start of UNIX epoch"
-scalar Timestamp
-
-"A Url scalar"
-scalar Url
-
-"Void"
-scalar Void
-
-input HomeWorkSort {
-  field: HomeWorkSortField
-  order: Order
-}
-
-input LectureHomeWorkInput {
-  description: String
-  id: ID
-  subject: String
-}
-
-input LectureInput {
-  description: String
-  id: ID
-  lectureHomeWorks: [String]
-  speakers: [String]
-  subject: String
-}
-
-input LectureSort {
-  field: LectureSortField
-  order: Order
-}
-
-input PersonInput {
-  firstName: String!
-  lastName: String!
-  middleName: String
-  phoneNumber: String!
-}
-
-input PurchaseInput {
-  trainingId: ID
-  trainingTariffId: ID
-  userId: ID
+  lectures: [TrainingLectureDto]
 }
 
 input TrainingInput {
@@ -267,9 +161,186 @@ input TrainingInput {
 }
 
 input TrainingLectureInput {
-  lastLecture: ID
   lecture: ID!
+  lastLecture: ID
   locking: Boolean
+}
+
+type TrainingLectureDto {
+  id: ID
+  lecture: LectureDto
+  lastLecture: LectureDto
+  locking: Boolean
+}
+
+input LectureInput {
+  id: ID
+  subject: String
+  description: String
+  speakers: [String]
+  lectureHomeWorks: [String]
+}
+
+type LectureDto {
+  id: ID
+  subject: String
+  description: String
+  speakers: [UserInfoDto]
+  lectureHomeWorks: [LectureHomeWorkDto]
+}
+
+type LecturesDto {
+  items: [LectureDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+input LectureHomeWorkInput {
+  id: ID
+  subject: String
+  description: String
+}
+
+type LectureHomeWorkDto {
+  id: ID
+  subject: String
+  description: String
+}
+
+type LectureHomeWorksDto {
+  items: [LectureHomeWorkDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type StudentHomeWorkDto {
+  id: ID
+  lectureHomeWork: LectureHomeWorkDto
+  status: StudentHomeWorkStatus
+  answer: String
+  student: UserInfoDto
+  mentor: UserInfoDto
+  resolution: String
+  creationDate: LocalDateTime
+  startCheckingDate: LocalDateTime
+  endCheckingDate: LocalDateTime
+}
+
+type StudentHomeWorksDto {
+  items: [StudentHomeWorkDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type TrainingsDto {
+  items: [TrainingDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type TrainingTariffsDto {
+  items: [TrainingTariffDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type ContentFileDto {
+  id: ID
+  size: Long
+  type: String
+  name: String
+  fileLocation: String
+}
+
+input UserIdInput {
+  id: ID
+}
+
+type UserDto {
+  id: ID
+  email: String
+  roles: [UserRole]
+}
+
+type UsersDto {
+  items: [UserInfoDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type UserInfoDto {
+  id: ID
+  email: String
+  roles: [UserRole]
+  person: PersonDto
+}
+
+type PersonDto {
+  id: ID
+  firstName: String
+  lastName: String
+  middleName: String
+  avatarLocation: String
+  phoneNumber: String
+}
+
+input PersonInput {
+  firstName: String!
+  lastName: String!
+  middleName: String
+  phoneNumber: String!
+}
+
+input UserSort {
+  field: UserSortField
+  order: Order
+}
+
+enum TechStack {
+  JAVA
+  PYTHON
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  MANAGER
+  MASTER
+  MENTOR
+  LECTOR
+}
+
+enum Order {
+  ASC
+  DESC
+}
+
+enum UserSortField {
+  LAST_NAME
+  PHONE
+  EMAIL
+}
+
+enum StudentHomeWorkStatus {
+  NEW
+  IN_REVIEW
+  APPROVED
+  NOT_APPROVED
+}
+
+input LectureSort {
+  field: LectureSortField
+  order: Order
+}
+
+input StudentHomeWorkSort {
+  field: StudentHomeWorkSortField
+  order: Order
+}
+
+input HomeWorkSort {
+  field: HomeWorkSortField
+  order: Order
 }
 
 input TrainingSort {
@@ -277,17 +348,57 @@ input TrainingSort {
   order: Order
 }
 
-input TrainingTariffInput {
-  code: String
-  description: String
-  name: String
-}
-
-input UserIdInput {
-  id: ID
-}
-
-input UserSort {
-  field: UserSortField
+input TrainingTariffSort {
+  field: TrainingTariffField
   order: Order
 }
+
+enum LectureSortField {
+  SUBJECT
+  CREATION_DATE
+}
+
+enum HomeWorkSortField {
+  SUBJECT
+  CREATION_DATE
+}
+
+enum StudentHomeWorkSortField {
+  MENTOR
+  STUDENT
+  STATE
+  CREATION_DATE
+}
+
+enum TrainingSortField {
+  NAME
+  CREATION_DATE
+}
+
+enum TrainingTariffField {
+  NAME
+  CODE
+  CREATION_DATE
+}
+
+scalar BigDecimal @javaType(name: "java.math.BigDecimal")
+
+scalar BigInteger @javaType(name: "java.math.BigInteger")
+
+scalar Date @javaType(name: "java.time.LocalDate")
+
+scalar DateTime @javaType(name: "java.time.OffsetDateTime")
+
+scalar LocalDateTime @javaType(name: "java.time.LocalDateTime")
+
+scalar LocalTime @javaType(name: "java.time.LocalTime")
+
+scalar Long @javaType(name: "java.lang.Long")
+
+scalar Time @javaType(name: "java.time.OffsetTime")
+
+scalar Timestamp @javaType(name: "java.util.Date")
+
+scalar Url @javaType(name: "java.net.URL")
+
+scalar Void @javaType(name: "java.lang.Void")

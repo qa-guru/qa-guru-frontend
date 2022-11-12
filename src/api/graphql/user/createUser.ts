@@ -1,4 +1,4 @@
-import { useCreateUserMutation as _useCreateUserMutation } from "../../generated/graphql";
+import { useCreateUserMutation as _useCreateUserMutation } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 

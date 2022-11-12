@@ -1,9 +1,0 @@
-query PersonByUserId($id: ID!) {
-  personByUserId(id: $id) {
-    id
-    lastName
-    firstName
-    middleName
-    phoneNumber
-  }
-}

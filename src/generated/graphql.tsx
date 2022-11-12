@@ -106,15 +106,18 @@ export type LecturesDto = {
 /** Mutation root */
 export type Mutation = {
   __typename?: "Mutation";
-  /** purchase section */
-  createPurchase?: Maybe<PurchaseDto>;
+  approved?: Maybe<StudentHomeWorkDto>;
   /** user section */
   createUser?: Maybe<UserDto>;
   deleteLecture?: Maybe<Scalars["Void"]>;
   deleteLectureHomeWork?: Maybe<Scalars["Void"]>;
   deleteTraining?: Maybe<Scalars["Void"]>;
+  deleteTrainingTariff?: Maybe<Scalars["Void"]>;
   deleteUser?: Maybe<Scalars["Void"]>;
+  notApproved?: Maybe<StudentHomeWorkDto>;
   removeTrainingLecture?: Maybe<TrainingDto>;
+  /** studentHomeWork section */
+  takeForReview?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
   updateLecture?: Maybe<LectureDto>;
   /** lectureHomeWork section */
@@ -125,11 +128,16 @@ export type Mutation = {
   /** training section */
   updateTraining?: Maybe<TrainingDto>;
   updateTrainingLecture?: Maybe<TrainingDto>;
+  /** training purchase section */
+  updateTrainingPurchase?: Maybe<TrainingPurchaseDto>;
+  /** training tariff */
+  updateTrainingTariff?: Maybe<TrainingTariffDto>;
 };
 
 /** Mutation root */
-export type MutationCreatePurchaseArgs = {
-  input: PurchaseInput;
+export type MutationApprovedArgs = {
+  homeWorkId: Scalars["ID"];
+  resolution?: InputMaybe<Scalars["String"]>;
 };
 
 /** Mutation root */
@@ -154,14 +162,30 @@ export type MutationDeleteTrainingArgs = {
 };
 
 /** Mutation root */
+export type MutationDeleteTrainingTariffArgs = {
+  id: Scalars["ID"];
+};
+
+/** Mutation root */
 export type MutationDeleteUserArgs = {
   id: Scalars["ID"];
+};
+
+/** Mutation root */
+export type MutationNotApprovedArgs = {
+  homeWorkId: Scalars["ID"];
+  resolution?: InputMaybe<Scalars["String"]>;
 };
 
 /** Mutation root */
 export type MutationRemoveTrainingLectureArgs = {
   id: Scalars["ID"];
   trainingId: Scalars["ID"];
+};
+
+/** Mutation root */
+export type MutationTakeForReviewArgs = {
+  homeWorkId: Scalars["ID"];
 };
 
 /** Mutation root */
@@ -196,6 +220,16 @@ export type MutationUpdateTrainingLectureArgs = {
   input: TrainingLectureInput;
 };
 
+/** Mutation root */
+export type MutationUpdateTrainingPurchaseArgs = {
+  input: TrainingPurchaseInput;
+};
+
+/** Mutation root */
+export type MutationUpdateTrainingTariffArgs = {
+  input: TrainingTariffInput;
+};
+
 export enum Order {
   Asc = "ASC",
   Desc = "DESC",
@@ -218,20 +252,6 @@ export type PersonInput = {
   phoneNumber: Scalars["String"];
 };
 
-export type PurchaseDto = {
-  __typename?: "PurchaseDto";
-  id?: Maybe<Scalars["ID"]>;
-  training: TrainingDto;
-  trainingTariff: TrainingTariffDto;
-  user: UserDto;
-};
-
-export type PurchaseInput = {
-  trainingId?: InputMaybe<Scalars["ID"]>;
-  trainingTariffId?: InputMaybe<Scalars["ID"]>;
-  userId?: InputMaybe<Scalars["ID"]>;
-};
-
 /** Query root */
 export type Query = {
   __typename?: "Query";
@@ -240,13 +260,23 @@ export type Query = {
   /** lectureHomeWork section */
   lectureHomeWork?: Maybe<LectureHomeWorkDto>;
   lectureHomeWorks?: Maybe<LectureHomeWorksDto>;
-  lectureHomeWorksByLecture?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  lectureHomeWorksByLectureId?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
   lectures?: Maybe<LecturesDto>;
   /** person section */
   person?: Maybe<PersonDto>;
   personByUserId?: Maybe<PersonDto>;
+  /** studentHomeWork section */
+  studentHomeWork?: Maybe<StudentHomeWorkDto>;
+  studentHomeWorks?: Maybe<StudentHomeWorksDto>;
+  studentHomeWorksByLectureHomeWorkId?: Maybe<StudentHomeWorksDto>;
+  studentHomeWorksByStatus?: Maybe<StudentHomeWorksDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
+  /** purchase section */
+  trainingPurchases?: Maybe<Array<Maybe<TrainingPurchaseDto>>>;
+  trainingPurchasesByUserId?: Maybe<Array<Maybe<TrainingPurchaseDto>>>;
+  /** training tariff */
+  trainingTariffs?: Maybe<TrainingTariffsDto>;
   trainings?: Maybe<TrainingsDto>;
   /** user section */
   user?: Maybe<UserDto>;
@@ -271,8 +301,8 @@ export type QueryLectureHomeWorksArgs = {
 };
 
 /** Query root */
-export type QueryLectureHomeWorksByLectureArgs = {
-  id?: InputMaybe<Scalars["ID"]>;
+export type QueryLectureHomeWorksByLectureIdArgs = {
+  lectureId?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
@@ -288,8 +318,48 @@ export type QueryPersonByUserIdArgs = {
 };
 
 /** Query root */
+export type QueryStudentHomeWorkArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
+/** Query root */
+export type QueryStudentHomeWorksArgs = {
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort?: InputMaybe<StudentHomeWorkSort>;
+};
+
+/** Query root */
+export type QueryStudentHomeWorksByLectureHomeWorkIdArgs = {
+  homeWorkId?: InputMaybe<Scalars["ID"]>;
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort?: InputMaybe<StudentHomeWorkSort>;
+};
+
+/** Query root */
+export type QueryStudentHomeWorksByStatusArgs = {
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort?: InputMaybe<StudentHomeWorkSort>;
+  status?: InputMaybe<StudentHomeWorkStatus>;
+};
+
+/** Query root */
 export type QueryTrainingArgs = {
   id: Scalars["ID"];
+};
+
+/** Query root */
+export type QueryTrainingPurchasesByUserIdArgs = {
+  userId: Scalars["ID"];
+};
+
+/** Query root */
+export type QueryTrainingTariffsArgs = {
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort?: InputMaybe<TrainingTariffSort>;
 };
 
 /** Query root */
@@ -300,15 +370,50 @@ export type QueryTrainingsArgs = {
 };
 
 /** Query root */
-export type QueryUserArgs = {
-  id?: InputMaybe<Scalars["ID"]>;
-};
-
-/** Query root */
 export type QueryUsersArgs = {
   page: Scalars["Int"];
   size: Scalars["Int"];
   sort?: InputMaybe<UserSort>;
+};
+
+export type StudentHomeWorkDto = {
+  __typename?: "StudentHomeWorkDto";
+  answer?: Maybe<Scalars["String"]>;
+  creationDate?: Maybe<Scalars["LocalDateTime"]>;
+  endCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lectureHomeWork?: Maybe<LectureHomeWorkDto>;
+  mentor?: Maybe<UserInfoDto>;
+  resolution?: Maybe<Scalars["String"]>;
+  startCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
+  status?: Maybe<StudentHomeWorkStatus>;
+  student?: Maybe<UserInfoDto>;
+};
+
+export type StudentHomeWorkSort = {
+  field?: InputMaybe<StudentHomeWorkSortField>;
+  order?: InputMaybe<Order>;
+};
+
+export enum StudentHomeWorkSortField {
+  CreationDate = "CREATION_DATE",
+  Mentor = "MENTOR",
+  State = "STATE",
+  Student = "STUDENT",
+}
+
+export enum StudentHomeWorkStatus {
+  Approved = "APPROVED",
+  InReview = "IN_REVIEW",
+  New = "NEW",
+  NotApproved = "NOT_APPROVED",
+}
+
+export type StudentHomeWorksDto = {
+  __typename?: "StudentHomeWorksDto";
+  items?: Maybe<Array<Maybe<StudentHomeWorkDto>>>;
+  totalElements?: Maybe<Scalars["Long"]>;
+  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export enum TechStack {
@@ -344,6 +449,21 @@ export type TrainingLectureInput = {
   locking?: InputMaybe<Scalars["Boolean"]>;
 };
 
+export type TrainingPurchaseDto = {
+  __typename?: "TrainingPurchaseDto";
+  id?: Maybe<Scalars["ID"]>;
+  training: TrainingDto;
+  trainingTariff: TrainingTariffDto;
+  user: UserInfoDto;
+};
+
+export type TrainingPurchaseInput = {
+  id?: InputMaybe<Scalars["ID"]>;
+  trainingId?: InputMaybe<Scalars["ID"]>;
+  trainingTariffId?: InputMaybe<Scalars["ID"]>;
+  userId?: InputMaybe<Scalars["ID"]>;
+};
+
 export type TrainingSort = {
   field?: InputMaybe<TrainingSortField>;
   order?: InputMaybe<Order>;
@@ -362,10 +482,29 @@ export type TrainingTariffDto = {
   name?: Maybe<Scalars["String"]>;
 };
 
+export enum TrainingTariffField {
+  Code = "CODE",
+  CreationDate = "CREATION_DATE",
+  Name = "NAME",
+}
+
 export type TrainingTariffInput = {
   code?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
   name?: InputMaybe<Scalars["String"]>;
+};
+
+export type TrainingTariffSort = {
+  field?: InputMaybe<TrainingTariffField>;
+  order?: InputMaybe<Order>;
+};
+
+export type TrainingTariffsDto = {
+  __typename?: "TrainingTariffsDto";
+  items?: Maybe<Array<Maybe<TrainingTariffDto>>>;
+  totalElements?: Maybe<Scalars["Long"]>;
+  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export type TrainingsDto = {
@@ -421,28 +560,32 @@ export type UsersDto = {
   totalPages?: Maybe<Scalars["Int"]>;
 };
 
-export type CreateUserMutationVariables = Exact<{
-  username: Scalars["String"];
-  password: Scalars["String"];
+export type LectureHomeWorkByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars["ID"]>;
 }>;
 
-export type CreateUserMutation = {
-  __typename?: "Mutation";
-  createUser?: {
-    __typename?: "UserDto";
+export type LectureHomeWorkByIdQuery = {
+  __typename?: "Query";
+  lectureHomeWork?: {
+    __typename?: "LectureHomeWorkDto";
     id?: string | null;
-    email?: string | null;
-    roles?: Array<UserRole | null> | null;
+    subject?: string | null;
+    description?: string | null;
   } | null;
 };
 
-export type DeleteUserMutationVariables = Exact<{
-  id: Scalars["ID"];
+export type UpdateLectureHomeWorkMutationVariables = Exact<{
+  input: LectureHomeWorkInput;
 }>;
 
-export type DeleteUserMutation = {
+export type UpdateLectureHomeWorkMutation = {
   __typename?: "Mutation";
-  deleteUser?: any | null;
+  updateLectureHomeWork?: {
+    __typename?: "LectureHomeWorkDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: string | null;
+  } | null;
 };
 
 export type LectureByIdQueryVariables = Exact<{
@@ -476,20 +619,6 @@ export type LectureByIdQuery = {
       subject?: string | null;
       description?: string | null;
     } | null> | null;
-  } | null;
-};
-
-export type LectureHomeWorkByIdQueryVariables = Exact<{
-  id?: InputMaybe<Scalars["ID"]>;
-}>;
-
-export type LectureHomeWorkByIdQuery = {
-  __typename?: "Query";
-  lectureHomeWork?: {
-    __typename?: "LectureHomeWorkDto";
-    id?: string | null;
-    subject?: string | null;
-    description?: string | null;
   } | null;
 };
 
@@ -530,68 +659,6 @@ export type LecturesQuery = {
   } | null;
 };
 
-export type PersonQueryVariables = Exact<{ [key: string]: never }>;
-
-export type PersonQuery = {
-  __typename?: "Query";
-  person?: {
-    __typename?: "PersonDto";
-    id?: string | null;
-    firstName?: string | null;
-    lastName?: string | null;
-    middleName?: string | null;
-    phoneNumber?: string | null;
-    avatarLocation?: string | null;
-  } | null;
-};
-
-export type PersonByUserIdQueryVariables = Exact<{
-  id: Scalars["ID"];
-}>;
-
-export type PersonByUserIdQuery = {
-  __typename?: "Query";
-  personByUserId?: {
-    __typename?: "PersonDto";
-    id?: string | null;
-    lastName?: string | null;
-    firstName?: string | null;
-    middleName?: string | null;
-    phoneNumber?: string | null;
-  } | null;
-};
-
-export type TrainingByIdQueryVariables = Exact<{
-  id: Scalars["ID"];
-}>;
-
-export type TrainingByIdQuery = {
-  __typename?: "Query";
-  training?: {
-    __typename?: "TrainingDto";
-    id: string;
-    name: string;
-    techStack: TechStack;
-    lectures?: Array<{
-      __typename?: "TrainingLectureDto";
-      id?: string | null;
-      locking?: boolean | null;
-      lecture?: {
-        __typename?: "LectureDto";
-        id?: string | null;
-        subject?: string | null;
-        description?: string | null;
-      } | null;
-      lastLecture?: {
-        __typename?: "LectureDto";
-        id?: string | null;
-        subject?: string | null;
-        description?: string | null;
-      } | null;
-    } | null> | null;
-  } | null;
-};
-
 export type UpdateLectureMutationVariables = Exact<{
   input: LectureInput;
 }>;
@@ -626,17 +693,99 @@ export type UpdateLectureMutation = {
   } | null;
 };
 
-export type UpdateLectureHomeWorkMutationVariables = Exact<{
-  input: LectureHomeWorkInput;
+export type TrainingByIdQueryVariables = Exact<{
+  id: Scalars["ID"];
 }>;
 
-export type UpdateLectureHomeWorkMutation = {
+export type TrainingByIdQuery = {
+  __typename?: "Query";
+  training?: {
+    __typename?: "TrainingDto";
+    id: string;
+    name: string;
+    techStack: TechStack;
+    lectures?: Array<{
+      __typename?: "TrainingLectureDto";
+      id?: string | null;
+      locking?: boolean | null;
+      lecture?: {
+        __typename?: "LectureDto";
+        id?: string | null;
+        subject?: string | null;
+        description?: string | null;
+      } | null;
+      lastLecture?: {
+        __typename?: "LectureDto";
+        id?: string | null;
+        subject?: string | null;
+        description?: string | null;
+      } | null;
+    } | null> | null;
+  } | null;
+};
+
+export type TrainingPurchasesByUserIdQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type TrainingPurchasesByUserIdQuery = {
+  __typename?: "Query";
+  trainingPurchasesByUserId?: Array<{
+    __typename?: "TrainingPurchaseDto";
+    training: { __typename?: "TrainingDto"; id: string; name: string };
+  } | null> | null;
+};
+
+export type UpdateTrainingMutationVariables = Exact<{
+  input: TrainingInput;
+}>;
+
+export type UpdateTrainingMutation = {
   __typename?: "Mutation";
-  updateLectureHomeWork?: {
-    __typename?: "LectureHomeWorkDto";
+  updateTraining?: {
+    __typename?: "TrainingDto";
+    id: string;
+    name: string;
+    techStack: TechStack;
+  } | null;
+};
+
+export type CreateUserMutationVariables = Exact<{
+  username: Scalars["String"];
+  password: Scalars["String"];
+}>;
+
+export type CreateUserMutation = {
+  __typename?: "Mutation";
+  createUser?: {
+    __typename?: "UserDto";
     id?: string | null;
-    subject?: string | null;
-    description?: string | null;
+    email?: string | null;
+    roles?: Array<UserRole | null> | null;
+  } | null;
+};
+
+export type DeleteUserMutationVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type DeleteUserMutation = {
+  __typename?: "Mutation";
+  deleteUser?: any | null;
+};
+
+export type PersonQueryVariables = Exact<{ [key: string]: never }>;
+
+export type PersonQuery = {
+  __typename?: "Query";
+  person?: {
+    __typename?: "PersonDto";
+    id?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    middleName?: string | null;
+    phoneNumber?: string | null;
+    avatarLocation?: string | null;
   } | null;
 };
 
@@ -668,20 +817,6 @@ export type UpdateRoleMutation = {
     id?: string | null;
     email?: string | null;
     roles?: Array<UserRole | null> | null;
-  } | null;
-};
-
-export type UpdateTrainingMutationVariables = Exact<{
-  input: TrainingInput;
-}>;
-
-export type UpdateTrainingMutation = {
-  __typename?: "Mutation";
-  updateTraining?: {
-    __typename?: "TrainingDto";
-    id: string;
-    name: string;
-    techStack: TechStack;
   } | null;
 };
 
@@ -723,6 +858,524 @@ export type UsersQuery = {
   } | null;
 };
 
+export const LectureHomeWorkByIdDocument = gql`
+  query LectureHomeWorkById($id: ID) {
+    lectureHomeWork(id: $id) {
+      id
+      subject
+      description
+    }
+  }
+`;
+
+/**
+ * __useLectureHomeWorkByIdQuery__
+ *
+ * To run a query within a React component, call `useLectureHomeWorkByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLectureHomeWorkByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLectureHomeWorkByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLectureHomeWorkByIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >(LectureHomeWorkByIdDocument, options);
+}
+export function useLectureHomeWorkByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    LectureHomeWorkByIdQuery,
+    LectureHomeWorkByIdQueryVariables
+  >(LectureHomeWorkByIdDocument, options);
+}
+export type LectureHomeWorkByIdQueryHookResult = ReturnType<
+  typeof useLectureHomeWorkByIdQuery
+>;
+export type LectureHomeWorkByIdLazyQueryHookResult = ReturnType<
+  typeof useLectureHomeWorkByIdLazyQuery
+>;
+export type LectureHomeWorkByIdQueryResult = Apollo.QueryResult<
+  LectureHomeWorkByIdQuery,
+  LectureHomeWorkByIdQueryVariables
+>;
+export const UpdateLectureHomeWorkDocument = gql`
+  mutation updateLectureHomeWork($input: LectureHomeWorkInput!) {
+    updateLectureHomeWork(input: $input) {
+      id
+      subject
+      description
+    }
+  }
+`;
+export type UpdateLectureHomeWorkMutationFn = Apollo.MutationFunction<
+  UpdateLectureHomeWorkMutation,
+  UpdateLectureHomeWorkMutationVariables
+>;
+
+/**
+ * __useUpdateLectureHomeWorkMutation__
+ *
+ * To run a mutation, you first call `useUpdateLectureHomeWorkMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLectureHomeWorkMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLectureHomeWorkMutation, { data, loading, error }] = useUpdateLectureHomeWorkMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateLectureHomeWorkMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLectureHomeWorkMutation,
+    UpdateLectureHomeWorkMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLectureHomeWorkMutation,
+    UpdateLectureHomeWorkMutationVariables
+  >(UpdateLectureHomeWorkDocument, options);
+}
+export type UpdateLectureHomeWorkMutationHookResult = ReturnType<
+  typeof useUpdateLectureHomeWorkMutation
+>;
+export type UpdateLectureHomeWorkMutationResult =
+  Apollo.MutationResult<UpdateLectureHomeWorkMutation>;
+export type UpdateLectureHomeWorkMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLectureHomeWorkMutation,
+  UpdateLectureHomeWorkMutationVariables
+>;
+export const LectureByIdDocument = gql`
+  query LectureById($id: ID) {
+    lecture(id: $id) {
+      id
+      subject
+      description
+      speakers {
+        id
+        email
+        roles
+        person {
+          firstName
+          lastName
+          middleName
+          phoneNumber
+          avatarLocation
+        }
+      }
+      lectureHomeWorks {
+        id
+        subject
+        description
+      }
+    }
+  }
+`;
+
+/**
+ * __useLectureByIdQuery__
+ *
+ * To run a query within a React component, call `useLectureByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLectureByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLectureByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLectureByIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    LectureByIdQuery,
+    LectureByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LectureByIdQuery, LectureByIdQueryVariables>(
+    LectureByIdDocument,
+    options
+  );
+}
+export function useLectureByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LectureByIdQuery,
+    LectureByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LectureByIdQuery, LectureByIdQueryVariables>(
+    LectureByIdDocument,
+    options
+  );
+}
+export type LectureByIdQueryHookResult = ReturnType<typeof useLectureByIdQuery>;
+export type LectureByIdLazyQueryHookResult = ReturnType<
+  typeof useLectureByIdLazyQuery
+>;
+export type LectureByIdQueryResult = Apollo.QueryResult<
+  LectureByIdQuery,
+  LectureByIdQueryVariables
+>;
+export const LecturesDocument = gql`
+  query Lectures {
+    lectures(page: 0, size: 10, sort: { field: SUBJECT }) {
+      items {
+        id
+        subject
+        description
+        speakers {
+          id
+          email
+          roles
+          person {
+            firstName
+            lastName
+            middleName
+            phoneNumber
+            avatarLocation
+          }
+        }
+        lectureHomeWorks {
+          id
+          subject
+          description
+        }
+      }
+      totalPages
+      totalElements
+    }
+  }
+`;
+
+/**
+ * __useLecturesQuery__
+ *
+ * To run a query within a React component, call `useLecturesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLecturesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLecturesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLecturesQuery(
+  baseOptions?: Apollo.QueryHookOptions<LecturesQuery, LecturesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LecturesQuery, LecturesQueryVariables>(
+    LecturesDocument,
+    options
+  );
+}
+export function useLecturesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    LecturesQuery,
+    LecturesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LecturesQuery, LecturesQueryVariables>(
+    LecturesDocument,
+    options
+  );
+}
+export type LecturesQueryHookResult = ReturnType<typeof useLecturesQuery>;
+export type LecturesLazyQueryHookResult = ReturnType<
+  typeof useLecturesLazyQuery
+>;
+export type LecturesQueryResult = Apollo.QueryResult<
+  LecturesQuery,
+  LecturesQueryVariables
+>;
+export const UpdateLectureDocument = gql`
+  mutation updateLecture($input: LectureInput!) {
+    updateLecture(input: $input) {
+      id
+      subject
+      description
+      speakers {
+        id
+        email
+        roles
+        person {
+          firstName
+          lastName
+          middleName
+          phoneNumber
+          avatarLocation
+        }
+      }
+      lectureHomeWorks {
+        id
+        subject
+        description
+      }
+    }
+  }
+`;
+export type UpdateLectureMutationFn = Apollo.MutationFunction<
+  UpdateLectureMutation,
+  UpdateLectureMutationVariables
+>;
+
+/**
+ * __useUpdateLectureMutation__
+ *
+ * To run a mutation, you first call `useUpdateLectureMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateLectureMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateLectureMutation, { data, loading, error }] = useUpdateLectureMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateLectureMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateLectureMutation,
+    UpdateLectureMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateLectureMutation,
+    UpdateLectureMutationVariables
+  >(UpdateLectureDocument, options);
+}
+export type UpdateLectureMutationHookResult = ReturnType<
+  typeof useUpdateLectureMutation
+>;
+export type UpdateLectureMutationResult =
+  Apollo.MutationResult<UpdateLectureMutation>;
+export type UpdateLectureMutationOptions = Apollo.BaseMutationOptions<
+  UpdateLectureMutation,
+  UpdateLectureMutationVariables
+>;
+export const TrainingByIdDocument = gql`
+  query TrainingById($id: ID!) {
+    training(id: $id) {
+      id
+      name
+      techStack
+      lectures {
+        id
+        lecture {
+          id
+          subject
+          description
+        }
+        locking
+        lastLecture {
+          id
+          subject
+          description
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useTrainingByIdQuery__
+ *
+ * To run a query within a React component, call `useTrainingByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useTrainingByIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    TrainingByIdQuery,
+    TrainingByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TrainingByIdQuery, TrainingByIdQueryVariables>(
+    TrainingByIdDocument,
+    options
+  );
+}
+export function useTrainingByIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingByIdQuery,
+    TrainingByIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TrainingByIdQuery, TrainingByIdQueryVariables>(
+    TrainingByIdDocument,
+    options
+  );
+}
+export type TrainingByIdQueryHookResult = ReturnType<
+  typeof useTrainingByIdQuery
+>;
+export type TrainingByIdLazyQueryHookResult = ReturnType<
+  typeof useTrainingByIdLazyQuery
+>;
+export type TrainingByIdQueryResult = Apollo.QueryResult<
+  TrainingByIdQuery,
+  TrainingByIdQueryVariables
+>;
+export const TrainingPurchasesByUserIdDocument = gql`
+  query TrainingPurchasesByUserId($id: ID!) {
+    trainingPurchasesByUserId(userId: $id) {
+      training {
+        id
+        name
+      }
+    }
+  }
+`;
+
+/**
+ * __useTrainingPurchasesByUserIdQuery__
+ *
+ * To run a query within a React component, call `useTrainingPurchasesByUserIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingPurchasesByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingPurchasesByUserIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useTrainingPurchasesByUserIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >(TrainingPurchasesByUserIdDocument, options);
+}
+export function useTrainingPurchasesByUserIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >(TrainingPurchasesByUserIdDocument, options);
+}
+export type TrainingPurchasesByUserIdQueryHookResult = ReturnType<
+  typeof useTrainingPurchasesByUserIdQuery
+>;
+export type TrainingPurchasesByUserIdLazyQueryHookResult = ReturnType<
+  typeof useTrainingPurchasesByUserIdLazyQuery
+>;
+export type TrainingPurchasesByUserIdQueryResult = Apollo.QueryResult<
+  TrainingPurchasesByUserIdQuery,
+  TrainingPurchasesByUserIdQueryVariables
+>;
+export const UpdateTrainingDocument = gql`
+  mutation updateTraining($input: TrainingInput!) {
+    updateTraining(input: $input) {
+      id
+      name
+      techStack
+    }
+  }
+`;
+export type UpdateTrainingMutationFn = Apollo.MutationFunction<
+  UpdateTrainingMutation,
+  UpdateTrainingMutationVariables
+>;
+
+/**
+ * __useUpdateTrainingMutation__
+ *
+ * To run a mutation, you first call `useUpdateTrainingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTrainingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTrainingMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >(UpdateTrainingDocument, options);
+}
+export type UpdateTrainingMutationHookResult = ReturnType<
+  typeof useUpdateTrainingMutation
+>;
+export type UpdateTrainingMutationResult =
+  Apollo.MutationResult<UpdateTrainingMutation>;
+export type UpdateTrainingMutationOptions = Apollo.BaseMutationOptions<
+  UpdateTrainingMutation,
+  UpdateTrainingMutationVariables
+>;
 export const CreateUserDocument = gql`
   mutation CreateUser($username: String!, $password: String!) {
     createUser(username: $username, password: $password) {
@@ -824,216 +1477,6 @@ export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<
   DeleteUserMutation,
   DeleteUserMutationVariables
 >;
-export const LectureByIdDocument = gql`
-  query LectureById($id: ID) {
-    lecture(id: $id) {
-      id
-      subject
-      description
-      speakers {
-        id
-        email
-        roles
-        person {
-          firstName
-          lastName
-          middleName
-          phoneNumber
-          avatarLocation
-        }
-      }
-      lectureHomeWorks {
-        id
-        subject
-        description
-      }
-    }
-  }
-`;
-
-/**
- * __useLectureByIdQuery__
- *
- * To run a query within a React component, call `useLectureByIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useLectureByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLectureByIdQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useLectureByIdQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    LectureByIdQuery,
-    LectureByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<LectureByIdQuery, LectureByIdQueryVariables>(
-    LectureByIdDocument,
-    options
-  );
-}
-export function useLectureByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    LectureByIdQuery,
-    LectureByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<LectureByIdQuery, LectureByIdQueryVariables>(
-    LectureByIdDocument,
-    options
-  );
-}
-export type LectureByIdQueryHookResult = ReturnType<typeof useLectureByIdQuery>;
-export type LectureByIdLazyQueryHookResult = ReturnType<
-  typeof useLectureByIdLazyQuery
->;
-export type LectureByIdQueryResult = Apollo.QueryResult<
-  LectureByIdQuery,
-  LectureByIdQueryVariables
->;
-export const LectureHomeWorkByIdDocument = gql`
-  query LectureHomeWorkById($id: ID) {
-    lectureHomeWork(id: $id) {
-      id
-      subject
-      description
-    }
-  }
-`;
-
-/**
- * __useLectureHomeWorkByIdQuery__
- *
- * To run a query within a React component, call `useLectureHomeWorkByIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useLectureHomeWorkByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLectureHomeWorkByIdQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useLectureHomeWorkByIdQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    LectureHomeWorkByIdQuery,
-    LectureHomeWorkByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    LectureHomeWorkByIdQuery,
-    LectureHomeWorkByIdQueryVariables
-  >(LectureHomeWorkByIdDocument, options);
-}
-export function useLectureHomeWorkByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    LectureHomeWorkByIdQuery,
-    LectureHomeWorkByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    LectureHomeWorkByIdQuery,
-    LectureHomeWorkByIdQueryVariables
-  >(LectureHomeWorkByIdDocument, options);
-}
-export type LectureHomeWorkByIdQueryHookResult = ReturnType<
-  typeof useLectureHomeWorkByIdQuery
->;
-export type LectureHomeWorkByIdLazyQueryHookResult = ReturnType<
-  typeof useLectureHomeWorkByIdLazyQuery
->;
-export type LectureHomeWorkByIdQueryResult = Apollo.QueryResult<
-  LectureHomeWorkByIdQuery,
-  LectureHomeWorkByIdQueryVariables
->;
-export const LecturesDocument = gql`
-  query Lectures {
-    lectures(page: 0, size: 10, sort: { field: SUBJECT }) {
-      items {
-        id
-        subject
-        description
-        speakers {
-          id
-          email
-          roles
-          person {
-            firstName
-            lastName
-            middleName
-            phoneNumber
-            avatarLocation
-          }
-        }
-        lectureHomeWorks {
-          id
-          subject
-          description
-        }
-      }
-      totalPages
-      totalElements
-    }
-  }
-`;
-
-/**
- * __useLecturesQuery__
- *
- * To run a query within a React component, call `useLecturesQuery` and pass it any options that fit your needs.
- * When your component renders, `useLecturesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLecturesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useLecturesQuery(
-  baseOptions?: Apollo.QueryHookOptions<LecturesQuery, LecturesQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<LecturesQuery, LecturesQueryVariables>(
-    LecturesDocument,
-    options
-  );
-}
-export function useLecturesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    LecturesQuery,
-    LecturesQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<LecturesQuery, LecturesQueryVariables>(
-    LecturesDocument,
-    options
-  );
-}
-export type LecturesQueryHookResult = ReturnType<typeof useLecturesQuery>;
-export type LecturesLazyQueryHookResult = ReturnType<
-  typeof useLecturesLazyQuery
->;
-export type LecturesQueryResult = Apollo.QueryResult<
-  LecturesQuery,
-  LecturesQueryVariables
->;
 export const PersonDocument = gql`
   query Person {
     person {
@@ -1085,263 +1528,6 @@ export type PersonLazyQueryHookResult = ReturnType<typeof usePersonLazyQuery>;
 export type PersonQueryResult = Apollo.QueryResult<
   PersonQuery,
   PersonQueryVariables
->;
-export const PersonByUserIdDocument = gql`
-  query PersonByUserId($id: ID!) {
-    personByUserId(id: $id) {
-      id
-      lastName
-      firstName
-      middleName
-      phoneNumber
-    }
-  }
-`;
-
-/**
- * __usePersonByUserIdQuery__
- *
- * To run a query within a React component, call `usePersonByUserIdQuery` and pass it any options that fit your needs.
- * When your component renders, `usePersonByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePersonByUserIdQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function usePersonByUserIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    PersonByUserIdQuery,
-    PersonByUserIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<PersonByUserIdQuery, PersonByUserIdQueryVariables>(
-    PersonByUserIdDocument,
-    options
-  );
-}
-export function usePersonByUserIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    PersonByUserIdQuery,
-    PersonByUserIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PersonByUserIdQuery, PersonByUserIdQueryVariables>(
-    PersonByUserIdDocument,
-    options
-  );
-}
-export type PersonByUserIdQueryHookResult = ReturnType<
-  typeof usePersonByUserIdQuery
->;
-export type PersonByUserIdLazyQueryHookResult = ReturnType<
-  typeof usePersonByUserIdLazyQuery
->;
-export type PersonByUserIdQueryResult = Apollo.QueryResult<
-  PersonByUserIdQuery,
-  PersonByUserIdQueryVariables
->;
-export const TrainingByIdDocument = gql`
-  query TrainingById($id: ID!) {
-    training(id: $id) {
-      id
-      name
-      techStack
-      lectures {
-        id
-        lecture {
-          id
-          subject
-          description
-        }
-        locking
-        lastLecture {
-          id
-          subject
-          description
-        }
-      }
-    }
-  }
-`;
-
-/**
- * __useTrainingByIdQuery__
- *
- * To run a query within a React component, call `useTrainingByIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useTrainingByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTrainingByIdQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useTrainingByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    TrainingByIdQuery,
-    TrainingByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TrainingByIdQuery, TrainingByIdQueryVariables>(
-    TrainingByIdDocument,
-    options
-  );
-}
-export function useTrainingByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TrainingByIdQuery,
-    TrainingByIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TrainingByIdQuery, TrainingByIdQueryVariables>(
-    TrainingByIdDocument,
-    options
-  );
-}
-export type TrainingByIdQueryHookResult = ReturnType<
-  typeof useTrainingByIdQuery
->;
-export type TrainingByIdLazyQueryHookResult = ReturnType<
-  typeof useTrainingByIdLazyQuery
->;
-export type TrainingByIdQueryResult = Apollo.QueryResult<
-  TrainingByIdQuery,
-  TrainingByIdQueryVariables
->;
-export const UpdateLectureDocument = gql`
-  mutation updateLecture($input: LectureInput!) {
-    updateLecture(input: $input) {
-      id
-      subject
-      description
-      speakers {
-        id
-        email
-        roles
-        person {
-          firstName
-          lastName
-          middleName
-          phoneNumber
-          avatarLocation
-        }
-      }
-      lectureHomeWorks {
-        id
-        subject
-        description
-      }
-    }
-  }
-`;
-export type UpdateLectureMutationFn = Apollo.MutationFunction<
-  UpdateLectureMutation,
-  UpdateLectureMutationVariables
->;
-
-/**
- * __useUpdateLectureMutation__
- *
- * To run a mutation, you first call `useUpdateLectureMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateLectureMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateLectureMutation, { data, loading, error }] = useUpdateLectureMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateLectureMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateLectureMutation,
-    UpdateLectureMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateLectureMutation,
-    UpdateLectureMutationVariables
-  >(UpdateLectureDocument, options);
-}
-export type UpdateLectureMutationHookResult = ReturnType<
-  typeof useUpdateLectureMutation
->;
-export type UpdateLectureMutationResult =
-  Apollo.MutationResult<UpdateLectureMutation>;
-export type UpdateLectureMutationOptions = Apollo.BaseMutationOptions<
-  UpdateLectureMutation,
-  UpdateLectureMutationVariables
->;
-export const UpdateLectureHomeWorkDocument = gql`
-  mutation updateLectureHomeWork($input: LectureHomeWorkInput!) {
-    updateLectureHomeWork(input: $input) {
-      id
-      subject
-      description
-    }
-  }
-`;
-export type UpdateLectureHomeWorkMutationFn = Apollo.MutationFunction<
-  UpdateLectureHomeWorkMutation,
-  UpdateLectureHomeWorkMutationVariables
->;
-
-/**
- * __useUpdateLectureHomeWorkMutation__
- *
- * To run a mutation, you first call `useUpdateLectureHomeWorkMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateLectureHomeWorkMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateLectureHomeWorkMutation, { data, loading, error }] = useUpdateLectureHomeWorkMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateLectureHomeWorkMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateLectureHomeWorkMutation,
-    UpdateLectureHomeWorkMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateLectureHomeWorkMutation,
-    UpdateLectureHomeWorkMutationVariables
-  >(UpdateLectureHomeWorkDocument, options);
-}
-export type UpdateLectureHomeWorkMutationHookResult = ReturnType<
-  typeof useUpdateLectureHomeWorkMutation
->;
-export type UpdateLectureHomeWorkMutationResult =
-  Apollo.MutationResult<UpdateLectureHomeWorkMutation>;
-export type UpdateLectureHomeWorkMutationOptions = Apollo.BaseMutationOptions<
-  UpdateLectureHomeWorkMutation,
-  UpdateLectureHomeWorkMutationVariables
 >;
 export const UpdatePersonDocument = gql`
   mutation updatePerson($input: PersonInput!) {
@@ -1449,58 +1635,6 @@ export type UpdateRoleMutationResult =
 export type UpdateRoleMutationOptions = Apollo.BaseMutationOptions<
   UpdateRoleMutation,
   UpdateRoleMutationVariables
->;
-export const UpdateTrainingDocument = gql`
-  mutation updateTraining($input: TrainingInput!) {
-    updateTraining(input: $input) {
-      id
-      name
-      techStack
-    }
-  }
-`;
-export type UpdateTrainingMutationFn = Apollo.MutationFunction<
-  UpdateTrainingMutation,
-  UpdateTrainingMutationVariables
->;
-
-/**
- * __useUpdateTrainingMutation__
- *
- * To run a mutation, you first call `useUpdateTrainingMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateTrainingMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateTrainingMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateTrainingMutation,
-    UpdateTrainingMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateTrainingMutation,
-    UpdateTrainingMutationVariables
-  >(UpdateTrainingDocument, options);
-}
-export type UpdateTrainingMutationHookResult = ReturnType<
-  typeof useUpdateTrainingMutation
->;
-export type UpdateTrainingMutationResult =
-  Apollo.MutationResult<UpdateTrainingMutation>;
-export type UpdateTrainingMutationOptions = Apollo.BaseMutationOptions<
-  UpdateTrainingMutation,
-  UpdateTrainingMutationVariables
 >;
 export const UserDocument = gql`
   query User {

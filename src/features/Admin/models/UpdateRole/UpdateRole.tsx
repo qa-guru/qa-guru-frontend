@@ -1,4 +1,4 @@
-import { useUpdateRoleMutation } from "../../../../api/mutation/updateRole";
+import { useUpdateRoleMutation } from "../../../../api/graphql/user/updateRole";
 import React, { useState } from "react";
 import { IUpdateRole } from "./UpdateRole.types";
 import { client } from "../../../../http";

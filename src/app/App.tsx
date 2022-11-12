@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Navbar from "../header/Navbar/Navbar";
-import { useUserQuery } from "../api/query/user";
+import { useUserQuery } from "../api/graphql/user/user";
 import Spinner from "../shared/ui/Spinner/Spinner";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
@@ -12,7 +12,7 @@ export const App = () => {
   const { isSignedIn, setIsSignedIn } = useAuth();
   let navigate = useNavigate();
 
-  const { data, loading } = useUserQuery({
+  const { loading, data } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
       navigate("/");

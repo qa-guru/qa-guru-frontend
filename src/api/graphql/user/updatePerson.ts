@@ -1,10 +1,10 @@
-import { useUpdateRoleMutation as _useUpdateRoleMutation } from "../../generated/graphql";
+import { useUpdatePersonMutation as _useUpdatePersonMutation } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
 
-export const useUpdateRoleMutation = () => {
+export const useUpdatePersonMutation = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return _useUpdateRoleMutation({
+  return _useUpdatePersonMutation({
     onError: (error) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
   });
