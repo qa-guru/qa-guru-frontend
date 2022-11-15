@@ -1,11 +1,7 @@
-import {
-  createHttpLink,
-  ApolloClient,
-  from,
-  InMemoryCache,
-} from "@apollo/client";
+import { createHttpLink, ApolloClient, from } from "@apollo/client";
 import axios from "axios";
 import { REQUEST_SAME_ORIGIN, GRAPHQL_URI } from "../config";
+import { cache } from "../cache";
 
 axios.defaults.withCredentials = !REQUEST_SAME_ORIGIN;
 
@@ -16,7 +12,7 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
   link: from([httpLink]),
-  cache: new InMemoryCache(),
+  cache: cache,
   defaultOptions: {
     query: {
       fetchPolicy: "network-only",

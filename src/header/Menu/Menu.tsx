@@ -16,10 +16,6 @@ const AppMenu = () => {
       pageURL: "kanban-board",
     },
     {
-      title: <Link to="lesson">{t("page.lesson")}</Link>,
-      pageURL: "lesson",
-    },
-    {
       title: <Link to="admin">{t("page.admin")}</Link>,
       pageURL: "admin",
     },

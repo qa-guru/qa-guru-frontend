@@ -1,5 +1,4 @@
 @import "./normalize.scss";
-//@import "antd/dist/antd.min.css";
 
 body {
   font-family: "Sora", sans-serif !important;
@@ -24,70 +23,6 @@ body {
   --gx-color-text-autotest-right: #e6daca;
   --gx-color-text-autotest-orange: #cd5920;
   --gx-color-practice-form-footer: #8e98a0;
-}
-
-//ant-design tabs
-.ant-tabs-top > .ant-tabs-nav::before,
-.ant-tabs-top > div > .ant-tabs-nav::before {
-  display: none;
-}
-.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
-.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
-  background-color: black;
-}
-.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab {
-  background-color: black;
-  border: black;
-  color: white;
-}
-.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active {
-  background-color: #393939;
-}
-.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: white;
-  text-shadow: none;
-}
-
-//ant-design tree
-.ant-tree.ant-tree-directory .ant-tree-treenode:hover::before {
-  background-color: black;
-}
-.ant-tree.ant-tree-directory .ant-tree-treenode::before {
-  bottom: 3px;
-  top: 3px;
-}
-.ant-tree.ant-tree-directory .ant-tree-treenode-selected:hover::before,
-.ant-tree.ant-tree-directory .ant-tree-treenode-selected::before {
-  background-color: black;
-}
-.ant-tree .ant-tree-treenode {
-  padding: 0;
-}
-.ant-tree {
-  font-size: 13px;
-}
-.ant-tree-indent {
-  :nth-child(1n) {
-    width: 4px;
-  }
-}
-.ant-tree-switcher {
-  width: 5px;
-}
-
-//ant-design header
-.ant-layout-header {
-  background: white;
-}
-
-//ant-select
-.ant-select-arrow {
-  color: #fff;
-}
-
-//code-editor
-.cm-scroller {
-  background-color: #393939;
 }
 
 //kanban-board

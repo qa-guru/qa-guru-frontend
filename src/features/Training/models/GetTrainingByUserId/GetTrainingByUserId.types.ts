@@ -1,3 +1,3 @@
 export interface IGetTrainingByUserId {
-  idUser: string | any;
+  idUser: string | undefined | null | any;
 }
