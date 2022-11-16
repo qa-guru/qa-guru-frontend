@@ -20,12 +20,12 @@ type Mutation {
   """
   lecture section
   """
-  updateLecture(input: LectureInput!): LectureDto
+  updateLecture(input: LectureInput!): LectureInfoDto
   deleteLecture(id: ID!): Void
   """
   lectureHomeWork section
   """
-  updateLectureHomeWork(input: LectureHomeWorkInput!): LectureHomeWorkDto
+  updateLectureHomeWork(input: LectureHomeWorkInput!): LectureHomeWorkInfoDto
   deleteLectureHomeWork(id: ID!): Void
   """
   training purchase section
@@ -41,8 +41,10 @@ type Mutation {
   """
   updateTraining(input: TrainingInput!): TrainingDto
   deleteTraining(id: ID!): Void
-  updateTrainingLecture(id: ID!, input: TrainingLectureInput!): TrainingDto
-  removeTrainingLecture(id: ID!, trainingId: ID!): TrainingDto
+  """
+  training lecture
+  """
+  updateTrainingLecture(id: ID!, lectureIds: [ID!]): [TrainingLectureDto]
   """
   studentHomeWork section
   """
@@ -57,6 +59,7 @@ type Query {
   user section
   """
   user: UserDto
+  userRoles: [UserRoleDto]
   users(page: Int!, size: Int!, sort: UserSort): UsersDto
   """
   person section
@@ -66,12 +69,12 @@ type Query {
   """
   lecture section
   """
-  lecture(id: ID): LectureDto
+  lecture(id: ID): LectureInfoDto
   lectures(page: Int!, size: Int!, sort: LectureSort): LecturesDto
   """
   lectureHomeWork section
   """
-  lectureHomeWork(id: ID): LectureHomeWorkDto
+  lectureHomeWork(id: ID): LectureHomeWorkInfoDto
   lectureHomeWorks(
     page: Int!
     size: Int!
@@ -96,6 +99,10 @@ type Query {
   """
   training(id: ID!): TrainingDto
   trainings(page: Int!, size: Int!, sort: TrainingSort): TrainingsDto
+  """
+  training lecture
+  """
+  trainingLectures(id: ID!): [TrainingLectureDto]
   """
   studentHomeWork section
   """
@@ -150,13 +157,14 @@ type TrainingTariffDto {
 type TrainingDto {
   id: ID!
   name: String!
+  content: String
   techStack: TechStack!
-  lectures: [TrainingLectureDto]
 }
 
 input TrainingInput {
   id: ID
   name: String
+  content: String
   techStack: TechStack!
 }
 
@@ -168,6 +176,7 @@ input TrainingLectureInput {
 
 type TrainingLectureDto {
   id: ID
+  number: Int
   lecture: LectureDto
   lastLecture: LectureDto
   locking: Boolean
@@ -177,8 +186,20 @@ input LectureInput {
   id: ID
   subject: String
   description: String
+  content: String
   speakers: [String]
   lectureHomeWorks: [String]
+}
+
+type LectureInfoDto {
+  id: ID
+  subject: String
+  description: String
+  content: String
+  speakers: [UserInfoDto]
+  lectureHomeWorks: [LectureHomeWorkDto]
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
 }
 
 type LectureDto {
@@ -186,7 +207,8 @@ type LectureDto {
   subject: String
   description: String
   speakers: [UserInfoDto]
-  lectureHomeWorks: [LectureHomeWorkDto]
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
 }
 
 type LecturesDto {
@@ -199,12 +221,24 @@ input LectureHomeWorkInput {
   id: ID
   subject: String
   description: String
+  content: String
+}
+
+type LectureHomeWorkInfoDto {
+  id: ID
+  subject: String
+  description: String
+  content: String
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
 }
 
 type LectureHomeWorkDto {
   id: ID
   subject: String
   description: String
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
 }
 
 type LectureHomeWorksDto {
@@ -222,6 +256,7 @@ type StudentHomeWorkDto {
   mentor: UserInfoDto
   resolution: String
   creationDate: LocalDateTime
+  modificationDate: LocalDateTime
   startCheckingDate: LocalDateTime
   endCheckingDate: LocalDateTime
 }
@@ -260,6 +295,11 @@ type UserDto {
   id: ID
   email: String
   roles: [UserRole]
+}
+
+type UserRoleDto {
+  name: String
+  description: String
 }
 
 type UsersDto {

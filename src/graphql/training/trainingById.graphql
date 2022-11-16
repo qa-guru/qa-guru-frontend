@@ -3,19 +3,5 @@ query TrainingById($id: ID!) {
     id
     name
     techStack
-    lectures {
-      id
-      lecture {
-        id
-        subject
-        description
-      }
-      locking
-      lastLecture {
-        id
-        subject
-        description
-      }
-    }
   }
 }

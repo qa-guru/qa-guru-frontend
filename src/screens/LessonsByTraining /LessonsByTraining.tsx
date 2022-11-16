@@ -1,20 +1,17 @@
 import React from "react";
 import GetLessonsByTraining from "../../features/Training/models/GetLessonsByTraining/GetLessonsByTraining";
 import { Button, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTrainingByIdQuery } from "../../api/graphql/training/trainingById";
 import Spinner from "../../shared/ui/Spinner/Spinner";
-import { useReactiveVar } from "@apollo/client";
-import { trainingIdVar } from "../../cache";
 
 const LessonsByTraining: React.FC = () => {
   let navigate = useNavigate();
-
-  const idTraining = useReactiveVar(trainingIdVar);
+  let { trainingId } = useParams();
 
   const { data, loading } = useTrainingByIdQuery({
-    variables: { id: idTraining },
-    skip: !idTraining,
+    variables: { id: trainingId },
+    skip: !trainingId,
   });
 
   if (loading) {

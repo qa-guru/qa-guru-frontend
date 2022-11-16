@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { useUserQuery } from "../../generated/graphql";
 import Spinner from "../../shared/ui/Spinner/Spinner";
-import GetTrainingByUserId from "../../features/Training/models/GetTrainingByUserId/GetTrainingByUserId";
+import GetTrainingPurchasesByUserId from "../../features/Training/models/GetTrainingPurchasesByUserId/GetTrainingPurchasesByUserId";
 
 const Home = () => {
   const { loading, data } = useUserQuery();
@@ -20,7 +20,7 @@ const Home = () => {
         <Typography variant="h4" component="h4">
           Ваши курсы:
         </Typography>
-        <GetTrainingByUserId idUser={data?.user?.id} />
+        <GetTrainingPurchasesByUserId idUser={data?.user?.id} />
       </div>
     </>
   );

@@ -51,21 +51,35 @@ export enum HomeWorkSortField {
 
 export type LectureDto = {
   __typename?: "LectureDto";
+  creationDate?: Maybe<Scalars["LocalDateTime"]>;
   description?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["ID"]>;
-  lectureHomeWorks?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  modificationDate?: Maybe<Scalars["LocalDateTime"]>;
   speakers?: Maybe<Array<Maybe<UserInfoDto>>>;
   subject?: Maybe<Scalars["String"]>;
 };
 
 export type LectureHomeWorkDto = {
   __typename?: "LectureHomeWorkDto";
+  creationDate?: Maybe<Scalars["LocalDateTime"]>;
   description?: Maybe<Scalars["String"]>;
   id?: Maybe<Scalars["ID"]>;
+  modificationDate?: Maybe<Scalars["LocalDateTime"]>;
+  subject?: Maybe<Scalars["String"]>;
+};
+
+export type LectureHomeWorkInfoDto = {
+  __typename?: "LectureHomeWorkInfoDto";
+  content?: Maybe<Scalars["String"]>;
+  creationDate?: Maybe<Scalars["LocalDateTime"]>;
+  description?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  modificationDate?: Maybe<Scalars["LocalDateTime"]>;
   subject?: Maybe<Scalars["String"]>;
 };
 
 export type LectureHomeWorkInput = {
+  content?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
   subject?: InputMaybe<Scalars["String"]>;
@@ -78,7 +92,20 @@ export type LectureHomeWorksDto = {
   totalPages?: Maybe<Scalars["Int"]>;
 };
 
+export type LectureInfoDto = {
+  __typename?: "LectureInfoDto";
+  content?: Maybe<Scalars["String"]>;
+  creationDate?: Maybe<Scalars["LocalDateTime"]>;
+  description?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lectureHomeWorks?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
+  modificationDate?: Maybe<Scalars["LocalDateTime"]>;
+  speakers?: Maybe<Array<Maybe<UserInfoDto>>>;
+  subject?: Maybe<Scalars["String"]>;
+};
+
 export type LectureInput = {
+  content?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
   lectureHomeWorks?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
@@ -115,19 +142,19 @@ export type Mutation = {
   deleteTrainingTariff?: Maybe<Scalars["Void"]>;
   deleteUser?: Maybe<Scalars["Void"]>;
   notApproved?: Maybe<StudentHomeWorkDto>;
-  removeTrainingLecture?: Maybe<TrainingDto>;
   /** studentHomeWork section */
   takeForReview?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
-  updateLecture?: Maybe<LectureDto>;
+  updateLecture?: Maybe<LectureInfoDto>;
   /** lectureHomeWork section */
-  updateLectureHomeWork?: Maybe<LectureHomeWorkDto>;
+  updateLectureHomeWork?: Maybe<LectureHomeWorkInfoDto>;
   /** person section */
   updatePerson?: Maybe<PersonDto>;
   updateRole?: Maybe<UserDto>;
   /** training section */
   updateTraining?: Maybe<TrainingDto>;
-  updateTrainingLecture?: Maybe<TrainingDto>;
+  /** training lecture */
+  updateTrainingLecture?: Maybe<Array<Maybe<TrainingLectureDto>>>;
   /** training purchase section */
   updateTrainingPurchase?: Maybe<TrainingPurchaseDto>;
   /** training tariff */
@@ -178,12 +205,6 @@ export type MutationNotApprovedArgs = {
 };
 
 /** Mutation root */
-export type MutationRemoveTrainingLectureArgs = {
-  id: Scalars["ID"];
-  trainingId: Scalars["ID"];
-};
-
-/** Mutation root */
 export type MutationTakeForReviewArgs = {
   homeWorkId: Scalars["ID"];
 };
@@ -217,7 +238,7 @@ export type MutationUpdateTrainingArgs = {
 /** Mutation root */
 export type MutationUpdateTrainingLectureArgs = {
   id: Scalars["ID"];
-  input: TrainingLectureInput;
+  lectureIds?: InputMaybe<Array<Scalars["ID"]>>;
 };
 
 /** Mutation root */
@@ -256,9 +277,9 @@ export type PersonInput = {
 export type Query = {
   __typename?: "Query";
   /** lecture section */
-  lecture?: Maybe<LectureDto>;
+  lecture?: Maybe<LectureInfoDto>;
   /** lectureHomeWork section */
-  lectureHomeWork?: Maybe<LectureHomeWorkDto>;
+  lectureHomeWork?: Maybe<LectureHomeWorkInfoDto>;
   lectureHomeWorks?: Maybe<LectureHomeWorksDto>;
   lectureHomeWorksByLectureId?: Maybe<Array<Maybe<LectureHomeWorkDto>>>;
   lectures?: Maybe<LecturesDto>;
@@ -272,6 +293,8 @@ export type Query = {
   studentHomeWorksByStatus?: Maybe<StudentHomeWorksDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
+  /** training lecture */
+  trainingLectures?: Maybe<Array<Maybe<TrainingLectureDto>>>;
   /** purchase section */
   trainingPurchases?: Maybe<Array<Maybe<TrainingPurchaseDto>>>;
   trainingPurchasesByUserId?: Maybe<Array<Maybe<TrainingPurchaseDto>>>;
@@ -280,6 +303,7 @@ export type Query = {
   trainings?: Maybe<TrainingsDto>;
   /** user section */
   user?: Maybe<UserDto>;
+  userRoles?: Maybe<Array<Maybe<UserRoleDto>>>;
   users?: Maybe<UsersDto>;
 };
 
@@ -351,6 +375,11 @@ export type QueryTrainingArgs = {
 };
 
 /** Query root */
+export type QueryTrainingLecturesArgs = {
+  id: Scalars["ID"];
+};
+
+/** Query root */
 export type QueryTrainingPurchasesByUserIdArgs = {
   userId: Scalars["ID"];
 };
@@ -384,6 +413,7 @@ export type StudentHomeWorkDto = {
   id?: Maybe<Scalars["ID"]>;
   lectureHomeWork?: Maybe<LectureHomeWorkDto>;
   mentor?: Maybe<UserInfoDto>;
+  modificationDate?: Maybe<Scalars["LocalDateTime"]>;
   resolution?: Maybe<Scalars["String"]>;
   startCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
   status?: Maybe<StudentHomeWorkStatus>;
@@ -423,13 +453,14 @@ export enum TechStack {
 
 export type TrainingDto = {
   __typename?: "TrainingDto";
+  content?: Maybe<Scalars["String"]>;
   id: Scalars["ID"];
-  lectures?: Maybe<Array<Maybe<TrainingLectureDto>>>;
   name: Scalars["String"];
   techStack: TechStack;
 };
 
 export type TrainingInput = {
+  content?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
   name?: InputMaybe<Scalars["String"]>;
   techStack: TechStack;
@@ -441,6 +472,7 @@ export type TrainingLectureDto = {
   lastLecture?: Maybe<LectureDto>;
   lecture?: Maybe<LectureDto>;
   locking?: Maybe<Scalars["Boolean"]>;
+  number?: Maybe<Scalars["Int"]>;
 };
 
 export type TrainingLectureInput = {
@@ -542,6 +574,12 @@ export enum UserRole {
   User = "USER",
 }
 
+export type UserRoleDto = {
+  __typename?: "UserRoleDto";
+  description?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
 export type UserSort = {
   field?: InputMaybe<UserSortField>;
   order?: InputMaybe<Order>;
@@ -567,7 +605,7 @@ export type LectureHomeWorkByIdQueryVariables = Exact<{
 export type LectureHomeWorkByIdQuery = {
   __typename?: "Query";
   lectureHomeWork?: {
-    __typename?: "LectureHomeWorkDto";
+    __typename?: "LectureHomeWorkInfoDto";
     id?: string | null;
     subject?: string | null;
     description?: string | null;
@@ -581,7 +619,7 @@ export type UpdateLectureHomeWorkMutationVariables = Exact<{
 export type UpdateLectureHomeWorkMutation = {
   __typename?: "Mutation";
   updateLectureHomeWork?: {
-    __typename?: "LectureHomeWorkDto";
+    __typename?: "LectureHomeWorkInfoDto";
     id?: string | null;
     subject?: string | null;
     description?: string | null;
@@ -595,7 +633,7 @@ export type LectureByIdQueryVariables = Exact<{
 export type LectureByIdQuery = {
   __typename?: "Query";
   lecture?: {
-    __typename?: "LectureDto";
+    __typename?: "LectureInfoDto";
     id?: string | null;
     subject?: string | null;
     description?: string | null;
@@ -649,12 +687,6 @@ export type LecturesQuery = {
           avatarLocation?: string | null;
         } | null;
       } | null> | null;
-      lectureHomeWorks?: Array<{
-        __typename?: "LectureHomeWorkDto";
-        id?: string | null;
-        subject?: string | null;
-        description?: string | null;
-      } | null> | null;
     } | null> | null;
   } | null;
 };
@@ -666,7 +698,7 @@ export type UpdateLectureMutationVariables = Exact<{
 export type UpdateLectureMutation = {
   __typename?: "Mutation";
   updateLecture?: {
-    __typename?: "LectureDto";
+    __typename?: "LectureInfoDto";
     id?: string | null;
     subject?: string | null;
     description?: string | null;
@@ -704,24 +736,35 @@ export type TrainingByIdQuery = {
     id: string;
     name: string;
     techStack: TechStack;
-    lectures?: Array<{
-      __typename?: "TrainingLectureDto";
-      id?: string | null;
-      locking?: boolean | null;
-      lecture?: {
-        __typename?: "LectureDto";
-        id?: string | null;
-        subject?: string | null;
-        description?: string | null;
-      } | null;
-      lastLecture?: {
-        __typename?: "LectureDto";
-        id?: string | null;
-        subject?: string | null;
-        description?: string | null;
-      } | null;
-    } | null> | null;
   } | null;
+};
+
+export type TrainingLecturesQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type TrainingLecturesQuery = {
+  __typename?: "Query";
+  trainingLectures?: Array<{
+    __typename?: "TrainingLectureDto";
+    number?: number | null;
+    lecture?: {
+      __typename?: "LectureDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: string | null;
+      speakers?: Array<{
+        __typename?: "UserInfoDto";
+        person?: {
+          __typename?: "PersonDto";
+          firstName?: string | null;
+          lastName?: string | null;
+          middleName?: string | null;
+          avatarLocation?: string | null;
+        } | null;
+      } | null> | null;
+    } | null;
+  } | null> | null;
 };
 
 export type TrainingPurchasesByUserIdQueryVariables = Exact<{
@@ -732,7 +775,12 @@ export type TrainingPurchasesByUserIdQuery = {
   __typename?: "Query";
   trainingPurchasesByUserId?: Array<{
     __typename?: "TrainingPurchaseDto";
-    training: { __typename?: "TrainingDto"; id: string; name: string };
+    training: {
+      __typename?: "TrainingDto";
+      id: string;
+      name: string;
+      techStack: TechStack;
+    };
   } | null> | null;
 };
 
@@ -1064,11 +1112,6 @@ export const LecturesDocument = gql`
             avatarLocation
           }
         }
-        lectureHomeWorks {
-          id
-          subject
-          description
-        }
       }
       totalPages
       totalElements
@@ -1195,20 +1238,6 @@ export const TrainingByIdDocument = gql`
       id
       name
       techStack
-      lectures {
-        id
-        lecture {
-          id
-          subject
-          description
-        }
-        locking
-        lastLecture {
-          id
-          subject
-          description
-        }
-      }
     }
   }
 `;
@@ -1263,12 +1292,84 @@ export type TrainingByIdQueryResult = Apollo.QueryResult<
   TrainingByIdQuery,
   TrainingByIdQueryVariables
 >;
+export const TrainingLecturesDocument = gql`
+  query TrainingLectures($id: ID!) {
+    trainingLectures(id: $id) {
+      number
+      lecture {
+        id
+        subject
+        description
+        speakers {
+          person {
+            firstName
+            lastName
+            middleName
+            avatarLocation
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useTrainingLecturesQuery__
+ *
+ * To run a query within a React component, call `useTrainingLecturesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingLecturesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingLecturesQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useTrainingLecturesQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    TrainingLecturesQuery,
+    TrainingLecturesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TrainingLecturesQuery, TrainingLecturesQueryVariables>(
+    TrainingLecturesDocument,
+    options
+  );
+}
+export function useTrainingLecturesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingLecturesQuery,
+    TrainingLecturesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    TrainingLecturesQuery,
+    TrainingLecturesQueryVariables
+  >(TrainingLecturesDocument, options);
+}
+export type TrainingLecturesQueryHookResult = ReturnType<
+  typeof useTrainingLecturesQuery
+>;
+export type TrainingLecturesLazyQueryHookResult = ReturnType<
+  typeof useTrainingLecturesLazyQuery
+>;
+export type TrainingLecturesQueryResult = Apollo.QueryResult<
+  TrainingLecturesQuery,
+  TrainingLecturesQueryVariables
+>;
 export const TrainingPurchasesByUserIdDocument = gql`
   query TrainingPurchasesByUserId($id: ID!) {
     trainingPurchasesByUserId(userId: $id) {
       training {
         id
         name
+        techStack
       }
     }
   }

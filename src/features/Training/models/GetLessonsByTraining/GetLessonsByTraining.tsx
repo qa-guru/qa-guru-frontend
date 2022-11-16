@@ -1,16 +1,15 @@
 import React from "react";
-import { useTrainingByIdQuery } from "../../../../api/graphql/training/trainingById";
 import Spinner from "../../../../shared/ui/Spinner/Spinner";
-import { useReactiveVar } from "@apollo/client";
-import { trainingIdVar } from "../../../../cache";
 import { Typography } from "@mui/material";
+import { useTrainingPurchasesByUserIdQuery } from "../../../../api/graphql/training/trainingLectures";
+import { useParams } from "react-router-dom";
 
 const GetLessonsByTraining: React.FC = () => {
-  const idTraining = useReactiveVar(trainingIdVar);
+  let { trainingId } = useParams();
 
-  const { data, loading } = useTrainingByIdQuery({
-    variables: { id: idTraining },
-    skip: !idTraining,
+  const { data, loading } = useTrainingPurchasesByUserIdQuery({
+    variables: { id: trainingId },
+    skip: !trainingId,
   });
 
   if (loading) {
@@ -19,7 +18,7 @@ const GetLessonsByTraining: React.FC = () => {
 
   return (
     <ol>
-      {data?.training?.lectures?.map((item, index) => {
+      {data?.trainingLectures?.map((item, index) => {
         return (
           <li key={index}>
             <Typography>{item?.lecture?.subject}</Typography>
