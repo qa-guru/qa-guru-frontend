@@ -12,7 +12,7 @@ export const App = () => {
   const { isSignedIn, setIsSignedIn } = useAuth();
   let navigate = useNavigate();
 
-  const { loading, data } = useUserQuery({
+  const { loading } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
       navigate("/");

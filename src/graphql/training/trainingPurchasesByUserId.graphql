@@ -3,6 +3,7 @@ query TrainingPurchasesByUserId($id: ID!) {
     training {
       id
       name
+      techStack
     }
   }
 }

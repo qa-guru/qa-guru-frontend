@@ -4,7 +4,6 @@ import LayoutOnCenter from "../../../../shared/ui/LayoutOnCenter/LayoutOnCenter"
 import { LectureByIdDocument } from "../../../../generated/graphql";
 import { IGetLecture } from "./GetLecture.types";
 import { Typography } from "@mui/material";
-import styles from "./GetLecture.module.scss";
 
 const GetLecture: React.FC<IGetLecture> = ({ idLecture }) => {
   const [lecture, { data }] = useLazyQuery(LectureByIdDocument);
