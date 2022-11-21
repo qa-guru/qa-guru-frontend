@@ -8,12 +8,14 @@ import Lecture from "../screens/Lecture/Lecture";
 import Home from "../screens/Home/Home";
 import Training from "../screens/Training/Training";
 import LessonsByTraining from "../screens/LessonsByTraining /LessonsByTraining";
+import LessonDetail from "../screens/LectureDetail";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="training/:trainingId" element={<LessonsByTraining />} />
+      <Route path="training/:trainingId" element={<LessonsByTraining />}/>
+      <Route path="training/:trainingId/:lessonId" element={<LessonDetail />} />
       <Route path="kanban-board" element={<KanbanBoard />} />
       <Route path="profile" element={<ProfileScreen />} />
       <Route path="*" element={<Page404 />} />
