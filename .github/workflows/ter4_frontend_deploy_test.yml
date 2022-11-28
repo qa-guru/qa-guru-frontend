@@ -17,5 +17,6 @@ jobs:
       - name: deploy
         run: |
           pwd
+          export NVM_DIR=/home/devops/.nvm
           yarn
 #          yarn build
