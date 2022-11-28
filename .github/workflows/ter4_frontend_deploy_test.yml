@@ -1,0 +1,20 @@
+name: ter4_frontend_deploy_test
+on:
+  push:
+    branches: 
+      - main
+jobs:
+  checkout:
+    runs-on: self-hosted
+    
+    steps:
+      - uses: actions/checkout@v1
+  
+  deploy:
+    runs-on: self-hosted
+    needs: checkout
+    steps:  
+      - name: deploy
+        run: |
+         yarn
+         yarn build
