@@ -17,5 +17,5 @@ jobs:
       - name: deploy
         run: |
           pwd
-#         yarn
-#         yarn build
+          yarn
+          yarn build
