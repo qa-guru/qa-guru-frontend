@@ -16,6 +16,6 @@ jobs:
     steps:  
       - name: deploy
         run: |
-          ls -l
+          pwd
 #         yarn
 #         yarn build
