@@ -17,5 +17,5 @@ jobs:
       - name: deploy
         run: |
         ls -l
-         yarn
-         yarn build
+#         yarn
+#         yarn build
