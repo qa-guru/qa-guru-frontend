@@ -16,13 +16,13 @@ jobs:
     steps:  
       - name: deploy
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_14.x | echo 1234qwer | sudo -S -E bash -
-          nvm install v18.12.1 
-          nvm use v18.12.1
-          npm install -g npm
-          node -v
-          npm -v
-          npm install --global yarn
-          yarn -v
-          yarn
-          yarn
+          action "install" {
+          uses = "actions/npm@1.0.0"
+          runs = "yarn"
+          args = "install"
+          }
+          action "build" {
+          needs = "install"
+          uses = "actions/npm@1.0.0"
+          runs = "yarn"
+          args = "build"
