@@ -10,19 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v1
   
-  deploy:
+  yarn-and-node:
     runs-on: self-hosted
     needs: checkout
-    steps:  
-      - name: deploy
-        run: |
-          action "install" {
-          uses = "actions/npm@1.0.0"
-          runs = "yarn"
-          args = "install"
-          }
-          action "build" {
-          needs = "install"
-          uses = "actions/npm@1.0.0"
-          runs = "yarn"
-          args = "build"
+    uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+    uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
