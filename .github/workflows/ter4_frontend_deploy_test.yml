@@ -13,9 +13,10 @@ jobs:
   yarn-and-node:
     runs-on: self-hosted
     needs: checkout
-    uses: actions/setup-node@v3
+    steps:
+      - uses: actions/setup-node@v3
         with:
           node-version: 16.x
-    uses: borales/actions-yarn@v4
+      - uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
