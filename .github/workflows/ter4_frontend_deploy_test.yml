@@ -17,4 +17,5 @@ jobs:
       - name: deploy
         run: |
           export NVM_DIR=/home/devops/.nvm
+          export PATH="`yarn global bin`:$PATH"
           yarn
