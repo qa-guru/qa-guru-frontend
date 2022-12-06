@@ -16,6 +16,10 @@ jobs:
     steps:  
       - name: deploy
         run: |
-          export NVM_DIR=/home/devops/.nvm
-          npm install -g yarn
+          npm install -g npm
+          node -v
+          npm -v
+          npm install --global yarn
+          yarn -v
+          yarn
           yarn
