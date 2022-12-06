@@ -16,7 +16,7 @@ jobs:
     steps:  
       - name: deploy
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -S 1234qwer -E bash -
+          curl -fsSL https://deb.nodesource.com/setup_14.x | echo 1234qwer | sudo -S -E bash -
           nvm install v18.12.1 
           nvm use v18.12.1
           npm install -g npm
