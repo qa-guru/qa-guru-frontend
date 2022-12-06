@@ -17,5 +17,5 @@ jobs:
       - name: deploy
         run: |
           export NVM_DIR=/home/devops/.nvm
-          corepack enable
+          brew install corepack
           yarn
