@@ -19,5 +19,6 @@ jobs:
           pwd
           export NVM_DIR=/home/devops/.nvm
           nvm --version
+          corepack enable
           yarn
 #          yarn build
