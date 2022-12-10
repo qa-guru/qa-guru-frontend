@@ -8,7 +8,7 @@ import * as Apollo from "@apollo/client";
 import { useSnackbar } from "notistack";
 
 export const useTrainingByIdQuery = (baseOptions?: {
-  variables: { id: string | undefined };
+  variables: { id: string };
   skip: boolean;
 }) => {
   const { enqueueSnackbar } = useSnackbar();
