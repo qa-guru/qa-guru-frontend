@@ -18,11 +18,14 @@ const UpdateRole: React.FC<IUpdateRole> = ({ id }) => {
   });
 
   const onUpdatePerson = (event: SelectChangeEvent) => {
+    //TODO: поправить типы
     if (id)
-      updateRole({
-        variables: { id, roles: event.target.value },
-        onCompleted: () => client.refetchQueries({ include: ["Users"] }),
-      });
+      {
+        updateRole({
+                variables: { id, roles: event.target.value as any  },
+                onCompleted: () => client.refetchQueries({ include: ["Users"] }),
+              });
+      }
   };
 
   return (
