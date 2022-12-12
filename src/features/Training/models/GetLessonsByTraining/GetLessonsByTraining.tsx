@@ -1,11 +1,12 @@
 import React from "react";
 import Spinner from "../../../../shared/ui/Spinner/Spinner";
-import { Typography } from "@mui/material";
+import {List, ListItem, Typography} from "@mui/material";
 import { useTrainingPurchasesByUserIdQuery } from "../../../../api/graphql/training/trainingLectures";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const GetLessonsByTraining: React.FC = () => {
-  let { trainingId } = useParams();
+  const { trainingId } = useParams();
+  const navigate = useNavigate();
 
   const { data, loading } = useTrainingPurchasesByUserIdQuery({
     variables: { id: trainingId! },
@@ -17,15 +18,15 @@ const GetLessonsByTraining: React.FC = () => {
   }
 
   return (
-    <ol>
+    <List>
       {data?.trainingLectures?.map((item, index) => {
         return (
-          <li key={index}>
+          <ListItem key={index} onClick={()=>navigate(`/training/${trainingId}/${item?.lecture?.id}`)}>
             <Typography>{item?.lecture?.subject}</Typography>
-          </li>
+          </ListItem>
         );
       })}
-    </ol>
+    </List>
   );
 };
 
