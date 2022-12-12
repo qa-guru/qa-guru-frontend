@@ -9,7 +9,7 @@ const GetLessonsByTraining: React.FC = () => {
   const navigate = useNavigate();
 
   const { data, loading } = useTrainingPurchasesByUserIdQuery({
-    variables: { id: trainingId },
+    variables: { id: trainingId! },
     skip: !trainingId,
   });
 

@@ -10,7 +10,7 @@ const LessonsByTraining: React.FC = () => {
   let { trainingId } = useParams();
 
   const { data, loading } = useTrainingByIdQuery({
-    variables: { id: trainingId },
+    variables: { id: trainingId! },
     skip: !trainingId,
   });
 
