@@ -1,5 +1,5 @@
-query User {
-  user {
+mutation updateUser($input: UserUpdateInput!) {
+  updateUser(input: $input) {
     id
     email
     firstName
@@ -7,7 +7,7 @@ query User {
     middleName
     phoneNumber
     avatarLocation
-    roles
     locked
+    roles
   }
 }

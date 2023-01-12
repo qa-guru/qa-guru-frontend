@@ -1,19 +1,18 @@
 import {
-  TrainingByIdQuery,
-  TrainingByIdQueryVariables,
-  useTrainingByIdQuery as _useTrainingByIdQuery,
+  LectureQuery,
+  LectureQueryVariables,
+  useLectureQuery as _useLectureQuery,
 } from "../../../generated/graphql";
 import { ApolloError } from "@apollo/client/errors";
 import * as Apollo from "@apollo/client";
 import { useSnackbar } from "notistack";
 
-export const useTrainingByIdQuery = (baseOptions?: {
-  variables: { id: string };
-  skip: boolean;
-}) => {
+export const useLectureQuery = (
+  baseOptions?: Apollo.QueryHookOptions<LectureQuery, LectureQueryVariables>
+) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return _useTrainingByIdQuery({
+  return _useLectureQuery({
     onError: (error: ApolloError) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
     ...baseOptions,

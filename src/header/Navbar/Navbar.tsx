@@ -23,15 +23,15 @@ const Navbar = () => {
     <AppBar style={{ backgroundColor: "#FFFBFE" }} position="static">
       <Toolbar>
         <AppMenu />
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={routeProfileScreen}
-        >
-          <AccountCircle />
-        </IconButton>
+        {/*<IconButton*/}
+        {/*  size="large"*/}
+        {/*  aria-label="account of current user"*/}
+        {/*  aria-controls="menu-appbar"*/}
+        {/*  aria-haspopup="true"*/}
+        {/*  onClick={routeProfileScreen}*/}
+        {/*>*/}
+        {/*  <AccountCircle />*/}
+        {/*</IconButton>*/}
         <LocalSelector />
         <Logout setIsLoading={setIsLoading} />
       </Toolbar>

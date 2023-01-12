@@ -31,7 +31,7 @@ const Login = () => {
   const doLogin: SubmitHandler<ILoginForm> = async (data) => {
     try {
       setIsLoading(true);
-      const response = await login(data.password, data.username);
+      const response = await login(data.username, data.password);
       switch (response.status) {
         case 200:
           setIsLoading(false);

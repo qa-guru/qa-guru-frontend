@@ -1,17 +1,13 @@
 query Users {
-  users(page: 0, size: 100, sort: { field: EMAIL, order: DESC }) {
+  users(page: 0, size: 10, sort: { field: EMAIL, order: DESC }) {
     items {
       id
       email
-      roles
-      person {
-        id
-        firstName
-        lastName
-        middleName
-        phoneNumber
-        avatarLocation
-      }
+      firstName
+      middleName
+      lastName
+      phoneNumber
+      locked
     }
     totalPages
     totalElements

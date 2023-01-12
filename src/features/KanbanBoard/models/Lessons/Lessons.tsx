@@ -35,11 +35,11 @@ const Lessons = () => {
                 {/*/>*/}
               </AdditionalLessons>
               <MainLessons>
-                <LessonItem
-                  key={lecture?.id}
-                  subject={lecture?.subject}
-                  description={lecture?.description}
-                />
+                {/*<LessonItem*/}
+                {/*  key={lecture?.id}*/}
+                {/*  subject={lecture?.subject}*/}
+                {/*  description={lecture?.description}*/}
+                {/*/>*/}
               </MainLessons>
             </>
           );

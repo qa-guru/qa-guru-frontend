@@ -1,0 +1,24 @@
+query trainingPurchasesByUserId($userId: ID!) {
+  trainingPurchasesByUserId(userId: $userId) {
+    id
+    user {
+      id
+      email
+      firstName
+      lastName
+      middleName
+    }
+    trainingTariff {
+      id
+      name
+      code
+      price
+      homeWork
+      description
+      training {
+        id
+        name
+      }
+    }
+  }
+}

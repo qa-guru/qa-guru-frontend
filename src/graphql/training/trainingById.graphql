@@ -1,7 +1,0 @@
-query TrainingById($id: ID!) {
-  training(id: $id) {
-    id
-    name
-    techStack
-  }
-}

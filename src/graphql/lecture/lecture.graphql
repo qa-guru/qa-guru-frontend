@@ -1,5 +1,5 @@
-mutation updateLecture($input: LectureInput!) {
-  updateLecture(input: $input) {
+query lecture($id: ID!) {
+  lecture(id: $id) {
     id
     speakers {
       id
@@ -10,6 +10,5 @@ mutation updateLecture($input: LectureInput!) {
     subject
     description
     content
-    contentHomeWork
   }
 }

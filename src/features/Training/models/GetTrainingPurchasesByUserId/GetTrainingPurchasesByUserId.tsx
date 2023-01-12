@@ -8,7 +8,7 @@ const GetTrainingPurchasesByUserId: React.FC<IGetTrainingByUserId> = ({
   idUser,
 }) => {
   const { data, loading } = useTrainingPurchasesByUserIdQuery({
-    variables: { id: idUser },
+    variables: { userId: idUser },
     skip: !idUser,
   });
 
@@ -21,8 +21,8 @@ const GetTrainingPurchasesByUserId: React.FC<IGetTrainingByUserId> = ({
       {data?.trainingPurchasesByUserId?.map((item, index) => {
         return (
           <li key={index}>
-            <Link to={`/training/${item?.training.id}`}>
-              {item?.training.name}
+            <Link to={`/training/${item?.trainingTariff.id}`}>
+              {item?.trainingTariff.name}
             </Link>
           </li>
         );

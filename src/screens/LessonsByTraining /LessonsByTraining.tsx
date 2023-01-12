@@ -2,14 +2,14 @@ import React from "react";
 import GetLessonsByTraining from "../../features/Training/models/GetLessonsByTraining/GetLessonsByTraining";
 import { Button, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { useTrainingByIdQuery } from "../../api/graphql/training/trainingById";
+import { useTrainingQuery } from "../../api/graphql/training/training";
 import Spinner from "../../shared/ui/Spinner/Spinner";
 
 const LessonsByTraining: React.FC = () => {
   let navigate = useNavigate();
   let { trainingId } = useParams();
 
-  const { data, loading } = useTrainingByIdQuery({
+  const { data, loading } = useTrainingQuery({
     variables: { id: trainingId! },
     skip: !trainingId,
   });
