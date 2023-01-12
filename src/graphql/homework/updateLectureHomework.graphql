@@ -1,7 +1,0 @@
-mutation updateLectureHomeWork($input: LectureHomeWorkInput!) {
-  updateLectureHomeWork(input: $input) {
-    id
-    subject
-    description
-  }
-}

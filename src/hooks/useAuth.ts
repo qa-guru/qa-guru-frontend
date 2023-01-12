@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCreateUserMutation } from "../api/graphql/user/createUser";
 import AuthService from "../api/rest/AuthService";
 import { client } from "../http";
+import { UserCreateInput } from "../generated/graphql";
 
 const useAuth = () => {
   const [createUser] = useCreateUserMutation();
@@ -27,11 +28,11 @@ const useAuth = () => {
     return response;
   };
 
-  const signup = (password: string, username: string) => {
+  const signup = (data: UserCreateInput) => {
     createUser({
-      variables: { password, username },
+      variables: { input: data },
       onCompleted: () => {
-        login(username, password);
+        login(data.email, data.password);
       },
     });
   };

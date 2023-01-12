@@ -1,8 +1,7 @@
 import { Controller } from "react-hook-form";
 import { IFormInputProps } from "../Input.types";
 import React from "react";
-import { FormLabel, TextField } from "@mui/material";
-import styles from "./InputTextField.scss";
+import { TextField } from "@mui/material";
 
 const InputTextField: React.FC<IFormInputProps> = ({
   control,

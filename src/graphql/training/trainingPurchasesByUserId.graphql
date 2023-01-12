@@ -1,9 +1,0 @@
-query TrainingPurchasesByUserId($id: ID!) {
-  trainingPurchasesByUserId(userId: $id) {
-    training {
-      id
-      name
-      techStack
-    }
-  }
-}

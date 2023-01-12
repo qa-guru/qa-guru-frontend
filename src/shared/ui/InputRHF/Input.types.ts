@@ -1,7 +1,7 @@
 export interface IFormInputProps {
   control: any;
   label?: string;
-  placeholder?: string;
+  placeholder?: any;
   content?: any;
   direction?: "horizontal" | "vertical";
   min?: number;

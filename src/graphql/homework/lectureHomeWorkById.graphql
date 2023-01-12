@@ -1,7 +1,0 @@
-query LectureHomeWorkById($id: ID) {
-  lectureHomeWork(id: $id) {
-    id
-    subject
-    description
-  }
-}
