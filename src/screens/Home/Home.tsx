@@ -13,7 +13,6 @@ const Home = () => {
 
   return (
     <>
-      <LectureHomework />
       <Typography align="center" variant="h3" component="h3">
         Hello <span style={{ color: "red" }}>{data?.user?.email}</span> in
         QA.GURU Application

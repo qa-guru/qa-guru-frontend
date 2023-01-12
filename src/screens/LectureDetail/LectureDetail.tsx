@@ -29,10 +29,7 @@ export const LectureDetail: React.FC<Props> = ({ data }) => {
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </Box>
         <Divider />
-        <Typography variant="h6">Домашнее задание</Typography>
-        <List>
-          <LectureHomework />
-        </List>
+        <LectureHomework />
         <Typography variant="h6">Ваш ответ</Typography>
         <TextField
           multiline
