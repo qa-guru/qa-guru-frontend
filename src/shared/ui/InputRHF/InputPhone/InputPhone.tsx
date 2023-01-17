@@ -1,28 +1,25 @@
 import { Controller } from "react-hook-form";
 import { IFormInputProps } from "../Input.types";
 import React from "react";
-import { TextField } from "@mui/material";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
-const InputTextField: React.FC<IFormInputProps> = ({
-  control,
-  name,
-  placeholder,
-  label,
-}) => {
+const InputPhone: React.FC<IFormInputProps> = ({ control, name }) => {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field: { onChange, value } }) => (
-        <TextField
+        <PhoneInput
+          international
+          countryCallingCodeEditable={false}
+          defaultCountry="RU"
           value={value}
           onChange={onChange}
-          placeholder={placeholder}
-          label={label}
         />
       )}
     />
   );
 };
 
-export default InputTextField;
+export default InputPhone;

@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { VitePluginFonts } from "vite-plugin-fonts";
+import svgr from "vite-plugin-svgr";
+
 const url = "http://5.161.103.109:8080";
 
 export default defineConfig({
@@ -11,12 +12,5 @@ export default defineConfig({
     },
     host: true,
   },
-  plugins: [
-    react(),
-    VitePluginFonts({
-      google: {
-        families: ["Sora"],
-      },
-    }),
-  ],
+  plugins: [react(), svgr()],
 });

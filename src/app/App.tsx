@@ -1,9 +1,11 @@
 import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Navbar from "../header/Navbar/Navbar";
 import { useUserQuery } from "../api/graphql/user/user";
 import Spinner from "../shared/ui/Spinner/Spinner";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../styles/theme/theme";
+import { CssBaseline } from "@mui/material";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("../routes/AppRoutes"));
@@ -28,14 +30,12 @@ export const App = () => {
   }
 
   return (
-    <>
-      {isSignedIn && <Navbar />}
-      <main>
-        <Suspense fallback={<Spinner />}>
-          {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
-        </Suspense>
-      </main>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Suspense fallback={<Spinner />}>
+        {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
+      </Suspense>
+    </ThemeProvider>
   );
 };
 

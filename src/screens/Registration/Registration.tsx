@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import SignUp from "../../features/Authorization/models/SignUp/SignUp";
-import LayoutOnCenter from "../../shared/ui/LayoutOnCenter/LayoutOnCenter";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Paper, Stack } from "@mui/material";
+import { ReactComponent as Logo } from "../../icons/Logo.svg";
 import styles from "./Registration.module.scss";
 import { useTranslation } from "react-i18next";
 
@@ -9,20 +9,25 @@ const Registration = () => {
   let navigate = useNavigate();
   const { t } = useTranslation();
 
-  const onClick = () => {
+  const routeLogin = () => {
     navigate("/authorization");
   };
 
   return (
-    <LayoutOnCenter>
-      <SignUp />
-      <div className={styles.wrapper}>
-        <Typography> {t("signup.already.registered")}</Typography>
-        <Button variant="text" onClick={onClick}>
-          {t("login")}
-        </Button>
-      </div>
-    </LayoutOnCenter>
+    <Stack className={styles.stack} justifyContent="center" alignItems="center">
+      <Logo />
+      <Paper
+        sx={{ minWidth: { xs: "none", md: "430px" } }}
+        className={styles.paper}
+      >
+        <SignUp />
+        <Box textAlign="center">
+          <Button variant="text" onClick={routeLogin}>
+            {t("auth.route")}
+          </Button>
+        </Box>
+      </Paper>
+    </Stack>
   );
 };
 
