@@ -8,6 +8,7 @@ import React from "react";
 import Spinner from "../../../../shared/ui/Spinner/Spinner";
 
 const Lessons = () => {
+  return <div>Hello</div>;
   // const { data, loading } = useLecturesQuery();
   //
   // if (loading) {
