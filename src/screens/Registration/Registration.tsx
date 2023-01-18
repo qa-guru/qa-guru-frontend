@@ -22,7 +22,11 @@ const Registration = () => {
       >
         <SignUp />
         <Box textAlign="center">
-          <Button variant="text" onClick={routeLogin}>
+          <Button
+            style={{ textTransform: "none" }}
+            variant="text"
+            onClick={routeLogin}
+          >
             {t("auth.route")}
           </Button>
         </Box>

@@ -47,8 +47,15 @@ type Mutation {
   updateHomeWork(id: ID!, content: String!): StudentHomeWorkDto
   deleteHomeWork(id: ID!): Void
   takeForReview(homeWorkId: ID!): StudentHomeWorkDto
-  approved(homeWorkId: ID!, resolution: String): StudentHomeWorkDto
-  notApproved(homeWorkId: ID!, resolution: String): StudentHomeWorkDto
+  approved(homeWorkId: ID!): StudentHomeWorkDto
+  notApproved(homeWorkId: ID!): StudentHomeWorkDto
+  resetState(homeWorkId: ID!): StudentHomeWorkDto
+  """
+  commentHomeWork section
+  """
+  sendComment(homeWorkId: ID!, content: String!): CommentHomeWorkDto
+  updateComment(id: ID!, content: String!): CommentHomeWorkDto
+  deleteComment(id: ID!): Void
 }
 
 "Query root"
@@ -112,6 +119,15 @@ type Query {
     sort: StudentHomeWorkSort
     status: StudentHomeWorkStatus!
   ): StudentHomeWorksDto
+  """
+  commentHomeWork section
+  """
+  commentsHomeWorkByHomeWork(
+    page: Int!
+    size: Int!
+    sort: CommentHomeWorkSort
+    homeWorkId: ID!
+  ): CommentHomeWorksDto
 }
 
 type TrainingPurchaseDto {
@@ -229,7 +245,6 @@ type StudentHomeWorkDto {
   answer: String
   student: UserDto
   mentor: UserDto
-  resolution: String
   creationDate: LocalDateTime
   startCheckingDate: LocalDateTime
   endCheckingDate: LocalDateTime
@@ -239,6 +254,20 @@ type StudentHomeWorksDto {
   items: [StudentHomeWorkDto]
   totalElements: Long
   totalPages: Int
+}
+
+type CommentHomeWorksDto {
+  items: [CommentHomeWorkDto]
+  totalElements: Long
+  totalPages: Int
+}
+
+type CommentHomeWorkDto {
+  id: ID
+  homeWork: StudentHomeWorkDto
+  creator: UserDto
+  content: String
+  creationDate: LocalDateTime
 }
 
 type TrainingsDto {
@@ -353,6 +382,11 @@ input StudentHomeWorkSort {
   order: Order
 }
 
+input CommentHomeWorkSort {
+  field: CommentHomeWorkSortField
+  order: Order
+}
+
 input TrainingSort {
   field: TrainingSortField
   order: Order
@@ -372,6 +406,11 @@ enum StudentHomeWorkSortField {
   MENTOR
   STUDENT
   STATE
+  CREATION_DATE
+}
+
+enum CommentHomeWorkSortField {
+  CREATOR
   CREATION_DATE
 }
 

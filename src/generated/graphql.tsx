@@ -30,6 +30,32 @@ export type Scalars = {
   Void: any;
 };
 
+export type CommentHomeWorkDto = {
+  __typename?: "CommentHomeWorkDto";
+  content?: Maybe<Scalars["String"]>;
+  creationDate?: Maybe<Scalars["LocalDateTime"]>;
+  creator?: Maybe<UserDto>;
+  homeWork?: Maybe<StudentHomeWorkDto>;
+  id?: Maybe<Scalars["ID"]>;
+};
+
+export type CommentHomeWorkSort = {
+  field?: InputMaybe<CommentHomeWorkSortField>;
+  order?: InputMaybe<Order>;
+};
+
+export enum CommentHomeWorkSortField {
+  CreationDate = "CREATION_DATE",
+  Creator = "CREATOR",
+}
+
+export type CommentHomeWorksDto = {
+  __typename?: "CommentHomeWorksDto";
+  items?: Maybe<Array<Maybe<CommentHomeWorkDto>>>;
+  totalElements?: Maybe<Scalars["Long"]>;
+  totalPages?: Maybe<Scalars["Int"]>;
+};
+
 export type ContentFileDto = {
   __typename?: "ContentFileDto";
   fileLocation?: Maybe<Scalars["String"]>;
@@ -106,16 +132,21 @@ export type Mutation = {
   changePasswordByUserId?: Maybe<Scalars["Void"]>;
   /** user section */
   createUser?: Maybe<UserDto>;
+  deleteComment?: Maybe<Scalars["Void"]>;
   deleteHomeWork?: Maybe<Scalars["Void"]>;
   deleteLecture?: Maybe<Scalars["Void"]>;
   deleteTraining?: Maybe<Scalars["Void"]>;
   deleteTrainingTariff?: Maybe<Scalars["Void"]>;
   lockUser?: Maybe<Scalars["Void"]>;
   notApproved?: Maybe<StudentHomeWorkDto>;
+  resetState?: Maybe<StudentHomeWorkDto>;
+  /** commentHomeWork section */
+  sendComment?: Maybe<CommentHomeWorkDto>;
   /** studentHomeWork section */
   sendHomeWorkToCheck?: Maybe<StudentHomeWorkDto>;
   takeForReview?: Maybe<StudentHomeWorkDto>;
   unlockUser?: Maybe<Scalars["Void"]>;
+  updateComment?: Maybe<CommentHomeWorkDto>;
   updateHomeWork?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
   updateLecture?: Maybe<LectureInfoDto>;
@@ -134,7 +165,6 @@ export type Mutation = {
 /** Mutation root */
 export type MutationApprovedArgs = {
   homeWorkId: Scalars["ID"];
-  resolution?: InputMaybe<Scalars["String"]>;
 };
 
 /** Mutation root */
@@ -152,6 +182,11 @@ export type MutationChangePasswordByUserIdArgs = {
 /** Mutation root */
 export type MutationCreateUserArgs = {
   input: UserCreateInput;
+};
+
+/** Mutation root */
+export type MutationDeleteCommentArgs = {
+  id: Scalars["ID"];
 };
 
 /** Mutation root */
@@ -182,7 +217,17 @@ export type MutationLockUserArgs = {
 /** Mutation root */
 export type MutationNotApprovedArgs = {
   homeWorkId: Scalars["ID"];
-  resolution?: InputMaybe<Scalars["String"]>;
+};
+
+/** Mutation root */
+export type MutationResetStateArgs = {
+  homeWorkId: Scalars["ID"];
+};
+
+/** Mutation root */
+export type MutationSendCommentArgs = {
+  content: Scalars["String"];
+  homeWorkId: Scalars["ID"];
 };
 
 /** Mutation root */
@@ -198,6 +243,12 @@ export type MutationTakeForReviewArgs = {
 
 /** Mutation root */
 export type MutationUnlockUserArgs = {
+  id: Scalars["ID"];
+};
+
+/** Mutation root */
+export type MutationUpdateCommentArgs = {
+  content: Scalars["String"];
   id: Scalars["ID"];
 };
 
@@ -252,6 +303,8 @@ export enum Order {
 /** Query root */
 export type Query = {
   __typename?: "Query";
+  /** commentHomeWork section */
+  commentsHomeWorkByHomeWork?: Maybe<CommentHomeWorksDto>;
   /** studentHomeWork section */
   homeWork?: Maybe<StudentHomeWorkDto>;
   homeWorkByStudentAndLecture?: Maybe<StudentHomeWorkDto>;
@@ -276,6 +329,14 @@ export type Query = {
   user?: Maybe<UserDto>;
   userRoles?: Maybe<Array<Maybe<UserRoleDto>>>;
   users?: Maybe<UsersDto>;
+};
+
+/** Query root */
+export type QueryCommentsHomeWorkByHomeWorkArgs = {
+  homeWorkId: Scalars["ID"];
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort?: InputMaybe<CommentHomeWorkSort>;
 };
 
 /** Query root */
@@ -373,7 +434,6 @@ export type StudentHomeWorkDto = {
   id?: Maybe<Scalars["ID"]>;
   lecture?: Maybe<LectureInfoDto>;
   mentor?: Maybe<UserDto>;
-  resolution?: Maybe<Scalars["String"]>;
   startCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
   status?: Maybe<StudentHomeWorkStatus>;
   student?: Maybe<UserDto>;
@@ -728,13 +788,11 @@ export type TrainingLecturesQuery = {
   } | null> | null;
 };
 
-export type TrainingPurchasesByUserIdQueryVariables = Exact<{
-  userId: Scalars["ID"];
-}>;
+export type TrainingPurchasesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type TrainingPurchasesByUserIdQuery = {
+export type TrainingPurchasesQuery = {
   __typename?: "Query";
-  trainingPurchasesByUserId?: Array<{
+  trainingPurchases?: Array<{
     __typename?: "TrainingPurchaseDto";
     id?: string | null;
     user: {
@@ -1284,9 +1342,9 @@ export type TrainingLecturesQueryResult = Apollo.QueryResult<
   TrainingLecturesQuery,
   TrainingLecturesQueryVariables
 >;
-export const TrainingPurchasesByUserIdDocument = gql`
-  query trainingPurchasesByUserId($userId: ID!) {
-    trainingPurchasesByUserId(userId: $userId) {
+export const TrainingPurchasesDocument = gql`
+  query trainingPurchases {
+    trainingPurchases {
       id
       user {
         id
@@ -1312,54 +1370,53 @@ export const TrainingPurchasesByUserIdDocument = gql`
 `;
 
 /**
- * __useTrainingPurchasesByUserIdQuery__
+ * __useTrainingPurchasesQuery__
  *
- * To run a query within a React component, call `useTrainingPurchasesByUserIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useTrainingPurchasesByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useTrainingPurchasesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingPurchasesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useTrainingPurchasesByUserIdQuery({
+ * const { data, loading, error } = useTrainingPurchasesQuery({
  *   variables: {
- *      userId: // value for 'userId'
  *   },
  * });
  */
-export function useTrainingPurchasesByUserIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
+export function useTrainingPurchasesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    TrainingPurchasesQuery,
+    TrainingPurchasesQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
-  >(TrainingPurchasesByUserIdDocument, options);
+    TrainingPurchasesQuery,
+    TrainingPurchasesQueryVariables
+  >(TrainingPurchasesDocument, options);
 }
-export function useTrainingPurchasesByUserIdLazyQuery(
+export function useTrainingPurchasesLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
+    TrainingPurchasesQuery,
+    TrainingPurchasesQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
-  >(TrainingPurchasesByUserIdDocument, options);
+    TrainingPurchasesQuery,
+    TrainingPurchasesQueryVariables
+  >(TrainingPurchasesDocument, options);
 }
-export type TrainingPurchasesByUserIdQueryHookResult = ReturnType<
-  typeof useTrainingPurchasesByUserIdQuery
+export type TrainingPurchasesQueryHookResult = ReturnType<
+  typeof useTrainingPurchasesQuery
 >;
-export type TrainingPurchasesByUserIdLazyQueryHookResult = ReturnType<
-  typeof useTrainingPurchasesByUserIdLazyQuery
+export type TrainingPurchasesLazyQueryHookResult = ReturnType<
+  typeof useTrainingPurchasesLazyQuery
 >;
-export type TrainingPurchasesByUserIdQueryResult = Apollo.QueryResult<
-  TrainingPurchasesByUserIdQuery,
-  TrainingPurchasesByUserIdQueryVariables
+export type TrainingPurchasesQueryResult = Apollo.QueryResult<
+  TrainingPurchasesQuery,
+  TrainingPurchasesQueryVariables
 >;
 export const CreateUserDocument = gql`
   mutation createUser($input: UserCreateInput!) {

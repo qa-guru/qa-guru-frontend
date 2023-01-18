@@ -26,6 +26,7 @@
     "husky": "^8.0.1",
     "i18next": "^22.0.4",
     "i18next-browser-languagedetector": "^7.0.0",
+    "isomorphic-dompurify": "^0.26.0",
     "jsonapi-serializer": "^3.6.7",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",

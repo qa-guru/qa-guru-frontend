@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Login from "../../features/Authorization/models/Login/Login";
 import { Box, Button, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "../../icons/Logo.svg";
-import styles from "../Registration/Registration.module.scss";
+import styles from "./Authorization.module.scss";
 import { useTranslation } from "react-i18next";
 
 const Authorization = () => {
@@ -27,10 +27,16 @@ const Authorization = () => {
       >
         <Login />
         <Box textAlign="center">
-          <Button variant="text">{t("restore")}</Button>
+          <Button style={{ textTransform: "none" }} variant="text">
+            {t("restore")}
+          </Button>
         </Box>
         <Box textAlign="center">
-          <Button variant="text" onClick={routeRegister}>
+          <Button
+            style={{ textTransform: "none" }}
+            variant="text"
+            onClick={routeRegister}
+          >
             {t("reg.route")}
           </Button>
         </Box>

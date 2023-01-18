@@ -9,6 +9,9 @@ const theme = createTheme({
     primary: {
       main: "#6750A4",
     },
+    secondary: {
+      main: "#fffbfe",
+    },
   },
   typography: { fontFamily: "'Roboto', sans-serif" },
   breakpoints: {
@@ -50,6 +53,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "12px",
+          backgroundColor: "#fffbfe",
         },
       },
     },
