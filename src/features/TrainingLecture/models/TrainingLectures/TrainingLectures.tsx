@@ -1,21 +1,18 @@
 import React from "react";
-import Spinner from "../../../../shared/ui/Spinner/Spinner";
 import { Box, CardActionArea, Paper, Typography } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
-import { useTrainingLecturesQuery } from "../../../../api/graphql/trainingLecture/trainingLectures";
-import styles from "./GetTrainingLectures.module.scss";
+import { Link } from "react-router-dom";
+import styles from "./TrainingLectures.module.scss";
+import { TrainingLecturesQuery } from "../../../../generated/graphql";
 
-const GetTrainingLectures: React.FC = () => {
-  const { trainingId } = useParams();
+interface ITrainingLectures {
+  data: TrainingLecturesQuery;
+  trainingId: string;
+}
 
-  const { data, loading } = useTrainingLecturesQuery({
-    variables: { id: trainingId! },
-  });
-
-  if (loading) {
-    return <Spinner />;
-  }
-
+const TrainingLectures: React.FC<ITrainingLectures> = ({
+  data,
+  trainingId,
+}) => {
   return (
     <Box className={styles.box}>
       {data?.trainingLectures?.map((item, index) => {
@@ -42,4 +39,4 @@ const GetTrainingLectures: React.FC = () => {
   );
 };
 
-export default GetTrainingLectures;
+export default TrainingLectures;

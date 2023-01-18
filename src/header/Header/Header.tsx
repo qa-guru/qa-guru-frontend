@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <AppBar className={styles.appbar} color="secondary" position="static">
       <Toolbar disableGutters>
-        <Logo />
+        <Logo className={styles.logo} />
         <AppMenu />
         <LocalSelector />
         <Logout setIsLoading={setIsLoading} />

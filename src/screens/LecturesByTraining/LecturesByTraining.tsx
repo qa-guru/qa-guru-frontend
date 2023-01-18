@@ -1,9 +1,9 @@
 import React from "react";
-import GetTrainingLectures from "../../features/TrainingLecture/models/GetTrainingLectures/GetTrainingLectures";
+import TrainingLectures from "../../features/TrainingLecture/models/TrainingLectures";
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const TrainingLectures: React.FC = () => {
+const LecturesByTraining: React.FC = () => {
   let navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ const TrainingLectures: React.FC = () => {
       <Typography variant="h4" component="h4">
         Список уроков
       </Typography>
-      <GetTrainingLectures />
+      <TrainingLectures />
       <Box textAlign="center" mt="25px">
         <Button
           sx={{ minWidth: "143px" }}
@@ -25,4 +25,4 @@ const TrainingLectures: React.FC = () => {
   );
 };
 
-export default TrainingLectures;
+export default LecturesByTraining;

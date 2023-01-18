@@ -29,7 +29,11 @@ const LectureHomework: React.FC<ILectureHomework> = ({ data }) => {
         placeholder="поле для ответа"
         variant="filled"
       />
-      <LoadingButton variant="contained">Отправить</LoadingButton>
+      <Box textAlign="center">
+        <LoadingButton sx={{ minWidth: "143px" }} variant="contained">
+          Отправить
+        </LoadingButton>
+      </Box>
     </>
   );
 };

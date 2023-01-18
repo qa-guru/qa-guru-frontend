@@ -7,7 +7,7 @@ interface IGetLecture {
   data: LectureQuery;
 }
 
-const LectureDetail: React.FC<IGetLecture> = ({ data }) => {
+const Lecture: React.FC<IGetLecture> = ({ data }) => {
   const { lecture } = data;
   const content = DOMPurify.sanitize(lecture?.content!);
 
@@ -25,4 +25,4 @@ const LectureDetail: React.FC<IGetLecture> = ({ data }) => {
   );
 };
 
-export default LectureDetail;
+export default Lecture;

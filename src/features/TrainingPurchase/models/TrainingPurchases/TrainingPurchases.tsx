@@ -1,18 +1,14 @@
 import React from "react";
-import { IGetTrainingByUserId } from "./GetTrainingPurchases.types";
-import Spinner from "../../../../shared/ui/Spinner/Spinner";
 import { Link } from "react-router-dom";
 import { Box, CardActionArea, Paper, Typography } from "@mui/material";
-import { useTrainingPurchasesQuery } from "../../../../api/graphql/trainingPurchase/trainingPurchases";
-import styles from "./GetTrainingPurchases.module.scss";
+import styles from "./TrainingPurchases.module.scss";
+import { TrainingPurchasesQuery } from "../../../../generated/graphql";
 
-const GetTrainingPurchases: React.FC<IGetTrainingByUserId> = () => {
-  const { data, loading } = useTrainingPurchasesQuery();
+interface ITrainingByUserId {
+  data: TrainingPurchasesQuery;
+}
 
-  if (loading) {
-    return <Spinner />;
-  }
-
+const TrainingPurchases: React.FC<ITrainingByUserId> = ({ data }) => {
   return (
     <Box className={styles.box}>
       {data?.trainingPurchases?.map((item, index) => {
@@ -39,4 +35,4 @@ const GetTrainingPurchases: React.FC<IGetTrainingByUserId> = () => {
   );
 };
 
-export default GetTrainingPurchases;
+export default TrainingPurchases;

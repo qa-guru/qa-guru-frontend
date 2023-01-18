@@ -1,15 +1,13 @@
-import { Box, Typography } from "@mui/material";
-import GetTrainingPurchases from "../../features/TrainingPurchase/models/GetTrainingPurchases/GetTrainingPurchases";
+import { Typography } from "@mui/material";
+import TrainingPurchases from "../../features/TrainingPurchase/models/TrainingPurchases";
 
 const Home = () => {
   return (
     <>
-      <Box>
-        <Typography variant="h4" component="h4" mb="20px">
-          Мои курсы
-        </Typography>
-        <GetTrainingPurchases />
-      </Box>
+      <Typography variant="h4" component="h4" mb="20px">
+        Мои курсы
+      </Typography>
+      <TrainingPurchases />
     </>
   );
 };

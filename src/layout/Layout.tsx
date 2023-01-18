@@ -1,15 +1,15 @@
 import React from "react";
 import Header from "../header/Header/Header";
 import { Outlet } from "react-router-dom";
-import styles from "./Layout.module.scss";
+import { Container } from "@mui/material";
 
 const Layout: React.FC = () => {
   return (
     <>
       <Header />
-      <main className={styles.layout}>
+      <Container maxWidth={"xl"}>
         <Outlet />
-      </main>
+      </Container>
     </>
   );
 };
