@@ -29,4 +29,3 @@ jobs:
       - name: Deploy
         run:
            rm -rf /var/www/app.qa.guru/html/*
-           cp -r dist/* /var/www/app.qa.guru/html/
