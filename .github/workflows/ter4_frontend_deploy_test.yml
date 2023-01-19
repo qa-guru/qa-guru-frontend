@@ -28,6 +28,5 @@ jobs:
           cmd: build # will run `yarn build` command
       - name: Deploy
         run:
-           pwd
            rm -rf /var/www/app.qa.guru/html/*
            cp -r dist/* /var/www/app.qa.guru/html/
