@@ -8,11 +8,19 @@ const AppMenu = () => {
 
   const pages = [
     {
-      title: <Link to={""}>{t("page.home")}</Link>,
+      title: (
+        <Link style={{ textDecoration: "none" }} to={""}>
+          {t("page.home")}
+        </Link>
+      ),
       pageURL: "",
     },
     {
-      title: <Link to="/kanban-board">{t("page.kanban")}</Link>,
+      title: (
+        <Link style={{ textDecoration: "none" }} to="/kanban-board">
+          {t("page.kanban")}
+        </Link>
+      ),
       pageURL: "kanban-board",
     },
   ];
@@ -27,9 +35,10 @@ const AppMenu = () => {
         const { title, pageURL } = page;
         return (
           <Button
+            style={{ textTransform: "none" }}
             key={pageURL}
             onClick={() => handleMenuClick(pageURL)}
-            sx={{ my: 2, color: "white", display: "block" }}
+            variant="text"
           >
             {title}
           </Button>

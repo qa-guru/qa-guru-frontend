@@ -1,45 +1,31 @@
 import React from "react";
-import {
-  Box,
-  Container,
-  Divider,
-  List,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import { LectureQuery } from "../../generated/graphql";
-import * as DOMPurify from "dompurify";
+import { Box, Button, Container, Divider, Stack } from "@mui/material";
 import LectureHomework from "../../features/Lecture/models/LectureHomework";
+import Lecture from "../../features/Lecture/models/Lecture";
+import { useNavigate, useParams } from "react-router-dom";
 
-interface Props {
-  data: LectureQuery;
-}
-export const LectureDetail: React.FC<Props> = ({ data }) => {
-  const { lecture } = data;
-  const content = DOMPurify.sanitize(lecture?.content!);
+const LectureDetail: React.FC = () => {
+  let navigate = useNavigate();
+  const { trainingId } = useParams();
 
   return (
     <Container maxWidth={"xl"}>
       <Stack spacing={2}>
-        <Typography variant="h2">{lecture?.subject}</Typography>
-        <Typography variant="h6">{lecture?.description}</Typography>
-        <Box width={500} height={500}>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-        </Box>
+        <Lecture />
         <Divider />
         <LectureHomework />
-        <Typography variant="h6">Ваш ответ</Typography>
-        <TextField
-          multiline
-          rows={5}
-          placeholder="поле для ответа"
-          variant="filled"
-        />
-        <LoadingButton variant="contained">Отправить</LoadingButton>
+        <Box textAlign="center">
+          <Button
+            sx={{ minWidth: "143px" }}
+            onClick={() => navigate(`/training/${trainingId}`)}
+            variant="contained"
+          >
+            Back
+          </Button>
+        </Box>
       </Stack>
     </Container>
   );
 };
+
 export default LectureDetail;

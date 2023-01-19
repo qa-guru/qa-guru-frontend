@@ -2,9 +2,8 @@ import { useTrainingLecturesQuery as _useTrainingLecturesQuery } from "../../../
 import { ApolloError } from "@apollo/client/errors";
 import { useSnackbar } from "notistack";
 
-export const useTrainingPurchasesByUserIdQuery = (baseOptions?: {
+export const useTrainingLecturesQuery = (baseOptions?: {
   variables: { id: string };
-  skip: boolean;
 }) => {
   const { enqueueSnackbar } = useSnackbar();
 

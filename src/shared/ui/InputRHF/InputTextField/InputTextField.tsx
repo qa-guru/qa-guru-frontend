@@ -7,6 +7,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
   control,
   name,
   placeholder,
+  label,
 }) => {
   return (
     <Controller
@@ -17,6 +18,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          label={label}
         />
       )}
     />

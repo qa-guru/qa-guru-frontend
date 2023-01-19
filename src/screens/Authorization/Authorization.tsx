@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Login from "../../features/Authorization/models/Login/Login";
-import LayoutOnCenter from "../../shared/ui/LayoutOnCenter/LayoutOnCenter";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Paper, Stack } from "@mui/material";
+import { ReactComponent as Logo } from "../../icons/Logo.svg";
 import styles from "./Authorization.module.scss";
 import { useTranslation } from "react-i18next";
 
@@ -9,20 +9,39 @@ const Authorization = () => {
   let navigate = useNavigate();
   const { t } = useTranslation();
 
-  const onClick = () => {
+  const routeRegister = () => {
     navigate("/register");
   };
 
   return (
-    <LayoutOnCenter>
-      <Login />
-      <div className={styles.wrapper}>
-        <Typography> {t("login.not.registered.yet")}</Typography>
-        <Button variant="text" onClick={onClick}>
-          {t("signup")}
-        </Button>
-      </div>
-    </LayoutOnCenter>
+    <Stack
+      color="secondary"
+      justifyContent="center"
+      alignItems="center"
+      className={styles.stack}
+    >
+      <Logo />
+      <Paper
+        sx={{ minWidth: { xs: "none", md: "430px" } }}
+        className={styles.paper}
+      >
+        <Login />
+        <Box textAlign="center">
+          <Button style={{ textTransform: "none" }} variant="text">
+            {t("restore")}
+          </Button>
+        </Box>
+        <Box textAlign="center">
+          <Button
+            style={{ textTransform: "none" }}
+            variant="text"
+            onClick={routeRegister}
+          >
+            {t("reg.route")}
+          </Button>
+        </Box>
+      </Paper>
+    </Stack>
   );
 };
 

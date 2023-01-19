@@ -6,9 +6,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 import LocalSelector from "../../../../shared/ui/LocaleSelector/LocalSelector";
-import { Button, Typography } from "@mui/material";
+import { Button, FormControl, FormHelperText, Stack } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from "./Login.module.scss";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface ILoginForm {
   password: string;
@@ -16,16 +17,26 @@ export interface ILoginForm {
 }
 
 const Login = () => {
-  const { handleSubmit, control } = useForm<ILoginForm>({
+  const { t } = useTranslation();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ILoginForm>({
     defaultValues: {
       username: "",
       password: "",
     },
+    resolver: yupResolver(
+      yup.object().shape({
+        username: yup.string().required(t("email.required")!),
+        password: yup.string().required(t("password.required")!),
+      })
+    ),
   });
 
   const { login } = useAuth();
   const { enqueueSnackbar } = useSnackbar();
-  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
   const doLogin: SubmitHandler<ILoginForm> = async (data) => {
@@ -56,23 +67,33 @@ const Login = () => {
   };
 
   return (
-    <form className={styles.login_form}>
-      <Typography align="center" variant="h4" component="h4">
-        QA Guru
-      </Typography>
-      <RHF.InputTextField
-        control={control}
-        name="username"
-        placeholder={t("email")}
-      />
-      <RHF.InputTextField
-        control={control}
-        name="password"
-        placeholder={t("password")}
-      />
-      <div className={styles.local}>
-        <LocalSelector />
-      </div>
+    <Stack
+      sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
+      spacing={2}
+    >
+      <FormControl fullWidth>
+        <RHF.InputTextField
+          control={control}
+          name="username"
+          placeholder={t("enter.email")}
+          label="E-mail"
+        />
+        {errors?.username && (
+          <FormHelperText error>{errors?.username.message}</FormHelperText>
+        )}
+      </FormControl>
+      <FormControl fullWidth>
+        <RHF.InputTextField
+          control={control}
+          name="password"
+          placeholder={t("enter.password")}
+          label={t("password")!}
+        />
+        {errors?.password && (
+          <FormHelperText error>{errors?.password.message}</FormHelperText>
+        )}
+      </FormControl>
+      <LocalSelector />
       <Button
         onClick={handleSubmit(doLogin)}
         variant="contained"
@@ -81,7 +102,7 @@ const Login = () => {
         {isLoading && <CircularProgress size={20} />}
         {t("login")}
       </Button>
-    </form>
+    </Stack>
   );
 };
 

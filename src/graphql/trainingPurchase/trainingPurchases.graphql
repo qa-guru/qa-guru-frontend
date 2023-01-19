@@ -1,5 +1,5 @@
-query trainingPurchasesByUserId($userId: ID!) {
-  trainingPurchasesByUserId(userId: $userId) {
+query trainingPurchases {
+  trainingPurchases {
     id
     user {
       id

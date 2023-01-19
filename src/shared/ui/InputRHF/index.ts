@@ -9,6 +9,7 @@ import SelectCascader from "./SelectCascader/SelectCascader";
 import Slider from "./Slider/Slider";
 import FileUploud from "./FileUploud/FileUploud";
 import Select from "./InputSelect/InputSelect";
+import InputPhone from "./InputPhone/InputPhone";
 
 export default {
   Select,
@@ -22,4 +23,5 @@ export default {
   SelectMultiple,
   SelectCascader,
   Slider,
+  InputPhone,
 };
