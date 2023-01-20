@@ -1,7 +1,7 @@
 import AppMenu from "../Menu/Menu";
 import Logout from "../../features/Authorization/models/Logout/Logout";
 import LocalSelector from "../../shared/ui/LocaleSelector/LocalSelector";
-import { AppBar, Stack, Toolbar } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import { useState } from "react";
 import Spinner from "../../shared/ui/Spinner/Spinner";
 import { ReactComponent as Logo } from "../../icons/Logo-header.svg";

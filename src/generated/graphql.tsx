@@ -820,6 +820,40 @@ export type TrainingPurchasesQuery = {
   } | null> | null;
 };
 
+export type TrainingPurchasesByUserIdQueryVariables = Exact<{
+  userId: Scalars["ID"];
+}>;
+
+export type TrainingPurchasesByUserIdQuery = {
+  __typename?: "Query";
+  trainingPurchasesByUserId?: Array<{
+    __typename?: "TrainingPurchaseDto";
+    id?: string | null;
+    user: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      lastName?: string | null;
+      middleName?: string | null;
+    };
+    trainingTariff: {
+      __typename?: "TrainingTariffDto";
+      id?: string | null;
+      name?: string | null;
+      code?: string | null;
+      price?: number | null;
+      homeWork?: boolean | null;
+      description?: string | null;
+      training?: {
+        __typename?: "TrainingDto";
+        id: string;
+        name: string;
+      } | null;
+    };
+  } | null> | null;
+};
+
 export type CreateUserMutationVariables = Exact<{
   input: UserCreateInput;
 }>;
@@ -1417,6 +1451,83 @@ export type TrainingPurchasesLazyQueryHookResult = ReturnType<
 export type TrainingPurchasesQueryResult = Apollo.QueryResult<
   TrainingPurchasesQuery,
   TrainingPurchasesQueryVariables
+>;
+export const TrainingPurchasesByUserIdDocument = gql`
+  query trainingPurchasesByUserId($userId: ID!) {
+    trainingPurchasesByUserId(userId: $userId) {
+      id
+      user {
+        id
+        email
+        firstName
+        lastName
+        middleName
+      }
+      trainingTariff {
+        id
+        name
+        code
+        price
+        homeWork
+        description
+        training {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useTrainingPurchasesByUserIdQuery__
+ *
+ * To run a query within a React component, call `useTrainingPurchasesByUserIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingPurchasesByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingPurchasesByUserIdQuery({
+ *   variables: {
+ *      userId: // value for 'userId'
+ *   },
+ * });
+ */
+export function useTrainingPurchasesByUserIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >(TrainingPurchasesByUserIdDocument, options);
+}
+export function useTrainingPurchasesByUserIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    TrainingPurchasesByUserIdQuery,
+    TrainingPurchasesByUserIdQueryVariables
+  >(TrainingPurchasesByUserIdDocument, options);
+}
+export type TrainingPurchasesByUserIdQueryHookResult = ReturnType<
+  typeof useTrainingPurchasesByUserIdQuery
+>;
+export type TrainingPurchasesByUserIdLazyQueryHookResult = ReturnType<
+  typeof useTrainingPurchasesByUserIdLazyQuery
+>;
+export type TrainingPurchasesByUserIdQueryResult = Apollo.QueryResult<
+  TrainingPurchasesByUserIdQuery,
+  TrainingPurchasesByUserIdQueryVariables
 >;
 export const CreateUserDocument = gql`
   mutation createUser($input: UserCreateInput!) {

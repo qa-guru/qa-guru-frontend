@@ -88,6 +88,7 @@ const Login = () => {
           name="password"
           placeholder={t("enter.password")}
           label={t("password")!}
+          type="password"
         />
         {errors?.password && (
           <FormHelperText error>{errors?.password.message}</FormHelperText>

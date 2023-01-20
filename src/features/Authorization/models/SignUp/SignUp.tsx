@@ -47,8 +47,8 @@ const SignUp = () => {
   const { signup } = useAuth();
   const [valueConfirmPassword, setValueConfirmPassword] = useState<any>("");
 
-  const onSubmit: SubmitHandler<UserCreateInput> = async (data) => {
-    valueConfirmPassword === getValues("password") && (await signup(data));
+  const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
+    valueConfirmPassword === getValues("password") && signup(data);
   };
 
   return (
@@ -101,6 +101,7 @@ const SignUp = () => {
           name="password"
           placeholder={t("enter.password")}
           label={t("password")!}
+          type="password"
         />
         {errors?.password && (
           <FormHelperText error>{errors?.password.message}</FormHelperText>
@@ -112,6 +113,7 @@ const SignUp = () => {
           placeholder={t("enter.password")!}
           label={t("password.confirm")!}
           onChange={(e) => setValueConfirmPassword(e.target.value)}
+          type="password"
         />
         {valueConfirmPassword !== getValues("password") && (
           <FormHelperText error>Пароли не совпадают</FormHelperText>

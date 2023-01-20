@@ -11,4 +11,5 @@ export interface IFormInputProps {
   setValue?: any;
   onChange?: any;
   defaultValue?: string;
+  type?: string;
 }
