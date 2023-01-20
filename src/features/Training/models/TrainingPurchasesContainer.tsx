@@ -1,0 +1,14 @@
+import React from "react";
+import Spinner from "../../../shared/ui/Spinner/Spinner";
+import { useTrainingPurchasesQuery } from "../../../api/graphql/trainingPurchase/trainingPurchases";
+import TrainingPurchases from "../ui/TrainingPurchases/TrainingPurchases";
+
+const TrainingPurchasesContainer: React.FC = () => {
+  const { data, loading } = useTrainingPurchasesQuery();
+
+  if (loading && !data) return <Spinner />;
+
+  return <TrainingPurchases data={data!} />;
+};
+
+export default TrainingPurchasesContainer;

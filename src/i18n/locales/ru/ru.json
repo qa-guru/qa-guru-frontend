@@ -7,7 +7,6 @@
   "auth.route": "Вход",
   "lastName": "Фамилия",
   "firstName": "Имя",
-  "phone": "Телефон",
   "password": "Пароль",
   "password.confirm": "Повторите пароль",
   "enter.password": "Введите пароль",

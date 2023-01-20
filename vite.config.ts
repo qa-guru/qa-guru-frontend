@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 
-const url = "http://5.161.103.109:8080";
+const url = "https://app.qa.guru/api/graphql";
 
 export default defineConfig({
   assetsInclude: ["**/*.graphql"],

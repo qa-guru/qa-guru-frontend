@@ -7,6 +7,7 @@
   "auth.route": "Login",
   "lastName": "LastName",
   "firstName": "FirstName",
+  "password": "Password",
   "password.confirm": "Confirm password",
   "enter.password": "Enter password",
   "enter.email": "Enter E-mail",
@@ -32,10 +33,5 @@
   "english": "English",
   "russian": "Russian",
 
-  "page.home": "Home",
-  "page.kanban": "Kanban Board",
-  "page.admin": "Admin",
-  "page.homework": "Homework",
-  "page.lecture": "Lecture",
-  "page.training": "Training"
+  "page.home": "Home"
 }

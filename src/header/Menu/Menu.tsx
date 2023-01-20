@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 const AppMenu = () => {
@@ -14,14 +14,6 @@ const AppMenu = () => {
         </Link>
       ),
       pageURL: "",
-    },
-    {
-      title: (
-        <Link style={{ textDecoration: "none" }} to="/kanban-board">
-          {t("page.kanban")}
-        </Link>
-      ),
-      pageURL: "kanban-board",
     },
   ];
 
@@ -40,7 +32,7 @@ const AppMenu = () => {
             onClick={() => handleMenuClick(pageURL)}
             variant="text"
           >
-            {title}
+            <Typography variant="h4">{title}</Typography>
           </Button>
         );
       })}

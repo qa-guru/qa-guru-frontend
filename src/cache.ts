@@ -1,4 +1,4 @@
-import { InMemoryCache } from "@apollo/client";
+import { InMemoryCache, makeVar } from "@apollo/client";
 
-// export const trainingIdVar = makeVar("");
+export const userIdVar = makeVar("");
 export const cache = new InMemoryCache();

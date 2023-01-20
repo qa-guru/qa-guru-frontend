@@ -4,7 +4,6 @@ import { useSnackbar } from "notistack";
 
 export const useTrainingQuery = (baseOptions?: {
   variables: { id: string };
-  skip: boolean;
 }) => {
   const { enqueueSnackbar } = useSnackbar();
 
