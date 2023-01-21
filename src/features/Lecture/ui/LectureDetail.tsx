@@ -40,13 +40,19 @@ const LectureDetail: React.FC<ILectureDetail> = ({
         </Typography>
       </Paper>
 
-      <Typography variant="h2">Спикеры</Typography>
-      <Box
+      <Typography pt="40px" variant="h2">
+        Спикеры
+      </Typography>
+      <Stack
+        spacing={2}
+        direction="row"
+        alignItems="center"
         sx={{
           borderRadius: "16px",
           border: 1,
+          borderColor: "#CAC4D0",
           width: "min-content",
-          padding: "10px",
+          padding: "10px 30px 10px 10px",
         }}
       >
         <Avatar
@@ -54,29 +60,44 @@ const LectureDetail: React.FC<ILectureDetail> = ({
           alt="Remy Sharp"
           src="/static/images/avatar/1.jpg"
         />
-        <Typography>Alexander Taldykin</Typography>
-      </Box>
+        <Box width="max-content" ml="16px">
+          <Typography variant="h4">Alexander Taldykin</Typography>
+          <Typography mt="4px" variant="subtitle2">
+            Student
+          </Typography>
+        </Box>
+      </Stack>
 
-      <Typography
-        variant="subtitle2"
-        dangerouslySetInnerHTML={{ __html: contentLecture }}
-      />
+      <Typography pt="40px" variant="h2">
+        Материалы урока
+      </Typography>
+      <Paper sx={{ padding: "20px" }}>
+        <Typography
+          variant="subtitle2"
+          dangerouslySetInnerHTML={{ __html: contentLecture }}
+        />
+      </Paper>
 
-      <Typography variant="h6">Домашнее задание</Typography>
-      <Box pt="15px" pb="15px">
+      <Typography pt="40px" variant="h2">
+        Домашнее задание
+      </Typography>
+      <Paper sx={{ padding: "20px" }}>
         <Typography
           variant="subtitle1"
           dangerouslySetInnerHTML={{ __html: contentLectureHomeWork }}
         />
-      </Box>
-      <Typography variant="h6">Ваш ответ</Typography>
+      </Paper>
+
+      <Typography pt="40px" variant="h2">
+        Ход выполнения
+      </Typography>
       <TextField
         multiline
         rows={5}
         placeholder="поле для ответа"
         variant="filled"
       />
-      <Box textAlign="center">
+      <Box>
         <LoadingButton sx={{ minWidth: "143px" }} variant="contained">
           Отправить
         </LoadingButton>
