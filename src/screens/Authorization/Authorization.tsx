@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import Login from "../../features/Authorization/models/Login/Login";
 import { Box, Button, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "../../icons/Logo.svg";
 import styles from "./Authorization.module.scss";
 import { useTranslation } from "react-i18next";
+import Login from "../../features/Authorization/Login";
 
 const Authorization = () => {
   let navigate = useNavigate();

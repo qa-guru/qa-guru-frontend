@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import { LectureDetail } from "../../features/Lecture";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import LectureDetail from "../../features/Lecture/LectureDetail";
 
 const Lecture: React.FC = () => {
   let navigate = useNavigate();
