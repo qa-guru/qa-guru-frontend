@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { TrainingPurchases } from "../../features/Training";
+import TrainingPurchases from "../../features/Training/TrainingPurchases";
 
 const Home = () => {
   return (

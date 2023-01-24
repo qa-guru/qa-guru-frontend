@@ -1,16 +1,17 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 
-const url = "http://app.qa.guru/api/graphql";
+export default ({ mode }: any) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
-export default defineConfig({
-  assetsInclude: ["**/*.graphql"],
-  server: {
-    proxy: {
-      "^/(graphql|login|logout)": url,
+  return defineConfig({
+    server: {
+      proxy: {
+        "^/(graphql|login|logout)": process.env.VITE_APP_ENDPOINT!,
+      },
+      host: true,
     },
-    host: true,
-  },
-  plugins: [react(), svgr()],
-});
+    plugins: [react(), svgr()],
+  });
+};

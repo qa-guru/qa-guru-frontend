@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
+import * as React from "react";
 import * as Apollo from "@apollo/client";
+import * as ApolloReactComponents from "@apollo/client/react/components";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -9,6 +11,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
   { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
   { [SubKey in K]: Maybe<T[SubKey]> };
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -820,40 +823,6 @@ export type TrainingPurchasesQuery = {
   } | null> | null;
 };
 
-export type TrainingPurchasesByUserIdQueryVariables = Exact<{
-  userId: Scalars["ID"];
-}>;
-
-export type TrainingPurchasesByUserIdQuery = {
-  __typename?: "Query";
-  trainingPurchasesByUserId?: Array<{
-    __typename?: "TrainingPurchaseDto";
-    id?: string | null;
-    user: {
-      __typename?: "UserDto";
-      id?: string | null;
-      email?: string | null;
-      firstName?: string | null;
-      lastName?: string | null;
-      middleName?: string | null;
-    };
-    trainingTariff: {
-      __typename?: "TrainingTariffDto";
-      id?: string | null;
-      name?: string | null;
-      code?: string | null;
-      price?: number | null;
-      homeWork?: boolean | null;
-      description?: string | null;
-      training?: {
-        __typename?: "TrainingDto";
-        id: string;
-        name: string;
-      } | null;
-    };
-  } | null> | null;
-};
-
 export type CreateUserMutationVariables = Exact<{
   input: UserCreateInput;
 }>;
@@ -964,6 +933,21 @@ export const LectureDocument = gql`
     }
   }
 `;
+export type LectureComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    LectureQuery,
+    LectureQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: LectureQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const LectureComponent = (props: LectureComponentProps) => (
+  <ApolloReactComponents.Query<LectureQuery, LectureQueryVariables>
+    query={LectureDocument}
+    {...props}
+  />
+);
 
 /**
  * __useLectureQuery__
@@ -1010,6 +994,29 @@ export const LectureHomeWorkDocument = gql`
     lectureHomeWork(lectureId: $lectureId)
   }
 `;
+export type LectureHomeWorkComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    LectureHomeWorkQuery,
+    LectureHomeWorkQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: LectureHomeWorkQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const LectureHomeWorkComponent = (
+  props: LectureHomeWorkComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    LectureHomeWorkQuery,
+    LectureHomeWorkQueryVariables
+  >
+    query={LectureHomeWorkDocument}
+    {...props}
+  />
+);
 
 /**
  * __useLectureHomeWorkQuery__
@@ -1079,6 +1086,20 @@ export const LecturesDocument = gql`
     }
   }
 `;
+export type LecturesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    LecturesQuery,
+    LecturesQueryVariables
+  >,
+  "query"
+>;
+
+export const LecturesComponent = (props: LecturesComponentProps) => (
+  <ApolloReactComponents.Query<LecturesQuery, LecturesQueryVariables>
+    query={LecturesDocument}
+    {...props}
+  />
+);
 
 /**
  * __useLecturesQuery__
@@ -1145,6 +1166,23 @@ export type UpdateLectureMutationFn = Apollo.MutationFunction<
   UpdateLectureMutation,
   UpdateLectureMutationVariables
 >;
+export type UpdateLectureComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateLectureMutation,
+    UpdateLectureMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateLectureComponent = (props: UpdateLectureComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateLectureMutation,
+    UpdateLectureMutationVariables
+  >
+    mutation={UpdateLectureDocument}
+    {...props}
+  />
+);
 
 /**
  * __useUpdateLectureMutation__
@@ -1208,6 +1246,21 @@ export const TrainingDocument = gql`
     }
   }
 `;
+export type TrainingComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingQuery,
+    TrainingQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: TrainingQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const TrainingComponent = (props: TrainingComponentProps) => (
+  <ApolloReactComponents.Query<TrainingQuery, TrainingQueryVariables>
+    query={TrainingDocument}
+    {...props}
+  />
+);
 
 /**
  * __useTrainingQuery__
@@ -1267,6 +1320,25 @@ export type UpdateTrainingMutationFn = Apollo.MutationFunction<
   UpdateTrainingMutation,
   UpdateTrainingMutationVariables
 >;
+export type UpdateTrainingComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateTrainingComponent = (
+  props: UpdateTrainingComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >
+    mutation={UpdateTrainingDocument}
+    {...props}
+  />
+);
 
 /**
  * __useUpdateTrainingMutation__
@@ -1325,6 +1397,29 @@ export const TrainingLecturesDocument = gql`
     }
   }
 `;
+export type TrainingLecturesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingLecturesQuery,
+    TrainingLecturesQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: TrainingLecturesQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const TrainingLecturesComponent = (
+  props: TrainingLecturesComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    TrainingLecturesQuery,
+    TrainingLecturesQueryVariables
+  >
+    query={TrainingLecturesDocument}
+    {...props}
+  />
+);
 
 /**
  * __useTrainingLecturesQuery__
@@ -1402,6 +1497,25 @@ export const TrainingPurchasesDocument = gql`
     }
   }
 `;
+export type TrainingPurchasesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingPurchasesQuery,
+    TrainingPurchasesQueryVariables
+  >,
+  "query"
+>;
+
+export const TrainingPurchasesComponent = (
+  props: TrainingPurchasesComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    TrainingPurchasesQuery,
+    TrainingPurchasesQueryVariables
+  >
+    query={TrainingPurchasesDocument}
+    {...props}
+  />
+);
 
 /**
  * __useTrainingPurchasesQuery__
@@ -1452,83 +1566,6 @@ export type TrainingPurchasesQueryResult = Apollo.QueryResult<
   TrainingPurchasesQuery,
   TrainingPurchasesQueryVariables
 >;
-export const TrainingPurchasesByUserIdDocument = gql`
-  query trainingPurchasesByUserId($userId: ID!) {
-    trainingPurchasesByUserId(userId: $userId) {
-      id
-      user {
-        id
-        email
-        firstName
-        lastName
-        middleName
-      }
-      trainingTariff {
-        id
-        name
-        code
-        price
-        homeWork
-        description
-        training {
-          id
-          name
-        }
-      }
-    }
-  }
-`;
-
-/**
- * __useTrainingPurchasesByUserIdQuery__
- *
- * To run a query within a React component, call `useTrainingPurchasesByUserIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useTrainingPurchasesByUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTrainingPurchasesByUserIdQuery({
- *   variables: {
- *      userId: // value for 'userId'
- *   },
- * });
- */
-export function useTrainingPurchasesByUserIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
-  >(TrainingPurchasesByUserIdDocument, options);
-}
-export function useTrainingPurchasesByUserIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    TrainingPurchasesByUserIdQuery,
-    TrainingPurchasesByUserIdQueryVariables
-  >(TrainingPurchasesByUserIdDocument, options);
-}
-export type TrainingPurchasesByUserIdQueryHookResult = ReturnType<
-  typeof useTrainingPurchasesByUserIdQuery
->;
-export type TrainingPurchasesByUserIdLazyQueryHookResult = ReturnType<
-  typeof useTrainingPurchasesByUserIdLazyQuery
->;
-export type TrainingPurchasesByUserIdQueryResult = Apollo.QueryResult<
-  TrainingPurchasesByUserIdQuery,
-  TrainingPurchasesByUserIdQueryVariables
->;
 export const CreateUserDocument = gql`
   mutation createUser($input: UserCreateInput!) {
     createUser(input: $input) {
@@ -1548,6 +1585,23 @@ export type CreateUserMutationFn = Apollo.MutationFunction<
   CreateUserMutation,
   CreateUserMutationVariables
 >;
+export type CreateUserComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    CreateUserMutation,
+    CreateUserMutationVariables
+  >,
+  "mutation"
+>;
+
+export const CreateUserComponent = (props: CreateUserComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    CreateUserMutation,
+    CreateUserMutationVariables
+  >
+    mutation={CreateUserDocument}
+    {...props}
+  />
+);
 
 /**
  * __useCreateUserMutation__
@@ -1600,6 +1654,23 @@ export type UpdateRoleMutationFn = Apollo.MutationFunction<
   UpdateRoleMutation,
   UpdateRoleMutationVariables
 >;
+export type UpdateRoleComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateRoleMutation,
+    UpdateRoleMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateRoleComponent = (props: UpdateRoleComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateRoleMutation,
+    UpdateRoleMutationVariables
+  >
+    mutation={UpdateRoleDocument}
+    {...props}
+  />
+);
 
 /**
  * __useUpdateRoleMutation__
@@ -1659,6 +1730,23 @@ export type UpdateUserMutationFn = Apollo.MutationFunction<
   UpdateUserMutation,
   UpdateUserMutationVariables
 >;
+export type UpdateUserComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateUserMutation,
+    UpdateUserMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateUserComponent = (props: UpdateUserComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateUserMutation,
+    UpdateUserMutationVariables
+  >
+    mutation={UpdateUserDocument}
+    {...props}
+  />
+);
 
 /**
  * __useUpdateUserMutation__
@@ -1713,6 +1801,17 @@ export const UserDocument = gql`
     }
   }
 `;
+export type UserComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<UserQuery, UserQueryVariables>,
+  "query"
+>;
+
+export const UserComponent = (props: UserComponentProps) => (
+  <ApolloReactComponents.Query<UserQuery, UserQueryVariables>
+    query={UserDocument}
+    {...props}
+  />
+);
 
 /**
  * __useUserQuery__
@@ -1764,6 +1863,17 @@ export const UsersDocument = gql`
     }
   }
 `;
+export type UsersComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<UsersQuery, UsersQueryVariables>,
+  "query"
+>;
+
+export const UsersComponent = (props: UsersComponentProps) => (
+  <ApolloReactComponents.Query<UsersQuery, UsersQueryVariables>
+    query={UsersDocument}
+    {...props}
+  />
+);
 
 /**
  * __useUsersQuery__

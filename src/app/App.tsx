@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useUserQuery } from "../api/graphql/user/user";
-import Spinner from "../shared/ui/Spinner/Spinner";
+import Spinner from "../shared/Spinner";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../styles/theme/theme";
 import { CssBaseline } from "@mui/material";
