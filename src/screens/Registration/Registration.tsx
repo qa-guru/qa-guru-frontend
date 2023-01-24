@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import SignUp from "../../features/Authorization/SignUp/SignUp";
 import { Box, Button, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "../../icons/Logo.svg";
 import styles from "./Registration.module.scss";
 import { useTranslation } from "react-i18next";
+import SignUp from "../../features/Authorization/SignUp";
 
 const Registration = () => {
   let navigate = useNavigate();
