@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly VITE_LOGIN_URI: string;
   readonly VITE_LOGOUT_URI: string;
   readonly VITE_REQUEST_SAME_ORIGIN: boolean;
+  readonly VITE_APP_ENDPOINT: string;
 }
 
 interface ImportMeta {

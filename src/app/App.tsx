@@ -25,9 +25,7 @@ export const App = () => {
     },
   });
 
-  if (loading) {
-    return <Spinner />;
-  }
+  if (loading) return <Spinner />;
 
   return (
     <ThemeProvider theme={theme}>
