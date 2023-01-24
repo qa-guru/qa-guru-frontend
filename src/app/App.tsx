@@ -21,7 +21,7 @@ export const App = () => {
     },
     onError: () => {
       setIsSignedIn(false);
-      navigate("authorization");
+      navigate("/authorization");
     },
   });
 
