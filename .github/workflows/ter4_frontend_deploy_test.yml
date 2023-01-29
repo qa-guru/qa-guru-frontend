@@ -1,17 +1,17 @@
-name: ter4_frontend_deploy_test
+name: ter4_frontend_deploy_prod
 on:
   push:
     branches: 
       - main
 jobs:
   checkout:
-    runs-on: self-hosted
+    runs-on: prod-runner
     
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
   
   yarn-and-node:
-    runs-on: self-hosted
+    runs-on: prod-runner
     needs: checkout
     steps:
       - name: Use Node.js 18.x
