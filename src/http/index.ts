@@ -1,17 +1,13 @@
-import { ApolloClient, createHttpLink, from } from "@apollo/client";
+import { ApolloClient, HttpLink } from "@apollo/client";
 import axios from "axios";
-import { GRAPHQL_URI, REQUEST_SAME_ORIGIN } from "../config";
+import { GRAPHQL_URI } from "../config";
 import { cache } from "../cache";
+import fetch from "cross-fetch";
 
-axios.defaults.withCredentials = !REQUEST_SAME_ORIGIN;
-
-const httpLink = createHttpLink({
-  uri: GRAPHQL_URI,
-  credentials: REQUEST_SAME_ORIGIN ? "same-origin" : "include",
-});
+axios.defaults.withCredentials = true;
 
 const client = new ApolloClient({
-  link: from([httpLink]),
+  link: new HttpLink({ uri: GRAPHQL_URI, fetch }),
   cache: cache,
   defaultOptions: {
     query: {

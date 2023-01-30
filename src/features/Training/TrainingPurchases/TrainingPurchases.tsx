@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CardActionArea, Grid, Paper, Typography } from "@mui/material";
 import { TrainingPurchasesQuery } from "../../../generated/graphql";
-import styles from "./TrainingPurchases.module.scss";
 
 interface ITrainings {
   data: TrainingPurchasesQuery;
@@ -17,11 +16,11 @@ const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
         return (
           <Grid item xs={6} key={index}>
             <Link
-              className={styles.link}
+              style={{ textDecoration: "none" }}
               to={`/training/${item?.trainingTariff?.training?.id}`}
             >
               <CardActionArea>
-                <Paper className={styles.paper}>
+                <Paper sx={{ padding: "24px 24px 15px 24px" }}>
                   <Typography variant="h3">
                     {item?.trainingTariff?.training?.name}
                   </Typography>

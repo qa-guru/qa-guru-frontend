@@ -27,8 +27,6 @@ export const App = () => {
 
   if (loading) return <Spinner />;
 
-  console.log("Hello");
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
