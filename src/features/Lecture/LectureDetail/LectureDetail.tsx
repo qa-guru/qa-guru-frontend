@@ -1,6 +1,6 @@
 import React from "react";
 import { LectureHomeWorkQuery, LectureQuery } from "../../../generated/graphql";
-import { Box, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Box, Stack, TextField, Typography } from "@mui/material";
 import DOMPurify from "isomorphic-dompurify";
 import { LoadingButton } from "@mui/lab";
 import LectureTitle from "../ui/LectureTitle";

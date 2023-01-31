@@ -1,0 +1,34 @@
+.loader {
+  --size: 40px;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.box {
+  width: var(--size);
+  height: var(--size);
+  background: gray;
+  animation: rotate 0.7s infinite;
+}
+
+.box:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.box:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.box:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.box:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
