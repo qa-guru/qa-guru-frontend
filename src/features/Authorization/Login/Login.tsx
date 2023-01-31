@@ -12,7 +12,7 @@ const Login: React.FC<ILogin> = (props) => {
     <form>
       <Stack
         sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
-        spacing={2}
+        spacing={{ xs: 1, md: 2 }}
       >
         <FormControl fullWidth>
           <RHF.InputTextField

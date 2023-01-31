@@ -2,11 +2,10 @@ import React from "react";
 import { ReactComponent as Java } from "../../icons/java.svg";
 import { ReactComponent as Gradle } from "../../icons/gradle.svg";
 import { ReactComponent as JUnit5 } from "../../icons/junit5.svg";
-import { ReactComponent as Allure } from "../../icons/allure.svg";
 import { ReactComponent as Idea } from "../../icons/idea.svg";
 import { ReactComponent as Selenide } from "../../icons/selenide.svg";
 import { Backdrop } from "@mui/material";
-import styles from "./Spinner.module.css";
+import styles from "./Spinner.module.scss";
 
 const Spinner: React.FC = () => {
   return (

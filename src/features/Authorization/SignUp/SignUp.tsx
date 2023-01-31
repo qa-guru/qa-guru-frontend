@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  Button,
-  FormControl,
-  FormHelperText,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Button, FormControl, FormHelperText, Stack } from "@mui/material";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
 import { ISignUp } from "./SignUp.types";
+import { TextFieldStyled } from "../../../shared/InputRHF/InputTextField/InputTextField";
 
 const SignUp: React.FC<ISignUp> = (props) => {
   const {
@@ -26,7 +21,7 @@ const SignUp: React.FC<ISignUp> = (props) => {
     <form>
       <Stack
         sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
-        spacing={2}
+        spacing={{ xs: 1, md: 2 }}
       >
         <FormControl fullWidth>
           <RHF.InputTextField
@@ -80,7 +75,7 @@ const SignUp: React.FC<ISignUp> = (props) => {
           )}
         </FormControl>
         <FormControl fullWidth>
-          <TextField
+          <TextFieldStyled
             name="password"
             placeholder={t("enter.password")!}
             label={t("password.confirm")!}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useCreateUserMutation } from "../api/graphql/user/createUser";
-import AuthService from "../api/rest/AuthService";
+import AuthService from "../api/rest/authService";
 import { client } from "../http";
 import { UserCreateInput } from "../generated/graphql";
 

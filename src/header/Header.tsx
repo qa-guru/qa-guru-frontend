@@ -10,7 +10,7 @@ const Header = () => {
       <Paper sx={{ backgroundColor: "#FFFBFE", borderRadius: 0 }}>
         <Box
           sx={{
-            padding: "7px 0 7px",
+            padding: { md: "7px 0 7px", xs: 0 },
             maxWidth: "1920px",
             margin: "0 auto",
           }}
