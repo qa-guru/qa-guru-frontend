@@ -3,7 +3,7 @@ import { Button, FormControl, FormHelperText, Stack } from "@mui/material";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
 import { ISignUp } from "./SignUp.types";
-import { TextFieldStyled } from "../../../shared/InputRHF/InputTextField/InputTextField";
+import { TextFieldStyled } from "../../../shared/InputRHF/InputTextField/InputTextField.styled";
 
 const SignUp: React.FC<ISignUp> = (props) => {
   const {
