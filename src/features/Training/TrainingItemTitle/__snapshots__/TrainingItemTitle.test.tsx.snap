@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`TrainingItemTitle > the component is render 1`] = `
+<DocumentFragment>
+  <h2
+    class="MuiTypography-root MuiTypography-h2 css-13ddgwt-MuiTypography-root"
+  >
+    string
+  </h2>
+</DocumentFragment>
+`;

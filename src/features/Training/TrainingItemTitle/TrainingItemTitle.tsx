@@ -1,10 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { TrainingQuery } from "../../../generated/graphql";
-
-interface ITrainingItemTitle {
-  data: TrainingQuery;
-}
+import { ITrainingItemTitle } from "./TrainingItemTitle.types";
 
 const TrainingItemTitle: React.FC<ITrainingItemTitle> = ({ data }) => {
   const { training } = data;

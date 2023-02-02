@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Dialog,
@@ -10,10 +10,30 @@ import {
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { ILogout } from "./Logout.types";
+import { useTranslation } from "react-i18next";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const Logout: React.FC<ILogout> = (props) => {
-  const { open, handleClickOpen, handleClose, handleCancel, handleOk, t } =
-    props;
+  const { logout, isLoading } = props;
+  const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOk = async () => {
+    await logout();
+    setOpen(false);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -26,10 +46,10 @@ const Logout: React.FC<ILogout> = (props) => {
           <DialogContentText>{t("logout.confirm")}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancel}>{t("no")}</Button>
-          <Button onClick={handleOk} autoFocus>
+          <LoadingButton onClick={handleOk} loading={isLoading}>
             {t("yes")}
-          </Button>
+          </LoadingButton>
+          <Button onClick={handleCancel}>{t("no")}</Button>
         </DialogActions>
       </Dialog>
     </>

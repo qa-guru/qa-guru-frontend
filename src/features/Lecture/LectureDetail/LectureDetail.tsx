@@ -1,5 +1,4 @@
 import React from "react";
-import { LectureHomeWorkQuery, LectureQuery } from "../../../generated/graphql";
 import { Box, Stack, TextField, Typography } from "@mui/material";
 import DOMPurify from "isomorphic-dompurify";
 import { LoadingButton } from "@mui/lab";
@@ -8,11 +7,7 @@ import LectureDescription from "../ui/LectureDescription";
 import LectureSpeakers from "../ui/LectureSpeakers";
 import LectureContent from "../ui/LectureContent";
 import LectureHomework from "../ui/LectureHomework";
-
-interface ILectureDetail {
-  dataLecture: LectureQuery;
-  dataLectureHomeWork: LectureHomeWorkQuery;
-}
+import { ILectureDetail } from "./LectureDetail.types";
 
 const LectureDetail: React.FC<ILectureDetail> = ({
   dataLecture,

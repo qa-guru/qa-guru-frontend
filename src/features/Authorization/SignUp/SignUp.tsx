@@ -1,21 +1,52 @@
-import React from "react";
-import { Button, FormControl, FormHelperText, Stack } from "@mui/material";
+import React, { useState } from "react";
+import { FormControl, FormHelperText, Stack } from "@mui/material";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
 import { ISignUp } from "./SignUp.types";
 import { TextFieldStyled } from "../../../shared/InputRHF/InputTextField/InputTextField.styled";
+import { useTranslation } from "react-i18next";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { UserCreateInput } from "../../../generated/graphql";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const SignUp: React.FC<ISignUp> = (props) => {
+  const { signup, isLoading } = props;
+  const { t } = useTranslation();
+  const [valueConfirmPassword, setValueConfirmPassword] = useState<string>("");
+
   const {
-    onSubmit,
-    setValueConfirmPassword,
-    errors,
-    control,
     handleSubmit,
-    valueConfirmPassword,
+    control,
+    formState: { errors },
     getValues,
-    t,
-  } = props;
+  } = useForm<UserCreateInput>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      phoneNumber: "",
+    },
+    resolver: yupResolver(
+      yup.object().shape({
+        firstName: yup.string().required(t("firstName.required")!),
+        lastName: yup.string().required(t("lastName.required")!),
+        email: yup.string().required(t("email.required")!),
+        password: yup
+          .string()
+          .min(8, t("password.required.min")!)
+          .max(15, t("password.required.max")!)
+          .required(t("password.required")!),
+        phoneNumber: yup.string().required(t("phone.required")!),
+      })
+    ),
+  });
+
+  const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
+    valueConfirmPassword === getValues("password") && signup(data);
+  };
 
   return (
     <form>
@@ -87,9 +118,13 @@ const SignUp: React.FC<ISignUp> = (props) => {
           )}
         </FormControl>
         <LocalSelector />
-        <Button onClick={handleSubmit(onSubmit)} variant="contained">
+        <LoadingButton
+          onClick={handleSubmit(onSubmit)}
+          loading={isLoading}
+          variant="contained"
+        >
           {t("registration")}
-        </Button>
+        </LoadingButton>
       </Stack>
     </form>
   );

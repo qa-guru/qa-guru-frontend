@@ -1,5 +1,7 @@
+import { Control } from "react-hook-form";
+
 export interface IFormInputProps {
-  control: any;
+  control: Control<any, any>;
   label?: string;
   placeholder?: any;
   content?: any;

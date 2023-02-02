@@ -1,12 +1,7 @@
 import React from "react";
 import { CardActionArea, Grid, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { TrainingLecturesQuery } from "../../../generated/graphql";
-
-interface ITrainingLectures {
-  data: TrainingLecturesQuery;
-  trainingId: string;
-}
+import { ITrainingLectures } from "./TrainingLectures.types";
 
 const TrainingLectures: React.FC<ITrainingLectures> = ({
   data,

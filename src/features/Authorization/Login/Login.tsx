@@ -1,12 +1,38 @@
 import React from "react";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
-import { Button, FormControl, FormHelperText, Stack } from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
-import { ILogin } from "./Login.types";
+import { FormControl, FormHelperText, Stack } from "@mui/material";
+import { ILogin, ILoginForm } from "./Login.types";
+import { SubmitHandler, useForm } from "react-hook-form";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const Login: React.FC<ILogin> = (props) => {
-  const { handleSubmit, control, errors, isLoading, doLogin, t } = props;
+  const { isLoading, login } = props;
+  const { t } = useTranslation();
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ILoginForm>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+    resolver: yupResolver(
+      yup.object().shape({
+        username: yup.string().required(t("email.required")!),
+        password: yup.string().required(t("password.required")!),
+      })
+    ),
+  });
+
+  const doLogin: SubmitHandler<ILoginForm> = async (data) => {
+    await login(data.username, data.password);
+  };
 
   return (
     <form>
@@ -38,14 +64,13 @@ const Login: React.FC<ILogin> = (props) => {
           )}
         </FormControl>
         <LocalSelector />
-        <Button
+        <LoadingButton
           onClick={handleSubmit(doLogin)}
+          loading={isLoading}
           variant="contained"
-          disabled={isLoading && true}
         >
-          {isLoading && <CircularProgress size={20} />}
           {t("login")}
-        </Button>
+        </LoadingButton>
       </Stack>
     </form>
   );

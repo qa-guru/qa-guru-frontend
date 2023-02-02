@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CardActionArea, Grid, Paper, Typography } from "@mui/material";
-import { TrainingPurchasesQuery } from "../../../generated/graphql";
-
-interface ITrainings {
-  data: TrainingPurchasesQuery;
-}
+import { ITrainings } from "./TrainingPurchases.types";
 
 const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;
