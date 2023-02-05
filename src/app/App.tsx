@@ -2,10 +2,10 @@ import { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useUserQuery } from "../api/graphql/user/user";
-import Spinner from "../shared/Spinner";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../styles/theme/theme";
 import { CssBaseline } from "@mui/material";
+import Spinner from "../shared/Spinner";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("../routes/AppRoutes"));
@@ -26,8 +26,6 @@ export const App = () => {
   });
 
   if (loading) return <Spinner />;
-
-  console.log("Hello");
 
   return (
     <ThemeProvider theme={theme}>

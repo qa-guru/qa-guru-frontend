@@ -13,5 +13,11 @@ export default ({ mode }: any) => {
       host: true,
     },
     plugins: [react(), svgr()],
+    // @ts-ignore
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: "src/test/setupTest.ts",
+    },
   });
 };

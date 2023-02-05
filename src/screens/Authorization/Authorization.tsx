@@ -3,7 +3,6 @@ import { Box, Button, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "../../icons/Logo.svg";
 import { useTranslation } from "react-i18next";
 import Login from "../../features/Authorization/Login";
-import styles from "./Authorization.module.scss";
 
 const Authorization = () => {
   let navigate = useNavigate();
@@ -18,12 +17,17 @@ const Authorization = () => {
       color="secondary"
       justifyContent="center"
       alignItems="center"
-      className={styles.stack}
+      sx={{
+        height: "100vh",
+        backgroundColor: "var(--gx-color-background-auth)",
+      }}
     >
       <Logo />
       <Paper
-        sx={{ minWidth: { xs: "none", md: "430px" } }}
-        className={styles.paper}
+        sx={{
+          minWidth: { xs: "none", md: "430px" },
+          marginTop: { xs: "7px", md: "22px" },
+        }}
       >
         <Login />
         <Box textAlign="center">

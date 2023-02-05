@@ -1,0 +1,143 @@
+// Vitest Snapshot v1
+
+exports[`LectureDetail > the component is render 1`] = `
+<DocumentFragment>
+  <div
+    class="css-1p5q5e5-MuiStack-root"
+  >
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-1sra7t5-MuiTypography-root"
+    >
+      string
+    </h2>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
+    >
+      <h4
+        class="MuiTypography-root MuiTypography-h4 css-16vsjin-MuiTypography-root"
+      >
+        Содержание урока
+      </h4>
+      <hr
+        class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+      />
+      <div
+        class="css-b55nah-MuiStack-root"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle2 css-12b95y0-MuiTypography-root"
+        >
+          string
+        </h6>
+      </div>
+    </div>
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-edb2gw-MuiTypography-root"
+    >
+      Спикеры
+    </h2>
+    <div
+      class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
+    >
+      <div
+        class="css-1iogkbe-MuiStack-root"
+      >
+        <div
+          class="MuiAvatar-root MuiAvatar-circular css-3xou8u-MuiAvatar-root"
+        >
+          <img
+            alt="Remy Sharp"
+            class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+            src="/static/images/avatar/1.jpg"
+          />
+        </div>
+        <div
+          class="MuiBox-root css-tzqd77"
+        >
+          <h4
+            class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
+          >
+            string string
+          </h4>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-1i398vg-MuiTypography-root"
+          >
+            Student
+          </h6>
+        </div>
+      </div>
+    </div>
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-edb2gw-MuiTypography-root"
+    >
+      Материалы урока
+    </h2>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+      >
+        string
+      </p>
+    </div>
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-edb2gw-MuiTypography-root"
+    >
+      Домашнее задание
+    </h2>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1kva4hp-MuiPaper-root"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      >
+        string
+      </h6>
+    </div>
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-edb2gw-MuiTypography-root"
+    >
+      Ход выполнения
+    </h2>
+    <div
+      class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+    >
+      <div
+        class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-multiline css-85zwa9-MuiInputBase-root-MuiFilledInput-root"
+      >
+        <textarea
+          aria-invalid="false"
+          class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline css-7209ej-MuiInputBase-input-MuiFilledInput-input"
+          id=":r0:"
+          placeholder="поле для ответа"
+          rows="5"
+          style="height: 0px; overflow: hidden;"
+        />
+        <textarea
+          aria-hidden="true"
+          class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline css-7209ej-MuiInputBase-input-MuiFilledInput-input"
+          readonly=""
+          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-0"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1nz1xz3-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        id=":r1:"
+        tabindex="0"
+        type="button"
+      >
+        Отправить
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

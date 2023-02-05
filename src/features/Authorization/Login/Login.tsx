@@ -1,51 +1,78 @@
 import React from "react";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
-import { Button, FormControl, FormHelperText, Stack } from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
-import { ILogin } from "./Login.types";
+import { FormControl, FormHelperText, Stack } from "@mui/material";
+import { ILogin, ILoginForm } from "./Login.types";
+import { SubmitHandler, useForm } from "react-hook-form";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const Login: React.FC<ILogin> = (props) => {
-  const { handleSubmit, control, errors, isLoading, doLogin, t } = props;
+  const { isLoading, login } = props;
+  const { t } = useTranslation();
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ILoginForm>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+    resolver: yupResolver(
+      yup.object().shape({
+        username: yup.string().required(t("email.required")!),
+        password: yup.string().required(t("password.required")!),
+      })
+    ),
+  });
+
+  const doLogin: SubmitHandler<ILoginForm> = async (data) => {
+    await login(data.username, data.password);
+  };
 
   return (
-    <Stack
-      sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
-      spacing={2}
-    >
-      <FormControl fullWidth>
-        <RHF.InputTextField
-          control={control}
-          name="username"
-          placeholder={t("enter.email")}
-          label="E-mail"
-        />
-        {errors?.username && (
-          <FormHelperText error>{errors?.username.message}</FormHelperText>
-        )}
-      </FormControl>
-      <FormControl fullWidth>
-        <RHF.InputTextField
-          control={control}
-          name="password"
-          placeholder={t("enter.password")}
-          label={t("password")!}
-          type="password"
-        />
-        {errors?.password && (
-          <FormHelperText error>{errors?.password.message}</FormHelperText>
-        )}
-      </FormControl>
-      <LocalSelector />
-      <Button
-        onClick={handleSubmit(doLogin)}
-        variant="contained"
-        disabled={isLoading && true}
+    <form>
+      <Stack
+        sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
+        spacing={{ xs: 1, md: 2 }}
       >
-        {isLoading && <CircularProgress size={20} />}
-        {t("login")}
-      </Button>
-    </Stack>
+        <FormControl fullWidth>
+          <RHF.InputTextField
+            control={control}
+            name="username"
+            placeholder={t("enter.email")}
+            label="E-mail"
+          />
+          {errors?.username && (
+            <FormHelperText error>{errors?.username.message}</FormHelperText>
+          )}
+        </FormControl>
+        <FormControl fullWidth>
+          <RHF.InputTextField
+            control={control}
+            name="password"
+            placeholder={t("enter.password")}
+            label={t("password")!}
+            type="password"
+          />
+          {errors?.password && (
+            <FormHelperText error>{errors?.password.message}</FormHelperText>
+          )}
+        </FormControl>
+        <LocalSelector />
+        <LoadingButton
+          onClick={handleSubmit(doLogin)}
+          loading={isLoading}
+          variant="contained"
+        >
+          {t("login")}
+        </LoadingButton>
+      </Stack>
+    </form>
   );
 };
 

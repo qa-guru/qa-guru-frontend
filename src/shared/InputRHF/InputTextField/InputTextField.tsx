@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
 import { IFormInputProps } from "../Input.types";
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextFieldStyled } from "./InputTextField.styled";
 
 const InputTextField: React.FC<IFormInputProps> = ({
   control,
@@ -15,7 +15,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
       name={name}
       control={control}
       render={({ field: { onChange, value } }) => (
-        <TextField
+        <TextFieldStyled
           value={value}
           onChange={onChange}
           placeholder={placeholder}
