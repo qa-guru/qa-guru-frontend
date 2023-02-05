@@ -5,20 +5,24 @@ interface ILectureDescription {
   arrayDescription: string[];
 }
 
+const style = {
+  paper: { padding: "20px" },
+};
+
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
   const { arrayDescription } = props;
 
   return (
     <>
-      <Paper sx={{ padding: "20px" }}>
-        <Typography mb="14px" variant="h4">
+      <Paper sx={style.paper}>
+        <Typography mb="14px" variant="h6">
           Содержание урока
         </Typography>
         <Divider />
         <Stack spacing={1.5}>
           {arrayDescription?.map((item, index) => {
             return (
-              <Typography key={index} variant="subtitle2" mt="20px">
+              <Typography key={index} variant="subtitle1" mt="20px">
                 {item}
               </Typography>
             );

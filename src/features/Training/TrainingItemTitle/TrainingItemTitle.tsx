@@ -6,7 +6,7 @@ const TrainingItemTitle: React.FC<ITrainingItemTitle> = ({ data }) => {
   const { training } = data;
 
   return (
-    <Typography mb="20px" variant="h2">
+    <Typography mb="20px" variant="h4">
       {training?.name}
     </Typography>
   );

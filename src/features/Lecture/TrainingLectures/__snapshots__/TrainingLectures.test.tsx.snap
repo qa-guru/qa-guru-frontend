@@ -18,28 +18,27 @@ exports[`TrainingLectures > the component is render 1`] = `
           type="button"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
-            style="padding: 24px 24px 15px 24px;"
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6zsig3-MuiPaper-root"
           >
-            <h3
-              class="MuiTypography-root MuiTypography-h3 css-gepadz-MuiTypography-root"
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
             >
               string
-            </h3>
+            </h6>
             <div
               class="css-b55nah-MuiStack-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-jpb38c-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle1 css-hi5vcn-MuiTypography-root"
               >
                 string
               </h6>
             </div>
-            <h4
-              class="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight css-scpiz2-MuiTypography-root"
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-alignRight css-1txwzru-MuiTypography-root"
             >
               Продолжить
-            </h4>
+            </h6>
           </div>
           <span
             class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"

@@ -4,6 +4,10 @@ import { Box, IconButton, SvgIcon } from "@mui/material";
 import { ReactComponent as EnglishIcon } from "../icons/english.svg";
 import { ReactComponent as RussiaIcon } from "../icons/russia.svg";
 
+const style = {
+  box: { display: "flex", justifyContent: "center" },
+};
+
 const LocalSelector = () => {
   const { i18n } = useTranslation();
 
@@ -12,7 +16,7 @@ const LocalSelector = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <Box sx={style.box}>
       <IconButton onClick={() => changeLanguage("en")}>
         <SvgIcon>
           <EnglishIcon />

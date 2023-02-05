@@ -11,6 +11,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import LoadingButton from "@mui/lab/LoadingButton";
 
+const style = {
+  stack: {
+    padding: { xs: "16px 30px 10px", md: "32px 60px 20px" },
+  },
+};
+
 const SignUp: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const { t } = useTranslation();
@@ -50,10 +56,7 @@ const SignUp: React.FC<ISignUp> = (props) => {
 
   return (
     <form>
-      <Stack
-        sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
-        spacing={{ xs: 1, md: 2 }}
-      >
+      <Stack sx={style.stack} spacing={{ xs: 1, md: 2 }}>
         <FormControl fullWidth>
           <RHF.InputTextField
             control={control}
@@ -88,7 +91,12 @@ const SignUp: React.FC<ISignUp> = (props) => {
           )}
         </FormControl>
         <FormControl fullWidth>
-          <RHF.InputPhone control={control} name="phoneNumber" />
+          <RHF.InputPhone
+            control={control}
+            name="phoneNumber"
+            label="Phone"
+            placeholder="(555) 555-5555"
+          />
           {errors?.phoneNumber && (
             <FormHelperText error>{errors?.phoneNumber.message}</FormHelperText>
           )}

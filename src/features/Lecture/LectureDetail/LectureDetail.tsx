@@ -9,6 +9,11 @@ import LectureContent from "../ui/LectureContent";
 import LectureHomework from "../ui/LectureHomework";
 import { ILectureDetail } from "./LectureDetail.types";
 
+const style = {
+  loadingButton: { minWidth: "143px", marginTop: "15px" },
+  stack: { spacing: 2 },
+};
+
 const LectureDetail: React.FC<ILectureDetail> = ({
   dataLecture,
   dataLectureHomeWork,
@@ -28,14 +33,14 @@ const LectureDetail: React.FC<ILectureDetail> = ({
   const arrayDescription = lecture?.description?.split("\n");
 
   return (
-    <Stack spacing={2}>
+    <Stack sx={style.stack}>
       <LectureTitle title={lecture?.subject!} />
       <LectureDescription arrayDescription={arrayDescription!} />
       <LectureSpeakers speakers={lecture?.speakers!} />
       <LectureContent contentLecture={contentLecture} />
       <LectureHomework contentLectureHomeWork={contentLectureHomeWork} />
 
-      <Typography pt="40px" variant="h2">
+      <Typography pt="40px" variant="h4" mb="15px">
         Ход выполнения
       </Typography>
       <TextField
@@ -45,7 +50,7 @@ const LectureDetail: React.FC<ILectureDetail> = ({
         variant="filled"
       />
       <Box>
-        <LoadingButton sx={{ minWidth: "143px" }} variant="contained">
+        <LoadingButton sx={style.loadingButton} variant="contained">
           Отправить
         </LoadingButton>
       </Box>
