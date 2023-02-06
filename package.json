@@ -33,7 +33,6 @@
     "react-hook-form": "^7.42.1",
     "react-i18next": "^12.1.4",
     "react-intl": "^6.2.5",
-    "react-phone-number-input": "^3.2.16",
     "react-router-dom": "^6.7.0",
     "sass": "^1.57.1",
     "util": "^0.12.4",

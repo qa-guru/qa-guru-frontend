@@ -9,10 +9,7 @@ import styles from "./Spinner.module.scss";
 
 const Spinner: React.FC = () => {
   return (
-    <Backdrop
-      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={true}
-    >
+    <Backdrop sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }} open={true}>
       <div className={styles.loader}>
         <Java className={styles.box} />
         <Gradle className={styles.box} />

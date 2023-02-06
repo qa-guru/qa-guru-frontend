@@ -9,6 +9,12 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 
+const style = {
+  stack: {
+    padding: { xs: "16px 30px 10px", md: "32px 60px 20px" },
+  },
+};
+
 const Login: React.FC<ILogin> = (props) => {
   const { isLoading, login } = props;
   const { t } = useTranslation();
@@ -36,10 +42,7 @@ const Login: React.FC<ILogin> = (props) => {
 
   return (
     <form>
-      <Stack
-        sx={{ padding: { xs: "16px 30px 10px", md: "32px 60px 20px" } }}
-        spacing={{ xs: 1, md: 2 }}
-      >
+      <Stack sx={style.stack} spacing={{ xs: 1, md: 2 }}>
         <FormControl fullWidth>
           <RHF.InputTextField
             control={control}

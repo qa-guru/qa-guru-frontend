@@ -1,0 +1,36 @@
+import { createTheme, responsiveFontSizes } from "@mui/material";
+import components from "./components";
+import themesOptions from "./themeOptions";
+import { THEMES } from "./constans";
+import merge from "lodash/merge";
+import "./fonts";
+
+const baseOptions = {
+  typography: {
+    fontFamily: "'Roboto', sans-serif",
+  },
+};
+
+export type themeSettingsTypes = {
+  theme: string;
+  responsiveFontSizes?: boolean;
+};
+
+export const createCustomTheme = (settings: themeSettingsTypes) => {
+  let themeOptions: any = themesOptions[settings.theme];
+
+  if (!themeOptions) {
+    themeOptions = themesOptions[THEMES.LIGHT];
+  }
+
+  const mergedThemeOptions = merge({}, baseOptions, themeOptions);
+
+  let theme = createTheme(mergedThemeOptions);
+
+  theme.components = components(theme);
+  if (settings.responsiveFontSizes) {
+    theme = responsiveFontSizes(theme);
+  }
+
+  return theme;
+};

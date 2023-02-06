@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { CardActionArea, Grid, Paper, Typography } from "@mui/material";
 import { ITrainings } from "./TrainingPurchases.types";
 
+const style = {
+  paper: { padding: "24px 24px 15px 24px" },
+};
+
 const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;
 
@@ -16,13 +20,13 @@ const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
               to={`/training/${item?.trainingTariff?.training?.id}`}
             >
               <CardActionArea>
-                <Paper sx={{ padding: "24px 24px 15px 24px" }}>
-                  <Typography variant="h3">
+                <Paper sx={style.paper}>
+                  <Typography variant="h5">
                     {item?.trainingTariff?.training?.name}
                   </Typography>
                   <Typography
                     color="primary"
-                    variant="h4"
+                    variant="subtitle2"
                     mt="20px"
                     align="right"
                   >

@@ -4,11 +4,17 @@ import Logout from "./Logout";
 
 const mockLogout: any = () => {};
 
+const mockSetAnchorElUser: any = () => {};
+
 describe("Logout", () => {
   it("the component is Loading", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <Logout logout={mockLogout} isLoading={true} />
+        <Logout
+          logout={mockLogout}
+          isLoading={true}
+          setAnchorElUser={mockSetAnchorElUser}
+        />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -16,7 +22,11 @@ describe("Logout", () => {
   it("the component is not Loading", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <Logout logout={mockLogout} isLoading={false} />
+        <Logout
+          logout={mockLogout}
+          isLoading={false}
+          setAnchorElUser={mockSetAnchorElUser}
+        />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

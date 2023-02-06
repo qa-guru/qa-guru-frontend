@@ -2,10 +2,10 @@
 
 exports[`TrainingItemTitle > the component is render 1`] = `
 <DocumentFragment>
-  <h2
-    class="MuiTypography-root MuiTypography-h2 css-13ddgwt-MuiTypography-root"
+  <h4
+    class="MuiTypography-root MuiTypography-h4 css-t0sbn-MuiTypography-root"
   >
     string
-  </h2>
+  </h4>
 </DocumentFragment>
 `;

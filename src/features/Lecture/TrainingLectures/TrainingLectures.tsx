@@ -3,6 +3,11 @@ import { CardActionArea, Grid, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ITrainingLectures } from "./TrainingLectures.types";
 
+const style = {
+  link: { textDecoration: "none", marginTop: "15px" },
+  paper: { padding: "24px 24px 15px 24px" },
+};
+
 const TrainingLectures: React.FC<ITrainingLectures> = ({
   data,
   trainingId,
@@ -15,22 +20,22 @@ const TrainingLectures: React.FC<ITrainingLectures> = ({
         return (
           <Grid item xs={12} key={index}>
             <Link
-              style={{ textDecoration: "none", marginTop: "15px" }}
+              style={style.link}
               to={`/training/${trainingId}/${item?.lecture?.id}`}
             >
               <CardActionArea>
-                <Paper style={{ padding: "24px 24px 15px 24px" }}>
-                  <Typography variant="h3">{item?.lecture?.subject}</Typography>
+                <Paper sx={style.paper}>
+                  <Typography variant="h6">{item?.lecture?.subject}</Typography>
                   <Stack spacing={1.5}>
                     {arrayDescriptionItem?.map((item, index) => {
                       return (
-                        <Typography key={index} variant="subtitle2" mt="16px">
+                        <Typography key={index} variant="subtitle1" mt="16px">
                           {item}
                         </Typography>
                       );
                     })}
                   </Stack>
-                  <Typography color="primary" variant="h4" align="right">
+                  <Typography color="primary" variant="subtitle2" align="right">
                     Продолжить
                   </Typography>
                 </Paper>

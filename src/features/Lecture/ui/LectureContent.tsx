@@ -5,15 +5,19 @@ interface ILectureContent {
   contentLecture: string;
 }
 
+const style = {
+  paper: { padding: "20px" },
+};
+
 const LectureContent: React.FC<ILectureContent> = (props) => {
   const { contentLecture } = props;
 
   return (
     <>
-      <Typography pt="40px" variant="h2">
+      <Typography mb="15px" pt="40px" variant="h4">
         Материалы урока
       </Typography>
-      <Paper sx={{ padding: "20px" }}>
+      <Paper sx={style.paper}>
         <Typography dangerouslySetInnerHTML={{ __html: contentLecture }} />
       </Paper>
     </>

@@ -6,7 +6,9 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  IconButton,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { ILogout } from "./Logout.types";
@@ -14,11 +16,12 @@ import { useTranslation } from "react-i18next";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 const Logout: React.FC<ILogout> = (props) => {
-  const { logout, isLoading } = props;
+  const { logout, isLoading, setAnchorElUser } = props;
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
+    setAnchorElUser(null);
     setOpen(true);
   };
 
@@ -37,9 +40,12 @@ const Logout: React.FC<ILogout> = (props) => {
 
   return (
     <>
-      <IconButton onClick={handleClickOpen}>
-        <ExitToAppIcon />
-      </IconButton>
+      <MenuItem onClick={handleClickOpen}>
+        <ListItemText>Выход</ListItemText>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
+      </MenuItem>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{t("sign.out")}</DialogTitle>
         <DialogContent>

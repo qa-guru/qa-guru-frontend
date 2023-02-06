@@ -1,8 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Paper, Stack } from "@mui/material";
+import { Box, Button, Paper, Stack, SvgIcon } from "@mui/material";
 import { ReactComponent as Logo } from "../../icons/Logo.svg";
 import { useTranslation } from "react-i18next";
 import SignUp from "../../features/Authorization/SignUp";
+import { secondary } from "../../theme/colors";
+
+const style = {
+  svgIcon: { height: "38px", width: { xs: "170px", sm: "250px" } },
+  paper: {
+    minWidth: { xs: "none", md: "430px" },
+    marginTop: { xs: "7px", md: "22px" },
+  },
+  stack: {
+    height: "100vh",
+  },
+  button: { textTransform: "none" },
+};
 
 const Registration = () => {
   let navigate = useNavigate();
@@ -14,27 +27,18 @@ const Registration = () => {
 
   return (
     <Stack
-      sx={{
-        height: "100vh",
-        backgroundColor: "var(--gx-color-background-auth)",
-      }}
+      sx={style.stack}
+      bgcolor={secondary.main}
       justifyContent="center"
       alignItems="center"
     >
-      <Logo />
-      <Paper
-        sx={{
-          minWidth: { xs: "none", md: "430px" },
-          marginTop: { xs: "7px", md: "22px" },
-        }}
-      >
+      <SvgIcon sx={style.svgIcon} viewBox="0 0 250 38">
+        <Logo />
+      </SvgIcon>
+      <Paper sx={style.paper}>
         <SignUp />
         <Box textAlign="center">
-          <Button
-            style={{ textTransform: "none" }}
-            variant="text"
-            onClick={routeLogin}
-          >
+          <Button sx={style.button} variant="text" onClick={routeLogin}>
             {t("auth.route")}
           </Button>
         </Box>

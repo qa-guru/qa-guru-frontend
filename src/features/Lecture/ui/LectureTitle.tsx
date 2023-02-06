@@ -8,7 +8,11 @@ interface ILectureTitle {
 const LectureTitle: React.FC<ILectureTitle> = (props) => {
   const { title } = props;
 
-  return <Typography variant="h2">{title}</Typography>;
+  return (
+    <Typography mb="15px" variant="h4">
+      {title}
+    </Typography>
+  );
 };
 
 export default LectureTitle;
