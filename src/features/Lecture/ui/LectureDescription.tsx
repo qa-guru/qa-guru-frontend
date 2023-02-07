@@ -9,7 +9,7 @@ interface ILectureDescription {
 const style = {
   paper: { padding: "20px" },
   circle: {
-    width: "40px",
+    minWidth: "40px",
     height: "40px",
     bgcolor: primary.main,
     borderRadius: "50%",

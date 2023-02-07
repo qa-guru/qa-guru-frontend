@@ -22,17 +22,17 @@ const mockContentLecture = [
   {
     type: "video",
     value: "Запись с занятия",
-    url: "https://www.youtube.com/watch?v=hzDWZgPQ8mY",
+    url: "hzDWZgPQ8mY",
   },
   {
     type: "video",
     value: "Запись занятия 14-го потока",
-    url: "https://www.youtube.com/watch?v=DlEIccu9wE0",
+    url: "DlEIccu9wE0",
   },
   {
     type: "video",
     value: "Разбор домашнего задания к уроку",
-    url: "https://www.youtube.com/watch?v=AWeeoE_US-k",
+    url: "AWeeoE_US-k",
   },
   {
     type: "title",
@@ -139,7 +139,7 @@ const LectureDetail: React.FC<ILectureDetail> = ({
         multiline
         rows={5}
         placeholder="поле для ответа"
-        variant="filled"
+        variant="outlined"
       />
       <Box>
         <LoadingButton sx={style.loadingButton} variant="contained">
