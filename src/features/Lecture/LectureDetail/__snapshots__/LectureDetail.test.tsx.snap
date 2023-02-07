@@ -24,11 +24,34 @@ exports[`LectureDetail > the component is render 1`] = `
       <div
         class="css-b55nah-MuiStack-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-19cx67f-MuiTypography-root"
+        <div
+          class="css-1sx5dla-MuiStack-root"
         >
-          string
-        </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-17hhpwk-MuiTypography-root"
+          >
+            1
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+          >
+            Практика. Пишем первый автотест: Java / Gradle / JUnit5 / Selenide.
+          </h6>
+        </div>
+        <div
+          class="css-1sx5dla-MuiStack-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-17hhpwk-MuiTypography-root"
+          >
+            2
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+          >
+            Изучаем готовый проект с инфраструктурой: Github / Jenkins / Allure Report / TestOps / Selenoid / Телеграм-бот.
+          </h6>
+        </div>
       </div>
     </div>
     <h4
@@ -70,11 +93,115 @@ exports[`LectureDetail > the component is render 1`] = `
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
     >
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+      <div
+        class="css-zgbp5c-MuiStack-root"
       >
-        string
-      </p>
+        <div
+          class="MuiBox-root css-12kog7f"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+          >
+            Запись с занятия
+          </h6>
+          <div
+            style="width: 100%; height: 270px;"
+          />
+        </div>
+        <div
+          class="MuiBox-root css-12kog7f"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+          >
+            Запись занятия 14-го потока
+          </h6>
+          <div
+            style="width: 100%; height: 270px;"
+          />
+        </div>
+        <div
+          class="MuiBox-root css-12kog7f"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+          >
+            Разбор домашнего задания к уроку
+          </h6>
+          <div
+            style="width: 100%; height: 270px;"
+          />
+        </div>
+        <h6
+          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+        >
+          Полезные ссылки:
+        </h6>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://github.com/qa-guru/demoqa-tests-16/tree/homework"
+        >
+          Ссылка на репозиторий
+        </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://github.com/qa-guru/getting-started-java/wiki"
+        >
+          Статья по настройке рабочей среды
+        </a>
+        <h6
+          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+        >
+          Selenide:
+        </h6>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://selenide.org/documentation.html"
+        >
+          Документация
+        </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://github.com/selenide/selenide/wiki/Selenide-vs-Selenium"
+        >
+          Сравнение Selenide с Selenium
+        </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://ru.selenide.org/2016/10/20/selenide-vs-pure-selenium/"
+        >
+          Еще одна статья про Selenide
+        </a>
+        <h6
+          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+        >
+          Git:
+        </h6>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://learngitbranching.js.org"
+        >
+          Интерактивный туториал
+        </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://git-scm.com/book/ru/v2/"
+        >
+          Лучшая книга про git
+        </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://ru.hexlet.io/courses/intro_to_git"
+        >
+          Курс: введение в git
+        </a>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://stepik.org/course/3145/promo"
+        >
+          Курс: основы git
+        </a>
+      </div>
     </div>
     <h4
       class="MuiTypography-root MuiTypography-h4 css-1dfolq9-MuiTypography-root"
@@ -82,13 +209,38 @@ exports[`LectureDetail > the component is render 1`] = `
       Домашнее задание
     </h4>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1kva4hp-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      <div
+        class="css-zgbp5c-MuiStack-root"
       >
-        string
-      </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        >
+          1. Зарегистрируйте аккаунт github.
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        >
+          2. Создайте новый репозиторий для домашнего задания.
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        >
+          3. Разработайте один автотест на проверку тестовой формы.
+        </h6>
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
+          href="https://demoqa.com/automation-practice-form"
+        >
+          Тестовая форма demoqa.com
+        </a>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        >
+          В поле ответа необходимо приложить ссылку на репозиторий.
+        </h6>
+      </div>
     </div>
     <h4
       class="MuiTypography-root MuiTypography-h4 css-1dfolq9-MuiTypography-root"

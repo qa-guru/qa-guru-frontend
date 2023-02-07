@@ -12,9 +12,14 @@ export const grey = {
   main: "#CAC4D0",
 };
 
+export const white = {
+  main: "#FFFFFF",
+};
+
 const palette = {
   primary,
   secondary,
+  white,
 };
 
 export const lightPalette = {
