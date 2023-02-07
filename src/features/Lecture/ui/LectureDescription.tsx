@@ -1,16 +1,27 @@
 import React from "react";
 import { Divider, Paper, Stack, Typography } from "@mui/material";
+import { primary, white } from "../../../theme/colors";
 
 interface ILectureDescription {
-  arrayDescription: string[];
+  mockDescription: any;
 }
 
 const style = {
   paper: { padding: "20px" },
+  circle: {
+    width: "40px",
+    height: "40px",
+    bgcolor: primary.main,
+    borderRadius: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: white.main,
+  },
 };
 
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
-  const { arrayDescription } = props;
+  const { mockDescription } = props;
 
   return (
     <>
@@ -20,11 +31,20 @@ const LectureDescription: React.FC<ILectureDescription> = (props) => {
         </Typography>
         <Divider />
         <Stack spacing={1.5}>
-          {arrayDescription?.map((item, index) => {
+          {mockDescription?.map((value: any, index: any) => {
             return (
-              <Typography key={index} variant="subtitle1" mt="20px">
-                {item}
-              </Typography>
+              <Stack
+                direction="row"
+                spacing={1.5}
+                alignItems="center"
+                key={index}
+                mt="16px"
+              >
+                <Typography sx={style.circle} variant="subtitle2">
+                  {index + 1}
+                </Typography>
+                <Typography variant="subtitle1">{value}</Typography>
+              </Stack>
             );
           })}
         </Stack>
