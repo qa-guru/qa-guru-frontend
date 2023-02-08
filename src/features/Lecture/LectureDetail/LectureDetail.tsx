@@ -1,15 +1,16 @@
 import React from "react";
-import { Box, Stack, TextField, Typography } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Stack } from "@mui/material";
 import LectureTitle from "../ui/LectureTitle";
 import LectureDescription from "../ui/LectureDescription";
 import LectureSpeakers from "../ui/LectureSpeakers";
 import LectureContent from "../ui/LectureContent";
 import LectureHomework from "../ui/LectureHomework";
 import { ILectureDetail } from "./LectureDetail.types";
+import SendHomeWorkToCheck from "../ui/SendHomeWorkToCheck";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 
 const style = {
-  loadingButton: { minWidth: "143px", marginTop: "15px" },
   stack: { spacing: 2 },
 };
 
@@ -117,12 +118,32 @@ const mockLectureHomeWork = [
   },
 ];
 
-const LectureDetail: React.FC<ILectureDetail> = ({
-  dataLecture,
-  dataLectureHomeWork,
-}) => {
+export interface ISendHomeWorkContent {
+  content: string;
+}
+
+const LectureDetail: React.FC<ILectureDetail> = (props) => {
+  const {
+    dataLecture,
+    dataLectureHomeWork,
+    loadingSendHomeWorkToCheck,
+    sendHomeWorkToCheck,
+  } = props;
   const { lecture } = dataLecture;
   const { lectureHomeWork } = dataLectureHomeWork;
+  const { lessonId } = useParams();
+
+  const { handleSubmit, control } = useForm<ISendHomeWorkContent>({
+    defaultValues: {
+      content: "",
+    },
+  });
+
+  const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
+    sendHomeWorkToCheck({
+      variables: { lectureId: lessonId!, content: data.content },
+    });
+  };
 
   return (
     <Stack sx={style.stack}>
@@ -131,21 +152,12 @@ const LectureDetail: React.FC<ILectureDetail> = ({
       <LectureSpeakers speakers={lecture?.speakers!} />
       <LectureContent contentLecture={mockContentLecture} />
       <LectureHomework contentLectureHomeWork={mockLectureHomeWork} />
-
-      <Typography pt="40px" variant="h4" mb="15px">
-        Ход выполнения
-      </Typography>
-      <TextField
-        multiline
-        rows={5}
-        placeholder="поле для ответа"
-        variant="outlined"
+      <SendHomeWorkToCheck
+        handleSubmit={handleSubmit}
+        control={control}
+        sendHomeWork={sendHomeWork}
+        loadingSendHomeWorkToCheck={loadingSendHomeWorkToCheck}
       />
-      <Box>
-        <LoadingButton sx={style.loadingButton} variant="contained">
-          Отправить
-        </LoadingButton>
-      </Box>
     </Stack>
   );
 };

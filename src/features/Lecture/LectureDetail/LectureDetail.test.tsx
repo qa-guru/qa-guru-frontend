@@ -28,13 +28,30 @@ const mockDataLectureHomeWorkQuery: LectureHomeWorkQuery = {
   lectureHomeWork: "string",
 };
 
+const mockSendHomeWorkToCheck: any = () => {};
+
 describe("LectureDetail", () => {
-  it("the component is render", () => {
+  it("the component is Loading", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <LectureDetail
           dataLectureHomeWork={mockDataLectureHomeWorkQuery!}
           dataLecture={mockDataLecture!}
+          sendHomeWorkToCheck={mockSendHomeWorkToCheck}
+          loadingSendHomeWorkToCheck={true}
+        />
+      </MemoryRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it("the component is not Loading", () => {
+    const { asFragment } = render(
+      <MemoryRouter>
+        <LectureDetail
+          dataLectureHomeWork={mockDataLectureHomeWorkQuery!}
+          dataLecture={mockDataLecture!}
+          sendHomeWorkToCheck={mockSendHomeWorkToCheck}
+          loadingSendHomeWorkToCheck={false}
         />
       </MemoryRouter>
     );
