@@ -52,7 +52,7 @@
     "build-storybook": "build-storybook",
     "husky": "husky install",
     "codegen": "graphql-code-generator --config codegen.ts",
-    "test": "vitest --update",
+    "test": "vitest",
     "prettier": "pretty-quick --staged"
   },
   "browserslist": {
