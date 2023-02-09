@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { render } from "../../../test/utilsTest";
 import LectureDetail from "./LectureDetail";
-import { LectureHomeWorkQuery, LectureQuery } from "../../../generated/graphql";
+import { LectureQuery } from "../../../generated/graphql";
 
 const mockDataLecture: LectureQuery = {
   __typename: "Query",
@@ -23,36 +23,11 @@ const mockDataLecture: LectureQuery = {
   },
 };
 
-const mockDataLectureHomeWorkQuery: LectureHomeWorkQuery = {
-  __typename: "Query",
-  lectureHomeWork: "string",
-};
-
-const mockSendHomeWorkToCheck: any = () => {};
-
 describe("LectureDetail", () => {
-  it("the component is Loading", () => {
+  it("the component is render", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureDetail
-          dataLectureHomeWork={mockDataLectureHomeWorkQuery!}
-          dataLecture={mockDataLecture!}
-          sendHomeWorkToCheck={mockSendHomeWorkToCheck}
-          loadingSendHomeWorkToCheck={true}
-        />
-      </MemoryRouter>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-  it("the component is not Loading", () => {
-    const { asFragment } = render(
-      <MemoryRouter>
-        <LectureDetail
-          dataLectureHomeWork={mockDataLectureHomeWorkQuery!}
-          dataLecture={mockDataLecture!}
-          sendHomeWorkToCheck={mockSendHomeWorkToCheck}
-          loadingSendHomeWorkToCheck={false}
-        />
+        <LectureDetail dataLecture={mockDataLecture!} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

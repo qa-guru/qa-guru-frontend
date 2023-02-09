@@ -2,23 +2,31 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import RHF from "../../../shared/InputRHF";
-import { Control, UseFormHandleSubmit } from "react-hook-form";
-import { ISendHomeWorkContent } from "../LectureDetail/LectureDetail";
+import {
+  ISendHomeWorkContent,
+  ISendHomeWorkToCheck,
+} from "./SendHomeWorkToCheck.types";
+import { useParams } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 const style = {
   loadingButton: { minWidth: "143px", marginTop: "15px" },
 };
 
-interface ISendHomeWorkToCheck {
-  sendHomeWork: (data: ISendHomeWorkContent) => void;
-  handleSubmit: UseFormHandleSubmit<{ content: string }>;
-  control: Control<{ content: string }, any>;
-  loadingSendHomeWorkToCheck: boolean;
-}
-
 const SendHomeWorkToCheck: React.FC<ISendHomeWorkToCheck> = (props) => {
-  const { sendHomeWork, loadingSendHomeWorkToCheck, control, handleSubmit } =
-    props;
+  const { sendHomeWorkToCheck, loading } = props;
+  const { lessonId } = useParams();
+  const { handleSubmit, control } = useForm<ISendHomeWorkContent>({
+    defaultValues: {
+      content: "",
+    },
+  });
+
+  const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
+    sendHomeWorkToCheck({
+      variables: { lectureId: lessonId!, content: data.content },
+    });
+  };
 
   return (
     <form>
@@ -29,7 +37,7 @@ const SendHomeWorkToCheck: React.FC<ISendHomeWorkToCheck> = (props) => {
       <Box>
         <LoadingButton
           onClick={handleSubmit(sendHomeWork)}
-          loading={loadingSendHomeWorkToCheck}
+          loading={loading}
           sx={style.loadingButton}
           variant="contained"
         >

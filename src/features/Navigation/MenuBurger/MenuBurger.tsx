@@ -5,13 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
-
-interface IMenuBurger {
-  setAnchorElNav: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
-  handleClickNavMenu: (pageURL: string) => void;
-  anchorElNav: HTMLElement | null;
-  pages: { pageURL: string; title: JSX.Element }[];
-}
+import { IMenuBurger } from "./MenuBurger.types";
 
 const style = {
   box: { display: { xs: "block", md: "none" } },

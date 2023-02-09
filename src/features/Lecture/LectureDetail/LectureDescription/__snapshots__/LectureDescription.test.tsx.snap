@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`LectureDescription > the component is render 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
+  >
+    <h6
+      class="MuiTypography-root MuiTypography-h6 css-css8ik-MuiTypography-root"
+    >
+      Содержание урока
+    </h6>
+    <hr
+      class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+    />
+    <div
+      class="css-b55nah-MuiStack-root"
+    />
+  </div>
+</DocumentFragment>
+`;
