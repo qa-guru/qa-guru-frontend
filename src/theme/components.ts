@@ -1,6 +1,8 @@
 import { Theme } from "@mui/material";
 
 const components = (theme: Theme): any => {
+  // @ts-ignore
+  const { white } = theme.palette;
   return {
     MuiCssBaseline: {
       styleOverrides: {
@@ -37,7 +39,7 @@ const components = (theme: Theme): any => {
     MuiInputBase: {
       styleOverrides: {
         input: {
-          borderColor: "white",
+          borderColor: white.main,
           fontSize: "16px",
         },
       },

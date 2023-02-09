@@ -1,10 +1,7 @@
 import React from "react";
 import { Divider, Paper, Stack, Typography } from "@mui/material";
-import { primary, white } from "../../../theme/colors";
-
-interface ILectureDescription {
-  mockDescription: any;
-}
+import { primary, white } from "../../../../theme/colors";
+import { ILectureDescription } from "./LectureDescription.types";
 
 const style = {
   paper: { padding: "20px" },
@@ -21,7 +18,7 @@ const style = {
 };
 
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
-  const { mockDescription } = props;
+  const { description } = props;
 
   return (
     <>
@@ -31,7 +28,7 @@ const LectureDescription: React.FC<ILectureDescription> = (props) => {
         </Typography>
         <Divider />
         <Stack spacing={1.5}>
-          {mockDescription?.map((value: any, index: any) => {
+          {description?.map((value: any, index: any) => {
             return (
               <Stack
                 direction="row"

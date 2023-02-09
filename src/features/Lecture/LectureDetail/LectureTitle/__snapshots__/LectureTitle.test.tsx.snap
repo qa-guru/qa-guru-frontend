@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`LectureTitle > the component is render 1`] = `
+<DocumentFragment>
+  <h4
+    class="MuiTypography-root MuiTypography-h4 css-1h02dxw-MuiTypography-root"
+  >
+    string
+  </h4>
+</DocumentFragment>
+`;

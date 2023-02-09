@@ -13,11 +13,7 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Logout from "../../Authorization/Logout";
-import { UserQuery } from "../../../generated/graphql";
-
-interface IProfile {
-  data: UserQuery;
-}
+import { IProfile } from "./Profile.types";
 
 const style = {
   menuItem: { mb: "10px" },

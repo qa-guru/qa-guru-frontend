@@ -1,38 +1,47 @@
 import React from "react";
-import { Box, CardMedia, Link, Paper, Stack, Typography } from "@mui/material";
+import { Box, Link, Paper, Stack, Typography } from "@mui/material";
+import { ILectureHomework } from "./LectureHomework.types";
 
-interface ILectureContent {
-  contentLecture: any;
-}
+const mockLectureHomeWork = [
+  {
+    type: "text",
+    value: "1. Зарегистрируйте аккаунт github.",
+  },
+  {
+    type: "text",
+    value: "2. Создайте новый репозиторий для домашнего задания.",
+  },
+  {
+    type: "text",
+    value: "3. Разработайте один автотест на проверку тестовой формы.",
+  },
+  {
+    type: "link",
+    value: "Тестовая форма demoqa.com",
+    url: "https://demoqa.com/automation-practice-form",
+  },
+  {
+    type: "text",
+    value: "В поле ответа необходимо приложить ссылку на репозиторий.",
+  },
+];
 
 const style = {
   paper: { padding: "20px" },
-  box: {
-    overflow: "hidden",
-    paddingBottom: "40.25%",
-    position: "relative",
-    height: 0,
-  },
-  iframe: {
-    left: 0,
-    top: 0,
-    height: "100%",
-    width: "70%",
-    position: "absolute",
-  },
+  box: { width: { xs: "100%", sm: "480px" } },
 };
 
-const LectureContent: React.FC<ILectureContent> = (props) => {
-  const { contentLecture } = props;
+const LectureHomework: React.FC<ILectureHomework> = ({ data }) => {
+  const { lectureHomeWork } = data;
 
   return (
-    <>
-      <Typography mb="15px" pt="40px" variant="h4">
-        Материалы урока
+    <Box>
+      <Typography pt="40px" variant="h4" mb="15px">
+        Домашнее задание
       </Typography>
       <Paper sx={style.paper}>
-        <Stack spacing={0.7}>
-          {contentLecture.map((item: any, index: any) => {
+        <Stack spacing={0.5}>
+          {mockLectureHomeWork.map((item: any, index: any) => {
             const { value, url, type } = item;
 
             switch (type) {
@@ -52,7 +61,6 @@ const LectureContent: React.FC<ILectureContent> = (props) => {
                 return (
                   <Box key={index}>
                     <Typography variant="h6">{value}</Typography>
-                    <CardMedia image={url} />
                     <Box sx={style.box}>
                       <iframe
                         // @ts-ignore
@@ -75,8 +83,8 @@ const LectureContent: React.FC<ILectureContent> = (props) => {
           })}
         </Stack>
       </Paper>
-    </>
+    </Box>
   );
 };
 
-export default LectureContent;
+export default LectureHomework;

@@ -1,16 +1,7 @@
 import React from "react";
 import { Avatar, Box, Grid, Stack, Typography } from "@mui/material";
-import { grey } from "../../../theme/colors";
-
-interface ILectureSpeakers {
-  speakers: Array<{
-    __typename?: "UserDto";
-    id?: string | null;
-    firstName?: string | null;
-    lastName?: string | null;
-    middleName?: string | null;
-  } | null> | null;
-}
+import { grey } from "../../../../theme/colors";
+import { ILectureSpeakers } from "./LectureSpeakers.types";
 
 const style = {
   stack: {

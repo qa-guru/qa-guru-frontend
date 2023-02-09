@@ -1,25 +1,17 @@
 import React from "react";
-import { Stack } from "@mui/material";
-import LectureTitle from "../ui/LectureTitle";
-import LectureDescription from "../ui/LectureDescription";
-import LectureSpeakers from "../ui/LectureSpeakers";
-import LectureContent from "../ui/LectureContent";
-import LectureHomework from "../ui/LectureHomework";
+import { Box } from "@mui/material";
+import LectureTitle from "./LectureTitle";
+import LectureDescription from "./LectureDescription";
+import LectureSpeakers from "./LectureSpeakers";
+import LectureContent from "./LectureContent";
 import { ILectureDetail } from "./LectureDetail.types";
-import SendHomeWorkToCheck from "../ui/SendHomeWorkToCheck";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
-
-const style = {
-  stack: { spacing: 2 },
-};
 
 const mockDescription = [
   "Практика. Пишем первый автотест: Java / Gradle / JUnit5 / Selenide.",
   "Изучаем готовый проект с инфраструктурой: Github / Jenkins / Allure Report / TestOps / Selenoid / Телеграм-бот.",
 ];
 
-const mockContentLecture = [
+const mockContent = [
   {
     type: "video",
     value: "Запись с занятия",
@@ -94,71 +86,17 @@ const mockContentLecture = [
   },
 ];
 
-const mockLectureHomeWork = [
-  {
-    type: "text",
-    value: "1. Зарегистрируйте аккаунт github.",
-  },
-  {
-    type: "text",
-    value: "2. Создайте новый репозиторий для домашнего задания.",
-  },
-  {
-    type: "text",
-    value: "3. Разработайте один автотест на проверку тестовой формы.",
-  },
-  {
-    type: "link",
-    value: "Тестовая форма demoqa.com",
-    url: "https://demoqa.com/automation-practice-form",
-  },
-  {
-    type: "text",
-    value: "В поле ответа необходимо приложить ссылку на репозиторий.",
-  },
-];
-
-export interface ISendHomeWorkContent {
-  content: string;
-}
-
 const LectureDetail: React.FC<ILectureDetail> = (props) => {
-  const {
-    dataLecture,
-    dataLectureHomeWork,
-    loadingSendHomeWorkToCheck,
-    sendHomeWorkToCheck,
-  } = props;
+  const { dataLecture } = props;
   const { lecture } = dataLecture;
-  const { lectureHomeWork } = dataLectureHomeWork;
-  const { lessonId } = useParams();
-
-  const { handleSubmit, control } = useForm<ISendHomeWorkContent>({
-    defaultValues: {
-      content: "",
-    },
-  });
-
-  const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
-    sendHomeWorkToCheck({
-      variables: { lectureId: lessonId!, content: data.content },
-    });
-  };
 
   return (
-    <Stack sx={style.stack}>
+    <Box>
       <LectureTitle title={lecture?.subject!} />
-      <LectureDescription mockDescription={mockDescription!} />
+      <LectureDescription description={mockDescription!} />
       <LectureSpeakers speakers={lecture?.speakers!} />
-      <LectureContent contentLecture={mockContentLecture} />
-      <LectureHomework contentLectureHomeWork={mockLectureHomeWork} />
-      <SendHomeWorkToCheck
-        handleSubmit={handleSubmit}
-        control={control}
-        sendHomeWork={sendHomeWork}
-        loadingSendHomeWorkToCheck={loadingSendHomeWorkToCheck}
-      />
-    </Stack>
+      <LectureContent content={mockContent} />
+    </Box>
   );
 };
 

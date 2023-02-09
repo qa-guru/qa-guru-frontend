@@ -1,9 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
-
-interface ILectureTitle {
-  title: string;
-}
+import { ILectureTitle } from "./LectureTitle.types";
 
 const LectureTitle: React.FC<ILectureTitle> = (props) => {
   const { title } = props;

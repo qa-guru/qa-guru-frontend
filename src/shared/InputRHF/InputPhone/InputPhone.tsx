@@ -1,18 +1,10 @@
 import { Controller } from "react-hook-form";
 import { IFormInputProps } from "../Input.types";
 import React from "react";
-import { Autocomplete, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { countries } from "./InputPhone.countries";
-import { styled } from "@mui/system";
 import { TextFieldStyled } from "../InputTextField/InputTextField.styled";
-
-const AutocompleteStyled = styled(Autocomplete)(({ theme }) => ({
-  [theme.breakpoints.down("md")]: {
-    "& .MuiOutlinedInput-root": {
-      padding: "5px",
-    },
-  },
-}));
+import { AutocompleteStyled } from "./AutocompleteStyled.styled";
 
 const InputPhone: React.FC<IFormInputProps> = ({
   control,

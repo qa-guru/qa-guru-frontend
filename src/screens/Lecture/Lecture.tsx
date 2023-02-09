@@ -1,7 +1,9 @@
 import React from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import LectureHomework from "../../features/Lecture/LectureHomework/LectureHomeworkContainer";
+import SendHomeWorkToCheck from "../../features/Lecture/SendHomeWorkToCheck";
 import LectureDetail from "../../features/Lecture/LectureDetail";
 
 const style = {
@@ -24,7 +26,11 @@ const Lecture: React.FC = () => {
           К списку уроков
         </Typography>
       </Button>
-      <LectureDetail />
+      <Stack spacing={2}>
+        <LectureDetail />
+        <LectureHomework />
+        <SendHomeWorkToCheck />
+      </Stack>
     </>
   );
 };
