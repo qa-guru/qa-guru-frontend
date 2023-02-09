@@ -8,7 +8,7 @@ const style = {
   link: { textDecoration: "none" },
   paper: { padding: "24px 24px 15px 24px" },
   circle: {
-    width: "40px",
+    minWidth: "40px",
     height: "40px",
     bgcolor: primary.main,
     borderRadius: "50%",

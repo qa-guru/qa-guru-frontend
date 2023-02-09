@@ -10,7 +10,7 @@ exports[`SignUp > the component is Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -21,7 +21,7 @@ exports[`SignUp > the component is Loading 1`] = `
             FirstName
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -50,7 +50,7 @@ exports[`SignUp > the component is Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -61,7 +61,7 @@ exports[`SignUp > the component is Loading 1`] = `
             LastName
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -90,7 +90,7 @@ exports[`SignUp > the component is Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -101,7 +101,7 @@ exports[`SignUp > the component is Loading 1`] = `
             E-mail
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -180,7 +180,7 @@ exports[`SignUp > the component is Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -191,7 +191,7 @@ exports[`SignUp > the component is Loading 1`] = `
             Password
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -463,7 +463,7 @@ exports[`SignUp > the component is not Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -474,7 +474,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             FirstName
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -503,7 +503,7 @@ exports[`SignUp > the component is not Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -514,7 +514,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             LastName
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -543,7 +543,7 @@ exports[`SignUp > the component is not Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -554,7 +554,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             E-mail
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"
@@ -633,7 +633,7 @@ exports[`SignUp > the component is not Loading 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1k5asyk-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -644,7 +644,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             Password
           </label>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <input
               aria-invalid="false"

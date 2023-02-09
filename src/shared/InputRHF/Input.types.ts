@@ -8,4 +8,6 @@ export interface IFormInputProps {
   name: any;
   defaultValue?: string;
   type?: string;
+  multiline?: boolean;
+  rows?: string | number;
 }

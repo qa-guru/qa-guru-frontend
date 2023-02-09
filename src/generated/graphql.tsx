@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import * as React from "react";
 import * as Apollo from "@apollo/client";
+import * as React from "react";
 import * as ApolloReactComponents from "@apollo/client/react/components";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -643,6 +643,43 @@ export type UsersDto = {
   totalPages?: Maybe<Scalars["Int"]>;
 };
 
+export type SendHomeWorkToCheckMutationVariables = Exact<{
+  lectureId: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type SendHomeWorkToCheckMutation = {
+  __typename?: "Mutation";
+  sendHomeWorkToCheck?: {
+    __typename?: "StudentHomeWorkDto";
+    id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: string | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
 export type LectureQueryVariables = Exact<{
   id: Scalars["ID"];
 }>;
@@ -917,6 +954,97 @@ export type UsersQuery = {
   } | null;
 };
 
+export const SendHomeWorkToCheckDocument = gql`
+  mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
+    sendHomeWorkToCheck(lectureId: $lectureId, content: $content) {
+      id
+      lecture {
+        id
+        subject
+        description
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      startCheckingDate
+      endCheckingDate
+    }
+  }
+`;
+export type SendHomeWorkToCheckMutationFn = Apollo.MutationFunction<
+  SendHomeWorkToCheckMutation,
+  SendHomeWorkToCheckMutationVariables
+>;
+export type SendHomeWorkToCheckComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    SendHomeWorkToCheckMutation,
+    SendHomeWorkToCheckMutationVariables
+  >,
+  "mutation"
+>;
+
+export const SendHomeWorkToCheckComponent = (
+  props: SendHomeWorkToCheckComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    SendHomeWorkToCheckMutation,
+    SendHomeWorkToCheckMutationVariables
+  >
+    mutation={SendHomeWorkToCheckDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useSendHomeWorkToCheckMutation__
+ *
+ * To run a mutation, you first call `useSendHomeWorkToCheckMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendHomeWorkToCheckMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendHomeWorkToCheckMutation, { data, loading, error }] = useSendHomeWorkToCheckMutation({
+ *   variables: {
+ *      lectureId: // value for 'lectureId'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useSendHomeWorkToCheckMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    SendHomeWorkToCheckMutation,
+    SendHomeWorkToCheckMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    SendHomeWorkToCheckMutation,
+    SendHomeWorkToCheckMutationVariables
+  >(SendHomeWorkToCheckDocument, options);
+}
+export type SendHomeWorkToCheckMutationHookResult = ReturnType<
+  typeof useSendHomeWorkToCheckMutation
+>;
+export type SendHomeWorkToCheckMutationResult =
+  Apollo.MutationResult<SendHomeWorkToCheckMutation>;
+export type SendHomeWorkToCheckMutationOptions = Apollo.BaseMutationOptions<
+  SendHomeWorkToCheckMutation,
+  SendHomeWorkToCheckMutationVariables
+>;
 export const LectureDocument = gql`
   query lecture($id: ID!) {
     lecture(id: $id) {

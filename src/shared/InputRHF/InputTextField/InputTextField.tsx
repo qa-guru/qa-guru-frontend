@@ -9,6 +9,8 @@ const InputTextField: React.FC<IFormInputProps> = ({
   placeholder,
   label,
   type,
+  multiline,
+  rows,
 }) => {
   return (
     <Controller
@@ -16,11 +18,14 @@ const InputTextField: React.FC<IFormInputProps> = ({
       control={control}
       render={({ field: { onChange, value } }) => (
         <TextFieldStyled
+          fullWidth
           value={value}
           onChange={onChange}
           placeholder={placeholder}
           label={label}
           type={type}
+          multiline={multiline}
+          rows={rows}
         />
       )}
     />

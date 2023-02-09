@@ -1,0 +1,26 @@
+mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
+  sendHomeWorkToCheck(lectureId: $lectureId, content: $content) {
+    id
+    lecture {
+      id
+      subject
+      description
+    }
+    answer
+    status
+    student {
+      id
+      firstName
+      middleName
+      lastName
+    }
+    mentor {
+      id
+      firstName
+      middleName
+      lastName
+    }
+    startCheckingDate
+    endCheckingDate
+  }
+}
