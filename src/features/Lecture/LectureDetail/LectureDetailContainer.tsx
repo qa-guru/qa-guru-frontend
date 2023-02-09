@@ -5,10 +5,9 @@ import { useLectureQuery } from "../../../api/graphql/lecture/lecture";
 import LectureDetail from "./LectureDetail";
 
 const LectureDetailContainer: React.FC = () => {
-  const { lessonId } = useParams();
-
+  const { lectureId } = useParams();
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
-    variables: { id: lessonId! },
+    variables: { id: lectureId! },
   });
 
   if (loadingLecture && !dataLecture) return <Spinner />;

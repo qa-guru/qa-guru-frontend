@@ -8,6 +8,7 @@ import {
 } from "./SendHomeWorkToCheck.types";
 import { useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Tooltip from "@mui/material/Tooltip";
 
 const style = {
   loadingButton: { minWidth: "143px", marginTop: "15px" },
@@ -31,18 +32,20 @@ const SendHomeWorkToCheck: React.FC<ISendHomeWorkToCheck> = (props) => {
   return (
     <form>
       <Typography pt="40px" variant="h4" mb="15px">
-        Ход выполнения
+        Задание
       </Typography>
       <RHF.InputTextField multiline rows={5} name="content" control={control} />
       <Box>
-        <LoadingButton
-          onClick={handleSubmit(sendHomeWork)}
-          loading={loading}
-          sx={style.loadingButton}
-          variant="contained"
-        >
-          Отправить
-        </LoadingButton>
+        <Tooltip title="Add">
+          <LoadingButton
+            onClick={handleSubmit(sendHomeWork)}
+            loading={loading}
+            sx={style.loadingButton}
+            variant="contained"
+          >
+            Отправить
+          </LoadingButton>
+        </Tooltip>
       </Box>
     </form>
   );
