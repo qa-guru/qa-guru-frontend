@@ -7,14 +7,12 @@ import { ApolloError } from "@apollo/client/errors";
 import * as Apollo from "@apollo/client";
 import { useSnackbar } from "notistack";
 
-export const useHomeWorksByLectureIdQuery = (baseOptions?: {
-  variables: {
-    size: number;
-    page: number;
-    sort: { field: string; order: string };
-    lectureId: string;
-  };
-}) => {
+export const useHomeWorksByLectureIdQuery = (
+  baseOptions?: Apollo.QueryHookOptions<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >
+) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return _useHomeWorksByLectureIdQuery({
