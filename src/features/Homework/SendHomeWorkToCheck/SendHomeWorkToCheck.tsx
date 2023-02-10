@@ -8,7 +8,7 @@ import {
 } from "./SendHomeWorkToCheck.types";
 import { useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Tooltip from "@mui/material/Tooltip";
+import { client } from "../../../http";
 
 const style = {
   loadingButton: { minWidth: "143px", marginTop: "15px" },
@@ -16,7 +16,7 @@ const style = {
 
 const SendHomeWorkToCheck: React.FC<ISendHomeWorkToCheck> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
-  const { lessonId } = useParams();
+  const { lectureId } = useParams();
   const { handleSubmit, control } = useForm<ISendHomeWorkContent>({
     defaultValues: {
       content: "",
@@ -25,8 +25,12 @@ const SendHomeWorkToCheck: React.FC<ISendHomeWorkToCheck> = (props) => {
 
   const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
     sendHomeWorkToCheck({
-      variables: { lectureId: lessonId!, content: data.content },
-    });
+      variables: { lectureId: lectureId!, content: data.content },
+    }).then(() =>
+      client.refetchQueries({
+        include: ["HomeWorkByStudentAndLectureDocument"],
+      })
+    );
   };
 
   return (
@@ -36,16 +40,14 @@ const SendHomeWorkToCheck: React.FC<ISendHomeWorkToCheck> = (props) => {
       </Typography>
       <RHF.InputTextField multiline rows={5} name="content" control={control} />
       <Box>
-        <Tooltip title="Add">
-          <LoadingButton
-            onClick={handleSubmit(sendHomeWork)}
-            loading={loading}
-            sx={style.loadingButton}
-            variant="contained"
-          >
-            Отправить
-          </LoadingButton>
-        </Tooltip>
+        <LoadingButton
+          onClick={handleSubmit(sendHomeWork)}
+          loading={loading}
+          sx={style.loadingButton}
+          variant="contained"
+        >
+          Отправить
+        </LoadingButton>
       </Box>
     </form>
   );

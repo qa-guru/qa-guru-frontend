@@ -2,6 +2,7 @@ import React from "react";
 import { IHomeworkAnswer } from "./HomeworkAnswer.types";
 import { Box, Paper, Stack, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import RenderAnswer from "./RenderAnswer/RenderAnswer";
 
 const style = {
   paper: { padding: "30px" },
@@ -43,19 +44,29 @@ const HomeworkAnswer: React.FC<IHomeworkAnswer> = (props) => {
               {data?.homeWorkByStudentAndLecture?.student?.firstName}{" "}
               {data?.homeWorkByStudentAndLecture?.student?.lastName}
             </Typography>
+            <Typography variant="subtitle2">
+              Создано {data?.homeWorkByStudentAndLecture?.creationDate}
+            </Typography>
           </Stack>
           <Box>
+            <Avatar
+              sx={style.avatar}
+              alt="Remy Sharp"
+              src="/static/images/avatar/1.jpg"
+            />
+            <Typography variant="subtitle2">
+              {data?.homeWorkByStudentAndLecture?.mentor?.firstName}{" "}
+              {data?.homeWorkByStudentAndLecture?.mentor?.lastName}
+            </Typography>
             <Typography variant="subtitle1">
               {data?.homeWorkByStudentAndLecture?.status}
             </Typography>
             <Typography variant="subtitle2">
-              {data?.homeWorkByStudentAndLecture?.creationDate}
+              {data?.homeWorkByStudentAndLecture?.startCheckingDate}
             </Typography>
           </Box>
         </Stack>
-        <Typography mt="20px" variant="subtitle1">
-          {data?.homeWorkByStudentAndLecture?.answer}
-        </Typography>
+        <RenderAnswer answer={data?.homeWorkByStudentAndLecture?.answer!} />
       </Paper>
     </>
   );

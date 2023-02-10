@@ -12,10 +12,7 @@ const AllHomeworkAnswersContainer: React.FC = () => {
       lectureId: lectureId!,
       page: 0,
       size: 5,
-      sort: {
-        field: "CREATION_DATE",
-        order: "DESC",
-      },
+      sort: {},
     },
   });
 

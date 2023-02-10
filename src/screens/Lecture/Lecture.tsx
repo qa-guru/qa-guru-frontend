@@ -5,6 +5,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LectureHomework from "../../features/Homework/LectureHomework";
 import LectureDetail from "../../features/Lecture/LectureDetail";
 import HomeworkCheckStatus from "../../features/Homework/HomeworkCheckStatus";
+import AllHomeworkAnswers from "../../features/Homework/AllHomeworkAnswers";
 
 const style = {
   button: { mb: "25px" },

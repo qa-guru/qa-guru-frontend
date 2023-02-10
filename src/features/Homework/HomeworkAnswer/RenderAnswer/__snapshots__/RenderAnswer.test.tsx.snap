@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`HomeworkAnswer > the component is render 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1yuhvjn"
+  >
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+    >
+      answer
+      <br />
+    </h6>
+  </div>
+</DocumentFragment>
+`;
