@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@mui/material";
 import LectureTitle from "./LectureTitle";
 import LectureDescription from "./LectureDescription";
 import LectureSpeakers from "./LectureSpeakers";
@@ -91,12 +90,12 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
   const { lecture } = dataLecture;
 
   return (
-    <Box>
+    <>
       <LectureTitle title={lecture?.subject!} />
       <LectureDescription description={mockDescription!} />
       <LectureSpeakers speakers={lecture?.speakers!} />
       <LectureContent content={mockContent} />
-    </Box>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useUserQuery } from "../api/graphql/user/user";
@@ -7,6 +7,7 @@ import { CssBaseline } from "@mui/material";
 import Spinner from "../shared/Spinner";
 import { createCustomTheme } from "../theme";
 import useSettings from "../hooks/useSettings";
+import { userIdVar } from "../cache";
 
 const AuthRoutes = lazy(() => import("../routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("../routes/AppRoutes"));
@@ -21,7 +22,7 @@ export const App = () => {
     responsiveFontSizes: settings.responsiveFontSizes,
   });
 
-  const { loading } = useUserQuery({
+  const { loading, data } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
       navigate("/");
@@ -31,6 +32,10 @@ export const App = () => {
       navigate("/authorization");
     },
   });
+
+  useEffect(() => {
+    userIdVar(data?.user?.id!);
+  }, [data]);
 
   if (loading) return <Spinner />;
 

@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Stack, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import LectureHomework from "../../features/Lecture/LectureHomework/LectureHomeworkContainer";
-import SendHomeWorkToCheck from "../../features/Lecture/SendHomeWorkToCheck";
+import LectureHomework from "../../features/Homework/LectureHomework";
 import LectureDetail from "../../features/Lecture/LectureDetail";
+import HomeworkCheckStatus from "../../features/Homework/HomeworkCheckStatus";
 
 const style = {
   button: { mb: "25px" },
@@ -12,8 +12,8 @@ const style = {
 };
 
 const Lecture: React.FC = () => {
-  let navigate = useNavigate();
   const { trainingId } = useParams();
+  let navigate = useNavigate();
 
   return (
     <>
@@ -26,10 +26,10 @@ const Lecture: React.FC = () => {
           К списку уроков
         </Typography>
       </Button>
-      <Stack spacing={2}>
+      <Stack>
         <LectureDetail />
         <LectureHomework />
-        <SendHomeWorkToCheck />
+        <HomeworkCheckStatus />
       </Stack>
     </>
   );

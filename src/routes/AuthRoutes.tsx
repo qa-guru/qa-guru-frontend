@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Authorization from "../screens/Authorization/Authorization";
+import Authorization from "../screens/Authorization";
 import React from "react";
-import Registration from "../screens/Registration/Registration";
+import Registration from "../screens/Registration";
 
 const AuthRoutes: React.FC = () => {
   return (

@@ -35,8 +35,8 @@ const LectureHomework: React.FC<ILectureHomework> = ({ data }) => {
   const { lectureHomeWork } = data;
 
   return (
-    <Box>
-      <Typography pt="40px" variant="h4" mb="15px">
+    <>
+      <Typography pt="30px" variant="h4" mb="15px">
         Домашнее задание
       </Typography>
       <Paper sx={style.paper}>
@@ -83,7 +83,7 @@ const LectureHomework: React.FC<ILectureHomework> = ({ data }) => {
           })}
         </Stack>
       </Paper>
-    </Box>
+    </>
   );
 };
 

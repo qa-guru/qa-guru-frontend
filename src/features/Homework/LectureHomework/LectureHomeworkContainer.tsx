@@ -5,10 +5,10 @@ import Spinner from "../../../shared/Spinner";
 import LectureHomework from "./LectureHomework";
 
 const LectureHomeworkContainer: React.FC = () => {
-  const { lessonId } = useParams();
+  const { lectureId } = useParams();
 
   const { data, loading } = useLectureHomeWorkQuery({
-    variables: { lectureId: lessonId! },
+    variables: { lectureId: lectureId! },
   });
 
   if (loading && !data) return <Spinner />;

@@ -24,7 +24,7 @@ const LectureContent: React.FC<ILectureContent> = (props) => {
 
   return (
     <>
-      <Typography mb="15px" pt="40px" variant="h4">
+      <Typography mb="15px" pt="30px" variant="h4">
         Материалы урока
       </Typography>
       <Paper sx={style.paper}>

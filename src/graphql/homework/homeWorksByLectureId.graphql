@@ -1,0 +1,40 @@
+query homeWorksByLectureId(
+  $page: Int!
+  $size: Int!
+  $sort: StudentHomeWorkSort!
+  $lectureId: ID!
+) {
+  homeWorksByLectureId(
+    page: $page
+    size: $size
+    sort: $sort
+    lectureId: $lectureId
+  ) {
+    totalPages
+    totalElements
+    items {
+      id
+      lecture {
+        id
+        subject
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      startCheckingDate
+      endCheckingDate
+    }
+  }
+}

@@ -6,7 +6,7 @@ exports[`SendHomeWorkToCheck > the component is Loading 1`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 css-1dfolq9-MuiTypography-root"
     >
-      Ход выполнения
+      Задание
     </h4>
     <div
       class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
@@ -48,9 +48,11 @@ exports[`SendHomeWorkToCheck > the component is Loading 1`] = `
       class="MuiBox-root css-0"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ra7q23-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        aria-label="Add"
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium  css-1ra7q23-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        data-mui-internal-clone-element="true"
         disabled=""
-        id=":r1:"
+        id=":r2:"
         tabindex="-1"
         type="button"
       >
@@ -58,7 +60,7 @@ exports[`SendHomeWorkToCheck > the component is Loading 1`] = `
           class="MuiLoadingButton-loadingIndicator MuiLoadingButton-loadingIndicatorCenter css-1yt7yx7-MuiLoadingButton-loadingIndicator"
         >
           <span
-            aria-labelledby=":r1:"
+            aria-labelledby=":r2:"
             class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorInherit css-62e83j-MuiCircularProgress-root"
             role="progressbar"
             style="width: 16px; height: 16px;"
@@ -91,7 +93,7 @@ exports[`SendHomeWorkToCheck > the component is not Loading 1`] = `
     <h4
       class="MuiTypography-root MuiTypography-h4 css-1dfolq9-MuiTypography-root"
     >
-      Ход выполнения
+      Задание
     </h4>
     <div
       class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-1q2c5hh-MuiFormControl-root-MuiTextField-root"
@@ -102,7 +104,7 @@ exports[`SendHomeWorkToCheck > the component is not Loading 1`] = `
         <textarea
           aria-invalid="false"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-          id=":r2:"
+          id=":r3:"
           rows="5"
           style="height: 0px; overflow: hidden;"
         />
@@ -133,8 +135,10 @@ exports[`SendHomeWorkToCheck > the component is not Loading 1`] = `
       class="MuiBox-root css-0"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ra7q23-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
-        id=":r3:"
+        aria-label="Add"
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium  css-1ra7q23-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        data-mui-internal-clone-element="true"
+        id=":r5:"
         tabindex="0"
         type="button"
       >

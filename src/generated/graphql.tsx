@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
 import * as React from "react";
+import * as Apollo from "@apollo/client";
 import * as ApolloReactComponents from "@apollo/client/react/components";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -643,6 +643,87 @@ export type UsersDto = {
   totalPages?: Maybe<Scalars["Int"]>;
 };
 
+export type HomeWorkByStudentAndLectureQueryVariables = Exact<{
+  studentId: Scalars["ID"];
+  lectureId: Scalars["ID"];
+}>;
+
+export type HomeWorkByStudentAndLectureQuery = {
+  __typename?: "Query";
+  homeWorkByStudentAndLecture?: {
+    __typename?: "StudentHomeWorkDto";
+    id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    creationDate?: any | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
+export type HomeWorksByLectureIdQueryVariables = Exact<{
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort: StudentHomeWorkSort;
+  lectureId: Scalars["ID"];
+}>;
+
+export type HomeWorksByLectureIdQuery = {
+  __typename?: "Query";
+  homeWorksByLectureId?: {
+    __typename?: "StudentHomeWorksDto";
+    totalPages?: number | null;
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "StudentHomeWorkDto";
+      id?: string | null;
+      answer?: string | null;
+      status?: StudentHomeWorkStatus | null;
+      creationDate?: any | null;
+      startCheckingDate?: any | null;
+      endCheckingDate?: any | null;
+      lecture?: {
+        __typename?: "LectureInfoDto";
+        id?: string | null;
+        subject?: string | null;
+      } | null;
+      student?: {
+        __typename?: "UserDto";
+        id?: string | null;
+        firstName?: string | null;
+        middleName?: string | null;
+        lastName?: string | null;
+      } | null;
+      mentor?: {
+        __typename?: "UserDto";
+        id?: string | null;
+        firstName?: string | null;
+        middleName?: string | null;
+        lastName?: string | null;
+      } | null;
+    } | null> | null;
+  } | null;
+};
+
 export type SendHomeWorkToCheckMutationVariables = Exact<{
   lectureId: Scalars["ID"];
   content: Scalars["String"];
@@ -954,6 +1035,228 @@ export type UsersQuery = {
   } | null;
 };
 
+export const HomeWorkByStudentAndLectureDocument = gql`
+  query homeWorkByStudentAndLecture($studentId: ID!, $lectureId: ID!) {
+    homeWorkByStudentAndLecture(studentId: $studentId, lectureId: $lectureId) {
+      id
+      lecture {
+        id
+        subject
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      startCheckingDate
+      endCheckingDate
+    }
+  }
+`;
+export type HomeWorkByStudentAndLectureComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    HomeWorkByStudentAndLectureQuery,
+    HomeWorkByStudentAndLectureQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: HomeWorkByStudentAndLectureQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const HomeWorkByStudentAndLectureComponent = (
+  props: HomeWorkByStudentAndLectureComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    HomeWorkByStudentAndLectureQuery,
+    HomeWorkByStudentAndLectureQueryVariables
+  >
+    query={HomeWorkByStudentAndLectureDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useHomeWorkByStudentAndLectureQuery__
+ *
+ * To run a query within a React component, call `useHomeWorkByStudentAndLectureQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomeWorkByStudentAndLectureQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHomeWorkByStudentAndLectureQuery({
+ *   variables: {
+ *      studentId: // value for 'studentId'
+ *      lectureId: // value for 'lectureId'
+ *   },
+ * });
+ */
+export function useHomeWorkByStudentAndLectureQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    HomeWorkByStudentAndLectureQuery,
+    HomeWorkByStudentAndLectureQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    HomeWorkByStudentAndLectureQuery,
+    HomeWorkByStudentAndLectureQueryVariables
+  >(HomeWorkByStudentAndLectureDocument, options);
+}
+export function useHomeWorkByStudentAndLectureLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HomeWorkByStudentAndLectureQuery,
+    HomeWorkByStudentAndLectureQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    HomeWorkByStudentAndLectureQuery,
+    HomeWorkByStudentAndLectureQueryVariables
+  >(HomeWorkByStudentAndLectureDocument, options);
+}
+export type HomeWorkByStudentAndLectureQueryHookResult = ReturnType<
+  typeof useHomeWorkByStudentAndLectureQuery
+>;
+export type HomeWorkByStudentAndLectureLazyQueryHookResult = ReturnType<
+  typeof useHomeWorkByStudentAndLectureLazyQuery
+>;
+export type HomeWorkByStudentAndLectureQueryResult = Apollo.QueryResult<
+  HomeWorkByStudentAndLectureQuery,
+  HomeWorkByStudentAndLectureQueryVariables
+>;
+export const HomeWorksByLectureIdDocument = gql`
+  query homeWorksByLectureId(
+    $page: Int!
+    $size: Int!
+    $sort: StudentHomeWorkSort!
+    $lectureId: ID!
+  ) {
+    homeWorksByLectureId(
+      page: $page
+      size: $size
+      sort: $sort
+      lectureId: $lectureId
+    ) {
+      totalPages
+      totalElements
+      items {
+        id
+        lecture {
+          id
+          subject
+        }
+        answer
+        status
+        student {
+          id
+          firstName
+          middleName
+          lastName
+        }
+        mentor {
+          id
+          firstName
+          middleName
+          lastName
+        }
+        creationDate
+        startCheckingDate
+        endCheckingDate
+      }
+    }
+  }
+`;
+export type HomeWorksByLectureIdComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: HomeWorksByLectureIdQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const HomeWorksByLectureIdComponent = (
+  props: HomeWorksByLectureIdComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >
+    query={HomeWorksByLectureIdDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useHomeWorksByLectureIdQuery__
+ *
+ * To run a query within a React component, call `useHomeWorksByLectureIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomeWorksByLectureIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHomeWorksByLectureIdQuery({
+ *   variables: {
+ *      page: // value for 'page'
+ *      size: // value for 'size'
+ *      sort: // value for 'sort'
+ *      lectureId: // value for 'lectureId'
+ *   },
+ * });
+ */
+export function useHomeWorksByLectureIdQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >(HomeWorksByLectureIdDocument, options);
+}
+export function useHomeWorksByLectureIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    HomeWorksByLectureIdQuery,
+    HomeWorksByLectureIdQueryVariables
+  >(HomeWorksByLectureIdDocument, options);
+}
+export type HomeWorksByLectureIdQueryHookResult = ReturnType<
+  typeof useHomeWorksByLectureIdQuery
+>;
+export type HomeWorksByLectureIdLazyQueryHookResult = ReturnType<
+  typeof useHomeWorksByLectureIdLazyQuery
+>;
+export type HomeWorksByLectureIdQueryResult = Apollo.QueryResult<
+  HomeWorksByLectureIdQuery,
+  HomeWorksByLectureIdQueryVariables
+>;
 export const SendHomeWorkToCheckDocument = gql`
   mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
     sendHomeWorkToCheck(lectureId: $lectureId, content: $content) {
