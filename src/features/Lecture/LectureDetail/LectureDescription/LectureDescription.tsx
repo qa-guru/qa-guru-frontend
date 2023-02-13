@@ -20,6 +20,8 @@ const style = {
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
   const { description } = props;
 
+  console.log(description);
+
   return (
     <>
       <Paper sx={style.paper}>

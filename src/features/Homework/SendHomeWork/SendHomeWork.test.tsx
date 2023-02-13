@@ -1,14 +1,14 @@
 import { MemoryRouter } from "react-router-dom";
 import { render } from "../../../test/utilsTest";
-import SendHomeWorkToCheck from "./SendHomeWorkToCheck";
+import SendHomeWork from "./SendHomeWork";
 
 const mockSendHomeWorkToCheck: any = () => {};
 
-describe("SendHomeWorkToCheck", () => {
+describe("SendHomeWork", () => {
   it("the component is Loading", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <SendHomeWorkToCheck
+        <SendHomeWork
           loading={true}
           sendHomeWorkToCheck={mockSendHomeWorkToCheck}
         />
@@ -19,7 +19,7 @@ describe("SendHomeWorkToCheck", () => {
   it("the component is not Loading", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <SendHomeWorkToCheck
+        <SendHomeWork
           loading={false}
           sendHomeWorkToCheck={mockSendHomeWorkToCheck}
         />

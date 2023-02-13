@@ -1,9 +1,8 @@
 import { Controller } from "react-hook-form";
 import { IFormInputProps } from "../Input.types";
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { countries } from "./InputPhone.countries";
-import { TextFieldStyled } from "../InputTextField/InputTextField.styled";
 import { AutocompleteStyled } from "./AutocompleteStyled.styled";
 
 const InputPhone: React.FC<IFormInputProps> = ({
@@ -38,7 +37,7 @@ const InputPhone: React.FC<IFormInputProps> = ({
             </Box>
           )}
           renderInput={(params) => (
-            <TextFieldStyled
+            <TextField
               value={value}
               onChange={onChange}
               {...params}

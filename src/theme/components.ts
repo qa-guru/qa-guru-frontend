@@ -38,9 +38,18 @@ const components = (theme: Theme): any => {
     },
     MuiInputBase: {
       styleOverrides: {
-        input: {
+        root: {
           borderColor: white.main,
           fontSize: "16px",
+          backgroundColor: white.main,
+          [theme.breakpoints.down("md")]: {
+            "& .MuiInputBase-input": {
+              padding: "12.5px 14px",
+            },
+            "& .MuiFormLabel-root": {
+              fontSize: "0.9rem",
+            },
+          },
         },
       },
     },

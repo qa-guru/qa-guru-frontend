@@ -4,8 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LectureHomework from "../../features/Homework/LectureHomework";
 import LectureDetail from "../../features/Lecture/LectureDetail";
-import HomeworkCheckStatus from "../../features/Homework/HomeworkCheckStatus";
-import AllHomeworkAnswers from "../../features/Homework/AllHomeworkAnswers";
+import HomeworkAnswer from "../../features/Homework/HomeworkAnswer/HomeworkAnswerContainer";
+import SendHomeWorkToCheck from "../../features/Homework/SendHomeWork/SendHomeWorkContainer";
+import useHomeworkCheckStatus from "../../hooks/useHomeworkCheckStatus";
 
 const style = {
   button: { mb: "25px" },
@@ -15,6 +16,7 @@ const style = {
 const Lecture: React.FC = () => {
   const { trainingId } = useParams();
   let navigate = useNavigate();
+  const [homeworkStatus] = useHomeworkCheckStatus();
 
   return (
     <>
@@ -30,7 +32,7 @@ const Lecture: React.FC = () => {
       <Stack>
         <LectureDetail />
         <LectureHomework />
-        <HomeworkCheckStatus />
+        {homeworkStatus ? <HomeworkAnswer /> : <SendHomeWorkToCheck />}
       </Stack>
     </>
   );

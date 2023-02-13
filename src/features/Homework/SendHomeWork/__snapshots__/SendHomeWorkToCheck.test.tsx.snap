@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`SendHomeWorkToCheck > the component is Loading 1`] = `
+exports[`SendHomeWork > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
     <h4
@@ -85,7 +85,7 @@ exports[`SendHomeWorkToCheck > the component is Loading 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SendHomeWorkToCheck > the component is not Loading 1`] = `
+exports[`SendHomeWork > the component is not Loading 1`] = `
 <DocumentFragment>
   <form>
     <h4

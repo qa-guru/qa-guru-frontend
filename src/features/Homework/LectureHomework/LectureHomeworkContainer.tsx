@@ -13,7 +13,7 @@ const LectureHomeworkContainer: React.FC = () => {
 
   if (loading && !data) return <Spinner />;
 
-  return <LectureHomework data={data} />;
+  return <LectureHomework data={!data} />;
 };
 
 export default LectureHomeworkContainer;
