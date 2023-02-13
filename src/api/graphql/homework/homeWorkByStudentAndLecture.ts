@@ -5,7 +5,6 @@ import {
 } from "../../../generated/graphql";
 import { ApolloError } from "@apollo/client/errors";
 import * as Apollo from "@apollo/client";
-import { useSnackbar } from "notistack";
 
 export const useHomeWorkByStudentAndLectureQuery = (
   baseOptions?: Apollo.QueryHookOptions<
@@ -13,11 +12,9 @@ export const useHomeWorkByStudentAndLectureQuery = (
     HomeWorkByStudentAndLectureQueryVariables
   >
 ) => {
-  const { enqueueSnackbar } = useSnackbar();
-
   return _useHomeWorkByStudentAndLectureQuery({
     onError: (error: ApolloError) =>
-      error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
+      error.graphQLErrors.map(({ message }) => console.log(error)),
     ...baseOptions,
   });
 };

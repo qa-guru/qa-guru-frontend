@@ -48,10 +48,8 @@ exports[`HomeworkCheckStatus > the component is render 1`] = `
       class="MuiBox-root css-0"
     >
       <button
-        aria-label="Add"
-        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium  css-1ra7q23-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
-        data-mui-internal-clone-element="true"
-        id=":r2:"
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ra7q23-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        id=":r1:"
         tabindex="0"
         type="button"
       >
