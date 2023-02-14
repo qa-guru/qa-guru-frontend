@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, SvgIcon } from "@mui/material";
-import { ReactComponent as Logo } from "../icons/logo-footer.svg";
+import { ReactComponent as Logo } from "../icons/sas.svg";
 import { secondary } from "../theme/colors";
 
 const style = {

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../features/Navigation/Header";
+import Header from "../features/Navigation/Header/Header";
 import { Outlet } from "react-router-dom";
 import { Container } from "@mui/material";
 import Footer from "./Footer";

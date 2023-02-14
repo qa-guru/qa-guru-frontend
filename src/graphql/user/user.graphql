@@ -1,4 +1,4 @@
-query User {
+query user {
   user {
     id
     email

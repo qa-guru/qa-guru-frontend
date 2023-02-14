@@ -8,7 +8,6 @@ import Avatar from "@mui/material/Avatar";
 import RHF from "../../../shared/InputRHF";
 import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
-import useHomeworkAnswerId from "../../../hooks/useHomeworkAnswerId";
 
 const style = {
   loadingButton: { minWidth: "151px", mt: "15px" },
@@ -26,21 +25,24 @@ const style = {
 };
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
-  const { loading, updateHomeWork, setUpdateHomeworkAnswer } = props;
-  const [homeworkIdAnswer] = useHomeworkAnswerId();
+  const { loading, updateHomework, setOpenHomeWorkEdit, dataHomeworkId } =
+    props;
   const { handleSubmit, control } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
       content: "",
     },
   });
 
-  console.log(homeworkIdAnswer);
-
-  const updateHomework: SubmitHandler<IUpdateHomeworkContent> = (data) => {
-    updateHomeWork({
-      variables: { id: homeworkIdAnswer!, content: data.content },
+  const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
+    data
+  ) => {
+    updateHomework({
+      variables: {
+        id: dataHomeworkId?.homeWorkByStudentAndLecture?.id!,
+        content: data.content,
+      },
     }).then(() => {
-      setUpdateHomeworkAnswer(false);
+      setOpenHomeWorkEdit(false);
     });
   };
 
@@ -64,7 +66,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
             control={control}
           />
           <LoadingButton
-            onClick={handleSubmit(updateHomework)}
+            onClick={handleSubmit(handleUpdateHomework)}
             loading={loading}
             sx={style.loadingButton}
             variant="contained"
@@ -72,7 +74,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
             Отправить
           </LoadingButton>
           <Button
-            onClick={() => setUpdateHomeworkAnswer(false)}
+            onClick={() => setOpenHomeWorkEdit(false)}
             sx={style.buttonCancel}
             variant="contained"
           >

@@ -1,10 +1,14 @@
-import { UpdateHomeworkMutationFn } from "../../../generated/graphql";
+import {
+  HomeWorkByStudentAndLectureIdQuery,
+  UpdateHomeworkMutationFn,
+} from "../../../generated/graphql";
 import React from "react";
 
 export interface IUpdateHomeWork {
   loading: boolean;
-  updateHomeWork: UpdateHomeworkMutationFn;
-  setUpdateHomeworkAnswer: React.Dispatch<React.SetStateAction<Boolean>>;
+  updateHomework: UpdateHomeworkMutationFn;
+  setOpenHomeWorkEdit: React.Dispatch<React.SetStateAction<Boolean>>;
+  dataHomeworkId: HomeWorkByStudentAndLectureIdQuery;
 }
 
 export interface IUpdateHomeworkContent {
