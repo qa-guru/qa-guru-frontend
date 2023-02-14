@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Paper, Stack, SvgIcon } from "@mui/material";
-import { ReactComponent as Logo } from "../icons/lol.svg";
+import { ReactComponent as Logo } from "../icons/logo.svg";
 import { useTranslation } from "react-i18next";
 import SignUp from "../features/Authorization/SignUp";
 import { secondary } from "../theme/colors";
