@@ -63,7 +63,13 @@ const LectureContent: React.FC<ILectureContent> = (props) => {
                 );
               case "link":
                 return (
-                  <Link key={index} underline="hover" href={url}>
+                  <Link
+                    key={index}
+                    underline="hover"
+                    href={url}
+                    target="_blank"
+                    rel="noopener"
+                  >
                     {value}
                   </Link>
                 );

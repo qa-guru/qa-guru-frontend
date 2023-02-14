@@ -161,12 +161,16 @@ exports[`LectureDetail > the component is render 1`] = `
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://github.com/qa-guru/demoqa-tests-16/tree/homework"
+        rel="noopener"
+        target="_blank"
       >
         Ссылка на репозиторий
       </a>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://github.com/qa-guru/getting-started-java/wiki"
+        rel="noopener"
+        target="_blank"
       >
         Статья по настройке рабочей среды
       </a>
@@ -178,18 +182,24 @@ exports[`LectureDetail > the component is render 1`] = `
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://selenide.org/documentation.html"
+        rel="noopener"
+        target="_blank"
       >
         Документация
       </a>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://github.com/selenide/selenide/wiki/Selenide-vs-Selenium"
+        rel="noopener"
+        target="_blank"
       >
         Сравнение Selenide с Selenium
       </a>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://ru.selenide.org/2016/10/20/selenide-vs-pure-selenium/"
+        rel="noopener"
+        target="_blank"
       >
         Еще одна статья про Selenide
       </a>
@@ -201,24 +211,32 @@ exports[`LectureDetail > the component is render 1`] = `
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://learngitbranching.js.org"
+        rel="noopener"
+        target="_blank"
       >
         Интерактивный туториал
       </a>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://git-scm.com/book/ru/v2/"
+        rel="noopener"
+        target="_blank"
       >
         Лучшая книга про git
       </a>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://ru.hexlet.io/courses/intro_to_git"
+        rel="noopener"
+        target="_blank"
       >
         Курс: введение в git
       </a>
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://stepik.org/course/3145/promo"
+        rel="noopener"
+        target="_blank"
       >
         Курс: основы git
       </a>

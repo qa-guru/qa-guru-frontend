@@ -761,6 +761,43 @@ export type SendHomeWorkToCheckMutation = {
   } | null;
 };
 
+export type UpdateHomeworkMutationVariables = Exact<{
+  id: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type UpdateHomeworkMutation = {
+  __typename?: "Mutation";
+  updateHomeWork?: {
+    __typename?: "StudentHomeWorkDto";
+    id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: string | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
 export type LectureQueryVariables = Exact<{
   id: Scalars["ID"];
 }>;
@@ -1347,6 +1384,97 @@ export type SendHomeWorkToCheckMutationResult =
 export type SendHomeWorkToCheckMutationOptions = Apollo.BaseMutationOptions<
   SendHomeWorkToCheckMutation,
   SendHomeWorkToCheckMutationVariables
+>;
+export const UpdateHomeworkDocument = gql`
+  mutation updateHomework($id: ID!, $content: String!) {
+    updateHomeWork(id: $id, content: $content) {
+      id
+      lecture {
+        id
+        subject
+        description
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      startCheckingDate
+      endCheckingDate
+    }
+  }
+`;
+export type UpdateHomeworkMutationFn = Apollo.MutationFunction<
+  UpdateHomeworkMutation,
+  UpdateHomeworkMutationVariables
+>;
+export type UpdateHomeworkComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateHomeworkMutation,
+    UpdateHomeworkMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateHomeworkComponent = (
+  props: UpdateHomeworkComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateHomeworkMutation,
+    UpdateHomeworkMutationVariables
+  >
+    mutation={UpdateHomeworkDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUpdateHomeworkMutation__
+ *
+ * To run a mutation, you first call `useUpdateHomeworkMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateHomeworkMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateHomeworkMutation, { data, loading, error }] = useUpdateHomeworkMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useUpdateHomeworkMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateHomeworkMutation,
+    UpdateHomeworkMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateHomeworkMutation,
+    UpdateHomeworkMutationVariables
+  >(UpdateHomeworkDocument, options);
+}
+export type UpdateHomeworkMutationHookResult = ReturnType<
+  typeof useUpdateHomeworkMutation
+>;
+export type UpdateHomeworkMutationResult =
+  Apollo.MutationResult<UpdateHomeworkMutation>;
+export type UpdateHomeworkMutationOptions = Apollo.BaseMutationOptions<
+  UpdateHomeworkMutation,
+  UpdateHomeworkMutationVariables
 >;
 export const LectureDocument = gql`
   query lecture($id: ID!) {

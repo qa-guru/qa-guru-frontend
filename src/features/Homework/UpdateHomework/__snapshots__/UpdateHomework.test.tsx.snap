@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`SendHomeWork > the component is Loading 1`] = `
+exports[`UpdateHomework > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
     <h5
@@ -61,7 +61,7 @@ exports[`SendHomeWork > the component is Loading 1`] = `
           </div>
         </div>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mx0aye-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-11c5lm0-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
           disabled=""
           id=":r1:"
           tabindex="-1"
@@ -93,13 +93,23 @@ exports[`SendHomeWork > the component is Loading 1`] = `
           </div>
           Отправить
         </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-cbd6sn-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Отменить
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
       </div>
     </div>
   </form>
 </DocumentFragment>
 `;
 
-exports[`SendHomeWork > the component is not Loading 1`] = `
+exports[`UpdateHomework > the component is not Loading 1`] = `
 <DocumentFragment>
   <form>
     <h5
@@ -160,12 +170,22 @@ exports[`SendHomeWork > the component is not Loading 1`] = `
           </div>
         </div>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mx0aye-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-11c5lm0-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
           id=":r3:"
           tabindex="0"
           type="button"
         >
           Отправить
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-cbd6sn-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Отменить
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />

@@ -1,11 +1,8 @@
 import React from "react";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import RHF from "../../../shared/InputRHF";
-import {
-  ISendHomeWorkContent,
-  ISendHomeWorkToCheck,
-} from "./SendHomeWork.types";
+import { ISendHomeWork, ISendHomeWorkContent } from "./SendHomeWork.types";
 import { useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { client } from "../../../http";
@@ -20,7 +17,7 @@ const style = {
   },
 };
 
-const SendHomeWork: React.FC<ISendHomeWorkToCheck> = (props) => {
+const SendHomeWork: React.FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
   const { lectureId } = useParams();
   const { handleSubmit, control } = useForm<ISendHomeWorkContent>({
@@ -32,44 +29,40 @@ const SendHomeWork: React.FC<ISendHomeWorkToCheck> = (props) => {
   const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
     sendHomeWorkToCheck({
       variables: { lectureId: lectureId!, content: data.content },
-    }).then(() =>
-      client.refetchQueries({
-        include: ["HomeWorkByStudentAndLectureDocument"],
-      })
-    );
+      onCompleted: () =>
+        client.refetchQueries({ include: ["homeWorkByStudentAndLecture"] }),
+    });
   };
 
   return (
     <form>
-      <Paper sx={style.paper}>
-        <Typography variant="h5" mb="15px">
-          Ответ на задание
-        </Typography>
-        <Stack direction="row" spacing={2}>
-          <Avatar
-            sx={style.avatar}
-            alt="Remy Sharp"
-            src="/static/images/avatar/1.jpg"
+      <Typography variant="h5" mb="15px">
+        Ответ на задание
+      </Typography>
+      <Stack direction="row" spacing={2}>
+        <Avatar
+          sx={style.avatar}
+          alt="Remy Sharp"
+          src="/static/images/avatar/1.jpg"
+        />
+        <Box width="100%">
+          <RHF.InputTextField
+            placeholder="Текст ответа"
+            multiline
+            rows={5}
+            name="content"
+            control={control}
           />
-          <Box width="100%">
-            <RHF.InputTextField
-              placeholder="Текст ответа"
-              multiline
-              rows={5}
-              name="content"
-              control={control}
-            />
-            <LoadingButton
-              onClick={handleSubmit(sendHomeWork)}
-              loading={loading}
-              sx={style.loadingButton}
-              variant="contained"
-            >
-              Отправить
-            </LoadingButton>
-          </Box>
-        </Stack>
-      </Paper>
+          <LoadingButton
+            onClick={handleSubmit(sendHomeWork)}
+            loading={loading}
+            sx={style.loadingButton}
+            variant="contained"
+          >
+            Отправить
+          </LoadingButton>
+        </Box>
+      </Stack>
     </form>
   );
 };

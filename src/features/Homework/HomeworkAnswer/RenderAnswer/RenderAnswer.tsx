@@ -14,7 +14,7 @@ const RenderAnswer: React.FC<IRenderAnswer> = ({ answer }) => {
           <Typography variant="subtitle1" key={i}>
             {parts.map((part, j) =>
               linkRegex.test(part) ? (
-                <Link key={j} href={part}>
+                <Link key={j} href={part} target="_blank" rel="noopener">
                   {part}
                 </Link>
               ) : (

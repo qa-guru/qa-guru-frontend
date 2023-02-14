@@ -1,6 +1,6 @@
 import { SendHomeWorkToCheckMutationFn } from "../../../generated/graphql";
 
-export interface ISendHomeWorkToCheck {
+export interface ISendHomeWork {
   sendHomeWorkToCheck: SendHomeWorkToCheckMutationFn;
   loading: boolean;
 }

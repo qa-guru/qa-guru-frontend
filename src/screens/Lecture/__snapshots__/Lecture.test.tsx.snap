@@ -834,10 +834,10 @@ exports[`Lecture > the component is render 1`] = `
         </svg>
       </div>
     </div>
-    <form>
-      <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1w6a372-MuiPaper-root"
-      >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1w6a372-MuiPaper-root"
+    >
+      <form>
         <h5
           class="MuiTypography-root MuiTypography-h5 css-ydjii8-MuiTypography-root"
         >
@@ -908,8 +908,9 @@ exports[`Lecture > the component is render 1`] = `
             </button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <br />
+    </div>
   </div>
 </DocumentFragment>
 `;

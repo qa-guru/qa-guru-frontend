@@ -3,21 +3,20 @@ import { useParams } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
 import { userIdVar } from "../cache";
 import { useHomeWorkByStudentAndLectureQuery } from "../api/graphql/homework/homeWorkByStudentAndLecture";
-import { StudentHomeWorkStatus } from "../generated/graphql";
 
-const useHomeworkCheckStatus = () => {
+const useHomeworkAnswerId = () => {
   const { lectureId } = useParams();
   const idUser = useReactiveVar(userIdVar);
-  const [homeworkStatus, setHomeworkStatus] = useState<StudentHomeWorkStatus>();
   const { data } = useHomeWorkByStudentAndLectureQuery({
     variables: { studentId: idUser!, lectureId: lectureId! },
   });
+  const [homeworkIdAnswer, setHomeworkIdAnswer] = useState<string>();
 
   useEffect(() => {
-    setHomeworkStatus(data?.homeWorkByStudentAndLecture?.status!);
+    setHomeworkIdAnswer(data?.homeWorkByStudentAndLecture?.id!);
   }, [data]);
 
-  return [homeworkStatus];
+  return [homeworkIdAnswer];
 };
 
-export default useHomeworkCheckStatus;
+export default useHomeworkAnswerId;

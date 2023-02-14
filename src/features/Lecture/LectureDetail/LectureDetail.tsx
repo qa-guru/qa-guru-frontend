@@ -89,8 +89,6 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
   const { dataLecture } = props;
   const { lecture } = dataLecture;
 
-  console.log(lecture);
-
   return (
     <>
       <LectureTitle title={lecture?.subject!} />

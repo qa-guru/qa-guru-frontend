@@ -75,7 +75,13 @@ const LectureHomework: React.FC<ILectureHomework> = ({ data }) => {
                 );
               case "link":
                 return (
-                  <Link key={index} underline="hover" href={url}>
+                  <Link
+                    key={index}
+                    underline="hover"
+                    href={url}
+                    target="_blank"
+                    rel="noopener"
+                  >
                     {value}
                   </Link>
                 );
