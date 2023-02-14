@@ -2,13 +2,13 @@ import { ApolloClient, HttpLink } from "@apollo/client";
 import axios from "axios";
 import { GRAPHQL_URI } from "../config";
 import fetch from "cross-fetch";
-import { cache } from "../cache";
+import { InMemoryCache } from "@apollo/client";
 
 axios.defaults.withCredentials = true;
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: GRAPHQL_URI, fetch }),
-  cache: cache,
+  cache: new InMemoryCache(),
   defaultOptions: {
     query: {
       fetchPolicy: "network-only",

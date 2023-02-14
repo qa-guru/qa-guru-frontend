@@ -1,4 +1,4 @@
-query Users {
+query users {
   users(page: 0, size: 10, sort: { field: EMAIL, order: DESC }) {
     items {
       id

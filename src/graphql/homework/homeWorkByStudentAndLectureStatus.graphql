@@ -1,0 +1,5 @@
+query homeWorkByStudentAndLectureStatus($studentId: ID!, $lectureId: ID!) {
+  homeWorkByStudentAndLecture(studentId: $studentId, lectureId: $lectureId) {
+    status
+  }
+}

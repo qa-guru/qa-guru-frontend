@@ -1,0 +1,71 @@
+// Vitest Snapshot v1
+
+exports[`Homework > the component is render 1`] = `
+<DocumentFragment>
+  <div
+    class="css-a2l1ks-MuiStack-root"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+    >
+      Ответ на задание
+    </h5>
+    <div
+      class="css-1q5eszk-MuiStack-root"
+    >
+      <div
+        class="MuiBox-root css-0"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        />
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="css-ckrv07-MuiStack-root"
+  >
+    <div
+      class="MuiAvatar-root MuiAvatar-circular css-2ldpwk-MuiAvatar-root"
+    >
+      <img
+        alt="Remy Sharp"
+        class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+        src="/static/images/avatar/1.jpg"
+      />
+    </div>
+    <div
+      class="MuiBox-root css-0"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      >
+        string string
+      </h6>
+      <div
+        class="css-u10pvi-MuiStack-root"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+        />
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="MuiBox-root css-1yuhvjn"
+  >
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+    >
+      string
+      <br />
+    </h6>
+  </div>
+</DocumentFragment>
+`;

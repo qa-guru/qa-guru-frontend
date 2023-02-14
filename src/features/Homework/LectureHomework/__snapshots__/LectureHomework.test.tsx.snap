@@ -31,6 +31,8 @@ exports[`LectureHomework > the component is render 1`] = `
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
         href="https://demoqa.com/automation-practice-form"
+        rel="noopener"
+        target="_blank"
       >
         Тестовая форма demoqa.com
       </a>

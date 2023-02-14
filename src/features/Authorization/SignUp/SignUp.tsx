@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { FormControl, FormHelperText, Stack } from "@mui/material";
+import { FormControl, FormHelperText, Stack, TextField } from "@mui/material";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
 import { ISignUp } from "./SignUp.types";
-import { TextFieldStyled } from "../../../shared/InputRHF/InputTextField/InputTextField.styled";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserCreateInput } from "../../../generated/graphql";
@@ -114,7 +113,7 @@ const SignUp: React.FC<ISignUp> = (props) => {
           )}
         </FormControl>
         <FormControl fullWidth>
-          <TextFieldStyled
+          <TextField
             name="password"
             placeholder={t("enter.password")!}
             label={t("password.confirm")!}
