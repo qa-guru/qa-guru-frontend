@@ -1,6 +1,6 @@
 import { Box, Paper, Stack, SvgIcon } from "@mui/material";
 import * as React from "react";
-import { ReactComponent as Logo } from "../../../icons/logo-header.svg";
+import { ReactComponent as Logo } from "../../../icons/lol.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Profile from "../Profile";
