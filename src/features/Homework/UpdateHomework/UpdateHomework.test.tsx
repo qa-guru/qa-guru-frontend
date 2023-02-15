@@ -4,7 +4,7 @@ import UpdateHomework from "./UpdateHomework";
 
 const mockSetOpenHomeWorkEdit: any = () => {};
 const mockUpdateHomework: any = () => {};
-const mockDataHomeworkId: any = "string";
+const mockDataHomework: any = "string";
 
 describe("UpdateHomework", () => {
   it("the component is Loading", () => {
@@ -14,7 +14,7 @@ describe("UpdateHomework", () => {
           setOpenHomeWorkEdit={mockSetOpenHomeWorkEdit}
           loading={true}
           updateHomework={mockUpdateHomework}
-          dataHomeworkId={mockDataHomeworkId}
+          dataHomework={mockDataHomework}
         />
       </MemoryRouter>
     );
@@ -27,7 +27,7 @@ describe("UpdateHomework", () => {
           setOpenHomeWorkEdit={mockSetOpenHomeWorkEdit}
           loading={false}
           updateHomework={mockUpdateHomework}
-          dataHomeworkId={mockDataHomeworkId}
+          dataHomework={mockDataHomework}
         />
       </MemoryRouter>
     );

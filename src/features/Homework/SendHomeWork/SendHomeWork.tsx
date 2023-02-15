@@ -9,7 +9,11 @@ import { client } from "../../../http";
 import Avatar from "@mui/material/Avatar";
 
 const style = {
-  loadingButton: { minWidth: "120px", marginTop: "15px" },
+  loadingButton: {
+    textTransform: "none",
+    minWidth: "151px",
+    marginTop: "15px",
+  },
   paper: { padding: "20px", mt: "40px" },
   avatar: {
     width: 40,

@@ -1,5 +1,0 @@
-query homeWorkByStudentAndLectureId($studentId: ID!, $lectureId: ID!) {
-  homeWorkByStudentAndLecture(studentId: $studentId, lectureId: $lectureId) {
-    id
-  }
-}

@@ -1,9 +1,9 @@
 import React from "react";
 import UpdateHomework from "./UpdateHomework";
 import { useUpdateHomeworkMutation } from "../../../api/graphql/homework/updateHomework";
-import { useHomeWorkByStudentAndLectureIdQuery } from "../../../api/graphql/homework/homeWorkByStudentAndLectureId";
 import { useParams } from "react-router-dom";
 import { useUserIdQuery } from "../../../api/graphql/user/userId";
+import { useHomeWorkByStudentAndLectureQuery } from "../../../api/graphql/homework/homeWorkByStudentAndLecture";
 
 interface IUpdateHomeworkContainer {
   setOpenHomeWorkEdit: React.Dispatch<React.SetStateAction<Boolean>>;
@@ -14,7 +14,7 @@ const UpdateHomeworkContainer: React.FC<IUpdateHomeworkContainer> = ({
 }) => {
   const { lectureId } = useParams();
   const { data: dataUserId } = useUserIdQuery();
-  const { data: dataHomeworkId } = useHomeWorkByStudentAndLectureIdQuery({
+  const { data: dataHomework } = useHomeWorkByStudentAndLectureQuery({
     variables: { studentId: dataUserId?.user?.id!, lectureId: lectureId! },
   });
   const [updateHomework, { loading }] = useUpdateHomeworkMutation();
@@ -24,7 +24,7 @@ const UpdateHomeworkContainer: React.FC<IUpdateHomeworkContainer> = ({
       setOpenHomeWorkEdit={setOpenHomeWorkEdit}
       loading={loading}
       updateHomework={updateHomework}
-      dataHomeworkId={dataHomeworkId!}
+      dataHomework={dataHomework!}
     />
   );
 };
