@@ -21,7 +21,7 @@ export const App = () => {
     responsiveFontSizes: settings.responsiveFontSizes,
   });
 
-  const { loading, data } = useUserQuery({
+  const { loading } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
       navigate("/");

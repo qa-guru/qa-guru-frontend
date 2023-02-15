@@ -11,6 +11,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
   type,
   multiline,
   rows,
+  defaultValue,
 }) => {
   return (
     <Controller
@@ -18,6 +19,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
       control={control}
       render={({ field: { onChange, value } }) => (
         <TextField
+          defaultValue={defaultValue}
           fullWidth
           value={value}
           onChange={onChange}

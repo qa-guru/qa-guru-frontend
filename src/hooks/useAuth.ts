@@ -20,7 +20,7 @@ const useAuth = () => {
         switch (response.status) {
           case 200:
             setIsLoading(false);
-            client.refetchQueries({ include: ["User"] });
+            client.refetchQueries({ include: ["user"] });
             break;
           default:
             setIsLoading(false);
@@ -47,7 +47,7 @@ const useAuth = () => {
         switch (response.status) {
           case 200:
             setIsLoading(false);
-            client.refetchQueries({ include: ["User"] });
+            client.refetchQueries({ include: ["user"] });
             break;
           default:
             setIsLoading(false);

@@ -10,7 +10,7 @@ import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const style = {
-  loadingButton: { minWidth: "151px", mt: "15px" },
+  loadingButton: { textTransform: "none", minWidth: "151px" },
   paper: { p: "20px", mt: "40px" },
   avatar: {
     width: 40,
@@ -19,17 +19,14 @@ const style = {
   buttonCancel: {
     textTransform: "none",
     minWidth: "151px",
-    mt: "15px",
-    ml: "10px",
   },
 };
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
-  const { loading, updateHomework, setOpenHomeWorkEdit, dataHomeworkId } =
-    props;
+  const { loading, updateHomework, setOpenHomeWorkEdit, dataHomework } = props;
   const { handleSubmit, control } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
-      content: "",
+      content: dataHomework?.homeWorkByStudentAndLecture?.answer!,
     },
   });
 
@@ -38,7 +35,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   ) => {
     updateHomework({
       variables: {
-        id: dataHomeworkId?.homeWorkByStudentAndLecture?.id!,
+        id: dataHomework?.homeWorkByStudentAndLecture?.id!,
         content: data.content,
       },
     }).then(() => {
@@ -59,27 +56,29 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
         />
         <Box width="100%">
           <RHF.InputTextField
-            placeholder="Текст ответа"
             multiline
             rows={5}
             name="content"
             control={control}
+            defaultValue={dataHomework?.homeWorkByStudentAndLecture?.answer!}
           />
-          <LoadingButton
-            onClick={handleSubmit(handleUpdateHomework)}
-            loading={loading}
-            sx={style.loadingButton}
-            variant="contained"
-          >
-            Отправить
-          </LoadingButton>
-          <Button
-            onClick={() => setOpenHomeWorkEdit(false)}
-            sx={style.buttonCancel}
-            variant="contained"
-          >
-            Отменить
-          </Button>
+          <Stack direction={{ xs: "column", sm: "row" }} spacing={1} mt="15px">
+            <LoadingButton
+              onClick={handleSubmit(handleUpdateHomework)}
+              loading={loading}
+              sx={style.loadingButton}
+              variant="contained"
+            >
+              Отправить
+            </LoadingButton>
+            <Button
+              onClick={() => setOpenHomeWorkEdit(false)}
+              sx={style.buttonCancel}
+              variant="contained"
+            >
+              Отменить
+            </Button>
+          </Stack>
         </Box>
       </Stack>
     </form>

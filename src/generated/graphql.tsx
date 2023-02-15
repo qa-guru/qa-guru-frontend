@@ -680,19 +680,6 @@ export type HomeWorkByStudentAndLectureQuery = {
   } | null;
 };
 
-export type HomeWorkByStudentAndLectureIdQueryVariables = Exact<{
-  studentId: Scalars["ID"];
-  lectureId: Scalars["ID"];
-}>;
-
-export type HomeWorkByStudentAndLectureIdQuery = {
-  __typename?: "Query";
-  homeWorkByStudentAndLecture?: {
-    __typename?: "StudentHomeWorkDto";
-    id?: string | null;
-  } | null;
-};
-
 export type HomeWorkByStudentAndLectureStatusQueryVariables = Exact<{
   studentId: Scalars["ID"];
   lectureId: Scalars["ID"];
@@ -1207,88 +1194,6 @@ export type HomeWorkByStudentAndLectureLazyQueryHookResult = ReturnType<
 export type HomeWorkByStudentAndLectureQueryResult = Apollo.QueryResult<
   HomeWorkByStudentAndLectureQuery,
   HomeWorkByStudentAndLectureQueryVariables
->;
-export const HomeWorkByStudentAndLectureIdDocument = gql`
-  query homeWorkByStudentAndLectureId($studentId: ID!, $lectureId: ID!) {
-    homeWorkByStudentAndLecture(studentId: $studentId, lectureId: $lectureId) {
-      id
-    }
-  }
-`;
-export type HomeWorkByStudentAndLectureIdComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    HomeWorkByStudentAndLectureIdQuery,
-    HomeWorkByStudentAndLectureIdQueryVariables
-  >,
-  "query"
-> &
-  (
-    | { variables: HomeWorkByStudentAndLectureIdQueryVariables; skip?: boolean }
-    | { skip: boolean }
-  );
-
-export const HomeWorkByStudentAndLectureIdComponent = (
-  props: HomeWorkByStudentAndLectureIdComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    HomeWorkByStudentAndLectureIdQuery,
-    HomeWorkByStudentAndLectureIdQueryVariables
-  >
-    query={HomeWorkByStudentAndLectureIdDocument}
-    {...props}
-  />
-);
-
-/**
- * __useHomeWorkByStudentAndLectureIdQuery__
- *
- * To run a query within a React component, call `useHomeWorkByStudentAndLectureIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useHomeWorkByStudentAndLectureIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useHomeWorkByStudentAndLectureIdQuery({
- *   variables: {
- *      studentId: // value for 'studentId'
- *      lectureId: // value for 'lectureId'
- *   },
- * });
- */
-export function useHomeWorkByStudentAndLectureIdQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    HomeWorkByStudentAndLectureIdQuery,
-    HomeWorkByStudentAndLectureIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    HomeWorkByStudentAndLectureIdQuery,
-    HomeWorkByStudentAndLectureIdQueryVariables
-  >(HomeWorkByStudentAndLectureIdDocument, options);
-}
-export function useHomeWorkByStudentAndLectureIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    HomeWorkByStudentAndLectureIdQuery,
-    HomeWorkByStudentAndLectureIdQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    HomeWorkByStudentAndLectureIdQuery,
-    HomeWorkByStudentAndLectureIdQueryVariables
-  >(HomeWorkByStudentAndLectureIdDocument, options);
-}
-export type HomeWorkByStudentAndLectureIdQueryHookResult = ReturnType<
-  typeof useHomeWorkByStudentAndLectureIdQuery
->;
-export type HomeWorkByStudentAndLectureIdLazyQueryHookResult = ReturnType<
-  typeof useHomeWorkByStudentAndLectureIdLazyQuery
->;
-export type HomeWorkByStudentAndLectureIdQueryResult = Apollo.QueryResult<
-  HomeWorkByStudentAndLectureIdQuery,
-  HomeWorkByStudentAndLectureIdQueryVariables
 >;
 export const HomeWorkByStudentAndLectureStatusDocument = gql`
   query homeWorkByStudentAndLectureStatus($studentId: ID!, $lectureId: ID!) {
