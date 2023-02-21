@@ -34,3 +34,11 @@ jobs:
         run:
 #            rm -rf /var/www/app.qa.guru/html/*
            cp -r dist/* /var/www/app-stage.qa.guru/html/
+
+  runtest:
+    runs-on: stage-runner
+    needs: yarn-and-node
+    steps:  
+      - name: runtest
+        run:  docker run -rm qa-guru-e2e-tests-api:latest  gradle clean smokeUI -Denv="stage"
+        
