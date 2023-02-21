@@ -40,5 +40,5 @@ jobs:
     needs: yarn-and-node
     steps:  
       - name: runtest
-        run:  docker run -rm qa-guru-e2e-tests-api:latest  gradle clean smokeUI -Denv="stage"
+        run:  docker run --rm qa-guru-e2e-tests-api:latest  gradle clean smokeUI -Denv="stage"
         
