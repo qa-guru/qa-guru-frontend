@@ -31,6 +31,8 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
       </Typography>
       <Grid container gap={2}>
         {speakers?.map((item, index) => {
+          const { firstName, lastName } = item!;
+
           return (
             <Stack
               spacing={2}
@@ -46,7 +48,7 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
               />
               <Box sx={style.box}>
                 <Typography variant="subtitle2">
-                  {item?.firstName} {item?.lastName}
+                  {firstName} {lastName}
                 </Typography>
               </Box>
             </Stack>

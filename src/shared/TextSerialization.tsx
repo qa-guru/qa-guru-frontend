@@ -1,13 +1,16 @@
 import React from "react";
 import { Box, Link, Typography } from "@mui/material";
-import { ISerializeAnswer } from "./SerializeAnswer.types";
 
-const SerializeAnswer: React.FC<ISerializeAnswer> = ({ answer }) => {
+export interface ITextSerialization {
+  text: string;
+}
+
+const TextSerialization: React.FC<ITextSerialization> = ({ text }) => {
   const linkRegex = /(https?:\/\/[^\s]+)/g;
-  const lines = answer?.split("\n");
+  const lines = text.split("\n");
 
   return (
-    <Box mt="16px">
+    <>
       {lines?.map((line, i) => {
         const parts = line.split(linkRegex);
         return (
@@ -25,8 +28,8 @@ const SerializeAnswer: React.FC<ISerializeAnswer> = ({ answer }) => {
           </Typography>
         );
       })}
-    </Box>
+    </>
   );
 };
 
-export default SerializeAnswer;
+export default TextSerialization;

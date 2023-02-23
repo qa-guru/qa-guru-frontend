@@ -25,28 +25,28 @@ exports[`LectureDetail > the component is render 1`] = `
         class="css-1sx5dla-MuiStack-root"
       >
         <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-1h8329t-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
         >
           1
         </h6>
         <h6
           class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
         >
-          Практика. Пишем первый автотест: Java / Gradle / JUnit5 / Selenide.
+          string1
         </h6>
       </div>
       <div
         class="css-1sx5dla-MuiStack-root"
       >
         <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-1h8329t-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
         >
           2
         </h6>
         <h6
           class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
         >
-          Изучаем готовый проект с инфраструктурой: Github / Jenkins / Allure Report / TestOps / Selenoid / Телеграм-бот.
+          string2
         </h6>
       </div>
     </div>
@@ -91,156 +91,8 @@ exports[`LectureDetail > the component is render 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
   >
     <div
-      class="css-j722dc-MuiStack-root"
-    >
-      <div
-        class="MuiBox-root css-0"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-        >
-          Запись с занятия
-        </h6>
-        <div
-          class="MuiBox-root css-1erchjt"
-        >
-          <iframe
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen=""
-            src="https://www.youtube.com/embed/hzDWZgPQ8mY"
-            style="left: 0px; top: 0px; height: 100%; width: 70%; position: absolute;"
-            title="Embedded youtube"
-          />
-        </div>
-      </div>
-      <div
-        class="MuiBox-root css-0"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-        >
-          Запись занятия 14-го потока
-        </h6>
-        <div
-          class="MuiBox-root css-1erchjt"
-        >
-          <iframe
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen=""
-            src="https://www.youtube.com/embed/DlEIccu9wE0"
-            style="left: 0px; top: 0px; height: 100%; width: 70%; position: absolute;"
-            title="Embedded youtube"
-          />
-        </div>
-      </div>
-      <div
-        class="MuiBox-root css-0"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-        >
-          Разбор домашнего задания к уроку
-        </h6>
-        <div
-          class="MuiBox-root css-1erchjt"
-        >
-          <iframe
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen=""
-            src="https://www.youtube.com/embed/AWeeoE_US-k"
-            style="left: 0px; top: 0px; height: 100%; width: 70%; position: absolute;"
-            title="Embedded youtube"
-          />
-        </div>
-      </div>
-      <h6
-        class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-      >
-        Полезные ссылки:
-      </h6>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://github.com/qa-guru/demoqa-tests-16/tree/homework"
-        rel="noopener"
-        target="_blank"
-      >
-        Ссылка на репозиторий
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://github.com/qa-guru/getting-started-java/wiki"
-        rel="noopener"
-        target="_blank"
-      >
-        Статья по настройке рабочей среды
-      </a>
-      <h6
-        class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-      >
-        Selenide:
-      </h6>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://selenide.org/documentation.html"
-        rel="noopener"
-        target="_blank"
-      >
-        Документация
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://github.com/selenide/selenide/wiki/Selenide-vs-Selenium"
-        rel="noopener"
-        target="_blank"
-      >
-        Сравнение Selenide с Selenium
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://ru.selenide.org/2016/10/20/selenide-vs-pure-selenium/"
-        rel="noopener"
-        target="_blank"
-      >
-        Еще одна статья про Selenide
-      </a>
-      <h6
-        class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-      >
-        Git:
-      </h6>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://learngitbranching.js.org"
-        rel="noopener"
-        target="_blank"
-      >
-        Интерактивный туториал
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://git-scm.com/book/ru/v2/"
-        rel="noopener"
-        target="_blank"
-      >
-        Лучшая книга про git
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://ru.hexlet.io/courses/intro_to_git"
-        rel="noopener"
-        target="_blank"
-      >
-        Курс: введение в git
-      </a>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://stepik.org/course/3145/promo"
-        rel="noopener"
-        target="_blank"
-      >
-        Курс: основы git
-      </a>
-    </div>
+      class="css-zgbp5c-MuiStack-root"
+    />
   </div>
 </DocumentFragment>
 `;

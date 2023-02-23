@@ -3,23 +3,9 @@
 exports[`SendHomeWork > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-ydjii8-MuiTypography-root"
-    >
-      Ответ на задание
-    </h5>
     <div
-      class="css-e53awj-MuiStack-root"
+      class="css-17qspa5-MuiStack-root"
     >
-      <div
-        class="MuiAvatar-root MuiAvatar-circular css-2ldpwk-MuiAvatar-root"
-      >
-        <img
-          alt="Remy Sharp"
-          class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-          src="/static/images/avatar/1.jpg"
-        />
-      </div>
       <div
         class="MuiBox-root css-8atqhb"
       >
@@ -102,23 +88,9 @@ exports[`SendHomeWork > the component is Loading 1`] = `
 exports[`SendHomeWork > the component is not Loading 1`] = `
 <DocumentFragment>
   <form>
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-ydjii8-MuiTypography-root"
-    >
-      Ответ на задание
-    </h5>
     <div
-      class="css-e53awj-MuiStack-root"
+      class="css-17qspa5-MuiStack-root"
     >
-      <div
-        class="MuiAvatar-root MuiAvatar-circular css-2ldpwk-MuiAvatar-root"
-      >
-        <img
-          alt="Remy Sharp"
-          class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-          src="/static/images/avatar/1.jpg"
-        />
-      </div>
       <div
         class="MuiBox-root css-8atqhb"
       >

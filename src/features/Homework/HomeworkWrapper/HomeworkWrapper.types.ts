@@ -1,5 +1,5 @@
-import { HomeWorkByStudentAndLectureStatusQuery } from "../../../generated/graphql";
+import { HomeWorkByStudentAndLectureQuery } from "../../../generated/graphql";
 
-export interface IHomeworkWrapper {
-  dataHomeworkStatus: HomeWorkByStudentAndLectureStatusQuery;
+export interface IHomework {
+  data: HomeWorkByStudentAndLectureQuery;
 }

@@ -13,17 +13,14 @@ const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
   return (
     <Grid container spacing={2} columns={{ xs: 6, md: 12 }}>
       {trainingPurchases?.map((item, index) => {
+        const { id, name } = item?.trainingTariff.training!;
+
         return (
           <Grid item xs={6} key={index}>
-            <Link
-              style={{ textDecoration: "none" }}
-              to={`/training/${item?.trainingTariff?.training?.id}`}
-            >
+            <Link style={{ textDecoration: "none" }} to={`/training/${id}`}>
               <CardActionArea>
                 <Paper sx={style.paper}>
-                  <Typography variant="h5">
-                    {item?.trainingTariff?.training?.name}
-                  </Typography>
+                  <Typography variant="h5">{name}</Typography>
                   <Typography
                     color="primary"
                     variant="subtitle2"

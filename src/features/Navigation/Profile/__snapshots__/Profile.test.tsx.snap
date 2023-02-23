@@ -22,12 +22,12 @@ exports[`Profile > the component is render 1`] = `
       class="MuiBox-root css-tzqd77"
     >
       <h6
-        class="MuiTypography-root MuiTypography-subtitle2 css-p0jxf6-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle2 css-17lzo9z-MuiTypography-root"
       >
         string
       </h6>
       <h6
-        class="MuiTypography-root MuiTypography-subtitle2 css-p0jxf6-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle2 css-17lzo9z-MuiTypography-root"
       >
         string
       </h6>

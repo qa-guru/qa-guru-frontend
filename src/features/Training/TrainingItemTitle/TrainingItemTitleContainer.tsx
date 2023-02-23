@@ -1,8 +1,9 @@
 import React from "react";
-import Spinner from "../../../shared/Spinner";
+import Spinner from "../../../shared/Spinner/Spinner";
 import { useTrainingQuery } from "../../../api/graphql/training/training";
 import { useParams } from "react-router-dom";
 import TrainingItemTitle from "./TrainingItemTitle";
+import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
 
 const TrainingItemTitleContainer: React.FC = () => {
   const { trainingId } = useParams();
@@ -11,9 +12,10 @@ const TrainingItemTitleContainer: React.FC = () => {
     variables: { id: trainingId! },
   });
 
-  if (loading && !data) return <Spinner />;
+  if (loading) return <Spinner />;
+  if (!data) return <NoDataErrorMessage />;
 
-  return <TrainingItemTitle data={data!} />;
+  return <TrainingItemTitle data={data} />;
 };
 
 export default TrainingItemTitleContainer;

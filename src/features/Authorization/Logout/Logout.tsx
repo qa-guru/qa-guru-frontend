@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Dialog,
@@ -13,29 +13,44 @@ import {
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { ILogout } from "./Logout.types";
 import { useTranslation } from "react-i18next";
-import LoadingButton from "@mui/lab/LoadingButton";
+import { useModal } from "react-modal-hook";
 
 const Logout: React.FC<ILogout> = (props) => {
-  const { logout, isLoading, setAnchorElUser } = props;
+  const { logout, setAnchorElUser } = props;
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
+  const [showModal, hideModal] = useModal(({ in: open }) => (
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>{t("sign.out")}</DialogTitle>
+      <DialogContent>
+        <DialogContentText>{t("logout.confirm")}</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button variant="contained" onClick={handleOk}>
+          {t("yes")}
+        </Button>
+        <Button variant="contained" onClick={handleCancel}>
+          {t("no")}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  ));
 
   const handleClickOpen = () => {
     setAnchorElUser(null);
-    setOpen(true);
+    showModal();
   };
 
   const handleClose = () => {
-    setOpen(false);
+    hideModal();
   };
 
   const handleOk = async () => {
     await logout();
-    setOpen(false);
+    hideModal();
   };
 
   const handleCancel = () => {
-    setOpen(false);
+    hideModal();
   };
 
   return (
@@ -46,18 +61,6 @@ const Logout: React.FC<ILogout> = (props) => {
           <ExitToAppIcon />
         </ListItemIcon>
       </MenuItem>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{t("sign.out")}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>{t("logout.confirm")}</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <LoadingButton onClick={handleOk} loading={isLoading}>
-            {t("yes")}
-          </LoadingButton>
-          <Button onClick={handleCancel}>{t("no")}</Button>
-        </DialogActions>
-      </Dialog>
     </>
   );
 };

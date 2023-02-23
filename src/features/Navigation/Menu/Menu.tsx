@@ -16,7 +16,11 @@ const AppMenu: React.FC<IAppMenu> = (props) => {
         const { pageURL, title } = page;
 
         return (
-          <Button key={index} onClick={() => handleClickNavMenu(pageURL)}>
+          <Button
+            variant="text"
+            key={index}
+            onClick={() => handleClickNavMenu(pageURL)}
+          >
             <Typography variant="subtitle2">{title}</Typography>
           </Button>
         );

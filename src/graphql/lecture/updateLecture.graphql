@@ -7,9 +7,23 @@ mutation updateLecture($input: LectureInput!) {
       lastName
       middleName
     }
+    homeWorkLevel {
+      id
+      code
+      description
+      estimate
+    }
     subject
     description
-    content
-    contentHomeWork
+    content {
+      type
+      value
+      url
+    }
+    contentHomeWork {
+      type
+      value
+      url
+    }
   }
 }

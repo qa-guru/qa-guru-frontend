@@ -67,6 +67,12 @@ const useAuth = () => {
       onCompleted: () => {
         login(data.email, data.password);
       },
+      onError: (error) =>
+        error.graphQLErrors.map(({ message }) => {
+          setIsLoading(false);
+          const email = message.split(" ").reverse()[0].replace(/['"]+/g, "");
+          enqueueSnackbar(t("create.user", { email: email }));
+        }),
     });
   };
 

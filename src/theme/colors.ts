@@ -1,4 +1,4 @@
-const primaryMain = "#6750A4";
+const primaryMain = "#2CCCA6";
 export const primary = {
   main: primaryMain,
 };
@@ -14,6 +14,10 @@ export const grey = {
 
 export const white = {
   main: "#FFFFFF",
+};
+
+export const black = {
+  main: "#212121",
 };
 
 const palette = {

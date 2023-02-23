@@ -8,7 +8,17 @@ query lecture($id: ID!) {
       middleName
     }
     subject
+    homeWorkLevel {
+      id
+      code
+      description
+      estimate
+    }
     description
-    content
+    content {
+      type
+      value
+      url
+    }
   }
 }

@@ -9,6 +9,12 @@ query lectures {
         lastName
       }
       description
+      homeWorkLevel {
+        id
+        code
+        description
+        estimate
+      }
     }
     totalPages
     totalElements

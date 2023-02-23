@@ -1,10 +1,12 @@
-import { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
+import { ModalProvider } from "react-modal-hook";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { TransitionGroup } from "react-transition-group";
 import useAuth from "../hooks/useAuth";
 import { useUserQuery } from "../api/graphql/user/user";
-import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
-import Spinner from "../shared/Spinner";
+import Spinner from "../shared/Spinner/Spinner";
 import { createCustomTheme } from "../theme";
 import useSettings from "../hooks/useSettings";
 
@@ -13,7 +15,7 @@ const AppRoutes = lazy(() => import("../routes/AppRoutes"));
 
 export const App = () => {
   const { isSignedIn, setIsSignedIn } = useAuth();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { settings } = useSettings();
 
   const theme = createCustomTheme({
@@ -35,12 +37,16 @@ export const App = () => {
   if (loading) return <Spinner />;
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Suspense fallback={<Spinner />}>
-        {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
-      </Suspense>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <ModalProvider rootComponent={TransitionGroup}>
+          <Suspense fallback={<Spinner />}>
+            {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
+          </Suspense>
+        </ModalProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

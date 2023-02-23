@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
 import { render } from "../../../test/utilsTest";
-import Homework from "./Homework";
+import HomeworkAnswer from "./HomeworkAnswer";
 import { HomeWorkByStudentAndLectureQuery } from "../../../generated/graphql";
 
 const mockData: HomeWorkByStudentAndLectureQuery = {
@@ -35,11 +35,11 @@ const mockData: HomeWorkByStudentAndLectureQuery = {
   },
 };
 
-describe("Homework", () => {
+describe("HomeworkAnswer", () => {
   it("the component is render", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <Homework data={mockData!} />
+        <HomeworkAnswer data={mockData!} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

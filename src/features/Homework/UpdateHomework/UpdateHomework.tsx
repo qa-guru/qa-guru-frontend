@@ -3,8 +3,7 @@ import {
   IUpdateHomeWork,
   IUpdateHomeworkContent,
 } from "./UpdateHomework.types";
-import { Box, Button, Stack, Typography } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
+import { Box, Button, Stack } from "@mui/material";
 import RHF from "../../../shared/InputRHF";
 import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -24,9 +23,11 @@ const style = {
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, dataHomework } = props;
+  const { id, answer } = dataHomework.homeWorkByStudentAndLecture!;
+
   const { handleSubmit, control } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
-      content: dataHomework?.homeWorkByStudentAndLecture?.answer!,
+      content: answer!,
     },
   });
 
@@ -35,32 +36,24 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   ) => {
     updateHomework({
       variables: {
-        id: dataHomework?.homeWorkByStudentAndLecture?.id!,
+        id: id!,
         content: data.content,
       },
-    }).then(() => {
-      setOpenHomeWorkEdit(false);
+      onCompleted: () => {
+        setOpenHomeWorkEdit(false);
+      },
     });
   };
 
   return (
     <form>
-      <Typography variant="h5" mb="15px">
-        Ответ на задание
-      </Typography>
-      <Stack direction="row" spacing={2}>
-        <Avatar
-          sx={style.avatar}
-          alt="Remy Sharp"
-          src="/static/images/avatar/1.jpg"
-        />
+      <Stack direction="row" spacing={2} mt="15px">
         <Box width="100%">
           <RHF.InputTextField
             multiline
             rows={5}
             name="content"
             control={control}
-            defaultValue={dataHomework?.homeWorkByStudentAndLecture?.answer!}
           />
           <Stack direction={{ xs: "column", sm: "row" }} spacing={1} mt="15px">
             <LoadingButton

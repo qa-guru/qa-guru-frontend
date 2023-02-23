@@ -22,6 +22,10 @@ type Mutation {
   """
   updateLecture(input: LectureInput!): LectureInfoDto
   deleteLecture(id: ID!): Void
+  updateLectureHomeWorkLevel(
+    input: LectureHomeWorkLevelInput!
+  ): LectureHomeWorkLevelDto
+  deleteLectureHomeWorkLevel(id: ID!): Void
   """
   training purchase section
   """
@@ -70,8 +74,10 @@ type Query {
   lecture section
   """
   lecture(id: ID): LectureInfoShortDto
-  lectureHomeWork(lectureId: ID): String
+  lectureHomeWork(lectureId: ID): [LectureContentHomeWorkDto]
   lectures(page: Int!, size: Int!, sort: LectureSort): LecturesDto
+  lectureHomeWorkLevel(id: ID): LectureHomeWorkLevelDto
+  lectureHomeWorkLevels: [LectureHomeWorkLevelDto]
   """
   purchase section
   """
@@ -102,6 +108,7 @@ type Query {
     studentId: ID!
     lectureId: ID!
   ): StudentHomeWorkDto
+  homeWorkByLecture(lectureId: ID!): StudentHomeWorkDto
   homeWorks(
     page: Int!
     size: Int!
@@ -138,8 +145,8 @@ type TrainingPurchaseDto {
 
 input TrainingPurchaseInput {
   id: ID
-  userId: ID
-  trainingTariffId: ID
+  userEmail: String
+  trainingTariffCode: String
 }
 
 input TrainingTariffInput {
@@ -148,7 +155,7 @@ input TrainingTariffInput {
   code: String
   price: Float
   homeWork: Boolean
-  trainingId: ID
+  trainingName: String
   description: String
 }
 
@@ -195,19 +202,21 @@ type TrainingLectureDto {
 
 input LectureInput {
   id: ID
+  homeWorkLevelCode: String
   subject: String
-  description: String
-  content: String
-  contentHomeWork: String
-  speakers: [ID]
+  description: [String]
+  content: [LectureContentInput]
+  contentHomeWork: [LectureContentHomeWorkInput]
+  speakers: [String]
 }
 
 type LectureInfoDto {
   id: ID
+  homeWorkLevel: LectureHomeWorkLevelDto
   subject: String
-  description: String
-  content: String
-  contentHomeWork: String
+  description: [String]
+  content: [LectureContentDto]
+  contentHomeWork: [LectureContentHomeWorkDto]
   speakers: [UserDto]
   creationDate: LocalDateTime
   modificationDate: LocalDateTime
@@ -215,9 +224,10 @@ type LectureInfoDto {
 
 type LectureInfoShortDto {
   id: ID
+  homeWorkLevel: LectureHomeWorkLevelDto
   subject: String
-  description: String
-  content: String
+  description: [String]
+  content: [LectureContentDto]
   speakers: [UserDto]
   creationDate: LocalDateTime
   modificationDate: LocalDateTime
@@ -225,17 +235,56 @@ type LectureInfoShortDto {
 
 type LectureDto {
   id: ID
+  homeWorkLevel: LectureHomeWorkLevelDto
   subject: String
-  description: String
+  description: [String]
   speakers: [UserDto]
   creationDate: LocalDateTime
   modificationDate: LocalDateTime
+}
+
+type LectureHomeWorkLevelDto {
+  id: ID
+  code: String
+  description: String
+  estimate: Int
+}
+
+input LectureHomeWorkLevelInput {
+  id: ID
+  code: String
+  description: String
+  estimate: Int
 }
 
 type LecturesDto {
   items: [LectureDto]
   totalElements: Long
   totalPages: Int
+}
+
+type LectureContentDto {
+  type: String
+  value: String
+  url: String
+}
+
+type LectureContentHomeWorkDto {
+  type: String
+  value: String
+  url: String
+}
+
+input LectureContentInput {
+  type: String
+  value: String
+  url: String
+}
+
+input LectureContentHomeWorkInput {
+  type: String
+  value: String
+  url: String
 }
 
 type StudentHomeWorkDto {
@@ -297,7 +346,7 @@ input UserCreateInput {
   firstName: String!
   lastName: String!
   middleName: String
-  phoneNumber: String!
+  phoneNumber: String
 }
 
 input UserUpdateInput {
@@ -306,7 +355,7 @@ input UserUpdateInput {
   firstName: String!
   lastName: String!
   middleName: String
-  phoneNumber: String!
+  phoneNumber: String
 }
 
 type UserDto {
@@ -347,7 +396,7 @@ enum TechStack {
 
 enum UserRole {
   ADMIN
-  USER
+  STUDENT
   MANAGER
   MASTER
   MENTOR

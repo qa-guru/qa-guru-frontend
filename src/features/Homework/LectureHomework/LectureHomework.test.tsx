@@ -5,7 +5,14 @@ import LectureHomework from "./LectureHomework";
 
 const mockData: LectureHomeWorkQuery = {
   __typename: "Query",
-  lectureHomeWork: "string",
+  lectureHomeWork: [
+    {
+      __typename: "LectureContentHomeWorkDto",
+      type: "string",
+      value: "string",
+      url: "string",
+    },
+  ],
 };
 
 describe("LectureHomework", () => {
