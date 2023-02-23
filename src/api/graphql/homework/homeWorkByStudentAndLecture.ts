@@ -1,10 +1,10 @@
+import { ApolloError } from "@apollo/client/errors";
+import * as Apollo from "@apollo/client";
 import {
   HomeWorkByStudentAndLectureQuery,
   HomeWorkByStudentAndLectureQueryVariables,
   useHomeWorkByStudentAndLectureQuery as _useHomeWorkByStudentAndLectureQuery,
 } from "../../../generated/graphql";
-import { ApolloError } from "@apollo/client/errors";
-import * as Apollo from "@apollo/client";
 
 export const useHomeWorkByStudentAndLectureQuery = (
   baseOptions?: Apollo.QueryHookOptions<

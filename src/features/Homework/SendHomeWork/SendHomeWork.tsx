@@ -1,12 +1,11 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import RHF from "../../../shared/InputRHF";
 import { ISendHomeWork, ISendHomeWorkContent } from "./SendHomeWork.types";
 import { useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { client } from "../../../http";
-import Avatar from "@mui/material/Avatar";
 
 const style = {
   loadingButton: {
@@ -40,15 +39,7 @@ const SendHomeWork: React.FC<ISendHomeWork> = (props) => {
 
   return (
     <form>
-      <Typography variant="h5" mb="15px">
-        Ответ на задание
-      </Typography>
-      <Stack direction="row" spacing={2}>
-        <Avatar
-          sx={style.avatar}
-          alt="Remy Sharp"
-          src="/static/images/avatar/1.jpg"
-        />
+      <Stack direction="row" spacing={2} mt="15px">
         <Box width="100%">
           <RHF.InputTextField
             placeholder="Текст ответа"

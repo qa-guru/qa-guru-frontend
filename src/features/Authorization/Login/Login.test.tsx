@@ -1,5 +1,5 @@
-import Login from "./Login";
 import { MemoryRouter } from "react-router-dom";
+import Login from "./Login";
 import { render } from "../../../test/utilsTest";
 
 const mockLogin: any = () => {};

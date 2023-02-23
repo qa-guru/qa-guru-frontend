@@ -3,7 +3,7 @@ import { Box, Button, Paper, Stack, SvgIcon } from "@mui/material";
 import { ReactComponent as Logo } from "../icons/logo.svg";
 import { useTranslation } from "react-i18next";
 import SignUp from "../features/Authorization/SignUp";
-import { secondary } from "../theme/colors";
+import { primary, secondary } from "../theme/colors";
 
 const style = {
   svgIcon: { height: "38px", width: { xs: "170px", sm: "250px" } },
@@ -14,7 +14,7 @@ const style = {
   stack: {
     height: "100vh",
   },
-  button: { textTransform: "none" },
+  button: { textTransform: "none", color: primary.main },
 };
 
 const Registration = () => {

@@ -4,6 +4,9 @@ import { ApolloProvider } from "@apollo/client";
 import React from "react";
 import { SnackbarProvider } from "notistack";
 import "../i18n/config";
+import { BrowserRouter } from "react-router-dom";
+import { TransitionGroup } from "react-transition-group";
+import { ModalProvider } from "react-modal-hook";
 
 afterEach(() => {
   cleanup();
@@ -23,7 +26,9 @@ const customRender = (ui: React.ReactElement, options = {}) =>
           autoHideDuration={1500}
           maxSnack={1}
         >
-          {children}
+          <ModalProvider rootComponent={TransitionGroup}>
+            {children}
+          </ModalProvider>
         </SnackbarProvider>
       </ApolloProvider>
     ),

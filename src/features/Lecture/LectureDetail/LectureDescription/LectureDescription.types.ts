@@ -1,3 +1,3 @@
 export interface ILectureDescription {
-  description: any;
+  description: Array<string | null> | null;
 }

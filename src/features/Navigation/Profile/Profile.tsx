@@ -14,6 +14,7 @@ import Menu from "@mui/material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Logout from "../../Authorization/Logout";
 import { IProfile } from "./Profile.types";
+import { black } from "../../../theme/colors";
 
 const style = {
   menuItem: { mb: "10px" },
@@ -28,11 +29,12 @@ const style = {
   },
   typography: {
     display: { xs: "none", md: "block" },
+    color: black.main,
   },
 };
 
 const Profile: React.FC<IProfile> = (props) => {
-  const { data } = props;
+  const { firstName, lastName } = props.data.user!;
 
   const settings = [
     {
@@ -55,7 +57,7 @@ const Profile: React.FC<IProfile> = (props) => {
   return (
     <>
       <Tooltip title="Open settings">
-        <Button onClick={handleOpenProfile}>
+        <Button variant="text" onClick={handleOpenProfile}>
           <Avatar
             sx={style.avatar}
             alt="Remy Sharp"
@@ -63,10 +65,10 @@ const Profile: React.FC<IProfile> = (props) => {
           />
           <Box sx={style.box}>
             <Typography sx={style.typography} variant="subtitle2">
-              {data?.user?.firstName}
+              {firstName}
             </Typography>
             <Typography sx={style.typography} variant="subtitle2">
-              {data?.user?.lastName}
+              {lastName}
             </Typography>
           </Box>
         </Button>

@@ -12,36 +12,7 @@ exports[`LectureHomework > the component is render 1`] = `
   >
     <div
       class="css-zgbp5c-MuiStack-root"
-    >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-      >
-        1. Зарегистрируйте аккаунт github.
-      </h6>
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-      >
-        2. Создайте новый репозиторий для домашнего задания.
-      </h6>
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-      >
-        3. Разработайте один автотест на проверку тестовой формы.
-      </h6>
-      <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-17dcqu8-MuiTypography-root-MuiLink-root"
-        href="https://demoqa.com/automation-practice-form"
-        rel="noopener"
-        target="_blank"
-      >
-        Тестовая форма demoqa.com
-      </a>
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-      >
-        В поле ответа необходимо приложить ссылку на репозиторий.
-      </h6>
-    </div>
+    />
   </div>
 </DocumentFragment>
 `;

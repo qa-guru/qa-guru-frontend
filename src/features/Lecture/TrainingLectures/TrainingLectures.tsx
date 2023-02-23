@@ -19,55 +19,35 @@ const style = {
   },
 };
 
-const mockDescription = [
-  {
-    id: "1",
-    value: "Git - самые основы",
-  },
-  {
-    id: "2",
-    value: "Теория: Gradle, JUnit5, Selenide.",
-  },
-  {
-    id: "3",
-    value: "Практика. Работаем с тренажером demoqa.com",
-  },
-  {
-    id: "4",
-    value: "Рассмотрим подробнее возможности Selenide и CSS/Xpath-селекторы",
-  },
-];
-
 const TrainingLectures: React.FC<ITrainingLectures> = ({
   data,
   trainingId,
 }) => {
+  const { trainingLectures } = data;
+
   return (
     <Grid container spacing={2}>
-      {data?.trainingLectures?.map((item, index) => {
+      {trainingLectures?.map((item, index) => {
+        const { id, subject, description } = item?.lecture!;
+
         return (
           <Grid item xs={12} key={index}>
-            <Link
-              style={style.link}
-              to={`/training/${trainingId}/${item?.lecture?.id}`}
-            >
+            <Link style={style.link} to={`/training/${trainingId}/${id}`}>
               <CardActionArea>
                 <Paper sx={style.paper}>
-                  <Typography variant="h6">{item?.lecture?.subject}</Typography>
+                  <Typography variant="h6">{subject}</Typography>
                   <Stack spacing={1.5}>
-                    {mockDescription?.map((item) => {
-                      const { id, value } = item;
-
+                    {description?.map((value, index) => {
                       return (
                         <Stack
                           direction="row"
                           spacing={1.5}
                           alignItems="center"
-                          key={id}
+                          key={index}
                           mt="16px"
                         >
                           <Typography sx={style.circle} variant="subtitle2">
-                            {id}
+                            {index + 1}
                           </Typography>
                           <Typography variant="subtitle1">{value}</Typography>
                         </Stack>

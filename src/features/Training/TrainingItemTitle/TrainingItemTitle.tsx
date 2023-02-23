@@ -3,11 +3,11 @@ import { Typography } from "@mui/material";
 import { ITrainingItemTitle } from "./TrainingItemTitle.types";
 
 const TrainingItemTitle: React.FC<ITrainingItemTitle> = ({ data }) => {
-  const { training } = data;
+  const { name } = data.training!;
 
   return (
     <Typography mb="20px" variant="h4">
-      {training?.name}
+      {name}
     </Typography>
   );
 };

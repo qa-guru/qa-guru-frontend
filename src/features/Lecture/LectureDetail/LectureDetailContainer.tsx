@@ -1,18 +1,20 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "../../../shared/Spinner";
+import Spinner from "../../../shared/Spinner/Spinner";
 import { useLectureQuery } from "../../../api/graphql/lecture/lecture";
 import LectureDetail from "./LectureDetail";
+import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
 
 const LectureDetailContainer: React.FC = () => {
   const { lectureId } = useParams();
-  const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
+  const { data, loading } = useLectureQuery({
     variables: { id: lectureId! },
   });
 
-  if (loadingLecture && !dataLecture) return <Spinner />;
+  if (loading) return <Spinner />;
+  if (!data) return <NoDataErrorMessage />;
 
-  return <LectureDetail dataLecture={dataLecture!} />;
+  return <LectureDetail data={data} />;
 };
 
 export default LectureDetailContainer;

@@ -1,7 +1,7 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema: "http://app.qa.guru/api/graphql",
+  schema: "http://app-stage.qa.guru:8080/graphql",
   documents: ["src/**/*.graphql"],
   generates: {
     "src/generated/graphql.tsx": {

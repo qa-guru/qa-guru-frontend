@@ -3,7 +3,7 @@ import { Box, Button, Paper, Stack, SvgIcon } from "@mui/material";
 import { ReactComponent as Logo } from "../icons/logo.svg";
 import { useTranslation } from "react-i18next";
 import Login from "../features/Authorization/Login";
-import { secondary } from "../theme/colors";
+import { primary, secondary } from "../theme/colors";
 
 const style = {
   svgIcon: { height: "38px", width: { xs: "170px", sm: "250px" } },
@@ -17,11 +17,12 @@ const style = {
   },
   button: {
     textTransform: "none",
+    color: primary.main,
   },
 };
 
 const Authorization = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const routeRegister = () => {

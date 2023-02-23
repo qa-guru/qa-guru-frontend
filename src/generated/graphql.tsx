@@ -68,22 +68,65 @@ export type ContentFileDto = {
   type?: Maybe<Scalars["String"]>;
 };
 
+export type LectureContentDto = {
+  __typename?: "LectureContentDto";
+  type?: Maybe<Scalars["String"]>;
+  url?: Maybe<Scalars["String"]>;
+  value?: Maybe<Scalars["String"]>;
+};
+
+export type LectureContentHomeWorkDto = {
+  __typename?: "LectureContentHomeWorkDto";
+  type?: Maybe<Scalars["String"]>;
+  url?: Maybe<Scalars["String"]>;
+  value?: Maybe<Scalars["String"]>;
+};
+
+export type LectureContentHomeWorkInput = {
+  type?: InputMaybe<Scalars["String"]>;
+  url?: InputMaybe<Scalars["String"]>;
+  value?: InputMaybe<Scalars["String"]>;
+};
+
+export type LectureContentInput = {
+  type?: InputMaybe<Scalars["String"]>;
+  url?: InputMaybe<Scalars["String"]>;
+  value?: InputMaybe<Scalars["String"]>;
+};
+
 export type LectureDto = {
   __typename?: "LectureDto";
   creationDate?: Maybe<Scalars["LocalDateTime"]>;
-  description?: Maybe<Scalars["String"]>;
+  description?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  homeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   id?: Maybe<Scalars["ID"]>;
   modificationDate?: Maybe<Scalars["LocalDateTime"]>;
   speakers?: Maybe<Array<Maybe<UserDto>>>;
   subject?: Maybe<Scalars["String"]>;
 };
 
+export type LectureHomeWorkLevelDto = {
+  __typename?: "LectureHomeWorkLevelDto";
+  code?: Maybe<Scalars["String"]>;
+  description?: Maybe<Scalars["String"]>;
+  estimate?: Maybe<Scalars["Int"]>;
+  id?: Maybe<Scalars["ID"]>;
+};
+
+export type LectureHomeWorkLevelInput = {
+  code?: InputMaybe<Scalars["String"]>;
+  description?: InputMaybe<Scalars["String"]>;
+  estimate?: InputMaybe<Scalars["Int"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
 export type LectureInfoDto = {
   __typename?: "LectureInfoDto";
-  content?: Maybe<Scalars["String"]>;
-  contentHomeWork?: Maybe<Scalars["String"]>;
+  content?: Maybe<Array<Maybe<LectureContentDto>>>;
+  contentHomeWork?: Maybe<Array<Maybe<LectureContentHomeWorkDto>>>;
   creationDate?: Maybe<Scalars["LocalDateTime"]>;
-  description?: Maybe<Scalars["String"]>;
+  description?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  homeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   id?: Maybe<Scalars["ID"]>;
   modificationDate?: Maybe<Scalars["LocalDateTime"]>;
   speakers?: Maybe<Array<Maybe<UserDto>>>;
@@ -92,9 +135,10 @@ export type LectureInfoDto = {
 
 export type LectureInfoShortDto = {
   __typename?: "LectureInfoShortDto";
-  content?: Maybe<Scalars["String"]>;
+  content?: Maybe<Array<Maybe<LectureContentDto>>>;
   creationDate?: Maybe<Scalars["LocalDateTime"]>;
-  description?: Maybe<Scalars["String"]>;
+  description?: Maybe<Array<Maybe<Scalars["String"]>>>;
+  homeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   id?: Maybe<Scalars["ID"]>;
   modificationDate?: Maybe<Scalars["LocalDateTime"]>;
   speakers?: Maybe<Array<Maybe<UserDto>>>;
@@ -102,11 +146,12 @@ export type LectureInfoShortDto = {
 };
 
 export type LectureInput = {
-  content?: InputMaybe<Scalars["String"]>;
-  contentHomeWork?: InputMaybe<Scalars["String"]>;
-  description?: InputMaybe<Scalars["String"]>;
+  content?: InputMaybe<Array<InputMaybe<LectureContentInput>>>;
+  contentHomeWork?: InputMaybe<Array<InputMaybe<LectureContentHomeWorkInput>>>;
+  description?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  homeWorkLevelCode?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
-  speakers?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  speakers?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   subject?: InputMaybe<Scalars["String"]>;
 };
 
@@ -138,6 +183,7 @@ export type Mutation = {
   deleteComment?: Maybe<Scalars["Void"]>;
   deleteHomeWork?: Maybe<Scalars["Void"]>;
   deleteLecture?: Maybe<Scalars["Void"]>;
+  deleteLectureHomeWorkLevel?: Maybe<Scalars["Void"]>;
   deleteTraining?: Maybe<Scalars["Void"]>;
   deleteTrainingTariff?: Maybe<Scalars["Void"]>;
   lockUser?: Maybe<Scalars["Void"]>;
@@ -153,6 +199,7 @@ export type Mutation = {
   updateHomeWork?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
   updateLecture?: Maybe<LectureInfoDto>;
+  updateLectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   updateRole?: Maybe<UserDto>;
   /** training section */
   updateTraining?: Maybe<TrainingDto>;
@@ -199,6 +246,11 @@ export type MutationDeleteHomeWorkArgs = {
 
 /** Mutation root */
 export type MutationDeleteLectureArgs = {
+  id: Scalars["ID"];
+};
+
+/** Mutation root */
+export type MutationDeleteLectureHomeWorkLevelArgs = {
   id: Scalars["ID"];
 };
 
@@ -267,6 +319,11 @@ export type MutationUpdateLectureArgs = {
 };
 
 /** Mutation root */
+export type MutationUpdateLectureHomeWorkLevelArgs = {
+  input: LectureHomeWorkLevelInput;
+};
+
+/** Mutation root */
 export type MutationUpdateRoleArgs = {
   id: Scalars["ID"];
   roles?: InputMaybe<Array<InputMaybe<UserRole>>>;
@@ -310,13 +367,16 @@ export type Query = {
   commentsHomeWorkByHomeWork?: Maybe<CommentHomeWorksDto>;
   /** studentHomeWork section */
   homeWork?: Maybe<StudentHomeWorkDto>;
+  homeWorkByLecture?: Maybe<StudentHomeWorkDto>;
   homeWorkByStudentAndLecture?: Maybe<StudentHomeWorkDto>;
   homeWorks?: Maybe<StudentHomeWorksDto>;
   homeWorksByLectureId?: Maybe<StudentHomeWorksDto>;
   homeWorksByStatus?: Maybe<StudentHomeWorksDto>;
   /** lecture section */
   lecture?: Maybe<LectureInfoShortDto>;
-  lectureHomeWork?: Maybe<Scalars["String"]>;
+  lectureHomeWork?: Maybe<Array<Maybe<LectureContentHomeWorkDto>>>;
+  lectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
+  lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
@@ -345,6 +405,11 @@ export type QueryCommentsHomeWorkByHomeWorkArgs = {
 /** Query root */
 export type QueryHomeWorkArgs = {
   id: Scalars["ID"];
+};
+
+/** Query root */
+export type QueryHomeWorkByLectureArgs = {
+  lectureId: Scalars["ID"];
 };
 
 /** Query root */
@@ -384,6 +449,11 @@ export type QueryLectureArgs = {
 /** Query root */
 export type QueryLectureHomeWorkArgs = {
   lectureId?: InputMaybe<Scalars["ID"]>;
+};
+
+/** Query root */
+export type QueryLectureHomeWorkLevelArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
@@ -515,8 +585,8 @@ export type TrainingPurchaseDto = {
 
 export type TrainingPurchaseInput = {
   id?: InputMaybe<Scalars["ID"]>;
-  trainingTariffId?: InputMaybe<Scalars["ID"]>;
-  userId?: InputMaybe<Scalars["ID"]>;
+  trainingTariffCode?: InputMaybe<Scalars["String"]>;
+  userEmail?: InputMaybe<Scalars["String"]>;
 };
 
 export type TrainingSort = {
@@ -553,7 +623,7 @@ export type TrainingTariffInput = {
   id?: InputMaybe<Scalars["ID"]>;
   name?: InputMaybe<Scalars["String"]>;
   price?: InputMaybe<Scalars["Float"]>;
-  trainingId?: InputMaybe<Scalars["ID"]>;
+  trainingName?: InputMaybe<Scalars["String"]>;
 };
 
 export type TrainingTariffSort = {
@@ -582,7 +652,7 @@ export type UserCreateInput = {
   lastName: Scalars["String"];
   middleName?: InputMaybe<Scalars["String"]>;
   password: Scalars["String"];
-  phoneNumber: Scalars["String"];
+  phoneNumber?: InputMaybe<Scalars["String"]>;
 };
 
 export type UserDto = {
@@ -607,7 +677,7 @@ export enum UserRole {
   Manager = "MANAGER",
   Master = "MASTER",
   Mentor = "MENTOR",
-  User = "USER",
+  Student = "STUDENT",
 }
 
 export type UserRoleDto = {
@@ -633,7 +703,7 @@ export type UserUpdateInput = {
   id?: InputMaybe<Scalars["ID"]>;
   lastName: Scalars["String"];
   middleName?: InputMaybe<Scalars["String"]>;
-  phoneNumber: Scalars["String"];
+  phoneNumber?: InputMaybe<Scalars["String"]>;
 };
 
 export type UsersDto = {
@@ -677,19 +747,6 @@ export type HomeWorkByStudentAndLectureQuery = {
       middleName?: string | null;
       lastName?: string | null;
     } | null;
-  } | null;
-};
-
-export type HomeWorkByStudentAndLectureStatusQueryVariables = Exact<{
-  studentId: Scalars["ID"];
-  lectureId: Scalars["ID"];
-}>;
-
-export type HomeWorkByStudentAndLectureStatusQuery = {
-  __typename?: "Query";
-  homeWorkByStudentAndLecture?: {
-    __typename?: "StudentHomeWorkDto";
-    status?: StudentHomeWorkStatus | null;
   } | null;
 };
 
@@ -755,7 +812,7 @@ export type SendHomeWorkToCheckMutation = {
       __typename?: "LectureInfoDto";
       id?: string | null;
       subject?: string | null;
-      description?: string | null;
+      description?: Array<string | null> | null;
     } | null;
     student?: {
       __typename?: "UserDto";
@@ -792,7 +849,7 @@ export type UpdateHomeworkMutation = {
       __typename?: "LectureInfoDto";
       id?: string | null;
       subject?: string | null;
-      description?: string | null;
+      description?: Array<string | null> | null;
     } | null;
     student?: {
       __typename?: "UserDto";
@@ -821,14 +878,26 @@ export type LectureQuery = {
     __typename?: "LectureInfoShortDto";
     id?: string | null;
     subject?: string | null;
-    description?: string | null;
-    content?: string | null;
+    description?: Array<string | null> | null;
     speakers?: Array<{
       __typename?: "UserDto";
       id?: string | null;
       firstName?: string | null;
       lastName?: string | null;
       middleName?: string | null;
+    } | null> | null;
+    homeWorkLevel?: {
+      __typename?: "LectureHomeWorkLevelDto";
+      id?: string | null;
+      code?: string | null;
+      description?: string | null;
+      estimate?: number | null;
+    } | null;
+    content?: Array<{
+      __typename?: "LectureContentDto";
+      type?: string | null;
+      value?: string | null;
+      url?: string | null;
     } | null> | null;
   } | null;
 };
@@ -839,7 +908,12 @@ export type LectureHomeWorkQueryVariables = Exact<{
 
 export type LectureHomeWorkQuery = {
   __typename?: "Query";
-  lectureHomeWork?: string | null;
+  lectureHomeWork?: Array<{
+    __typename?: "LectureContentHomeWorkDto";
+    type?: string | null;
+    value?: string | null;
+    url?: string | null;
+  } | null> | null;
 };
 
 export type LecturesQueryVariables = Exact<{ [key: string]: never }>;
@@ -853,7 +927,7 @@ export type LecturesQuery = {
     items?: Array<{
       __typename?: "LectureDto";
       id?: string | null;
-      description?: string | null;
+      description?: Array<string | null> | null;
       speakers?: Array<{
         __typename?: "UserDto";
         id?: string | null;
@@ -861,6 +935,13 @@ export type LecturesQuery = {
         middleName?: string | null;
         lastName?: string | null;
       } | null> | null;
+      homeWorkLevel?: {
+        __typename?: "LectureHomeWorkLevelDto";
+        id?: string | null;
+        code?: string | null;
+        description?: string | null;
+        estimate?: number | null;
+      } | null;
     } | null> | null;
   } | null;
 };
@@ -875,15 +956,32 @@ export type UpdateLectureMutation = {
     __typename?: "LectureInfoDto";
     id?: string | null;
     subject?: string | null;
-    description?: string | null;
-    content?: string | null;
-    contentHomeWork?: string | null;
+    description?: Array<string | null> | null;
     speakers?: Array<{
       __typename?: "UserDto";
       id?: string | null;
       firstName?: string | null;
       lastName?: string | null;
       middleName?: string | null;
+    } | null> | null;
+    homeWorkLevel?: {
+      __typename?: "LectureHomeWorkLevelDto";
+      id?: string | null;
+      code?: string | null;
+      description?: string | null;
+      estimate?: number | null;
+    } | null;
+    content?: Array<{
+      __typename?: "LectureContentDto";
+      type?: string | null;
+      value?: string | null;
+      url?: string | null;
+    } | null> | null;
+    contentHomeWork?: Array<{
+      __typename?: "LectureContentHomeWorkDto";
+      type?: string | null;
+      value?: string | null;
+      url?: string | null;
     } | null> | null;
   } | null;
 };
@@ -948,13 +1046,13 @@ export type TrainingLecturesQuery = {
       __typename?: "LectureDto";
       id?: string | null;
       subject?: string | null;
-      description?: string | null;
+      description?: Array<string | null> | null;
     } | null;
     lastLecture?: {
       __typename?: "LectureDto";
       id?: string | null;
       subject?: string | null;
-      description?: string | null;
+      description?: Array<string | null> | null;
     } | null;
   } | null> | null;
 };
@@ -1194,91 +1292,6 @@ export type HomeWorkByStudentAndLectureLazyQueryHookResult = ReturnType<
 export type HomeWorkByStudentAndLectureQueryResult = Apollo.QueryResult<
   HomeWorkByStudentAndLectureQuery,
   HomeWorkByStudentAndLectureQueryVariables
->;
-export const HomeWorkByStudentAndLectureStatusDocument = gql`
-  query homeWorkByStudentAndLectureStatus($studentId: ID!, $lectureId: ID!) {
-    homeWorkByStudentAndLecture(studentId: $studentId, lectureId: $lectureId) {
-      status
-    }
-  }
-`;
-export type HomeWorkByStudentAndLectureStatusComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    HomeWorkByStudentAndLectureStatusQuery,
-    HomeWorkByStudentAndLectureStatusQueryVariables
-  >,
-  "query"
-> &
-  (
-    | {
-        variables: HomeWorkByStudentAndLectureStatusQueryVariables;
-        skip?: boolean;
-      }
-    | { skip: boolean }
-  );
-
-export const HomeWorkByStudentAndLectureStatusComponent = (
-  props: HomeWorkByStudentAndLectureStatusComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    HomeWorkByStudentAndLectureStatusQuery,
-    HomeWorkByStudentAndLectureStatusQueryVariables
-  >
-    query={HomeWorkByStudentAndLectureStatusDocument}
-    {...props}
-  />
-);
-
-/**
- * __useHomeWorkByStudentAndLectureStatusQuery__
- *
- * To run a query within a React component, call `useHomeWorkByStudentAndLectureStatusQuery` and pass it any options that fit your needs.
- * When your component renders, `useHomeWorkByStudentAndLectureStatusQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useHomeWorkByStudentAndLectureStatusQuery({
- *   variables: {
- *      studentId: // value for 'studentId'
- *      lectureId: // value for 'lectureId'
- *   },
- * });
- */
-export function useHomeWorkByStudentAndLectureStatusQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    HomeWorkByStudentAndLectureStatusQuery,
-    HomeWorkByStudentAndLectureStatusQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    HomeWorkByStudentAndLectureStatusQuery,
-    HomeWorkByStudentAndLectureStatusQueryVariables
-  >(HomeWorkByStudentAndLectureStatusDocument, options);
-}
-export function useHomeWorkByStudentAndLectureStatusLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    HomeWorkByStudentAndLectureStatusQuery,
-    HomeWorkByStudentAndLectureStatusQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    HomeWorkByStudentAndLectureStatusQuery,
-    HomeWorkByStudentAndLectureStatusQueryVariables
-  >(HomeWorkByStudentAndLectureStatusDocument, options);
-}
-export type HomeWorkByStudentAndLectureStatusQueryHookResult = ReturnType<
-  typeof useHomeWorkByStudentAndLectureStatusQuery
->;
-export type HomeWorkByStudentAndLectureStatusLazyQueryHookResult = ReturnType<
-  typeof useHomeWorkByStudentAndLectureStatusLazyQuery
->;
-export type HomeWorkByStudentAndLectureStatusQueryResult = Apollo.QueryResult<
-  HomeWorkByStudentAndLectureStatusQuery,
-  HomeWorkByStudentAndLectureStatusQueryVariables
 >;
 export const HomeWorksByLectureIdDocument = gql`
   query homeWorksByLectureId(
@@ -1592,8 +1605,18 @@ export const LectureDocument = gql`
         middleName
       }
       subject
+      homeWorkLevel {
+        id
+        code
+        description
+        estimate
+      }
       description
-      content
+      content {
+        type
+        value
+        url
+      }
     }
   }
 `;
@@ -1655,7 +1678,11 @@ export type LectureQueryResult = Apollo.QueryResult<
 >;
 export const LectureHomeWorkDocument = gql`
   query lectureHomeWork($lectureId: ID!) {
-    lectureHomeWork(lectureId: $lectureId)
+    lectureHomeWork(lectureId: $lectureId) {
+      type
+      value
+      url
+    }
   }
 `;
 export type LectureHomeWorkComponentProps = Omit<
@@ -1744,6 +1771,12 @@ export const LecturesDocument = gql`
           lastName
         }
         description
+        homeWorkLevel {
+          id
+          code
+          description
+          estimate
+        }
       }
       totalPages
       totalElements
@@ -1819,10 +1852,24 @@ export const UpdateLectureDocument = gql`
         lastName
         middleName
       }
+      homeWorkLevel {
+        id
+        code
+        description
+        estimate
+      }
       subject
       description
-      content
-      contentHomeWork
+      content {
+        type
+        value
+        url
+      }
+      contentHomeWork {
+        type
+        value
+        url
+      }
     }
   }
 `;

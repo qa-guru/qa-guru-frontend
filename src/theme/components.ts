@@ -26,6 +26,7 @@ const components = (theme: Theme): any => {
         root: {
           borderRadius: "100px",
           fontSize: "14px",
+          color: white.main,
         },
       },
     },
@@ -33,6 +34,9 @@ const components = (theme: Theme): any => {
       styleOverrides: {
         root: {
           borderRadius: "12px",
+          backgroundColor: white.main,
+          boxShadow:
+            "0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15)",
         },
       },
     },

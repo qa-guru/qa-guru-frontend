@@ -3,14 +3,13 @@ import { render } from "../../../test/utilsTest";
 import LectureDetail from "./LectureDetail";
 import { LectureQuery } from "../../../generated/graphql";
 
-const mockDataLecture: LectureQuery = {
+const mockData: LectureQuery = {
   __typename: "Query",
   lecture: {
     __typename: "LectureInfoShortDto",
     id: "string",
     subject: "string",
-    description: "string",
-    content: "string",
+    description: ["string1", "string2"],
     speakers: [
       {
         __typename: "UserDto",
@@ -20,6 +19,21 @@ const mockDataLecture: LectureQuery = {
         middleName: "string",
       },
     ],
+    homeWorkLevel: {
+      __typename: "LectureHomeWorkLevelDto",
+      id: "string",
+      code: "string",
+      description: "string",
+      estimate: 7,
+    },
+    content: [
+      {
+        __typename: "LectureContentDto",
+        type: "string",
+        value: "string",
+        url: "string",
+      },
+    ],
   },
 };
 
@@ -27,7 +41,7 @@ describe("LectureDetail", () => {
   it("the component is render", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureDetail dataLecture={mockDataLecture!} />
+        <LectureDetail data={mockData} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

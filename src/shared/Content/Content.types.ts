@@ -1,6 +1,5 @@
-export interface ILectureContent {
+export interface IContent {
   content: Array<{
-    __typename?: "LectureContentDto";
     type?: string | null;
     value?: string | null;
     url?: string | null;

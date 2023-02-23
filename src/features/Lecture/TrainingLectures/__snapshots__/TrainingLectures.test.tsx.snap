@@ -32,56 +32,28 @@ exports[`TrainingLectures > the component is render 1`] = `
                 class="css-1sx5dla-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-1h8329t-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
                 >
                   1
                 </h6>
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
                 >
-                  Git - самые основы
+                  string1
                 </h6>
               </div>
               <div
                 class="css-1sx5dla-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-1h8329t-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
                 >
                   2
                 </h6>
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
                 >
-                  Теория: Gradle, JUnit5, Selenide.
-                </h6>
-              </div>
-              <div
-                class="css-1sx5dla-MuiStack-root"
-              >
-                <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-1h8329t-MuiTypography-root"
-                >
-                  3
-                </h6>
-                <h6
-                  class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-                >
-                  Практика. Работаем с тренажером demoqa.com
-                </h6>
-              </div>
-              <div
-                class="css-1sx5dla-MuiStack-root"
-              >
-                <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-1h8329t-MuiTypography-root"
-                >
-                  4
-                </h6>
-                <h6
-                  class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-                >
-                  Рассмотрим подробнее возможности Selenide и CSS/Xpath-селекторы
+                  string1
                 </h6>
               </div>
             </div>

@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "http://app.qa.guru/api/graphql",
+        "url": "http://app-stage.qa.guru:8080/graphql",
         "headers": {
           "user-agent": "JS GraphQL"
         },

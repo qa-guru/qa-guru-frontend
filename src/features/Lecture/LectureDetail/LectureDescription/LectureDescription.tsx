@@ -28,7 +28,7 @@ const LectureDescription: React.FC<ILectureDescription> = (props) => {
         </Typography>
         <Divider />
         <Stack spacing={1.5}>
-          {description?.map((value: any, index: any) => {
+          {description?.map((value, index) => {
             return (
               <Stack
                 direction="row"

@@ -5,19 +5,21 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LectureHomework from "../features/Homework/LectureHomework";
 import LectureDetail from "../features/Lecture/LectureDetail";
 import HomeworkWrapper from "../features/Homework/HomeworkWrapper";
+import { primary } from "../theme/colors";
 
 const style = {
-  button: { mb: "25px" },
+  button: { mb: "25px", color: primary.main },
   icon: { mr: "10px" },
 };
 
 const Lecture: React.FC = () => {
   const { trainingId } = useParams();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <>
       <Button
+        variant="outlined"
         sx={style.button}
         onClick={() => navigate(`/training/${trainingId}`)}
       >
