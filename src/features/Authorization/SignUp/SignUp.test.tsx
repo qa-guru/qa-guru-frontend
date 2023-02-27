@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
-import { render } from "../../../test/utilsTest";
 import SignUp from "./SignUp";
+import { render } from "../../../test/utilsTest";
 
 const mockSignUp: any = () => {};
 

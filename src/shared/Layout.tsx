@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../features/Navigation/Header/Header";
 import { Outlet } from "react-router-dom";
 import { Container } from "@mui/material";
-import Footer from "./Footer";
+import Header from "../features/Navigation/Header";
+import Footer from "../features/Navigation/Footer";
 
 const Layout: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
-import { render } from "../../../test/utilsTest";
 import Logout from "./Logout";
+import { render } from "../../../test/utilsTest";
 
 const mockLogout: any = () => {};
 

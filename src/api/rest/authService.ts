@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import axios, { AxiosResponse } from "axios";
 import qs from "qs";
 import { LOGIN_URI, LOGOUT_URI } from "../../config";
@@ -8,7 +9,7 @@ export interface LoginResponse {
 }
 
 export default class AuthService {
-  static async login(
+  static login(
     username: string,
     password: string
   ): Promise<AxiosResponse<LoginResponse>> {
@@ -23,7 +24,7 @@ export default class AuthService {
     });
   }
 
-  static async logout(): Promise<AxiosResponse<void>> {
+  static logout(): Promise<AxiosResponse<void>> {
     return axios.post(LOGOUT_URI, {
       method: "POST",
     });

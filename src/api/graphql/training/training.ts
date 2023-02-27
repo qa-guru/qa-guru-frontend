@@ -1,6 +1,6 @@
-import { useTrainingQuery as _useTrainingQuery } from "../../../generated/graphql";
 import { ApolloError } from "@apollo/client/errors";
 import { useSnackbar } from "notistack";
+import { useTrainingQuery as _useTrainingQuery } from "../generated/graphql";
 
 export const useTrainingQuery = (baseOptions?: {
   variables: { id: string };

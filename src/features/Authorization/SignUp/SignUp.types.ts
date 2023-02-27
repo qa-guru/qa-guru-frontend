@@ -1,4 +1,4 @@
-import { UserCreateInput } from "../../../generated/graphql";
+import { UserCreateInput } from "../../../api/graphql/generated/graphql";
 
 export interface ISignUp {
   signup: (data: UserCreateInput) => void;

@@ -1,16 +1,8 @@
-import { Typography } from "@mui/material";
-import TrainingPurchases from "../features/Training/TrainingPurchases";
 import React from "react";
+import TrainingPurchases from "../features/TrainingPurchases";
 
 const Home = () => {
-  return (
-    <>
-      <Typography variant="h4" mb="20px">
-        Мои курсы
-      </Typography>
-      <TrainingPurchases />
-    </>
-  );
+  return <TrainingPurchases />;
 };
 
 export default Home;

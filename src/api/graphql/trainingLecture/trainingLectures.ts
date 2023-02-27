@@ -1,11 +1,11 @@
+import { ApolloError } from "@apollo/client/errors";
+import { useSnackbar } from "notistack";
+import * as Apollo from "@apollo/client";
 import {
   TrainingLecturesQuery,
   TrainingLecturesQueryVariables,
   useTrainingLecturesQuery as _useTrainingLecturesQuery,
-} from "../../../generated/graphql";
-import { ApolloError } from "@apollo/client/errors";
-import { useSnackbar } from "notistack";
-import * as Apollo from "@apollo/client";
+} from "../generated/graphql";
 
 export const useTrainingLecturesQuery = (
   baseOptions?: Apollo.QueryHookOptions<

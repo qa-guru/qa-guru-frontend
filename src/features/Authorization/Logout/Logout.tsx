@@ -11,9 +11,9 @@ import {
   MenuItem,
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { ILogout } from "./Logout.types";
 import { useTranslation } from "react-i18next";
 import { useModal } from "react-modal-hook";
+import { ILogout } from "./Logout.types";
 
 const Logout: React.FC<ILogout> = (props) => {
   const { logout, setAnchorElUser } = props;

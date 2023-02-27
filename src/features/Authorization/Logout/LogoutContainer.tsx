@@ -1,6 +1,6 @@
 import React from "react";
-import useAuth from "../../../hooks/useAuth";
 import Logout from "./Logout";
+import useAuth from "../../../hooks/useAuth";
 import Spinner from "../../../shared/Spinner/Spinner";
 
 interface ILogoutContainer {
