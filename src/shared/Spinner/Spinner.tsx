@@ -35,7 +35,7 @@ const Spinner: React.FC = () => {
               >
                 <g
                   transform="matrix(1.711138 0 0 1.711138 -9.303671 28.796635)"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 >
                   <g fill="#02303a">
                     <path d="M42.166-.22c.835-1.953.82-3.865.3-5.387C41.833-7.48 39.234-9.93 38.4-8.96c-.108.135-1.603-.04-1.845.283-.35.47-.148.62.027.78.525.47 1.872.983 2.464 2.572.256.673.848 2.25-.175 3.192-1.172 1.064-2.478 1.306-7.838-3.676-5.7-5.32-13.386-3.15-15.918-2.316-2.545.848-3.703 1.683-2.707 3.65 1.36 2.666.916 1.845 2.235 4.04 2.1 3.5 6.693-1.616 6.693-1.616-3.42 5.158-6.356 3.905-7.487 2.114-1-1.63-1.805-3.5-1.805-3.5C3.382-.3 5.725 13.5 5.725 13.5h4.3c1.104-5.077 5.023-4.888 5.696 0h3.286c2.9-9.925 9.117 0 9.117 0h3.7c0-5.292-.552-7.285 2.155-7.65 4.633-.633 6.787-2.8 8.188-6.06z" />
@@ -94,11 +94,11 @@ const Spinner: React.FC = () => {
                     y2="50%"
                     id="linearGradient-1"
                   >
-                    <stop stop-color="#F97A12" offset="26%"></stop>
-                    <stop stop-color="#B07B58" offset="46%"></stop>
-                    <stop stop-color="#577BAE" offset="72%"></stop>
-                    <stop stop-color="#1E7CE5" offset="91%"></stop>
-                    <stop stop-color="#087CFA" offset="100%"></stop>
+                    <stop stopColor="#F97A12" offset="26%"></stop>
+                    <stop stopColor="#B07B58" offset="46%"></stop>
+                    <stop stopColor="#577BAE" offset="72%"></stop>
+                    <stop stopColor="#1E7CE5" offset="91%"></stop>
+                    <stop stopColor="#087CFA" offset="100%"></stop>
                   </linearGradient>
                   <linearGradient
                     x1="0.344827586%"
@@ -107,16 +107,16 @@ const Spinner: React.FC = () => {
                     y2="77.6190476%"
                     id="linearGradient-2"
                   >
-                    <stop stop-color="#F97A12" offset="0%"></stop>
-                    <stop stop-color="#CB7A3E" offset="7%"></stop>
-                    <stop stop-color="#9E7B6A" offset="15%"></stop>
-                    <stop stop-color="#757B91" offset="24%"></stop>
-                    <stop stop-color="#537BB1" offset="33%"></stop>
-                    <stop stop-color="#387CCC" offset="43%"></stop>
-                    <stop stop-color="#237CE0" offset="54%"></stop>
-                    <stop stop-color="#147CEF" offset="66%"></stop>
-                    <stop stop-color="#0B7CF7" offset="79%"></stop>
-                    <stop stop-color="#087CFA" offset="100%"></stop>
+                    <stop stopColor="#F97A12" offset="0%"></stop>
+                    <stop stopColor="#CB7A3E" offset="7%"></stop>
+                    <stop stopColor="#9E7B6A" offset="15%"></stop>
+                    <stop stopColor="#757B91" offset="24%"></stop>
+                    <stop stopColor="#537BB1" offset="33%"></stop>
+                    <stop stopColor="#387CCC" offset="43%"></stop>
+                    <stop stopColor="#237CE0" offset="54%"></stop>
+                    <stop stopColor="#147CEF" offset="66%"></stop>
+                    <stop stopColor="#0B7CF7" offset="79%"></stop>
+                    <stop stopColor="#087CFA" offset="100%"></stop>
                   </linearGradient>
                   <linearGradient
                     x1="78.1690141%"
@@ -125,16 +125,16 @@ const Spinner: React.FC = () => {
                     y2="-6.62404092%"
                     id="linearGradient-3"
                   >
-                    <stop stop-color="#FE315D" offset="0%"></stop>
-                    <stop stop-color="#CB417E" offset="8%"></stop>
-                    <stop stop-color="#9E4E9B" offset="16%"></stop>
-                    <stop stop-color="#755BB4" offset="25%"></stop>
-                    <stop stop-color="#5365CA" offset="34%"></stop>
-                    <stop stop-color="#386DDB" offset="44%"></stop>
-                    <stop stop-color="#2374E9" offset="54%"></stop>
-                    <stop stop-color="#1478F3" offset="66%"></stop>
-                    <stop stop-color="#0B7BF8" offset="79%"></stop>
-                    <stop stop-color="#087CFA" offset="100%"></stop>
+                    <stop stopColor="#FE315D" offset="0%"></stop>
+                    <stop stopColor="#CB417E" offset="8%"></stop>
+                    <stop stopColor="#9E4E9B" offset="16%"></stop>
+                    <stop stopColor="#755BB4" offset="25%"></stop>
+                    <stop stopColor="#5365CA" offset="34%"></stop>
+                    <stop stopColor="#386DDB" offset="44%"></stop>
+                    <stop stopColor="#2374E9" offset="54%"></stop>
+                    <stop stopColor="#1478F3" offset="66%"></stop>
+                    <stop stopColor="#0B7BF8" offset="79%"></stop>
+                    <stop stopColor="#087CFA" offset="100%"></stop>
                   </linearGradient>
                   <linearGradient
                     x1="20%"
@@ -143,14 +143,14 @@ const Spinner: React.FC = () => {
                     y2="132.676282%"
                     id="linearGradient-4"
                   >
-                    <stop stop-color="#FE315D" offset="0%"></stop>
-                    <stop stop-color="#F63462" offset="4%"></stop>
-                    <stop stop-color="#DF3A71" offset="10%"></stop>
-                    <stop stop-color="#C24383" offset="17%"></stop>
-                    <stop stop-color="#AD4A91" offset="29%"></stop>
-                    <stop stop-color="#755BB4" offset="55%"></stop>
-                    <stop stop-color="#1D76ED" offset="92%"></stop>
-                    <stop stop-color="#087CFA" offset="100%"></stop>
+                    <stop stopColor="#FE315D" offset="0%"></stop>
+                    <stop stopColor="#F63462" offset="4%"></stop>
+                    <stop stopColor="#DF3A71" offset="10%"></stop>
+                    <stop stopColor="#C24383" offset="17%"></stop>
+                    <stop stopColor="#AD4A91" offset="29%"></stop>
+                    <stop stopColor="#755BB4" offset="55%"></stop>
+                    <stop stopColor="#1D76ED" offset="92%"></stop>
+                    <stop stopColor="#087CFA" offset="100%"></stop>
                   </linearGradient>
                 </defs>
                 <g>
@@ -214,8 +214,8 @@ const Spinner: React.FC = () => {
                 viewBox="0 -30.632388516510233 255.324 285.95638851651023"
               >
                 <linearGradient id="a">
-                  <stop offset=".18" stop-color="#0052cc" />
-                  <stop offset="1" stop-color="#2684ff" />
+                  <stop offset=".18" stopColor="#0052cc" />
+                  <stop offset="1" stopColor="#2684ff" />
                 </linearGradient>
                 <linearGradient
                   id="b"

@@ -1,5 +1,5 @@
-import { useUpdateHomeworkMutation as _useUpdateHomeworkMutation } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
+import { useUpdateHomeworkMutation as _useUpdateHomeworkMutation } from "../generated/graphql";
 
 export const useUpdateHomeworkMutation = () => {
   const { enqueueSnackbar } = useSnackbar();

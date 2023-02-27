@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./app/App";
 import { SnackbarProvider } from "notistack";
-import { client } from "./http";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import { client } from "./api/http";
 import "./i18n/config";
 
 const root = ReactDOM.createRoot(

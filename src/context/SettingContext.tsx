@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useMemo } from "react";
 import { themeSettingsTypes } from "../theme";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { THEMES } from "../theme/constans";

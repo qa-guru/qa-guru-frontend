@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useCreateUserMutation } from "../api/graphql/user/createUser";
 import AuthService from "../api/rest/authService";
-import { client } from "../http";
-import { UserCreateInput } from "../generated/graphql";
+import { client } from "../api/http";
+import { UserCreateInput } from "../api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 
@@ -71,7 +71,7 @@ const useAuth = () => {
         error.graphQLErrors.map(({ message }) => {
           setIsLoading(false);
           const email = message.split(" ").reverse()[0].replace(/['"]+/g, "");
-          enqueueSnackbar(t("create.user", { email: email }));
+          enqueueSnackbar(t("create.user", { email }));
         }),
     });
   };
