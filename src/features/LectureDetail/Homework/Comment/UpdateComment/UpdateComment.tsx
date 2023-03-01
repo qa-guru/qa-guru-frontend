@@ -2,40 +2,39 @@ import React from "react";
 import { Box, Button, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  IUpdateHomeWork,
-  IUpdateHomeworkContent,
-} from "./UpdateHomework.types";
-import RHF from "../../../../shared/InputRHF";
+import { IUpdateComment, IUpdateCommentContent } from "./UpdateComment.types";
+import RHF from "../../../../../shared/InputRHF";
 
 const style = {
   loadingButton: { textTransform: "none", minWidth: "151px" },
   paper: { p: "20px", mt: "40px" },
+  avatar: {
+    width: 40,
+    height: 40,
+  },
   buttonCancel: {
     textTransform: "none",
     minWidth: "151px",
   },
 };
 
-const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
-  const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
+const UpdateComment: React.FC<IUpdateComment> = (props) => {
+  const { loading, updateComment, id, setSelectedIndex, content } = props;
 
-  const { handleSubmit, control } = useForm<IUpdateHomeworkContent>({
+  const { handleSubmit, control } = useForm<IUpdateCommentContent>({
     defaultValues: {
-      content: answer!,
+      content: content!,
     },
   });
 
-  const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
-    data
-  ) => {
-    updateHomework({
+  const handleUpdateComment: SubmitHandler<IUpdateCommentContent> = (data) => {
+    updateComment({
       variables: {
         id: id!,
         content: data.content,
       },
       onCompleted: () => {
-        setOpenHomeWorkEdit(false);
+        setSelectedIndex(-111);
       },
     });
   };
@@ -52,7 +51,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
           />
           <Stack direction={{ xs: "column", sm: "row" }} spacing={1} mt="15px">
             <LoadingButton
-              onClick={handleSubmit(handleUpdateHomework)}
+              onClick={handleSubmit(handleUpdateComment)}
               loading={loading}
               sx={style.loadingButton}
               variant="contained"
@@ -60,7 +59,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               Отправить
             </LoadingButton>
             <Button
-              onClick={() => setOpenHomeWorkEdit(false)}
+              onClick={() => setSelectedIndex(-111)}
               sx={style.buttonCancel}
               variant="contained"
             >
@@ -73,4 +72,4 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   );
 };
 
-export default UpdateHomework;
+export default UpdateComment;

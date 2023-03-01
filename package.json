@@ -54,7 +54,7 @@
     "husky": "husky install",
     "codegen": "graphql-code-generator --config codegen.ts",
     "test": "vitest",
-    "prettier": "pretty-quick --staged",
+    "prettier": "pretty-quick",
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "browserslist": {

@@ -1,0 +1,30 @@
+query commentsHomeWorkByHomeWork(
+  $page: Int!
+  $size: Int!
+  $sort: CommentHomeWorkSort!
+  $homeWorkId: ID!
+) {
+  commentsHomeWorkByHomeWork(
+    page: $page
+    size: $size
+    sort: $sort
+    homeWorkId: $homeWorkId
+  ) {
+    items {
+      id
+      creator {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+      }
+    }
+    totalPages
+    totalElements
+  }
+}

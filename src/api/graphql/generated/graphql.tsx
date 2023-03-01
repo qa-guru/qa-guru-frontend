@@ -823,6 +823,97 @@ export type UpdateHomeworkMutation = {
   } | null;
 };
 
+export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
+  page: Scalars["Int"];
+  size: Scalars["Int"];
+  sort: CommentHomeWorkSort;
+  homeWorkId: Scalars["ID"];
+}>;
+
+export type CommentsHomeWorkByHomeWorkQuery = {
+  __typename?: "Query";
+  commentsHomeWorkByHomeWork?: {
+    __typename?: "CommentHomeWorksDto";
+    totalPages?: number | null;
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "CommentHomeWorkDto";
+      id?: string | null;
+      creationDate?: any | null;
+      content?: string | null;
+      creator?: {
+        __typename?: "UserDto";
+        id?: string | null;
+        firstName?: string | null;
+        middleName?: string | null;
+        lastName?: string | null;
+      } | null;
+      homeWork?: {
+        __typename?: "StudentHomeWorkDto";
+        id?: string | null;
+      } | null;
+    } | null> | null;
+  } | null;
+};
+
+export type SendCommentMutationVariables = Exact<{
+  homeWorkId: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type SendCommentMutation = {
+  __typename?: "Mutation";
+  sendComment?: {
+    __typename?: "CommentHomeWorkDto";
+    id?: string | null;
+    creationDate?: any | null;
+    content?: string | null;
+    creator?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    homeWork?: {
+      __typename?: "StudentHomeWorkDto";
+      id?: string | null;
+      answer?: string | null;
+      status?: StudentHomeWorkStatus | null;
+    } | null;
+  } | null;
+};
+
+export type UpdateCommentMutationVariables = Exact<{
+  id: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type UpdateCommentMutation = {
+  __typename?: "Mutation";
+  updateComment?: {
+    __typename?: "CommentHomeWorkDto";
+    id?: string | null;
+    creationDate?: any | null;
+    content?: string | null;
+    creator?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    homeWork?: {
+      __typename?: "StudentHomeWorkDto";
+      id?: string | null;
+      answer?: string | null;
+      status?: StudentHomeWorkStatus | null;
+    } | null;
+  } | null;
+};
+
 export type LectureQueryVariables = Exact<{
   id: Scalars["ID"];
 }>;
@@ -1335,6 +1426,279 @@ export type UpdateHomeworkMutationResult =
 export type UpdateHomeworkMutationOptions = Apollo.BaseMutationOptions<
   UpdateHomeworkMutation,
   UpdateHomeworkMutationVariables
+>;
+export const CommentsHomeWorkByHomeWorkDocument = gql`
+  query commentsHomeWorkByHomeWork(
+    $page: Int!
+    $size: Int!
+    $sort: CommentHomeWorkSort!
+    $homeWorkId: ID!
+  ) {
+    commentsHomeWorkByHomeWork(
+      page: $page
+      size: $size
+      sort: $sort
+      homeWorkId: $homeWorkId
+    ) {
+      items {
+        id
+        creator {
+          id
+          firstName
+          middleName
+          lastName
+        }
+        creationDate
+        content
+        homeWork {
+          id
+        }
+      }
+      totalPages
+      totalElements
+    }
+  }
+`;
+export type CommentsHomeWorkByHomeWorkComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: CommentsHomeWorkByHomeWorkQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const CommentsHomeWorkByHomeWorkComponent = (
+  props: CommentsHomeWorkByHomeWorkComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >
+    query={CommentsHomeWorkByHomeWorkDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useCommentsHomeWorkByHomeWorkQuery__
+ *
+ * To run a query within a React component, call `useCommentsHomeWorkByHomeWorkQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentsHomeWorkByHomeWorkQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentsHomeWorkByHomeWorkQuery({
+ *   variables: {
+ *      page: // value for 'page'
+ *      size: // value for 'size'
+ *      sort: // value for 'sort'
+ *      homeWorkId: // value for 'homeWorkId'
+ *   },
+ * });
+ */
+export function useCommentsHomeWorkByHomeWorkQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >(CommentsHomeWorkByHomeWorkDocument, options);
+}
+export function useCommentsHomeWorkByHomeWorkLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >(CommentsHomeWorkByHomeWorkDocument, options);
+}
+export type CommentsHomeWorkByHomeWorkQueryHookResult = ReturnType<
+  typeof useCommentsHomeWorkByHomeWorkQuery
+>;
+export type CommentsHomeWorkByHomeWorkLazyQueryHookResult = ReturnType<
+  typeof useCommentsHomeWorkByHomeWorkLazyQuery
+>;
+export type CommentsHomeWorkByHomeWorkQueryResult = Apollo.QueryResult<
+  CommentsHomeWorkByHomeWorkQuery,
+  CommentsHomeWorkByHomeWorkQueryVariables
+>;
+export const SendCommentDocument = gql`
+  mutation sendComment($homeWorkId: ID!, $content: String!) {
+    sendComment(homeWorkId: $homeWorkId, content: $content) {
+      id
+      creator {
+        id
+        email
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+        answer
+        status
+      }
+    }
+  }
+`;
+export type SendCommentMutationFn = Apollo.MutationFunction<
+  SendCommentMutation,
+  SendCommentMutationVariables
+>;
+export type SendCommentComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    SendCommentMutation,
+    SendCommentMutationVariables
+  >,
+  "mutation"
+>;
+
+export const SendCommentComponent = (props: SendCommentComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    SendCommentMutation,
+    SendCommentMutationVariables
+  >
+    mutation={SendCommentDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useSendCommentMutation__
+ *
+ * To run a mutation, you first call `useSendCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendCommentMutation, { data, loading, error }] = useSendCommentMutation({
+ *   variables: {
+ *      homeWorkId: // value for 'homeWorkId'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useSendCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    SendCommentMutation,
+    SendCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<SendCommentMutation, SendCommentMutationVariables>(
+    SendCommentDocument,
+    options
+  );
+}
+export type SendCommentMutationHookResult = ReturnType<
+  typeof useSendCommentMutation
+>;
+export type SendCommentMutationResult =
+  Apollo.MutationResult<SendCommentMutation>;
+export type SendCommentMutationOptions = Apollo.BaseMutationOptions<
+  SendCommentMutation,
+  SendCommentMutationVariables
+>;
+export const UpdateCommentDocument = gql`
+  mutation updateComment($id: ID!, $content: String!) {
+    updateComment(id: $id, content: $content) {
+      id
+      creator {
+        id
+        email
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+        answer
+        status
+      }
+    }
+  }
+`;
+export type UpdateCommentMutationFn = Apollo.MutationFunction<
+  UpdateCommentMutation,
+  UpdateCommentMutationVariables
+>;
+export type UpdateCommentComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateCommentComponent = (props: UpdateCommentComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >
+    mutation={UpdateCommentDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUpdateCommentMutation__
+ *
+ * To run a mutation, you first call `useUpdateCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCommentMutation, { data, loading, error }] = useUpdateCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useUpdateCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >(UpdateCommentDocument, options);
+}
+export type UpdateCommentMutationHookResult = ReturnType<
+  typeof useUpdateCommentMutation
+>;
+export type UpdateCommentMutationResult =
+  Apollo.MutationResult<UpdateCommentMutation>;
+export type UpdateCommentMutationOptions = Apollo.BaseMutationOptions<
+  UpdateCommentMutation,
+  UpdateCommentMutationVariables
 >;
 export const LectureDocument = gql`
   query lecture($id: ID!) {

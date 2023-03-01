@@ -1,50 +1,48 @@
 import React from "react";
 import { Box, Button, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  IUpdateHomeWork,
-  IUpdateHomeworkContent,
-} from "./UpdateHomework.types";
+import { ISendComment, ISendCommentContent } from "./SendComment.types";
 import RHF from "../../../../shared/InputRHF";
+import { client } from "../../../../api/http";
 
 const style = {
-  loadingButton: { textTransform: "none", minWidth: "151px" },
-  paper: { p: "20px", mt: "40px" },
+  loadingButton: {
+    textTransform: "none",
+    minWidth: "151px",
+  },
+  paper: { padding: "20px", mt: "40px" },
   buttonCancel: {
     textTransform: "none",
     minWidth: "151px",
   },
 };
 
-const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
-  const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
-
-  const { handleSubmit, control } = useForm<IUpdateHomeworkContent>({
+const SendComment: React.FC<ISendComment> = (props) => {
+  const { sendComment, loading, setAddComment, id } = props;
+  const { handleSubmit, control } = useForm<ISendCommentContent>({
     defaultValues: {
-      content: answer!,
+      content: "",
     },
   });
 
-  const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
-    data
-  ) => {
-    updateHomework({
-      variables: {
-        id: id!,
-        content: data.content,
-      },
-      onCompleted: () => {
-        setOpenHomeWorkEdit(false);
-      },
+  const handleSendComment: SubmitHandler<ISendCommentContent> = (data) => {
+    sendComment({
+      variables: { homeWorkId: id, content: data.content },
+      onCompleted: () =>
+        client.refetchQueries({ include: ["commentsHomeWorkByHomeWork"] }),
+    }).then(() => {
+      setAddComment(false);
     });
   };
 
   return (
     <form>
-      <Stack direction="row" spacing={2} mt="15px">
+      <Stack direction="row" spacing={2}>
         <Box width="100%">
           <RHF.InputTextField
+            placeholder="Текст ответа"
             multiline
             rows={5}
             name="content"
@@ -52,7 +50,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
           />
           <Stack direction={{ xs: "column", sm: "row" }} spacing={1} mt="15px">
             <LoadingButton
-              onClick={handleSubmit(handleUpdateHomework)}
+              onClick={handleSubmit(handleSendComment)}
               loading={loading}
               sx={style.loadingButton}
               variant="contained"
@@ -60,7 +58,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               Отправить
             </LoadingButton>
             <Button
-              onClick={() => setOpenHomeWorkEdit(false)}
+              onClick={() => setAddComment(false)}
               sx={style.buttonCancel}
               variant="contained"
             >
@@ -73,4 +71,4 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   );
 };
 
-export default UpdateHomework;
+export default SendComment;
