@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { Box, Button, Paper, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { format, parseISO } from "date-fns";
 import { IHomework } from "./Homework.types";
-import UpdateHomework from "./UpdateHomework/UpdateHomeworkContainer";
-import SendHomeWork from "./SendHomework/SendHomeworkContainer";
+import UpdateHomework from "./UpdateHomework";
+import SendHomeWork from "./SendHomework";
+import Comment from "./Comment";
+import SendComment from "./SendComment";
 import { ReactComponent as OvenClock } from "../../../assets/icons/ovenclock.svg";
 import { ReactComponent as Search } from "../../../assets/icons/search.svg";
 import { ReactComponent as Done } from "../../../assets/icons/done.svg";
+import { ReactComponent as Plus } from "../../../assets/icons/button-plus.svg";
 import TextSerialization from "../../../shared/TextSerialization";
+import { primary } from "../../../theme/colors";
 
 const style = {
   paper: { padding: "20px", mt: "40px" },
@@ -21,6 +32,7 @@ const style = {
     width: "max-content",
     mt: "20px",
   },
+  loadMoreBtn: { color: primary.main, maxWidth: "20%", margin: "0 auto" },
 };
 
 const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
@@ -36,11 +48,18 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
   } = dataHomeWorkByLecture.homeWorkByLecture!;
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
+  const [addComment, setAddComment] = useState<boolean>(false);
+  const [size, setSize] = useState<number>(2);
+  const [totalElements, setTotalElements] = useState<any>();
+
+  const field: any = "CREATION_DATE";
+  const order: any = "DESC";
 
   let icon;
   let date;
   let statusText;
   let homework;
+  let comment;
 
   switch (status) {
     case "NEW":
@@ -73,6 +92,25 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
   } else {
     homework = <SendHomeWork />;
   }
+
+  if (addComment) {
+    comment = <SendComment setAddComment={setAddComment} id={id!} />;
+  } else {
+    comment = (
+      <Comment
+        id={id!}
+        size={size}
+        field={field}
+        order={order}
+        setTotalElements={setTotalElements}
+      />
+    );
+  }
+
+  const loadMore = () => {
+    setSize(size + 1);
+  };
+
   return (
     <Paper sx={style.paper}>
       <Stack spacing={3} direction="row" alignItems="center">
@@ -98,7 +136,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
         </Stack>
       </Stack>
 
-      {status === "NEW" && (
+      {status && (
         <Stack
           spacing={1.7}
           direction="row"
@@ -136,6 +174,33 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
         >
           Редактировать
         </Button>
+      )}
+
+      {status && (
+        <Box mt="20px" p="0 15px">
+          <Typography variant="h5">Комментарии</Typography>
+          {comment}
+
+          {!addComment && (
+            <>
+              <IconButton onClick={() => setAddComment(true)}>
+                <Plus />
+              </IconButton>
+
+              {totalElements > 2 && totalElements > size && (
+                <Stack>
+                  <Button
+                    onClick={loadMore}
+                    sx={style.loadMoreBtn}
+                    variant="outlined"
+                  >
+                    Загрузить еще
+                  </Button>
+                </Stack>
+              )}
+            </>
+          )}
+        </Box>
       )}
     </Paper>
   );

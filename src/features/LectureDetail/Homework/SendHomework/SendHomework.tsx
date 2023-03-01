@@ -13,11 +13,6 @@ const style = {
     minWidth: "151px",
     marginTop: "15px",
   },
-  paper: { padding: "20px", mt: "40px" },
-  avatar: {
-    width: 40,
-    height: 40,
-  },
 };
 
 const SendHomework: React.FC<ISendHomeWork> = (props) => {
@@ -33,7 +28,7 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
     sendHomeWorkToCheck({
       variables: { lectureId: lectureId!, content: data.content },
       onCompleted: () =>
-        client.refetchQueries({ include: ["homeWorkByStudentAndLecture"] }),
+        client.refetchQueries({ include: ["homeWorkByLecture"] }),
     });
   };
 

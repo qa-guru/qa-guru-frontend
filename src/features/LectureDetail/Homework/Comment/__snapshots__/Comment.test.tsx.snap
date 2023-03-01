@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`Comment > the component is render 1`] = `<DocumentFragment />`;

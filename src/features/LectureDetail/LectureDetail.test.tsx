@@ -5,7 +5,6 @@ import {
   HomeWorkByLectureQuery,
   LectureHomeWorkQuery,
   LectureQuery,
-  StudentHomeWorkStatus,
 } from "../../api/graphql/generated/graphql";
 
 const mockDataLecture: LectureQuery = {
