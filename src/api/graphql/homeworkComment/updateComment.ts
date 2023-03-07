@@ -1,11 +1,23 @@
+import { ApolloError } from "@apollo/client/errors";
 import { useSnackbar } from "notistack";
-import { useUpdateCommentMutation as _useUpdateCommentMutation } from "../generated/graphql";
+import * as Apollo from "@apollo/client";
+import {
+  UpdateCommentMutation,
+  UpdateCommentMutationVariables,
+  useUpdateCommentMutation as _useUpdateCommentMutation,
+} from "../generated/graphql";
 
-export const useUpdateCommentMutation = () => {
+export const useUpdateCommentMutation = (
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >
+) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return _useUpdateCommentMutation({
-    onError: (error) =>
+    onError: (error: ApolloError) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
+    ...baseOptions,
   });
 };

@@ -7,10 +7,10 @@ export interface ITextSerialization {
 
 const TextSerialization: React.FC<ITextSerialization> = ({ text }) => {
   const linkRegex = /(https?:\/\/[^\s]+)/g;
-  const lines = text.split("\n");
+  const lines = text?.split("\n");
 
   return (
-    <>
+    <Box overflow="hidden">
       {lines?.map((line, i) => {
         const parts = line.split(linkRegex);
         return (
@@ -28,7 +28,7 @@ const TextSerialization: React.FC<ITextSerialization> = ({ text }) => {
           </Typography>
         );
       })}
-    </>
+    </Box>
   );
 };
 

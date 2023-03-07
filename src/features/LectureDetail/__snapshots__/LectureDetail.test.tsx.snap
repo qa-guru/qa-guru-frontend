@@ -8,7 +8,7 @@ exports[`LectureDetail > the component is render 1`] = `
     string
   </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
   >
     <h6
       class="MuiTypography-root MuiTypography-h6 css-css8ik-MuiTypography-root"
@@ -19,10 +19,10 @@ exports[`LectureDetail > the component is render 1`] = `
       class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
     />
     <div
-      class="css-b55nah-MuiStack-root"
+      class="MuiStack-root css-b55nah-MuiStack-root"
     >
       <div
-        class="css-1sx5dla-MuiStack-root"
+        class="MuiStack-root css-1sx5dla-MuiStack-root"
       >
         <h6
           class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
@@ -36,7 +36,7 @@ exports[`LectureDetail > the component is render 1`] = `
         </h6>
       </div>
       <div
-        class="css-1sx5dla-MuiStack-root"
+        class="MuiStack-root css-1sx5dla-MuiStack-root"
       >
         <h6
           class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
@@ -60,7 +60,7 @@ exports[`LectureDetail > the component is render 1`] = `
     class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
   >
     <div
-      class="css-mcfb5r-MuiStack-root"
+      class="MuiStack-root css-mcfb5r-MuiStack-root"
     >
       <div
         class="MuiAvatar-root MuiAvatar-circular css-3xou8u-MuiAvatar-root"
@@ -88,10 +88,10 @@ exports[`LectureDetail > the component is render 1`] = `
     Материалы урока
   </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
   >
     <div
-      class="css-zgbp5c-MuiStack-root"
+      class="MuiStack-root css-zgbp5c-MuiStack-root"
     />
   </div>
   <h4
@@ -100,17 +100,17 @@ exports[`LectureDetail > the component is render 1`] = `
     Домашнее задание
   </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1u0eh3h-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
   >
     <div
-      class="css-zgbp5c-MuiStack-root"
+      class="MuiStack-root css-zgbp5c-MuiStack-root"
     />
   </div>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1w6a372-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-164p8hf-MuiPaper-root"
   >
     <div
-      class="css-a2l1ks-MuiStack-root"
+      class="MuiStack-root css-a2l1ks-MuiStack-root"
     >
       <h5
         class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
@@ -118,7 +118,7 @@ exports[`LectureDetail > the component is render 1`] = `
         Ответ на задание
       </h5>
       <div
-        class="css-zpn3py-MuiStack-root"
+        class="MuiStack-root css-zpn3py-MuiStack-root"
       >
         <div
           class="MuiBox-root css-0"
@@ -133,50 +133,54 @@ exports[`LectureDetail > the component is render 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root css-tr0r3x"
+      class="MuiBox-root css-6qfr2n"
     >
       <form>
         <div
-          class="css-17qspa5-MuiStack-root"
+          class="MuiStack-root css-17qspa5-MuiStack-root"
         >
           <div
             class="MuiBox-root css-8atqhb"
           >
             <div
-              class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+              class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
             >
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
               >
-                <textarea
-                  aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                  id=":r0:"
-                  placeholder="Текст ответа"
-                  rows="5"
-                  style="height: 0px; overflow: hidden;"
-                />
-                <textarea
-                  aria-hidden="true"
-                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                  readonly=""
-                  style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
-                  tabindex="-1"
-                />
-                <fieldset
-                  aria-hidden="true"
-                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
                 >
-                  <legend
-                    class="css-ihdtdm"
+                  <textarea
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                    id=":r0:"
+                    placeholder="Текст ответа"
+                    rows="5"
+                    style="height: 0px; overflow: hidden;"
+                  />
+                  <textarea
+                    aria-hidden="true"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                    readonly=""
+                    style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                    tabindex="-1"
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                   >
-                    <span
-                      class="notranslate"
+                    <legend
+                      class="css-ihdtdm"
                     >
-                      ​
-                    </span>
-                  </legend>
-                </fieldset>
+                      <span
+                        class="notranslate"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
               </div>
             </div>
             <button

@@ -11,7 +11,7 @@ import {
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
 import Logout from "../../../Authorization/Logout";
 import { black } from "../../../../theme/colors";
@@ -39,7 +39,7 @@ const Profile: React.FC<IProfile> = (props) => {
   const settings = [
     {
       title: "Настройки",
-      icon: <ExitToAppIcon />,
+      icon: <SettingsIcon />,
     },
   ];
 

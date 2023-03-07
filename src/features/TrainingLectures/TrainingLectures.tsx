@@ -6,7 +6,7 @@ import { primary, white } from "../../theme/colors";
 
 const style = {
   link: { textDecoration: "none" },
-  paper: { padding: "24px 24px 15px 24px" },
+  paper: { padding: { xs: "15px", md: "20px" } },
   circle: {
     minWidth: "40px",
     height: "40px",

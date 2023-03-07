@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, SvgIcon } from "@mui/material";
 import { ReactComponent as Logo } from "../../assets/icons/logo-footer.svg";
-import { secondary } from "../../theme/colors";
+import { purple } from "../../theme/colors";
 
 const style = {
   svgIcon: { height: "31px", width: { xs: "120px", sm: "166px" } },
   box: {
-    bgcolor: secondary.main,
+    bgcolor: purple.main,
     position: "fixed",
     bottom: "0",
     width: "100%",

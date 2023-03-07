@@ -61,7 +61,7 @@ const Header = () => {
           />
 
           <Box sx={style.box}>
-            <IconButton onClick={() => handleClickNavMenu("/")}>
+            <IconButton disableRipple onClick={() => handleClickNavMenu("/")}>
               <SvgIcon sx={style.svgIcon} viewBox="0 0 166 31">
                 <Logo />
               </SvgIcon>

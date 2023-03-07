@@ -4,7 +4,7 @@ import { ILectureDescription } from "./LectureDescription.types";
 import { primary, white } from "../../../theme/colors";
 
 const style = {
-  paper: { padding: "20px" },
+  paper: { padding: { xs: "15px", md: "20px" } },
   circle: {
     minWidth: "40px",
     height: "40px",

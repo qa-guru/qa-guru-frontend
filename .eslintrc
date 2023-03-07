@@ -20,6 +20,7 @@
   },
   "plugins": ["import", "sonarjs"],
   "rules": {
+    "no-unsafe-optional-chaining": "off",
     // possible errors
     "for-direction": "error",
     "no-prototype-builtins": "error",

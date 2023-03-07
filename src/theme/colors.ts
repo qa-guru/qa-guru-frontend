@@ -3,13 +3,18 @@ export const primary = {
   main: primaryMain,
 };
 
-const secondaryMain = "#4a4458";
+const secondaryMain = "#E0E0E0";
 export const secondary = {
   main: secondaryMain,
 };
 
+export const purple = {
+  main: "#4A4458",
+};
+
 export const grey = {
   main: "#CAC4D0",
+  secondary: "#EEEEEE",
 };
 
 export const white = {

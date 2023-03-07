@@ -1,15 +1,17 @@
-import React from "react";
-import { CommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/generated/graphql";
+import { ApolloQueryResult, FetchMoreQueryOptions } from "@apollo/client";
+import {
+  CommentsHomeWorkByHomeWorkQuery,
+  CommentsHomeWorkByHomeWorkQueryVariables,
+  UserQuery,
+} from "../../../../api/graphql/generated/graphql";
 
 export interface IComment {
-  data: CommentsHomeWorkByHomeWorkQuery;
-  setTotalElements: React.Dispatch<React.SetStateAction<any>>;
+  dataCommentsHomeWorkByHomeWork: CommentsHomeWorkByHomeWorkQuery;
+  dataUser: UserQuery;
+  id: string;
+  fetchMore: any;
 }
 
 export interface ICommentContainer {
   id: string;
-  size: number;
-  field: any;
-  order: any;
-  setTotalElements: React.Dispatch<React.SetStateAction<any>>;
 }

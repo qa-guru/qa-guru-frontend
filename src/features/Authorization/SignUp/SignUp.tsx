@@ -19,7 +19,7 @@ import { ISignUp } from "./SignUp.types";
 import RHF from "../../../shared/InputRHF";
 import LocalSelector from "../../../shared/LocalSelector";
 import { UserCreateInput } from "../../../api/graphql/generated/graphql";
-import { primary, secondary } from "../../../theme/colors";
+import { primary, purple } from "../../../theme/colors";
 import { ReactComponent as Logo } from "../../../assets/icons/logo.svg";
 
 const style = {
@@ -31,7 +31,7 @@ const style = {
   stack: {
     padding: { xs: "16px 30px 10px", md: "32px 60px 20px" },
   },
-  wrapper: { height: "100vh", bgcolor: secondary.main },
+  wrapper: { height: "100vh", bgcolor: purple.main },
   btn: { textTransform: "none" },
   button: { textTransform: "none", color: primary.main },
 };

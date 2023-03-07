@@ -1,10 +1,9 @@
 import React from "react";
-import { SendCommentMutationFn } from "../../../../api/graphql/generated/graphql";
+import { SendCommentMutationFn } from "../../../../../api/graphql/generated/graphql";
 
 export interface ISendComment {
   sendComment: SendCommentMutationFn;
   loading: boolean;
-  setAddComment: React.Dispatch<React.SetStateAction<boolean>>;
   id: string;
 }
 
@@ -13,6 +12,7 @@ export interface ISendCommentContent {
 }
 
 export interface ISendHomeworkContainer {
-  setAddComment: React.Dispatch<React.SetStateAction<boolean>>;
+  setComments: React.Dispatch<React.SetStateAction<any[]>>;
+  comments: any[];
   id: string;
 }

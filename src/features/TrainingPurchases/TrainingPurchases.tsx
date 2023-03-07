@@ -4,7 +4,7 @@ import { CardActionArea, Grid, Paper, Typography } from "@mui/material";
 import { ITrainings } from "./TrainingPurchases.types";
 
 const style = {
-  paper: { padding: "24px 24px 15px 24px" },
+  paper: { padding: { xs: "15px", md: "20px" } },
 };
 
 const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
