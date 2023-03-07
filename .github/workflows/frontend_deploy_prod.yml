@@ -1,17 +1,17 @@
-name: ter4_frontend_deploy_test
+name: frontend_deploy_prod
 on:
   push:
     branches: 
-      - develop
+      - main
 jobs:
   checkout:
-    runs-on: stage-runner
+    runs-on: prod-runner
     
     steps:
       - uses: actions/checkout@v3
   
   yarn-and-node:
-    runs-on: stage-runner
+    runs-on: prod-runner
     needs: checkout
     steps:
       - name: Use Node.js 18.x
@@ -28,17 +28,17 @@ jobs:
           cmd: build # will run `yarn build` command
       - name: Deploy step 1
         run:
-           rm -rf /var/www/app-stage.qa.guru/html/*
+           rm -rf /var/www/app.qa.guru/html/*
 #            cp -r dist/* /var/www/app.qa.guru/html/
       - name: Deploy step 2
         run:
 #            rm -rf /var/www/app.qa.guru/html/*
-           cp -r dist/* /var/www/app-stage.qa.guru/html/
+           cp -r dist/* /var/www/app.qa.guru/html/
 
   runtest:
     runs-on: stage-runner
     needs: yarn-and-node
     steps:  
       - name: runtest
-        run:  docker run --rm qa-guru-e2e-tests-api:latest  gradle clean smokeUI -Denv="stage"
+        run:  docker run --rm qa-guru-e2e-tests-api:latest  gradle clean smokeUI -Denv="prod"
         
