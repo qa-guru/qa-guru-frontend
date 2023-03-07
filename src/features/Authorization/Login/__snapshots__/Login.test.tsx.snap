@@ -3,7 +3,7 @@
 exports[`Login > the component is Loading 1`] = `
 <DocumentFragment>
   <div
-    class="css-11wokni-MuiStack-root"
+    class="MuiStack-root css-i110ky-MuiStack-root"
   >
     <svg
       aria-hidden="true"
@@ -64,7 +64,7 @@ exports[`Login > the component is Loading 1`] = `
     >
       <form>
         <div
-          class="css-14szvo7-MuiStack-root"
+          class="MuiStack-root css-14szvo7-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -375,7 +375,7 @@ exports[`Login > the component is Loading 1`] = `
 exports[`Login > the component is not Loading 1`] = `
 <DocumentFragment>
   <div
-    class="css-11wokni-MuiStack-root"
+    class="MuiStack-root css-i110ky-MuiStack-root"
   >
     <svg
       aria-hidden="true"
@@ -436,7 +436,7 @@ exports[`Login > the component is not Loading 1`] = `
     >
       <form>
         <div
-          class="css-14szvo7-MuiStack-root"
+          class="MuiStack-root css-14szvo7-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"

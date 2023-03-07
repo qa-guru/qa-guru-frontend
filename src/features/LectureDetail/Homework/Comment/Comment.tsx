@@ -1,90 +1,144 @@
 import React, { useEffect, useState } from "react";
-import { Stack, Typography, Box, IconButton, Button } from "@mui/material";
+import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { format, parseISO } from "date-fns";
+import { LoadingButton } from "@mui/lab";
 import { IComment } from "./Comment.types";
 import UpdateComment from "./UpdateComment";
+import SendComment from "./SendComment";
 import TextSerialization from "../../../../shared/TextSerialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
+import { grey, primary } from "../../../../theme/colors";
+import { CommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/generated/graphql";
 
 const style = {
   avatar: {
     width: 40,
     height: 40,
   },
-  wrapper: {
-    width: "max-content",
-    mt: "20px",
+  container: {
+    backgroundColor: grey.secondary,
+    borderRadius: "12px",
+    padding: { xs: "10px", md: "15px" },
   },
+  loadMoreBtn: { color: primary.main, margin: "0 auto" },
 };
 
 const Comment: React.FC<IComment> = (props) => {
-  const { data, setTotalElements } = props;
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const { dataCommentsHomeWorkByHomeWork, dataUser, fetchMore, id } = props;
+  const [page, setPage] = useState<number>(1);
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [hasMoreComments, setHasMoreComments] = useState(true);
+  const { totalElements, items } =
+    dataCommentsHomeWorkByHomeWork.commentsHomeWorkByHomeWork! || {};
+  const [comments, setComments] = useState<any[]>(items!);
+  const { id: idUser } = dataUser.user!;
 
   useEffect(() => {
-    setTotalElements(data?.commentsHomeWorkByHomeWork?.totalElements);
-  }, [data]);
+    if (comments?.length >= totalElements) {
+      setHasMoreComments(false);
+    }
+  }, [comments]);
+
+  const handleLoadMore = () => {
+    setLoading(true);
+    setPage(page + 1);
+    fetchMore({
+      variables: { page },
+      updateQuery: (
+        previousQueryResult: CommentsHomeWorkByHomeWorkQuery,
+        {
+          fetchMoreResult,
+        }: { fetchMoreResult?: CommentsHomeWorkByHomeWorkQuery }
+      ) => {
+        if (!fetchMoreResult) return previousQueryResult;
+
+        setComments([
+          ...comments,
+          ...fetchMoreResult.commentsHomeWorkByHomeWork?.items!,
+        ]);
+      },
+    }).then(() => setLoading(false));
+  };
 
   return (
-    <>
-      {data?.commentsHomeWorkByHomeWork?.items?.map((item, index) => {
-        const isSelected = index === selectedIndex;
+    <Box mt="20px" p="0 15px">
+      <Typography variant="h5">Комментарии</Typography>
+      <Stack mt="5px" spacing={2}>
+        {comments?.map((item, index) => {
+          const isSelected = index === selectedIndex;
+          const { creator, content, creationDate, id } = item!;
 
-        return (
-          <Stack
-            alignItems="center"
-            direction="row"
-            key={index}
-            justifyContent="space-between"
-          >
-            <Box width="100%">
+          return (
+            <Paper key={index} sx={style.container}>
               <Stack
-                spacing={1.7}
+                alignItems={{ xs: "flex-start", md: "center" }}
                 direction="row"
-                alignItems="center"
-                sx={style.wrapper}
+                justifyContent="space-between"
+                spacing={1}
               >
-                <Avatar
-                  sx={style.avatar}
-                  alt="Remy Sharp"
-                  src="/static/images/avatar/1.jpg"
-                />
-                <Box>
-                  <Typography variant="subtitle1">
-                    {item?.creator?.firstName} {item?.creator?.lastName}
-                  </Typography>
-                  <Stack direction="row" justifyContent="space-between">
-                    <Typography variant="subtitle2">
-                      {format(parseISO(item?.creationDate!), "dd.MM.yyyy")}
-                    </Typography>
-                    <Typography variant="subtitle2">
-                      {format(parseISO?.(item?.creationDate!), "HH:mm")}
-                    </Typography>
+                <Box width="100%">
+                  <Stack spacing={1.7} direction="row" alignItems="center">
+                    <Avatar
+                      sx={style.avatar}
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/1.jpg"
+                    />
+                    <Box>
+                      <Typography variant="subtitle1">
+                        {creator?.firstName} {creator?.lastName}
+                      </Typography>
+                      <Stack direction="row" justifyContent="space-between">
+                        <Typography variant="subtitle2">
+                          {format(
+                            parseISO(creationDate!),
+                            "dd.MM.yyyy '|' HH:mm"
+                          )}
+                        </Typography>
+                      </Stack>
+                    </Box>
                   </Stack>
+
+                  <Box mt="7px">
+                    {isSelected ? (
+                      <UpdateComment
+                        comments={comments}
+                        setComments={setComments}
+                        content={content!}
+                        setSelectedIndex={setSelectedIndex}
+                        id={id!}
+                      />
+                    ) : (
+                      <TextSerialization text={content!} />
+                    )}
+                  </Box>
                 </Box>
-              </Stack>
 
-              <Box mt="7px">
-                {isSelected ? (
-                  <UpdateComment
-                    content={item?.content!}
-                    setSelectedIndex={setSelectedIndex}
-                    id={item?.id!}
-                  />
-                ) : (
-                  <TextSerialization text={item?.content!} />
+                {!isSelected && idUser === creator?.id && (
+                  <IconButton onClick={() => setSelectedIndex(index)}>
+                    <Edit />
+                  </IconButton>
                 )}
-              </Box>
-            </Box>
-
-            <IconButton onClick={() => setSelectedIndex(index)}>
-              <Edit />
-            </IconButton>
-          </Stack>
-        );
-      })}
-    </>
+              </Stack>
+            </Paper>
+          );
+        })}
+      </Stack>
+      {hasMoreComments && (
+        <Stack mt="15px">
+          <LoadingButton
+            loading={loading}
+            onClick={handleLoadMore}
+            sx={style.loadMoreBtn}
+            variant="outlined"
+          >
+            Загрузить еще
+          </LoadingButton>
+        </Stack>
+      )}
+      <SendComment comments={comments} setComments={setComments} id={id!} />
+    </Box>
   );
 };
 

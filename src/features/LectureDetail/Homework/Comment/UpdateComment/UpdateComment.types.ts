@@ -17,4 +17,6 @@ export interface IUpdateCommentContainer {
   id: string;
   setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
   content: string;
+  comments: any;
+  setComments: React.Dispatch<React.SetStateAction<any>>;
 }

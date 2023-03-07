@@ -1,8 +1,11 @@
 import React from "react";
-import { Box, Stack } from "@mui/material";
+import { Box, FormControl, FormHelperText, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 import { ISendHomeWork, ISendHomeWorkContent } from "./SendHomework.types";
 import RHF from "../../../../shared/InputRHF";
 import { client } from "../../../../api/http";
@@ -18,10 +21,20 @@ const style = {
 const SendHomework: React.FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
   const { lectureId } = useParams();
-  const { handleSubmit, control } = useForm<ISendHomeWorkContent>({
+  const { t } = useTranslation();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ISendHomeWorkContent>({
     defaultValues: {
       content: "",
     },
+    resolver: yupResolver(
+      yup.object().shape({
+        content: yup.string().required(t("content.required")!),
+      })
+    ),
   });
 
   const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
@@ -36,13 +49,18 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
     <form>
       <Stack direction="row" spacing={2} mt="15px">
         <Box width="100%">
-          <RHF.InputTextField
-            placeholder="Текст ответа"
-            multiline
-            rows={5}
-            name="content"
-            control={control}
-          />
+          <FormControl fullWidth>
+            <RHF.InputTextField
+              placeholder="Текст ответа"
+              multiline
+              rows={5}
+              name="content"
+              control={control}
+            />
+            {errors?.content && (
+              <FormHelperText error>{errors?.content.message}</FormHelperText>
+            )}
+          </FormControl>
           <LoadingButton
             onClick={handleSubmit(sendHomeWork)}
             loading={loading}

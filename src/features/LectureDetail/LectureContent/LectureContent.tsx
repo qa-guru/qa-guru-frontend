@@ -4,7 +4,7 @@ import { ILectureContent } from "./LectureContent.types";
 import Content from "../../../shared/Content";
 
 const style = {
-  paper: { padding: "20px" },
+  paper: { padding: { xs: "15px", md: "20px" } },
 };
 
 const LectureContent: React.FC<ILectureContent> = ({ content }) => {

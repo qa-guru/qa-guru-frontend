@@ -3,11 +3,11 @@ import merge from "lodash/merge";
 import components from "./components";
 import themesOptions from "./themeOptions";
 import { THEMES } from "./constans";
-import "./fonts";
+import "./fonts.css";
 
 const baseOptions = {
   typography: {
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: "'Montserrat', sans-serif",
   },
 };
 

@@ -25,11 +25,11 @@ const Logout: React.FC<ILogout> = (props) => {
         <DialogContentText>{t("logout.confirm")}</DialogContentText>
       </DialogContent>
       <DialogActions>
+        <Button color="secondary" variant="contained" onClick={handleCancel}>
+          {t("no")}
+        </Button>
         <Button variant="contained" onClick={handleOk}>
           {t("yes")}
-        </Button>
-        <Button variant="contained" onClick={handleCancel}>
-          {t("no")}
         </Button>
       </DialogActions>
     </Dialog>

@@ -1,29 +1,19 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { format, parseISO } from "date-fns";
 import { IHomework } from "./Homework.types";
 import UpdateHomework from "./UpdateHomework";
 import SendHomeWork from "./SendHomework";
 import Comment from "./Comment";
-import SendComment from "./SendComment";
 import { ReactComponent as OvenClock } from "../../../assets/icons/ovenclock.svg";
 import { ReactComponent as Search } from "../../../assets/icons/search.svg";
 import { ReactComponent as Done } from "../../../assets/icons/done.svg";
-import { ReactComponent as Plus } from "../../../assets/icons/button-plus.svg";
 import TextSerialization from "../../../shared/TextSerialization";
-import { primary } from "../../../theme/colors";
 
 const style = {
-  paper: { padding: "20px", mt: "40px" },
-  buttonUpdate: { textTransform: "none", minWidth: "151px", mt: "15px" },
+  paper: { padding: { xs: "15px", md: "20px" }, mt: "40px" },
+  buttonUpdate: { textTransform: "none", minWidth: "147px", mt: "15px" },
   avatar: {
     width: 40,
     height: 40,
@@ -32,7 +22,6 @@ const style = {
     width: "max-content",
     mt: "20px",
   },
-  loadMoreBtn: { color: primary.main, maxWidth: "20%", margin: "0 auto" },
 };
 
 const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
@@ -48,18 +37,11 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
   } = dataHomeWorkByLecture.homeWorkByLecture!;
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
-  const [addComment, setAddComment] = useState<boolean>(false);
-  const [size, setSize] = useState<number>(2);
-  const [totalElements, setTotalElements] = useState<any>();
-
-  const field: any = "CREATION_DATE";
-  const order: any = "DESC";
 
   let icon;
   let date;
   let statusText;
   let homework;
-  let comment;
 
   switch (status) {
     case "NEW":
@@ -92,24 +74,6 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
   } else {
     homework = <SendHomeWork />;
   }
-
-  if (addComment) {
-    comment = <SendComment setAddComment={setAddComment} id={id!} />;
-  } else {
-    comment = (
-      <Comment
-        id={id!}
-        size={size}
-        field={field}
-        order={order}
-        setTotalElements={setTotalElements}
-      />
-    );
-  }
-
-  const loadMore = () => {
-    setSize(size + 1);
-  };
 
   return (
     <Paper sx={style.paper}>
@@ -154,18 +118,14 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
             </Typography>
             <Stack direction="row" justifyContent="space-between">
               <Typography variant="subtitle2">
-                {format(parseISO(creationDate!), "dd.MM.yyyy")}
-              </Typography>
-              <Typography variant="subtitle2">
-                {format(parseISO?.(creationDate!), "HH:mm")}
+                {format(parseISO(creationDate!), "dd.MM.yyyy '|' HH:mm")}
               </Typography>
             </Stack>
           </Box>
         </Stack>
       )}
 
-      <Box mt="15px">{homework}</Box>
-
+      <Box mt="7px">{homework}</Box>
       {!openHomeWorkEdit && status && (
         <Button
           onClick={() => setOpenHomeWorkEdit(true)}
@@ -176,32 +136,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
         </Button>
       )}
 
-      {status && (
-        <Box mt="20px" p="0 15px">
-          <Typography variant="h5">Комментарии</Typography>
-          {comment}
-
-          {!addComment && (
-            <>
-              <IconButton onClick={() => setAddComment(true)}>
-                <Plus />
-              </IconButton>
-
-              {totalElements > 2 && totalElements > size && (
-                <Stack>
-                  <Button
-                    onClick={loadMore}
-                    sx={style.loadMoreBtn}
-                    variant="outlined"
-                  >
-                    Загрузить еще
-                  </Button>
-                </Stack>
-              )}
-            </>
-          )}
-        </Box>
-      )}
+      {status && <Comment id={id!} />}
     </Paper>
   );
 };

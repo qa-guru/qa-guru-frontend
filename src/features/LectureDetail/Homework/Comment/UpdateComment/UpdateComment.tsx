@@ -4,17 +4,13 @@ import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IUpdateComment, IUpdateCommentContent } from "./UpdateComment.types";
 import RHF from "../../../../../shared/InputRHF";
+import { black } from "../../../../../theme/colors";
 
 const style = {
-  loadingButton: { textTransform: "none", minWidth: "151px" },
-  paper: { p: "20px", mt: "40px" },
-  avatar: {
-    width: 40,
-    height: 40,
-  },
+  loadingButton: { minWidth: "147px" },
   buttonCancel: {
-    textTransform: "none",
-    minWidth: "151px",
+    minWidth: "116px",
+    color: black.main,
   },
 };
 
@@ -41,15 +37,28 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
 
   return (
     <form>
-      <Stack direction="row" spacing={2} mt="15px">
+      <Stack direction="row" spacing={2}>
         <Box width="100%">
           <RHF.InputTextField
             multiline
-            rows={5}
+            rows={2}
             name="content"
             control={control}
           />
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={1} mt="15px">
+          <Stack
+            direction={{ xs: "column-reverse", sm: "row" }}
+            justifyContent="flex-end"
+            spacing={1}
+            mt="5px"
+          >
+            <Button
+              onClick={() => setSelectedIndex(-111)}
+              sx={style.buttonCancel}
+              variant="contained"
+              color="secondary"
+            >
+              Отменить
+            </Button>
             <LoadingButton
               onClick={handleSubmit(handleUpdateComment)}
               loading={loading}
@@ -58,13 +67,6 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
             >
               Отправить
             </LoadingButton>
-            <Button
-              onClick={() => setSelectedIndex(-111)}
-              sx={style.buttonCancel}
-              variant="contained"
-            >
-              Отменить
-            </Button>
           </Stack>
         </Box>
       </Stack>
