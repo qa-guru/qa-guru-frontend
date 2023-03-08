@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { ISendHomeWork, ISendHomeWorkContent } from "./SendHomework.types";
 import RHF from "../../../../shared/InputRHF";
-import { client } from "../../../../api/http";
+import { client } from "../../../../api";
 
 const style = {
   loadingButton: {

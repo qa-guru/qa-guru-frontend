@@ -4,7 +4,7 @@ import { SnackbarProvider } from "notistack";
 import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import { client } from "./api/http";
+import { client } from "./api";
 import "./i18n/config";
 
 const root = ReactDOM.createRoot(

@@ -13,6 +13,5 @@ export interface ISendCommentContent {
 
 export interface ISendHomeworkContainer {
   setComments: React.Dispatch<React.SetStateAction<any[]>>;
-  comments: any[];
   id: string;
 }

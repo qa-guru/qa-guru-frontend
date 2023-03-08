@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Comment from "./Comment";
 import { ICommentContainer } from "./Comment.types";
 import { useCommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/homeworkComment/commentsHomeWorkByHomeWork";
@@ -14,7 +14,6 @@ import {
 const CommentContainer: React.FC<ICommentContainer> = (props) => {
   const { id } = props;
   const { data: dataUser, loading: loadingUser } = useUserQuery();
-
   const fieldSortComments =
     "CREATION_DATE" as InputMaybe<CommentHomeWorkSortField>;
   const fieldOrderComments = "DESC" as InputMaybe<Order>;

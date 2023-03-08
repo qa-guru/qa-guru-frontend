@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Typography from "@mui/material/Typography";
 import { ISendComment, ISendCommentContent } from "./SendComment.types";
 import RHF from "../../../../../shared/InputRHF";
-import { client } from "../../../../../api/http";
+import { client } from "../../../../../api";
 
 const style = {
   loadingButton: {
@@ -26,6 +26,8 @@ const SendComment: React.FC<ISendComment> = (props) => {
   const handleSendComment: SubmitHandler<ISendCommentContent> = (data) => {
     sendComment({
       variables: { homeWorkId: id, content: data.content },
+      onCompleted: () =>
+        client.refetchQueries({ include: ["commentsHomeWorkByHomeWork"] }),
     }).then(() => {
       reset();
     });
