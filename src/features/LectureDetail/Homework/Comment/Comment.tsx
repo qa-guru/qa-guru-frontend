@@ -26,14 +26,14 @@ const style = {
 
 const Comment: React.FC<IComment> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUser, fetchMore, id } = props;
-  const [page, setPage] = useState<number>(1);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreComments, setHasMoreComments] = useState(true);
+  const [page, setPage] = useState<number>(1);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork.commentsHomeWorkByHomeWork! || {};
-  const [comments, setComments] = useState<any[]>(items!);
   const { id: idUser } = dataUser.user!;
+  const [comments, setComments] = useState<any[]>(items!);
 
   useEffect(() => {
     if (comments?.length >= totalElements) {
@@ -53,11 +53,10 @@ const Comment: React.FC<IComment> = (props) => {
         }: { fetchMoreResult?: CommentsHomeWorkByHomeWorkQuery }
       ) => {
         if (!fetchMoreResult) return previousQueryResult;
-
-        setComments([
-          ...comments,
-          ...fetchMoreResult.commentsHomeWorkByHomeWork?.items!,
-        ]);
+        const newComments = fetchMoreResult.commentsHomeWorkByHomeWork?.items;
+        setComments((prevComments) => {
+          return [...prevComments, ...newComments!];
+        });
       },
     }).then(() => setLoading(false));
   };
@@ -103,7 +102,6 @@ const Comment: React.FC<IComment> = (props) => {
                   <Box mt="7px">
                     {isSelected ? (
                       <UpdateComment
-                        comments={comments}
                         setComments={setComments}
                         content={content!}
                         setSelectedIndex={setSelectedIndex}
@@ -137,7 +135,7 @@ const Comment: React.FC<IComment> = (props) => {
           </LoadingButton>
         </Stack>
       )}
-      <SendComment comments={comments} setComments={setComments} id={id!} />
+      <SendComment setComments={setComments} id={id!} />
     </Box>
   );
 };

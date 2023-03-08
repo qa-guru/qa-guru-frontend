@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCreateUserMutation } from "../api/graphql/user/createUser";
 import AuthService from "../api/rest/authService";
-import { client } from "../api/http";
+import { client } from "../api";
 import { UserCreateInput } from "../api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";

@@ -5,7 +5,7 @@ import { SnackbarProvider } from "notistack";
 import "../i18n/config";
 import { TransitionGroup } from "react-transition-group";
 import { ModalProvider } from "react-modal-hook";
-import { client } from "../api/http";
+import { client } from "../api";
 
 afterEach(() => {
   cleanup();
