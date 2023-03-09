@@ -42,7 +42,8 @@ const SendComment: React.FC<ISendComment> = (props) => {
         <RHF.InputTextField
           placeholder="Текст ответа"
           multiline
-          rows={2}
+          maxRows={10}
+          minRows={2}
           name="content"
           control={control}
         />

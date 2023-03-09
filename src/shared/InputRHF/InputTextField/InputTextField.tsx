@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form";
-import { IFormInputProps } from "../Input.types";
 import React from "react";
 import { TextField } from "@mui/material";
+import { IFormInputProps } from "../Input.types";
 
 const InputTextField: React.FC<IFormInputProps> = ({
   control,
@@ -10,8 +10,8 @@ const InputTextField: React.FC<IFormInputProps> = ({
   label,
   type,
   multiline,
-  rows,
-  defaultValue,
+  maxRows,
+  minRows,
 }) => {
   return (
     <Controller
@@ -26,7 +26,8 @@ const InputTextField: React.FC<IFormInputProps> = ({
           label={label}
           type={type}
           multiline={multiline}
-          rows={rows}
+          maxRows={maxRows}
+          minRows={minRows}
         />
       )}
     />

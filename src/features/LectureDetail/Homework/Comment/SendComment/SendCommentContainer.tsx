@@ -3,14 +3,19 @@ import SendComment from "./SendComment";
 import { ISendHomeworkContainer } from "./SendComment.types";
 import { useSendCommentMutation } from "../../../../../api/graphql/homeworkComment/sendComment";
 
-const SendCommentContainer: React.FC<ISendHomeworkContainer> = ({
-  id,
-  setComments,
-}) => {
+const SendCommentContainer: React.FC<ISendHomeworkContainer> = (props) => {
+  const { id, setComments, totalElements } = props;
+
   const [sendComment, { loading }] = useSendCommentMutation({
     update(cache, { data }) {
       const newComment = data?.sendComment;
-      const numNewComments = 1;
+      let numNewComments: number;
+
+      if (totalElements > 1) {
+        numNewComments = 1;
+      } else {
+        numNewComments = 0;
+      }
 
       setComments((prevComments) => {
         const numToDelete = Math.min(numNewComments, prevComments.length);

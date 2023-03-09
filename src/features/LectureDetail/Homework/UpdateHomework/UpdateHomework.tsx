@@ -61,7 +61,8 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
           <FormControl fullWidth>
             <RHF.InputTextField
               multiline
-              rows={5}
+              maxRows={10}
+              minRows={5}
               name="content"
               control={control}
             />

@@ -53,7 +53,8 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
             <RHF.InputTextField
               placeholder="Текст ответа"
               multiline
-              rows={5}
+              maxRows={10}
+              minRows={5}
               name="content"
               control={control}
             />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { format, parseISO } from "date-fns";
@@ -30,16 +30,10 @@ const Comment: React.FC<IComment> = (props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreComments, setHasMoreComments] = useState(true);
   const [page, setPage] = useState<number>(1);
-  const { totalElements, items } =
+  const { totalElements, items, totalPages } =
     dataCommentsHomeWorkByHomeWork.commentsHomeWorkByHomeWork! || {};
   const { id: idUser } = dataUser.user!;
   const [comments, setComments] = useState<any[]>(items!);
-
-  useEffect(() => {
-    if (comments?.length >= totalElements) {
-      setHasMoreComments(false);
-    }
-  }, [comments]);
 
   const handleLoadMore = () => {
     setLoading(true);
@@ -60,6 +54,12 @@ const Comment: React.FC<IComment> = (props) => {
       },
     }).then(() => setLoading(false));
   };
+
+  useEffect(() => {
+    if (comments?.length >= totalElements) {
+      setHasMoreComments(false);
+    }
+  }, [comments]);
 
   return (
     <Box mt="20px" p="0 15px">
@@ -135,7 +135,11 @@ const Comment: React.FC<IComment> = (props) => {
           </LoadingButton>
         </Stack>
       )}
-      <SendComment setComments={setComments} id={id!} />
+      <SendComment
+        totalElements={totalElements}
+        setComments={setComments}
+        id={id!}
+      />
     </Box>
   );
 };
