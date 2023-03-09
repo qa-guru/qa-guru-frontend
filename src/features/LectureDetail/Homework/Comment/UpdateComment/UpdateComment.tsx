@@ -41,7 +41,8 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
         <Box width="100%">
           <RHF.InputTextField
             multiline
-            rows={2}
+            maxRows={10}
+            minRows={2}
             name="content"
             control={control}
           />

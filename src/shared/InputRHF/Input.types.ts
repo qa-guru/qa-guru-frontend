@@ -6,8 +6,9 @@ export interface IFormInputProps {
   placeholder?: any;
   content?: any;
   name: any;
-  defaultValue?: string;
   type?: string;
   multiline?: boolean;
-  rows?: string | number;
+  maxRows?: string | number;
+  minRows?: string | number;
+  defaultValue?: string;
 }
