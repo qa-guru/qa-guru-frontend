@@ -7,7 +7,6 @@ interface ITariffHook {
 
 const useTariff = ({ trainingId }: ITariffHook) => {
   const { data } = useTrainingPurchasesQuery();
-  const [tariffHomework, setTariffHomework] = useState<boolean>(false);
 
   const hasTariffHomework = useMemo(() => {
     return (
