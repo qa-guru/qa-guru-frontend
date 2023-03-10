@@ -48,7 +48,6 @@ exports[`Comment > the component is render 1`] = `
               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
               id=":r1:"
               placeholder="Текст ответа"
-              rows="2"
               style="height: 0px; overflow: hidden;"
             />
             <textarea

@@ -25,7 +25,7 @@ const CommentContainer: React.FC<ICommentContainer> = (props) => {
   } = useCommentsHomeWorkByHomeWorkQuery({
     variables: {
       page: 0,
-      size: 2,
+      size: 3,
       homeWorkId: id,
       sort: {
         field: fieldSortComments,
