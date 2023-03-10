@@ -22,7 +22,6 @@ exports[`UpdateHomework > the component is Loading 1`] = `
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r0:"
-                rows="5"
                 style="height: 0px; overflow: hidden;"
               >
                 string
@@ -126,7 +125,6 @@ exports[`UpdateHomework > the component is not Loading 1`] = `
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r2:"
-                rows="5"
                 style="height: 0px; overflow: hidden;"
               >
                 string

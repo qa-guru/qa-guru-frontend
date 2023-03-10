@@ -23,7 +23,6 @@ exports[`SendHomework > the component is Loading 1`] = `
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r0:"
                 placeholder="Текст ответа"
-                rows="5"
                 style="height: 0px; overflow: hidden;"
               />
               <textarea
@@ -112,7 +111,6 @@ exports[`SendHomework > the component is not Loading 1`] = `
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r2:"
                 placeholder="Текст ответа"
-                rows="5"
                 style="height: 0px; overflow: hidden;"
               />
               <textarea

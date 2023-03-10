@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { format, parseISO } from "date-fns";
@@ -49,6 +49,9 @@ const Comment: React.FC<IComment> = (props) => {
         if (!fetchMoreResult) return previousQueryResult;
         const newComments = fetchMoreResult.commentsHomeWorkByHomeWork?.items;
         setComments((prevComments) => {
+          console.log(prevComments);
+          console.log(newComments);
+
           return [...prevComments, ...newComments!];
         });
       },
@@ -135,11 +138,7 @@ const Comment: React.FC<IComment> = (props) => {
           </LoadingButton>
         </Stack>
       )}
-      <SendComment
-        totalElements={totalElements}
-        setComments={setComments}
-        id={id!}
-      />
+      <SendComment setComments={setComments} id={id!} />
     </Box>
   );
 };

@@ -36,8 +36,6 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
     id,
   } = dataHomeWorkByLecture.homeWorkByLecture!;
 
-  console.log(id);
-
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
 
   let icon;

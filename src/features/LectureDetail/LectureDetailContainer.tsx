@@ -8,6 +8,7 @@ import {
   useHomeWorkByLectureQuery,
   useLectureHomeWorkQuery,
 } from "../../api/graphql/generated/graphql";
+import { useTrainingPurchasesQuery } from "../../api/graphql/trainingPurchase/trainingPurchases";
 
 const LectureDetailContainer: React.FC = () => {
   const { lectureId } = useParams();
@@ -25,14 +26,14 @@ const LectureDetailContainer: React.FC = () => {
 
   if (loadingLecture || loadingHomework || loadingLectureHomeWork)
     return <Spinner />;
-  if (!dataLecture || !dataHomeWorkByLecture || !dataLectureHomework)
-    return <NoDataErrorMessage />;
+
+  if (!dataLecture) return <NoDataErrorMessage />;
 
   return (
     <LectureDetail
       dataLecture={dataLecture}
-      dataHomeWorkByLecture={dataHomeWorkByLecture}
-      dataLectureHomework={dataLectureHomework}
+      dataHomeWorkByLecture={dataHomeWorkByLecture!}
+      dataLectureHomework={dataLectureHomework!}
     />
   );
 };
