@@ -10,7 +10,7 @@ const style = {
 const LectureHomework: React.FC<ILectureHomework> = ({
   dataLectureHomework,
 }) => {
-  const { lectureHomeWork } = dataLectureHomework;
+  const { lectureHomeWork } = dataLectureHomework!;
 
   return (
     <>

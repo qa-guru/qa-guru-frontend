@@ -8,17 +8,17 @@ interface ITariffHook {
 const useTariff = ({ trainingId }: ITariffHook) => {
   const { data } = useTrainingPurchasesQuery();
 
-  const hasTariffHomework = useMemo(() => {
+  const hasHomework = useMemo(() => {
     return (
       data?.trainingPurchases?.some(
-        (p) =>
-          p?.trainingTariff.training?.id === trainingId &&
-          p?.trainingTariff.homeWork
+        (item) =>
+          item?.trainingTariff.training?.id === trainingId &&
+          item?.trainingTariff.homeWork
       ) ?? false
     );
   }, [data, trainingId]);
 
-  return { hasTariffHomework };
+  return { hasHomework };
 };
 
 export default useTariff;
