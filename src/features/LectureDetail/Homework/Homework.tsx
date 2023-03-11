@@ -34,7 +34,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
     creationDate,
     answer,
     id,
-  } = dataHomeWorkByLecture.homeWorkByLecture!;
+  } = dataHomeWorkByLecture.homeWorkByLecture! || {};
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
 

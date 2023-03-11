@@ -32,6 +32,7 @@ const CommentContainer: React.FC<ICommentContainer> = (props) => {
         order: fieldOrderComments,
       },
     },
+    fetchPolicy: "network-only",
   });
 
   if (loadingCommentsHomeWorkByHomeWork || loadingUser)

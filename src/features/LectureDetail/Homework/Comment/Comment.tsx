@@ -49,9 +49,6 @@ const Comment: React.FC<IComment> = (props) => {
         if (!fetchMoreResult) return previousQueryResult;
         const newComments = fetchMoreResult.commentsHomeWorkByHomeWork?.items;
         setComments((prevComments) => {
-          console.log(prevComments);
-          console.log(newComments);
-
           return [...prevComments, ...newComments!];
         });
       },

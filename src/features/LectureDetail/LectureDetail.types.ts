@@ -6,6 +6,6 @@ import {
 
 export interface ILectureDetail {
   dataLecture: LectureQuery;
-  dataHomeWorkByLecture: HomeWorkByLectureQuery;
   dataLectureHomework: LectureHomeWorkQuery;
+  dataHomeWorkByLecture: HomeWorkByLectureQuery;
 }
