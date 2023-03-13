@@ -8,4 +8,5 @@ export interface ILectureDetail {
   dataLecture: LectureQuery;
   dataLectureHomework: LectureHomeWorkQuery;
   dataHomeWorkByLecture: HomeWorkByLectureQuery;
+  hasHomework: boolean;
 }

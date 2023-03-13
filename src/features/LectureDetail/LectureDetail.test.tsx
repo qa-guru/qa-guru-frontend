@@ -86,13 +86,27 @@ const mockDataLectureHomework: LectureHomeWorkQuery = {
 };
 
 describe("LectureDetail", () => {
-  it("the component is render", () => {
+  it("hasHomework is true", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <LectureDetail
           dataLecture={mockDataLecture}
           dataHomeWorkByLecture={mockDataHomeWorkByLecture}
           dataLectureHomework={mockDataLectureHomework}
+          hasHomework={true}
+        />
+      </MemoryRouter>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it("hasHomework is false", () => {
+    const { asFragment } = render(
+      <MemoryRouter>
+        <LectureDetail
+          dataLecture={mockDataLecture}
+          dataHomeWorkByLecture={mockDataHomeWorkByLecture}
+          dataLectureHomework={mockDataLectureHomework}
+          hasHomework={false}
         />
       </MemoryRouter>
     );
