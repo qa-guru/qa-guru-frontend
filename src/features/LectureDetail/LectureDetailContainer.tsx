@@ -8,9 +8,12 @@ import {
   useHomeWorkByLectureQuery,
   useLectureHomeWorkQuery,
 } from "../../api/graphql/generated/graphql";
+import useTariff from "../../hooks/useTariff";
 
 const LectureDetailContainer: React.FC = () => {
   const { lectureId } = useParams();
+  const { trainingId } = useParams();
+  const { hasHomework } = useTariff({ trainingId });
 
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
     variables: { id: lectureId! },
@@ -19,11 +22,13 @@ const LectureDetailContainer: React.FC = () => {
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
       variables: { lectureId: lectureId! },
+      skip: !hasHomework,
     });
 
   const { data: dataHomeWorkByLecture, loading: loadingHomework } =
     useHomeWorkByLectureQuery({
       variables: { lectureId: lectureId! },
+      skip: !hasHomework || !dataLectureHomework?.lectureHomeWork?.length,
     });
 
   if (loadingLecture || loadingHomework || loadingLectureHomeWork)
@@ -36,6 +41,7 @@ const LectureDetailContainer: React.FC = () => {
       dataLecture={dataLecture}
       dataLectureHomework={dataLectureHomework!}
       dataHomeWorkByLecture={dataHomeWorkByLecture!}
+      hasHomework={hasHomework}
     />
   );
 };
