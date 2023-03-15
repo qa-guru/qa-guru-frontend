@@ -55,8 +55,9 @@ export enum CommentHomeWorkSortField {
 export type CommentHomeWorksDto = {
   __typename?: "CommentHomeWorksDto";
   items?: Maybe<Array<Maybe<CommentHomeWorkDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export type ContentFileDto = {
@@ -168,8 +169,9 @@ export enum LectureSortField {
 export type LecturesDto = {
   __typename?: "LecturesDto";
   items?: Maybe<Array<Maybe<LectureDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 /** Mutation root */
@@ -397,8 +399,8 @@ export type Query = {
 /** Query root */
 export type QueryCommentsHomeWorkByHomeWorkArgs = {
   homeWorkId: Scalars["ID"];
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<CommentHomeWorkSort>;
 };
 
@@ -420,23 +422,23 @@ export type QueryHomeWorkByStudentAndLectureArgs = {
 
 /** Query root */
 export type QueryHomeWorksArgs = {
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<StudentHomeWorkSort>;
 };
 
 /** Query root */
 export type QueryHomeWorksByLectureIdArgs = {
   lectureId: Scalars["ID"];
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<StudentHomeWorkSort>;
 };
 
 /** Query root */
 export type QueryHomeWorksByStatusArgs = {
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<StudentHomeWorkSort>;
   status: StudentHomeWorkStatus;
 };
@@ -458,8 +460,8 @@ export type QueryLectureHomeWorkLevelArgs = {
 
 /** Query root */
 export type QueryLecturesArgs = {
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<LectureSort>;
 };
 
@@ -480,22 +482,22 @@ export type QueryTrainingPurchasesByUserIdArgs = {
 
 /** Query root */
 export type QueryTrainingTariffsArgs = {
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<TrainingTariffSort>;
 };
 
 /** Query root */
 export type QueryTrainingsArgs = {
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<TrainingSort>;
 };
 
 /** Query root */
 export type QueryUsersArgs = {
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
   sort?: InputMaybe<UserSort>;
 };
 
@@ -534,8 +536,9 @@ export enum StudentHomeWorkStatus {
 export type StudentHomeWorksDto = {
   __typename?: "StudentHomeWorksDto";
   items?: Maybe<Array<Maybe<StudentHomeWorkDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export enum TechStack {
@@ -634,15 +637,17 @@ export type TrainingTariffSort = {
 export type TrainingTariffsDto = {
   __typename?: "TrainingTariffsDto";
   items?: Maybe<Array<Maybe<TrainingTariffDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export type TrainingsDto = {
   __typename?: "TrainingsDto";
   items?: Maybe<Array<Maybe<TrainingDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export type UserCreateInput = {
@@ -709,8 +714,9 @@ export type UserUpdateInput = {
 export type UsersDto = {
   __typename?: "UsersDto";
   items?: Maybe<Array<Maybe<UserDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
-  totalPages?: Maybe<Scalars["Int"]>;
 };
 
 export type HomeWorkByLectureQueryVariables = Exact<{
@@ -824,8 +830,8 @@ export type UpdateHomeworkMutation = {
 };
 
 export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
-  page: Scalars["Int"];
-  size: Scalars["Int"];
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
   sort: CommentHomeWorkSort;
   homeWorkId: Scalars["ID"];
 }>;
@@ -834,7 +840,8 @@ export type CommentsHomeWorkByHomeWorkQuery = {
   __typename?: "Query";
   commentsHomeWorkByHomeWork?: {
     __typename?: "CommentHomeWorksDto";
-    totalPages?: number | null;
+    offset?: number | null;
+    limit?: number | null;
     totalElements?: any | null;
     items?: Array<{
       __typename?: "CommentHomeWorkDto";
@@ -1429,14 +1436,14 @@ export type UpdateHomeworkMutationOptions = Apollo.BaseMutationOptions<
 >;
 export const CommentsHomeWorkByHomeWorkDocument = gql`
   query commentsHomeWorkByHomeWork(
-    $page: Int!
-    $size: Int!
+    $offset: Int!
+    $limit: Int!
     $sort: CommentHomeWorkSort!
     $homeWorkId: ID!
   ) {
     commentsHomeWorkByHomeWork(
-      page: $page
-      size: $size
+      offset: $offset
+      limit: $limit
       sort: $sort
       homeWorkId: $homeWorkId
     ) {
@@ -1454,7 +1461,8 @@ export const CommentsHomeWorkByHomeWorkDocument = gql`
           id
         }
       }
-      totalPages
+      offset
+      limit
       totalElements
     }
   }
@@ -1495,8 +1503,8 @@ export const CommentsHomeWorkByHomeWorkComponent = (
  * @example
  * const { data, loading, error } = useCommentsHomeWorkByHomeWorkQuery({
  *   variables: {
- *      page: // value for 'page'
- *      size: // value for 'size'
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
  *      sort: // value for 'sort'
  *      homeWorkId: // value for 'homeWorkId'
  *   },

@@ -9,7 +9,6 @@ import SendComment from "./SendComment";
 import TextSerialization from "../../../../shared/TextSerialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
 import { grey, primary } from "../../../../theme/colors";
-import { CommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/generated/graphql";
 
 const style = {
   avatar: {
@@ -29,43 +28,48 @@ const Comment: React.FC<IComment> = (props) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreComments, setHasMoreComments] = useState(true);
-  const [page, setPage] = useState<number>(1);
-  const { totalElements, items, totalPages } =
+  const { totalElements, items, offset, limit } =
     dataCommentsHomeWorkByHomeWork.commentsHomeWorkByHomeWork! || {};
   const { id: idUser } = dataUser.user!;
-  const [comments, setComments] = useState<any[]>(items!);
 
   const handleLoadMore = () => {
     setLoading(true);
-    setPage(page + 1);
     fetchMore({
-      variables: { page },
+      variables: {
+        offset: items?.length,
+      },
       updateQuery: (
-        previousQueryResult: CommentsHomeWorkByHomeWorkQuery,
-        {
-          fetchMoreResult,
-        }: { fetchMoreResult?: CommentsHomeWorkByHomeWorkQuery }
+        prev: { commentsHomeWorkByHomeWork: { items: any } },
+        { fetchMoreResult }: any
       ) => {
-        if (!fetchMoreResult) return previousQueryResult;
-        const newComments = fetchMoreResult.commentsHomeWorkByHomeWork?.items;
-        setComments((prevComments) => {
-          return [...prevComments, ...newComments!];
-        });
+        if (!fetchMoreResult) return prev;
+        return {
+          commentsHomeWorkByHomeWork: {
+            ...fetchMoreResult.commentsHomeWorkByHomeWork,
+            items: [
+              ...prev.commentsHomeWorkByHomeWork.items,
+              ...fetchMoreResult.commentsHomeWorkByHomeWork.items,
+            ],
+          },
+        };
       },
     }).then(() => setLoading(false));
   };
 
   useEffect(() => {
-    if (comments?.length >= totalElements) {
+    if (items?.length! >= totalElements) {
       setHasMoreComments(false);
     }
-  }, [comments]);
+  }, [items]);
 
   return (
     <Box mt="20px" p="0 15px">
-      <Typography variant="h5">Комментарии</Typography>
+      <Stack spacing={1} direction="row">
+        <Typography variant="h5">Комментарии</Typography>
+        <Typography variant="h5">({totalElements})</Typography>
+      </Stack>
       <Stack mt="5px" spacing={2}>
-        {comments?.map((item, index) => {
+        {items?.map((item, index) => {
           const isSelected = index === selectedIndex;
           const { creator, content, creationDate, id } = item!;
 
@@ -102,7 +106,6 @@ const Comment: React.FC<IComment> = (props) => {
                   <Box mt="7px">
                     {isSelected ? (
                       <UpdateComment
-                        setComments={setComments}
                         content={content!}
                         setSelectedIndex={setSelectedIndex}
                         id={id!}
@@ -135,7 +138,7 @@ const Comment: React.FC<IComment> = (props) => {
           </LoadingButton>
         </Stack>
       )}
-      <SendComment setComments={setComments} id={id!} />
+      <SendComment id={id!} />
     </Box>
   );
 };

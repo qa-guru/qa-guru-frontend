@@ -1,16 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import SendComment from "./SendComment";
 import { ISendHomeworkContainer } from "./SendComment.types";
 import { useSendCommentMutation } from "../../../../../api/graphql/homeworkComment/sendComment";
+import { CommentsHomeWorkByHomeWorkDocument } from "../../../../../api/graphql/generated/graphql";
 
 const SendCommentContainer: React.FC<ISendHomeworkContainer> = (props) => {
-  const { id, setComments } = props;
+  const { id } = props;
 
   const [sendComment, { loading }] = useSendCommentMutation({
-    update(cache, { data }) {
+    update: (cache, { data }) => {
       const newComment = data?.sendComment;
-      setComments((prevComments) => {
-        return [newComment, ...prevComments];
+      const { commentsHomeWorkByHomeWork }: any = cache.readQuery({
+        query: CommentsHomeWorkByHomeWorkDocument,
+        variables: {
+          offset: 0,
+          limit: 3,
+          sort: {
+            field: "CREATION_DATE",
+            order: "DESC",
+          },
+          homeWorkId: id,
+        },
+      });
+
+      cache.writeQuery({
+        query: CommentsHomeWorkByHomeWorkDocument,
+        variables: {
+          offset: 0,
+          limit: 3,
+          sort: {
+            field: "CREATION_DATE",
+            order: "DESC",
+          },
+          homeWorkId: id,
+        },
+        data: {
+          commentsHomeWorkByHomeWork: {
+            ...commentsHomeWorkByHomeWork,
+            items: [newComment, ...commentsHomeWorkByHomeWork.items],
+            totalElements:
+              parseInt(commentsHomeWorkByHomeWork.totalElements, 10) + 1,
+          },
+        },
       });
     },
   });

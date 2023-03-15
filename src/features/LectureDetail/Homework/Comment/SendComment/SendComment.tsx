@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { ISendComment, ISendCommentContent } from "./SendComment.types";
 import RHF from "../../../../../shared/InputRHF";
 import { client } from "../../../../../api";
+import { CommentsHomeWorkByHomeWorkDocument } from "../../../../../api/graphql/generated/graphql";
 
 const style = {
   loadingButton: {
@@ -26,8 +27,6 @@ const SendComment: React.FC<ISendComment> = (props) => {
   const handleSendComment: SubmitHandler<ISendCommentContent> = (data) => {
     sendComment({
       variables: { homeWorkId: id, content: data.content },
-      onCompleted: () =>
-        client.refetchQueries({ include: ["commentsHomeWorkByHomeWork"] }),
     }).then(() => {
       reset();
     });
