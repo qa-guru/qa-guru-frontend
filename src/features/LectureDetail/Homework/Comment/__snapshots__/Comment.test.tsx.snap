@@ -5,11 +5,20 @@ exports[`Comment > the component is render 1`] = `
   <div
     class="MuiBox-root css-a4a06o"
   >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+    <div
+      class="MuiStack-root css-w4z10b-MuiStack-root"
     >
-      Комментарии
-    </h5>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+      >
+        Комментарии
+      </h5>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+      >
+        ()
+      </h5>
+    </div>
     <div
       class="MuiStack-root css-1w1iguc-MuiStack-root"
     />
