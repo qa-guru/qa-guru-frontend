@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Comment from "./Comment";
 import { ICommentContainer } from "./Comment.types";
 import { useCommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/homeworkComment/commentsHomeWorkByHomeWork";
@@ -24,15 +24,14 @@ const CommentContainer: React.FC<ICommentContainer> = (props) => {
     fetchMore,
   } = useCommentsHomeWorkByHomeWorkQuery({
     variables: {
-      page: 0,
-      size: 3,
+      offset: 0,
+      limit: 3,
       homeWorkId: id,
       sort: {
         field: fieldSortComments,
         order: fieldOrderComments,
       },
     },
-    fetchPolicy: "network-only",
   });
 
   if (loadingCommentsHomeWorkByHomeWork || loadingUser)

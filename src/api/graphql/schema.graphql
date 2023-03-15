@@ -69,13 +69,13 @@ type Query {
   """
   user: UserDto
   userRoles: [UserRoleDto]
-  users(page: Int!, size: Int!, sort: UserSort): UsersDto
+  users(offset: Int!, limit: Int!, sort: UserSort): UsersDto
   """
   lecture section
   """
   lecture(id: ID): LectureInfoShortDto
   lectureHomeWork(lectureId: ID): [LectureContentHomeWorkDto]
-  lectures(page: Int!, size: Int!, sort: LectureSort): LecturesDto
+  lectures(offset: Int!, limit: Int!, sort: LectureSort): LecturesDto
   lectureHomeWorkLevel(id: ID): LectureHomeWorkLevelDto
   lectureHomeWorkLevels: [LectureHomeWorkLevelDto]
   """
@@ -87,15 +87,15 @@ type Query {
   training tariff
   """
   trainingTariffs(
-    page: Int!
-    size: Int!
+    offset: Int!
+    limit: Int!
     sort: TrainingTariffSort
   ): TrainingTariffsDto
   """
   training section
   """
   training(id: ID!): TrainingDto
-  trainings(page: Int!, size: Int!, sort: TrainingSort): TrainingsDto
+  trainings(offset: Int!, limit: Int!, sort: TrainingSort): TrainingsDto
   """
   training lecture
   """
@@ -110,19 +110,19 @@ type Query {
   ): StudentHomeWorkDto
   homeWorkByLecture(lectureId: ID!): StudentHomeWorkDto
   homeWorks(
-    page: Int!
-    size: Int!
+    offset: Int!
+    limit: Int!
     sort: StudentHomeWorkSort
   ): StudentHomeWorksDto
   homeWorksByLectureId(
-    page: Int!
-    size: Int!
+    offset: Int!
+    limit: Int!
     sort: StudentHomeWorkSort
     lectureId: ID!
   ): StudentHomeWorksDto
   homeWorksByStatus(
-    page: Int!
-    size: Int!
+    offset: Int!
+    limit: Int!
     sort: StudentHomeWorkSort
     status: StudentHomeWorkStatus!
   ): StudentHomeWorksDto
@@ -130,8 +130,8 @@ type Query {
   commentHomeWork section
   """
   commentsHomeWorkByHomeWork(
-    page: Int!
-    size: Int!
+    offset: Int!
+    limit: Int!
     sort: CommentHomeWorkSort
     homeWorkId: ID!
   ): CommentHomeWorksDto
@@ -259,8 +259,9 @@ input LectureHomeWorkLevelInput {
 
 type LecturesDto {
   items: [LectureDto]
+  offset: Int
+  limit: Int
   totalElements: Long
-  totalPages: Int
 }
 
 type LectureContentDto {
@@ -301,14 +302,16 @@ type StudentHomeWorkDto {
 
 type StudentHomeWorksDto {
   items: [StudentHomeWorkDto]
+  offset: Int
+  limit: Int
   totalElements: Long
-  totalPages: Int
 }
 
 type CommentHomeWorksDto {
   items: [CommentHomeWorkDto]
+  offset: Int
+  limit: Int
   totalElements: Long
-  totalPages: Int
 }
 
 type CommentHomeWorkDto {
@@ -321,14 +324,16 @@ type CommentHomeWorkDto {
 
 type TrainingsDto {
   items: [TrainingDto]
+  offset: Int
+  limit: Int
   totalElements: Long
-  totalPages: Int
 }
 
 type TrainingTariffsDto {
   items: [TrainingTariffDto]
+  offset: Int
+  limit: Int
   totalElements: Long
-  totalPages: Int
 }
 
 type ContentFileDto {
@@ -380,8 +385,9 @@ type UserRoleDto {
 
 type UsersDto {
   items: [UserDto]
+  offset: Int
+  limit: Int
   totalElements: Long
-  totalPages: Int
 }
 
 input UserSort {

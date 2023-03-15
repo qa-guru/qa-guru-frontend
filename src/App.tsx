@@ -26,7 +26,6 @@ export const App = () => {
   const { loading } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
-      navigate("/");
     },
     onError: () => {
       setIsSignedIn(false);

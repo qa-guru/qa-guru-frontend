@@ -2,6 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import axios from "axios";
 import fetch from "cross-fetch";
 import { GRAPHQL_URI } from "../config";
+import { offsetLimitPagination } from "@apollo/client/utilities";
 
 axios.defaults.withCredentials = true;
 

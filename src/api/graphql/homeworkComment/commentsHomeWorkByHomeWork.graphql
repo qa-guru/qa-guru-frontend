@@ -1,12 +1,12 @@
 query commentsHomeWorkByHomeWork(
-  $page: Int!
-  $size: Int!
+  $offset: Int!
+  $limit: Int!
   $sort: CommentHomeWorkSort!
   $homeWorkId: ID!
 ) {
   commentsHomeWorkByHomeWork(
-    page: $page
-    size: $size
+    offset: $offset
+    limit: $limit
     sort: $sort
     homeWorkId: $homeWorkId
   ) {
@@ -24,7 +24,8 @@ query commentsHomeWorkByHomeWork(
         id
       }
     }
-    totalPages
+    offset
+    limit
     totalElements
   }
 }
