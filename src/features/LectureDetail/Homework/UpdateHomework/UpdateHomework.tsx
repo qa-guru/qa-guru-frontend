@@ -11,6 +11,7 @@ import {
 } from "./UpdateHomework.types";
 import RHF from "../../../../shared/InputRHF";
 import { black } from "../../../../theme/colors";
+import { client } from "../../../../api";
 
 const style = {
   loadingButton: { minWidth: "151px" },
@@ -35,7 +36,10 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("content.required")!),
+        content: yup
+          .string()
+          .required(t("sendHomework")!)
+          .max(2000, "sendHomework.max"),
       })
     ),
   });
@@ -49,6 +53,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
         content: data.content,
       },
       onCompleted: () => {
+        client.refetchQueries({ include: ["homeWorkByLecture"] });
         setOpenHomeWorkEdit(false);
       },
     });

@@ -32,7 +32,10 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("content.required")!),
+        content: yup
+          .string()
+          .required(t("sendHomework")!)
+          .max(2000, "sendHomework.max"),
       })
     ),
   });
