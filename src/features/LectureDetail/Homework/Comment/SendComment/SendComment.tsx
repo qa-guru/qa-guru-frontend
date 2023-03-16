@@ -1,12 +1,13 @@
 import React from "react";
-import { Stack } from "@mui/material";
+import { Box, FormControl, FormHelperText, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Typography from "@mui/material/Typography";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 import { ISendComment, ISendCommentContent } from "./SendComment.types";
 import RHF from "../../../../../shared/InputRHF";
-import { client } from "../../../../../api";
-import { CommentsHomeWorkByHomeWorkDocument } from "../../../../../api/graphql/generated/graphql";
 
 const style = {
   loadingButton: {
@@ -17,11 +18,25 @@ const style = {
 
 const SendComment: React.FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
+  const { t } = useTranslation();
 
-  const { handleSubmit, control, reset } = useForm<ISendCommentContent>({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<ISendCommentContent>({
     defaultValues: {
       content: "",
     },
+    resolver: yupResolver(
+      yup.object().shape({
+        content: yup
+          .string()
+          .required(t("sendComment")!)
+          .max(10000, "sendComment.max"),
+      })
+    ),
   });
 
   const handleSendComment: SubmitHandler<ISendCommentContent> = (data) => {
@@ -37,16 +52,21 @@ const SendComment: React.FC<ISendComment> = (props) => {
       <Typography mt="15px" mb="5px" variant="h5">
         Добавить комментарий
       </Typography>
-      <Stack width="100%">
-        <RHF.InputTextField
-          placeholder="Текст ответа"
-          multiline
-          maxRows={10}
-          minRows={2}
-          name="content"
-          control={control}
-        />
-      </Stack>
+      <Box width="100%">
+        <FormControl fullWidth>
+          <RHF.InputTextField
+            placeholder="Текст ответа"
+            multiline
+            maxRows={10}
+            minRows={2}
+            name="content"
+            control={control}
+          />
+          {errors?.content && (
+            <FormHelperText error>{errors?.content.message}</FormHelperText>
+          )}
+        </FormControl>
+      </Box>
       <Stack direction="column" alignItems="flex-end">
         <LoadingButton
           onClick={handleSubmit(handleSendComment)}

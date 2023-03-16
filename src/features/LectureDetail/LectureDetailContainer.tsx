@@ -29,6 +29,7 @@ const LectureDetailContainer: React.FC = () => {
     useHomeWorkByLectureQuery({
       variables: { lectureId: lectureId! },
       skip: !hasHomework || !dataLectureHomework?.lectureHomeWork?.length,
+      fetchPolicy: "network-only",
     });
 
   if (loadingLecture || loadingHomework || loadingLectureHomeWork)

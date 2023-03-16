@@ -33,5 +33,10 @@
   "english": "English",
   "russian": "Russian",
 
-  "page.home": "Home"
+  "page.home": "Home",
+
+  "sendHomework": "Answer to homework is required",
+  "sendHomework.max": "Answer to homework must be no more than 2000 characters",
+  "sendComment": "Comment is required",
+  "sendComment.max": "Comment must be no more than 10000 characters"
 }
