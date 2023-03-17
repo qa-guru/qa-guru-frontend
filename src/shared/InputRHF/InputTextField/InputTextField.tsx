@@ -12,6 +12,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
   multiline,
   maxRows,
   minRows,
+  inputProps,
 }) => {
   return (
     <Controller
@@ -28,6 +29,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
           multiline={multiline}
           maxRows={maxRows}
           minRows={minRows}
+          inputProps={inputProps}
         />
       )}
     />

@@ -24,6 +24,8 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
   const {
     handleSubmit,
     control,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<IUpdateCommentContent>({
     defaultValues: {
@@ -34,7 +36,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
         content: yup
           .string()
           .required(t("sendComment")!)
-          .max(10000, "sendComment.max"),
+          .max(10000, t("sendComment.max")!),
       })
     ),
   });
@@ -51,6 +53,15 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
     });
   };
 
+  const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
+    const { value } = event.currentTarget;
+    if (value.length >= 10000) {
+      setError("content", { message: t("sendHomework.max")! });
+    } else {
+      clearErrors("content");
+    }
+  };
+
   return (
     <form>
       <Stack direction="row" spacing={2}>
@@ -62,6 +73,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
               minRows={2}
               name="content"
               control={control}
+              inputProps={{ maxLength: 10000, onInput: handleInput }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>

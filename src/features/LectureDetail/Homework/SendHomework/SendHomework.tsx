@@ -25,6 +25,8 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
   const {
     handleSubmit,
     control,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<ISendHomeWorkContent>({
     defaultValues: {
@@ -35,7 +37,7 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
         content: yup
           .string()
           .required(t("sendHomework")!)
-          .max(2000, "sendHomework.max"),
+          .max(2000, t("sendHomework.max")!),
       })
     ),
   });
@@ -46,6 +48,15 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
       onCompleted: () =>
         client.refetchQueries({ include: ["homeWorkByLecture"] }),
     });
+  };
+
+  const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
+    const { value } = event.currentTarget;
+    if (value.length >= 2000) {
+      setError("content", { message: t("sendHomework.max")! });
+    } else {
+      clearErrors("content");
+    }
   };
 
   return (
@@ -60,6 +71,7 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
               minRows={5}
               name="content"
               control={control}
+              inputProps={{ maxLength: 2000, onInput: handleInput }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>

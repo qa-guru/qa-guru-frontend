@@ -24,6 +24,7 @@ exports[`SendComment > the component is Loading 1`] = `
               aria-invalid="false"
               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
               id=":r0:"
+              maxlength="10000"
               placeholder="Текст ответа"
               style="height: 0px; overflow: hidden;"
             />
