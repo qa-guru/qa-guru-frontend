@@ -2,12 +2,12 @@ import React from "react";
 import { Box, Button, FormControl, FormHelperText, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { IUpdateComment, IUpdateCommentContent } from "./UpdateComment.types";
 import RHF from "../../../../../shared/InputRHF";
 import { black } from "../../../../../theme/colors";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import * as yup from "yup";
-import { useTranslation } from "react-i18next";
 
 const style = {
   loadingButton: { minWidth: "147px" },
@@ -56,7 +56,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
   const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const { value } = event.currentTarget;
     if (value.length >= 10000) {
-      setError("content", { message: t("sendHomework.max")! });
+      setError("content", { message: t("sendComment.max")! });
     } else {
       clearErrors("content");
     }
