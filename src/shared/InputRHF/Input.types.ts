@@ -11,4 +11,5 @@ export interface IFormInputProps {
   maxRows?: string | number;
   minRows?: string | number;
   defaultValue?: string;
+  inputProps?: any;
 }

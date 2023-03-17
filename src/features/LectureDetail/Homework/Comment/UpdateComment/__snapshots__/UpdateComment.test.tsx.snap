@@ -22,6 +22,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r0:"
+                maxlength="10000"
                 style="height: 0px; overflow: hidden;"
               >
                 Hello

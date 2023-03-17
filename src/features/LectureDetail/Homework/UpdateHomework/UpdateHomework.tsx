@@ -29,6 +29,8 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const {
     handleSubmit,
     control,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
@@ -39,7 +41,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
         content: yup
           .string()
           .required(t("sendHomework")!)
-          .max(2000, "sendHomework.max"),
+          .max(2000, t("sendHomework.max")!),
       })
     ),
   });
@@ -59,6 +61,15 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
     });
   };
 
+  const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
+    const { value } = event.currentTarget;
+    if (value.length >= 2000) {
+      setError("content", { message: t("sendHomework.max")! });
+    } else {
+      clearErrors("content");
+    }
+  };
+
   return (
     <form>
       <Stack direction="row" spacing={2} mt="15px">
@@ -70,6 +81,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               minRows={5}
               name="content"
               control={control}
+              inputProps={{ maxLength: 2000, onInput: handleInput }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>
