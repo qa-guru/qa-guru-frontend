@@ -52,7 +52,7 @@ const SendComment: React.FC<ISendComment> = (props) => {
   const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
     const { value } = event.currentTarget;
     if (value.length >= 10000) {
-      setError("content", { message: t("sendHomework.max")! });
+      setError("content", { message: t("sendComment.max")! });
     } else {
       clearErrors("content");
     }
