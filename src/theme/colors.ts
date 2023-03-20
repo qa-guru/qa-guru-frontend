@@ -25,10 +25,18 @@ export const black = {
   main: "#212121",
 };
 
+export const red = {
+  main: "red",
+};
+
 const palette = {
   primary,
   secondary,
   white,
+  red,
+  grey,
+  black,
+  purple,
 };
 
 export const lightPalette = {

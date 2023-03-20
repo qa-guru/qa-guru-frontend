@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { format, parseISO } from "date-fns";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { styled } from "@mui/material/styles";
 import { IHomework } from "./Homework.types";
 import UpdateHomework from "./UpdateHomework";
 import SendHomeWork from "./SendHomework";
 import Comment from "./Comment";
-import { ReactComponent as OvenClock } from "../../../assets/icons/ovenclock.svg";
+import { ReactComponent as Clock } from "../../../assets/icons/clock.svg";
 import { ReactComponent as Search } from "../../../assets/icons/search.svg";
 import { ReactComponent as Done } from "../../../assets/icons/done.svg";
 import TextSerialization from "../../../shared/TextSerialization";
+import { red } from "../../../theme/colors";
+
+const RedHighlightOffIcon = styled(HighlightOffIcon)({
+  color: red.main,
+});
 
 const style = {
   paper: { padding: { xs: "15px", md: "20px" }, mt: "40px" },
@@ -45,7 +52,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
 
   switch (status) {
     case "NEW":
-      icon = <OvenClock />;
+      icon = <Clock />;
       date = null;
       statusText = "Ожидает проверки";
       break;
@@ -58,6 +65,11 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
       icon = <Done />;
       date = format(parseISO(endCheckingDate), "dd.MM.yyyy");
       statusText = "Принято";
+      break;
+    case "NOT_APPROVED":
+      icon = <RedHighlightOffIcon />;
+      date = format(parseISO(endCheckingDate), "dd.MM.yyyy");
+      statusText = "Не принято";
       break;
   }
 
@@ -79,13 +91,13 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
     <Paper sx={style.paper}>
       <Stack spacing={3} direction="row" alignItems="center">
         <Typography variant="h5">Ответ на задание</Typography>
-        <Stack direction="row" spacing={1.5} alignItems="center">
+        <Stack direction="row" spacing={1} alignItems="center">
           {icon}
           <Box>
             <Typography variant="subtitle1">{statusText}</Typography>
             <Typography variant="subtitle2">{date}</Typography>
           </Box>
-          {status === ("IN_REVIEW" || "APPROVED") && (
+          {status === ("IN_REVIEW" || "APPROVED" || "NOT_APPROVED") && (
             <Stack direction="row" alignItems="center" spacing={1}>
               <Avatar
                 sx={style.avatar}
