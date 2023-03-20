@@ -7,17 +7,22 @@ import {
   HomeWorkByLectureQuery,
   LectureHomeWorkQuery,
 } from "../api/graphql/generated/graphql";
+import { primary } from "../theme/colors";
 
 const mockDataLectureHomework: LectureHomeWorkQuery = {
   lectureHomeWork: [
     {
       type: "text",
-      value: "Сделай уроки",
-    },
-    {
-      type: "link",
-      value: "stri1234123412341243123412341234ng",
-      url: "https://translate.google.com/",
+      value:
+        "Здесь будет отображаться текст домашнего задания к текущей лекции.\n" +
+        "Пример домашнего задания:\n" +
+        '1. Есть ли разница между $("h1 div"); и $("h1").$("div").\n' +
+        "Может ли привести к тому что, поиск найдёт разные элементы?\n" +
+        "2. Разработайте следующий автотест:\n" +
+        " - Откройте страницу Selenide в Github\n" +
+        " - Перейдите в раздел Wiki проекта\n" +
+        " - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions\n" +
+        " - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5",
     },
   ],
 };
@@ -55,6 +60,9 @@ const style = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    cursor: "default",
+    borderRadius: "7px",
+    "&:hover": { backgroundColor: primary.main },
   },
 };
 
@@ -65,8 +73,14 @@ const BlurredHomework: React.FC = () => {
         <LectureHomework dataLectureHomework={mockDataLectureHomework} />
         <Homework dataHomeWorkByLecture={mockDataHomeWorkByLecture} />
       </BlurredComponent>
-      <Button size="large" sx={style.button} variant="contained">
-        Купить тариф с д/з
+      <Button
+        disableElevation
+        disableTouchRipple
+        size="large"
+        sx={style.button}
+        variant="contained"
+      >
+        Д/З недоступно
       </Button>
     </Box>
   );
