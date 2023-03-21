@@ -44,6 +44,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
   } = dataHomeWorkByLecture.homeWorkByLecture! || {};
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
+  const DATE_FORMAT = "dd.MM.yyyy";
 
   let icon;
   let date;
@@ -58,17 +59,17 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
       break;
     case "IN_REVIEW":
       icon = <Search />;
-      date = format(parseISO(startCheckingDate), "dd.MM.yyyy");
+      date = format(parseISO(startCheckingDate), DATE_FORMAT);
       statusText = "На проверке";
       break;
     case "APPROVED":
       icon = <Done />;
-      date = format(parseISO(endCheckingDate), "dd.MM.yyyy");
+      date = format(parseISO(endCheckingDate), DATE_FORMAT);
       statusText = "Принято";
       break;
     case "NOT_APPROVED":
       icon = <RedHighlightOffIcon />;
-      date = format(parseISO(endCheckingDate), "dd.MM.yyyy");
+      date = format(parseISO(endCheckingDate), DATE_FORMAT);
       statusText = "Не принято";
       break;
   }

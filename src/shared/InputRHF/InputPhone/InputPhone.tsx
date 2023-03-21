@@ -1,9 +1,8 @@
 import { Controller } from "react-hook-form";
-import { IFormInputProps } from "../Input.types";
 import React from "react";
-import { Box, TextField } from "@mui/material";
-import { countries } from "./InputPhone.countries";
-import { AutocompleteStyled } from "./AutocompleteStyled.styled";
+import { Autocomplete, Box, TextField } from "@mui/material";
+import { countries } from "./InputPhone.types";
+import { IFormInputProps } from "../Input.types";
 
 const InputPhone: React.FC<IFormInputProps> = ({
   control,
@@ -16,7 +15,7 @@ const InputPhone: React.FC<IFormInputProps> = ({
       name={name}
       control={control}
       render={({ field: { value, onChange } }) => (
-        <AutocompleteStyled
+        <Autocomplete
           options={countries}
           freeSolo
           getOptionLabel={(option: any) => `(${option.code})+${option.phone}`}

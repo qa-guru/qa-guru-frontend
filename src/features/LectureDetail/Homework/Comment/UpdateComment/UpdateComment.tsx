@@ -25,18 +25,15 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
     handleSubmit,
     control,
     setError,
-    clearErrors,
     formState: { errors },
+    trigger,
   } = useForm<IUpdateCommentContent>({
     defaultValues: {
       content: content!,
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup
-          .string()
-          .required(t("sendComment")!)
-          .max(10000, t("sendComment.max")!),
+        content: yup.string().required(t("comment")!),
       })
     ),
   });
@@ -48,18 +45,20 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
         content: data.content,
       },
       onCompleted: () => {
-        setSelectedIndex(-111);
+        setSelectedIndex(-1);
       },
     });
   };
 
-  const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
-    const { value } = event.currentTarget;
-    if (value.length >= 10000) {
-      setError("content", { message: t("sendComment.max")! });
-    } else {
-      clearErrors("content");
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    trigger("content").then((isValid) => {
+      if (isValid && e.target.value.length >= 10000) {
+        setError("content", {
+          type: "manual",
+          message: t("comment.max")!,
+        });
+      }
+    });
   };
 
   return (
@@ -73,7 +72,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
               minRows={2}
               name="content"
               control={control}
-              inputProps={{ maxLength: 10000, onInput: handleInput }}
+              inputProps={{ maxLength: 10000, onChange: handleChange }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>

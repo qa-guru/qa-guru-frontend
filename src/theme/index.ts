@@ -5,15 +5,15 @@ import themesOptions from "./themeOptions";
 import { THEMES } from "./constans";
 import "./fonts.css";
 
+export type themeSettingsTypes = {
+  theme: string;
+  responsiveFontSizes?: boolean;
+};
+
 const baseOptions = {
   typography: {
     fontFamily: "'Montserrat', sans-serif",
   },
-};
-
-export type themeSettingsTypes = {
-  theme: string;
-  responsiveFontSizes?: boolean;
 };
 
 export const createCustomTheme = (settings: themeSettingsTypes) => {

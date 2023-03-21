@@ -1,16 +1,13 @@
 import { MemoryRouter } from "react-router-dom";
-import { render } from "../../test/utilsTest";
 import TrainingPurchases from "./TrainingPurchases";
+import { render } from "../../test/utilsTest";
 import { TrainingPurchasesQuery } from "../../api/graphql/generated/graphql";
 
 const mockData: TrainingPurchasesQuery = {
-  __typename: "Query",
   trainingPurchases: [
     {
-      __typename: "TrainingPurchaseDto",
       id: "string",
       user: {
-        __typename: "UserDto",
         id: "string",
         email: "string",
         firstName: "string",
@@ -18,7 +15,6 @@ const mockData: TrainingPurchasesQuery = {
         middleName: "string",
       },
       trainingTariff: {
-        __typename: "TrainingTariffDto",
         id: "string",
         name: "string",
         code: "string",
@@ -26,7 +22,6 @@ const mockData: TrainingPurchasesQuery = {
         homeWork: false,
         description: "string",
         training: {
-          __typename: "TrainingDto",
           id: "string",
           name: "string",
         },

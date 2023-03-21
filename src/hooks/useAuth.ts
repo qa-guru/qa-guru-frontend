@@ -17,25 +17,21 @@ const useAuth = () => {
     setIsLoading(true);
     await AuthService.login(username, password)
       .then((response) => {
-        switch (response.status) {
-          case 200:
-            setIsLoading(false);
-            client.refetchQueries({ include: ["user"] });
-            break;
-          default:
-            setIsLoading(false);
-            enqueueSnackbar(t("login.unknownError"));
+        if (response.status === 200) {
+          setIsLoading(false);
+          client.refetchQueries({ include: ["user"] });
+        } else {
+          setIsLoading(false);
+          enqueueSnackbar(t("login.unknownError"));
         }
       })
       .catch((error) => {
-        switch (error.response?.data.status) {
-          case 401:
-            setIsLoading(false);
-            enqueueSnackbar(t("login.unauthorized"));
-            break;
-          default:
-            setIsLoading(false);
-            enqueueSnackbar(t("login.unknownError"));
+        if (error.response?.data.status === 401) {
+          setIsLoading(false);
+          enqueueSnackbar(t("login.unauthorized"));
+        } else {
+          setIsLoading(false);
+          enqueueSnackbar(t("login.unknownError"));
         }
       });
   };
@@ -44,14 +40,12 @@ const useAuth = () => {
     setIsLoading(true);
     await AuthService.logout()
       .then((response) => {
-        switch (response.status) {
-          case 200:
-            setIsLoading(false);
-            client.refetchQueries({ include: ["user"] });
-            break;
-          default:
-            setIsLoading(false);
-            enqueueSnackbar(t("logout.unknownError"));
+        if (response.status === 200) {
+          setIsLoading(false);
+          client.refetchQueries({ include: ["user"] });
+        } else {
+          setIsLoading(false);
+          enqueueSnackbar(t("logout.unknownError"));
         }
       })
       .catch((error) => {
@@ -68,7 +62,7 @@ const useAuth = () => {
         login(data.email, data.password);
       },
       onError: (error) =>
-        error.graphQLErrors.map(({ message }) => {
+        error.graphQLErrors.forEach(({ message }) => {
           setIsLoading(false);
           const email = message.split(" ").reverse()[0].replace(/['"]+/g, "");
           enqueueSnackbar(t("create.user", { email }));

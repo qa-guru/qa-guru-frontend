@@ -62,6 +62,8 @@ const Content: React.FC<IContent> = ({ content }) => {
                 {value}
               </Link>
             );
+          default:
+            return null;
         }
       })}
     </>

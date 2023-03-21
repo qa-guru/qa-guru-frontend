@@ -26,18 +26,15 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
     handleSubmit,
     control,
     setError,
-    clearErrors,
     formState: { errors },
+    trigger,
   } = useForm<ISendHomeWorkContent>({
     defaultValues: {
       content: "",
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup
-          .string()
-          .required(t("sendHomework")!)
-          .max(2000, t("sendHomework.max")!),
+        content: yup.string().required(t("homework")!),
       })
     ),
   });
@@ -50,13 +47,15 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
     });
   };
 
-  const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
-    const { value } = event.currentTarget;
-    if (value.length >= 2000) {
-      setError("content", { message: t("sendHomework.max")! });
-    } else {
-      clearErrors("content");
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    trigger("content").then((isValid) => {
+      if (isValid && e.target.value.length >= 2000) {
+        setError("content", {
+          type: "manual",
+          message: t("homework.max")!,
+        });
+      }
+    });
   };
 
   return (
@@ -71,7 +70,7 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
               minRows={5}
               name="content"
               control={control}
-              inputProps={{ maxLength: 2000, onInput: handleInput }}
+              inputProps={{ maxLength: 2000, onChange: handleChange }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>
