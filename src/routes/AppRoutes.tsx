@@ -7,8 +7,8 @@ import Lecture from "../screens/Lecture";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="training/:trainingId" element={<TrainingLectures />} />
         <Route path="training/:trainingId/:lectureId" element={<Lecture />} />
       </Route>

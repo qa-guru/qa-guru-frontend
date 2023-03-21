@@ -123,7 +123,6 @@
     "no-undef": "off",
     "no-unused-vars": "off",
     // import
-    "import/extensions": "error",
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-absolute-path": "error",
@@ -149,6 +148,14 @@
     // does not properly work with ts
     "import/no-unresolved": "off",
     // sonarjs
-    "sonarjs/cognitive-complexity": "warn"
+    "sonarjs/cognitive-complexity": "warn",
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "types": "always",
+        "json": "always"
+      }
+    ]
   }
 }

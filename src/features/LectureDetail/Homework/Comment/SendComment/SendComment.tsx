@@ -24,19 +24,16 @@ const SendComment: React.FC<ISendComment> = (props) => {
     handleSubmit,
     control,
     setError,
-    clearErrors,
     reset,
     formState: { errors },
+    trigger,
   } = useForm<ISendCommentContent>({
     defaultValues: {
       content: "",
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup
-          .string()
-          .required(t("sendComment")!)
-          .max(10000, t("sendComment.max")!),
+        content: yup.string().required(t("comment")!),
       })
     ),
   });
@@ -49,13 +46,15 @@ const SendComment: React.FC<ISendComment> = (props) => {
     });
   };
 
-  const handleInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
-    const { value } = event.currentTarget;
-    if (value.length >= 10000) {
-      setError("content", { message: t("sendComment.max")! });
-    } else {
-      clearErrors("content");
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    trigger("content").then((isValid) => {
+      if (isValid && e.target.value.length >= 10000) {
+        setError("content", {
+          type: "manual",
+          message: t("comment.max")!,
+        });
+      }
+    });
   };
 
   return (
@@ -72,7 +71,7 @@ const SendComment: React.FC<ISendComment> = (props) => {
             minRows={2}
             name="content"
             control={control}
-            inputProps={{ maxLength: 10000, onInput: handleInput }}
+            inputProps={{ maxLength: 10000, onChange: handleChange }}
           />
           {errors?.content && (
             <FormHelperText error>{errors?.content.message}</FormHelperText>

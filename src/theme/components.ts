@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { Theme } from "@mui/material";
 
 const components = (theme: Theme): any => {
@@ -61,6 +62,17 @@ const components = (theme: Theme): any => {
       styleOverrides: {
         root: {
           borderRadius: "12px",
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          [theme.breakpoints.down("md")]: {
+            "& .MuiOutlinedInput-root": {
+              padding: "5px",
+            },
+          },
         },
       },
     },

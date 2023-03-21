@@ -1,7 +1,5 @@
-import { ApolloQueryResult, FetchMoreQueryOptions } from "@apollo/client";
 import {
   CommentsHomeWorkByHomeWorkQuery,
-  CommentsHomeWorkByHomeWorkQueryVariables,
   UserQuery,
 } from "../../../../api/graphql/generated/graphql";
 

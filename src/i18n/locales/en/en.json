@@ -35,8 +35,8 @@
 
   "page.home": "Home",
 
-  "sendHomework": "Answer to homework is required",
-  "sendHomework.max": "Answer to homework must be no more than 2000 characters",
-  "sendComment": "Comment is required",
-  "sendComment.max": "Comment must be no more than 10000 characters"
+  "homework": "Answer to homework is required",
+  "homework.max": "Answer to homework must be no more than 2000 characters",
+  "comment": "Comment is required",
+  "comment.max": "Comment must be no more than 10000 characters"
 }

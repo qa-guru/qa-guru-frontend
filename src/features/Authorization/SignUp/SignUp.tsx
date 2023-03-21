@@ -74,8 +74,12 @@ const SignUp: React.FC<ISignUp> = (props) => {
     navigate("/authorization");
   };
 
+  const passwordsMatch = valueConfirmPassword === getValues("password");
+
   const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
-    valueConfirmPassword === getValues("password") && signup(data);
+    if (passwordsMatch) {
+      signup(data);
+    }
   };
 
   return (

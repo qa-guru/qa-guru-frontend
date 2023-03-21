@@ -2,10 +2,10 @@ import { Box, IconButton, Paper, Stack, SvgIcon } from "@mui/material";
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ReactComponent as Logo } from "../../../assets/icons/logo-header.svg";
 import Profile from "./Profile";
 import AppMenu from "./Menu/Menu";
 import MenuBurger from "./MenuBurger/MenuBurger";
+import { ReactComponent as Logo } from "../../../assets/icons/logo-header.svg";
 import LocalSelector from "../../../shared/LocalSelector";
 import { primary } from "../../../theme/colors";
 
