@@ -190,7 +190,7 @@ exports[`SignUp > the component is Loading 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
           >
             <div
-              class="MuiAutocomplete-root css-1dpnvmm-MuiAutocomplete-root"
+              class="MuiAutocomplete-root css-l3ln04-MuiAutocomplete-root"
             >
               <div
                 class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
@@ -719,7 +719,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
           >
             <div
-              class="MuiAutocomplete-root css-1dpnvmm-MuiAutocomplete-root"
+              class="MuiAutocomplete-root css-l3ln04-MuiAutocomplete-root"
             >
               <div
                 class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
