@@ -1,3 +1,0 @@
-query lectureHomeWork($lectureId: ID!) {
-  lectureHomeWork(lectureId: $lectureId)
-}

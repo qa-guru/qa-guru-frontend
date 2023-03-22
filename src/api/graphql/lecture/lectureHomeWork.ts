@@ -1,5 +1,5 @@
-import { useLectureHomeWorkQuery as _useLectureHomeWorkQuery } from "../../../generated/graphql";
 import { useSnackbar } from "notistack";
+import { useLectureHomeWorkQuery as _useLectureHomeWorkQuery } from "../generated/graphql";
 
 export const useLectureHomeWorkQuery = () => {
   const { enqueueSnackbar } = useSnackbar();

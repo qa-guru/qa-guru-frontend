@@ -1,0 +1,7 @@
+query lectureHomeWork($lectureId: ID!) {
+  lectureHomeWork(lectureId: $lectureId) {
+    type
+    value
+    url
+  }
+}

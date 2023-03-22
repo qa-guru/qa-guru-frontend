@@ -1,0 +1,45 @@
+// Vitest Snapshot v1
+
+exports[`TrainingPurchases > the component is render 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1tp3ba8-MuiGrid-root"
+    >
+      <a
+        href="/training/string"
+        style="text-decoration: none;"
+      >
+        <button
+          class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6zsig3-MuiPaper-root"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+            >
+              string
+            </h5>
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-alignRight css-r8cv4z-MuiTypography-root"
+            >
+              Продолжить
+            </h6>
+          </div>
+          <span
+            class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+          />
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

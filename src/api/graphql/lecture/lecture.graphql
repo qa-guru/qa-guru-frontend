@@ -1,0 +1,24 @@
+query lecture($id: ID!) {
+  lecture(id: $id) {
+    id
+    speakers {
+      id
+      firstName
+      lastName
+      middleName
+    }
+    subject
+    homeWorkLevel {
+      id
+      code
+      description
+      estimate
+    }
+    description
+    content {
+      type
+      value
+      url
+    }
+  }
+}

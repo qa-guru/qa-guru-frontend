@@ -1,0 +1,31 @@
+query commentsHomeWorkByHomeWork(
+  $offset: Int!
+  $limit: Int!
+  $sort: CommentHomeWorkSort!
+  $homeWorkId: ID!
+) {
+  commentsHomeWorkByHomeWork(
+    offset: $offset
+    limit: $limit
+    sort: $sort
+    homeWorkId: $homeWorkId
+  ) {
+    items {
+      id
+      creator {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+      }
+    }
+    offset
+    limit
+    totalElements
+  }
+}

@@ -1,0 +1,13 @@
+query user {
+  user {
+    id
+    email
+    firstName
+    lastName
+    middleName
+    phoneNumber
+    avatarLocation
+    roles
+    locked
+  }
+}
