@@ -1,4 +1,4 @@
-export interface IContent {
+export interface IContentSerialization {
   content: Array<{
     type?: string | null;
     value?: string | null;

@@ -486,5 +486,8 @@ exports[`LectureDetail > hasHomework is true 1`] = `
       </form>
     </div>
   </div>
+  <div>
+    Loading...
+  </div>
 </DocumentFragment>
 `;

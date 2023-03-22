@@ -6,6 +6,7 @@ import LectureContent from "./LectureContent";
 import { ILectureDetail } from "./LectureDetail.types";
 import LectureHomework from "./LectureHomework";
 import Homework from "./Homework";
+import HomeworksOtherStudents from "./HomeworksOtherStudents";
 import BlurredHomework from "../../shared/BlurredHomework";
 
 const LectureDetail: React.FC<ILectureDetail> = (props) => {
@@ -35,6 +36,7 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
       ) : (
         <BlurredHomework />
       )}
+      {hasHomework ? <HomeworksOtherStudents /> : null}
     </>
   );
 };

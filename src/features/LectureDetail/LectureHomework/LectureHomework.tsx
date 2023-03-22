@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, Stack, Typography } from "@mui/material";
 import { ILectureHomework } from "./LectureHomework.types";
-import Content from "../../../shared/Content";
+import ContentSerialization from "../../../shared/ContentSerialization";
 
 const style = {
   paper: { padding: { xs: "15px", md: "20px" } },
@@ -19,7 +19,7 @@ const LectureHomework: React.FC<ILectureHomework> = ({
       </Typography>
       <Paper sx={style.paper}>
         <Stack spacing={0.5}>
-          <Content content={lectureHomeWork!} />
+          <ContentSerialization content={lectureHomeWork!} />
         </Stack>
       </Paper>
     </>
