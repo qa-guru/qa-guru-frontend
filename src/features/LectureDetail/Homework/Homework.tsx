@@ -90,15 +90,25 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
 
   return (
     <Paper sx={style.paper}>
-      <Stack spacing={3} direction="row" alignItems="center">
+      <Stack
+        spacing={{ xs: 1, sm: 3 }}
+        direction="row"
+        alignItems="center"
+        justifyContent={{ xs: "space-between", sm: "stretch" }}
+      >
         <Typography variant="h5">Ответ на задание</Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          {icon}
-          <Box>
-            <Typography variant="subtitle1">{statusText}</Typography>
-            <Typography variant="subtitle2">{date}</Typography>
-          </Box>
-          {status === ("IN_REVIEW" || "APPROVED" || "NOT_APPROVED") && (
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 0.5, sm: 2 }}
+        >
+          <Stack direction="row" spacing={1} alignItems="center">
+            {icon}
+            <Box>
+              <Typography variant="subtitle1">{statusText}</Typography>
+              <Typography variant="subtitle2">{date}</Typography>
+            </Box>
+          </Stack>
+          {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
             <Stack direction="row" alignItems="center" spacing={1}>
               <Avatar
                 sx={style.avatar}
