@@ -71,7 +71,11 @@ const BlurredHomework: React.FC = () => {
     <Box position="relative">
       <BlurredComponent>
         <LectureHomework dataLectureHomework={mockDataLectureHomework} />
-        <Homework dataHomeWorkByLecture={mockDataHomeWorkByLecture} />
+        <Box pt="40px">
+          <Homework
+            dataHomeWorkByLecture={mockDataHomeWorkByLecture.homeWorkByLecture!}
+          />
+        </Box>
       </BlurredComponent>
       <Button
         disableElevation

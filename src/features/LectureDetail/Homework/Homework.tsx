@@ -19,7 +19,7 @@ const RedHighlightOffIcon = styled(HighlightOffIcon)({
 });
 
 const style = {
-  paper: { padding: { xs: "15px", md: "20px" }, mt: "40px" },
+  paper: { padding: { xs: "15px", md: "20px" } },
   buttonUpdate: { textTransform: "none", minWidth: "147px", mt: "15px" },
   avatar: {
     width: 40,
@@ -31,7 +31,8 @@ const style = {
   },
 };
 
-const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
+const Homework: React.FC<IHomework> = (props) => {
+  const { dataHomeWorkByLecture, editAccess } = props;
   const {
     status,
     startCheckingDate,
@@ -41,7 +42,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
     creationDate,
     answer,
     id,
-  } = dataHomeWorkByLecture.homeWorkByLecture! || {};
+  } = dataHomeWorkByLecture! || {};
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
   const DATE_FORMAT = "dd.MM.yyyy";
@@ -98,7 +99,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
       >
         <Typography variant="h5">Ответ на задание</Typography>
         <Stack
-          direction={{ xs: "column", sm: "row" }}
+          direction={{ xs: "column-reverse", sm: "row" }}
           spacing={{ xs: 0.5, sm: 2 }}
         >
           <Stack direction="row" spacing={1} alignItems="center">
@@ -149,7 +150,7 @@ const Homework: React.FC<IHomework> = ({ dataHomeWorkByLecture }) => {
       )}
 
       <Box mt="7px">{homework}</Box>
-      {!openHomeWorkEdit && status && (
+      {!openHomeWorkEdit && status && editAccess && (
         <Button
           onClick={() => setOpenHomeWorkEdit(true)}
           sx={style.buttonUpdate}

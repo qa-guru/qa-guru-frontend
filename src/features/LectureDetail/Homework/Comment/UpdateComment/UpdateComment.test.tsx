@@ -1,9 +1,8 @@
 import { MemoryRouter } from "react-router-dom";
 import UpdateComment from "./UpdateComment";
 import { render } from "../../../../../test/utilsTest";
-
-const mockSetSelectedIndex: any = () => {};
-const mockUpdateComment: any = () => {};
+import { mockUpdateComment } from "../../../../../shared/mocks/updateComment.mock";
+import { mockSetSelectedIndex } from "../../../../../shared/mocks/setSelectedIndex.mock";
 
 describe("UpdateComment", () => {
   it("the component is Loading", () => {

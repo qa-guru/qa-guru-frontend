@@ -1,8 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import SendComment from "./SendComment";
 import { render } from "../../../../../test/utilsTest";
-
-const mockSendComment: any = () => {};
+import { mockSendComment } from "../../../../../shared/mocks/sendComment.mock";
 
 describe("SendComment", () => {
   it("the component is Loading", () => {
