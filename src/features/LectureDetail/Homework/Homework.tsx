@@ -11,7 +11,7 @@ import Comment from "./Comment";
 import { ReactComponent as Clock } from "../../../assets/icons/clock.svg";
 import { ReactComponent as Search } from "../../../assets/icons/search.svg";
 import { ReactComponent as Done } from "../../../assets/icons/done.svg";
-import TextSerialization from "../../../shared/TextSerialization";
+import TextSerialization from "../../../shared/Serializers/TextSerialization";
 import { red } from "../../../theme/colors";
 
 const RedHighlightOffIcon = styled(HighlightOffIcon)({

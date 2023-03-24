@@ -17,7 +17,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
 import { ISignUp } from "./SignUp.types";
 import RHF from "../../../shared/InputRHF";
-import LocalSelector from "../../../shared/LocalSelector";
+import LocalSelector from "../../../shared/Buttons/LocalSelector";
 import { UserCreateInput } from "../../../api/graphql/generated/graphql";
 import { primary, purple } from "../../../theme/colors";
 import { ReactComponent as Logo } from "../../../assets/icons/logo.svg";

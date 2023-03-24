@@ -1,7 +1,7 @@
 import {
   HomeWorksByLectureIdQuery,
   StudentHomeWorkStatus,
-} from "../../../api/graphql/generated/graphql";
+} from "../../api/graphql/generated/graphql";
 
 export const mockDataHomeWorksByLectureId: HomeWorksByLectureIdQuery = {
   homeWorksByLectureId: {

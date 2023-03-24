@@ -6,7 +6,7 @@ import Profile from "./Profile";
 import AppMenu from "./Menu/Menu";
 import MenuBurger from "./MenuBurger/MenuBurger";
 import { ReactComponent as Logo } from "../../../assets/icons/logo-header.svg";
-import LocalSelector from "../../../shared/LocalSelector";
+import LocalSelector from "../../../shared/Buttons/LocalSelector";
 import { primary } from "../../../theme/colors";
 
 const style = {

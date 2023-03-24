@@ -1,27 +1,13 @@
 import { MemoryRouter } from "react-router-dom";
 import Profile from "./Profile";
 import { render } from "../../../../test/utilsTest";
-import { UserQuery } from "../../../../api/graphql/generated/graphql";
-
-const mockData: UserQuery = {
-  user: {
-    id: "string",
-    email: "string",
-    firstName: "string",
-    lastName: "string",
-    middleName: "string",
-    phoneNumber: "string",
-    avatarLocation: "string",
-    roles: [],
-    locked: false,
-  },
-};
+import { mockDataUser } from "../../../../shared/mocks/dataUser.mock";
 
 describe("Profile", () => {
   it("the component is render", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <Profile data={mockData!} />
+        <Profile data={mockDataUser!} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

@@ -6,7 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import { IComment } from "./Comment.types";
 import UpdateComment from "./UpdateComment";
 import SendComment from "./SendComment";
-import TextSerialization from "../../../../shared/TextSerialization";
+import TextSerialization from "../../../../shared/Serializers/TextSerialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
 import { grey, primary } from "../../../../theme/colors";
 

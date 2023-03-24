@@ -8,6 +8,7 @@ import {
   StudentHomeWorkSortField,
 } from "../../../api/graphql/generated/graphql";
 import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
+import { useUserQuery } from "../../../api/graphql/user/user";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();
@@ -18,7 +19,7 @@ const HomeworksOtherStudentsContainer: React.FC = () => {
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
       offset: 0,
-      limit: 3,
+      limit: 1,
       sort: {
         field: fieldSortHomeworks,
         order: fieldOrderHomeworks,
@@ -26,11 +27,18 @@ const HomeworksOtherStudentsContainer: React.FC = () => {
       lectureId: lectureId!,
     },
   });
+  const { data: dataUser, loading: loadingUser } = useUserQuery();
 
-  if (loading) return <div>Loading...</div>;
-  if (!data) return <NoDataErrorMessage />;
+  if (loading || loadingUser) return null;
+  if (!data || !dataUser) return <NoDataErrorMessage />;
 
-  return <HomeworksOtherStudents data={data} />;
+  return (
+    <HomeworksOtherStudents
+      fetchMore={fetchMore}
+      data={data}
+      dataUser={dataUser}
+    />
+  );
 };
 
 export default HomeworksOtherStudentsContainer;

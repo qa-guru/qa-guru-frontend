@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ILogin, ILoginForm } from "./Login.types";
 import RHF from "../../../shared/InputRHF";
-import LocalSelector from "../../../shared/LocalSelector";
+import LocalSelector from "../../../shared/Buttons/LocalSelector";
 import { ReactComponent as Logo } from "../../../assets/icons/logo.svg";
 import { primary, purple } from "../../../theme/colors";
 

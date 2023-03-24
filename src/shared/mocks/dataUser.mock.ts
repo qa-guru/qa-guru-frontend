@@ -1,4 +1,4 @@
-import { UserQuery, UserRole } from "../../../api/graphql/generated/graphql";
+import { UserQuery, UserRole } from "../../api/graphql/generated/graphql";
 
 export const mockDataUser: UserQuery = {
   user: {
@@ -9,7 +9,7 @@ export const mockDataUser: UserQuery = {
     middleName: "string",
     phoneNumber: "string",
     avatarLocation: "string",
-    roles: [UserRole.Student],
+    roles: null,
     locked: false,
   },
 };

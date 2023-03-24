@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, Stack, Typography } from "@mui/material";
 import { ILectureContent } from "./LectureContent.types";
-import ContentSerialization from "../../../shared/ContentSerialization";
+import ContentSerialization from "../../../shared/Serializers/ContentSerialization";
 
 const style = {
   paper: { padding: { xs: "15px", md: "20px" } },
