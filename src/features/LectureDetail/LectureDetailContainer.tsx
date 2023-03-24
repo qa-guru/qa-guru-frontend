@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import LectureDetail from "./LectureDetail";
-import Spinner from "../../shared/Spinner/Spinner";
+import Spinner from "../../shared/Spinner";
 import { useLectureQuery } from "../../api/graphql/lecture/lecture";
 import NoDataErrorMessage from "../../shared/NoDataErrorMessage";
 import {

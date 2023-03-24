@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import TrainingLectures from "./TrainingLectures";
 import { useTrainingLecturesQuery } from "../../api/graphql/trainingLecture/trainingLectures";
-import Spinner from "../../shared/Spinner/Spinner";
+import Spinner from "../../shared/Spinner";
 import NoDataErrorMessage from "../../shared/NoDataErrorMessage";
 import { useTrainingQuery } from "../../api/graphql/training/training";
 
