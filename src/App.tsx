@@ -6,9 +6,10 @@ import { CssBaseline } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
 import useAuth from "./hooks/useAuth";
 import { useUserQuery } from "./api/graphql/user/user";
-import Spinner from "./shared/Spinner/Spinner";
+import Spinner from "./shared/Spinner";
 import { createCustomTheme } from "./theme";
 import useSettings from "./hooks/useSettings";
+import BackdropSpinner from "./shared/BackdropSpinner";
 
 const AuthRoutes = lazy(() => import("./routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("./routes/AppRoutes"));
@@ -33,7 +34,7 @@ export const App = () => {
     },
   });
 
-  if (loading) return <Spinner />;
+  if (loading) return <BackdropSpinner />;
 
   return (
     <StyledEngineProvider injectFirst>

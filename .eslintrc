@@ -154,7 +154,8 @@
       "never",
       {
         "types": "always",
-        "json": "always"
+        "json": "always",
+        "mock": "always"
       }
     ]
   }

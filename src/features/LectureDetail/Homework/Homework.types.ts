@@ -1,5 +1,6 @@
-import { HomeWorkByLectureQuery } from "../../../api/graphql/generated/graphql";
+import { StudentHomeWorkDto } from "../../../api/graphql/generated/graphql";
 
 export interface IHomework {
-  dataHomeWorkByLecture: HomeWorkByLectureQuery;
+  editAccess?: boolean;
+  dataHomeWorkByLecture: StudentHomeWorkDto;
 }

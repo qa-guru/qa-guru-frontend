@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Link, Typography } from "@mui/material";
-import { IContent } from "./Content.types";
+import { IContentSerialization } from "./ContentSerialization.types";
 import TextSerialization from "../TextSerialization";
 
 const style = {
@@ -19,7 +19,7 @@ const style = {
   },
 };
 
-const Content: React.FC<IContent> = ({ content }) => {
+const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
   return (
     <>
       {content?.map((item, index) => {
@@ -70,4 +70,4 @@ const Content: React.FC<IContent> = ({ content }) => {
   );
 };
 
-export default Content;
+export default ContentSerialization;

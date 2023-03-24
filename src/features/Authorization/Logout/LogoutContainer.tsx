@@ -1,7 +1,7 @@
 import React from "react";
 import Logout from "./Logout";
 import useAuth from "../../../hooks/useAuth";
-import Spinner from "../../../shared/Spinner/Spinner";
+import Spinner from "../../../shared/Spinner";
 
 interface ILogoutContainer {
   setAnchorElUser: React.Dispatch<React.SetStateAction<HTMLElement | null>>;

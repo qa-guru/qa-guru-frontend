@@ -1,6 +1,6 @@
 import React from "react";
 import TrainingPurchases from "./TrainingPurchases";
-import Spinner from "../../shared/Spinner/Spinner";
+import Spinner from "../../shared/Spinner";
 import { useTrainingPurchasesQuery } from "../../api/graphql/trainingPurchase/trainingPurchases";
 import NoDataErrorMessage from "../../shared/NoDataErrorMessage";
 

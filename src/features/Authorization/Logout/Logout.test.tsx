@@ -3,7 +3,6 @@ import Logout from "./Logout";
 import { render } from "../../../test/utilsTest";
 
 const mockLogout: any = () => {};
-
 const mockSetAnchorElUser: any = () => {};
 
 describe("Logout", () => {

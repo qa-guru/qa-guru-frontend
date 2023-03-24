@@ -6,7 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import { IComment } from "./Comment.types";
 import UpdateComment from "./UpdateComment";
 import SendComment from "./SendComment";
-import TextSerialization from "../../../../shared/TextSerialization";
+import TextSerialization from "../../../../shared/Serializers/TextSerialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
 import { grey, primary } from "../../../../theme/colors";
 
@@ -28,7 +28,7 @@ const Comment: React.FC<IComment> = (props) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreComments, setHasMoreComments] = useState(true);
-  const { totalElements, items, offset, limit } =
+  const { totalElements, items, offset } =
     dataCommentsHomeWorkByHomeWork.commentsHomeWorkByHomeWork! || {};
   const { id: idUser } = dataUser.user!;
 
@@ -72,6 +72,7 @@ const Comment: React.FC<IComment> = (props) => {
         {items?.map((item, index) => {
           const isSelected = index === selectedIndex;
           const { creator, content, creationDate, id } = item!;
+          const editAccess = idUser === creator?.id;
 
           return (
             <Paper key={index} sx={style.container}>
@@ -116,7 +117,7 @@ const Comment: React.FC<IComment> = (props) => {
                   </Box>
                 </Box>
 
-                {!isSelected && idUser === creator?.id && (
+                {!isSelected && editAccess && (
                   <IconButton onClick={() => setSelectedIndex(index)}>
                     <Edit />
                   </IconButton>

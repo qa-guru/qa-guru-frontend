@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate, useParams } from "react-router-dom";
-import { primary } from "../theme/colors";
+import { primary } from "../../theme/colors";
 
 const style = {
   button: { mb: "25px", color: primary.main },
