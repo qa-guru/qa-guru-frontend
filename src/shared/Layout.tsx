@@ -3,6 +3,11 @@ import { Outlet } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import Header from "../features/Navigation/Header";
 import Footer from "../features/Navigation/Footer";
+import { UserRole } from "../api/graphql/generated/graphql";
+
+interface LayoutProps {
+  userRoles: Array<UserRole | null>;
+}
 
 const style = {
   root: {
@@ -15,10 +20,10 @@ const style = {
   },
 };
 
-const Layout: React.FC = () => {
+const Layout: React.FC<LayoutProps> = ({ userRoles }) => {
   return (
     <Box sx={style.root}>
-      <Header />
+      <Header userRoles={userRoles} />
       <Container sx={style.content} maxWidth={"xl"}>
         <Outlet />
       </Container>

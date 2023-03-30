@@ -1,16 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "../screens/Home";
+import React from "react";
+import { getUserRoutes, roleRoutes } from "./RoleRoutes";
 import Layout from "../shared/Layout";
-import TrainingLectures from "../screens/LecturesByTraining";
-import Lecture from "../screens/Lecture";
+import { UserRole } from "../api/graphql/generated/graphql";
 
-const AppRoutes = () => {
+interface AppRoutesProps {
+  userRoles: Array<UserRole | null>;
+}
+
+const AppRoutes: React.FC<AppRoutesProps> = ({ userRoles }) => {
+  const userRoutes = getUserRoutes(userRoles);
+
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="training/:trainingId" element={<TrainingLectures />} />
-        <Route path="training/:trainingId/:lectureId" element={<Lecture />} />
+      <Route path="/" element={<Layout userRoles={userRoles} />}>
+        {userRoutes.map((route) => route)}
       </Route>
     </Routes>
   );

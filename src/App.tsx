@@ -24,7 +24,7 @@ export const App = () => {
     responsiveFontSizes: settings.responsiveFontSizes,
   });
 
-  const { loading } = useUserQuery({
+  const { loading, data } = useUserQuery({
     onCompleted: () => {
       setIsSignedIn(true);
     },
@@ -42,7 +42,11 @@ export const App = () => {
         <CssBaseline />
         <ModalProvider rootComponent={TransitionGroup}>
           <Suspense fallback={<Spinner />}>
-            {!isSignedIn ? <AuthRoutes /> : <AppRoutes />}
+            {!isSignedIn ? (
+              <AuthRoutes />
+            ) : (
+              <AppRoutes userRoles={data?.user?.roles!} />
+            )}
           </Suspense>
         </ModalProvider>
       </ThemeProvider>
