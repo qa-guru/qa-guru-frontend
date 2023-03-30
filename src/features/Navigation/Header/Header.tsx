@@ -5,9 +5,11 @@ import { useTranslation } from "react-i18next";
 import Profile from "./Profile";
 import AppMenu from "./Menu/Menu";
 import MenuBurger from "./MenuBurger/MenuBurger";
+import { IHeader } from "./Header.types";
 import { ReactComponent as Logo } from "../../../assets/icons/logo-header.svg";
 import LocalSelector from "../../../shared/Buttons/LocalSelector";
 import { primary } from "../../../theme/colors";
+import { UserRole } from "../../../api/graphql/generated/graphql";
 
 const style = {
   wrapper: {
@@ -27,21 +29,47 @@ const style = {
   link: { textDecoration: "none", color: primary.main },
 };
 
-const Header = () => {
+const Header: React.FC<IHeader> = ({ userRoles }) => {
   const [anchorElNav, setAnchorElNav] =
     React.useState<null | HTMLElement>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  const kanbanAllowedRoles = [UserRole.Mentor, UserRole.Master];
+  const homeAllowedRoles = [UserRole.Student];
+
+  const hasAnyOfRoles = (
+    userRoles: Array<UserRole | null>,
+    allowedRoles: UserRole[]
+  ): boolean => {
+    return userRoles.some((role) => allowedRoles.includes(role as UserRole));
+  };
+
   const pages = [
-    {
-      title: (
-        <Link style={style.link} to="/">
-          {t("page.home")}
-        </Link>
-      ),
-      pageURL: "/",
-    },
+    ...(hasAnyOfRoles(userRoles, homeAllowedRoles)
+      ? [
+          {
+            title: (
+              <Link style={style.link} to="/">
+                {t("page.home")}
+              </Link>
+            ),
+            pageURL: "/",
+          },
+        ]
+      : []),
+    ...(hasAnyOfRoles(userRoles, kanbanAllowedRoles)
+      ? [
+          {
+            title: (
+              <Link style={style.link} to="/kanban">
+                Доска заданий
+              </Link>
+            ),
+            pageURL: "/kanban",
+          },
+        ]
+      : []),
   ];
 
   const handleClickNavMenu = (pageURL: string) => {

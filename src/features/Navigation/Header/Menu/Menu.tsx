@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { IAppMenu } from "./Menu.types";
 
@@ -12,19 +12,21 @@ const AppMenu: React.FC<IAppMenu> = (props) => {
 
   return (
     <Box sx={style.box}>
-      {pages.map((page, index) => {
-        const { pageURL, title } = page;
+      <Stack direction="row" spacing={3}>
+        {pages.map((page, index) => {
+          const { pageURL, title } = page;
 
-        return (
-          <Button
-            variant="text"
-            key={index}
-            onClick={() => handleClickNavMenu(pageURL)}
-          >
-            <Typography variant="subtitle2">{title}</Typography>
-          </Button>
-        );
-      })}
+          return (
+            <Button
+              variant="text"
+              key={index}
+              onClick={() => handleClickNavMenu(pageURL)}
+            >
+              <Typography variant="subtitle2">{title}</Typography>
+            </Button>
+          );
+        })}
+      </Stack>
     </Box>
   );
 };
