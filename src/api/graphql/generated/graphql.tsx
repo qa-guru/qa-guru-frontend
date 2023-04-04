@@ -381,6 +381,7 @@ export type Query = {
   lectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
+  lecturesByMentor?: Maybe<LecturesDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
   /** training lecture */
@@ -391,6 +392,7 @@ export type Query = {
   /** training tariff */
   trainingTariffs?: Maybe<TrainingTariffsDto>;
   trainings?: Maybe<TrainingsDto>;
+  trainingsByMentor?: Maybe<TrainingsDto>;
   /** user section */
   user?: Maybe<UserDto>;
   userRoles?: Maybe<Array<Maybe<UserRoleDto>>>;
@@ -423,6 +425,7 @@ export type QueryHomeWorkByStudentAndLectureArgs = {
 
 /** Query root */
 export type QueryHomeWorksArgs = {
+  filter?: InputMaybe<StudentHomeWorkFilter>;
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<StudentHomeWorkSort>;
@@ -467,6 +470,13 @@ export type QueryLecturesArgs = {
 };
 
 /** Query root */
+export type QueryLecturesByMentorArgs = {
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
+  sort?: InputMaybe<LectureSort>;
+};
+
+/** Query root */
 export type QueryTrainingArgs = {
   id: Scalars["ID"];
 };
@@ -496,6 +506,13 @@ export type QueryTrainingsArgs = {
 };
 
 /** Query root */
+export type QueryTrainingsByMentorArgs = {
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
+  sort?: InputMaybe<TrainingSort>;
+};
+
+/** Query root */
 export type QueryUsersArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
@@ -513,6 +530,15 @@ export type StudentHomeWorkDto = {
   startCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
   status?: Maybe<StudentHomeWorkStatus>;
   student?: Maybe<UserDto>;
+};
+
+export type StudentHomeWorkFilter = {
+  creationDateFrom?: InputMaybe<Scalars["LocalDateTime"]>;
+  creationDateTo?: InputMaybe<Scalars["LocalDateTime"]>;
+  lectureId?: InputMaybe<Scalars["ID"]>;
+  mentorId?: InputMaybe<Scalars["ID"]>;
+  status?: InputMaybe<StudentHomeWorkStatus>;
+  trainingId?: InputMaybe<Scalars["ID"]>;
 };
 
 export type StudentHomeWorkSort = {
@@ -1189,6 +1215,13 @@ export type UserQuery = {
     roles?: Array<UserRole | null> | null;
     locked?: boolean | null;
   } | null;
+};
+
+export type UserIdQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UserIdQuery = {
+  __typename?: "Query";
+  user?: { __typename?: "UserDto"; id?: string | null } | null;
 };
 
 export const HomeWorkByLectureDocument = gql`
@@ -2600,3 +2633,64 @@ export function useUserLazyQuery(
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
+export const UserIdDocument = gql`
+  query userId {
+    user {
+      id
+    }
+  }
+`;
+export type UserIdComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    UserIdQuery,
+    UserIdQueryVariables
+  >,
+  "query"
+>;
+
+export const UserIdComponent = (props: UserIdComponentProps) => (
+  <ApolloReactComponents.Query<UserIdQuery, UserIdQueryVariables>
+    query={UserIdDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUserIdQuery__
+ *
+ * To run a query within a React component, call `useUserIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserIdQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUserIdQuery(
+  baseOptions?: Apollo.QueryHookOptions<UserIdQuery, UserIdQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UserIdQuery, UserIdQueryVariables>(
+    UserIdDocument,
+    options
+  );
+}
+export function useUserIdLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<UserIdQuery, UserIdQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UserIdQuery, UserIdQueryVariables>(
+    UserIdDocument,
+    options
+  );
+}
+export type UserIdQueryHookResult = ReturnType<typeof useUserIdQuery>;
+export type UserIdLazyQueryHookResult = ReturnType<typeof useUserIdLazyQuery>;
+export type UserIdQueryResult = Apollo.QueryResult<
+  UserIdQuery,
+  UserIdQueryVariables
+>;

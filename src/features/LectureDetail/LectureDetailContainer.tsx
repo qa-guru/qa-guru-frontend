@@ -4,11 +4,9 @@ import LectureDetail from "./LectureDetail";
 import Spinner from "../../shared/Spinner";
 import { useLectureQuery } from "../../api/graphql/lecture/lecture";
 import NoDataErrorMessage from "../../shared/NoDataErrorMessage";
-import {
-  useHomeWorkByLectureQuery,
-  useLectureHomeWorkQuery,
-} from "../../api/graphql/generated/graphql";
 import useTariff from "../../hooks/useTariff";
+import { LectureIdContext } from "../../context/LectureIdContext";
+import { useLectureHomeWorkQuery } from "../../api/graphql/lecture/lectureHomeWork";
 
 const LectureDetailContainer: React.FC = () => {
   const { lectureId } = useParams();
@@ -25,28 +23,18 @@ const LectureDetailContainer: React.FC = () => {
       skip: !tariffHomework,
     });
 
-  const hasHomework = dataLectureHomework?.lectureHomeWork?.length! > 0;
+  if (loadingLecture || loadingLectureHomeWork) return <Spinner />;
 
-  const { data: dataHomeWorkByLecture, loading: loadingHomework } =
-    useHomeWorkByLectureQuery({
-      variables: { lectureId: lectureId! },
-      skip: !tariffHomework || !hasHomework,
-      fetchPolicy: "network-only",
-    });
-
-  if (loadingLecture || loadingHomework || loadingLectureHomeWork)
-    return <Spinner />;
-
-  if (!dataLecture) return <NoDataErrorMessage />;
+  if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
 
   return (
-    <LectureDetail
-      dataLecture={dataLecture}
-      dataLectureHomework={dataLectureHomework!}
-      dataHomeWorkByLecture={dataHomeWorkByLecture!}
-      tariffHomework={tariffHomework}
-      hasHomework={hasHomework}
-    />
+    <LectureIdContext.Provider value={lectureId}>
+      <LectureDetail
+        dataLecture={dataLecture}
+        dataLectureHomework={dataLectureHomework!}
+        tariffHomework={tariffHomework}
+      />
+    </LectureIdContext.Provider>
   );
 };
 

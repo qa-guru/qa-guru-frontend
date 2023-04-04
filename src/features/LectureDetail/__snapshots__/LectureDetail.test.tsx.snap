@@ -175,101 +175,28 @@ exports[`LectureDetail > hasHomework is false 1`] = `
         class="MuiBox-root css-pxpt32"
       >
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+          class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
+          style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
         >
-          <div
-            class="MuiStack-root css-1bg7s6x-MuiStack-root"
+          <span
+            class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+            role="progressbar"
+            style="width: 40px; height: 40px;"
           >
-            <h5
-              class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
             >
-              Ответ на задание
-            </h5>
-            <div
-              class="MuiStack-root css-a5ikui-MuiStack-root"
-            >
-              <div
-                class="MuiStack-root css-1q36rmd-MuiStack-root"
-              >
-                <div
-                  class="MuiBox-root css-0"
-                >
-                  <h6
-                    class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-                  />
-                  <h6
-                    class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-6qfr2n"
-          >
-            <form>
-              <div
-                class="MuiStack-root css-17qspa5-MuiStack-root"
-              >
-                <div
-                  class="MuiBox-root css-8atqhb"
-                >
-                  <div
-                    class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-                  >
-                    <div
-                      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-                    >
-                      <div
-                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
-                      >
-                        <textarea
-                          aria-invalid="false"
-                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                          id=":r2:"
-                          maxlength="2000"
-                          placeholder="Текст ответа"
-                          style="height: 0px; overflow: hidden;"
-                        />
-                        <textarea
-                          aria-hidden="true"
-                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                          readonly=""
-                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
-                          tabindex="-1"
-                        />
-                        <fieldset
-                          aria-hidden="true"
-                          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-                        >
-                          <legend
-                            class="css-ihdtdm"
-                          >
-                            <span
-                              class="notranslate"
-                            >
-                              ​
-                            </span>
-                          </legend>
-                        </fieldset>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1tn15vr-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
-                    id=":r3:"
-                    tabindex="0"
-                    type="button"
-                  >
-                    Отправить
-                    <span
-                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                    />
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="20.2"
+                stroke-width="3.6"
+              />
+            </svg>
+          </span>
         </div>
       </div>
     </div>
@@ -453,105 +380,52 @@ exports[`LectureDetail > hasHomework is true 1`] = `
     </div>
   </div>
   <div
-    class="MuiBox-root css-pxpt32"
+    class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
+    style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
   >
-    <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
     >
-      <div
-        class="MuiStack-root css-1bg7s6x-MuiStack-root"
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
       >
-        <h5
-          class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
-        >
-          Ответ на задание
-        </h5>
-        <div
-          class="MuiStack-root css-a5ikui-MuiStack-root"
-        >
-          <div
-            class="MuiStack-root css-1q36rmd-MuiStack-root"
-          >
-            <div
-              class="MuiBox-root css-0"
-            >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-              />
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="MuiBox-root css-6qfr2n"
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+  </div>
+  <div
+    class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
+    style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+  >
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
       >
-        <form>
-          <div
-            class="MuiStack-root css-17qspa5-MuiStack-root"
-          >
-            <div
-              class="MuiBox-root css-8atqhb"
-            >
-              <div
-                class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-              >
-                <div
-                  class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-                >
-                  <div
-                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
-                  >
-                    <textarea
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                      id=":r0:"
-                      maxlength="2000"
-                      placeholder="Текст ответа"
-                      style="height: 0px; overflow: hidden;"
-                    />
-                    <textarea
-                      aria-hidden="true"
-                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                      readonly=""
-                      style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
-                      tabindex="-1"
-                    />
-                    <fieldset
-                      aria-hidden="true"
-                      class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-                    >
-                      <legend
-                        class="css-ihdtdm"
-                      >
-                        <span
-                          class="notranslate"
-                        >
-                          ​
-                        </span>
-                      </legend>
-                    </fieldset>
-                  </div>
-                </div>
-              </div>
-              <button
-                class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1tn15vr-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
-                id=":r1:"
-                tabindex="0"
-                type="button"
-              >
-                Отправить
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
   </div>
 </DocumentFragment>
 `;

@@ -5,7 +5,6 @@ import LectureHomework from "../../features/LectureDetail/LectureHomework";
 import Homework from "../../features/LectureDetail/Homework";
 import { primary } from "../../theme/colors";
 import { mockDataLectureHomework } from "../mocks/dataLectureHomework.mock";
-import { mockDataHomeWorkByLecture } from "../mocks/dataHomeWorkByLecture.mock";
 
 const style = {
   button: {
@@ -25,9 +24,7 @@ const BlurredHomework: React.FC = () => {
       <BlurredComponent>
         <LectureHomework dataLectureHomework={mockDataLectureHomework} />
         <Box pt="40px">
-          <Homework
-            dataHomeWorkByLecture={mockDataHomeWorkByLecture.homeWorkByLecture!}
-          />
+          <Homework />
         </Box>
       </BlurredComponent>
       <Button

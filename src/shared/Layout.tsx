@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Box, Container } from "@mui/material";
-import Header from "../features/Navigation/Header";
-import Footer from "../features/Navigation/Footer";
+import Header from "../widgets/Header";
+import Footer from "../widgets/Footer";
 import { UserRole } from "../api/graphql/generated/graphql";
 
 interface LayoutProps {

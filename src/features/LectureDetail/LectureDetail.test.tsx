@@ -2,7 +2,6 @@ import { MemoryRouter } from "react-router-dom";
 import LectureDetail from "./LectureDetail";
 import { render } from "../../test/utilsTest";
 import { mockDataLecture } from "../../shared/mocks/dataLecture.mock";
-import { mockDataHomeWorkByLecture } from "../../shared/mocks/dataHomeWorkByLecture.mock";
 import { mockDataLectureHomework } from "../../shared/mocks/dataLectureHomework.mock";
 
 describe("LectureDetail", () => {
@@ -11,9 +10,7 @@ describe("LectureDetail", () => {
       <MemoryRouter>
         <LectureDetail
           dataLecture={mockDataLecture}
-          dataHomeWorkByLecture={mockDataHomeWorkByLecture}
           dataLectureHomework={mockDataLectureHomework}
-          hasHomework={true}
           tariffHomework={true}
         />
       </MemoryRouter>
@@ -25,9 +22,7 @@ describe("LectureDetail", () => {
       <MemoryRouter>
         <LectureDetail
           dataLecture={mockDataLecture}
-          dataHomeWorkByLecture={mockDataHomeWorkByLecture}
           dataLectureHomework={mockDataLectureHomework}
-          hasHomework={false}
           tariffHomework={false}
         />
       </MemoryRouter>

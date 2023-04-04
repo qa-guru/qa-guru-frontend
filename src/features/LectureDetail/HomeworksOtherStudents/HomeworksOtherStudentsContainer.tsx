@@ -8,7 +8,8 @@ import {
   StudentHomeWorkSortField,
 } from "../../../api/graphql/generated/graphql";
 import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
-import { useUserQuery } from "../../../api/graphql/user/user";
+import { useUserIdQuery } from "../../../api/graphql/user/userId";
+import Spinner from "../../../shared/Spinner";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();
@@ -16,10 +17,11 @@ const HomeworksOtherStudentsContainer: React.FC = () => {
     "CREATION_DATE" as InputMaybe<StudentHomeWorkSortField>;
   const fieldOrderHomeworks = "DESC" as InputMaybe<Order>;
 
+  const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
       offset: 0,
-      limit: 1,
+      limit: 2,
       sort: {
         field: fieldSortHomeworks,
         order: fieldOrderHomeworks,
@@ -27,16 +29,15 @@ const HomeworksOtherStudentsContainer: React.FC = () => {
       lectureId: lectureId!,
     },
   });
-  const { data: dataUser, loading: loadingUser } = useUserQuery();
 
-  if (loading || loadingUser) return null;
-  if (!data || !dataUser) return <NoDataErrorMessage />;
+  if (loading || loadingUserId) return <Spinner />;
+  if (!data || !dataUserId) return <NoDataErrorMessage />;
 
   return (
     <HomeworksOtherStudents
+      dataUserId={dataUserId}
       fetchMore={fetchMore}
       data={data}
-      dataUser={dataUser}
     />
   );
 };
