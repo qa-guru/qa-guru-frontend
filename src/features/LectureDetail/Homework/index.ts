@@ -1,1 +1,1 @@
-export { default } from "./Homework";
+export { default } from "./HomeworkContainer";

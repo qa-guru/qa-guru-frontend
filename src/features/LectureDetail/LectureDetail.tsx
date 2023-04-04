@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Paper } from "@mui/material";
 import LectureTitle from "./LectureTitle";
 import LectureDescription from "./LectureDescription";
 import LectureSpeakers from "./LectureSpeakers";
@@ -11,14 +11,9 @@ import HomeworksOtherStudents from "./HomeworksOtherStudents";
 import BlurredHomework from "../../shared/Blurred/BlurredHomework";
 
 const LectureDetail: React.FC<ILectureDetail> = (props) => {
-  const {
-    dataLecture,
-    dataHomeWorkByLecture,
-    dataLectureHomework,
-    tariffHomework,
-    hasHomework,
-  } = props;
+  const { dataLecture, dataLectureHomework, tariffHomework } = props;
   const { subject, description, speakers, content } = dataLecture.lecture!;
+  const hasHomework = dataLectureHomework?.lectureHomeWork?.length! > 0;
 
   return (
     <>
@@ -31,14 +26,7 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
           {hasHomework && (
             <>
               <LectureHomework dataLectureHomework={dataLectureHomework} />
-              <Box pt="40px">
-                <Homework
-                  editAccess={true}
-                  dataHomeWorkByLecture={
-                    dataHomeWorkByLecture.homeWorkByLecture!
-                  }
-                />
-              </Box>
+              <Homework />
               <HomeworksOtherStudents />
             </>
           )}

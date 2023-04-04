@@ -1,11 +1,23 @@
+import { ApolloError } from "@apollo/client/errors";
 import { useSnackbar } from "notistack";
-import { useLectureHomeWorkQuery as _useLectureHomeWorkQuery } from "../generated/graphql";
+import * as Apollo from "@apollo/client";
+import {
+  LectureHomeWorkQuery,
+  LectureHomeWorkQueryVariables,
+  useLectureHomeWorkQuery as _useLectureHomeWorkQuery,
+} from "../generated/graphql";
 
-export const useLectureHomeWorkQuery = () => {
+export const useLectureHomeWorkQuery = (
+  baseOptions?: Apollo.QueryHookOptions<
+    LectureHomeWorkQuery,
+    LectureHomeWorkQueryVariables
+  >
+) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return _useLectureHomeWorkQuery({
-    onError: (error) =>
+    onError: (error: ApolloError) =>
       error.graphQLErrors.map(({ message }) => enqueueSnackbar(message)),
+    ...baseOptions,
   });
 };

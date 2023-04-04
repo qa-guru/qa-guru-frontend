@@ -1,19 +1,19 @@
 import { MemoryRouter } from "react-router-dom";
 import HomeworksOtherStudents from "./HomeworksOtherStudents";
-import { mockDataUser } from "../../../shared/mocks/dataUser.mock";
 import { mockDataHomeWorksByLectureId } from "../../../shared/mocks/dataHomeWorksByLectureId.mock";
 import { render } from "../../../test/utilsTest";
+import { mockDataUserId } from "../../../shared/mocks/dataUserId.mock";
 
-const mockFetchMoreHomeWorksByLectureId: any = () => {};
+const fetchMore: any = () => {};
 
 describe("HomeworksOtherStudents", () => {
   it("the component is render", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <HomeworksOtherStudents
-          fetchMore={mockFetchMoreHomeWorksByLectureId}
+          dataUserId={mockDataUserId}
+          fetchMore={fetchMore}
           data={mockDataHomeWorksByLectureId}
-          dataUser={mockDataUser}
         />
       </MemoryRouter>
     );

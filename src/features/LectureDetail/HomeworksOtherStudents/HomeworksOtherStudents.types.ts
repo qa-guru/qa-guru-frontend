@@ -6,6 +6,5 @@ import {
 export interface IHomeworksOtherStudents {
   data: HomeWorksByLectureIdQuery;
   fetchMore: any;
-
-  dataUser: UserQuery;
+  dataUserId: UserQuery;
 }
