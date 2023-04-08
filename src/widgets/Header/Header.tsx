@@ -35,18 +35,8 @@ const Header: React.FC<IHeader> = ({ userRoles }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const kanbanAllowedRoles = [UserRole.Mentor, UserRole.Master];
-  const homeAllowedRoles = [UserRole.Student];
-
-  const hasAnyOfRoles = (
-    userRoles: Array<UserRole | null>,
-    allowedRoles: UserRole[]
-  ): boolean => {
-    return userRoles.some((role) => allowedRoles.includes(role as UserRole));
-  };
-
   const pages = [
-    ...(hasAnyOfRoles(userRoles, homeAllowedRoles)
+    ...(userRoles.includes(UserRole.Student)
       ? [
           {
             title: (
@@ -58,7 +48,9 @@ const Header: React.FC<IHeader> = ({ userRoles }) => {
           },
         ]
       : []),
-    ...(hasAnyOfRoles(userRoles, kanbanAllowedRoles)
+    ...(userRoles.some((role) =>
+      [UserRole.Mentor, UserRole.Master].includes(role!)
+    )
       ? [
           {
             title: (

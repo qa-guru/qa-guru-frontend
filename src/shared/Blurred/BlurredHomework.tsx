@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 import BlurredComponent from "./BlurredComponent";
-import LectureHomework from "../../features/LectureDetail/LectureHomework";
-import Homework from "../../features/LectureDetail/Homework";
+import LectureHomework from "../../features/LectureDetail/LectureDetailView/components/LectureHomework";
+import Homework from "../../features/LectureDetail/LectureDetailContainer/Homework";
 import { primary } from "../../theme/colors";
-import { mockDataLectureHomework } from "../mocks/dataLectureHomework.mock";
+import { lectureHomework } from "../mocks/lectureHomework.mock";
 
 const style = {
   button: {
@@ -22,7 +22,7 @@ const BlurredHomework: React.FC = () => {
   return (
     <Box position="relative">
       <BlurredComponent>
-        <LectureHomework dataLectureHomework={mockDataLectureHomework} />
+        <LectureHomework dataLectureHomework={lectureHomework} />
         <Box pt="40px">
           <Homework />
         </Box>

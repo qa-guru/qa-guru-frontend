@@ -9,12 +9,12 @@ import {
   Typography,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
 import Logout from "../../../features/Authorization/Logout";
 import { black } from "../../../theme/colors";
+import AvatarCustom from "../../../shared/AvatarCustom";
 
 const style = {
   menuItem: { mb: "10px" },
@@ -22,10 +22,6 @@ const style = {
   box: {
     width: "max-content",
     ml: "16px",
-  },
-  avatar: {
-    width: 40,
-    height: 40,
   },
   typography: {
     display: { xs: "none", md: "block" },
@@ -35,6 +31,7 @@ const style = {
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName } = props.data.user!;
+  const fullName = `${firstName} ${lastName}`;
 
   const settings = [
     {
@@ -58,11 +55,7 @@ const Profile: React.FC<IProfile> = (props) => {
     <>
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
-          <Avatar
-            sx={style.avatar}
-            alt="Remy Sharp"
-            src="/static/images/avatar/1.jpg"
-          />
+          <AvatarCustom fullName={fullName} />
           <Box sx={style.box}>
             <Typography sx={style.typography} variant="subtitle2">
               {firstName}

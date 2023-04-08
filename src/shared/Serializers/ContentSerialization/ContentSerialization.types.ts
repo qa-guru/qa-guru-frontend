@@ -1,7 +1,8 @@
+import {
+  LectureContentDto,
+  LectureContentHomeWorkDto,
+} from "../../../api/graphql/generated/graphql";
+
 export interface IContentSerialization {
-  content: Array<{
-    type?: string | null;
-    value?: string | null;
-    url?: string | null;
-  } | null> | null;
+  content: (LectureContentHomeWorkDto | LectureContentDto | null | undefined)[];
 }

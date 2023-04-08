@@ -1,19 +1,17 @@
 import { MemoryRouter } from "react-router-dom";
 import TrainingLectures from "./TrainingLectures";
 import { render } from "../../test/utilsTest";
-import { mockDataTrainingLectures } from "../../shared/mocks/dataTrainingLectures.mock";
-import { mockDataTraining } from "../../shared/mocks/dataTraining.mock";
-
-const mockTrainingId: string = "string";
+import { trainingLectures } from "../../shared/mocks/trainingLectures.mock";
+import { training } from "../../shared/mocks/training.mock";
 
 describe("TrainingLectures", () => {
   it("the component is render", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <TrainingLectures
-          trainingId={mockTrainingId!}
-          dataTrainingLectures={mockDataTrainingLectures}
-          dataTraining={mockDataTraining}
+          trainingId="1234"
+          dataTrainingLectures={trainingLectures}
+          dataTraining={training}
         />
       </MemoryRouter>
     );
