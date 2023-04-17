@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import { IAvatarCustom } from "./AvatarCustom.types";
 import { Typography } from "@mui/material";
+import { IAvatarCustom } from "./AvatarCustom.types";
 
 function stringToColor(string: string) {
   let hash = 0;
