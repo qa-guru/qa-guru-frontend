@@ -4,7 +4,7 @@ export interface IFormInputProps {
   control: Control<any, any>;
   label?: string;
   placeholder?: any;
-  content?: any;
+  options?: any[];
   name: any;
   type?: string;
   multiline?: boolean;
@@ -12,4 +12,6 @@ export interface IFormInputProps {
   minRows?: string | number;
   defaultValue?: string;
   inputProps?: any;
+  onChange?: (e: any) => void;
+  disabled?: boolean;
 }

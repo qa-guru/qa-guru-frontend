@@ -1,5 +1,5 @@
 import React from "react";
-import Kanban from "../features/Kanban/Kanban";
+import Kanban from "../features/Kanban/KanbanView/Kanban";
 
 const KanbanBoard: React.FC = () => {
   return <Kanban />;

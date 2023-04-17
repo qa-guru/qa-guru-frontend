@@ -18,7 +18,11 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
           >
-            ss
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+            >
+              ss
+            </h6>
           </div>
           <div
             class="MuiBox-root css-0"
@@ -144,7 +148,11 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
           >
-            ss
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+            >
+              ss
+            </h6>
           </div>
           <div
             class="MuiBox-root css-0"
@@ -339,7 +347,11 @@ exports[`CommentItem > the component is false 1`] = `
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
           >
-            ss
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+            >
+              ss
+            </h6>
           </div>
           <div
             class="MuiBox-root css-0"
@@ -398,7 +410,11 @@ exports[`CommentItem > the component is true 1`] = `
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
           >
-            ss
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+            >
+              ss
+            </h6>
           </div>
           <div
             class="MuiBox-root css-0"

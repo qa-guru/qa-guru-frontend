@@ -1,5 +1,5 @@
 import React from "react";
-import { ILectureDetailView } from "./LectureDetailView.types";
+import { ILectureDetail } from "./LectureDetail.types";
 import LectureTitle from "./components/LectureTitle";
 import LectureDescription from "./components/LectureDescription";
 import LectureSpeakers from "./components/LectureSpeakers";
@@ -9,7 +9,7 @@ import Homework from "../LectureDetailContainer/Homework";
 import BlurredHomework from "../../../shared/Blurred/BlurredHomework";
 import HomeworksOtherStudents from "../LectureDetailContainer/HomeworksOtherStudents";
 
-const LectureDetailView: React.FC<ILectureDetailView> = (props) => {
+const LectureDetail: React.FC<ILectureDetail> = (props) => {
   const { dataLecture, dataLectureHomework, tariffHomework } = props;
   const { subject, description, speakers, content } = dataLecture.lecture!;
   const hasHomework = dataLectureHomework?.lectureHomeWork?.length! > 0;
@@ -32,4 +32,4 @@ const LectureDetailView: React.FC<ILectureDetailView> = (props) => {
   );
 };
 
-export default LectureDetailView;
+export default LectureDetail;

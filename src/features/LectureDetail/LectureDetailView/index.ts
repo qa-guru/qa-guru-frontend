@@ -1,1 +1,1 @@
-export { default } from "./LectureDetailView";
+export { default } from "./LectureDetail";

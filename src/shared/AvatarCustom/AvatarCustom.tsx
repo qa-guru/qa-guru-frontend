@@ -1,5 +1,6 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
+import { Typography } from "@mui/material";
 import { IAvatarCustom } from "./AvatarCustom.types";
 
 function stringToColor(string: string) {
@@ -31,10 +32,17 @@ function stringAvatar(name: string) {
   };
 }
 
-const AvatarCustom: React.FC<IAvatarCustom> = ({ fullName, width, height }) => {
+const AvatarCustom: React.FC<IAvatarCustom> = ({
+  fullName,
+  width,
+  height,
+  variant = "h6",
+}) => {
   return (
     <Avatar sx={{ width, height, ...stringAvatar(fullName).sx }}>
-      {stringAvatar(fullName).children}
+      <Typography variant={variant}>
+        {stringAvatar(fullName).children}
+      </Typography>
     </Avatar>
   );
 };

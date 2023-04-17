@@ -1,0 +1,5 @@
+mutation takeForReview($homeworkId: ID!) {
+  takeForReview(homeWorkId: $homeworkId) {
+    id
+  }
+}

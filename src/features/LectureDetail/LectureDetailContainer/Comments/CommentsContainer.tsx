@@ -27,7 +27,10 @@ const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
       offset: 0,
       limit: 3,
       homeWorkId: id,
-      sort: sortOptions,
+      sort: {
+        field: CommentHomeWorkSortField.CreationDate,
+        order: Order.Desc,
+      },
     },
   });
 
