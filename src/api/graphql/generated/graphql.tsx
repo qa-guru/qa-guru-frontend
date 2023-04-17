@@ -930,6 +930,21 @@ export type CommentsHomeWorkByHomeWorkQuery = {
   } | null;
 };
 
+export type CommentsTotalElementsQueryVariables = Exact<{
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
+  sort: CommentHomeWorkSort;
+  homeWorkId: Scalars["ID"];
+}>;
+
+export type CommentsTotalElementsQuery = {
+  __typename?: "Query";
+  commentsHomeWorkByHomeWork?: {
+    __typename?: "CommentHomeWorksDto";
+    totalElements?: any | null;
+  } | null;
+};
+
 export type SendCommentMutationVariables = Exact<{
   homeWorkId: Scalars["ID"];
   content: Scalars["String"];
@@ -1733,6 +1748,100 @@ export type CommentsHomeWorkByHomeWorkLazyQueryHookResult = ReturnType<
 export type CommentsHomeWorkByHomeWorkQueryResult = Apollo.QueryResult<
   CommentsHomeWorkByHomeWorkQuery,
   CommentsHomeWorkByHomeWorkQueryVariables
+>;
+export const CommentsTotalElementsDocument = gql`
+  query commentsTotalElements(
+    $offset: Int!
+    $limit: Int!
+    $sort: CommentHomeWorkSort!
+    $homeWorkId: ID!
+  ) {
+    commentsHomeWorkByHomeWork(
+      offset: $offset
+      limit: $limit
+      sort: $sort
+      homeWorkId: $homeWorkId
+    ) {
+      totalElements
+    }
+  }
+`;
+export type CommentsTotalElementsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    CommentsTotalElementsQuery,
+    CommentsTotalElementsQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: CommentsTotalElementsQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const CommentsTotalElementsComponent = (
+  props: CommentsTotalElementsComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    CommentsTotalElementsQuery,
+    CommentsTotalElementsQueryVariables
+  >
+    query={CommentsTotalElementsDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useCommentsTotalElementsQuery__
+ *
+ * To run a query within a React component, call `useCommentsTotalElementsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentsTotalElementsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentsTotalElementsQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *      homeWorkId: // value for 'homeWorkId'
+ *   },
+ * });
+ */
+export function useCommentsTotalElementsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    CommentsTotalElementsQuery,
+    CommentsTotalElementsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    CommentsTotalElementsQuery,
+    CommentsTotalElementsQueryVariables
+  >(CommentsTotalElementsDocument, options);
+}
+export function useCommentsTotalElementsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CommentsTotalElementsQuery,
+    CommentsTotalElementsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    CommentsTotalElementsQuery,
+    CommentsTotalElementsQueryVariables
+  >(CommentsTotalElementsDocument, options);
+}
+export type CommentsTotalElementsQueryHookResult = ReturnType<
+  typeof useCommentsTotalElementsQuery
+>;
+export type CommentsTotalElementsLazyQueryHookResult = ReturnType<
+  typeof useCommentsTotalElementsLazyQuery
+>;
+export type CommentsTotalElementsQueryResult = Apollo.QueryResult<
+  CommentsTotalElementsQuery,
+  CommentsTotalElementsQueryVariables
 >;
 export const SendCommentDocument = gql`
   mutation sendComment($homeWorkId: ID!, $content: String!) {

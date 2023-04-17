@@ -1,11 +1,10 @@
-const primaryMain = "#2CCCA6";
 export const primary = {
-  main: primaryMain,
+  main: "#2CCCA6",
+  secondary: "#E0F2F1",
 };
 
-const secondaryMain = "#E0E0E0";
 export const secondary = {
-  main: secondaryMain,
+  main: "#E0E0E0",
 };
 
 export const purple = {

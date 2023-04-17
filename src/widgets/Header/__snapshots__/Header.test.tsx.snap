@@ -1,0 +1,967 @@
+// Vitest Snapshot v1
+
+exports[`Header > userRole is Master 1`] = `
+<DocumentFragment>
+  <header
+    style="margin-bottom: 30px;"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
+    >
+      <div
+        class="MuiBox-root css-q0ikcs"
+      >
+        <div
+          class="MuiBox-root css-d47f85"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-mf1cb5-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="MenuIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiBox-root css-70qvj9"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-yvetkp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1007wv2-MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 166 31"
+            >
+              <svg
+                fill="none"
+                height="31"
+                viewBox="0 0 166 31"
+                width="166"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M90.0119 17.7286C87.9485 15.8597 86.937 13.4627 86.937 10.5172C86.937 7.57175 87.9889 5.15443 90.0321 3.30589C92.0753 1.45735 94.7052 0.502609 97.861 0.502609C98.6405 0.486175 99.4198 0.547415 100.187 0.68543C100.721 0.787928 101.248 0.923613 101.765 1.0917L103.282 1.70111V7.12485C98.124 4.46376 92.8238 6.23105 93.0059 10.5985C93.0059 12.122 93.4307 13.2799 94.341 14.1331C95.2181 14.9688 96.3892 15.4217 97.598 15.3925C98.5892 15.3925 99.358 15.1894 99.8839 14.844V8.91245H105.811V17.5864C105.063 18.3989 103.93 19.1099 102.433 19.6787C100.889 20.2653 99.2487 20.5547 97.598 20.5319C94.5905 20.5319 92.0618 19.5974 90.0119 17.7286Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M107.963 0.831146H113.881V12.1797C113.881 14.2375 115.137 15.1543 116.758 15.1543C118.38 15.1543 119.616 14.2375 119.616 12.1797V0.831146H125.513V12.1389C125.513 14.8283 124.702 16.9065 123.02 18.3531C121.338 19.7997 119.292 20.5331 116.758 20.5331C114.225 20.5331 112.138 19.82 110.476 18.3531C108.815 16.8861 107.963 14.8283 107.963 12.1389V0.831146Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M147.036 20.202H140.078L134.936 13.2955H134.12V20.202H128.162V0.831146H137.507C139.691 0.831146 141.466 1.40328 142.792 2.58842C143.437 3.13839 143.951 3.82548 144.297 4.59963C144.643 5.37377 144.812 6.21545 144.792 7.06333C144.792 9.49491 143.465 11.5178 141.241 12.6212L147.036 20.202ZM136.814 8.9432C137.936 8.9432 138.67 8.3302 138.67 7.36983C138.67 6.40946 137.936 5.81689 136.814 5.81689H134.12V8.9432H136.814Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M148.03 0.831146H153.947V12.1797C153.947 14.2375 155.204 15.1543 156.825 15.1543C158.446 15.1543 159.682 14.2375 159.682 12.1797V0.831146H165.579V12.1389C165.579 14.8283 164.769 16.9065 163.087 18.3531C161.405 19.7997 159.358 20.5331 156.825 20.5331C154.292 20.5331 152.204 19.82 150.522 18.3531C148.84 16.8861 148.03 14.8283 148.03 12.1389V0.831146Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M81.9209 8.1721C82.2587 8.49409 82.5257 8.88256 82.7051 9.31289C82.8845 9.74322 82.9722 10.206 82.9628 10.672C82.9628 11.6134 82.5899 12.5167 81.9253 13.1853C81.2607 13.8539 80.3581 14.2336 79.4142 14.2417C78.4548 14.2417 77.6192 13.8919 76.8868 13.1924C76.5509 12.8646 76.2853 12.4722 76.1062 12.0389C75.9271 11.6056 75.8382 11.1406 75.8449 10.672C75.8355 10.206 75.9232 9.74322 76.1026 9.31289C76.2819 8.88256 76.549 8.49409 76.8868 8.1721C77.2142 7.83475 77.6072 7.56765 78.0418 7.38721C78.4764 7.20677 78.9434 7.11679 79.4142 7.12278C79.8816 7.11839 80.345 7.20919 80.776 7.38962C81.2071 7.57005 81.5966 7.83631 81.9209 8.1721Z"
+                  fill="#00DDB5"
+                />
+                <path
+                  d="M40.8243 20.5218C38.2231 20.2189 36.1121 19.1083 34.4413 17.2C32.7706 15.2917 31.9702 13.0805 31.9702 10.5664C31.9702 7.77974 32.9307 5.4272 34.8816 3.45834C36.8324 1.48948 39.2936 0.5 42.2449 0.5C45.1963 0.5 47.6474 1.49958 49.5883 3.45834C51.5292 5.4171 52.4996 7.77974 52.4996 10.5664C52.5161 12.451 51.9984 14.3011 51.0076 15.8986C50.0167 17.496 48.594 18.7743 46.9071 19.5828C47.4573 20.2694 48.2177 20.6026 49.2381 20.6026C50.0314 20.6097 50.8133 20.4116 51.5092 20.0271V24.8634C50.4862 25.2955 49.3866 25.512 48.2777 25.4995C45.7265 25.4995 43.6456 24.3888 42.0248 22.208L40.8243 20.5218ZM42.2449 15.2109C43.4855 15.2109 44.496 14.7667 45.2863 13.9185C46.0767 13.0704 46.4969 11.9194 46.4969 10.5664C46.4969 9.21347 46.0867 8.10283 45.2863 7.25471C44.486 6.40658 43.4855 5.92194 42.2449 5.92194C41.0044 5.92194 40.0039 6.3662 39.2035 7.25471C38.4032 8.14322 38.003 9.21347 38.003 10.5664C38.003 11.9194 38.4132 13.03 39.2035 13.9185C39.9939 14.8071 41.0144 15.2109 42.2449 15.2109Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M52.9966 20.202L60.9182 0.831146H66.5679L74.5198 20.202H68.1664L66.7891 16.5951H60.5061L59.1087 20.202H52.9966ZM62.2151 12.1643H65.05L63.6426 7.59286L62.2151 12.1643Z"
+                  fill="#252525"
+                />
+                <rect
+                  fill="#00DDB5"
+                  height="5.16556"
+                  width="20.6623"
+                  x="17.7021"
+                  y="25.3344"
+                />
+                <path
+                  d="M18.2384 10.0325V16.398L0 23.0139V16.9344L10.8358 13.2152L0 9.49603V3.41656L18.2384 10.0325Z"
+                  fill="#00DDB5"
+                />
+              </svg>
+            </svg>
+          </button>
+          <div
+            class="MuiBox-root css-j0f50d"
+          >
+            <div
+              class="MuiStack-root css-u10pvi-MuiStack-root"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                >
+                  <a
+                    href="/kanban"
+                    style="text-decoration: none; color: rgb(44, 204, 166);"
+                  >
+                    Доска заданий
+                  </a>
+                </h6>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiStack-root css-1d9cypr-MuiStack-root"
+        >
+          <div
+            class="MuiBox-root css-0"
+          >
+            <div
+              class="MuiBox-root css-1l4w6pd"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    id="Layer_1"
+                    style="enable-background: new 0 0 512 512;"
+                    viewBox="0 0 512 512"
+                    x="0px"
+                    xml:space="preserve"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    y="0px"
+                  >
+                    <circle
+                      cx="256"
+                      cy="256"
+                      r="256"
+                      style="fill: #F0F0F0;"
+                    />
+                    <g>
+                      <path
+                        d="M52.92,100.142c-20.109,26.163-35.272,56.318-44.101,89.077h133.178L52.92,100.142z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M503.181,189.219c-8.829-32.758-23.993-62.913-44.101-89.076l-89.075,89.076H503.181z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M8.819,322.784c8.83,32.758,23.993,62.913,44.101,89.075l89.074-89.075L8.819,322.784L8.819,322.784 z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M411.858,52.921c-26.163-20.109-56.317-35.272-89.076-44.102v133.177L411.858,52.921z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M100.142,459.079c26.163,20.109,56.318,35.272,89.076,44.102V370.005L100.142,459.079z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M189.217,8.819c-32.758,8.83-62.913,23.993-89.075,44.101l89.075,89.075V8.819z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M322.783,503.181c32.758-8.83,62.913-23.993,89.075-44.101l-89.075-89.075V503.181z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M370.005,322.784l89.075,89.076c20.108-26.162,35.272-56.318,44.101-89.076H370.005z"
+                        style="fill: #0052B4;"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M509.833,222.609h-220.44h-0.001V2.167C278.461,0.744,267.317,0,256,0 c-11.319,0-22.461,0.744-33.391,2.167v220.44v0.001H2.167C0.744,233.539,0,244.683,0,256c0,11.319,0.744,22.461,2.167,33.391 h220.44h0.001v220.442C233.539,511.256,244.681,512,256,512c11.317,0,22.461-0.743,33.391-2.167v-220.44v-0.001h220.442 C511.256,278.461,512,267.319,512,256C512,244.683,511.256,233.539,509.833,222.609z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M322.783,322.784L322.783,322.784L437.019,437.02c5.254-5.252,10.266-10.743,15.048-16.435 l-97.802-97.802h-31.482V322.784z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M189.217,322.784h-0.002L74.98,437.019c5.252,5.254,10.743,10.266,16.435,15.048l97.802-97.804 V322.784z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M189.217,189.219v-0.002L74.981,74.98c-5.254,5.252-10.266,10.743-15.048,16.435l97.803,97.803 H189.217z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M322.783,189.219L322.783,189.219L437.02,74.981c-5.252-5.254-10.743-10.266-16.435-15.047 l-97.802,97.803V189.219z"
+                        style="fill: #D80027;"
+                      />
+                    </g>
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    image-rendering="optimizeQuality"
+                    shape-rendering="geometricPrecision"
+                    text-rendering="geometricPrecision"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="nonzero"
+                    >
+                      <path
+                        d="M256 0c70.684 0 134.689 28.664 181.012 74.987C483.336 121.311 512 185.316 512 256c0 70.684-28.664 134.689-74.988 181.013C390.689 483.336 326.684 512 256 512c-70.677 0-134.689-28.664-181.013-74.987C28.664 390.689 0 326.676 0 256c0-70.684 28.664-134.689 74.987-181.013C121.311 28.664 185.316 0 256 0z"
+                        fill="#4D4D4D"
+                      />
+                      <path
+                        d="M256.001 19.597c65.278 0 124.382 26.466 167.162 69.242 42.776 42.78 69.242 101.884 69.242 167.162S465.939 380.384 423.16 423.16c-42.777 42.78-101.881 69.246-167.159 69.246-65.278 0-124.382-26.466-167.162-69.243-42.777-42.779-69.243-101.884-69.243-167.162S46.062 131.619 88.839 88.839c42.78-42.776 101.884-69.242 167.162-69.242z"
+                        fill="#fff"
+                      />
+                      <path
+                        d="M472.405 256.232H39.597l-.003-.231c0-119.52 96.886-216.407 216.407-216.407 119.517 0 216.407 96.887 216.407 216.407l-.003.231z"
+                        fill="#fff"
+                      />
+                      <path
+                        d="M39.597 256.232h432.808c-.124 119.411-96.963 216.176-216.404 216.176-119.444 0-216.28-96.765-216.404-216.176z"
+                        fill="#D52B1E"
+                      />
+                      <path
+                        d="M52.038 183.55h407.926c8.048 22.652 12.444 47.036 12.444 72.451 0 25.586-4.452 50.131-12.606 72.915H52.2c-8.154-22.784-12.606-47.329-12.606-72.915 0-25.415 4.396-49.799 12.444-72.451z"
+                        fill="#0039A6"
+                      />
+                    </g>
+                  </svg>
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
+            style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+          >
+            <span
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+              role="progressbar"
+              style="width: 40px; height: 40px;"
+            >
+              <svg
+                class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+                viewBox="22 22 44 44"
+              >
+                <circle
+                  class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                  cx="44"
+                  cy="44"
+                  fill="none"
+                  r="20.2"
+                  stroke-width="3.6"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`Header > userRole is Mentor 1`] = `
+<DocumentFragment>
+  <header
+    style="margin-bottom: 30px;"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
+    >
+      <div
+        class="MuiBox-root css-q0ikcs"
+      >
+        <div
+          class="MuiBox-root css-d47f85"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-mf1cb5-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="MenuIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiBox-root css-70qvj9"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-yvetkp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1007wv2-MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 166 31"
+            >
+              <svg
+                fill="none"
+                height="31"
+                viewBox="0 0 166 31"
+                width="166"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M90.0119 17.7286C87.9485 15.8597 86.937 13.4627 86.937 10.5172C86.937 7.57175 87.9889 5.15443 90.0321 3.30589C92.0753 1.45735 94.7052 0.502609 97.861 0.502609C98.6405 0.486175 99.4198 0.547415 100.187 0.68543C100.721 0.787928 101.248 0.923613 101.765 1.0917L103.282 1.70111V7.12485C98.124 4.46376 92.8238 6.23105 93.0059 10.5985C93.0059 12.122 93.4307 13.2799 94.341 14.1331C95.2181 14.9688 96.3892 15.4217 97.598 15.3925C98.5892 15.3925 99.358 15.1894 99.8839 14.844V8.91245H105.811V17.5864C105.063 18.3989 103.93 19.1099 102.433 19.6787C100.889 20.2653 99.2487 20.5547 97.598 20.5319C94.5905 20.5319 92.0618 19.5974 90.0119 17.7286Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M107.963 0.831146H113.881V12.1797C113.881 14.2375 115.137 15.1543 116.758 15.1543C118.38 15.1543 119.616 14.2375 119.616 12.1797V0.831146H125.513V12.1389C125.513 14.8283 124.702 16.9065 123.02 18.3531C121.338 19.7997 119.292 20.5331 116.758 20.5331C114.225 20.5331 112.138 19.82 110.476 18.3531C108.815 16.8861 107.963 14.8283 107.963 12.1389V0.831146Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M147.036 20.202H140.078L134.936 13.2955H134.12V20.202H128.162V0.831146H137.507C139.691 0.831146 141.466 1.40328 142.792 2.58842C143.437 3.13839 143.951 3.82548 144.297 4.59963C144.643 5.37377 144.812 6.21545 144.792 7.06333C144.792 9.49491 143.465 11.5178 141.241 12.6212L147.036 20.202ZM136.814 8.9432C137.936 8.9432 138.67 8.3302 138.67 7.36983C138.67 6.40946 137.936 5.81689 136.814 5.81689H134.12V8.9432H136.814Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M148.03 0.831146H153.947V12.1797C153.947 14.2375 155.204 15.1543 156.825 15.1543C158.446 15.1543 159.682 14.2375 159.682 12.1797V0.831146H165.579V12.1389C165.579 14.8283 164.769 16.9065 163.087 18.3531C161.405 19.7997 159.358 20.5331 156.825 20.5331C154.292 20.5331 152.204 19.82 150.522 18.3531C148.84 16.8861 148.03 14.8283 148.03 12.1389V0.831146Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M81.9209 8.1721C82.2587 8.49409 82.5257 8.88256 82.7051 9.31289C82.8845 9.74322 82.9722 10.206 82.9628 10.672C82.9628 11.6134 82.5899 12.5167 81.9253 13.1853C81.2607 13.8539 80.3581 14.2336 79.4142 14.2417C78.4548 14.2417 77.6192 13.8919 76.8868 13.1924C76.5509 12.8646 76.2853 12.4722 76.1062 12.0389C75.9271 11.6056 75.8382 11.1406 75.8449 10.672C75.8355 10.206 75.9232 9.74322 76.1026 9.31289C76.2819 8.88256 76.549 8.49409 76.8868 8.1721C77.2142 7.83475 77.6072 7.56765 78.0418 7.38721C78.4764 7.20677 78.9434 7.11679 79.4142 7.12278C79.8816 7.11839 80.345 7.20919 80.776 7.38962C81.2071 7.57005 81.5966 7.83631 81.9209 8.1721Z"
+                  fill="#00DDB5"
+                />
+                <path
+                  d="M40.8243 20.5218C38.2231 20.2189 36.1121 19.1083 34.4413 17.2C32.7706 15.2917 31.9702 13.0805 31.9702 10.5664C31.9702 7.77974 32.9307 5.4272 34.8816 3.45834C36.8324 1.48948 39.2936 0.5 42.2449 0.5C45.1963 0.5 47.6474 1.49958 49.5883 3.45834C51.5292 5.4171 52.4996 7.77974 52.4996 10.5664C52.5161 12.451 51.9984 14.3011 51.0076 15.8986C50.0167 17.496 48.594 18.7743 46.9071 19.5828C47.4573 20.2694 48.2177 20.6026 49.2381 20.6026C50.0314 20.6097 50.8133 20.4116 51.5092 20.0271V24.8634C50.4862 25.2955 49.3866 25.512 48.2777 25.4995C45.7265 25.4995 43.6456 24.3888 42.0248 22.208L40.8243 20.5218ZM42.2449 15.2109C43.4855 15.2109 44.496 14.7667 45.2863 13.9185C46.0767 13.0704 46.4969 11.9194 46.4969 10.5664C46.4969 9.21347 46.0867 8.10283 45.2863 7.25471C44.486 6.40658 43.4855 5.92194 42.2449 5.92194C41.0044 5.92194 40.0039 6.3662 39.2035 7.25471C38.4032 8.14322 38.003 9.21347 38.003 10.5664C38.003 11.9194 38.4132 13.03 39.2035 13.9185C39.9939 14.8071 41.0144 15.2109 42.2449 15.2109Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M52.9966 20.202L60.9182 0.831146H66.5679L74.5198 20.202H68.1664L66.7891 16.5951H60.5061L59.1087 20.202H52.9966ZM62.2151 12.1643H65.05L63.6426 7.59286L62.2151 12.1643Z"
+                  fill="#252525"
+                />
+                <rect
+                  fill="#00DDB5"
+                  height="5.16556"
+                  width="20.6623"
+                  x="17.7021"
+                  y="25.3344"
+                />
+                <path
+                  d="M18.2384 10.0325V16.398L0 23.0139V16.9344L10.8358 13.2152L0 9.49603V3.41656L18.2384 10.0325Z"
+                  fill="#00DDB5"
+                />
+              </svg>
+            </svg>
+          </button>
+          <div
+            class="MuiBox-root css-j0f50d"
+          >
+            <div
+              class="MuiStack-root css-u10pvi-MuiStack-root"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                >
+                  <a
+                    href="/kanban"
+                    style="text-decoration: none; color: rgb(44, 204, 166);"
+                  >
+                    Доска заданий
+                  </a>
+                </h6>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiStack-root css-1d9cypr-MuiStack-root"
+        >
+          <div
+            class="MuiBox-root css-0"
+          >
+            <div
+              class="MuiBox-root css-1l4w6pd"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    id="Layer_1"
+                    style="enable-background: new 0 0 512 512;"
+                    viewBox="0 0 512 512"
+                    x="0px"
+                    xml:space="preserve"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    y="0px"
+                  >
+                    <circle
+                      cx="256"
+                      cy="256"
+                      r="256"
+                      style="fill: #F0F0F0;"
+                    />
+                    <g>
+                      <path
+                        d="M52.92,100.142c-20.109,26.163-35.272,56.318-44.101,89.077h133.178L52.92,100.142z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M503.181,189.219c-8.829-32.758-23.993-62.913-44.101-89.076l-89.075,89.076H503.181z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M8.819,322.784c8.83,32.758,23.993,62.913,44.101,89.075l89.074-89.075L8.819,322.784L8.819,322.784 z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M411.858,52.921c-26.163-20.109-56.317-35.272-89.076-44.102v133.177L411.858,52.921z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M100.142,459.079c26.163,20.109,56.318,35.272,89.076,44.102V370.005L100.142,459.079z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M189.217,8.819c-32.758,8.83-62.913,23.993-89.075,44.101l89.075,89.075V8.819z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M322.783,503.181c32.758-8.83,62.913-23.993,89.075-44.101l-89.075-89.075V503.181z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M370.005,322.784l89.075,89.076c20.108-26.162,35.272-56.318,44.101-89.076H370.005z"
+                        style="fill: #0052B4;"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M509.833,222.609h-220.44h-0.001V2.167C278.461,0.744,267.317,0,256,0 c-11.319,0-22.461,0.744-33.391,2.167v220.44v0.001H2.167C0.744,233.539,0,244.683,0,256c0,11.319,0.744,22.461,2.167,33.391 h220.44h0.001v220.442C233.539,511.256,244.681,512,256,512c11.317,0,22.461-0.743,33.391-2.167v-220.44v-0.001h220.442 C511.256,278.461,512,267.319,512,256C512,244.683,511.256,233.539,509.833,222.609z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M322.783,322.784L322.783,322.784L437.019,437.02c5.254-5.252,10.266-10.743,15.048-16.435 l-97.802-97.802h-31.482V322.784z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M189.217,322.784h-0.002L74.98,437.019c5.252,5.254,10.743,10.266,16.435,15.048l97.802-97.804 V322.784z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M189.217,189.219v-0.002L74.981,74.98c-5.254,5.252-10.266,10.743-15.048,16.435l97.803,97.803 H189.217z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M322.783,189.219L322.783,189.219L437.02,74.981c-5.252-5.254-10.743-10.266-16.435-15.047 l-97.802,97.803V189.219z"
+                        style="fill: #D80027;"
+                      />
+                    </g>
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    image-rendering="optimizeQuality"
+                    shape-rendering="geometricPrecision"
+                    text-rendering="geometricPrecision"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="nonzero"
+                    >
+                      <path
+                        d="M256 0c70.684 0 134.689 28.664 181.012 74.987C483.336 121.311 512 185.316 512 256c0 70.684-28.664 134.689-74.988 181.013C390.689 483.336 326.684 512 256 512c-70.677 0-134.689-28.664-181.013-74.987C28.664 390.689 0 326.676 0 256c0-70.684 28.664-134.689 74.987-181.013C121.311 28.664 185.316 0 256 0z"
+                        fill="#4D4D4D"
+                      />
+                      <path
+                        d="M256.001 19.597c65.278 0 124.382 26.466 167.162 69.242 42.776 42.78 69.242 101.884 69.242 167.162S465.939 380.384 423.16 423.16c-42.777 42.78-101.881 69.246-167.159 69.246-65.278 0-124.382-26.466-167.162-69.243-42.777-42.779-69.243-101.884-69.243-167.162S46.062 131.619 88.839 88.839c42.78-42.776 101.884-69.242 167.162-69.242z"
+                        fill="#fff"
+                      />
+                      <path
+                        d="M472.405 256.232H39.597l-.003-.231c0-119.52 96.886-216.407 216.407-216.407 119.517 0 216.407 96.887 216.407 216.407l-.003.231z"
+                        fill="#fff"
+                      />
+                      <path
+                        d="M39.597 256.232h432.808c-.124 119.411-96.963 216.176-216.404 216.176-119.444 0-216.28-96.765-216.404-216.176z"
+                        fill="#D52B1E"
+                      />
+                      <path
+                        d="M52.038 183.55h407.926c8.048 22.652 12.444 47.036 12.444 72.451 0 25.586-4.452 50.131-12.606 72.915H52.2c-8.154-22.784-12.606-47.329-12.606-72.915 0-25.415 4.396-49.799 12.444-72.451z"
+                        fill="#0039A6"
+                      />
+                    </g>
+                  </svg>
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
+            style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+          >
+            <span
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+              role="progressbar"
+              style="width: 40px; height: 40px;"
+            >
+              <svg
+                class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+                viewBox="22 22 44 44"
+              >
+                <circle
+                  class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                  cx="44"
+                  cy="44"
+                  fill="none"
+                  r="20.2"
+                  stroke-width="3.6"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`Header > userRole is Student 1`] = `
+<DocumentFragment>
+  <header
+    style="margin-bottom: 30px;"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
+    >
+      <div
+        class="MuiBox-root css-q0ikcs"
+      >
+        <div
+          class="MuiBox-root css-d47f85"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-mf1cb5-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="MenuIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          class="MuiBox-root css-70qvj9"
+        >
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-yvetkp-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1007wv2-MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 166 31"
+            >
+              <svg
+                fill="none"
+                height="31"
+                viewBox="0 0 166 31"
+                width="166"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M90.0119 17.7286C87.9485 15.8597 86.937 13.4627 86.937 10.5172C86.937 7.57175 87.9889 5.15443 90.0321 3.30589C92.0753 1.45735 94.7052 0.502609 97.861 0.502609C98.6405 0.486175 99.4198 0.547415 100.187 0.68543C100.721 0.787928 101.248 0.923613 101.765 1.0917L103.282 1.70111V7.12485C98.124 4.46376 92.8238 6.23105 93.0059 10.5985C93.0059 12.122 93.4307 13.2799 94.341 14.1331C95.2181 14.9688 96.3892 15.4217 97.598 15.3925C98.5892 15.3925 99.358 15.1894 99.8839 14.844V8.91245H105.811V17.5864C105.063 18.3989 103.93 19.1099 102.433 19.6787C100.889 20.2653 99.2487 20.5547 97.598 20.5319C94.5905 20.5319 92.0618 19.5974 90.0119 17.7286Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M107.963 0.831146H113.881V12.1797C113.881 14.2375 115.137 15.1543 116.758 15.1543C118.38 15.1543 119.616 14.2375 119.616 12.1797V0.831146H125.513V12.1389C125.513 14.8283 124.702 16.9065 123.02 18.3531C121.338 19.7997 119.292 20.5331 116.758 20.5331C114.225 20.5331 112.138 19.82 110.476 18.3531C108.815 16.8861 107.963 14.8283 107.963 12.1389V0.831146Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M147.036 20.202H140.078L134.936 13.2955H134.12V20.202H128.162V0.831146H137.507C139.691 0.831146 141.466 1.40328 142.792 2.58842C143.437 3.13839 143.951 3.82548 144.297 4.59963C144.643 5.37377 144.812 6.21545 144.792 7.06333C144.792 9.49491 143.465 11.5178 141.241 12.6212L147.036 20.202ZM136.814 8.9432C137.936 8.9432 138.67 8.3302 138.67 7.36983C138.67 6.40946 137.936 5.81689 136.814 5.81689H134.12V8.9432H136.814Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M148.03 0.831146H153.947V12.1797C153.947 14.2375 155.204 15.1543 156.825 15.1543C158.446 15.1543 159.682 14.2375 159.682 12.1797V0.831146H165.579V12.1389C165.579 14.8283 164.769 16.9065 163.087 18.3531C161.405 19.7997 159.358 20.5331 156.825 20.5331C154.292 20.5331 152.204 19.82 150.522 18.3531C148.84 16.8861 148.03 14.8283 148.03 12.1389V0.831146Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M81.9209 8.1721C82.2587 8.49409 82.5257 8.88256 82.7051 9.31289C82.8845 9.74322 82.9722 10.206 82.9628 10.672C82.9628 11.6134 82.5899 12.5167 81.9253 13.1853C81.2607 13.8539 80.3581 14.2336 79.4142 14.2417C78.4548 14.2417 77.6192 13.8919 76.8868 13.1924C76.5509 12.8646 76.2853 12.4722 76.1062 12.0389C75.9271 11.6056 75.8382 11.1406 75.8449 10.672C75.8355 10.206 75.9232 9.74322 76.1026 9.31289C76.2819 8.88256 76.549 8.49409 76.8868 8.1721C77.2142 7.83475 77.6072 7.56765 78.0418 7.38721C78.4764 7.20677 78.9434 7.11679 79.4142 7.12278C79.8816 7.11839 80.345 7.20919 80.776 7.38962C81.2071 7.57005 81.5966 7.83631 81.9209 8.1721Z"
+                  fill="#00DDB5"
+                />
+                <path
+                  d="M40.8243 20.5218C38.2231 20.2189 36.1121 19.1083 34.4413 17.2C32.7706 15.2917 31.9702 13.0805 31.9702 10.5664C31.9702 7.77974 32.9307 5.4272 34.8816 3.45834C36.8324 1.48948 39.2936 0.5 42.2449 0.5C45.1963 0.5 47.6474 1.49958 49.5883 3.45834C51.5292 5.4171 52.4996 7.77974 52.4996 10.5664C52.5161 12.451 51.9984 14.3011 51.0076 15.8986C50.0167 17.496 48.594 18.7743 46.9071 19.5828C47.4573 20.2694 48.2177 20.6026 49.2381 20.6026C50.0314 20.6097 50.8133 20.4116 51.5092 20.0271V24.8634C50.4862 25.2955 49.3866 25.512 48.2777 25.4995C45.7265 25.4995 43.6456 24.3888 42.0248 22.208L40.8243 20.5218ZM42.2449 15.2109C43.4855 15.2109 44.496 14.7667 45.2863 13.9185C46.0767 13.0704 46.4969 11.9194 46.4969 10.5664C46.4969 9.21347 46.0867 8.10283 45.2863 7.25471C44.486 6.40658 43.4855 5.92194 42.2449 5.92194C41.0044 5.92194 40.0039 6.3662 39.2035 7.25471C38.4032 8.14322 38.003 9.21347 38.003 10.5664C38.003 11.9194 38.4132 13.03 39.2035 13.9185C39.9939 14.8071 41.0144 15.2109 42.2449 15.2109Z"
+                  fill="#252525"
+                />
+                <path
+                  d="M52.9966 20.202L60.9182 0.831146H66.5679L74.5198 20.202H68.1664L66.7891 16.5951H60.5061L59.1087 20.202H52.9966ZM62.2151 12.1643H65.05L63.6426 7.59286L62.2151 12.1643Z"
+                  fill="#252525"
+                />
+                <rect
+                  fill="#00DDB5"
+                  height="5.16556"
+                  width="20.6623"
+                  x="17.7021"
+                  y="25.3344"
+                />
+                <path
+                  d="M18.2384 10.0325V16.398L0 23.0139V16.9344L10.8358 13.2152L0 9.49603V3.41656L18.2384 10.0325Z"
+                  fill="#00DDB5"
+                />
+              </svg>
+            </svg>
+          </button>
+          <div
+            class="MuiBox-root css-j0f50d"
+          >
+            <div
+              class="MuiStack-root css-u10pvi-MuiStack-root"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                >
+                  <a
+                    href="/"
+                    style="text-decoration: none; color: rgb(44, 204, 166);"
+                  >
+                    Home
+                  </a>
+                </h6>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiStack-root css-1d9cypr-MuiStack-root"
+        >
+          <div
+            class="MuiBox-root css-0"
+          >
+            <div
+              class="MuiBox-root css-1l4w6pd"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    id="Layer_1"
+                    style="enable-background: new 0 0 512 512;"
+                    viewBox="0 0 512 512"
+                    x="0px"
+                    xml:space="preserve"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    y="0px"
+                  >
+                    <circle
+                      cx="256"
+                      cy="256"
+                      r="256"
+                      style="fill: #F0F0F0;"
+                    />
+                    <g>
+                      <path
+                        d="M52.92,100.142c-20.109,26.163-35.272,56.318-44.101,89.077h133.178L52.92,100.142z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M503.181,189.219c-8.829-32.758-23.993-62.913-44.101-89.076l-89.075,89.076H503.181z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M8.819,322.784c8.83,32.758,23.993,62.913,44.101,89.075l89.074-89.075L8.819,322.784L8.819,322.784 z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M411.858,52.921c-26.163-20.109-56.317-35.272-89.076-44.102v133.177L411.858,52.921z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M100.142,459.079c26.163,20.109,56.318,35.272,89.076,44.102V370.005L100.142,459.079z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M189.217,8.819c-32.758,8.83-62.913,23.993-89.075,44.101l89.075,89.075V8.819z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M322.783,503.181c32.758-8.83,62.913-23.993,89.075-44.101l-89.075-89.075V503.181z"
+                        style="fill: #0052B4;"
+                      />
+                      <path
+                        d="M370.005,322.784l89.075,89.076c20.108-26.162,35.272-56.318,44.101-89.076H370.005z"
+                        style="fill: #0052B4;"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M509.833,222.609h-220.44h-0.001V2.167C278.461,0.744,267.317,0,256,0 c-11.319,0-22.461,0.744-33.391,2.167v220.44v0.001H2.167C0.744,233.539,0,244.683,0,256c0,11.319,0.744,22.461,2.167,33.391 h220.44h0.001v220.442C233.539,511.256,244.681,512,256,512c11.317,0,22.461-0.743,33.391-2.167v-220.44v-0.001h220.442 C511.256,278.461,512,267.319,512,256C512,244.683,511.256,233.539,509.833,222.609z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M322.783,322.784L322.783,322.784L437.019,437.02c5.254-5.252,10.266-10.743,15.048-16.435 l-97.802-97.802h-31.482V322.784z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M189.217,322.784h-0.002L74.98,437.019c5.252,5.254,10.743,10.266,16.435,15.048l97.802-97.804 V322.784z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M189.217,189.219v-0.002L74.981,74.98c-5.254,5.252-10.266,10.743-15.048,16.435l97.803,97.803 H189.217z"
+                        style="fill: #D80027;"
+                      />
+                      <path
+                        d="M322.783,189.219L322.783,189.219L437.02,74.981c-5.252-5.254-10.743-10.266-16.435-15.047 l-97.802,97.803V189.219z"
+                        style="fill: #D80027;"
+                      />
+                    </g>
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                    <g />
+                  </svg>
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    image-rendering="optimizeQuality"
+                    shape-rendering="geometricPrecision"
+                    text-rendering="geometricPrecision"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill-rule="nonzero"
+                    >
+                      <path
+                        d="M256 0c70.684 0 134.689 28.664 181.012 74.987C483.336 121.311 512 185.316 512 256c0 70.684-28.664 134.689-74.988 181.013C390.689 483.336 326.684 512 256 512c-70.677 0-134.689-28.664-181.013-74.987C28.664 390.689 0 326.676 0 256c0-70.684 28.664-134.689 74.987-181.013C121.311 28.664 185.316 0 256 0z"
+                        fill="#4D4D4D"
+                      />
+                      <path
+                        d="M256.001 19.597c65.278 0 124.382 26.466 167.162 69.242 42.776 42.78 69.242 101.884 69.242 167.162S465.939 380.384 423.16 423.16c-42.777 42.78-101.881 69.246-167.159 69.246-65.278 0-124.382-26.466-167.162-69.243-42.777-42.779-69.243-101.884-69.243-167.162S46.062 131.619 88.839 88.839c42.78-42.776 101.884-69.242 167.162-69.242z"
+                        fill="#fff"
+                      />
+                      <path
+                        d="M472.405 256.232H39.597l-.003-.231c0-119.52 96.886-216.407 216.407-216.407 119.517 0 216.407 96.887 216.407 216.407l-.003.231z"
+                        fill="#fff"
+                      />
+                      <path
+                        d="M39.597 256.232h432.808c-.124 119.411-96.963 216.176-216.404 216.176-119.444 0-216.28-96.765-216.404-216.176z"
+                        fill="#D52B1E"
+                      />
+                      <path
+                        d="M52.038 183.55h407.926c8.048 22.652 12.444 47.036 12.444 72.451 0 25.586-4.452 50.131-12.606 72.915H52.2c-8.154-22.784-12.606-47.329-12.606-72.915 0-25.415 4.396-49.799 12.444-72.451z"
+                        fill="#0039A6"
+                      />
+                    </g>
+                  </svg>
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
+            style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+          >
+            <span
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+              role="progressbar"
+              style="width: 40px; height: 40px;"
+            >
+              <svg
+                class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+                viewBox="22 22 44 44"
+              >
+                <circle
+                  class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                  cx="44"
+                  cy="44"
+                  fill="none"
+                  r="20.2"
+                  stroke-width="3.6"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

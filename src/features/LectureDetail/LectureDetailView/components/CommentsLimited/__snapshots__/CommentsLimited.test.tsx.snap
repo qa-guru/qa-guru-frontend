@@ -1,0 +1,281 @@
+// Vitest Snapshot v1
+
+exports[`CommentsLimited > the component is render 1`] = `
+<DocumentFragment>
+  <form>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-6nzxz6-MuiTypography-root"
+    >
+      Добавить комментарий
+    </h5>
+    <div
+      class="MuiBox-root css-8atqhb"
+    >
+      <div
+        class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+        >
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+          >
+            <textarea
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+              id=":r0:"
+              maxlength="10000"
+              placeholder="Текст ответа"
+              style="height: 0px; overflow: hidden;"
+            />
+            <textarea
+              aria-hidden="true"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+              readonly=""
+              style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+              tabindex="-1"
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-ihdtdm"
+              >
+                <span
+                  class="notranslate"
+                >
+                  ​
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiStack-root css-1qvzoxq-MuiStack-root"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-17d8meg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        id=":r1:"
+        tabindex="0"
+        type="button"
+      >
+        Отправить
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </form>
+  <div
+    class="MuiStack-root css-w4z10b-MuiStack-root"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+    >
+      Комментарии
+    </h5>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+    >
+      (6)
+    </h5>
+  </div>
+  <div
+    class="MuiStack-root css-1w1iguc-MuiStack-root"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
+      style="background-color: rgb(224, 242, 241);"
+    >
+      <div
+        class="MuiStack-root css-1esctib-MuiStack-root"
+      >
+        <div
+          class="MuiBox-root css-8atqhb"
+        >
+          <div
+            class="MuiStack-root css-unhrs1-MuiStack-root"
+          >
+            <div
+              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
+            >
+              ss
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              >
+                string string
+              </h6>
+              <div
+                class="MuiStack-root css-gmwslw-MuiStack-root"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                >
+                  23.03.2023 | 00:00
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-6qfr2n"
+          >
+            <div
+              class="MuiBox-root css-i6bazn"
+            >
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+              >
+                string
+                <br />
+              </h6>
+            </div>
+          </div>
+        </div>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            fill="none"
+            height="54"
+            viewBox="0 0 54 54"
+            width="54"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              filter="url(#filter0_ddd_53710_35328)"
+            >
+              <rect
+                fill="#2CCCA6"
+                height="44"
+                rx="22"
+                width="44"
+                x="5"
+                y="4"
+              />
+              <path
+                d="M17.998 31.2512V35.0012H21.748L32.808 23.9412L29.058 20.1912L17.998 31.2512ZM35.708 21.0412C36.098 20.6512 36.098 20.0212 35.708 19.6312L33.368 17.2912C32.978 16.9012 32.348 16.9012 31.958 17.2912L30.128 19.1212L33.878 22.8712L35.708 21.0412Z"
+                fill="white"
+              />
+            </g>
+            <defs>
+              <filter
+                color-interpolation-filters="sRGB"
+                filterUnits="userSpaceOnUse"
+                height="54"
+                id="filter0_ddd_53710_35328"
+                width="54"
+                x="0"
+                y="0"
+              >
+                <feflood
+                  flood-opacity="0"
+                  result="BackgroundImageFix"
+                />
+                <fecolormatrix
+                  in="SourceAlpha"
+                  result="hardAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                />
+                <feoffset
+                  dy="1"
+                />
+                <fegaussianblur
+                  stdDeviation="2.5"
+                />
+                <fecomposite
+                  in2="hardAlpha"
+                  operator="out"
+                />
+                <fecolormatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+                />
+                <feblend
+                  in2="BackgroundImageFix"
+                  mode="normal"
+                  result="effect1_dropShadow_53710_35328"
+                />
+                <fecolormatrix
+                  in="SourceAlpha"
+                  result="hardAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                />
+                <feoffset
+                  dy="2"
+                />
+                <fegaussianblur
+                  stdDeviation="1"
+                />
+                <fecomposite
+                  in2="hardAlpha"
+                  operator="out"
+                />
+                <fecolormatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"
+                />
+                <feblend
+                  in2="effect1_dropShadow_53710_35328"
+                  mode="normal"
+                  result="effect2_dropShadow_53710_35328"
+                />
+                <fecolormatrix
+                  in="SourceAlpha"
+                  result="hardAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                />
+                <femorphology
+                  in="SourceAlpha"
+                  operator="erode"
+                  radius="2"
+                  result="effect3_dropShadow_53710_35328"
+                />
+                <feoffset
+                  dy="3"
+                />
+                <fegaussianblur
+                  stdDeviation="0.5"
+                />
+                <fecomposite
+                  in2="hardAlpha"
+                  operator="out"
+                />
+                <fecolormatrix
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+                />
+                <feblend
+                  in2="effect2_dropShadow_53710_35328"
+                  mode="normal"
+                  result="effect3_dropShadow_53710_35328"
+                />
+                <feblend
+                  in="SourceGraphic"
+                  in2="effect3_dropShadow_53710_35328"
+                  mode="normal"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
