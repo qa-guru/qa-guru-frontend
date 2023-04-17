@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import LectureDetailView from "../LectureDetailView";
+import LectureDetail from "../LectureDetailView";
 import Spinner from "../../../shared/Spinner";
 import { useLectureQuery } from "../../../api/graphql/lecture/lecture";
 import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
@@ -29,7 +29,7 @@ const LectureDetailContainer: React.FC = () => {
 
   return (
     <LectureIdContext.Provider value={lectureId}>
-      <LectureDetailView
+      <LectureDetail
         dataLecture={dataLecture}
         dataLectureHomework={dataLectureHomework!}
         tariffHomework={tariffHomework}

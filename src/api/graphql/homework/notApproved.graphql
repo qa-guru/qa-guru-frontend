@@ -1,0 +1,5 @@
+mutation notApproved($homeWorkId: ID!) {
+  notApproved(homeWorkId: $homeWorkId) {
+    id
+  }
+}

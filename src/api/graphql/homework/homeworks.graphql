@@ -1,0 +1,34 @@
+query homeWorks(
+  $offset: Int!
+  $limit: Int!
+  $sort: StudentHomeWorkSort
+  $filter: StudentHomeWorkFilter
+) {
+  homeWorks(offset: $offset, limit: $limit, sort: $sort, filter: $filter) {
+    offset
+    limit
+    totalElements
+    items {
+      id
+      lecture {
+        id
+        subject
+        description
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+    }
+  }
+}

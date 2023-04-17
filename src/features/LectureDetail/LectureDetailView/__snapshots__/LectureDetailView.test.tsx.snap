@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`LectureDetailView > hasHomework is false 1`] = `
+exports[`LectureDetail > hasHomework is false 1`] = `
 <DocumentFragment>
   <h4
     class="MuiTypography-root MuiTypography-h4 css-1h02dxw-MuiTypography-root"
@@ -210,7 +210,7 @@ exports[`LectureDetailView > hasHomework is false 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LectureDetailView > hasHomework is true 1`] = `
+exports[`LectureDetail > hasHomework is true 1`] = `
 <DocumentFragment>
   <h4
     class="MuiTypography-root MuiTypography-h4 css-1h02dxw-MuiTypography-root"

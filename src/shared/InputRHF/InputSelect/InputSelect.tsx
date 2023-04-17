@@ -7,17 +7,11 @@ const InputSelect: React.FC<IFormInputProps> = ({
   control,
   placeholder,
   name,
-  content,
+  options,
   defaultValue,
+  onChange,
+  disabled = false,
 }) => {
-  const generateMenuItem = () => {
-    return content.map((option: string) => (
-      <MenuItem key={option} value={option}>
-        {option}
-      </MenuItem>
-    ));
-  };
-
   return (
     <FormControl>
       <InputLabel>{placeholder}</InputLabel>
@@ -25,9 +19,23 @@ const InputSelect: React.FC<IFormInputProps> = ({
         name={name}
         control={control}
         defaultValue={defaultValue}
-        render={({ field: { value, onChange } }) => (
-          <Select label={placeholder} onChange={onChange} value={value}>
-            {generateMenuItem()}
+        render={({ field: { value, onChange: handleChange } }) => (
+          <Select
+            label={placeholder}
+            onChange={(event) => {
+              handleChange(event);
+              if (onChange) {
+                onChange(event.target.value as string);
+              }
+            }}
+            value={value}
+            disabled={disabled}
+          >
+            {options?.map((option, index) => (
+              <MenuItem key={index} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
           </Select>
         )}
       />
