@@ -1,4 +1,4 @@
-name: ter4_frontend_deploy_test
+name: frontend_deploy_test
 on:
   push:
     branches: 
