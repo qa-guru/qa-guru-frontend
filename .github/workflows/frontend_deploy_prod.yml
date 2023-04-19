@@ -1,4 +1,4 @@
-name: ter4_frontend_deploy_prod
+name: frontend_deploy_prod
 on:
   push:
     branches: 
