@@ -1,18 +1,14 @@
 import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
 import { ITrainingSelection } from "./TrainingSelection.types";
-import RHF from "../../../../../shared/InputRHF";
-import { SelectedTrainingIdContext } from "../../../../../context/SelectedTrainingIdContext";
+import RHF from "../../../../../../shared/InputRHF";
+import { SelectedTrainingIdContext } from "../../../../../../context/SelectedTrainingIdContext";
+import { ShouldSkipHomeWorksContext } from "../../../../../../context/ShouldSkipHomeWorksContext";
 
-const TrainingSelection: React.FC<ITrainingSelection> = ({ data }) => {
+const TrainingSelection: React.FC<ITrainingSelection> = ({ data, control }) => {
   const { items } = data.trainingsByMentor!;
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      selectTrainings: "",
-    },
-  });
   const { setSelectedTrainingId } = useContext(SelectedTrainingIdContext);
+  const { setShouldSkipHomeWorks } = useContext(ShouldSkipHomeWorksContext);
 
   const trainingOptions = items?.map((item) => ({
     value: item?.id,
@@ -21,6 +17,7 @@ const TrainingSelection: React.FC<ITrainingSelection> = ({ data }) => {
 
   const handleSelectChange = (selectedId: string) => {
     setSelectedTrainingId(selectedId);
+    setShouldSkipHomeWorks(true);
   };
 
   return (

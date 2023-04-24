@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
+import { ITrainingLecturesContainer } from "./TrainingLecturesContainer.types";
 import { useTrainingLecturesQuery } from "../../../../api/graphql/trainingLecture/trainingLectures";
-import Spinner from "../../../../shared/Spinner";
-import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
-import LectureSelection from "../../KanbanView/components/LectureSelection";
+import LectureSelection from "../../KanbanView/components/Form/LectureSelection";
 import { SelectedTrainingIdContext } from "../../../../context/SelectedTrainingIdContext";
 
-const TrainingLecturesContainer: React.FC = () => {
+const TrainingLecturesContainer: React.FC<ITrainingLecturesContainer> = ({
+  control,
+}) => {
   const { selectedTrainingId } = useContext(SelectedTrainingIdContext);
 
   const { data, loading } = useTrainingLecturesQuery({
@@ -13,9 +14,7 @@ const TrainingLecturesContainer: React.FC = () => {
     skip: !selectedTrainingId,
   });
 
-  if (loading) return <Spinner />;
-
-  return <LectureSelection data={data!} />;
+  return <LectureSelection data={data!} control={control} />;
 };
 
 export default TrainingLecturesContainer;

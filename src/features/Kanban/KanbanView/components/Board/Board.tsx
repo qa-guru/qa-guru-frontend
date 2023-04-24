@@ -16,9 +16,9 @@ const createColumnItem = (
   title: StudentHomeWorkStatus,
   items: StudentHomeWorkDto[]
 ): IColumnItem => {
-  const cards = items.filter((homework) => homework.status === title);
+  const cards = items?.filter((homework) => homework.status === title);
 
-  const extendedCards: IExtendedCard[] = cards.map((card) => {
+  const extendedCards: IExtendedCard[] = cards?.map((card) => {
     if (title === StudentHomeWorkStatus.New) {
       return { ...card, allowedColumns: ["2"] };
     } else if (title === StudentHomeWorkStatus.InReview) {
@@ -35,7 +35,7 @@ const createColumnItem = (
 };
 
 const Board: React.FC<IBoard> = ({ data }) => {
-  const { items } = data?.homeWorks!;
+  const { items } = data?.homeWorks || {};
   const { takeForReview, notApproved, approved } = useUpdateHomeworkStatus();
   const [isDraggingNewItem, setIsDraggingNewItem] = useState<boolean>(false);
   const [isDraggingFromInReview, setIsDraggingFromInReview] =

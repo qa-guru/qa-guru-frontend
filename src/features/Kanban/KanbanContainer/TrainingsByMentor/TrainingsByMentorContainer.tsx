@@ -1,5 +1,6 @@
 import React from "react";
-import TrainingSelection from "../../KanbanView/components/TrainingSelection";
+import { ITrainingsByMentorContainer } from "./TrainingsByMentorContainer.types";
+import TrainingSelection from "../../KanbanView/components/Form/TrainingSelection";
 import { useTrainingsByMentorQuery } from "../../../../api/graphql/training/trainingsByMentor";
 import {
   Order,
@@ -8,7 +9,9 @@ import {
 import Spinner from "../../../../shared/Spinner";
 import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 
-const TrainingsByMentorContainer: React.FC = () => {
+const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
+  control,
+}) => {
   const { data, loading } = useTrainingsByMentorQuery({
     variables: {
       offset: 0,
@@ -23,7 +26,7 @@ const TrainingsByMentorContainer: React.FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <TrainingSelection data={data} />;
+  return <TrainingSelection data={data} control={control} />;
 };
 
 export default TrainingsByMentorContainer;
