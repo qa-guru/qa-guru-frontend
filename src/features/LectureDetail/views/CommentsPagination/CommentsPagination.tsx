@@ -1,0 +1,83 @@
+import React, { useEffect, useState } from "react";
+import { Box, CircularProgress, Stack } from "@mui/material";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { ICommentsPagination } from "./CommentsPagination.types";
+import SendComment from "../../containers/SendComment";
+import CommentItem from "../CommentItem";
+import CommentTotalElements from "../CommentTotalElements";
+
+const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
+  const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
+  const { totalElements, items, offset } =
+    dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
+
+  const handleLoadMore = () => {
+    setLoading(true);
+    fetchMore({
+      variables: {
+        offset: items?.length,
+      },
+      updateQuery: (
+        prev: { commentsHomeWorkByHomeWork: { items: any } },
+        { fetchMoreResult }: any
+      ) => {
+        if (!fetchMoreResult) return prev;
+        return {
+          commentsHomeWorkByHomeWork: {
+            ...fetchMoreResult.commentsHomeWorkByHomeWork,
+            items: [
+              ...prev.commentsHomeWorkByHomeWork.items,
+              ...fetchMoreResult.commentsHomeWorkByHomeWork.items,
+            ],
+          },
+        };
+      },
+    }).then(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    if (items?.length! >= totalElements) {
+      setHasMoreComments(false);
+    }
+  }, [items]);
+
+  return (
+    <>
+      <SendComment id={id!} />
+      <CommentTotalElements totalElements={totalElements} />
+      <InfiniteScroll
+        dataLength={items?.length!}
+        next={handleLoadMore}
+        hasMore={hasMoreComments}
+        loader={
+          <Box mt="10px" display="flex" justifyContent="center">
+            <CircularProgress size={25} />
+          </Box>
+        }
+        style={{ overflow: "visible" }}
+        scrollableTarget="scroll-container"
+      >
+        <Stack mt="5px" spacing={2}>
+          {items?.map((item, index) => {
+            const editAccess = dataUserId?.user?.id === item?.creator?.id;
+            return (
+              <CommentItem
+                key={index}
+                item={item!}
+                editAccess={editAccess}
+                isSelected={selectedIndex === index}
+                setSelectedIndex={setSelectedIndex}
+                index={index}
+              />
+            );
+          })}
+        </Stack>
+      </InfiniteScroll>
+    </>
+  );
+};
+
+export default CommentsPagination;

@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 import BlurredComponent from "./BlurredComponent";
-import LectureHomework from "../../features/LectureDetail/LectureDetailView/components/LectureHomework";
-import Homework from "../../features/LectureDetail/LectureDetailContainer/Homework";
+import LectureHomework from "../../features/LectureDetail/views/LectureHomework";
+import Homework from "../../features/LectureDetail/containers/Homework";
 import { primary } from "../../theme/colors";
 import { lectureHomework } from "../mocks/lectureHomework.mock";
 

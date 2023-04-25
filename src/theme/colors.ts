@@ -14,6 +14,7 @@ export const purple = {
 export const grey = {
   main: "#CAC4D0",
   secondary: "#EEEEEE",
+  light: "#FAFAFA",
 };
 
 export const white = {

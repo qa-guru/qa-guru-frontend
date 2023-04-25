@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { InputLabel, MenuItem, Select } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
 const InputSelect: React.FC<IFormInputProps> = ({
@@ -13,7 +13,7 @@ const InputSelect: React.FC<IFormInputProps> = ({
   disabled = false,
 }) => {
   return (
-    <FormControl>
+    <>
       <InputLabel>{placeholder}</InputLabel>
       <Controller
         name={name}
@@ -39,7 +39,7 @@ const InputSelect: React.FC<IFormInputProps> = ({
           </Select>
         )}
       />
-    </FormControl>
+    </>
   );
 };
 

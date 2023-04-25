@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
-import Logout from "../../../features/Authorization/Logout";
+import Logout from "../../../features/Authorization/containers/LogoutContainer";
 import { black } from "../../../theme/colors";
 import AvatarCustom from "../../../shared/AvatarCustom";
 

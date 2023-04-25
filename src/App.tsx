@@ -4,7 +4,7 @@ import { ModalProvider } from "react-modal-hook";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
-import useAuth from "./hooks/useAuth";
+import useAuth from "./features/Authorization/hooks/useAuth";
 import { useUserQuery } from "./api/graphql/user/user";
 import Spinner from "./shared/Spinner";
 import { createCustomTheme } from "./theme";
