@@ -1,4 +1,4 @@
-import Login from "../features/Authorization/Login";
+import Login from "../features/Authorization/containers/LoginContainer";
 
 const Authorization = () => {
   return <Login />;

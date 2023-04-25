@@ -1,5 +1,5 @@
 import React from "react";
-import TrainingLectures from "../features/TrainingLectures";
+import TrainingLectures from "../features/TrainingLectures/containers";
 import ButtonTrainingList from "../shared/Buttons/ButtonTrainingList";
 
 const LecturesByTraining: React.FC = () => {

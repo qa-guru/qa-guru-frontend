@@ -4,7 +4,7 @@ import { UserRole } from "../api/graphql/generated/graphql";
 import Home from "../screens/Home";
 import TrainingLectures from "../screens/LecturesByTraining";
 import Lecture from "../screens/Lecture";
-import Kanban from "../features/Kanban/KanbanView/Kanban";
+import Kanban from "../features/Kanban/views/Kanban";
 
 const StudentRoutes: React.ReactNode[] = [
   <Route key="/" path="/" element={<Home />} />,
