@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Stack } from "@mui/material";
@@ -9,39 +9,63 @@ import {
   StudentHomeWorkStatus,
 } from "../../../../api/graphql/generated/graphql";
 import { IColumnItem } from "../Column/Column.types";
-import useUpdateHomeworkStatus from "../../../LectureDetail/hooks/useUpdateHomeworkStatus";
+import useUpdateHomeworkStatus from "../../hooks/useUpdateHomeworkStatus";
 import { createColumnItem } from "../../helpers/createColumnItem";
+import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
 
-const Board: React.FC<IBoard> = ({ data }) => {
-  const { items } = data?.homeWorks || {};
+const Board: React.FC<IBoard> = ({
+  newData,
+  inReviewData,
+  approvedData,
+  notApprovedData,
+  fetchMoreFunctions,
+}) => {
+  const { items: newItems, totalElements: newTotalElements } =
+    newData?.homeWorks || {};
+  const { items: inReviewItems, totalElements: inReviewTotalElements } =
+    inReviewData?.homeWorks || {};
+  const { items: approvedItems, totalElements: approvedTotalElements } =
+    approvedData?.homeWorks || {};
+  const { items: notApprovedItems, totalElements: notApprovedTotalElements } =
+    notApprovedData?.homeWorks || {};
+
   const { takeForReview, notApproved, approved } = useUpdateHomeworkStatus();
   const [draggingState, setDraggingState] = useState({
     newItem: false,
     fromInReview: false,
+    fromNotApproved: false,
   });
 
-  const [columns, setColumns] = useState<IColumnItem[]>([
-    createColumnItem(
-      "1",
-      StudentHomeWorkStatus.New,
-      items as StudentHomeWorkDto[]
-    ),
-    createColumnItem(
-      "2",
-      StudentHomeWorkStatus.InReview,
-      items as StudentHomeWorkDto[]
-    ),
-    createColumnItem(
-      "3",
-      StudentHomeWorkStatus.Approved,
-      items as StudentHomeWorkDto[]
-    ),
-    createColumnItem(
-      "4",
-      StudentHomeWorkStatus.NotApproved,
-      items as StudentHomeWorkDto[]
-    ),
-  ]);
+  const [columns, setColumns] = useState<IColumnItem[]>([]);
+
+  useEffect(() => {
+    setColumns([
+      createColumnItem(
+        "1",
+        StudentHomeWorkStatus.New,
+        newItems as StudentHomeWorkDto[],
+        newTotalElements
+      ),
+      createColumnItem(
+        "2",
+        StudentHomeWorkStatus.InReview,
+        inReviewItems as StudentHomeWorkDto[],
+        inReviewTotalElements
+      ),
+      createColumnItem(
+        "3",
+        StudentHomeWorkStatus.Approved,
+        approvedItems as StudentHomeWorkDto[],
+        approvedTotalElements
+      ),
+      createColumnItem(
+        "4",
+        StudentHomeWorkStatus.NotApproved,
+        notApprovedItems as StudentHomeWorkDto[],
+        notApprovedTotalElements
+      ),
+    ]);
+  }, [newItems, inReviewItems, approvedItems, notApprovedItems]);
 
   const updateStatus = useCallback(
     async (cardId: string, targetColumnId: string) => {
@@ -65,6 +89,8 @@ const Board: React.FC<IBoard> = ({ data }) => {
   const moveCard = useCallback(
     async (cardId: string, sourceColumnId: string, targetColumnId: string) => {
       await updateStatus(cardId, targetColumnId);
+      const newAllowedColumns = getUpdatedAllowedColumns(targetColumnId);
+
       setColumns((prevColumns) => {
         const sourceColumnIndex = prevColumns.findIndex(
           (col) => col.id === sourceColumnId
@@ -104,13 +130,14 @@ const Board: React.FC<IBoard> = ({ data }) => {
   return (
     <DndProvider backend={HTML5Backend}>
       <Stack direction="row" spacing={2} mt="20px">
-        {columns?.map((column) => (
+        {columns?.map((column, index) => (
           <Column
             draggingState={draggingState}
             setDraggingState={setDraggingState}
             key={column.id}
             column={column}
             onCardDrop={moveCard}
+            fetchMore={fetchMoreFunctions[index]}
           />
         ))}
       </Stack>

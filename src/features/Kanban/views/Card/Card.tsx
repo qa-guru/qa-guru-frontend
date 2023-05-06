@@ -6,6 +6,7 @@ import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.sv
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
 import { grey, white } from "../../../../theme/colors";
 import UserRow from "../UserRow";
+import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
 
 const styles = {
   paper: {
@@ -32,15 +33,22 @@ const styles = {
 const Card: React.FC<ICard> = ({
   card,
   sourceColumnId,
-  allowedColumns,
   setDraggingState,
   isCardsHidden,
 }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
-    item: { id: card.id, sourceColumnId, allowedColumns },
+    item: {
+      id: card.id,
+      sourceColumnId,
+      allowedColumns: getUpdatedAllowedColumns(sourceColumnId),
+    },
     end: () => {
-      setDraggingState({ newItem: false, fromInReview: false });
+      setDraggingState({
+        newItem: false,
+        fromInReview: false,
+        fromNotApproved: false,
+      });
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -53,9 +61,18 @@ const Card: React.FC<ICard> = ({
         setDraggingState((prevState) => ({ ...prevState, newItem: true }));
       } else if (sourceColumnId === "2") {
         setDraggingState((prevState) => ({ ...prevState, fromInReview: true }));
+      } else if (sourceColumnId === "4") {
+        setDraggingState((prevState) => ({
+          ...prevState,
+          fromNotApproved: true,
+        }));
       }
     } else {
-      setDraggingState({ newItem: false, fromInReview: false });
+      setDraggingState({
+        newItem: false,
+        fromInReview: false,
+        fromNotApproved: false,
+      });
     }
   }, [isDragging, sourceColumnId, setDraggingState]);
 
@@ -79,7 +96,7 @@ const Card: React.FC<ICard> = ({
       <Box padding={1}>
         <Typography variant="subtitle1">{card.lecture?.subject}</Typography>
         <Stack spacing={1} mt="10px">
-          <UserRow icon={MentorIcon} user={card.mentor!} />
+          {card.mentor && <UserRow icon={MentorIcon} user={card.mentor} />}
           <UserRow icon={StudentIcon} user={card.student!} />
         </Stack>
       </Box>

@@ -382,6 +382,7 @@ export type Query = {
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
   lecturesByMentor?: Maybe<LecturesDto>;
+  mentors?: Maybe<UsersDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
   /** training lecture */
@@ -474,6 +475,13 @@ export type QueryLecturesByMentorArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<LectureSort>;
+};
+
+/** Query root */
+export type QueryMentorsArgs = {
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
+  sort?: InputMaybe<UserSort>;
 };
 
 /** Query root */

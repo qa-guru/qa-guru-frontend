@@ -46,4 +46,5 @@ export const kanbanColumn: IColumnItem = {
       allowedColumns: ["column2", "column3"],
     },
   ],
+  totalElements: 7,
 };

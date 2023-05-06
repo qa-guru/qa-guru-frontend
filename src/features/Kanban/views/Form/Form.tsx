@@ -22,7 +22,6 @@ const Form: React.FC = () => {
     setSelectedLectureId,
     setSelectedCreationDateFrom,
     setSelectedCreationDateTo,
-    setShouldSkipHomeWorks,
   } = useContext(KanbanContext);
 
   const handleFilterKanban: SubmitHandler<IFilterKanban> = (data) => {
@@ -30,7 +29,6 @@ const Form: React.FC = () => {
     setSelectedLectureId(data.selectLectures);
     setSelectedCreationDateFrom(data.creationDateFrom);
     setSelectedCreationDateTo(data.creationDateTo);
-    setShouldSkipHomeWorks(false);
   };
 
   const handleReset = () => {
@@ -38,7 +36,6 @@ const Form: React.FC = () => {
     setSelectedLectureId(null);
     setSelectedCreationDateFrom(null);
     setSelectedCreationDateTo(null);
-    setShouldSkipHomeWorks(false);
     reset();
   };
 

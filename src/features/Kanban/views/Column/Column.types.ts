@@ -14,14 +14,16 @@ export interface IColumnItem {
   id: string;
   title: StudentHomeWorkStatus;
   cards: IExtendedCard[];
+  totalElements: number;
 }
 
 export interface IDraggingState {
   newItem: boolean;
   fromInReview: boolean;
+  fromNotApproved: boolean;
 }
-
 export interface IColumn {
+  fetchMore: any;
   draggingState: IDraggingState;
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   column: IColumnItem;

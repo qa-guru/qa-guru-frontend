@@ -13,7 +13,6 @@ describe("Card", () => {
           <Card
             card={studentHomeWorkDto}
             sourceColumnId="column-1"
-            allowedColumns={["column-1", "column-2"]}
             setDraggingState={() => {}}
             isCardsHidden={false}
           />
@@ -29,7 +28,6 @@ describe("Card", () => {
           <Card
             card={studentHomeWorkDto}
             sourceColumnId="column-1"
-            allowedColumns={["column-1", "column-2"]}
             setDraggingState={() => {}}
             isCardsHidden={true}
           />

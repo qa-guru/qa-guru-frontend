@@ -5,7 +5,6 @@ import { IDraggingState } from "../Column/Column.types";
 export interface ICard {
   card: StudentHomeWorkDto;
   sourceColumnId: string;
-  allowedColumns: string[];
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   isCardsHidden: boolean;
 }

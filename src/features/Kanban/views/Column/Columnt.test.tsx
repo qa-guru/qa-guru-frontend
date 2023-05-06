@@ -6,60 +6,40 @@ import { render } from "../../../../test/utilsTest";
 import { kanbanColumn } from "../../../../shared/mocks/kanbanColumnMock";
 
 describe("Column", () => {
-  it("newItem - true and fromInReview - true", () => {
+  it("items is true", () => {
     const { asFragment } = render(
       <DndProvider backend={HTML5Backend}>
         <MemoryRouter>
           <Column
             column={kanbanColumn}
             onCardDrop={() => {}}
-            draggingState={{ newItem: true, fromInReview: true }}
+            draggingState={{
+              newItem: true,
+              fromInReview: true,
+              fromNotApproved: true,
+            }}
             setDraggingState={() => {}}
+            fetchMore={() => {}}
           />
         </MemoryRouter>
       </DndProvider>
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it("newItem - true and fromInReview - false", () => {
+  it("items is false", () => {
     const { asFragment } = render(
       <DndProvider backend={HTML5Backend}>
         <MemoryRouter>
           <Column
             column={kanbanColumn}
             onCardDrop={() => {}}
-            draggingState={{ newItem: true, fromInReview: false }}
+            draggingState={{
+              newItem: false,
+              fromInReview: false,
+              fromNotApproved: false,
+            }}
             setDraggingState={() => {}}
-          />
-        </MemoryRouter>
-      </DndProvider>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-  it("newItem - false and fromInReview - true", () => {
-    const { asFragment } = render(
-      <DndProvider backend={HTML5Backend}>
-        <MemoryRouter>
-          <Column
-            column={kanbanColumn}
-            onCardDrop={() => {}}
-            draggingState={{ newItem: false, fromInReview: true }}
-            setDraggingState={() => {}}
-          />
-        </MemoryRouter>
-      </DndProvider>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-  it("newItem - false and fromInReview - false", () => {
-    const { asFragment } = render(
-      <DndProvider backend={HTML5Backend}>
-        <MemoryRouter>
-          <Column
-            column={kanbanColumn}
-            onCardDrop={() => {}}
-            draggingState={{ newItem: false, fromInReview: false }}
-            setDraggingState={() => {}}
+            fetchMore={() => {}}
           />
         </MemoryRouter>
       </DndProvider>

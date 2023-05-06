@@ -10,7 +10,13 @@ describe("Board", () => {
     const { asFragment } = render(
       <DndProvider backend={HTML5Backend}>
         <MemoryRouter>
-          <Board data={homeWorksQuery!} />
+          <Board
+            newData={homeWorksQuery}
+            inReviewData={homeWorksQuery}
+            approvedData={homeWorksQuery}
+            notApprovedData={homeWorksQuery}
+            fetchMoreFunctions={() => {}}
+          />
         </MemoryRouter>
       </DndProvider>
     );

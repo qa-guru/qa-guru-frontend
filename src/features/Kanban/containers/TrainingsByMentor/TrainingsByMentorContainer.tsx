@@ -6,8 +6,6 @@ import {
   Order,
   TrainingSortField,
 } from "../../../../api/graphql/generated/graphql";
-import Spinner from "../../../../shared/Spinner";
-import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 
 const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
   control,
@@ -15,7 +13,7 @@ const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
   const { data, loading } = useTrainingsByMentorQuery({
     variables: {
       offset: 0,
-      limit: 20,
+      limit: 100,
       sort: {
         field: TrainingSortField.Name,
         order: Order.Asc,
@@ -23,10 +21,7 @@ const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
     },
   });
 
-  if (loading) return <Spinner />;
-  if (!data) return <NoDataErrorMessage />;
-
-  return <TrainingSelection data={data} control={control} />;
+  return <TrainingSelection data={data!} control={control} />;
 };
 
 export default TrainingsByMentorContainer;

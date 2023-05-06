@@ -3,11 +3,12 @@ import { useHomeWorksQuery } from "../../../../api/graphql/homework/homeWorks";
 import {
   Order,
   StudentHomeWorkSortField,
+  StudentHomeWorkStatus,
 } from "../../../../api/graphql/generated/graphql";
 import Spinner from "../../../../shared/Spinner";
 import Board from "../../views/Board";
 import { KanbanContext } from "../../context/KanbanContext";
-import { isValidDate } from "../../helpers/isValidDate";
+import { getValidDateOrNull } from "../../helpers/isValidDate";
 
 const HomeworksContainer: React.FC = () => {
   const {
@@ -15,19 +16,14 @@ const HomeworksContainer: React.FC = () => {
     selectedTrainingId,
     selectedCreationDateFrom,
     selectedCreationDateTo,
-    shouldSkipHomeWorks,
   } = useContext(KanbanContext);
 
   const filterObject = useMemo(() => {
     return {
       lectureId: selectedLectureId,
       trainingId: selectedTrainingId,
-      creationDateFrom: isValidDate(selectedCreationDateFrom!)
-        ? selectedCreationDateFrom
-        : null,
-      creationDateTo: isValidDate(selectedCreationDateTo!)
-        ? selectedCreationDateTo
-        : null,
+      creationDateFrom: getValidDateOrNull(selectedCreationDateFrom!),
+      creationDateTo: getValidDateOrNull(selectedCreationDateTo!),
     };
   }, [
     selectedLectureId,
@@ -36,22 +32,87 @@ const HomeworksContainer: React.FC = () => {
     selectedCreationDateTo,
   ]);
 
-  const { data, loading } = useHomeWorksQuery({
+  const {
+    data: newData,
+    loading: newLoading,
+    fetchMore: fetchMoreNew,
+  } = useHomeWorksQuery({
     variables: {
       offset: 0,
-      limit: 100,
+      limit: 4,
       sort: {
         field: StudentHomeWorkSortField.CreationDate,
         order: Order.Asc,
       },
-      filter: filterObject,
+      filter: { ...filterObject, status: StudentHomeWorkStatus.New },
     },
-    skip: shouldSkipHomeWorks,
   });
 
-  if (loading) return <Spinner />;
+  const {
+    data: inReviewData,
+    loading: inReviewLoading,
+    fetchMore: fetchMoreInReview,
+  } = useHomeWorksQuery({
+    variables: {
+      offset: 0,
+      limit: 4,
+      sort: {
+        field: StudentHomeWorkSortField.CreationDate,
+        order: Order.Asc,
+      },
+      filter: { ...filterObject, status: StudentHomeWorkStatus.InReview },
+    },
+  });
 
-  return <Board data={data!} />;
+  const {
+    data: approvedData,
+    loading: approvedLoading,
+    fetchMore: fetchMoreApproved,
+  } = useHomeWorksQuery({
+    variables: {
+      offset: 0,
+      limit: 4,
+      sort: {
+        field: StudentHomeWorkSortField.CreationDate,
+        order: Order.Asc,
+      },
+      filter: { ...filterObject, status: StudentHomeWorkStatus.Approved },
+    },
+  });
+
+  const {
+    data: notApprovedData,
+    loading: notApprovedLoading,
+    fetchMore: fetchMoreNotApproved,
+  } = useHomeWorksQuery({
+    variables: {
+      offset: 0,
+      limit: 4,
+      sort: {
+        field: StudentHomeWorkSortField.CreationDate,
+        order: Order.Asc,
+      },
+      filter: { ...filterObject, status: StudentHomeWorkStatus.NotApproved },
+    },
+  });
+
+  if (newLoading || inReviewLoading || approvedLoading || notApprovedLoading)
+    return <Spinner />;
+
+  return (
+    <Board
+      newData={newData!}
+      inReviewData={inReviewData!}
+      approvedData={approvedData!}
+      notApprovedData={notApprovedData!}
+      fetchMoreFunctions={[
+        fetchMoreNew,
+        fetchMoreInReview,
+        fetchMoreApproved,
+        fetchMoreNotApproved,
+      ]}
+    />
+  );
 };
 
 export default HomeworksContainer;

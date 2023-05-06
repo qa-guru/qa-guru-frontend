@@ -28,6 +28,10 @@ const ManagerRoutes: React.ReactNode[] = [
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
 ];
 
+const MasterRoutes: React.ReactNode[] = [
+  <Route key="kanban" path="/kanban" element={<Kanban />} />,
+];
+
 export const getUserRoutes = (userRoles: Array<UserRole | null>) => {
   return userRoles.reduce((acc, role) => {
     if (role && roleRoutes[role]) {
@@ -41,4 +45,5 @@ export const roleRoutes: { [key in UserRole]?: React.ReactNode[] } = {
   [UserRole.Student]: StudentRoutes,
   [UserRole.Mentor]: MentorRoutes,
   [UserRole.Manager]: ManagerRoutes,
+  [UserRole.Master]: ManagerRoutes,
 };

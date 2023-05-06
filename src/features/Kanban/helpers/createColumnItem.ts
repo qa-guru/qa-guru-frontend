@@ -8,7 +8,8 @@ import { IColumnItem, IExtendedCard } from "../views/Column/Column.types";
 export const createColumnItem = (
   id: string,
   title: StudentHomeWorkStatus,
-  items: StudentHomeWorkDto[]
+  items: StudentHomeWorkDto[],
+  totalElements: number
 ): IColumnItem => {
   const extendedCards: IExtendedCard[] = items
     ?.filter((homework) => homework.status === title)
@@ -20,5 +21,6 @@ export const createColumnItem = (
     id,
     title,
     cards: extendedCards,
+    totalElements,
   };
 };

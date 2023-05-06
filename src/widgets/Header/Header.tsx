@@ -49,7 +49,7 @@ const Header: React.FC<IHeader> = ({ userRoles }) => {
         ]
       : []),
     ...(userRoles.some((role) =>
-      [UserRole.Mentor, UserRole.Master].includes(role!)
+      [UserRole.Mentor, UserRole.Master, UserRole.Master].includes(role!)
     )
       ? [
           {

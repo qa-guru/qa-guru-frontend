@@ -5,6 +5,8 @@ export const getAllowedColumns = (title: StudentHomeWorkStatus) => {
     return ["2"];
   } else if (title === StudentHomeWorkStatus.InReview) {
     return ["3", "4"];
+  } else if (title === StudentHomeWorkStatus.NotApproved) {
+    return ["3"];
   }
   return [];
 };

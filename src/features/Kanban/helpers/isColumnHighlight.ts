@@ -4,8 +4,16 @@ export const isColumnHighlight: IsColumnHighlightFunction = (
   columnId,
   draggingState
 ) => {
+  const { newItem, fromInReview, fromNotApproved } = draggingState;
+
+  const isDragNewToInReview = columnId === "2" && newItem;
+  const isDragInReviewToApprovedOrNot =
+    ["3", "4"].includes(columnId) && fromInReview;
+  const isDragNotApprovedToApproved = columnId === "3" && fromNotApproved;
+
   return (
-    (columnId === "2" && draggingState.newItem) ||
-    (["3", "4"].includes(columnId) && draggingState.fromInReview)
+    isDragNewToInReview ||
+    isDragInReviewToApprovedOrNot ||
+    isDragNotApprovedToApproved
   );
 };

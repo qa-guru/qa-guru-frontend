@@ -48,15 +48,15 @@ const useAuth = () => {
           enqueueSnackbar(t("logout.unknownError"));
         }
       })
-      .catch((error) => {
+      .catch(() => {
         setIsLoading(false);
         enqueueSnackbar(t("logout.unknownError"));
       });
   };
 
-  const signup = (data: UserCreateInput) => {
+  const signup = async (data: UserCreateInput) => {
     setIsLoading(true);
-    createUser({
+    await createUser({
       variables: { input: data },
       onCompleted: () => {
         login(data.email, data.password);
