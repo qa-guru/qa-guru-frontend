@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   Box,
   Button,
@@ -67,17 +67,17 @@ const Login: React.FC<ILogin> = (props) => {
     await login(data.username, data.password);
   };
 
-  const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
       event.preventDefault();
       handleSubmit(doLogin)();
     }
-  };
+  }, [handleSubmit, doLogin]);
 
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener('keydown', handleKeyPress);
     return () => {
-      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener('keydown', handleKeyPress);
     };
   }, [handleKeyPress]);
 
