@@ -1,4 +1,4 @@
-import { Control, FieldValues } from "react-hook-form";
+import { Control } from "react-hook-form";
 import { IFilterKanban } from "../Form.types";
 
 export interface ICreationDateToSelection {

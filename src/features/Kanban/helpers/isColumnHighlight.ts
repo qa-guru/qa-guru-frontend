@@ -1,11 +1,24 @@
-import { IsColumnHighlightFunction } from "../views/Column/Column.types";
+import { IDraggingState } from "../views/Board/Board.types";
 
-export const isColumnHighlight: IsColumnHighlightFunction = (
+type IsColumnHighlight = (
+  columnId: string,
+  draggingState: IDraggingState
+) => boolean;
+
+export const isColumnHighlight: IsColumnHighlight = (
   columnId,
   draggingState
 ) => {
+  const { newItem, fromInReview, fromNotApproved } = draggingState;
+
+  const isDragNewToInReview = columnId === "2" && newItem;
+  const isDragInReviewToApprovedOrNot =
+    ["3", "4"].includes(columnId) && fromInReview;
+  const isDragNotApprovedToApproved = columnId === "3" && fromNotApproved;
+
   return (
-    (columnId === "2" && draggingState.newItem) ||
-    (["3", "4"].includes(columnId) && draggingState.fromInReview)
+    isDragNewToInReview ||
+    isDragInReviewToApprovedOrNot ||
+    isDragNotApprovedToApproved
   );
 };

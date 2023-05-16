@@ -1,7 +1,8 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
+import "dotenv/config";
 
 const config: CodegenConfig = {
-  schema: "http://app-stage.qa.guru:8080/graphql",
+  schema: `${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI}`,
   documents: ["src/**/*.graphql"],
   generates: {
     "src/api/graphql/generated/graphql.tsx": {
@@ -9,6 +10,7 @@ const config: CodegenConfig = {
         "typescript",
         "typescript-operations",
         "typescript-react-apollo",
+        "fragment-matcher",
       ],
       config: {
         withComponent: true,

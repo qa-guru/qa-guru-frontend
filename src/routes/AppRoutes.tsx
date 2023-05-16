@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import React from "react";
-import { getUserRoutes, roleRoutes } from "./RoleRoutes";
+import { getUserRoutes } from "./RoleRoutes";
 import Layout from "../shared/Layout";
 import { UserRole } from "../api/graphql/generated/graphql";
 

@@ -3,7 +3,7 @@ import { Theme } from "@mui/material";
 
 const components = (theme: Theme): any => {
   // @ts-ignore
-  const { white } = theme.palette;
+  const { white, primary } = theme.palette;
   return {
     MuiCssBaseline: {
       styleOverrides: {
@@ -20,6 +20,20 @@ const components = (theme: Theme): any => {
           WebkitFontSmoothing: "antialiased",
         },
         body: { width: "100%", height: "100%" },
+        "*::-webkit-scrollbar": {
+          width: "4px",
+          height: "4px",
+        },
+        "*::-webkit-scrollbar-track": {
+          backgroundColor: theme.palette.grey[300],
+        },
+        "*::-webkit-scrollbar-thumb": {
+          borderRadius: "8px",
+          backgroundColor: theme.palette.grey[500],
+          "&:hover": {
+            backgroundColor: theme.palette.grey[700],
+          },
+        },
       },
     },
     MuiButton: {

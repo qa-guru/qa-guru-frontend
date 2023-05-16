@@ -1,4 +1,3 @@
-import React from "react";
 import { SendCommentMutationFn } from "../../../../api/graphql/generated/graphql";
 
 export interface ISendComment {

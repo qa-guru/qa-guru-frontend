@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTrainingPurchasesQuery } from "../../../api/graphql/trainingPurchase/trainingPurchases";
 
 interface ITariffHook {

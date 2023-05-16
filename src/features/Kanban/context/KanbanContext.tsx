@@ -9,8 +9,6 @@ export interface IKanbanContext {
   setSelectedCreationDateFrom: Dispatch<SetStateAction<string | null>>;
   selectedCreationDateTo: string | null;
   setSelectedCreationDateTo: Dispatch<SetStateAction<string | null>>;
-  shouldSkipHomeWorks: boolean;
-  setShouldSkipHomeWorks: Dispatch<SetStateAction<boolean>>;
 }
 
 export const KanbanContext = createContext<IKanbanContext>({
@@ -22,6 +20,4 @@ export const KanbanContext = createContext<IKanbanContext>({
   setSelectedCreationDateFrom: () => {},
   selectedCreationDateTo: null,
   setSelectedCreationDateTo: () => {},
-  shouldSkipHomeWorks: false,
-  setShouldSkipHomeWorks: () => {},
 });

@@ -1,5 +1,32 @@
 mutation takeForReview($homeworkId: ID!) {
   takeForReview(homeWorkId: $homeworkId) {
-    id
+    ...NewTakeForReviewHomeWork
   }
+}
+
+fragment NewTakeForReviewHomeWork on StudentHomeWorkDto {
+  id
+  lecture {
+    id
+    subject
+    description
+  }
+  answer
+  status
+  student {
+    id
+    email
+    firstName
+    middleName
+    lastName
+  }
+  mentor {
+    id
+    email
+    firstName
+    middleName
+    lastName
+  }
+  startCheckingDate
+  endCheckingDate
 }

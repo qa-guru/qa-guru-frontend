@@ -1,4 +1,4 @@
-import { Control, FieldValues } from "react-hook-form";
+import { Control } from "react-hook-form";
 import { TrainingLecturesQuery } from "../../../../../api/graphql/generated/graphql";
 import { IFilterKanban } from "../Form.types";
 

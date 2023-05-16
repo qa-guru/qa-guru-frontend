@@ -1,4 +1,4 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
+# This file was generated. Do not edit manually.
 
 schema {
   query: Query
@@ -171,6 +171,7 @@ type Query {
   lectureHomeWorkLevels: [LectureHomeWorkLevelDto]
   lectures(limit: Int!, offset: Int!, sort: LectureSort): LecturesDto
   lecturesByMentor(limit: Int!, offset: Int!, sort: LectureSort): LecturesDto
+  mentors(limit: Int!, offset: Int!, sort: UserSort): UsersDto
   "training section"
   training(id: ID!): TrainingDto
   "training lecture"
@@ -302,7 +303,9 @@ enum Order {
 
 enum StudentHomeWorkSortField {
   CREATION_DATE
+  END_CHECKING_DATE
   MENTOR
+  START_CHECKING_DATE
   STATE
   STUDENT
 }

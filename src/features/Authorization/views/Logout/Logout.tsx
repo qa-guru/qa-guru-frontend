@@ -19,7 +19,7 @@ const Logout: React.FC<ILogout> = (props) => {
   const { logout, setAnchorElUser } = props;
   const { t } = useTranslation();
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={hideModal}>
       <DialogTitle>{t("sign.out")}</DialogTitle>
       <DialogContent>
         <DialogContentText>{t("logout.confirm")}</DialogContentText>
@@ -38,10 +38,6 @@ const Logout: React.FC<ILogout> = (props) => {
   const handleClickOpen = () => {
     setAnchorElUser(null);
     showModal();
-  };
-
-  const handleClose = () => {
-    hideModal();
   };
 
   const handleOk = async () => {

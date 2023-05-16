@@ -9,13 +9,11 @@ import CommentTotalElements from "../CommentTotalElements";
 const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-  const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items, offset } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
 
   const handleLoadMore = () => {
-    setLoading(true);
     fetchMore({
       variables: {
         offset: items?.length,
@@ -35,7 +33,7 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
           },
         };
       },
-    }).then(() => setLoading(false));
+    });
   };
 
   useEffect(() => {

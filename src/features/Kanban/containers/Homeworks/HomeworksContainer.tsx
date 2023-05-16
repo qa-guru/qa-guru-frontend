@@ -3,11 +3,14 @@ import { useHomeWorksQuery } from "../../../../api/graphql/homework/homeWorks";
 import {
   Order,
   StudentHomeWorkSortField,
+  StudentHomeWorkStatus,
 } from "../../../../api/graphql/generated/graphql";
 import Spinner from "../../../../shared/Spinner";
 import Board from "../../views/Board";
 import { KanbanContext } from "../../context/KanbanContext";
-import { isValidDate } from "../../helpers/isValidDate";
+import { getValidDateOrNull } from "../../helpers/isValidDate";
+import { useUserIdQuery } from "../../../../api/graphql/user/userId";
+import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 
 const HomeworksContainer: React.FC = () => {
   const {
@@ -15,19 +18,14 @@ const HomeworksContainer: React.FC = () => {
     selectedTrainingId,
     selectedCreationDateFrom,
     selectedCreationDateTo,
-    shouldSkipHomeWorks,
   } = useContext(KanbanContext);
 
   const filterObject = useMemo(() => {
     return {
       lectureId: selectedLectureId,
       trainingId: selectedTrainingId,
-      creationDateFrom: isValidDate(selectedCreationDateFrom!)
-        ? selectedCreationDateFrom
-        : null,
-      creationDateTo: isValidDate(selectedCreationDateTo!)
-        ? selectedCreationDateTo
-        : null,
+      creationDateFrom: getValidDateOrNull(selectedCreationDateFrom!),
+      creationDateTo: getValidDateOrNull(selectedCreationDateTo!),
     };
   }, [
     selectedLectureId,
@@ -36,22 +34,105 @@ const HomeworksContainer: React.FC = () => {
     selectedCreationDateTo,
   ]);
 
-  const { data, loading } = useHomeWorksQuery({
+  const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
+
+  const {
+    data: newData,
+    loading: newLoading,
+    fetchMore: fetchMoreNew,
+  } = useHomeWorksQuery({
     variables: {
       offset: 0,
-      limit: 100,
+      limit: 4,
       sort: {
         field: StudentHomeWorkSortField.CreationDate,
-        order: Order.Asc,
+        order: Order.Desc,
       },
-      filter: filterObject,
+      filter: { ...filterObject, status: StudentHomeWorkStatus.New },
     },
-    skip: shouldSkipHomeWorks,
   });
 
-  if (loading) return <Spinner />;
+  const {
+    data: inReviewData,
+    loading: inReviewLoading,
+    fetchMore: fetchMoreInReview,
+  } = useHomeWorksQuery({
+    variables: {
+      offset: 0,
+      limit: 4,
+      sort: {
+        field: StudentHomeWorkSortField.StartCheckingDate,
+        order: Order.Desc,
+      },
+      filter: { ...filterObject, status: StudentHomeWorkStatus.InReview },
+    },
+  });
 
-  return <Board data={data!} />;
+  const {
+    data: approvedData,
+    loading: approvedLoading,
+    fetchMore: fetchMoreApproved,
+  } = useHomeWorksQuery({
+    variables: {
+      offset: 0,
+      limit: 4,
+      sort: {
+        field: StudentHomeWorkSortField.EndCheckingDate,
+        order: Order.Desc,
+      },
+      filter: { ...filterObject, status: StudentHomeWorkStatus.Approved },
+    },
+  });
+
+  const {
+    data: notApprovedData,
+    loading: notApprovedLoading,
+    fetchMore: fetchMoreNotApproved,
+  } = useHomeWorksQuery({
+    variables: {
+      offset: 0,
+      limit: 4,
+      sort: {
+        field: StudentHomeWorkSortField.EndCheckingDate,
+        order: Order.Desc,
+      },
+      filter: { ...filterObject, status: StudentHomeWorkStatus.NotApproved },
+    },
+  });
+
+  if (
+    newLoading ||
+    inReviewLoading ||
+    approvedLoading ||
+    notApprovedLoading ||
+    loadingUserId
+  )
+    return <Spinner />;
+
+  if (
+    !newData ||
+    !inReviewData ||
+    !approvedData ||
+    !notApprovedData ||
+    !dataUserId
+  )
+    return <NoDataErrorMessage />;
+
+  return (
+    <Board
+      newData={newData}
+      inReviewData={inReviewData}
+      approvedData={approvedData}
+      notApprovedData={notApprovedData}
+      fetchMoreFunctions={[
+        fetchMoreNew,
+        fetchMoreInReview,
+        fetchMoreApproved,
+        fetchMoreNotApproved,
+      ]}
+      dataUserId={dataUserId}
+    />
+  );
 };
 
 export default HomeworksContainer;

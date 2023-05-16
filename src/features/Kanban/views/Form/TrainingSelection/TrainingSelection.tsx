@@ -5,9 +5,8 @@ import RHF from "../../../../../shared/InputRHF";
 import { KanbanContext } from "../../../context/KanbanContext";
 
 const TrainingSelection: React.FC<ITrainingSelection> = ({ data, control }) => {
-  const { items } = data.trainingsByMentor!;
-  const { setSelectedTrainingId, setShouldSkipHomeWorks } =
-    useContext(KanbanContext);
+  const items = data?.trainingsByMentor?.items || [];
+  const { setSelectedTrainingId } = useContext(KanbanContext);
 
   const trainingOptions = items?.map((item) => ({
     value: item?.id,
@@ -16,7 +15,6 @@ const TrainingSelection: React.FC<ITrainingSelection> = ({ data, control }) => {
 
   const handleSelectChange = (selectedId: string) => {
     setSelectedTrainingId(selectedId);
-    setShouldSkipHomeWorks(true);
   };
 
   return (
