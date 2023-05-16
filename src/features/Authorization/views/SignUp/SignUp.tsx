@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -82,17 +82,17 @@ const SignUp: React.FC<ISignUp> = (props) => {
     }
   };
 
-  const handleKeyPress = useCallback((event: KeyboardEvent) => {
-    if (event.key === 'Enter') {
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
       event.preventDefault();
       handleSubmit(onSubmit)();
     }
-  }, [handleSubmit, onSubmit]);
+  };
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener("keydown", handleKeyPress);
     return () => {
-      document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener("keydown", handleKeyPress);
     };
   }, [handleKeyPress]);
 
