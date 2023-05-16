@@ -8,10 +8,9 @@ import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "../../../../api/graphql/generated/graphql";
-import { IColumnItem } from "../Column/Column.types";
 import useUpdateHomeworkStatus from "../../hooks/useUpdateHomeworkStatus";
 import { createColumnItem } from "../../helpers/createColumnItem";
-import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
+import { IColumnItem } from "../Column/Column.types";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -19,24 +18,24 @@ const Board: React.FC<IBoard> = ({
   approvedData,
   notApprovedData,
   fetchMoreFunctions,
+  dataUserId,
 }) => {
   const { items: newItems, totalElements: newTotalElements } =
-    newData?.homeWorks || {};
+    newData.homeWorks!;
   const { items: inReviewItems, totalElements: inReviewTotalElements } =
-    inReviewData?.homeWorks || {};
+    inReviewData.homeWorks!;
   const { items: approvedItems, totalElements: approvedTotalElements } =
-    approvedData?.homeWorks || {};
+    approvedData.homeWorks!;
   const { items: notApprovedItems, totalElements: notApprovedTotalElements } =
-    notApprovedData?.homeWorks || {};
-
+    notApprovedData.homeWorks!;
   const { takeForReview, notApproved, approved } = useUpdateHomeworkStatus();
   const [draggingState, setDraggingState] = useState({
     newItem: false,
     fromInReview: false,
     fromNotApproved: false,
   });
-
   const [columns, setColumns] = useState<IColumnItem[]>([]);
+  const userId = dataUserId.user?.id;
 
   useEffect(() => {
     setColumns([
@@ -89,8 +88,6 @@ const Board: React.FC<IBoard> = ({
   const moveCard = useCallback(
     async (cardId: string, sourceColumnId: string, targetColumnId: string) => {
       await updateStatus(cardId, targetColumnId);
-      const newAllowedColumns = getUpdatedAllowedColumns(targetColumnId);
-
       setColumns((prevColumns) => {
         const sourceColumnIndex = prevColumns.findIndex(
           (col) => col.id === sourceColumnId
@@ -114,8 +111,9 @@ const Board: React.FC<IBoard> = ({
 
         const newTargetColumn = {
           ...targetColumn,
-          cards: [...targetColumn.cards, card],
+          cards: targetColumn.cards.slice(),
         };
+        newTargetColumn.cards.unshift(card);
 
         return prevColumns.map((column, index) => {
           if (index === sourceColumnIndex) return newSourceColumn;
@@ -138,6 +136,7 @@ const Board: React.FC<IBoard> = ({
             column={column}
             onCardDrop={moveCard}
             fetchMore={fetchMoreFunctions[index]}
+            userId={userId!}
           />
         ))}
       </Stack>

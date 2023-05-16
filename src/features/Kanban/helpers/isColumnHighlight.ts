@@ -1,6 +1,11 @@
-import { IsColumnHighlightFunction } from "../views/Column/Column.types";
+import { IDraggingState } from "../views/Board/Board.types";
 
-export const isColumnHighlight: IsColumnHighlightFunction = (
+type IsColumnHighlight = (
+  columnId: string,
+  draggingState: IDraggingState
+) => boolean;
+
+export const isColumnHighlight: IsColumnHighlight = (
   columnId,
   draggingState
 ) => {

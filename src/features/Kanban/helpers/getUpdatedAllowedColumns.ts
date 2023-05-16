@@ -1,14 +1,32 @@
-export const getUpdatedAllowedColumns = (columnId: string) => {
+export const getUpdatedAllowedColumns = (
+  columnId: string,
+  userId: string,
+  mentorId: string
+) => {
+  let allowedColumns: string[] = [];
+
   switch (columnId) {
     case "1":
-      return ["2"];
+      allowedColumns = ["2"];
+      break;
     case "2":
-      return ["3", "4"];
+      if (userId === mentorId) {
+        allowedColumns = ["3", "4"];
+      }
+      break;
     case "3":
-      return [];
+      if (userId === mentorId) {
+        allowedColumns = [];
+      }
+      break;
     case "4":
-      return ["3"];
+      if (userId === mentorId) {
+        allowedColumns = ["3"];
+      }
+      break;
     default:
-      return [];
+      allowedColumns = [];
   }
+
+  return allowedColumns;
 };

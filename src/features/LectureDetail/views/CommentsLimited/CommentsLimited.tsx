@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { ICommentsLimited } from "./CommentsLimited.types";
 import SendComment from "../../containers/SendComment";
 import CommentItem from "../CommentItem";

@@ -10,6 +10,7 @@ const config: CodegenConfig = {
         "typescript",
         "typescript-operations",
         "typescript-react-apollo",
+        "fragment-matcher",
       ],
       config: {
         withComponent: true,

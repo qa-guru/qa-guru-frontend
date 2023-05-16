@@ -8,10 +8,12 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
@@ -556,7 +558,9 @@ export type StudentHomeWorkSort = {
 
 export enum StudentHomeWorkSortField {
   CreationDate = "CREATION_DATE",
+  EndCheckingDate = "END_CHECKING_DATE",
   Mentor = "MENTOR",
+  StartCheckingDate = "START_CHECKING_DATE",
   State = "STATE",
   Student = "STUDENT",
 }
@@ -760,7 +764,67 @@ export type ApprovedMutationVariables = Exact<{
 
 export type ApprovedMutation = {
   __typename?: "Mutation";
-  approved?: { __typename?: "StudentHomeWorkDto"; id?: string | null } | null;
+  approved?: {
+    __typename?: "StudentHomeWorkDto";
+    id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: Array<string | null> | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
+export type ApprovedHomeworkFragment = {
+  __typename?: "StudentHomeWorkDto";
+  id?: string | null;
+  answer?: string | null;
+  status?: StudentHomeWorkStatus | null;
+  startCheckingDate?: any | null;
+  endCheckingDate?: any | null;
+  lecture?: {
+    __typename?: "LectureInfoDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: Array<string | null> | null;
+  } | null;
+  student?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    lastName?: string | null;
+  } | null;
+  mentor?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    lastName?: string | null;
+  } | null;
 };
 
 export type HomeWorkByLectureQueryVariables = Exact<{
@@ -858,6 +922,7 @@ export type HomeWorksQuery = {
       id?: string | null;
       answer?: string | null;
       status?: StudentHomeWorkStatus | null;
+      creationDate?: any | null;
       lecture?: {
         __typename?: "LectureInfoDto";
         id?: string | null;
@@ -891,6 +956,63 @@ export type NotApprovedMutation = {
   notApproved?: {
     __typename?: "StudentHomeWorkDto";
     id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: Array<string | null> | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
+export type NotApprovedHomeworkFragment = {
+  __typename?: "StudentHomeWorkDto";
+  id?: string | null;
+  answer?: string | null;
+  status?: StudentHomeWorkStatus | null;
+  startCheckingDate?: any | null;
+  endCheckingDate?: any | null;
+  lecture?: {
+    __typename?: "LectureInfoDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: Array<string | null> | null;
+  } | null;
+  student?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    lastName?: string | null;
+  } | null;
+  mentor?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    lastName?: string | null;
   } | null;
 };
 
@@ -940,6 +1062,63 @@ export type TakeForReviewMutation = {
   takeForReview?: {
     __typename?: "StudentHomeWorkDto";
     id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+      description?: Array<string | null> | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
+export type NewTakeForReviewHomeWorkFragment = {
+  __typename?: "StudentHomeWorkDto";
+  id?: string | null;
+  answer?: string | null;
+  status?: StudentHomeWorkStatus | null;
+  startCheckingDate?: any | null;
+  endCheckingDate?: any | null;
+  lecture?: {
+    __typename?: "LectureInfoDto";
+    id?: string | null;
+    subject?: string | null;
+    description?: Array<string | null> | null;
+  } | null;
+  student?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    lastName?: string | null;
+  } | null;
+  mentor?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    middleName?: string | null;
+    lastName?: string | null;
   } | null;
 };
 
@@ -1338,12 +1517,97 @@ export type UserIdQuery = {
   user?: { __typename?: "UserDto"; id?: string | null } | null;
 };
 
+export const ApprovedHomeworkFragmentDoc = gql`
+  fragment ApprovedHomework on StudentHomeWorkDto {
+    id
+    lecture {
+      id
+      subject
+      description
+    }
+    answer
+    status
+    student {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    mentor {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    startCheckingDate
+    endCheckingDate
+  }
+`;
+export const NotApprovedHomeworkFragmentDoc = gql`
+  fragment NotApprovedHomework on StudentHomeWorkDto {
+    id
+    lecture {
+      id
+      subject
+      description
+    }
+    answer
+    status
+    student {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    mentor {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    startCheckingDate
+    endCheckingDate
+  }
+`;
+export const NewTakeForReviewHomeWorkFragmentDoc = gql`
+  fragment NewTakeForReviewHomeWork on StudentHomeWorkDto {
+    id
+    lecture {
+      id
+      subject
+      description
+    }
+    answer
+    status
+    student {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    mentor {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    startCheckingDate
+    endCheckingDate
+  }
+`;
 export const ApprovedDocument = gql`
   mutation approved($homeWorkId: ID!) {
     approved(homeWorkId: $homeWorkId) {
-      id
+      ...ApprovedHomework
     }
   }
+  ${ApprovedHomeworkFragmentDoc}
 `;
 export type ApprovedMutationFn = Apollo.MutationFunction<
   ApprovedMutation,
@@ -1649,6 +1913,7 @@ export const HomeWorksDocument = gql`
           middleName
           lastName
         }
+        creationDate
       }
     }
   }
@@ -1720,9 +1985,10 @@ export type HomeWorksQueryResult = Apollo.QueryResult<
 export const NotApprovedDocument = gql`
   mutation notApproved($homeWorkId: ID!) {
     notApproved(homeWorkId: $homeWorkId) {
-      id
+      ...NotApprovedHomework
     }
   }
+  ${NotApprovedHomeworkFragmentDoc}
 `;
 export type NotApprovedMutationFn = Apollo.MutationFunction<
   NotApprovedMutation,
@@ -1878,9 +2144,10 @@ export type SendHomeWorkToCheckMutationOptions = Apollo.BaseMutationOptions<
 export const TakeForReviewDocument = gql`
   mutation takeForReview($homeworkId: ID!) {
     takeForReview(homeWorkId: $homeworkId) {
-      id
+      ...NewTakeForReviewHomeWork
     }
   }
+  ${NewTakeForReviewHomeWorkFragmentDoc}
 `;
 export type TakeForReviewMutationFn = Apollo.MutationFunction<
   TakeForReviewMutation,
@@ -3200,3 +3467,13 @@ export type UserIdQueryResult = Apollo.QueryResult<
   UserIdQuery,
   UserIdQueryVariables
 >;
+
+export interface PossibleTypesResultData {
+  possibleTypes: {
+    [key: string]: string[];
+  };
+}
+const result: PossibleTypesResultData = {
+  possibleTypes: {},
+};
+export default result;

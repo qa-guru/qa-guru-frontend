@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React from "react";
 import Authorization from "../screens/Authorization";
 import Registration from "../screens/Registration";

@@ -14,7 +14,10 @@ export const createColumnItem = (
   const extendedCards: IExtendedCard[] = items
     ?.filter((homework) => homework.status === title)
     ?.map((card) => {
-      return { ...card, allowedColumns: getAllowedColumns(title) };
+      return {
+        ...card,
+        allowedColumns: getAllowedColumns(title),
+      };
     });
 
   return {

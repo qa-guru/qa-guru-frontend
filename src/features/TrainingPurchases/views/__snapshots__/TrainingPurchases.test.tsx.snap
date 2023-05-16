@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`TrainingPurchases > the component is render 1`] = `
 <DocumentFragment>
@@ -18,7 +18,7 @@ exports[`TrainingPurchases > the component is render 1`] = `
         style="text-decoration: none;"
       >
         <button
-          class="MuiButtonBase-root MuiCardActionArea-root css-1pz8km4-MuiButtonBase-root-MuiCardActionArea-root"
+          class="MuiButtonBase-root MuiCardActionArea-root css-y0orxu-MuiButtonBase-root-MuiCardActionArea-root"
           tabindex="0"
           type="button"
         >

@@ -18,8 +18,9 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["import", "sonarjs"],
+  "plugins": ["import", "sonarjs", "unused-imports"],
   "rules": {
+    "unused-imports/no-unused-imports": "error",
     "no-unsafe-optional-chaining": "off",
     // possible errors
     "for-direction": "error",
@@ -95,7 +96,7 @@
     "no-multi-assign": "warn",
     "no-nested-ternary": "warn",
     "no-new-object": "warn",
-    "no-underscore-dangle": "warn",
+    "no-underscore-dangle": "off",
     "no-unneeded-ternary": "warn",
     "one-var": ["warn", "never"],
     "operator-assignment": "warn",

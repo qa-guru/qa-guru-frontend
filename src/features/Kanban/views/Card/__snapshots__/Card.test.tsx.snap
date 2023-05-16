@@ -1,9 +1,9 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Card > Card is hidden 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1wf8lpj-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-edif77-MuiPaper-root"
     draggable="true"
   >
     <div
@@ -12,8 +12,13 @@ exports[`Card > Card is hidden 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
       >
-        ID курса
+        123123
       </h6>
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+      >
+        10.10.2021
+      </p>
     </div>
     <div
       class="MuiBox-root css-hpgf8j"
@@ -109,7 +114,7 @@ exports[`Card > Card is hidden 1`] = `
 exports[`Card > Card is visible 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-103p7jh-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-12lw3ie-MuiPaper-root"
     draggable="true"
   >
     <div
@@ -118,8 +123,13 @@ exports[`Card > Card is visible 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
       >
-        ID курса
+        123123
       </h6>
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+      >
+        10.10.2021
+      </p>
     </div>
     <div
       class="MuiBox-root css-hpgf8j"

@@ -1,8 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDrop } from "react-dnd";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Typography,
+} from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { IColumn } from "./Column.types";
+import { useModal } from "react-modal-hook";
+import { CardType, IColumn } from "./Column.types";
 import Card from "../Card";
 import { getColumnStyles } from "../../helpers/getColumnStyles";
 import { isColumnHighlight } from "../../helpers/isColumnHighlight";
@@ -13,26 +22,58 @@ const Column: React.FC<IColumn> = ({
   draggingState,
   setDraggingState,
   fetchMore,
+  userId,
 }) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
+  const droppedItem = useRef<CardType | null>(null);
   const [{ isOver, canDrop }, dropRef] = useDrop({
     accept: "card",
-    drop: (item: {
-      id: string;
-      sourceColumnId: string;
-      allowedColumns: string[];
-    }) => {
-      if (item.allowedColumns.includes(column.id!)) {
-        onCardDrop(item.id, item.sourceColumnId, column.id!);
+    drop: (item: CardType) => {
+      if (item.allowedColumns.includes(column.id)) {
+        droppedItem.current = item;
+        showModal();
       }
     },
+
     canDrop: (item: { allowedColumns: string[] }) =>
-      item.allowedColumns.includes(column.id!),
+      item.allowedColumns.includes(column.id),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
   });
+  const [showModal, hideModal] = useModal(({ in: open, droppedItem }) => (
+    <Dialog open={open} onClose={hideModal} maxWidth="xs">
+      <DialogContent>
+        Вы уверены, что хотите поменять статус данной домашней работы?
+      </DialogContent>
+      <DialogActions>
+        <Button color="secondary" variant="contained" onClick={handleCancel}>
+          Нет
+        </Button>
+        <Button variant="contained" onClick={handleOk}>
+          Да
+        </Button>
+      </DialogActions>
+    </Dialog>
+  ));
+
+  const handleOk = async () => {
+    if (droppedItem.current) {
+      await onCardDrop(
+        droppedItem.current.id,
+        droppedItem.current.sourceColumnId,
+        column.id
+      );
+      droppedItem.current = null;
+      hideModal();
+    }
+  };
+
+  const handleCancel = () => {
+    droppedItem.current = null;
+    hideModal();
+  };
 
   const handleLoadMore = () => {
     fetchMore({
@@ -65,7 +106,13 @@ const Column: React.FC<IColumn> = ({
   }, [column.cards?.length]);
 
   return (
-    <Box width="25%" flexGrow="1" display="flex" flexDirection="column">
+    <Box
+      width="25%"
+      flexGrow="1"
+      display="flex"
+      flexDirection="column"
+      maxHeight="65vh"
+    >
       <Typography variant="h6">{column.title}</Typography>
       <Box
         id={`scroll-container-${column.id}`}
@@ -75,7 +122,6 @@ const Column: React.FC<IColumn> = ({
           ...getColumnStyles(column.id, draggingState, isOver),
           boxSizing: "border-box",
           overflowY: "auto",
-          maxHeight: "600px",
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",
@@ -97,6 +143,7 @@ const Column: React.FC<IColumn> = ({
         >
           {column.cards?.map((card) => (
             <Card
+              userId={userId}
               key={card.id}
               card={card}
               sourceColumnId={column.id}

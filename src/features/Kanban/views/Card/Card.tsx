@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect } from "react";
 import { useDrag } from "react-dnd";
 import { Box, Paper, Stack, Typography } from "@mui/material";
+import { format, parseISO } from "date-fns";
+import { useSnackbar } from "notistack";
 import { ICard } from "./Card.types";
 import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
@@ -12,7 +14,7 @@ const styles = {
   paper: {
     backgroundColor: white,
     borderRadius: 1,
-    marginBottom: 1,
+    marginBottom: 1.5,
     boxShadow: 1,
     cursor: "grab",
   },
@@ -35,13 +37,18 @@ const Card: React.FC<ICard> = ({
   sourceColumnId,
   setDraggingState,
   isCardsHidden,
+  userId,
 }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
       id: card.id,
       sourceColumnId,
-      allowedColumns: getUpdatedAllowedColumns(sourceColumnId),
+      allowedColumns: getUpdatedAllowedColumns(
+        sourceColumnId,
+        userId,
+        card.mentor?.id!
+      ),
     },
     end: () => {
       setDraggingState({
@@ -54,27 +61,44 @@ const Card: React.FC<ICard> = ({
       isDragging: monitor.isDragging(),
     }),
   });
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleDragEffect = useCallback(() => {
-    if (isDragging) {
-      if (sourceColumnId === "1") {
-        setDraggingState((prevState) => ({ ...prevState, newItem: true }));
-      } else if (sourceColumnId === "2") {
-        setDraggingState((prevState) => ({ ...prevState, fromInReview: true }));
-      } else if (sourceColumnId === "4") {
-        setDraggingState((prevState) => ({
-          ...prevState,
-          fromNotApproved: true,
-        }));
-      }
-    } else {
+    if (!isDragging) {
       setDraggingState({
         newItem: false,
         fromInReview: false,
         fromNotApproved: false,
       });
+      return;
     }
-  }, [isDragging, sourceColumnId, setDraggingState]);
+
+    if (sourceColumnId === "1") {
+      setDraggingState((prevState) => ({ ...prevState, newItem: true }));
+      return;
+    }
+
+    if (userId !== card.mentor?.id) {
+      enqueueSnackbar("Вы не можете поменять статус данной домашней работы");
+      return;
+    }
+
+    if (sourceColumnId === "2") {
+      setDraggingState((prevState) => ({ ...prevState, fromInReview: true }));
+    } else if (sourceColumnId === "4") {
+      setDraggingState((prevState) => ({
+        ...prevState,
+        fromNotApproved: true,
+      }));
+    }
+  }, [
+    isDragging,
+    sourceColumnId,
+    setDraggingState,
+    userId,
+    card.mentor?.id,
+    enqueueSnackbar,
+  ]);
 
   useEffect(() => {
     handleDragEffect();
@@ -90,7 +114,11 @@ const Card: React.FC<ICard> = ({
     <Paper ref={dragRef} sx={paperStyles}>
       <Box sx={styles.cardHeader}>
         <Typography textTransform="uppercase" variant="subtitle2">
-          ID курса
+          {card.id}
+        </Typography>
+        <Typography variant="body2">
+          {card.creationDate &&
+            format(parseISO(card.creationDate), "dd.MM.yyyy")}
         </Typography>
       </Box>
       <Box padding={1}>

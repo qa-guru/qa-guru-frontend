@@ -20,6 +20,7 @@ describe("Column", () => {
             }}
             setDraggingState={() => {}}
             fetchMore={() => {}}
+            userId={"123"}
           />
         </MemoryRouter>
       </DndProvider>
@@ -40,6 +41,7 @@ describe("Column", () => {
             }}
             setDraggingState={() => {}}
             fetchMore={() => {}}
+            userId={"123"}
           />
         </MemoryRouter>
       </DndProvider>

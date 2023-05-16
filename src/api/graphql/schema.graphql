@@ -303,7 +303,9 @@ enum Order {
 
 enum StudentHomeWorkSortField {
   CREATION_DATE
+  END_CHECKING_DATE
   MENTOR
+  START_CHECKING_DATE
   STATE
   STUDENT
 }

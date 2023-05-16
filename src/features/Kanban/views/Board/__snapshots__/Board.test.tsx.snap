@@ -1,4 +1,4 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Board > Board is render 1`] = `
 <DocumentFragment>
@@ -6,7 +6,7 @@ exports[`Board > Board is render 1`] = `
     class="MuiStack-root css-1dmi50t-MuiStack-root"
   >
     <div
-      class="MuiBox-root css-1vcbrsc"
+      class="MuiBox-root css-w12c5y"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
@@ -14,7 +14,7 @@ exports[`Board > Board is render 1`] = `
         NEW
       </h6>
       <div
-        class="MuiBox-root css-1jf6xrh"
+        class="MuiBox-root css-1e97qij"
         id="scroll-container-1"
       >
         <div
@@ -52,7 +52,7 @@ exports[`Board > Board is render 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root css-1vcbrsc"
+      class="MuiBox-root css-w12c5y"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
@@ -60,7 +60,7 @@ exports[`Board > Board is render 1`] = `
         IN_REVIEW
       </h6>
       <div
-        class="MuiBox-root css-1jf6xrh"
+        class="MuiBox-root css-1e97qij"
         id="scroll-container-2"
       >
         <div
@@ -98,7 +98,7 @@ exports[`Board > Board is render 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root css-1vcbrsc"
+      class="MuiBox-root css-w12c5y"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
@@ -106,7 +106,7 @@ exports[`Board > Board is render 1`] = `
         APPROVED
       </h6>
       <div
-        class="MuiBox-root css-1jf6xrh"
+        class="MuiBox-root css-1e97qij"
         id="scroll-container-3"
       >
         <div
@@ -117,7 +117,7 @@ exports[`Board > Board is render 1`] = `
             style="height: auto; overflow: visible;"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-103p7jh-MuiPaper-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-12lw3ie-MuiPaper-root"
               draggable="true"
             >
               <div
@@ -126,8 +126,11 @@ exports[`Board > Board is render 1`] = `
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
                 >
-                  ID курса
+                  string
                 </h6>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+                />
               </div>
               <div
                 class="MuiBox-root css-hpgf8j"
@@ -224,7 +227,7 @@ exports[`Board > Board is render 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root css-1vcbrsc"
+      class="MuiBox-root css-w12c5y"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
@@ -232,7 +235,7 @@ exports[`Board > Board is render 1`] = `
         NOT_APPROVED
       </h6>
       <div
-        class="MuiBox-root css-1jf6xrh"
+        class="MuiBox-root css-1e97qij"
         id="scroll-container-4"
       >
         <div

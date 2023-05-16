@@ -4,6 +4,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Board from "./Board";
 import { render } from "../../../../test/utilsTest";
 import { homeWorksQuery } from "../../../../shared/mocks/homeworks.mock";
+import { userId } from "../../../../shared/mocks/userId.mock";
 
 describe("Board", () => {
   it("Board is render", () => {
@@ -16,6 +17,7 @@ describe("Board", () => {
             approvedData={homeWorksQuery}
             notApprovedData={homeWorksQuery}
             fetchMoreFunctions={() => {}}
+            dataUserId={userId}
           />
         </MemoryRouter>
       </DndProvider>
