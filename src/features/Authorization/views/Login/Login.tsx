@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Button,
@@ -67,6 +67,20 @@ const Login: React.FC<ILogin> = (props) => {
     await login(data.username, data.password);
     navigate("/");
   };
+
+  const handleKeyPress = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSubmit(doLogin)();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
   return (
     <Stack justifyContent="center" alignItems="center" sx={style.wrapper}>
