@@ -3,4 +3,5 @@ export interface IFilterKanban {
   selectLectures: string;
   creationDateFrom: string;
   creationDateTo: string;
+  selectMentors: string;
 }

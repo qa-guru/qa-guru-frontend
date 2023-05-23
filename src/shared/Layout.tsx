@@ -1,9 +1,8 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import { Box, Container } from "@mui/material";
+import {Outlet} from "react-router-dom";
+import {Box, Container} from "@mui/material";
 import Header from "../widgets/Header";
-import Footer from "../widgets/Footer";
-import { UserRole } from "../api/graphql/generated/graphql";
+import {UserRole} from "../api/graphql/generated/graphql";
 
 interface LayoutProps {
   userRoles: Array<UserRole | null>;
@@ -27,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ userRoles }) => {
       <Container sx={style.content} maxWidth={"xl"}>
         <Outlet />
       </Container>
-      <Footer />
+      {/*<Footer />*/}
     </Box>
   );
 };

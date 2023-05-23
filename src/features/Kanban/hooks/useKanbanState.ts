@@ -13,8 +13,7 @@ const useKanbanState = () => {
   const [selectedCreationDateTo, setSelectedCreationDateTo] = useState<
     string | null
   >(null);
-  const [shouldSkipHomeWorks, setShouldSkipHomeWorks] =
-    useState<boolean>(false);
+  const [selectedMentorId, setSelectedMentorId] = useState<string | null>(null);
 
   return {
     selectedTrainingId,
@@ -25,8 +24,8 @@ const useKanbanState = () => {
     setSelectedCreationDateFrom,
     selectedCreationDateTo,
     setSelectedCreationDateTo,
-    shouldSkipHomeWorks,
-    setShouldSkipHomeWorks,
+    selectedMentorId,
+    setSelectedMentorId,
   };
 };
 

@@ -15,6 +15,11 @@ import { CardType, IColumn } from "./Column.types";
 import Card from "../Card";
 import { getColumnStyles } from "../../helpers/getColumnStyles";
 import { isColumnHighlight } from "../../helpers/isColumnHighlight";
+import { primary } from "../../../../theme/colors";
+
+const style = {
+  loadMoreBtn: { color: primary.main, margin: "20px auto" },
+};
 
 const Column: React.FC<IColumn> = ({
   column,
@@ -22,9 +27,9 @@ const Column: React.FC<IColumn> = ({
   draggingState,
   setDraggingState,
   fetchMore,
-  userId,
 }) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
+  const [showButton, setShowButton] = useState<boolean>(true);
   const droppedItem = useRef<CardType | null>(null);
   const [{ isOver, canDrop }, dropRef] = useDrop({
     accept: "card",
@@ -42,7 +47,7 @@ const Column: React.FC<IColumn> = ({
       canDrop: monitor.canDrop(),
     }),
   });
-  const [showModal, hideModal] = useModal(({ in: open, droppedItem }) => (
+  const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal} maxWidth="xs">
       <DialogContent>
         Вы уверены, что хотите поменять статус данной домашней работы?
@@ -76,6 +81,7 @@ const Column: React.FC<IColumn> = ({
   };
 
   const handleLoadMore = () => {
+    setShowButton(false);
     fetchMore({
       variables: {
         offset: column.cards?.length,
@@ -106,13 +112,7 @@ const Column: React.FC<IColumn> = ({
   }, [column.cards?.length]);
 
   return (
-    <Box
-      width="25%"
-      flexGrow="1"
-      display="flex"
-      flexDirection="column"
-      maxHeight="65vh"
-    >
+    <Box width="25%" flexGrow="1" display="flex" flexDirection="column">
       <Typography variant="h6">{column.title}</Typography>
       <Box
         id={`scroll-container-${column.id}`}
@@ -121,7 +121,8 @@ const Column: React.FC<IColumn> = ({
         sx={{
           ...getColumnStyles(column.id, draggingState, isOver),
           boxSizing: "border-box",
-          overflowY: "auto",
+          overflowY: showButton ? "hidden" : "auto",
+          maxHeight: "70vh",
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",
@@ -143,7 +144,6 @@ const Column: React.FC<IColumn> = ({
         >
           {column.cards?.map((card) => (
             <Card
-              userId={userId}
               key={card.id}
               card={card}
               sourceColumnId={column.id}
@@ -153,6 +153,11 @@ const Column: React.FC<IColumn> = ({
           ))}
         </InfiniteScroll>
       </Box>
+      {showButton && hasMoreHomeworks && (
+        <Button sx={style.loadMoreBtn} onClick={handleLoadMore}>
+          Загрузить еще
+        </Button>
+      )}
     </Box>
   );
 };

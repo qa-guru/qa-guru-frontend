@@ -18,7 +18,6 @@ const Board: React.FC<IBoard> = ({
   approvedData,
   notApprovedData,
   fetchMoreFunctions,
-  dataUserId,
 }) => {
   const { items: newItems, totalElements: newTotalElements } =
     newData.homeWorks!;
@@ -35,7 +34,6 @@ const Board: React.FC<IBoard> = ({
     fromNotApproved: false,
   });
   const [columns, setColumns] = useState<IColumnItem[]>([]);
-  const userId = dataUserId.user?.id;
 
   useEffect(() => {
     setColumns([
@@ -127,7 +125,7 @@ const Board: React.FC<IBoard> = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Stack direction="row" spacing={2} mt="20px">
+      <Stack direction="row" spacing={2} mt="15px">
         {columns?.map((column, index) => (
           <Column
             draggingState={draggingState}
@@ -136,7 +134,6 @@ const Board: React.FC<IBoard> = ({
             column={column}
             onCardDrop={moveCard}
             fetchMore={fetchMoreFunctions[index]}
-            userId={userId!}
           />
         ))}
       </Stack>

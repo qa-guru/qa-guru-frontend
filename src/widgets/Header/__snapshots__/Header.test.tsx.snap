@@ -322,7 +322,7 @@ exports[`Header > userRole is Master 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Header > userRole is Mentor 1`] = `
+exports[`Header > userRole is MentorsContainer 1`] = `
 <DocumentFragment>
   <header
     style="margin-bottom: 30px;"

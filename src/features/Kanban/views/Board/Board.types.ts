@@ -9,7 +9,6 @@ export interface IBoard {
   approvedData: HomeWorksQuery;
   notApprovedData: HomeWorksQuery;
   fetchMoreFunctions: any;
-  dataUserId: UserIdQuery;
 }
 
 export interface IDraggingState {
