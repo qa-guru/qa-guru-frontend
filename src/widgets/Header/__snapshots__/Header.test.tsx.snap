@@ -298,7 +298,7 @@ exports[`Header > userRole is Master 1`] = `
             <span
               class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
               role="progressbar"
-              style="width: 40px; height: 40px;"
+              style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
             >
               <svg
                 class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
@@ -620,7 +620,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             <span
               class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
               role="progressbar"
-              style="width: 40px; height: 40px;"
+              style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
             >
               <svg
                 class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
@@ -942,7 +942,7 @@ exports[`Header > userRole is Student 1`] = `
             <span
               class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
               role="progressbar"
-              style="width: 40px; height: 40px;"
+              style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
             >
               <svg
                 class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"

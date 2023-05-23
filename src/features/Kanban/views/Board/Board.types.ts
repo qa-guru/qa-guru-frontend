@@ -1,7 +1,4 @@
-import {
-  HomeWorksQuery,
-  UserIdQuery,
-} from "../../../../api/graphql/generated/graphql";
+import { HomeWorksQuery } from "../../../../api/graphql/generated/graphql";
 
 export interface IBoard {
   newData: HomeWorksQuery;

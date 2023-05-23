@@ -4,37 +4,40 @@ import { DndProvider } from "react-dnd";
 import Card from "./Card";
 import { render } from "../../../../test/utilsTest";
 import { studentHomeWorkDto } from "../../../../shared/mocks/studentHomeWorkDto.mock";
+import { UserProvider } from "../../context/UserContext";
 
 describe("Card", () => {
   it("Card is visible", () => {
     const { asFragment } = render(
-      <DndProvider backend={HTML5Backend}>
-        <MemoryRouter>
-          <Card
-            card={studentHomeWorkDto}
-            sourceColumnId="column-1"
-            setDraggingState={() => {}}
-            isCardsHidden={false}
-            userId={"123"}
-          />
-        </MemoryRouter>
-      </DndProvider>
+      <UserProvider>
+        <DndProvider backend={HTML5Backend}>
+          <MemoryRouter>
+            <Card
+              card={studentHomeWorkDto}
+              sourceColumnId="column-1"
+              setDraggingState={() => {}}
+              isCardsHidden={false}
+            />
+          </MemoryRouter>
+        </DndProvider>
+      </UserProvider>
     );
     expect(asFragment()).toMatchSnapshot();
   });
   it("Card is hidden", () => {
     const { asFragment } = render(
-      <DndProvider backend={HTML5Backend}>
-        <MemoryRouter>
-          <Card
-            card={studentHomeWorkDto}
-            sourceColumnId="column-1"
-            setDraggingState={() => {}}
-            isCardsHidden={true}
-            userId={"123"}
-          />
-        </MemoryRouter>
-      </DndProvider>
+      <UserProvider>
+        <DndProvider backend={HTML5Backend}>
+          <MemoryRouter>
+            <Card
+              card={studentHomeWorkDto}
+              sourceColumnId="column-1"
+              setDraggingState={() => {}}
+              isCardsHidden={true}
+            />
+          </MemoryRouter>
+        </DndProvider>
+      </UserProvider>
     );
     expect(asFragment()).toMatchSnapshot();
   });
