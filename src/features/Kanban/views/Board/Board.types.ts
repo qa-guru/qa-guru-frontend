@@ -1,7 +1,4 @@
-import {
-  HomeWorksQuery,
-  UserIdQuery,
-} from "../../../../api/graphql/generated/graphql";
+import { HomeWorksQuery } from "../../../../api/graphql/generated/graphql";
 
 export interface IBoard {
   newData: HomeWorksQuery;
@@ -9,7 +6,6 @@ export interface IBoard {
   approvedData: HomeWorksQuery;
   notApprovedData: HomeWorksQuery;
   fetchMoreFunctions: any;
-  dataUserId: UserIdQuery;
 }
 
 export interface IDraggingState {

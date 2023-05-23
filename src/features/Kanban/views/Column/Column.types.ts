@@ -26,7 +26,6 @@ export interface IColumn {
   draggingState: IDraggingState;
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   column: IColumnItem;
-  userId: string;
   onCardDrop: (
     cardId: string,
     sourceColumnId: string,

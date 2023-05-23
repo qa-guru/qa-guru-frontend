@@ -1,7 +1,9 @@
 import React from "react";
 import { CircularProgress, Grid } from "@mui/material";
+import { primary } from "../theme/colors";
 
 const Spinner: React.FC = () => {
+
   return (
     <Grid
       container
@@ -16,7 +18,7 @@ const Spinner: React.FC = () => {
         zIndex: 1000,
       }}
     >
-      <CircularProgress />
+      <CircularProgress style={{ color: primary.main }} />
     </Grid>
   );
 };

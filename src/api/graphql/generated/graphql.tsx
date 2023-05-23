@@ -1370,6 +1370,26 @@ export type TrainingQuery = {
   } | null;
 };
 
+export type TrainingsQueryVariables = Exact<{
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
+  sort?: InputMaybe<TrainingSort>;
+}>;
+
+export type TrainingsQuery = {
+  __typename?: "Query";
+  trainings?: {
+    __typename?: "TrainingsDto";
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "TrainingDto";
+      id: string;
+      name: string;
+      techStack: TechStack;
+    } | null> | null;
+  } | null;
+};
+
 export type TrainingsByMentorQueryVariables = Exact<{
   offset: Scalars["Int"];
   limit: Scalars["Int"];
@@ -1492,6 +1512,32 @@ export type CreateUserMutation = {
   } | null;
 };
 
+export type MentorsQueryVariables = Exact<{
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
+  sort: UserSort;
+}>;
+
+export type MentorsQuery = {
+  __typename?: "Query";
+  mentors?: {
+    __typename?: "UsersDto";
+    offset?: number | null;
+    limit?: number | null;
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+      phoneNumber?: string | null;
+      locked?: boolean | null;
+    } | null> | null;
+  } | null;
+};
+
 export type UserQueryVariables = Exact<{ [key: string]: never }>;
 
 export type UserQuery = {
@@ -1515,6 +1561,16 @@ export type UserIdQueryVariables = Exact<{ [key: string]: never }>;
 export type UserIdQuery = {
   __typename?: "Query";
   user?: { __typename?: "UserDto"; id?: string | null } | null;
+};
+
+export type UserRolesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UserRolesQuery = {
+  __typename?: "Query";
+  user?: {
+    __typename?: "UserDto";
+    roles?: Array<UserRole | null> | null;
+  } | null;
 };
 
 export const ApprovedHomeworkFragmentDoc = gql`
@@ -2915,6 +2971,81 @@ export type TrainingQueryResult = Apollo.QueryResult<
   TrainingQuery,
   TrainingQueryVariables
 >;
+export const TrainingsDocument = gql`
+  query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
+    trainings(offset: $offset, limit: $limit, sort: $sort) {
+      items {
+        id
+        name
+        techStack
+      }
+      totalElements
+    }
+  }
+`;
+export type TrainingsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingsQuery,
+    TrainingsQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: TrainingsQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const TrainingsComponent = (props: TrainingsComponentProps) => (
+  <ApolloReactComponents.Query<TrainingsQuery, TrainingsQueryVariables>
+    query={TrainingsDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useTrainingsQuery__
+ *
+ * To run a query within a React component, call `useTrainingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingsQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useTrainingsQuery(
+  baseOptions: Apollo.QueryHookOptions<TrainingsQuery, TrainingsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TrainingsQuery, TrainingsQueryVariables>(
+    TrainingsDocument,
+    options
+  );
+}
+export function useTrainingsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingsQuery,
+    TrainingsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TrainingsQuery, TrainingsQueryVariables>(
+    TrainingsDocument,
+    options
+  );
+}
+export type TrainingsQueryHookResult = ReturnType<typeof useTrainingsQuery>;
+export type TrainingsLazyQueryHookResult = ReturnType<
+  typeof useTrainingsLazyQuery
+>;
+export type TrainingsQueryResult = Apollo.QueryResult<
+  TrainingsQuery,
+  TrainingsQueryVariables
+>;
 export const TrainingsByMentorDocument = gql`
   query trainingsByMentor($offset: Int!, $limit: Int!, $sort: TrainingSort) {
     trainingsByMentor(offset: $offset, limit: $limit, sort: $sort) {
@@ -3346,6 +3477,82 @@ export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
   CreateUserMutation,
   CreateUserMutationVariables
 >;
+export const MentorsDocument = gql`
+  query mentors($offset: Int!, $limit: Int!, $sort: UserSort!) {
+    mentors(offset: $offset, limit: $limit, sort: $sort) {
+      offset
+      limit
+      totalElements
+      items {
+        id
+        email
+        firstName
+        middleName
+        lastName
+        phoneNumber
+        locked
+      }
+    }
+  }
+`;
+export type MentorsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    MentorsQuery,
+    MentorsQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: MentorsQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const MentorsComponent = (props: MentorsComponentProps) => (
+  <ApolloReactComponents.Query<MentorsQuery, MentorsQueryVariables>
+    query={MentorsDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useMentorsQuery__
+ *
+ * To run a query within a React component, call `useMentorsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMentorsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMentorsQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useMentorsQuery(
+  baseOptions: Apollo.QueryHookOptions<MentorsQuery, MentorsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<MentorsQuery, MentorsQueryVariables>(
+    MentorsDocument,
+    options
+  );
+}
+export function useMentorsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<MentorsQuery, MentorsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<MentorsQuery, MentorsQueryVariables>(
+    MentorsDocument,
+    options
+  );
+}
+export type MentorsQueryHookResult = ReturnType<typeof useMentorsQuery>;
+export type MentorsLazyQueryHookResult = ReturnType<typeof useMentorsLazyQuery>;
+export type MentorsQueryResult = Apollo.QueryResult<
+  MentorsQuery,
+  MentorsQueryVariables
+>;
 export const UserDocument = gql`
   query user {
     user {
@@ -3467,13 +3674,69 @@ export type UserIdQueryResult = Apollo.QueryResult<
   UserIdQuery,
   UserIdQueryVariables
 >;
+export const UserRolesDocument = gql`
+  query userRoles {
+    user {
+      roles
+    }
+  }
+`;
+export type UserRolesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    UserRolesQuery,
+    UserRolesQueryVariables
+  >,
+  "query"
+>;
 
-export interface PossibleTypesResultData {
-  possibleTypes: {
-    [key: string]: string[];
-  };
+export const UserRolesComponent = (props: UserRolesComponentProps) => (
+  <ApolloReactComponents.Query<UserRolesQuery, UserRolesQueryVariables>
+    query={UserRolesDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUserRolesQuery__
+ *
+ * To run a query within a React component, call `useUserRolesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserRolesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserRolesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUserRolesQuery(
+  baseOptions?: Apollo.QueryHookOptions<UserRolesQuery, UserRolesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UserRolesQuery, UserRolesQueryVariables>(
+    UserRolesDocument,
+    options
+  );
 }
-const result: PossibleTypesResultData = {
-  possibleTypes: {},
-};
-export default result;
+export function useUserRolesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UserRolesQuery,
+    UserRolesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UserRolesQuery, UserRolesQueryVariables>(
+    UserRolesDocument,
+    options
+  );
+}
+export type UserRolesQueryHookResult = ReturnType<typeof useUserRolesQuery>;
+export type UserRolesLazyQueryHookResult = ReturnType<
+  typeof useUserRolesLazyQuery
+>;
+export type UserRolesQueryResult = Apollo.QueryResult<
+  UserRolesQuery,
+  UserRolesQueryVariables
+>;

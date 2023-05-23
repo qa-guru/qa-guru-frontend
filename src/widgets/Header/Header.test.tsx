@@ -12,7 +12,7 @@ describe("Header", () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it("userRole is Mentor", () => {
+  it("userRole is MentorsContainer", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <Header userRoles={[UserRole.Mentor]} />

@@ -2,78 +2,13 @@
 
 exports[`Kanban > Kanban is render 1`] = `
 <DocumentFragment>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
-  >
-    Task Board
-  </h4>
-  <form
-    style="margin-top: 20px;"
-  >
+  <form>
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-ofrcno-MuiGrid-root"
     >
       <div
         class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
-      >
-        <div
-          class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-        >
-          <label
-            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-            data-shrink="false"
-          >
-            Выберите курс
-          </label>
-          <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-          >
-            <div
-              aria-expanded="false"
-              aria-haspopup="listbox"
-              class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-              role="button"
-              tabindex="0"
-            >
-              <span
-                class="notranslate"
-              >
-                ​
-              </span>
-            </div>
-            <input
-              aria-hidden="true"
-              aria-invalid="false"
-              class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-              tabindex="-1"
-              value=""
-            />
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
-              data-testid="ArrowDropDownIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7 10l5 5 5-5z"
-              />
-            </svg>
-            <fieldset
-              aria-hidden="true"
-              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                class="css-yjsfm1"
-              >
-                <span>
-                  Выберите курс
-                </span>
-              </legend>
-            </fieldset>
-          </div>
-        </div>
-      </div>
+      />
       <div
         class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
       >
@@ -132,6 +67,67 @@ exports[`Kanban > Kanban is render 1`] = `
               >
                 <span>
                   Выберите урок
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+          >
+            Выберите наставника
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+          >
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                class="notranslate"
+              >
+                ​
+              </span>
+            </div>
+            <input
+              aria-hidden="true"
+              aria-invalid="false"
+              class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              tabindex="-1"
+              value=""
+            />
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-yjsfm1"
+              >
+                <span>
+                  Выберите наставника
                 </span>
               </legend>
             </fieldset>
@@ -289,7 +285,7 @@ exports[`Kanban > Kanban is render 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -309,7 +305,7 @@ exports[`Kanban > Kanban is render 1`] = `
     <span
       class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
       role="progressbar"
-      style="width: 40px; height: 40px;"
+      style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
     >
       <svg
         class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"

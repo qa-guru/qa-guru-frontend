@@ -4,9 +4,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IFilterKanban } from "./Form.types";
 import CreationDateFromSelection from "./CreationDateFromSelection";
 import CreationDateToSelection from "./CreationDateToSelection";
-import TrainingSelection from "../../containers/TrainingsByMentor";
+import MentorsSelection from "../../containers/Mentors";
 import LectureSelection from "../../containers/TrainingLectures";
 import { KanbanContext } from "../../context/KanbanContext";
+import TrainingSelectionByRole from "../../roles/TrainingSelectionByRole";
 
 const Form: React.FC = () => {
   const { control, handleSubmit, reset } = useForm({
@@ -15,6 +16,7 @@ const Form: React.FC = () => {
       selectTrainings: "",
       creationDateFrom: "",
       creationDateTo: "",
+      selectMentors: "",
     },
   });
   const {
@@ -22,6 +24,7 @@ const Form: React.FC = () => {
     setSelectedLectureId,
     setSelectedCreationDateFrom,
     setSelectedCreationDateTo,
+    setSelectedMentorId,
   } = useContext(KanbanContext);
 
   const handleFilterKanban: SubmitHandler<IFilterKanban> = (data) => {
@@ -29,6 +32,7 @@ const Form: React.FC = () => {
     setSelectedLectureId(data.selectLectures);
     setSelectedCreationDateFrom(data.creationDateFrom);
     setSelectedCreationDateTo(data.creationDateTo);
+    setSelectedMentorId(data.selectMentors);
   };
 
   const handleReset = () => {
@@ -36,17 +40,21 @@ const Form: React.FC = () => {
     setSelectedLectureId(null);
     setSelectedCreationDateFrom(null);
     setSelectedCreationDateTo(null);
+    setSelectedMentorId(null);
     reset();
   };
 
   return (
-    <form style={{ marginTop: "20px" }}>
+    <form>
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={12} sm={2}>
-          <TrainingSelection control={control} />
+          <TrainingSelectionByRole control={control} />
         </Grid>
         <Grid item xs={12} sm={2}>
           <LectureSelection control={control} />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <MentorsSelection control={control} />
         </Grid>
         <Grid item xs={12} sm={2}>
           <CreationDateFromSelection control={control} />
@@ -62,7 +70,7 @@ const Form: React.FC = () => {
             >
               Применить
             </Button>
-            <Button onClick={handleReset} variant="contained">
+            <Button onClick={handleReset} color="secondary" variant="contained">
               Сбросить
             </Button>
           </Stack>

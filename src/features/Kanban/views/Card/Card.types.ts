@@ -7,5 +7,4 @@ export interface ICard {
   sourceColumnId: string;
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   isCardsHidden: boolean;
-  userId: string;
 }

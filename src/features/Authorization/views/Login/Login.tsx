@@ -65,7 +65,6 @@ const Login: React.FC<ILogin> = (props) => {
 
   const doLogin: SubmitHandler<ILoginForm> = async (data) => {
     await login(data.username, data.password);
-    navigate("/");
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {

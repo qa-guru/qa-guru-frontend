@@ -4,8 +4,10 @@ import { ITrainingSelection } from "./TrainingSelection.types";
 import RHF from "../../../../../shared/InputRHF";
 import { KanbanContext } from "../../../context/KanbanContext";
 
-const TrainingSelection: React.FC<ITrainingSelection> = ({ data, control }) => {
-  const items = data?.trainingsByMentor?.items || [];
+const TrainingSelection: React.FC<ITrainingSelection> = ({
+  items,
+  control,
+}) => {
   const { setSelectedTrainingId } = useContext(KanbanContext);
 
   const trainingOptions = items?.map((item) => ({

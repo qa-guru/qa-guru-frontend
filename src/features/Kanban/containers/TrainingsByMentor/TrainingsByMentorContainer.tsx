@@ -10,7 +10,7 @@ import {
 const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
   control,
 }) => {
-  const { data, loading } = useTrainingsByMentorQuery({
+  const { data } = useTrainingsByMentorQuery({
     variables: {
       offset: 0,
       limit: 100,
@@ -21,7 +21,12 @@ const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
     },
   });
 
-  return <TrainingSelection data={data!} control={control} />;
+  return (
+    <TrainingSelection
+      items={data?.trainingsByMentor?.items}
+      control={control}
+    />
+  );
 };
 
 export default TrainingsByMentorContainer;

@@ -9,6 +9,7 @@ import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.
 import { grey, white } from "../../../../theme/colors";
 import UserRow from "../UserRow";
 import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
+import { useUserContext } from "../../context/UserContext";
 
 const styles = {
   paper: {
@@ -37,8 +38,9 @@ const Card: React.FC<ICard> = ({
   sourceColumnId,
   setDraggingState,
   isCardsHidden,
-  userId,
 }) => {
+  const { userId, userRoles } = useUserContext();
+  const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -46,8 +48,9 @@ const Card: React.FC<ICard> = ({
       sourceColumnId,
       allowedColumns: getUpdatedAllowedColumns(
         sourceColumnId,
-        userId,
-        card.mentor?.id!
+        userId!,
+        card.mentor?.id!,
+        userRoles
       ),
     },
     end: () => {
@@ -70,6 +73,11 @@ const Card: React.FC<ICard> = ({
         fromInReview: false,
         fromNotApproved: false,
       });
+      return;
+    }
+
+    if (hasManagerRole) {
+      enqueueSnackbar("MANAGER не может менять статус домашнего задания");
       return;
     }
 
@@ -98,6 +106,7 @@ const Card: React.FC<ICard> = ({
     userId,
     card.mentor?.id,
     enqueueSnackbar,
+    hasManagerRole,
   ]);
 
   useEffect(() => {

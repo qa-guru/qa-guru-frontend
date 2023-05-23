@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useCreateUserMutation } from "../../../api/graphql/user/createUser";
 import AuthService from "../../../api/rest/authService";
@@ -12,6 +13,7 @@ const useAuth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const login = async (username: string, password: string) => {
     setIsLoading(true);
@@ -20,6 +22,7 @@ const useAuth = () => {
         if (response.status === 200) {
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
+          navigate("/");
         } else {
           setIsLoading(false);
           enqueueSnackbar(t("login.unknownError"));
@@ -48,15 +51,15 @@ const useAuth = () => {
           enqueueSnackbar(t("logout.unknownError"));
         }
       })
-      .catch(() => {
+      .catch((error) => {
         setIsLoading(false);
         enqueueSnackbar(t("logout.unknownError"));
       });
   };
 
-  const signup = async (data: UserCreateInput) => {
+  const signup = (data: UserCreateInput) => {
     setIsLoading(true);
-    await createUser({
+    createUser({
       variables: { input: data },
       onCompleted: () => {
         login(data.email, data.password);

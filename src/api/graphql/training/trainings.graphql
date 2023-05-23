@@ -1,0 +1,10 @@
+query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
+  trainings(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      name
+      techStack
+    }
+    totalElements
+  }
+}
