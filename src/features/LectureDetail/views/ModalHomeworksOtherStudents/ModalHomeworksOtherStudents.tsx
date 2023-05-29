@@ -24,7 +24,7 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
   dataUserId,
 }) => {
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} maxWidth="xl" fullWidth>
+    <Dialog open={open} onClose={hideModal} maxWidth="xl" fullWidth>
       <DialogContent sx={style.scrollContainer} id="scroll-container">
         <ClearIcon sx={style.clearIcon} onClick={hideModal} />
         <HomeworkItem dataHomeWorkByLecture={item} dataUserId={dataUserId} />
