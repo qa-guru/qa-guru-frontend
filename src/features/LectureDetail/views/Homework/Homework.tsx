@@ -27,7 +27,7 @@ const Homework: React.FC<IHomework> = (props) => {
   const lectureId = useContext(LectureIdContext);
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} maxWidth="xl" fullWidth>
+    <Dialog open={open} onClose={hideModal} maxWidth="xl" fullWidth>
       <DialogContent sx={style.scrollContainer} id="scroll-container">
         <ClearIcon sx={style.clearIcon} onClick={hideModal} />
         <LectureIdContext.Provider value={lectureId}>
