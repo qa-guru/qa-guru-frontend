@@ -7,14 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { ISendComment, ISendCommentContent } from "./SendComment.types";
+import { style } from "./styles";
 import RHF from "../../../../shared/InputRHF";
-
-const style = {
-  loadingButton: {
-    minWidth: "147px",
-    mt: "5px",
-  },
-};
 
 const SendComment: React.FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;

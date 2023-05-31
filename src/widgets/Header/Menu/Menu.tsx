@@ -2,10 +2,7 @@ import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { IAppMenu } from "./Menu.types";
-
-const style = {
-  box: { display: { xs: "none", md: "block" }, ml: "52px" },
-};
+import { style } from "./styles";
 
 const AppMenu: React.FC<IAppMenu> = (props) => {
   const { handleClickNavMenu, pages } = props;

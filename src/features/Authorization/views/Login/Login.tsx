@@ -15,27 +15,10 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ILogin, ILoginForm } from "./Login.types";
+import { style } from "./styles";
 import RHF from "../../../../shared/InputRHF";
 import LocalSelector from "../../../../shared/Buttons/LocalSelector";
 import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
-import { primary, purple } from "../../../../theme/colors";
-
-const style = {
-  svgIcon: { height: "38px", width: { xs: "170px", sm: "250px" } },
-  paper: {
-    minWidth: { xs: "none", md: "430px" },
-    marginTop: { xs: "7px", md: "22px" },
-  },
-  stack: {
-    padding: { xs: "16px 30px 10px", md: "32px 60px 20px" },
-  },
-  wrapper: { height: "100vh", bgcolor: purple.main },
-  button: {
-    textTransform: "none",
-    color: primary.main,
-  },
-  btn: { textTransform: "none" },
-};
 
 const Login: React.FC<ILogin> = (props) => {
   const { isLoading, login } = props;

@@ -1,21 +1,7 @@
 import React from "react";
 import { Divider, Paper, Stack, Typography } from "@mui/material";
 import { ILectureDescription } from "./LectureDescription.types";
-import { primary, white } from "../../../../theme/colors";
-
-const style = {
-  paper: { padding: { xs: "15px", md: "20px" } },
-  circle: {
-    minWidth: "40px",
-    height: "40px",
-    bgcolor: primary.main,
-    borderRadius: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: white.main,
-  },
-};
+import { style } from "./styles";
 
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
   const { description } = props;

@@ -6,16 +6,8 @@ import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { IUpdateComment, IUpdateCommentContent } from "./UpdateComment.types";
+import { style } from "./styles";
 import RHF from "../../../../shared/InputRHF";
-import { black } from "../../../../theme/colors";
-
-const style = {
-  loadingButton: { minWidth: "147px" },
-  buttonCancel: {
-    minWidth: "116px",
-    color: black.main,
-  },
-};
 
 const UpdateComment: React.FC<IUpdateComment> = (props) => {
   const { loading, updateComment, id, setSelectedIndex, content } = props;

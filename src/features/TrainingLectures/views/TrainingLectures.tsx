@@ -2,22 +2,7 @@ import React from "react";
 import { CardActionArea, Grid, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ITrainingLectures } from "./TrainingLectures.types";
-import { primary, white } from "../../../theme/colors";
-
-const style = {
-  link: { textDecoration: "none" },
-  paper: { padding: { xs: "15px", md: "20px" } },
-  circle: {
-    minWidth: "40px",
-    height: "40px",
-    bgcolor: primary.main,
-    borderRadius: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: white.main,
-  },
-};
+import { style } from "./styles";
 
 const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;
