@@ -3,11 +3,8 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { IHomeworkItem } from "./HomeworkItem.types";
 import StatusContent from "./StatusContent";
 import HomeworkContent from "./HomeworkContent";
+import { style } from "./styles";
 import Profile from "../Profile/Profile";
-
-const style = {
-  buttonUpdate: { textTransform: "none", minWidth: "147px", mt: "15px" },
-};
 
 const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;

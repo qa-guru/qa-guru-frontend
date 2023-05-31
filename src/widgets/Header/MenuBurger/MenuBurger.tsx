@@ -6,10 +6,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { IMenuBurger } from "./MenuBurger.types";
-
-const style = {
-  box: { display: { xs: "block", md: "none" } },
-};
+import { style } from "./styles";
 
 const MenuBurger: React.FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;

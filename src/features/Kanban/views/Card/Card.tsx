@@ -4,34 +4,12 @@ import { Box, Paper, Stack, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { useSnackbar } from "notistack";
 import { ICard } from "./Card.types";
+import { styles } from "./styles";
 import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
-import { grey, white } from "../../../../theme/colors";
 import UserRow from "../UserRow";
 import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
 import { useUserContext } from "../../context/UserContext";
-
-const styles = {
-  paper: {
-    backgroundColor: white,
-    borderRadius: 1,
-    marginBottom: 1.5,
-    boxShadow: 1,
-    cursor: "grab",
-  },
-  draggedPaper: {
-    opacity: 0.5,
-    cursor: "grabbing",
-  },
-  hiddenPaper: {
-    visibility: "hidden",
-  },
-  cardHeader: {
-    backgroundColor: grey.light,
-    boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)",
-    padding: 1,
-  },
-};
 
 const Card: React.FC<ICard> = ({
   card,

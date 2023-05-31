@@ -3,14 +3,9 @@ import { Paper, Stack, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IHomeworksOtherStudents } from "./HomeworksOtherStudents.types";
-import { primary } from "../../../../theme/colors";
+import { style } from "./styles";
 import ModalHomeworksOtherStudents from "../ModalHomeworksOtherStudents";
 import HomeworkItem from "../HomeworkItem";
-
-const style = {
-  paper: { padding: { xs: "15px", md: "20px" } },
-  loadMoreBtn: { color: primary.main, margin: "0 auto" },
-};
 
 const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;

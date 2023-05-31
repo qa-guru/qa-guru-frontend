@@ -9,18 +9,9 @@ import {
   IUpdateHomeWork,
   IUpdateHomeworkContent,
 } from "./UpdateHomework.types";
+import { style } from "./styles";
 import RHF from "../../../../../shared/InputRHF";
-import { black } from "../../../../../theme/colors";
 import { client } from "../../../../../api";
-
-const style = {
-  loadingButton: { minWidth: "151px" },
-  paper: { p: "20px", mt: "40px" },
-  buttonCancel: {
-    minWidth: "116px",
-    color: black.main,
-  },
-};
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;

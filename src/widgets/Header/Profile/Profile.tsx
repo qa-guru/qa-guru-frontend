@@ -13,21 +13,8 @@ import Menu from "@mui/material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
 import Logout from "../../../features/Authorization/containers/LogoutContainer";
-import { black } from "../../../theme/colors";
 import AvatarCustom from "../../../shared/AvatarCustom";
-
-const style = {
-  menuItem: { mb: "10px" },
-  listItemText: { mr: "20px" },
-  box: {
-    width: "max-content",
-    ml: "16px",
-  },
-  typography: {
-    display: { xs: "none", md: "block" },
-    color: black.main,
-  },
-};
+import { style } from "./styles";
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName } = props.data.user!;
@@ -40,8 +27,9 @@ const Profile: React.FC<IProfile> = (props) => {
     },
   ];
 
-  const [anchorElUser, setAnchorElUser] =
-    React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenProfile = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);

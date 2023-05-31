@@ -12,14 +12,10 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { CardType, IColumn } from "./Column.types";
+import { style } from "./styles";
 import Card from "../Card";
 import { getColumnStyles } from "../../helpers/getColumnStyles";
 import { isColumnHighlight } from "../../helpers/isColumnHighlight";
-import { primary } from "../../../../theme/colors";
-
-const style = {
-  loadMoreBtn: { color: primary.main, margin: "20px auto" },
-};
 
 const Column: React.FC<IColumn> = ({
   column,

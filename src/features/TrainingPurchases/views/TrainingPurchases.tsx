@@ -2,17 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CardActionArea, Grid, Paper, Typography } from "@mui/material";
 import { ITrainings } from "./TrainingPurchases.types";
-
-const style = {
-  paper: {
-    padding: { xs: "15px", md: "20px" },
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  cardActionArea: { height: "100%" },
-};
+import { style } from "./styles";
 
 const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;

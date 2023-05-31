@@ -16,25 +16,11 @@ import * as yup from "yup";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
 import { ISignUp } from "./SignUp.types";
+import { style } from "./styles";
 import RHF from "../../../../shared/InputRHF";
 import LocalSelector from "../../../../shared/Buttons/LocalSelector";
 import { UserCreateInput } from "../../../../api/graphql/generated/graphql";
-import { primary, purple } from "../../../../theme/colors";
 import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
-
-const style = {
-  svgIcon: { height: "38px", width: { xs: "170px", sm: "250px" } },
-  paper: {
-    minWidth: { xs: "none", md: "430px" },
-    marginTop: { xs: "7px", md: "22px" },
-  },
-  stack: {
-    padding: { xs: "16px 30px 10px", md: "32px 60px 20px" },
-  },
-  wrapper: { height: "100vh", bgcolor: purple.main },
-  btn: { textTransform: "none" },
-  button: { textTransform: "none", color: primary.main },
-};
 
 const SignUp: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;

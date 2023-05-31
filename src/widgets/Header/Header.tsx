@@ -6,32 +6,15 @@ import Profile from "./Profile";
 import AppMenu from "./Menu/Menu";
 import MenuBurger from "./MenuBurger/MenuBurger";
 import { IHeader } from "./Header.types";
+import { style } from "./styles";
 import { ReactComponent as Logo } from "../../assets/icons/logo-header.svg";
 import LocalSelector from "../../shared/Buttons/LocalSelector";
-import { primary } from "../../theme/colors";
 import { UserRole } from "../../api/graphql/generated/graphql";
 
-const style = {
-  wrapper: {
-    padding: { md: "7px 20px 7px", xs: 0 },
-    maxWidth: "1920px",
-    margin: "0 auto",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  header: {
-    marginBottom: "30px",
-  },
-  paper: { borderRadius: 0 },
-  box: { display: "flex", alignItems: "center" },
-  svgIcon: { mt: "7px", height: "31px", width: { xs: "120px", sm: "166px" } },
-  link: { textDecoration: "none", color: primary.main },
-};
-
 const Header: React.FC<IHeader> = ({ userRoles }) => {
-  const [anchorElNav, setAnchorElNav] =
-    React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
   const navigate = useNavigate();
   const { t } = useTranslation();
 

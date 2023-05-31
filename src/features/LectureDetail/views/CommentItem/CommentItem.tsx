@@ -1,18 +1,12 @@
 import React from "react";
 import { Box, IconButton, Paper, Stack } from "@mui/material";
 import { ICommentItem } from "./CommentItem.types";
+import { style } from "./styles";
 import UpdateComment from "../../containers/UpdateComment";
 import TextSerialization from "../../../../shared/Serializers/TextSerialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
 import { grey, primary } from "../../../../theme/colors";
 import Profile from "../Profile";
-
-const style = {
-  container: {
-    borderRadius: "12px",
-    padding: { xs: "10px", md: "15px" },
-  },
-};
 
 const CommentItem: React.FC<ICommentItem> = ({
   item,
