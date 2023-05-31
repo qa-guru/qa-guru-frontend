@@ -38,7 +38,7 @@
     "yup": "^1.1.1"
   },
   "scripts": {
-    "preinstall": "husky install",
+    "postinstall": "husky install",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
