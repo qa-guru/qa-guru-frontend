@@ -12,9 +12,9 @@ import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
+import { style } from "./styles";
 import Logout from "../../../features/Authorization/containers/LogoutContainer";
 import AvatarCustom from "../../../shared/AvatarCustom";
-import { style } from "./styles";
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName } = props.data.user!;
