@@ -14,6 +14,9 @@ const useKanbanState = () => {
     string | null
   >(null);
   const [selectedMentorId, setSelectedMentorId] = useState<string | null>(null);
+  const [selectedAssignToMe, setSelectedAssignToMe] = useState<string | null>(
+    null
+  );
 
   return {
     selectedTrainingId,
@@ -26,6 +29,8 @@ const useKanbanState = () => {
     setSelectedCreationDateTo,
     selectedMentorId,
     setSelectedMentorId,
+    selectedAssignToMe,
+    setSelectedAssignToMe,
   };
 };
 

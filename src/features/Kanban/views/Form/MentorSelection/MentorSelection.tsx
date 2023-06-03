@@ -19,7 +19,7 @@ const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
 
   return (
     <FormControl fullWidth>
-      <RHF.Select
+      <RHF.InputSelect
         control={control}
         options={mentorsOptions}
         name="selectMentors"

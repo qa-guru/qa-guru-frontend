@@ -14,4 +14,5 @@ export interface IFormInputProps {
   inputProps?: any;
   onChange?: (e: any) => void;
   disabled?: boolean;
+  content?: Array<{ value: string; label: string }>;
 }

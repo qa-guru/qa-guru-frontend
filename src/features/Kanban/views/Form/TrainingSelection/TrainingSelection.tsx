@@ -21,7 +21,7 @@ const TrainingSelection: React.FC<ITrainingSelection> = ({
 
   return (
     <FormControl fullWidth>
-      <RHF.Select
+      <RHF.InputSelect
         control={control}
         options={trainingOptions}
         name="selectTrainings"

@@ -11,6 +11,8 @@ export interface IKanbanContext {
   setSelectedCreationDateTo: Dispatch<SetStateAction<string | null>>;
   selectedMentorId: string | null;
   setSelectedMentorId: Dispatch<SetStateAction<string | null>>;
+  selectedAssignToMe: string | null;
+  setSelectedAssignToMe: Dispatch<SetStateAction<string | null>>;
 }
 
 export const KanbanContext = createContext<IKanbanContext>({
@@ -24,4 +26,6 @@ export const KanbanContext = createContext<IKanbanContext>({
   setSelectedCreationDateTo: () => {},
   selectedMentorId: null,
   setSelectedMentorId: () => {},
+  selectedAssignToMe: null,
+  setSelectedAssignToMe: () => {},
 });

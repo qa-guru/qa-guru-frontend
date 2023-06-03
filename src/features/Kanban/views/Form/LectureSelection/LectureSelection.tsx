@@ -14,7 +14,7 @@ const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
   return (
     <Tooltip title={isDisabled ? "Выберите курс" : ""} placement="top">
       <FormControl fullWidth>
-        <RHF.Select
+        <RHF.InputSelect
           control={control}
           name="selectLectures"
           placeholder="Выберите урок"
