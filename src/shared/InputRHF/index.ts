@@ -1,11 +1,13 @@
 import InputTextField from "./InputTextField/InputTextField";
-import Select from "./InputSelect/InputSelect";
+import InputSelect from "./InputSelect/InputSelect";
 import InputPhone from "./InputPhone/InputPhone";
 import InputDatePicker from "./InputDatePicker/InputDatePicker";
+import InputRadio from "./InputRadio/InputRadio";
 
 export default {
-  Select,
+  InputSelect,
   InputTextField,
   InputDatePicker,
   InputPhone,
+  InputRadio,
 };
