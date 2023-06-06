@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Divider, Grid, Paper, Stack, Typography } from "@mui/material";
 import { ILectureSpeakers } from "./LectureSpeakers.types";
 import { style } from "./styles";
 import AvatarCustom from "../../../../shared/AvatarCustom";
@@ -9,9 +9,10 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
 
   return (
     <>
-      <Typography mb="15px" pt="30px" variant="h4">
-        Спикеры
-      </Typography>
+      <Paper sx={style.paper}>
+        <Typography mb="14px" variant="h5">
+          Спикеры
+        </Typography>
       <Grid container gap={2}>
         {speakers?.map((item, index) => {
           const { firstName, lastName } = item!;
@@ -25,7 +26,7 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
               key={index}
               sx={style.stack}
             >
-              <AvatarCustom width={70} height={70} fullName={fullName} />
+              <AvatarCustom width={60} height={60} fullName={fullName} />
               <Box sx={style.box}>
                 <Typography variant="subtitle2">{fullName}</Typography>
               </Box>
@@ -33,6 +34,7 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
           );
         })}
       </Grid>
+      </Paper>
     </>
   );
 };

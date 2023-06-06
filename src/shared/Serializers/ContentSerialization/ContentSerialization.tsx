@@ -28,7 +28,7 @@ const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
         switch (type) {
           case "title":
             return (
-              <Typography key={index} variant="h6">
+              <Typography key={index} variant="h5">
                 {value}
               </Typography>
             );
@@ -36,8 +36,8 @@ const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
             return <TextSerialization text={value!} key={index} />;
           case "video":
             return (
-              <Box key={index}>
-                <Typography variant="h6">{value}</Typography>
+              <Box key={index} mb={3}>
+                {/*<Typography variant="h6">{value}</Typography>*/}
                 <Box sx={style.box}>
                   <iframe
                     // @ts-ignore
@@ -59,7 +59,9 @@ const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
                 target="_blank"
                 rel="noopener"
               >
+                <Box mt={1}>
                 {value}
+                </Box>
               </Link>
             );
           default:

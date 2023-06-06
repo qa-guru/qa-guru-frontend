@@ -6,7 +6,7 @@ const LectureTitle: React.FC<ILectureTitle> = (props) => {
   const { title } = props;
 
   return (
-    <Typography mb="15px" variant="h4">
+    <Typography mb={3} variant="h4">
       {title}
     </Typography>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { useModal } from "react-modal-hook";
-import { Button, Dialog, DialogContent, Stack } from "@mui/material";
+import { Button, Dialog, DialogContent, Stack, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { IModalHomeworksOtherStudents } from "./ModalHomeworksOtherStudents.types";
 import { style } from "./styles";
@@ -30,9 +30,11 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
       <Comments id={item?.id!}>
         <CommentsTotalElements />
       </Comments>
-      <Button sx={{ mt: "10px" }} variant="contained" onClick={showModal}>
-        Показать
-      </Button>
+      <Box>
+        <Button variant="contained" onClick={showModal}>
+          Показать
+        </Button>
+      </Box>
     </Stack>
   );
 };

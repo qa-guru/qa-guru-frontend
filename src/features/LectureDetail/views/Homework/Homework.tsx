@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useModal } from "react-modal-hook";
-import { Button, Dialog, DialogContent, Paper } from "@mui/material";
+import { Button, Dialog, DialogContent, Paper, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { IHomework } from "./Homework.types";
 import { style } from "./styles";
@@ -42,9 +42,11 @@ const Homework: React.FC<IHomework> = (props) => {
           <Comments id={dataHomeWorkByLecture?.id!}>
             <CommentsLimited />
           </Comments>
-          <Button sx={style.button} variant="contained" onClick={showModal}>
-            Показать другие комментарии
-          </Button>
+          <Box mt={2}>
+            <Button sx={style.button} variant="contained" onClick={showModal}>
+              Показать другие комментарии
+            </Button>
+          </Box>
         </>
       )}
     </Paper>
