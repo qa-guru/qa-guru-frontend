@@ -2,7 +2,7 @@ import { Control } from "react-hook-form";
 import { MentorsQuery } from "../../../../../api/graphql/generated/graphql";
 import { IFilterKanban } from "../Form.types";
 
-export interface IMentorSelection {
+export interface IMentorSelection<T extends IFilterKanban> {
   data: MentorsQuery;
-  control: Control<IFilterKanban, any>;
+  control: Control<T>;
 }

@@ -1,6 +1,7 @@
+import { Control, FieldValues } from "react-hook-form";
 import { UserIdQuery } from "../../../../../api/graphql/generated/graphql";
 
-export interface IAssignedToMeSelection {
+export interface IAssignedToMeSelection<T extends FieldValues> {
   data: UserIdQuery;
-  control: any;
+  control: Control<T>;
 }

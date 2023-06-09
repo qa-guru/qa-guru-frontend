@@ -2,7 +2,7 @@ import { Control } from "react-hook-form";
 import { TechStack } from "../../../../../api/graphql/generated/graphql";
 import { IFilterKanban } from "../Form.types";
 
-export interface ITrainingSelection {
+export interface ITrainingSelection<T extends IFilterKanban> {
   items:
     | Array<{
         __typename?: "TrainingDto";
@@ -12,5 +12,5 @@ export interface ITrainingSelection {
       } | null>
     | null
     | undefined;
-  control: Control<IFilterKanban, any>;
+  control: Control<T>;
 }

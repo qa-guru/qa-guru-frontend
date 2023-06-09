@@ -1,10 +1,10 @@
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import React from "react";
 import { Autocomplete, Box, TextField } from "@mui/material";
 import { countries } from "./InputPhone.types";
 import { IFormInputProps } from "../Input.types";
 
-const InputPhone: React.FC<IFormInputProps> = ({
+const InputPhone: React.FC<IFormInputProps<FieldValues>> = ({
   control,
   name,
   label,

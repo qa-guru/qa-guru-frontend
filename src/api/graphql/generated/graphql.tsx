@@ -23,17 +23,17 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  BigDecimal: any;
-  BigInteger: any;
-  Date: any;
-  DateTime: any;
-  LocalDateTime: any;
-  LocalTime: any;
-  Long: any;
-  Time: any;
-  Timestamp: any;
-  Url: any;
-  Void: any;
+  BigDecimal: number;
+  BigInteger: number;
+  Date: string;
+  DateTime: string;
+  LocalDateTime: string;
+  LocalTime: string;
+  Long: number;
+  Time: string;
+  Timestamp: number;
+  Url: string;
+  Void: void;
 };
 
 export type CommentHomeWorkDto = {
@@ -769,8 +769,8 @@ export type ApprovedMutation = {
     id?: string | null;
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
+    startCheckingDate?: string | null;
+    endCheckingDate?: string | null;
     lecture?: {
       __typename?: "LectureInfoDto";
       id?: string | null;
@@ -801,8 +801,8 @@ export type ApprovedHomeworkFragment = {
   id?: string | null;
   answer?: string | null;
   status?: StudentHomeWorkStatus | null;
-  startCheckingDate?: any | null;
-  endCheckingDate?: any | null;
+  startCheckingDate?: string | null;
+  endCheckingDate?: string | null;
   lecture?: {
     __typename?: "LectureInfoDto";
     id?: string | null;
@@ -838,9 +838,9 @@ export type HomeWorkByLectureQuery = {
     id?: string | null;
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
-    creationDate?: any | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
+    creationDate?: string | null;
+    startCheckingDate?: string | null;
+    endCheckingDate?: string | null;
     lecture?: {
       __typename?: "LectureInfoDto";
       id?: string | null;
@@ -876,15 +876,15 @@ export type HomeWorksByLectureIdQuery = {
     __typename?: "StudentHomeWorksDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: any | null;
+    totalElements?: string | null;
     items?: Array<{
       __typename?: "StudentHomeWorkDto";
       id?: string | null;
       answer?: string | null;
       status?: StudentHomeWorkStatus | null;
-      creationDate?: any | null;
-      startCheckingDate?: any | null;
-      endCheckingDate?: any | null;
+      creationDate?: string | null;
+      startCheckingDate?: string | null;
+      endCheckingDate?: string | null;
       student?: {
         __typename?: "UserDto";
         id?: string | null;
@@ -916,13 +916,13 @@ export type HomeWorksQuery = {
     __typename?: "StudentHomeWorksDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: any | null;
+    totalElements?: string | null;
     items?: Array<{
       __typename?: "StudentHomeWorkDto";
       id?: string | null;
       answer?: string | null;
       status?: StudentHomeWorkStatus | null;
-      creationDate?: any | null;
+      creationDate?: string | null;
       lecture?: {
         __typename?: "LectureInfoDto";
         id?: string | null;
@@ -958,8 +958,8 @@ export type NotApprovedMutation = {
     id?: string | null;
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
+    startCheckingDate?: string | null;
+    endCheckingDate?: string | null;
     lecture?: {
       __typename?: "LectureInfoDto";
       id?: string | null;
@@ -990,8 +990,8 @@ export type NotApprovedHomeworkFragment = {
   id?: string | null;
   answer?: string | null;
   status?: StudentHomeWorkStatus | null;
-  startCheckingDate?: any | null;
-  endCheckingDate?: any | null;
+  startCheckingDate?: string | null;
+  endCheckingDate?: string | null;
   lecture?: {
     __typename?: "LectureInfoDto";
     id?: string | null;
@@ -1028,8 +1028,8 @@ export type SendHomeWorkToCheckMutation = {
     id?: string | null;
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
+    startCheckingDate?: string | null;
+    endCheckingDate?: string | null;
     lecture?: {
       __typename?: "LectureInfoDto";
       id?: string | null;
@@ -1064,8 +1064,8 @@ export type TakeForReviewMutation = {
     id?: string | null;
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
+    startCheckingDate?: string | null;
+    endCheckingDate?: string | null;
     lecture?: {
       __typename?: "LectureInfoDto";
       id?: string | null;
@@ -1096,8 +1096,8 @@ export type NewTakeForReviewHomeWorkFragment = {
   id?: string | null;
   answer?: string | null;
   status?: StudentHomeWorkStatus | null;
-  startCheckingDate?: any | null;
-  endCheckingDate?: any | null;
+  startCheckingDate?: string | null;
+  endCheckingDate?: string | null;
   lecture?: {
     __typename?: "LectureInfoDto";
     id?: string | null;
@@ -1134,8 +1134,8 @@ export type UpdateHomeworkMutation = {
     id?: string | null;
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
+    startCheckingDate?: string | null;
+    endCheckingDate?: string | null;
     lecture?: {
       __typename?: "LectureInfoDto";
       id?: string | null;
@@ -1172,11 +1172,11 @@ export type CommentsHomeWorkByHomeWorkQuery = {
     __typename?: "CommentHomeWorksDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: any | null;
+    totalElements?: string | null;
     items?: Array<{
       __typename?: "CommentHomeWorkDto";
       id?: string | null;
-      creationDate?: any | null;
+      creationDate?: string | null;
       content?: string | null;
       creator?: {
         __typename?: "UserDto";
@@ -1203,7 +1203,7 @@ export type SendCommentMutation = {
   sendComment?: {
     __typename?: "CommentHomeWorkDto";
     id?: string | null;
-    creationDate?: any | null;
+    creationDate?: string | null;
     content?: string | null;
     creator?: {
       __typename?: "UserDto";
@@ -1232,7 +1232,7 @@ export type UpdateCommentMutation = {
   updateComment?: {
     __typename?: "CommentHomeWorkDto";
     id?: string | null;
-    creationDate?: any | null;
+    creationDate?: string | null;
     content?: string | null;
     creator?: {
       __typename?: "UserDto";
@@ -1380,7 +1380,7 @@ export type TrainingsQuery = {
   __typename?: "Query";
   trainings?: {
     __typename?: "TrainingsDto";
-    totalElements?: any | null;
+    totalElements?: string | null;
     items?: Array<{
       __typename?: "TrainingDto";
       id: string;
@@ -1402,7 +1402,7 @@ export type TrainingsByMentorQuery = {
     __typename?: "TrainingsDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: any | null;
+    totalElements?: string | null;
     items?: Array<{
       __typename?: "TrainingDto";
       id: string;
