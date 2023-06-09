@@ -1,10 +1,16 @@
+// eslint-disable-next-line import/named
+import { PaletteMode } from "@mui/material";
 import { THEMES } from "./constans";
 import { lightPalette } from "./colors";
 
-const themesOptions = {
+export const themesOptions = {
   [THEMES.LIGHT]: {
-    palette: lightPalette,
+    palette: {
+      ...lightPalette,
+      mode: "light" as PaletteMode,
+    },
   },
 };
+
 
 export default themesOptions;

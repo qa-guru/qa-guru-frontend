@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/named
+import { ThemeOptions } from '@mui/material/styles';
 import { createTheme, responsiveFontSizes } from "@mui/material";
 import merge from "lodash/merge";
 import components from "./components";
@@ -17,7 +19,7 @@ const baseOptions = {
 };
 
 export const createCustomTheme = (settings: themeSettingsTypes) => {
-  let themeOptions: any = themesOptions[settings.theme];
+  let themeOptions: ThemeOptions = themesOptions[settings.theme];
 
   if (!themeOptions) {
     themeOptions = themesOptions[THEMES.LIGHT];

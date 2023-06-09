@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/named
+import { PaletteMode, Color } from "@mui/material";
+
 export const primary = {
   main: "#2CCCA6",
   secondary: "#E0F2F1",
@@ -15,7 +18,7 @@ export const grey = {
   main: "#CAC4D0",
   secondary: "#EEEEEE",
   light: "#FAFAFA",
-};
+} as Partial<Color>;
 
 export const white = {
   main: "#FFFFFF",
@@ -41,6 +44,7 @@ const palette = {
 
 export const lightPalette = {
   ...palette,
-  mode: "light",
+  mode: "light" as PaletteMode,
   background: { default: "#FFFFFF", paper: "#FFFBFE" },
 };
+
