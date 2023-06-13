@@ -3,12 +3,18 @@ import {
   CommentsHomeWorkByHomeWorkQuery,
   UserIdQuery,
 } from "../../../../api/graphql/generated/graphql";
+import { ApolloQueryResult, FetchMoreQueryOptions } from "@apollo/client";
 
 interface CommentsProps {
   id: string;
   dataCommentsHomeWorkByHomeWork: CommentsHomeWorkByHomeWorkQuery;
   dataUserId: UserIdQuery;
-  fetchMore: any;
+  fetchMore: (
+    fetchMoreOptions: FetchMoreQueryOptions<
+      CommentsHomeWorkByHomeWorkQuery,
+      Record<string, unknown>
+    >
+  ) => Promise<ApolloQueryResult<CommentsHomeWorkByHomeWorkQuery>>;
   totalElements: number;
 }
 

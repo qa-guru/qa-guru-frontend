@@ -41,25 +41,25 @@ const Board: React.FC<IBoard> = ({
         "1",
         StudentHomeWorkStatus.New,
         newItems as StudentHomeWorkDto[],
-        newTotalElements
+        newTotalElements!
       ),
       createColumnItem(
         "2",
         StudentHomeWorkStatus.InReview,
         inReviewItems as StudentHomeWorkDto[],
-        inReviewTotalElements
+        inReviewTotalElements!
       ),
       createColumnItem(
         "3",
         StudentHomeWorkStatus.Approved,
         approvedItems as StudentHomeWorkDto[],
-        approvedTotalElements
+        approvedTotalElements!
       ),
       createColumnItem(
         "4",
         StudentHomeWorkStatus.NotApproved,
         notApprovedItems as StudentHomeWorkDto[],
-        notApprovedTotalElements
+        notApprovedTotalElements!
       ),
     ]);
   }, [newItems, inReviewItems, approvedItems, notApprovedItems]);

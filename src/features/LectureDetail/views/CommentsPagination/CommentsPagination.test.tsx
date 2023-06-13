@@ -4,7 +4,7 @@ import { render } from "../../../../test/utilsTest";
 import { commentsHomeWorkByHomeWork } from "../../../../shared/mocks/commentsHomeWorkByHomeWork.mock";
 import { userId } from "../../../../shared/mocks/userId.mock";
 
-const mockFetchMoreCommentsHomeWorkByHomeWork: any = () => {};
+const mockFetchMoreCommentsHomeWorkByHomeWork = () => {};
 
 describe("CommentsPagination", () => {
   it("the component is render", () => {

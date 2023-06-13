@@ -3,7 +3,7 @@ import CommentItem from "./CommentItem";
 import { render } from "../../../../test/utilsTest";
 import { commentHomeWorkDto } from "../../../../shared/mocks/commentHomeworkDto.mock";
 
-const setSelectedIndex: any = () => {};
+const setSelectedIndex = () => {};
 describe("CommentItem", () => {
   it("the component is true", () => {
     const { asFragment } = render(

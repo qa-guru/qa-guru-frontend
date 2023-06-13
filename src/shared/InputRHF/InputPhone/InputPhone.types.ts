@@ -1,8 +1,15 @@
+import { IFormInputProps } from "../Input.types";
+import { FieldValues, UseFormReturn } from "react-hook-form";
+
 export interface Country {
   code: string;
   label: string;
   phone: string;
   suggested?: boolean;
+}
+
+export interface InputPhoneProps extends IFormInputProps<FieldValues> {
+  control: UseFormReturn['control'];
 }
 
 export const countries: readonly Country[] = [

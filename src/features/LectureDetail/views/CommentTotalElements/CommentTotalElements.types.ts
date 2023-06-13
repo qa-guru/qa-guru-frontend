@@ -1,3 +1,3 @@
 export interface ICommentTotalElements {
-  totalElements?: number;
+  totalElements?: number | null;
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import {
+  HomeWorksQueryVariables,
   StudentHomeWorkDto,
-  StudentHomeWorkStatus,
+  StudentHomeWorkStatus
 } from "../../../../api/graphql/generated/graphql";
 import { IDraggingState } from "../Board/Board.types";
 
@@ -22,7 +23,13 @@ export interface IColumnItem {
 }
 
 export interface IColumn {
-  fetchMore: any;
+  fetchMore: (options: {
+    variables: HomeWorksQueryVariables;
+    updateQuery: (
+      prev: { homeWorks: { items: IExtendedCard[] } },
+      { fetchMoreResult }: { fetchMoreResult?: { homeWorks: { items: IExtendedCard[] } } }
+    ) => void;
+  }) => void;
   draggingState: IDraggingState;
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   column: IColumnItem;

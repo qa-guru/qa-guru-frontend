@@ -5,30 +5,31 @@ import { ICommentsPagination } from "./CommentsPagination.types";
 import SendComment from "../../containers/SendComment";
 import CommentItem from "../CommentItem";
 import CommentTotalElements from "../CommentTotalElements";
+import { CommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/generated/graphql";
 
 const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items, offset } =
-    dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
+  dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
 
   const handleLoadMore = () => {
-    fetchMore({
+    fetchMore!({
       variables: {
         offset: items?.length,
       },
       updateQuery: (
-        prev: { commentsHomeWorkByHomeWork: { items: any } },
-        { fetchMoreResult }: any
+        prev: CommentsHomeWorkByHomeWorkQuery,
+        { fetchMoreResult }: { fetchMoreResult?: CommentsHomeWorkByHomeWorkQuery }
       ) => {
         if (!fetchMoreResult) return prev;
         return {
           commentsHomeWorkByHomeWork: {
             ...fetchMoreResult.commentsHomeWorkByHomeWork,
             items: [
-              ...prev.commentsHomeWorkByHomeWork.items,
-              ...fetchMoreResult.commentsHomeWorkByHomeWork.items,
+              ...prev.commentsHomeWorkByHomeWork!.items || [],
+              ...fetchMoreResult.commentsHomeWorkByHomeWork!.items || [],
             ],
           },
         };
@@ -37,7 +38,7 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   };
 
   useEffect(() => {
-    if (items?.length! >= totalElements) {
+    if (items?.length! >= totalElements!) {
       setHasMoreComments(false);
     }
   }, [items]);
@@ -78,4 +79,4 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   );
 };
 
-export default CommentsPagination;
+export default CommentsPagination

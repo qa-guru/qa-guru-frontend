@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
-import { CardType, IColumn } from "./Column.types";
+import { CardType, IColumn, IExtendedCard } from "./Column.types";
 import { style } from "./styles";
 import Card from "../Card";
 import { getColumnStyles } from "../../helpers/getColumnStyles";
@@ -83,8 +83,8 @@ const Column: React.FC<IColumn> = ({
         offset: column.cards?.length,
       },
       updateQuery: (
-        prev: { homeWorks: { items: any } },
-        { fetchMoreResult }: any
+        prev: { homeWorks: { items: IExtendedCard[] } },
+        { fetchMoreResult }: { fetchMoreResult?: { homeWorks: { items: IExtendedCard[] } } }
       ) => {
         if (!fetchMoreResult) return prev;
 

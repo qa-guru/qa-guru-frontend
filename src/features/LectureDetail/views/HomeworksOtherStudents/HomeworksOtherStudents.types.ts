@@ -5,6 +5,11 @@ import {
 
 export interface IHomeworksOtherStudents {
   data: HomeWorksByLectureIdQuery;
-  fetchMore: any;
-  dataUserId: UserIdQuery;
+  fetchMore: (params: {
+    variables: { offset?: number };
+    updateQuery: (
+      prev: HomeWorksByLectureIdQuery,
+      { fetchMoreResult }: { fetchMoreResult?: HomeWorksByLectureIdQuery | undefined }
+    ) => HomeWorksByLectureIdQuery;
+  }) => Promise<void>;  dataUserId: UserIdQuery;
 }

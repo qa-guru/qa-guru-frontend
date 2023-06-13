@@ -6,6 +6,7 @@ import { IHomeworksOtherStudents } from "./HomeworksOtherStudents.types";
 import { style } from "./styles";
 import ModalHomeworksOtherStudents from "../ModalHomeworksOtherStudents";
 import HomeworkItem from "../HomeworkItem";
+import { HomeWorksByLectureIdQuery } from "../../../../api/graphql/generated/graphql";
 
 const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;
@@ -14,7 +15,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 
   useEffect(() => {
-    if (items?.length! >= totalElements) {
+    if (items?.length! >= totalElements!) {
       setHasMoreHomeworks(false);
     }
   }, [items]);
@@ -26,16 +27,16 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
         offset: items?.length,
       },
       updateQuery: (
-        prev: { homeWorksByLectureId: { items: any } },
-        { fetchMoreResult }: any
+        prev: HomeWorksByLectureIdQuery,
+        { fetchMoreResult }: { fetchMoreResult?: HomeWorksByLectureIdQuery | undefined }
       ) => {
         if (!fetchMoreResult) return prev;
         return {
           homeWorksByLectureId: {
             ...fetchMoreResult.homeWorksByLectureId,
             items: [
-              ...prev.homeWorksByLectureId.items,
-              ...fetchMoreResult.homeWorksByLectureId.items,
+              ...(prev.homeWorksByLectureId?.items || []),
+              ...(fetchMoreResult.homeWorksByLectureId?.items || []),
             ],
           },
         };

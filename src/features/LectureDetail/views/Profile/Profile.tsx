@@ -16,7 +16,7 @@ const Profile: React.FC<IProfile> = (props) => {
         <Typography variant="subtitle1">{fullName}</Typography>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="subtitle2">
-            {format(parseISO(date), "dd.MM.yyyy '|' HH:mm")}
+            {format(parseISO(date!), "dd.MM.yyyy '|' HH:mm")}
           </Typography>
         </Stack>
       </Box>

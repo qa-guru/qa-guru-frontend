@@ -876,7 +876,7 @@ export type HomeWorksByLectureIdQuery = {
     __typename?: "StudentHomeWorksDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: string | null;
+    totalElements?: number | null;
     items?: Array<{
       __typename?: "StudentHomeWorkDto";
       id?: string | null;
@@ -916,7 +916,7 @@ export type HomeWorksQuery = {
     __typename?: "StudentHomeWorksDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: string | null;
+    totalElements?: number | null;
     items?: Array<{
       __typename?: "StudentHomeWorkDto";
       id?: string | null;
@@ -1172,7 +1172,7 @@ export type CommentsHomeWorkByHomeWorkQuery = {
     __typename?: "CommentHomeWorksDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: string | null;
+    totalElements?: number | null;
     items?: Array<{
       __typename?: "CommentHomeWorkDto";
       id?: string | null;
@@ -1380,7 +1380,7 @@ export type TrainingsQuery = {
   __typename?: "Query";
   trainings?: {
     __typename?: "TrainingsDto";
-    totalElements?: string | null;
+    totalElements?: number | null;
     items?: Array<{
       __typename?: "TrainingDto";
       id: string;
@@ -1402,7 +1402,7 @@ export type TrainingsByMentorQuery = {
     __typename?: "TrainingsDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: string | null;
+    totalElements?: number | null;
     items?: Array<{
       __typename?: "TrainingDto";
       id: string;
@@ -1524,7 +1524,7 @@ export type MentorsQuery = {
     __typename?: "UsersDto";
     offset?: number | null;
     limit?: number | null;
-    totalElements?: any | null;
+    totalElements?: number | null;
     items?: Array<{
       __typename?: "UserDto";
       id?: string | null;

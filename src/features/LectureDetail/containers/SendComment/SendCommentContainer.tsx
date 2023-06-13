@@ -2,7 +2,10 @@ import React from "react";
 import { ISendCommentContainer } from "./SendCommentContainer.types";
 import SendComment from "../../views/SendComment";
 import { useSendCommentMutation } from "../../../../api/graphql/homeworkComment/sendComment";
-import { CommentsHomeWorkByHomeWorkDocument } from "../../../../api/graphql/generated/graphql";
+import {
+  CommentsHomeWorkByHomeWorkDocument,
+  CommentsHomeWorkByHomeWorkQuery
+} from "../../../../api/graphql/generated/graphql";
 
 const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
   const { id } = props;
@@ -10,7 +13,7 @@ const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
   const [sendComment, { loading }] = useSendCommentMutation({
     update: (cache, { data }) => {
       const newComment = data?.sendComment;
-      const existingComments: any = cache.readQuery({
+      const existingComments = cache.readQuery<CommentsHomeWorkByHomeWorkQuery>({
         query: CommentsHomeWorkByHomeWorkDocument,
         variables: {
           offset: 0,
@@ -36,14 +39,14 @@ const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
         },
         data: {
           commentsHomeWorkByHomeWork: {
-            ...existingComments.commentsHomeWorkByHomeWork,
+            ...existingComments!.commentsHomeWorkByHomeWork,
             items: [
               newComment,
-              ...existingComments.commentsHomeWorkByHomeWork.items,
+              ...(existingComments!.commentsHomeWorkByHomeWork!.items || []),
             ],
             totalElements:
               parseInt(
-                existingComments.commentsHomeWorkByHomeWork.totalElements,
+                String(existingComments!.commentsHomeWorkByHomeWork!.totalElements || 0),
                 10
               ) + 1,
           },

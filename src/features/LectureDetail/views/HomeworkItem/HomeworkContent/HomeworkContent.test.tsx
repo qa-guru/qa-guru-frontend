@@ -3,7 +3,7 @@ import HomeworkContent from "./HomeworkContent";
 import { render } from "../../../../../test/utilsTest";
 import { StudentHomeWorkStatus } from "../../../../../api/graphql/generated/graphql";
 
-const mockSetOpenHomeWorkEdit: any = () => {};
+const mockSetOpenHomeWorkEdit = () => {};
 describe("SendHomework", () => {
   it("status is New", () => {
     const { asFragment } = render(

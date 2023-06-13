@@ -1,11 +1,11 @@
-import { HomeWorksQuery } from "../../../../api/graphql/generated/graphql";
+import { HomeWorksQuery, HomeWorksQueryVariables } from "../../../../api/graphql/generated/graphql";
 
 export interface IBoard {
   newData: HomeWorksQuery;
   inReviewData: HomeWorksQuery;
   approvedData: HomeWorksQuery;
   notApprovedData: HomeWorksQuery;
-  fetchMoreFunctions: any;
+  fetchMoreFunctions: ((options: { variables: HomeWorksQueryVariables }) => void)[];
 }
 
 export interface IDraggingState {
