@@ -27,34 +27,34 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   return (
     <>
       <Stack
-        mb="20px"
+        mb="14px"
         spacing={{ xs: 0, sm: 3 }}
         direction="row"
         flexWrap="wrap"
         alignItems="center"
         justifyContent={{ xs: "space-between", sm: "stretch" }}
       >
-          <Typography variant="h5">Ответ на задание</Typography>
-          <StatusContent status={status!} />
-            <Stack
-              direction={{ xs: "row", sm: "row" }}
-              spacing={{ xs: 0.5, sm: 2 }}
-            >
-            {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
-              <Box mt={{ xs: 2, sm: 0 }}>
-                <Profile
-                  firstName={mentor?.firstName!}
-                  lastName={mentor?.lastName!}
-                  date={date}
-                />
-              </Box>
-            )}
-            </Stack>
+        <Typography variant="h5">Ответ на задание</Typography>
+        <StatusContent status={status!} />
+        <Stack
+          direction={{ xs: "row", sm: "row" }}
+          spacing={{ xs: 0.5, sm: 2 }}
+        >
+          {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
+            <Box mt={{ xs: 2, sm: 0 }}>
+              <Profile
+                firstName={mentor?.firstName!}
+                lastName={mentor?.lastName!}
+                date={date}
+              />
+            </Box>
+          )}
+        </Stack>
       </Stack>
       <Divider />
 
       {status && (
-        <Box mt="10px">
+        <Box mt="16px">
           <Profile
             firstName={student?.firstName!}
             lastName={student?.lastName!}

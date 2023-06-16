@@ -52,7 +52,7 @@ exports[`UpdateHomework > the component is Loading 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-106pgoz-MuiStack-root"
+          class="MuiStack-root css-qlbgf4-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
@@ -156,7 +156,7 @@ exports[`UpdateHomework > the component is not Loading 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-106pgoz-MuiStack-root"
+          class="MuiStack-root css-qlbgf4-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"

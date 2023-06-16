@@ -17,10 +17,12 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
     <Dialog open={open} onClose={hideModal} maxWidth="xl" fullWidth>
       <DialogContent sx={style.scrollContainer} id="scroll-container">
         <ClearIcon sx={style.clearIcon} onClick={hideModal} />
-        <HomeworkItem dataHomeWorkByLecture={item} dataUserId={dataUserId} />
-        <Comments id={item.id!}>
-          <CommentsPagination />
-        </Comments>
+        <Box pt={{ xs: "16px", sm: "0" }}>
+          <HomeworkItem dataHomeWorkByLecture={item} dataUserId={dataUserId} />
+          <Comments id={item.id!}>
+            <CommentsPagination />
+          </Comments>
+        </Box>
       </DialogContent>
     </Dialog>
   ));

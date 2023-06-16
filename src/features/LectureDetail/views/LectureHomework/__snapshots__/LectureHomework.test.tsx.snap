@@ -2,14 +2,14 @@
 
 exports[`LectureHomework > the component is render 1`] = `
 <DocumentFragment>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-14z7ouz-MuiTypography-root"
-  >
-    Домашнее задание
-  </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
   >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
+    >
+      Домашнее задание
+    </h5>
     <div
       class="MuiStack-root css-zgbp5c-MuiStack-root"
     >
