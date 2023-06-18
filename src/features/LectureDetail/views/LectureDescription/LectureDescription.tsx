@@ -9,7 +9,7 @@ const LectureDescription: React.FC<ILectureDescription> = (props) => {
   return (
     <>
       <Paper sx={style.paper}>
-        <Typography mb="14px" variant="h6">
+        <Typography mb="14px" variant="h5">
           Содержание урока
         </Typography>
         <Divider />

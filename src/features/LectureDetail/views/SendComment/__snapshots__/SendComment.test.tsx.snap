@@ -4,7 +4,7 @@ exports[`SendComment > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-6nzxz6-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-1ify8y5-MuiTypography-root"
     >
       Добавить комментарий
     </h5>
@@ -54,7 +54,7 @@ exports[`SendComment > the component is Loading 1`] = `
       </div>
     </div>
     <div
-      class="MuiStack-root css-1qvzoxq-MuiStack-root"
+      class="MuiStack-root css-govf87-MuiStack-root"
     >
       <button
         class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-17d8meg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"

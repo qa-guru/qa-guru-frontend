@@ -73,8 +73,8 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
           <Stack
             direction={{ xs: "column-reverse", sm: "row" }}
             justifyContent="flex-end"
-            spacing={1}
-            mt="5px"
+            spacing={2}
+            mt={2}
           >
             <Button
               onClick={() => setSelectedIndex(-1)}

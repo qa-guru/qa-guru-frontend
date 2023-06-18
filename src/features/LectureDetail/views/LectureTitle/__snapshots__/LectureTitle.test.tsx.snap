@@ -3,7 +3,7 @@
 exports[`LectureTitle > the component is render 1`] = `
 <DocumentFragment>
   <h4
-    class="MuiTypography-root MuiTypography-h4 css-1h02dxw-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-h4 css-shgr9c-MuiTypography-root"
   >
     Title
   </h4>
