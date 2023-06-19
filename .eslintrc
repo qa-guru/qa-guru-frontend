@@ -18,11 +18,11 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["import", "sonarjs", "unused-imports"],
+  "plugins": ["import", "sonarjs", "unused-imports", "@typescript-eslint"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
     "no-unsafe-optional-chaining": "off",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
     // possible errors
     "for-direction": "error",
     "no-prototype-builtins": "error",

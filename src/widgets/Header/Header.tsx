@@ -1,51 +1,24 @@
 import { Box, IconButton, Paper, Stack, SvgIcon } from "@mui/material";
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Profile from "./Profile";
 import AppMenu from "./Menu/Menu";
 import MenuBurger from "./MenuBurger/MenuBurger";
 import { IHeader } from "./Header.types";
 import { style } from "./styles";
+import { getProfileByRole } from "./roles/ProfileByRole";
 import { ReactComponent as Logo } from "../../assets/icons/logo-header.svg";
 import LocalSelector from "../../shared/Buttons/LocalSelector";
-import { UserRole } from "../../api/graphql/generated/graphql";
 
 const Header: React.FC<IHeader> = ({ userRoles }) => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+  const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(
     null
   );
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const pages = [
-    ...(userRoles.includes(UserRole.Student)
-      ? [
-          {
-            title: (
-              <Link style={style.link} to="/">
-                {t("page.home")}
-              </Link>
-            ),
-            pageURL: "/",
-          },
-        ]
-      : []),
-    ...(userRoles.some((role) =>
-      [UserRole.Mentor, UserRole.Master, UserRole.Master].includes(role!)
-    )
-      ? [
-          {
-            title: (
-              <Link style={style.link} to="/kanban">
-                Доска заданий
-              </Link>
-            ),
-            pageURL: "/kanban",
-          },
-        ]
-      : []),
-  ];
+  const pages = getProfileByRole(userRoles, t);
 
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);
