@@ -6,9 +6,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { IFormInputProps } from "../Input.types";
 
-const InputDatePicker = <T extends FieldValues>(props: IFormInputProps<T>) => {
-  const { control, name, label } = props;
-
+const InputDatePicker = <T extends FieldValues>({
+  control,
+  name,
+  label,
+}: IFormInputProps<T>) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Controller

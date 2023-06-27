@@ -3,17 +3,15 @@ import { Controller, FieldValues } from "react-hook-form";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
-const InputSelect = <T extends FieldValues>(props: IFormInputProps<T>) => {
-  const {
-    control,
-    placeholder,
-    name,
-    options,
-    defaultValue,
-    onChange,
-    disabled = false,
-  } = props;
-
+const InputSelect = <T extends FieldValues>({
+  control,
+  placeholder,
+  name,
+  options,
+  defaultValue,
+  onChange,
+  disabled = false,
+}: IFormInputProps<T>) => {
   return (
     <>
       <InputLabel>{placeholder}</InputLabel>

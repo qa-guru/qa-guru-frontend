@@ -4,9 +4,12 @@ import { Autocomplete, Box, TextField } from "@mui/material";
 import { countries } from "./InputPhone.types";
 import { IFormInputProps } from "../Input.types";
 
-const InputPhone = <T extends FieldValues>(props: IFormInputProps<T>) => {
-  const { control, name, label, placeholder } = props;
-
+const InputPhone = <T extends FieldValues>({
+  control,
+  name,
+  label,
+  placeholder,
+}: IFormInputProps<T>) => {
   return (
     <Controller
       name={name}

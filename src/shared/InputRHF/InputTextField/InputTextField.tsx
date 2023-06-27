@@ -3,19 +3,17 @@ import React from "react";
 import { TextField } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
-const InputTextField = <T extends FieldValues>(props: IFormInputProps<T>) => {
-  const {
-    control,
-    name,
-    placeholder,
-    label,
-    type,
-    multiline,
-    maxRows,
-    minRows,
-    inputProps,
-  } = props;
-
+const InputTextField = <T extends FieldValues>({
+  control,
+  name,
+  placeholder,
+  label,
+  type,
+  multiline,
+  maxRows,
+  minRows,
+  inputProps,
+}: IFormInputProps<T>) => {
   return (
     <Controller
       name={name}

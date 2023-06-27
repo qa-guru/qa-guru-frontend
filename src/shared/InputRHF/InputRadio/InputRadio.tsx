@@ -9,9 +9,12 @@ import {
 } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
-const InputRadio = <T extends FieldValues>(props: IFormInputProps<T>) => {
-  const { control, label, name, content } = props;
-
+const InputRadio = <T extends FieldValues>({
+  control,
+  label,
+  name,
+  content,
+}: IFormInputProps<T>) => {
   const generateRadioOptions = () => {
     return content?.map((item, index) => {
       return (
