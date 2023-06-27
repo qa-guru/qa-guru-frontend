@@ -1,4 +1,11 @@
-export const countries: readonly any[] = [
+export interface Country {
+  code: string;
+  label: string;
+  phone: string;
+  suggested?: boolean;
+}
+
+export const countries: ReadonlyArray<Country> = [
   { code: "AD", label: "Andorra", phone: "376" },
   {
     code: "AE",

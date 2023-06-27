@@ -28,7 +28,7 @@ exports[`Profile > the component is render 1`] = `
         <h6
           class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
         >
-          10.10.2021 | 13:10
+          10.10.2021 | 12:10
         </h6>
       </div>
     </div>

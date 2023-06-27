@@ -1,15 +1,12 @@
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import React from "react";
 import { Autocomplete, Box, TextField } from "@mui/material";
 import { countries } from "./InputPhone.types";
 import { IFormInputProps } from "../Input.types";
 
-const InputPhone: React.FC<IFormInputProps> = ({
-  control,
-  name,
-  label,
-  placeholder,
-}) => {
+const InputPhone = <T extends FieldValues>(props: IFormInputProps<T>) => {
+  const { control, name, label, placeholder } = props;
+
   return (
     <Controller
       name={name}
@@ -18,8 +15,13 @@ const InputPhone: React.FC<IFormInputProps> = ({
         <Autocomplete
           options={countries}
           freeSolo
-          getOptionLabel={(option: any) => `(${option.code})+${option.phone}`}
-          renderOption={(props, option: any) => (
+          getOptionLabel={(option) => {
+            if (typeof option === "string") {
+              return option;
+            }
+            return `(${option.code})+${option.phone}`;
+          }}
+          renderOption={(props, option) => (
             <Box
               component="li"
               sx={{ "& > img": { mr: 2, flexShrink: 0 } }}

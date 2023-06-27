@@ -12,5 +12,5 @@ export interface ITrainingSelection {
       } | null>
     | null
     | undefined;
-  control: Control<IFilterKanban, any>;
+  control: Control<IFilterKanban, unknown>;
 }

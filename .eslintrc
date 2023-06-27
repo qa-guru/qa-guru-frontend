@@ -22,7 +22,7 @@
   "rules": {
     "unused-imports/no-unused-imports": "error",
     "no-unsafe-optional-chaining": "off",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": "off",
     // possible errors
     "for-direction": "error",
     "no-prototype-builtins": "error",

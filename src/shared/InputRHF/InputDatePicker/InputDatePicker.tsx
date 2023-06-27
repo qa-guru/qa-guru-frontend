@@ -1,22 +1,19 @@
 import * as React from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { IFormInputProps } from "../Input.types";
 
-const InputDatePicker: React.FC<IFormInputProps> = ({
-  control,
-  name,
-  label,
-}) => {
+const InputDatePicker = <T extends FieldValues>(props: IFormInputProps<T>) => {
+  const { control, name, label } = props;
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Controller
         name={name}
         control={control}
-        defaultValue={null}
         render={({ field: { onChange, value } }) => (
           <DatePicker
             label={label}

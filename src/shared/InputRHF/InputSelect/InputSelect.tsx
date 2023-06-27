@@ -1,17 +1,19 @@
 import React from "react";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
-const InputSelect: React.FC<IFormInputProps> = ({
-  control,
-  placeholder,
-  name,
-  options,
-  defaultValue,
-  onChange,
-  disabled = false,
-}) => {
+const InputSelect = <T extends FieldValues>(props: IFormInputProps<T>) => {
+  const {
+    control,
+    placeholder,
+    name,
+    options,
+    defaultValue,
+    onChange,
+    disabled = false,
+  } = props;
+
   return (
     <>
       <InputLabel>{placeholder}</InputLabel>
@@ -32,7 +34,7 @@ const InputSelect: React.FC<IFormInputProps> = ({
             disabled={disabled}
           >
             {options?.map((option, index) => (
-              <MenuItem key={index} value={option.value}>
+              <MenuItem key={index} value={option.value!}>
                 {option.label}
               </MenuItem>
             ))}
