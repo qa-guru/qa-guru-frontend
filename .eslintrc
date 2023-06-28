@@ -160,5 +160,13 @@
         "mock": "always"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/api/**/*", "*.test.tsx"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
 }
