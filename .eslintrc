@@ -163,7 +163,7 @@
   },
   "overrides": [
     {
-      "files": ["**/graphql/**/*", "*.test.tsx"],
+      "files": ["**/generated/**/*", "*.test.tsx"],
       "rules": {
         "@typescript-eslint/no-explicit-any": "off"
       }
