@@ -4,7 +4,7 @@ exports[`CommentsLimited > the component is render 1`] = `
 <DocumentFragment>
   <form>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-6nzxz6-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-1ify8y5-MuiTypography-root"
     >
       Добавить комментарий
     </h5>
@@ -54,7 +54,7 @@ exports[`CommentsLimited > the component is render 1`] = `
       </div>
     </div>
     <div
-      class="MuiStack-root css-1qvzoxq-MuiStack-root"
+      class="MuiStack-root css-govf87-MuiStack-root"
     >
       <button
         class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-17d8meg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
@@ -70,7 +70,7 @@ exports[`CommentsLimited > the component is render 1`] = `
     </div>
   </form>
   <div
-    class="MuiStack-root css-w4z10b-MuiStack-root"
+    class="MuiStack-root css-1tc5d84-MuiStack-root"
   >
     <h5
       class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"

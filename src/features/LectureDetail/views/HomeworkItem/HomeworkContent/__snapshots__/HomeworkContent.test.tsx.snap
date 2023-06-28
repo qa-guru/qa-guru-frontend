@@ -67,7 +67,7 @@ exports[`SendHomework > status is InReview 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-106pgoz-MuiStack-root"
+          class="MuiStack-root css-qlbgf4-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
@@ -149,7 +149,7 @@ exports[`SendHomework > status is New 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-106pgoz-MuiStack-root"
+          class="MuiStack-root css-qlbgf4-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"

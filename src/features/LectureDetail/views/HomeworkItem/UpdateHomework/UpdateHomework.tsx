@@ -84,7 +84,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
             direction={{ xs: "column-reverse", sm: "row" }}
             justifyContent="flex-end"
             spacing={1}
-            mt="5px"
+            mt={2}
           >
             <Button
               onClick={() => setOpenHomeWorkEdit(false)}

@@ -7,10 +7,10 @@ import ContentSerialization from "../../../../shared/Serializers/ContentSerializ
 const LectureContent: React.FC<ILectureContent> = ({ content }) => {
   return (
     <>
-      <Typography mb="15px" pt="30px" variant="h4">
-        Материалы урока
-      </Typography>
       <Paper sx={style.paper}>
+        <Typography mb={3} variant="h5">
+          Материалы урока
+        </Typography>
         <Stack spacing={0.5}>
           <ContentSerialization content={content} />
         </Stack>

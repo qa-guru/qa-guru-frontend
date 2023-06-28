@@ -3,18 +3,18 @@
 exports[`LectureDetail > hasHomework is false 1`] = `
 <DocumentFragment>
   <h4
-    class="MuiTypography-root MuiTypography-h4 css-1h02dxw-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-h4 css-shgr9c-MuiTypography-root"
   >
     string
   </h4>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
   >
-    <h6
-      class="MuiTypography-root MuiTypography-h6 css-css8ik-MuiTypography-root"
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-8wzaua-MuiTypography-root"
     >
       Содержание урока
-    </h6>
+    </h5>
     <hr
       class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
     />
@@ -51,45 +51,49 @@ exports[`LectureDetail > hasHomework is false 1`] = `
       </div>
     </div>
   </div>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-1t14ubg-MuiTypography-root"
-  >
-    Спикеры
-  </h4>
   <div
-    class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
   >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-8wzaua-MuiTypography-root"
+    >
+      Спикеры
+    </h5>
     <div
-      class="MuiStack-root css-mcfb5r-MuiStack-root"
+      class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
     >
       <div
-        class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1ncqb0b-MuiAvatar-root"
+        class="MuiStack-root css-9jigf2-MuiStack-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+        <div
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-8r2gc-MuiAvatar-root"
         >
-          ss
-        </h6>
-      </div>
-      <div
-        class="MuiBox-root css-tzqd77"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+          >
+            ss
+          </h6>
+        </div>
+        <div
+          class="MuiBox-root css-tzqd77"
         >
-          string string
-        </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          >
+            string string
+          </h6>
+        </div>
       </div>
     </div>
   </div>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-1t14ubg-MuiTypography-root"
-  >
-    Материалы урока
-  </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
   >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-1ht8sh5-MuiTypography-root"
+    >
+      Материалы урока
+    </h5>
     <div
       class="MuiStack-root css-zgbp5c-MuiStack-root"
     />
@@ -100,14 +104,14 @@ exports[`LectureDetail > hasHomework is false 1`] = `
     <div
       class="MuiBox-root css-1nsqiu3"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4 css-14z7ouz-MuiTypography-root"
-      >
-        Домашнее задание
-      </h4>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
       >
+        <h5
+          class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
+        >
+          Домашнее задание
+        </h5>
         <div
           class="MuiStack-root css-zgbp5c-MuiStack-root"
         >
@@ -217,18 +221,18 @@ exports[`LectureDetail > hasHomework is false 1`] = `
 exports[`LectureDetail > hasHomework is true 1`] = `
 <DocumentFragment>
   <h4
-    class="MuiTypography-root MuiTypography-h4 css-1h02dxw-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-h4 css-shgr9c-MuiTypography-root"
   >
     string
   </h4>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
   >
-    <h6
-      class="MuiTypography-root MuiTypography-h6 css-css8ik-MuiTypography-root"
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-8wzaua-MuiTypography-root"
     >
       Содержание урока
-    </h6>
+    </h5>
     <hr
       class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
     />
@@ -265,57 +269,61 @@ exports[`LectureDetail > hasHomework is true 1`] = `
       </div>
     </div>
   </div>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-1t14ubg-MuiTypography-root"
-  >
-    Спикеры
-  </h4>
   <div
-    class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
   >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-8wzaua-MuiTypography-root"
+    >
+      Спикеры
+    </h5>
     <div
-      class="MuiStack-root css-mcfb5r-MuiStack-root"
+      class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
     >
       <div
-        class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1ncqb0b-MuiAvatar-root"
+        class="MuiStack-root css-9jigf2-MuiStack-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+        <div
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-8r2gc-MuiAvatar-root"
         >
-          ss
-        </h6>
-      </div>
-      <div
-        class="MuiBox-root css-tzqd77"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+          >
+            ss
+          </h6>
+        </div>
+        <div
+          class="MuiBox-root css-tzqd77"
         >
-          string string
-        </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          >
+            string string
+          </h6>
+        </div>
       </div>
     </div>
   </div>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-1t14ubg-MuiTypography-root"
-  >
-    Материалы урока
-  </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
   >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-1ht8sh5-MuiTypography-root"
+    >
+      Материалы урока
+    </h5>
     <div
       class="MuiStack-root css-zgbp5c-MuiStack-root"
     />
   </div>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-14z7ouz-MuiTypography-root"
-  >
-    Домашнее задание
-  </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
   >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
+    >
+      Домашнее задание
+    </h5>
     <div
       class="MuiStack-root css-zgbp5c-MuiStack-root"
     >

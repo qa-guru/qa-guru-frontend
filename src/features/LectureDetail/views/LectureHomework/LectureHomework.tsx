@@ -11,10 +11,10 @@ const LectureHomework: React.FC<ILectureHomework> = ({
 
   return (
     <>
-      <Typography pt="30px" variant="h4" mb="15px">
-        Домашнее задание
-      </Typography>
       <Paper sx={style.paper}>
+        <Typography mb={2} variant="h5">
+          Домашнее задание
+        </Typography>
         <Stack spacing={0.5}>
           <ContentSerialization content={lectureHomeWork!} />
         </Stack>

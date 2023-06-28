@@ -1,11 +1,13 @@
-import { grey } from "../../../../theme/colors";
-
 export const style = {
+  paper: {
+    padding: {
+      xs: "15px",
+      md: "20px",
+    },
+    marginTop: "30px",
+  },
   stack: {
-    borderRadius: "16px",
-    border: 1,
-    padding: "10px 30px 10px 10px",
-    borderColor: grey.main,
+    padding: "10px 30px 10px 0",
     width: "min-content",
   },
   avatar: {

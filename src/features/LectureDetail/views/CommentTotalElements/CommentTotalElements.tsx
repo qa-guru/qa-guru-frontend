@@ -6,7 +6,7 @@ const CommentTotalElements: React.FC<ICommentTotalElements> = ({
   totalElements,
 }) => {
   return (
-    <Stack spacing={1} direction="row">
+    <Stack mt={2} mb={2} spacing={1} direction="row">
       <Typography variant="h5">Комментарии</Typography>
       <Typography variant="h5">({totalElements})</Typography>
     </Stack>

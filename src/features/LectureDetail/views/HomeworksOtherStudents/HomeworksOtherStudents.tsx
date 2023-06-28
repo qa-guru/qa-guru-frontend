@@ -47,7 +47,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
 
   return (
     <>
-      <Stack mb="15px" pt="30px" spacing={1} direction="row">
+      <Stack my={3} pt={3} spacing={1} direction="row">
         <Typography variant="h4">Домашние работы других студентов</Typography>
         <Typography variant="h4">({totalElements})</Typography>
       </Stack>

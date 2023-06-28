@@ -53,7 +53,7 @@ const SendComment: React.FC<ISendComment> = (props) => {
 
   return (
     <form>
-      <Typography mt="15px" mb="5px" variant="h5">
+      <Typography mt={3} mb={2} variant="h5">
         Добавить комментарий
       </Typography>
       <Box width="100%">
@@ -72,7 +72,7 @@ const SendComment: React.FC<ISendComment> = (props) => {
           )}
         </FormControl>
       </Box>
-      <Stack direction="column" alignItems="flex-end">
+      <Stack direction="column" alignItems="flex-end" mt={2}>
         <LoadingButton
           onClick={handleSubmit(handleSendComment)}
           loading={loading}
