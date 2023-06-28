@@ -1,9 +1,9 @@
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import React from "react";
 import { TextField } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
-const InputTextField: React.FC<IFormInputProps> = ({
+const InputTextField = <T extends FieldValues>({
   control,
   name,
   placeholder,
@@ -13,7 +13,7 @@ const InputTextField: React.FC<IFormInputProps> = ({
   maxRows,
   minRows,
   inputProps,
-}) => {
+}: IFormInputProps<T>) => {
   return (
     <Controller
       name={name}

@@ -59,9 +59,7 @@ const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
                 target="_blank"
                 rel="noopener"
               >
-                <Box mt={1}>
-                {value}
-                </Box>
+                <Box mt={1}>{value}</Box>
               </Link>
             );
           default:

@@ -1,5 +1,5 @@
 import React from "react";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import {
   FormLabel,
   FormControl,
@@ -9,12 +9,12 @@ import {
 } from "@mui/material";
 import { IFormInputProps } from "../Input.types";
 
-const InputRadio: React.FC<IFormInputProps> = ({
+const InputRadio = <T extends FieldValues>({
   control,
   label,
   name,
   content,
-}) => {
+}: IFormInputProps<T>) => {
   const generateRadioOptions = () => {
     return content?.map((item, index) => {
       return (

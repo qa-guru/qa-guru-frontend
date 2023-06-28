@@ -120,7 +120,7 @@ const SignUp: React.FC<ISignUp> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="email"
-                placeholder={t("enter.email")}
+                placeholder={t("enter.email")!}
                 label="E-mail"
               />
               {errors?.email && (
@@ -144,7 +144,7 @@ const SignUp: React.FC<ISignUp> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="password"
-                placeholder={t("enter.password")}
+                placeholder={t("enter.password")!}
                 label={t("password")!}
                 type="password"
               />

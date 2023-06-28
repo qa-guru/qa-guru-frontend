@@ -4,5 +4,5 @@ import { IFilterKanban } from "../Form.types";
 
 export interface IMentorSelection {
   data: MentorsQuery;
-  control: Control<IFilterKanban, any>;
+  control: Control<IFilterKanban, unknown>;
 }

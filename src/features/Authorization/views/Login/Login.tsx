@@ -77,7 +77,7 @@ const Login: React.FC<ILogin> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="username"
-                placeholder={t("enter.email")}
+                placeholder={t("enter.email")!}
                 label="E-mail"
               />
               {errors?.username && (
@@ -90,7 +90,7 @@ const Login: React.FC<ILogin> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="password"
-                placeholder={t("enter.password")}
+                placeholder={t("enter.password")!}
                 label={t("password")!}
                 type="password"
               />
