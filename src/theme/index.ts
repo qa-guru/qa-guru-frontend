@@ -17,7 +17,7 @@ const baseOptions = {
 };
 
 export const createCustomTheme = (settings: themeSettingsTypes) => {
-  let themeOptions: any = themesOptions[settings.theme];
+  let themeOptions: object = themesOptions[settings.theme];
 
   if (!themeOptions) {
     themeOptions = themesOptions[THEMES.LIGHT];

@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/named
 import { Theme } from "@mui/material";
 
-const components = (theme: Theme): any => {
+const components = (theme: Theme) => {
   // @ts-ignore
   const { white, primary } = theme.palette;
   return {
