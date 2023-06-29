@@ -14,13 +14,17 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
 
   const handleLoadMore = () => {
-    fetchMore({
+    fetchMore!({
       variables: {
         offset: items?.length,
       },
       updateQuery: (
-        prev: { commentsHomeWorkByHomeWork: { items: any } },
-        { fetchMoreResult }: any
+        prev: { commentsHomeWorkByHomeWork: { items: Comment[] } },
+        {
+          fetchMoreResult,
+        }: {
+          fetchMoreResult: { commentsHomeWorkByHomeWork: { items: Comment[] } };
+        }
       ) => {
         if (!fetchMoreResult) return prev;
         return {

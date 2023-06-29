@@ -21,8 +21,26 @@ export interface IColumnItem {
   totalElements: number;
 }
 
+type FetchMoreVariables = {
+  offset: number;
+};
+
+type FetchMoreUpdateQuery = (
+  prev: { homeWorks: { items: StudentHomeWorkDto[] } },
+  {
+    fetchMoreResult,
+  }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } }
+) => {
+  homeWorks: {
+    items: StudentHomeWorkDto[];
+  };
+};
+
 export interface IColumn {
-  fetchMore: any;
+  fetchMore: (options: {
+    variables: FetchMoreVariables;
+    updateQuery: FetchMoreUpdateQuery;
+  }) => void;
   draggingState: IDraggingState;
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   column: IColumnItem;

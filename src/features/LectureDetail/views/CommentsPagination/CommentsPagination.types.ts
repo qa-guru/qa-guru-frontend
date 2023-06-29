@@ -7,5 +7,15 @@ export interface ICommentsPagination {
   dataCommentsHomeWorkByHomeWork?: CommentsHomeWorkByHomeWorkQuery;
   dataUserId?: UserIdQuery;
   id?: string;
-  fetchMore?: any;
+  fetchMore?: (options: {
+    variables: { offset?: number };
+    updateQuery: (
+      prev: { commentsHomeWorkByHomeWork: { items: Comment[] } },
+      {
+        fetchMoreResult,
+      }: {
+        fetchMoreResult: { commentsHomeWorkByHomeWork: { items: Comment[] } };
+      }
+    ) => { commentsHomeWorkByHomeWork: { items: Comment[] } };
+  }) => void;
 }
