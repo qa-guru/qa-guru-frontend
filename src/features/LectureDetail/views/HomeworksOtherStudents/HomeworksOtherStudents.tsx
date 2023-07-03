@@ -25,17 +25,14 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
       variables: {
         offset: items?.length,
       },
-      updateQuery: (
-        prev: { homeWorksByLectureId: { items: any } },
-        { fetchMoreResult }: any
-      ) => {
+      updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
         return {
           homeWorksByLectureId: {
             ...fetchMoreResult.homeWorksByLectureId,
             items: [
-              ...prev.homeWorksByLectureId.items,
-              ...fetchMoreResult.homeWorksByLectureId.items,
+              ...prev.homeWorksByLectureId!.items!,
+              ...fetchMoreResult.homeWorksByLectureId!.items!,
             ],
           },
         };

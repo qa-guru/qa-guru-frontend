@@ -18,14 +18,7 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
       variables: {
         offset: items?.length,
       },
-      updateQuery: (
-        prev: { commentsHomeWorkByHomeWork: { items: Comment[] } },
-        {
-          fetchMoreResult,
-        }: {
-          fetchMoreResult: { commentsHomeWorkByHomeWork: { items: Comment[] } };
-        }
-      ) => {
+      updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
         return {
           commentsHomeWorkByHomeWork: {

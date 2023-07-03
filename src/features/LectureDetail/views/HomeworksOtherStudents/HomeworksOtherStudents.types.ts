@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/named
+import { ApolloQueryResult } from "@apollo/client";
 import {
   HomeWorksByLectureIdQuery,
   UserIdQuery,
@@ -5,6 +7,17 @@ import {
 
 export interface IHomeworksOtherStudents {
   data: HomeWorksByLectureIdQuery;
-  fetchMore: any;
+  fetchMore: (options: {
+    variables: { offset?: number };
+    updateQuery: (
+      prev: HomeWorksByLectureIdQuery,
+      {
+        fetchMoreResult,
+      }: {
+        fetchMoreResult: HomeWorksByLectureIdQuery;
+      }
+    ) => HomeWorksByLectureIdQuery;
+  }) => Promise<ApolloQueryResult<HomeWorksByLectureIdQuery>>;
+
   dataUserId: UserIdQuery;
 }
