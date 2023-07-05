@@ -17,7 +17,7 @@ describe("Board", () => {
               inReviewData={homeWorksQuery}
               approvedData={homeWorksQuery}
               notApprovedData={homeWorksQuery}
-              fetchMoreFunctions={() => {}}
+              fetchMoreFunctions={[() => {}]}
             />
           </MemoryRouter>
         </DndProvider>
