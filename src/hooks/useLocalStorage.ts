@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { themeSettingsTypes } from "../theme";
 
-const useLocalStorage = (key: string, initialValue: any) => {
+const useLocalStorage = (key: string, initialValue: themeSettingsTypes) => {
   const [data, setData] = useState(initialValue);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const useLocalStorage = (key: string, initialValue: any) => {
     }
   }, [key]);
 
-  const storeData = (updateValue: any | themeSettingsTypes) => {
+  const storeData = (updateValue: themeSettingsTypes) => {
     setData(updateValue);
     window.localStorage.setItem(key, JSON.stringify(updateValue));
   };
