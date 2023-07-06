@@ -20,7 +20,6 @@ const HomeworksContainer: React.FC = () => {
     selectedCreationDateFrom,
     selectedCreationDateTo,
     selectedMentorId,
-    selectedAssignToMe,
   } = useContext(KanbanContext);
 
   const filterObject = useMemo(() => {
@@ -29,7 +28,7 @@ const HomeworksContainer: React.FC = () => {
       trainingId: selectedTrainingId,
       creationDateFrom: getValidDateOrNull(selectedCreationDateFrom!),
       creationDateTo: getValidDateOrNull(selectedCreationDateTo!),
-      mentorId: selectedAssignToMe || selectedMentorId,
+      mentorId: selectedMentorId,
     };
   }, [
     selectedLectureId,
@@ -37,7 +36,6 @@ const HomeworksContainer: React.FC = () => {
     selectedCreationDateFrom,
     selectedCreationDateTo,
     selectedMentorId,
-    selectedAssignToMe,
   ]);
 
   const { data: dataUser, loading: dataLoading } = useUserQuery();

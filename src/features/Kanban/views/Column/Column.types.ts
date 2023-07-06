@@ -22,7 +22,19 @@ export interface IColumnItem {
 }
 
 export interface IColumn {
-  fetchMore: any;
+  fetchMore: (options: {
+    variables: { offset: number };
+    updateQuery: (
+      prev: { homeWorks: { items: StudentHomeWorkDto[] } },
+      {
+        fetchMoreResult,
+      }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } }
+    ) => {
+      homeWorks: {
+        items: StudentHomeWorkDto[];
+      };
+    };
+  }) => void;
   draggingState: IDraggingState;
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   column: IColumnItem;

@@ -16,6 +16,7 @@ import { style } from "./styles";
 import Card from "../Card";
 import { getColumnStyles } from "../../helpers/getColumnStyles";
 import { isColumnHighlight } from "../../helpers/isColumnHighlight";
+import { StudentHomeWorkDto } from "../../../../api/graphql/generated/graphql";
 
 const Column: React.FC<IColumn> = ({
   column,
@@ -83,8 +84,10 @@ const Column: React.FC<IColumn> = ({
         offset: column.cards?.length,
       },
       updateQuery: (
-        prev: { homeWorks: { items: any } },
-        { fetchMoreResult }: any
+        prev: { homeWorks: { items: StudentHomeWorkDto[] } },
+        {
+          fetchMoreResult,
+        }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } }
       ) => {
         if (!fetchMoreResult) return prev;
 
