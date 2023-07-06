@@ -66,7 +66,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
         })}
       </Stack>
       {hasMoreHomeworks && (
-        <Stack mt="15px">
+        <Stack mt="5px">
           <LoadingButton
             loading={loading}
             onClick={handleLoadMore}
