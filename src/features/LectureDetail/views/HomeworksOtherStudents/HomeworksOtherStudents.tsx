@@ -24,6 +24,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
     fetchMore({
       variables: {
         offset: items?.length,
+        limit: 3,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
