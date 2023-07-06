@@ -8,7 +8,6 @@ import MentorsSelection from "../../containers/Mentors";
 import LectureSelection from "../../containers/TrainingLectures";
 import { KanbanContext } from "../../context/KanbanContext";
 import TrainingSelectionByRole from "../../roles/TrainingSelectionByRole";
-import AssignedToMeSelection from "../../containers/UserId";
 
 const Form: React.FC = () => {
   const { control, handleSubmit, reset } = useForm({
@@ -18,7 +17,6 @@ const Form: React.FC = () => {
       creationDateFrom: "",
       creationDateTo: "",
       selectMentors: "",
-      selectAssignToMe: "",
     },
   });
   const {
@@ -27,7 +25,6 @@ const Form: React.FC = () => {
     setSelectedCreationDateFrom,
     setSelectedCreationDateTo,
     setSelectedMentorId,
-    setSelectedAssignToMe,
   } = useContext(KanbanContext);
 
   const handleFilterKanban: SubmitHandler<IFilterKanban> = (data) => {
@@ -36,7 +33,6 @@ const Form: React.FC = () => {
     setSelectedCreationDateFrom(data.creationDateFrom);
     setSelectedCreationDateTo(data.creationDateTo);
     setSelectedMentorId(data.selectMentors);
-    setSelectedAssignToMe(data.selectAssignToMe);
   };
 
   const handleReset = () => {
@@ -45,29 +41,25 @@ const Form: React.FC = () => {
     setSelectedCreationDateFrom(null);
     setSelectedCreationDateTo(null);
     setSelectedMentorId(null);
-    setSelectedAssignToMe(null);
     reset();
   };
 
   return (
     <form>
       <Grid container spacing={1} alignItems="center">
-        <Grid item xs={12} sm={1.5}>
+        <Grid item xs={12} sm={2}>
           <TrainingSelectionByRole control={control} />
         </Grid>
-        <Grid item xs={12} sm={1.5}>
+        <Grid item xs={12} sm={2}>
           <LectureSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={1.9}>
+        <Grid item xs={12} sm={2}>
           <MentorsSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={1.5}>
-          <AssignedToMeSelection control={control} />
-        </Grid>
-        <Grid item xs={12} sm={1.7}>
+        <Grid item xs={12} sm={2}>
           <CreationDateFromSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={1.7}>
+        <Grid item xs={12} sm={2}>
           <CreationDateToSelection control={control} />
         </Grid>
         <Grid item xs={12} sm={2}>

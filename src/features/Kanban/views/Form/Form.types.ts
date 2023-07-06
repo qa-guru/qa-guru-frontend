@@ -4,5 +4,4 @@ export interface IFilterKanban {
   creationDateFrom: string;
   creationDateTo: string;
   selectMentors: string;
-  selectAssignToMe: string;
 }
