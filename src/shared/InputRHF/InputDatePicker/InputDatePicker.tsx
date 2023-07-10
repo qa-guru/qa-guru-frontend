@@ -20,6 +20,7 @@ const InputDatePicker = <T extends FieldValues>({
           <DatePicker
             label={label}
             value={value ? dayjs(value) : null}
+            sx={{ width: "100%" }}
             onChange={(newValue) => {
               if (newValue) {
                 const formattedDate = dayjs(newValue)

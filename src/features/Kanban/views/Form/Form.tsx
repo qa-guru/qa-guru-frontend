@@ -8,6 +8,7 @@ import MentorsSelection from "../../containers/Mentors";
 import LectureSelection from "../../containers/TrainingLectures";
 import { KanbanContext } from "../../context/KanbanContext";
 import TrainingSelectionByRole from "../../roles/TrainingSelectionByRole";
+import { width } from "@mui/system";
 
 const Form: React.FC = () => {
   const { control, handleSubmit, reset } = useForm({
@@ -46,36 +47,51 @@ const Form: React.FC = () => {
 
   return (
     <form>
-      <Grid container spacing={1} alignItems="center">
-        <Grid item xs={12} sm={2}>
+      <Grid
+        container
+        spacing={1}
+        alignItems="center"
+        justifyContent="space-around"
+      >
+        <Grid item xs={12} md={2.4}>
           <TrainingSelectionByRole control={control} />
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} md={2.4}>
           <LectureSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} md={2.4}>
           <MentorsSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} md={2.4}>
           <CreationDateFromSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} md={2.4}>
           <CreationDateToSelection control={control} />
         </Grid>
-        <Grid item xs={12} sm={2}>
-          <Stack direction="row" spacing={1}>
-            <Button
-              onClick={handleSubmit(handleFilterKanban)}
-              variant="contained"
-            >
-              Применить
-            </Button>
-            <Button onClick={handleReset} color="secondary" variant="contained">
-              Сбросить
-            </Button>
-          </Stack>
-        </Grid>
       </Grid>
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="center"
+        sx={{ mt: 2 }}
+      >
+        <Button
+          onClick={handleSubmit(handleFilterKanban)}
+          variant="contained"
+          sx={{ width: "130px" }}
+        >
+          Применить
+        </Button>
+        <Button
+          onClick={handleReset}
+          color="secondary"
+          variant="contained"
+          sx={{ width: "130px" }}
+        >
+          Сбросить
+        </Button>
+      </Stack>
     </form>
   );
 };

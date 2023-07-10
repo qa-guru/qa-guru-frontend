@@ -99,7 +99,7 @@ exports[`Header > userRole is Master 1`] = `
             </svg>
           </button>
           <div
-            class="MuiBox-root css-j0f50d"
+            class="MuiBox-root css-16ld21m"
           >
             <div
               class="MuiStack-root css-u10pvi-MuiStack-root"
@@ -421,7 +421,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             </svg>
           </button>
           <div
-            class="MuiBox-root css-j0f50d"
+            class="MuiBox-root css-16ld21m"
           >
             <div
               class="MuiStack-root css-u10pvi-MuiStack-root"
@@ -743,7 +743,7 @@ exports[`Header > userRole is Student 1`] = `
             </svg>
           </button>
           <div
-            class="MuiBox-root css-j0f50d"
+            class="MuiBox-root css-16ld21m"
           >
             <div
               class="MuiStack-root css-u10pvi-MuiStack-root"

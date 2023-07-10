@@ -7,6 +7,7 @@ export const styles = {
     marginBottom: 1.5,
     boxShadow: 1,
     cursor: "grab",
+    minHeight: "230px",
   },
   draggedPaper: {
     opacity: 0.5,
