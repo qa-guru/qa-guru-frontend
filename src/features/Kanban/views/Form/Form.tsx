@@ -8,7 +8,6 @@ import MentorsSelection from "../../containers/Mentors";
 import LectureSelection from "../../containers/TrainingLectures";
 import { KanbanContext } from "../../context/KanbanContext";
 import TrainingSelectionByRole from "../../roles/TrainingSelectionByRole";
-import { width } from "@mui/system";
 
 const Form: React.FC = () => {
   const { control, handleSubmit, reset } = useForm({
