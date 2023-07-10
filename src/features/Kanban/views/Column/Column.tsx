@@ -112,7 +112,9 @@ const Column: React.FC<IColumn> = ({
 
   return (
     <Box width="25%" flexGrow="1" display="flex" flexDirection="column">
-      <Typography variant="h6">{column.title}</Typography>
+      <Typography variant="h6" ml={1.5} mt={1.5}>
+        {column.title}
+      </Typography>
       <Box
         id={`scroll-container-${column.id}`}
         ref={dropRef}

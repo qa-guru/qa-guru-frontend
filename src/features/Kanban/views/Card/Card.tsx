@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useDrag } from "react-dnd";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Grid, Paper, Stack, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { useSnackbar } from "notistack";
 import { ICard } from "./Card.types";
@@ -95,26 +95,29 @@ const Card: React.FC<ICard> = ({
     styles.paper,
     isDragging && styles.draggedPaper,
     isCardsHidden && !isDragging && styles.hiddenPaper,
+    { marginBottom: 3 },
   ];
 
   return (
-    <Paper ref={dragRef} sx={paperStyles}>
-      <Box sx={styles.cardHeader}>
-        <Typography textTransform="uppercase" variant="subtitle2">
-          {card.id}
-        </Typography>
-        <Typography variant="body2">
-          {card.creationDate &&
-            format(parseISO(card.creationDate), "dd.MM.yyyy")}
-        </Typography>
-      </Box>
-      <Box padding={1}>
-        <Typography variant="subtitle1">{card.lecture?.subject}</Typography>
-        <Stack spacing={1} mt="10px">
-          {card.mentor && <UserRow icon={MentorIcon} user={card.mentor} />}
-          <UserRow icon={StudentIcon} user={card.student!} />
-        </Stack>
-      </Box>
+    <Paper ref={dragRef} sx={paperStyles} elevation={6}>
+      <Grid container>
+        <Grid item sx={styles.cardHeader}>
+          <Typography textTransform="uppercase" variant="subtitle2">
+            {card.id}
+          </Typography>
+          <Typography variant="body2">
+            {card.creationDate &&
+              format(parseISO(card.creationDate), "dd.MM.yyyy")}
+          </Typography>
+        </Grid>
+        <Grid item padding={1}>
+          <Typography variant="subtitle1">{card.lecture?.subject}</Typography>
+          <Stack spacing={1} mt="10px">
+            {card.mentor && <UserRow icon={MentorIcon} user={card.mentor} />}
+            <UserRow icon={StudentIcon} user={card.student!} />
+          </Stack>
+        </Grid>
+      </Grid>
     </Paper>
   );
 };

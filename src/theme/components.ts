@@ -50,8 +50,6 @@ const components = (theme: Theme) => {
         root: {
           borderRadius: "10px",
           backgroundColor: white.main,
-          boxShadow:
-            "0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px rgba(0, 0, 0, 0.14), 0px 1px 14px rgba(0, 0, 0, 0.12)",
         },
       },
     },
@@ -59,7 +57,7 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           borderColor: white.main,
-          fontSize: "16px",
+          fontSize: "14px",
           backgroundColor: white.main,
           [theme.breakpoints.down("md")]: {
             "& .MuiInputBase-input": {

@@ -52,45 +52,45 @@ const Form: React.FC = () => {
         alignItems="center"
         justifyContent="space-around"
       >
-        <Grid item xs={12} md={2.4}>
+        <Grid item xs={12} md={1.9} lg={2}>
           <TrainingSelectionByRole control={control} />
         </Grid>
-        <Grid item xs={12} md={2.4}>
+        <Grid item xs={12} md={1.9} lg={2}>
           <LectureSelection control={control} />
         </Grid>
-        <Grid item xs={12} md={2.4}>
+        <Grid item xs={12} md={1.9} lg={2}>
           <MentorsSelection control={control} />
         </Grid>
-        <Grid item xs={12} md={2.4}>
+        <Grid item xs={12} md={1.9} lg={2}>
           <CreationDateFromSelection control={control} />
         </Grid>
-        <Grid item xs={12} md={2.4}>
+        <Grid item xs={12} md={1.9} lg={2}>
           <CreationDateToSelection control={control} />
         </Grid>
+        <Grid item xs={12} md={2.5} lg={2}>
+          <Stack
+            direction="row"
+            justifyContent={{ xs: "center", md: "flex-end" }}
+            spacing={1}
+          >
+            <Button
+              onClick={handleSubmit(handleFilterKanban)}
+              variant="contained"
+              sx={{ fontSize: { xs: "12px", xl: "14px" } }}
+            >
+              Применить
+            </Button>
+            <Button
+              onClick={handleReset}
+              color="secondary"
+              variant="contained"
+              sx={{ fontSize: { xs: "12px", xl: "14px" } }}
+            >
+              Сбросить
+            </Button>
+          </Stack>
+        </Grid>
       </Grid>
-      <Stack
-        direction="row"
-        spacing={2}
-        alignItems="center"
-        justifyContent="center"
-        sx={{ mt: 2 }}
-      >
-        <Button
-          onClick={handleSubmit(handleFilterKanban)}
-          variant="contained"
-          sx={{ width: "130px" }}
-        >
-          Применить
-        </Button>
-        <Button
-          onClick={handleReset}
-          color="secondary"
-          variant="contained"
-          sx={{ width: "130px" }}
-        >
-          Сбросить
-        </Button>
-      </Stack>
     </form>
   );
 };

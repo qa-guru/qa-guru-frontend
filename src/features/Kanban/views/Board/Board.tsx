@@ -125,7 +125,7 @@ const Board: React.FC<IBoard> = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Stack direction="row" spacing={2} mt="15px">
+      <Stack direction="row" mt="15px">
         {columns?.map((column, index) => (
           <Column
             draggingState={draggingState}

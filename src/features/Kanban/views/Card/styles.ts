@@ -3,11 +3,9 @@ import { grey, white } from "../../../../theme/colors";
 export const styles = {
   paper: {
     backgroundColor: white,
-    borderRadius: 1,
-    marginBottom: 1.5,
-    boxShadow: 1,
     cursor: "grab",
-    minHeight: "230px",
+    flexGrow: "1",
+    margin: 1.5,
   },
   draggedPaper: {
     opacity: 0.5,
@@ -18,7 +16,10 @@ export const styles = {
   },
   cardHeader: {
     backgroundColor: grey.light,
-    boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)",
+    boxShadow: "0 1px 3px rgba(0, 0, 0, .6)",
     padding: 1,
+    width: "100%",
+    borderTopLeftRadius: "10px",
+    borderTopRightRadius: "10px",
   },
 };
