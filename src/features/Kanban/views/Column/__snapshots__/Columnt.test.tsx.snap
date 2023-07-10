@@ -31,7 +31,7 @@ exports[`Column > items is false 1`] = `
               <h6
                 class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
               >
-                card1
+                JAVA-d1
               </h6>
               <p
                 class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -137,7 +137,7 @@ exports[`Column > items is false 1`] = `
               <h6
                 class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
               >
-                card2
+                JAVA-d2
               </h6>
               <p
                 class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -281,7 +281,7 @@ exports[`Column > items is true 1`] = `
               <h6
                 class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
               >
-                card1
+                JAVA-d1
               </h6>
               <p
                 class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -387,7 +387,7 @@ exports[`Column > items is true 1`] = `
               <h6
                 class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
               >
-                card2
+                JAVA-d2
               </h6>
               <p
                 class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"

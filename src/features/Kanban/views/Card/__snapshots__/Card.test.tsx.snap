@@ -12,7 +12,7 @@ exports[`Card > Card is hidden 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
       >
-        123123
+        JAVA-23
       </h6>
       <p
         class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -123,7 +123,7 @@ exports[`Card > Card is visible 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
       >
-        123123
+        JAVA-23
       </h6>
       <p
         class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
