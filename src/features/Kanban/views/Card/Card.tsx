@@ -95,11 +95,11 @@ const Card: React.FC<ICard> = ({
     styles.paper,
     isDragging && styles.draggedPaper,
     isCardsHidden && !isDragging && styles.hiddenPaper,
-    { marginBottom: 3 },
+    { marginBottom: 2 },
   ];
 
   return (
-    <Paper ref={dragRef} sx={paperStyles} elevation={6}>
+    <Paper ref={dragRef} sx={paperStyles} elevation={4}>
       <Grid container>
         <Grid item sx={styles.cardHeader}>
           <Typography textTransform="uppercase" variant="subtitle2">

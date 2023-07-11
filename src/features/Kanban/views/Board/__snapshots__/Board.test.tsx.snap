@@ -9,7 +9,7 @@ exports[`Board > Board is render 1`] = `
       class="MuiBox-root css-1vcbrsc"
     >
       <h6
-        class="MuiTypography-root MuiTypography-h6 css-1a14uyh-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
       >
         NEW
       </h6>
@@ -65,7 +65,7 @@ exports[`Board > Board is render 1`] = `
       class="MuiBox-root css-1vcbrsc"
     >
       <h6
-        class="MuiTypography-root MuiTypography-h6 css-1a14uyh-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
       >
         IN_REVIEW
       </h6>
@@ -121,7 +121,7 @@ exports[`Board > Board is render 1`] = `
       class="MuiBox-root css-1vcbrsc"
     >
       <h6
-        class="MuiTypography-root MuiTypography-h6 css-1a14uyh-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
       >
         APPROVED
       </h6>
@@ -137,7 +137,7 @@ exports[`Board > Board is render 1`] = `
             style="height: auto; overflow: visible;"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation6 css-zaef6n-MuiPaper-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1s3bnvi-MuiPaper-root"
               draggable="true"
             >
               <div
@@ -264,7 +264,7 @@ exports[`Board > Board is render 1`] = `
       class="MuiBox-root css-1vcbrsc"
     >
       <h6
-        class="MuiTypography-root MuiTypography-h6 css-1a14uyh-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
       >
         NOT_APPROVED
       </h6>

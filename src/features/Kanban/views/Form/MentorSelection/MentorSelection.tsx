@@ -13,10 +13,6 @@ const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
     label: `${item?.firstName} ${item?.lastName}`,
   }));
 
-  const handleSelectChange = (selectedId: string) => {
-    setSelectedMentorId(selectedId);
-  };
-
   return (
     <FormControl fullWidth>
       <RHF.InputSelect
@@ -24,7 +20,6 @@ const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
         options={mentorsOptions}
         name="selectMentors"
         placeholder="Выберите наставника"
-        onChange={handleSelectChange}
       />
     </FormControl>
   );

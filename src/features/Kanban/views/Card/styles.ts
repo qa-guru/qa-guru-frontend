@@ -5,7 +5,7 @@ export const styles = {
     backgroundColor: white,
     cursor: "grab",
     flexGrow: "1",
-    margin: 1.5,
+    margin: 1,
   },
   draggedPaper: {
     opacity: 0.5,
