@@ -97,11 +97,16 @@ const Card: React.FC<ICard> = ({
     isCardsHidden && !isDragging && styles.hiddenPaper,
   ];
 
+  const getFormattedId = (id: string) => {
+    const lastTwoChars = id.slice(-2);
+    return `JAVA-${lastTwoChars}`;
+  };
+
   return (
     <Paper ref={dragRef} sx={paperStyles}>
       <Box sx={styles.cardHeader}>
         <Typography textTransform="uppercase" variant="subtitle2">
-          {card.id}
+          {getFormattedId(card.id!)}
         </Typography>
         <Typography variant="body2">
           {card.creationDate &&

@@ -146,7 +146,7 @@ exports[`Board > Board is render 1`] = `
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
                 >
-                  string
+                  JAVA-ng
                 </h6>
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
