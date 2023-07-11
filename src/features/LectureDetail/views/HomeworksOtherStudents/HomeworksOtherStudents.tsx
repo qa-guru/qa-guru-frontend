@@ -24,6 +24,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
     fetchMore({
       variables: {
         offset: items?.length,
+        limit: 3,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
@@ -66,7 +67,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
         })}
       </Stack>
       {hasMoreHomeworks && (
-        <Stack mt="15px">
+        <Stack mt="5px">
           <LoadingButton
             loading={loading}
             onClick={handleLoadMore}

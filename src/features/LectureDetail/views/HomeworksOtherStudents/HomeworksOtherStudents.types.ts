@@ -8,7 +8,7 @@ import {
 export interface IHomeworksOtherStudents {
   data: HomeWorksByLectureIdQuery;
   fetchMore: (options: {
-    variables: { offset?: number };
+    variables: { offset?: number; limit?: number };
     updateQuery: (
       prev: HomeWorksByLectureIdQuery,
       {

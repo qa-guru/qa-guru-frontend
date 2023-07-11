@@ -234,10 +234,10 @@ exports[`HomeworksOtherStudents > the component is render 1`] = `
     </div>
   </div>
   <div
-    class="MuiStack-root css-1sxz4pq-MuiStack-root"
+    class="MuiStack-root css-1inmmz-MuiStack-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-6zzab1-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-m0rdlc-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
       id=":r0:"
       tabindex="0"
       type="button"
