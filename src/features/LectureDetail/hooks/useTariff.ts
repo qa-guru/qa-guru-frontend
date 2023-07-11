@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTrainingPurchasesQuery } from "../../../api/graphql/trainingPurchase/trainingPurchases";
+import { useTrainingPurchasesQuery } from "../../../api/graphql/generated/graphql";
 
 interface ITariffHook {
   trainingId?: string;

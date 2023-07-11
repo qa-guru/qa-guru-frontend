@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useModal } from "react-modal-hook";
 import { Button, Dialog, DialogContent, Paper, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IHomework } from "./Homework.types";
 import { style } from "./styles";
 import Comments from "../../containers/Comments";
@@ -13,11 +14,14 @@ import HomeworkItem from "../HomeworkItem";
 const Homework: React.FC<IHomework> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;
   const lectureId = useContext(LectureIdContext);
+  const { modalId } = useParams<{ modalId: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={hideModal} maxWidth="xl" fullWidth>
+    <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
       <DialogContent sx={style.scrollContainer} id="scroll-container">
-        <ClearIcon sx={style.clearIcon} onClick={hideModal} />
+        <ClearIcon sx={style.clearIcon} onClick={hideModalAndUpdateUrl} />
         <Box pt={{ xs: "16px", sm: "0" }}>
           <LectureIdContext.Provider value={lectureId}>
             <HomeworkItem
@@ -33,6 +37,24 @@ const Homework: React.FC<IHomework> = (props) => {
     </Dialog>
   ));
 
+  useEffect(() => {
+    if (modalId === dataHomeWorkByLecture?.id) {
+      showModal();
+    }
+  }, [modalId, showModal, dataHomeWorkByLecture?.id]);
+
+  const showModalAndSetUrl = () => {
+    showModal();
+    navigate(`${location.pathname}/${dataHomeWorkByLecture?.id}`);
+  };
+
+  const hideModalAndUpdateUrl = () => {
+    hideModal();
+    navigate(location.pathname.replace(`/${dataHomeWorkByLecture?.id}`, ""), {
+      replace: true,
+    });
+  };
+
   return (
     <Paper sx={style.paper}>
       <HomeworkItem
@@ -45,7 +67,11 @@ const Homework: React.FC<IHomework> = (props) => {
             <CommentsLimited />
           </Comments>
           <Box mt={2}>
-            <Button sx={style.button} variant="contained" onClick={showModal}>
+            <Button
+              sx={style.button}
+              variant="contained"
+              onClick={showModalAndSetUrl}
+            >
               Показать другие комментарии
             </Button>
           </Box>

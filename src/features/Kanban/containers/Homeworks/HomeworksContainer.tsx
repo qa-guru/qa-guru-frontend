@@ -1,9 +1,9 @@
 import React, { useContext, useMemo } from "react";
-import { useHomeWorksQuery } from "../../../../api/graphql/homework/homeWorks";
 import {
   Order,
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
+  useHomeWorksQuery,
   useUserQuery,
 } from "../../../../api/graphql/generated/graphql";
 import Spinner from "../../../../shared/Spinner";

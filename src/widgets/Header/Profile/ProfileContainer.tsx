@@ -1,8 +1,8 @@
 import React from "react";
 import Profile from "./Profile";
-import { useUserQuery } from "../../../api/graphql/user/user";
 import Spinner from "../../../shared/Spinner";
 import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
+import { useUserQuery } from "../../../api/graphql/generated/graphql";
 
 const ProfileContainer: React.FC = () => {
   const { loading, data } = useUserQuery();

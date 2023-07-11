@@ -1,14 +1,14 @@
 import React from "react";
 import { ICommentsContainer } from "./CommentsContainer.types";
-import { useCommentsHomeWorkByHomeWorkQuery } from "../../../../api/graphql/homeworkComment/commentsHomeWorkByHomeWork";
 import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 import SkeletonComment from "../../../../shared/Skeletons/SkeletonComment";
 import {
   CommentHomeWorkSortField,
   InputMaybe,
   Order,
+  useCommentsHomeWorkByHomeWorkQuery,
+  useUserIdQuery,
 } from "../../../../api/graphql/generated/graphql";
-import { useUserIdQuery } from "../../../../api/graphql/user/userId";
 
 const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();

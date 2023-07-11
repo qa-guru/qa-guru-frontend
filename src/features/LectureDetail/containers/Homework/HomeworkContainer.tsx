@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import Homework from "../../views/Homework";
-import { useHomeWorkByLectureQuery } from "../../../../api/graphql/generated/graphql";
+import {
+  useHomeWorkByLectureQuery,
+  useUserIdQuery,
+} from "../../../../api/graphql/generated/graphql";
 import { LectureIdContext } from "../../context/LectureIdContext";
-import { useUserIdQuery } from "../../../../api/graphql/user/userId";
 import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 import Spinner from "../../../../shared/Spinner";
 

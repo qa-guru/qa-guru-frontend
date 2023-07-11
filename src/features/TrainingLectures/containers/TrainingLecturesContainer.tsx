@@ -1,10 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import TrainingLectures from "../views/TrainingLectures";
-import { useTrainingLecturesQuery } from "../../../api/graphql/trainingLecture/trainingLectures";
 import Spinner from "../../../shared/Spinner";
 import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
-import { useTrainingQuery } from "../../../api/graphql/training/training";
+import {
+  useTrainingLecturesQuery,
+  useTrainingQuery,
+} from "../../../api/graphql/generated/graphql";
 
 const TrainingLecturesContainer: React.FC = () => {
   const { trainingId } = useParams();
