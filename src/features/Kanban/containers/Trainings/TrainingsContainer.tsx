@@ -1,9 +1,9 @@
 import React from "react";
 import { ITrainingsContainer } from "./TrainingsContainer.types";
-import { useTrainingsQuery } from "../../../../api/graphql/training/trainings";
 import {
   Order,
   TrainingSortField,
+  useTrainingsQuery,
 } from "../../../../api/graphql/generated/graphql";
 import TrainingSelection from "../../views/Form/TrainingSelection";
 

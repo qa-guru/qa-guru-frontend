@@ -1,7 +1,7 @@
 import React from "react";
 import { IUpdateCommentContainer } from "./UpdateCommentContainer.types";
 import UpdateComment from "../../views/UpdateComment";
-import { useUpdateCommentMutation } from "../../../../api/graphql/homeworkComment/updateComment";
+import { useUpdateCommentMutation } from "../../../../api/graphql/generated/graphql";
 
 const UpdateCommentContainer: React.FC<IUpdateCommentContainer> = (props) => {
   const { id, setSelectedIndex, content } = props;

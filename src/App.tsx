@@ -5,10 +5,10 @@ import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
 import useAuth from "./features/Authorization/hooks/useAuth";
-import { useUserQuery } from "./api/graphql/user/user";
 import Spinner from "./shared/Spinner";
 import { createCustomTheme } from "./theme";
 import useSettings from "./hooks/useSettings";
+import { useUserQuery } from "./api/graphql/generated/graphql";
 
 const AuthRoutes = lazy(() => import("./routes/AuthRoutes"));
 const AppRoutes = lazy(() => import("./routes/AppRoutes"));

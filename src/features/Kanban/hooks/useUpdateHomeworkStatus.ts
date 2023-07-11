@@ -1,10 +1,10 @@
-import { useTakeForReviewMutation } from "../../../api/graphql/homework/takeForReview";
-import { useApprovedMutation } from "../../../api/graphql/homework/approved";
-import { useNotApprovedMutation } from "../../../api/graphql/homework/notApproved";
 import {
   ApprovedHomeworkFragmentDoc,
   NewTakeForReviewHomeWorkFragmentDoc,
   NotApprovedHomeworkFragmentDoc,
+  useApprovedMutation,
+  useNotApprovedMutation,
+  useTakeForReviewMutation,
 } from "../../../api/graphql/generated/graphql";
 
 type HomeWorkItem = {

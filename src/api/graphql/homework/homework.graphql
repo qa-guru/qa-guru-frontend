@@ -1,0 +1,26 @@
+query homeWork($homeWorkId: ID!) {
+  homeWork(id: $homeWorkId) {
+    id
+    lecture {
+      id
+      subject
+    }
+    answer
+    status
+    student {
+      id
+      firstName
+      middleName
+      lastName
+    }
+    mentor {
+      id
+      firstName
+      middleName
+      lastName
+    }
+    creationDate
+    startCheckingDate
+    endCheckingDate
+  }
+}

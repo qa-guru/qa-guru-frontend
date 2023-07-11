@@ -4,12 +4,12 @@ import {
   InputMaybe,
   Order,
   StudentHomeWorkSortField,
+  useHomeWorksByLectureIdQuery,
+  useUserIdQuery,
 } from "../../../../api/graphql/generated/graphql";
-import { useUserIdQuery } from "../../../../api/graphql/user/userId";
 import HomeworksOtherStudents from "../../views/HomeworksOtherStudents";
 import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 import Spinner from "../../../../shared/Spinner";
-import { useHomeWorksByLectureIdQuery } from "../../../../api/graphql/homework/homeWorksByLectureId";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();
@@ -23,7 +23,7 @@ const HomeworksOtherStudentsContainer: React.FC = () => {
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
       offset: 0,
-      limit: 2,
+      limit: 3,
       sort: sortOptions,
       lectureId: lectureId!,
     },
