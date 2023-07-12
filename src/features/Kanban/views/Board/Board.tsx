@@ -125,7 +125,11 @@ const Board: React.FC<IBoard> = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Stack direction="row" mt="15px">
+      <Stack
+        direction="row"
+        mt="15px"
+        sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}
+      >
         {columns?.map((column, index) => (
           <Column
             draggingState={draggingState}

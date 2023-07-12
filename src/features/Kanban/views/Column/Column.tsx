@@ -111,7 +111,14 @@ const Column: React.FC<IColumn> = ({
   }, [column.cards?.length]);
 
   return (
-    <Box width="25%" flexGrow="1" display="flex" flexDirection="column">
+    <Box
+      width={"25%"}
+      minWidth={{ xs: "93vw", md: "25%" }}
+      flexGrow="1"
+      display="flex"
+      flexDirection="column"
+      sx={{ scrollSnapAlign: "start" }}
+    >
       <Typography variant="h6" ml={1} mt={1.5}>
         {column.title}
       </Typography>
