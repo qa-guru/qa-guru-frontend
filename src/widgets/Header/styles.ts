@@ -11,6 +11,7 @@ export const style = {
   },
   header: {
     marginBottom: "30px",
+    alignItems: "center",
   },
   paper: { borderRadius: 0 },
   box: { display: "flex", alignItems: "center" },
