@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Stack, useMediaQuery, useTheme } from "@mui/material";
+import { Stack } from "@mui/material";
 import { IBoard } from "./Board.types";
 import Column from "../Column/Column";
 import {
@@ -34,8 +34,6 @@ const Board: React.FC<IBoard> = ({
     fromNotApproved: false,
   });
   const [columns, setColumns] = useState<IColumnItem[]>([]);
-  const theme = useTheme();
-  const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     setColumns([
@@ -125,12 +123,6 @@ const Board: React.FC<IBoard> = ({
     [updateStatus]
   );
 
-  const filteredColumns = useMemo(() => {
-    return columns.filter((column) => {
-      return !isMdDown || column.cards.length > 0;
-    });
-  }, [columns, isMdDown]);
-
   return (
     <DndProvider backend={HTML5Backend}>
       <Stack
@@ -138,7 +130,7 @@ const Board: React.FC<IBoard> = ({
         mt="15px"
         sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}
       >
-        {filteredColumns.map((column, index) => (
+        {columns.map((column, index) => (
           <Column
             draggingState={draggingState}
             setDraggingState={setDraggingState}

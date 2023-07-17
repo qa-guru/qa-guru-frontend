@@ -6,7 +6,7 @@ exports[`Board > Board is render 1`] = `
     class="MuiStack-root css-s0u10c-MuiStack-root"
   >
     <div
-      class="MuiBox-root css-vvkqgl"
+      class="MuiBox-root css-7j5mo1"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -62,7 +62,7 @@ exports[`Board > Board is render 1`] = `
       </button>
     </div>
     <div
-      class="MuiBox-root css-vvkqgl"
+      class="MuiBox-root css-7j5mo1"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -118,7 +118,7 @@ exports[`Board > Board is render 1`] = `
       </button>
     </div>
     <div
-      class="MuiBox-root css-vvkqgl"
+      class="MuiBox-root css-7j5mo1"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -261,7 +261,7 @@ exports[`Board > Board is render 1`] = `
       </button>
     </div>
     <div
-      class="MuiBox-root css-vvkqgl"
+      class="MuiBox-root css-7j5mo1"
     >
       <h6
         class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
