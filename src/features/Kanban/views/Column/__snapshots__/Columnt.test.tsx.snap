@@ -3,7 +3,7 @@
 exports[`Column > items is false 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-1gbmj4h"
+    class="MuiBox-root css-vvkqgl"
   >
     <h6
       class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -261,7 +261,7 @@ exports[`Column > items is false 1`] = `
 exports[`Column > items is true 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-1gbmj4h"
+    class="MuiBox-root css-vvkqgl"
   >
     <h6
       class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"

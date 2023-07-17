@@ -113,7 +113,7 @@ const Column: React.FC<IColumn> = ({
   return (
     <Box
       width={"25%"}
-      minWidth={{ xs: "93vw", md: "25%" }}
+      minWidth={{ xs: "92vw", md: "25%" }}
       flexGrow="1"
       display="flex"
       flexDirection="column"

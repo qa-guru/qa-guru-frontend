@@ -48,7 +48,7 @@ const Form: React.FC = () => {
     <form>
       <Grid
         container
-        spacing={1}
+        spacing={{ xs: 1.5, lg: 1 }}
         alignItems="center"
         justifyContent="space-around"
       >

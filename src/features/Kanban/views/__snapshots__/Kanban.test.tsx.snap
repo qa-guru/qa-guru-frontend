@@ -4,7 +4,7 @@ exports[`Kanban > Kanban is render 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 css-16w6dmw-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1.5 MuiGrid-spacing-lg-1 css-fmu3qo-MuiGrid-root"
     >
       <div
         class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-1.9 MuiGrid-grid-lg-2 css-85swxc-MuiGrid-root"
