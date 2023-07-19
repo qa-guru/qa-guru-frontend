@@ -24,6 +24,7 @@ const Column: React.FC<IColumn> = ({
   draggingState,
   setDraggingState,
   fetchMore,
+  onCardClick,
 }) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -148,6 +149,7 @@ const Column: React.FC<IColumn> = ({
               sourceColumnId={column.id}
               setDraggingState={setDraggingState}
               isCardsHidden={isColumnHighlight(column.id, draggingState)}
+              onCardClick={() => onCardClick(card)}
             />
           ))}
         </InfiniteScroll>
