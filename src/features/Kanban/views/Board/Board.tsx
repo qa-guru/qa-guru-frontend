@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Grid, Stack } from "@mui/material";
+import { Grid, Hidden, Stack } from "@mui/material";
 import { IBoard } from "./Board.types";
 import Column from "../Column/Column";
 import {
@@ -157,14 +157,20 @@ const Board: React.FC<IBoard> = ({
             ))}
           </Stack>
         </Grid>
-        {showHomeworkDetails && selectedCard && (
-          <Grid item ml={3} sx={{ flex: "1 0 0", backgroundColor: grey.light }}>
-            <HomeworkDetails
-              card={selectedCard}
-              onClose={handleHomeworkDetailsClose}
-            />
-          </Grid>
-        )}
+        <Hidden mdDown>
+          {showHomeworkDetails && selectedCard && (
+            <Grid
+              item
+              ml={3}
+              sx={{ flex: "1 0 0", backgroundColor: grey.light }}
+            >
+              <HomeworkDetails
+                card={selectedCard}
+                onClose={handleHomeworkDetailsClose}
+              />
+            </Grid>
+          )}
+        </Hidden>
       </Grid>
     </DndProvider>
   );
