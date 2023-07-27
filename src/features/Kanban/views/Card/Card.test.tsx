@@ -17,6 +17,7 @@ describe("Card", () => {
               sourceColumnId="column-1"
               setDraggingState={() => {}}
               isCardsHidden={false}
+              onCardClick={() => {}}
             />
           </MemoryRouter>
         </DndProvider>
@@ -34,6 +35,7 @@ describe("Card", () => {
               sourceColumnId="column-1"
               setDraggingState={() => {}}
               isCardsHidden={true}
+              onCardClick={() => {}}
             />
           </MemoryRouter>
         </DndProvider>
