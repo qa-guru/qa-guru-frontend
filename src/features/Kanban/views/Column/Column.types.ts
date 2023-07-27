@@ -43,4 +43,5 @@ export interface IColumn {
     sourceColumnId: string,
     targetColumnId: string
   ) => void;
+  // isXsOrSmOrMd: boolean;
 }

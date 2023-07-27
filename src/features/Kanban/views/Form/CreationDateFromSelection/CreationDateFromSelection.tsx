@@ -9,7 +9,7 @@ const CreationDateFromSelection: React.FC<ICreationDateFromSelection> = ({
     <RHF.InputDatePicker
       control={control}
       name="creationDateFrom"
-      label="Выберите дату от"
+      label="Созданные от"
     />
   );
 };

@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Stack } from "@mui/material";
+import { Box, useMediaQuery, Pagination, Stack } from "@mui/material";
+import { useTheme } from "@mui/system";
+import SwipeableViews from "react-swipeable-views";
 import { IBoard } from "./Board.types";
 import Column from "../Column/Column";
 import {
@@ -34,6 +36,8 @@ const Board: React.FC<IBoard> = ({
     fromNotApproved: false,
   });
   const [columns, setColumns] = useState<IColumnItem[]>([]);
+  const theme = useTheme();
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     setColumns([
@@ -123,24 +127,59 @@ const Board: React.FC<IBoard> = ({
     [updateStatus]
   );
 
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
-      <Stack
-        direction="row"
-        mt="15px"
-        sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}
-      >
-        {columns.map((column, index) => (
-          <Column
-            draggingState={draggingState}
-            setDraggingState={setDraggingState}
-            key={column.id}
-            column={column}
-            onCardDrop={moveCard}
-            fetchMore={fetchMoreFunctions[index]}
-          />
-        ))}
-      </Stack>
+      {isDownMd ? (
+        <Box mt="15px">
+          <Box display="flex" justifyContent="center">
+            <Pagination
+              count={columns.length}
+              page={activeStep + 1}
+              onChange={(event, step) => handleStepChange(step - 1)}
+              color={"primary"}
+              hidePrevButton
+              hideNextButton
+            />
+          </Box>
+          <Box sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}>
+            <SwipeableViews index={activeStep} onChangeIndex={handleStepChange}>
+              {columns.map((column, index) => (
+                <Column
+                  draggingState={draggingState}
+                  setDraggingState={setDraggingState}
+                  key={column.id}
+                  column={column}
+                  onCardDrop={moveCard}
+                  fetchMore={fetchMoreFunctions[index]}
+                />
+              ))}
+            </SwipeableViews>
+          </Box>
+        </Box>
+      ) : (
+        <Stack
+          direction="row"
+          mt="15px"
+          sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}
+        >
+          {columns.map((column, index) => (
+            <Column
+              draggingState={draggingState}
+              setDraggingState={setDraggingState}
+              key={column.id}
+              column={column}
+              onCardDrop={moveCard}
+              fetchMore={fetchMoreFunctions[index]}
+            />
+          ))}
+        </Stack>
+      )}
     </DndProvider>
   );
 };
