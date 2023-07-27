@@ -1,12 +1,10 @@
 import React from "react";
 import { Backdrop, CircularProgress } from "@mui/material";
+import { style } from "./styles";
 
 const BackdropSpinner: React.FC = () => {
   return (
-    <Backdrop
-      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={true}
-    >
+    <Backdrop sx={style.backdrop} open={true}>
       <CircularProgress color="inherit" />
     </Backdrop>
   );

@@ -1,22 +1,10 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 import BlurredComponent from "./BlurredComponent";
+import { style } from "./styles";
 import LectureHomework from "../../features/LectureDetail/views/LectureHomework";
 import Homework from "../../features/LectureDetail/containers/Homework";
-import { primary } from "../../theme/colors";
 import { lectureHomework } from "../mocks/lectureHomework.mock";
-
-const style = {
-  button: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    cursor: "default",
-    borderRadius: "7px",
-    "&:hover": { backgroundColor: primary.main },
-  },
-};
 
 const BlurredHomework: React.FC = () => {
   return (

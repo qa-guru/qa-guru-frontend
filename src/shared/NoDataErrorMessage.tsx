@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import { useModal } from "react-modal-hook";
 import { Backdrop, Box, Dialog, DialogTitle } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
-
-const style = {
-  icon: { display: "flex", justifyContent: "center", pb: "20px" },
-};
+import { style } from "./styles";
 
 const NoDataErrorMessage: React.FC = () => {
   const [showModal] = useModal(({ in: open }) => (
@@ -25,12 +22,7 @@ const NoDataErrorMessage: React.FC = () => {
     showModal();
   }, [showModal]);
 
-  return (
-    <Backdrop
-      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      open={true}
-    ></Backdrop>
-  );
+  return <Backdrop sx={style.backdropError} open={true} />;
 };
 
 export default NoDataErrorMessage;

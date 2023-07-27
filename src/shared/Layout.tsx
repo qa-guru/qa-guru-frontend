@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Box, Container } from "@mui/material";
+import { style } from "./styles";
 import Header from "../widgets/Header";
 import { UserRole } from "../api/graphql/generated/graphql";
 // import Footer from "../widgets/Footer";
@@ -8,17 +9,6 @@ import { UserRole } from "../api/graphql/generated/graphql";
 interface LayoutProps {
   userRoles: Array<UserRole | null>;
 }
-
-const style = {
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "100vh",
-  },
-  content: {
-    flexGrow: 1,
-  },
-};
 
 const Layout: React.FC<LayoutProps> = ({ userRoles }) => {
   return (

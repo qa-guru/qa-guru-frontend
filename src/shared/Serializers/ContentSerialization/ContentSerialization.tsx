@@ -1,23 +1,8 @@
 import React from "react";
 import { Box, Link, Typography } from "@mui/material";
 import { IContentSerialization } from "./ContentSerialization.types";
+import { style } from "./styles";
 import TextSerialization from "../TextSerialization";
-
-const style = {
-  box: {
-    overflow: "hidden",
-    paddingBottom: "40.25%",
-    position: "relative",
-    height: 0,
-  },
-  iframe: {
-    left: 0,
-    top: 0,
-    height: "100%",
-    width: "70%",
-    position: "absolute",
-  },
-};
 
 const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
   return (
