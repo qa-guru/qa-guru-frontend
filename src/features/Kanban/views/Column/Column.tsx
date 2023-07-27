@@ -70,6 +70,16 @@ const Column: React.FC<IColumn> = ({
       );
       droppedItem.current = null;
       hideModal();
+
+      const containerElement = document.getElementById(
+        `scroll-container-${column.id}`
+      );
+      if (containerElement) {
+        containerElement.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
