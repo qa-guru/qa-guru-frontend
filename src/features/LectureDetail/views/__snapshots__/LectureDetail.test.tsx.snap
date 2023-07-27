@@ -179,8 +179,7 @@ exports[`LectureDetail > hasHomework is false 1`] = `
         class="MuiBox-root css-pxpt32"
       >
         <div
-          class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
-          style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+          class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
         >
           <span
             class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
@@ -388,8 +387,7 @@ exports[`LectureDetail > hasHomework is true 1`] = `
     </div>
   </div>
   <div
-    class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
-    style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+    class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
   >
     <span
       class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
@@ -412,8 +410,7 @@ exports[`LectureDetail > hasHomework is true 1`] = `
     </span>
   </div>
   <div
-    class="MuiGrid-root MuiGrid-container css-1hbmzt3-MuiGrid-root"
-    style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 1000;"
+    class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
   >
     <span
       class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
