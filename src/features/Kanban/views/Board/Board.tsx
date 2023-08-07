@@ -142,7 +142,8 @@ const Board: React.FC<IBoard> = ({
               count={columns.length}
               page={activeStep + 1}
               onChange={(event, step) => handleStepChange(step - 1)}
-              color={"primary"}
+              color="primary"
+              size="small"
               hidePrevButton
               hideNextButton
             />

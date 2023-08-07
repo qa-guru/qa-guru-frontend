@@ -3,7 +3,7 @@ import { Theme } from "@mui/material";
 
 const components = (theme: Theme) => {
   // @ts-ignore
-  const { white, primary } = theme.palette;
+  const { white, primary, secondary } = theme.palette;
   return {
     MuiCssBaseline: {
       styleOverrides: {
@@ -84,6 +84,21 @@ const components = (theme: Theme) => {
             "& .MuiOutlinedInput-root": {
               padding: "5px",
             },
+          },
+        },
+      },
+    },
+    MuiPagination: {
+      styleOverrides: {
+        root: {
+          "& .MuiPaginationItem-root": {
+            margin: "0 6px",
+            backgroundColor: secondary.main,
+            color: secondary.main,
+          },
+          "& .MuiPaginationItem-root.Mui-selected": {
+            backgroundColor: primary.main,
+            color: primary.main,
           },
         },
       },
