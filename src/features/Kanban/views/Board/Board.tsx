@@ -1,7 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Box, useMediaQuery, Pagination, Stack } from "@mui/material";
+import {
+  Box,
+  useMediaQuery,
+  Pagination,
+  Stack,
+  Grid,
+  Hidden,
+} from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
 import { IBoard } from "./Board.types";
@@ -13,6 +20,8 @@ import {
 import useUpdateHomeworkStatus from "../../hooks/useUpdateHomeworkStatus";
 import { createColumnItem } from "../../helpers/createColumnItem";
 import { IColumnItem } from "../Column/Column.types";
+import HomeworkDetails from "../Menu/HomeworkDetails";
+import { grey } from "../../../../theme/colors";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -38,6 +47,10 @@ const Board: React.FC<IBoard> = ({
   const [columns, setColumns] = useState<IColumnItem[]>([]);
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
+    null
+  );
 
   useEffect(() => {
     setColumns([
@@ -133,6 +146,16 @@ const Board: React.FC<IBoard> = ({
     setActiveStep(step);
   };
 
+  const handleCardClick = (card: StudentHomeWorkDto) => {
+    setSelectedCard(card);
+    setShowHomeworkDetails(true);
+  };
+
+  const handleHomeworkDetailsClose = () => {
+    setSelectedCard(null);
+    setShowHomeworkDetails(false);
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       {isDownMd ? (
@@ -158,24 +181,44 @@ const Board: React.FC<IBoard> = ({
                   column={column}
                   onCardDrop={moveCard}
                   fetchMore={fetchMoreFunctions[index]}
+                  onCardClick={handleCardClick}
                 />
               ))}
             </SwipeableViews>
           </Box>
         </Box>
       ) : (
-        <Stack direction="row" mt="15px">
-          {columns.map((column, index) => (
-            <Column
-              draggingState={draggingState}
-              setDraggingState={setDraggingState}
-              key={column.id}
-              column={column}
-              onCardDrop={moveCard}
-              fetchMore={fetchMoreFunctions[index]}
-            />
-          ))}
-        </Stack>
+        <Grid container mt={3}>
+          <Grid item style={{ flex: showHomeworkDetails ? "2 0 0" : "1 0 0" }}>
+            <Stack direction="row" spacing={2}>
+              {columns?.map((column, index) => (
+                <Column
+                  draggingState={draggingState}
+                  setDraggingState={setDraggingState}
+                  key={column.id}
+                  column={column}
+                  onCardDrop={moveCard}
+                  fetchMore={fetchMoreFunctions[index]}
+                  onCardClick={handleCardClick}
+                />
+              ))}
+            </Stack>
+          </Grid>
+          <Hidden mdDown>
+            {showHomeworkDetails && selectedCard && (
+              <Grid
+                item
+                ml={3}
+                sx={{ flex: "1 0 0", backgroundColor: grey.light }}
+              >
+                <HomeworkDetails
+                  card={selectedCard}
+                  onClose={handleHomeworkDetailsClose}
+                />
+              </Grid>
+            )}
+          </Hidden>
+        </Grid>
       )}
     </DndProvider>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import { IMentorsContainer } from "./MentorsContainer.types";
-import { useMentorsQuery } from "../../../../api/graphql/user/mentors";
 import {
   Order,
+  useMentorsQuery,
   UserSortField,
 } from "../../../../api/graphql/generated/graphql";
 import MentorSelection from "../../views/Form/MentorSelection";

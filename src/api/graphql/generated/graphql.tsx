@@ -368,8 +368,9 @@ export enum Order {
 /** Query root */
 export type Query = {
   __typename?: "Query";
-  /** commentHomeWork section */
   commentsHomeWorkByHomeWork?: Maybe<CommentHomeWorksDto>;
+  /** commentHomeWork section */
+  commentsHomeWorkById?: Maybe<CommentHomeWorksDto>;
   /** studentHomeWork section */
   homeWork?: Maybe<StudentHomeWorkDto>;
   homeWorkByLecture?: Maybe<StudentHomeWorkDto>;
@@ -408,6 +409,11 @@ export type QueryCommentsHomeWorkByHomeWorkArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<CommentHomeWorkSort>;
+};
+
+/** Query root */
+export type QueryCommentsHomeWorkByIdArgs = {
+  id: Scalars["ID"];
 };
 
 /** Query root */
@@ -900,6 +906,42 @@ export type HomeWorksByLectureIdQuery = {
         lastName?: string | null;
       } | null;
     } | null> | null;
+  } | null;
+};
+
+export type HomeWorkQueryVariables = Exact<{
+  homeWorkId: Scalars["ID"];
+}>;
+
+export type HomeWorkQuery = {
+  __typename?: "Query";
+  homeWork?: {
+    __typename?: "StudentHomeWorkDto";
+    id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    creationDate?: any | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
   } | null;
 };
 
@@ -1936,6 +1978,95 @@ export type HomeWorksByLectureIdLazyQueryHookResult = ReturnType<
 export type HomeWorksByLectureIdQueryResult = Apollo.QueryResult<
   HomeWorksByLectureIdQuery,
   HomeWorksByLectureIdQueryVariables
+>;
+export const HomeWorkDocument = gql`
+  query homeWork($homeWorkId: ID!) {
+    homeWork(id: $homeWorkId) {
+      id
+      lecture {
+        id
+        subject
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      startCheckingDate
+      endCheckingDate
+    }
+  }
+`;
+export type HomeWorkComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    HomeWorkQuery,
+    HomeWorkQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: HomeWorkQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const HomeWorkComponent = (props: HomeWorkComponentProps) => (
+  <ApolloReactComponents.Query<HomeWorkQuery, HomeWorkQueryVariables>
+    query={HomeWorkDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useHomeWorkQuery__
+ *
+ * To run a query within a React component, call `useHomeWorkQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomeWorkQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHomeWorkQuery({
+ *   variables: {
+ *      homeWorkId: // value for 'homeWorkId'
+ *   },
+ * });
+ */
+export function useHomeWorkQuery(
+  baseOptions: Apollo.QueryHookOptions<HomeWorkQuery, HomeWorkQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<HomeWorkQuery, HomeWorkQueryVariables>(
+    HomeWorkDocument,
+    options
+  );
+}
+export function useHomeWorkLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HomeWorkQuery,
+    HomeWorkQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<HomeWorkQuery, HomeWorkQueryVariables>(
+    HomeWorkDocument,
+    options
+  );
+}
+export type HomeWorkQueryHookResult = ReturnType<typeof useHomeWorkQuery>;
+export type HomeWorkLazyQueryHookResult = ReturnType<
+  typeof useHomeWorkLazyQuery
+>;
+export type HomeWorkQueryResult = Apollo.QueryResult<
+  HomeWorkQuery,
+  HomeWorkQueryVariables
 >;
 export const HomeWorksDocument = gql`
   query homeWorks(

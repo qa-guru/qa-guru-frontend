@@ -15,7 +15,7 @@ const StudentRoutes: React.ReactNode[] = [
   />,
   <Route
     key="lecture"
-    path="/training/:trainingId/:lectureId"
+    path="/training/:trainingId/:lectureId/:modalId?"
     element={<Lecture />}
   />,
 ];

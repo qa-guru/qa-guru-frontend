@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { ITrainingLecturesContainer } from "./TrainingLecturesContainer.types";
-import { useTrainingLecturesQuery } from "../../../../api/graphql/trainingLecture/trainingLectures";
 import LectureSelection from "../../views/Form/LectureSelection";
 import { KanbanContext } from "../../context/KanbanContext";
+import { useTrainingLecturesQuery } from "../../../../api/graphql/generated/graphql";
 
 const TrainingLecturesContainer: React.FC<ITrainingLecturesContainer> = ({
   control,

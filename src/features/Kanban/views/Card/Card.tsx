@@ -10,12 +10,14 @@ import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.
 import UserRow from "../UserRow";
 import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
 import { useUserContext } from "../../context/UserContext";
+import { getFormattedId } from "../../helpers/getFormattedId";
 
 const Card: React.FC<ICard> = ({
   card,
   sourceColumnId,
   setDraggingState,
   isCardsHidden,
+  onCardClick,
 }) => {
   const { userId, userRoles } = useUserContext();
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
@@ -98,12 +100,21 @@ const Card: React.FC<ICard> = ({
     { marginBottom: 2 },
   ];
 
+  const handleCardClick = () => {
+    onCardClick();
+  };
+
   return (
-    <Paper ref={dragRef} sx={paperStyles} elevation={4}>
+    <Paper
+      ref={dragRef}
+      sx={paperStyles}
+      onClick={handleCardClick}
+      elevation={4}
+    >
       <Grid container>
         <Grid item sx={styles.cardHeader}>
           <Typography textTransform="uppercase" variant="subtitle2">
-            {card.id}
+            {getFormattedId(card.id!)}
           </Typography>
           <Typography variant="body2">
             {card.creationDate &&

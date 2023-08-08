@@ -2,11 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import LectureDetail from "../../views";
 import Spinner from "../../../../shared/Spinner";
-import { useLectureQuery } from "../../../../api/graphql/lecture/lecture";
 import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
 import useTariff from "../../hooks/useTariff";
 import { LectureIdContext } from "../../context/LectureIdContext";
-import { useLectureHomeWorkQuery } from "../../../../api/graphql/lecture/lectureHomeWork";
+import {
+  useLectureHomeWorkQuery,
+  useLectureQuery,
+} from "../../../../api/graphql/generated/graphql";
 
 const LectureDetailContainer: React.FC = () => {
   const { lectureId, trainingId } = useParams();

@@ -1,10 +1,10 @@
 import React from "react";
 import { ISendCommentContainer } from "./SendCommentContainer.types";
 import SendComment from "../../views/SendComment";
-import { useSendCommentMutation } from "../../../../api/graphql/homeworkComment/sendComment";
 import {
   CommentsHomeWorkByHomeWorkDocument,
   CommentsHomeWorkByHomeWorkQuery,
+  useSendCommentMutation,
 } from "../../../../api/graphql/generated/graphql";
 
 const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {

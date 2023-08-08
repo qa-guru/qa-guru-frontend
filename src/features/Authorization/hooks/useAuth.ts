@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useCreateUserMutation } from "../../../api/graphql/user/createUser";
 import AuthService from "../../../api/rest/authService";
 import { client } from "../../../api";
-import { UserCreateInput } from "../../../api/graphql/generated/graphql";
+import {
+  useCreateUserMutation,
+  UserCreateInput,
+} from "../../../api/graphql/generated/graphql";
 
 const useAuth = () => {
   const [createUser] = useCreateUserMutation();

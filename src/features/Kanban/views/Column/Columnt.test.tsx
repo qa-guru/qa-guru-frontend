@@ -22,6 +22,7 @@ describe("Column", () => {
               }}
               setDraggingState={() => {}}
               fetchMore={() => {}}
+              onCardClick={() => {}}
             />
           </MemoryRouter>
         </DndProvider>
@@ -44,6 +45,7 @@ describe("Column", () => {
               }}
               setDraggingState={() => {}}
               fetchMore={() => {}}
+              onCardClick={() => {}}
             />
           </MemoryRouter>
         </DndProvider>

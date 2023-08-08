@@ -14,7 +14,7 @@ const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
       <Typography mb="20px" variant="h4">
         {name}
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} mb={3}>
         {trainingLectures?.map((item, index) => {
           const { id, subject, description } = item!.lecture!;
 

@@ -1,8 +1,8 @@
 import React from "react";
 import TrainingPurchases from "../views/TrainingPurchases";
 import Spinner from "../../../shared/Spinner";
-import { useTrainingPurchasesQuery } from "../../../api/graphql/trainingPurchase/trainingPurchases";
 import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
+import { useTrainingPurchasesQuery } from "../../../api/graphql/generated/graphql";
 
 const TrainingPurchasesContainer: React.FC = () => {
   const { data, loading } = useTrainingPurchasesQuery();

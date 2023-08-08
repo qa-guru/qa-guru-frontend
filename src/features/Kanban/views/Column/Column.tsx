@@ -24,6 +24,7 @@ const Column: React.FC<IColumn> = ({
   draggingState,
   setDraggingState,
   fetchMore,
+  onCardClick,
 }) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -69,6 +70,16 @@ const Column: React.FC<IColumn> = ({
       );
       droppedItem.current = null;
       hideModal();
+
+      const containerElement = document.getElementById(
+        `scroll-container-${column.id}`
+      );
+      if (containerElement) {
+        containerElement.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
@@ -156,6 +167,7 @@ const Column: React.FC<IColumn> = ({
               sourceColumnId={column.id}
               setDraggingState={setDraggingState}
               isCardsHidden={isColumnHighlight(column.id, draggingState)}
+              onCardClick={() => onCardClick(card)}
             />
           ))}
         </InfiniteScroll>
