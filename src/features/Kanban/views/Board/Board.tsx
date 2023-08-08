@@ -164,11 +164,7 @@ const Board: React.FC<IBoard> = ({
           </Box>
         </Box>
       ) : (
-        <Stack
-          direction="row"
-          mt="15px"
-          sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}
-        >
+        <Stack direction="row" mt="15px">
           {columns.map((column, index) => (
             <Column
               draggingState={draggingState}
