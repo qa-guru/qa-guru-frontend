@@ -117,7 +117,6 @@ const Column: React.FC<IColumn> = ({
       flexGrow="1"
       display="flex"
       flexDirection="column"
-      sx={{ scrollSnapAlign: "start" }}
     >
       <Typography variant="h6" ml={1} mt={1.5}>
         {column.title}
