@@ -4,7 +4,7 @@ import { Grid, Paper, Stack, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { useSnackbar } from "notistack";
 import { ICard } from "./Card.types";
-import { styles } from "./styles";
+import { style } from "./styles";
 import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
 import UserRow from "../UserRow";
@@ -94,14 +94,14 @@ const Card: React.FC<ICard> = ({
   }, [handleDragEffect]);
 
   const paperStyles = [
-    styles.paper,
-    isDragging && styles.draggedPaper,
-    isCardsHidden && !isDragging && styles.hiddenPaper,
+    style.paper,
+    isDragging && style.draggedPaper,
+    isCardsHidden && !isDragging && style.hiddenPaper,
     { marginBottom: 2 },
   ];
 
   const handleCardClick = () => {
-    onCardClick();
+    onCardClick!();
   };
 
   return (
@@ -112,7 +112,7 @@ const Card: React.FC<ICard> = ({
       elevation={4}
     >
       <Grid container>
-        <Grid item sx={styles.cardHeader}>
+        <Grid item sx={style.cardHeader}>
           <Typography textTransform="uppercase" variant="subtitle2">
             {getFormattedId(card.id!)}
           </Typography>

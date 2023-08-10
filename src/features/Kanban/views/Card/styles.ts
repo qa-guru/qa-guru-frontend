@@ -1,6 +1,6 @@
 import { grey, white } from "../../../../theme/colors";
 
-export const styles = {
+export const style = {
   paper: {
     backgroundColor: white,
     cursor: "grab",

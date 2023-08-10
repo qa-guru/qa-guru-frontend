@@ -123,8 +123,7 @@ const Column: React.FC<IColumn> = ({
 
   return (
     <Box
-      width={"25%"}
-      minWidth={{ xs: "100%", md: "25%" }}
+      width={{ xs: "100%", md: "25%" }}
       flexGrow="1"
       display="flex"
       flexDirection="column"
@@ -167,7 +166,7 @@ const Column: React.FC<IColumn> = ({
               sourceColumnId={column.id}
               setDraggingState={setDraggingState}
               isCardsHidden={isColumnHighlight(column.id, draggingState)}
-              onCardClick={() => onCardClick(card)}
+              onCardClick={() => onCardClick!(card)}
             />
           ))}
         </InfiniteScroll>

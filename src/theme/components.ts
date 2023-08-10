@@ -88,21 +88,6 @@ const components = (theme: Theme) => {
         },
       },
     },
-    MuiPagination: {
-      styleOverrides: {
-        root: {
-          "& .MuiPaginationItem-root": {
-            margin: "0 6px",
-            backgroundColor: secondary.main,
-            color: secondary.main,
-          },
-          "& .MuiPaginationItem-root.Mui-selected": {
-            backgroundColor: primary.main,
-            color: primary.main,
-          },
-        },
-      },
-    },
   };
 };
 

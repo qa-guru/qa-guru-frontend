@@ -1,17 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import {
-  Box,
-  useMediaQuery,
-  Pagination,
-  Stack,
-  Grid,
-  Hidden,
-} from "@mui/material";
+import { Box, useMediaQuery, Pagination, Stack, Grid } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
 import { IBoard } from "./Board.types";
+import { style } from "./styles";
 import Column from "../Column/Column";
 import {
   StudentHomeWorkDto,
@@ -21,7 +15,6 @@ import useUpdateHomeworkStatus from "../../hooks/useUpdateHomeworkStatus";
 import { createColumnItem } from "../../helpers/createColumnItem";
 import { IColumnItem } from "../Column/Column.types";
 import HomeworkDetails from "../Menu/HomeworkDetails";
-import { grey } from "../../../../theme/colors";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -159,20 +152,29 @@ const Board: React.FC<IBoard> = ({
   return (
     <DndProvider backend={HTML5Backend}>
       {isDownMd ? (
-        <Box mt="15px">
+        <Box mt={2}>
           <Box display="flex" justifyContent="center">
             <Pagination
               count={columns.length}
               page={activeStep + 1}
               onChange={(event, step) => handleStepChange(step - 1)}
-              color="primary"
               size="small"
+              sx={style.pagination}
               hidePrevButton
               hideNextButton
             />
           </Box>
-          <Box sx={{ overflowX: "auto", scrollSnapType: "x mandatory" }}>
-            <SwipeableViews index={activeStep} onChangeIndex={handleStepChange}>
+          <Box>
+            <SwipeableViews
+              key={activeStep}
+              index={activeStep}
+              onChangeIndex={handleStepChange}
+              springConfig={{
+                duration: "0.35s", // You can adjust the duration as needed
+                easeFunction: "cubic-bezier(0.15, 0.3, 0.25, 1)", // You can adjust the easing function as needed
+                delay: "0s", // Delay before starting the animation
+              }}
+            >
               {columns.map((column, index) => (
                 <Column
                   draggingState={draggingState}
@@ -181,16 +183,19 @@ const Board: React.FC<IBoard> = ({
                   column={column}
                   onCardDrop={moveCard}
                   fetchMore={fetchMoreFunctions[index]}
-                  onCardClick={handleCardClick}
                 />
               ))}
             </SwipeableViews>
           </Box>
         </Box>
       ) : (
-        <Grid container mt={3}>
-          <Grid item style={{ flex: showHomeworkDetails ? "2 0 0" : "1 0 0" }}>
-            <Stack direction="row" spacing={2}>
+        <Grid container mt={2}>
+          <Grid item xs={showHomeworkDetails ? 8 : 12}>
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{ marginRight: showHomeworkDetails ? 2 : 0 }}
+            >
               {columns?.map((column, index) => (
                 <Column
                   draggingState={draggingState}
@@ -204,20 +209,14 @@ const Board: React.FC<IBoard> = ({
               ))}
             </Stack>
           </Grid>
-          <Hidden mdDown>
+          <Grid item xs={4} sx={style.menu}>
             {showHomeworkDetails && selectedCard && (
-              <Grid
-                item
-                ml={3}
-                sx={{ flex: "1 0 0", backgroundColor: grey.light }}
-              >
-                <HomeworkDetails
-                  card={selectedCard}
-                  onClose={handleHomeworkDetailsClose}
-                />
-              </Grid>
+              <HomeworkDetails
+                card={selectedCard}
+                onClose={handleHomeworkDetailsClose}
+              />
             )}
-          </Hidden>
+          </Grid>
         </Grid>
       )}
     </DndProvider>

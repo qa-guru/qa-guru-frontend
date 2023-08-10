@@ -3,17 +3,16 @@
 exports[`Board > Board is render 1`] = `
 <DocumentFragment>
   <div
-    class="MuiGrid-root MuiGrid-container css-11jhn1e-MuiGrid-root"
+    class="MuiGrid-root MuiGrid-container css-e2ivvl-MuiGrid-root"
   >
     <div
-      class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
-      style="flex: 1 0 0px;"
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
     >
       <div
-        class="MuiStack-root css-e53awj-MuiStack-root"
+        class="MuiStack-root css-1etqvnd-MuiStack-root"
       >
         <div
-          class="MuiBox-root css-1iskn60"
+          class="MuiBox-root css-pi4i3q"
         >
           <h6
             class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -69,7 +68,7 @@ exports[`Board > Board is render 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-1iskn60"
+          class="MuiBox-root css-pi4i3q"
         >
           <h6
             class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -125,7 +124,7 @@ exports[`Board > Board is render 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-1iskn60"
+          class="MuiBox-root css-pi4i3q"
         >
           <h6
             class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -268,7 +267,7 @@ exports[`Board > Board is render 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-1iskn60"
+          class="MuiBox-root css-pi4i3q"
         >
           <h6
             class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
@@ -325,6 +324,9 @@ exports[`Board > Board is render 1`] = `
         </div>
       </div>
     </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-50c6w0-MuiGrid-root"
+    />
   </div>
 </DocumentFragment>
 `;
