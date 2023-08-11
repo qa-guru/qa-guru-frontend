@@ -324,9 +324,6 @@ exports[`Board > Board is render 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 css-50c6w0-MuiGrid-root"
-    />
   </div>
 </DocumentFragment>
 `;

@@ -40,6 +40,7 @@ const Board: React.FC<IBoard> = ({
   const [columns, setColumns] = useState<IColumnItem[]>([]);
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
   const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
     null
@@ -169,10 +170,8 @@ const Board: React.FC<IBoard> = ({
               key={activeStep}
               index={activeStep}
               onChangeIndex={handleStepChange}
-              springConfig={{
-                duration: "0.35s", // You can adjust the duration as needed
-                easeFunction: "cubic-bezier(0.15, 0.3, 0.25, 1)", // You can adjust the easing function as needed
-                delay: "0s", // Delay before starting the animation
+              slideStyle={{
+                scrollBehavior: "smooth",
               }}
             >
               {columns.map((column, index) => (
@@ -190,11 +189,11 @@ const Board: React.FC<IBoard> = ({
         </Box>
       ) : (
         <Grid container mt={2}>
-          <Grid item xs={showHomeworkDetails ? 8 : 12}>
+          <Grid item xs={showHomeworkDetails && isUpLg ? 8 : 12}>
             <Stack
               direction="row"
               spacing={1}
-              sx={{ marginRight: showHomeworkDetails ? 2 : 0 }}
+              sx={{ marginRight: showHomeworkDetails && isUpLg ? 2 : 0 }}
             >
               {columns?.map((column, index) => (
                 <Column
@@ -209,14 +208,14 @@ const Board: React.FC<IBoard> = ({
               ))}
             </Stack>
           </Grid>
-          <Grid item xs={4} sx={style.menu}>
-            {showHomeworkDetails && selectedCard && (
+          {isUpLg && showHomeworkDetails && selectedCard && (
+            <Grid item xs={4} sx={style.menu}>
               <HomeworkDetails
                 card={selectedCard}
                 onClose={handleHomeworkDetailsClose}
               />
-            )}
-          </Grid>
+            </Grid>
+          )}
         </Grid>
       )}
     </DndProvider>
