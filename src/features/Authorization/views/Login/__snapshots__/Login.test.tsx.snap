@@ -60,11 +60,11 @@ exports[`Login > the component is Loading 1`] = `
       </svg>
     </svg>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-37zh3o-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-8d1df6-MuiPaper-root"
     >
       <form>
         <div
-          class="MuiStack-root css-14szvo7-MuiStack-root"
+          class="MuiStack-root css-inq34b-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -432,11 +432,11 @@ exports[`Login > the component is not Loading 1`] = `
       </svg>
     </svg>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-37zh3o-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-8d1df6-MuiPaper-root"
     >
       <form>
         <div
-          class="MuiStack-root css-14szvo7-MuiStack-root"
+          class="MuiStack-root css-inq34b-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"

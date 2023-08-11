@@ -122,8 +122,15 @@ const Column: React.FC<IColumn> = ({
   }, [column.cards?.length]);
 
   return (
-    <Box width="25%" flexGrow="1" display="flex" flexDirection="column">
-      <Typography variant="h6">{column.title}</Typography>
+    <Box
+      width={{ xs: "100%", md: "25%" }}
+      flexGrow="1"
+      display="flex"
+      flexDirection="column"
+    >
+      <Typography variant="h6" ml={1} mt={1.5}>
+        {column.title}
+      </Typography>
       <Box
         id={`scroll-container-${column.id}`}
         ref={dropRef}
@@ -159,7 +166,7 @@ const Column: React.FC<IColumn> = ({
               sourceColumnId={column.id}
               setDraggingState={setDraggingState}
               isCardsHidden={isColumnHighlight(column.id, draggingState)}
-              onCardClick={() => onCardClick(card)}
+              onCardClick={() => onCardClick!(card)}
             />
           ))}
         </InfiniteScroll>

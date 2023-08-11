@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Grid, Hidden, Stack } from "@mui/material";
+import { Box, useMediaQuery, Pagination, Stack, Grid } from "@mui/material";
+import { useTheme } from "@mui/system";
+import SwipeableViews from "react-swipeable-views";
 import { IBoard } from "./Board.types";
+import { style } from "./styles";
 import Column from "../Column/Column";
 import {
   StudentHomeWorkDto,
@@ -12,7 +15,6 @@ import useUpdateHomeworkStatus from "../../hooks/useUpdateHomeworkStatus";
 import { createColumnItem } from "../../helpers/createColumnItem";
 import { IColumnItem } from "../Column/Column.types";
 import HomeworkDetails from "../Menu/HomeworkDetails";
-import { grey } from "../../../../theme/colors";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -36,6 +38,9 @@ const Board: React.FC<IBoard> = ({
     fromNotApproved: false,
   });
   const [columns, setColumns] = useState<IColumnItem[]>([]);
+  const theme = useTheme();
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
   const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
     null
@@ -129,6 +134,12 @@ const Board: React.FC<IBoard> = ({
     [updateStatus]
   );
 
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
+
   const handleCardClick = (card: StudentHomeWorkDto) => {
     setSelectedCard(card);
     setShowHomeworkDetails(true);
@@ -141,37 +152,72 @@ const Board: React.FC<IBoard> = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Grid container mt={3}>
-        <Grid item style={{ flex: showHomeworkDetails ? "2 0 0" : "1 0 0" }}>
-          <Stack direction="row" spacing={2}>
-            {columns?.map((column, index) => (
-              <Column
-                draggingState={draggingState}
-                setDraggingState={setDraggingState}
-                key={column.id}
-                column={column}
-                onCardDrop={moveCard}
-                fetchMore={fetchMoreFunctions[index]}
-                onCardClick={handleCardClick}
-              />
-            ))}
-          </Stack>
-        </Grid>
-        <Hidden mdDown>
-          {showHomeworkDetails && selectedCard && (
-            <Grid
-              item
-              ml={3}
-              sx={{ flex: "1 0 0", backgroundColor: grey.light }}
+      {isDownMd ? (
+        <Box mt={2}>
+          <Box display="flex" justifyContent="center">
+            <Pagination
+              count={columns.length}
+              page={activeStep + 1}
+              onChange={(event, step) => handleStepChange(step - 1)}
+              size="small"
+              sx={style.pagination}
+              hidePrevButton
+              hideNextButton
+            />
+          </Box>
+          <Box>
+            <SwipeableViews
+              key={activeStep}
+              index={activeStep}
+              onChangeIndex={handleStepChange}
+              slideStyle={{
+                scrollBehavior: "smooth",
+              }}
             >
+              {columns.map((column, index) => (
+                <Column
+                  draggingState={draggingState}
+                  setDraggingState={setDraggingState}
+                  key={column.id}
+                  column={column}
+                  onCardDrop={moveCard}
+                  fetchMore={fetchMoreFunctions[index]}
+                />
+              ))}
+            </SwipeableViews>
+          </Box>
+        </Box>
+      ) : (
+        <Grid container mt={2}>
+          <Grid item xs={showHomeworkDetails && isUpLg ? 8 : 12}>
+            <Stack
+              direction="row"
+              spacing={1}
+              sx={{ marginRight: showHomeworkDetails && isUpLg ? 2 : 0 }}
+            >
+              {columns?.map((column, index) => (
+                <Column
+                  draggingState={draggingState}
+                  setDraggingState={setDraggingState}
+                  key={column.id}
+                  column={column}
+                  onCardDrop={moveCard}
+                  fetchMore={fetchMoreFunctions[index]}
+                  onCardClick={handleCardClick}
+                />
+              ))}
+            </Stack>
+          </Grid>
+          {isUpLg && showHomeworkDetails && selectedCard && (
+            <Grid item xs={4} sx={style.menu}>
               <HomeworkDetails
                 card={selectedCard}
                 onClose={handleHomeworkDetailsClose}
               />
             </Grid>
           )}
-        </Hidden>
-      </Grid>
+        </Grid>
+      )}
     </DndProvider>
   );
 };

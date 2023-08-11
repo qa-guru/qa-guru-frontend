@@ -72,7 +72,7 @@ const Login: React.FC<ILogin> = (props) => {
 
       <Paper sx={style.paper}>
         <form>
-          <Stack sx={style.stack} spacing={{ xs: 1, md: 2 }}>
+          <Stack sx={style.stack} spacing={{ xs: 1, sm: 2 }}>
             <FormControl fullWidth>
               <RHF.InputTextField
                 control={control}

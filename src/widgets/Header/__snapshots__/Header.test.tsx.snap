@@ -3,7 +3,7 @@
 exports[`Header > userRole is Master 1`] = `
 <DocumentFragment>
   <header
-    style="margin-bottom: 30px;"
+    style="margin-bottom: 30px; align-items: center;"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
@@ -99,7 +99,7 @@ exports[`Header > userRole is Master 1`] = `
             </svg>
           </button>
           <div
-            class="MuiBox-root css-j0f50d"
+            class="MuiBox-root css-mloeoe"
           >
             <div
               class="MuiStack-root css-u10pvi-MuiStack-root"
@@ -324,7 +324,7 @@ exports[`Header > userRole is Master 1`] = `
 exports[`Header > userRole is MentorsContainer 1`] = `
 <DocumentFragment>
   <header
-    style="margin-bottom: 30px;"
+    style="margin-bottom: 30px; align-items: center;"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
@@ -420,7 +420,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             </svg>
           </button>
           <div
-            class="MuiBox-root css-j0f50d"
+            class="MuiBox-root css-mloeoe"
           >
             <div
               class="MuiStack-root css-u10pvi-MuiStack-root"
@@ -645,7 +645,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
 exports[`Header > userRole is Student 1`] = `
 <DocumentFragment>
   <header
-    style="margin-bottom: 30px;"
+    style="margin-bottom: 30px; align-items: center;"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
@@ -741,7 +741,7 @@ exports[`Header > userRole is Student 1`] = `
             </svg>
           </button>
           <div
-            class="MuiBox-root css-j0f50d"
+            class="MuiBox-root css-mloeoe"
           >
             <div
               class="MuiStack-root css-u10pvi-MuiStack-root"

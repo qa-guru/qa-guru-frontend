@@ -4,13 +4,13 @@ exports[`Form > Form is render 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 css-7ldjcq-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1.5 css-73i7jt-MuiGrid-root"
     >
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1.9 MuiGrid-grid-lg-2 css-161wx65-MuiGrid-root"
       />
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1.9 MuiGrid-grid-lg-2 css-161wx65-MuiGrid-root"
       >
         <div
           aria-label="Выберите курс"
@@ -74,7 +74,7 @@ exports[`Form > Form is render 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1.9 MuiGrid-grid-lg-2 css-161wx65-MuiGrid-root"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -135,10 +135,10 @@ exports[`Form > Form is render 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1.9 MuiGrid-grid-lg-2 css-161wx65-MuiGrid-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root css-136h9lv-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -146,7 +146,7 @@ exports[`Form > Form is render 1`] = `
             for=":r1:"
             id=":r1:-label"
           >
-            Выберите дату от
+            Созданные от
           </label>
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
@@ -194,7 +194,7 @@ exports[`Form > Form is render 1`] = `
                 class="css-yjsfm1"
               >
                 <span>
-                  Выберите дату от
+                  Созданные от
                 </span>
               </legend>
             </fieldset>
@@ -202,10 +202,10 @@ exports[`Form > Form is render 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-1.9 MuiGrid-grid-lg-2 css-161wx65-MuiGrid-root"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root css-136h9lv-MuiFormControl-root-MuiTextField-root"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -213,7 +213,7 @@ exports[`Form > Form is render 1`] = `
             for=":r3:"
             id=":r3:-label"
           >
-            Выберите дату до
+            Созданные до
           </label>
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
@@ -261,7 +261,7 @@ exports[`Form > Form is render 1`] = `
                 class="css-yjsfm1"
               >
                 <span>
-                  Выберите дату до
+                  Созданные до
                 </span>
               </legend>
             </fieldset>
@@ -269,13 +269,13 @@ exports[`Form > Form is render 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-2 css-63b4os-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-2.5 MuiGrid-grid-lg-2 css-z5ipfj-MuiGrid-root"
       >
         <div
-          class="MuiStack-root css-w4z10b-MuiStack-root"
+          class="MuiStack-root css-10v7adq-MuiStack-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-w5bxvv-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -285,7 +285,7 @@ exports[`Form > Form is render 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-11j7ep2-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
