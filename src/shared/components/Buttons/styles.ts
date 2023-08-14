@@ -1,4 +1,4 @@
-import { primary } from "../../theme/colors";
+import { primary } from "../../../theme/colors";
 
 export const style = {
   lessonsButton: { mb: "25px", color: primary.main },

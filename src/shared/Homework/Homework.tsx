@@ -5,11 +5,11 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IHomework } from "./Homework.types";
 import { style } from "./styles";
-import Comments from "../../containers/Comments";
-import CommentsLimited from "../CommentsLimited";
-import CommentsPagination from "../CommentsPagination";
-import { LectureIdContext } from "../../context/LectureIdContext";
-import HomeworkItem from "../HomeworkItem";
+import Comments from "../../features/LectureDetail/containers/Comments";
+import CommentsLimited from "../../features/LectureDetail/views/CommentsLimited";
+import CommentsPagination from "../../features/LectureDetail/views/CommentsPagination";
+import { LectureIdContext } from "../../features/LectureDetail/context/LectureIdContext";
+import HomeworkItem from "../../features/LectureDetail/views/HomeworkItem";
 
 const Homework: React.FC<IHomework> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;
@@ -37,22 +37,22 @@ const Homework: React.FC<IHomework> = (props) => {
     </Dialog>
   ));
 
-  useEffect(() => {
-    if (modalId === dataHomeWorkByLecture?.id) {
-      showModal();
-    }
-  }, [modalId, showModal, dataHomeWorkByLecture?.id]);
+  // useEffect(() => {
+  //   if (modalId === dataHomeWorkByLecture?.id) {
+  //     showModal();
+  //   }
+  // }, [modalId, showModal, dataHomeWorkByLecture?.id]);
 
   const showModalAndSetUrl = () => {
     showModal();
-    navigate(`${location.pathname}/${dataHomeWorkByLecture?.id}`);
+    // navigate(`${location.pathname}/${dataHomeWorkByLecture?.id}`);
   };
 
   const hideModalAndUpdateUrl = () => {
     hideModal();
-    navigate(location.pathname.replace(`/${dataHomeWorkByLecture?.id}`, ""), {
-      replace: true,
-    });
+    // navigate(location.pathname.replace(`/${dataHomeWorkByLecture?.id}`, ""), {
+    //   replace: true,
+    // });
   };
 
   return (

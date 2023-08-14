@@ -122,7 +122,7 @@ const Card: React.FC<ICard> = ({
           </Typography>
         </Grid>
         <Grid item padding={1}>
-          <Typography variant="subtitle1">{card.lecture?.subject}</Typography>
+          <Typography variant="body2">{card.lecture?.subject}</Typography>
           <Stack spacing={1} mt="10px">
             {card.mentor && <UserRow icon={MentorIcon} user={card.mentor} />}
             <UserRow icon={StudentIcon} user={card.student!} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Backdrop, CircularProgress } from "@mui/material";
-import { style } from "./styles";
+import { style } from "../styles";
 
 const BackdropSpinner: React.FC = () => {
   return (

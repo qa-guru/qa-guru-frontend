@@ -1,7 +1,7 @@
 import React from "react";
 import { CircularProgress, Grid } from "@mui/material";
-import { style } from "./styles";
-import { primary } from "../theme/colors";
+import { style } from "../styles";
+import { primary } from "../../theme/colors";
 
 const Spinner: React.FC = () => {
   return (

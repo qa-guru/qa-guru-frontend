@@ -6,11 +6,12 @@ import SendHomeworkItem from "../../../containers/SendHomework";
 
 const HomeworkContent: React.FC<IHomeworkContent> = (props) => {
   const { status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, id } = props;
+  let homeworkContent;
 
   if (status && !openHomeWorkEdit) {
-    return <TextSerialization text={answer!} />;
+    homeworkContent = <TextSerialization text={answer!} />;
   } else if (status && openHomeWorkEdit) {
-    return (
+    homeworkContent = (
       <UpdateHomeworkItem
         answer={answer}
         setOpenHomeWorkEdit={setOpenHomeWorkEdit}
@@ -18,8 +19,10 @@ const HomeworkContent: React.FC<IHomeworkContent> = (props) => {
       />
     );
   } else {
-    return <SendHomeworkItem />;
+    homeworkContent = <SendHomeworkItem />;
   }
+
+  return <>{homeworkContent}</>;
 };
 
 export default HomeworkContent;

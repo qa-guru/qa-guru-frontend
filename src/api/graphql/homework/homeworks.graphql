@@ -29,7 +29,9 @@ query homeWorks(
         middleName
         lastName
       }
-      creationDate
+      creationDate,
+      startCheckingDate,
+      endCheckingDate
     }
   }
 }

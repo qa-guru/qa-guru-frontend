@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useModal } from "react-modal-hook";
 import { Backdrop, Box, Dialog, DialogTitle } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
-import { style } from "./styles";
+import { style } from "../styles";
 
 const NoDataErrorMessage: React.FC = () => {
   const [showModal] = useModal(({ in: open }) => (

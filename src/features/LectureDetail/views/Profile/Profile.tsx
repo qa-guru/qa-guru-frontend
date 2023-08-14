@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { IProfile } from "./Profile.types";
-import AvatarCustom from "../../../../shared/AvatarCustom";
+import AvatarCustom from "../../../../shared/components/AvatarCustom";
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName, date } = props;

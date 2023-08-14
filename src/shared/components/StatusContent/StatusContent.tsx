@@ -3,10 +3,10 @@ import { Box, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { IStatusContent } from "./StatusContent.types";
-import { ReactComponent as Clock } from "../../../../../assets/icons/clock.svg";
-import { ReactComponent as Search } from "../../../../../assets/icons/search.svg";
-import { ReactComponent as Done } from "../../../../../assets/icons/done.svg";
-import { red } from "../../../../../theme/colors";
+import { ReactComponent as Clock } from "../../../assets/icons/clock.svg";
+import { ReactComponent as Search } from "../../../assets/icons/search.svg";
+import { ReactComponent as Done } from "../../../assets/icons/done.svg";
+import { red } from "../../../theme/colors";
 
 const RedHighlightOffIcon = styled(HighlightOffIcon)({
   color: red.main,
@@ -41,7 +41,7 @@ const StatusContent: React.FC<IStatusContent> = ({ status }) => {
     <Stack direction="row" spacing={1} alignItems="center">
       {icon}
       <Box>
-        <Typography variant="subtitle1">{statusText}</Typography>
+        <Typography variant="body2">{statusText}</Typography>
       </Box>
     </Stack>
   );

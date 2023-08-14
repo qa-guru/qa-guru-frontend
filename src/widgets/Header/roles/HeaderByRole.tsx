@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { UserRole } from "../../../api/graphql/generated/graphql";
 import { style } from "../styles";
 
-export const getProfileByRole = (
+export const getHeaderByRole = (
   userRoles: Array<UserRole | null>,
   t: (key: string) => string
 ) => {

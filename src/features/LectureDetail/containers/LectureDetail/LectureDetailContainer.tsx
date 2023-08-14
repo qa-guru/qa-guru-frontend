@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import LectureDetail from "../../views";
-import Spinner from "../../../../shared/Spinner";
-import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
+import Spinner from "../../../../shared/components/Spinner";
+import NoDataErrorMessage from "../../../../shared/components/NoDataErrorMessage";
 import useTariff from "../../hooks/useTariff";
 import { LectureIdContext } from "../../context/LectureIdContext";
 import {

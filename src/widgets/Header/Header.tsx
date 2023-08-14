@@ -7,9 +7,9 @@ import AppMenu from "./Menu/Menu";
 import MenuBurger from "./MenuBurger/MenuBurger";
 import { IHeader } from "./Header.types";
 import { style } from "./styles";
-import { getProfileByRole } from "./roles/ProfileByRole";
+import { getHeaderByRole } from "./roles/HeaderByRole";
 import { ReactComponent as Logo } from "../../assets/icons/logo-header.svg";
-import LocalSelector from "../../shared/Buttons/LocalSelector";
+import LocalSelector from "../../shared/components/Buttons/LocalSelector";
 
 const Header: React.FC<IHeader> = ({ userRoles }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(
@@ -18,7 +18,7 @@ const Header: React.FC<IHeader> = ({ userRoles }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const pages = getProfileByRole(userRoles, t);
+  const pages = getHeaderByRole(userRoles, t);
 
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);

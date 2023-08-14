@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import { IHomeworkItem } from "./HomeworkItem.types";
-import StatusContent from "./StatusContent";
 import HomeworkContent from "./HomeworkContent";
 import { style } from "./styles";
+import StatusContent from "../../../../shared/components/StatusContent";
 import Profile from "../Profile/Profile";
 
 const HomeworkItem: React.FC<IHomeworkItem> = (props) => {

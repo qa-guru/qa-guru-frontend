@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
 import { IUserRow } from "./UserRow.types";
-import AvatarCustom from "../../../../shared/AvatarCustom";
+import AvatarCustom from "../../../../shared/components/AvatarCustom";
 
 const UserRow: React.FC<IUserRow> = ({ icon: Icon, user }) => {
   const fullName = `${user?.firstName} ${user?.lastName}`;
@@ -16,7 +16,7 @@ const UserRow: React.FC<IUserRow> = ({ icon: Icon, user }) => {
         variant="subtitle2"
       />
       <Stack direction="row">
-        <Typography variant="subtitle1">{fullName}</Typography>
+        <Typography variant="body2">{fullName}</Typography>
       </Stack>
     </Stack>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { themeSettingsTypes } from "../theme";
+import { themeSettingsTypes } from "../../theme";
 
 const useLocalStorage = (key: string, initialValue: themeSettingsTypes) => {
   const [data, setData] = useState(initialValue);

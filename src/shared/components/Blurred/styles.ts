@@ -1,4 +1,4 @@
-import { primary } from "../../theme/colors";
+import { primary } from "../../../theme/colors";
 
 export const style = {
   wrapper: { filter: "blur(3.5px)", pointerEvents: "none" },

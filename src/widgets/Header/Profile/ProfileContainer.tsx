@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
-import Spinner from "../../../shared/Spinner";
-import NoDataErrorMessage from "../../../shared/NoDataErrorMessage";
+import Spinner from "../../../shared/components/Spinner";
+import NoDataErrorMessage from "../../../shared/components/NoDataErrorMessage";
 import { useUserQuery } from "../../../api/graphql/generated/graphql";
 
 const ProfileContainer: React.FC = () => {

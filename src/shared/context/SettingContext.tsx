@@ -1,7 +1,7 @@
 import { createContext, ReactNode } from "react";
-import { themeSettingsTypes } from "../theme";
+import { themeSettingsTypes } from "../../theme";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { THEMES } from "../theme/constans";
+import { THEMES } from "../../theme/constans";
 
 const initialSettings: themeSettingsTypes = {
   theme: THEMES.LIGHT,

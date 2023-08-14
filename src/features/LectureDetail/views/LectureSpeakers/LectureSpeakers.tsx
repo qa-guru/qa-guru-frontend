@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 import { ILectureSpeakers } from "./LectureSpeakers.types";
 import { style } from "./styles";
-import AvatarCustom from "../../../../shared/AvatarCustom";
+import AvatarCustom from "../../../../shared/components/AvatarCustom";
 
 const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
   const { speakers } = props;

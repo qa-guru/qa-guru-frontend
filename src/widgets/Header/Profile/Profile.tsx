@@ -14,7 +14,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
 import { style } from "./styles";
 import Logout from "../../../features/Authorization/containers/LogoutContainer";
-import AvatarCustom from "../../../shared/AvatarCustom";
+import AvatarCustom from "../../../shared/components/AvatarCustom";
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName } = props.data.user!;

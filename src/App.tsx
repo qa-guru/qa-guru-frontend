@@ -5,9 +5,9 @@ import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
 import useAuth from "./features/Authorization/hooks/useAuth";
-import Spinner from "./shared/Spinner";
+import Spinner from "./shared/components/Spinner";
 import { createCustomTheme } from "./theme";
-import useSettings from "./hooks/useSettings";
+import useSettings from "./shared/hooks/useSettings";
 import { useUserQuery } from "./api/graphql/generated/graphql";
 
 const AuthRoutes = lazy(() => import("./routes/AuthRoutes"));
