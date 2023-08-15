@@ -14,7 +14,7 @@ import {
 import useUpdateHomeworkStatus from "../../hooks/useUpdateHomeworkStatus";
 import { createColumnItem } from "../../helpers/createColumnItem";
 import { IColumnItem } from "../Column/Column.types";
-import HomeworkDetails from "../Menu/HomeworkDetails";
+import HomeworkDetails from "../HomeworkDetails/HomeworkDetails";
 
 const Board: React.FC<IBoard> = ({
   newData,

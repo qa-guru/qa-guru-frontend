@@ -8,7 +8,7 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { ISendComment, ISendCommentContent } from "./SendComment.types";
 import { style } from "./styles";
-import RHF from "../../../../shared/InputRHF";
+import RHF from "../../../../shared/components/InputRHF";
 
 const SendComment: React.FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;

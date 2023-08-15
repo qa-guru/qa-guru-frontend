@@ -5,49 +5,56 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import { IUpdateComment, IUpdateCommentContent } from "./UpdateComment.types";
+import {
+  IUpdateHomeWork,
+  IUpdateHomeworkContent,
+} from "./UpdateHomework.types";
 import { style } from "./styles";
-import RHF from "../../../../shared/components/InputRHF";
+import RHF from "../../../../../../shared/components/InputRHF";
+import { client } from "../../../../../../api";
 
-const UpdateComment: React.FC<IUpdateComment> = (props) => {
-  const { loading, updateComment, id, setSelectedIndex, content } = props;
+const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
+  const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
   const { t } = useTranslation();
 
   const {
     handleSubmit,
     control,
-    setError,
     formState: { errors },
     trigger,
-  } = useForm<IUpdateCommentContent>({
+    setError,
+  } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
-      content: content!,
+      content: answer!,
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("comment")!),
+        content: yup.string().required(t("homework")!),
       })
     ),
   });
 
-  const handleUpdateComment: SubmitHandler<IUpdateCommentContent> = (data) => {
-    updateComment({
+  const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
+    data
+  ) => {
+    updateHomework({
       variables: {
         id: id!,
         content: data.content,
       },
       onCompleted: () => {
-        setSelectedIndex(-1);
+        client.refetchQueries({ include: ["homeWorkByLecture"] });
+        setOpenHomeWorkEdit(false);
       },
     });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= 10000) {
+      if (isValid && e.target.value.length >= 2000) {
         setError("content", {
           type: "manual",
-          message: t("comment.max")!,
+          message: t("homework.max")!,
         });
       }
     });
@@ -55,16 +62,19 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
 
   return (
     <form>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} mt="15px">
         <Box width="100%">
           <FormControl fullWidth>
             <RHF.InputTextField
               multiline
               maxRows={10}
-              minRows={2}
+              minRows={5}
               name="content"
               control={control}
-              inputProps={{ maxLength: 10000, onChange: handleChange }}
+              inputProps={{
+                maxLength: 2000,
+                onChange: handleChange,
+              }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>
@@ -73,11 +83,11 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
           <Stack
             direction={{ xs: "column-reverse", sm: "row" }}
             justifyContent="flex-end"
-            spacing={2}
+            spacing={1}
             mt={2}
           >
             <Button
-              onClick={() => setSelectedIndex(-1)}
+              onClick={() => setOpenHomeWorkEdit(false)}
               sx={style.buttonCancel}
               variant="contained"
               color="secondary"
@@ -85,7 +95,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
               Отменить
             </Button>
             <LoadingButton
-              onClick={handleSubmit(handleUpdateComment)}
+              onClick={handleSubmit(handleUpdateHomework)}
               loading={loading}
               sx={style.loadingButton}
               variant="contained"
@@ -99,4 +109,4 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
   );
 };
 
-export default UpdateComment;
+export default UpdateHomework;

@@ -1,5 +1,5 @@
 import React from "react";
-import SendHomework from "../../views/HomeworkItem/SendHomework";
+import SendHomework from "../../views/HomeworkItem/HomeworkContent/SendHomework";
 import { useSendHomeWorkToCheckMutation } from "../../../../api/graphql/generated/graphql";
 
 const SendHomeworkContainer: React.FC = () => {

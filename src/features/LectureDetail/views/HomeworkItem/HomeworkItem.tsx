@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 import { IHomeworkItem } from "./HomeworkItem.types";
 import HomeworkContent from "./HomeworkContent";
 import { style } from "./styles";
+import ButtonEdit from "./ButtonEdit";
 import StatusContent from "../../../../shared/components/StatusContent";
 import Profile from "../Profile/Profile";
 
@@ -27,11 +28,9 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   return (
     <>
       <Stack
-        mb="14px"
+        sx={style.stack}
         spacing={{ xs: 0, sm: 3 }}
         direction="row"
-        flexWrap="wrap"
-        alignItems="center"
         justifyContent={{ xs: "space-between", sm: "stretch" }}
       >
         <Typography variant="h5">Ответ на задание</Typography>
@@ -72,15 +71,12 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
           id={id!}
         />
       </Box>
-      {!openHomeWorkEdit && status && editAccess && (
-        <Button
-          onClick={() => setOpenHomeWorkEdit(true)}
-          sx={style.buttonUpdate}
-          variant="contained"
-        >
-          Редактировать
-        </Button>
-      )}
+      <ButtonEdit
+        editAccess={editAccess}
+        openHomeWorkEdit={openHomeWorkEdit}
+        setOpenHomeWorkEdit={setOpenHomeWorkEdit}
+        status={status!}
+      />
     </>
   );
 };

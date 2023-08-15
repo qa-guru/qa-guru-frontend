@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Homework from "../../../../shared/Homework";
+import Homework from "../../views/Homework";
 import {
   useHomeWorkByLectureQuery,
   useUserIdQuery,

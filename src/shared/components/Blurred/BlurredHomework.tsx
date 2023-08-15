@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button } from "@mui/material";
 import BlurredComponent from "./BlurredComponent";
 import { style } from "./styles";
-import LectureHomework from "../../LectureHomework";
+import LectureHomework from "../LectureHomework";
 import Homework from "../../../features/LectureDetail/containers/Homework";
 import { lectureHomework } from "../../mocks/lectureHomework.mock";
 
