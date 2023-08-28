@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { IUpdateComment, IUpdateCommentContent } from "./UpdateComment.types";
 import { style } from "./styles";
-import RHF from "../../../../shared/InputRHF";
+import RHF from "../../../../shared/components/InputRHF";
 
 const UpdateComment: React.FC<IUpdateComment> = (props) => {
   const { loading, updateComment, id, setSelectedIndex, content } = props;

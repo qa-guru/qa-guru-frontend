@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useModal } from "react-modal-hook";
 import { Button, Dialog, DialogContent, Paper, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -37,22 +37,22 @@ const Homework: React.FC<IHomework> = (props) => {
     </Dialog>
   ));
 
-  useEffect(() => {
-    if (modalId === dataHomeWorkByLecture?.id) {
-      showModal();
-    }
-  }, [modalId, showModal, dataHomeWorkByLecture?.id]);
+  // useEffect(() => {
+  //   if (modalId === dataHomeWorkByLecture?.id) {
+  //     showModal();
+  //   }
+  // }, [modalId, showModal, dataHomeWorkByLecture?.id]);
 
   const showModalAndSetUrl = () => {
     showModal();
-    navigate(`${location.pathname}/${dataHomeWorkByLecture?.id}`);
+    // navigate(`${location.pathname}/${dataHomeWorkByLecture?.id}`);
   };
 
   const hideModalAndUpdateUrl = () => {
     hideModal();
-    navigate(location.pathname.replace(`/${dataHomeWorkByLecture?.id}`, ""), {
-      replace: true,
-    });
+    // navigate(location.pathname.replace(`/${dataHomeWorkByLecture?.id}`, ""), {
+    //   replace: true,
+    // });
   };
 
   return (

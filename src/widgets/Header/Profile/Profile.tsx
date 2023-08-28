@@ -6,7 +6,6 @@ import {
   ListItemText,
   MenuItem,
   MenuList,
-  Typography,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
@@ -14,7 +13,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./Profile.types";
 import { style } from "./styles";
 import Logout from "../../../features/Authorization/containers/LogoutContainer";
-import AvatarCustom from "../../../shared/AvatarCustom";
+import UserRow from "../../../shared/components/UserRow";
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName } = props.data.user!;
@@ -43,14 +42,8 @@ const Profile: React.FC<IProfile> = (props) => {
     <>
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
-          <AvatarCustom fullName={fullName} />
           <Box sx={style.box}>
-            <Typography sx={style.typography} variant="subtitle2">
-              {firstName}
-            </Typography>
-            <Typography sx={style.typography} variant="subtitle2">
-              {lastName}
-            </Typography>
+            <UserRow user={props.data.user!} variant="subtitle2" />
           </Box>
         </Button>
       </Tooltip>

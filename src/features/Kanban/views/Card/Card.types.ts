@@ -8,4 +8,5 @@ export interface ICard {
   setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
   isCardsHidden: boolean;
   onCardClick?: () => void;
+  isActive?: boolean;
 }

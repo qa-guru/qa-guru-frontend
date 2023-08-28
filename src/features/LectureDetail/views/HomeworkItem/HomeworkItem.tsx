@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 import { IHomeworkItem } from "./HomeworkItem.types";
-import StatusContent from "./StatusContent";
 import HomeworkContent from "./HomeworkContent";
 import { style } from "./styles";
-import Profile from "../Profile/Profile";
+import ButtonEdit from "./ButtonEdit";
+import StatusContent from "../../../../shared/components/StatusContent";
+import UserRow from "../../../../shared/components/UserRow";
 
 const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;
@@ -27,11 +28,9 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   return (
     <>
       <Stack
-        mb="14px"
+        sx={style.stack}
         spacing={{ xs: 0, sm: 3 }}
         direction="row"
-        flexWrap="wrap"
-        alignItems="center"
         justifyContent={{ xs: "space-between", sm: "stretch" }}
       >
         <Typography variant="h5">Ответ на задание</Typography>
@@ -42,11 +41,7 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
         >
           {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
             <Box mt={{ xs: 2, sm: 0 }}>
-              <Profile
-                firstName={mentor?.firstName!}
-                lastName={mentor?.lastName!}
-                date={date}
-              />
+              <UserRow user={mentor!} date={date} />
             </Box>
           )}
         </Stack>
@@ -55,11 +50,7 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
 
       {status && (
         <Box mt="16px">
-          <Profile
-            firstName={student?.firstName!}
-            lastName={student?.lastName!}
-            date={creationDate!}
-          />
+          <UserRow user={mentor!} date={date} />
         </Box>
       )}
 
@@ -72,15 +63,12 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
           id={id!}
         />
       </Box>
-      {!openHomeWorkEdit && status && editAccess && (
-        <Button
-          onClick={() => setOpenHomeWorkEdit(true)}
-          sx={style.buttonUpdate}
-          variant="contained"
-        >
-          Редактировать
-        </Button>
-      )}
+      <ButtonEdit
+        editAccess={editAccess}
+        openHomeWorkEdit={openHomeWorkEdit}
+        setOpenHomeWorkEdit={setOpenHomeWorkEdit}
+        status={status!}
+      />
     </>
   );
 };

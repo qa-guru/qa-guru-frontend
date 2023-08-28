@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Grid, Paper, Stack, Typography } from "@mui/material";
 import { ILectureSpeakers } from "./LectureSpeakers.types";
 import { style } from "./styles";
-import AvatarCustom from "../../../../shared/AvatarCustom";
+import UserRow from "../../../../shared/components/UserRow";
 
 const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
   const { speakers } = props;
@@ -15,9 +15,6 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
         </Typography>
         <Grid container gap={2}>
           {speakers?.map((item, index) => {
-            const { firstName, lastName } = item!;
-            const fullName = `${firstName} ${lastName}`;
-
             return (
               <Stack
                 spacing={2}
@@ -26,10 +23,7 @@ const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
                 key={index}
                 sx={style.stack}
               >
-                <AvatarCustom width={60} height={60} fullName={fullName} />
-                <Box sx={style.box}>
-                  <Typography variant="subtitle2">{fullName}</Typography>
-                </Box>
+                <UserRow user={item!} width={60} height={60} />
               </Stack>
             );
           })}

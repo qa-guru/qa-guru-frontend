@@ -6,7 +6,7 @@ import UpdateComment from "../../containers/UpdateComment";
 import TextSerialization from "../../../../shared/Serializers/TextSerialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
 import { grey, primary } from "../../../../theme/colors";
-import Profile from "../Profile";
+import UserRow from "../../../../shared/components/UserRow";
 
 const CommentItem: React.FC<ICommentItem> = ({
   item,
@@ -32,12 +32,7 @@ const CommentItem: React.FC<ICommentItem> = ({
         spacing={1}
       >
         <Box width="100%">
-          <Profile
-            firstName={creator?.firstName!}
-            lastName={creator?.lastName!}
-            date={creationDate!}
-          />
-
+          <UserRow user={creator!} date={creationDate} />
           <Box mt="7px">
             {isSelected ? (
               <UpdateComment

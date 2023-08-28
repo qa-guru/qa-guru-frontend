@@ -22,7 +22,7 @@ const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
           case "video":
             return (
               <Box key={index} mb={3}>
-                {/*<Typography variant="h6">{value}</Typography>*/}
+                <Typography variant="h6">{value}</Typography>
                 <Box sx={style.box}>
                   <iframe
                     // @ts-ignore

@@ -1,7 +1,7 @@
 import React from "react";
 import { FormControl, Tooltip } from "@mui/material";
 import ISelectLectures from "./LectureSelection.types";
-import RHF from "../../../../../shared/InputRHF";
+import RHF from "../../../../../shared/components/InputRHF";
 
 const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
   const lecturesOptions = data?.trainingLectures?.map((item) => ({

@@ -4,11 +4,11 @@ export const style = {
   menuItem: { mb: "10px" },
   listItemText: { mr: "20px" },
   box: {
-    width: "max-content",
+    width: "min-content",
     ml: "16px",
+    color: black.main,
   },
   typography: {
     display: { xs: "none", md: "block" },
-    color: black.main,
   },
 };

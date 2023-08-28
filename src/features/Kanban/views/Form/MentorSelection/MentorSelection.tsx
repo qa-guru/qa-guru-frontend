@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FormControl } from "@mui/material";
 import { IMentorSelection } from "./MentorSelection.types";
 import { KanbanContext } from "../../../context/KanbanContext";
-import RHF from "../../../../../shared/InputRHF";
+import RHF from "../../../../../shared/components/InputRHF";
 
 const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
   const items = data?.mentors?.items;

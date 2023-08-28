@@ -1,4 +1,4 @@
-import { grey, white } from "../../../../theme/colors";
+import { grey, primary, white } from "../../../../theme/colors";
 
 export const style = {
   paper: {
@@ -6,6 +6,9 @@ export const style = {
     cursor: "grab",
     flexGrow: "1",
     margin: 1,
+    "&:hover": {
+      backgroundColor: `${primary.main}40`,
+    },
   },
   draggedPaper: {
     opacity: 0.5,
@@ -21,5 +24,8 @@ export const style = {
     width: "100%",
     borderTopLeftRadius: "10px",
     borderTopRightRadius: "10px",
+  },
+  activeCard: {
+    backgroundColor: `${primary.main}40`,
   },
 };

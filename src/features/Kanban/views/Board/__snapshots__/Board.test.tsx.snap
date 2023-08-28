@@ -3,10 +3,10 @@
 exports[`Board > Board is render 1`] = `
 <DocumentFragment>
   <div
-    class="MuiGrid-root MuiGrid-container css-e2ivvl-MuiGrid-root"
+    class="MuiBox-root css-k008qs"
   >
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+      class="MuiBox-root css-1j2i35l"
     >
       <div
         class="MuiStack-root css-1etqvnd-MuiStack-root"
@@ -15,12 +15,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
           >
-            NEW
+            New
           </h6>
           <div
-            class="MuiBox-root css-wm2rfz"
+            class="MuiBox-root css-jsg97x"
             id="scroll-container-1"
           >
             <div
@@ -57,7 +57,7 @@ exports[`Board > Board is render 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1pmmhtq-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-acwlth-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -71,12 +71,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
           >
-            IN_REVIEW
+            In review
           </h6>
           <div
-            class="MuiBox-root css-wm2rfz"
+            class="MuiBox-root css-jsg97x"
             id="scroll-container-2"
           >
             <div
@@ -113,7 +113,7 @@ exports[`Board > Board is render 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1pmmhtq-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-acwlth-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -127,12 +127,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
           >
-            APPROVED
+            Approved
           </h6>
           <div
-            class="MuiBox-root css-wm2rfz"
+            class="MuiBox-root css-jsg97x"
             id="scroll-container-3"
           >
             <div
@@ -143,7 +143,7 @@ exports[`Board > Board is render 1`] = `
                 style="height: auto; overflow: visible;"
               >
                 <div
-                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1s3bnvi-MuiPaper-root"
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
                   draggable="true"
                 >
                   <div
@@ -164,16 +164,16 @@ exports[`Board > Board is render 1`] = `
                     <div
                       class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         string
-                      </h6>
+                      </p>
                       <div
                         class="MuiStack-root css-qkek6c-MuiStack-root"
                       >
                         <div
-                          class="MuiStack-root css-1q36rmd-MuiStack-root"
+                          class="MuiStack-root css-unhrs1-MuiStack-root"
                         >
                           <svg
                             fill="none"
@@ -205,7 +205,7 @@ exports[`Board > Board is render 1`] = `
                             </h6>
                           </div>
                           <div
-                            class="MuiStack-root css-m69qwo-MuiStack-root"
+                            class="MuiBox-root css-0"
                           >
                             <h6
                               class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
@@ -215,7 +215,7 @@ exports[`Board > Board is render 1`] = `
                           </div>
                         </div>
                         <div
-                          class="MuiStack-root css-1q36rmd-MuiStack-root"
+                          class="MuiStack-root css-unhrs1-MuiStack-root"
                         >
                           <svg
                             fill="none"
@@ -239,7 +239,7 @@ exports[`Board > Board is render 1`] = `
                             </h6>
                           </div>
                           <div
-                            class="MuiStack-root css-m69qwo-MuiStack-root"
+                            class="MuiBox-root css-0"
                           >
                             <h6
                               class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
@@ -256,7 +256,7 @@ exports[`Board > Board is render 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1pmmhtq-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-acwlth-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -270,12 +270,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-1v8hjuc-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
           >
-            NOT_APPROVED
+            Not approved
           </h6>
           <div
-            class="MuiBox-root css-wm2rfz"
+            class="MuiBox-root css-jsg97x"
             id="scroll-container-4"
           >
             <div
@@ -312,7 +312,7 @@ exports[`Board > Board is render 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1pmmhtq-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-acwlth-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >

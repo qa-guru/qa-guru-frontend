@@ -48,11 +48,11 @@ exports[`HomeworksOtherStudents > the component is render 1`] = `
           <div
             class="MuiBox-root css-0"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
             >
               Принято
-            </h6>
+            </p>
           </div>
         </div>
         <div
@@ -68,7 +68,7 @@ exports[`HomeworksOtherStudents > the component is render 1`] = `
                 class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
                 >
                   ss
                 </h6>
@@ -108,7 +108,7 @@ exports[`HomeworksOtherStudents > the component is render 1`] = `
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
             >
               ss
             </h6>
@@ -127,7 +127,7 @@ exports[`HomeworksOtherStudents > the component is render 1`] = `
               <h6
                 class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
               >
-                23.03.2023 | 00:00
+                23.05.2023 | 00:00
               </h6>
             </div>
           </div>

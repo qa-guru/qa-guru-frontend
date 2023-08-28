@@ -7,7 +7,7 @@ import { ICard } from "./Card.types";
 import { style } from "./styles";
 import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
-import UserRow from "../UserRow";
+import UserRow from "../../../../shared/components/UserRow";
 import { getUpdatedAllowedColumns } from "../../helpers/getUpdatedAllowedColumns";
 import { useUserContext } from "../../context/UserContext";
 import { getFormattedId } from "../../helpers/getFormattedId";
@@ -18,6 +18,7 @@ const Card: React.FC<ICard> = ({
   setDraggingState,
   isCardsHidden,
   onCardClick,
+  isActive,
 }) => {
   const { userId, userRoles } = useUserContext();
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
@@ -93,16 +94,19 @@ const Card: React.FC<ICard> = ({
     handleDragEffect();
   }, [handleDragEffect]);
 
+  const handleCardClick = () => {
+    onCardClick!();
+  };
+
   const paperStyles = [
     style.paper,
     isDragging && style.draggedPaper,
     isCardsHidden && !isDragging && style.hiddenPaper,
-    { marginBottom: 2 },
+    isActive! && style.activeCard,
+    isDragging && {
+      marginBottom: 2,
+    },
   ];
-
-  const handleCardClick = () => {
-    onCardClick!();
-  };
 
   return (
     <Paper
@@ -122,10 +126,22 @@ const Card: React.FC<ICard> = ({
           </Typography>
         </Grid>
         <Grid item padding={1}>
-          <Typography variant="subtitle1">{card.lecture?.subject}</Typography>
+          <Typography variant="body2">{card.lecture?.subject}</Typography>
           <Stack spacing={1} mt="10px">
-            {card.mentor && <UserRow icon={MentorIcon} user={card.mentor} />}
-            <UserRow icon={StudentIcon} user={card.student!} />
+            {card.mentor && (
+              <UserRow
+                icon={MentorIcon}
+                user={card.mentor}
+                width={26}
+                height={26}
+              />
+            )}
+            <UserRow
+              icon={StudentIcon}
+              user={card.student!}
+              width={26}
+              height={26}
+            />
           </Stack>
         </Grid>
       </Grid>

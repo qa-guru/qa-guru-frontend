@@ -3,13 +3,13 @@
 exports[`Header > userRole is Master 1`] = `
 <DocumentFragment>
   <header
-    style="margin-bottom: 30px; align-items: center;"
+    style="margin-bottom: 3vh; align-items: center;"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
     >
       <div
-        class="MuiBox-root css-q0ikcs"
+        class="MuiBox-root css-ni9stj"
       >
         <div
           class="MuiBox-root css-d47f85"
@@ -324,13 +324,13 @@ exports[`Header > userRole is Master 1`] = `
 exports[`Header > userRole is MentorsContainer 1`] = `
 <DocumentFragment>
   <header
-    style="margin-bottom: 30px; align-items: center;"
+    style="margin-bottom: 3vh; align-items: center;"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
     >
       <div
-        class="MuiBox-root css-q0ikcs"
+        class="MuiBox-root css-ni9stj"
       >
         <div
           class="MuiBox-root css-d47f85"
@@ -645,13 +645,13 @@ exports[`Header > userRole is MentorsContainer 1`] = `
 exports[`Header > userRole is Student 1`] = `
 <DocumentFragment>
   <header
-    style="margin-bottom: 30px; align-items: center;"
+    style="margin-bottom: 3vh; align-items: center;"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
     >
       <div
-        class="MuiBox-root css-q0ikcs"
+        class="MuiBox-root css-ni9stj"
       >
         <div
           class="MuiBox-root css-d47f85"

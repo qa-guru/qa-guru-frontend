@@ -14,6 +14,11 @@ query homeWorks(
         id
         subject
         description
+        contentHomeWork{
+          url
+          value
+          type
+        }
       }
       answer
       status
@@ -29,7 +34,9 @@ query homeWorks(
         middleName
         lastName
       }
-      creationDate
+      creationDate,
+      startCheckingDate,
+      endCheckingDate
     }
   }
 }

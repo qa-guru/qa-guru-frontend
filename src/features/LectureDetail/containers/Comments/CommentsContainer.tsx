@@ -1,7 +1,7 @@
 import React from "react";
 import { ICommentsContainer } from "./CommentsContainer.types";
-import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
-import SkeletonComment from "../../../../shared/Skeletons/SkeletonComment";
+import NoDataErrorMessage from "../../../../shared/components/NoDataErrorMessage";
+import SkeletonComment from "../../../../shared/components/Skeletons/SkeletonComment";
 import {
   CommentHomeWorkSortField,
   InputMaybe,

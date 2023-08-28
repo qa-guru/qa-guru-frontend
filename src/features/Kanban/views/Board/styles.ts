@@ -14,9 +14,14 @@ export const style = {
       color: "transparent",
     },
   },
+  boxWrapper: {
+    flex: "1 1 66%",
+    position: "relative",
+    overflow: "hidden",
+    marginTop: 1,
+  },
   menu: {
     backgroundColor: grey.light,
-    boxShadow: "0 1px 3px rgba(0, 0, 0, .2)",
-    marginTop: 2.5,
+    marginTop: "30px",
   },
 };

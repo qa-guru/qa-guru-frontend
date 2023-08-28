@@ -25,6 +25,7 @@ const Column: React.FC<IColumn> = ({
   setDraggingState,
   fetchMore,
   onCardClick,
+  activeCardId,
 }) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -121,6 +122,21 @@ const Column: React.FC<IColumn> = ({
     }
   }, [column.cards?.length]);
 
+  const formatStatus = (status: string) => {
+    switch (status) {
+      case "APPROVED":
+        return "Approved";
+      case "IN_REVIEW":
+        return "In review";
+      case "NEW":
+        return "New";
+      case "NOT_APPROVED":
+        return "Not approved";
+      default:
+        return status;
+    }
+  };
+
   return (
     <Box
       width={{ xs: "100%", md: "25%" }}
@@ -128,8 +144,8 @@ const Column: React.FC<IColumn> = ({
       display="flex"
       flexDirection="column"
     >
-      <Typography variant="h6" ml={1} mt={1.5}>
-        {column.title}
+      <Typography variant="h6" ml={1}>
+        {formatStatus(column.title)}
       </Typography>
       <Box
         id={`scroll-container-${column.id}`}
@@ -139,7 +155,7 @@ const Column: React.FC<IColumn> = ({
           ...getColumnStyles(column.id, draggingState, isOver),
           boxSizing: "border-box",
           overflowY: showButton ? "hidden" : "auto",
-          maxHeight: "70vh",
+          maxHeight: { xs: "73vh", lg: "71vh" },
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",
@@ -167,6 +183,7 @@ const Column: React.FC<IColumn> = ({
               setDraggingState={setDraggingState}
               isCardsHidden={isColumnHighlight(column.id, draggingState)}
               onCardClick={() => onCardClick!(card)}
+              isActive={activeCardId === card.id}
             />
           ))}
         </InfiniteScroll>

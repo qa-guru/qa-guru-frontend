@@ -8,9 +8,10 @@ export const style = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    height: "8vh",
   },
   header: {
-    marginBottom: "30px",
+    marginBottom: "3vh",
     alignItems: "center",
   },
   paper: { borderRadius: 0 },

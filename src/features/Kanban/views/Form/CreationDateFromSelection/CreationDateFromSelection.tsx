@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ICreationDateFromSelection } from "./CreationDateFromSelection.types";
-import RHF from "../../../../../shared/InputRHF";
+import RHF from "../../../../../shared/components/InputRHF";
 
 const CreationDateFromSelection: React.FC<ICreationDateFromSelection> = ({
   control,

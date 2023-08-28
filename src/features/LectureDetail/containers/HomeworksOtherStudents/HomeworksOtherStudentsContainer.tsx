@@ -8,8 +8,8 @@ import {
   useUserIdQuery,
 } from "../../../../api/graphql/generated/graphql";
 import HomeworksOtherStudents from "../../views/HomeworksOtherStudents";
-import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
-import Spinner from "../../../../shared/Spinner";
+import NoDataErrorMessage from "../../../../shared/components/NoDataErrorMessage";
+import Spinner from "../../../../shared/components/Spinner";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();

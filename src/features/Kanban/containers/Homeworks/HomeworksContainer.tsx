@@ -6,11 +6,11 @@ import {
   useHomeWorksQuery,
   useUserQuery,
 } from "../../../../api/graphql/generated/graphql";
-import Spinner from "../../../../shared/Spinner";
+import Spinner from "../../../../shared/components/Spinner";
 import Board from "../../views/Board";
 import { KanbanContext } from "../../context/KanbanContext";
 import { getValidDateOrNull } from "../../helpers/isValidDate";
-import NoDataErrorMessage from "../../../../shared/NoDataErrorMessage";
+import NoDataErrorMessage from "../../../../shared/components/NoDataErrorMessage";
 import { UserProvider } from "../../context/UserContext";
 
 const HomeworksContainer: React.FC = () => {

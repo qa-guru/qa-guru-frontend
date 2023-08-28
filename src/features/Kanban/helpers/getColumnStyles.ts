@@ -23,7 +23,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
       padding: "6px",
       borderRadius: "4px",
       width: "100%",
-      minHeight: "100%",
+      minHeight: "80%",
       display: "flex",
       flexDirection: "column",
     };

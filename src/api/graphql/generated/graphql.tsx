@@ -193,17 +193,20 @@ export type Mutation = {
   deleteTrainingTariff?: Maybe<Scalars["Void"]>;
   lockUser?: Maybe<Scalars["Void"]>;
   notApproved?: Maybe<StudentHomeWorkDto>;
+  resetPassword?: Maybe<Scalars["Void"]>;
   resetState?: Maybe<StudentHomeWorkDto>;
   /** commentHomeWork section */
   sendComment?: Maybe<CommentHomeWorkDto>;
   /** studentHomeWork section */
   sendHomeWorkToCheck?: Maybe<StudentHomeWorkDto>;
+  setPassword?: Maybe<Scalars["Void"]>;
   takeForReview?: Maybe<StudentHomeWorkDto>;
   unlockUser?: Maybe<Scalars["Void"]>;
   updateComment?: Maybe<CommentHomeWorkDto>;
   updateHomeWork?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
   updateLecture?: Maybe<LectureInfoDto>;
+  /** lecture home work level section */
   updateLectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   updateRole?: Maybe<UserDto>;
   /** training section */
@@ -280,6 +283,11 @@ export type MutationNotApprovedArgs = {
 };
 
 /** Mutation root */
+export type MutationResetPasswordArgs = {
+  email: Scalars["String"];
+};
+
+/** Mutation root */
 export type MutationResetStateArgs = {
   homeWorkId: Scalars["ID"];
 };
@@ -294,6 +302,12 @@ export type MutationSendCommentArgs = {
 export type MutationSendHomeWorkToCheckArgs = {
   content: Scalars["String"];
   lectureId: Scalars["ID"];
+};
+
+/** Mutation root */
+export type MutationSetPasswordArgs = {
+  newPassword: Scalars["String"];
+  token: Scalars["String"];
 };
 
 /** Mutation root */
@@ -368,9 +382,10 @@ export enum Order {
 /** Query root */
 export type Query = {
   __typename?: "Query";
-  commentsHomeWorkByHomeWork?: Maybe<CommentHomeWorksDto>;
+  checkResetPasswordToken?: Maybe<Scalars["Void"]>;
   /** commentHomeWork section */
-  commentsHomeWorkById?: Maybe<CommentHomeWorksDto>;
+  commentHomeWorkById?: Maybe<CommentHomeWorksDto>;
+  commentsHomeWorkByHomeWork?: Maybe<CommentHomeWorksDto>;
   /** studentHomeWork section */
   homeWork?: Maybe<StudentHomeWorkDto>;
   homeWorkByLecture?: Maybe<StudentHomeWorkDto>;
@@ -381,10 +396,10 @@ export type Query = {
   /** lecture section */
   lecture?: Maybe<LectureInfoShortDto>;
   lectureHomeWork?: Maybe<Array<Maybe<LectureContentHomeWorkDto>>>;
+  /** lecture home work level section */
   lectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
-  lecturesByMentor?: Maybe<LecturesDto>;
   mentors?: Maybe<UsersDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
@@ -404,16 +419,21 @@ export type Query = {
 };
 
 /** Query root */
+export type QueryCheckResetPasswordTokenArgs = {
+  token: Scalars["String"];
+};
+
+/** Query root */
+export type QueryCommentHomeWorkByIdArgs = {
+  id: Scalars["ID"];
+};
+
+/** Query root */
 export type QueryCommentsHomeWorkByHomeWorkArgs = {
   homeWorkId: Scalars["ID"];
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<CommentHomeWorkSort>;
-};
-
-/** Query root */
-export type QueryCommentsHomeWorkByIdArgs = {
-  id: Scalars["ID"];
 };
 
 /** Query root */
@@ -473,13 +493,6 @@ export type QueryLectureHomeWorkLevelArgs = {
 
 /** Query root */
 export type QueryLecturesArgs = {
-  limit: Scalars["Int"];
-  offset: Scalars["Int"];
-  sort?: InputMaybe<LectureSort>;
-};
-
-/** Query root */
-export type QueryLecturesByMentorArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<LectureSort>;
@@ -965,11 +978,19 @@ export type HomeWorksQuery = {
       answer?: string | null;
       status?: StudentHomeWorkStatus | null;
       creationDate?: any | null;
+      startCheckingDate?: any | null;
+      endCheckingDate?: any | null;
       lecture?: {
         __typename?: "LectureInfoDto";
         id?: string | null;
         subject?: string | null;
         description?: Array<string | null> | null;
+        contentHomeWork?: Array<{
+          __typename?: "LectureContentHomeWorkDto";
+          url?: string | null;
+          value?: string | null;
+          type?: string | null;
+        } | null> | null;
       } | null;
       student?: {
         __typename?: "UserDto";
@@ -2085,6 +2106,11 @@ export const HomeWorksDocument = gql`
           id
           subject
           description
+          contentHomeWork {
+            url
+            value
+            type
+          }
         }
         answer
         status
@@ -2101,6 +2127,8 @@ export const HomeWorksDocument = gql`
           lastName
         }
         creationDate
+        startCheckingDate
+        endCheckingDate
       }
     }
   }

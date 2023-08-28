@@ -4,10 +4,10 @@ import LectureTitle from "./LectureTitle";
 import LectureDescription from "./LectureDescription";
 import LectureSpeakers from "./LectureSpeakers";
 import LectureContent from "./LectureContent";
-import LectureHomework from "./LectureHomework";
-import Homework from "../containers/Homework";
-import BlurredHomework from "../../../shared/Blurred/BlurredHomework";
+import LectureHomework from "../../../shared/components/LectureHomework";
+import BlurredHomework from "../../../shared/components/Blurred/BlurredHomework";
 import HomeworksOtherStudents from "../containers/HomeworksOtherStudents";
+import Homework from "../containers/Homework";
 
 const LectureDetail: React.FC<ILectureDetail> = (props) => {
   const { dataLecture, dataLectureHomework, tariffHomework } = props;
