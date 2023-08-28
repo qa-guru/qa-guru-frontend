@@ -1,5 +1,8 @@
-import { LectureHomeWorkQuery } from "../../../api/graphql/generated/graphql";
+import {
+  LectureContentDto,
+  LectureContentHomeWorkDto,
+} from "../../../api/graphql/generated/graphql";
 
 export interface ILectureHomework {
-  dataLectureHomework: LectureHomeWorkQuery;
+  lectureHomeWork?: (LectureContentHomeWorkDto | LectureContentDto | null)[];
 }

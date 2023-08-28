@@ -86,11 +86,11 @@ exports[`Column > items is false 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                   <div
@@ -120,11 +120,11 @@ exports[`Column > items is false 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -196,11 +196,11 @@ exports[`Column > items is false 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                   <div
@@ -230,11 +230,11 @@ exports[`Column > items is false 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -344,11 +344,11 @@ exports[`Column > items is true 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                   <div
@@ -378,11 +378,11 @@ exports[`Column > items is true 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -454,11 +454,11 @@ exports[`Column > items is true 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                   <div
@@ -488,11 +488,11 @@ exports[`Column > items is true 1`] = `
                     <div
                       class="MuiBox-root css-0"
                     >
-                      <h6
-                        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                      <p
+                        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
                       >
                         undefined undefined
-                      </h6>
+                      </p>
                     </div>
                   </div>
                 </div>

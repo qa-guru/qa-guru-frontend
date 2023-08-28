@@ -4,13 +4,12 @@ import BlurredComponent from "./BlurredComponent";
 import { style } from "./styles";
 import LectureHomework from "../LectureHomework";
 import Homework from "../../../features/LectureDetail/containers/Homework";
-import { lectureHomework } from "../../mocks/lectureHomework.mock";
 
 const BlurredHomework: React.FC = () => {
   return (
     <Box position="relative">
       <BlurredComponent>
-        <LectureHomework dataLectureHomework={lectureHomework} />
+        <LectureHomework />
         <Box pt="40px">
           <Homework />
         </Box>

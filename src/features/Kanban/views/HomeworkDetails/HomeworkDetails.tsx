@@ -10,6 +10,7 @@ import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.sv
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
 import StatusContent from "../../../../shared/components/StatusContent";
 import TextSerialization from "../../../../shared/Serializers/TextSerialization";
+import LectureHomework from "../../../../shared/components/LectureHomework";
 
 const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";
@@ -41,7 +42,7 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
           />
         )}
       </Stack>
-      <Stack spacing={2} direction="row" mt="10px">
+      <Stack spacing={2} direction="row" mt={2}>
         <Stack direction="column">
           <Typography variant="body2">Создано</Typography>
           <Typography variant="caption" noWrap>
@@ -67,12 +68,12 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
           </Stack>
         )}
       </Stack>
-      <Box mt="10px">
+      <Box mt="15px">
         <StatusContent status={card.status!} />
       </Box>
-      {/*<LectureHomework dataLectureHomework={card.lecture?.contentHomeWork!} />;*/}
+      <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork!} />
       <Paper sx={style.paper}>
-        <Typography variant="h5" mb="15px">
+        <Typography variant="h5" mb={2}>
           Ответ на задание
         </Typography>
         <TextSerialization text={card.answer!} />

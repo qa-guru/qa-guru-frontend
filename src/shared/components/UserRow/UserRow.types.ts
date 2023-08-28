@@ -7,5 +7,5 @@ export interface IUserRow {
   date?: string;
   width?: string | number;
   height?: string | number;
-  variant?: "subtitle1" | "subtitle2";
+  variant?: "body2" | "subtitle1" | "subtitle2";
 }

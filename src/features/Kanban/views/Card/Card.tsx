@@ -134,6 +134,7 @@ const Card: React.FC<ICard> = ({
                 user={card.mentor}
                 width={26}
                 height={26}
+                variant="body2"
               />
             )}
             <UserRow
@@ -141,6 +142,7 @@ const Card: React.FC<ICard> = ({
               user={card.student!}
               width={26}
               height={26}
+              variant="body2"
             />
           </Stack>
         </Grid>

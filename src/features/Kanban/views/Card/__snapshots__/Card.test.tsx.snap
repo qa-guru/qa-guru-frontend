@@ -67,11 +67,11 @@ exports[`Card > Card is hidden 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
               >
                 firstName lastName
-              </h6>
+              </p>
             </div>
           </div>
           <div
@@ -101,11 +101,11 @@ exports[`Card > Card is hidden 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
               >
                 firstName lastName
-              </h6>
+              </p>
             </div>
           </div>
         </div>
@@ -182,11 +182,11 @@ exports[`Card > Card is visible 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
               >
                 firstName lastName
-              </h6>
+              </p>
             </div>
           </div>
           <div
@@ -216,11 +216,11 @@ exports[`Card > Card is visible 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
               >
                 firstName lastName
-              </h6>
+              </p>
             </div>
           </div>
         </div>
