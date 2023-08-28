@@ -13,7 +13,6 @@ import TextSerialization from "../../../../shared/Serializers/TextSerialization"
 
 const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";
-  console.log(card.lecture);
 
   return (
     <Box sx={style.menu}>
