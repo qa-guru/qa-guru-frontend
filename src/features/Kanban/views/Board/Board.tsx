@@ -184,7 +184,7 @@ const Board: React.FC<IBoard> = ({
                 <Column
                   draggingState={draggingState}
                   setDraggingState={setDraggingState}
-                  key={column.id}
+                  key={`${column.id}-${index}`}
                   column={column}
                   onCardDrop={moveCard}
                   fetchMore={fetchMoreFunctions[index]}
@@ -205,7 +205,7 @@ const Board: React.FC<IBoard> = ({
                 <Column
                   draggingState={draggingState}
                   setDraggingState={setDraggingState}
-                  key={column.id}
+                  key={`${column.id}-${index}`}
                   column={column}
                   onCardDrop={moveCard}
                   fetchMore={fetchMoreFunctions[index]}
