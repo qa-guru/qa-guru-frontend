@@ -3,7 +3,7 @@
 exports[`Card > Card is hidden 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-4f1csc-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-wjs4fs-MuiPaper-root"
     draggable="true"
   >
     <div
@@ -26,14 +26,14 @@ exports[`Card > Card is hidden 1`] = `
       <div
         class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
         />
         <div
           class="MuiStack-root css-qkek6c-MuiStack-root"
         >
           <div
-            class="MuiStack-root css-1q36rmd-MuiStack-root"
+            class="MuiStack-root css-unhrs1-MuiStack-root"
           >
             <svg
               fill="none"
@@ -65,7 +65,7 @@ exports[`Card > Card is hidden 1`] = `
               </h6>
             </div>
             <div
-              class="MuiStack-root css-m69qwo-MuiStack-root"
+              class="MuiBox-root css-0"
             >
               <h6
                 class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
@@ -75,7 +75,7 @@ exports[`Card > Card is hidden 1`] = `
             </div>
           </div>
           <div
-            class="MuiStack-root css-1q36rmd-MuiStack-root"
+            class="MuiStack-root css-unhrs1-MuiStack-root"
           >
             <svg
               fill="none"
@@ -99,7 +99,7 @@ exports[`Card > Card is hidden 1`] = `
               </h6>
             </div>
             <div
-              class="MuiStack-root css-m69qwo-MuiStack-root"
+              class="MuiBox-root css-0"
             >
               <h6
                 class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
@@ -118,7 +118,7 @@ exports[`Card > Card is hidden 1`] = `
 exports[`Card > Card is visible 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1s3bnvi-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
     draggable="true"
   >
     <div
@@ -141,14 +141,14 @@ exports[`Card > Card is visible 1`] = `
       <div
         class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
         />
         <div
           class="MuiStack-root css-qkek6c-MuiStack-root"
         >
           <div
-            class="MuiStack-root css-1q36rmd-MuiStack-root"
+            class="MuiStack-root css-unhrs1-MuiStack-root"
           >
             <svg
               fill="none"
@@ -180,7 +180,7 @@ exports[`Card > Card is visible 1`] = `
               </h6>
             </div>
             <div
-              class="MuiStack-root css-m69qwo-MuiStack-root"
+              class="MuiBox-root css-0"
             >
               <h6
                 class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
@@ -190,7 +190,7 @@ exports[`Card > Card is visible 1`] = `
             </div>
           </div>
           <div
-            class="MuiStack-root css-1q36rmd-MuiStack-root"
+            class="MuiStack-root css-unhrs1-MuiStack-root"
           >
             <svg
               fill="none"
@@ -214,7 +214,7 @@ exports[`Card > Card is visible 1`] = `
               </h6>
             </div>
             <div
-              class="MuiStack-root css-m69qwo-MuiStack-root"
+              class="MuiBox-root css-0"
             >
               <h6
                 class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"

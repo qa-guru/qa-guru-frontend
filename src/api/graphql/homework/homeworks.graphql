@@ -14,6 +14,11 @@ query homeWorks(
         id
         subject
         description
+        contentHomeWork{
+          url
+          value
+          type
+        }
       }
       answer
       status

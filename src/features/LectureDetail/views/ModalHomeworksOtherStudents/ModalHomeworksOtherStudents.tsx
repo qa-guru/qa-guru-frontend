@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useModal } from "react-modal-hook";
 import { Box, Button, Dialog, DialogContent, Stack } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -32,20 +32,20 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
     </Dialog>
   ));
 
-  useEffect(() => {
-    if (modalId === item.id) {
-      showModal();
-    }
-  }, [modalId, showModal, item.id]);
+  // useEffect(() => {
+  //   if (modalId === item.id) {
+  //     showModal();
+  //   }
+  // }, [modalId, showModal, item.id]);
 
   const showModalAndSetUrl = () => {
     showModal();
-    navigate(`${location.pathname}/${item.id}`);
+    // navigate(`${location.pathname}/${item.id}`);
   };
 
   const hideModalAndUpdateUrl = () => {
     hideModal();
-    navigate(location.pathname.replace(`/${item.id}`, ""), { replace: true });
+    // navigate(location.pathname.replace(`/${item.id}`, ""), { replace: true });
   };
 
   return (

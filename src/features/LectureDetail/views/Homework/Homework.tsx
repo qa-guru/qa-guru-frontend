@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useModal } from "react-modal-hook";
 import { Button, Dialog, DialogContent, Paper, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";

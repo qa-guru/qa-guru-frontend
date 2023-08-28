@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
+import { Container } from "@mui/system";
 import { style } from "./styles";
 import Header from "../../widgets/Header";
 import { UserRole } from "../../api/graphql/generated/graphql";
@@ -14,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ userRoles }) => {
   return (
     <Box sx={style.root}>
       <Header userRoles={userRoles} />
-      <Container sx={style.content} maxWidth={"xl"}>
+      <Container sx={style.content}>
         <Outlet />
       </Container>
       {/*<Footer />*/}

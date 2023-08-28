@@ -10,27 +10,30 @@ exports[`Profile > the component is render 1`] = `
     type="button"
   >
     <div
-      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
+      class="MuiBox-root css-ub3hk"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+      <div
+        class="MuiStack-root css-unhrs1-MuiStack-root"
       >
-        ss
-      </h6>
-    </div>
-    <div
-      class="MuiBox-root css-tzqd77"
-    >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle2 css-17lzo9z-MuiTypography-root"
-      >
-        string
-      </h6>
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle2 css-17lzo9z-MuiTypography-root"
-      >
-        string
-      </h6>
+        <div
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1glkqjq-MuiAvatar-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          >
+            ss
+          </h6>
+        </div>
+        <div
+          class="MuiBox-root css-0"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          >
+            string string
+          </h6>
+        </div>
+      </div>
     </div>
     <span
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"

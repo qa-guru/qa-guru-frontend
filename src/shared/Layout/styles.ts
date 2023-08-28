@@ -6,5 +6,6 @@ export const style = {
   },
   content: {
     flexGrow: 1,
+    minWidth: "100%",
   },
 };

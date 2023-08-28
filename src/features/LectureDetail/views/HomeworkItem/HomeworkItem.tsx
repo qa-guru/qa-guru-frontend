@@ -5,7 +5,7 @@ import HomeworkContent from "./HomeworkContent";
 import { style } from "./styles";
 import ButtonEdit from "./ButtonEdit";
 import StatusContent from "../../../../shared/components/StatusContent";
-import Profile from "../Profile/Profile";
+import UserRow from "../../../../shared/components/UserRow";
 
 const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;
@@ -41,11 +41,7 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
         >
           {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
             <Box mt={{ xs: 2, sm: 0 }}>
-              <Profile
-                firstName={mentor?.firstName!}
-                lastName={mentor?.lastName!}
-                date={date}
-              />
+              <UserRow user={mentor!} date={date} />
             </Box>
           )}
         </Stack>
@@ -54,11 +50,7 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
 
       {status && (
         <Box mt="16px">
-          <Profile
-            firstName={student?.firstName!}
-            lastName={student?.lastName!}
-            date={creationDate!}
-          />
+          <UserRow user={mentor!} date={date} />
         </Box>
       )}
 

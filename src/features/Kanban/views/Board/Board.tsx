@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Box, useMediaQuery, Pagination, Stack, Grid } from "@mui/material";
+import { Box, useMediaQuery, Pagination, Stack } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
+import { Resizable } from "re-resizable";
 import { IBoard } from "./Board.types";
 import { style } from "./styles";
 import Column from "../Column/Column";
@@ -140,20 +141,25 @@ const Board: React.FC<IBoard> = ({
     setActiveStep(step);
   };
 
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
   const handleCardClick = (card: StudentHomeWorkDto) => {
     setSelectedCard(card);
     setShowHomeworkDetails(true);
+    setActiveCardId(card.id!);
   };
 
+  const [detailsWidth, setDetailsWidth] = useState("33%");
   const handleHomeworkDetailsClose = () => {
     setSelectedCard(null);
     setShowHomeworkDetails(false);
+    setDetailsWidth("33%");
   };
 
   return (
     <DndProvider backend={HTML5Backend}>
       {isDownMd ? (
-        <Box mt={2}>
+        <Box mt="2vh">
           <Box display="flex" justifyContent="center">
             <Pagination
               count={columns.length}
@@ -188,8 +194,8 @@ const Board: React.FC<IBoard> = ({
           </Box>
         </Box>
       ) : (
-        <Grid container mt={2}>
-          <Grid item xs={showHomeworkDetails && isUpLg ? 8 : 12}>
+        <Box display="flex">
+          <Box sx={style.boxWrapper}>
             <Stack
               direction="row"
               spacing={1}
@@ -204,19 +210,32 @@ const Board: React.FC<IBoard> = ({
                   onCardDrop={moveCard}
                   fetchMore={fetchMoreFunctions[index]}
                   onCardClick={handleCardClick}
+                  activeCardId={activeCardId}
                 />
               ))}
             </Stack>
-          </Grid>
+          </Box>
           {isUpLg && showHomeworkDetails && selectedCard && (
-            <Grid item xs={4} sx={style.menu}>
+            <Resizable
+              enable={{ left: true }}
+              size={{ width: detailsWidth, height: "100%" }}
+              maxWidth="50%"
+              minWidth="33%"
+              style={style.menu}
+              onResize={(e, direction, ref, d) => {
+                setDetailsWidth((prevWidth) => {
+                  const newWidth = parseInt(prevWidth, 10) - d.width;
+                  return `${newWidth}px`;
+                });
+              }}
+            >
               <HomeworkDetails
                 card={selectedCard}
                 onClose={handleHomeworkDetailsClose}
               />
-            </Grid>
+            </Resizable>
           )}
-        </Grid>
+        </Box>
       )}
     </DndProvider>
   );

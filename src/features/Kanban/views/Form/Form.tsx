@@ -135,6 +135,7 @@ const Form: React.FC = () => {
               <Button
                 onClick={handleSubmit(handleFilterKanban)}
                 variant="contained"
+                size="large"
                 sx={{ fontSize: "12px" }}
               >
                 Применить
@@ -143,6 +144,7 @@ const Form: React.FC = () => {
                 onClick={handleReset}
                 color="secondary"
                 variant="contained"
+                size="large"
                 sx={{ fontSize: "12px" }}
               >
                 Сбросить

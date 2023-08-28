@@ -20,11 +20,11 @@ exports[`StatusContent > status is Approved 1`] = `
     <div
       class="MuiBox-root css-0"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       >
         Принято
-      </h6>
+      </p>
     </div>
   </div>
 </DocumentFragment>
@@ -52,11 +52,11 @@ exports[`StatusContent > status is InReview 1`] = `
     <div
       class="MuiBox-root css-0"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       >
         На проверке
-      </h6>
+      </p>
     </div>
   </div>
 </DocumentFragment>
@@ -88,11 +88,11 @@ exports[`StatusContent > status is New 1`] = `
     <div
       class="MuiBox-root css-0"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       >
         Ожидает проверки
-      </h6>
+      </p>
     </div>
   </div>
 </DocumentFragment>
@@ -117,11 +117,11 @@ exports[`StatusContent > status is NotApproved 1`] = `
     <div
       class="MuiBox-root css-0"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       >
         Не принято
-      </h6>
+      </p>
     </div>
   </div>
 </DocumentFragment>
