@@ -144,7 +144,7 @@ const Column: React.FC<IColumn> = ({
       display="flex"
       flexDirection="column"
     >
-      <Typography variant="h6" ml={1}>
+      <Typography variant="h6" ml={1} mb={1}>
         {formatStatus(column.title)}
       </Typography>
       <Box
@@ -155,7 +155,7 @@ const Column: React.FC<IColumn> = ({
           ...getColumnStyles(column.id, draggingState, isOver),
           boxSizing: "border-box",
           overflowY: showButton ? "hidden" : "auto",
-          maxHeight: { xs: "73vh", lg: "71vh" },
+          maxHeight: { xs: "73vh", lg: "69vh" },
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",
@@ -175,16 +175,18 @@ const Column: React.FC<IColumn> = ({
           style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
         >
-          {column.cards?.map((card, index: number) => (
-            <Card
-              key={`${card.id}-${index}`}
-              card={card}
-              sourceColumnId={column.id}
-              setDraggingState={setDraggingState}
-              isCardsHidden={isColumnHighlight(column.id, draggingState)}
-              onCardClick={() => onCardClick!(card)}
-              isActive={activeCardId === card.id}
-            />
+          {column.cards?.map((card, index) => (
+            <Box mb={2}>
+              <Card
+                key={`${card.id}-${index}`}
+                card={card}
+                sourceColumnId={column.id}
+                setDraggingState={setDraggingState}
+                isCardsHidden={isColumnHighlight(column.id, draggingState)}
+                onCardClick={() => onCardClick!(card)}
+                isActive={activeCardId === card.id}
+              />
+            </Box>
           ))}
         </InfiniteScroll>
       </Box>

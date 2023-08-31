@@ -4,11 +4,7 @@ import { ILectureHomework } from "./LectureHomework.types";
 import { style } from "./styles";
 import ContentSerialization from "../../Serializers/ContentSerialization";
 
-const LectureHomework: React.FC<ILectureHomework> = ({
-  dataLectureHomework,
-}) => {
-  const { lectureHomeWork } = dataLectureHomework!;
-
+const LectureHomework: React.FC<ILectureHomework> = ({ lectureHomeWork }) => {
   return (
     <>
       <Paper sx={style.paper}>

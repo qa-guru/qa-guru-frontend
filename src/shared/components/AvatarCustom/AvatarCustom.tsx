@@ -3,25 +3,35 @@ import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import { IAvatarCustom } from "./AvatarCustom.types";
 
-function stringToColor(string: string) {
-  let hash = 0;
-  let i;
-
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  let color = "#";
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-  /* eslint-enable no-bitwise */
-
-  return color;
+function stringToColor(name: string) {
+  const colors = [
+    "#FFA000",
+    "#6750A4",
+    "#2CCCA6",
+    "#0288D1",
+    "#6750A4",
+    "#C2185B",
+    "#388E3C",
+    "#0097A7",
+    "#00796B",
+    "#455A64",
+  ];
+  const index = Math.abs(hashCode(name)) % colors.length;
+  return colors[index];
 }
+
+/* eslint-disable no-bitwise */
+
+function hashCode(str: string) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+  }
+  return hash;
+}
+
+/* eslint-enable no-bitwise */
 
 function stringAvatar(name: string) {
   return {

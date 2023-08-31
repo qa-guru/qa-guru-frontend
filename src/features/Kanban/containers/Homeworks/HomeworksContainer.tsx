@@ -47,7 +47,7 @@ const HomeworksContainer: React.FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: 0,
-      limit: 4,
+      limit: 5,
       sort: {
         field: StudentHomeWorkSortField.CreationDate,
         order: Order.Desc,
@@ -63,7 +63,7 @@ const HomeworksContainer: React.FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: 0,
-      limit: 4,
+      limit: 5,
       sort: {
         field: StudentHomeWorkSortField.StartCheckingDate,
         order: Order.Desc,
@@ -79,7 +79,7 @@ const HomeworksContainer: React.FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: 0,
-      limit: 4,
+      limit: 5,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,
@@ -95,7 +95,7 @@ const HomeworksContainer: React.FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: 0,
-      limit: 4,
+      limit: 5,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,

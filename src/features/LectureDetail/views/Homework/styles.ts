@@ -1,5 +1,5 @@
 export const style = {
-  paper: { padding: { xs: "15px", md: "20px" }, mt: "40px" },
+  paper: { padding: { xs: "15px", md: "20px" }, mt: "25px" },
   scrollContainer: { overflowY: "auto", maxHeight: "calc(100vh - 200px)" },
   button: { mt: "10px" },
   clearIcon: {

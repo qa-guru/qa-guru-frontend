@@ -22,6 +22,6 @@ export const style = {
   },
   menu: {
     backgroundColor: grey.light,
-    marginTop: "30px",
+    marginTop: "20px",
   },
 };

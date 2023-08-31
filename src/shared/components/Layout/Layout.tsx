@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import { style } from "./styles";
-import Header from "../../widgets/Header";
-import { UserRole } from "../../api/graphql/generated/graphql";
+import Header from "../../../widgets/Header";
+import { UserRole } from "../../../api/graphql/generated/graphql";
 // import Footer from "../widgets/Footer";
 
 interface LayoutProps {

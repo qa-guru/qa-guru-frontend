@@ -149,11 +149,13 @@ const Board: React.FC<IBoard> = ({
     setActiveCardId(card.id!);
   };
 
-  const [detailsWidth, setDetailsWidth] = useState("33%");
+  const [detailsWidth, setDetailsWidth] = useState("34%");
+  const [fadeOut, setFadeOut] = useState(false);
+
   const handleHomeworkDetailsClose = () => {
     setSelectedCard(null);
     setShowHomeworkDetails(false);
-    setDetailsWidth("33%");
+    setDetailsWidth("34%");
   };
 
   return (
@@ -195,11 +197,19 @@ const Board: React.FC<IBoard> = ({
         </Box>
       ) : (
         <Box display="flex">
-          <Box sx={style.boxWrapper}>
+          <Box
+            mt={2}
+            sx={{
+              transition: "width 0.5s ease-in-out",
+              width: showHomeworkDetails && isUpLg ? "66%" : "100%",
+            }}
+          >
             <Stack
               direction="row"
               spacing={1}
-              sx={{ marginRight: showHomeworkDetails && isUpLg ? 2 : 0 }}
+              sx={{
+                marginRight: showHomeworkDetails && isUpLg ? 2 : 0,
+              }}
             >
               {columns?.map((column, index) => (
                 <Column
@@ -215,12 +225,12 @@ const Board: React.FC<IBoard> = ({
               ))}
             </Stack>
           </Box>
-          {isUpLg && showHomeworkDetails && selectedCard && (
+          {isUpLg && selectedCard && (
             <Resizable
               enable={{ left: true }}
               size={{ width: detailsWidth, height: "100%" }}
               maxWidth="50%"
-              minWidth="33%"
+              minWidth="34%"
               style={style.menu}
               onResize={(e, direction, ref, d) => {
                 setDetailsWidth((prevWidth) => {
@@ -232,6 +242,7 @@ const Board: React.FC<IBoard> = ({
               <HomeworkDetails
                 card={selectedCard}
                 onClose={handleHomeworkDetailsClose}
+                showHomeworkDetails={showHomeworkDetails}
               />
             </Resizable>
           )}

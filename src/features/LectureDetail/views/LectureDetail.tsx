@@ -10,9 +10,13 @@ import HomeworksOtherStudents from "../containers/HomeworksOtherStudents";
 import Homework from "../containers/Homework";
 
 const LectureDetail: React.FC<ILectureDetail> = (props) => {
-  const { dataLecture, dataLectureHomework, tariffHomework } = props;
+  const {
+    dataLecture,
+    dataLectureHomework: { lectureHomeWork },
+    tariffHomework,
+  } = props;
   const { subject, description, speakers, content } = dataLecture.lecture!;
-  const hasHomework = dataLectureHomework?.lectureHomeWork?.length! > 0;
+  const hasHomework = lectureHomeWork?.length! > 0;
 
   return (
     <>
@@ -22,7 +26,7 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
       <LectureContent content={content!} />
       {tariffHomework && hasHomework && (
         <>
-          <LectureHomework dataLectureHomework={dataLectureHomework} />
+          <LectureHomework lectureHomeWork={lectureHomeWork!} />
           <Homework />
           <HomeworksOtherStudents />
         </>

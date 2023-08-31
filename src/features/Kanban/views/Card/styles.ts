@@ -1,13 +1,14 @@
-import { grey, primary, white } from "../../../../theme/colors";
+import { grey, primary } from "../../../../theme/colors";
 
 export const style = {
   paper: {
-    backgroundColor: white,
     cursor: "grab",
     flexGrow: "1",
     margin: 1,
+    border: `1px solid transparent`,
     "&:hover": {
-      backgroundColor: `${primary.main}40`,
+      transform: "scale(1.02)",
+      transition: "transform 300ms ease-in-out",
     },
   },
   draggedPaper: {
@@ -19,13 +20,15 @@ export const style = {
   },
   cardHeader: {
     backgroundColor: grey.light,
-    boxShadow: "0 1px 3px rgba(0, 0, 0, .6)",
+    justifyContent: "space-between",
+    boxShadow: "0px 3px 3px rgba(0, 0, 0, 0.2)",
     padding: 1,
     width: "100%",
-    borderTopLeftRadius: "10px",
-    borderTopRightRadius: "10px",
+    borderTopLeftRadius: "8px",
+    borderTopRightRadius: "8px",
+    position: "relative",
   },
   activeCard: {
-    backgroundColor: `${primary.main}40`,
+    border: `1px solid ${primary.main}80`,
   },
 };
