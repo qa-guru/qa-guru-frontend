@@ -6,7 +6,7 @@ exports[`Board > Board is render 1`] = `
     class="MuiBox-root css-k008qs"
   >
     <div
-      class="MuiBox-root css-1j2i35l"
+      class="MuiBox-root css-lxdyda"
     >
       <div
         class="MuiStack-root css-1etqvnd-MuiStack-root"
@@ -15,12 +15,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
           >
             New
           </h6>
           <div
-            class="MuiBox-root css-jsg97x"
+            class="MuiBox-root css-1yma5ff"
             id="scroll-container-1"
           >
             <div
@@ -71,12 +71,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
           >
             In review
           </h6>
           <div
-            class="MuiBox-root css-jsg97x"
+            class="MuiBox-root css-1yma5ff"
             id="scroll-container-2"
           >
             <div
@@ -127,12 +127,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
           >
             Approved
           </h6>
           <div
-            class="MuiBox-root css-jsg97x"
+            class="MuiBox-root css-1yma5ff"
             id="scroll-container-3"
           >
             <div
@@ -143,14 +143,14 @@ exports[`Board > Board is render 1`] = `
                 style="height: auto; overflow: visible;"
               >
                 <div
-                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
-                  draggable="true"
+                  class="MuiBox-root css-1qm1lh"
                 >
                   <div
-                    class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+                    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1tmrm3q-MuiPaper-root"
+                    draggable="true"
                   >
                     <div
-                      class="MuiGrid-root MuiGrid-item css-1ddv4e1-MuiGrid-root"
+                      class="MuiStack-root css-1nx4lax-MuiStack-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
@@ -162,7 +162,7 @@ exports[`Board > Board is render 1`] = `
                       />
                     </div>
                     <div
-                      class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
+                      class="MuiBox-root css-hpgf8j"
                     >
                       <p
                         class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -196,7 +196,7 @@ exports[`Board > Board is render 1`] = `
                             />
                           </svg>
                           <div
-                            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-51pvgs-MuiAvatar-root"
+                            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                           >
                             <h6
                               class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -230,7 +230,7 @@ exports[`Board > Board is render 1`] = `
                             />
                           </svg>
                           <div
-                            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-51pvgs-MuiAvatar-root"
+                            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                           >
                             <h6
                               class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -270,12 +270,12 @@ exports[`Board > Board is render 1`] = `
           class="MuiBox-root css-pi4i3q"
         >
           <h6
-            class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
           >
             Not approved
           </h6>
           <div
-            class="MuiBox-root css-jsg97x"
+            class="MuiBox-root css-1yma5ff"
             id="scroll-container-4"
           >
             <div

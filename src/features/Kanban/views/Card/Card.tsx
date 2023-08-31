@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useDrag } from "react-dnd";
-import { Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { useSnackbar } from "notistack";
 import { ICard } from "./Card.types";
@@ -108,6 +108,13 @@ const Card: React.FC<ICard> = ({
     },
   ];
 
+  const cardHeaderStyles = {
+    ...style.cardHeader,
+    backgroundColor: isActive
+      ? style.activeCard.border.slice(10)
+      : style.cardHeader.backgroundColor,
+  };
+
   return (
     <Paper
       ref={dragRef}
@@ -115,38 +122,36 @@ const Card: React.FC<ICard> = ({
       onClick={handleCardClick}
       elevation={4}
     >
-      <Grid container>
-        <Grid item sx={style.cardHeader}>
-          <Typography textTransform="uppercase" variant="subtitle2">
-            {getFormattedId(card.id!)}
-          </Typography>
-          <Typography variant="body2">
-            {card.creationDate &&
-              format(parseISO(card.creationDate), "dd.MM.yyyy")}
-          </Typography>
-        </Grid>
-        <Grid item padding={1}>
-          <Typography variant="body2">{card.lecture?.subject}</Typography>
-          <Stack spacing={1} mt="10px">
-            {card.mentor && (
-              <UserRow
-                icon={MentorIcon}
-                user={card.mentor}
-                width={26}
-                height={26}
-                variant="body2"
-              />
-            )}
+      <Stack sx={cardHeaderStyles} direction="row">
+        <Typography textTransform="uppercase" variant="subtitle2">
+          {getFormattedId(card.id!)}
+        </Typography>
+        <Typography variant="body2">
+          {card.creationDate &&
+            format(parseISO(card.creationDate), "dd.MM.yyyy")}
+        </Typography>
+      </Stack>
+      <Box padding={1}>
+        <Typography variant="body2">{card.lecture?.subject}</Typography>
+        <Stack spacing={1} mt="10px">
+          {card.mentor && (
             <UserRow
-              icon={StudentIcon}
-              user={card.student!}
+              icon={MentorIcon}
+              user={card.mentor}
               width={26}
               height={26}
               variant="body2"
             />
-          </Stack>
-        </Grid>
-      </Grid>
+          )}
+          <UserRow
+            icon={StudentIcon}
+            user={card.student!}
+            width={26}
+            height={26}
+            variant="body2"
+          />
+        </Stack>
+      </Box>
     </Paper>
   );
 };

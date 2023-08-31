@@ -4,8 +4,6 @@ import { render } from "../../../../test/utilsTest";
 import { commentsHomeWorkByHomeWork } from "../../../../shared/mocks/commentsHomeWorkByHomeWork.mock";
 import { userId } from "../../../../shared/mocks/userId.mock";
 
-const mockFetchMoreCommentsHomeWorkByHomeWork: any = () => {};
-
 describe("CommentsPagination", () => {
   it("the component is render", () => {
     const { asFragment } = render(
@@ -13,7 +11,7 @@ describe("CommentsPagination", () => {
         <CommentsPagination
           id="string"
           dataCommentsHomeWorkByHomeWork={commentsHomeWorkByHomeWork}
-          fetchMore={mockFetchMoreCommentsHomeWorkByHomeWork}
+          fetchMore={() => {}}
           dataUserId={userId}
         />
       </MemoryRouter>

@@ -1,6 +1,6 @@
 export const style = {
   menu: {
-    padding: 3,
+    padding: "8px 25px",
     maxHeight: "76vh",
     overflowY: "auto",
   },

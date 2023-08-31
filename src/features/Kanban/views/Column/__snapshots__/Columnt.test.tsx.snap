@@ -6,12 +6,12 @@ exports[`Column > items is false 1`] = `
     class="MuiBox-root css-pi4i3q"
   >
     <h6
-      class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
     >
       New
     </h6>
     <div
-      class="MuiBox-root css-jsg97x"
+      class="MuiBox-root css-1yma5ff"
       id="scroll-container-column1"
     >
       <div
@@ -22,14 +22,14 @@ exports[`Column > items is false 1`] = `
           style="height: auto; overflow: visible;"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
-            draggable="true"
+            class="MuiBox-root css-1qm1lh"
           >
             <div
-              class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1tmrm3q-MuiPaper-root"
+              draggable="true"
             >
               <div
-                class="MuiGrid-root MuiGrid-item css-1ddv4e1-MuiGrid-root"
+                class="MuiStack-root css-1nx4lax-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
@@ -43,7 +43,7 @@ exports[`Column > items is false 1`] = `
                 </p>
               </div>
               <div
-                class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
+                class="MuiBox-root css-hpgf8j"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -75,7 +75,7 @@ exports[`Column > items is false 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -109,7 +109,7 @@ exports[`Column > items is false 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -132,14 +132,14 @@ exports[`Column > items is false 1`] = `
             </div>
           </div>
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
-            draggable="true"
+            class="MuiBox-root css-1qm1lh"
           >
             <div
-              class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1tmrm3q-MuiPaper-root"
+              draggable="true"
             >
               <div
-                class="MuiGrid-root MuiGrid-item css-1ddv4e1-MuiGrid-root"
+                class="MuiStack-root css-1nx4lax-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
@@ -153,7 +153,7 @@ exports[`Column > items is false 1`] = `
                 </p>
               </div>
               <div
-                class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
+                class="MuiBox-root css-hpgf8j"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -185,7 +185,7 @@ exports[`Column > items is false 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -219,7 +219,7 @@ exports[`Column > items is false 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -264,12 +264,12 @@ exports[`Column > items is true 1`] = `
     class="MuiBox-root css-pi4i3q"
   >
     <h6
-      class="MuiTypography-root MuiTypography-h6 css-ssm9q9-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
     >
       New
     </h6>
     <div
-      class="MuiBox-root css-jsg97x"
+      class="MuiBox-root css-1yma5ff"
       id="scroll-container-column1"
     >
       <div
@@ -280,14 +280,14 @@ exports[`Column > items is true 1`] = `
           style="height: auto; overflow: visible;"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
-            draggable="true"
+            class="MuiBox-root css-1qm1lh"
           >
             <div
-              class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1tmrm3q-MuiPaper-root"
+              draggable="true"
             >
               <div
-                class="MuiGrid-root MuiGrid-item css-1ddv4e1-MuiGrid-root"
+                class="MuiStack-root css-1nx4lax-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
@@ -301,7 +301,7 @@ exports[`Column > items is true 1`] = `
                 </p>
               </div>
               <div
-                class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
+                class="MuiBox-root css-hpgf8j"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -333,7 +333,7 @@ exports[`Column > items is true 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -367,7 +367,7 @@ exports[`Column > items is true 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -390,14 +390,14 @@ exports[`Column > items is true 1`] = `
             </div>
           </div>
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1u4njfa-MuiPaper-root"
-            draggable="true"
+            class="MuiBox-root css-1qm1lh"
           >
             <div
-              class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1tmrm3q-MuiPaper-root"
+              draggable="true"
             >
               <div
-                class="MuiGrid-root MuiGrid-item css-1ddv4e1-MuiGrid-root"
+                class="MuiStack-root css-1nx4lax-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-m2m39s-MuiTypography-root"
@@ -411,7 +411,7 @@ exports[`Column > items is true 1`] = `
                 </p>
               </div>
               <div
-                class="MuiGrid-root MuiGrid-item css-1p27619-MuiGrid-root"
+                class="MuiBox-root css-hpgf8j"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
@@ -443,7 +443,7 @@ exports[`Column > items is true 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -477,7 +477,7 @@ exports[`Column > items is true 1`] = `
                       />
                     </svg>
                     <div
-                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-v8kvua-MuiAvatar-root"
+                      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
                     >
                       <h6
                         class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
