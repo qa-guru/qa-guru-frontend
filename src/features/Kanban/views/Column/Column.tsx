@@ -175,9 +175,9 @@ const Column: React.FC<IColumn> = ({
           style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
         >
-          {column.cards?.map((card) => (
+          {column.cards?.map((card, index: number) => (
             <Card
-              key={card.id}
+              key={`${card.id}-${index}`}
               card={card}
               sourceColumnId={column.id}
               setDraggingState={setDraggingState}
