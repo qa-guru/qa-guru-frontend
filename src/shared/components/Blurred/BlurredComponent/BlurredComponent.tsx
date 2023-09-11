@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Box } from "@mui/material";
-import { style } from "./styles";
+import { style } from "../styles";
 
 interface IBlurredComponent {
   children: ReactNode;

@@ -1,12 +1,12 @@
 import { MemoryRouter } from "react-router-dom";
-import LectureDescription from "./LectureDescription";
+import BlurredHomework from "./BlurredHomework";
 import { render } from "../../../../test/utilsTest";
 
-describe("LectureDescription", () => {
+describe("BlurredHomework", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureDescription description={["string, string", "string"]} />
+        <BlurredHomework />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

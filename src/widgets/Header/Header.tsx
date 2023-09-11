@@ -9,7 +9,7 @@ import { IHeader } from "./Header.types";
 import { style } from "./styles";
 import { getHeaderByRole } from "./roles/headerByRole";
 import { ReactComponent as Logo } from "../../assets/icons/logo-header.svg";
-import LocalSelector from "../../shared/components/Buttons/LocalSelector";
+import LocalSelector from "../../shared/components/Buttons/LocalSelector/LocalSelector";
 
 const Header: React.FC<IHeader> = ({ userRoles }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(

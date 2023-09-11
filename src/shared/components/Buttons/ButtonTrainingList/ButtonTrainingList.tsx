@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import { style } from "./styles";
+import { style } from "../styles";
 
 const ButtonTrainingList: React.FC = () => {
   const navigate = useNavigate();

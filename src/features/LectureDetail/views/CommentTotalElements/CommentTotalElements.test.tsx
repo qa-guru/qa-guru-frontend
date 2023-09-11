@@ -3,7 +3,7 @@ import CommentTotalElements from "./CommentTotalElements";
 import { render } from "../../../../test/utilsTest";
 
 describe("CommentTotalElements", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <CommentTotalElements totalElements={7} />

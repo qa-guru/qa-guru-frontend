@@ -1,13 +1,13 @@
 import { MemoryRouter } from "react-router-dom";
-import LectureHomework from "./LectureHomework";
+import UserRow from "./UserRow";
 import { render } from "../../../test/utilsTest";
-import { lectureContent } from "../../mocks/letcureContentDto.mock";
+import { studentHomeWorkDto } from "../../mocks/studentHomeWorkDto.mock";
 
-describe("LectureHomework", () => {
+describe("UserRow", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureHomework lectureHomeWork={lectureContent} />
+        <UserRow user={studentHomeWorkDto}? />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

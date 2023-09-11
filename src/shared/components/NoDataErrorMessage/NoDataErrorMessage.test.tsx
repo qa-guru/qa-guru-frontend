@@ -1,13 +1,12 @@
 import { MemoryRouter } from "react-router-dom";
-import LectureHomework from "./LectureHomework";
+import NoDataErrorMessage from "./NoDataErrorMessage";
 import { render } from "../../../test/utilsTest";
-import { lectureContent } from "../../mocks/letcureContentDto.mock";
 
-describe("LectureHomework", () => {
+describe("NoDataErrorMessage", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureHomework lectureHomeWork={lectureContent} />
+        <NoDataErrorMessage />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

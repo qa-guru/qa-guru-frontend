@@ -5,7 +5,7 @@ import { commentsHomeWorkByHomeWork } from "../../../../shared/mocks/commentsHom
 import { userId } from "../../../../shared/mocks/userId.mock";
 
 describe("CommentsLimited", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <CommentsLimited

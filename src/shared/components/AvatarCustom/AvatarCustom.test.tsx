@@ -1,13 +1,17 @@
 import { MemoryRouter } from "react-router-dom";
-import LectureHomework from "./LectureHomework";
+import AvatarCustom from "./AvatarCustom";
 import { render } from "../../../test/utilsTest";
-import { lectureContent } from "../../mocks/letcureContentDto.mock";
 
-describe("LectureHomework", () => {
+describe("AvatarCustom", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureHomework lectureHomeWork={lectureContent} />
+        <AvatarCustom
+          fullName="testDate"
+          width={40}
+          height={40}
+          variant="subtitle2"
+        />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

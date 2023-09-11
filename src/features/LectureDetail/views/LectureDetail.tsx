@@ -5,7 +5,7 @@ import LectureDescription from "./LectureDescription";
 import LectureSpeakers from "./LectureSpeakers";
 import LectureContent from "./LectureContent";
 import LectureHomework from "../../../shared/components/LectureHomework";
-import BlurredHomework from "../../../shared/components/Blurred/BlurredHomework";
+import BlurredHomework from "../../../shared/components/Blurred/BlurredHomework/BlurredHomework";
 import HomeworksOtherStudents from "../containers/HomeworksOtherStudents";
 import Homework from "../containers/Homework";
 

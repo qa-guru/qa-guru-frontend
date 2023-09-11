@@ -7,7 +7,7 @@ import { kanbanColumn } from "../../../../shared/mocks/kanbanColumnMock";
 import { UserProvider } from "../../context/UserContext";
 
 describe("Column", () => {
-  it("items is true", () => {
+  it("items are true", () => {
     const { asFragment } = render(
       <UserProvider>
         <DndProvider backend={HTML5Backend}>
@@ -30,7 +30,7 @@ describe("Column", () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it("items is false", () => {
+  it("items are false", () => {
     const { asFragment } = render(
       <UserProvider>
         <DndProvider backend={HTML5Backend}>

@@ -1,6 +1,6 @@
 import React from "react";
 import LectureDetail from "../features/LectureDetail/containers/LectureDetail";
-import ButtonLessonsList from "../shared/components/Buttons/ButtonLessonsList";
+import ButtonLessonsList from "../shared/components/Buttons/ButtonLessonsList/ButtonLessonsList";
 
 const Lecture: React.FC = () => {
   return (

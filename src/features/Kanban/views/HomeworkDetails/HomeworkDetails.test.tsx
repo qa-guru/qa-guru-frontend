@@ -4,7 +4,7 @@ import { render } from "../../../../test/utilsTest";
 import { studentHomeWorkDto } from "../../../../shared/mocks/studentHomeWorkDto.mock";
 
 describe("HomeworkDetails", () => {
-  it("HomeworkDetails is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <HomeworkDetails
@@ -16,7 +16,7 @@ describe("HomeworkDetails", () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it("HomeworkDetails is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <HomeworkDetails

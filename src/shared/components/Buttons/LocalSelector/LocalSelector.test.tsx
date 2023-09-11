@@ -1,12 +1,12 @@
 import { MemoryRouter } from "react-router-dom";
-import LectureDescription from "./LectureDescription";
+import LocalSelector from "./LocalSelector";
 import { render } from "../../../../test/utilsTest";
 
-describe("LectureDescription", () => {
+describe("LocalSelector", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureDescription description={["string, string", "string"]} />
+        <LocalSelector />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

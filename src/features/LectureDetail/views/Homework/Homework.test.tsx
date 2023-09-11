@@ -5,7 +5,7 @@ import { userId } from "../../../../shared/mocks/userId.mock";
 import { studentHomeWorkDto } from "../../../../shared/mocks/studentHomeWorkDto.mock";
 
 describe("Homework", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <Homework

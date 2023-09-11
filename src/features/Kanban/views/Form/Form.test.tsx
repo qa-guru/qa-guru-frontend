@@ -3,7 +3,7 @@ import Form from "./Form";
 import { render } from "../../../../test/utilsTest";
 
 describe("Form", () => {
-  it("Form is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <Form />
