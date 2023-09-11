@@ -22,9 +22,9 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({
 
   return (
     <Fade in={showHomeworkDetails} timeout={700}>
-      <Box>
+      <Box sx={style.menu}>
         <ExpandIcon />
-        <Box sx={style.menu}>
+        <Box>
           <Stack spacing={1} direction="row" justifyContent={"space-between"}>
             <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
             <Button onClick={onClose} variant="contained">

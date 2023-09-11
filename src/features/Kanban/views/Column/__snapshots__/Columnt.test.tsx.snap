@@ -5,13 +5,22 @@ exports[`Column > items is false 1`] = `
   <div
     class="MuiBox-root css-pi4i3q"
   >
-    <h6
-      class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
-    >
-      New
-    </h6>
     <div
-      class="MuiBox-root css-1yma5ff"
+      class="MuiStack-root css-m69qwo-MuiStack-root"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-qxr42l-MuiTypography-root"
+      >
+        New
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-12xs37t-MuiTypography-root"
+      >
+        (7)
+      </p>
+    </div>
+    <div
+      class="MuiBox-root css-18wqyzg"
       id="scroll-container-column1"
     >
       <div
@@ -263,13 +272,22 @@ exports[`Column > items is true 1`] = `
   <div
     class="MuiBox-root css-pi4i3q"
   >
-    <h6
-      class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
-    >
-      New
-    </h6>
     <div
-      class="MuiBox-root css-1yma5ff"
+      class="MuiStack-root css-m69qwo-MuiStack-root"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-qxr42l-MuiTypography-root"
+      >
+        New
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-12xs37t-MuiTypography-root"
+      >
+        (7)
+      </p>
+    </div>
+    <div
+      class="MuiBox-root css-18wqyzg"
       id="scroll-container-column1"
     >
       <div

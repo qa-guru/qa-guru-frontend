@@ -1,4 +1,4 @@
-import { primary, secondary, grey } from "../../../../theme/colors";
+import { primary, secondary } from "../../../../theme/colors";
 
 export const style = {
   pagination: {
@@ -13,15 +13,5 @@ export const style = {
       backgroundColor: primary.main,
       color: "transparent",
     },
-  },
-  boxWrapper: {
-    flex: "1 1 66%",
-    position: "relative",
-    overflow: "hidden",
-    marginTop: 1,
-  },
-  menu: {
-    backgroundColor: grey.light,
-    marginTop: "20px",
   },
 };

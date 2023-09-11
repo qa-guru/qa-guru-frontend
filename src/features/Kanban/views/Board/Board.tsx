@@ -5,6 +5,7 @@ import { Box, useMediaQuery, Pagination, Stack } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
 import { Resizable } from "re-resizable";
+import { motion, AnimatePresence } from "framer-motion";
 import { IBoard } from "./Board.types";
 import { style } from "./styles";
 import Column from "../Column/Column";
@@ -149,13 +150,13 @@ const Board: React.FC<IBoard> = ({
     setActiveCardId(card.id!);
   };
 
-  const [detailsWidth, setDetailsWidth] = useState("34%");
+  const [detailsWidth, setDetailsWidth] = useState("33%");
   const [fadeOut, setFadeOut] = useState(false);
 
   const handleHomeworkDetailsClose = () => {
     setSelectedCard(null);
     setShowHomeworkDetails(false);
-    setDetailsWidth("34%");
+    setDetailsWidth("33%");
   };
 
   return (
@@ -197,12 +198,11 @@ const Board: React.FC<IBoard> = ({
         </Box>
       ) : (
         <Box display="flex">
-          <Box
-            mt={2}
-            sx={{
-              transition: "width 0.5s ease-in-out",
-              width: showHomeworkDetails && isUpLg ? "66%" : "100%",
-            }}
+          <motion.div
+            initial={{ width: showHomeworkDetails ? "66%" : "100%" }}
+            animate={{ width: showHomeworkDetails ? "66%" : "100%" }}
+            transition={{ duration: 0.4 }}
+            style={{ marginTop: "20px" }}
           >
             <Stack
               direction="row"
@@ -224,28 +224,34 @@ const Board: React.FC<IBoard> = ({
                 />
               ))}
             </Stack>
-          </Box>
-          {isUpLg && selectedCard && (
-            <Resizable
-              enable={{ left: true }}
-              size={{ width: detailsWidth, height: "100%" }}
-              maxWidth="50%"
-              minWidth="34%"
-              style={style.menu}
-              onResize={(e, direction, ref, d) => {
-                setDetailsWidth((prevWidth) => {
-                  const newWidth = parseInt(prevWidth, 10) - d.width;
-                  return `${newWidth}px`;
-                });
-              }}
-            >
-              <HomeworkDetails
-                card={selectedCard}
-                onClose={handleHomeworkDetailsClose}
-                showHomeworkDetails={showHomeworkDetails}
-              />
-            </Resizable>
-          )}
+          </motion.div>
+          <AnimatePresence>
+            {isUpLg && selectedCard && (
+              <motion.div
+                initial={{ width: "0%" }}
+                animate={{ width: "33%" }}
+                exit={{ width: "0%" }}
+                transition={{ duration: 0.4 }}
+              >
+                <Resizable
+                  enable={{ left: true }}
+                  minWidth="33vw"
+                  onResize={(e, direction, ref, d) => {
+                    setDetailsWidth((prevWidth) => {
+                      const newWidth = parseInt(prevWidth, 10) + d.width;
+                      return `${newWidth}px`;
+                    });
+                  }}
+                >
+                  <HomeworkDetails
+                    card={selectedCard}
+                    onClose={handleHomeworkDetailsClose}
+                    showHomeworkDetails={showHomeworkDetails}
+                  />
+                </Resizable>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Box>
       )}
     </DndProvider>

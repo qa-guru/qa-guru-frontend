@@ -3,7 +3,7 @@
 exports[`HomeworkDetails > HomeworkDetails is render 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-0"
+    class="MuiBox-root css-1eyappt"
     style="opacity: 1; webkit-transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
   >
     <svg
@@ -19,7 +19,7 @@ exports[`HomeworkDetails > HomeworkDetails is render 1`] = `
       />
     </svg>
     <div
-      class="MuiBox-root css-m71bw6"
+      class="MuiBox-root css-0"
     >
       <div
         class="MuiStack-root css-jibmk2-MuiStack-root"
@@ -254,7 +254,7 @@ exports[`HomeworkDetails > HomeworkDetails is render 1`] = `
 exports[`HomeworkDetails > HomeworkDetails is render 2`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-0"
+    class="MuiBox-root css-1eyappt"
     style="opacity: 0; visibility: hidden;"
   >
     <svg
@@ -270,7 +270,7 @@ exports[`HomeworkDetails > HomeworkDetails is render 2`] = `
       />
     </svg>
     <div
-      class="MuiBox-root css-m71bw6"
+      class="MuiBox-root css-0"
     >
       <div
         class="MuiStack-root css-jibmk2-MuiStack-root"

@@ -7,6 +7,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  Stack,
   Typography,
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -144,18 +145,28 @@ const Column: React.FC<IColumn> = ({
       display="flex"
       flexDirection="column"
     >
-      <Typography variant="h6" ml={1} mb={1}>
-        {formatStatus(column.title)}
-      </Typography>
+      <Stack direction="row">
+        <Typography fontSize="20px" ml={1} mb={1}>
+          {formatStatus(column.title)}
+        </Typography>
+        <Typography fontSize="20px" ml={1}>
+          {Number(column.totalElements) === 0
+            ? "(empty)"
+            : `(${column.totalElements})`}
+        </Typography>
+      </Stack>
       <Box
         id={`scroll-container-${column.id}`}
         ref={dropRef}
         flexGrow="1"
+        mt="5px"
         sx={{
           ...getColumnStyles(column.id, draggingState, isOver),
           boxSizing: "border-box",
           overflowY: showButton ? "hidden" : "auto",
           maxHeight: { xs: "73vh", lg: "69vh" },
+          backgroundColor:
+            Number(column.totalElements) === 0 ? style.emptyColumn : "inherit",
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",

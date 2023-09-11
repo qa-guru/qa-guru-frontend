@@ -6,7 +6,7 @@ exports[`Board > Board is render 1`] = `
     class="MuiBox-root css-k008qs"
   >
     <div
-      class="MuiBox-root css-lxdyda"
+      style="margin-top: 20px; width: 100%;"
     >
       <div
         class="MuiStack-root css-1etqvnd-MuiStack-root"
@@ -14,13 +14,22 @@ exports[`Board > Board is render 1`] = `
         <div
           class="MuiBox-root css-pi4i3q"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
-          >
-            New
-          </h6>
           <div
-            class="MuiBox-root css-1yma5ff"
+            class="MuiStack-root css-m69qwo-MuiStack-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-qxr42l-MuiTypography-root"
+            >
+              New
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-12xs37t-MuiTypography-root"
+            >
+              (6)
+            </p>
+          </div>
+          <div
+            class="MuiBox-root css-18wqyzg"
             id="scroll-container-1"
           >
             <div
@@ -70,13 +79,22 @@ exports[`Board > Board is render 1`] = `
         <div
           class="MuiBox-root css-pi4i3q"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
-          >
-            In review
-          </h6>
           <div
-            class="MuiBox-root css-1yma5ff"
+            class="MuiStack-root css-m69qwo-MuiStack-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-qxr42l-MuiTypography-root"
+            >
+              In review
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-12xs37t-MuiTypography-root"
+            >
+              (6)
+            </p>
+          </div>
+          <div
+            class="MuiBox-root css-18wqyzg"
             id="scroll-container-2"
           >
             <div
@@ -126,13 +144,22 @@ exports[`Board > Board is render 1`] = `
         <div
           class="MuiBox-root css-pi4i3q"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
-          >
-            Approved
-          </h6>
           <div
-            class="MuiBox-root css-1yma5ff"
+            class="MuiStack-root css-m69qwo-MuiStack-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-qxr42l-MuiTypography-root"
+            >
+              Approved
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-12xs37t-MuiTypography-root"
+            >
+              (6)
+            </p>
+          </div>
+          <div
+            class="MuiBox-root css-18wqyzg"
             id="scroll-container-3"
           >
             <div
@@ -269,13 +296,22 @@ exports[`Board > Board is render 1`] = `
         <div
           class="MuiBox-root css-pi4i3q"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-h6 css-11qn3ug-MuiTypography-root"
-          >
-            Not approved
-          </h6>
           <div
-            class="MuiBox-root css-1yma5ff"
+            class="MuiStack-root css-m69qwo-MuiStack-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-qxr42l-MuiTypography-root"
+            >
+              Not approved
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-12xs37t-MuiTypography-root"
+            >
+              (6)
+            </p>
+          </div>
+          <div
+            class="MuiBox-root css-18wqyzg"
             id="scroll-container-4"
           >
             <div
