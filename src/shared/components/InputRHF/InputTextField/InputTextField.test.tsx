@@ -15,11 +15,8 @@ describe("InputTextField", () => {
             name="testDate"
             placeholder="testDate"
             label="testDate"
-            type={}
-            multiline={}
             maxRows="4"
             minRows="2"
-            inputProps={}
           />
         </FormProvider>
       </MemoryRouter>

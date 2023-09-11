@@ -14,9 +14,9 @@ describe("InputSelect", () => {
             control={methods.control}
             name="testDate"
             placeholder="testDate"
-            options={}
+            options={[{ value: "select", label: "label" }]}
             defaultValue="testDate"
-            onChange={}
+            onChange={() => {}}
             disabled={false}
           />
         </FormProvider>

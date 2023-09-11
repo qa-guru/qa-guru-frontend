@@ -7,7 +7,7 @@ describe("UserRow", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <UserRow user={studentHomeWorkDto}? />
+        <UserRow user={studentHomeWorkDto} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

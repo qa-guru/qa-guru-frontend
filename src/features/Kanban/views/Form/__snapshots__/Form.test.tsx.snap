@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form > Form is render 1`] = `
+exports[`Form > renders correctly 1`] = `
 <DocumentFragment>
   <form>
     <div

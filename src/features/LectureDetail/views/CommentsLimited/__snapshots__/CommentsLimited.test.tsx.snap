@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CommentsLimited > the component is render 1`] = `
+exports[`CommentsLimited > renders correctly 1`] = `
 <DocumentFragment>
   <form>
     <h5

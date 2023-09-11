@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import MentorSelection from "./MentorSelection";
 import { render } from "../../../../../test/utilsTest";
 import { IFilterKanban } from "../Form.types";
-import { training } from "../../../../../shared/mocks/training.mock";
+import { mentorsDto } from "../../../../../shared/mocks/mentors.mock";
 
 describe("MentorSelection", () => {
   it("renders correctly", () => {
@@ -12,7 +12,7 @@ describe("MentorSelection", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <FormProvider {...methods}>
-          <MentorSelection control={methods.control} data={training}? />
+          <MentorSelection control={methods.control} data={mentorsDto} />
         </FormProvider>
       </MemoryRouter>
     );

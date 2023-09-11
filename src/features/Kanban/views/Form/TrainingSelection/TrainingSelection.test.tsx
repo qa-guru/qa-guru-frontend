@@ -3,6 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import TrainingSelection from "./TrainingSelection";
 import { render } from "../../../../../test/utilsTest";
 import { IFilterKanban } from "../Form.types";
+import { trainingDto } from "../../../../../shared/mocks/trainingDto.mock";
 
 describe("TrainingSelection", () => {
   it("renders correctly", () => {
@@ -11,7 +12,7 @@ describe("TrainingSelection", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <FormProvider {...methods}>
-          <TrainingSelection control={methods.control} items={} />
+          <TrainingSelection control={methods.control} items={[trainingDto]} />
         </FormProvider>
       </MemoryRouter>
     );

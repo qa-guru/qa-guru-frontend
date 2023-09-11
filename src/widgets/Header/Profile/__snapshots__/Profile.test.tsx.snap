@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Profile > the component is render 1`] = `
+exports[`Profile > renders correctly 1`] = `
 <DocumentFragment>
   <button
     aria-label="Open settings"

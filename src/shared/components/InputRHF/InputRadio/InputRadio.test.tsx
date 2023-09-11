@@ -5,20 +5,24 @@ import { render } from "../../../../test/utilsTest";
 
 describe("InputRadio", () => {
   it("renders correctly", () => {
-    const methods = useForm();
+    function TestComponent() {
+      const methods = useForm();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <InputRadio
+              control={methods.control}
+              name="testDate"
+              label="testDate"
+              content={[{ value: "radio", label: "radio" }]}
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <InputRadio
-            control={methods.control}
-            name="testDate"
-            label="testDate"
-            content={}
-          />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });
