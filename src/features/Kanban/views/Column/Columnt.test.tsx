@@ -3,7 +3,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Column from "./Column";
 import { render } from "../../../../test/utilsTest";
-import { kanbanColumn } from "../../../../shared/mocks/kanbanColumnMock";
+import { kanbanColumn } from "../../../../shared/mocks/kanbanColumn.mock";
 import { UserProvider } from "../../context/UserContext";
 
 describe("Column", () => {
