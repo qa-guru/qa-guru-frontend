@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Kanban > Kanban is render 1`] = `
+exports[`Kanban > renders correctly 1`] = `
 <DocumentFragment>
   <form>
     <div

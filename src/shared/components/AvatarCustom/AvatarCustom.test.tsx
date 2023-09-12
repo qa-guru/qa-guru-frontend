@@ -7,7 +7,7 @@ describe("AvatarCustom", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <AvatarCustom
-          fullName="testDate"
+          fullName="John Doe"
           width={40}
           height={40}
           variant="subtitle2"

@@ -7,15 +7,22 @@ import { trainingDto } from "../../../../../shared/mocks/trainingDto.mock";
 
 describe("TrainingSelection", () => {
   it("renders correctly", () => {
-    const methods = useForm<IFilterKanban>();
+    function TestComponent() {
+      const methods = useForm<IFilterKanban>();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <TrainingSelection
+              control={methods.control}
+              items={[trainingDto]}
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <TrainingSelection control={methods.control} items={[trainingDto]} />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

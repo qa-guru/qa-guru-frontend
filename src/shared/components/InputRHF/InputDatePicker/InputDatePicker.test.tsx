@@ -5,19 +5,23 @@ import { render } from "../../../../test/utilsTest";
 
 describe("InputDatePicker", () => {
   it("renders correctly", () => {
-    const methods = useForm();
+    function TestComponent() {
+      const methods = useForm();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <InputDatePicker
+              control={methods.control}
+              name="testDate"
+              label="testDate"
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <InputDatePicker
-            control={methods.control}
-            name="testDate"
-            label="testDate"
-          />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

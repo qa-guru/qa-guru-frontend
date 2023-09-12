@@ -5,20 +5,24 @@ import { render } from "../../../../test/utilsTest";
 
 describe("InputPhone", () => {
   it("renders correctly", () => {
-    const methods = useForm();
+    function TestComponent() {
+      const methods = useForm();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <InputPhone
+              control={methods.control}
+              name="testDate"
+              label="testDate"
+              placeholder="testDate"
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <InputPhone
-            control={methods.control}
-            name="testDate"
-            label="testDate"
-            placeholder="testDate"
-          />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

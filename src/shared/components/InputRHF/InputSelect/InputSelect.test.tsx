@@ -5,23 +5,27 @@ import { render } from "../../../../test/utilsTest";
 
 describe("InputSelect", () => {
   it("renders correctly", () => {
-    const methods = useForm();
+    function TestComponent() {
+      const methods = useForm();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <InputSelect
+              control={methods.control}
+              name="testDate"
+              placeholder="testDate"
+              options={[{ value: "select", label: "label" }]}
+              defaultValue="testDate"
+              onChange={() => {}}
+              disabled={false}
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <InputSelect
-            control={methods.control}
-            name="testDate"
-            placeholder="testDate"
-            options={[{ value: "select", label: "label" }]}
-            defaultValue="testDate"
-            onChange={() => {}}
-            disabled={false}
-          />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

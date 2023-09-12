@@ -7,15 +7,22 @@ import { trainingLectures } from "../../../../../shared/mocks/trainingLectures.m
 
 describe("LectureSelection", () => {
   it("renders correctly", () => {
-    const methods = useForm<IFilterKanban>();
+    function TestComponent() {
+      const methods = useForm<IFilterKanban>();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <LectureSelection
+              control={methods.control}
+              data={trainingLectures}
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <LectureSelection control={methods.control} data={trainingLectures} />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

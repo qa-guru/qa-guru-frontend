@@ -7,15 +7,19 @@ import { mentorsDto } from "../../../../../shared/mocks/mentors.mock";
 
 describe("MentorSelection", () => {
   it("renders correctly", () => {
-    const methods = useForm<IFilterKanban>();
+    function TestComponent() {
+      const methods = useForm<IFilterKanban>();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <MentorSelection control={methods.control} data={mentorsDto} />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <MentorSelection control={methods.control} data={mentorsDto} />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -5,22 +5,26 @@ import { render } from "../../../../test/utilsTest";
 
 describe("InputTextField", () => {
   it("renders correctly", () => {
-    const methods = useForm();
+    function TestComponent() {
+      const methods = useForm();
+      return (
+        <MemoryRouter>
+          <FormProvider {...methods}>
+            <InputTextField
+              control={methods.control}
+              name="testDate"
+              placeholder="testDate"
+              label="testDate"
+              maxRows="4"
+              minRows="2"
+            />
+          </FormProvider>
+        </MemoryRouter>
+      );
+    }
 
-    const { asFragment } = render(
-      <MemoryRouter>
-        <FormProvider {...methods}>
-          <InputTextField
-            control={methods.control}
-            name="testDate"
-            placeholder="testDate"
-            label="testDate"
-            maxRows="4"
-            minRows="2"
-          />
-        </FormProvider>
-      </MemoryRouter>
-    );
+    const { asFragment } = render(<TestComponent />);
+
     expect(asFragment()).toMatchSnapshot();
   });
 });
