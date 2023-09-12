@@ -1,0 +1,32 @@
+import React, { useContext } from "react";
+import Homework from "../../views/homework";
+import {
+  useHomeWorkByLectureQuery,
+  useUserIdQuery,
+} from "../../../../api/graphql/generated/graphql";
+import { LectureIdContext } from "../../context/lecture-id-context";
+import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
+import Spinner from "../../../../shared/components/spinner";
+
+const HomeworkContainer: React.FC = () => {
+  const lectureId = useContext(LectureIdContext);
+  const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
+
+  const { data: dataHomeWorkByLecture, loading: loadingHomeWorkByLecture } =
+    useHomeWorkByLectureQuery({
+      variables: { lectureId: lectureId! },
+      fetchPolicy: "cache-first",
+    });
+
+  if (loadingUserId || loadingHomeWorkByLecture) return <Spinner />;
+  if (!dataHomeWorkByLecture || !dataUserId) return <NoDataErrorMessage />;
+
+  return (
+    <Homework
+      dataHomeWorkByLecture={dataHomeWorkByLecture.homeWorkByLecture!}
+      dataUserId={dataUserId!}
+    />
+  );
+};
+
+export default HomeworkContainer;
