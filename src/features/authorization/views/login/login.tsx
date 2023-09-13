@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { ILogin, ILoginForm } from "./login.types";
 import { style } from "./styles";
 import RHF from "../../../../shared/components/input-RHF";
-import LocalSelector from "../../../../shared/components/buttons/local-selector";
+import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
 import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
 
 const Login: React.FC<ILogin> = (props) => {

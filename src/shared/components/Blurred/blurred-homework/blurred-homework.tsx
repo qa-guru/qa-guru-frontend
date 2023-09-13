@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
-import BlurredComponent from "./blurred-component";
-import { style } from "./styles";
-import LectureHomework from "../lecture-homework";
-import Homework from "../../../features/lecture-detail/containers/homework";
+import BlurredComponent from "../blurred-component/blurred-component";
+import { style } from "../styles";
+import LectureHomework from "../../lecture-homework";
+import Homework from "../../../../features/lecture-detail/containers/homework";
 
 const BlurredHomework: React.FC = () => {
   return (

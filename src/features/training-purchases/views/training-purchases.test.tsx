@@ -4,7 +4,7 @@ import { render } from "../../../test/utils-test";
 import { trainingPurchases } from "../../../shared/mocks/training-purchases.mock";
 
 describe("TrainingPurchases", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <TrainingPurchases data={trainingPurchases} />

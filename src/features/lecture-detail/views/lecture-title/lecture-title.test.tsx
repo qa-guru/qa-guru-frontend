@@ -3,7 +3,7 @@ import LectureTitle from "./lecture-title";
 import { render } from "../../../../test/utils-test";
 
 describe("LectureTitle", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <LectureTitle title="Title" />

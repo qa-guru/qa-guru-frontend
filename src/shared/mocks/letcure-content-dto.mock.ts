@@ -1,6 +1,6 @@
 import { LectureContentDto } from "../../api/graphql/generated/graphql";
 
-export const lectureContent: LectureContentDto[] = [
+export const lectureContentDto: LectureContentDto[] = [
   {
     type: "text",
     value:

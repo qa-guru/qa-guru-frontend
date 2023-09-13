@@ -7,7 +7,7 @@ import { userId } from "../../../../shared/mocks/user-id.mock";
 const fetchMore: any = () => {};
 
 describe("HomeworksOtherStudents", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <HomeworksOtherStudents

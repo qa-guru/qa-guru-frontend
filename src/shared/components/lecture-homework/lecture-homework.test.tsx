@@ -1,12 +1,13 @@
 import { MemoryRouter } from "react-router-dom";
 import LectureHomework from "./lecture-homework";
 import { render } from "../../../test/utils-test";
+import { lectureContentDto } from "../../mocks/letcure-content-dto.mock";
 
 describe("LectureHomework", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <LectureHomework />
+        <LectureHomework lectureHomeWork={lectureContentDto} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

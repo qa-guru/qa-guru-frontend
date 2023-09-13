@@ -7,7 +7,7 @@ import { homeWorksQuery } from "../../../../shared/mocks/homeworks.mock";
 import { UserProvider } from "../../context/user-context";
 
 describe("Board", () => {
-  it("board is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <UserProvider>
         <DndProvider backend={HTML5Backend}>

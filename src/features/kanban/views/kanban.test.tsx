@@ -3,7 +3,7 @@ import Kanban from "./kanban";
 import { render } from "../../../test/utils-test";
 
 describe("Kanban", () => {
-  it("kanban is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <Kanban />

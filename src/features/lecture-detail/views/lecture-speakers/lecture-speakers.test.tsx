@@ -4,7 +4,7 @@ import { render } from "../../../../test/utils-test";
 import { speakers } from "../../../../shared/mocks/speakers.mock";
 
 describe("LectureSpeakers", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <LectureSpeakers speakers={speakers} />

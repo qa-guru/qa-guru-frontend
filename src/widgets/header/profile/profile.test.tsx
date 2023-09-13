@@ -4,7 +4,7 @@ import { render } from "../../../test/utils-test";
 import { user } from "../../../shared/mocks/user.mock";
 
 describe("Profile", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <Profile data={user} />

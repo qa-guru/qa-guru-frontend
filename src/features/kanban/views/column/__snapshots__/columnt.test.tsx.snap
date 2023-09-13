@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Column > items is false 1`] = `
+exports[`Column > items are false 1`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-pi4i3q"
@@ -258,7 +258,7 @@ exports[`Column > items is false 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Column > items is true 1`] = `
+exports[`Column > items are true 1`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-pi4i3q"

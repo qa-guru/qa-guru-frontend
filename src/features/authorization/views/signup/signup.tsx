@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { ISignUp } from "./signup.types";
 import { style } from "./styles";
 import RHF from "../../../../shared/components/input-RHF";
-import LocalSelector from "../../../../shared/components/buttons/local-selector";
+import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
 import { UserCreateInput } from "../../../../api/graphql/generated/graphql";
 import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
 

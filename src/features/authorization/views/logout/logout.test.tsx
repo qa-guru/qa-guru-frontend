@@ -6,7 +6,7 @@ const mockLogout: any = () => {};
 const mockSetAnchorElUser: any = () => {};
 
 describe("Logout", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <Logout logout={mockLogout} setAnchorElUser={mockSetAnchorElUser} />

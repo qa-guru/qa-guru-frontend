@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LectureTitle > the component is render 1`] = `
+exports[`LectureTitle > renders correctly 1`] = `
 <DocumentFragment>
   <h4
     class="MuiTypography-root MuiTypography-h4 css-shgr9c-MuiTypography-root"

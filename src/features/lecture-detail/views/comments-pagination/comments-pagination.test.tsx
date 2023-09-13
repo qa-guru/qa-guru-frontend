@@ -5,7 +5,7 @@ import { commentsHomeWorkByHomeWork } from "../../../../shared/mocks/comments-ho
 import { userId } from "../../../../shared/mocks/user-id.mock";
 
 describe("CommentsPagination", () => {
-  it("the component is render", () => {
+  it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <CommentsPagination
