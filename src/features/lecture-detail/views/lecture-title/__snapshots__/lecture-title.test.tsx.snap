@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LectureTitle > renders correctly 1`] = `
+<DocumentFragment>
+  <h4
+    class="MuiTypography-root MuiTypography-h4 css-shgr9c-MuiTypography-root"
+  >
+    Title
+  </h4>
+</DocumentFragment>
+`;

@@ -1,0 +1,135 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LectureContent > renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-6qxqkz-MuiPaper-root"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-1ht8sh5-MuiTypography-root"
+    >
+      Материалы урока
+    </h5>
+    <div
+      class="MuiStack-root css-zgbp5c-MuiStack-root"
+    >
+      <div
+        class="MuiBox-root css-i6bazn"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          Здесь будет отображаться текст домашнего задания к текущей лекции.
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          Пример домашнего задания:
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          1. Есть ли разница между $("h1 div"); и $("h1").$("div").
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          Может ли привести к тому что, поиск найдёт разные элементы?
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          2. Разработайте следующий автотест:
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Откройте страницу Selenide в Github
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Перейдите в раздел Wiki проекта
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
+          <br />
+        </h6>
+      </div>
+      <div
+        class="MuiBox-root css-i6bazn"
+      >
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          Здесь будет отображаться текст домашнего задания к текущей лекции.
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          Пример домашнего задания:
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          1. Есть ли разница между $("h1 div"); и $("h1").$("div").
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          Может ли привести к тому что, поиск найдёт разные элементы?
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+          2. Разработайте следующий автотест:
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Откройте страницу Selenide в Github
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Перейдите в раздел Wiki проекта
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
+          <br />
+        </h6>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+        >
+           - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
+          <br />
+        </h6>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

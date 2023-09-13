@@ -1,0 +1,52 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputPhone > renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiAutocomplete-root css-1h51icj-MuiAutocomplete-root"
+  >
+    <div
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+        data-shrink="false"
+        for=":r0:"
+        id=":r0:-label"
+      >
+        testDate
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+      >
+        <input
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+          id=":r0:"
+          placeholder="testDate"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="css-yjsfm1"
+          >
+            <span>
+              testDate
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
