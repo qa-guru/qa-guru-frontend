@@ -1,0 +1,63 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BlurredHomework > renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-79elbk"
+  >
+    <div
+      class="MuiBox-root css-1nsqiu3"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-16cch88-MuiPaper-root"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
+        >
+          Домашнее задание
+        </h5>
+        <div
+          class="MuiStack-root css-zgbp5c-MuiStack-root"
+        />
+      </div>
+      <div
+        class="MuiBox-root css-pxpt32"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
+        >
+          <span
+            class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+            role="progressbar"
+            style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
+          >
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="20.2"
+                stroke-width="3.6"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation css-237h2n-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      Д/З недоступно
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</DocumentFragment>
+`;
