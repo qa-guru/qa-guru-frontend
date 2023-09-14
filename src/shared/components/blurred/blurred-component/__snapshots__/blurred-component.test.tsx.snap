@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BlurredComponent > renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1nsqiu3"
+  >
+    <div>
+      Sample content
+    </div>
+  </div>
+</DocumentFragment>
+`;
