@@ -39,7 +39,6 @@ const Signup: React.FC<ISignUp> = (props) => {
       lastName: "",
       email: "",
       password: "",
-      phoneNumber: "",
     },
     resolver: yupResolver(
       yup.object().shape({
@@ -51,8 +50,7 @@ const Signup: React.FC<ISignUp> = (props) => {
           .min(8, t("password.required.min")!)
           .max(15, t("password.required.max")!)
           .required(t("password.required")!),
-        phoneNumber: yup.string().required(t("phone.required")!),
-      })
+      }),
     ),
   });
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
-import { Container } from "@mui/system";
+import Container from "@mui/material/Container";
 import { style } from "./styles";
 import Header from "../../../widgets/header";
 import { UserRole } from "../../../api/graphql/generated/graphql";

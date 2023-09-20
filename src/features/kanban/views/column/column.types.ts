@@ -28,7 +28,7 @@ export interface IColumn {
       prev: { homeWorks: { items: StudentHomeWorkDto[] } },
       {
         fetchMoreResult,
-      }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } }
+      }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } },
     ) => {
       homeWorks: {
         items: StudentHomeWorkDto[];
@@ -41,9 +41,14 @@ export interface IColumn {
   onCardDrop: (
     cardId: string,
     sourceColumnId: string,
-    targetColumnId: string
+    targetColumnId: string,
   ) => void;
   onCardClick?: (card: StudentHomeWorkDto) => void;
   isActive?: boolean;
   activeCardId?: string | null;
 }
+
+export type DropCollectedProps = {
+  isOver: boolean;
+  canDrop: boolean;
+};

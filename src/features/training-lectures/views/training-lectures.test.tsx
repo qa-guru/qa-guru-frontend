@@ -1,8 +1,8 @@
 import { MemoryRouter } from "react-router-dom";
 import TrainingLectures from "./training-lectures";
-import { render } from "../../../test/utils-test";
 import { trainingLectures } from "../../../shared/mocks/training-lectures.mock";
 import { training } from "../../../shared/mocks/training.mock";
+import { render } from "../../../test/utils-test";
 
 describe("TrainingLectures", () => {
   it("renders correctly", () => {
@@ -13,7 +13,7 @@ describe("TrainingLectures", () => {
           dataTrainingLectures={trainingLectures}
           dataTraining={training}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

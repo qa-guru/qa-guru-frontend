@@ -1,21 +1,21 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Box, useMediaQuery, Pagination, Stack } from "@mui/material";
+import { Box, Pagination, Stack, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
-import { Resizable } from "re-resizable";
-import { IBoard } from "./board.types";
+import { AnimatePresence, motion } from "framer-motion";
 import { style } from "./styles";
-import Column from "../column/column";
+import { IBoard } from "./board.types";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "../../../../api/graphql/generated/graphql";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
-import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
+import { createColumnItem } from "../../helpers/create-column-item";
 import HomeworkDetails from "../homework-details/homework-details";
+import Column from "../column";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -44,8 +44,10 @@ const Board: React.FC<IBoard> = ({
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
   const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
-    null
+    null,
   );
+  const [activeStep, setActiveStep] = useState(0);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   useEffect(() => {
     setColumns([
@@ -53,25 +55,25 @@ const Board: React.FC<IBoard> = ({
         "1",
         StudentHomeWorkStatus.New,
         newItems as StudentHomeWorkDto[],
-        newTotalElements
+        newTotalElements,
       ),
       createColumnItem(
         "2",
         StudentHomeWorkStatus.InReview,
         inReviewItems as StudentHomeWorkDto[],
-        inReviewTotalElements
+        inReviewTotalElements,
       ),
       createColumnItem(
         "3",
         StudentHomeWorkStatus.Approved,
         approvedItems as StudentHomeWorkDto[],
-        approvedTotalElements
+        approvedTotalElements,
       ),
       createColumnItem(
         "4",
         StudentHomeWorkStatus.NotApproved,
         notApprovedItems as StudentHomeWorkDto[],
-        notApprovedTotalElements
+        notApprovedTotalElements,
       ),
     ]);
   }, [newItems, inReviewItems, approvedItems, notApprovedItems]);
@@ -92,7 +94,7 @@ const Board: React.FC<IBoard> = ({
           break;
       }
     },
-    [takeForReview, notApproved, approved]
+    [takeForReview, notApproved, approved],
   );
 
   const moveCard = useCallback(
@@ -100,17 +102,17 @@ const Board: React.FC<IBoard> = ({
       await updateStatus(cardId, targetColumnId);
       setColumns((prevColumns) => {
         const sourceColumnIndex = prevColumns.findIndex(
-          (col) => col.id === sourceColumnId
+          (col) => col.id === sourceColumnId,
         );
         const targetColumnIndex = prevColumns.findIndex(
-          (col) => col.id === targetColumnId
+          (col) => col.id === targetColumnId,
         );
 
         const sourceColumn = prevColumns[sourceColumnIndex];
         const targetColumn = prevColumns[targetColumnIndex];
 
         const cardIndex = sourceColumn.cards.findIndex(
-          (card) => card.id === cardId
+          (card) => card.id === cardId,
         );
         const card = sourceColumn.cards[cardIndex];
 
@@ -132,16 +134,12 @@ const Board: React.FC<IBoard> = ({
         });
       });
     },
-    [updateStatus]
+    [updateStatus],
   );
-
-  const [activeStep, setActiveStep] = useState(0);
 
   const handleStepChange = (step: number) => {
     setActiveStep(step);
   };
-
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
     setSelectedCard(card);
@@ -149,13 +147,9 @@ const Board: React.FC<IBoard> = ({
     setActiveCardId(card.id!);
   };
 
-  const [detailsWidth, setDetailsWidth] = useState("34%");
-  const [fadeOut, setFadeOut] = useState(false);
-
   const handleHomeworkDetailsClose = () => {
     setSelectedCard(null);
     setShowHomeworkDetails(false);
-    setDetailsWidth("34%");
   };
 
   return (
@@ -197,19 +191,16 @@ const Board: React.FC<IBoard> = ({
         </Box>
       ) : (
         <Box display="flex">
-          <Box
-            mt={2}
-            sx={{
-              transition: "width 0.5s ease-in-out",
-              width: showHomeworkDetails && isUpLg ? "66%" : "100%",
-            }}
+          <motion.div
+            initial={{ width: showHomeworkDetails ? "65%" : "100%" }}
+            animate={{ width: showHomeworkDetails ? "65%" : "100%" }}
+            transition={{ duration: 0.5 }}
           >
             <Stack
               direction="row"
               spacing={1}
-              sx={{
-                marginRight: showHomeworkDetails && isUpLg ? 2 : 0,
-              }}
+              mr={showHomeworkDetails && isUpLg ? 2 : 0}
+              mt="20px"
             >
               {columns?.map((column, index) => (
                 <Column
@@ -224,28 +215,25 @@ const Board: React.FC<IBoard> = ({
                 />
               ))}
             </Stack>
-          </Box>
-          {isUpLg && selectedCard && (
-            <Resizable
-              enable={{ left: true }}
-              size={{ width: detailsWidth, height: "100%" }}
-              maxWidth="50%"
-              minWidth="34%"
-              style={style.menu}
-              onResize={(e, direction, ref, d) => {
-                setDetailsWidth((prevWidth) => {
-                  const newWidth = parseInt(prevWidth, 10) - d.width;
-                  return `${newWidth}px`;
-                });
-              }}
-            >
-              <HomeworkDetails
-                card={selectedCard}
-                onClose={handleHomeworkDetailsClose}
-                showHomeworkDetails={showHomeworkDetails}
-              />
-            </Resizable>
-          )}
+          </motion.div>
+          <AnimatePresence>
+            {isUpLg && selectedCard && (
+              <motion.div
+                initial={{ width: "0%" }}
+                animate={{ width: "35%" }}
+                exit={{ width: "0" }}
+                transition={{ duration: 0.5 }}
+                style={style.menu}
+              >
+                <Box minWidth="35vw">
+                  <HomeworkDetails
+                    card={selectedCard}
+                    onClose={handleHomeworkDetailsClose}
+                  />
+                </Box>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </Box>
       )}
     </DndProvider>

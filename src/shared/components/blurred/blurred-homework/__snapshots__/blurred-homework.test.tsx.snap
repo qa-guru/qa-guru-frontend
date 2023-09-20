@@ -17,7 +17,7 @@ exports[`BlurredHomework > renders correctly 1`] = `
           Домашнее задание
         </h5>
         <div
-          class="MuiStack-root css-zgbp5c-MuiStack-root"
+          class="MuiStack-root css-j3ygch-MuiStack-root"
         />
       </div>
       <div

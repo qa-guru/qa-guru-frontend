@@ -105,7 +105,7 @@ exports[`Layout > renders correctly 1`] = `
               class="MuiBox-root css-mloeoe"
             >
               <div
-                class="MuiStack-root css-u10pvi-MuiStack-root"
+                class="MuiStack-root css-1heabyg-MuiStack-root"
               >
                 <button
                   class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"

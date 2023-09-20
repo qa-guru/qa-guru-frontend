@@ -3,7 +3,7 @@
 exports[`HomeworksOtherStudents > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-14fnpt3-MuiStack-root"
+    class="MuiStack-root css-1t3znw4-MuiStack-root"
   >
     <h4
       class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
@@ -17,13 +17,13 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
     </h4>
   </div>
   <div
-    class="MuiStack-root css-1p5q5e5-MuiStack-root"
+    class="MuiStack-root css-1sazv7p-MuiStack-root"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
     >
       <div
-        class="MuiStack-root css-17psve5-MuiStack-root"
+        class="MuiStack-root css-osjy2d-MuiStack-root"
       >
         <h5
           class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
@@ -31,7 +31,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
           Ответ на задание
         </h5>
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-kdc3n8-MuiStack-root"
         >
           <svg
             fill="none"
@@ -56,13 +56,13 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-m9e6gq-MuiStack-root"
+          class="MuiStack-root css-vq7ph6-MuiStack-root"
         >
           <div
             class="MuiBox-root css-1quw33y"
           >
             <div
-              class="MuiStack-root css-unhrs1-MuiStack-root"
+              class="MuiStack-root css-qix97k-MuiStack-root"
             >
               <div
                 class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
@@ -102,7 +102,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         class="MuiBox-root css-1yuhvjn"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
@@ -158,60 +158,60 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         />
       </button>
       <div
-        class="MuiStack-root css-1nn8w31-MuiStack-root"
+        class="MuiStack-root css-47fnhy-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-hszfwg-MuiStack-root"
+          class="MuiStack-root css-e8agqp-MuiStack-root"
         >
           <div
-            class="MuiStack-root css-1okj3ks-MuiStack-root"
+            class="MuiStack-root css-jfdv4h-MuiStack-root"
           >
             <div
-              class="MuiStack-root css-1q36rmd-MuiStack-root"
+              class="MuiStack-root css-kdc3n8-MuiStack-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
+                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-wkdwxb-MuiSkeleton-root"
                 style="width: 40px; height: 40px;"
               />
               <div
                 class="MuiStack-root css-1r50ci7-MuiStack-root"
               >
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-12j6v5j-MuiSkeleton-root"
                 />
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-12j6v5j-MuiSkeleton-root"
                 />
               </div>
             </div>
             <span
-              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
+              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-7uzo9y-MuiSkeleton-root"
               style="width: 100%; height: 60px;"
             />
           </div>
           <div
-            class="MuiStack-root css-1okj3ks-MuiStack-root"
+            class="MuiStack-root css-jfdv4h-MuiStack-root"
           >
             <div
-              class="MuiStack-root css-1q36rmd-MuiStack-root"
+              class="MuiStack-root css-kdc3n8-MuiStack-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
+                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-wkdwxb-MuiSkeleton-root"
                 style="width: 40px; height: 40px;"
               />
               <div
                 class="MuiStack-root css-1r50ci7-MuiStack-root"
               >
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-12j6v5j-MuiSkeleton-root"
                 />
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-12j6v5j-MuiSkeleton-root"
                 />
               </div>
             </div>
             <span
-              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
+              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-7uzo9y-MuiSkeleton-root"
               style="width: 100%; height: 60px;"
             />
           </div>

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
-import { CardType, IColumn } from "./column.types";
+import { CardType, DropCollectedProps, IColumn } from "./column.types";
 import { style } from "./styles";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
@@ -30,7 +30,7 @@ const Column: React.FC<IColumn> = ({
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
   const droppedItem = useRef<CardType | null>(null);
-  const [{ isOver, canDrop }, dropRef] = useDrop({
+  const [{ isOver }, dropRef] = useDrop<CardType, void, DropCollectedProps>({
     accept: "card",
     drop: (item: CardType) => {
       if (item.allowedColumns.includes(column.id)) {
@@ -46,6 +46,7 @@ const Column: React.FC<IColumn> = ({
       canDrop: monitor.canDrop(),
     }),
   });
+
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal} maxWidth="xs">
       <DialogContent>
@@ -67,13 +68,13 @@ const Column: React.FC<IColumn> = ({
       await onCardDrop(
         droppedItem.current.id,
         droppedItem.current.sourceColumnId,
-        column.id
+        column.id,
       );
       droppedItem.current = null;
       hideModal();
 
       const containerElement = document.getElementById(
-        `scroll-container-${column.id}`
+        `scroll-container-${column.id}`,
       );
       if (containerElement) {
         containerElement.scrollTo({
@@ -99,7 +100,7 @@ const Column: React.FC<IColumn> = ({
         prev: { homeWorks: { items: StudentHomeWorkDto[] } },
         {
           fetchMoreResult,
-        }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } }
+        }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } },
       ) => {
         if (!fetchMoreResult) return prev;
 
@@ -184,7 +185,7 @@ const Column: React.FC<IColumn> = ({
                 setDraggingState={setDraggingState}
                 isCardsHidden={isColumnHighlight(column.id, draggingState)}
                 onCardClick={() => onCardClick!(card)}
-                isActive={activeCardId === card.id}
+                isActive={activeCardId === card?.id}
               />
             </Box>
           ))}

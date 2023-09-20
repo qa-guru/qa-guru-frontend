@@ -32,7 +32,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
               aria-hidden="true"
               class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
               readonly=""
-              style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+              style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
               tabindex="-1"
             />
             <fieldset
@@ -70,7 +70,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
     </div>
   </form>
   <div
-    class="MuiStack-root css-1tc5d84-MuiStack-root"
+    class="MuiStack-root css-1lxv330-MuiStack-root"
   >
     <h5
       class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
@@ -84,20 +84,20 @@ exports[`CommentsLimited > renders correctly 1`] = `
     </h5>
   </div>
   <div
-    class="MuiStack-root css-1w1iguc-MuiStack-root"
+    class="MuiStack-root css-1200ypm-MuiStack-root"
   >
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
       style="background-color: rgb(224, 242, 241);"
     >
       <div
-        class="MuiStack-root css-1esctib-MuiStack-root"
+        class="MuiStack-root css-1s6nq5m-MuiStack-root"
       >
         <div
           class="MuiBox-root css-8atqhb"
         >
           <div
-            class="MuiStack-root css-unhrs1-MuiStack-root"
+            class="MuiStack-root css-qix97k-MuiStack-root"
           >
             <div
               class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
