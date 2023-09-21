@@ -94,11 +94,11 @@ exports[`CommentsPagination > renders correctly 1`] = `
         class="MuiStack-root css-1w1iguc-MuiStack-root"
       >
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
           style="background-color: rgb(224, 242, 241);"
         >
           <div
-            class="MuiStack-root css-1esctib-MuiStack-root"
+            class="MuiStack-root css-d7v726-MuiStack-root"
           >
             <div
               class="MuiBox-root css-8atqhb"

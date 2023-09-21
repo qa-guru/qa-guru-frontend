@@ -7,12 +7,17 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  Typography,
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { CardType, IColumn } from "./column.types";
-import { style } from "./styles";
+import {
+  StyledBoxContainer,
+  StyledButton,
+  StyledCardBox,
+  StyledCircularProgress,
+  StyledTypography,
+} from "./column.styled";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
@@ -122,6 +127,8 @@ const Column: React.FC<IColumn> = ({
     }
   }, [column.cards?.length]);
 
+  const customStyles = getColumnStyles(column.id, draggingState, isOver);
+
   const formatStatus = (status: string) => {
     switch (status) {
       case "APPROVED":
@@ -138,15 +145,10 @@ const Column: React.FC<IColumn> = ({
   };
 
   return (
-    <Box
-      width={{ xs: "100%", md: "25%" }}
-      flexGrow="1"
-      display="flex"
-      flexDirection="column"
-    >
-      <Typography variant="h6" ml={1} mb={1}>
+    <StyledBoxContainer>
+      <StyledTypography variant="h6">
         {formatStatus(column.title)}
-      </Typography>
+      </StyledTypography>
       <Box
         id={`scroll-container-${column.id}`}
         ref={dropRef}
@@ -168,15 +170,15 @@ const Column: React.FC<IColumn> = ({
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
           loader={
-            <Box mt="10px" display="flex" justifyContent="center">
+            <StyledCircularProgress>
               <CircularProgress size={25} />
-            </Box>
+            </StyledCircularProgress>
           }
           style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (
-            <Box mb={2}>
+            <StyledCardBox>
               <Card
                 key={`${card.id}-${index}`}
                 card={card}
@@ -186,16 +188,14 @@ const Column: React.FC<IColumn> = ({
                 onCardClick={() => onCardClick!(card)}
                 isActive={activeCardId === card.id}
               />
-            </Box>
+            </StyledCardBox>
           ))}
         </InfiniteScroll>
       </Box>
       {showButton && hasMoreHomeworks && (
-        <Button sx={style.loadMoreBtn} onClick={handleLoadMore}>
-          Загрузить еще
-        </Button>
+        <StyledButton onClick={handleLoadMore}>Загрузить еще</StyledButton>
       )}
-    </Box>
+    </StyledBoxContainer>
   );
 };
 

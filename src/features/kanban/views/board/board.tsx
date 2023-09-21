@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Box, useMediaQuery, Pagination, Stack } from "@mui/material";
+import { Box, useMediaQuery, Stack } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
 import { Resizable } from "re-resizable";
 import { IBoard } from "./board.types";
-import { style } from "./styles";
+import { StyledPagination } from "./board.styled";
 import Column from "../column/column";
 import {
   StudentHomeWorkDto,
@@ -163,12 +163,11 @@ const Board: React.FC<IBoard> = ({
       {isDownMd ? (
         <Box mt="2vh">
           <Box display="flex" justifyContent="center">
-            <Pagination
+            <StyledPagination
               count={columns.length}
               page={activeStep + 1}
               onChange={(event, step) => handleStepChange(step - 1)}
               size="small"
-              sx={style.pagination}
               hidePrevButton
               hideNextButton
             />
@@ -231,7 +230,10 @@ const Board: React.FC<IBoard> = ({
               size={{ width: detailsWidth, height: "100%" }}
               maxWidth="50%"
               minWidth="34%"
-              style={style.menu}
+              style={{
+                backgroundColor: theme.palette.grey.light,
+                marginTop: "20px",
+              }}
               onResize={(e, direction, ref, d) => {
                 setDetailsWidth((prevWidth) => {
                   const newWidth = parseInt(prevWidth, 10) - d.width;

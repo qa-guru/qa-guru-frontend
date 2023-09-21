@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import BlurredComponent from "../blurred-component/blurred-component";
-import { style } from "../styles";
+import { StyledButton } from "../blurred.styled";
 import LectureHomework from "../../lecture-homework";
 import Homework from "../../../../features/lecture-detail/containers/homework";
 
@@ -14,15 +14,14 @@ const BlurredHomework: React.FC = () => {
           <Homework />
         </Box>
       </BlurredComponent>
-      <Button
+      <StyledButton
         disableElevation
         disableTouchRipple
         size="large"
-        sx={style.button}
         variant="contained"
       >
         Д/З недоступно
-      </Button>
+      </StyledButton>
     </Box>
   );
 };

@@ -133,7 +133,7 @@ exports[`Header > userRole is Master 1`] = `
             class="MuiBox-root css-0"
           >
             <div
-              class="MuiBox-root css-1l4w6pd"
+              class="MuiBox-root css-1wcjc1k"
             >
               <button
                 class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -454,7 +454,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             class="MuiBox-root css-0"
           >
             <div
-              class="MuiBox-root css-1l4w6pd"
+              class="MuiBox-root css-1wcjc1k"
             >
               <button
                 class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -775,7 +775,7 @@ exports[`Header > userRole is Student 1`] = `
             class="MuiBox-root css-0"
           >
             <div
-              class="MuiBox-root css-1l4w6pd"
+              class="MuiBox-root css-1wcjc1k"
             >
               <button
                 class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"

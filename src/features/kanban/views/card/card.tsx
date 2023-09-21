@@ -4,7 +4,7 @@ import { Box, Paper, Stack, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { useSnackbar } from "notistack";
 import { ICard } from "./card.types";
-import { style } from "./styles";
+import { style } from "./card.styled";
 import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
 import UserRow from "../../../../shared/components/user-row";

@@ -3,11 +3,11 @@
 exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
     style="background-color: rgb(238, 238, 238);"
   >
     <div
-      class="MuiStack-root css-1esctib-MuiStack-root"
+      class="MuiStack-root css-d7v726-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
@@ -133,11 +133,11 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
 exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
     style="background-color: rgb(224, 242, 241);"
   >
     <div
-      class="MuiStack-root css-1esctib-MuiStack-root"
+      class="MuiStack-root css-d7v726-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
@@ -332,11 +332,11 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
 exports[`CommentItem > the component is false 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
     style="background-color: rgb(238, 238, 238);"
   >
     <div
-      class="MuiStack-root css-1esctib-MuiStack-root"
+      class="MuiStack-root css-d7v726-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
@@ -395,11 +395,11 @@ exports[`CommentItem > the component is false 1`] = `
 exports[`CommentItem > the component is true 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-l6ebae-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
     style="background-color: rgb(224, 242, 241);"
   >
     <div
-      class="MuiStack-root css-1esctib-MuiStack-root"
+      class="MuiStack-root css-d7v726-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"

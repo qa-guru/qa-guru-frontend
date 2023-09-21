@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Button, Fade, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Fade, Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
-import { style } from "./styles";
+import { StyledBox, StyledPaper } from "./homework-details.styled";
 import { IHomeworkDetail } from "./homework-details.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import UserRow from "../../../../shared/components/user-row";
@@ -24,7 +24,7 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({
     <Fade in={showHomeworkDetails} timeout={700}>
       <Box>
         <ExpandIcon />
-        <Box sx={style.menu}>
+        <StyledBox>
           <Stack spacing={1} direction="row" justifyContent={"space-between"}>
             <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
             <Button onClick={onClose} variant="contained">
@@ -81,13 +81,13 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({
             <StatusContent status={card.status!} />
           </Box>
           <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork!} />
-          <Paper sx={style.paper}>
+          <StyledPaper>
             <Typography variant="h5" mb={2}>
               Ответ на задание
             </Typography>
             <TextSerialization text={card.answer!} />
-          </Paper>
-        </Box>
+          </StyledPaper>
+        </StyledBox>
       </Box>
     </Fade>
   );

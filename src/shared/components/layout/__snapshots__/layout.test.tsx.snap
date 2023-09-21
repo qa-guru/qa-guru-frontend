@@ -3,7 +3,7 @@
 exports[`Layout > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-zf0iqh"
+    class="MuiBox-root css-1u971bb"
   >
     <header
       style="margin-bottom: 3vh; align-items: center;"
@@ -155,7 +155,7 @@ exports[`Layout > renders correctly 1`] = `
               class="MuiBox-root css-0"
             >
               <div
-                class="MuiBox-root css-1l4w6pd"
+                class="MuiBox-root css-1wcjc1k"
               >
                 <button
                   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -341,7 +341,7 @@ exports[`Layout > renders correctly 1`] = `
       </div>
     </header>
     <div
-      class="MuiContainer-root MuiContainer-maxWidthLg css-m5hk2o-MuiContainer-root"
+      class="MuiContainer-root MuiContainer-maxWidthLg css-i986fo-MuiContainer-root"
     />
   </div>
 </DocumentFragment>

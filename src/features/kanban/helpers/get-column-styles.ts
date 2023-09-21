@@ -4,7 +4,7 @@ import { isColumnHighlight } from "./is-column-highlight";
 import { primary } from "../../../theme/colors";
 import { IDraggingState } from "../views/board/board.types";
 
-type GetColumnStylesFunction = (
+export type GetColumnStylesFunction = (
   columnId: string,
   draggingState: IDraggingState,
   isOver: boolean

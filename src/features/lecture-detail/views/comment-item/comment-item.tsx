@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, IconButton, Paper, Stack } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { ICommentItem } from "./comment-item.types";
-import { style } from "./styles";
+import { StyledPaper, StyledStack } from "./comment-item.styled";
 import UpdateComment from "../../containers/update-comment";
 import TextSerialization from "../../../../shared/serializers/text-serialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
@@ -18,19 +18,13 @@ const CommentItem: React.FC<ICommentItem> = ({
   const { creator, content, creationDate, id } = item;
 
   return (
-    <Paper
+    <StyledPaper
       key={index}
-      sx={style.container}
       style={{
         backgroundColor: editAccess ? primary.secondary : grey.secondary,
       }}
     >
-      <Stack
-        alignItems={{ xs: "flex-start", md: "center" }}
-        direction="row"
-        justifyContent="space-between"
-        spacing={1}
-      >
+      <StyledStack spacing={1} direction="row">
         <Box width="100%">
           <UserRow user={creator!} date={creationDate} />
           <Box mt="7px">
@@ -51,8 +45,8 @@ const CommentItem: React.FC<ICommentItem> = ({
             <Edit />
           </IconButton>
         )}
-      </Stack>
-    </Paper>
+      </StyledStack>
+    </StyledPaper>
   );
 };
 
