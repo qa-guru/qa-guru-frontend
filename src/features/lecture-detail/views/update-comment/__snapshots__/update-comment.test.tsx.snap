@@ -4,7 +4,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiStack-root css-e53awj-MuiStack-root"
+      class="MuiStack-root css-pl8gqh-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
@@ -31,7 +31,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
                 aria-hidden="true"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 readonly=""
-                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
                 tabindex="-1"
               />
               <fieldset
@@ -52,7 +52,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-1ng5cmk-MuiStack-root"
+          class="MuiStack-root css-oiim47-MuiStack-root"
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
@@ -71,7 +71,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
             tabindex="-1"
             type="button"
           >
-            <div
+            <span
               class="MuiLoadingButton-loadingIndicator MuiLoadingButton-loadingIndicatorCenter css-1yt7yx7-MuiLoadingButton-loadingIndicator"
             >
               <span
@@ -94,7 +94,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
                   />
                 </svg>
               </span>
-            </div>
+            </span>
             Отправить
           </button>
         </div>

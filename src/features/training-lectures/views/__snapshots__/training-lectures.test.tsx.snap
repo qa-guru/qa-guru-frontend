@@ -31,10 +31,10 @@ exports[`TrainingLectures > renders correctly 1`] = `
               string
             </h6>
             <div
-              class="MuiStack-root css-b55nah-MuiStack-root"
+              class="MuiStack-root css-10kbc59-MuiStack-root"
             >
               <div
-                class="MuiStack-root css-1sx5dla-MuiStack-root"
+                class="MuiStack-root css-5gq4xp-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
@@ -48,7 +48,7 @@ exports[`TrainingLectures > renders correctly 1`] = `
                 </h6>
               </div>
               <div
-                class="MuiStack-root css-1sx5dla-MuiStack-root"
+                class="MuiStack-root css-5gq4xp-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"

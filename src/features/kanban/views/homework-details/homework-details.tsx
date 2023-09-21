@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, Button, Fade, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
-import { StyledBox, StyledPaper } from "./homework-details.styled";
 import { IHomeworkDetail } from "./homework-details.types";
+import { StyledBox, StyledPaper } from "./homework-details.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import UserRow from "../../../../shared/components/user-row";
 import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
@@ -11,19 +11,14 @@ import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.
 import StatusContent from "../../../../shared/components/status-content";
 import TextSerialization from "../../../../shared/serializers/text-serialization";
 import LectureHomework from "../../../../shared/components/lecture-homework";
-import { ReactComponent as ExpandIcon } from "../../../../assets/icons/expand.svg";
 
 const HomeworkDetails: React.FC<IHomeworkDetail> = ({
   card,
   onClose,
-  showHomeworkDetails,
 }) => {
   const Format = "dd.MM.yyyy | HH:mm";
 
   return (
-    <Fade in={showHomeworkDetails} timeout={700}>
-      <Box>
-        <ExpandIcon />
         <StyledBox>
           <Stack spacing={1} direction="row" justifyContent={"space-between"}>
             <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
@@ -88,8 +83,6 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({
             <TextSerialization text={card.answer!} />
           </StyledPaper>
         </StyledBox>
-      </Box>
-    </Fade>
   );
 };
 

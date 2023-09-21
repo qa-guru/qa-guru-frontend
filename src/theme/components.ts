@@ -42,6 +42,7 @@ const components = (theme: Theme) => {
           borderRadius: "100px",
           fontSize: "14px",
           color: white.main,
+          variant: "contained",
         },
       },
     },

@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate, useParams } from "react-router-dom";
 import { StyledButton, StyledIcon } from "../buttons.styled";
 

@@ -3,7 +3,7 @@
 exports[`StatusContent > status is Approved 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1q36rmd-MuiStack-root"
+    class="MuiStack-root css-kdc3n8-MuiStack-root"
   >
     <svg
       fill="none"
@@ -33,7 +33,7 @@ exports[`StatusContent > status is Approved 1`] = `
 exports[`StatusContent > status is InReview 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1q36rmd-MuiStack-root"
+    class="MuiStack-root css-kdc3n8-MuiStack-root"
   >
     <svg
       fill="none"
@@ -65,7 +65,7 @@ exports[`StatusContent > status is InReview 1`] = `
 exports[`StatusContent > status is New 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1q36rmd-MuiStack-root"
+    class="MuiStack-root css-kdc3n8-MuiStack-root"
   >
     <svg
       fill="none"
@@ -101,7 +101,7 @@ exports[`StatusContent > status is New 1`] = `
 exports[`StatusContent > status is NotApproved 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1q36rmd-MuiStack-root"
+    class="MuiStack-root css-kdc3n8-MuiStack-root"
   >
     <svg
       aria-hidden="true"

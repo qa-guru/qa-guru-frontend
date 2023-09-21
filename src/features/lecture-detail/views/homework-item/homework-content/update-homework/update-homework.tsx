@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Button, FormControl, FormHelperText, Stack } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Box, FormControl, FormHelperText, Stack } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -9,7 +8,12 @@ import {
   IUpdateHomeWork,
   IUpdateHomeworkContent,
 } from "./update-homework.types";
-import { style } from "./styles";
+import {
+  StyledCancelButton,
+  StyledLoadingButton,
+  StyledStack,
+  StyledWrapper,
+} from "./update-homework.styled";
 import RHF from "../../../../../../shared/components/input-RHF";
 import { client } from "../../../../../../api";
 
@@ -62,7 +66,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
 
   return (
     <form>
-      <Stack direction="row" spacing={2} mt="15px">
+      <StyledWrapper spacing={2}>
         <Box width="100%">
           <FormControl fullWidth>
             <RHF.InputTextField
@@ -80,31 +84,19 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               <FormHelperText error>{errors?.content.message}</FormHelperText>
             )}
           </FormControl>
-          <Stack
-            direction={{ xs: "column-reverse", sm: "row" }}
-            justifyContent="flex-end"
-            spacing={1}
-            mt={2}
-          >
-            <Button
-              onClick={() => setOpenHomeWorkEdit(false)}
-              sx={style.buttonCancel}
-              variant="contained"
-              color="secondary"
-            >
+          <StyledStack spacing={1}>
+            <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
               Отменить
-            </Button>
-            <LoadingButton
+            </StyledCancelButton>
+            <StyledLoadingButton
               onClick={handleSubmit(handleUpdateHomework)}
               loading={loading}
-              sx={style.loadingButton}
-              variant="contained"
             >
               Отправить
-            </LoadingButton>
-          </Stack>
+            </StyledLoadingButton>
+          </StyledStack>
         </Box>
-      </Stack>
+      </StyledWrapper>
     </form>
   );
 };

@@ -19,10 +19,10 @@ exports[`LectureDetail > hasHomework is true 1`] = `
       class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
     />
     <div
-      class="MuiStack-root css-b55nah-MuiStack-root"
+      class="MuiStack-root css-10kbc59-MuiStack-root"
     >
       <div
-        class="MuiStack-root css-1sx5dla-MuiStack-root"
+        class="MuiStack-root css-5gq4xp-MuiStack-root"
       >
         <h6
           class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
@@ -36,7 +36,7 @@ exports[`LectureDetail > hasHomework is true 1`] = `
         </h6>
       </div>
       <div
-        class="MuiStack-root css-1sx5dla-MuiStack-root"
+        class="MuiStack-root css-5gq4xp-MuiStack-root"
       >
         <h6
           class="MuiTypography-root MuiTypography-subtitle2 css-16en7dj-MuiTypography-root"
@@ -63,10 +63,10 @@ exports[`LectureDetail > hasHomework is true 1`] = `
       class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
     >
       <div
-        class="MuiStack-root css-9jigf2-MuiStack-root"
+        class="MuiStack-root css-1y1wt4z-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1gkzrlu-MuiAvatar-root"
@@ -99,7 +99,7 @@ exports[`LectureDetail > hasHomework is true 1`] = `
       Материалы урока
     </h5>
     <div
-      class="MuiStack-root css-zgbp5c-MuiStack-root"
+      class="MuiStack-root css-j3ygch-MuiStack-root"
     />
   </div>
   <div
@@ -111,7 +111,7 @@ exports[`LectureDetail > hasHomework is true 1`] = `
       Домашнее задание
     </h5>
     <div
-      class="MuiStack-root css-zgbp5c-MuiStack-root"
+      class="MuiStack-root css-j3ygch-MuiStack-root"
     >
       <div
         class="MuiBox-root css-i6bazn"

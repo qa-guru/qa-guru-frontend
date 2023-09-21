@@ -9,14 +9,13 @@ import { ILogin, ILoginForm } from "./login.types";
 import {
   StyledButton,
   StyledLoadingButton,
+  StyledLogo,
   StyledPaper,
   StyledStack,
-  StyledSvgIcon,
   StyledWrapper,
 } from "./login.styled";
 import RHF from "../../../../shared/components/input-RHF";
 import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
-import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
 
 const Login: React.FC<ILogin> = (props) => {
   const { isLoading, login } = props;
@@ -64,9 +63,7 @@ const Login: React.FC<ILogin> = (props) => {
 
   return (
     <StyledWrapper>
-      <StyledSvgIcon>
-        <Logo />
-      </StyledSvgIcon>
+      <StyledLogo />
       <StyledPaper>
         <form>
           <StyledStack spacing={{ xs: 1, sm: 2 }}>

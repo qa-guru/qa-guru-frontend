@@ -1,13 +1,15 @@
 import { styled } from "@mui/system";
-import { Button, Paper, Stack, SvgIcon } from "@mui/material";
+import { Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
 
-export const StyledSvgIcon = styled(SvgIcon)(({ theme }) => ({
+export const StyledLogo = styled(Logo)(({ theme }) => ({
   height: "32px",
   width: "225px",
+  viewBox: "0 0 250 38",
   [theme.breakpoints.up("sm")]: {
-    height: "38px",
-    width: "250px",
+    height: "48px",
+    width: "280px",
   },
 }));
 
@@ -29,7 +31,7 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   height: "100vh",
-  backgroundColor: theme.palette.purple.main,
+  backgroundColor: theme.palette.purple,
   justifyContent: "center",
   alignItems: "center",
 }));

@@ -4,7 +4,7 @@ exports[`SendHomework > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiStack-root css-17qspa5-MuiStack-root"
+      class="MuiStack-root css-n8ocm4-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
@@ -30,7 +30,7 @@ exports[`SendHomework > the component is Loading 1`] = `
                 aria-hidden="true"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 readonly=""
-                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
                 tabindex="-1"
               />
               <fieldset
@@ -57,7 +57,7 @@ exports[`SendHomework > the component is Loading 1`] = `
           tabindex="-1"
           type="button"
         >
-          <div
+          <span
             class="MuiLoadingButton-loadingIndicator MuiLoadingButton-loadingIndicatorCenter css-1yt7yx7-MuiLoadingButton-loadingIndicator"
           >
             <span
@@ -80,7 +80,7 @@ exports[`SendHomework > the component is Loading 1`] = `
                 />
               </svg>
             </span>
-          </div>
+          </span>
           Отправить
         </button>
       </div>
@@ -93,7 +93,7 @@ exports[`SendHomework > the component is not Loading 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiStack-root css-17qspa5-MuiStack-root"
+      class="MuiStack-root css-n8ocm4-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
@@ -119,7 +119,7 @@ exports[`SendHomework > the component is not Loading 1`] = `
                 aria-hidden="true"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                 readonly=""
-                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
                 tabindex="-1"
               />
               <fieldset

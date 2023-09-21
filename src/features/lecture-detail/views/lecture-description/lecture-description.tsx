@@ -1,38 +1,31 @@
 import React from "react";
-import { Divider, Paper, Stack, Typography } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 import { ILectureDescription } from "./lecture-description.types";
-import { style } from "./styles";
+import {
+  StyledCircle,
+  StyledPaper,
+  StyledStack,
+  StyledTypography,
+} from "./lecture-description.styled";
 
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
   const { description } = props;
 
   return (
-    <>
-      <Paper sx={style.paper}>
-        <Typography mb="14px" variant="h5">
-          Содержание урока
-        </Typography>
-        <Divider />
-        <Stack spacing={1.5}>
-          {description?.map((value, index) => {
-            return (
-              <Stack
-                direction="row"
-                spacing={1.5}
-                alignItems="center"
-                key={index}
-                mt="16px"
-              >
-                <Typography sx={style.circle} variant="subtitle2">
-                  {index + 1}
-                </Typography>
-                <Typography variant="subtitle1">{value}</Typography>
-              </Stack>
-            );
-          })}
-        </Stack>
-      </Paper>
-    </>
+    <StyledPaper>
+      <StyledTypography variant="h5">Содержание урока</StyledTypography>
+      <Divider />
+      <Stack>
+        {description?.map((value, index) => {
+          return (
+            <StyledStack key={index}>
+              <StyledCircle variant="subtitle2">{index + 1}</StyledCircle>
+              <Typography variant="subtitle1">{value}</Typography>
+            </StyledStack>
+          );
+        })}
+      </Stack>
+    </StyledPaper>
   );
 };
 

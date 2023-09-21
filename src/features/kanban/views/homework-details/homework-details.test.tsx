@@ -7,23 +7,7 @@ describe("HomeworkDetails", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <HomeworkDetails
-          card={studentHomeWorkDto}
-          onClose={() => {}}
-          showHomeworkDetails={true}
-        />
-      </MemoryRouter>
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-  it("renders correctly", () => {
-    const { asFragment } = render(
-      <MemoryRouter>
-        <HomeworkDetails
-          card={studentHomeWorkDto}
-          onClose={() => {}}
-          showHomeworkDetails={false}
-        />
+        <HomeworkDetails card={studentHomeWorkDto} onClose={() => {}} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

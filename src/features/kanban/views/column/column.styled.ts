@@ -1,8 +1,8 @@
-// column.styled.ts
+// eslint-disable-next-line import/named
 import { styled, Theme } from "@mui/system";
 import { Box, Button, Typography } from "@mui/material";
-import { getColumnStyles } from "../../helpers/get-column-styles";
-import { isColumnHighlight } from "../../helpers/is-column-highlight";
+// import { isColumnHighlight } from "../../helpers/is-column-highlight";
+// import { getColumnStyles } from "../../helpers/get-column-styles";
 import { IDraggingState } from "../board/board.types";
 
 type IStyledScrollBox = {
@@ -11,6 +11,7 @@ type IStyledScrollBox = {
   draggingState: IDraggingState;
   isOver: boolean;
   showButton: boolean;
+  totalElements: string;
 };
 
 export const StyledBoxContainer = styled(Box)(({ theme }) => ({
@@ -25,7 +26,7 @@ export const StyledBoxContainer = styled(Box)(({ theme }) => ({
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(1),
-  marginBottom: theme.spacing(1),
+  fontSize: "20px",
 }));
 
 // export const StyledScrollBox = styled(Box)<IStyledScrollBox>(
@@ -46,6 +47,33 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
 //   })
 // );
 
+// const StyledScrollBox = styled(Box)<IStyledScrollBox>(
+//   ({ theme, columnId, draggingState, isOver, showButton, totalElements }) => ({
+//     ...getColumnStyles(columnId, draggingState, isOver),
+//     boxSizing: "border-box",
+//     overflowY: showButton ? "hidden" : "auto",
+//     maxHeight: "73vh",
+//     [theme.breakpoints.up("md")]: {
+//       maxHeight: "69vh",
+//     },
+//     backgroundColor:
+//       Number(totalElements) === 0
+//         ? {
+//             backgroundColor: theme.palette.grey.light,
+//             borderRadius: "10px",
+//             height: "69vh",
+//             boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
+//             margin: 10,
+//           }
+//         : "inherit",
+//     ...(isColumnHighlight(columnId, draggingState) && {
+//       "&::-webkit-scrollbar": {
+//         display: "none",
+//       },
+//     }),
+//   })
+// );
+
 export const StyledCircularProgress = styled(Box)(({ theme }) => ({
   marginTop: "10px",
   display: "flex",
@@ -54,6 +82,17 @@ export const StyledCircularProgress = styled(Box)(({ theme }) => ({
 
 export const StyledCardBox = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(2),
+}));
+
+export const StyledEmptyColumn = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.grey.light,
+  borderRadius: "10px",
+  height: "73vh",
+  [theme.breakpoints.up("sm")]: {
+    height: "69vh",
+  },
+  boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
+  margin: 10,
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({

@@ -3,7 +3,7 @@
 exports[`CommentTotalElements > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1tc5d84-MuiStack-root"
+    class="MuiStack-root css-1lxv330-MuiStack-root"
   >
     <h5
       class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"

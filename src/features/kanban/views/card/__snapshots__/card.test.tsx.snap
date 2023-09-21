@@ -27,10 +27,10 @@ exports[`Card > card is hidden 1`] = `
         class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       />
       <div
-        class="MuiStack-root css-qkek6c-MuiStack-root"
+        class="MuiStack-root css-1rjw2po-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <svg
             fill="none"
@@ -72,7 +72,7 @@ exports[`Card > card is hidden 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <svg
             fill="none"
@@ -138,10 +138,10 @@ exports[`Card > card is visible 1`] = `
         class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
       />
       <div
-        class="MuiStack-root css-qkek6c-MuiStack-root"
+        class="MuiStack-root css-1rjw2po-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <svg
             fill="none"
@@ -183,7 +183,7 @@ exports[`Card > card is visible 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <svg
             fill="none"

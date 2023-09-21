@@ -11,7 +11,7 @@ import {
 
 const useAuth = () => {
   const [createUser] = useCreateUserMutation();
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const [isAuth, setIsAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation();
@@ -75,7 +75,7 @@ const useAuth = () => {
     });
   };
 
-  return { login, logout, signup, isSignedIn, setIsSignedIn, isLoading };
+  return { login, logout, signup, isAuth, setIsAuth, isLoading };
 };
 
 export default useAuth;

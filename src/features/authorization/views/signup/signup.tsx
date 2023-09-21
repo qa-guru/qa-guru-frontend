@@ -9,15 +9,14 @@ import { ISignUp } from "./signup.types";
 import {
   StyledButton,
   StyledLoadingButton,
+  StyledLogo,
   StyledPaper,
   StyledStack,
-  StyledSvgIcon,
   StyledWrapper,
 } from "./signup.styled";
 import RHF from "../../../../shared/components/input-RHF";
 import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
 import { UserCreateInput } from "../../../../api/graphql/generated/graphql";
-import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
 
 const Signup: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -81,9 +80,7 @@ const Signup: React.FC<ISignUp> = (props) => {
 
   return (
     <StyledWrapper>
-      <StyledSvgIcon>
-        <Logo />
-      </StyledSvgIcon>
+      <StyledLogo />
       <StyledPaper>
         <form>
           <StyledStack spacing={{ xs: 1, md: 2 }}>

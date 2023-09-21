@@ -7,13 +7,13 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
     style="background-color: rgb(238, 238, 238);"
   >
     <div
-      class="MuiStack-root css-d7v726-MuiStack-root"
+      class="MuiStack-root css-13a7n82-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
@@ -48,7 +48,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
         >
           <form>
             <div
-              class="MuiStack-root css-e53awj-MuiStack-root"
+              class="MuiStack-root css-pl8gqh-MuiStack-root"
             >
               <div
                 class="MuiBox-root css-8atqhb"
@@ -75,7 +75,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
                         aria-hidden="true"
                         class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                         readonly=""
-                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
                         tabindex="-1"
                       />
                       <fieldset
@@ -96,7 +96,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
                   </div>
                 </div>
                 <div
-                  class="MuiStack-root css-1ng5cmk-MuiStack-root"
+                  class="MuiStack-root css-oiim47-MuiStack-root"
                 >
                   <button
                     class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
@@ -137,13 +137,13 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
     style="background-color: rgb(224, 242, 241);"
   >
     <div
-      class="MuiStack-root css-d7v726-MuiStack-root"
+      class="MuiStack-root css-13a7n82-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
@@ -336,13 +336,13 @@ exports[`CommentItem > the component is false 1`] = `
     style="background-color: rgb(238, 238, 238);"
   >
     <div
-      class="MuiStack-root css-d7v726-MuiStack-root"
+      class="MuiStack-root css-13a7n82-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
@@ -399,13 +399,13 @@ exports[`CommentItem > the component is true 1`] = `
     style="background-color: rgb(224, 242, 241);"
   >
     <div
-      class="MuiStack-root css-d7v726-MuiStack-root"
+      class="MuiStack-root css-13a7n82-MuiStack-root"
     >
       <div
         class="MuiBox-root css-8atqhb"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-qix97k-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
@@ -440,7 +440,7 @@ exports[`CommentItem > the component is true 1`] = `
         >
           <form>
             <div
-              class="MuiStack-root css-e53awj-MuiStack-root"
+              class="MuiStack-root css-pl8gqh-MuiStack-root"
             >
               <div
                 class="MuiBox-root css-8atqhb"
@@ -467,7 +467,7 @@ exports[`CommentItem > the component is true 1`] = `
                         aria-hidden="true"
                         class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
                         readonly=""
-                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
                         tabindex="-1"
                       />
                       <fieldset
@@ -488,7 +488,7 @@ exports[`CommentItem > the component is true 1`] = `
                   </div>
                 </div>
                 <div
-                  class="MuiStack-root css-1ng5cmk-MuiStack-root"
+                  class="MuiStack-root css-oiim47-MuiStack-root"
                 >
                   <button
                     class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
