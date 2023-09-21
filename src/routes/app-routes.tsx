@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { getUserRoutes } from "./role-routes";
 import Layout from "../shared/components/layout/layout";
 import { UserRole } from "../api/graphql/generated/graphql";
@@ -12,11 +13,13 @@ const AppRoutes: React.FC<AppRoutesProps> = ({ userRoles }) => {
   const userRoutes = getUserRoutes(userRoles);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout userRoles={userRoles} />}>
-        {userRoutes.map((route) => route)}
-      </Route>
-    </Routes>
+    <ErrorBoundary fallback={<div>Not found</div>}>
+      <Routes>
+        <Route path="/" element={<Layout userRoles={userRoles} />}>
+          {userRoutes.map((route) => route)}
+        </Route>
+      </Routes>
+    </ErrorBoundary>
   );
 };
 
