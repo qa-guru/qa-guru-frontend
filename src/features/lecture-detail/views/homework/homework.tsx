@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useModal } from "react-modal-hook";
-import { Dialog, Box } from "@mui/material";
+import { Dialog } from "@mui/material";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IHomework } from "./homework.types";
 import {
@@ -8,6 +8,7 @@ import {
   StyledButton,
   StyledClearIcon,
   StyledDialogContent,
+  StyledModalBox,
   StyledPaper,
 } from "./homework.styled";
 import Comments from "../../containers/comments";
@@ -27,7 +28,7 @@ const Homework: React.FC<IHomework> = (props) => {
     <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
       <StyledDialogContent id="scroll-container">
         <StyledClearIcon onClick={hideModalAndUpdateUrl} />
-        <Box pt={{ xs: "16px", sm: "0" }}>
+        <StyledModalBox>
           <LectureIdContext.Provider value={lectureId}>
             <HomeworkItem
               dataHomeWorkByLecture={dataHomeWorkByLecture}
@@ -37,7 +38,7 @@ const Homework: React.FC<IHomework> = (props) => {
               <CommentsPagination />
             </Comments>
           </LectureIdContext.Provider>
-        </Box>
+        </StyledModalBox>
       </StyledDialogContent>
     </Dialog>
   ));

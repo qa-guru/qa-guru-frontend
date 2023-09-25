@@ -83,7 +83,7 @@ const Signup: React.FC<ISignUp> = (props) => {
       <StyledLogo />
       <StyledPaper>
         <form>
-          <StyledStack spacing={{ xs: 1, md: 2 }}>
+          <StyledStack>
             <FormControl fullWidth>
               <RHF.InputTextField
                 control={control}

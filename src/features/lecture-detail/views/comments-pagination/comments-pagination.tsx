@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box, CircularProgress, Stack } from "@mui/material";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { CircularProgress } from "@mui/material";
 import { ICommentsPagination } from "./comments-pagination.types";
+import {
+  StyledBox,
+  StyledInfiniteScroll,
+  StyledStack,
+} from "./comments-pagination.styled";
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
@@ -43,19 +47,18 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
     <>
       <SendComment id={id!} />
       <CommentTotalElements totalElements={totalElements} />
-      <InfiniteScroll
+      <StyledInfiniteScroll
         dataLength={items?.length!}
         next={handleLoadMore}
         hasMore={hasMoreComments}
         loader={
-          <Box mt="10px" display="flex" justifyContent="center">
+          <StyledBox>
             <CircularProgress size={25} />
-          </Box>
+          </StyledBox>
         }
-        style={{ overflow: "visible" }}
         scrollableTarget="scroll-container"
       >
-        <Stack mt="5px" spacing={2}>
+        <StyledStack>
           {items?.map((item, index) => {
             const editAccess = dataUserId?.user?.id === item?.creator?.id;
             return (
@@ -69,8 +72,8 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
               />
             );
           })}
-        </Stack>
-      </InfiniteScroll>
+        </StyledStack>
+      </StyledInfiniteScroll>
     </>
   );
 };

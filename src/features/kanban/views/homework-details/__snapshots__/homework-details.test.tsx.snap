@@ -3,18 +3,18 @@
 exports[`HomeworkDetails > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-1lsotmj"
+    class="MuiBox-root css-15v0e0b"
   >
     <div
-      class="MuiStack-root css-1jbxis-MuiStack-root"
+      class="MuiStack-root css-nbehj-MuiStack-root"
     >
       <h6
-        class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
       >
         JAVA-23
       </h6>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
@@ -36,13 +36,13 @@ exports[`HomeworkDetails > renders correctly 1`] = `
       </button>
     </div>
     <p
-      class="MuiTypography-root MuiTypography-body1 css-ix1f03-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
     />
     <div
-      class="MuiStack-root css-18y360j-MuiStack-root"
+      class="MuiStack-root css-3t268d-MuiStack-root"
     >
       <div
-        class="MuiStack-root css-qix97k-MuiStack-root"
+        class="MuiStack-root css-unhrs1-MuiStack-root"
       >
         <svg
           fill="none"
@@ -57,10 +57,10 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           />
         </svg>
         <div
-          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
           >
             fl
           </h6>
@@ -69,14 +69,14 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
           >
             firstName lastName
           </h6>
         </div>
       </div>
       <div
-        class="MuiStack-root css-qix97k-MuiStack-root"
+        class="MuiStack-root css-unhrs1-MuiStack-root"
       >
         <svg
           fill="none"
@@ -99,10 +99,10 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           />
         </svg>
         <div
-          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
           >
             fl
           </h6>
@@ -111,7 +111,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
           >
             firstName lastName
           </h6>
@@ -119,46 +119,46 @@ exports[`HomeworkDetails > renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="MuiStack-root css-18y360j-MuiStack-root"
+      class="MuiStack-root css-3t268d-MuiStack-root"
     >
       <div
-        class="MuiStack-root css-nen11g-MuiStack-root"
+        class="MuiStack-root css-fuiiz2-MuiStack-root"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
         >
           Создано
         </p>
         <span
-          class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-g98qyn-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
         >
           10.10.2021 | 12:10
         </span>
       </div>
       <div
-        class="MuiStack-root css-nen11g-MuiStack-root"
+        class="MuiStack-root css-fuiiz2-MuiStack-root"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
         >
           Начало проверки
         </p>
         <span
-          class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-g98qyn-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
         >
           10.10.2021 | 14:10
         </span>
       </div>
       <div
-        class="MuiStack-root css-nen11g-MuiStack-root"
+        class="MuiStack-root css-fuiiz2-MuiStack-root"
       >
         <p
-          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
         >
           Окончание проверки
         </p>
         <span
-          class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-caption css-10kve1z-MuiTypography-root"
         >
           10.10.2021 | 12:11
         </span>
@@ -168,7 +168,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
       class="MuiBox-root css-tr0r3x"
     >
       <div
-        class="MuiStack-root css-kdc3n8-MuiStack-root"
+        class="MuiStack-root css-19iseno-MuiStack-root"
       >
         <svg
           fill="none"
@@ -192,7 +192,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
           >
             Ожидает проверки
           </p>
@@ -200,22 +200,22 @@ exports[`HomeworkDetails > renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1902zug-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ay1hcn-MuiPaper-root"
     >
       <h5
-        class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
       >
         Домашнее задание
       </h5>
       <div
-        class="MuiStack-root css-j3ygch-MuiStack-root"
+        class="MuiStack-root css-1yc1p5z-MuiStack-root"
       />
     </div>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ye51wz-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
     >
       <h5
-        class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
       >
         Ответ на задание
       </h5>
@@ -223,241 +223,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
         class="MuiBox-root css-i6bazn"
       >
         <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
-        >
-          answer
-          <br />
-        </h6>
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`HomeworkDetails > renders correctly 2`] = `
-<DocumentFragment>
-  <div
-    class="MuiBox-root css-1lsotmj"
-  >
-    <div
-      class="MuiStack-root css-1jbxis-MuiStack-root"
-    >
-      <h6
-        class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
-      >
-        JAVA-23
-      </h6>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Свернуть 
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-          data-testid="ChevronRightIcon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-          />
-        </svg>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-    </div>
-    <p
-      class="MuiTypography-root MuiTypography-body1 css-ix1f03-MuiTypography-root"
-    />
-    <div
-      class="MuiStack-root css-18y360j-MuiStack-root"
-    >
-      <div
-        class="MuiStack-root css-qix97k-MuiStack-root"
-      >
-        <svg
-          fill="none"
-          height="16"
-          viewBox="0 0 20 16"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.16683 8.98333V12.3167L10.0002 15.5L15.8335 12.3167V8.98333L10.0002 12.1667L4.16683 8.98333ZM10.0002 0.5L0.833496 5.5L10.0002 10.5L17.5002 6.40833V12.1667H19.1668V5.5L10.0002 0.5Z"
-            fill="#2CCCA6"
-          />
-        </svg>
-        <div
-          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
-        >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
-          >
-            fl
-          </h6>
-        </div>
-        <div
-          class="MuiBox-root css-0"
-        >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-          >
-            firstName lastName
-          </h6>
-        </div>
-      </div>
-      <div
-        class="MuiStack-root css-qix97k-MuiStack-root"
-      >
-        <svg
-          fill="none"
-          height="20"
-          viewBox="0 0 20 20"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M17.5002 2.5H2.50016C1.5835 2.5 0.833496 3.25 0.833496 4.16667V10.8333H2.50016V4.16667H17.5002V17.5C18.4168 17.5 19.1668 16.75 19.1668 15.8333V4.16667C19.1668 3.25 18.4168 2.5 17.5002 2.5Z"
-            fill="#2CCCA6"
-          />
-          <path
-            d="M7.49984 11.6667C9.34079 11.6667 10.8332 10.1743 10.8332 8.33333C10.8332 6.49238 9.34079 5 7.49984 5C5.65889 5 4.1665 6.49238 4.1665 8.33333C4.1665 10.1743 5.65889 11.6667 7.49984 11.6667Z"
-            fill="#2CCCA6"
-          />
-          <path
-            d="M12.8252 13.8C11.4252 13.0833 9.6085 12.5 7.50016 12.5C5.39183 12.5 3.57516 13.0833 2.17516 13.8C1.34183 14.225 0.833496 15.0833 0.833496 16.0167V18.3333H14.1668V16.0167C14.1668 15.0833 13.6585 14.225 12.8252 13.8Z"
-            fill="#2CCCA6"
-          />
-        </svg>
-        <div
-          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-4ljh0t-MuiAvatar-root"
-        >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
-          >
-            fl
-          </h6>
-        </div>
-        <div
-          class="MuiBox-root css-0"
-        >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
-          >
-            firstName lastName
-          </h6>
-        </div>
-      </div>
-    </div>
-    <div
-      class="MuiStack-root css-18y360j-MuiStack-root"
-    >
-      <div
-        class="MuiStack-root css-nen11g-MuiStack-root"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
-        >
-          Создано
-        </p>
-        <span
-          class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-g98qyn-MuiTypography-root"
-        >
-          10.10.2021 | 12:10
-        </span>
-      </div>
-      <div
-        class="MuiStack-root css-nen11g-MuiStack-root"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
-        >
-          Начало проверки
-        </p>
-        <span
-          class="MuiTypography-root MuiTypography-caption MuiTypography-noWrap css-g98qyn-MuiTypography-root"
-        >
-          10.10.2021 | 14:10
-        </span>
-      </div>
-      <div
-        class="MuiStack-root css-nen11g-MuiStack-root"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
-        >
-          Окончание проверки
-        </p>
-        <span
-          class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
-        >
-          10.10.2021 | 12:11
-        </span>
-      </div>
-    </div>
-    <div
-      class="MuiBox-root css-tr0r3x"
-    >
-      <div
-        class="MuiStack-root css-kdc3n8-MuiStack-root"
-      >
-        <svg
-          fill="none"
-          height="20"
-          viewBox="0 0 20 20"
-          width="20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9.99 0C4.47 0 0 4.48 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 9.99 0ZM10 18C5.58 18 2 14.42 2 10C2 5.58 5.58 2 10 2C14.42 2 18 5.58 18 10C18 14.42 14.42 18 10 18Z"
-            fill="black"
-            fill-opacity="0.56"
-          />
-          <path
-            d="M10.5 5H9V11L14.25 14.15L15 12.92L10.5 10.25V5Z"
-            fill="black"
-            fill-opacity="0.56"
-          />
-        </svg>
-        <div
-          class="MuiBox-root css-0"
-        >
-          <p
-            class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
-          >
-            Ожидает проверки
-          </p>
-        </div>
-      </div>
-    </div>
-    <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1902zug-MuiPaper-root"
-    >
-      <h5
-        class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
-      >
-        Домашнее задание
-      </h5>
-      <div
-        class="MuiStack-root css-j3ygch-MuiStack-root"
-      />
-    </div>
-    <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ye51wz-MuiPaper-root"
-    >
-      <h5
-        class="MuiTypography-root MuiTypography-h5 css-ch2k2f-MuiTypography-root"
-      >
-        Ответ на задание
-      </h5>
-      <div
-        class="MuiBox-root css-i6bazn"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
         >
           answer
           <br />

@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/system";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export const StyledButton = styled(Button)(({ theme }) => ({
@@ -14,4 +14,8 @@ export const StyledIcon = styled(ArrowBackIcon)(({ theme }) => ({
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
+}));
+
+export const StyledTypography = styled(Typography)(({ theme }) => ({
+  textTransform: "none",
 }));

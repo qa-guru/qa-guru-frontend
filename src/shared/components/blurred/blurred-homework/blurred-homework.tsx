@@ -1,18 +1,21 @@
 import React from "react";
-import { Box } from "@mui/material";
 import BlurredComponent from "../blurred-component/blurred-component";
-import { StyledButton } from "../blurred.styled";
+import {
+  StyledButton,
+  StyledHomeworkBox,
+  StyledWrapper,
+} from "../blurred.styled";
 import LectureHomework from "../../lecture-homework";
 import Homework from "../../../../features/lecture-detail/containers/homework";
 
 const BlurredHomework: React.FC = () => {
   return (
-    <Box position="relative">
+    <StyledWrapper>
       <BlurredComponent>
         <LectureHomework />
-        <Box pt="40px">
+        <StyledHomeworkBox>
           <Homework />
-        </Box>
+        </StyledHomeworkBox>
       </BlurredComponent>
       <StyledButton
         disableElevation
@@ -22,7 +25,7 @@ const BlurredHomework: React.FC = () => {
       >
         Д/З недоступно
       </StyledButton>
-    </Box>
+    </StyledWrapper>
   );
 };
 

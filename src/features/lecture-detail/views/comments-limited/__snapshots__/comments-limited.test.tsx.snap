@@ -4,12 +4,12 @@ exports[`CommentsLimited > renders correctly 1`] = `
 <DocumentFragment>
   <form>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-1ify8y5-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-15e6tim-MuiTypography-root"
     >
       Добавить комментарий
     </h5>
     <div
-      class="MuiBox-root css-8atqhb"
+      class="MuiBox-root css-qsaw8"
     >
       <div
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -18,11 +18,11 @@ exports[`CommentsLimited > renders correctly 1`] = `
           class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
         >
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <textarea
               aria-invalid="false"
-              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
               id=":r0:"
               maxlength="10000"
               placeholder="Текст ответа"
@@ -30,9 +30,9 @@ exports[`CommentsLimited > renders correctly 1`] = `
             />
             <textarea
               aria-hidden="true"
-              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
               readonly=""
-              style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+              style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
               tabindex="-1"
             />
             <fieldset
@@ -54,10 +54,10 @@ exports[`CommentsLimited > renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="MuiStack-root css-govf87-MuiStack-root"
+      class="MuiStack-root css-19fy60o-MuiStack-root"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-17d8meg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-13usayb-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
         id=":r1:"
         tabindex="0"
         type="button"
@@ -70,40 +70,39 @@ exports[`CommentsLimited > renders correctly 1`] = `
     </div>
   </form>
   <div
-    class="MuiStack-root css-1lxv330-MuiStack-root"
+    class="MuiStack-root css-100u45y-MuiStack-root"
   >
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
     >
       Комментарии
     </h5>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
     >
       (6)
     </h5>
   </div>
   <div
-    class="MuiStack-root css-1200ypm-MuiStack-root"
+    class="MuiStack-root css-1ezn384-MuiStack-root"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
-      style="background-color: rgb(224, 242, 241);"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1faagsy-MuiPaper-root"
     >
       <div
-        class="MuiStack-root css-13a7n82-MuiStack-root"
+        class="MuiStack-root css-16v954g-MuiStack-root"
       >
         <div
-          class="MuiBox-root css-8atqhb"
+          class="MuiBox-root css-qsaw8"
         >
           <div
-            class="MuiStack-root css-qix97k-MuiStack-root"
+            class="MuiStack-root css-unhrs1-MuiStack-root"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
               >
                 ss
               </h6>
@@ -112,7 +111,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
               class="MuiBox-root css-0"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
               >
                 string string
               </h6>
@@ -120,7 +119,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
                 class="MuiStack-root css-gmwslw-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
                 >
                   23.03.2023 | 00:00
                 </h6>
@@ -128,13 +127,13 @@ exports[`CommentsLimited > renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root css-6qfr2n"
+            class="MuiBox-root css-1s7xwmf"
           >
             <div
               class="MuiBox-root css-i6bazn"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
               >
                 string
                 <br />

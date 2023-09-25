@@ -1,29 +1,37 @@
-import { Skeleton, Stack } from "@mui/material";
+import {
+  StyledCircularSkeleton,
+  StyledRoundedSkeleton,
+  StyledRowStack,
+  StyledSkeleton,
+  StyledStack,
+  StyledStackItem,
+  StyledWrapper,
+} from "./skeleton-comment.styled";
 
 const SkeletonComment = () => {
   return (
-    <Stack mt="20px" spacing={1}>
-      <Stack spacing={1}>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <Skeleton variant="circular" width={40} height={40} />
-          <Stack width="10%">
-            <Skeleton variant="text" sx={{ fontSize: "0.7rem" }} />
-            <Skeleton variant="text" sx={{ fontSize: "0.7rem" }} />
-          </Stack>
-        </Stack>
-        <Skeleton variant="rounded" width="100%" height={60} />
-      </Stack>
-      <Stack spacing={1}>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <Skeleton variant="circular" width={40} height={40} />
-          <Stack width="10%">
-            <Skeleton variant="text" sx={{ fontSize: "0.7rem" }} />
-            <Skeleton variant="text" sx={{ fontSize: "0.7rem" }} />
-          </Stack>
-        </Stack>
-        <Skeleton variant="rounded" width="100%" height={60} />
-      </Stack>
-    </Stack>
+    <StyledWrapper>
+      <StyledStack>
+        <StyledRowStack>
+          <StyledCircularSkeleton variant="circular" />
+          <StyledStackItem>
+            <StyledSkeleton variant="text" />
+            <StyledSkeleton variant="text" />
+          </StyledStackItem>
+        </StyledRowStack>
+        <StyledRoundedSkeleton variant="rounded" />
+      </StyledStack>
+      <StyledStack>
+        <StyledRowStack>
+          <StyledCircularSkeleton variant="circular" />
+          <StyledStackItem>
+            <StyledSkeleton variant="text" />
+            <StyledSkeleton variant="text" />
+          </StyledStackItem>
+        </StyledRowStack>
+        <StyledRoundedSkeleton variant="rounded" />
+      </StyledStack>
+    </StyledWrapper>
   );
 };
 

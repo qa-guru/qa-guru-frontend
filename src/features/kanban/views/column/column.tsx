@@ -8,19 +8,12 @@ import {
   DialogActions,
   DialogContent,
   Stack,
+  Typography,
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { CardType, IColumn } from "./column.types";
-import {
-  StyledBoxContainer,
-  StyledButton,
-  StyledCardBox,
-  StyledCircularProgress,
-  StyledEmptyColumn,
-  StyledTypography,
-} from "./column.styled";
-// import { style } from "./styles";
+import { style } from "./column.styled";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
@@ -130,8 +123,6 @@ const Column: React.FC<IColumn> = ({
     }
   }, [column.cards?.length]);
 
-  const customStyles = getColumnStyles(column.id, draggingState, isOver);
-
   const formatStatus = (status: string) => {
     switch (status) {
       case "APPROVED":
@@ -148,16 +139,21 @@ const Column: React.FC<IColumn> = ({
   };
 
   return (
-    <StyledBoxContainer>
+    <Box
+      width={{ xs: "100%", md: "25%" }}
+      flexGrow="1"
+      display="flex"
+      flexDirection="column"
+    >
       <Stack direction="row">
-        <StyledTypography variant="h6">
+        <Typography fontSize="20px" ml={1} mb={1}>
           {formatStatus(column.title)}
-        </StyledTypography>
-        <StyledTypography>
+        </Typography>
+        <Typography fontSize="20px" ml={1}>
           {Number(column.totalElements) === 0
             ? "(empty)"
             : `(${column.totalElements})`}
-        </StyledTypography>
+        </Typography>
       </Stack>
       <Box
         id={`scroll-container-${column.id}`}
@@ -170,7 +166,7 @@ const Column: React.FC<IColumn> = ({
           overflowY: showButton ? "hidden" : "auto",
           maxHeight: { xs: "73vh", lg: "69vh" },
           backgroundColor:
-            Number(column.totalElements) === 0 ? "transparent" : "inherit",
+            Number(column.totalElements) === 0 ? style.emptyColumn : "inherit",
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",
@@ -178,21 +174,20 @@ const Column: React.FC<IColumn> = ({
           }),
         }}
       >
-        {Number(column.totalElements) === 0 && <StyledEmptyColumn />}
         <InfiniteScroll
           dataLength={column.cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
           loader={
-            <StyledCircularProgress>
+            <Box mt="10px" display="flex" justifyContent="center">
               <CircularProgress size={25} />
-            </StyledCircularProgress>
+            </Box>
           }
           style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (
-            <StyledCardBox>
+            <Box mb={2}>
               <Card
                 key={`${card.id}-${index}`}
                 card={card}
@@ -202,14 +197,16 @@ const Column: React.FC<IColumn> = ({
                 onCardClick={() => onCardClick!(card)}
                 isActive={activeCardId === card.id}
               />
-            </StyledCardBox>
+            </Box>
           ))}
         </InfiniteScroll>
       </Box>
       {showButton && hasMoreHomeworks && (
-        <StyledButton onClick={handleLoadMore}>Загрузить еще</StyledButton>
+        <Button sx={style.loadMoreBtn} onClick={handleLoadMore}>
+          Загрузить еще
+        </Button>
       )}
-    </StyledBoxContainer>
+    </Box>
   );
 };
 

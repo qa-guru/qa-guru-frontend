@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { IStatusContent } from "./status-content.types";
+import { StyledStack } from "./status-content.styled";
 import { ReactComponent as Clock } from "../../../assets/icons/clock.svg";
 import { ReactComponent as Search } from "../../../assets/icons/search.svg";
 import { ReactComponent as Done } from "../../../assets/icons/done.svg";
@@ -38,12 +39,12 @@ const StatusContent: React.FC<IStatusContent> = ({ status }) => {
   }
 
   return (
-    <Stack direction="row" spacing={1} alignItems="center">
+    <StyledStack>
       {icon}
       <Box>
         <Typography variant="body2">{statusText}</Typography>
       </Box>
-    </Stack>
+    </StyledStack>
   );
 };
 

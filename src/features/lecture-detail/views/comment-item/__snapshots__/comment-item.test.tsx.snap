@@ -3,23 +3,22 @@
 exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
-    style="background-color: rgb(238, 238, 238);"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-156ijh5-MuiPaper-root"
   >
     <div
-      class="MuiStack-root css-13a7n82-MuiStack-root"
+      class="MuiStack-root css-16v954g-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-qix97k-MuiStack-root"
+          class="MuiStack-root css-unhrs1-MuiStack-root"
         >
           <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
             >
               ss
             </h6>
@@ -28,7 +27,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
             class="MuiBox-root css-0"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
             >
               string string
             </h6>
@@ -36,7 +35,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
               class="MuiStack-root css-gmwslw-MuiStack-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
               >
                 23.03.2023 | 00:00
               </h6>
@@ -44,14 +43,14 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root css-6qfr2n"
+          class="MuiBox-root css-1s7xwmf"
         >
           <form>
             <div
-              class="MuiStack-root css-pl8gqh-MuiStack-root"
+              class="MuiStack-root css-m5qggf-MuiStack-root"
             >
               <div
-                class="MuiBox-root css-8atqhb"
+                class="MuiBox-root css-qsaw8"
               >
                 <div
                   class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -60,11 +59,11 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
                     class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
                   >
                     <div
-                      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+                      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
                     >
                       <textarea
                         aria-invalid="false"
-                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                         id=":r2:"
                         maxlength="10000"
                         style="height: 0px; overflow: hidden;"
@@ -73,9 +72,9 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
                       </textarea>
                       <textarea
                         aria-hidden="true"
-                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                         readonly=""
-                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
                         tabindex="-1"
                       />
                       <fieldset
@@ -96,10 +95,10 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
                   </div>
                 </div>
                 <div
-                  class="MuiStack-root css-oiim47-MuiStack-root"
+                  class="MuiStack-root css-8vieed-MuiStack-root"
                 >
                   <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
+                    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-9fppy5-MuiButtonBase-root-MuiButton-root"
                     tabindex="0"
                     type="button"
                   >
@@ -109,7 +108,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
                     />
                   </button>
                   <button
-                    class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1prcu1a-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+                    class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-3zgvrf-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
                     id=":r3:"
                     tabindex="0"
                     type="button"
@@ -133,23 +132,22 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
 exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
-    style="background-color: rgb(224, 242, 241);"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1faagsy-MuiPaper-root"
   >
     <div
-      class="MuiStack-root css-13a7n82-MuiStack-root"
+      class="MuiStack-root css-16v954g-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-qix97k-MuiStack-root"
+          class="MuiStack-root css-unhrs1-MuiStack-root"
         >
           <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
             >
               ss
             </h6>
@@ -158,7 +156,7 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
             class="MuiBox-root css-0"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
             >
               string string
             </h6>
@@ -166,7 +164,7 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
               class="MuiStack-root css-gmwslw-MuiStack-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
               >
                 23.03.2023 | 00:00
               </h6>
@@ -174,13 +172,13 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root css-6qfr2n"
+          class="MuiBox-root css-1s7xwmf"
         >
           <div
             class="MuiBox-root css-i6bazn"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
             >
               string
               <br />
@@ -332,23 +330,22 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
 exports[`CommentItem > the component is false 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
-    style="background-color: rgb(238, 238, 238);"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-156ijh5-MuiPaper-root"
   >
     <div
-      class="MuiStack-root css-13a7n82-MuiStack-root"
+      class="MuiStack-root css-16v954g-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-qix97k-MuiStack-root"
+          class="MuiStack-root css-unhrs1-MuiStack-root"
         >
           <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
             >
               ss
             </h6>
@@ -357,7 +354,7 @@ exports[`CommentItem > the component is false 1`] = `
             class="MuiBox-root css-0"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
             >
               string string
             </h6>
@@ -365,7 +362,7 @@ exports[`CommentItem > the component is false 1`] = `
               class="MuiStack-root css-gmwslw-MuiStack-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
               >
                 23.03.2023 | 00:00
               </h6>
@@ -373,13 +370,13 @@ exports[`CommentItem > the component is false 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root css-6qfr2n"
+          class="MuiBox-root css-1s7xwmf"
         >
           <div
             class="MuiBox-root css-i6bazn"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
             >
               string
               <br />
@@ -395,23 +392,22 @@ exports[`CommentItem > the component is false 1`] = `
 exports[`CommentItem > the component is true 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1op57w8-MuiPaper-root"
-    style="background-color: rgb(224, 242, 241);"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1faagsy-MuiPaper-root"
   >
     <div
-      class="MuiStack-root css-13a7n82-MuiStack-root"
+      class="MuiStack-root css-16v954g-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-qix97k-MuiStack-root"
+          class="MuiStack-root css-unhrs1-MuiStack-root"
         >
           <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
             >
               ss
             </h6>
@@ -420,7 +416,7 @@ exports[`CommentItem > the component is true 1`] = `
             class="MuiBox-root css-0"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
             >
               string string
             </h6>
@@ -428,7 +424,7 @@ exports[`CommentItem > the component is true 1`] = `
               class="MuiStack-root css-gmwslw-MuiStack-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
               >
                 23.03.2023 | 00:00
               </h6>
@@ -436,14 +432,14 @@ exports[`CommentItem > the component is true 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root css-6qfr2n"
+          class="MuiBox-root css-1s7xwmf"
         >
           <form>
             <div
-              class="MuiStack-root css-pl8gqh-MuiStack-root"
+              class="MuiStack-root css-m5qggf-MuiStack-root"
             >
               <div
-                class="MuiBox-root css-8atqhb"
+                class="MuiBox-root css-qsaw8"
               >
                 <div
                   class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -452,11 +448,11 @@ exports[`CommentItem > the component is true 1`] = `
                     class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
                   >
                     <div
-                      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+                      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
                     >
                       <textarea
                         aria-invalid="false"
-                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                         id=":r0:"
                         maxlength="10000"
                         style="height: 0px; overflow: hidden;"
@@ -465,9 +461,9 @@ exports[`CommentItem > the component is true 1`] = `
                       </textarea>
                       <textarea
                         aria-hidden="true"
-                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                         readonly=""
-                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+                        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
                         tabindex="-1"
                       />
                       <fieldset
@@ -488,10 +484,10 @@ exports[`CommentItem > the component is true 1`] = `
                   </div>
                 </div>
                 <div
-                  class="MuiStack-root css-oiim47-MuiStack-root"
+                  class="MuiStack-root css-8vieed-MuiStack-root"
                 >
                   <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
+                    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-9fppy5-MuiButtonBase-root-MuiButton-root"
                     tabindex="0"
                     type="button"
                   >
@@ -501,7 +497,7 @@ exports[`CommentItem > the component is true 1`] = `
                     />
                   </button>
                   <button
-                    class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1prcu1a-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+                    class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-3zgvrf-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
                     id=":r1:"
                     tabindex="0"
                     type="button"

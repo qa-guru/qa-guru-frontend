@@ -3,9 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
   Grid,
-  Stack,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -15,6 +13,14 @@ import { useTheme } from "@mui/system";
 import { IFilterKanban } from "./form.types";
 import CreationDateFromSelection from "./creation-date-from-selection";
 import CreationDateToSelection from "./creation-date-to-selection";
+import {
+  StyledColumnStack,
+  StyledGrid,
+  StyledLargeButton,
+  StyledRowStack,
+  StyledSmallButton,
+  StyledStack,
+} from "./form.styled";
 import MentorsSelection from "../../containers/mentors";
 import LectureSelection from "../../containers/training-lectures";
 import { KanbanContext } from "../../context/kanban-context";
@@ -75,46 +81,34 @@ const Form: React.FC = () => {
             <Typography>Фильтр</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Grid container direction={"column"} spacing={2}>
-              <Grid item>
-                <TrainingSelectionByRole control={control} />
-              </Grid>
-              <Grid item>
-                <LectureSelection control={control} />
-              </Grid>
-              <Grid item>
-                <MentorsSelection control={control} />
-              </Grid>
-              <Grid item>
-                <Stack direction="row" spacing={2}>
-                  <CreationDateFromSelection control={control} />
-                  <CreationDateToSelection control={control} />
-                </Stack>
-              </Grid>
-              <Grid item>
-                <Stack direction="row" justifyContent={"center"} spacing={2}>
-                  <Button
-                    onClick={handleSubmit(handleFilterKanban)}
-                    variant="contained"
-                    sx={{ fontSize: "14px" }}
-                  >
-                    Применить
-                  </Button>
-                  <Button
-                    onClick={handleReset}
-                    color="secondary"
-                    variant="contained"
-                    sx={{ fontSize: "14px" }}
-                  >
-                    Сбросить
-                  </Button>
-                </Stack>
-              </Grid>
-            </Grid>
+            <StyledColumnStack>
+              <TrainingSelectionByRole control={control} />
+              <LectureSelection control={control} />
+              <MentorsSelection control={control} />
+              <StyledRowStack>
+                <CreationDateFromSelection control={control} />
+                <CreationDateToSelection control={control} />
+              </StyledRowStack>
+              <StyledRowStack>
+                <StyledSmallButton
+                  onClick={handleSubmit(handleFilterKanban)}
+                  variant="contained"
+                >
+                  Применить
+                </StyledSmallButton>
+                <StyledSmallButton
+                  onClick={handleReset}
+                  color="secondary"
+                  variant="contained"
+                >
+                  Сбросить
+                </StyledSmallButton>
+              </StyledRowStack>
+            </StyledColumnStack>
           </AccordionDetails>
         </Accordion>
       ) : (
-        <Grid container spacing={1.5} alignItems="center">
+        <StyledGrid container>
           <Grid item md={1.9} lg={2}>
             <TrainingSelectionByRole control={control} />
           </Grid>
@@ -131,27 +125,25 @@ const Form: React.FC = () => {
             <CreationDateToSelection control={control} />
           </Grid>
           <Grid item md={2.5} lg={2}>
-            <Stack direction="row" justifyContent={"flex-end"} spacing={1}>
-              <Button
+            <StyledStack>
+              <StyledLargeButton
                 onClick={handleSubmit(handleFilterKanban)}
                 variant="contained"
                 size="large"
-                sx={{ fontSize: "12px" }}
               >
                 Применить
-              </Button>
-              <Button
+              </StyledLargeButton>
+              <StyledLargeButton
                 onClick={handleReset}
                 color="secondary"
                 variant="contained"
                 size="large"
-                sx={{ fontSize: "12px" }}
               >
                 Сбросить
-              </Button>
-            </Stack>
+              </StyledLargeButton>
+            </StyledStack>
           </Grid>
-        </Grid>
+        </StyledGrid>
       )}
     </form>
   );

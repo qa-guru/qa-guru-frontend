@@ -3,7 +3,7 @@
 exports[`StatusContent > status is Approved 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-kdc3n8-MuiStack-root"
+    class="MuiStack-root css-19iseno-MuiStack-root"
   >
     <svg
       fill="none"
@@ -21,7 +21,7 @@ exports[`StatusContent > status is Approved 1`] = `
       class="MuiBox-root css-0"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
       >
         Принято
       </p>
@@ -33,7 +33,7 @@ exports[`StatusContent > status is Approved 1`] = `
 exports[`StatusContent > status is InReview 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-kdc3n8-MuiStack-root"
+    class="MuiStack-root css-19iseno-MuiStack-root"
   >
     <svg
       fill="none"
@@ -53,7 +53,7 @@ exports[`StatusContent > status is InReview 1`] = `
       class="MuiBox-root css-0"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
       >
         На проверке
       </p>
@@ -65,7 +65,7 @@ exports[`StatusContent > status is InReview 1`] = `
 exports[`StatusContent > status is New 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-kdc3n8-MuiStack-root"
+    class="MuiStack-root css-19iseno-MuiStack-root"
   >
     <svg
       fill="none"
@@ -89,7 +89,7 @@ exports[`StatusContent > status is New 1`] = `
       class="MuiBox-root css-0"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
       >
         Ожидает проверки
       </p>
@@ -101,7 +101,7 @@ exports[`StatusContent > status is New 1`] = `
 exports[`StatusContent > status is NotApproved 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-kdc3n8-MuiStack-root"
+    class="MuiStack-root css-19iseno-MuiStack-root"
   >
     <svg
       aria-hidden="true"
@@ -118,7 +118,7 @@ exports[`StatusContent > status is NotApproved 1`] = `
       class="MuiBox-root css-0"
     >
       <p
-        class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
       >
         Не принято
       </p>

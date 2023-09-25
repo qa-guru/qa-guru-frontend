@@ -1,13 +1,16 @@
 import React from "react";
-import { Box, FormControl, FormHelperText, Stack } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Typography from "@mui/material/Typography";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { ISendComment, ISendCommentContent } from "./send-comment.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledLoadingButton,
+  StyledStack,
+  StyledTypography,
+} from "./send-comment.styled";
 import RHF from "../../../../shared/components/input-RHF";
 
 const SendComment: React.FC<ISendComment> = (props) => {
@@ -53,10 +56,8 @@ const SendComment: React.FC<ISendComment> = (props) => {
 
   return (
     <form>
-      <Typography mt={3} mb={2} variant="h5">
-        Добавить комментарий
-      </Typography>
-      <Box width="100%">
+      <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
+      <StyledBox>
         <FormControl fullWidth>
           <RHF.InputTextField
             placeholder="Текст ответа"
@@ -71,17 +72,16 @@ const SendComment: React.FC<ISendComment> = (props) => {
             <FormHelperText error>{errors?.content.message}</FormHelperText>
           )}
         </FormControl>
-      </Box>
-      <Stack direction="column" alignItems="flex-end" mt={2}>
-        <LoadingButton
+      </StyledBox>
+      <StyledStack>
+        <StyledLoadingButton
+          variant="contained"
           onClick={handleSubmit(handleSendComment)}
           loading={loading}
-          sx={style.loadingButton}
-          variant="contained"
         >
           Отправить
-        </LoadingButton>
-      </Stack>
+        </StyledLoadingButton>
+      </StyledStack>
     </form>
   );
 };

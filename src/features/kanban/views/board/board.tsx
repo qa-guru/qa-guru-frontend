@@ -1,12 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Box, useMediaQuery, Stack } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
 import { AnimatePresence, motion } from "framer-motion";
 import { IBoard } from "./board.types";
-import { StyledPagination } from "./board.styled";
+import {
+  StyledBox,
+  StyledHomeworkDetails,
+  StyledMobileWrapper,
+  StyledPagination,
+  StyledStack,
+  StyledWrapper,
+} from "./board.styled";
 import Column from "../column/column";
 import {
   StudentHomeWorkDto,
@@ -157,8 +164,8 @@ const Board: React.FC<IBoard> = ({
   return (
     <DndProvider backend={HTML5Backend}>
       {isDownMd ? (
-        <Box mt="2vh">
-          <Box display="flex" justifyContent="center">
+        <StyledMobileWrapper>
+          <StyledBox>
             <StyledPagination
               count={columns.length}
               page={activeStep + 1}
@@ -167,7 +174,7 @@ const Board: React.FC<IBoard> = ({
               hidePrevButton
               hideNextButton
             />
-          </Box>
+          </StyledBox>
           <Box>
             <SwipeableViews
               key={activeStep}
@@ -189,20 +196,15 @@ const Board: React.FC<IBoard> = ({
               ))}
             </SwipeableViews>
           </Box>
-        </Box>
+        </StyledMobileWrapper>
       ) : (
-        <Box display="flex">
+        <StyledWrapper>
           <motion.div
             initial={{ width: showHomeworkDetails ? "65%" : "100%" }}
             animate={{ width: showHomeworkDetails ? "65%" : "100%" }}
             transition={{ duration: 0.4 }}
           >
-            <Stack
-              direction="row"
-              spacing={1}
-              mr={showHomeworkDetails && isUpLg ? 2 : 0}
-              mt="20px"
-            >
+            <StyledStack mr={showHomeworkDetails && isUpLg ? 2 : 0}>
               {columns?.map((column, index) => (
                 <Column
                   draggingState={draggingState}
@@ -215,26 +217,26 @@ const Board: React.FC<IBoard> = ({
                   activeCardId={activeCardId}
                 />
               ))}
-            </Stack>
+            </StyledStack>
           </motion.div>
           <AnimatePresence>
             {isUpLg && selectedCard && (
               <motion.div
                 initial={{ width: "0%" }}
-                animate={{ width: "35%" }}
+                animate={{ width: "34%" }}
                 exit={{ width: "0" }}
                 transition={{ duration: 0.4 }}
               >
-                <Box minWidth="35vw">
+                <StyledHomeworkDetails>
                   <HomeworkDetails
                     card={selectedCard}
                     onClose={handleHomeworkDetailsClose}
                   />
-                </Box>
+                </StyledHomeworkDetails>
               </motion.div>
             )}
           </AnimatePresence>
-        </Box>
+        </StyledWrapper>
       )}
     </DndProvider>
   );

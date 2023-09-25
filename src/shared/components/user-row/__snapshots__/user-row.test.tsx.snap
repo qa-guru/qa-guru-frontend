@@ -3,13 +3,13 @@
 exports[`UserRow > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-qix97k-MuiStack-root"
+    class="MuiStack-root css-unhrs1-MuiStack-root"
   >
     <div
-      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+      class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
     >
       <h6
-        class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
       >
         uu
       </h6>
@@ -18,7 +18,7 @@ exports[`UserRow > renders correctly 1`] = `
       class="MuiBox-root css-0"
     >
       <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
       >
         undefined undefined
       </h6>

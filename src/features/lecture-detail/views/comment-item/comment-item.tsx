@@ -1,11 +1,15 @@
 import React from "react";
-import { Box, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { ICommentItem } from "./comment-item.types";
-import { StyledPaper, StyledStack } from "./comment-item.styled";
+import {
+  StyledBox,
+  StyledCommentBox,
+  StyledPaper,
+  StyledStack,
+} from "./comment-item.styled";
 import UpdateComment from "../../containers/update-comment";
 import TextSerialization from "../../../../shared/serializers/text-serialization";
 import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
-import { grey, primary } from "../../../../theme/colors";
 import UserRow from "../../../../shared/components/user-row";
 
 const CommentItem: React.FC<ICommentItem> = ({
@@ -18,16 +22,11 @@ const CommentItem: React.FC<ICommentItem> = ({
   const { creator, content, creationDate, id } = item;
 
   return (
-    <StyledPaper
-      key={index}
-      style={{
-        backgroundColor: editAccess ? primary.secondary : grey.secondary,
-      }}
-    >
-      <StyledStack spacing={1} direction="row">
-        <Box width="100%">
+    <StyledPaper key={index} editAccess={editAccess}>
+      <StyledStack>
+        <StyledCommentBox>
           <UserRow user={creator!} date={creationDate} />
-          <Box mt="7px">
+          <StyledBox>
             {isSelected ? (
               <UpdateComment
                 content={content!}
@@ -37,8 +36,8 @@ const CommentItem: React.FC<ICommentItem> = ({
             ) : (
               <TextSerialization text={content!} />
             )}
-          </Box>
-        </Box>
+          </StyledBox>
+        </StyledCommentBox>
 
         {!isSelected && editAccess && (
           <IconButton onClick={() => setSelectedIndex(index)}>

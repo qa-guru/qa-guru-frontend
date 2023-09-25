@@ -24,8 +24,10 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   padding: "16px 30px 10px",
-  [theme.breakpoints.up("sm")]: {
+  gap: theme.spacing(1),
+  [theme.breakpoints.up("md")]: {
     padding: "32px 60px 20px",
+    gap: theme.spacing(2),
   },
 }));
 

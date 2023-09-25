@@ -6,7 +6,7 @@ exports[`Header > userRole is Master 1`] = `
     style="margin-bottom: 3vh; align-items: center;"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19bu0fy-MuiPaper-root"
     >
       <div
         class="MuiBox-root css-ni9stj"
@@ -102,15 +102,15 @@ exports[`Header > userRole is Master 1`] = `
             class="MuiBox-root css-mloeoe"
           >
             <div
-              class="MuiStack-root css-1heabyg-MuiStack-root"
+              class="MuiStack-root css-u10pvi-MuiStack-root"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1joc3qd-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
                 >
                   <a
                     href="/kanban"
@@ -292,12 +292,12 @@ exports[`Header > userRole is Master 1`] = `
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
+            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
           >
             <span
-              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-9lu0vq-MuiCircularProgress-root"
               role="progressbar"
-              style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
+              style="width: 40px; height: 40px;"
             >
               <svg
                 class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
@@ -327,7 +327,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
     style="margin-bottom: 3vh; align-items: center;"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19bu0fy-MuiPaper-root"
     >
       <div
         class="MuiBox-root css-ni9stj"
@@ -423,15 +423,15 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             class="MuiBox-root css-mloeoe"
           >
             <div
-              class="MuiStack-root css-1heabyg-MuiStack-root"
+              class="MuiStack-root css-u10pvi-MuiStack-root"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1joc3qd-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
                 >
                   <a
                     href="/kanban"
@@ -613,12 +613,12 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
+            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
           >
             <span
-              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-9lu0vq-MuiCircularProgress-root"
               role="progressbar"
-              style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
+              style="width: 40px; height: 40px;"
             >
               <svg
                 class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
@@ -648,7 +648,7 @@ exports[`Header > userRole is Student 1`] = `
     style="margin-bottom: 3vh; align-items: center;"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-13pcxks-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19bu0fy-MuiPaper-root"
     >
       <div
         class="MuiBox-root css-ni9stj"
@@ -744,15 +744,15 @@ exports[`Header > userRole is Student 1`] = `
             class="MuiBox-root css-mloeoe"
           >
             <div
-              class="MuiStack-root css-1heabyg-MuiStack-root"
+              class="MuiStack-root css-u10pvi-MuiStack-root"
             >
               <button
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1joc3qd-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
                 >
                   <a
                     href="/"
@@ -934,12 +934,12 @@ exports[`Header > userRole is Student 1`] = `
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
+            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
           >
             <span
-              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-9lu0vq-MuiCircularProgress-root"
               role="progressbar"
-              style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
+              style="width: 40px; height: 40px;"
             >
               <svg
                 class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Stack } from "@mui/material";
 import { ICommentsLimited } from "./comments-limited.types";
+import { StyledStack } from "./comments-limited.styled";
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
@@ -15,7 +15,7 @@ const CommentsLimited: React.FC<ICommentsLimited> = (props) => {
     <>
       <SendComment id={id!} />
       <CommentTotalElements totalElements={totalElements} />
-      <Stack mt="5px" spacing={2}>
+      <StyledStack>
         {items?.slice(0, 3).map((item, index) => {
           const editAccess = dataUserId?.user?.id === item?.creator?.id;
           return (
@@ -29,7 +29,7 @@ const CommentsLimited: React.FC<ICommentsLimited> = (props) => {
             />
           );
         })}
-      </Stack>
+      </StyledStack>
     </>
   );
 };

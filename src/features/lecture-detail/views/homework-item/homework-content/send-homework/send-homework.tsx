@@ -1,22 +1,18 @@
 import React, { useContext } from "react";
-import { Box, FormControl, FormHelperText, Stack } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { ISendHomeWorkContent, ISendHomeWork } from "./send-homework.types";
+import {
+  StyledBox,
+  StyledLoadingButton,
+  StyledStack,
+} from "./send-homework.styled";
 import RHF from "../../../../../../shared/components/input-RHF";
 import { client } from "../../../../../../api";
 import { LectureIdContext } from "../../../../context/lecture-id-context";
-
-const style = {
-  loadingButton: {
-    textTransform: "none",
-    minWidth: "151px",
-    marginTop: "15px",
-  },
-};
 
 const SendHomework: React.FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
@@ -60,8 +56,8 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
 
   return (
     <form>
-      <Stack direction="row" spacing={2} mt="15px">
-        <Box width="100%">
+      <StyledStack>
+        <StyledBox>
           <FormControl fullWidth>
             <RHF.InputTextField
               placeholder="Текст ответа"
@@ -76,16 +72,15 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
               <FormHelperText error>{errors?.content.message}</FormHelperText>
             )}
           </FormControl>
-          <LoadingButton
-            onClick={handleSubmit(sendHomeWork)}
-            loading={loading}
-            sx={style.loadingButton}
+          <StyledLoadingButton
             variant="contained"
+            loading={loading}
+            onClick={handleSubmit(sendHomeWork)}
           >
             Отправить
-          </LoadingButton>
-        </Box>
-      </Stack>
+          </StyledLoadingButton>
+        </StyledBox>
+      </StyledStack>
     </form>
   );
 };

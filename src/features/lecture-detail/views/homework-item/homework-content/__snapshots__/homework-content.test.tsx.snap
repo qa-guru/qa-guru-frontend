@@ -6,7 +6,7 @@ exports[`SendHomework > status is Approved 1`] = `
     class="MuiBox-root css-i6bazn"
   >
     <h6
-      class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
     >
       answer
       <br />
@@ -19,10 +19,10 @@ exports[`SendHomework > status is InReview 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiStack-root css-n8ocm4-MuiStack-root"
+      class="MuiStack-root css-bplnkz-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -31,11 +31,11 @@ exports[`SendHomework > status is InReview 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
           >
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
             >
               <textarea
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r2:"
                 maxlength="2000"
                 style="height: 0px; overflow: hidden;"
@@ -44,9 +44,9 @@ exports[`SendHomework > status is InReview 1`] = `
               </textarea>
               <textarea
                 aria-hidden="true"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                 readonly=""
-                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
                 tabindex="-1"
               />
               <fieldset
@@ -67,10 +67,10 @@ exports[`SendHomework > status is InReview 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-n3npbl-MuiStack-root"
+          class="MuiStack-root css-3oxrce-MuiStack-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-h20xto-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -80,7 +80,7 @@ exports[`SendHomework > status is InReview 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-tf1rlc-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1ddwho6-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             id=":r3:"
             tabindex="0"
             type="button"
@@ -101,10 +101,10 @@ exports[`SendHomework > status is New 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiStack-root css-n8ocm4-MuiStack-root"
+      class="MuiStack-root css-bplnkz-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -113,11 +113,11 @@ exports[`SendHomework > status is New 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
           >
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
             >
               <textarea
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r0:"
                 maxlength="2000"
                 style="height: 0px; overflow: hidden;"
@@ -126,9 +126,9 @@ exports[`SendHomework > status is New 1`] = `
               </textarea>
               <textarea
                 aria-hidden="true"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                 readonly=""
-                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding-top: 0px; padding-bottom: 0px; width: 100%;"
+                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
                 tabindex="-1"
               />
               <fieldset
@@ -149,10 +149,10 @@ exports[`SendHomework > status is New 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-n3npbl-MuiStack-root"
+          class="MuiStack-root css-3oxrce-MuiStack-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-h20xto-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -162,7 +162,7 @@ exports[`SendHomework > status is New 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-tf1rlc-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1ddwho6-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             id=":r1:"
             tabindex="0"
             type="button"
@@ -185,7 +185,7 @@ exports[`SendHomework > status is NotApproved 1`] = `
     class="MuiBox-root css-i6bazn"
   >
     <h6
-      class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
     >
       answer
       <br />

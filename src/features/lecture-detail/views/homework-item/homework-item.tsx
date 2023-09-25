@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import { IHomeworkItem } from "./homework-item.types";
 import HomeworkContent from "./homework-content";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledHomeworkContentBox,
+  StyledStack,
+  StyledUserRowBox,
+  StyledWrapper,
+} from "./homework-item.styled";
 import ButtonEdit from "./button-edit";
 import StatusContent from "../../../../shared/components/status-content";
 import UserRow from "../../../../shared/components/user-row";
@@ -27,34 +33,26 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
 
   return (
     <>
-      <Stack
-        sx={style.stack}
-        spacing={{ xs: 0, sm: 3 }}
-        direction="row"
-        justifyContent={{ xs: "space-between", sm: "stretch" }}
-      >
+      <StyledWrapper>
         <Typography variant="h5">Ответ на задание</Typography>
         <StatusContent status={status!} />
-        <Stack
-          direction={{ xs: "row", sm: "row" }}
-          spacing={{ xs: 0.5, sm: 2 }}
-        >
+        <StyledStack>
           {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
-            <Box mt={{ xs: 2, sm: 0 }}>
+            <StyledBox>
               <UserRow user={mentor!} date={date} />
-            </Box>
+            </StyledBox>
           )}
-        </Stack>
-      </Stack>
+        </StyledStack>
+      </StyledWrapper>
       <Divider />
 
       {status && (
-        <Box mt="16px">
+        <StyledUserRowBox>
           <UserRow user={mentor!} date={date} />
-        </Box>
+        </StyledUserRowBox>
       )}
 
-      <Box mt="7px">
+      <StyledHomeworkContentBox>
         <HomeworkContent
           status={status!}
           answer={answer!}
@@ -62,7 +60,7 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
           setOpenHomeWorkEdit={setOpenHomeWorkEdit}
           id={id!}
         />
-      </Box>
+      </StyledHomeworkContentBox>
       <ButtonEdit
         editAccess={editAccess}
         openHomeWorkEdit={openHomeWorkEdit}

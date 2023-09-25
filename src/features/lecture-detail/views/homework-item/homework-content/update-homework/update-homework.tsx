@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, FormControl, FormHelperText, Stack } from "@mui/material";
+import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -9,6 +9,7 @@ import {
   IUpdateHomeworkContent,
 } from "./update-homework.types";
 import {
+  StyledBox,
   StyledCancelButton,
   StyledLoadingButton,
   StyledStack,
@@ -66,8 +67,8 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
 
   return (
     <form>
-      <StyledWrapper spacing={2}>
-        <Box width="100%">
+      <StyledWrapper>
+        <StyledBox>
           <FormControl fullWidth>
             <RHF.InputTextField
               multiline
@@ -84,7 +85,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               <FormHelperText error>{errors?.content.message}</FormHelperText>
             )}
           </FormControl>
-          <StyledStack spacing={1}>
+          <StyledStack>
             <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
               Отменить
             </StyledCancelButton>
@@ -95,7 +96,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               Отправить
             </StyledLoadingButton>
           </StyledStack>
-        </Box>
+        </StyledBox>
       </StyledWrapper>
     </form>
   );
