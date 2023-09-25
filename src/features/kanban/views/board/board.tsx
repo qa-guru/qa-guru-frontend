@@ -200,8 +200,8 @@ const Board: React.FC<IBoard> = ({
       ) : (
         <StyledWrapper>
           <motion.div
-            initial={{ width: showHomeworkDetails ? "65%" : "100%" }}
-            animate={{ width: showHomeworkDetails ? "65%" : "100%" }}
+            initial={{ width: showHomeworkDetails && isUpLg ? "65%" : "100%" }}
+            animate={{ width: showHomeworkDetails && isUpLg ? "65%" : "100%" }}
             transition={{ duration: 0.4 }}
           >
             <StyledStack mr={showHomeworkDetails && isUpLg ? 2 : 0}>
