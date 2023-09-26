@@ -2,7 +2,7 @@ import { getAllowedColumns } from "./get-allowed-columns";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
-} from "../../../api/graphql/generated/graphql";
+} from "../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 import { IColumnItem, IExtendedCard } from "../views/column/column.types";
 
 export const createColumnItem = (

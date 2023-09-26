@@ -10,7 +10,7 @@ exports[`Profile > renders correctly 1`] = `
     type="button"
   >
     <div
-      class="MuiBox-root css-ub3hk"
+      class="MuiBox-root css-1i83w74"
     >
       <div
         class="MuiStack-root css-unhrs1-MuiStack-root"

@@ -1,17 +1,14 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  ListItemIcon,
-  ListItemText,
-  MenuItem,
-  MenuList,
-} from "@mui/material";
+import { Button, ListItemIcon, MenuList } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IProfile } from "./profile.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledListItemText,
+  StyledMenuItem,
+} from "./profile.styled";
 import Logout from "../../../features/authorization/containers/logout-container";
 import UserRow from "../../../shared/components/user-row";
 
@@ -42,9 +39,9 @@ const Profile: React.FC<IProfile> = (props) => {
     <>
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
-          <Box sx={style.box}>
+          <StyledBox>
             <UserRow user={props.data.user!} variant="subtitle2" />
-          </Box>
+          </StyledBox>
         </Button>
       </Tooltip>
       <Menu
@@ -58,13 +55,10 @@ const Profile: React.FC<IProfile> = (props) => {
 
           return (
             <MenuList key={index}>
-              <MenuItem
-                onClick={handleClickSettingsProfile}
-                sx={style.menuItem}
-              >
-                <ListItemText sx={style.listItemText}>{title}</ListItemText>
+              <StyledMenuItem onClick={handleClickSettingsProfile}>
+                <StyledListItemText>{title}</StyledListItemText>
                 <ListItemIcon>{icon}</ListItemIcon>
-              </MenuItem>
+              </StyledMenuItem>
               <Logout setAnchorElUser={setAnchorElUser} />
             </MenuList>
           );

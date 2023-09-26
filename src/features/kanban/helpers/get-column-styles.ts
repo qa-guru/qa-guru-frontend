@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/named
 import { SxProps, Theme } from "@mui/system";
 import { isColumnHighlight } from "./is-column-highlight";
-import { primary } from "../../../theme/colors";
+import { primary } from "../../../../../../../Downloads/qa-guru-frontend-develop 2/src/theme/colors";
 import { IDraggingState } from "../views/board/board.types";
 
-export type GetColumnStylesFunction = (
+type GetColumnStylesFunction = (
   columnId: string,
   draggingState: IDraggingState,
   isOver: boolean

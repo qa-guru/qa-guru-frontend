@@ -1,4 +1,4 @@
-import { StudentHomeWorkStatus } from "../../../api/graphql/generated/graphql";
+import { StudentHomeWorkStatus } from "../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 
 export const getAllowedColumns = (title: StudentHomeWorkStatus) => {
   let allowedColumns: string[] = [];

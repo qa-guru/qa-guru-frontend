@@ -1,4 +1,7 @@
-import { grey, primary } from "../../../../theme/colors";
+import {
+  grey,
+  primary,
+} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/theme/colors";
 
 export const style = {
   loadMoreBtn: { color: primary.main, margin: "1vh auto" },

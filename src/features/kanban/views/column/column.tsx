@@ -13,11 +13,11 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { CardType, IColumn } from "./column.types";
-import { style } from "./column.styled";
+import { style } from "./styles";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
-import { StudentHomeWorkDto } from "../../../../api/graphql/generated/graphql";
+import { StudentHomeWorkDto } from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 
 const Column: React.FC<IColumn> = ({
   column,

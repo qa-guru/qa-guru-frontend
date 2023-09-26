@@ -1,4 +1,4 @@
-import { Box, IconButton, Paper, Stack, SvgIcon } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -6,9 +6,15 @@ import Profile from "./profile";
 import AppMenu from "./menu/menu";
 import MenuBurger from "./menu-burger/menu-burger";
 import { IHeader } from "./header.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledHeader,
+  StyledLogo,
+  StyledPaper,
+  StyledStack,
+  StyledWrapper,
+} from "./header.styled";
 import { getHeaderByRole } from "./roles/header-by-role";
-import { ReactComponent as Logo } from "../../assets/icons/logo-header.svg";
 import LocalSelector from "../../shared/components/buttons/local-selector/local-selector";
 
 const Header: React.FC<IHeader> = ({ userRoles }) => {
@@ -26,9 +32,9 @@ const Header: React.FC<IHeader> = ({ userRoles }) => {
   };
 
   return (
-    <header style={style.header}>
-      <Paper sx={style.paper}>
-        <Box sx={style.wrapper}>
+    <StyledHeader>
+      <StyledPaper>
+        <StyledWrapper>
           <MenuBurger
             pages={pages}
             setAnchorElNav={setAnchorElNav}
@@ -36,24 +42,22 @@ const Header: React.FC<IHeader> = ({ userRoles }) => {
             anchorElNav={anchorElNav}
           />
 
-          <Box sx={style.box}>
+          <StyledBox>
             <IconButton disableRipple onClick={() => handleClickNavMenu("/")}>
-              <SvgIcon sx={style.svgIcon} viewBox="0 0 166 31">
-                <Logo />
-              </SvgIcon>
+              <StyledLogo />
             </IconButton>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-          </Box>
+          </StyledBox>
 
-          <Stack direction="row" alignItems="center">
+          <StyledStack>
             <Box>
               <LocalSelector />
             </Box>
             <Profile />
-          </Stack>
-        </Box>
-      </Paper>
-    </header>
+          </StyledStack>
+        </StyledWrapper>
+      </StyledPaper>
+    </StyledHeader>
   );
 };
 

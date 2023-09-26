@@ -1,7 +1,7 @@
 import React from "react";
 import { FormControl, Tooltip } from "@mui/material";
 import ISelectLectures from "./lecture-selection.types";
-import RHF from "../../../../../shared/components/input-RHF";
+import RHF from "../../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/shared/components/input-RHF";
 
 const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
   const lecturesOptions = data?.trainingLectures?.map((item) => ({

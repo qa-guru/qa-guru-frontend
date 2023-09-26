@@ -4,7 +4,7 @@ import {
   Order,
   TrainingSortField,
   useTrainingsQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 import TrainingSelection from "../../views/form/training-selection";
 
 const TrainingsContainer: React.FC<ITrainingsContainer> = ({ control }) => {

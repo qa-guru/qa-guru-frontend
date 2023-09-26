@@ -3,7 +3,7 @@ import { ITrainingSelectionByRole } from "./training-selection-by-role.types";
 import {
   UserRole,
   useUserRolesQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 import Trainings from "../../containers/trainings";
 import TrainingsByMentor from "../../containers/trainings-by-mentor";
 

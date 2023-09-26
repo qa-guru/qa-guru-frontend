@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { CircularProgress, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 export const StyledGrid = styled(Grid)(({ theme }) => ({
   position: "fixed",
@@ -12,6 +12,6 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
-  color: theme.palette.primary,
-}));
+// export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
+//   color: theme.palette.primary.main,
+// }));

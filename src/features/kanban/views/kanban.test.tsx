@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
 import Kanban from "./kanban";
-import { render } from "../../../test/utils-test";
+import { render } from "../../../../../../../Downloads/qa-guru-frontend-develop 2/src/test/utils-test";
 
 describe("Kanban", () => {
   it("renders correctly", () => {

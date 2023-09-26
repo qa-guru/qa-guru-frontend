@@ -1,10 +1,11 @@
 import React from "react";
-import { StyledCircularProgress, StyledGrid } from "./spinner.styled";
+import { CircularProgress } from "@mui/material";
+import { StyledGrid } from "./spinner.styled";
 
 const Spinner: React.FC = () => {
   return (
     <StyledGrid container>
-      <StyledCircularProgress />
+      <CircularProgress color="primary" />
     </StyledGrid>
   );
 };

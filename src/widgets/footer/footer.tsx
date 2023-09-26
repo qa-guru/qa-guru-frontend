@@ -1,17 +1,13 @@
 import React from "react";
-import { Box, SvgIcon } from "@mui/material";
-import { style } from "./styles";
-import { ReactComponent as Logo } from "../../assets/icons/logo-footer.svg";
+import { StyledBox, StyledFooter, StyledLogo } from "./footer.styled";
 
 const Footer: React.FC = () => {
   return (
-    <footer style={style.footer}>
-      <Box sx={style.box}>
-        <SvgIcon sx={style.svgIcon} viewBox="0 0 166 31">
-          <Logo />
-        </SvgIcon>
-      </Box>
-    </footer>
+    <StyledFooter>
+      <StyledBox>
+        <StyledLogo />
+      </StyledBox>
+    </StyledFooter>
   );
 };
 

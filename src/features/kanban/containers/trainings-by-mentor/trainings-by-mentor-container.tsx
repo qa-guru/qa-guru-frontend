@@ -5,7 +5,7 @@ import {
   Order,
   TrainingSortField,
   useTrainingsByMentorQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 
 const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
   control,
