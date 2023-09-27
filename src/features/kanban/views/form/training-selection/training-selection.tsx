@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FormControl } from "@mui/material";
+import RHF from "shared/components/input-RHF";
 import { ITrainingSelection } from "./training-selection.types";
-import RHF from "../../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/shared/components/input-RHF";
 import { KanbanContext } from "../../../context/kanban-context";
 
 const TrainingSelection: React.FC<ITrainingSelection> = ({

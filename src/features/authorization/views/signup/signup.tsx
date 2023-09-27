@@ -5,7 +5,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { ISignUp } from "./signup.types";
+import RHF from "shared/components/input-RHF";
+import LocalSelector from "shared/components/buttons/local-selector/local-selector";
+import { UserCreateInput } from "api/graphql/generated/graphql";
 import {
   StyledButton,
   StyledLoadingButton,
@@ -14,9 +16,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./signup.styled";
-import RHF from "../../../../shared/components/input-RHF";
-import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
-import { UserCreateInput } from "../../../../api/graphql/generated/graphql";
+import { ISignUp } from "./signup.types";
 
 const Signup: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;

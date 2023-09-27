@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
 import UpdateComment from "./update-comment";
-import { render } from "../../../../test/utils-test";
 
 const mockUpdateComment: any = () => {};
 const mockSetSelectedIndex: any = () => {};

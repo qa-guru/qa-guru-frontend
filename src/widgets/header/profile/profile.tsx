@@ -3,14 +3,14 @@ import { Button, ListItemIcon, MenuList } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
+import Logout from "features/authorization/containers/logout-container";
+import UserRow from "shared/components/user-row";
 import { IProfile } from "./profile.types";
 import {
   StyledBox,
   StyledListItemText,
   StyledMenuItem,
 } from "./profile.styled";
-import Logout from "../../../features/authorization/containers/logout-container";
-import UserRow from "../../../shared/components/user-row";
 
 const Profile: React.FC<IProfile> = (props) => {
   const { firstName, lastName } = props.data.user!;

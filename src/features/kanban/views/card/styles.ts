@@ -1,7 +1,4 @@
-import {
-  grey,
-  primary,
-} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/theme/colors";
+import { grey, primary } from "theme/colors";
 
 export const style = {
   paper: {

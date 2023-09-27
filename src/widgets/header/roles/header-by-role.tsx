@@ -1,5 +1,5 @@
+import { UserRole } from "api/graphql/generated/graphql";
 import { StyledLink } from "./roles.styled";
-import { UserRole } from "../../../api/graphql/generated/graphql";
 
 export const getHeaderByRole = (
   userRoles: Array<UserRole | null>,

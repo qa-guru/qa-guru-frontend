@@ -1,4 +1,4 @@
-import SignUp from "../features/authorization/containers/signup-container";
+import SignUp from "features/authorization/containers/signup-container";
 
 const Registration = () => {
   return <SignUp />;

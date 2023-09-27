@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Maybe,
-  StudentHomeWorkStatus,
-} from "../../../../../api/graphql/generated/graphql";
+import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 export interface IButtonEdit {
   openHomeWorkEdit: boolean;

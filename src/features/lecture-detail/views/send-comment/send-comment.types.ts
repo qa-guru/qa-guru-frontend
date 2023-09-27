@@ -1,4 +1,4 @@
-import { SendCommentMutationFn } from "../../../../api/graphql/generated/graphql";
+import { SendCommentMutationFn } from "api/graphql/generated/graphql";
 
 export interface ISendComment {
   sendComment: SendCommentMutationFn;

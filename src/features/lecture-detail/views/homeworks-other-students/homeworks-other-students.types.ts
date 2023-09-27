@@ -3,7 +3,7 @@ import { ApolloQueryResult } from "@apollo/client";
 import {
   HomeWorksByLectureIdQuery,
   UserIdQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 
 export interface IHomeworksOtherStudents {
   data: HomeWorksByLectureIdQuery;

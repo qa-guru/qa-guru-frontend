@@ -1,12 +1,12 @@
 import React from "react";
 import { Divider } from "@mui/material";
+import ContentSerialization from "shared/serializers/content-serialization";
 import { ILectureContent } from "./lecture-content.types";
 import {
   StyledPaper,
   StyledStack,
   StyledTypography,
 } from "./lecture-content.styled";
-import ContentSerialization from "../../../../shared/serializers/content-serialization";
 
 const LectureContent: React.FC<ILectureContent> = ({ content }) => {
   return (

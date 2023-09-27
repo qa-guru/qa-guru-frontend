@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
 import ButtonTrainingList from "./button-training-list";
-import { render } from "../../../../test/utils-test";
 
 describe("ButtonTrainingList", () => {
   it("renders correctly", () => {

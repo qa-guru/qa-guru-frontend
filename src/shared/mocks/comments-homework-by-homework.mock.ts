@@ -1,4 +1,4 @@
-import { CommentsHomeWorkByHomeWorkQuery } from "../../api/graphql/generated/graphql";
+import { CommentsHomeWorkByHomeWorkQuery } from "api/graphql/generated/graphql";
 
 export const commentsHomeWorkByHomeWork: CommentsHomeWorkByHomeWorkQuery = {
   commentsHomeWorkByHomeWork: {

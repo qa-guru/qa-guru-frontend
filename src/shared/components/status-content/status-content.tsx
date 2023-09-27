@@ -2,12 +2,12 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { IStatusContent } from "./status-content.types";
+import { ReactComponent as Clock } from "assets/icons/clock.svg";
+import { ReactComponent as Search } from "assets/icons/search.svg";
+import { ReactComponent as Done } from "assets/icons/done.svg";
+import { red } from "theme/colors";
 import { StyledStack } from "./status-content.styled";
-import { ReactComponent as Clock } from "../../../assets/icons/clock.svg";
-import { ReactComponent as Search } from "../../../assets/icons/search.svg";
-import { ReactComponent as Done } from "../../../assets/icons/done.svg";
-import { red } from "../../../theme/colors";
+import { IStatusContent } from "./status-content.types";
 
 const RedHighlightOffIcon = styled(HighlightOffIcon)({
   color: red.main,

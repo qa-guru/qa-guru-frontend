@@ -1,4 +1,4 @@
-import { UserDto } from "../../api/graphql/generated/graphql";
+import { UserDto } from "api/graphql/generated/graphql";
 
 export const speakers: UserDto[] = [
   {

@@ -1,4 +1,4 @@
-import { SendHomeWorkToCheckMutationFn } from "../../../../../../api/graphql/generated/graphql";
+import { SendHomeWorkToCheckMutationFn } from "api/graphql/generated/graphql";
 
 export interface ISendHomeWork {
   sendHomeWorkToCheck: SendHomeWorkToCheckMutationFn;

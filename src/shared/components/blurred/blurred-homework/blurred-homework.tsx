@@ -1,12 +1,12 @@
 import React from "react";
+import LectureHomework from "shared/components/lecture-homework";
+import Homework from "features/lecture-detail/containers/homework";
 import BlurredComponent from "../blurred-component/blurred-component";
 import {
   StyledButton,
   StyledHomeworkBox,
   StyledWrapper,
 } from "../blurred.styled";
-import LectureHomework from "../../lecture-homework";
-import Homework from "../../../../features/lecture-detail/containers/homework";
 
 const BlurredHomework: React.FC = () => {
   return (

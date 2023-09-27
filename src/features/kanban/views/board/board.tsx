@@ -5,6 +5,10 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import SwipeableViews from "react-swipeable-views";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  StudentHomeWorkDto,
+  StudentHomeWorkStatus,
+} from "api/graphql/generated/graphql";
 import { IBoard } from "./board.types";
 import {
   StyledBox,
@@ -15,10 +19,6 @@ import {
   StyledWrapper,
 } from "./board.styled";
 import Column from "../column/column";
-import {
-  StudentHomeWorkDto,
-  StudentHomeWorkStatus,
-} from "../../../../api/graphql/generated/graphql";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";

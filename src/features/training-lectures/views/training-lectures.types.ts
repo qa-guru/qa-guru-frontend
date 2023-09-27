@@ -1,7 +1,7 @@
 import {
   TrainingLecturesQuery,
   TrainingQuery,
-} from "../../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 
 export interface ITrainingLectures {
   dataTrainingLectures: TrainingLecturesQuery;

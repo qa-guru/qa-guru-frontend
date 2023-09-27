@@ -2,7 +2,12 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
-import { IHomeworkDetail } from "./homework-details.types";
+import UserRow from "shared/components/user-row";
+import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
+import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
+import StatusContent from "shared/components/status-content";
+import TextSerialization from "shared/serializers/text-serialization";
+import LectureHomework from "shared/components/lecture-homework";
 import {
   StyledBox,
   StyledColumnStack,
@@ -12,13 +17,8 @@ import {
   StyledTitle,
   StyledTypography,
 } from "./homework-details.styled";
+import { IHomeworkDetail } from "./homework-details.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
-import UserRow from "../../../../shared/components/user-row";
-import { ReactComponent as MentorIcon } from "../../../../assets/icons/mentor.svg";
-import { ReactComponent as StudentIcon } from "../../../../assets/icons/student.svg";
-import StatusContent from "../../../../shared/components/status-content";
-import TextSerialization from "../../../../shared/serializers/text-serialization";
-import LectureHomework from "../../../../shared/components/lecture-homework";
 
 const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";

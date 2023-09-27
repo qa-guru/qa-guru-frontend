@@ -1,4 +1,4 @@
-import { TechStack, TrainingQuery } from "../../api/graphql/generated/graphql";
+import { TechStack, TrainingQuery } from "api/graphql/generated/graphql";
 
 export const training: TrainingQuery = {
   training: {

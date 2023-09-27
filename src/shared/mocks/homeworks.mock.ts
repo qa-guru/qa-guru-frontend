@@ -1,7 +1,7 @@
 import {
   HomeWorksQuery,
   StudentHomeWorkStatus,
-} from "../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 
 export const homeWorksQuery: HomeWorksQuery = {
   homeWorks: {

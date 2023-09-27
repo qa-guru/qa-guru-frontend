@@ -5,7 +5,7 @@ import {
   useApprovedMutation,
   useNotApprovedMutation,
   useTakeForReviewMutation,
-} from "../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 
 type HomeWorkItem = {
   __ref: string;

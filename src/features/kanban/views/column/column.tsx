@@ -12,12 +12,12 @@ import {
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { CardType, IColumn } from "./column.types";
 import { style } from "./styles";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
-import { StudentHomeWorkDto } from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
 
 const Column: React.FC<IColumn> = ({
   column,
@@ -165,8 +165,8 @@ const Column: React.FC<IColumn> = ({
           boxSizing: "border-box",
           overflowY: showButton ? "hidden" : "auto",
           maxHeight: { xs: "73vh", lg: "69vh" },
-          backgroundColor:
-            Number(column.totalElements) === 0 ? style.emptyColumn : "inherit",
+          // backgroundColor:
+          //   Number(column.totalElements) === 0 ? style.emptyColumn : "inherit",
           ...(isColumnHighlight(column.id, draggingState) && {
             "&::-webkit-scrollbar": {
               display: "none",
@@ -187,9 +187,8 @@ const Column: React.FC<IColumn> = ({
           scrollableTarget={`scroll-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (
-            <Box mb={2}>
+            <Box mb={2} key={`${card.id}-${index}`}>
               <Card
-                key={`${card.id}-${index}`}
                 card={card}
                 sourceColumnId={column.id}
                 setDraggingState={setDraggingState}

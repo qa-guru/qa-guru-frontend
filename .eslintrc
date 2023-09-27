@@ -158,7 +158,8 @@
         "types": "always",
         "json": "always",
         "mock": "always",
-        "styled": "always"
+        "styled": "always",
+        "svg": "always"
       }
     ]
   },

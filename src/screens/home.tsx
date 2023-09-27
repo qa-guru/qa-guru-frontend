@@ -1,5 +1,5 @@
 import React from "react";
-import TrainingPurchases from "../features/training-purchases/containers";
+import TrainingPurchases from "features/training-purchases/containers";
 
 const Home = () => {
   return <TrainingPurchases />;

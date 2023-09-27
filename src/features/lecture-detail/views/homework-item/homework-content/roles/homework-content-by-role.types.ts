@@ -1,5 +1,5 @@
 import React from "react";
-import { StudentHomeWorkStatus } from "../../../../../../api/graphql/generated/graphql";
+import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 export interface IHomeworkContentByRole {
   status: StudentHomeWorkStatus;

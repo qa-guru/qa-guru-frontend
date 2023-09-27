@@ -2,7 +2,7 @@ import React from "react";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
-} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 import { IDraggingState } from "../board/board.types";
 
 export interface CardType {

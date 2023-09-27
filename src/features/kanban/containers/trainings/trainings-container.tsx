@@ -1,10 +1,10 @@
 import React from "react";
-import { ITrainingsContainer } from "./trainings-container.types";
 import {
   Order,
   TrainingSortField,
   useTrainingsQuery,
-} from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
+import { ITrainingsContainer } from "./trainings-container.types";
 import TrainingSelection from "../../views/form/training-selection";
 
 const TrainingsContainer: React.FC<ITrainingsContainer> = ({ control }) => {

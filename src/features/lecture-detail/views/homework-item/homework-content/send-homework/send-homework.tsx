@@ -4,14 +4,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import RHF from "shared/components/input-RHF";
+import { client } from "api";
 import { ISendHomeWorkContent, ISendHomeWork } from "./send-homework.types";
 import {
   StyledBox,
   StyledLoadingButton,
   StyledStack,
 } from "./send-homework.styled";
-import RHF from "../../../../../../shared/components/input-RHF";
-import { client } from "../../../../../../api";
 import { LectureIdContext } from "../../../../context/lecture-id-context";
 
 const SendHomework: React.FC<ISendHomeWork> = (props) => {

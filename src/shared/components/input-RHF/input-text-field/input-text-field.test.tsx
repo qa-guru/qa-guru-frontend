@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
+import { render } from "test/utils-test";
 import InputTextField from "./input-text-field";
-import { render } from "../../../../test/utils-test";
 
 describe("InputTextField", () => {
   it("renders correctly", () => {

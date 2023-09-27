@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Divider, Typography } from "@mui/material";
+import StatusContent from "shared/components/status-content";
+import UserRow from "shared/components/user-row";
 import { IHomeworkItem } from "./homework-item.types";
 import HomeworkContent from "./homework-content";
 import {
@@ -10,8 +12,6 @@ import {
   StyledWrapper,
 } from "./homework-item.styled";
 import ButtonEdit from "./button-edit";
-import StatusContent from "../../../../shared/components/status-content";
-import UserRow from "../../../../shared/components/user-row";
 
 const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;

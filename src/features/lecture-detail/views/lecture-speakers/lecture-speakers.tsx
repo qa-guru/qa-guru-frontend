@@ -1,4 +1,5 @@
 import React from "react";
+import UserRow from "shared/components/user-row";
 import { ILectureSpeakers } from "./lecture-speakers.types";
 import {
   StyledPaper,
@@ -6,7 +7,6 @@ import {
   StyledTypography,
   StyledWrapper,
 } from "./lecture-speakers.styled";
-import UserRow from "../../../../shared/components/user-row";
 
 const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
   const { speakers } = props;

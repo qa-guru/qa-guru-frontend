@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
+import { trainingPurchases } from "shared/mocks/training-purchases.mock";
 import TrainingPurchases from "./training-purchases";
-import { render } from "../../../test/utils-test";
-import { trainingPurchases } from "../../../shared/mocks/training-purchases.mock";
 
 describe("TrainingPurchases", () => {
   it("renders correctly", () => {

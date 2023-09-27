@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
 import SkeletonComment from "./skeleton-comment";
-import { render } from "../../../../test/utils-test";
 
 describe("SkeletonComment", () => {
   it("renders correctly", () => {

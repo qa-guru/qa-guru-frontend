@@ -1,5 +1,5 @@
 import React from "react";
-import { UpdateCommentMutationFn } from "../../../../api/graphql/generated/graphql";
+import { UpdateCommentMutationFn } from "api/graphql/generated/graphql";
 
 export interface IUpdateComment {
   updateComment: UpdateCommentMutationFn;

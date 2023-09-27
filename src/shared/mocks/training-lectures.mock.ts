@@ -1,4 +1,4 @@
-import { TrainingLecturesQuery } from "../../api/graphql/generated/graphql";
+import { TrainingLecturesQuery } from "api/graphql/generated/graphql";
 
 export const trainingLectures: TrainingLecturesQuery = {
   trainingLectures: [

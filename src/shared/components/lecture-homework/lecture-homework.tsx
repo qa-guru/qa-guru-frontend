@@ -1,11 +1,11 @@
 import React from "react";
+import ContentSerialization from "shared/serializers/content-serialization";
 import { ILectureHomework } from "./lecture-homework.types";
 import {
   StyledPaper,
   StyledStack,
   StyledTypography,
 } from "./lecture-homework.styled";
-import ContentSerialization from "../../serializers/content-serialization";
 
 const LectureHomework: React.FC<ILectureHomework> = ({ lectureHomeWork }) => {
   return (

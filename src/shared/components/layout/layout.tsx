@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "widgets/header";
+import { UserRole } from "api/graphql/generated/graphql";
 import { StyledBox, StyledContainer } from "./layout.styled";
-import Header from "../../../widgets/header";
-import { UserRole } from "../../../api/graphql/generated/graphql";
 // import footer from "../widgets/footer";
 
 interface LayoutProps {

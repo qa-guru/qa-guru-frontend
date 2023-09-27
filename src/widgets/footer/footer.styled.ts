@@ -1,4 +1,3 @@
-import { purple } from "../../theme/colors";
 import { styled } from "@mui/system";
 import { Box } from "@mui/material";
 import { ReactComponent as Logo } from "../../assets/icons/logo-footer.svg";

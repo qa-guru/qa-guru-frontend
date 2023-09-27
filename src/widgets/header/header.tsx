@@ -2,6 +2,7 @@ import { Box, IconButton } from "@mui/material";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
 import MenuBurger from "./menu-burger/menu-burger";
@@ -15,7 +16,6 @@ import {
   StyledWrapper,
 } from "./header.styled";
 import { getHeaderByRole } from "./roles/header-by-role";
-import LocalSelector from "../../shared/components/buttons/local-selector/local-selector";
 
 const Header: React.FC<IHeader> = ({ userRoles }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(

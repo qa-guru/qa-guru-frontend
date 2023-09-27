@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
+import { render } from "test/utils-test";
 import InputDatePicker from "./input-date-picker";
-import { render } from "../../../../test/utils-test";
 
 describe("InputDatePicker", () => {
   it("renders correctly", () => {

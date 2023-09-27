@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
+import { studentHomeWorkDto } from "shared/mocks/student-homework-dto.mock";
 import UserRow from "./user-row";
-import { render } from "../../../test/utils-test";
-import { studentHomeWorkDto } from "../../mocks/student-homework-dto.mock";
 
 describe("UserRow", () => {
   it("renders correctly", () => {

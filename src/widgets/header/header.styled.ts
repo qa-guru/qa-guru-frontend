@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Paper, Stack } from "@mui/material";
-import { ReactComponent as Logo } from "../../assets/icons/logo-header.svg";
+import { ReactComponent as Logo } from "assets/icons/logo-header.svg";
 
 export const StyledHeader = styled("header")(({ theme }) => ({
   marginBottom: "25px",

@@ -4,6 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import RHF from "shared/components/input-RHF";
+import { client } from "api";
 import {
   IUpdateHomeWork,
   IUpdateHomeworkContent,
@@ -15,8 +17,6 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./update-homework.styled";
-import RHF from "../../../../../../shared/components/input-RHF";
-import { client } from "../../../../../../api";
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;

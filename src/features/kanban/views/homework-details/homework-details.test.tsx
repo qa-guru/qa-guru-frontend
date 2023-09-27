@@ -1,17 +1,13 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
+import { studentHomeWorkDto } from "shared/mocks/student-homework-dto.mock";
 import HomeworkDetails from "./homework-details";
-import { render } from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/test/utils-test";
-import { studentHomeWorkDto } from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/shared/mocks/student-homework-dto.mock";
 
 describe("HomeworkDetails", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <HomeworkDetails
-          card={studentHomeWorkDto}
-          onClose={() => {}}
-          showHomeworkDetails={true}
-        />
+        <HomeworkDetails card={studentHomeWorkDto} onClose={() => {}} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -19,11 +15,7 @@ describe("HomeworkDetails", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <HomeworkDetails
-          card={studentHomeWorkDto}
-          onClose={() => {}}
-          showHomeworkDetails={false}
-        />
+        <HomeworkDetails card={studentHomeWorkDto} onClose={() => {}} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

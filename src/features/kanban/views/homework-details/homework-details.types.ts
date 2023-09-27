@@ -1,4 +1,4 @@
-import { StudentHomeWorkDto } from "../../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 
 export interface IHomeworkDetail {
   card: StudentHomeWorkDto;

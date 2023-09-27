@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
 import LectureDescription from "./lecture-description";
-import { render } from "../../../../test/utils-test";
 
 describe("LectureDescription", () => {
   it("renders correctly", () => {

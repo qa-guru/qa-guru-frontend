@@ -2,7 +2,7 @@ import {
   LectureInfoDto,
   StudentHomeWorkStatus,
   UserDto,
-} from "../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 
 export const studentHomeWorkDto = {
   answer: "answer",

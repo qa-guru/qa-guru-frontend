@@ -1,4 +1,4 @@
-import { UserRole } from "../../../../../../../Downloads/qa-guru-frontend-develop 2/src/api/graphql/generated/graphql";
+import { UserRole } from "api/graphql/generated/graphql";
 
 export const getUpdatedAllowedColumns = (
   columnId: string,

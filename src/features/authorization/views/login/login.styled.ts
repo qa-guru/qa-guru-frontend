@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
+import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
 export const StyledLogo = styled(Logo)(({ theme }) => ({
   height: "32px",

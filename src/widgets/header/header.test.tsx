@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
+import { UserRole } from "api/graphql/generated/graphql";
 import Header from "./header";
-import { render } from "../../test/utils-test";
-import { UserRole } from "../../api/graphql/generated/graphql";
 
 describe("Header", () => {
   it("userRole is Student", () => {

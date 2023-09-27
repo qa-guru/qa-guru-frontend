@@ -1,5 +1,5 @@
 import React from "react";
-import { CommentHomeWorkDto } from "../../../../api/graphql/generated/graphql";
+import { CommentHomeWorkDto } from "api/graphql/generated/graphql";
 
 export interface ICommentItem {
   item: CommentHomeWorkDto;

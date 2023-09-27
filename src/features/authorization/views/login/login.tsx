@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import RHF from "shared/components/input-RHF";
+import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import { ILogin, ILoginForm } from "./login.types";
 import {
   StyledButton,
@@ -14,8 +16,6 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./login.styled";
-import RHF from "../../../../shared/components/input-RHF";
-import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
 
 const Login: React.FC<ILogin> = (props) => {
   const { isLoading, login } = props;

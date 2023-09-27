@@ -1,4 +1,4 @@
-import { TechStack, TrainingDto } from "../../api/graphql/generated/graphql";
+import { TechStack, TrainingDto } from "api/graphql/generated/graphql";
 
 export const trainingDto: TrainingDto = {
   id: "string",

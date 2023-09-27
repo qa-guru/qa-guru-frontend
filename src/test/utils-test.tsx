@@ -6,9 +6,9 @@ import "../i18n/config";
 import { TransitionGroup } from "react-transition-group";
 import { ModalProvider } from "react-modal-hook";
 import { ThemeProvider } from "@mui/material/styles";
-import { client } from "../api";
+import { client } from "api";
+import { createCustomTheme } from "theme";
 import useSettings from "../shared/hooks/use-settings";
-import { createCustomTheme } from "../theme";
 
 interface WrapperProps {
   children: React.ReactNode;

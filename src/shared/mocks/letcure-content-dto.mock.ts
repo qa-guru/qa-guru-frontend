@@ -1,4 +1,4 @@
-import { LectureContentDto } from "../../api/graphql/generated/graphql";
+import { LectureContentDto } from "api/graphql/generated/graphql";
 
 export const lectureContentDto: LectureContentDto[] = [
   {

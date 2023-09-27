@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import RHF from "shared/components/input-RHF";
 import { ISendComment, ISendCommentContent } from "./send-comment.types";
 import {
   StyledBox,
@@ -11,7 +12,6 @@ import {
   StyledStack,
   StyledTypography,
 } from "./send-comment.styled";
-import RHF from "../../../../shared/components/input-RHF";
 
 const SendComment: React.FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
