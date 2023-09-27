@@ -1,5 +1,5 @@
 import React from "react";
-import { UpdateHomeworkMutationFn } from "../../../../../../api/graphql/generated/graphql";
+import { UpdateHomeworkMutationFn } from "api/graphql/generated/graphql";
 
 export interface IUpdateHomeWork {
   loading: boolean;

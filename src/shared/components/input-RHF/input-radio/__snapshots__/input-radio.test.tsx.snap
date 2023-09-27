@@ -6,7 +6,7 @@ exports[`InputRadio > renders correctly 1`] = `
     class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
   >
     <label
-      class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
+      class="MuiFormLabel-root MuiFormLabel-colorPrimary css-1kh2dq1-MuiFormLabel-root"
     >
       testDate
     </label>
@@ -18,7 +18,7 @@ exports[`InputRadio > renders correctly 1`] = `
         class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
       >
         <span
-          class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-vqmohf-MuiButtonBase-root-MuiRadio-root"
+          class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-cykf00-MuiButtonBase-root-MuiRadio-root"
         >
           <input
             class="PrivateSwitchBase-input css-1m9pwf3"
@@ -57,7 +57,7 @@ exports[`InputRadio > renders correctly 1`] = `
           />
         </span>
         <span
-          class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-158lv7p-MuiTypography-root"
         >
           radio
         </span>

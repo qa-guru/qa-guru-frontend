@@ -4,10 +4,10 @@ exports[`UpdateComment > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
     <div
-      class="MuiStack-root css-e53awj-MuiStack-root"
+      class="MuiStack-root css-m5qggf-MuiStack-root"
     >
       <div
-        class="MuiBox-root css-8atqhb"
+        class="MuiBox-root css-qsaw8"
       >
         <div
           class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -16,11 +16,11 @@ exports[`UpdateComment > the component is Loading 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
           >
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-8ewcdo-MuiInputBase-root-MuiOutlinedInput-root"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
             >
               <textarea
                 aria-invalid="false"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                 id=":r0:"
                 maxlength="10000"
                 style="height: 0px; overflow: hidden;"
@@ -29,7 +29,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
               </textarea>
               <textarea
                 aria-hidden="true"
-                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
+                class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1i66myl-MuiInputBase-input-MuiOutlinedInput-input"
                 readonly=""
                 style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
                 tabindex="-1"
@@ -52,10 +52,10 @@ exports[`UpdateComment > the component is Loading 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-1ng5cmk-MuiStack-root"
+          class="MuiStack-root css-8vieed-MuiStack-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1mdvw7y-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-9fppy5-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -65,7 +65,7 @@ exports[`UpdateComment > the component is Loading 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1prcu1a-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-3zgvrf-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             disabled=""
             id=":r1:"
             tabindex="-1"

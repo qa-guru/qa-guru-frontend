@@ -1,29 +1,31 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
+import LectureHomework from "shared/components/lecture-homework";
+import Homework from "features/lecture-detail/containers/homework";
 import BlurredComponent from "../blurred-component/blurred-component";
-import { style } from "../styles";
-import LectureHomework from "../../lecture-homework";
-import Homework from "../../../../features/lecture-detail/containers/homework";
+import {
+  StyledButton,
+  StyledHomeworkBox,
+  StyledWrapper,
+} from "../blurred.styled";
 
 const BlurredHomework: React.FC = () => {
   return (
-    <Box position="relative">
+    <StyledWrapper>
       <BlurredComponent>
         <LectureHomework />
-        <Box pt="40px">
+        <StyledHomeworkBox>
           <Homework />
-        </Box>
+        </StyledHomeworkBox>
       </BlurredComponent>
-      <Button
+      <StyledButton
         disableElevation
         disableTouchRipple
         size="large"
-        sx={style.button}
         variant="contained"
       >
         Д/З недоступно
-      </Button>
-    </Box>
+      </StyledButton>
+    </StyledWrapper>
   );
 };
 

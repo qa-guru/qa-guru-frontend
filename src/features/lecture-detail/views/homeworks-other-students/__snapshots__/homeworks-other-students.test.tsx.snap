@@ -3,35 +3,35 @@
 exports[`HomeworksOtherStudents > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-14fnpt3-MuiStack-root"
+    class="MuiStack-root css-dbaqvx-MuiStack-root"
   >
     <h4
-      class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h4 css-h8ke29-MuiTypography-root"
     >
       Домашние работы других студентов
     </h4>
     <h4
-      class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h4 css-h8ke29-MuiTypography-root"
     >
       (7)
     </h4>
   </div>
   <div
-    class="MuiStack-root css-1p5q5e5-MuiStack-root"
+    class="MuiStack-root css-18scyt6-MuiStack-root"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-nxklxt-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1xm6bug-MuiPaper-root"
     >
       <div
-        class="MuiStack-root css-17psve5-MuiStack-root"
+        class="MuiStack-root css-d3d1h5-MuiStack-root"
       >
         <h5
-          class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
         >
           Ответ на задание
         </h5>
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-19iseno-MuiStack-root"
         >
           <svg
             fill="none"
@@ -49,26 +49,26 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
             class="MuiBox-root css-0"
           >
             <p
-              class="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
             >
               Принято
             </p>
           </div>
         </div>
         <div
-          class="MuiStack-root css-m9e6gq-MuiStack-root"
+          class="MuiStack-root css-txf2s8-MuiStack-root"
         >
           <div
-            class="MuiBox-root css-1quw33y"
+            class="MuiBox-root css-of5zve"
           >
             <div
               class="MuiStack-root css-unhrs1-MuiStack-root"
             >
               <div
-                class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+                class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
                 >
                   ss
                 </h6>
@@ -77,7 +77,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
                 class="MuiBox-root css-0"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
                 >
                   string string
                 </h6>
@@ -85,7 +85,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
                   class="MuiStack-root css-gmwslw-MuiStack-root"
                 >
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
                   >
                     23.05.2023 | 00:00
                   </h6>
@@ -99,16 +99,16 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
       />
       <div
-        class="MuiBox-root css-1yuhvjn"
+        class="MuiBox-root css-1kawqjx"
       >
         <div
           class="MuiStack-root css-unhrs1-MuiStack-root"
         >
           <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
             >
               ss
             </h6>
@@ -117,7 +117,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
             class="MuiBox-root css-0"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
             >
               string string
             </h6>
@@ -125,7 +125,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
               class="MuiStack-root css-gmwslw-MuiStack-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
               >
                 23.05.2023 | 00:00
               </h6>
@@ -134,13 +134,13 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root css-6qfr2n"
+        class="MuiBox-root css-v0ilmk"
       >
         <div
           class="MuiBox-root css-i6bazn"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-18u75fl-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
           >
             string
             <br />
@@ -148,7 +148,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         </div>
       </div>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ouw2p3-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ebyb54-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
@@ -158,61 +158,57 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         />
       </button>
       <div
-        class="MuiStack-root css-1nn8w31-MuiStack-root"
+        class="MuiStack-root css-kfcs6u-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-hszfwg-MuiStack-root"
+          class="MuiStack-root css-n9karh-MuiStack-root"
         >
           <div
-            class="MuiStack-root css-1okj3ks-MuiStack-root"
+            class="MuiStack-root css-vx72w3-MuiStack-root"
           >
             <div
-              class="MuiStack-root css-1q36rmd-MuiStack-root"
+              class="MuiStack-root css-16jryck-MuiStack-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
-                style="width: 40px; height: 40px;"
+                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-a4z31c-MuiSkeleton-root"
               />
               <div
-                class="MuiStack-root css-1r50ci7-MuiStack-root"
+                class="MuiStack-root css-1gcuwd7-MuiStack-root"
               >
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
                 />
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
                 />
               </div>
             </div>
             <span
-              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
-              style="width: 100%; height: 60px;"
+              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-8hw9pq-MuiSkeleton-root"
             />
           </div>
           <div
-            class="MuiStack-root css-1okj3ks-MuiStack-root"
+            class="MuiStack-root css-vx72w3-MuiStack-root"
           >
             <div
-              class="MuiStack-root css-1q36rmd-MuiStack-root"
+              class="MuiStack-root css-16jryck-MuiStack-root"
             >
               <span
-                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
-                style="width: 40px; height: 40px;"
+                class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-a4z31c-MuiSkeleton-root"
               />
               <div
-                class="MuiStack-root css-1r50ci7-MuiStack-root"
+                class="MuiStack-root css-1gcuwd7-MuiStack-root"
               >
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
                 />
                 <span
-                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+                  class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
                 />
               </div>
             </div>
             <span
-              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
-              style="width: 100%; height: 60px;"
+              class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-8hw9pq-MuiSkeleton-root"
             />
           </div>
         </div>
@@ -220,7 +216,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -234,17 +230,17 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="MuiStack-root css-1inmmz-MuiStack-root"
+    class="MuiStack-root css-nen11g-MuiStack-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-m0rdlc-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v2j849-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
       id=":r0:"
       tabindex="0"
       type="button"
     >
       Загрузить еще
       <span
-        class="MuiButton-endIcon MuiButton-iconSizeMedium css-9tj150-MuiButton-endIcon"
+        class="MuiButton-endIcon MuiButton-iconSizeMedium css-1gnd1fd-MuiButton-endIcon"
       >
         <svg
           aria-hidden="true"

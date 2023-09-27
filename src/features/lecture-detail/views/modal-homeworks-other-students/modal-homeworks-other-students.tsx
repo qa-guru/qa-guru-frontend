@@ -1,10 +1,14 @@
 import React from "react";
 import { useModal } from "react-modal-hook";
-import { Box, Button, Dialog, DialogContent, Stack } from "@mui/material";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Button, Dialog } from "@mui/material";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IModalHomeworksOtherStudents } from "./modal-homeworks-other-students.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledClearIcon,
+  StyledDialogContent,
+  StyledStack,
+} from "./modal-homeworks-other-students.styled";
 import Comments from "../../containers/comments";
 import CommentsPagination from "../comments-pagination/comments-pagination";
 import HomeworkItem from "../homework-item";
@@ -20,15 +24,15 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
-      <DialogContent sx={style.scrollContainer} id="scroll-container">
-        <ClearIcon sx={style.clearIcon} onClick={hideModalAndUpdateUrl} />
-        <Box pt={{ xs: "16px", sm: "0" }}>
+      <StyledDialogContent id="scroll-container">
+        <StyledClearIcon onClick={hideModalAndUpdateUrl} />
+        <StyledBox>
           <HomeworkItem dataHomeWorkByLecture={item} dataUserId={dataUserId} />
           <Comments id={item.id!}>
             <CommentsPagination />
           </Comments>
-        </Box>
-      </DialogContent>
+        </StyledBox>
+      </StyledDialogContent>
     </Dialog>
   ));
 
@@ -49,7 +53,7 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
   };
 
   return (
-    <Stack mt="10px" direction="row" alignItems="center" spacing={2}>
+    <StyledStack>
       <Comments id={item?.id!}>
         <CommentsTotalElements />
       </Comments>
@@ -58,7 +62,7 @@ const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
           Показать
         </Button>
       </Box>
-    </Stack>
+    </StyledStack>
   );
 };
 

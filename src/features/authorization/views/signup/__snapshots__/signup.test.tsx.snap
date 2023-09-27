@@ -3,68 +3,62 @@
 exports[`SignUp > the component is Loading 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-i110ky-MuiStack-root"
+    class="MuiStack-root css-1li1ayc-MuiStack-root"
   >
     <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1flx48e-MuiSvgIcon-root"
-      focusable="false"
+      class="css-13bjqh2"
+      fill="none"
+      height="38"
       viewBox="0 0 250 38"
+      width="250"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        fill="none"
-        height="38"
-        viewBox="0 0 250 38"
-        width="250"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M135.904 26.0125C132.789 23.1909 131.262 19.5717 131.262 15.1245C131.262 10.6773 132.85 7.02749 135.935 4.23647C139.02 1.44545 142.991 0.00393883 147.755 0.00393883C148.932 -0.0208734 150.109 0.0715888 151.268 0.279972C152.074 0.434727 152.87 0.639592 153.65 0.893382L155.941 1.8135V10.0025C148.152 5.98468 140.15 8.65302 140.425 15.2472C140.425 17.5475 141.066 19.2957 142.441 20.5839C143.765 21.8458 145.533 22.5295 147.358 22.4854C148.855 22.4854 150.016 22.1787 150.81 21.6573V12.7015H159.759V25.7978C158.629 27.0247 156.918 28.0981 154.658 28.9569C152.327 29.8426 149.851 30.2796 147.358 30.2451C142.817 30.2451 139 28.8342 135.904 26.0125Z"
-          fill="white"
-        />
-        <path
-          d="M163.009 0.5H171.943V17.6345C171.943 20.7415 173.84 22.1258 176.288 22.1258C178.736 22.1258 180.602 20.7415 180.602 17.6345V0.5H189.506V17.573C189.506 21.6336 188.282 24.7714 185.743 26.9555C183.203 29.1396 180.113 30.247 176.288 30.247C172.463 30.247 169.312 29.1704 166.803 26.9555C164.294 24.7406 163.009 21.6336 163.009 17.573V0.5Z"
-          fill="white"
-        />
-        <path
-          d="M222.003 29.7471H211.497L203.734 19.3193H202.501V29.7471H193.506V0.5H207.616C210.912 0.5 213.592 1.36384 215.595 3.15322C216.568 3.9836 217.344 5.021 217.867 6.18984C218.389 7.35867 218.644 8.62949 218.614 9.90966C218.614 13.581 216.611 16.6353 213.253 18.3012L222.003 29.7471ZM206.568 12.748C208.263 12.748 209.372 11.8224 209.372 10.3724C209.372 8.92242 208.263 8.02773 206.568 8.02773H202.501V12.748H206.568Z"
-          fill="white"
-        />
-        <path
-          d="M223.503 0.5H232.437V17.6345C232.437 20.7415 234.334 22.1258 236.782 22.1258C239.23 22.1258 241.096 20.7415 241.096 17.6345V0.5H250V17.573C250 21.6336 248.776 24.7714 246.237 26.9555C243.697 29.1396 240.607 30.247 236.782 30.247C232.957 30.247 229.806 29.1704 227.266 26.9555C224.727 24.7406 223.503 21.6336 223.503 17.573V0.5Z"
-          fill="white"
-        />
-        <path
-          d="M123.688 11.5837C124.198 12.0699 124.602 12.6564 124.872 13.3061C125.143 13.9559 125.276 14.6546 125.261 15.3581C125.261 16.7795 124.698 18.1434 123.695 19.1529C122.692 20.1623 121.329 20.7356 119.904 20.7479C118.455 20.7479 117.194 20.2198 116.088 19.1636C115.58 18.6687 115.179 18.0762 114.909 17.422C114.639 16.7678 114.504 16.0656 114.515 15.3581C114.5 14.6546 114.633 13.9559 114.904 13.3061C115.174 12.6564 115.578 12.0699 116.088 11.5837C116.582 11.0743 117.175 10.6711 117.832 10.3986C118.488 10.1262 119.193 9.99034 119.904 9.99939C120.609 9.99276 121.309 10.1299 121.96 10.4023C122.611 10.6747 123.199 11.0767 123.688 11.5837Z"
-          fill="#00DDB5"
-        />
-        <path
-          d="M61.6386 30.2299C57.7112 29.7726 54.5239 28.0957 52.0013 25.2144C49.4787 22.3332 48.2703 18.9947 48.2703 15.1988C48.2703 10.9913 49.7204 7.43933 52.6659 4.46665C55.6115 1.49396 59.3274 0 63.7835 0C68.2396 0 71.9405 1.50921 74.8709 4.46665C77.8014 7.42408 79.2666 10.9913 79.2666 15.1988C79.2915 18.0442 78.5099 20.8375 77.0138 23.2495C75.5177 25.6615 73.3696 27.5915 70.8227 28.8122C71.6535 29.8488 72.8015 30.3519 74.3422 30.3519C75.54 30.3627 76.7205 30.0635 77.7711 29.4829V36.785C76.2267 37.4375 74.5663 37.7643 72.8921 37.7454C69.0402 37.7454 65.8983 36.0686 63.4512 32.7757L61.6386 30.2299ZM63.7835 22.2113C65.6566 22.2113 67.1822 21.5405 68.3756 20.26C69.5689 18.9794 70.2033 17.2416 70.2033 15.1988C70.2033 13.156 69.584 11.4791 68.3756 10.1986C67.1671 8.91805 65.6566 8.18631 63.7835 8.18631C61.9105 8.18631 60.3999 8.85707 59.1915 10.1986C57.983 11.5401 57.3788 13.156 57.3788 15.1988C57.3788 17.2416 57.9982 18.9185 59.1915 20.26C60.3848 21.6015 61.9256 22.2113 63.7835 22.2113Z"
-          fill="white"
-        />
-        <path
-          d="M80.017 29.7471L91.9775 0.5H100.508L112.514 29.7471H102.921L100.842 24.3012H91.3552L89.2454 29.7471H80.017ZM93.9355 17.6114H98.2158L96.0908 10.7092L93.9355 17.6114Z"
-          fill="white"
-        />
-        <rect
-          fill="#00DDB5"
-          height="5.16556"
-          width="20.6623"
-          x="17.7019"
-          y="24.8344"
-        />
-        <path
-          d="M18.2384 9.53246V15.898L0 22.5139V16.4344L10.8358 12.7152L0 8.99603V2.91656L18.2384 9.53246Z"
-          fill="#00DDB5"
-        />
-      </svg>
+      <path
+        d="M135.904 26.0125C132.789 23.1909 131.262 19.5717 131.262 15.1245C131.262 10.6773 132.85 7.02749 135.935 4.23647C139.02 1.44545 142.991 0.00393883 147.755 0.00393883C148.932 -0.0208734 150.109 0.0715888 151.268 0.279972C152.074 0.434727 152.87 0.639592 153.65 0.893382L155.941 1.8135V10.0025C148.152 5.98468 140.15 8.65302 140.425 15.2472C140.425 17.5475 141.066 19.2957 142.441 20.5839C143.765 21.8458 145.533 22.5295 147.358 22.4854C148.855 22.4854 150.016 22.1787 150.81 21.6573V12.7015H159.759V25.7978C158.629 27.0247 156.918 28.0981 154.658 28.9569C152.327 29.8426 149.851 30.2796 147.358 30.2451C142.817 30.2451 139 28.8342 135.904 26.0125Z"
+        fill="white"
+      />
+      <path
+        d="M163.009 0.5H171.943V17.6345C171.943 20.7415 173.84 22.1258 176.288 22.1258C178.736 22.1258 180.602 20.7415 180.602 17.6345V0.5H189.506V17.573C189.506 21.6336 188.282 24.7714 185.743 26.9555C183.203 29.1396 180.113 30.247 176.288 30.247C172.463 30.247 169.312 29.1704 166.803 26.9555C164.294 24.7406 163.009 21.6336 163.009 17.573V0.5Z"
+        fill="white"
+      />
+      <path
+        d="M222.003 29.7471H211.497L203.734 19.3193H202.501V29.7471H193.506V0.5H207.616C210.912 0.5 213.592 1.36384 215.595 3.15322C216.568 3.9836 217.344 5.021 217.867 6.18984C218.389 7.35867 218.644 8.62949 218.614 9.90966C218.614 13.581 216.611 16.6353 213.253 18.3012L222.003 29.7471ZM206.568 12.748C208.263 12.748 209.372 11.8224 209.372 10.3724C209.372 8.92242 208.263 8.02773 206.568 8.02773H202.501V12.748H206.568Z"
+        fill="white"
+      />
+      <path
+        d="M223.503 0.5H232.437V17.6345C232.437 20.7415 234.334 22.1258 236.782 22.1258C239.23 22.1258 241.096 20.7415 241.096 17.6345V0.5H250V17.573C250 21.6336 248.776 24.7714 246.237 26.9555C243.697 29.1396 240.607 30.247 236.782 30.247C232.957 30.247 229.806 29.1704 227.266 26.9555C224.727 24.7406 223.503 21.6336 223.503 17.573V0.5Z"
+        fill="white"
+      />
+      <path
+        d="M123.688 11.5837C124.198 12.0699 124.602 12.6564 124.872 13.3061C125.143 13.9559 125.276 14.6546 125.261 15.3581C125.261 16.7795 124.698 18.1434 123.695 19.1529C122.692 20.1623 121.329 20.7356 119.904 20.7479C118.455 20.7479 117.194 20.2198 116.088 19.1636C115.58 18.6687 115.179 18.0762 114.909 17.422C114.639 16.7678 114.504 16.0656 114.515 15.3581C114.5 14.6546 114.633 13.9559 114.904 13.3061C115.174 12.6564 115.578 12.0699 116.088 11.5837C116.582 11.0743 117.175 10.6711 117.832 10.3986C118.488 10.1262 119.193 9.99034 119.904 9.99939C120.609 9.99276 121.309 10.1299 121.96 10.4023C122.611 10.6747 123.199 11.0767 123.688 11.5837Z"
+        fill="#00DDB5"
+      />
+      <path
+        d="M61.6386 30.2299C57.7112 29.7726 54.5239 28.0957 52.0013 25.2144C49.4787 22.3332 48.2703 18.9947 48.2703 15.1988C48.2703 10.9913 49.7204 7.43933 52.6659 4.46665C55.6115 1.49396 59.3274 0 63.7835 0C68.2396 0 71.9405 1.50921 74.8709 4.46665C77.8014 7.42408 79.2666 10.9913 79.2666 15.1988C79.2915 18.0442 78.5099 20.8375 77.0138 23.2495C75.5177 25.6615 73.3696 27.5915 70.8227 28.8122C71.6535 29.8488 72.8015 30.3519 74.3422 30.3519C75.54 30.3627 76.7205 30.0635 77.7711 29.4829V36.785C76.2267 37.4375 74.5663 37.7643 72.8921 37.7454C69.0402 37.7454 65.8983 36.0686 63.4512 32.7757L61.6386 30.2299ZM63.7835 22.2113C65.6566 22.2113 67.1822 21.5405 68.3756 20.26C69.5689 18.9794 70.2033 17.2416 70.2033 15.1988C70.2033 13.156 69.584 11.4791 68.3756 10.1986C67.1671 8.91805 65.6566 8.18631 63.7835 8.18631C61.9105 8.18631 60.3999 8.85707 59.1915 10.1986C57.983 11.5401 57.3788 13.156 57.3788 15.1988C57.3788 17.2416 57.9982 18.9185 59.1915 20.26C60.3848 21.6015 61.9256 22.2113 63.7835 22.2113Z"
+        fill="white"
+      />
+      <path
+        d="M80.017 29.7471L91.9775 0.5H100.508L112.514 29.7471H102.921L100.842 24.3012H91.3552L89.2454 29.7471H80.017ZM93.9355 17.6114H98.2158L96.0908 10.7092L93.9355 17.6114Z"
+        fill="white"
+      />
+      <rect
+        fill="#00DDB5"
+        height="5.16556"
+        width="20.6623"
+        x="17.7019"
+        y="24.8344"
+      />
+      <path
+        d="M18.2384 9.53246V15.898L0 22.5139V16.4344L10.8358 12.7152L0 8.99603V2.91656L18.2384 9.53246Z"
+        fill="#00DDB5"
+      />
     </svg>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-37zh3o-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ixx00l-MuiPaper-root"
     >
       <form>
         <div
-          class="MuiStack-root css-14szvo7-MuiStack-root"
+          class="MuiStack-root css-15doi4c-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -73,7 +67,7 @@ exports[`SignUp > the component is Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r0:"
                 id=":r0:-label"
@@ -81,11 +75,11 @@ exports[`SignUp > the component is Loading 1`] = `
                 FirstName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r0:"
                   placeholder="Введите ваше имя"
                   type="text"
@@ -113,7 +107,7 @@ exports[`SignUp > the component is Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r1:"
                 id=":r1:-label"
@@ -121,11 +115,11 @@ exports[`SignUp > the component is Loading 1`] = `
                 LastName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r1:"
                   placeholder="Введите фамилию"
                   type="text"
@@ -153,7 +147,7 @@ exports[`SignUp > the component is Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r2:"
                 id=":r2:-label"
@@ -161,11 +155,11 @@ exports[`SignUp > the component is Loading 1`] = `
                 E-mail
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r2:"
                   placeholder="Enter E-mail"
                   type="text"
@@ -190,13 +184,13 @@ exports[`SignUp > the component is Loading 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
           >
             <div
-              class="MuiAutocomplete-root css-1h51icj-MuiAutocomplete-root"
+              class="MuiAutocomplete-root css-dd9lfv-MuiAutocomplete-root"
             >
               <div
                 class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink="false"
                   for=":r3:"
                   id=":r3:-label"
@@ -204,7 +198,7 @@ exports[`SignUp > the component is Loading 1`] = `
                   Phone
                 </label>
                 <div
-                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-autocomplete="list"
@@ -212,7 +206,7 @@ exports[`SignUp > the component is Loading 1`] = `
                     aria-invalid="false"
                     autocapitalize="none"
                     autocomplete="off"
-                    class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                     id=":r3:"
                     placeholder="(555) 555-5555"
                     role="combobox"
@@ -243,7 +237,7 @@ exports[`SignUp > the component is Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r5:"
                 id=":r5:-label"
@@ -251,11 +245,11 @@ exports[`SignUp > the component is Loading 1`] = `
                 Password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r5:"
                   placeholder="Enter password"
                   type="password"
@@ -283,7 +277,7 @@ exports[`SignUp > the component is Loading 1`] = `
               class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r6:"
                 id=":r6:-label"
@@ -291,11 +285,11 @@ exports[`SignUp > the component is Loading 1`] = `
                 Confirm password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-1wwfoqv-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r6:"
                   name="password"
                   placeholder="Enter password"
@@ -318,7 +312,7 @@ exports[`SignUp > the component is Loading 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root css-1l4w6pd"
+            class="MuiBox-root css-1wcjc1k"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -476,7 +470,7 @@ exports[`SignUp > the component is Loading 1`] = `
             </button>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1agp3zg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1xce3jn-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             disabled=""
             id=":r7:"
             tabindex="-1"
@@ -514,7 +508,7 @@ exports[`SignUp > the component is Loading 1`] = `
         class="MuiBox-root css-xi606m"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-il137k-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-g8p3bc-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
@@ -532,68 +526,62 @@ exports[`SignUp > the component is Loading 1`] = `
 exports[`SignUp > the component is not Loading 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-i110ky-MuiStack-root"
+    class="MuiStack-root css-1li1ayc-MuiStack-root"
   >
     <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1flx48e-MuiSvgIcon-root"
-      focusable="false"
+      class="css-13bjqh2"
+      fill="none"
+      height="38"
       viewBox="0 0 250 38"
+      width="250"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        fill="none"
-        height="38"
-        viewBox="0 0 250 38"
-        width="250"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M135.904 26.0125C132.789 23.1909 131.262 19.5717 131.262 15.1245C131.262 10.6773 132.85 7.02749 135.935 4.23647C139.02 1.44545 142.991 0.00393883 147.755 0.00393883C148.932 -0.0208734 150.109 0.0715888 151.268 0.279972C152.074 0.434727 152.87 0.639592 153.65 0.893382L155.941 1.8135V10.0025C148.152 5.98468 140.15 8.65302 140.425 15.2472C140.425 17.5475 141.066 19.2957 142.441 20.5839C143.765 21.8458 145.533 22.5295 147.358 22.4854C148.855 22.4854 150.016 22.1787 150.81 21.6573V12.7015H159.759V25.7978C158.629 27.0247 156.918 28.0981 154.658 28.9569C152.327 29.8426 149.851 30.2796 147.358 30.2451C142.817 30.2451 139 28.8342 135.904 26.0125Z"
-          fill="white"
-        />
-        <path
-          d="M163.009 0.5H171.943V17.6345C171.943 20.7415 173.84 22.1258 176.288 22.1258C178.736 22.1258 180.602 20.7415 180.602 17.6345V0.5H189.506V17.573C189.506 21.6336 188.282 24.7714 185.743 26.9555C183.203 29.1396 180.113 30.247 176.288 30.247C172.463 30.247 169.312 29.1704 166.803 26.9555C164.294 24.7406 163.009 21.6336 163.009 17.573V0.5Z"
-          fill="white"
-        />
-        <path
-          d="M222.003 29.7471H211.497L203.734 19.3193H202.501V29.7471H193.506V0.5H207.616C210.912 0.5 213.592 1.36384 215.595 3.15322C216.568 3.9836 217.344 5.021 217.867 6.18984C218.389 7.35867 218.644 8.62949 218.614 9.90966C218.614 13.581 216.611 16.6353 213.253 18.3012L222.003 29.7471ZM206.568 12.748C208.263 12.748 209.372 11.8224 209.372 10.3724C209.372 8.92242 208.263 8.02773 206.568 8.02773H202.501V12.748H206.568Z"
-          fill="white"
-        />
-        <path
-          d="M223.503 0.5H232.437V17.6345C232.437 20.7415 234.334 22.1258 236.782 22.1258C239.23 22.1258 241.096 20.7415 241.096 17.6345V0.5H250V17.573C250 21.6336 248.776 24.7714 246.237 26.9555C243.697 29.1396 240.607 30.247 236.782 30.247C232.957 30.247 229.806 29.1704 227.266 26.9555C224.727 24.7406 223.503 21.6336 223.503 17.573V0.5Z"
-          fill="white"
-        />
-        <path
-          d="M123.688 11.5837C124.198 12.0699 124.602 12.6564 124.872 13.3061C125.143 13.9559 125.276 14.6546 125.261 15.3581C125.261 16.7795 124.698 18.1434 123.695 19.1529C122.692 20.1623 121.329 20.7356 119.904 20.7479C118.455 20.7479 117.194 20.2198 116.088 19.1636C115.58 18.6687 115.179 18.0762 114.909 17.422C114.639 16.7678 114.504 16.0656 114.515 15.3581C114.5 14.6546 114.633 13.9559 114.904 13.3061C115.174 12.6564 115.578 12.0699 116.088 11.5837C116.582 11.0743 117.175 10.6711 117.832 10.3986C118.488 10.1262 119.193 9.99034 119.904 9.99939C120.609 9.99276 121.309 10.1299 121.96 10.4023C122.611 10.6747 123.199 11.0767 123.688 11.5837Z"
-          fill="#00DDB5"
-        />
-        <path
-          d="M61.6386 30.2299C57.7112 29.7726 54.5239 28.0957 52.0013 25.2144C49.4787 22.3332 48.2703 18.9947 48.2703 15.1988C48.2703 10.9913 49.7204 7.43933 52.6659 4.46665C55.6115 1.49396 59.3274 0 63.7835 0C68.2396 0 71.9405 1.50921 74.8709 4.46665C77.8014 7.42408 79.2666 10.9913 79.2666 15.1988C79.2915 18.0442 78.5099 20.8375 77.0138 23.2495C75.5177 25.6615 73.3696 27.5915 70.8227 28.8122C71.6535 29.8488 72.8015 30.3519 74.3422 30.3519C75.54 30.3627 76.7205 30.0635 77.7711 29.4829V36.785C76.2267 37.4375 74.5663 37.7643 72.8921 37.7454C69.0402 37.7454 65.8983 36.0686 63.4512 32.7757L61.6386 30.2299ZM63.7835 22.2113C65.6566 22.2113 67.1822 21.5405 68.3756 20.26C69.5689 18.9794 70.2033 17.2416 70.2033 15.1988C70.2033 13.156 69.584 11.4791 68.3756 10.1986C67.1671 8.91805 65.6566 8.18631 63.7835 8.18631C61.9105 8.18631 60.3999 8.85707 59.1915 10.1986C57.983 11.5401 57.3788 13.156 57.3788 15.1988C57.3788 17.2416 57.9982 18.9185 59.1915 20.26C60.3848 21.6015 61.9256 22.2113 63.7835 22.2113Z"
-          fill="white"
-        />
-        <path
-          d="M80.017 29.7471L91.9775 0.5H100.508L112.514 29.7471H102.921L100.842 24.3012H91.3552L89.2454 29.7471H80.017ZM93.9355 17.6114H98.2158L96.0908 10.7092L93.9355 17.6114Z"
-          fill="white"
-        />
-        <rect
-          fill="#00DDB5"
-          height="5.16556"
-          width="20.6623"
-          x="17.7019"
-          y="24.8344"
-        />
-        <path
-          d="M18.2384 9.53246V15.898L0 22.5139V16.4344L10.8358 12.7152L0 8.99603V2.91656L18.2384 9.53246Z"
-          fill="#00DDB5"
-        />
-      </svg>
+      <path
+        d="M135.904 26.0125C132.789 23.1909 131.262 19.5717 131.262 15.1245C131.262 10.6773 132.85 7.02749 135.935 4.23647C139.02 1.44545 142.991 0.00393883 147.755 0.00393883C148.932 -0.0208734 150.109 0.0715888 151.268 0.279972C152.074 0.434727 152.87 0.639592 153.65 0.893382L155.941 1.8135V10.0025C148.152 5.98468 140.15 8.65302 140.425 15.2472C140.425 17.5475 141.066 19.2957 142.441 20.5839C143.765 21.8458 145.533 22.5295 147.358 22.4854C148.855 22.4854 150.016 22.1787 150.81 21.6573V12.7015H159.759V25.7978C158.629 27.0247 156.918 28.0981 154.658 28.9569C152.327 29.8426 149.851 30.2796 147.358 30.2451C142.817 30.2451 139 28.8342 135.904 26.0125Z"
+        fill="white"
+      />
+      <path
+        d="M163.009 0.5H171.943V17.6345C171.943 20.7415 173.84 22.1258 176.288 22.1258C178.736 22.1258 180.602 20.7415 180.602 17.6345V0.5H189.506V17.573C189.506 21.6336 188.282 24.7714 185.743 26.9555C183.203 29.1396 180.113 30.247 176.288 30.247C172.463 30.247 169.312 29.1704 166.803 26.9555C164.294 24.7406 163.009 21.6336 163.009 17.573V0.5Z"
+        fill="white"
+      />
+      <path
+        d="M222.003 29.7471H211.497L203.734 19.3193H202.501V29.7471H193.506V0.5H207.616C210.912 0.5 213.592 1.36384 215.595 3.15322C216.568 3.9836 217.344 5.021 217.867 6.18984C218.389 7.35867 218.644 8.62949 218.614 9.90966C218.614 13.581 216.611 16.6353 213.253 18.3012L222.003 29.7471ZM206.568 12.748C208.263 12.748 209.372 11.8224 209.372 10.3724C209.372 8.92242 208.263 8.02773 206.568 8.02773H202.501V12.748H206.568Z"
+        fill="white"
+      />
+      <path
+        d="M223.503 0.5H232.437V17.6345C232.437 20.7415 234.334 22.1258 236.782 22.1258C239.23 22.1258 241.096 20.7415 241.096 17.6345V0.5H250V17.573C250 21.6336 248.776 24.7714 246.237 26.9555C243.697 29.1396 240.607 30.247 236.782 30.247C232.957 30.247 229.806 29.1704 227.266 26.9555C224.727 24.7406 223.503 21.6336 223.503 17.573V0.5Z"
+        fill="white"
+      />
+      <path
+        d="M123.688 11.5837C124.198 12.0699 124.602 12.6564 124.872 13.3061C125.143 13.9559 125.276 14.6546 125.261 15.3581C125.261 16.7795 124.698 18.1434 123.695 19.1529C122.692 20.1623 121.329 20.7356 119.904 20.7479C118.455 20.7479 117.194 20.2198 116.088 19.1636C115.58 18.6687 115.179 18.0762 114.909 17.422C114.639 16.7678 114.504 16.0656 114.515 15.3581C114.5 14.6546 114.633 13.9559 114.904 13.3061C115.174 12.6564 115.578 12.0699 116.088 11.5837C116.582 11.0743 117.175 10.6711 117.832 10.3986C118.488 10.1262 119.193 9.99034 119.904 9.99939C120.609 9.99276 121.309 10.1299 121.96 10.4023C122.611 10.6747 123.199 11.0767 123.688 11.5837Z"
+        fill="#00DDB5"
+      />
+      <path
+        d="M61.6386 30.2299C57.7112 29.7726 54.5239 28.0957 52.0013 25.2144C49.4787 22.3332 48.2703 18.9947 48.2703 15.1988C48.2703 10.9913 49.7204 7.43933 52.6659 4.46665C55.6115 1.49396 59.3274 0 63.7835 0C68.2396 0 71.9405 1.50921 74.8709 4.46665C77.8014 7.42408 79.2666 10.9913 79.2666 15.1988C79.2915 18.0442 78.5099 20.8375 77.0138 23.2495C75.5177 25.6615 73.3696 27.5915 70.8227 28.8122C71.6535 29.8488 72.8015 30.3519 74.3422 30.3519C75.54 30.3627 76.7205 30.0635 77.7711 29.4829V36.785C76.2267 37.4375 74.5663 37.7643 72.8921 37.7454C69.0402 37.7454 65.8983 36.0686 63.4512 32.7757L61.6386 30.2299ZM63.7835 22.2113C65.6566 22.2113 67.1822 21.5405 68.3756 20.26C69.5689 18.9794 70.2033 17.2416 70.2033 15.1988C70.2033 13.156 69.584 11.4791 68.3756 10.1986C67.1671 8.91805 65.6566 8.18631 63.7835 8.18631C61.9105 8.18631 60.3999 8.85707 59.1915 10.1986C57.983 11.5401 57.3788 13.156 57.3788 15.1988C57.3788 17.2416 57.9982 18.9185 59.1915 20.26C60.3848 21.6015 61.9256 22.2113 63.7835 22.2113Z"
+        fill="white"
+      />
+      <path
+        d="M80.017 29.7471L91.9775 0.5H100.508L112.514 29.7471H102.921L100.842 24.3012H91.3552L89.2454 29.7471H80.017ZM93.9355 17.6114H98.2158L96.0908 10.7092L93.9355 17.6114Z"
+        fill="white"
+      />
+      <rect
+        fill="#00DDB5"
+        height="5.16556"
+        width="20.6623"
+        x="17.7019"
+        y="24.8344"
+      />
+      <path
+        d="M18.2384 9.53246V15.898L0 22.5139V16.4344L10.8358 12.7152L0 8.99603V2.91656L18.2384 9.53246Z"
+        fill="#00DDB5"
+      />
     </svg>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-37zh3o-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ixx00l-MuiPaper-root"
     >
       <form>
         <div
-          class="MuiStack-root css-14szvo7-MuiStack-root"
+          class="MuiStack-root css-15doi4c-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -602,7 +590,7 @@ exports[`SignUp > the component is not Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r8:"
                 id=":r8:-label"
@@ -610,11 +598,11 @@ exports[`SignUp > the component is not Loading 1`] = `
                 FirstName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r8:"
                   placeholder="Введите ваше имя"
                   type="text"
@@ -642,7 +630,7 @@ exports[`SignUp > the component is not Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":r9:"
                 id=":r9:-label"
@@ -650,11 +638,11 @@ exports[`SignUp > the component is not Loading 1`] = `
                 LastName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":r9:"
                   placeholder="Введите фамилию"
                   type="text"
@@ -682,7 +670,7 @@ exports[`SignUp > the component is not Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":ra:"
                 id=":ra:-label"
@@ -690,11 +678,11 @@ exports[`SignUp > the component is not Loading 1`] = `
                 E-mail
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":ra:"
                   placeholder="Enter E-mail"
                   type="text"
@@ -719,13 +707,13 @@ exports[`SignUp > the component is not Loading 1`] = `
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
           >
             <div
-              class="MuiAutocomplete-root css-1h51icj-MuiAutocomplete-root"
+              class="MuiAutocomplete-root css-dd9lfv-MuiAutocomplete-root"
             >
               <div
                 class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
               >
                 <label
-                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                   data-shrink="false"
                   for=":rb:"
                   id=":rb:-label"
@@ -733,7 +721,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                   Phone
                 </label>
                 <div
-                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-autocomplete="list"
@@ -741,7 +729,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                     aria-invalid="false"
                     autocapitalize="none"
                     autocomplete="off"
-                    class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                     id=":rb:"
                     placeholder="(555) 555-5555"
                     role="combobox"
@@ -772,7 +760,7 @@ exports[`SignUp > the component is not Loading 1`] = `
               class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":rd:"
                 id=":rd:-label"
@@ -780,11 +768,11 @@ exports[`SignUp > the component is not Loading 1`] = `
                 Password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-13lveny-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":rd:"
                   placeholder="Enter password"
                   type="password"
@@ -812,7 +800,7 @@ exports[`SignUp > the component is not Loading 1`] = `
               class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="false"
                 for=":re:"
                 id=":re:-label"
@@ -820,11 +808,11 @@ exports[`SignUp > the component is not Loading 1`] = `
                 Confirm password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-1wwfoqv-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
-                  class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  class="MuiInputBase-input MuiOutlinedInput-input css-1lkr5rz-MuiInputBase-input-MuiOutlinedInput-input"
                   id=":re:"
                   name="password"
                   placeholder="Enter password"
@@ -847,7 +835,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root css-1l4w6pd"
+            class="MuiBox-root css-1wcjc1k"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -1005,7 +993,7 @@ exports[`SignUp > the component is not Loading 1`] = `
             </button>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1agp3zg-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1xce3jn-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             id=":rf:"
             tabindex="0"
             type="button"
@@ -1021,7 +1009,7 @@ exports[`SignUp > the component is not Loading 1`] = `
         class="MuiBox-root css-xi606m"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-il137k-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-g8p3bc-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >

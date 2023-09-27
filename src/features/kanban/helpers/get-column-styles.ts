@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/named
 import { SxProps, Theme } from "@mui/system";
+import { primary } from "theme/colors";
 import { isColumnHighlight } from "./is-column-highlight";
-import { primary } from "../../../theme/colors";
 import { IDraggingState } from "../views/board/board.types";
 
 type GetColumnStylesFunction = (

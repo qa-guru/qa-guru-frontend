@@ -6,10 +6,10 @@ import {
   StudentHomeWorkSortField,
   useHomeWorksByLectureIdQuery,
   useUserIdQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
+import NoDataErrorMessage from "shared/components/no-data-error-message";
+import Spinner from "shared/components/spinner";
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
-import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
-import Spinner from "../../../../shared/components/spinner";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();

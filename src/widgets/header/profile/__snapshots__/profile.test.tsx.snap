@@ -4,22 +4,22 @@ exports[`Profile > renders correctly 1`] = `
 <DocumentFragment>
   <button
     aria-label="Open settings"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1joc3qd-MuiButtonBase-root-MuiButton-root"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
   >
     <div
-      class="MuiBox-root css-ub3hk"
+      class="MuiBox-root css-1i83w74"
     >
       <div
         class="MuiStack-root css-unhrs1-MuiStack-root"
       >
         <div
-          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-11h8gky-MuiAvatar-root"
+          class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
           >
             ss
           </h6>
@@ -28,7 +28,7 @@ exports[`Profile > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
           >
             string string
           </h6>

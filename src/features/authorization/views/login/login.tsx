@@ -1,24 +1,21 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormHelperText,
-  Paper,
-  Stack,
-  SvgIcon,
-} from "@mui/material";
+import { Box, FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import LoadingButton from "@mui/lab/LoadingButton";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import RHF from "shared/components/input-RHF";
+import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import { ILogin, ILoginForm } from "./login.types";
-import { style } from "./styles";
-import RHF from "../../../../shared/components/input-RHF";
-import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
-import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
+import {
+  StyledButton,
+  StyledLoadingButton,
+  StyledLogo,
+  StyledPaper,
+  StyledStack,
+  StyledWrapper,
+} from "./login.styled";
 
 const Login: React.FC<ILogin> = (props) => {
   const { isLoading, login } = props;
@@ -65,14 +62,11 @@ const Login: React.FC<ILogin> = (props) => {
   }, [handleKeyPress]);
 
   return (
-    <Stack justifyContent="center" alignItems="center" sx={style.wrapper}>
-      <SvgIcon sx={style.svgIcon} viewBox="0 0 250 38">
-        <Logo />
-      </SvgIcon>
-
-      <Paper sx={style.paper}>
+    <StyledWrapper>
+      <StyledLogo />
+      <StyledPaper>
         <form>
-          <Stack sx={style.stack} spacing={{ xs: 1, sm: 2 }}>
+          <StyledStack>
             <FormControl fullWidth>
               <RHF.InputTextField
                 control={control}
@@ -101,28 +95,25 @@ const Login: React.FC<ILogin> = (props) => {
               )}
             </FormControl>
             <LocalSelector />
-            <LoadingButton
-              sx={style.btn}
+            <StyledLoadingButton
               onClick={handleSubmit(doLogin)}
               loading={isLoading}
               variant="contained"
             >
               {t("login")}
-            </LoadingButton>
-          </Stack>
+            </StyledLoadingButton>
+          </StyledStack>
         </form>
         <Box textAlign="center">
-          <Button sx={style.button} variant="text">
-            {t("restore")}
-          </Button>
+          <StyledButton variant="text">{t("restore")}</StyledButton>
         </Box>
         <Box textAlign="center">
-          <Button sx={style.button} variant="text" onClick={routeRegister}>
+          <StyledButton variant="text" onClick={routeRegister}>
             {t("reg.route")}
-          </Button>
+          </StyledButton>
         </Box>
-      </Paper>
-    </Stack>
+      </StyledPaper>
+    </StyledWrapper>
   );
 };
 

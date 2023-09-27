@@ -1,9 +1,9 @@
 import { MemoryRouter } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
+import { trainingLectures } from "shared/mocks/training-lectures.mock";
+import { render } from "test/utils-test";
 import LectureSelection from "./lecture-selection";
-import { render } from "../../../../../test/utils-test";
 import { IFilterKanban } from "../form.types";
-import { trainingLectures } from "../../../../../shared/mocks/training-lectures.mock";
 
 describe("LectureSelection", () => {
   it("renders correctly", () => {

@@ -1,8 +1,8 @@
 import { MemoryRouter } from "react-router-dom";
+import { homeWorksByLectureId } from "shared/mocks/homeworks-by-lecture-id.mock";
+import { render } from "test/utils-test";
+import { userId } from "shared/mocks/user-id.mock";
 import HomeworksOtherStudents from "./homeworks-other-students";
-import { homeWorksByLectureId } from "../../../../shared/mocks/homeworks-by-lecture-id.mock";
-import { render } from "../../../../test/utils-test";
-import { userId } from "../../../../shared/mocks/user-id.mock";
 
 const fetchMore: any = () => {};
 

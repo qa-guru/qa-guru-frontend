@@ -1,13 +1,12 @@
 import React, { ReactNode } from "react";
-import { Box } from "@mui/material";
-import { style } from "../styles";
+import { StyledBox } from "../blurred.styled";
 
 interface IBlurredComponent {
   children: ReactNode;
 }
 
 const BlurredComponent: React.FC<IBlurredComponent> = ({ children }) => {
-  return <Box sx={style.wrapper}>{children}</Box>;
+  return <StyledBox>{children}</StyledBox>;
 };
 
 export default BlurredComponent;

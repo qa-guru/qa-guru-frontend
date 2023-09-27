@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  FormHelperText,
-  Paper,
-  Stack,
-  SvgIcon,
-  TextField,
-} from "@mui/material";
+import { Box, FormControl, FormHelperText, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
+import RHF from "shared/components/input-RHF";
+import LocalSelector from "shared/components/buttons/local-selector/local-selector";
+import { UserCreateInput } from "api/graphql/generated/graphql";
+import {
+  StyledButton,
+  StyledLoadingButton,
+  StyledLogo,
+  StyledPaper,
+  StyledStack,
+  StyledWrapper,
+} from "./signup.styled";
 import { ISignUp } from "./signup.types";
-import { style } from "./styles";
-import RHF from "../../../../shared/components/input-RHF";
-import LocalSelector from "../../../../shared/components/buttons/local-selector/local-selector";
-import { UserCreateInput } from "../../../../api/graphql/generated/graphql";
-import { ReactComponent as Logo } from "../../../../assets/icons/logo.svg";
 
 const Signup: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -83,13 +79,11 @@ const Signup: React.FC<ISignUp> = (props) => {
   }, [handleKeyPress]);
 
   return (
-    <Stack sx={style.wrapper} justifyContent="center" alignItems="center">
-      <SvgIcon sx={style.svgIcon} viewBox="0 0 250 38">
-        <Logo />
-      </SvgIcon>
-      <Paper sx={style.paper}>
+    <StyledWrapper>
+      <StyledLogo />
+      <StyledPaper>
         <form>
-          <Stack sx={style.stack} spacing={{ xs: 1, md: 2 }}>
+          <StyledStack>
             <FormControl fullWidth>
               <RHF.InputTextField
                 control={control}
@@ -167,23 +161,22 @@ const Signup: React.FC<ISignUp> = (props) => {
               )}
             </FormControl>
             <LocalSelector />
-            <LoadingButton
-              sx={style.btn}
+            <StyledLoadingButton
               onClick={handleSubmit(onSubmit)}
               loading={isLoading}
               variant="contained"
             >
               {t("registration")}
-            </LoadingButton>
-          </Stack>
+            </StyledLoadingButton>
+          </StyledStack>
         </form>
         <Box textAlign="center">
-          <Button sx={style.button} variant="text" onClick={routeLogin}>
+          <StyledButton variant="text" onClick={routeLogin}>
             {t("auth.route")}
-          </Button>
+          </StyledButton>
         </Box>
-      </Paper>
-    </Stack>
+      </StyledPaper>
+    </StyledWrapper>
   );
 };
 

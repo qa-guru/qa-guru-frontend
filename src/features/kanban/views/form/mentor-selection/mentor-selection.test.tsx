@@ -1,9 +1,9 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { MemoryRouter } from "react-router-dom";
+import { mentorsDto } from "shared/mocks/mentors.mock";
+import { render } from "test/utils-test";
 import MentorSelection from "./mentor-selection";
-import { render } from "../../../../../test/utils-test";
 import { IFilterKanban } from "../form.types";
-import { mentorsDto } from "../../../../../shared/mocks/mentors.mock";
 
 describe("MentorSelection", () => {
   it("renders correctly", () => {

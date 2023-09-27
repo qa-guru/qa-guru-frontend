@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { useModal } from "react-modal-hook";
-import { Backdrop, Box, Dialog, DialogTitle } from "@mui/material";
+import { Dialog, DialogTitle } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
-import { style } from "./styles";
+import {
+  StyledBackdropError,
+  StyledIconBox,
+} from "./no-data-error-message.styled";
 
 const NoDataErrorMessage: React.FC = () => {
   const [showModal] = useModal(({ in: open }) => (
     <Dialog open={open}>
       <DialogTitle>Упс что-то пошло не так....</DialogTitle>
-      <Box sx={style.icon}>
+      <StyledIconBox>
         <ReplayIcon cursor="pointer" onClick={reloadPage} />
-      </Box>
+      </StyledIconBox>
     </Dialog>
   ));
 
@@ -22,7 +25,7 @@ const NoDataErrorMessage: React.FC = () => {
     showModal();
   }, [showModal]);
 
-  return <Backdrop sx={style.backdropError} open={true} />;
+  return <StyledBackdropError open={true} />;
 };
 
 export default NoDataErrorMessage;

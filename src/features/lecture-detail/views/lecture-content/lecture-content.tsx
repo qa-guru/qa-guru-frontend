@@ -1,20 +1,23 @@
 import React from "react";
-import { Paper, Stack, Typography } from "@mui/material";
+import { Divider } from "@mui/material";
+import ContentSerialization from "shared/serializers/content-serialization";
 import { ILectureContent } from "./lecture-content.types";
-import { style } from "./styles";
-import ContentSerialization from "../../../../shared/serializers/content-serialization";
+import {
+  StyledPaper,
+  StyledStack,
+  StyledTypography,
+} from "./lecture-content.styled";
 
 const LectureContent: React.FC<ILectureContent> = ({ content }) => {
   return (
     <>
-      <Paper sx={style.paper}>
-        <Typography mb={3} variant="h5">
-          Материалы урока
-        </Typography>
-        <Stack spacing={0.5}>
+      <StyledPaper>
+        <StyledTypography variant="h5">Материалы урока</StyledTypography>
+        <Divider />
+        <StyledStack>
           <ContentSerialization content={content} />
-        </Stack>
-      </Paper>
+        </StyledStack>
+      </StyledPaper>
     </>
   );
 };

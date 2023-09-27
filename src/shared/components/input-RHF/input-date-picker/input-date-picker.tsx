@@ -1,10 +1,10 @@
 import * as React from "react";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Controller, FieldValues } from "react-hook-form";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { IFormInputProps } from "../input.types";
+import { StyledDatePicker } from "../input.styled";
 
 const InputDatePicker = <T extends FieldValues>({
   control,
@@ -17,13 +17,12 @@ const InputDatePicker = <T extends FieldValues>({
         name={name}
         control={control}
         render={({ field: { onChange, value } }) => (
-          <DatePicker
+          <StyledDatePicker
             label={label}
             value={value ? dayjs(value) : null}
-            sx={{ width: "100%" }}
             onChange={(newValue) => {
               if (newValue) {
-                const formattedDate = dayjs(newValue)
+                const formattedDate = dayjs(Number(newValue))
                   .set("hour", 0)
                   .set("minute", 0)
                   .set("second", 0)

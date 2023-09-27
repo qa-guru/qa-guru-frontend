@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
+import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 import HomeworkContent from "./homework-content";
-import { render } from "../../../../../test/utils-test";
-import { StudentHomeWorkStatus } from "../../../../../api/graphql/generated/graphql";
 
 const mockSetOpenHomeWorkEdit: any = () => {};
 describe("SendHomework", () => {

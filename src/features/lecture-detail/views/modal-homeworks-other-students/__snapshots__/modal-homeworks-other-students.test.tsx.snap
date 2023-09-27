@@ -3,61 +3,57 @@
 exports[`ModalHomeworksOtherStudents > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1nn8w31-MuiStack-root"
+    class="MuiStack-root css-kfcs6u-MuiStack-root"
   >
     <div
-      class="MuiStack-root css-hszfwg-MuiStack-root"
+      class="MuiStack-root css-n9karh-MuiStack-root"
     >
       <div
-        class="MuiStack-root css-1okj3ks-MuiStack-root"
+        class="MuiStack-root css-vx72w3-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-16jryck-MuiStack-root"
         >
           <span
-            class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
-            style="width: 40px; height: 40px;"
+            class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-a4z31c-MuiSkeleton-root"
           />
           <div
-            class="MuiStack-root css-1r50ci7-MuiStack-root"
+            class="MuiStack-root css-1gcuwd7-MuiStack-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
             />
             <span
-              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
             />
           </div>
         </div>
         <span
-          class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
-          style="width: 100%; height: 60px;"
+          class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-8hw9pq-MuiSkeleton-root"
         />
       </div>
       <div
-        class="MuiStack-root css-1okj3ks-MuiStack-root"
+        class="MuiStack-root css-vx72w3-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-16jryck-MuiStack-root"
         >
           <span
-            class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
-            style="width: 40px; height: 40px;"
+            class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-a4z31c-MuiSkeleton-root"
           />
           <div
-            class="MuiStack-root css-1r50ci7-MuiStack-root"
+            class="MuiStack-root css-1gcuwd7-MuiStack-root"
           >
             <span
-              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
             />
             <span
-              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1uzkixw-MuiSkeleton-root"
+              class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
             />
           </div>
         </div>
         <span
-          class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
-          style="width: 100%; height: 60px;"
+          class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-8hw9pq-MuiSkeleton-root"
         />
       </div>
     </div>
@@ -65,7 +61,7 @@ exports[`ModalHomeworksOtherStudents > renders correctly 1`] = `
       class="MuiBox-root css-0"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >

@@ -1,10 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Box } from "@mui/material";
-import { Container } from "@mui/system";
-import { style } from "./styles";
-import Header from "../../../widgets/header";
-import { UserRole } from "../../../api/graphql/generated/graphql";
+import Header from "widgets/header";
+import { UserRole } from "api/graphql/generated/graphql";
+import { StyledBox, StyledContainer } from "./layout.styled";
 // import footer from "../widgets/footer";
 
 interface LayoutProps {
@@ -13,13 +11,13 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ userRoles }) => {
   return (
-    <Box sx={style.root}>
+    <StyledBox>
       <Header userRoles={userRoles} />
-      <Container sx={style.content}>
+      <StyledContainer>
         <Outlet />
-      </Container>
+      </StyledContainer>
       {/*<footer />*/}
-    </Box>
+    </StyledBox>
   );
 };
 

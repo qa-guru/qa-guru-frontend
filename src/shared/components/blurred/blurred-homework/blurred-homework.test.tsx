@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
 import BlurredHomework from "./blurred-homework";
-import { render } from "../../../../test/utils-test";
 
 describe("BlurredHomework", () => {
   it("renders correctly", () => {

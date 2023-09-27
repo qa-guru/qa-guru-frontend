@@ -1,9 +1,9 @@
 import { MemoryRouter } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
+import { trainingDto } from "shared/mocks/training-dto.mock";
+import { render } from "test/utils-test";
 import TrainingSelection from "./training-selection";
-import { render } from "../../../../../test/utils-test";
 import { IFilterKanban } from "../form.types";
-import { trainingDto } from "../../../../../shared/mocks/training-dto.mock";
 
 describe("TrainingSelection", () => {
   it("renders correctly", () => {

@@ -5,12 +5,12 @@ import {
   StudentHomeWorkStatus,
   useHomeWorksQuery,
   useUserQuery,
-} from "../../../../api/graphql/generated/graphql";
-import Spinner from "../../../../shared/components/spinner";
+} from "api/graphql/generated/graphql";
+import Spinner from "shared/components/spinner";
+import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Board from "../../views/board";
 import { KanbanContext } from "../../context/kanban-context";
 import { getValidDateOrNull } from "../../helpers/is-valid-date";
-import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
 import { UserProvider } from "../../context/user-context";
 
 const HomeworksContainer: React.FC = () => {

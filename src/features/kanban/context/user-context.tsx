@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { UserRole } from "../../../api/graphql/generated/graphql";
+import { UserRole } from "api/graphql/generated/graphql";
 
 interface UserContextType {
   userId?: string | null | undefined;

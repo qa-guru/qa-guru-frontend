@@ -157,7 +157,9 @@
       {
         "types": "always",
         "json": "always",
-        "mock": "always"
+        "mock": "always",
+        "styled": "always",
+        "svg": "always"
       }
     ]
   },

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import Homework from "../../views/homework";
 import {
   useHomeWorkByLectureQuery,
   useUserIdQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
+import NoDataErrorMessage from "shared/components/no-data-error-message";
+import Spinner from "shared/components/spinner";
 import { LectureIdContext } from "../../context/lecture-id-context";
-import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
-import Spinner from "../../../../shared/components/spinner";
+import Homework from "../../views/homework";
 
 const HomeworkContainer: React.FC = () => {
   const lectureId = useContext(LectureIdContext);

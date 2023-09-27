@@ -1,12 +1,16 @@
 import React from "react";
-import { Box, IconButton, Paper, Stack } from "@mui/material";
+import { IconButton } from "@mui/material";
+import TextSerialization from "shared/serializers/text-serialization";
+import { ReactComponent as Edit } from "assets/icons/button-edit.svg";
+import UserRow from "shared/components/user-row";
 import { ICommentItem } from "./comment-item.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledCommentBox,
+  StyledPaper,
+  StyledStack,
+} from "./comment-item.styled";
 import UpdateComment from "../../containers/update-comment";
-import TextSerialization from "../../../../shared/serializers/text-serialization";
-import { ReactComponent as Edit } from "../../../../assets/icons/button-edit.svg";
-import { grey, primary } from "../../../../theme/colors";
-import UserRow from "../../../../shared/components/user-row";
 
 const CommentItem: React.FC<ICommentItem> = ({
   item,
@@ -18,22 +22,11 @@ const CommentItem: React.FC<ICommentItem> = ({
   const { creator, content, creationDate, id } = item;
 
   return (
-    <Paper
-      key={index}
-      sx={style.container}
-      style={{
-        backgroundColor: editAccess ? primary.secondary : grey.secondary,
-      }}
-    >
-      <Stack
-        alignItems={{ xs: "flex-start", md: "center" }}
-        direction="row"
-        justifyContent="space-between"
-        spacing={1}
-      >
-        <Box width="100%">
+    <StyledPaper key={index} editAccess={editAccess}>
+      <StyledStack>
+        <StyledCommentBox>
           <UserRow user={creator!} date={creationDate} />
-          <Box mt="7px">
+          <StyledBox>
             {isSelected ? (
               <UpdateComment
                 content={content!}
@@ -43,16 +36,16 @@ const CommentItem: React.FC<ICommentItem> = ({
             ) : (
               <TextSerialization text={content!} />
             )}
-          </Box>
-        </Box>
+          </StyledBox>
+        </StyledCommentBox>
 
         {!isSelected && editAccess && (
           <IconButton onClick={() => setSelectedIndex(index)}>
             <Edit />
           </IconButton>
         )}
-      </Stack>
-    </Paper>
+      </StyledStack>
+    </StyledPaper>
   );
 };
 

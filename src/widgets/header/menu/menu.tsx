@@ -1,15 +1,15 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { IAppMenu } from "./menu.types";
-import { style } from "./styles";
+import { StyledBox, StyledStack } from "./menu.styled";
 
 const AppMenu: React.FC<IAppMenu> = (props) => {
   const { handleClickNavMenu, pages } = props;
 
   return (
-    <Box sx={style.box}>
-      <Stack direction="row" spacing={3}>
+    <StyledBox>
+      <StyledStack>
         {pages.map((page, index) => {
           const { pageURL, title } = page;
 
@@ -23,8 +23,8 @@ const AppMenu: React.FC<IAppMenu> = (props) => {
             </Button>
           );
         })}
-      </Stack>
-    </Box>
+      </StyledStack>
+    </StyledBox>
   );
 };
 

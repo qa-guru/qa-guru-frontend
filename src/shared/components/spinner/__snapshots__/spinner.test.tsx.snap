@@ -3,12 +3,12 @@
 exports[`Spinner > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiGrid-root MuiGrid-container css-u5c3di-MuiGrid-root"
+    class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
       role="progressbar"
-      style="width: 40px; height: 40px; color: rgb(44, 204, 166);"
+      style="width: 40px; height: 40px;"
     >
       <svg
         class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"

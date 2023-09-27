@@ -3,7 +3,7 @@
 exports[`Logout > renders correctly 1`] = `
 <DocumentFragment>
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-1plfk1d-MuiButtonBase-root-MuiMenuItem-root"
     role="menuitem"
     tabindex="-1"
   >
@@ -11,7 +11,7 @@ exports[`Logout > renders correctly 1`] = `
       class="MuiListItemText-root css-tlelie-MuiListItemText-root"
     >
       <span
-        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-1hiauz6-MuiTypography-root"
       >
         Выход
       </span>

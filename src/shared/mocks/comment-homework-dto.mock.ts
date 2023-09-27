@@ -1,4 +1,4 @@
-import { CommentHomeWorkDto } from "../../api/graphql/generated/graphql";
+import { CommentHomeWorkDto } from "api/graphql/generated/graphql";
 
 export const commentHomeWorkDto: CommentHomeWorkDto = {
   content: "string",

@@ -1,8 +1,16 @@
 import React from "react";
-import { CardActionArea, Grid, Paper, Stack, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { CardActionArea, Grid, Typography } from "@mui/material";
 import { ITrainingLectures } from "./training-lectures.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledGridContainer,
+  StyledLink,
+  StyledPaper,
+  StyledStack,
+  StyledSubtitle,
+  StyledTypography,
+  StyledWrapper,
+} from "./training-lectures.styled";
 
 const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;
@@ -11,51 +19,41 @@ const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
 
   return (
     <>
-      <Typography mb="20px" variant="h4">
-        {name}
-      </Typography>
-      <Grid container spacing={2} mb={3}>
+      <Typography variant="h4">{name}</Typography>
+      <StyledGridContainer container>
         {trainingLectures?.map((item, index) => {
           const { id, subject, description } = item!.lecture!;
 
           return (
             <Grid item xs={12} key={index}>
-              <Link style={style.link} to={`/training/${trainingId}/${id}`}>
+              <StyledLink to={`/training/${trainingId}/${id}`}>
                 <CardActionArea>
-                  <Paper sx={style.paper}>
+                  <StyledPaper>
                     <Typography variant="h6">{subject}</Typography>
-                    <Stack spacing={1.5}>
+                    <StyledWrapper>
                       {description?.map((value, index) => {
                         return (
-                          <Stack
-                            direction="row"
-                            spacing={1.5}
-                            alignItems="center"
-                            key={index}
-                            mt="16px"
-                          >
-                            <Typography sx={style.circle} variant="subtitle2">
+                          <StyledStack key={index}>
+                            <StyledTypography variant="subtitle2">
                               {index + 1}
-                            </Typography>
+                            </StyledTypography>
                             <Typography variant="subtitle1">{value}</Typography>
-                          </Stack>
+                          </StyledStack>
                         );
                       })}
-                    </Stack>
-                    <Typography
-                      color="primary"
-                      variant="subtitle2"
-                      align="right"
-                    >
-                      Продолжить
-                    </Typography>
-                  </Paper>
+                    </StyledWrapper>
+                    <StyledBox>
+                      <StyledSubtitle variant="subtitle2">
+                        Продолжить
+                      </StyledSubtitle>
+                    </StyledBox>
+                  </StyledPaper>
                 </CardActionArea>
-              </Link>
+              </StyledLink>
             </Grid>
           );
         })}
-      </Grid>
+      </StyledGridContainer>
     </>
   );
 };

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Paper, Stack, Typography } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
-import { style } from "./styles";
+import {
+  StyledLoadingButton,
+  StyledPaper,
+  StyledStack,
+  StyledWrapper,
+} from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
 import HomeworkItem from "../homework-item";
 
@@ -45,14 +49,14 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
 
   return (
     <>
-      <Stack my={3} pt={3} spacing={1} direction="row">
+      <StyledStack>
         <Typography variant="h4">Домашние работы других студентов</Typography>
         <Typography variant="h4">({totalElements})</Typography>
-      </Stack>
-      <Stack spacing={2}>
+      </StyledStack>
+      <StyledWrapper>
         {items?.map((item, index) => {
           return (
-            <Paper key={index} sx={style.paper}>
+            <StyledPaper key={index}>
               <HomeworkItem
                 dataHomeWorkByLecture={item!}
                 dataUserId={dataUserId}
@@ -62,20 +66,19 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
                 item={item!}
                 dataUserId={dataUserId}
               />
-            </Paper>
+            </StyledPaper>
           );
         })}
-      </Stack>
+      </StyledWrapper>
       {hasMoreHomeworks && (
-        <Stack mt="5px">
-          <LoadingButton
+        <Stack>
+          <StyledLoadingButton
             loading={loading}
             onClick={handleLoadMore}
-            sx={style.loadMoreBtn}
             endIcon={<ExpandMoreIcon />}
           >
             Загрузить еще
-          </LoadingButton>
+          </StyledLoadingButton>
         </Stack>
       )}
     </>

@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import { useModal } from "react-modal-hook";
-import { Button, Dialog, DialogContent, Paper, Box } from "@mui/material";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Dialog } from "@mui/material";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IHomework } from "./homework.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledButton,
+  StyledClearIcon,
+  StyledDialogContent,
+  StyledModalBox,
+  StyledPaper,
+} from "./homework.styled";
 import Comments from "../../containers/comments";
 import CommentsLimited from "../comments-limited";
 import CommentsPagination from "../comments-pagination";
@@ -20,9 +26,9 @@ const Homework: React.FC<IHomework> = (props) => {
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
-      <DialogContent sx={style.scrollContainer} id="scroll-container">
-        <ClearIcon sx={style.clearIcon} onClick={hideModalAndUpdateUrl} />
-        <Box pt={{ xs: "16px", sm: "0" }}>
+      <StyledDialogContent id="scroll-container">
+        <StyledClearIcon onClick={hideModalAndUpdateUrl} />
+        <StyledModalBox>
           <LectureIdContext.Provider value={lectureId}>
             <HomeworkItem
               dataHomeWorkByLecture={dataHomeWorkByLecture}
@@ -32,8 +38,8 @@ const Homework: React.FC<IHomework> = (props) => {
               <CommentsPagination />
             </Comments>
           </LectureIdContext.Provider>
-        </Box>
-      </DialogContent>
+        </StyledModalBox>
+      </StyledDialogContent>
     </Dialog>
   ));
 
@@ -56,7 +62,7 @@ const Homework: React.FC<IHomework> = (props) => {
   };
 
   return (
-    <Paper sx={style.paper}>
+    <StyledPaper>
       <HomeworkItem
         dataHomeWorkByLecture={dataHomeWorkByLecture}
         dataUserId={dataUserId}
@@ -66,18 +72,14 @@ const Homework: React.FC<IHomework> = (props) => {
           <Comments id={dataHomeWorkByLecture?.id!}>
             <CommentsLimited />
           </Comments>
-          <Box mt={2}>
-            <Button
-              sx={style.button}
-              variant="contained"
-              onClick={showModalAndSetUrl}
-            >
+          <StyledBox>
+            <StyledButton variant="contained" onClick={showModalAndSetUrl}>
               Показать другие комментарии
-            </Button>
-          </Box>
+            </StyledButton>
+          </StyledBox>
         </>
       )}
-    </Paper>
+    </StyledPaper>
   );
 };
 

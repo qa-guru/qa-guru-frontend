@@ -2,8 +2,8 @@ import {
   LectureInfoDto,
   StudentHomeWorkStatus,
   UserDto,
-} from "../../api/graphql/generated/graphql";
-import { IColumnItem } from "../../features/kanban/views/column/column.types";
+} from "api/graphql/generated/graphql";
+import { IColumnItem } from "features/kanban/views/column/column.types";
 
 export const kanbanColumn: IColumnItem = {
   id: "column1",

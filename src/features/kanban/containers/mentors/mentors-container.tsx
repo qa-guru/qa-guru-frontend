@@ -1,10 +1,10 @@
 import React from "react";
-import { IMentorsContainer } from "./mentors-container.types";
 import {
   Order,
   useMentorsQuery,
   UserSortField,
-} from "../../../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
+import { IMentorsContainer } from "./mentors-container.types";
 import MentorSelection from "../../views/form/mentor-selection";
 
 const MentorsContainer: React.FC<IMentorsContainer> = ({ control }) => {

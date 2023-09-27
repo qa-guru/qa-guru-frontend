@@ -1,4 +1,4 @@
-import { MentorsQuery } from "../../api/graphql/generated/graphql";
+import { MentorsQuery } from "api/graphql/generated/graphql";
 
 export const mentorsDto: MentorsQuery = {
   mentors: {

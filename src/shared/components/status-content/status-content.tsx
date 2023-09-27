@@ -1,12 +1,13 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { ReactComponent as Clock } from "assets/icons/clock.svg";
+import { ReactComponent as Search } from "assets/icons/search.svg";
+import { ReactComponent as Done } from "assets/icons/done.svg";
+import { red } from "theme/colors";
+import { StyledStack } from "./status-content.styled";
 import { IStatusContent } from "./status-content.types";
-import { ReactComponent as Clock } from "../../../assets/icons/clock.svg";
-import { ReactComponent as Search } from "../../../assets/icons/search.svg";
-import { ReactComponent as Done } from "../../../assets/icons/done.svg";
-import { red } from "../../../theme/colors";
 
 const RedHighlightOffIcon = styled(HighlightOffIcon)({
   color: red.main,
@@ -38,12 +39,12 @@ const StatusContent: React.FC<IStatusContent> = ({ status }) => {
   }
 
   return (
-    <Stack direction="row" spacing={1} alignItems="center">
+    <StyledStack>
       {icon}
       <Box>
         <Typography variant="body2">{statusText}</Typography>
       </Box>
-    </Stack>
+    </StyledStack>
   );
 };
 

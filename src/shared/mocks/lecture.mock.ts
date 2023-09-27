@@ -1,4 +1,4 @@
-import { LectureQuery } from "../../api/graphql/generated/graphql";
+import { LectureQuery } from "api/graphql/generated/graphql";
 
 export const lecture: LectureQuery = {
   lecture: {

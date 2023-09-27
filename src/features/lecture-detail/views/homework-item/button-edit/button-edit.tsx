@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "@mui/material";
 import { IButtonEdit } from "./button-edit.types";
-import { style } from "./styles";
+import { StyledButton } from "./button-edit.styled";
 
 const ButtonEdit: React.FC<IButtonEdit> = (props) => {
   const { openHomeWorkEdit, setOpenHomeWorkEdit, status, editAccess } = props;
@@ -9,13 +8,12 @@ const ButtonEdit: React.FC<IButtonEdit> = (props) => {
   return (
     <>
       {!openHomeWorkEdit && status && editAccess && (
-        <Button
-          onClick={() => setOpenHomeWorkEdit(true)}
-          sx={style.buttonUpdate}
+        <StyledButton
           variant="contained"
+          onClick={() => setOpenHomeWorkEdit(true)}
         >
           Редактировать
-        </Button>
+        </StyledButton>
       )}
     </>
   );

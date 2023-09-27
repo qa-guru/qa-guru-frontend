@@ -1,12 +1,17 @@
 import React from "react";
-import { Box, Button, FormControl, FormHelperText, Stack } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { IUpdateComment, IUpdateCommentContent } from "./update-comment.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledButton,
+  StyledButtonsStack,
+  StyledLoadingButton,
+  StyledStack,
+} from "./update-comment.styled";
 import RHF from "../../../../shared/components/input-RHF";
 
 const UpdateComment: React.FC<IUpdateComment> = (props) => {
@@ -55,8 +60,8 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
 
   return (
     <form>
-      <Stack direction="row" spacing={2}>
-        <Box width="100%">
+      <StyledStack>
+        <StyledBox>
           <FormControl fullWidth>
             <RHF.InputTextField
               multiline
@@ -70,31 +75,23 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
               <FormHelperText error>{errors?.content.message}</FormHelperText>
             )}
           </FormControl>
-          <Stack
-            direction={{ xs: "column-reverse", sm: "row" }}
-            justifyContent="flex-end"
-            spacing={2}
-            mt={2}
-          >
-            <Button
-              onClick={() => setSelectedIndex(-1)}
-              sx={style.buttonCancel}
+          <StyledButtonsStack>
+            <StyledButton
               variant="contained"
-              color="secondary"
+              onClick={() => setSelectedIndex(-1)}
             >
               Отменить
-            </Button>
-            <LoadingButton
+            </StyledButton>
+            <StyledLoadingButton
+              variant="contained"
               onClick={handleSubmit(handleUpdateComment)}
               loading={loading}
-              sx={style.loadingButton}
-              variant="contained"
             >
               Отправить
-            </LoadingButton>
-          </Stack>
-        </Box>
-      </Stack>
+            </StyledLoadingButton>
+          </StyledButtonsStack>
+        </StyledBox>
+      </StyledStack>
     </form>
   );
 };

@@ -1,34 +1,30 @@
 import React from "react";
-import { Grid, Paper, Stack, Typography } from "@mui/material";
+import UserRow from "shared/components/user-row";
 import { ILectureSpeakers } from "./lecture-speakers.types";
-import { style } from "./styles";
-import UserRow from "../../../../shared/components/user-row";
+import {
+  StyledPaper,
+  StyledStack,
+  StyledTypography,
+  StyledWrapper,
+} from "./lecture-speakers.styled";
 
 const LectureSpeakers: React.FC<ILectureSpeakers> = (props) => {
   const { speakers } = props;
 
   return (
     <>
-      <Paper sx={style.paper}>
-        <Typography mb="14px" variant="h5">
-          Спикеры
-        </Typography>
-        <Grid container gap={2}>
+      <StyledPaper>
+        <StyledTypography variant="h5">Спикеры</StyledTypography>
+        <StyledWrapper>
           {speakers?.map((item, index) => {
             return (
-              <Stack
-                spacing={2}
-                direction="row"
-                alignItems="center"
-                key={index}
-                sx={style.stack}
-              >
+              <StyledStack key={index}>
                 <UserRow user={item!} width={60} height={60} />
-              </Stack>
+              </StyledStack>
             );
           })}
-        </Grid>
-      </Paper>
+        </StyledWrapper>
+      </StyledPaper>
     </>
   );
 };

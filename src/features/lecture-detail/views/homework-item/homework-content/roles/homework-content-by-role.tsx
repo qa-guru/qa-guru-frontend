@@ -1,6 +1,6 @@
 import React from "react";
+import { useUserRolesQuery } from "api/graphql/generated/graphql";
 import { IHomeworkContentByRole } from "./homework-content-by-role.types";
-import { useUserRolesQuery } from "../../../../../../api/graphql/generated/graphql";
 
 const HomeworkContentByRole: React.FC<IHomeworkContentByRole> = (props) => {
   const { status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, id } = props;

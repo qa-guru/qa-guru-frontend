@@ -1,6 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
 import SendComment from "./send-comment";
-import { render } from "../../../../test/utils-test";
 
 const mockSendComment: any = () => {};
 

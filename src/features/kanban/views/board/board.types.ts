@@ -1,4 +1,4 @@
-import { HomeWorksQuery } from "../../../../api/graphql/generated/graphql";
+import { HomeWorksQuery } from "api/graphql/generated/graphql";
 
 type FetchMoreFunction = (options: {
   variables: { offset: number };

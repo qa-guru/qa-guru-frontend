@@ -1,4 +1,4 @@
-import { UserQuery } from "../../api/graphql/generated/graphql";
+import { UserQuery } from "api/graphql/generated/graphql";
 
 export const user: UserQuery = {
   user: {

@@ -3,7 +3,7 @@
 exports[`LocalSelector > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-1l4w6pd"
+    class="MuiBox-root css-1wcjc1k"
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"

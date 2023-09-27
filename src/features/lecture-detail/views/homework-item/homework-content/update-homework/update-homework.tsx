@@ -1,17 +1,22 @@
 import React from "react";
-import { Box, Button, FormControl, FormHelperText, Stack } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import RHF from "shared/components/input-RHF";
+import { client } from "api";
 import {
   IUpdateHomeWork,
   IUpdateHomeworkContent,
 } from "./update-homework.types";
-import { style } from "./styles";
-import RHF from "../../../../../../shared/components/input-RHF";
-import { client } from "../../../../../../api";
+import {
+  StyledBox,
+  StyledCancelButton,
+  StyledLoadingButton,
+  StyledStack,
+  StyledWrapper,
+} from "./update-homework.styled";
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
@@ -62,8 +67,8 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
 
   return (
     <form>
-      <Stack direction="row" spacing={2} mt="15px">
-        <Box width="100%">
+      <StyledWrapper>
+        <StyledBox>
           <FormControl fullWidth>
             <RHF.InputTextField
               multiline
@@ -80,31 +85,19 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               <FormHelperText error>{errors?.content.message}</FormHelperText>
             )}
           </FormControl>
-          <Stack
-            direction={{ xs: "column-reverse", sm: "row" }}
-            justifyContent="flex-end"
-            spacing={1}
-            mt={2}
-          >
-            <Button
-              onClick={() => setOpenHomeWorkEdit(false)}
-              sx={style.buttonCancel}
-              variant="contained"
-              color="secondary"
-            >
+          <StyledStack>
+            <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
               Отменить
-            </Button>
-            <LoadingButton
+            </StyledCancelButton>
+            <StyledLoadingButton
               onClick={handleSubmit(handleUpdateHomework)}
               loading={loading}
-              sx={style.loadingButton}
-              variant="contained"
             >
               Отправить
-            </LoadingButton>
-          </Stack>
-        </Box>
-      </Stack>
+            </StyledLoadingButton>
+          </StyledStack>
+        </StyledBox>
+      </StyledWrapper>
     </form>
   );
 };

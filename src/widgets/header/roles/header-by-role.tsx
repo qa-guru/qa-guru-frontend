@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { UserRole } from "../../../api/graphql/generated/graphql";
-import { style } from "../styles";
+import { UserRole } from "api/graphql/generated/graphql";
+import { StyledLink } from "./roles.styled";
 
 export const getHeaderByRole = (
   userRoles: Array<UserRole | null>,
@@ -10,11 +9,7 @@ export const getHeaderByRole = (
 
   if (userRoles.includes(UserRole.Student)) {
     headerPages.push({
-      title: (
-        <Link style={style.link} to="/">
-          {t("page.home")}
-        </Link>
-      ),
+      title: <StyledLink to="/">{t("page.home")}</StyledLink>,
       pageURL: "/",
     });
   }
@@ -27,11 +22,7 @@ export const getHeaderByRole = (
     )
   ) {
     headerPages.push({
-      title: (
-        <Link style={style.link} to="/kanban">
-          Доска заданий
-        </Link>
-      ),
+      title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
       pageURL: "/kanban",
     });
   }

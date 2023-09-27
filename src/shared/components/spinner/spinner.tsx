@@ -1,18 +1,12 @@
 import React from "react";
-import { CircularProgress, Grid } from "@mui/material";
-import { style } from "./styles";
-import { primary } from "../../../theme/colors";
+import { CircularProgress } from "@mui/material";
+import { StyledGrid } from "./spinner.styled";
 
 const Spinner: React.FC = () => {
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="center"
-      sx={style.gridSpinner}
-    >
-      <CircularProgress style={{ color: primary.main }} />
-    </Grid>
+    <StyledGrid container>
+      <CircularProgress color="primary" />
+    </StyledGrid>
   );
 };
 

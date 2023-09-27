@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
+import { render } from "test/utils-test";
+import { commentHomeWorkDto } from "shared/mocks/comment-homework-dto.mock";
 import CommentItem from "./comment-item";
-import { render } from "../../../../test/utils-test";
-import { commentHomeWorkDto } from "../../../../shared/mocks/comment-homework-dto.mock";
 
 const setSelectedIndex: any = () => {};
 describe("CommentItem", () => {

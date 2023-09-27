@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
+import { render } from "test/utils-test";
 import InputPhone from "./input-phone";
-import { render } from "../../../../test/utils-test";
 
 describe("InputPhone", () => {
   it("renders correctly", () => {

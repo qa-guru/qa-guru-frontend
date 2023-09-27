@@ -1,6 +1,6 @@
 import React from "react";
+import TextSerialization from "shared/serializers/text-serialization";
 import { IHomeworkContent } from "./homework-content.types";
-import TextSerialization from "../../../../../shared/serializers/text-serialization";
 import UpdateHomeworkItem from "../../../containers/update-homework";
 import SendHomeworkItem from "../../../containers/send-homework";
 

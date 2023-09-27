@@ -5,7 +5,7 @@ import {
   CommentsHomeWorkByHomeWorkQuery,
   CommentsHomeWorkByHomeWorkQueryVariables,
   UserIdQuery,
-} from "../../../../api/graphql/generated/graphql";
+} from "api/graphql/generated/graphql";
 
 interface CommentsProps {
   id: string;
