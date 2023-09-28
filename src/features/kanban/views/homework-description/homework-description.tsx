@@ -11,22 +11,28 @@ import LectureHomework from "shared/components/lecture-homework";
 import {
   StyledBox,
   StyledColumnStack,
+  StyledLink,
   StyledPaper,
   StyledRowStack,
   StyledStack,
   StyledTitle,
   StyledTypography,
-} from "./homework-details.styled";
-import { IHomeworkDetail } from "./homework-details.types";
+} from "./homework-description.styled";
+import { IHomeworkDescription } from "./homework-description.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
+const HomeworkDescription: React.FC<IHomeworkDescription> = ({
+  card,
+  onClose,
+}) => {
   const Format = "dd.MM.yyyy | HH:mm";
 
   return (
     <StyledBox>
       <StyledStack>
-        <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
+        <StyledLink to={`/kanban/${card.id}`}>
+          {getFormattedId(card.id!)}
+        </StyledLink>
         <Button onClick={onClose} variant="contained">
           Свернуть <ChevronRightIcon />
         </Button>
@@ -86,4 +92,4 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
   );
 };
 
-export default HomeworkDetails;
+export default HomeworkDescription;

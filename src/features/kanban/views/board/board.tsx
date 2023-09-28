@@ -22,7 +22,7 @@ import Column from "../column/column";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
-import HomeworkDetails from "../homework-details/homework-details";
+import HomeworkDetails from "../homework-description/homework-description";
 
 const Board: React.FC<IBoard> = ({
   newData,

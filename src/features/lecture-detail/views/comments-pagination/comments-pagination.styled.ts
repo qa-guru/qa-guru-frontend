@@ -12,7 +12,6 @@ export const StyledInfiniteScroll = styled(InfiniteScroll)(({ theme }) => ({
 }));
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-  marginTop: "10px",
-  display: "flex",
-  justifyContent: "center",
+  marginTop: "25px",
+  textAlign: "center",
 }));
