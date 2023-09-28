@@ -6,7 +6,6 @@ import {
   CircularProgress,
   Dialog,
   DialogActions,
-  DialogContent,
   Stack,
   Typography,
 } from "@mui/material";
@@ -14,7 +13,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { CardType, IColumn } from "./column.types";
-import { style } from "./styles";
+import {
+  style,
+  StyledButton,
+  StyledCancelButton,
+  StyledDialogContent,
+  StyledStack,
+  StyledWrapper,
+} from "./column.styled";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
@@ -48,18 +54,28 @@ const Column: React.FC<IColumn> = ({
     }),
   });
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={hideModal} maxWidth="xs">
-      <DialogContent>
-        Вы уверены, что хотите поменять статус данной домашней работы?
-      </DialogContent>
-      <DialogActions>
-        <Button color="secondary" variant="contained" onClick={handleCancel}>
-          Нет
-        </Button>
-        <Button variant="contained" onClick={handleOk}>
-          Да
-        </Button>
-      </DialogActions>
+    <Dialog open={open} onClose={hideModal}>
+      <StyledWrapper>
+        <StyledDialogContent>
+          <Typography variant="h5">
+            Вы уверены, что хотите поменять статус данной домашней работы?
+          </Typography>
+        </StyledDialogContent>
+        <DialogActions>
+          <StyledStack>
+            <StyledCancelButton
+              color="secondary"
+              variant="contained"
+              onClick={handleCancel}
+            >
+              Нет
+            </StyledCancelButton>
+            <StyledButton variant="contained" onClick={handleOk}>
+              Да
+            </StyledButton>
+          </StyledStack>
+        </DialogActions>
+      </StyledWrapper>
     </Dialog>
   ));
 
