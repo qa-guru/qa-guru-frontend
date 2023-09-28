@@ -10,13 +10,14 @@ const InputDatePicker = <T extends FieldValues>({
   control,
   name,
   label,
+  onChange,
 }: IFormInputProps<T>) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Controller
         name={name}
         control={control}
-        render={({ field: { onChange, value } }) => (
+        render={({ field: { onChange: handleChange, value } }) => (
           <StyledDatePicker
             label={label}
             value={value ? dayjs(value) : null}
@@ -27,9 +28,8 @@ const InputDatePicker = <T extends FieldValues>({
                   .set("minute", 0)
                   .set("second", 0)
                   .format("YYYY-MM-DDTHH:mm:ss");
-                onChange(formattedDate);
-              } else {
-                onChange(null);
+                handleChange(formattedDate);
+                if (onChange) onChange(formattedDate);
               }
             }}
           />
