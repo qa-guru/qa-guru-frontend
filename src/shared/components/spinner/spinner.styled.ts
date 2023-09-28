@@ -10,8 +10,5 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   zIndex: 1000,
   justifyContent: "center",
   alignItems: "center",
+  color: theme.palette.primary,
 }));
-
-// export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
-//   color: theme.palette.primary.main,
-// }));

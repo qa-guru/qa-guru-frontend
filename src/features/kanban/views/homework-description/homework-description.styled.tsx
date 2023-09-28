@@ -18,8 +18,16 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledLink = styled(Link)(({ theme }) => ({
+  textDecoration: "none",
+  color: theme.palette.black.main,
+  "&:hover": { color: theme.palette.primary.main },
+}));
+
+export const StyledId = styled(Stack)(({ theme }) => ({
+  gap: theme.spacing(1),
+  flexDirection: "row",
+  alignItems: "center",
   color: theme.palette.primary.main,
-  fontSize: "18px",
 }));
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({

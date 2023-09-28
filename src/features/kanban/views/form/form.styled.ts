@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Button, Grid, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 export const StyledColumnStack = styled(Stack)(({ theme }) => ({
   flexDirection: "column",
@@ -12,22 +12,9 @@ export const StyledRowStack = styled(Stack)(({ theme }) => ({
   justifyContent: "center",
 }));
 
-export const StyledSmallButton = styled(Button)(({ theme }) => ({
-  fontSize: "14px",
-}));
-
-export const StyledLargeButton = styled(Button)(({ theme }) => ({
-  fontSize: "12px",
-}));
-
-export const StyledGrid = styled(Grid)(({ theme }) => ({
-  flexWrap: "nowrap",
-  gap: theme.spacing(1.5),
-  alignItems: "center",
-}));
-
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledRow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  justifyContent: "flex-end",
+  justifyContent: "space-between",
+  alignItems: "center",
   gap: theme.spacing(1),
 }));

@@ -8,9 +8,11 @@ import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusContent from "shared/components/status-content";
 import TextSerialization from "shared/serializers/text-serialization";
 import LectureHomework from "shared/components/lecture-homework";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import {
   StyledBox,
   StyledColumnStack,
+  StyledId,
   StyledLink,
   StyledPaper,
   StyledRowStack,
@@ -30,9 +32,12 @@ const HomeworkDescription: React.FC<IHomeworkDescription> = ({
   return (
     <StyledBox>
       <StyledStack>
-        <StyledLink to={`/kanban/${card.id}`}>
-          {getFormattedId(card.id!)}
-        </StyledLink>
+        <StyledId>
+          <StyledLink to={`/kanban/${card.id}`}>
+            <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
+          </StyledLink>
+          <OpenInNewIcon />
+        </StyledId>
         <Button onClick={onClose} variant="contained">
           Свернуть <ChevronRightIcon />
         </Button>

@@ -8,12 +8,31 @@ exports[`HomeworkDescription > renders correctly 1`] = `
     <div
       class="MuiStack-root css-nbehj-MuiStack-root"
     >
-      <a
-        class="css-5drclp"
-        href="/kanban/123123"
+      <div
+        class="MuiStack-root css-88meij-MuiStack-root"
       >
-        JAVA-23
-      </a>
+        <a
+          class="css-1kgkdd1"
+          href="/kanban/123123"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+          >
+            JAVA-23
+          </h6>
+        </a>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="OpenInNewIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+          />
+        </svg>
+      </div>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
@@ -243,12 +262,31 @@ exports[`HomeworkDescription > renders correctly 2`] = `
     <div
       class="MuiStack-root css-nbehj-MuiStack-root"
     >
-      <a
-        class="css-5drclp"
-        href="/kanban/123123"
+      <div
+        class="MuiStack-root css-88meij-MuiStack-root"
       >
-        JAVA-23
-      </a>
+        <a
+          class="css-1kgkdd1"
+          href="/kanban/123123"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+          >
+            JAVA-23
+          </h6>
+        </a>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="OpenInNewIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+          />
+        </svg>
+      </div>
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
         tabindex="0"

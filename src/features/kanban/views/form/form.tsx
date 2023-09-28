@@ -3,22 +3,19 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Grid,
+  Box,
+  Button,
+  IconButton,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import CreationDateFromSelection from "./creation-date-from-selection";
 import CreationDateToSelection from "./creation-date-to-selection";
-import {
-  StyledColumnStack,
-  StyledGrid,
-  StyledLargeButton,
-  StyledRowStack,
-  StyledSmallButton,
-} from "./form.styled";
+import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
 import MentorsSelection from "../../containers/mentors";
 import LectureSelection from "../../containers/training-lectures";
 import { KanbanContext } from "../../context/kanban-context";
@@ -80,45 +77,30 @@ const Form: React.FC = () => {
                 <CreationDateToSelection control={control} />
               </StyledRowStack>
               <StyledRowStack>
-                <StyledSmallButton
+                <Button
                   onClick={handleReset}
-                  color="secondary"
                   variant="contained"
+                  endIcon={<RefreshIcon />}
                 >
                   Сбросить
-                </StyledSmallButton>
+                </Button>
               </StyledRowStack>
             </StyledColumnStack>
           </AccordionDetails>
         </Accordion>
       ) : (
-        <StyledGrid container>
-          <Grid item md={1.9} lg={2}>
-            <TrainingSelectionByRole control={control} />
-          </Grid>
-          <Grid item md={1.9} lg={2}>
-            <LectureSelection control={control} />
-          </Grid>
-          <Grid item md={1.9} lg={2}>
-            <MentorsSelection control={control} />
-          </Grid>
-          <Grid item md={1.9} lg={2}>
-            <CreationDateFromSelection control={control} />
-          </Grid>
-          <Grid item md={1.9} lg={2}>
-            <CreationDateToSelection control={control} />
-          </Grid>
-          <Grid item md={2.5} lg={2}>
-            <StyledLargeButton
-              onClick={handleReset}
-              color="secondary"
-              variant="contained"
-              size="large"
-            >
-              Сбросить
-            </StyledLargeButton>
-          </Grid>
-        </StyledGrid>
+        <StyledRow>
+          <TrainingSelectionByRole control={control} />
+          <LectureSelection control={control} />
+          <MentorsSelection control={control} />
+          <CreationDateFromSelection control={control} />
+          <CreationDateToSelection control={control} />
+          <Box>
+            <IconButton onClick={handleReset}>
+              <RefreshIcon color={"primary"} fontSize={"large"} />
+            </IconButton>
+          </Box>
+        </StyledRow>
       )}
     </form>
   );

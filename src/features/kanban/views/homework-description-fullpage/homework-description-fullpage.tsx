@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography, Box } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
 import { IHomeworkDescriptionFullpage } from "./homework-description-fullpage.types";
@@ -21,7 +21,6 @@ const HomeworkDescriptionFullpage: React.FC<
           Назад <ChevronRightIcon />
         </Button>
       </StyledBox>
-      <Typography variant="h6"></Typography>
     </Box>
   );
 };

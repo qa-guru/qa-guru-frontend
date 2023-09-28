@@ -286,7 +286,7 @@ exports[`Header > userRole is Master 1`] = `
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
+            class="MuiGrid-root MuiGrid-container css-4w1ufh-MuiGrid-root"
           >
             <span
               class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
@@ -601,7 +601,7 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
+            class="MuiGrid-root MuiGrid-container css-4w1ufh-MuiGrid-root"
           >
             <span
               class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
@@ -916,7 +916,7 @@ exports[`Header > userRole is Student 1`] = `
             </div>
           </div>
           <div
-            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
+            class="MuiGrid-root MuiGrid-container css-4w1ufh-MuiGrid-root"
           >
             <span
               class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"

@@ -22,7 +22,7 @@ import Column from "../column/column";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
-import HomeworkDetails from "../homework-description/homework-description";
+import HomeworkDescription from "../homework-description/homework-description";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -228,7 +228,7 @@ const Board: React.FC<IBoard> = ({
                 transition={{ duration: 0.4 }}
               >
                 <StyledHomeworkDetails>
-                  <HomeworkDetails
+                  <HomeworkDescription
                     card={selectedCard}
                     onClose={handleHomeworkDetailsClose}
                   />
