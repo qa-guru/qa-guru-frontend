@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
 import * as React from "react";
+import * as Apollo from "@apollo/client";
 import * as ApolloReactComponents from "@apollo/client/react/components";
 
 export type Maybe<T> = T | null;
@@ -777,6 +777,98 @@ export type UsersDto = {
   totalElements?: Maybe<Scalars["Long"]>;
 };
 
+export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
+  sort: CommentHomeWorkSort;
+  homeWorkId: Scalars["ID"];
+}>;
+
+export type CommentsHomeWorkByHomeWorkQuery = {
+  __typename?: "Query";
+  commentsHomeWorkByHomeWork?: {
+    __typename?: "CommentHomeWorksDto";
+    offset?: number | null;
+    limit?: number | null;
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "CommentHomeWorkDto";
+      id?: string | null;
+      creationDate?: any | null;
+      content?: string | null;
+      creator?: {
+        __typename?: "UserDto";
+        id?: string | null;
+        firstName?: string | null;
+        middleName?: string | null;
+        lastName?: string | null;
+      } | null;
+      homeWork?: {
+        __typename?: "StudentHomeWorkDto";
+        id?: string | null;
+      } | null;
+    } | null> | null;
+  } | null;
+};
+
+export type SendCommentMutationVariables = Exact<{
+  homeWorkId: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type SendCommentMutation = {
+  __typename?: "Mutation";
+  sendComment?: {
+    __typename?: "CommentHomeWorkDto";
+    id?: string | null;
+    creationDate?: any | null;
+    content?: string | null;
+    creator?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    homeWork?: {
+      __typename?: "StudentHomeWorkDto";
+      id?: string | null;
+      answer?: string | null;
+      status?: StudentHomeWorkStatus | null;
+    } | null;
+  } | null;
+};
+
+export type UpdateCommentMutationVariables = Exact<{
+  id: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type UpdateCommentMutation = {
+  __typename?: "Mutation";
+  updateComment?: {
+    __typename?: "CommentHomeWorkDto";
+    id?: string | null;
+    creationDate?: any | null;
+    content?: string | null;
+    creator?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    homeWork?: {
+      __typename?: "StudentHomeWorkDto";
+      id?: string | null;
+      answer?: string | null;
+      status?: StudentHomeWorkStatus | null;
+    } | null;
+  } | null;
+};
+
 export type ApprovedMutationVariables = Exact<{
   homeWorkId: Scalars["ID"];
 }>;
@@ -882,6 +974,42 @@ export type HomeWorkByLectureQuery = {
   } | null;
 };
 
+export type HomeWorkQueryVariables = Exact<{
+  homeWorkId: Scalars["ID"];
+}>;
+
+export type HomeWorkQuery = {
+  __typename?: "Query";
+  homeWork?: {
+    __typename?: "StudentHomeWorkDto";
+    id?: string | null;
+    answer?: string | null;
+    status?: StudentHomeWorkStatus | null;
+    creationDate?: any | null;
+    startCheckingDate?: any | null;
+    endCheckingDate?: any | null;
+    lecture?: {
+      __typename?: "LectureInfoDto";
+      id?: string | null;
+      subject?: string | null;
+    } | null;
+    student?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    mentor?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+  } | null;
+};
+
 export type HomeWorksByLectureIdQueryVariables = Exact<{
   offset: Scalars["Int"];
   limit: Scalars["Int"];
@@ -919,42 +1047,6 @@ export type HomeWorksByLectureIdQuery = {
         lastName?: string | null;
       } | null;
     } | null> | null;
-  } | null;
-};
-
-export type HomeWorkQueryVariables = Exact<{
-  homeWorkId: Scalars["ID"];
-}>;
-
-export type HomeWorkQuery = {
-  __typename?: "Query";
-  homeWork?: {
-    __typename?: "StudentHomeWorkDto";
-    id?: string | null;
-    answer?: string | null;
-    status?: StudentHomeWorkStatus | null;
-    creationDate?: any | null;
-    startCheckingDate?: any | null;
-    endCheckingDate?: any | null;
-    lecture?: {
-      __typename?: "LectureInfoDto";
-      id?: string | null;
-      subject?: string | null;
-    } | null;
-    student?: {
-      __typename?: "UserDto";
-      id?: string | null;
-      firstName?: string | null;
-      middleName?: string | null;
-      lastName?: string | null;
-    } | null;
-    mentor?: {
-      __typename?: "UserDto";
-      id?: string | null;
-      firstName?: string | null;
-      middleName?: string | null;
-      lastName?: string | null;
-    } | null;
   } | null;
 };
 
@@ -1222,96 +1314,18 @@ export type UpdateHomeworkMutation = {
   } | null;
 };
 
-export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
-  offset: Scalars["Int"];
-  limit: Scalars["Int"];
-  sort: CommentHomeWorkSort;
-  homeWorkId: Scalars["ID"];
+export type LectureHomeWorkQueryVariables = Exact<{
+  lectureId: Scalars["ID"];
 }>;
 
-export type CommentsHomeWorkByHomeWorkQuery = {
+export type LectureHomeWorkQuery = {
   __typename?: "Query";
-  commentsHomeWorkByHomeWork?: {
-    __typename?: "CommentHomeWorksDto";
-    offset?: number | null;
-    limit?: number | null;
-    totalElements?: any | null;
-    items?: Array<{
-      __typename?: "CommentHomeWorkDto";
-      id?: string | null;
-      creationDate?: any | null;
-      content?: string | null;
-      creator?: {
-        __typename?: "UserDto";
-        id?: string | null;
-        firstName?: string | null;
-        middleName?: string | null;
-        lastName?: string | null;
-      } | null;
-      homeWork?: {
-        __typename?: "StudentHomeWorkDto";
-        id?: string | null;
-      } | null;
-    } | null> | null;
-  } | null;
-};
-
-export type SendCommentMutationVariables = Exact<{
-  homeWorkId: Scalars["ID"];
-  content: Scalars["String"];
-}>;
-
-export type SendCommentMutation = {
-  __typename?: "Mutation";
-  sendComment?: {
-    __typename?: "CommentHomeWorkDto";
-    id?: string | null;
-    creationDate?: any | null;
-    content?: string | null;
-    creator?: {
-      __typename?: "UserDto";
-      id?: string | null;
-      email?: string | null;
-      firstName?: string | null;
-      middleName?: string | null;
-      lastName?: string | null;
-    } | null;
-    homeWork?: {
-      __typename?: "StudentHomeWorkDto";
-      id?: string | null;
-      answer?: string | null;
-      status?: StudentHomeWorkStatus | null;
-    } | null;
-  } | null;
-};
-
-export type UpdateCommentMutationVariables = Exact<{
-  id: Scalars["ID"];
-  content: Scalars["String"];
-}>;
-
-export type UpdateCommentMutation = {
-  __typename?: "Mutation";
-  updateComment?: {
-    __typename?: "CommentHomeWorkDto";
-    id?: string | null;
-    creationDate?: any | null;
-    content?: string | null;
-    creator?: {
-      __typename?: "UserDto";
-      id?: string | null;
-      email?: string | null;
-      firstName?: string | null;
-      middleName?: string | null;
-      lastName?: string | null;
-    } | null;
-    homeWork?: {
-      __typename?: "StudentHomeWorkDto";
-      id?: string | null;
-      answer?: string | null;
-      status?: StudentHomeWorkStatus | null;
-    } | null;
-  } | null;
+  lectureHomeWork?: Array<{
+    __typename?: "LectureContentHomeWorkDto";
+    type?: string | null;
+    value?: string | null;
+    url?: string | null;
+  } | null> | null;
 };
 
 export type LectureQueryVariables = Exact<{
@@ -1346,20 +1360,6 @@ export type LectureQuery = {
       url?: string | null;
     } | null> | null;
   } | null;
-};
-
-export type LectureHomeWorkQueryVariables = Exact<{
-  lectureId: Scalars["ID"];
-}>;
-
-export type LectureHomeWorkQuery = {
-  __typename?: "Query";
-  lectureHomeWork?: Array<{
-    __typename?: "LectureContentHomeWorkDto";
-    type?: string | null;
-    value?: string | null;
-    url?: string | null;
-  } | null> | null;
 };
 
 export type UpdateLectureMutationVariables = Exact<{
@@ -1399,101 +1399,6 @@ export type UpdateLectureMutation = {
       value?: string | null;
       url?: string | null;
     } | null> | null;
-  } | null;
-};
-
-export type TrainingQueryVariables = Exact<{
-  id: Scalars["ID"];
-}>;
-
-export type TrainingQuery = {
-  __typename?: "Query";
-  training?: {
-    __typename?: "TrainingDto";
-    id: string;
-    name: string;
-    content?: string | null;
-    techStack: TechStack;
-    tariffs?: Array<{
-      __typename?: "TrainingTariffDto";
-      id?: string | null;
-      name?: string | null;
-      code?: string | null;
-      price?: number | null;
-      homeWork?: boolean | null;
-      description?: string | null;
-    } | null> | null;
-    mentors?: Array<{
-      __typename?: "UserDto";
-      id?: string | null;
-      firstName?: string | null;
-      lastName?: string | null;
-      middleName?: string | null;
-    } | null> | null;
-  } | null;
-};
-
-export type TrainingsQueryVariables = Exact<{
-  offset: Scalars["Int"];
-  limit: Scalars["Int"];
-  sort?: InputMaybe<TrainingSort>;
-}>;
-
-export type TrainingsQuery = {
-  __typename?: "Query";
-  trainings?: {
-    __typename?: "TrainingsDto";
-    totalElements?: any | null;
-    items?: Array<{
-      __typename?: "TrainingDto";
-      id: string;
-      name: string;
-      techStack: TechStack;
-    } | null> | null;
-  } | null;
-};
-
-export type TrainingsByMentorQueryVariables = Exact<{
-  offset: Scalars["Int"];
-  limit: Scalars["Int"];
-  sort?: InputMaybe<TrainingSort>;
-}>;
-
-export type TrainingsByMentorQuery = {
-  __typename?: "Query";
-  trainingsByMentor?: {
-    __typename?: "TrainingsDto";
-    offset?: number | null;
-    limit?: number | null;
-    totalElements?: any | null;
-    items?: Array<{
-      __typename?: "TrainingDto";
-      id: string;
-      name: string;
-      content?: string | null;
-      techStack: TechStack;
-      mentors?: Array<{
-        __typename?: "UserDto";
-        id?: string | null;
-        firstName?: string | null;
-        middleName?: string | null;
-        lastName?: string | null;
-      } | null> | null;
-    } | null> | null;
-  } | null;
-};
-
-export type UpdateTrainingMutationVariables = Exact<{
-  input: TrainingInput;
-}>;
-
-export type UpdateTrainingMutation = {
-  __typename?: "Mutation";
-  updateTraining?: {
-    __typename?: "TrainingDto";
-    id: string;
-    name: string;
-    techStack: TechStack;
   } | null;
 };
 
@@ -1555,6 +1460,101 @@ export type TrainingPurchasesQuery = {
   } | null> | null;
 };
 
+export type TrainingQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type TrainingQuery = {
+  __typename?: "Query";
+  training?: {
+    __typename?: "TrainingDto";
+    id: string;
+    name: string;
+    content?: string | null;
+    techStack: TechStack;
+    tariffs?: Array<{
+      __typename?: "TrainingTariffDto";
+      id?: string | null;
+      name?: string | null;
+      code?: string | null;
+      price?: number | null;
+      homeWork?: boolean | null;
+      description?: string | null;
+    } | null> | null;
+    mentors?: Array<{
+      __typename?: "UserDto";
+      id?: string | null;
+      firstName?: string | null;
+      lastName?: string | null;
+      middleName?: string | null;
+    } | null> | null;
+  } | null;
+};
+
+export type TrainingsByMentorQueryVariables = Exact<{
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
+  sort?: InputMaybe<TrainingSort>;
+}>;
+
+export type TrainingsByMentorQuery = {
+  __typename?: "Query";
+  trainingsByMentor?: {
+    __typename?: "TrainingsDto";
+    offset?: number | null;
+    limit?: number | null;
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "TrainingDto";
+      id: string;
+      name: string;
+      content?: string | null;
+      techStack: TechStack;
+      mentors?: Array<{
+        __typename?: "UserDto";
+        id?: string | null;
+        firstName?: string | null;
+        middleName?: string | null;
+        lastName?: string | null;
+      } | null> | null;
+    } | null> | null;
+  } | null;
+};
+
+export type TrainingsQueryVariables = Exact<{
+  offset: Scalars["Int"];
+  limit: Scalars["Int"];
+  sort?: InputMaybe<TrainingSort>;
+}>;
+
+export type TrainingsQuery = {
+  __typename?: "Query";
+  trainings?: {
+    __typename?: "TrainingsDto";
+    totalElements?: any | null;
+    items?: Array<{
+      __typename?: "TrainingDto";
+      id: string;
+      name: string;
+      techStack: TechStack;
+    } | null> | null;
+  } | null;
+};
+
+export type UpdateTrainingMutationVariables = Exact<{
+  input: TrainingInput;
+}>;
+
+export type UpdateTrainingMutation = {
+  __typename?: "Mutation";
+  updateTraining?: {
+    __typename?: "TrainingDto";
+    id: string;
+    name: string;
+    techStack: TechStack;
+  } | null;
+};
+
 export type CreateUserMutationVariables = Exact<{
   input: UserCreateInput;
 }>;
@@ -1601,6 +1601,23 @@ export type MentorsQuery = {
   } | null;
 };
 
+export type UserIdQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UserIdQuery = {
+  __typename?: "Query";
+  user?: { __typename?: "UserDto"; id?: string | null } | null;
+};
+
+export type UserRolesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UserRolesQuery = {
+  __typename?: "Query";
+  user?: {
+    __typename?: "UserDto";
+    roles?: Array<UserRole | null> | null;
+  } | null;
+};
+
 export type UserQueryVariables = Exact<{ [key: string]: never }>;
 
 export type UserQuery = {
@@ -1616,23 +1633,6 @@ export type UserQuery = {
     avatarLocation?: string | null;
     roles?: Array<UserRole | null> | null;
     locked?: boolean | null;
-  } | null;
-};
-
-export type UserIdQueryVariables = Exact<{ [key: string]: never }>;
-
-export type UserIdQuery = {
-  __typename?: "Query";
-  user?: { __typename?: "UserDto"; id?: string | null } | null;
-};
-
-export type UserRolesQueryVariables = Exact<{ [key: string]: never }>;
-
-export type UserRolesQuery = {
-  __typename?: "Query";
-  user?: {
-    __typename?: "UserDto";
-    roles?: Array<UserRole | null> | null;
   } | null;
 };
 
@@ -1720,6 +1720,280 @@ export const NewTakeForReviewHomeWorkFragmentDoc = gql`
     endCheckingDate
   }
 `;
+export const CommentsHomeWorkByHomeWorkDocument = gql`
+  query commentsHomeWorkByHomeWork(
+    $offset: Int!
+    $limit: Int!
+    $sort: CommentHomeWorkSort!
+    $homeWorkId: ID!
+  ) {
+    commentsHomeWorkByHomeWork(
+      offset: $offset
+      limit: $limit
+      sort: $sort
+      homeWorkId: $homeWorkId
+    ) {
+      items {
+        id
+        creator {
+          id
+          firstName
+          middleName
+          lastName
+        }
+        creationDate
+        content
+        homeWork {
+          id
+        }
+      }
+      offset
+      limit
+      totalElements
+    }
+  }
+`;
+export type CommentsHomeWorkByHomeWorkComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: CommentsHomeWorkByHomeWorkQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const CommentsHomeWorkByHomeWorkComponent = (
+  props: CommentsHomeWorkByHomeWorkComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >
+    query={CommentsHomeWorkByHomeWorkDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useCommentsHomeWorkByHomeWorkQuery__
+ *
+ * To run a query within a React component, call `useCommentsHomeWorkByHomeWorkQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCommentsHomeWorkByHomeWorkQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCommentsHomeWorkByHomeWorkQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *      homeWorkId: // value for 'homeWorkId'
+ *   },
+ * });
+ */
+export function useCommentsHomeWorkByHomeWorkQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >(CommentsHomeWorkByHomeWorkDocument, options);
+}
+export function useCommentsHomeWorkByHomeWorkLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    CommentsHomeWorkByHomeWorkQuery,
+    CommentsHomeWorkByHomeWorkQueryVariables
+  >(CommentsHomeWorkByHomeWorkDocument, options);
+}
+export type CommentsHomeWorkByHomeWorkQueryHookResult = ReturnType<
+  typeof useCommentsHomeWorkByHomeWorkQuery
+>;
+export type CommentsHomeWorkByHomeWorkLazyQueryHookResult = ReturnType<
+  typeof useCommentsHomeWorkByHomeWorkLazyQuery
+>;
+export type CommentsHomeWorkByHomeWorkQueryResult = Apollo.QueryResult<
+  CommentsHomeWorkByHomeWorkQuery,
+  CommentsHomeWorkByHomeWorkQueryVariables
+>;
+export const SendCommentDocument = gql`
+  mutation sendComment($homeWorkId: ID!, $content: String!) {
+    sendComment(homeWorkId: $homeWorkId, content: $content) {
+      id
+      creator {
+        id
+        email
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+        answer
+        status
+      }
+    }
+  }
+`;
+export type SendCommentMutationFn = Apollo.MutationFunction<
+  SendCommentMutation,
+  SendCommentMutationVariables
+>;
+export type SendCommentComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    SendCommentMutation,
+    SendCommentMutationVariables
+  >,
+  "mutation"
+>;
+
+export const SendCommentComponent = (props: SendCommentComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    SendCommentMutation,
+    SendCommentMutationVariables
+  >
+    mutation={SendCommentDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useSendCommentMutation__
+ *
+ * To run a mutation, you first call `useSendCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSendCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [sendCommentMutation, { data, loading, error }] = useSendCommentMutation({
+ *   variables: {
+ *      homeWorkId: // value for 'homeWorkId'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useSendCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    SendCommentMutation,
+    SendCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<SendCommentMutation, SendCommentMutationVariables>(
+    SendCommentDocument,
+    options
+  );
+}
+export type SendCommentMutationHookResult = ReturnType<
+  typeof useSendCommentMutation
+>;
+export type SendCommentMutationResult =
+  Apollo.MutationResult<SendCommentMutation>;
+export type SendCommentMutationOptions = Apollo.BaseMutationOptions<
+  SendCommentMutation,
+  SendCommentMutationVariables
+>;
+export const UpdateCommentDocument = gql`
+  mutation updateComment($id: ID!, $content: String!) {
+    updateComment(id: $id, content: $content) {
+      id
+      creator {
+        id
+        email
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+        answer
+        status
+      }
+    }
+  }
+`;
+export type UpdateCommentMutationFn = Apollo.MutationFunction<
+  UpdateCommentMutation,
+  UpdateCommentMutationVariables
+>;
+export type UpdateCommentComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateCommentComponent = (props: UpdateCommentComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >
+    mutation={UpdateCommentDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUpdateCommentMutation__
+ *
+ * To run a mutation, you first call `useUpdateCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCommentMutation, { data, loading, error }] = useUpdateCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useUpdateCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >(UpdateCommentDocument, options);
+}
+export type UpdateCommentMutationHookResult = ReturnType<
+  typeof useUpdateCommentMutation
+>;
+export type UpdateCommentMutationResult =
+  Apollo.MutationResult<UpdateCommentMutation>;
+export type UpdateCommentMutationOptions = Apollo.BaseMutationOptions<
+  UpdateCommentMutation,
+  UpdateCommentMutationVariables
+>;
 export const ApprovedDocument = gql`
   mutation approved($homeWorkId: ID!) {
     approved(homeWorkId: $homeWorkId) {
@@ -1884,6 +2158,95 @@ export type HomeWorkByLectureQueryResult = Apollo.QueryResult<
   HomeWorkByLectureQuery,
   HomeWorkByLectureQueryVariables
 >;
+export const HomeWorkDocument = gql`
+  query homeWork($homeWorkId: ID!) {
+    homeWork(id: $homeWorkId) {
+      id
+      lecture {
+        id
+        subject
+      }
+      answer
+      status
+      student {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      mentor {
+        id
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      startCheckingDate
+      endCheckingDate
+    }
+  }
+`;
+export type HomeWorkComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    HomeWorkQuery,
+    HomeWorkQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: HomeWorkQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const HomeWorkComponent = (props: HomeWorkComponentProps) => (
+  <ApolloReactComponents.Query<HomeWorkQuery, HomeWorkQueryVariables>
+    query={HomeWorkDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useHomeWorkQuery__
+ *
+ * To run a query within a React component, call `useHomeWorkQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomeWorkQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useHomeWorkQuery({
+ *   variables: {
+ *      homeWorkId: // value for 'homeWorkId'
+ *   },
+ * });
+ */
+export function useHomeWorkQuery(
+  baseOptions: Apollo.QueryHookOptions<HomeWorkQuery, HomeWorkQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<HomeWorkQuery, HomeWorkQueryVariables>(
+    HomeWorkDocument,
+    options
+  );
+}
+export function useHomeWorkLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HomeWorkQuery,
+    HomeWorkQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<HomeWorkQuery, HomeWorkQueryVariables>(
+    HomeWorkDocument,
+    options
+  );
+}
+export type HomeWorkQueryHookResult = ReturnType<typeof useHomeWorkQuery>;
+export type HomeWorkLazyQueryHookResult = ReturnType<
+  typeof useHomeWorkLazyQuery
+>;
+export type HomeWorkQueryResult = Apollo.QueryResult<
+  HomeWorkQuery,
+  HomeWorkQueryVariables
+>;
 export const HomeWorksByLectureIdDocument = gql`
   query homeWorksByLectureId(
     $offset: Int!
@@ -1999,95 +2362,6 @@ export type HomeWorksByLectureIdLazyQueryHookResult = ReturnType<
 export type HomeWorksByLectureIdQueryResult = Apollo.QueryResult<
   HomeWorksByLectureIdQuery,
   HomeWorksByLectureIdQueryVariables
->;
-export const HomeWorkDocument = gql`
-  query homeWork($homeWorkId: ID!) {
-    homeWork(id: $homeWorkId) {
-      id
-      lecture {
-        id
-        subject
-      }
-      answer
-      status
-      student {
-        id
-        firstName
-        middleName
-        lastName
-      }
-      mentor {
-        id
-        firstName
-        middleName
-        lastName
-      }
-      creationDate
-      startCheckingDate
-      endCheckingDate
-    }
-  }
-`;
-export type HomeWorkComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    HomeWorkQuery,
-    HomeWorkQueryVariables
-  >,
-  "query"
-> &
-  ({ variables: HomeWorkQueryVariables; skip?: boolean } | { skip: boolean });
-
-export const HomeWorkComponent = (props: HomeWorkComponentProps) => (
-  <ApolloReactComponents.Query<HomeWorkQuery, HomeWorkQueryVariables>
-    query={HomeWorkDocument}
-    {...props}
-  />
-);
-
-/**
- * __useHomeWorkQuery__
- *
- * To run a query within a React component, call `useHomeWorkQuery` and pass it any options that fit your needs.
- * When your component renders, `useHomeWorkQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useHomeWorkQuery({
- *   variables: {
- *      homeWorkId: // value for 'homeWorkId'
- *   },
- * });
- */
-export function useHomeWorkQuery(
-  baseOptions: Apollo.QueryHookOptions<HomeWorkQuery, HomeWorkQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<HomeWorkQuery, HomeWorkQueryVariables>(
-    HomeWorkDocument,
-    options
-  );
-}
-export function useHomeWorkLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    HomeWorkQuery,
-    HomeWorkQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<HomeWorkQuery, HomeWorkQueryVariables>(
-    HomeWorkDocument,
-    options
-  );
-}
-export type HomeWorkQueryHookResult = ReturnType<typeof useHomeWorkQuery>;
-export type HomeWorkLazyQueryHookResult = ReturnType<
-  typeof useHomeWorkLazyQuery
->;
-export type HomeWorkQueryResult = Apollo.QueryResult<
-  HomeWorkQuery,
-  HomeWorkQueryVariables
 >;
 export const HomeWorksDocument = gql`
   query homeWorks(
@@ -2515,362 +2789,6 @@ export type UpdateHomeworkMutationOptions = Apollo.BaseMutationOptions<
   UpdateHomeworkMutation,
   UpdateHomeworkMutationVariables
 >;
-export const CommentsHomeWorkByHomeWorkDocument = gql`
-  query commentsHomeWorkByHomeWork(
-    $offset: Int!
-    $limit: Int!
-    $sort: CommentHomeWorkSort!
-    $homeWorkId: ID!
-  ) {
-    commentsHomeWorkByHomeWork(
-      offset: $offset
-      limit: $limit
-      sort: $sort
-      homeWorkId: $homeWorkId
-    ) {
-      items {
-        id
-        creator {
-          id
-          firstName
-          middleName
-          lastName
-        }
-        creationDate
-        content
-        homeWork {
-          id
-        }
-      }
-      offset
-      limit
-      totalElements
-    }
-  }
-`;
-export type CommentsHomeWorkByHomeWorkComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    CommentsHomeWorkByHomeWorkQuery,
-    CommentsHomeWorkByHomeWorkQueryVariables
-  >,
-  "query"
-> &
-  (
-    | { variables: CommentsHomeWorkByHomeWorkQueryVariables; skip?: boolean }
-    | { skip: boolean }
-  );
-
-export const CommentsHomeWorkByHomeWorkComponent = (
-  props: CommentsHomeWorkByHomeWorkComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    CommentsHomeWorkByHomeWorkQuery,
-    CommentsHomeWorkByHomeWorkQueryVariables
-  >
-    query={CommentsHomeWorkByHomeWorkDocument}
-    {...props}
-  />
-);
-
-/**
- * __useCommentsHomeWorkByHomeWorkQuery__
- *
- * To run a query within a React component, call `useCommentsHomeWorkByHomeWorkQuery` and pass it any options that fit your needs.
- * When your component renders, `useCommentsHomeWorkByHomeWorkQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCommentsHomeWorkByHomeWorkQuery({
- *   variables: {
- *      offset: // value for 'offset'
- *      limit: // value for 'limit'
- *      sort: // value for 'sort'
- *      homeWorkId: // value for 'homeWorkId'
- *   },
- * });
- */
-export function useCommentsHomeWorkByHomeWorkQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    CommentsHomeWorkByHomeWorkQuery,
-    CommentsHomeWorkByHomeWorkQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    CommentsHomeWorkByHomeWorkQuery,
-    CommentsHomeWorkByHomeWorkQueryVariables
-  >(CommentsHomeWorkByHomeWorkDocument, options);
-}
-export function useCommentsHomeWorkByHomeWorkLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    CommentsHomeWorkByHomeWorkQuery,
-    CommentsHomeWorkByHomeWorkQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    CommentsHomeWorkByHomeWorkQuery,
-    CommentsHomeWorkByHomeWorkQueryVariables
-  >(CommentsHomeWorkByHomeWorkDocument, options);
-}
-export type CommentsHomeWorkByHomeWorkQueryHookResult = ReturnType<
-  typeof useCommentsHomeWorkByHomeWorkQuery
->;
-export type CommentsHomeWorkByHomeWorkLazyQueryHookResult = ReturnType<
-  typeof useCommentsHomeWorkByHomeWorkLazyQuery
->;
-export type CommentsHomeWorkByHomeWorkQueryResult = Apollo.QueryResult<
-  CommentsHomeWorkByHomeWorkQuery,
-  CommentsHomeWorkByHomeWorkQueryVariables
->;
-export const SendCommentDocument = gql`
-  mutation sendComment($homeWorkId: ID!, $content: String!) {
-    sendComment(homeWorkId: $homeWorkId, content: $content) {
-      id
-      creator {
-        id
-        email
-        firstName
-        middleName
-        lastName
-      }
-      creationDate
-      content
-      homeWork {
-        id
-        answer
-        status
-      }
-    }
-  }
-`;
-export type SendCommentMutationFn = Apollo.MutationFunction<
-  SendCommentMutation,
-  SendCommentMutationVariables
->;
-export type SendCommentComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    SendCommentMutation,
-    SendCommentMutationVariables
-  >,
-  "mutation"
->;
-
-export const SendCommentComponent = (props: SendCommentComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    SendCommentMutation,
-    SendCommentMutationVariables
-  >
-    mutation={SendCommentDocument}
-    {...props}
-  />
-);
-
-/**
- * __useSendCommentMutation__
- *
- * To run a mutation, you first call `useSendCommentMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useSendCommentMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [sendCommentMutation, { data, loading, error }] = useSendCommentMutation({
- *   variables: {
- *      homeWorkId: // value for 'homeWorkId'
- *      content: // value for 'content'
- *   },
- * });
- */
-export function useSendCommentMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    SendCommentMutation,
-    SendCommentMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<SendCommentMutation, SendCommentMutationVariables>(
-    SendCommentDocument,
-    options
-  );
-}
-export type SendCommentMutationHookResult = ReturnType<
-  typeof useSendCommentMutation
->;
-export type SendCommentMutationResult =
-  Apollo.MutationResult<SendCommentMutation>;
-export type SendCommentMutationOptions = Apollo.BaseMutationOptions<
-  SendCommentMutation,
-  SendCommentMutationVariables
->;
-export const UpdateCommentDocument = gql`
-  mutation updateComment($id: ID!, $content: String!) {
-    updateComment(id: $id, content: $content) {
-      id
-      creator {
-        id
-        email
-        firstName
-        middleName
-        lastName
-      }
-      creationDate
-      content
-      homeWork {
-        id
-        answer
-        status
-      }
-    }
-  }
-`;
-export type UpdateCommentMutationFn = Apollo.MutationFunction<
-  UpdateCommentMutation,
-  UpdateCommentMutationVariables
->;
-export type UpdateCommentComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateCommentMutation,
-    UpdateCommentMutationVariables
-  >,
-  "mutation"
->;
-
-export const UpdateCommentComponent = (props: UpdateCommentComponentProps) => (
-  <ApolloReactComponents.Mutation<
-    UpdateCommentMutation,
-    UpdateCommentMutationVariables
-  >
-    mutation={UpdateCommentDocument}
-    {...props}
-  />
-);
-
-/**
- * __useUpdateCommentMutation__
- *
- * To run a mutation, you first call `useUpdateCommentMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateCommentMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateCommentMutation, { data, loading, error }] = useUpdateCommentMutation({
- *   variables: {
- *      id: // value for 'id'
- *      content: // value for 'content'
- *   },
- * });
- */
-export function useUpdateCommentMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateCommentMutation,
-    UpdateCommentMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateCommentMutation,
-    UpdateCommentMutationVariables
-  >(UpdateCommentDocument, options);
-}
-export type UpdateCommentMutationHookResult = ReturnType<
-  typeof useUpdateCommentMutation
->;
-export type UpdateCommentMutationResult =
-  Apollo.MutationResult<UpdateCommentMutation>;
-export type UpdateCommentMutationOptions = Apollo.BaseMutationOptions<
-  UpdateCommentMutation,
-  UpdateCommentMutationVariables
->;
-export const LectureDocument = gql`
-  query lecture($id: ID!) {
-    lecture(id: $id) {
-      id
-      speakers {
-        id
-        firstName
-        lastName
-        middleName
-      }
-      subject
-      homeWorkLevel {
-        id
-        code
-        description
-        estimate
-      }
-      description
-      content {
-        type
-        value
-        url
-      }
-    }
-  }
-`;
-export type LectureComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    LectureQuery,
-    LectureQueryVariables
-  >,
-  "query"
-> &
-  ({ variables: LectureQueryVariables; skip?: boolean } | { skip: boolean });
-
-export const LectureComponent = (props: LectureComponentProps) => (
-  <ApolloReactComponents.Query<LectureQuery, LectureQueryVariables>
-    query={LectureDocument}
-    {...props}
-  />
-);
-
-/**
- * __useLectureQuery__
- *
- * To run a query within a React component, call `useLectureQuery` and pass it any options that fit your needs.
- * When your component renders, `useLectureQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLectureQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useLectureQuery(
-  baseOptions: Apollo.QueryHookOptions<LectureQuery, LectureQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<LectureQuery, LectureQueryVariables>(
-    LectureDocument,
-    options
-  );
-}
-export function useLectureLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<LectureQuery, LectureQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<LectureQuery, LectureQueryVariables>(
-    LectureDocument,
-    options
-  );
-}
-export type LectureQueryHookResult = ReturnType<typeof useLectureQuery>;
-export type LectureLazyQueryHookResult = ReturnType<typeof useLectureLazyQuery>;
-export type LectureQueryResult = Apollo.QueryResult<
-  LectureQuery,
-  LectureQueryVariables
->;
 export const LectureHomeWorkDocument = gql`
   query lectureHomeWork($lectureId: ID!) {
     lectureHomeWork(lectureId: $lectureId) {
@@ -2953,6 +2871,88 @@ export type LectureHomeWorkLazyQueryHookResult = ReturnType<
 export type LectureHomeWorkQueryResult = Apollo.QueryResult<
   LectureHomeWorkQuery,
   LectureHomeWorkQueryVariables
+>;
+export const LectureDocument = gql`
+  query lecture($id: ID!) {
+    lecture(id: $id) {
+      id
+      speakers {
+        id
+        firstName
+        lastName
+        middleName
+      }
+      subject
+      homeWorkLevel {
+        id
+        code
+        description
+        estimate
+      }
+      description
+      content {
+        type
+        value
+        url
+      }
+    }
+  }
+`;
+export type LectureComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    LectureQuery,
+    LectureQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: LectureQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const LectureComponent = (props: LectureComponentProps) => (
+  <ApolloReactComponents.Query<LectureQuery, LectureQueryVariables>
+    query={LectureDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useLectureQuery__
+ *
+ * To run a query within a React component, call `useLectureQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLectureQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLectureQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLectureQuery(
+  baseOptions: Apollo.QueryHookOptions<LectureQuery, LectureQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<LectureQuery, LectureQueryVariables>(
+    LectureDocument,
+    options
+  );
+}
+export function useLectureLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<LectureQuery, LectureQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<LectureQuery, LectureQueryVariables>(
+    LectureDocument,
+    options
+  );
+}
+export type LectureQueryHookResult = ReturnType<typeof useLectureQuery>;
+export type LectureLazyQueryHookResult = ReturnType<typeof useLectureLazyQuery>;
+export type LectureQueryResult = Apollo.QueryResult<
+  LectureQuery,
+  LectureQueryVariables
 >;
 export const UpdateLectureDocument = gql`
   mutation updateLecture($input: LectureInput!) {
@@ -3044,334 +3044,6 @@ export type UpdateLectureMutationResult =
 export type UpdateLectureMutationOptions = Apollo.BaseMutationOptions<
   UpdateLectureMutation,
   UpdateLectureMutationVariables
->;
-export const TrainingDocument = gql`
-  query training($id: ID!) {
-    training(id: $id) {
-      id
-      name
-      content
-      techStack
-      tariffs {
-        id
-        name
-        code
-        price
-        homeWork
-        description
-      }
-      mentors {
-        id
-        firstName
-        lastName
-        middleName
-      }
-    }
-  }
-`;
-export type TrainingComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    TrainingQuery,
-    TrainingQueryVariables
-  >,
-  "query"
-> &
-  ({ variables: TrainingQueryVariables; skip?: boolean } | { skip: boolean });
-
-export const TrainingComponent = (props: TrainingComponentProps) => (
-  <ApolloReactComponents.Query<TrainingQuery, TrainingQueryVariables>
-    query={TrainingDocument}
-    {...props}
-  />
-);
-
-/**
- * __useTrainingQuery__
- *
- * To run a query within a React component, call `useTrainingQuery` and pass it any options that fit your needs.
- * When your component renders, `useTrainingQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTrainingQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useTrainingQuery(
-  baseOptions: Apollo.QueryHookOptions<TrainingQuery, TrainingQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TrainingQuery, TrainingQueryVariables>(
-    TrainingDocument,
-    options
-  );
-}
-export function useTrainingLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TrainingQuery,
-    TrainingQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TrainingQuery, TrainingQueryVariables>(
-    TrainingDocument,
-    options
-  );
-}
-export type TrainingQueryHookResult = ReturnType<typeof useTrainingQuery>;
-export type TrainingLazyQueryHookResult = ReturnType<
-  typeof useTrainingLazyQuery
->;
-export type TrainingQueryResult = Apollo.QueryResult<
-  TrainingQuery,
-  TrainingQueryVariables
->;
-export const TrainingsDocument = gql`
-  query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
-    trainings(offset: $offset, limit: $limit, sort: $sort) {
-      items {
-        id
-        name
-        techStack
-      }
-      totalElements
-    }
-  }
-`;
-export type TrainingsComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    TrainingsQuery,
-    TrainingsQueryVariables
-  >,
-  "query"
-> &
-  ({ variables: TrainingsQueryVariables; skip?: boolean } | { skip: boolean });
-
-export const TrainingsComponent = (props: TrainingsComponentProps) => (
-  <ApolloReactComponents.Query<TrainingsQuery, TrainingsQueryVariables>
-    query={TrainingsDocument}
-    {...props}
-  />
-);
-
-/**
- * __useTrainingsQuery__
- *
- * To run a query within a React component, call `useTrainingsQuery` and pass it any options that fit your needs.
- * When your component renders, `useTrainingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTrainingsQuery({
- *   variables: {
- *      offset: // value for 'offset'
- *      limit: // value for 'limit'
- *      sort: // value for 'sort'
- *   },
- * });
- */
-export function useTrainingsQuery(
-  baseOptions: Apollo.QueryHookOptions<TrainingsQuery, TrainingsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<TrainingsQuery, TrainingsQueryVariables>(
-    TrainingsDocument,
-    options
-  );
-}
-export function useTrainingsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TrainingsQuery,
-    TrainingsQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<TrainingsQuery, TrainingsQueryVariables>(
-    TrainingsDocument,
-    options
-  );
-}
-export type TrainingsQueryHookResult = ReturnType<typeof useTrainingsQuery>;
-export type TrainingsLazyQueryHookResult = ReturnType<
-  typeof useTrainingsLazyQuery
->;
-export type TrainingsQueryResult = Apollo.QueryResult<
-  TrainingsQuery,
-  TrainingsQueryVariables
->;
-export const TrainingsByMentorDocument = gql`
-  query trainingsByMentor($offset: Int!, $limit: Int!, $sort: TrainingSort) {
-    trainingsByMentor(offset: $offset, limit: $limit, sort: $sort) {
-      offset
-      limit
-      totalElements
-      items {
-        id
-        name
-        content
-        techStack
-        mentors {
-          id
-          firstName
-          middleName
-          lastName
-        }
-      }
-    }
-  }
-`;
-export type TrainingsByMentorComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    TrainingsByMentorQuery,
-    TrainingsByMentorQueryVariables
-  >,
-  "query"
-> &
-  (
-    | { variables: TrainingsByMentorQueryVariables; skip?: boolean }
-    | { skip: boolean }
-  );
-
-export const TrainingsByMentorComponent = (
-  props: TrainingsByMentorComponentProps
-) => (
-  <ApolloReactComponents.Query<
-    TrainingsByMentorQuery,
-    TrainingsByMentorQueryVariables
-  >
-    query={TrainingsByMentorDocument}
-    {...props}
-  />
-);
-
-/**
- * __useTrainingsByMentorQuery__
- *
- * To run a query within a React component, call `useTrainingsByMentorQuery` and pass it any options that fit your needs.
- * When your component renders, `useTrainingsByMentorQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useTrainingsByMentorQuery({
- *   variables: {
- *      offset: // value for 'offset'
- *      limit: // value for 'limit'
- *      sort: // value for 'sort'
- *   },
- * });
- */
-export function useTrainingsByMentorQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    TrainingsByMentorQuery,
-    TrainingsByMentorQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<
-    TrainingsByMentorQuery,
-    TrainingsByMentorQueryVariables
-  >(TrainingsByMentorDocument, options);
-}
-export function useTrainingsByMentorLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    TrainingsByMentorQuery,
-    TrainingsByMentorQueryVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<
-    TrainingsByMentorQuery,
-    TrainingsByMentorQueryVariables
-  >(TrainingsByMentorDocument, options);
-}
-export type TrainingsByMentorQueryHookResult = ReturnType<
-  typeof useTrainingsByMentorQuery
->;
-export type TrainingsByMentorLazyQueryHookResult = ReturnType<
-  typeof useTrainingsByMentorLazyQuery
->;
-export type TrainingsByMentorQueryResult = Apollo.QueryResult<
-  TrainingsByMentorQuery,
-  TrainingsByMentorQueryVariables
->;
-export const UpdateTrainingDocument = gql`
-  mutation updateTraining($input: TrainingInput!) {
-    updateTraining(input: $input) {
-      id
-      name
-      techStack
-    }
-  }
-`;
-export type UpdateTrainingMutationFn = Apollo.MutationFunction<
-  UpdateTrainingMutation,
-  UpdateTrainingMutationVariables
->;
-export type UpdateTrainingComponentProps = Omit<
-  ApolloReactComponents.MutationComponentOptions<
-    UpdateTrainingMutation,
-    UpdateTrainingMutationVariables
-  >,
-  "mutation"
->;
-
-export const UpdateTrainingComponent = (
-  props: UpdateTrainingComponentProps
-) => (
-  <ApolloReactComponents.Mutation<
-    UpdateTrainingMutation,
-    UpdateTrainingMutationVariables
-  >
-    mutation={UpdateTrainingDocument}
-    {...props}
-  />
-);
-
-/**
- * __useUpdateTrainingMutation__
- *
- * To run a mutation, you first call `useUpdateTrainingMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateTrainingMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateTrainingMutation(
-  baseOptions?: Apollo.MutationHookOptions<
-    UpdateTrainingMutation,
-    UpdateTrainingMutationVariables
-  >
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<
-    UpdateTrainingMutation,
-    UpdateTrainingMutationVariables
-  >(UpdateTrainingDocument, options);
-}
-export type UpdateTrainingMutationHookResult = ReturnType<
-  typeof useUpdateTrainingMutation
->;
-export type UpdateTrainingMutationResult =
-  Apollo.MutationResult<UpdateTrainingMutation>;
-export type UpdateTrainingMutationOptions = Apollo.BaseMutationOptions<
-  UpdateTrainingMutation,
-  UpdateTrainingMutationVariables
 >;
 export const TrainingLecturesDocument = gql`
   query trainingLectures($id: ID!) {
@@ -3561,6 +3233,334 @@ export type TrainingPurchasesQueryResult = Apollo.QueryResult<
   TrainingPurchasesQuery,
   TrainingPurchasesQueryVariables
 >;
+export const TrainingDocument = gql`
+  query training($id: ID!) {
+    training(id: $id) {
+      id
+      name
+      content
+      techStack
+      tariffs {
+        id
+        name
+        code
+        price
+        homeWork
+        description
+      }
+      mentors {
+        id
+        firstName
+        lastName
+        middleName
+      }
+    }
+  }
+`;
+export type TrainingComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingQuery,
+    TrainingQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: TrainingQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const TrainingComponent = (props: TrainingComponentProps) => (
+  <ApolloReactComponents.Query<TrainingQuery, TrainingQueryVariables>
+    query={TrainingDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useTrainingQuery__
+ *
+ * To run a query within a React component, call `useTrainingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useTrainingQuery(
+  baseOptions: Apollo.QueryHookOptions<TrainingQuery, TrainingQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TrainingQuery, TrainingQueryVariables>(
+    TrainingDocument,
+    options
+  );
+}
+export function useTrainingLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingQuery,
+    TrainingQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TrainingQuery, TrainingQueryVariables>(
+    TrainingDocument,
+    options
+  );
+}
+export type TrainingQueryHookResult = ReturnType<typeof useTrainingQuery>;
+export type TrainingLazyQueryHookResult = ReturnType<
+  typeof useTrainingLazyQuery
+>;
+export type TrainingQueryResult = Apollo.QueryResult<
+  TrainingQuery,
+  TrainingQueryVariables
+>;
+export const TrainingsByMentorDocument = gql`
+  query trainingsByMentor($offset: Int!, $limit: Int!, $sort: TrainingSort) {
+    trainingsByMentor(offset: $offset, limit: $limit, sort: $sort) {
+      offset
+      limit
+      totalElements
+      items {
+        id
+        name
+        content
+        techStack
+        mentors {
+          id
+          firstName
+          middleName
+          lastName
+        }
+      }
+    }
+  }
+`;
+export type TrainingsByMentorComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingsByMentorQuery,
+    TrainingsByMentorQueryVariables
+  >,
+  "query"
+> &
+  (
+    | { variables: TrainingsByMentorQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const TrainingsByMentorComponent = (
+  props: TrainingsByMentorComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    TrainingsByMentorQuery,
+    TrainingsByMentorQueryVariables
+  >
+    query={TrainingsByMentorDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useTrainingsByMentorQuery__
+ *
+ * To run a query within a React component, call `useTrainingsByMentorQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingsByMentorQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingsByMentorQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useTrainingsByMentorQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    TrainingsByMentorQuery,
+    TrainingsByMentorQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    TrainingsByMentorQuery,
+    TrainingsByMentorQueryVariables
+  >(TrainingsByMentorDocument, options);
+}
+export function useTrainingsByMentorLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingsByMentorQuery,
+    TrainingsByMentorQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    TrainingsByMentorQuery,
+    TrainingsByMentorQueryVariables
+  >(TrainingsByMentorDocument, options);
+}
+export type TrainingsByMentorQueryHookResult = ReturnType<
+  typeof useTrainingsByMentorQuery
+>;
+export type TrainingsByMentorLazyQueryHookResult = ReturnType<
+  typeof useTrainingsByMentorLazyQuery
+>;
+export type TrainingsByMentorQueryResult = Apollo.QueryResult<
+  TrainingsByMentorQuery,
+  TrainingsByMentorQueryVariables
+>;
+export const TrainingsDocument = gql`
+  query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
+    trainings(offset: $offset, limit: $limit, sort: $sort) {
+      items {
+        id
+        name
+        techStack
+      }
+      totalElements
+    }
+  }
+`;
+export type TrainingsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TrainingsQuery,
+    TrainingsQueryVariables
+  >,
+  "query"
+> &
+  ({ variables: TrainingsQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const TrainingsComponent = (props: TrainingsComponentProps) => (
+  <ApolloReactComponents.Query<TrainingsQuery, TrainingsQueryVariables>
+    query={TrainingsDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useTrainingsQuery__
+ *
+ * To run a query within a React component, call `useTrainingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTrainingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTrainingsQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useTrainingsQuery(
+  baseOptions: Apollo.QueryHookOptions<TrainingsQuery, TrainingsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<TrainingsQuery, TrainingsQueryVariables>(
+    TrainingsDocument,
+    options
+  );
+}
+export function useTrainingsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    TrainingsQuery,
+    TrainingsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<TrainingsQuery, TrainingsQueryVariables>(
+    TrainingsDocument,
+    options
+  );
+}
+export type TrainingsQueryHookResult = ReturnType<typeof useTrainingsQuery>;
+export type TrainingsLazyQueryHookResult = ReturnType<
+  typeof useTrainingsLazyQuery
+>;
+export type TrainingsQueryResult = Apollo.QueryResult<
+  TrainingsQuery,
+  TrainingsQueryVariables
+>;
+export const UpdateTrainingDocument = gql`
+  mutation updateTraining($input: TrainingInput!) {
+    updateTraining(input: $input) {
+      id
+      name
+      techStack
+    }
+  }
+`;
+export type UpdateTrainingMutationFn = Apollo.MutationFunction<
+  UpdateTrainingMutation,
+  UpdateTrainingMutationVariables
+>;
+export type UpdateTrainingComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UpdateTrainingComponent = (
+  props: UpdateTrainingComponentProps
+) => (
+  <ApolloReactComponents.Mutation<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >
+    mutation={UpdateTrainingDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUpdateTrainingMutation__
+ *
+ * To run a mutation, you first call `useUpdateTrainingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTrainingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTrainingMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateTrainingMutation,
+    UpdateTrainingMutationVariables
+  >(UpdateTrainingDocument, options);
+}
+export type UpdateTrainingMutationHookResult = ReturnType<
+  typeof useUpdateTrainingMutation
+>;
+export type UpdateTrainingMutationResult =
+  Apollo.MutationResult<UpdateTrainingMutation>;
+export type UpdateTrainingMutationOptions = Apollo.BaseMutationOptions<
+  UpdateTrainingMutation,
+  UpdateTrainingMutationVariables
+>;
 export const CreateUserDocument = gql`
   mutation createUser($input: UserCreateInput!) {
     createUser(input: $input) {
@@ -3712,66 +3712,6 @@ export type MentorsQueryResult = Apollo.QueryResult<
   MentorsQuery,
   MentorsQueryVariables
 >;
-export const UserDocument = gql`
-  query user {
-    user {
-      id
-      email
-      firstName
-      lastName
-      middleName
-      phoneNumber
-      avatarLocation
-      roles
-      locked
-    }
-  }
-`;
-export type UserComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<UserQuery, UserQueryVariables>,
-  "query"
->;
-
-export const UserComponent = (props: UserComponentProps) => (
-  <ApolloReactComponents.Query<UserQuery, UserQueryVariables>
-    query={UserDocument}
-    {...props}
-  />
-);
-
-/**
- * __useUserQuery__
- *
- * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUserQuery({
- *   variables: {
- *   },
- * });
- */
-export function useUserQuery(
-  baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options);
-}
-export function useUserLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(
-    UserDocument,
-    options
-  );
-}
-export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
-export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
-export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
 export const UserIdDocument = gql`
   query userId {
     user {
@@ -3899,3 +3839,63 @@ export type UserRolesQueryResult = Apollo.QueryResult<
   UserRolesQuery,
   UserRolesQueryVariables
 >;
+export const UserDocument = gql`
+  query user {
+    user {
+      id
+      email
+      firstName
+      lastName
+      middleName
+      phoneNumber
+      avatarLocation
+      roles
+      locked
+    }
+  }
+`;
+export type UserComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<UserQuery, UserQueryVariables>,
+  "query"
+>;
+
+export const UserComponent = (props: UserComponentProps) => (
+  <ApolloReactComponents.Query<UserQuery, UserQueryVariables>
+    query={UserDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUserQuery__
+ *
+ * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUserQuery(
+  baseOptions?: Apollo.QueryHookOptions<UserQuery, UserQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UserQuery, UserQueryVariables>(UserDocument, options);
+}
+export function useUserLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<UserQuery, UserQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UserQuery, UserQueryVariables>(
+    UserDocument,
+    options
+  );
+}
+export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
+export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
+export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;

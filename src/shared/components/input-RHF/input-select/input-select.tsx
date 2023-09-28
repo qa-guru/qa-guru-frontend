@@ -24,9 +24,7 @@ const InputSelect = <T extends FieldValues>({
             label={placeholder}
             onChange={(event) => {
               handleChange(event);
-              if (onChange) {
-                onChange(event.target.value as string);
-              }
+              if (onChange) onChange(event.target.value as string);
             }}
             value={value}
             disabled={disabled}

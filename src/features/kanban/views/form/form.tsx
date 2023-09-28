@@ -7,10 +7,9 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
-import { IFilterKanban } from "./form.types";
 import CreationDateFromSelection from "./creation-date-from-selection";
 import CreationDateToSelection from "./creation-date-to-selection";
 import {
@@ -19,7 +18,6 @@ import {
   StyledLargeButton,
   StyledRowStack,
   StyledSmallButton,
-  StyledStack,
 } from "./form.styled";
 import MentorsSelection from "../../containers/mentors";
 import LectureSelection from "../../containers/training-lectures";
@@ -44,25 +42,17 @@ const Form: React.FC = () => {
   const {
     setSelectedTrainingId,
     setSelectedLectureId,
+    setSelectedMentorId,
     setSelectedCreationDateFrom,
     setSelectedCreationDateTo,
-    setSelectedMentorId,
   } = useContext(KanbanContext);
-
-  const handleFilterKanban: SubmitHandler<IFilterKanban> = (data) => {
-    setSelectedTrainingId(data.selectTrainings);
-    setSelectedLectureId(data.selectLectures);
-    setSelectedCreationDateFrom(data.creationDateFrom);
-    setSelectedCreationDateTo(data.creationDateTo);
-    setSelectedMentorId(data.selectMentors);
-  };
 
   const handleReset = () => {
     setSelectedTrainingId(null);
     setSelectedLectureId(null);
+    setSelectedMentorId(null);
     setSelectedCreationDateFrom(null);
     setSelectedCreationDateTo(null);
-    setSelectedMentorId(null);
     reset();
   };
 
@@ -90,12 +80,6 @@ const Form: React.FC = () => {
                 <CreationDateToSelection control={control} />
               </StyledRowStack>
               <StyledRowStack>
-                <StyledSmallButton
-                  onClick={handleSubmit(handleFilterKanban)}
-                  variant="contained"
-                >
-                  Применить
-                </StyledSmallButton>
                 <StyledSmallButton
                   onClick={handleReset}
                   color="secondary"
@@ -125,23 +109,14 @@ const Form: React.FC = () => {
             <CreationDateToSelection control={control} />
           </Grid>
           <Grid item md={2.5} lg={2}>
-            <StyledStack>
-              <StyledLargeButton
-                onClick={handleSubmit(handleFilterKanban)}
-                variant="contained"
-                size="large"
-              >
-                Применить
-              </StyledLargeButton>
-              <StyledLargeButton
-                onClick={handleReset}
-                color="secondary"
-                variant="contained"
-                size="large"
-              >
-                Сбросить
-              </StyledLargeButton>
-            </StyledStack>
+            <StyledLargeButton
+              onClick={handleReset}
+              color="secondary"
+              variant="contained"
+              size="large"
+            >
+              Сбросить
+            </StyledLargeButton>
           </Grid>
         </StyledGrid>
       )}
