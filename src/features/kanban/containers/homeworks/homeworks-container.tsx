@@ -15,27 +15,27 @@ import { UserProvider } from "../../context/user-context";
 
 const HomeworksContainer: React.FC = () => {
   const {
-    selectedLectureId,
     selectedTrainingId,
+    selectedLectureId,
+    selectedMentorId,
     selectedCreationDateFrom,
     selectedCreationDateTo,
-    selectedMentorId,
   } = useContext(KanbanContext);
 
   const filterObject = useMemo(() => {
     return {
-      lectureId: selectedLectureId,
       trainingId: selectedTrainingId,
+      lectureId: selectedLectureId,
+      mentorId: selectedMentorId,
       creationDateFrom: getValidDateOrNull(selectedCreationDateFrom!),
       creationDateTo: getValidDateOrNull(selectedCreationDateTo!),
-      mentorId: selectedMentorId,
     };
   }, [
-    selectedLectureId,
     selectedTrainingId,
+    selectedLectureId,
+    selectedMentorId,
     selectedCreationDateFrom,
     selectedCreationDateTo,
-    selectedMentorId,
   ]);
 
   const { data: dataUser, loading: dataLoading } = useUserQuery();
