@@ -151,9 +151,10 @@ const Board: React.FC<IBoard> = ({
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
-    setSelectedCard(card);
-    setShowHomeworkDetails(true);
-    setActiveCardId(card.id!);
+    const shouldShowDetails = !showHomeworkDetails || card.id !== activeCardId;
+    setSelectedCard(shouldShowDetails ? card : null);
+    setActiveCardId(shouldShowDetails ? card.id! : null);
+    setShowHomeworkDetails(shouldShowDetails);
   };
 
   const handleHomeworkDetailsClose = () => {
