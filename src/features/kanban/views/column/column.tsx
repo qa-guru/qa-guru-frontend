@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDrop } from "react-dnd";
 import {
   Box,
-  Button,
   CircularProgress,
   Dialog,
   DialogActions,
@@ -14,12 +13,17 @@ import { useModal } from "react-modal-hook";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { CardType, IColumn } from "./column.types";
 import {
-  style,
   StyledButton,
   StyledCancelButton,
   StyledDialogContent,
+  StyledLoadMoreButton,
   StyledStack,
+  StyledTypographyCount,
+  StyledTypographyStatus,
   StyledWrapper,
+  StyledWrapperBoxCircle,
+  StyledWrapperColumnBox,
+  StyledWrapperColumnContainer,
 } from "./column.styled";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
@@ -155,39 +159,29 @@ const Column: React.FC<IColumn> = ({
   };
 
   return (
-    <Box
-      width={{ xs: "100%", md: "25%" }}
-      flexGrow="1"
-      display="flex"
-      flexDirection="column"
-    >
+    <StyledWrapperColumnBox>
       <Stack direction="row">
-        <Typography fontSize="20px" ml={1} mb={1}>
+        <StyledTypographyStatus>
           {formatStatus(column.title)}
-        </Typography>
-        <Typography fontSize="20px" ml={1}>
+        </StyledTypographyStatus>
+        <StyledTypographyCount>
           {Number(column.totalElements) === 0
             ? "(empty)"
             : `(${column.totalElements})`}
-        </Typography>
+        </StyledTypographyCount>
       </Stack>
-      <Box
+      <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
-        flexGrow="1"
-        mt="5px"
         sx={{
-          ...getColumnStyles(column.id, draggingState, isOver),
-          boxSizing: "border-box",
+          ...getColumnStyles(
+            column.id,
+            draggingState,
+            canDrop,
+            column.totalElements,
+            isOver
+          ),
           overflowY: showButton ? "hidden" : "auto",
-          maxHeight: { xs: "73vh", lg: "69vh" },
-          // backgroundColor:
-          //   Number(column.totalElements) === 0 ? style.emptyColumn : "inherit",
-          ...(isColumnHighlight(column.id, draggingState) && {
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-          }),
         }}
       >
         <InfiniteScroll
@@ -195,9 +189,9 @@ const Column: React.FC<IColumn> = ({
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
           loader={
-            <Box mt="10px" display="flex" justifyContent="center">
+            <StyledWrapperBoxCircle>
               <CircularProgress size={25} />
-            </Box>
+            </StyledWrapperBoxCircle>
           }
           style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
@@ -215,13 +209,13 @@ const Column: React.FC<IColumn> = ({
             </Box>
           ))}
         </InfiniteScroll>
-      </Box>
+      </StyledWrapperColumnContainer>
       {showButton && hasMoreHomeworks && (
-        <Button sx={style.loadMoreBtn} onClick={handleLoadMore}>
+        <StyledLoadMoreButton onClick={handleLoadMore}>
           Загрузить еще
-        </Button>
+        </StyledLoadMoreButton>
       )}
-    </Box>
+    </StyledWrapperColumnBox>
   );
 };
 

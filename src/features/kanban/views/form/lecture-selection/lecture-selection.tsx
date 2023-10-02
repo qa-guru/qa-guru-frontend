@@ -5,7 +5,7 @@ import ISelectLectures from "./lecture-selection.types";
 import { KanbanContext } from "../../../context/kanban-context";
 
 const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
-  const { setSelectedLectureId } = useContext(KanbanContext);
+  const { setLectureId } = useContext(KanbanContext);
 
   const lecturesOptions = data?.trainingLectures?.map((item) => ({
     value: item?.lecture?.id,
@@ -15,7 +15,7 @@ const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
   const isDisabled = !lecturesOptions;
 
   const handleSelectChange = (selectedId: string) => {
-    setSelectedLectureId(selectedId);
+    setLectureId(selectedId);
   };
 
   return (

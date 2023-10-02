@@ -1,17 +1,51 @@
-import { grey, primary } from "theme/colors";
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Stack } from "@mui/material";
+import { Box, Button, DialogContent, Stack, Typography } from "@mui/material";
 
-export const style = {
-  loadMoreBtn: { color: primary.main, margin: "1vh auto" },
-  emptyColumn: {
-    backgroundColor: grey.light,
-    borderRadius: "10px",
-    height: "69vh",
-    boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
-    margin: 10,
+export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
+  flexGrow: 1,
+  marginTop: "5px",
+  boxSizing: "border-box",
+  [theme.breakpoints.up("lg")]: {
+    maxHeight: "69vh",
   },
-};
+  [theme.breakpoints.up("xs")]: {
+    maxHeight: "73vh",
+  },
+}));
+
+export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
+  flexDirection: "column",
+  display: "flex",
+  flexGrow: "1",
+  [theme.breakpoints.up("md")]: {
+    maxHeight: "25%",
+  },
+  [theme.breakpoints.up("xs")]: {
+    width: "100%",
+  },
+}));
+
+export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
+  margin: "1vh auto",
+  color: theme.palette.primary.main,
+}));
+
+export const StyledTypographyStatus = styled(Typography)({
+  fontSize: "20px",
+  marginLeft: "8px",
+  marginBottom: "8px",
+});
+
+export const StyledTypographyCount = styled(Typography)({
+  fontSize: "20px",
+  marginLeft: "8px",
+});
+
+export const StyledWrapperBoxCircle = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "10px",
+});
 
 export const StyledWrapper = styled(Box)(({ theme }) => ({
   padding: "25px 10px 5px 20px",

@@ -8,7 +8,7 @@ const TrainingSelection: React.FC<ITrainingSelection> = ({
   items,
   control,
 }) => {
-  const { setSelectedTrainingId } = useContext(KanbanContext);
+  const { setTrainingId } = useContext(KanbanContext);
 
   const trainingOptions = items?.map((item) => ({
     value: item?.id,
@@ -16,7 +16,7 @@ const TrainingSelection: React.FC<ITrainingSelection> = ({
   }));
 
   const handleSelectChange = (selectedId: string) => {
-    setSelectedTrainingId(selectedId);
+    setTrainingId(selectedId);
   };
 
   return (

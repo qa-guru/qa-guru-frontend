@@ -12,7 +12,6 @@ import {
 import { IBoard } from "./board.types";
 import {
   StyledBox,
-  StyledHomeworkDetails,
   StyledMobileWrapper,
   StyledPagination,
   StyledStack,
@@ -53,6 +52,8 @@ const Board: React.FC<IBoard> = ({
   const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
     null
   );
+  const [activeStep, setActiveStep] = useState(0);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   useEffect(() => {
     setColumns([
@@ -142,13 +143,9 @@ const Board: React.FC<IBoard> = ({
     [updateStatus]
   );
 
-  const [activeStep, setActiveStep] = useState(0);
-
   const handleStepChange = (step: number) => {
     setActiveStep(step);
   };
-
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
     const shouldShowDetails = !showHomeworkDetails || card.id !== activeCardId;
@@ -228,12 +225,10 @@ const Board: React.FC<IBoard> = ({
                 exit={{ width: "0" }}
                 transition={{ duration: 0.4 }}
               >
-                <StyledHomeworkDetails>
-                  <HomeworkDetails
-                    card={selectedCard}
-                    onClose={handleHomeworkDetailsClose}
-                  />
-                </StyledHomeworkDetails>
+                <HomeworkDetails
+                  card={selectedCard!}
+                  onClose={handleHomeworkDetailsClose}
+                />
               </motion.div>
             )}
           </AnimatePresence>

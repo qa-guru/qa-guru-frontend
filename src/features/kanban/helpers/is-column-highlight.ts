@@ -9,16 +9,11 @@ export const isColumnHighlight: IsColumnHighlight = (
   columnId,
   draggingState
 ) => {
-  const { newItem, fromInReview, fromNotApproved } = draggingState;
+  const columnHighlightMap: { [key: string]: boolean } = {
+    "2": draggingState.newItem,
+    "3": draggingState.fromInReview || draggingState.fromNotApproved,
+    "4": draggingState.fromInReview,
+  };
 
-  const isDragNewToInReview = columnId === "2" && newItem;
-  const isDragInReviewToApprovedOrNot =
-    ["3", "4"].includes(columnId) && fromInReview;
-  const isDragNotApprovedToApproved = columnId === "3" && fromNotApproved;
-
-  return (
-    isDragNewToInReview ||
-    isDragInReviewToApprovedOrNot ||
-    isDragNotApprovedToApproved
-  );
+  return columnHighlightMap[columnId] || false;
 };

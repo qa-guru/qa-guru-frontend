@@ -3,14 +3,10 @@ import { TechStack } from "api/graphql/generated/graphql";
 import { IFilterKanban } from "../form.types";
 
 export interface ITrainingSelection {
-  items:
-    | Array<{
-        __typename?: "TrainingDto";
-        id: string;
-        name: string;
-        techStack: TechStack;
-      } | null>
-    | null
-    | undefined;
+  items?: Array<{
+    id: string;
+    name: string;
+    techStack: TechStack;
+  } | null> | null;
   control: Control<IFilterKanban, unknown>;
 }

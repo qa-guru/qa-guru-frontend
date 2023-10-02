@@ -1,7 +1,7 @@
 export interface IFilterKanban {
-  selectTrainings: string;
-  selectLectures: string;
+  trainings: string;
+  lectures: string;
   creationDateFrom: string;
   creationDateTo: string;
-  selectMentors: string;
+  mentors: string;
 }

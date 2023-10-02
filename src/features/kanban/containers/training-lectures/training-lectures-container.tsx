@@ -7,11 +7,11 @@ import { KanbanContext } from "../../context/kanban-context";
 const TrainingLecturesContainer: React.FC<ITrainingLecturesContainer> = ({
   control,
 }) => {
-  const { selectedTrainingId } = useContext(KanbanContext);
+  const { trainingId } = useContext(KanbanContext);
 
   const { data, loading } = useTrainingLecturesQuery({
-    variables: { id: selectedTrainingId! },
-    skip: !selectedTrainingId,
+    variables: { id: trainingId! },
+    skip: !trainingId,
   });
 
   return <LectureSelection data={data!} control={control} />;
