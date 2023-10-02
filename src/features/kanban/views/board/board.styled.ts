@@ -15,9 +15,9 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
   },
 }));
 
-export const StyledWrapper = styled(Box)(({ theme }) => ({
+export const StyledWrapper = styled(Box)({
   display: "flex",
-}));
+});
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",

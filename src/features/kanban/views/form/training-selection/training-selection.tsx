@@ -24,7 +24,7 @@ const TrainingSelection: React.FC<ITrainingSelection> = ({
       <RHF.InputSelect
         control={control}
         options={trainingOptions}
-        name="selectTrainings"
+        name="trainings"
         placeholder="Выберите курс"
         onChange={handleSelectChange}
       />

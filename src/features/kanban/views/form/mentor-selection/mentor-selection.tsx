@@ -22,7 +22,7 @@ const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
       <RHF.InputSelect
         control={control}
         options={mentorsOptions}
-        name="selectMentors"
+        name="mentors"
         placeholder="Выберите наставника"
         onChange={handleSelectChange}
       />

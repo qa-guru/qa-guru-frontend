@@ -23,7 +23,7 @@ const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
       <FormControl fullWidth>
         <RHF.InputSelect
           control={control}
-          name="selectLectures"
+          name="lectures"
           placeholder="Выберите урок"
           options={lecturesOptions}
           disabled={isDisabled}
