@@ -32,6 +32,7 @@ export const StyledMobileWrapper = styled(Box)(({ theme }) => ({
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
+  marginBottom: "15px",
 }));
 
 export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({

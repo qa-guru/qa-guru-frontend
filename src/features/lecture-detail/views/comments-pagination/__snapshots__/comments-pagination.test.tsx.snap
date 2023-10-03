@@ -288,7 +288,7 @@ exports[`CommentsPagination > renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root css-1ydbx7"
+        class="MuiBox-root css-zvc26o"
       >
         <span
           class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"

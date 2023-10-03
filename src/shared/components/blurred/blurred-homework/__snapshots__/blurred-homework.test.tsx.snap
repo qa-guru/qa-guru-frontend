@@ -24,7 +24,7 @@ exports[`BlurredHomework > renders correctly 1`] = `
         class="MuiBox-root css-1qg03zn"
       >
         <div
-          class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-container css-4w1ufh-MuiGrid-root"
         >
           <span
             class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"

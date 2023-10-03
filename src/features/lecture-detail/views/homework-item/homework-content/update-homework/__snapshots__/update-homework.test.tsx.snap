@@ -55,7 +55,7 @@ exports[`UpdateHomework > the component is Loading 1`] = `
           class="MuiStack-root css-3oxrce-MuiStack-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-h20xto-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-aur4c0-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -65,7 +65,7 @@ exports[`UpdateHomework > the component is Loading 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1ddwho6-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-6ir13s-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             disabled=""
             id=":r1:"
             tabindex="-1"
@@ -159,7 +159,7 @@ exports[`UpdateHomework > the component is not Loading 1`] = `
           class="MuiStack-root css-3oxrce-MuiStack-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-h20xto-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-aur4c0-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -169,7 +169,7 @@ exports[`UpdateHomework > the component is not Loading 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1ddwho6-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-6ir13s-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             id=":r3:"
             tabindex="0"
             type="button"

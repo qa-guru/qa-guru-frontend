@@ -1,15 +1,15 @@
 name: frontend_deploy_prod
 on:
   push:
-    branches: 
+    branches:
       - main
 jobs:
   checkout:
     runs-on: prod-runner
-    
+
     steps:
       - uses: actions/checkout@v3
-  
+
   yarn-and-node:
     runs-on: prod-runner
     needs: checkout
@@ -27,10 +27,9 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
       - name: Deploy step 1
-        run:
-           rm -rf /var/www/app.qa.guru/html/*
-#            cp -r dist/* /var/www/app.qa.guru/html/
+        run: rm -rf /var/www/app.qa.guru/html/*
+      #            cp -r dist/* /var/www/app.qa.guru/html/
       - name: Deploy step 2
         run:
-#            rm -rf /var/www/app.qa.guru/html/*
-           cp -r dist/* /var/www/app.qa.guru/html/
+          #            rm -rf /var/www/app.qa.guru/html/*
+          cp -r dist/* /var/www/app.qa.guru/html/

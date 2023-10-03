@@ -8,7 +8,9 @@ import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusContent from "shared/components/status-content";
 import TextSerialization from "shared/serializers/text-serialization";
 import LectureHomework from "shared/components/lecture-homework";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
+import { IHomeworkDescription } from "./homework-description.types";
 import {
   StyledBox,
   StyledColumnStack,
@@ -17,18 +19,27 @@ import {
   StyledStack,
   StyledTitle,
   StyledTypography,
-} from "./homework-details.styled";
-import { IHomeworkDetail } from "./homework-details.types";
+  StyledId,
+  StyledLink,
+} from "./homework-description.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
+const HomeworkDescription: React.FC<IHomeworkDescription> = ({
+  card,
+  onClose,
+}) => {
   const Format = "dd.MM.yyyy | HH:mm";
 
   return (
     <StyledHomeworkDetails>
       <StyledBox>
         <StyledStack>
-          <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
+          <StyledId>
+            <StyledLink to={`/kanban/${card.id}`}>
+              <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
+            </StyledLink>
+            <OpenInNewIcon />
+          </StyledId>
           <Button onClick={onClose} variant="contained">
             Свернуть <ChevronRightIcon />
           </Button>
@@ -89,4 +100,4 @@ const HomeworkDetails: React.FC<IHomeworkDetail> = ({ card, onClose }) => {
   );
 };
 
-export default HomeworkDetails;
+export default HomeworkDescription;
