@@ -276,7 +276,7 @@ exports[`Kanban > renders correctly 1`] = `
     </div>
   </form>
   <div
-    class="MuiGrid-root MuiGrid-container css-4w1ufh-MuiGrid-root"
+    class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
   >
     <span
       class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"

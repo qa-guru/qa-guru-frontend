@@ -3,9 +3,9 @@ import { Box, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-  marginTop: "30px",
+  marginTop: "20px",
   padding: "35px 25px",
-  maxHeight: "73vh",
+  maxHeight: "73.6vh",
   overflowY: "auto",
   backgroundColor: theme.palette.grey.light,
 }));
