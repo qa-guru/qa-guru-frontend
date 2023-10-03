@@ -6,7 +6,7 @@ import { KanbanContext } from "../../../context/kanban-context";
 
 const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
   const items = data?.mentors?.items;
-  const { setSelectedMentorId } = useContext(KanbanContext);
+  const { setMentorId } = useContext(KanbanContext);
 
   const mentorsOptions = items?.map((item) => ({
     value: item?.id,
@@ -14,7 +14,7 @@ const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
   }));
 
   const handleSelectChange = (selectedId: string) => {
-    setSelectedMentorId(selectedId);
+    setMentorId(selectedId);
   };
 
   return (
@@ -22,7 +22,7 @@ const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
       <RHF.InputSelect
         control={control}
         options={mentorsOptions}
-        name="selectMentors"
+        name="mentors"
         placeholder="Выберите наставника"
         onChange={handleSelectChange}
       />

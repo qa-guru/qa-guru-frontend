@@ -12,24 +12,24 @@ exports[`Board > renders correctly 1`] = `
         class="MuiStack-root css-1daplrh-MuiStack-root"
       >
         <div
-          class="MuiBox-root css-pi4i3q"
+          class="MuiBox-root css-5vnc55"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-2z044d-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
             >
               New
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1xcnt46-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1rsv1w3"
+            class="MuiBox-root css-1c93eqw"
             id="scroll-container-1"
           >
             <div
@@ -40,7 +40,7 @@ exports[`Board > renders correctly 1`] = `
                 style="height: auto; overflow: visible;"
               >
                 <div
-                  class="MuiBox-root css-pnxypv"
+                  class="MuiBox-root css-ozqqb1"
                 >
                   <span
                     class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
@@ -66,7 +66,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-129opaf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -77,24 +77,24 @@ exports[`Board > renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-pi4i3q"
+          class="MuiBox-root css-5vnc55"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-2z044d-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
             >
               In review
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1xcnt46-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1rsv1w3"
+            class="MuiBox-root css-1c93eqw"
             id="scroll-container-2"
           >
             <div
@@ -105,7 +105,7 @@ exports[`Board > renders correctly 1`] = `
                 style="height: auto; overflow: visible;"
               >
                 <div
-                  class="MuiBox-root css-pnxypv"
+                  class="MuiBox-root css-ozqqb1"
                 >
                   <span
                     class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
@@ -131,7 +131,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-129opaf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -142,24 +142,24 @@ exports[`Board > renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-pi4i3q"
+          class="MuiBox-root css-5vnc55"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-2z044d-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
             >
               Approved
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1xcnt46-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1rsv1w3"
+            class="MuiBox-root css-1c93eqw"
             id="scroll-container-3"
           >
             <div
@@ -283,7 +283,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-129opaf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -294,24 +294,24 @@ exports[`Board > renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-pi4i3q"
+          class="MuiBox-root css-5vnc55"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-2z044d-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
             >
               Not approved
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1xcnt46-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1rsv1w3"
+            class="MuiBox-root css-1c93eqw"
             id="scroll-container-4"
           >
             <div
@@ -322,7 +322,7 @@ exports[`Board > renders correctly 1`] = `
                 style="height: auto; overflow: visible;"
               >
                 <div
-                  class="MuiBox-root css-pnxypv"
+                  class="MuiBox-root css-ozqqb1"
                 >
                   <span
                     class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
@@ -348,7 +348,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-129opaf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >

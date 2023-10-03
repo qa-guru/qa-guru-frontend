@@ -9,18 +9,19 @@ import StatusContent from "shared/components/status-content";
 import TextSerialization from "shared/serializers/text-serialization";
 import LectureHomework from "shared/components/lecture-homework";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
+import { IHomeworkDescription } from "./homework-description.types";
 import {
   StyledBox,
   StyledColumnStack,
-  StyledId,
-  StyledLink,
   StyledPaper,
   StyledRowStack,
   StyledStack,
   StyledTitle,
   StyledTypography,
+  StyledId,
+  StyledLink,
 } from "./homework-description.styled";
-import { IHomeworkDescription } from "./homework-description.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const HomeworkDescription: React.FC<IHomeworkDescription> = ({
@@ -30,70 +31,72 @@ const HomeworkDescription: React.FC<IHomeworkDescription> = ({
   const Format = "dd.MM.yyyy | HH:mm";
 
   return (
-    <StyledBox>
-      <StyledStack>
-        <StyledId>
-          <StyledLink to={`/kanban/${card.id}`}>
-            <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
-          </StyledLink>
-          <OpenInNewIcon />
-        </StyledId>
-        <Button onClick={onClose} variant="contained">
-          Свернуть <ChevronRightIcon />
-        </Button>
-      </StyledStack>
-      <Typography variant="body1">{card.lecture?.subject}</Typography>
-      <StyledRowStack>
-        <UserRow
-          icon={StudentIcon}
-          user={card.student!}
-          width={26}
-          height={26}
-        />
-        {card.mentor && (
+    <StyledHomeworkDetails>
+      <StyledBox>
+        <StyledStack>
+          <StyledId>
+            <StyledLink to={`/kanban/${card.id}`}>
+              <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
+            </StyledLink>
+            <OpenInNewIcon />
+          </StyledId>
+          <Button onClick={onClose} variant="contained">
+            Свернуть <ChevronRightIcon />
+          </Button>
+        </StyledStack>
+        <Typography variant="body1">{card.lecture?.subject}</Typography>
+        <StyledRowStack>
           <UserRow
-            icon={MentorIcon}
-            user={card.mentor}
+            icon={StudentIcon}
+            user={card.student!}
             width={26}
             height={26}
           />
-        )}
-      </StyledRowStack>
-      <StyledRowStack>
-        <StyledColumnStack>
-          <Typography variant="body2">Создано</Typography>
-          <StyledTypography variant="caption">
-            {card.creationDate && format(parseISO(card.creationDate), Format)}
-          </StyledTypography>
-        </StyledColumnStack>
-        {card.startCheckingDate && (
+          {card.mentor && (
+            <UserRow
+              icon={MentorIcon}
+              user={card.mentor}
+              width={26}
+              height={26}
+            />
+          )}
+        </StyledRowStack>
+        <StyledRowStack>
           <StyledColumnStack>
-            <Typography variant="body2">Начало проверки</Typography>
+            <Typography variant="body2">Создано</Typography>
             <StyledTypography variant="caption">
-              {card.startCheckingDate &&
-                format(parseISO(card.startCheckingDate), Format)}
+              {card.creationDate && format(parseISO(card.creationDate), Format)}
             </StyledTypography>
           </StyledColumnStack>
-        )}
-        {card.endCheckingDate && (
-          <StyledColumnStack>
-            <Typography variant="body2">Окончание проверки</Typography>
-            <Typography variant="caption">
-              {card.endCheckingDate &&
-                format(parseISO(card.endCheckingDate), Format)}
-            </Typography>
-          </StyledColumnStack>
-        )}
-      </StyledRowStack>
-      <Box mt="15px">
-        <StatusContent status={card.status!} />
-      </Box>
-      <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork!} />
-      <StyledPaper>
-        <StyledTitle variant="h5">Ответ на задание</StyledTitle>
-        <TextSerialization text={card.answer!} />
-      </StyledPaper>
-    </StyledBox>
+          {card.startCheckingDate && (
+            <StyledColumnStack>
+              <Typography variant="body2">Начало проверки</Typography>
+              <StyledTypography variant="caption">
+                {card.startCheckingDate &&
+                  format(parseISO(card.startCheckingDate), Format)}
+              </StyledTypography>
+            </StyledColumnStack>
+          )}
+          {card.endCheckingDate && (
+            <StyledColumnStack>
+              <Typography variant="body2">Окончание проверки</Typography>
+              <Typography variant="caption">
+                {card.endCheckingDate &&
+                  format(parseISO(card.endCheckingDate), Format)}
+              </Typography>
+            </StyledColumnStack>
+          )}
+        </StyledRowStack>
+        <Box mt="15px">
+          <StatusContent status={card.status!} />
+        </Box>
+        <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork!} />
+        <StyledPaper>
+          <StyledTitle variant="h5">Ответ на задание</StyledTitle>
+          <TextSerialization text={card.answer!} />
+        </StyledPaper>
+      </StyledBox>
+    </StyledHomeworkDetails>
   );
 };
 

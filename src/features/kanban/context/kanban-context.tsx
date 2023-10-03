@@ -1,27 +1,27 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
 export interface IKanbanContext {
-  selectedTrainingId: string | null;
-  setSelectedTrainingId: Dispatch<SetStateAction<string | null>>;
-  selectedLectureId: string | null;
-  setSelectedLectureId: Dispatch<SetStateAction<string | null>>;
-  selectedCreationDateFrom: string | null;
-  setSelectedCreationDateFrom: Dispatch<SetStateAction<string | null>>;
-  selectedCreationDateTo: string | null;
-  setSelectedCreationDateTo: Dispatch<SetStateAction<string | null>>;
-  selectedMentorId: string | null;
-  setSelectedMentorId: Dispatch<SetStateAction<string | null>>;
+  trainingId: string | null;
+  setTrainingId: Dispatch<SetStateAction<string | null>>;
+  lectureId: string | null;
+  setLectureId: Dispatch<SetStateAction<string | null>>;
+  creationDateFrom: string | null;
+  setCreationDateFrom: Dispatch<SetStateAction<string | null>>;
+  creationDateTo: string | null;
+  setCreationDateTo: Dispatch<SetStateAction<string | null>>;
+  mentorId: string | null;
+  setMentorId: Dispatch<SetStateAction<string | null>>;
 }
 
 export const KanbanContext = createContext<IKanbanContext>({
-  selectedTrainingId: null,
-  setSelectedTrainingId: () => {},
-  selectedLectureId: null,
-  setSelectedLectureId: () => {},
-  selectedCreationDateFrom: null,
-  setSelectedCreationDateFrom: () => {},
-  selectedCreationDateTo: null,
-  setSelectedCreationDateTo: () => {},
-  selectedMentorId: null,
-  setSelectedMentorId: () => {},
+  trainingId: null,
+  setTrainingId: () => {},
+  lectureId: null,
+  setLectureId: () => {},
+  creationDateFrom: null,
+  setCreationDateFrom: () => {},
+  creationDateTo: null,
+  setCreationDateTo: () => {},
+  mentorId: null,
+  setMentorId: () => {},
 });

@@ -2,8 +2,8 @@ import React, { createContext, useContext } from "react";
 import { UserRole } from "api/graphql/generated/graphql";
 
 interface UserContextType {
-  userId?: string | null | undefined;
-  userRoles?: Array<UserRole | null> | null | undefined;
+  userId?: string | null;
+  userRoles?: Array<UserRole | null> | null;
 }
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -17,8 +17,8 @@ export const useUserContext = (): UserContextType => {
 };
 
 interface UserProviderProps {
-  userId?: string | null | undefined;
-  userRoles?: Array<UserRole | null> | null | undefined;
+  userId?: string | null;
+  userRoles?: Array<UserRole | null> | null;
   children: React.ReactNode;
 }
 

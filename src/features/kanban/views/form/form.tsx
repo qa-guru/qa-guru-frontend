@@ -24,11 +24,11 @@ import TrainingSelectionByRole from "../../roles/training-selection-by-role";
 const Form: React.FC = () => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
-      selectLectures: "",
-      selectTrainings: "",
+      lectures: "",
+      trainings: "",
       creationDateFrom: "",
       creationDateTo: "",
-      selectMentors: "",
+      mentors: "",
     },
   });
 
@@ -37,19 +37,19 @@ const Form: React.FC = () => {
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const {
-    setSelectedTrainingId,
-    setSelectedLectureId,
-    setSelectedMentorId,
-    setSelectedCreationDateFrom,
-    setSelectedCreationDateTo,
+    setTrainingId,
+    setLectureId,
+    setMentorId,
+    setCreationDateFrom,
+    setCreationDateTo,
   } = useContext(KanbanContext);
 
   const handleReset = () => {
-    setSelectedTrainingId(null);
-    setSelectedLectureId(null);
-    setSelectedMentorId(null);
-    setSelectedCreationDateFrom(null);
-    setSelectedCreationDateTo(null);
+    setTrainingId(null);
+    setLectureId(null);
+    setMentorId(null);
+    setCreationDateFrom(null);
+    setCreationDateTo(null);
     reset();
   };
 

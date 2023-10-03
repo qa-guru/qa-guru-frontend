@@ -2,11 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDrop } from "react-dnd";
 import {
   Box,
-  Button,
   CircularProgress,
   Dialog,
   DialogActions,
-  DialogContent,
   Stack,
   Typography,
 } from "@mui/material";
@@ -14,7 +12,19 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { CardType, IColumn } from "./column.types";
-import { style } from "./styles";
+import {
+  StyledButton,
+  StyledCancelButton,
+  StyledDialogContent,
+  StyledLoadMoreButton,
+  StyledStack,
+  StyledTypographyCount,
+  StyledTypographyStatus,
+  StyledWrapper,
+  StyledWrapperBoxCircle,
+  StyledWrapperColumnBox,
+  StyledWrapperColumnContainer,
+} from "./column.styled";
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
@@ -48,18 +58,28 @@ const Column: React.FC<IColumn> = ({
     }),
   });
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={hideModal} maxWidth="xs">
-      <DialogContent>
-        Вы уверены, что хотите поменять статус данной домашней работы?
-      </DialogContent>
-      <DialogActions>
-        <Button color="secondary" variant="contained" onClick={handleCancel}>
-          Нет
-        </Button>
-        <Button variant="contained" onClick={handleOk}>
-          Да
-        </Button>
-      </DialogActions>
+    <Dialog open={open} onClose={hideModal}>
+      <StyledWrapper>
+        <StyledDialogContent>
+          <Typography variant="h5">
+            Вы уверены, что хотите поменять статус данной домашней работы?
+          </Typography>
+        </StyledDialogContent>
+        <DialogActions>
+          <StyledStack>
+            <StyledCancelButton
+              color="secondary"
+              variant="contained"
+              onClick={handleCancel}
+            >
+              Нет
+            </StyledCancelButton>
+            <StyledButton variant="contained" onClick={handleOk}>
+              Да
+            </StyledButton>
+          </StyledStack>
+        </DialogActions>
+      </StyledWrapper>
     </Dialog>
   ));
 
@@ -139,39 +159,29 @@ const Column: React.FC<IColumn> = ({
   };
 
   return (
-    <Box
-      width={{ xs: "100%", md: "25%" }}
-      flexGrow="1"
-      display="flex"
-      flexDirection="column"
-    >
+    <StyledWrapperColumnBox>
       <Stack direction="row">
-        <Typography fontSize="20px" ml={1} mb={1}>
+        <StyledTypographyStatus>
           {formatStatus(column.title)}
-        </Typography>
-        <Typography fontSize="20px" ml={1}>
+        </StyledTypographyStatus>
+        <StyledTypographyCount>
           {Number(column.totalElements) === 0
             ? "(empty)"
             : `(${column.totalElements})`}
-        </Typography>
+        </StyledTypographyCount>
       </Stack>
-      <Box
+      <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
-        flexGrow="1"
-        mt="5px"
         sx={{
-          ...getColumnStyles(column.id, draggingState, isOver),
-          boxSizing: "border-box",
+          ...getColumnStyles(
+            column.id,
+            draggingState,
+            canDrop,
+            column.totalElements,
+            isOver
+          ),
           overflowY: showButton ? "hidden" : "auto",
-          maxHeight: { xs: "73vh", lg: "69vh" },
-          // backgroundColor:
-          //   Number(column.totalElements) === 0 ? style.emptyColumn : "inherit",
-          ...(isColumnHighlight(column.id, draggingState) && {
-            "&::-webkit-scrollbar": {
-              display: "none",
-            },
-          }),
         }}
       >
         <InfiniteScroll
@@ -179,9 +189,9 @@ const Column: React.FC<IColumn> = ({
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
           loader={
-            <Box mt="10px" display="flex" justifyContent="center">
+            <StyledWrapperBoxCircle>
               <CircularProgress size={25} />
-            </Box>
+            </StyledWrapperBoxCircle>
           }
           style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
@@ -199,13 +209,13 @@ const Column: React.FC<IColumn> = ({
             </Box>
           ))}
         </InfiniteScroll>
-      </Box>
+      </StyledWrapperColumnContainer>
       {showButton && hasMoreHomeworks && (
-        <Button sx={style.loadMoreBtn} onClick={handleLoadMore}>
+        <StyledLoadMoreButton onClick={handleLoadMore}>
           Загрузить еще
-        </Button>
+        </StyledLoadMoreButton>
       )}
-    </Box>
+    </StyledWrapperColumnBox>
   );
 };
 

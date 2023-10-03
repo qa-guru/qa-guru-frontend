@@ -14,29 +14,18 @@ import { getValidDateOrNull } from "../../helpers/is-valid-date";
 import { UserProvider } from "../../context/user-context";
 
 const HomeworksContainer: React.FC = () => {
-  const {
-    selectedTrainingId,
-    selectedLectureId,
-    selectedMentorId,
-    selectedCreationDateFrom,
-    selectedCreationDateTo,
-  } = useContext(KanbanContext);
+  const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =
+    useContext(KanbanContext);
 
   const filterObject = useMemo(() => {
     return {
-      trainingId: selectedTrainingId,
-      lectureId: selectedLectureId,
-      mentorId: selectedMentorId,
-      creationDateFrom: getValidDateOrNull(selectedCreationDateFrom!),
-      creationDateTo: getValidDateOrNull(selectedCreationDateTo!),
+      trainingId,
+      lectureId,
+      mentorId,
+      creationDateFrom: getValidDateOrNull(creationDateFrom!),
+      creationDateTo: getValidDateOrNull(creationDateTo!),
     };
-  }, [
-    selectedTrainingId,
-    selectedLectureId,
-    selectedMentorId,
-    selectedCreationDateFrom,
-    selectedCreationDateTo,
-  ]);
+  }, [trainingId, lectureId, mentorId, creationDateFrom, creationDateTo]);
 
   const { data: dataUser, loading: dataLoading } = useUserQuery();
 

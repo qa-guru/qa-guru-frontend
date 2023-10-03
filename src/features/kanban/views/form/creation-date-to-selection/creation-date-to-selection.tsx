@@ -6,10 +6,10 @@ import { KanbanContext } from "../../../context/kanban-context";
 const CreationDateToSelection: React.FC<ICreationDateToSelection> = ({
   control,
 }) => {
-  const { setSelectedCreationDateTo } = useContext(KanbanContext);
+  const { setCreationDateTo } = useContext(KanbanContext);
 
   const handleSelectChange = (selectedId: string) => {
-    setSelectedCreationDateTo(selectedId);
+    setCreationDateTo(selectedId);
   };
 
   return (
