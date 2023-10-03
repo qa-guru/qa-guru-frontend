@@ -25,7 +25,7 @@ const MentorRoutes: React.ReactNode[] = [
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
-    path="/kanban/:kanbanId"
+    path="/kanban/:lectureId"
     element={<KanbanHomeworkDescription />}
   />,
 ];
@@ -34,7 +34,7 @@ const ManagerRoutes: React.ReactNode[] = [
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
-    path="/kanban/:kanbanId"
+    path="/kanban/:lectureId"
     element={<KanbanHomeworkDescription />}
   />,
 ];

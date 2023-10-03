@@ -1,5 +1,5 @@
 import React from "react";
-import HomeworkDescriptionFullpage from "../features/kanban/views/homework-description-fullpage";
+import HomeworkDescriptionFullpage from "features/kanban/containers/homework-by-lecture";
 
 const KanbanHomeworkDescription: React.FC = () => {
   return <HomeworkDescriptionFullpage />;
