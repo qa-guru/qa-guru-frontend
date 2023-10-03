@@ -47,6 +47,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
       ...styles,
       border: "2px dashed",
       borderColor: primary.main,
+      borderRadius: "10px",
     };
   }
 

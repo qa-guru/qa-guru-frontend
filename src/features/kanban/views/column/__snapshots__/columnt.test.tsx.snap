@@ -3,24 +3,24 @@
 exports[`Column > items are false 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-5vnc55"
+    class="MuiBox-root css-10rlq88"
   >
     <div
       class="MuiStack-root css-m69qwo-MuiStack-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
       >
         New
       </p>
       <p
-        class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
       >
         (7)
       </p>
     </div>
     <div
-      class="MuiBox-root css-1c93eqw"
+      class="MuiBox-root css-1ormioc"
       id="scroll-container-column1"
     >
       <div
@@ -270,24 +270,24 @@ exports[`Column > items are false 1`] = `
 exports[`Column > items are true 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-5vnc55"
+    class="MuiBox-root css-10rlq88"
   >
     <div
       class="MuiStack-root css-m69qwo-MuiStack-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
       >
         New
       </p>
       <p
-        class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
       >
         (7)
       </p>
     </div>
     <div
-      class="MuiBox-root css-1c93eqw"
+      class="MuiBox-root css-1ormioc"
       id="scroll-container-column1"
     >
       <div

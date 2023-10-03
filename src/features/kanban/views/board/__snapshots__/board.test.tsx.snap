@@ -9,27 +9,27 @@ exports[`Board > renders correctly 1`] = `
       style="width: 100%;"
     >
       <div
-        class="MuiStack-root css-1daplrh-MuiStack-root"
+        class="MuiStack-root css-1802xdq-MuiStack-root"
       >
         <div
-          class="MuiBox-root css-5vnc55"
+          class="MuiBox-root css-10rlq88"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
             >
               New
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1c93eqw"
+            class="MuiBox-root css-1ormioc"
             id="scroll-container-1"
           >
             <div
@@ -77,24 +77,24 @@ exports[`Board > renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-5vnc55"
+          class="MuiBox-root css-10rlq88"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
             >
               In review
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1c93eqw"
+            class="MuiBox-root css-1ormioc"
             id="scroll-container-2"
           >
             <div
@@ -142,24 +142,24 @@ exports[`Board > renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-5vnc55"
+          class="MuiBox-root css-10rlq88"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
             >
               Approved
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1c93eqw"
+            class="MuiBox-root css-1ormioc"
             id="scroll-container-3"
           >
             <div
@@ -294,24 +294,24 @@ exports[`Board > renders correctly 1`] = `
           </button>
         </div>
         <div
-          class="MuiBox-root css-5vnc55"
+          class="MuiBox-root css-10rlq88"
         >
           <div
             class="MuiStack-root css-m69qwo-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-17z0j7v-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
             >
               Not approved
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-hmwxfk-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1c93eqw"
+            class="MuiBox-root css-1ormioc"
             id="scroll-container-4"
           >
             <div

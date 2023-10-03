@@ -10,5 +10,4 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   zIndex: 1000,
   justifyContent: "center",
   alignItems: "center",
-  color: theme.palette.primary,
 }));

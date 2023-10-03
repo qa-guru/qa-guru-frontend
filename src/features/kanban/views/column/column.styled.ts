@@ -5,11 +5,9 @@ export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
+  maxHeight: "72vh",
   [theme.breakpoints.up("lg")]: {
-    maxHeight: "69vh",
-  },
-  [theme.breakpoints.up("xs")]: {
-    maxHeight: "73vh",
+    maxHeight: "70vh",
   },
 }));
 
@@ -17,11 +15,9 @@ export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   display: "flex",
   flexGrow: "1",
+  width: "100%",
   [theme.breakpoints.up("md")]: {
     maxHeight: "25%",
-  },
-  [theme.breakpoints.up("xs")]: {
-    width: "100%",
   },
 }));
 
@@ -31,14 +27,14 @@ export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
 }));
 
 export const StyledTypographyStatus = styled(Typography)({
-  fontSize: "20px",
+  fontSize: "18px",
   marginLeft: "8px",
-  marginBottom: "8px",
+  marginBottom: "5px",
 });
 
 export const StyledTypographyCount = styled(Typography)({
-  fontSize: "20px",
-  marginLeft: "8px",
+  fontSize: "18px",
+  marginLeft: "5px",
 });
 
 export const StyledWrapperBoxCircle = styled(Box)({

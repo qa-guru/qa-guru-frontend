@@ -26,14 +26,14 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   padding: "16px 30px 10px",
   gap: theme.spacing(1),
   [theme.breakpoints.up("md")]: {
-    padding: "32px 60px 20px",
+    padding: "32px 60px 10px",
     gap: theme.spacing(2),
   },
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   height: "100vh",
-  backgroundColor: theme.palette.purple,
+  backgroundColor: theme.palette.purple.main,
   justifyContent: "center",
   alignItems: "center",
 }));

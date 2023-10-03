@@ -22,7 +22,7 @@ export const StyledWrapper = styled(Box)({
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   gap: theme.spacing(1),
-  marginTop: "20px",
+  marginTop: "15px",
 }));
 
 export const StyledMobileWrapper = styled(Box)(({ theme }) => ({
