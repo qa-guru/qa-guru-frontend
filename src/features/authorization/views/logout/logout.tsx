@@ -1,37 +1,48 @@
 import React from "react";
 import {
-  Button,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   ListItemIcon,
   ListItemText,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useTranslation } from "react-i18next";
 import { useModal } from "react-modal-hook";
 import { ILogout } from "./logout.types";
+import {
+  StyledButton,
+  StyledCancelButton,
+  StyledDialogContent,
+  StyledStack,
+  StyledWrapper,
+} from "./logout.styled";
 
 const Logout: React.FC<ILogout> = (props) => {
   const { logout, setAnchorElUser } = props;
   const { t } = useTranslation();
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal}>
-      <DialogTitle>{t("sign.out")}</DialogTitle>
-      <DialogContent>
-        <DialogContentText>{t("logout.confirm")}</DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button color="secondary" variant="contained" onClick={handleCancel}>
-          {t("no")}
-        </Button>
-        <Button variant="contained" onClick={handleOk}>
-          {t("yes")}
-        </Button>
-      </DialogActions>
+      <StyledWrapper>
+        <StyledDialogContent>
+          <Typography variant="h5">{t("logout.confirm")}</Typography>
+        </StyledDialogContent>
+        <DialogActions>
+          <StyledStack>
+            <StyledCancelButton
+              color="secondary"
+              variant="contained"
+              onClick={handleCancel}
+            >
+              {t("no")}
+            </StyledCancelButton>
+            <StyledButton variant="contained" onClick={handleOk}>
+              {t("yes")}
+            </StyledButton>
+          </StyledStack>
+        </DialogActions>
+      </StyledWrapper>
     </Dialog>
   ));
 

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`HomeworkDescription > renders correctly 1`] = `
+exports[`HomeworkDetails > renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-1rcn7ct"
@@ -258,7 +258,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`HomeworkDescription > renders correctly 2`] = `
+exports[`HomeworkDetails > renders correctly 2`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-1rcn7ct"

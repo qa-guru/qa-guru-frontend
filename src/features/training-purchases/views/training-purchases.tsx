@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { ITrainings } from "./training-purchases.types";
 import {
   StyledBox,
@@ -14,7 +14,7 @@ const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;
 
   return (
-    <>
+    <Container>
       <Typography variant="h4">Мои курсы</Typography>
       <StyledGrid container columns={{ xs: 6, md: 12 }}>
         {trainingPurchases?.map((item, index) => {
@@ -38,7 +38,7 @@ const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
           );
         })}
       </StyledGrid>
-    </>
+    </Container>
   );
 };
 

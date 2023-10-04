@@ -1,6 +1,7 @@
 import React from "react";
 import LectureHomework from "shared/components/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
+import { Container } from "@mui/material";
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "./lecture-title";
 import LectureDescription from "./lecture-description";
@@ -19,7 +20,7 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
   const hasHomework = lectureHomeWork?.length! > 0;
 
   return (
-    <>
+    <Container>
       <LectureTitle title={subject!} />
       <LectureDescription description={description!} />
       <LectureSpeakers speakers={speakers!} />
@@ -32,7 +33,7 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
         </>
       )}
       {!tariffHomework && <BlurredHomework />}
-    </>
+    </Container>
   );
 };
 

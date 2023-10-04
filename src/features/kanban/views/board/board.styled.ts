@@ -17,6 +17,7 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
 
 export const StyledWrapper = styled(Box)({
   display: "flex",
+  minWidth: "100%",
 });
 
 export const StyledStack = styled(Stack)(({ theme }) => ({

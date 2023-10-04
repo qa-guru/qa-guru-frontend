@@ -6,21 +6,21 @@ exports[`Column > items are false 1`] = `
     class="MuiBox-root css-10rlq88"
   >
     <div
-      class="MuiStack-root css-m69qwo-MuiStack-root"
+      class="MuiStack-root css-nijip5-MuiStack-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
       >
         New
       </p>
       <p
-        class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
       >
         (7)
       </p>
     </div>
     <div
-      class="MuiBox-root css-1ormioc"
+      class="MuiBox-root css-1dn90kg"
       id="scroll-container-column1"
     >
       <div
@@ -61,7 +61,7 @@ exports[`Column > items are false 1`] = `
                   class="MuiStack-root css-qkek6c-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -103,7 +103,7 @@ exports[`Column > items are false 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -171,7 +171,7 @@ exports[`Column > items are false 1`] = `
                   class="MuiStack-root css-qkek6c-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -213,7 +213,7 @@ exports[`Column > items are false 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -273,21 +273,21 @@ exports[`Column > items are true 1`] = `
     class="MuiBox-root css-10rlq88"
   >
     <div
-      class="MuiStack-root css-m69qwo-MuiStack-root"
+      class="MuiStack-root css-nijip5-MuiStack-root"
     >
       <p
-        class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
       >
         New
       </p>
       <p
-        class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
       >
         (7)
       </p>
     </div>
     <div
-      class="MuiBox-root css-1ormioc"
+      class="MuiBox-root css-1dn90kg"
       id="scroll-container-column1"
     >
       <div
@@ -328,7 +328,7 @@ exports[`Column > items are true 1`] = `
                   class="MuiStack-root css-qkek6c-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -370,7 +370,7 @@ exports[`Column > items are true 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -438,7 +438,7 @@ exports[`Column > items are true 1`] = `
                   class="MuiStack-root css-qkek6c-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -480,7 +480,7 @@ exports[`Column > items are true 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-unhrs1-MuiStack-root"
+                    class="MuiStack-root css-1q36rmd-MuiStack-root"
                   >
                     <svg
                       fill="none"

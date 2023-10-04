@@ -12,7 +12,7 @@ exports[`CommentItem > editAccess - false, isSelected - true 1`] = `
         class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -141,7 +141,7 @@ exports[`CommentItem > editAccess - true, isSelected - false 1`] = `
         class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -339,7 +339,7 @@ exports[`CommentItem > the component is false 1`] = `
         class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -401,7 +401,7 @@ exports[`CommentItem > the component is true 1`] = `
         class="MuiBox-root css-qsaw8"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"

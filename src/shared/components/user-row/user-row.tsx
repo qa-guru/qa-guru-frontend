@@ -16,7 +16,7 @@ const UserRow: React.FC<IUserRow> = (props) => {
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
   return (
-    <Stack direction="row" spacing={1.7} alignItems="center">
+    <Stack direction="row" spacing={1} alignItems="center">
       {Icon && <Icon />}
       <AvatarCustom
         fullName={fullName}

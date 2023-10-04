@@ -3,7 +3,7 @@
 exports[`Board > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-gvoll6"
+    class="MuiBox-root css-19dgkr4"
   >
     <div
       style="width: 100%;"
@@ -15,21 +15,21 @@ exports[`Board > renders correctly 1`] = `
           class="MuiBox-root css-10rlq88"
         >
           <div
-            class="MuiStack-root css-m69qwo-MuiStack-root"
+            class="MuiStack-root css-nijip5-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
             >
               New
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1ormioc"
+            class="MuiBox-root css-1dn90kg"
             id="scroll-container-1"
           >
             <div
@@ -80,21 +80,21 @@ exports[`Board > renders correctly 1`] = `
           class="MuiBox-root css-10rlq88"
         >
           <div
-            class="MuiStack-root css-m69qwo-MuiStack-root"
+            class="MuiStack-root css-nijip5-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
             >
               In review
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1ormioc"
+            class="MuiBox-root css-1dn90kg"
             id="scroll-container-2"
           >
             <div
@@ -145,21 +145,21 @@ exports[`Board > renders correctly 1`] = `
           class="MuiBox-root css-10rlq88"
         >
           <div
-            class="MuiStack-root css-m69qwo-MuiStack-root"
+            class="MuiStack-root css-nijip5-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
             >
               Approved
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1ormioc"
+            class="MuiBox-root css-1dn90kg"
             id="scroll-container-3"
           >
             <div
@@ -200,7 +200,7 @@ exports[`Board > renders correctly 1`] = `
                         class="MuiStack-root css-qkek6c-MuiStack-root"
                       >
                         <div
-                          class="MuiStack-root css-unhrs1-MuiStack-root"
+                          class="MuiStack-root css-1q36rmd-MuiStack-root"
                         >
                           <svg
                             fill="none"
@@ -242,7 +242,7 @@ exports[`Board > renders correctly 1`] = `
                           </div>
                         </div>
                         <div
-                          class="MuiStack-root css-unhrs1-MuiStack-root"
+                          class="MuiStack-root css-1q36rmd-MuiStack-root"
                         >
                           <svg
                             fill="none"
@@ -297,21 +297,21 @@ exports[`Board > renders correctly 1`] = `
           class="MuiBox-root css-10rlq88"
         >
           <div
-            class="MuiStack-root css-m69qwo-MuiStack-root"
+            class="MuiStack-root css-nijip5-MuiStack-root"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1bh9k26-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
             >
               Not approved
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-1ee4ic8-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
             >
               (6)
             </p>
           </div>
           <div
-            class="MuiBox-root css-1ormioc"
+            class="MuiBox-root css-1dn90kg"
             id="scroll-container-4"
           >
             <div

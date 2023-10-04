@@ -52,7 +52,7 @@ exports[`HomeworkItem > renders correctly 1`] = `
     class="MuiBox-root css-1kawqjx"
   >
     <div
-      class="MuiStack-root css-unhrs1-MuiStack-root"
+      class="MuiStack-root css-1q36rmd-MuiStack-root"
     >
       <div
         class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"

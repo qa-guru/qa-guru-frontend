@@ -7,7 +7,7 @@ export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",
   maxHeight: "72vh",
   [theme.breakpoints.up("lg")]: {
-    maxHeight: "70vh",
+    maxHeight: "69.5vh",
   },
 }));
 
@@ -27,13 +27,13 @@ export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
 }));
 
 export const StyledTypographyStatus = styled(Typography)({
-  fontSize: "18px",
+  fontSize: "20px",
   marginLeft: "8px",
   marginBottom: "5px",
 });
 
 export const StyledTypographyCount = styled(Typography)({
-  fontSize: "18px",
+  fontSize: "20px",
   marginLeft: "5px",
 });
 
@@ -58,6 +58,10 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   justifyContent: "space-around",
   marginBottom: "15px",
+}));
+
+export const StyledRowStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
