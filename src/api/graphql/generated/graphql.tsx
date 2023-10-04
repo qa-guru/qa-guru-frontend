@@ -992,6 +992,12 @@ export type HomeWorkQuery = {
       __typename?: "LectureInfoDto";
       id?: string | null;
       subject?: string | null;
+      contentHomeWork?: Array<{
+        __typename?: "LectureContentHomeWorkDto";
+        url?: string | null;
+        value?: string | null;
+        type?: string | null;
+      } | null> | null;
     } | null;
     student?: {
       __typename?: "UserDto";
@@ -2165,6 +2171,11 @@ export const HomeWorkDocument = gql`
       lecture {
         id
         subject
+        contentHomeWork {
+          url
+          value
+          type
+        }
       }
       answer
       status

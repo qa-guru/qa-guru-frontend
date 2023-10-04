@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
@@ -54,4 +54,11 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
 
 export const StyledTitle = styled(Typography)(({ theme }) => ({
   marginBottom: "15px",
+}));
+
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.white.main,
+  width: "40px",
+  height: "40px",
 }));

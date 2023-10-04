@@ -2,390 +2,398 @@
 
 exports[`LectureDetail > hasHomework is false 1`] = `
 <DocumentFragment>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-1d2tv6x-MuiTypography-root"
-  >
-    string
-  </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1xm6bug-MuiPaper-root"
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
   >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 css-1d2tv6x-MuiTypography-root"
     >
-      Содержание урока
-    </h5>
-    <hr
-      class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
-    />
+      string
+    </h4>
     <div
-      class="MuiStack-root css-nen11g-MuiStack-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1xm6bug-MuiPaper-root"
     >
-      <div
-        class="MuiStack-root css-vutjc0-MuiStack-root"
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
-        >
-          1
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
-        >
-          string1
-        </h6>
-      </div>
-      <div
-        class="MuiStack-root css-vutjc0-MuiStack-root"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
-        >
-          2
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
-        >
-          string2
-        </h6>
-      </div>
-    </div>
-  </div>
-  <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19betnq-MuiPaper-root"
-  >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
-    >
-      Спикеры
-    </h5>
-    <div
-      class="MuiStack-root css-m5qggf-MuiStack-root"
-    >
-      <div
-        class="MuiStack-root css-e4wh76-MuiStack-root"
-      >
-        <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
-        >
-          <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1mdff12-MuiAvatar-root"
-          >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
-            >
-              ss
-            </h6>
-          </div>
-          <div
-            class="MuiBox-root css-0"
-          >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
-            >
-              string string
-            </h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
-  >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
-    >
-      Материалы урока
-    </h5>
-    <hr
-      class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
-    />
-    <div
-      class="MuiStack-root css-1u4qgj1-MuiStack-root"
-    />
-  </div>
-  <div
-    class="MuiBox-root css-19sk4h4"
-  >
-    <div
-      class="MuiBox-root css-847q77"
-    >
-      <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ay1hcn-MuiPaper-root"
-      >
-        <h5
-          class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
-        >
-          Домашнее задание
-        </h5>
-        <div
-          class="MuiStack-root css-1yc1p5z-MuiStack-root"
-        />
-      </div>
-      <div
-        class="MuiBox-root css-1qg03zn"
-      >
-        <div
-          class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
-        >
-          <span
-            class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
-            role="progressbar"
-            style="width: 40px; height: 40px;"
-          >
-            <svg
-              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
-              viewBox="22 22 44 44"
-            >
-              <circle
-                class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
-                cx="44"
-                cy="44"
-                fill="none"
-                r="20.2"
-                stroke-width="3.6"
-              />
-            </svg>
-          </span>
-        </div>
-      </div>
-    </div>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation css-yscrp5-MuiButtonBase-root-MuiButton-root"
-      tabindex="0"
-      type="button"
-    >
-      Д/З недоступно
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        Содержание урока
+      </h5>
+      <hr
+        class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
       />
-    </button>
+      <div
+        class="MuiStack-root css-nen11g-MuiStack-root"
+      >
+        <div
+          class="MuiStack-root css-vutjc0-MuiStack-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
+          >
+            1
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+          >
+            string1
+          </h6>
+        </div>
+        <div
+          class="MuiStack-root css-vutjc0-MuiStack-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
+          >
+            2
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+          >
+            string2
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19betnq-MuiPaper-root"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+      >
+        Спикеры
+      </h5>
+      <div
+        class="MuiStack-root css-m5qggf-MuiStack-root"
+      >
+        <div
+          class="MuiStack-root css-e4wh76-MuiStack-root"
+        >
+          <div
+            class="MuiStack-root css-1q36rmd-MuiStack-root"
+          >
+            <div
+              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1mdff12-MuiAvatar-root"
+            >
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              >
+                ss
+              </h6>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+              >
+                string string
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+      >
+        Материалы урока
+      </h5>
+      <hr
+        class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+      />
+      <div
+        class="MuiStack-root css-1u4qgj1-MuiStack-root"
+      />
+    </div>
+    <div
+      class="MuiBox-root css-19sk4h4"
+    >
+      <div
+        class="MuiBox-root css-847q77"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
+          >
+            Домашнее задание
+          </h5>
+          <div
+            class="MuiStack-root css-1yc1p5z-MuiStack-root"
+          />
+        </div>
+        <div
+          class="MuiBox-root css-1qg03zn"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
+          >
+            <span
+              class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
+              role="progressbar"
+              style="width: 40px; height: 40px;"
+            >
+              <svg
+                class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+                viewBox="22 22 44 44"
+              >
+                <circle
+                  class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+                  cx="44"
+                  cy="44"
+                  fill="none"
+                  r="20.2"
+                  stroke-width="3.6"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation css-yscrp5-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Д/З недоступно
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
   </div>
 </DocumentFragment>
 `;
 
 exports[`LectureDetail > hasHomework is true 1`] = `
 <DocumentFragment>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-1d2tv6x-MuiTypography-root"
-  >
-    string
-  </h4>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1xm6bug-MuiPaper-root"
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
   >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 css-1d2tv6x-MuiTypography-root"
     >
-      Содержание урока
-    </h5>
-    <hr
-      class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
-    />
+      string
+    </h4>
     <div
-      class="MuiStack-root css-nen11g-MuiStack-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1xm6bug-MuiPaper-root"
     >
-      <div
-        class="MuiStack-root css-vutjc0-MuiStack-root"
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
-        >
-          1
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
-        >
-          string1
-        </h6>
-      </div>
+        Содержание урока
+      </h5>
+      <hr
+        class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+      />
       <div
-        class="MuiStack-root css-vutjc0-MuiStack-root"
-      >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
-        >
-          2
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
-        >
-          string2
-        </h6>
-      </div>
-    </div>
-  </div>
-  <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19betnq-MuiPaper-root"
-  >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
-    >
-      Спикеры
-    </h5>
-    <div
-      class="MuiStack-root css-m5qggf-MuiStack-root"
-    >
-      <div
-        class="MuiStack-root css-e4wh76-MuiStack-root"
+        class="MuiStack-root css-nen11g-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-vutjc0-MuiStack-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
+          >
+            1
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+          >
+            string1
+          </h6>
+        </div>
+        <div
+          class="MuiStack-root css-vutjc0-MuiStack-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-h56oj2-MuiTypography-root"
+          >
+            2
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+          >
+            string2
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-19betnq-MuiPaper-root"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+      >
+        Спикеры
+      </h5>
+      <div
+        class="MuiStack-root css-m5qggf-MuiStack-root"
+      >
+        <div
+          class="MuiStack-root css-e4wh76-MuiStack-root"
         >
           <div
-            class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1mdff12-MuiAvatar-root"
+            class="MuiStack-root css-1q36rmd-MuiStack-root"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+            <div
+              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1mdff12-MuiAvatar-root"
             >
-              ss
-            </h6>
-          </div>
-          <div
-            class="MuiBox-root css-0"
-          >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              >
+                ss
+              </h6>
+            </div>
+            <div
+              class="MuiBox-root css-0"
             >
-              string string
-            </h6>
+              <h6
+                class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+              >
+                string string
+              </h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
-  >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
-    >
-      Материалы урока
-    </h5>
-    <hr
-      class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
-    />
     <div
-      class="MuiStack-root css-1u4qgj1-MuiStack-root"
-    />
-  </div>
-  <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ay1hcn-MuiPaper-root"
-  >
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
     >
-      Домашнее задание
-    </h5>
-    <div
-      class="MuiStack-root css-1yc1p5z-MuiStack-root"
-    >
-      <div
-        class="MuiBox-root css-i6bazn"
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        Материалы урока
+      </h5>
+      <hr
+        class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+      />
+      <div
+        class="MuiStack-root css-1u4qgj1-MuiStack-root"
+      />
+    </div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
+      >
+        Домашнее задание
+      </h5>
+      <div
+        class="MuiStack-root css-1yc1p5z-MuiStack-root"
+      >
+        <div
+          class="MuiBox-root css-i6bazn"
         >
-          Здесь будет отображаться текст домашнего задания к текущей лекции.
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-          Пример домашнего задания:
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-          1. Есть ли разница между $("h1 div"); и $("h1").$("div").
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-          Может ли привести к тому что, поиск найдёт разные элементы?
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-          2. Разработайте следующий автотест:
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-           - Откройте страницу Selenide в Github
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-           - Перейдите в раздел Wiki проекта
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-           - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-          <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
-        >
-           - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
-          <br />
-        </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+            Здесь будет отображаться текст домашнего задания к текущей лекции.
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+            Пример домашнего задания:
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+            1. Есть ли разница между $("h1 div"); и $("h1").$("div").
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+            Может ли привести к тому что, поиск найдёт разные элементы?
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+            2. Разработайте следующий автотест:
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+             - Откройте страницу Selenide в Github
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+             - Перейдите в раздел Wiki проекта
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+             - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
+            <br />
+          </h6>
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          >
+             - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
+            <br />
+          </h6>
+        </div>
       </div>
     </div>
-  </div>
-  <div
-    class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
-  >
-    <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
-      role="progressbar"
-      style="width: 40px; height: 40px;"
+    <div
+      class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
     >
-      <svg
-        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
-        viewBox="22 22 44 44"
+      <span
+        class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
+        role="progressbar"
+        style="width: 40px; height: 40px;"
       >
-        <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
-          cx="44"
-          cy="44"
-          fill="none"
-          r="20.2"
-          stroke-width="3.6"
-        />
-      </svg>
-    </span>
-  </div>
-  <div
-    class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
-  >
-    <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
-      role="progressbar"
-      style="width: 40px; height: 40px;"
+        <svg
+          class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+            cx="44"
+            cy="44"
+            fill="none"
+            r="20.2"
+            stroke-width="3.6"
+          />
+        </svg>
+      </span>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-container css-il5n0a-MuiGrid-root"
     >
-      <svg
-        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
-        viewBox="22 22 44 44"
+      <span
+        class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
+        role="progressbar"
+        style="width: 40px; height: 40px;"
       >
-        <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
-          cx="44"
-          cy="44"
-          fill="none"
-          r="20.2"
-          stroke-width="3.6"
-        />
-      </svg>
-    </span>
+        <svg
+          class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+            cx="44"
+            cy="44"
+            fill="none"
+            r="20.2"
+            stroke-width="3.6"
+          />
+        </svg>
+      </span>
+    </div>
   </div>
 </DocumentFragment>
 `;

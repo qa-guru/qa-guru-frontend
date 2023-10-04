@@ -1,5 +1,5 @@
 import React from "react";
-import { CardActionArea, Grid, Typography } from "@mui/material";
+import { CardActionArea, Container, Grid, Typography } from "@mui/material";
 import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,
@@ -18,7 +18,7 @@ const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
   const { name } = dataTraining.training!;
 
   return (
-    <>
+    <Container>
       <Typography variant="h4">{name}</Typography>
       <StyledGridContainer container>
         {trainingLectures?.map((item, index) => {
@@ -54,7 +54,7 @@ const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
           );
         })}
       </StyledGridContainer>
-    </>
+    </Container>
   );
 };
 

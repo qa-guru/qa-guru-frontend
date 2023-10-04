@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
@@ -10,7 +10,7 @@ import TextSerialization from "shared/serializers/text-serialization";
 import LectureHomework from "shared/components/lecture-homework";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
-import { IHomeworkDescription } from "./homework-description.types";
+import { IHomeworkDescription } from "./homework-details.types";
 import {
   StyledBox,
   StyledColumnStack,
@@ -21,13 +21,11 @@ import {
   StyledTypography,
   StyledId,
   StyledLink,
-} from "./homework-description.styled";
+  StyledIconButton,
+} from "./homework-details.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const HomeworkDescription: React.FC<IHomeworkDescription> = ({
-  card,
-  onClose,
-}) => {
+const HomeworkDetails: React.FC<IHomeworkDescription> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";
 
   return (
@@ -40,9 +38,9 @@ const HomeworkDescription: React.FC<IHomeworkDescription> = ({
             </StyledLink>
             <OpenInNewIcon />
           </StyledId>
-          <Button onClick={onClose} variant="contained">
-            Свернуть <ChevronRightIcon />
-          </Button>
+          <StyledIconButton onClick={onClose}>
+            <ChevronRightIcon />
+          </StyledIconButton>
         </StyledStack>
         <Typography variant="body1">{card.lecture?.subject}</Typography>
         <StyledRowStack>
@@ -100,4 +98,4 @@ const HomeworkDescription: React.FC<IHomeworkDescription> = ({
   );
 };
 
-export default HomeworkDescription;
+export default HomeworkDetails;

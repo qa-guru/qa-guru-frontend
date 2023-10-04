@@ -2,52 +2,56 @@
 
 exports[`TrainingPurchases > renders correctly 1`] = `
 <DocumentFragment>
-  <h4
-    class="MuiTypography-root MuiTypography-h4 css-h8ke29-MuiTypography-root"
-  >
-    Мои курсы
-  </h4>
   <div
-    class="MuiGrid-root MuiGrid-container css-fz9o5v-MuiGrid-root"
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
   >
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1tp3ba8-MuiGrid-root"
+    <h4
+      class="MuiTypography-root MuiTypography-h4 css-h8ke29-MuiTypography-root"
     >
-      <a
-        class="css-ytumd6"
-        href="/training/string"
+      Мои курсы
+    </h4>
+    <div
+      class="MuiGrid-root MuiGrid-container css-fz9o5v-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1tp3ba8-MuiGrid-root"
       >
-        <button
-          class="MuiButtonBase-root MuiCardActionArea-root css-1pokm5m-MuiButtonBase-root-MuiCardActionArea-root"
-          tabindex="0"
-          type="button"
+        <a
+          class="css-ytumd6"
+          href="/training/string"
         >
-          <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-b0q2y0-MuiPaper-root"
+          <button
+            class="MuiButtonBase-root MuiCardActionArea-root css-1pokm5m-MuiButtonBase-root-MuiCardActionArea-root"
+            tabindex="0"
+            type="button"
           >
-            <h5
-              class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
-            >
-              string
-            </h5>
             <div
-              class="MuiBox-root css-18bde50"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-b0q2y0-MuiPaper-root"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-1hhqpuv-MuiTypography-root"
+              <h5
+                class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
               >
-                Продолжить
-              </h6>
+                string
+              </h5>
+              <div
+                class="MuiBox-root css-18bde50"
+              >
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 css-1hhqpuv-MuiTypography-root"
+                >
+                  Продолжить
+                </h6>
+              </div>
             </div>
-          </div>
-          <span
-            class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
-          />
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
-      </a>
+            <span
+              class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+            />
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </a>
+      </div>
     </div>
   </div>
 </DocumentFragment>

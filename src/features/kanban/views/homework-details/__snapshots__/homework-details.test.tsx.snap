@@ -1,27 +1,46 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`HomeworkDetails > renders correctly 1`] = `
+exports[`HomeworkDescription > renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-1rcn7ct"
   >
     <div
-      class="MuiBox-root css-15v0e0b"
+      class="MuiBox-root css-1yzho83"
     >
       <div
         class="MuiStack-root css-nbehj-MuiStack-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+        <div
+          class="MuiStack-root css-88meij-MuiStack-root"
         >
-          JAVA-23
-        </h6>
+          <a
+            class="css-1kgkdd1"
+            href="/kanban/123123"
+          >
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+            >
+              JAVA-23
+            </h6>
+          </a>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="OpenInNewIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+            />
+          </svg>
+        </div>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-g7r6jb-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
-          Свернуть 
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
@@ -45,7 +64,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
         class="MuiStack-root css-3t268d-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <svg
             fill="none"
@@ -79,7 +98,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <svg
             fill="none"
@@ -135,7 +154,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
           >
-            10.10.2021 | 13:10
+            10.10.2021 | 12:10
           </span>
         </div>
         <div
@@ -149,7 +168,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
           >
-            10.10.2021 | 15:10
+            10.10.2021 | 14:10
           </span>
         </div>
         <div
@@ -163,7 +182,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-10kve1z-MuiTypography-root"
           >
-            10.10.2021 | 13:11
+            10.10.2021 | 12:11
           </span>
         </div>
       </div>
@@ -203,7 +222,7 @@ exports[`HomeworkDetails > renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ay1hcn-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
       >
         <h5
           class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
@@ -238,28 +257,47 @@ exports[`HomeworkDetails > renders correctly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`HomeworkDetails > renders correctly 2`] = `
+exports[`HomeworkDescription > renders correctly 2`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-1rcn7ct"
   >
     <div
-      class="MuiBox-root css-15v0e0b"
+      class="MuiBox-root css-1yzho83"
     >
       <div
         class="MuiStack-root css-nbehj-MuiStack-root"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+        <div
+          class="MuiStack-root css-88meij-MuiStack-root"
         >
-          JAVA-23
-        </h6>
+          <a
+            class="css-1kgkdd1"
+            href="/kanban/123123"
+          >
+            <h6
+              class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+            >
+              JAVA-23
+            </h6>
+          </a>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="OpenInNewIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+            />
+          </svg>
+        </div>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1uq8tlb-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-g7r6jb-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
-          Свернуть 
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
@@ -283,7 +321,7 @@ exports[`HomeworkDetails > renders correctly 2`] = `
         class="MuiStack-root css-3t268d-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <svg
             fill="none"
@@ -317,7 +355,7 @@ exports[`HomeworkDetails > renders correctly 2`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-unhrs1-MuiStack-root"
+          class="MuiStack-root css-1q36rmd-MuiStack-root"
         >
           <svg
             fill="none"
@@ -373,7 +411,7 @@ exports[`HomeworkDetails > renders correctly 2`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
           >
-            10.10.2021 | 13:10
+            10.10.2021 | 12:10
           </span>
         </div>
         <div
@@ -387,7 +425,7 @@ exports[`HomeworkDetails > renders correctly 2`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
           >
-            10.10.2021 | 15:10
+            10.10.2021 | 14:10
           </span>
         </div>
         <div
@@ -401,7 +439,7 @@ exports[`HomeworkDetails > renders correctly 2`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-10kve1z-MuiTypography-root"
           >
-            10.10.2021 | 13:11
+            10.10.2021 | 12:11
           </span>
         </div>
       </div>
@@ -441,7 +479,7 @@ exports[`HomeworkDetails > renders correctly 2`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-ay1hcn-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
       >
         <h5
           class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"

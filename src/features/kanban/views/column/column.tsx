@@ -5,7 +5,6 @@ import {
   CircularProgress,
   Dialog,
   DialogActions,
-  Stack,
   Typography,
 } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -17,6 +16,7 @@ import {
   StyledCancelButton,
   StyledDialogContent,
   StyledLoadMoreButton,
+  StyledRowStack,
   StyledStack,
   StyledTypographyCount,
   StyledTypographyStatus,
@@ -160,7 +160,7 @@ const Column: React.FC<IColumn> = ({
 
   return (
     <StyledWrapperColumnBox>
-      <Stack direction="row">
+      <StyledRowStack>
         <StyledTypographyStatus>
           {formatStatus(column.title)}
         </StyledTypographyStatus>
@@ -169,7 +169,7 @@ const Column: React.FC<IColumn> = ({
             ? "(empty)"
             : `(${column.totalElements})`}
         </StyledTypographyCount>
-      </Stack>
+      </StyledRowStack>
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
