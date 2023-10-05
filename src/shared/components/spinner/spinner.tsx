@@ -5,7 +5,7 @@ import { StyledGrid } from "./spinner.styled";
 const Spinner: React.FC = () => {
   return (
     <StyledGrid container>
-      <CircularProgress color="primary" />
+      <CircularProgress />
     </StyledGrid>
   );
 };

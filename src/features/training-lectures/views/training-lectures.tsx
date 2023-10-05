@@ -1,5 +1,6 @@
 import React from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
+import ButtonTrainingList from "shared/components/buttons/button-training-list/button-training-list";
 import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,
@@ -19,6 +20,7 @@ const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
 
   return (
     <Container>
+      <ButtonTrainingList />
       <Typography variant="h4">{name}</Typography>
       <StyledGridContainer container>
         {trainingLectures?.map((item, index) => {

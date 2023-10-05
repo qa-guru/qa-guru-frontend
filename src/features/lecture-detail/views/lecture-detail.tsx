@@ -2,6 +2,7 @@ import React from "react";
 import LectureHomework from "shared/components/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 import { Container } from "@mui/material";
+import ButtonLessonsList from "shared/components/buttons/button-lessons-list/button-lessons-list";
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "./lecture-title";
 import LectureDescription from "./lecture-description";
@@ -21,6 +22,7 @@ const LectureDetail: React.FC<ILectureDetail> = (props) => {
 
   return (
     <Container>
+      <ButtonLessonsList />
       <LectureTitle title={subject!} />
       <LectureDescription description={description!} />
       <LectureSpeakers speakers={speakers!} />
