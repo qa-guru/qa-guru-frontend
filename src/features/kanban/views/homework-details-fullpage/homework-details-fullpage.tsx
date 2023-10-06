@@ -9,6 +9,7 @@ import StatusContent from "shared/components/status-content";
 import UserRow from "shared/components/user-row";
 import LectureHomework from "shared/components/lecture-homework";
 import TextSerialization from "shared/serializers/text-serialization";
+import Homework from "features/lecture-detail/views/homework";
 import { IHomeworkDescriptionFullpage } from "./homework-details-fullpage.types";
 import {
   StyledColumnStack,
@@ -19,7 +20,6 @@ import {
   StyledTitle,
 } from "./homework-details-fullpage.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
-import Homework from "features/lecture-detail/views/homework";
 
 const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
   data,
