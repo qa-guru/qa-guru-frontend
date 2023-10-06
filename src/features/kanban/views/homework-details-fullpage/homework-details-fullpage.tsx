@@ -11,17 +11,19 @@ import LectureHomework from "shared/components/lecture-homework";
 import TextSerialization from "shared/serializers/text-serialization";
 import { IHomeworkDescriptionFullpage } from "./homework-details-fullpage.types";
 import {
-  StyledIconButton,
-  StyledStack,
   StyledColumnStack,
+  StyledIconButton,
   StyledPaper,
   StyledRowStack,
+  StyledStack,
   StyledTitle,
 } from "./homework-details-fullpage.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
+import Homework from "features/lecture-detail/views/homework";
 
 const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
   data,
+  dataUserId,
 }) => {
   const navigate = useNavigate();
   const Format = "dd.MM.yyyy | HH:mm";
@@ -84,6 +86,10 @@ const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
           <TextSerialization text={data!.homeWork?.answer!} />
         </StyledPaper>
       </StyledStack>
+      <Homework
+        dataHomeWorkByLecture={data.homeWork!}
+        dataUserId={dataUserId!}
+      />
     </Container>
   );
 };

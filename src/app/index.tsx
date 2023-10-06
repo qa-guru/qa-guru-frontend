@@ -18,7 +18,6 @@ const App = () => {
     },
     onError: () => {
       setIsAuth(false);
-      navigate("/authorization");
     },
   });
 
@@ -26,7 +25,7 @@ const App = () => {
 
   return (
     <>
-      {!isAuth ? <AuthRoutes /> : <AppRoutes userRoles={data?.user?.roles!} />}
+      {isAuth ? <AppRoutes userRoles={data?.user?.roles!} /> : <AuthRoutes />}
     </>
   );
 };
