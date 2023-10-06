@@ -5,6 +5,12 @@ import { StyledStack, StyledWrapper } from "../board.styled";
 import Column from "../../column";
 import HomeworkDetails from "../../homework-details/homework-details";
 
+const minColumnWidth = "65%";
+const maxColumnWidth = "100%";
+const minDetailsWidth = "0";
+const maxDetailsWidth = "34%";
+const animateDuration = 0.4;
+
 const DesktopBoard: React.FC<IDesktopBoard> = ({
   columns,
   draggingState,
@@ -18,24 +24,18 @@ const DesktopBoard: React.FC<IDesktopBoard> = ({
   activeCardId,
   handleHomeworkDetailsClose,
 }) => {
-  const MinColumnWidth = "65%";
-  const MaxColumnWidth = "100%";
-  const MinDetailsWidth = "0";
-  const MaxDetailsWidth = "34%";
-  const AnimateDuration = 0.4;
-
   return (
     <StyledWrapper>
       <motion.div
         initial={{
           width:
-            showHomeworkDetails && isUpLg ? MinColumnWidth : MaxColumnWidth,
+            showHomeworkDetails && isUpLg ? minColumnWidth : maxColumnWidth,
         }}
         animate={{
           width:
-            showHomeworkDetails && isUpLg ? MinColumnWidth : MaxColumnWidth,
+            showHomeworkDetails && isUpLg ? minColumnWidth : maxColumnWidth,
         }}
-        transition={{ duration: AnimateDuration }}
+        transition={{ duration: animateDuration }}
       >
         <StyledStack mr={showHomeworkDetails && isUpLg ? 2 : 0}>
           {columns?.map((column, index) => (
@@ -55,10 +55,10 @@ const DesktopBoard: React.FC<IDesktopBoard> = ({
       <AnimatePresence>
         {isUpLg && selectedCard && (
           <motion.div
-            initial={{ width: MinDetailsWidth }}
-            animate={{ width: MaxDetailsWidth }}
-            exit={{ width: MinDetailsWidth }}
-            transition={{ duration: AnimateDuration }}
+            initial={{ width: minDetailsWidth }}
+            animate={{ width: maxDetailsWidth }}
+            exit={{ width: minDetailsWidth }}
+            transition={{ duration: animateDuration }}
           >
             <HomeworkDetails
               card={selectedCard!}

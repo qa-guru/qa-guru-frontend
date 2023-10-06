@@ -9,6 +9,8 @@ import {
 } from "../board.styled";
 import Column from "../../column";
 
+const step = 1;
+
 const MobileBoard: React.FC<IMobileBoard> = ({
   columns,
   activeStep,
@@ -18,15 +20,13 @@ const MobileBoard: React.FC<IMobileBoard> = ({
   moveCard,
   fetchMoreFunctions,
 }) => {
-  const Step = 1;
-
   return (
     <StyledMobileWrapper>
       <StyledBox>
         <StyledPagination
           count={columns.length}
-          page={activeStep + Step}
-          onChange={(event, steps) => handleStepChange(steps - Step)}
+          page={activeStep + step}
+          onChange={(event, steps) => handleStepChange(steps - step)}
           size="small"
           hidePrevButton
           hideNextButton
