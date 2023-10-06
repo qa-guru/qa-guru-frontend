@@ -8,9 +8,9 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(2),
 }));
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   width: "100%",
-}));
+});
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "column-reverse",

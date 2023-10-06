@@ -29,10 +29,10 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
 
-export const StyledCommentBox = styled(Box)(({ theme }) => ({
+export const StyledCommentBox = styled(Box)({
   width: "100%",
-}));
+});
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   marginTop: "10px",
-}));
+});

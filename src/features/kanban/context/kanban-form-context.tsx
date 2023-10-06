@@ -1,6 +1,6 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
-export interface IKanbanContext {
+export interface IKanbanFormContext {
   trainingId: string | null;
   setTrainingId: Dispatch<SetStateAction<string | null>>;
   lectureId: string | null;
@@ -13,7 +13,7 @@ export interface IKanbanContext {
   setMentorId: Dispatch<SetStateAction<string | null>>;
 }
 
-export const KanbanContext = createContext<IKanbanContext>({
+export const KanbanFormContext = createContext<IKanbanFormContext>({
   trainingId: null,
   setTrainingId: () => {},
   lectureId: null,

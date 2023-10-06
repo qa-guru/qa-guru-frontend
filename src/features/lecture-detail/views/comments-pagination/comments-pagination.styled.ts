@@ -7,11 +7,11 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(2),
 }));
 
-export const StyledInfiniteScroll = styled(InfiniteScroll)(({ theme }) => ({
+export const StyledInfiniteScroll = styled(InfiniteScroll)({
   overflow: "visible",
-}));
+});
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   marginTop: "25px",
   textAlign: "center",
-}));
+});

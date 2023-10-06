@@ -44,21 +44,21 @@ export const StyledRowStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
 }));
 
-export const StyledColumnStack = styled(Stack)(({ theme }) => ({
+export const StyledColumnStack = styled(Stack)({
   flexDirection: "column",
-}));
+});
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)({
   flexWrap: "nowrap",
-}));
+});
 
-export const StyledTitle = styled(Typography)(({ theme }) => ({
+export const StyledTitle = styled(Typography)({
   marginBottom: "15px",
-}));
+});
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.white.main,
-  width: "40px",
-  height: "40px",
+  width: "35px",
+  height: "35px",
 }));

@@ -2,10 +2,10 @@ import { styled } from "@mui/system";
 import { DialogContent, Stack, Box } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
-export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
+export const StyledDialogContent = styled(DialogContent)({
   overflowY: "auto",
   maxHeight: "calc(100vh - 200px)",
-}));
+});
 
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",

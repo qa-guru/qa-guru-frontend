@@ -1,18 +1,18 @@
 import { styled } from "@mui/system";
 import { Button, Box } from "@mui/material";
 
-export const StyledWrapper = styled(Box)(({ theme }) => ({
+export const StyledWrapper = styled(Box)({
   position: "relative",
-}));
+});
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   filter: "blur(3.5px)",
   pointerEvents: "none",
-}));
+});
 
-export const StyledHomeworkBox = styled(Box)(({ theme }) => ({
+export const StyledHomeworkBox = styled(Box)({
   paddingTop: "40px",
-}));
+});
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   position: "absolute",

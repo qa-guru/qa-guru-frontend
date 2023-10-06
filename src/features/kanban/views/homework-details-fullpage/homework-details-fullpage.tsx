@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Typography } from "@mui/material";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
@@ -11,12 +10,14 @@ import LectureHomework from "shared/components/lecture-homework";
 import TextSerialization from "shared/serializers/text-serialization";
 import { IHomeworkDescriptionFullpage } from "./homework-details-fullpage.types";
 import {
-  StyledIconButton,
-  StyledStack,
+  StyledAnswerPaper,
   StyledColumnStack,
-  StyledPaper,
+  StyledIcon,
+  StyledNavigateButton,
   StyledRowStack,
+  StyledStack,
   StyledTitle,
+  StyledTypography,
 } from "./homework-details-fullpage.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
@@ -32,15 +33,14 @@ const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
 
   return (
     <Container>
+      <StyledNavigateButton variant="outlined" onClick={handleBack}>
+        <StyledIcon />
+        <StyledTypography variant="subtitle1">К доске заданий</StyledTypography>
+      </StyledNavigateButton>
       <StyledTitle variant="h6">
         {getFormattedId(data!.homeWork?.lecture!.id!)}
       </StyledTitle>
-      <StyledRowStack>
-        <Typography variant="h4">{data!.homeWork?.lecture?.subject}</Typography>
-        <StyledIconButton onClick={handleBack}>
-          <ChevronRightIcon />
-        </StyledIconButton>
-      </StyledRowStack>
+      <Typography variant="h4">{data!.homeWork?.lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>
           <UserRow icon={StudentIcon} user={data!.homeWork?.student!} />
@@ -79,10 +79,10 @@ const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
         <LectureHomework
           lectureHomeWork={data.homeWork?.lecture?.contentHomeWork!}
         />
-        <StyledPaper>
+        <StyledAnswerPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>
           <TextSerialization text={data!.homeWork?.answer!} />
-        </StyledPaper>
+        </StyledAnswerPaper>
       </StyledStack>
     </Container>
   );

@@ -4,7 +4,6 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  Button,
   IconButton,
   Typography,
   useMediaQuery,
@@ -18,7 +17,7 @@ import CreationDateToSelection from "./creation-date-to-selection";
 import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
 import MentorsSelection from "../../containers/mentors";
 import LectureSelection from "../../containers/training-lectures";
-import { KanbanContext } from "../../context/kanban-context";
+import { KanbanFormContext } from "../../context/kanban-form-context";
 import TrainingSelectionByRole from "../../roles/training-selection-by-role";
 
 const Form: React.FC = () => {
@@ -42,7 +41,7 @@ const Form: React.FC = () => {
     setMentorId,
     setCreationDateFrom,
     setCreationDateTo,
-  } = useContext(KanbanContext);
+  } = useContext(KanbanFormContext);
 
   const handleReset = () => {
     setTrainingId(null);
@@ -77,13 +76,9 @@ const Form: React.FC = () => {
                 <CreationDateToSelection control={control} />
               </StyledRowStack>
               <StyledRowStack>
-                <Button
-                  onClick={handleReset}
-                  variant="contained"
-                  endIcon={<RefreshIcon />}
-                >
-                  Сбросить
-                </Button>
+                <IconButton onClick={handleReset}>
+                  <RefreshIcon color={"primary"} fontSize={"large"} />
+                </IconButton>
               </StyledRowStack>
             </StyledColumnStack>
           </AccordionDetails>

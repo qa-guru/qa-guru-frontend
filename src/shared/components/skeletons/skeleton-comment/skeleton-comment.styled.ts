@@ -16,20 +16,20 @@ export const StyledRowStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledStackItem = styled(Stack)(({ theme }) => ({
+export const StyledStackItem = styled(Stack)({
   width: "10%",
-}));
+});
 
-export const StyledCircularSkeleton = styled(Skeleton)(({ theme }) => ({
+export const StyledCircularSkeleton = styled(Skeleton)({
   width: 40,
   height: 40,
-}));
+});
 
-export const StyledRoundedSkeleton = styled(Skeleton)(({ theme }) => ({
+export const StyledRoundedSkeleton = styled(Skeleton)({
   width: "100%",
   height: 60,
-}));
+});
 
-export const StyledSkeleton = styled(Skeleton)(({ theme }) => ({
+export const StyledSkeleton = styled(Skeleton)({
   fontSize: "0.7rem",
-}));
+});

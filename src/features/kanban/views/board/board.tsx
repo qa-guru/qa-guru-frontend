@@ -1,27 +1,18 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Box, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
-import SwipeableViews from "react-swipeable-views";
-import { AnimatePresence, motion } from "framer-motion";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
 import { IBoard } from "./board.types";
-import {
-  StyledBox,
-  StyledMobileWrapper,
-  StyledPagination,
-  StyledStack,
-  StyledWrapper,
-} from "./board.styled";
-import Column from "../column/column";
+import DesktopBoard from "./desktop-board";
+import MobileBoard from "./mobile-board";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
-import HomeworkDetails from "../homework-details/homework-details";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -162,77 +153,29 @@ const Board: React.FC<IBoard> = ({
   return (
     <DndProvider backend={HTML5Backend}>
       {isDownMd ? (
-        <StyledMobileWrapper>
-          <StyledBox>
-            <StyledPagination
-              count={columns.length}
-              page={activeStep + 1}
-              onChange={(event, step) => handleStepChange(step - 1)}
-              size="small"
-              hidePrevButton
-              hideNextButton
-            />
-          </StyledBox>
-          <Box>
-            <SwipeableViews
-              key={activeStep}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              slideStyle={{
-                scrollBehavior: "smooth",
-              }}
-            >
-              {columns.map((column, index) => (
-                <Column
-                  draggingState={draggingState}
-                  setDraggingState={setDraggingState}
-                  key={`${column.id}-${index}`}
-                  column={column}
-                  onCardDrop={moveCard}
-                  fetchMore={fetchMoreFunctions[index]}
-                />
-              ))}
-            </SwipeableViews>
-          </Box>
-        </StyledMobileWrapper>
+        <MobileBoard
+          columns={columns}
+          activeStep={activeStep}
+          handleStepChange={handleStepChange}
+          draggingState={draggingState}
+          setDraggingState={setDraggingState}
+          moveCard={moveCard}
+          fetchMoreFunctions={fetchMoreFunctions}
+        />
       ) : (
-        <StyledWrapper>
-          <motion.div
-            initial={{ width: showHomeworkDetails && isUpLg ? "65%" : "100%" }}
-            animate={{ width: showHomeworkDetails && isUpLg ? "65%" : "100%" }}
-            transition={{ duration: 0.4 }}
-          >
-            <StyledStack mr={showHomeworkDetails && isUpLg ? 2 : 0}>
-              {columns?.map((column, index) => (
-                <Column
-                  draggingState={draggingState}
-                  setDraggingState={setDraggingState}
-                  key={`${column.id}-${index}`}
-                  column={column}
-                  onCardDrop={moveCard}
-                  fetchMore={fetchMoreFunctions[index]}
-                  onCardClick={handleCardClick}
-                  activeCardId={activeCardId}
-                />
-              ))}
-            </StyledStack>
-          </motion.div>
-          <AnimatePresence>
-            {isUpLg && selectedCard && (
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={{ width: "34%" }}
-                exit={{ width: "0" }}
-                transition={{ duration: 0.4 }}
-              >
-                <HomeworkDetails
-                  card={selectedCard!}
-                  onClose={handleHomeworkDetailsClose}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </StyledWrapper>
+        <DesktopBoard
+          columns={columns}
+          draggingState={draggingState}
+          setDraggingState={setDraggingState}
+          moveCard={moveCard}
+          fetchMoreFunctions={fetchMoreFunctions}
+          showHomeworkDetails={showHomeworkDetails}
+          isUpLg={isUpLg}
+          selectedCard={selectedCard}
+          handleCardClick={handleCardClick}
+          activeCardId={activeCardId}
+          handleHomeworkDetailsClose={handleHomeworkDetailsClose}
+        />
       )}
     </DndProvider>
   );

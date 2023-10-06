@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { useTrainingLecturesQuery } from "api/graphql/generated/graphql";
 import { ITrainingLecturesContainer } from "./training-lectures-container.types";
 import LectureSelection from "../../views/form/lecture-selection";
-import { KanbanContext } from "../../context/kanban-context";
+import { KanbanFormContext } from "../../context/kanban-form-context";
 
 const TrainingLecturesContainer: React.FC<ITrainingLecturesContainer> = ({
   control,
 }) => {
-  const { trainingId } = useContext(KanbanContext);
+  const { trainingId } = useContext(KanbanFormContext);
 
   const { data, loading } = useTrainingLecturesQuery({
     variables: { id: trainingId! },
