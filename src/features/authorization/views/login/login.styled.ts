@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Button, Paper, Stack } from "@mui/material";
+import { Box, Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
@@ -37,6 +37,10 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
 }));
+
+export const StyledAlignBox = styled(Box)({
+  textAlign: "center",
+});
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: "none",

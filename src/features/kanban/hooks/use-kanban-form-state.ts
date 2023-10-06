@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useKanbanState = () => {
+const useKanbanFormState = () => {
   const [trainingId, setTrainingId] = useState<string | null>(null);
   const [lectureId, setLectureId] = useState<string | null>(null);
   const [creationDateFrom, setCreationDateFrom] = useState<string | null>(null);
@@ -21,4 +21,4 @@ const useKanbanState = () => {
   };
 };
 
-export default useKanbanState;
+export default useKanbanFormState;

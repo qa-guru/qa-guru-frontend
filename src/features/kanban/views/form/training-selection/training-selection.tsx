@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { FormControl } from "@mui/material";
 import RHF from "shared/components/input-RHF";
 import { ITrainingSelection } from "./training-selection.types";
-import { KanbanContext } from "../../../context/kanban-context";
+import { KanbanFormContext } from "../../../context/kanban-form-context";
 
 const TrainingSelection: React.FC<ITrainingSelection> = ({
   items,
   control,
 }) => {
-  const { setTrainingId } = useContext(KanbanContext);
+  const { setTrainingId } = useContext(KanbanFormContext);
 
   const trainingOptions = items?.map((item) => ({
     value: item?.id,

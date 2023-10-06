@@ -52,7 +52,7 @@ exports[`HomeworkItem > renders correctly 1`] = `
     class="MuiBox-root css-1kawqjx"
   >
     <div
-      class="MuiStack-root css-1q36rmd-MuiStack-root"
+      class="MuiStack-root css-19iseno-MuiStack-root"
     >
       <div
         class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -72,12 +72,12 @@ exports[`HomeworkItem > renders correctly 1`] = `
           firstName lastName
         </h6>
         <div
-          class="MuiStack-root css-gmwslw-MuiStack-root"
+          class="MuiStack-root css-1je0tgk-MuiStack-root"
         >
           <h6
             class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
           >
-            10.10.2021 | 13:11
+            10.10.2021 | 12:11
           </h6>
         </div>
       </div>

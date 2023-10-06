@@ -13,6 +13,6 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(0.5),
 }));
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)({
   marginBottom: "20px",
-}));
+});

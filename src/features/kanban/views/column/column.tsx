@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDrop } from "react-dnd";
 import {
-  Box,
   CircularProgress,
   Dialog,
   DialogActions,
   Typography,
 } from "@mui/material";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { useModal } from "react-modal-hook";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { CardType, IColumn } from "./column.types";
 import {
   StyledButton,
   StyledCancelButton,
+  StyledCardBox,
   StyledDialogContent,
+  StyledInfiniteScroll,
   StyledLoadMoreButton,
   StyledRowStack,
   StyledStack,
@@ -173,6 +173,7 @@ const Column: React.FC<IColumn> = ({
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
+        showButton={showButton}
         sx={{
           ...getColumnStyles(
             column.id,
@@ -181,10 +182,9 @@ const Column: React.FC<IColumn> = ({
             column.totalElements,
             isOver
           ),
-          overflowY: showButton ? "hidden" : "auto",
         }}
       >
-        <InfiniteScroll
+        <StyledInfiniteScroll
           dataLength={column.cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
@@ -193,11 +193,10 @@ const Column: React.FC<IColumn> = ({
               <CircularProgress size={25} />
             </StyledWrapperBoxCircle>
           }
-          style={{ overflow: "visible" }}
           scrollableTarget={`scroll-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (
-            <Box mb={2} key={`${card.id}-${index}`}>
+            <StyledCardBox key={`${card.id}-${index}`}>
               <Card
                 card={card}
                 sourceColumnId={column.id}
@@ -206,9 +205,9 @@ const Column: React.FC<IColumn> = ({
                 onCardClick={() => onCardClick!(card)}
                 isActive={activeCardId === card.id}
               />
-            </Box>
+            </StyledCardBox>
           ))}
-        </InfiniteScroll>
+        </StyledInfiniteScroll>
       </StyledWrapperColumnContainer>
       {showButton && hasMoreHomeworks && (
         <StyledLoadMoreButton onClick={handleLoadMore}>

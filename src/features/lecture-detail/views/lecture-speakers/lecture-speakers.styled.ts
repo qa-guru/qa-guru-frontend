@@ -22,6 +22,6 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)({
   marginBottom: "15px",
-}));
+});

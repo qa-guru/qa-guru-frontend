@@ -8,9 +8,9 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   marginTop: "20px",
 }));
 
-export const StyledCardActionArea = styled(CardActionArea)(({ theme }) => ({
+export const StyledCardActionArea = styled(CardActionArea)({
   height: "100%",
-}));
+});
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
@@ -23,16 +23,16 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   justifyContent: "space-between",
 }));
 
-export const StyledLink = styled(Link)(({ theme }) => ({
+export const StyledLink = styled(Link)({
   textDecoration: "none",
-}));
+});
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "flex-end",
   marginTop: "20px",
-}));
+});

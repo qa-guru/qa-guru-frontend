@@ -1,15 +1,23 @@
 import { styled } from "@mui/system";
 import { Box, Button, DialogContent, Stack, Typography } from "@mui/material";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
-  flexGrow: 1,
-  marginTop: "5px",
-  boxSizing: "border-box",
-  maxHeight: "72vh",
-  [theme.breakpoints.up("lg")]: {
-    maxHeight: "69.5vh",
-  },
-}));
+interface IStyledColumn {
+  showButton?: boolean;
+}
+
+export const StyledWrapperColumnContainer = styled(Box)<IStyledColumn>(
+  ({ theme, showButton }) => ({
+    flexGrow: 1,
+    marginTop: "5px",
+    boxSizing: "border-box",
+    maxHeight: "72vh",
+    [theme.breakpoints.up("lg")]: {
+      maxHeight: "69.5vh",
+    },
+    overflowY: showButton ? "hidden" : "auto",
+  })
+);
 
 export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
   flexDirection: "column",
@@ -43,14 +51,14 @@ export const StyledWrapperBoxCircle = styled(Box)({
   marginTop: "10px",
 });
 
-export const StyledWrapper = styled(Box)(({ theme }) => ({
+export const StyledWrapper = styled(Box)({
   padding: "25px 10px 5px 20px",
   width: "390px",
-}));
+});
 
-export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
+export const StyledDialogContent = styled(DialogContent)({
   textAlign: "center",
-}));
+});
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   width: "100%",
@@ -60,13 +68,21 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   marginBottom: "15px",
 }));
 
-export const StyledRowStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
+export const StyledInfiniteScroll = styled(InfiniteScroll)(({ theme }) => ({
+  overflow: "visible",
 }));
 
-export const StyledButton = styled(Button)(({ theme }) => ({
+export const StyledRowStack = styled(Stack)({
+  flexDirection: "row",
+});
+
+export const StyledCardBox = styled(Box)({
+  marginBottom: "16px",
+});
+
+export const StyledButton = styled(Button)({
   width: "145px",
-}));
+});
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "145px",

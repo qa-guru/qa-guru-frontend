@@ -29,10 +29,10 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledUserRowBox = styled(Box)(({ theme }) => ({
+export const StyledUserRowBox = styled(Box)({
   marginTop: "16px",
-}));
+});
 
-export const StyledHomeworkContentBox = styled(Box)(({ theme }) => ({
+export const StyledHomeworkContentBox = styled(Box)({
   marginTop: "7px",
-}));
+});

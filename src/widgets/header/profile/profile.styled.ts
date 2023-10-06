@@ -7,10 +7,10 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   color: theme.palette.black.main,
 }));
 
-export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+export const StyledMenuItem = styled(MenuItem)({
   marginBottom: "10px",
-}));
+});
 
-export const StyledListItemText = styled(ListItemText)(({ theme }) => ({
+export const StyledListItemText = styled(ListItemText)({
   marginRight: "20px",
-}));
+});

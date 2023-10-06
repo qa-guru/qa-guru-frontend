@@ -27,18 +27,18 @@ exports[`Column > items are false 1`] = `
         class="infinite-scroll-component__outerdiv"
       >
         <div
-          class="infinite-scroll-component "
-          style="height: auto; overflow: visible;"
+          class="infinite-scroll-component css-da5oxk"
+          style="height: auto; overflow: auto;"
         >
           <div
-            class="MuiBox-root css-1qm1lh"
+            class="MuiBox-root css-k4eprn"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-16jtuil-MuiPaper-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1dscxhz-MuiPaper-root"
               draggable="true"
             >
               <div
-                class="MuiStack-root css-1nx4lax-MuiStack-root"
+                class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
@@ -52,16 +52,16 @@ exports[`Column > items are false 1`] = `
                 </p>
               </div>
               <div
-                class="MuiBox-root css-hpgf8j"
+                class="MuiBox-root css-1626bqa"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
                 />
                 <div
-                  class="MuiStack-root css-qkek6c-MuiStack-root"
+                  class="MuiStack-root css-1qqxfbr-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -103,7 +103,7 @@ exports[`Column > items are false 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -141,14 +141,14 @@ exports[`Column > items are false 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root css-1qm1lh"
+            class="MuiBox-root css-k4eprn"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-16jtuil-MuiPaper-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1dscxhz-MuiPaper-root"
               draggable="true"
             >
               <div
-                class="MuiStack-root css-1nx4lax-MuiStack-root"
+                class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
@@ -162,16 +162,16 @@ exports[`Column > items are false 1`] = `
                 </p>
               </div>
               <div
-                class="MuiBox-root css-hpgf8j"
+                class="MuiBox-root css-1626bqa"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
                 />
                 <div
-                  class="MuiStack-root css-qkek6c-MuiStack-root"
+                  class="MuiStack-root css-1qqxfbr-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -213,7 +213,7 @@ exports[`Column > items are false 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -294,18 +294,18 @@ exports[`Column > items are true 1`] = `
         class="infinite-scroll-component__outerdiv"
       >
         <div
-          class="infinite-scroll-component "
-          style="height: auto; overflow: visible;"
+          class="infinite-scroll-component css-da5oxk"
+          style="height: auto; overflow: auto;"
         >
           <div
-            class="MuiBox-root css-1qm1lh"
+            class="MuiBox-root css-k4eprn"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-16jtuil-MuiPaper-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1dscxhz-MuiPaper-root"
               draggable="true"
             >
               <div
-                class="MuiStack-root css-1nx4lax-MuiStack-root"
+                class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
@@ -319,16 +319,16 @@ exports[`Column > items are true 1`] = `
                 </p>
               </div>
               <div
-                class="MuiBox-root css-hpgf8j"
+                class="MuiBox-root css-1626bqa"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
                 />
                 <div
-                  class="MuiStack-root css-qkek6c-MuiStack-root"
+                  class="MuiStack-root css-1qqxfbr-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -370,7 +370,7 @@ exports[`Column > items are true 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -408,14 +408,14 @@ exports[`Column > items are true 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root css-1qm1lh"
+            class="MuiBox-root css-k4eprn"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-16jtuil-MuiPaper-root"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-1dscxhz-MuiPaper-root"
               draggable="true"
             >
               <div
-                class="MuiStack-root css-1nx4lax-MuiStack-root"
+                class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
@@ -429,16 +429,16 @@ exports[`Column > items are true 1`] = `
                 </p>
               </div>
               <div
-                class="MuiBox-root css-hpgf8j"
+                class="MuiBox-root css-1626bqa"
               >
                 <p
                   class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
                 />
                 <div
-                  class="MuiStack-root css-qkek6c-MuiStack-root"
+                  class="MuiStack-root css-1qqxfbr-MuiStack-root"
                 >
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"
@@ -480,7 +480,7 @@ exports[`Column > items are true 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiStack-root css-1q36rmd-MuiStack-root"
+                    class="MuiStack-root css-19iseno-MuiStack-root"
                   >
                     <svg
                       fill="none"

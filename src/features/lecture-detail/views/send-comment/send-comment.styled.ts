@@ -2,21 +2,21 @@ import { styled } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
 import { Stack, Typography, Box } from "@mui/material";
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)({
   margin: "20px 0",
-}));
+});
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   width: "100%",
-}));
+});
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledStack = styled(Stack)({
   flexDirection: "column",
   alignItems: "flex-end",
   marginTop: "15px",
-}));
+});
 
-export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
+export const StyledLoadingButton = styled(LoadingButton)({
   minWidth: "147px",
   marginTop: "5px",
-}));
+});

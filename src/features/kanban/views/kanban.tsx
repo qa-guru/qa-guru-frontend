@@ -1,17 +1,20 @@
 import React from "react";
 import Form from "./form";
 import Board from "../containers/homeworks";
-import { KanbanContext } from "../context/kanban-context";
-import useKanbanState from "../hooks/use-kanban-state";
+import { KanbanFormContext } from "../context/kanban-form-context";
+import useKanbanFormState from "../hooks/use-kanban-form-state";
+import UserProvider from "../containers/user";
 
 const Kanban = () => {
-  const kanbanState = useKanbanState();
+  const kanbanFormState = useKanbanFormState();
 
   return (
-    <KanbanContext.Provider value={kanbanState}>
-      <Form />
-      <Board />
-    </KanbanContext.Provider>
+    <KanbanFormContext.Provider value={kanbanFormState}>
+      <UserProvider>
+        <Form />
+        <Board />
+      </UserProvider>
+    </KanbanFormContext.Provider>
   );
 };
 

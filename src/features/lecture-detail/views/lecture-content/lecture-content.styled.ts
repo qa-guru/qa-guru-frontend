@@ -9,9 +9,9 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)({
   marginBottom: "15px",
-}));
+});
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(0.5),

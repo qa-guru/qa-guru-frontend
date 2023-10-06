@@ -4,30 +4,25 @@ import {
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
   useHomeWorksQuery,
-  useUserQuery,
 } from "api/graphql/generated/graphql";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Board from "../../views/board";
-import { KanbanContext } from "../../context/kanban-context";
-import { getValidDateOrNull } from "../../helpers/is-valid-date";
-import { UserProvider } from "../../context/user-context";
+import { KanbanFormContext } from "../../context/kanban-form-context";
 
 const HomeworksContainer: React.FC = () => {
   const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =
-    useContext(KanbanContext);
+    useContext(KanbanFormContext);
 
   const filterObject = useMemo(() => {
     return {
       trainingId,
       lectureId,
       mentorId,
-      creationDateFrom: getValidDateOrNull(creationDateFrom!),
-      creationDateTo: getValidDateOrNull(creationDateTo!),
+      creationDateFrom: creationDateFrom!,
+      creationDateTo: creationDateTo!,
     };
   }, [trainingId, lectureId, mentorId, creationDateFrom, creationDateTo]);
-
-  const { data: dataUser, loading: dataLoading } = useUserQuery();
 
   const {
     data: newData,
@@ -93,39 +88,25 @@ const HomeworksContainer: React.FC = () => {
     },
   });
 
-  if (
-    newLoading ||
-    inReviewLoading ||
-    approvedLoading ||
-    notApprovedLoading ||
-    dataLoading
-  )
+  if (newLoading || inReviewLoading || approvedLoading || notApprovedLoading)
     return <Spinner />;
 
-  if (
-    !newData ||
-    !inReviewData ||
-    !approvedData ||
-    !notApprovedData ||
-    !dataUser
-  )
+  if (!newData || !inReviewData || !approvedData || !notApprovedData)
     return <NoDataErrorMessage />;
 
   return (
-    <UserProvider userId={dataUser.user?.id} userRoles={dataUser.user?.roles}>
-      <Board
-        newData={newData}
-        inReviewData={inReviewData}
-        approvedData={approvedData}
-        notApprovedData={notApprovedData}
-        fetchMoreFunctions={[
-          fetchMoreNew,
-          fetchMoreInReview,
-          fetchMoreApproved,
-          fetchMoreNotApproved,
-        ]}
-      />
-    </UserProvider>
+    <Board
+      newData={newData}
+      inReviewData={inReviewData}
+      approvedData={approvedData}
+      notApprovedData={notApprovedData}
+      fetchMoreFunctions={[
+        fetchMoreNew,
+        fetchMoreInReview,
+        fetchMoreApproved,
+        fetchMoreNotApproved,
+      ]}
+    />
   );
 };
 

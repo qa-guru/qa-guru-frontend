@@ -334,7 +334,7 @@ exports[`Login > the component is Loading 1`] = `
         </div>
       </form>
       <div
-        class="MuiBox-root css-xi606m"
+        class="MuiBox-root css-1iatin6"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-g8p3bc-MuiButtonBase-root-MuiButton-root"
@@ -348,7 +348,7 @@ exports[`Login > the component is Loading 1`] = `
         </button>
       </div>
       <div
-        class="MuiBox-root css-xi606m"
+        class="MuiBox-root css-1iatin6"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-g8p3bc-MuiButtonBase-root-MuiButton-root"
@@ -678,7 +678,7 @@ exports[`Login > the component is not Loading 1`] = `
         </div>
       </form>
       <div
-        class="MuiBox-root css-xi606m"
+        class="MuiBox-root css-1iatin6"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-g8p3bc-MuiButtonBase-root-MuiButton-root"
@@ -692,7 +692,7 @@ exports[`Login > the component is not Loading 1`] = `
         </button>
       </div>
       <div
-        class="MuiBox-root css-xi606m"
+        class="MuiBox-root css-1iatin6"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-g8p3bc-MuiButtonBase-root-MuiButton-root"

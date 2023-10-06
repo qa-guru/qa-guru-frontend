@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { IUserRow } from "./user-row.types";
+import { StyledDateStack, StyledWrapperStack } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
 
 const UserRow: React.FC<IUserRow> = (props) => {
@@ -16,7 +17,7 @@ const UserRow: React.FC<IUserRow> = (props) => {
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
   return (
-    <Stack direction="row" spacing={1} alignItems="center">
+    <StyledWrapperStack>
       {Icon && <Icon />}
       <AvatarCustom
         fullName={fullName}
@@ -27,14 +28,14 @@ const UserRow: React.FC<IUserRow> = (props) => {
       <Box>
         <Typography variant={variant}>{fullName}</Typography>
         {date && (
-          <Stack direction="row" justifyContent="space-between">
+          <StyledDateStack>
             <Typography variant="subtitle2">
               {format(parseISO(date), "dd.MM.yyyy '|' HH:mm")}
             </Typography>
-          </Stack>
+          </StyledDateStack>
         )}
       </Box>
-    </Stack>
+    </StyledWrapperStack>
   );
 };
 

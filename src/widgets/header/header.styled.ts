@@ -2,10 +2,10 @@ import { styled } from "@mui/system";
 import { Box, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "assets/icons/logo-header.svg";
 
-export const StyledHeader = styled("header")(({ theme }) => ({
+export const StyledHeader = styled("header")({
   marginBottom: "25px",
   alignItems: "center",
-}));
+});
 
 export const StyledWrapper = styled(Box)(({ theme }) => ({
   maxWidth: "1920px",
@@ -20,14 +20,14 @@ export const StyledWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledPaper = styled(Paper)(({ theme }) => ({
+export const StyledPaper = styled(Paper)({
   borderRadius: 0,
-}));
+});
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   display: "flex",
   alignItems: "center",
-}));
+});
 
 export const StyledLogo = styled(Logo)(({ theme }) => ({
   marginTop: "7px",
@@ -39,7 +39,7 @@ export const StyledLogo = styled(Logo)(({ theme }) => ({
   },
 }));
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledStack = styled(Stack)({
   flexDirection: "row",
   alignItems: "center",
-}));
+});

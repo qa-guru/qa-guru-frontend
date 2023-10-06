@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Button, Paper, Stack } from "@mui/material";
+import { Box, Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
@@ -30,6 +30,10 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
     gap: theme.spacing(2),
   },
 }));
+
+export const StyledAlignBox = styled(Box)({
+  textAlign: "center",
+});
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   height: "100vh",

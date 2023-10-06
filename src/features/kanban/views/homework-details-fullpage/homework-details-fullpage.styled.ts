@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
-import { IconButton, Paper, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Paper, Stack, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "column",
@@ -19,17 +20,31 @@ export const StyledRowStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
 }));
 
-export const StyledColumnStack = styled(Stack)(({ theme }) => ({
+export const StyledColumnStack = styled(Stack)({
   flexDirection: "column",
-}));
+});
 
-export const StyledPaper = styled(Paper)(({ theme }) => ({
+export const StyledAnswerPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
   [theme.breakpoints.up("sm")]: {
     padding: "20px",
   },
+  marginBottom: "24px",
 }));
 
-export const StyledTitle = styled(Typography)(({ theme }) => ({
+export const StyledTitle = styled(Typography)({
   marginBottom: "15px",
+});
+
+export const StyledNavigateButton = styled(Button)(({ theme }) => ({
+  marginBottom: "25px",
+  color: theme.palette.primary.main,
 }));
+
+export const StyledIcon = styled(ArrowBackIcon)({
+  marginRight: "10px",
+});
+
+export const StyledTypography = styled(Typography)({
+  textTransform: "none",
+});

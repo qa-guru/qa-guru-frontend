@@ -12,7 +12,7 @@ exports[`Form > renders correctly 1`] = `
         data-mui-internal-clone-element="true"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1quyj4n-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
         >
           Выберите урок
@@ -70,7 +70,7 @@ exports[`Form > renders correctly 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1quyj4n-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
         >
           Выберите наставника
@@ -124,7 +124,7 @@ exports[`Form > renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="MuiFormControl-root MuiTextField-root css-hzmf2y-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-2zvu7z-MuiFormControl-root-MuiTextField-root"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"
@@ -187,7 +187,7 @@ exports[`Form > renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="MuiFormControl-root MuiTextField-root css-hzmf2y-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-2zvu7z-MuiFormControl-root-MuiTextField-root"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1uxbq4s-MuiFormLabel-root-MuiInputLabel-root"

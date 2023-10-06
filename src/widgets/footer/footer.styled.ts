@@ -2,9 +2,9 @@ import { styled } from "@mui/system";
 import { Box } from "@mui/material";
 import { ReactComponent as Logo } from "../../assets/icons/logo-footer.svg";
 
-export const StyledFooter = styled("footer")(({ theme }) => ({
+export const StyledFooter = styled("footer")({
   paddingTop: "50px",
-}));
+});
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.purplr.main,

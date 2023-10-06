@@ -7,9 +7,9 @@ export const StyledGridContainer = styled(Grid)(({ theme }) => ({
   margin: "30px 0",
 }));
 
-export const StyledLink = styled(Link)(({ theme }) => ({
+export const StyledLink = styled(Link)({
   textDecoration: "none",
-}));
+});
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
@@ -40,10 +40,10 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "flex-end",
-}));
+});
 
 export const StyledSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
