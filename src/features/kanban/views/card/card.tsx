@@ -27,6 +27,7 @@ const Card: React.FC<ICard> = ({
 }) => {
   const { userId, userRoles } = useUserContext();
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
+  const { enqueueSnackbar } = useSnackbar();
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -50,7 +51,6 @@ const Card: React.FC<ICard> = ({
       isDragging: monitor.isDragging(),
     }),
   });
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleDragEffect = useCallback(() => {
     if (!isDragging) {

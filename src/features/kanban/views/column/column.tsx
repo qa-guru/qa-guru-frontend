@@ -57,6 +57,7 @@ const Column: React.FC<IColumn> = ({
       canDrop: monitor.canDrop(),
     }),
   });
+
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal}>
       <StyledWrapper>

@@ -8,6 +8,7 @@ import StatusContent from "shared/components/status-content";
 import UserRow from "shared/components/user-row";
 import LectureHomework from "shared/components/lecture-homework";
 import TextSerialization from "shared/serializers/text-serialization";
+import Homework from "features/lecture-detail/views/homework";
 import { IHomeworkDescriptionFullpage } from "./homework-details-fullpage.types";
 import {
   StyledAnswerPaper,
@@ -23,6 +24,7 @@ import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
   data,
+  dataUserId,
 }) => {
   const navigate = useNavigate();
   const Format = "dd.MM.yyyy | HH:mm";
@@ -84,6 +86,10 @@ const HomeworkDetailsFullpage: React.FC<IHomeworkDescriptionFullpage> = ({
           <TextSerialization text={data!.homeWork?.answer!} />
         </StyledAnswerPaper>
       </StyledStack>
+      <Homework
+        dataHomeWorkByLecture={data.homeWork!}
+        dataUserId={dataUserId!}
+      />
     </Container>
   );
 };
