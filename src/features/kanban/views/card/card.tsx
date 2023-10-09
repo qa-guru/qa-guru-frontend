@@ -1,12 +1,17 @@
 import React, { useCallback, useEffect } from "react";
 import { useDrag } from "react-dnd";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { useSnackbar } from "notistack";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledCardHeader,
+  StyledPaper,
+  StyledUserRowStack,
+} from "./card.styled";
 import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
 import { useUserContext } from "../../context/user-context";
@@ -22,6 +27,7 @@ const Card: React.FC<ICard> = ({
 }) => {
   const { userId, userRoles } = useUserContext();
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
+  const { enqueueSnackbar } = useSnackbar();
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -45,7 +51,6 @@ const Card: React.FC<ICard> = ({
       isDragging: monitor.isDragging(),
     }),
   });
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleDragEffect = useCallback(() => {
     if (!isDragging) {
@@ -98,31 +103,16 @@ const Card: React.FC<ICard> = ({
     onCardClick!();
   };
 
-  const paperStyles = [
-    style.paper,
-    isDragging && style.draggedPaper,
-    isCardsHidden && !isDragging && style.hiddenPaper,
-    isActive! && style.activeCard,
-    isDragging && {
-      marginBottom: 2,
-    },
-  ];
-
-  const cardHeaderStyles = {
-    ...style.cardHeader,
-    backgroundColor: isActive
-      ? style.activeCard.border.slice(10)
-      : style.cardHeader.backgroundColor,
-  };
-
   return (
-    <Paper
+    <StyledPaper
+      isDragging={isDragging}
+      isCardsHidden={isCardsHidden}
+      isActive={isActive}
       ref={dragRef}
-      sx={paperStyles}
       onClick={handleCardClick}
       elevation={4}
     >
-      <Stack sx={cardHeaderStyles} direction="row">
+      <StyledCardHeader isActive={isActive}>
         <Typography textTransform="uppercase" variant="subtitle2">
           {getFormattedId(card.id!)}
         </Typography>
@@ -130,10 +120,10 @@ const Card: React.FC<ICard> = ({
           {card.creationDate &&
             format(parseISO(card.creationDate), "dd.MM.yyyy")}
         </Typography>
-      </Stack>
-      <Box padding={1}>
+      </StyledCardHeader>
+      <StyledBox>
         <Typography variant="body2">{card.lecture?.subject}</Typography>
-        <Stack spacing={1} mt="10px">
+        <StyledUserRowStack>
           {card.mentor && (
             <UserRow
               icon={MentorIcon}
@@ -150,9 +140,9 @@ const Card: React.FC<ICard> = ({
             height={26}
             variant="body2"
           />
-        </Stack>
-      </Box>
-    </Paper>
+        </StyledUserRowStack>
+      </StyledBox>
+    </StyledPaper>
   );
 };
 

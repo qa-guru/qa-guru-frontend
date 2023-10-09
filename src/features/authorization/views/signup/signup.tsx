@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, FormControl, FormHelperText, TextField } from "@mui/material";
+import { FormControl, FormHelperText, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,6 +9,7 @@ import RHF from "shared/components/input-RHF";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import { UserCreateInput } from "api/graphql/generated/graphql";
 import {
+  StyledAlignBox,
   StyledButton,
   StyledLoadingButton,
   StyledLogo,
@@ -170,11 +171,11 @@ const Signup: React.FC<ISignUp> = (props) => {
             </StyledLoadingButton>
           </StyledStack>
         </form>
-        <Box textAlign="center">
+        <StyledAlignBox>
           <StyledButton variant="text" onClick={routeLogin}>
             {t("auth.route")}
           </StyledButton>
-        </Box>
+        </StyledAlignBox>
       </StyledPaper>
     </StyledWrapper>
   );

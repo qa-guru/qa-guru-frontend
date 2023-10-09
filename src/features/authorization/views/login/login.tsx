@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, FormControl, FormHelperText } from "@mui/material";
+import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
@@ -9,6 +9,7 @@ import RHF from "shared/components/input-RHF";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import { ILogin, ILoginForm } from "./login.types";
 import {
+  StyledAlignBox,
   StyledButton,
   StyledLoadingButton,
   StyledLogo,
@@ -104,14 +105,14 @@ const Login: React.FC<ILogin> = (props) => {
             </StyledLoadingButton>
           </StyledStack>
         </form>
-        <Box textAlign="center">
+        <StyledAlignBox>
           <StyledButton variant="text">{t("restore")}</StyledButton>
-        </Box>
-        <Box textAlign="center">
+        </StyledAlignBox>
+        <StyledAlignBox>
           <StyledButton variant="text" onClick={routeRegister}>
             {t("reg.route")}
           </StyledButton>
-        </Box>
+        </StyledAlignBox>
       </StyledPaper>
     </StyledWrapper>
   );

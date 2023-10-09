@@ -3,7 +3,7 @@
 exports[`UserRow > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-1q36rmd-MuiStack-root"
+    class="MuiStack-root css-19iseno-MuiStack-root"
   >
     <div
       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"

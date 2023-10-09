@@ -7,9 +7,9 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(2),
 }));
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   width: "100%",
-}));
+});
 
 export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
   marginTop: "15px",
@@ -21,9 +21,9 @@ export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
+export const StyledLoadingButton = styled(LoadingButton)({
   minWidth: "147px",
-}));
+});
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   minWidth: "116px",

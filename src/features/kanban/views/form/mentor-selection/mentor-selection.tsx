@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { FormControl } from "@mui/material";
 import RHF from "shared/components/input-RHF";
 import { IMentorSelection } from "./mentor-selection.types";
-import { KanbanContext } from "../../../context/kanban-context";
+import { KanbanFormContext } from "../../../context/kanban-form-context";
 
 const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
   const items = data?.mentors?.items;
-  const { setMentorId } = useContext(KanbanContext);
+  const { setMentorId } = useContext(KanbanFormContext);
 
   const mentorsOptions = items?.map((item) => ({
     value: item?.id,

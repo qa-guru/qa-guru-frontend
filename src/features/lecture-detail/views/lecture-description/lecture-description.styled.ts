@@ -8,15 +8,15 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledStack = styled(Stack)({
   alignItems: "center",
   marginTop: "16px",
   flexDirection: "row",
-}));
+});
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
+export const StyledTypography = styled(Typography)({
   marginBottom: "15px",
-}));
+});
 
 export const StyledCircle = styled(Typography)(({ theme }) => ({
   minWidth: "40px",

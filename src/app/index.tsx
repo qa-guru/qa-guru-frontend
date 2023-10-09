@@ -15,9 +15,11 @@ const App = () => {
   const { loading, data } = useUserQuery({
     onCompleted: () => {
       setIsAuth(true);
+      navigate("/");
     },
     onError: () => {
       setIsAuth(false);
+      navigate("/authorization");
     },
   });
 

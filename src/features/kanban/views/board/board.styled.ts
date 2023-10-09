@@ -26,16 +26,16 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   marginTop: "15px",
 }));
 
-export const StyledMobileWrapper = styled(Box)(({ theme }) => ({
+export const StyledMobileWrapper = styled(Box)({
   marginTop: "20px",
-}));
+});
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
   marginBottom: "15px",
-}));
+});
 
-export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
+export const StyledHomeworkDetails = styled(Box)({
   minWidth: "33.5vw",
-}));
+});

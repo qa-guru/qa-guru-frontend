@@ -3,7 +3,7 @@
 exports[`InputSelect > renders correctly 1`] = `
 <DocumentFragment>
   <label
-    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-animated css-1l6a1vt-MuiFormLabel-root-MuiInputLabel-root"
+    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-animated css-1r395si-MuiFormLabel-root-MuiInputLabel-root"
   >
     testDate
   </label>

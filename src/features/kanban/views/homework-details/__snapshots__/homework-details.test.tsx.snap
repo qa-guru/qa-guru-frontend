@@ -37,7 +37,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           </svg>
         </div>
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-g7r6jb-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ddltag-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
@@ -64,7 +64,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
         class="MuiStack-root css-3t268d-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-19iseno-MuiStack-root"
         >
           <svg
             fill="none"
@@ -98,7 +98,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-19iseno-MuiStack-root"
         >
           <svg
             fill="none"
@@ -294,7 +294,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           </svg>
         </div>
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-g7r6jb-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ddltag-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="button"
         >
@@ -321,7 +321,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
         class="MuiStack-root css-3t268d-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-19iseno-MuiStack-root"
         >
           <svg
             fill="none"
@@ -355,7 +355,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-1q36rmd-MuiStack-root"
+          class="MuiStack-root css-19iseno-MuiStack-root"
         >
           <svg
             fill="none"
