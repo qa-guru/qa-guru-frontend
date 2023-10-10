@@ -13,9 +13,9 @@ import {
 } from "./card.styled";
 import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
+import { useUserContext } from "../../context/user-context";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import DragEffectByRole from "../../roles/drag-effect-by-role/drag-effect-by-role";
-import { useUserContext } from "../../context/user-context";
 
 const Card: React.FC<ICard> = ({
   card,
@@ -30,12 +30,12 @@ const Card: React.FC<ICard> = ({
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
-      id,
+      id: card.id,
       sourceColumnId,
       allowedColumns: getUpdatedAllowedColumns(
         sourceColumnId,
-        userId,
-        mentor?.id,
+        userId!,
+        card.mentor?.id!,
         userRoles
       ),
     },
@@ -73,8 +73,10 @@ const Card: React.FC<ICard> = ({
           <Typography textTransform="uppercase" variant="subtitle2">
             {getFormattedId(id!)}
           </Typography>
-          {card.creationDate &&
-            format(parseISO(card.creationDate), "dd.MM.yyyy")}
+          <Typography variant="body2">
+            {card.creationDate &&
+              format(parseISO(card.creationDate), "dd.MM.yyyy")}
+          </Typography>
         </StyledCardHeader>
         <StyledBox>
           <Typography variant="body2">{lecture?.subject}</Typography>

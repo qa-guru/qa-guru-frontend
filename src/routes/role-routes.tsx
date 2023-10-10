@@ -61,5 +61,5 @@ export const roleRoutes: { [key in UserRole]?: React.ReactNode[] } = {
   [UserRole.Student]: StudentRoutes,
   [UserRole.Mentor]: MentorRoutes,
   [UserRole.Manager]: ManagerRoutes,
-  [UserRole.Master]: ManagerRoutes,
+  [UserRole.Master]: MasterRoutes,
 };

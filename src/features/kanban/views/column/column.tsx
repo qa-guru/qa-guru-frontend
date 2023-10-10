@@ -28,6 +28,7 @@ import {
 import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
+import { getFormattedStatus } from "../../helpers/get-formatted-status";
 
 const Column: React.FC<IColumn> = ({
   column,
@@ -57,6 +58,7 @@ const Column: React.FC<IColumn> = ({
       canDrop: monitor.canDrop(),
     }),
   });
+
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal}>
       <StyledWrapper>
@@ -143,26 +145,11 @@ const Column: React.FC<IColumn> = ({
     }
   }, [column.cards?.length]);
 
-  const formatStatus = (status: string) => {
-    switch (status) {
-      case "APPROVED":
-        return "Approved";
-      case "IN_REVIEW":
-        return "In review";
-      case "NEW":
-        return "New";
-      case "NOT_APPROVED":
-        return "Not approved";
-      default:
-        return status;
-    }
-  };
-
   return (
     <StyledWrapperColumnBox>
       <StyledRowStack>
         <StyledTypographyStatus>
-          {formatStatus(column.title)}
+          {getFormattedStatus(column.title)}
         </StyledTypographyStatus>
         <StyledTypographyCount>
           {Number(column.totalElements) === 0

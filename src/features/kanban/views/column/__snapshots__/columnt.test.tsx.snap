@@ -45,7 +45,11 @@ exports[`Column > items are false 1`] = `
                 >
                   JAVA-D1
                 </h6>
-                24.04.2023
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                >
+                  24.04.2023
+                </p>
               </div>
               <div
                 class="MuiBox-root css-1626bqa"
@@ -151,7 +155,11 @@ exports[`Column > items are false 1`] = `
                 >
                   JAVA-D2
                 </h6>
-                22.04.2023
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                >
+                  22.04.2023
+                </p>
               </div>
               <div
                 class="MuiBox-root css-1626bqa"
@@ -304,7 +312,11 @@ exports[`Column > items are true 1`] = `
                 >
                   JAVA-D1
                 </h6>
-                24.04.2023
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                >
+                  24.04.2023
+                </p>
               </div>
               <div
                 class="MuiBox-root css-1626bqa"
@@ -410,7 +422,11 @@ exports[`Column > items are true 1`] = `
                 >
                   JAVA-D2
                 </h6>
-                22.04.2023
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                >
+                  22.04.2023
+                </p>
               </div>
               <div
                 class="MuiBox-root css-1626bqa"

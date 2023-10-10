@@ -15,6 +15,7 @@ const App = () => {
   const { loading, data } = useUserQuery({
     onCompleted: () => {
       setIsAuth(true);
+      navigate("/");
     },
     onError: () => {
       setIsAuth(false);
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <>
-      {!isAuth ? <AuthRoutes /> : <AppRoutes userRoles={data?.user?.roles!} />}
+      {isAuth ? <AppRoutes userRoles={data?.user?.roles!} /> : <AuthRoutes />}
     </>
   );
 };
