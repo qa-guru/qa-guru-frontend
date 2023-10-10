@@ -1,13 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { IDragEffectByRole } from "./drag-effect-by-role.types";
-import { IDraggingState } from "../../views/board/board.types";
-
-const statusColumn = {
-  new: "1",
-  inReview: "2",
-  notApproved: "4",
-};
+import { STATUS_COLUMN } from "../../constants/constants";
 
 const DragEffectByRole: React.FC<IDragEffectByRole> = ({
   card,
@@ -21,76 +15,49 @@ const DragEffectByRole: React.FC<IDragEffectByRole> = ({
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
   const mentorId = card.mentor?.id;
 
-  const resetDraggingState = useCallback(() => {
-    setDraggingState({
-      newItem: false,
-      fromInReview: false,
-      fromNotApproved: false,
-    });
-  }, [setDraggingState]);
-
-  const handleManagerDragEffect = useCallback(() => {
-    enqueueSnackbar("MANAGER не может менять статус домашнего задания");
-  }, [enqueueSnackbar]);
-
-  const handleNonMentorDragEffect = useCallback(() => {
-    enqueueSnackbar("Вы не можете поменять статус данной домашней работы");
-  }, [enqueueSnackbar]);
-
-  const updateDraggingState = useCallback(
-    (key: keyof IDraggingState) => {
-      setDraggingState((prevState) => ({ ...prevState, [key]: true }));
-    },
-    [setDraggingState]
-  );
-
-  const handleDragEffect = useCallback(() => {
+  useEffect(() => {
     if (!isDragging) {
-      resetDraggingState();
+      setDraggingState({
+        newItem: false,
+        fromInReview: false,
+        fromNotApproved: false,
+      });
       return;
     }
 
     if (hasManagerRole) {
-      handleManagerDragEffect();
+      enqueueSnackbar("MANAGER не может менять статус домашнего задания");
       return;
     }
 
-    switch (sourceColumnId) {
-      case statusColumn.new:
-        updateDraggingState("newItem");
-        break;
-      case statusColumn.inReview:
-        if (userId !== mentorId) {
-          handleNonMentorDragEffect();
-          return;
-        }
-        updateDraggingState("fromInReview");
-        break;
-      case statusColumn.notApproved:
-        if (userId !== mentorId) {
-          handleNonMentorDragEffect();
-          return;
-        }
-        updateDraggingState("fromNotApproved");
-        break;
-      default:
-        break;
+    if (
+      userId !== mentorId &&
+      (sourceColumnId === STATUS_COLUMN.IN_REVIEW ||
+        sourceColumnId === STATUS_COLUMN.NOT_APPROVED)
+    ) {
+      enqueueSnackbar("Вы не можете поменять статус данной домашней работы");
+      return;
     }
+
+    const stateUpdateMap = {
+      [STATUS_COLUMN.NEW]: { newItem: true },
+      [STATUS_COLUMN.IN_REVIEW]: { fromInReview: true },
+      [STATUS_COLUMN.NOT_APPROVED]: { fromNotApproved: true },
+    };
+
+    setDraggingState((prevState) => ({
+      ...prevState,
+      ...stateUpdateMap[sourceColumnId],
+    }));
   }, [
     isDragging,
     sourceColumnId,
-    resetDraggingState,
-    handleManagerDragEffect,
-    handleNonMentorDragEffect,
-    updateDraggingState,
     userId,
     mentorId,
     hasManagerRole,
+    enqueueSnackbar,
+    setDraggingState,
   ]);
-
-  useEffect(() => {
-    handleDragEffect();
-  }, [handleDragEffect]);
 
   return null;
 };

@@ -2,9 +2,9 @@ import { UserRole } from "api/graphql/generated/graphql";
 
 export const getUpdatedAllowedColumns = (
   columnId: string,
-  userId: string,
-  mentorId: string,
-  userRoles: (UserRole | null)[] | null | undefined
+  userId?: string | null,
+  mentorId?: string | null,
+  userRoles?: (UserRole | null)[] | null
 ) => {
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
 

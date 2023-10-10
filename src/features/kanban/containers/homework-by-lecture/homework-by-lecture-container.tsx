@@ -7,10 +7,10 @@
 // import Spinner from "shared/components/spinner";
 // import Homework from "../../../lecture-detail/views/homework";
 //
-// const HomeworkByLectureContainer: React.FC = ({ lectureId }) => {
-//   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
+// constants HomeworkByLectureContainer: React.FC = ({ lectureId }) => {
+//   constants { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
 //
-//   const { data: dataHomeWorkByLecture, loading: loadingHomeWorkByLecture } =
+//   constants { data: dataHomeWorkByLecture, loading: loadingHomeWorkByLecture } =
 //     useHomeWorkByLectureQuery({
 //       variables: { lectureId: lectureId! },
 //       fetchPolicy: "cache-first",

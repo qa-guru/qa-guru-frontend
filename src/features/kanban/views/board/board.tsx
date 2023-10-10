@@ -13,6 +13,7 @@ import MobileBoard from "./mobile-board";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
+import { STATUS_COLUMN } from "../../constants/constants";
 
 const Board: React.FC<IBoard> = ({
   newData,
@@ -49,25 +50,25 @@ const Board: React.FC<IBoard> = ({
   useEffect(() => {
     setColumns([
       createColumnItem(
-        "1",
+        STATUS_COLUMN.NEW,
         StudentHomeWorkStatus.New,
         newItems as StudentHomeWorkDto[],
         newTotalElements
       ),
       createColumnItem(
-        "2",
+        STATUS_COLUMN.IN_REVIEW,
         StudentHomeWorkStatus.InReview,
         inReviewItems as StudentHomeWorkDto[],
         inReviewTotalElements
       ),
       createColumnItem(
-        "3",
+        STATUS_COLUMN.APPROVED,
         StudentHomeWorkStatus.Approved,
         approvedItems as StudentHomeWorkDto[],
         approvedTotalElements
       ),
       createColumnItem(
-        "4",
+        STATUS_COLUMN.NOT_APPROVED,
         StudentHomeWorkStatus.NotApproved,
         notApprovedItems as StudentHomeWorkDto[],
         notApprovedTotalElements
@@ -78,13 +79,13 @@ const Board: React.FC<IBoard> = ({
   const updateStatus = useCallback(
     async (cardId: string, targetColumnId: string) => {
       switch (targetColumnId) {
-        case "2":
+        case STATUS_COLUMN.IN_REVIEW:
           await takeForReview({ variables: { homeworkId: cardId } });
           break;
-        case "3":
+        case STATUS_COLUMN.APPROVED:
           await approved({ variables: { homeWorkId: cardId } });
           break;
-        case "4":
+        case STATUS_COLUMN.NOT_APPROVED:
           await notApproved({ variables: { homeWorkId: cardId } });
           break;
         default:

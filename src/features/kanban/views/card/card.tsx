@@ -27,7 +27,6 @@ const Card: React.FC<ICard> = ({
 }) => {
   const { userId, userRoles } = useUserContext();
   const { id, mentor, student, lecture, creationDate } = card;
-
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -35,8 +34,8 @@ const Card: React.FC<ICard> = ({
       sourceColumnId,
       allowedColumns: getUpdatedAllowedColumns(
         sourceColumnId,
-        userId!,
-        mentor?.id!,
+        userId,
+        mentor?.id,
         userRoles
       ),
     },
@@ -52,12 +51,16 @@ const Card: React.FC<ICard> = ({
     }),
   });
 
-  const formattedCreationDate = creationDate
-    ? format(parseISO(creationDate), "dd.MM.yyyy")
-    : null;
-
   return (
     <>
+      <DragEffectByRole
+        card={card}
+        sourceColumnId={sourceColumnId}
+        setDraggingState={setDraggingState}
+        isDragging={isDragging}
+        userId={userId}
+        userRoles={userRoles}
+      />
       <StyledPaper
         isDragging={isDragging}
         isCardsHidden={isCardsHidden}
@@ -66,21 +69,12 @@ const Card: React.FC<ICard> = ({
         onClick={onCardClick}
         elevation={4}
       >
-        <DragEffectByRole
-          card={card}
-          sourceColumnId={sourceColumnId}
-          setDraggingState={setDraggingState}
-          isDragging={isDragging}
-          userId={userId}
-          userRoles={userRoles}
-        />
         <StyledCardHeader isActive={isActive}>
           <Typography textTransform="uppercase" variant="subtitle2">
             {getFormattedId(id!)}
           </Typography>
-          {formattedCreationDate && (
-            <Typography variant="body2">{formattedCreationDate}</Typography>
-          )}
+          {card.creationDate &&
+            format(parseISO(card.creationDate), "dd.MM.yyyy")}
         </StyledCardHeader>
         <StyledBox>
           <Typography variant="body2">{lecture?.subject}</Typography>

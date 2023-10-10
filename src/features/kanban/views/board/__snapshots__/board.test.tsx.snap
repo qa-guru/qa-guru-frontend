@@ -9,7 +9,7 @@ exports[`Board > renders correctly 1`] = `
       style="width: 100%;"
     >
       <div
-        class="MuiStack-root css-1802xdq-MuiStack-root"
+        class="MuiStack-root css-p9at2-MuiStack-root"
       >
         <div
           class="MuiBox-root css-10rlq88"
@@ -184,9 +184,6 @@ exports[`Board > renders correctly 1`] = `
                       >
                         JAVA-NG
                       </h6>
-                      <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
-                      />
                     </div>
                     <div
                       class="MuiBox-root css-1626bqa"
