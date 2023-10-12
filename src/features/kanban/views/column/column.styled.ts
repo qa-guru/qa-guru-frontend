@@ -6,18 +6,18 @@ interface IStyledColumn {
   showButton?: boolean;
 }
 
-export const StyledWrapperColumnContainer = styled(Box)<IStyledColumn>(
-  ({ theme, showButton }) => ({
-    flexGrow: 1,
-    marginTop: "5px",
-    boxSizing: "border-box",
-    maxHeight: "72vh",
-    [theme.breakpoints.up("lg")]: {
-      maxHeight: "69.5vh",
-    },
-    overflowY: showButton ? "hidden" : "auto",
-  })
-);
+export const StyledWrapperColumnContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "showButton",
+})<IStyledColumn>(({ theme, showButton }) => ({
+  flexGrow: 1,
+  marginTop: "5px",
+  boxSizing: "border-box",
+  maxHeight: "72vh",
+  [theme.breakpoints.up("lg")]: {
+    maxHeight: "69.5vh",
+  },
+  overflowY: showButton ? "hidden" : "auto",
+}));
 
 export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
   flexDirection: "column",

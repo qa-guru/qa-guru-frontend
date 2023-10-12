@@ -1,4 +1,5 @@
 import { IDraggingState } from "../views/board/board.types";
+import { STATUS_COLUMN } from "../constants/constants";
 
 type IsColumnHighlight = (
   columnId: string,
@@ -10,9 +11,10 @@ export const isColumnHighlight: IsColumnHighlight = (
   draggingState
 ) => {
   const columnHighlightMap: { [key: string]: boolean } = {
-    "2": draggingState.newItem,
-    "3": draggingState.fromInReview || draggingState.fromNotApproved,
-    "4": draggingState.fromInReview,
+    [STATUS_COLUMN.IN_REVIEW]: draggingState.newItem,
+    [STATUS_COLUMN.APPROVED]:
+      draggingState.fromInReview || draggingState.fromNotApproved,
+    [STATUS_COLUMN.NOT_APPROVED]: draggingState.fromInReview,
   };
 
   return columnHighlightMap[columnId] || false;

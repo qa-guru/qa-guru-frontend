@@ -4,12 +4,7 @@ import { IDesktopBoard } from "./desktop-board.types";
 import { StyledStack, StyledWrapper } from "../board.styled";
 import Column from "../../column";
 import HomeworkDetails from "../../homework-details/homework-details";
-
-const minColumnWidth = "65%";
-const maxColumnWidth = "100%";
-const minDetailsWidth = "0";
-const maxDetailsWidth = "34%";
-const animateDuration = 0.4;
+import { UI_CONSTANTS } from "../../../constants/constants";
 
 const DesktopBoard: React.FC<IDesktopBoard> = ({
   columns,
@@ -29,15 +24,25 @@ const DesktopBoard: React.FC<IDesktopBoard> = ({
       <motion.div
         initial={{
           width:
-            showHomeworkDetails && isUpLg ? minColumnWidth : maxColumnWidth,
+            showHomeworkDetails && isUpLg
+              ? UI_CONSTANTS.MIN_COLUMN_WIDTH
+              : UI_CONSTANTS.MAX_COLUMN_WIDTH,
         }}
         animate={{
           width:
-            showHomeworkDetails && isUpLg ? minColumnWidth : maxColumnWidth,
+            showHomeworkDetails && isUpLg
+              ? UI_CONSTANTS.MIN_COLUMN_WIDTH
+              : UI_CONSTANTS.MAX_COLUMN_WIDTH,
         }}
-        transition={{ duration: animateDuration }}
+        transition={{ duration: UI_CONSTANTS.ANIMATE_DURATION }}
       >
-        <StyledStack mr={showHomeworkDetails && isUpLg ? 2 : 0}>
+        <StyledStack
+          mr={
+            showHomeworkDetails && isUpLg
+              ? UI_CONSTANTS.ANIMATE_MARGIN
+              : undefined
+          }
+        >
           {columns?.map((column, index) => (
             <Column
               draggingState={draggingState}
@@ -55,10 +60,10 @@ const DesktopBoard: React.FC<IDesktopBoard> = ({
       <AnimatePresence>
         {isUpLg && selectedCard && (
           <motion.div
-            initial={{ width: minDetailsWidth }}
-            animate={{ width: maxDetailsWidth }}
-            exit={{ width: minDetailsWidth }}
-            transition={{ duration: animateDuration }}
+            initial={{ width: UI_CONSTANTS.MIN_DETAILS_WITH }}
+            animate={{ width: UI_CONSTANTS.MAX_DETAILS_WITH }}
+            exit={{ width: UI_CONSTANTS.MIN_DETAILS_WITH }}
+            transition={{ duration: UI_CONSTANTS.ANIMATE_DURATION }}
           >
             <HomeworkDetails
               card={selectedCard!}

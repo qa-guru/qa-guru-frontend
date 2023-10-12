@@ -9,6 +9,7 @@ import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Board from "../../views/board";
 import { KanbanFormContext } from "../../context/kanban-form-context";
+import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants/constants";
 
 const HomeworksContainer: React.FC = () => {
   const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =
@@ -30,8 +31,8 @@ const HomeworksContainer: React.FC = () => {
     fetchMore: fetchMoreNew,
   } = useHomeWorksQuery({
     variables: {
-      offset: 0,
-      limit: 5,
+      offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
       sort: {
         field: StudentHomeWorkSortField.CreationDate,
         order: Order.Desc,
@@ -46,8 +47,8 @@ const HomeworksContainer: React.FC = () => {
     fetchMore: fetchMoreInReview,
   } = useHomeWorksQuery({
     variables: {
-      offset: 0,
-      limit: 5,
+      offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
       sort: {
         field: StudentHomeWorkSortField.StartCheckingDate,
         order: Order.Desc,
@@ -62,8 +63,8 @@ const HomeworksContainer: React.FC = () => {
     fetchMore: fetchMoreApproved,
   } = useHomeWorksQuery({
     variables: {
-      offset: 0,
-      limit: 5,
+      offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,
@@ -78,8 +79,8 @@ const HomeworksContainer: React.FC = () => {
     fetchMore: fetchMoreNotApproved,
   } = useHomeWorksQuery({
     variables: {
-      offset: 0,
-      limit: 5,
+      offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,

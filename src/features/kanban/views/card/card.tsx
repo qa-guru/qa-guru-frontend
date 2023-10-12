@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { useDrag } from "react-dnd";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
-import { useSnackbar } from "notistack";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
@@ -16,6 +15,7 @@ import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
 import { useUserContext } from "../../context/user-context";
 import { getFormattedId } from "../../helpers/get-formatted-id";
+import DragEffectByRole from "../../roles/drag-effect-by-role/drag-effect-by-role";
 
 const Card: React.FC<ICard> = ({
   card,
@@ -26,8 +26,7 @@ const Card: React.FC<ICard> = ({
   isActive,
 }) => {
   const { userId, userRoles } = useUserContext();
-  const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
-  const { enqueueSnackbar } = useSnackbar();
+  const { id, mentor, student, lecture, creationDate } = card;
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -52,97 +51,58 @@ const Card: React.FC<ICard> = ({
     }),
   });
 
-  const handleDragEffect = useCallback(() => {
-    if (!isDragging) {
-      setDraggingState({
-        newItem: false,
-        fromInReview: false,
-        fromNotApproved: false,
-      });
-      return;
-    }
-
-    if (hasManagerRole) {
-      enqueueSnackbar("MANAGER не может менять статус домашнего задания");
-      return;
-    }
-
-    if (sourceColumnId === "1") {
-      setDraggingState((prevState) => ({ ...prevState, newItem: true }));
-      return;
-    }
-
-    if (userId !== card.mentor?.id) {
-      enqueueSnackbar("Вы не можете поменять статус данной домашней работы");
-      return;
-    }
-
-    if (sourceColumnId === "2") {
-      setDraggingState((prevState) => ({ ...prevState, fromInReview: true }));
-    } else if (sourceColumnId === "4") {
-      setDraggingState((prevState) => ({
-        ...prevState,
-        fromNotApproved: true,
-      }));
-    }
-  }, [
-    isDragging,
-    sourceColumnId,
-    setDraggingState,
-    userId,
-    card.mentor?.id,
-    enqueueSnackbar,
-    hasManagerRole,
-  ]);
-
-  useEffect(() => {
-    handleDragEffect();
-  }, [handleDragEffect]);
-
-  const handleCardClick = () => {
-    onCardClick!();
-  };
-
   return (
-    <StyledPaper
-      isDragging={isDragging}
-      isCardsHidden={isCardsHidden}
-      isActive={isActive}
-      ref={dragRef}
-      onClick={handleCardClick}
-      elevation={4}
-    >
-      <StyledCardHeader isActive={isActive}>
-        <Typography textTransform="uppercase" variant="subtitle2">
-          {getFormattedId(card.id!)}
-        </Typography>
-        <Typography variant="body2">
-          {card.creationDate &&
-            format(parseISO(card.creationDate), "dd.MM.yyyy")}
-        </Typography>
-      </StyledCardHeader>
-      <StyledBox>
-        <Typography variant="body2">{card.lecture?.subject}</Typography>
-        <StyledUserRowStack>
-          {card.mentor && (
-            <UserRow
-              icon={MentorIcon}
-              user={card.mentor}
-              width={26}
-              height={26}
-              variant="body2"
-            />
-          )}
-          <UserRow
-            icon={StudentIcon}
-            user={card.student!}
-            width={26}
-            height={26}
-            variant="body2"
-          />
-        </StyledUserRowStack>
-      </StyledBox>
-    </StyledPaper>
+    <>
+      <DragEffectByRole
+        card={card}
+        sourceColumnId={sourceColumnId}
+        setDraggingState={setDraggingState}
+        isDragging={isDragging}
+        userId={userId}
+        userRoles={userRoles}
+      />
+      <StyledPaper
+        isDragging={isDragging}
+        isCardsHidden={isCardsHidden}
+        isActive={isActive}
+        ref={dragRef}
+        onClick={onCardClick}
+        elevation={4}
+      >
+        <StyledCardHeader isActive={isActive}>
+          <Typography textTransform="uppercase" variant="subtitle2">
+            {getFormattedId(id!)}
+          </Typography>
+          <Typography variant="body2">
+            {card.creationDate &&
+              format(parseISO(card.creationDate), "dd.MM.yyyy")}
+          </Typography>
+        </StyledCardHeader>
+        <StyledBox>
+          <Typography variant="body2">{lecture?.subject}</Typography>
+          <StyledUserRowStack>
+            {mentor && (
+              <UserRow
+                icon={MentorIcon}
+                user={mentor}
+                width={26}
+                height={26}
+                variant="body2"
+              />
+            )}
+            {student && (
+              <UserRow
+                icon={StudentIcon}
+                user={student}
+                width={26}
+                height={26}
+                variant="body2"
+              />
+            )}
+          </StyledUserRowStack>
+        </StyledBox>
+      </StyledPaper>
+    </>
   );
 };
 

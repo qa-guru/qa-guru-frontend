@@ -1,10 +1,11 @@
 import { UserRole } from "api/graphql/generated/graphql";
+import { STATUS_COLUMN } from "../constants/constants";
 
 export const getUpdatedAllowedColumns = (
   columnId: string,
-  userId: string,
-  mentorId: string,
-  userRoles: (UserRole | null)[] | null | undefined
+  userId?: string | null,
+  mentorId?: string | null,
+  userRoles?: (UserRole | null)[] | null
 ) => {
   const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
 
@@ -15,22 +16,22 @@ export const getUpdatedAllowedColumns = (
   let allowedColumns: string[] = [];
 
   switch (columnId) {
-    case "1":
-      allowedColumns = ["2"];
+    case STATUS_COLUMN.NEW:
+      allowedColumns = [STATUS_COLUMN.IN_REVIEW];
       break;
-    case "2":
+    case STATUS_COLUMN.IN_REVIEW:
       if (userId === mentorId) {
-        allowedColumns = ["3", "4"];
+        allowedColumns = [STATUS_COLUMN.APPROVED, STATUS_COLUMN.NOT_APPROVED];
       }
       break;
-    case "3":
+    case STATUS_COLUMN.APPROVED:
       if (userId === mentorId) {
         allowedColumns = [];
       }
       break;
-    case "4":
+    case STATUS_COLUMN.NOT_APPROVED:
       if (userId === mentorId) {
-        allowedColumns = ["3"];
+        allowedColumns = [STATUS_COLUMN.APPROVED];
       }
       break;
     default:

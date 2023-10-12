@@ -6,12 +6,13 @@ import {
 } from "api/graphql/generated/graphql";
 import { IMentorsContainer } from "./mentors-container.types";
 import MentorSelection from "../../views/form/mentor-selection";
+import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
 
 const MentorsContainer: React.FC<IMentorsContainer> = ({ control }) => {
   const { data } = useMentorsQuery({
     variables: {
-      offset: 0,
-      limit: 100,
+      offset: STANDARD_QUERY_DEFAULTS.OFFSET,
+      limit: STANDARD_QUERY_DEFAULTS.LIMIT,
       sort: {
         field: UserSortField.LastName,
         order: Order.Asc,
