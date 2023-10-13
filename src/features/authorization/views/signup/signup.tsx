@@ -18,6 +18,7 @@ import {
   StyledWrapper,
 } from "./signup.styled";
 import { ISignUp } from "./signup.types";
+import { REQUIRED_SYMBOLS } from "../../constants/constants";
 
 const Signup: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -45,8 +46,8 @@ const Signup: React.FC<ISignUp> = (props) => {
         email: yup.string().required(t("email.required")!),
         password: yup
           .string()
-          .min(8, t("password.required.min")!)
-          .max(15, t("password.required.max")!)
+          .min(REQUIRED_SYMBOLS.MIN, t("password.required.min")!)
+          .max(REQUIRED_SYMBOLS.MAX, t("password.required.max")!)
           .required(t("password.required")!),
         phoneNumber: yup.string().required(t("phone.required")!),
       })

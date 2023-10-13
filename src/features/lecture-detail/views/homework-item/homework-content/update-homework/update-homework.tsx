@@ -17,6 +17,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./update-homework.styled";
+import { MAX_HOMEWORK_LENGTH } from "../../../../constants/constants";
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
@@ -56,7 +57,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= 2000) {
+      if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
         setError("content", {
           type: "manual",
           message: t("homework.max")!,
@@ -77,7 +78,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
               name="content"
               control={control}
               inputProps={{
-                maxLength: 2000,
+                maxLength: MAX_HOMEWORK_LENGTH,
                 onChange: handleChange,
               }}
             />

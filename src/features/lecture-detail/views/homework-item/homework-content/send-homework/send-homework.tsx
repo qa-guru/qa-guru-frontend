@@ -13,6 +13,7 @@ import {
   StyledStack,
 } from "./send-homework.styled";
 import { LectureIdContext } from "../../../../context/lecture-id-context";
+import { MAX_HOMEWORK_LENGTH } from "../../../../constants/constants";
 
 const SendHomework: React.FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
@@ -45,7 +46,7 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= 2000) {
+      if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
         setError("content", {
           type: "manual",
           message: t("homework.max")!,
@@ -66,7 +67,10 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
               minRows={5}
               name="content"
               control={control}
-              inputProps={{ maxLength: 2000, onChange: handleChange }}
+              inputProps={{
+                maxLength: MAX_HOMEWORK_LENGTH,
+                onChange: handleChange,
+              }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>

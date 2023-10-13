@@ -12,6 +12,7 @@ import {
   StyledStack,
   StyledTypography,
 } from "./send-comment.styled";
+import { MAX_COMMENT_LENGTH } from "../../constants/constants";
 
 const SendComment: React.FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
@@ -45,7 +46,7 @@ const SendComment: React.FC<ISendComment> = (props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= 10000) {
+      if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {
           type: "manual",
           message: t("comment.max")!,
@@ -66,7 +67,10 @@ const SendComment: React.FC<ISendComment> = (props) => {
             minRows={2}
             name="content"
             control={control}
-            inputProps={{ maxLength: 10000, onChange: handleChange }}
+            inputProps={{
+              maxLength: MAX_COMMENT_LENGTH,
+              onChange: handleChange,
+            }}
           />
           {errors?.content && (
             <FormHelperText error>{errors?.content.message}</FormHelperText>

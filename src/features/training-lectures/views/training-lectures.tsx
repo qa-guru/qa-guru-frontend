@@ -12,6 +12,7 @@ import {
   StyledTypography,
   StyledWrapper,
 } from "./training-lectures.styled";
+import { INDEX_OFFSET } from "../constants/constants";
 
 const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;
@@ -37,7 +38,7 @@ const TrainingLectures: React.FC<ITrainingLectures> = (props) => {
                         return (
                           <StyledStack key={index}>
                             <StyledTypography variant="subtitle2">
-                              {index + 1}
+                              {index + INDEX_OFFSET}
                             </StyledTypography>
                             <Typography variant="subtitle1">{value}</Typography>
                           </StyledStack>

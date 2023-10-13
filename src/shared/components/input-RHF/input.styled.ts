@@ -1,8 +1,8 @@
 import { styled } from "@mui/system";
-import { Box, InputLabel } from "@mui/material";
+import { InputLabel } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-export const StyledBox = styled(Box)({
+export const StyledImgBox = styled("li")({
   "& > img": { marginRight: "20px", flexShrink: 0 },
 });
 
