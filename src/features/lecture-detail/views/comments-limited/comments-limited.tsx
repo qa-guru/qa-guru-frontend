@@ -4,10 +4,16 @@ import { StyledStack } from "./comments-limited.styled";
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
+import {
+  COMMENTS_DISPLAY_LIMIT,
+  INITIAL_SELECTED_INDEX,
+} from "../../constants/constants";
 
 const CommentsLimited: React.FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [selectedIndex, setSelectedIndex] = useState<number>(
+    INITIAL_SELECTED_INDEX
+  );
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
 
@@ -16,7 +22,7 @@ const CommentsLimited: React.FC<ICommentsLimited> = (props) => {
       <SendComment id={id!} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledStack>
-        {items?.slice(0, 3).map((item, index) => {
+        {items?.slice(0, COMMENTS_DISPLAY_LIMIT).map((item, index) => {
           const editAccess = dataUserId?.user?.id === item?.creator?.id;
           return (
             <CommentItem

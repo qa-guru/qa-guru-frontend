@@ -6,7 +6,7 @@ import {
   StyledStack,
   StyledStackItem,
   StyledWrapper,
-} from "./skeleton-comment.styled";
+} from "../skeletons.styled";
 
 const SkeletonComment = () => {
   return (

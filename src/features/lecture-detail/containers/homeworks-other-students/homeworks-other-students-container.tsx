@@ -10,6 +10,7 @@ import {
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Spinner from "shared/components/spinner";
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
+import { QUERY_DEFAULTS } from "../../constants/constants";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();
@@ -22,8 +23,8 @@ const HomeworksOtherStudentsContainer: React.FC = () => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
-      offset: 0,
-      limit: 3,
+      offset: QUERY_DEFAULTS.OFFSET,
+      limit: QUERY_DEFAULTS.LIMIT,
       sort: sortOptions,
       lectureId: lectureId!,
     },

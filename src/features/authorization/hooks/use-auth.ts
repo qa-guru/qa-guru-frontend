@@ -8,6 +8,7 @@ import {
   useCreateUserMutation,
   UserCreateInput,
 } from "api/graphql/generated/graphql";
+import { RESPONSE_STATUS } from "../constants/constants";
 
 const useAuth = () => {
   const [createUser] = useCreateUserMutation();
@@ -21,7 +22,7 @@ const useAuth = () => {
     setIsLoading(true);
     await AuthService.login(username, password)
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
           navigate("/");
@@ -31,7 +32,7 @@ const useAuth = () => {
         }
       })
       .catch((error) => {
-        if (error.response?.data.status === 401) {
+        if (error.response?.data.status === RESPONSE_STATUS.UNAUTHORIZED) {
           setIsLoading(false);
           enqueueSnackbar(t("login.unauthorized"));
         } else {
@@ -45,7 +46,7 @@ const useAuth = () => {
     setIsLoading(true);
     await AuthService.logout()
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
         } else {

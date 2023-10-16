@@ -1,7 +1,11 @@
 import React from "react";
 import { Box, Link, Typography } from "@mui/material";
 import { IContentSerialization } from "./content-serialization.types";
-import { style } from "./styles";
+import {
+  StyledBox,
+  StyledIframe,
+  StyledIframeBox,
+} from "./content-serialization.styled";
 import TextSerialization from "../text-serialization";
 
 const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
@@ -21,19 +25,17 @@ const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
             return <TextSerialization text={value!} key={index} />;
           case "video":
             return (
-              <Box key={index} mb={3}>
+              <StyledBox key={index}>
                 <Typography variant="h6">{value}</Typography>
-                <Box sx={style.box}>
-                  <iframe
-                    // @ts-ignore
-                    style={style.iframe}
+                <StyledIframeBox>
+                  <StyledIframe
                     src={`https://www.youtube.com/embed/${url}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     title="Embedded youtube"
                   />
-                </Box>
-              </Box>
+                </StyledIframeBox>
+              </StyledBox>
             );
           case "link":
             return (

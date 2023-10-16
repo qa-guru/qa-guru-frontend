@@ -9,6 +9,7 @@ import {
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { ICommentsContainer } from "./comments-container.types";
+import { QUERY_DEFAULTS } from "../../constants/constants";
 
 const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
@@ -24,8 +25,8 @@ const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
     fetchMore,
   } = useCommentsHomeWorkByHomeWorkQuery({
     variables: {
-      offset: 0,
-      limit: 3,
+      offset: QUERY_DEFAULTS.OFFSET,
+      limit: QUERY_DEFAULTS.LIMIT,
       homeWorkId: id,
       sort: {
         field: CommentHomeWorkSortField.CreationDate,

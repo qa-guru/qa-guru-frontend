@@ -10,6 +10,7 @@ import {
 } from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
 import HomeworkItem from "../homework-item";
+import { QUERY_DEFAULTS } from "../../constants/constants";
 
 const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;
@@ -28,7 +29,7 @@ const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
     fetchMore({
       variables: {
         offset: items?.length,
-        limit: 3,
+        limit: QUERY_DEFAULTS.LIMIT,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;

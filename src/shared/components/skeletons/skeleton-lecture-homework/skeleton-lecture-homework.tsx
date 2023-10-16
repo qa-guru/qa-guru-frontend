@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Skeleton } from "@mui/material";
+import { StyledHomeworkBox, StyledHomeworkSkeleton } from "../skeletons.styled";
 
 const SkeletonLectureHomework: React.FC = () => {
   return (
-    <Box mt="15px">
-      <Skeleton variant="rounded" width="100%" height={130} />
-    </Box>
+    <StyledHomeworkBox>
+      <StyledHomeworkSkeleton variant="rounded" />
+    </StyledHomeworkBox>
   );
 };
 

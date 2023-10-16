@@ -13,6 +13,10 @@ import {
   StyledStack,
 } from "./update-comment.styled";
 import RHF from "../../../../shared/components/input-RHF";
+import {
+  INITIAL_SELECTED_INDEX,
+  MAX_COMMENT_LENGTH,
+} from "../../constants/constants";
 
 const UpdateComment: React.FC<IUpdateComment> = (props) => {
   const { loading, updateComment, id, setSelectedIndex, content } = props;
@@ -42,14 +46,14 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
         content: data.content,
       },
       onCompleted: () => {
-        setSelectedIndex(-1);
+        setSelectedIndex(INITIAL_SELECTED_INDEX);
       },
     });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= 10000) {
+      if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {
           type: "manual",
           message: t("comment.max")!,
@@ -69,7 +73,10 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
               minRows={2}
               name="content"
               control={control}
-              inputProps={{ maxLength: 10000, onChange: handleChange }}
+              inputProps={{
+                maxLength: MAX_COMMENT_LENGTH,
+                onChange: handleChange,
+              }}
             />
             {errors?.content && (
               <FormHelperText error>{errors?.content.message}</FormHelperText>
@@ -78,7 +85,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
           <StyledButtonsStack>
             <StyledButton
               variant="contained"
-              onClick={() => setSelectedIndex(-1)}
+              onClick={() => setSelectedIndex(INITIAL_SELECTED_INDEX)}
             >
               Отменить
             </StyledButton>

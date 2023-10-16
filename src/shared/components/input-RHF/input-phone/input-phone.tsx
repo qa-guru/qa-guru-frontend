@@ -1,8 +1,9 @@
 import { Controller, FieldValues } from "react-hook-form";
 import React from "react";
-import { Autocomplete, Box, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { countries } from "./input-phone.types";
 import { IFormInputProps } from "../input.types";
+import { StyledImgBox } from "../input.styled";
 
 const InputPhone = <T extends FieldValues>({
   control,
@@ -25,11 +26,7 @@ const InputPhone = <T extends FieldValues>({
             return `(${option.code})+${option.phone}`;
           }}
           renderOption={(props, option) => (
-            <Box
-              component="li"
-              sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-              {...props}
-            >
+            <StyledImgBox {...props}>
               <img
                 loading="lazy"
                 width="20"
@@ -38,7 +35,7 @@ const InputPhone = <T extends FieldValues>({
                 alt="flag"
               />
               {option.label} ({option.code}) +{option.phone}
-            </Box>
+            </StyledImgBox>
           )}
           renderInput={(params) => (
             <TextField
