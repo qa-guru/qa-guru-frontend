@@ -4,6 +4,7 @@ import { format, parseISO } from "date-fns";
 import { IUserRow } from "./user-row.types";
 import { StyledDateStack, StyledWrapperStack } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
+import { DATE_FORMAT } from "../../constants/constants";
 
 const UserRow: React.FC<IUserRow> = (props) => {
   const {
@@ -30,7 +31,7 @@ const UserRow: React.FC<IUserRow> = (props) => {
         {date && (
           <StyledDateStack>
             <Typography variant="subtitle2">
-              {format(parseISO(date), "dd.MM.yyyy '|' HH:mm")}
+              {format(parseISO(date), DATE_FORMAT)}
             </Typography>
           </StyledDateStack>
         )}

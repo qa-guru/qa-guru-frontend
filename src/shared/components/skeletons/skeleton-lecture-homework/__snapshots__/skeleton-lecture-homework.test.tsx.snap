@@ -3,11 +3,10 @@
 exports[`SkeletonLectureHomework > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-tr0r3x"
+    class="MuiBox-root css-1c90ci9"
   >
     <span
-      class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1ukovu3-MuiSkeleton-root"
-      style="width: 100%; height: 130px;"
+      class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-ysrgr0-MuiSkeleton-root"
     />
   </div>
 </DocumentFragment>

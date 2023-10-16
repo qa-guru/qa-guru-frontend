@@ -2,22 +2,11 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import { IAvatarCustom } from "./avatar-custom.types";
+import { COLORS } from "../../constants/constants";
 
 function stringToColor(name: string) {
-  const colors = [
-    "#FFA000",
-    "#6750A4",
-    "#2CCCA6",
-    "#0288D1",
-    "#6750A4",
-    "#C2185B",
-    "#388E3C",
-    "#0097A7",
-    "#00796B",
-    "#455A64",
-  ];
-  const index = Math.abs(hashCode(name)) % colors.length;
-  return colors[index];
+  const index = Math.abs(hashCode(name)) % COLORS.length;
+  return COLORS[index];
 }
 
 /* eslint-disable no-bitwise */

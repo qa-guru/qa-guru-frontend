@@ -3,7 +3,7 @@
 exports[`SkeletonComment > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiStack-root css-n9karh-MuiStack-root"
+    class="MuiStack-root css-ba457o-MuiStack-root"
   >
     <div
       class="MuiStack-root css-vx72w3-MuiStack-root"

@@ -9,10 +9,13 @@ import {
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
+import { INITIAL_SELECTED_INDEX } from "../../constants/constants";
 
 const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [selectedIndex, setSelectedIndex] = useState<number>(
+    INITIAL_SELECTED_INDEX
+  );
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};

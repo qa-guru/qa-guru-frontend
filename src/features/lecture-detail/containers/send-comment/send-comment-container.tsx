@@ -6,6 +6,11 @@ import {
 } from "api/graphql/generated/graphql";
 import { ISendCommentContainer } from "./send-comment-container.types";
 import SendComment from "../../views/send-comment";
+import {
+  INDEX_OFFSET,
+  PARSE_INT_RADIX,
+  QUERY_DEFAULTS,
+} from "../../constants/constants";
 
 const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
   const { id } = props;
@@ -17,8 +22,8 @@ const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
         cache.readQuery({
           query: CommentsHomeWorkByHomeWorkDocument,
           variables: {
-            offset: 0,
-            limit: 3,
+            offset: QUERY_DEFAULTS.OFFSET,
+            limit: QUERY_DEFAULTS.LIMIT,
             sort: {
               field: "CREATION_DATE",
               order: "DESC",
@@ -30,8 +35,8 @@ const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
       cache.writeQuery({
         query: CommentsHomeWorkByHomeWorkDocument,
         variables: {
-          offset: 0,
-          limit: 3,
+          offset: QUERY_DEFAULTS.OFFSET,
+          limit: QUERY_DEFAULTS.LIMIT,
           sort: {
             field: "CREATION_DATE",
             order: "DESC",
@@ -48,8 +53,8 @@ const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
             totalElements:
               parseInt(
                 existingComments!.commentsHomeWorkByHomeWork!.totalElements,
-                10
-              ) + 1,
+                PARSE_INT_RADIX
+              ) + INDEX_OFFSET,
           },
         },
       });

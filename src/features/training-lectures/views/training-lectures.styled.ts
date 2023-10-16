@@ -19,7 +19,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  gap: theme.spacing(1.5),
+  gap: theme.spacing(0.5),
 }));
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
