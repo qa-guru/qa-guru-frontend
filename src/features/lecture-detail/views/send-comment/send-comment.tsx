@@ -12,7 +12,7 @@ import {
   StyledStack,
   StyledTypography,
 } from "./send-comment.styled";
-import { MAX_COMMENT_LENGTH } from "../../constants/constants";
+import { MAX_COMMENT_LENGTH } from "../../constants";
 
 const SendComment: React.FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;

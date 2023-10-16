@@ -6,7 +6,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { IMentorsContainer } from "./mentors-container.types";
 import MentorSelection from "../../views/form/mentor-selection";
-import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
+import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
 const MentorsContainer: React.FC<IMentorsContainer> = ({ control }) => {
   const { data } = useMentorsQuery({

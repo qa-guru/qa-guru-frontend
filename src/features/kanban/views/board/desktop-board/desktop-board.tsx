@@ -4,7 +4,7 @@ import { IDesktopBoard } from "./desktop-board.types";
 import { StyledStack, StyledWrapper } from "../board.styled";
 import Column from "../../column";
 import HomeworkDetails from "../../homework-details/homework-details";
-import { UI_CONSTANTS } from "../../../constants/constants";
+import { UI_CONSTANTS } from "../../../constants";
 
 const DesktopBoard: React.FC<IDesktopBoard> = ({
   columns,

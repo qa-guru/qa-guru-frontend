@@ -10,7 +10,7 @@ import {
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Spinner from "shared/components/spinner";
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
-import { QUERY_DEFAULTS } from "../../constants/constants";
+import { QUERY_DEFAULTS } from "../../constants";
 
 const HomeworksOtherStudentsContainer: React.FC = () => {
   const { lectureId } = useParams();

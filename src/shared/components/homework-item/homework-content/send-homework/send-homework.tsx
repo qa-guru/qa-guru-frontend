@@ -6,14 +6,14 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import RHF from "shared/components/input-RHF";
 import { client } from "api";
+import { LectureIdContext } from "features/lecture-detail/context/lecture-id-context";
 import { ISendHomeWorkContent, ISendHomeWork } from "./send-homework.types";
 import {
   StyledBox,
   StyledLoadingButton,
   StyledStack,
 } from "./send-homework.styled";
-import { MAX_HOMEWORK_LENGTH } from "../../../../constants/constants";
-import { LectureIdContext } from "../../../../../features/lecture-detail/context/lecture-id-context";
+import { MAX_HOMEWORK_LENGTH } from "../../../../constants";
 
 const SendHomework: React.FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;

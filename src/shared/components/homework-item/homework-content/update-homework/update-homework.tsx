@@ -17,7 +17,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./update-homework.styled";
-import { MAX_HOMEWORK_LENGTH } from "../../../../constants/constants";
+import { MAX_HOMEWORK_LENGTH } from "../../../../constants";
 
 const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;

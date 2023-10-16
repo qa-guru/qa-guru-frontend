@@ -1,5 +1,5 @@
 import { IDraggingState } from "../views/board/board.types";
-import { STATUS_COLUMN } from "../constants/constants";
+import { STATUS_COLUMN } from "../constants";
 
 type IsColumnHighlight = (
   columnId: string,

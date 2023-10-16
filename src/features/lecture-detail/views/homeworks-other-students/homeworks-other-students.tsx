@@ -9,7 +9,7 @@ import {
   StyledWrapper,
 } from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
-import { QUERY_DEFAULTS } from "../../constants/constants";
+import { QUERY_DEFAULTS } from "../../constants";
 import HomeworkItem from "../../../../shared/components/homework-item";
 
 const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {

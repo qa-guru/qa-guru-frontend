@@ -18,7 +18,7 @@ import {
   StyledWrapper,
 } from "./signup.styled";
 import { ISignUp } from "./signup.types";
-import { REQUIRED_SYMBOLS } from "../../constants/constants";
+import { REQUIRED_SYMBOLS } from "../../constants";
 
 const Signup: React.FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;

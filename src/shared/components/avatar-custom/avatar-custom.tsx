@@ -2,7 +2,7 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import { IAvatarCustom } from "./avatar-custom.types";
-import { COLORS } from "../../constants/constants";
+import { COLORS } from "../../constants";
 
 function stringToColor(name: string) {
   const index = Math.abs(hashCode(name)) % COLORS.length;

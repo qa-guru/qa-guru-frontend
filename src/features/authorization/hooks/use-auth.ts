@@ -8,7 +8,7 @@ import {
   useCreateUserMutation,
   UserCreateInput,
 } from "api/graphql/generated/graphql";
-import { RESPONSE_STATUS } from "../constants/constants";
+import { RESPONSE_STATUS } from "../constants";
 
 const useAuth = () => {
   const [createUser] = useCreateUserMutation();

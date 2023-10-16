@@ -9,7 +9,7 @@ import {
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
-import { INITIAL_SELECTED_INDEX } from "../../constants/constants";
+import { INITIAL_SELECTED_INDEX } from "../../constants";
 
 const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;

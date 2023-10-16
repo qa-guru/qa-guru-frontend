@@ -7,7 +7,7 @@ import CommentTotalElements from "../comment-total-elements";
 import {
   COMMENTS_DISPLAY_LIMIT,
   INITIAL_SELECTED_INDEX,
-} from "../../constants/constants";
+} from "../../constants";
 
 const CommentsLimited: React.FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;

@@ -13,7 +13,7 @@ import MobileBoard from "./mobile-board";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
-import { STATUS_COLUMN } from "../../constants/constants";
+import { STATUS_COLUMN } from "../../constants";
 
 const Board: React.FC<IBoard> = ({
   newData,

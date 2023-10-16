@@ -13,10 +13,7 @@ import {
   StyledStack,
 } from "./update-comment.styled";
 import RHF from "../../../../shared/components/input-RHF";
-import {
-  INITIAL_SELECTED_INDEX,
-  MAX_COMMENT_LENGTH,
-} from "../../constants/constants";
+import { INITIAL_SELECTED_INDEX, MAX_COMMENT_LENGTH } from "../../constants";
 
 const UpdateComment: React.FC<IUpdateComment> = (props) => {
   const { loading, updateComment, id, setSelectedIndex, content } = props;

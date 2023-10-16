@@ -4,7 +4,7 @@ import { format, parseISO } from "date-fns";
 import { IUserRow } from "./user-row.types";
 import { StyledDateStack, StyledWrapperStack } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
-import { DATE_FORMAT } from "../../constants/constants";
+import { DATE_FORMAT } from "../../constants";
 
 const UserRow: React.FC<IUserRow> = (props) => {
   const {

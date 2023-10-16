@@ -9,7 +9,7 @@ import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Board from "../../views/board";
 import { KanbanFormContext } from "../../context/kanban-form-context";
-import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants/constants";
+import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 
 const HomeworksContainer: React.FC = () => {
   const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =

@@ -8,7 +8,7 @@ import {
   StyledPagination,
 } from "../board.styled";
 import Column from "../../column";
-import { STEP } from "../../../constants/constants";
+import { STEP } from "../../../constants";
 
 const MobileBoard: React.FC<IMobileBoard> = ({
   columns,

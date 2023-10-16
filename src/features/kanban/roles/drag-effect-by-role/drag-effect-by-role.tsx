@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { IDragEffectByRole } from "./drag-effect-by-role.types";
-import { STATUS_COLUMN } from "../../constants/constants";
+import { STATUS_COLUMN } from "../../constants";
 
 const DragEffectByRole: React.FC<IDragEffectByRole> = ({
   card,

@@ -8,7 +8,7 @@ import {
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { ICommentsContainer } from "./comments-container.types";
-import { QUERY_DEFAULTS } from "../../constants/constants";
+import { QUERY_DEFAULTS } from "../../constants";
 
 const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();

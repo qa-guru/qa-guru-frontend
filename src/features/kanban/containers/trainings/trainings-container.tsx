@@ -6,7 +6,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { ITrainingsContainer } from "./trainings-container.types";
 import TrainingSelection from "../../views/form/training-selection";
-import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
+import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
 const TrainingsContainer: React.FC<ITrainingsContainer> = ({ control }) => {
   const { data } = useTrainingsQuery({

@@ -7,7 +7,7 @@ import {
   StyledStack,
   StyledTypography,
 } from "./lecture-description.styled";
-import { INDEX_OFFSET } from "../../constants/constants";
+import { INDEX_OFFSET } from "../../constants";
 
 const LectureDescription: React.FC<ILectureDescription> = (props) => {
   const { description } = props;
