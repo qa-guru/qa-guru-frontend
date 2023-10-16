@@ -5,18 +5,18 @@ interface IStyledPaper {
   editAccess: boolean;
 }
 
-export const StyledPaper = styled(Paper)<IStyledPaper>(
-  ({ theme, editAccess }) => ({
-    backgroundColor: editAccess
-      ? theme.palette.primary.secondary
-      : theme.palette.grey.secondary,
-    borderRadius: "12px",
-    padding: "10px",
-    [theme.breakpoints.up("sm")]: {
-      padding: "15px",
-    },
-  })
-);
+export const StyledPaper = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== "editAccess",
+})<IStyledPaper>(({ theme, editAccess }) => ({
+  backgroundColor: editAccess
+    ? theme.palette.primary.secondary
+    : theme.palette.grey.secondary,
+  borderRadius: "12px",
+  padding: "10px",
+  [theme.breakpoints.up("sm")]: {
+    padding: "15px",
+  },
+}));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
