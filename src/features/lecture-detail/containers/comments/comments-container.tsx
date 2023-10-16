@@ -3,7 +3,6 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 import SkeletonComment from "shared/components/skeletons/skeleton-comment/skeleton-comment";
 import {
   CommentHomeWorkSortField,
-  InputMaybe,
   Order,
   useCommentsHomeWorkByHomeWorkQuery,
   useUserIdQuery,
@@ -12,11 +11,6 @@ import { ICommentsContainer } from "./comments-container.types";
 
 const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
-
-  const sortOptions = {
-    field: "CREATION_DATE" as InputMaybe<CommentHomeWorkSortField>,
-    order: "DESC" as InputMaybe<Order>,
-  };
 
   const {
     loading: loadingComments,

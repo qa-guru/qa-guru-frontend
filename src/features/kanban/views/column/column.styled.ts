@@ -68,9 +68,9 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   marginBottom: "15px",
 }));
 
-export const StyledInfiniteScroll = styled(InfiniteScroll)(({ theme }) => ({
+export const StyledInfiniteScroll = styled(InfiniteScroll)({
   overflow: "visible",
-}));
+});
 
 export const StyledRowStack = styled(Stack)({
   flexDirection: "row",

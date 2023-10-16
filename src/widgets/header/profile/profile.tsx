@@ -13,9 +13,6 @@ import {
 } from "./profile.styled";
 
 const Profile: React.FC<IProfile> = (props) => {
-  const { firstName, lastName } = props.data.user!;
-  const fullName = `${firstName} ${lastName}`;
-
   const settings = [
     {
       title: "Настройки",

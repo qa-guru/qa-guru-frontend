@@ -9,11 +9,11 @@ import {
   StyledWrapper,
 } from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
-import HomeworkItem from "../homework-item";
+import HomeworkItem from "../../../../shared/components/homework-item";
 
 const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;
-  const { items, offset, totalElements, limit } = data.homeWorksByLectureId!;
+  const { items, totalElements } = data.homeWorksByLectureId!;
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 

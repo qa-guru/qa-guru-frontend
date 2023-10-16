@@ -1,8 +1,8 @@
 import React from "react";
-import HomeworkDescriptionFullpage from "features/kanban/containers/homework";
+import HomeworkDescriptionFullPage from "features/kanban/containers/homework";
 
 const KanbanHomeworkDescription: React.FC = () => {
-  return <HomeworkDescriptionFullpage />;
+  return <HomeworkDescriptionFullPage />;
 };
 
 export default KanbanHomeworkDescription;

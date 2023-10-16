@@ -1,7 +1,7 @@
 import React from "react";
 import { useUpdateHomeworkMutation } from "api/graphql/generated/graphql";
 import { IUpdateHomeworkContainer } from "./update-homework-container.types";
-import UpdateHomework from "../../views/homework-item/homework-content/update-homework";
+import UpdateHomework from "../../../../shared/components/homework-item/homework-content/update-homework";
 
 const UpdateHomeworkContainer: React.FC<IUpdateHomeworkContainer> = ({
   setOpenHomeWorkEdit,

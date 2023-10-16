@@ -21,7 +21,7 @@ import { KanbanFormContext } from "../../context/kanban-form-context";
 import TrainingSelectionByRole from "../../roles/training-selection-by-role";
 
 const Form: React.FC = () => {
-  const { control, handleSubmit, reset } = useForm({
+  const { control, reset } = useForm({
     defaultValues: {
       lectures: "",
       trainings: "",

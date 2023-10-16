@@ -1,5 +1,5 @@
 import React from "react";
-import HomeworkDetailsFullpage from "features/kanban/views/homework-details-fullpage";
+import HomeworkDetailsFullPage from "features/kanban/views/homework-details-fullpage";
 import {
   useHomeWorkQuery,
   useUserIdQuery,
@@ -21,7 +21,7 @@ const HomeworkContainer: React.FC = () => {
 
   if (!data || !dataUserId) return <NoDataErrorMessage />;
 
-  return <HomeworkDetailsFullpage data={data} dataUserId={dataUserId} />;
+  return <HomeworkDetailsFullPage data={data} dataUserId={dataUserId} />;
 };
 
 export default HomeworkContainer;

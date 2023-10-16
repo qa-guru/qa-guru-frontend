@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
@@ -22,6 +22,7 @@ import {
   StyledId,
   StyledLink,
   StyledIconButton,
+  StyledStatusContentBox,
 } from "./homework-details.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
@@ -85,9 +86,9 @@ const HomeworkDetails: React.FC<IHomeworkDescription> = ({ card, onClose }) => {
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        <Box mt="15px">
+        <StyledStatusContentBox>
           <StatusContent status={card.status!} />
-        </Box>
+        </StyledStatusContentBox>
         <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork!} />
         <StyledPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>

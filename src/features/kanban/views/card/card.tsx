@@ -26,7 +26,7 @@ const Card: React.FC<ICard> = ({
   isActive,
 }) => {
   const { userId, userRoles } = useUserContext();
-  const { id, mentor, student, lecture, creationDate } = card;
+  const { id, mentor, student, lecture } = card;
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {

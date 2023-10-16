@@ -1,1 +1,1 @@
-export { default } from "./homework-details-fullpage";
+export { default } from "./homework-details-full-page";

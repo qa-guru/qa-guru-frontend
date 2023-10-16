@@ -206,7 +206,7 @@ export type Mutation = {
   updateHomeWork?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
   updateLecture?: Maybe<LectureInfoDto>;
-  /** lecture home work level section */
+  /** lecture homework level section */
   updateLectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   updateRole?: Maybe<UserDto>;
   /** training section */
@@ -396,7 +396,7 @@ export type Query = {
   /** lecture section */
   lecture?: Maybe<LectureInfoShortDto>;
   lectureHomeWork?: Maybe<Array<Maybe<LectureContentHomeWorkDto>>>;
-  /** lecture home work level section */
+  /** lecture homework level section */
   lectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;

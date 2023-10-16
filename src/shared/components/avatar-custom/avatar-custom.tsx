@@ -36,7 +36,7 @@ function hashCode(str: string) {
 function stringAvatar(name: string) {
   return {
     sx: {
-      bgcolor: stringToColor(name),
+      backgroundColor: stringToColor(name),
     },
     children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };

@@ -1,13 +1,5 @@
 import { HomeWorksQuery } from "api/graphql/generated/graphql";
 
-type FetchMoreFunction = (options: {
-  variables: { offset: number };
-  updateQuery?: (
-    prev: HomeWorksQuery,
-    { fetchMoreResult }: { fetchMoreResult?: HomeWorksQuery }
-  ) => HomeWorksQuery;
-}) => void;
-
 export interface IBoard {
   newData: HomeWorksQuery;
   inReviewData: HomeWorksQuery;

@@ -9,7 +9,7 @@ const TrainingLecturesContainer: React.FC<ITrainingLecturesContainer> = ({
 }) => {
   const { trainingId } = useContext(KanbanFormContext);
 
-  const { data, loading } = useTrainingLecturesQuery({
+  const { data } = useTrainingLecturesQuery({
     variables: { id: trainingId! },
     skip: !trainingId,
   });

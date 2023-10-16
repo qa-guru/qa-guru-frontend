@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog } from "@mui/material";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IHomework } from "./homework.types";
 import {
   StyledBox,
@@ -15,14 +14,11 @@ import Comments from "../../containers/comments";
 import CommentsLimited from "../comments-limited";
 import CommentsPagination from "../comments-pagination";
 import { LectureIdContext } from "../../context/lecture-id-context";
-import HomeworkItem from "../homework-item";
+import HomeworkItem from "../../../../shared/components/homework-item";
 
 const Homework: React.FC<IHomework> = (props) => {
-  const { dataHomeWorkByLecture, dataUserId } = props;
+  const { dataHomeWorkByLecture, dataUserId, hideStatusAndMentor } = props;
   const lectureId = useContext(LectureIdContext);
-  const { modalId } = useParams<{ modalId: string }>();
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
@@ -43,22 +39,12 @@ const Homework: React.FC<IHomework> = (props) => {
     </Dialog>
   ));
 
-  // useEffect(() => {
-  //   if (modalId === dataHomeWorkByLecture?.id) {
-  //     showModal();
-  //   }
-  // }, [modalId, showModal, dataHomeWorkByLecture?.id]);
-
   const showModalAndSetUrl = () => {
     showModal();
-    // navigate(`${location.pathname}/${dataHomeWorkByLecture?.id}`);
   };
 
   const hideModalAndUpdateUrl = () => {
     hideModal();
-    // navigate(location.pathname.replace(`/${dataHomeWorkByLecture?.id}`, ""), {
-    //   replace: true,
-    // });
   };
 
   return (
@@ -66,6 +52,7 @@ const Homework: React.FC<IHomework> = (props) => {
       <HomeworkItem
         dataHomeWorkByLecture={dataHomeWorkByLecture}
         dataUserId={dataUserId}
+        hideStatusAndMentor={hideStatusAndMentor}
       />
       {dataHomeWorkByLecture?.id! && (
         <>

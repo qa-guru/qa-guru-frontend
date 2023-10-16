@@ -187,7 +187,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root css-tr0r3x"
+        class="MuiBox-root css-1c90ci9"
       >
         <div
           class="MuiStack-root css-19iseno-MuiStack-root"
@@ -444,7 +444,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root css-tr0r3x"
+        class="MuiBox-root css-1c90ci9"
       >
         <div
           class="MuiStack-root css-19iseno-MuiStack-root"

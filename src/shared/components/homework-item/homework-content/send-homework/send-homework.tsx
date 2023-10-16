@@ -12,7 +12,7 @@ import {
   StyledLoadingButton,
   StyledStack,
 } from "./send-homework.styled";
-import { LectureIdContext } from "../../../../context/lecture-id-context";
+import { LectureIdContext } from "../../../../../features/lecture-detail/context/lecture-id-context";
 
 const SendHomework: React.FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;

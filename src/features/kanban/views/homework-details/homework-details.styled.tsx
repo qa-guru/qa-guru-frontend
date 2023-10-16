@@ -17,6 +17,10 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   marginBottom: "15px",
 }));
 
+export const StyledStatusContentBox = styled(Box)({
+  marginTop: "15px",
+});
+
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.black.main,

@@ -9,7 +9,7 @@ import TrainingSelection from "../../views/form/training-selection";
 import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
 
 const TrainingsContainer: React.FC<ITrainingsContainer> = ({ control }) => {
-  const { data, loading } = useTrainingsQuery({
+  const { data } = useTrainingsQuery({
     variables: {
       offset: STANDARD_QUERY_DEFAULTS.OFFSET,
       limit: STANDARD_QUERY_DEFAULTS.LIMIT,

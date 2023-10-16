@@ -14,7 +14,7 @@ const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
-  const { totalElements, items, offset } =
+  const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
 
   const handleLoadMore = () => {

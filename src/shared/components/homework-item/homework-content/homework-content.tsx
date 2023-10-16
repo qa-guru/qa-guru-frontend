@@ -1,8 +1,8 @@
 import React from "react";
 import TextSerialization from "shared/serializers/text-serialization";
 import { IHomeworkContent } from "./homework-content.types";
-import UpdateHomeworkItem from "../../../containers/update-homework";
-import SendHomeworkItem from "../../../containers/send-homework";
+import UpdateHomeworkItem from "../../../../features/lecture-detail/containers/update-homework";
+import SendHomeworkItem from "../../../../features/lecture-detail/containers/send-homework";
 
 const HomeworkContent: React.FC<IHomeworkContent> = (props) => {
   const { status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, id } = props;
