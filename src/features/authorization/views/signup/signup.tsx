@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FormControl, FormHelperText, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -20,7 +20,7 @@ import {
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS } from "../../constants";
 
-const Signup: React.FC<ISignUp> = (props) => {
+const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
   const { t } = useTranslation();

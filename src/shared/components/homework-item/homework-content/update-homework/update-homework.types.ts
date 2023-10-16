@@ -1,10 +1,10 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { UpdateHomeworkMutationFn } from "api/graphql/generated/graphql";
 
 export interface IUpdateHomeWork {
   loading: boolean;
   updateHomework: UpdateHomeworkMutationFn;
-  setOpenHomeWorkEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   answer: string;
   id: string;
 }

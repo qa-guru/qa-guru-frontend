@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Box, Button, Dialog } from "@mui/material";
 import { IModalHomeworksOtherStudents } from "./modal-homeworks-other-students.types";
@@ -13,7 +13,7 @@ import CommentsPagination from "../comments-pagination/comments-pagination";
 import HomeworkItem from "../../../../shared/components/homework-item";
 import CommentsTotalElements from "../comment-total-elements";
 
-const ModalHomeworksOtherStudents: React.FC<IModalHomeworksOtherStudents> = ({
+const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
   item,
   dataUserId,
 }) => {

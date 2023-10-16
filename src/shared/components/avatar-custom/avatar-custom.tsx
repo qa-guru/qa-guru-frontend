@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import { IAvatarCustom } from "./avatar-custom.types";
@@ -31,7 +31,7 @@ function stringAvatar(name: string) {
   };
 }
 
-const AvatarCustom: React.FC<IAvatarCustom> = ({
+const AvatarCustom: FC<IAvatarCustom> = ({
   fullName,
   width,
   height,

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useDrag } from "react-dnd";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
@@ -17,7 +17,7 @@ import { useUserContext } from "../../context/user-context";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import DragEffectByRole from "../../roles/drag-effect-by-role/drag-effect-by-role";
 
-const Card: React.FC<ICard> = ({
+const Card: FC<ICard> = ({
   card,
   sourceColumnId,
   setDraggingState,

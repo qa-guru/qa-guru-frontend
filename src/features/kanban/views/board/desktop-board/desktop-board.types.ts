@@ -1,4 +1,4 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { IColumnItem } from "../../column/column.types";
 import { StudentHomeWorkDto } from "../../../../../api/graphql/generated/graphql";
 
@@ -9,8 +9,8 @@ export interface IDesktopBoard {
     fromInReview: boolean;
     fromNotApproved: boolean;
   };
-  setDraggingState: React.Dispatch<
-    React.SetStateAction<{
+  setDraggingState: Dispatch<
+    SetStateAction<{
       newItem: boolean;
       fromInReview: boolean;
       fromNotApproved: boolean;

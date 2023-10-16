@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Order,
   TrainingSortField,
@@ -8,7 +8,7 @@ import { ITrainingsContainer } from "./trainings-container.types";
 import TrainingSelection from "../../views/form/training-selection";
 import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
-const TrainingsContainer: React.FC<ITrainingsContainer> = ({ control }) => {
+const TrainingsContainer: FC<ITrainingsContainer> = ({ control }) => {
   const { data } = useTrainingsQuery({
     variables: {
       offset: STANDARD_QUERY_DEFAULTS.OFFSET,

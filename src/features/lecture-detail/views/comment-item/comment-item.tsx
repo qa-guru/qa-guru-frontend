@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { IconButton } from "@mui/material";
 import TextSerialization from "shared/serializers/text-serialization";
 import { ReactComponent as Edit } from "assets/icons/button-edit.svg";
@@ -12,7 +12,7 @@ import {
 } from "./comment-item.styled";
 import UpdateComment from "../../containers/update-comment";
 
-const CommentItem: React.FC<ICommentItem> = ({
+const CommentItem: FC<ICommentItem> = ({
   item,
   editAccess,
   isSelected,

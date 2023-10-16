@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Divider, Stack, Typography } from "@mui/material";
 import { ILectureDescription } from "./lecture-description.types";
 import {
@@ -9,7 +9,7 @@ import {
 } from "./lecture-description.styled";
 import { INDEX_OFFSET } from "../../constants";
 
-const LectureDescription: React.FC<ILectureDescription> = (props) => {
+const LectureDescription: FC<ILectureDescription> = (props) => {
   const { description } = props;
 
   return (

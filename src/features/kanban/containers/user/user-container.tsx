@@ -1,11 +1,11 @@
-import React from "react";
+import { FC } from "react";
 import { useUserQuery } from "api/graphql/generated/graphql";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { IUserContainer } from "./user-container.types";
 import { UserProvider } from "../../context/user-context";
 
-const UserContainer: React.FC<IUserContainer> = ({ children }) => {
+const UserContainer: FC<IUserContainer> = ({ children }) => {
   const { data, loading } = useUserQuery();
 
   if (loading) return <Spinner />;

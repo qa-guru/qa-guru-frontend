@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Dialog,
   DialogActions,
@@ -19,7 +19,7 @@ import {
   StyledWrapper,
 } from "./logout.styled";
 
-const Logout: React.FC<ILogout> = (props) => {
+const Logout: FC<ILogout> = (props) => {
   const { logout, setAnchorElUser } = props;
   const { t } = useTranslation();
   const [showModal, hideModal] = useModal(({ in: open }) => (

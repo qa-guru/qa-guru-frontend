@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import { CircularProgress } from "@mui/material";
 import { StyledGrid } from "./spinner.styled";
 
-const Spinner: React.FC = () => {
+const Spinner: FC = () => {
   return (
     <StyledGrid container>
       <CircularProgress />

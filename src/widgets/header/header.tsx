@@ -1,5 +1,5 @@
 import { Box, IconButton } from "@mui/material";
-import * as React from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
@@ -17,10 +17,8 @@ import {
 } from "./header.styled";
 import { getHeaderByRole } from "./roles/header-by-role";
 
-const Header: React.FC<IHeader> = ({ userRoles }) => {
-  const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(
-    null
-  );
+const Header: FC<IHeader> = ({ userRoles }) => {
+  const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { Divider, Typography } from "@mui/material";
 import StatusContent from "shared/components/status-content";
 import UserRow from "shared/components/user-row";
@@ -13,7 +13,7 @@ import {
 } from "./homework-item.styled";
 import ButtonEdit from "./button-edit";
 
-const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
+const HomeworkItem: FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLecture, dataUserId, hideStatusAndMentor } = props;
   const {
     status,

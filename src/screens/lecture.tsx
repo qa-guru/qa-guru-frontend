@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import LectureDetail from "features/lecture-detail/containers/lecture-detail";
 
-const Lecture: React.FC = () => {
+const Lecture: FC = () => {
   return <LectureDetail />;
 };
 

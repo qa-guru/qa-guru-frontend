@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
@@ -12,7 +12,7 @@ import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
 import { QUERY_DEFAULTS } from "../../constants";
 import HomeworkItem from "../../../../shared/components/homework-item";
 
-const HomeworksOtherStudents: React.FC<IHomeworksOtherStudents> = (props) => {
+const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;
   const { items, totalElements } = data.homeWorksByLectureId!;
   const [loading, setLoading] = useState<boolean>(false);

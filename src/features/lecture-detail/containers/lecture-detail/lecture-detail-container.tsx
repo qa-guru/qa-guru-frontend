@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
@@ -10,7 +10,7 @@ import LectureDetail from "../../views";
 import useTariff from "../../hooks/use-tariff";
 import { LectureIdContext } from "../../context/lecture-id-context";
 
-const LectureDetailContainer: React.FC = () => {
+const LectureDetailContainer: FC = () => {
   const { lectureId, trainingId } = useParams();
 
   const { tariffHomework } = useTariff({ trainingId });

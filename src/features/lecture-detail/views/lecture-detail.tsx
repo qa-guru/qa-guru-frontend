@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import LectureHomework from "shared/components/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 import { Container } from "@mui/material";
@@ -11,7 +11,7 @@ import LectureContent from "./lecture-content";
 import HomeworksOtherStudents from "../containers/homeworks-other-students";
 import Homework from "../containers/homework";
 
-const LectureDetail: React.FC<ILectureDetail> = (props) => {
+const LectureDetail: FC<ILectureDetail> = (props) => {
   const {
     dataLecture,
     dataLectureHomework: { lectureHomeWork },

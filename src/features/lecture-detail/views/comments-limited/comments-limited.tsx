@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { ICommentsLimited } from "./comments-limited.types";
 import { StyledStack } from "./comments-limited.styled";
 import SendComment from "../../containers/send-comment";
@@ -9,7 +9,7 @@ import {
   INITIAL_SELECTED_INDEX,
 } from "../../constants";
 
-const CommentsLimited: React.FC<ICommentsLimited> = (props) => {
+const CommentsLimited: FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;
   const [selectedIndex, setSelectedIndex] = useState<number>(
     INITIAL_SELECTED_INDEX

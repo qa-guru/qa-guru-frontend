@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
 import {
   InputMaybe,
@@ -12,7 +12,7 @@ import Spinner from "shared/components/spinner";
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
 import { QUERY_DEFAULTS } from "../../constants";
 
-const HomeworksOtherStudentsContainer: React.FC = () => {
+const HomeworksOtherStudentsContainer: FC = () => {
   const { lectureId } = useParams();
 
   const sortOptions = {

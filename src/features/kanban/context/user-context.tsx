@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import { ReactNode, FC, createContext, useContext } from "react";
 import { UserRole } from "api/graphql/generated/graphql";
 
 interface UserContextType {
@@ -19,10 +19,10 @@ export const useUserContext = (): UserContextType => {
 interface UserProviderProps {
   userId?: string | null;
   userRoles?: Array<UserRole | null> | null;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const UserProvider: React.FC<UserProviderProps> = ({
+export const UserProvider: FC<UserProviderProps> = ({
   userId,
   userRoles,
   children,

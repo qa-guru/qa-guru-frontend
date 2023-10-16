@@ -1,7 +1,7 @@
-import React from "react";
+import { ReactNode } from "react";
 import { SnackbarProvider } from "notistack";
 
-export const withSnackBar = (component: () => React.ReactNode) => () =>
+export const withSnackBar = (component: () => ReactNode) => () =>
   (
     <SnackbarProvider
       anchorOrigin={{

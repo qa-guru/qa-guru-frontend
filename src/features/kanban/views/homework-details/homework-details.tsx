@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
@@ -26,7 +26,7 @@ import {
 } from "./homework-details.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const HomeworkDetails: React.FC<IHomeworkDescription> = ({ card, onClose }) => {
+const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";
 
   return (

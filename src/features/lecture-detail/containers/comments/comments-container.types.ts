@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 // eslint-disable-next-line import/named
 import { ApolloQueryResult, FetchMoreQueryOptions } from "@apollo/client";
 import {
@@ -22,5 +22,5 @@ interface CommentsProps {
 
 export interface ICommentsContainer {
   id: string;
-  children: React.ReactElement<CommentsProps>;
+  children: ReactElement<CommentsProps>;
 }

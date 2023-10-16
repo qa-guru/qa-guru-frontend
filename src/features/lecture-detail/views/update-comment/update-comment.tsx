@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, ChangeEvent } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -15,7 +15,7 @@ import {
 import RHF from "../../../../shared/components/input-RHF";
 import { INITIAL_SELECTED_INDEX, MAX_COMMENT_LENGTH } from "../../constants";
 
-const UpdateComment: React.FC<IUpdateComment> = (props) => {
+const UpdateComment: FC<IUpdateComment> = (props) => {
   const { loading, updateComment, id, setSelectedIndex, content } = props;
   const { t } = useTranslation();
 
@@ -48,7 +48,7 @@ const UpdateComment: React.FC<IUpdateComment> = (props) => {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
       if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {

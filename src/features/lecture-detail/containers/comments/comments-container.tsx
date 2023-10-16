@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, cloneElement } from "react";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import SkeletonComment from "shared/components/skeletons/skeleton-comment/skeleton-comment";
 import {
@@ -10,7 +10,7 @@ import {
 import { ICommentsContainer } from "./comments-container.types";
 import { QUERY_DEFAULTS } from "../../constants";
 
-const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
+const CommentsContainer: FC<ICommentsContainer> = ({ id, children }) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
 
   const {
@@ -40,7 +40,7 @@ const CommentsContainer: React.FC<ICommentsContainer> = ({ id, children }) => {
     return <NoDataErrorMessage />;
   }
 
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     id,
     dataUserId,
     dataCommentsHomeWorkByHomeWork,

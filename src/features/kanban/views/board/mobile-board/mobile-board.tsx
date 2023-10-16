@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box } from "@mui/material";
 import { IMobileBoard } from "./mobile-board.types";
@@ -10,7 +10,7 @@ import {
 import Column from "../../column";
 import { STEP } from "../../../constants";
 
-const MobileBoard: React.FC<IMobileBoard> = ({
+const MobileBoard: FC<IMobileBoard> = ({
   columns,
   activeStep,
   handleStepChange,

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { FC, useContext, ChangeEvent } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -15,7 +15,7 @@ import {
 } from "./send-homework.styled";
 import { MAX_HOMEWORK_LENGTH } from "../../../../constants";
 
-const SendHomework: React.FC<ISendHomeWork> = (props) => {
+const SendHomework: FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
   const lectureId = useContext(LectureIdContext);
   const { t } = useTranslation();
@@ -44,7 +44,7 @@ const SendHomework: React.FC<ISendHomeWork> = (props) => {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
       if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
         setError("content", {

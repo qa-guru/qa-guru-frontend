@@ -1,10 +1,10 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { CommentHomeWorkDto } from "api/graphql/generated/graphql";
 
 export interface ICommentItem {
   item: CommentHomeWorkDto;
   editAccess: boolean;
   isSelected: boolean;
-  setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
+  setSelectedIndex: Dispatch<SetStateAction<number>>;
   index: number;
 }

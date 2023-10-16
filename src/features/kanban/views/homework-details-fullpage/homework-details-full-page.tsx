@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Container, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
@@ -21,7 +21,7 @@ import {
 } from "./homework-details-full-page.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const HomeworkDetailsFullPage: React.FC<IHomeworkDescriptionFullPage> = ({
+const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
   data,
   dataUserId,
 }) => {

@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import HomeworkDescriptionFullPage from "features/kanban/containers/homework";
 
-const KanbanHomeworkDescription: React.FC = () => {
+const KanbanHomeworkDescription: FC = () => {
   return <HomeworkDescriptionFullPage />;
 };
 

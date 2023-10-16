@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import { lazy } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "shared/components/spinner";
 import useAuth from "features/authorization/hooks/use-auth";

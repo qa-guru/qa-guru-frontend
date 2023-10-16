@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { FC, useContext } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog } from "@mui/material";
 import { IHomework } from "./homework.types";
@@ -16,7 +16,7 @@ import CommentsPagination from "../comments-pagination";
 import { LectureIdContext } from "../../context/lecture-id-context";
 import HomeworkItem from "../../../../shared/components/homework-item";
 
-const Homework: React.FC<IHomework> = (props) => {
+const Homework: FC<IHomework> = (props) => {
   const { dataHomeWorkByLecture, dataUserId, hideStatusAndMentor } = props;
   const lectureId = useContext(LectureIdContext);
 

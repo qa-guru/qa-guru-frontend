@@ -1,7 +1,7 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export interface IUpdateHomeworkContainer {
-  setOpenHomeWorkEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   answer: string;
   id: string;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, MouseEvent } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
@@ -7,10 +7,10 @@ import Typography from "@mui/material/Typography";
 import { IMenuBurger } from "./menu-burger.types";
 import { StyledBox } from "./menu-burger.styled";
 
-const MenuBurger: React.FC<IMenuBurger> = (props) => {
+const MenuBurger: FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
 

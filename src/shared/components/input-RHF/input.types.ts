@@ -1,4 +1,4 @@
-import React from "react";
+import { InputHTMLAttributes } from "react";
 import { Control, FieldValues } from "react-hook-form";
 
 export interface IFormInputProps<T extends FieldValues> {
@@ -12,7 +12,7 @@ export interface IFormInputProps<T extends FieldValues> {
   maxRows?: string | number;
   minRows?: string | number;
   defaultValue?: T[keyof T];
-  inputProps?: React.InputHTMLAttributes<HTMLTextAreaElement>;
+  inputProps?: InputHTMLAttributes<HTMLTextAreaElement>;
   onChange?: (value: string) => void;
   disabled?: boolean;
   content?: Array<{ value: string; label: string }>;

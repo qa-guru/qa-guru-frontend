@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import { ITrainings } from "./training-purchases.types";
 import {
@@ -10,7 +10,7 @@ import {
   StyledTypography,
 } from "./training-purchases.styled";
 
-const TrainingPurchases: React.FC<ITrainings> = ({ data }) => {
+const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;
 
   return (

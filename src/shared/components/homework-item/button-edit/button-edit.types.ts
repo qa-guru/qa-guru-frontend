@@ -1,9 +1,9 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 export interface IButtonEdit {
   openHomeWorkEdit: boolean;
-  setOpenHomeWorkEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   status: Maybe<StudentHomeWorkStatus>;
   editAccess: boolean;
 }

@@ -1,11 +1,11 @@
-import React from "react";
+import { FC, Fragment } from "react";
 import { Box, Link, Typography } from "@mui/material";
 
 export interface ITextSerialization {
   text: string;
 }
 
-const TextSerialization: React.FC<ITextSerialization> = ({ text }) => {
+const TextSerialization: FC<ITextSerialization> = ({ text }) => {
   const linkRegex = /(https?:\/\/[^\s]+)/g;
   const lines = text?.split("\n");
 
@@ -25,7 +25,7 @@ const TextSerialization: React.FC<ITextSerialization> = ({ text }) => {
                   {part}
                 </Link>
               ) : (
-                <React.Fragment key={j}>{part}</React.Fragment>
+                <Fragment key={j}>{part}</Fragment>
               )
             )}
             <br />

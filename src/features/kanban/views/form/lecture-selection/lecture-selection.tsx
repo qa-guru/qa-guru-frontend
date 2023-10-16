@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { FormControl, Tooltip } from "@mui/material";
 import RHF from "shared/components/input-RHF";
 import ISelectLectures from "./lecture-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
-const LectureSelection: React.FC<ISelectLectures> = ({ data, control }) => {
+const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
   const { setLectureId } = useContext(KanbanFormContext);
 
   const lecturesOptions = data?.trainingLectures?.map((item) => ({

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IDesktopBoard } from "./desktop-board.types";
 import { StyledStack, StyledWrapper } from "../board.styled";
@@ -6,7 +6,7 @@ import Column from "../../column";
 import HomeworkDetails from "../../homework-details/homework-details";
 import { UI_CONSTANTS } from "../../../constants";
 
-const DesktopBoard: React.FC<IDesktopBoard> = ({
+const DesktopBoard: FC<IDesktopBoard> = ({
   columns,
   draggingState,
   setDraggingState,

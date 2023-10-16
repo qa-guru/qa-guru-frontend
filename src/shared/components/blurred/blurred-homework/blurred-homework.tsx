@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import LectureHomework from "shared/components/lecture-homework";
 import Homework from "features/lecture-detail/containers/homework";
 import BlurredComponent from "../blurred-component/blurred-component";
@@ -8,7 +8,7 @@ import {
   StyledWrapper,
 } from "../blurred.styled";
 
-const BlurredHomework: React.FC = () => {
+const BlurredHomework: FC = () => {
   return (
     <StyledWrapper>
       <BlurredComponent>

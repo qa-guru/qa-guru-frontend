@@ -1,4 +1,4 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { IColumnItem } from "../../column/column.types";
 
 export interface IMobileBoard {
@@ -10,8 +10,8 @@ export interface IMobileBoard {
     fromInReview: boolean;
     fromNotApproved: boolean;
   };
-  setDraggingState: React.Dispatch<
-    React.SetStateAction<{
+  setDraggingState: Dispatch<
+    SetStateAction<{
       newItem: boolean;
       fromInReview: boolean;
       fromNotApproved: boolean;

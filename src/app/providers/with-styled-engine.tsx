@@ -1,5 +1,5 @@
 import { StyledEngineProvider } from "@mui/material";
-import React from "react";
+import { ReactNode } from "react";
 
-export const withStyledEngine = (component: () => React.ReactNode) => () =>
+export const withStyledEngine = (component: () => ReactNode) => () =>
   <StyledEngineProvider injectFirst>{component()}</StyledEngineProvider>;

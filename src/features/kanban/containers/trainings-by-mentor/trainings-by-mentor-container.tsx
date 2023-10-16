@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Order,
   TrainingSortField,
@@ -8,7 +8,7 @@ import { ITrainingsByMentorContainer } from "./trainings-by-mentor-container.typ
 import TrainingSelection from "../../views/form/training-selection";
 import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
-const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
+const TrainingsByMentorContainer: FC<ITrainingsByMentorContainer> = ({
   control,
 }) => {
   const { data } = useTrainingsByMentorQuery({
