@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import TrainingLectures from "features/training-lectures/containers";
 
-const LecturesByTraining: React.FC = () => {
+const LecturesByTraining: FC = () => {
   return <TrainingLectures />;
 };
 

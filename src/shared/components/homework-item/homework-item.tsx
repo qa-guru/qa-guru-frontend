@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { Divider, Typography } from "@mui/material";
 import StatusContent from "shared/components/status-content";
 import UserRow from "shared/components/user-row";
@@ -13,15 +13,14 @@ import {
 } from "./homework-item.styled";
 import ButtonEdit from "./button-edit";
 
-const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
-  const { dataHomeWorkByLecture, dataUserId } = props;
+const HomeworkItem: FC<IHomeworkItem> = (props) => {
+  const { dataHomeWorkByLecture, dataUserId, hideStatusAndMentor } = props;
   const {
     status,
     startCheckingDate,
     endCheckingDate,
     mentor,
     student,
-    creationDate,
     answer,
     id,
   } = dataHomeWorkByLecture! || {};
@@ -35,14 +34,18 @@ const HomeworkItem: React.FC<IHomeworkItem> = (props) => {
     <>
       <StyledWrapper>
         <Typography variant="h5">Ответ на задание</Typography>
-        <StatusContent status={status!} />
-        <StyledStack>
-          {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
-            <StyledBox>
-              <UserRow user={mentor!} date={date} />
-            </StyledBox>
-          )}
-        </StyledStack>
+        {!hideStatusAndMentor && (
+          <>
+            <StatusContent status={status!} />
+            <StyledStack>
+              {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
+                <StyledBox>
+                  <UserRow user={mentor!} date={date} />
+                </StyledBox>
+              )}
+            </StyledStack>
+          </>
+        )}
       </StyledWrapper>
       <Divider />
 

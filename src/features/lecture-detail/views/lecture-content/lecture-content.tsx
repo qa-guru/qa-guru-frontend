@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Divider } from "@mui/material";
 import ContentSerialization from "shared/serializers/content-serialization";
 import { ILectureContent } from "./lecture-content.types";
@@ -8,7 +8,7 @@ import {
   StyledTypography,
 } from "./lecture-content.styled";
 
-const LectureContent: React.FC<ILectureContent> = ({ content }) => {
+const LectureContent: FC<ILectureContent> = ({ content }) => {
   return (
     <>
       <StyledPaper>

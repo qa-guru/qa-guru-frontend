@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { Typography } from "@mui/material";
 import { IAvatarCustom } from "./avatar-custom.types";
-import { COLORS } from "../../constants/constants";
+import { COLORS } from "../../constants";
 
 function stringToColor(name: string) {
   const index = Math.abs(hashCode(name)) % COLORS.length;
@@ -25,13 +25,13 @@ function hashCode(str: string) {
 function stringAvatar(name: string) {
   return {
     sx: {
-      bgcolor: stringToColor(name),
+      backgroundColor: stringToColor(name),
     },
     children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
   };
 }
 
-const AvatarCustom: React.FC<IAvatarCustom> = ({
+const AvatarCustom: FC<IAvatarCustom> = ({
   fullName,
   width,
   height,

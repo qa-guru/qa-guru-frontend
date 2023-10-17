@@ -1,10 +1,10 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
-export interface IHomeworkContentByRole {
+export interface IHomeworkContent {
   status: StudentHomeWorkStatus;
   answer: string;
   openHomeWorkEdit: boolean;
-  setOpenHomeWorkEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   id: string;
 }

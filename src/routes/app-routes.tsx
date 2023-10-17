@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import React from "react";
+import { FC } from "react";
 import Layout from "shared/components/layout/layout";
 import { UserRole } from "api/graphql/generated/graphql";
 import { getUserRoutes } from "./role-routes";
@@ -8,7 +8,7 @@ interface AppRoutesProps {
   userRoles: Array<UserRole | null>;
 }
 
-const AppRoutes: React.FC<AppRoutesProps> = ({ userRoles }) => {
+const AppRoutes: FC<AppRoutesProps> = ({ userRoles }) => {
   const userRoutes = getUserRoutes(userRoles);
 
   return (

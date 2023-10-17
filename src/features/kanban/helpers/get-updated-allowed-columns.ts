@@ -1,5 +1,5 @@
 import { UserRole } from "api/graphql/generated/graphql";
-import { STATUS_COLUMN } from "../constants/constants";
+import { STATUS_COLUMN } from "../constants";
 
 export const getUpdatedAllowedColumns = (
   columnId: string,

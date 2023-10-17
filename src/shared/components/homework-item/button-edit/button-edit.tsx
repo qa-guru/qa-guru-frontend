@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import { IButtonEdit } from "./button-edit.types";
 import { StyledButton } from "./button-edit.styled";
 
-const ButtonEdit: React.FC<IButtonEdit> = (props) => {
+const ButtonEdit: FC<IButtonEdit> = (props) => {
   const { openHomeWorkEdit, setOpenHomeWorkEdit, status, editAccess } = props;
 
   return (

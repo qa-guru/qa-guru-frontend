@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog, DialogTitle } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
@@ -7,7 +7,7 @@ import {
   StyledIconBox,
 } from "./no-data-error-message.styled";
 
-const NoDataErrorMessage: React.FC = () => {
+const NoDataErrorMessage: FC = () => {
   const [showModal] = useModal(({ in: open }) => (
     <Dialog open={open}>
       <DialogTitle>Упс что-то пошло не так....</DialogTitle>

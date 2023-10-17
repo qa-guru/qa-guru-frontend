@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useDrop } from "react-dnd";
 import {
   CircularProgress,
@@ -30,7 +30,7 @@ import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
 import { getFormattedStatus } from "../../helpers/get-formatted-status";
 
-const Column: React.FC<IColumn> = ({
+const Column: FC<IColumn> = ({
   column,
   onCardDrop,
   draggingState,

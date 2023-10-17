@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   StyledNavigateButton,
@@ -6,7 +6,7 @@ import {
   StyledTypography,
 } from "../buttons.styled";
 
-const ButtonTrainingList: React.FC = () => {
+const ButtonTrainingList: FC = () => {
   const navigate = useNavigate();
 
   return (

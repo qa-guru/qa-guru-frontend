@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useMediaQuery } from "@mui/material";
@@ -13,9 +13,9 @@ import MobileBoard from "./mobile-board";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { createColumnItem } from "../../helpers/create-column-item";
 import { IColumnItem } from "../column/column.types";
-import { STATUS_COLUMN } from "../../constants/constants";
+import { STATUS_COLUMN } from "../../constants";
 
-const Board: React.FC<IBoard> = ({
+const Board: FC<IBoard> = ({
   newData,
   inReviewData,
   approvedData,

@@ -1,4 +1,4 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { IDraggingState } from "../../views/board/board.types";
 import {
   StudentHomeWorkDto,
@@ -8,7 +8,7 @@ import {
 export interface IDragEffectByRole {
   card: StudentHomeWorkDto;
   sourceColumnId: string;
-  setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
+  setDraggingState: Dispatch<SetStateAction<IDraggingState>>;
   isDragging: boolean;
   userId?: string | null;
   userRoles?: (UserRole | null)[] | null;

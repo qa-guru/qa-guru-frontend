@@ -1,10 +1,9 @@
-import * as React from "react";
+import { FC, useContext } from "react";
 import RHF from "shared/components/input-RHF";
-import { useContext } from "react";
 import { ICreationDateFromSelection } from "./creation-date-from-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
-const CreationDateFromSelection: React.FC<ICreationDateFromSelection> = ({
+const CreationDateFromSelection: FC<ICreationDateFromSelection> = ({
   control,
 }) => {
   const { setCreationDateFrom } = useContext(KanbanFormContext);

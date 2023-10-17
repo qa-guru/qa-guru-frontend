@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   CommentsHomeWorkByHomeWorkDocument,
   CommentsHomeWorkByHomeWorkQuery,
@@ -6,13 +6,9 @@ import {
 } from "api/graphql/generated/graphql";
 import { ISendCommentContainer } from "./send-comment-container.types";
 import SendComment from "../../views/send-comment";
-import {
-  INDEX_OFFSET,
-  PARSE_INT_RADIX,
-  QUERY_DEFAULTS,
-} from "../../constants/constants";
+import { INDEX_OFFSET, PARSE_INT_RADIX, QUERY_DEFAULTS } from "../../constants";
 
-const SendCommentContainer: React.FC<ISendCommentContainer> = (props) => {
+const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
   const { id } = props;
 
   const [sendComment, { loading }] = useSendCommentMutation({

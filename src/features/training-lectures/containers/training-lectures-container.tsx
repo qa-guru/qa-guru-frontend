@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
@@ -8,7 +8,7 @@ import {
 } from "api/graphql/generated/graphql";
 import TrainingLectures from "../views/training-lectures";
 
-const TrainingLecturesContainer: React.FC = () => {
+const TrainingLecturesContainer: FC = () => {
   const { trainingId } = useParams();
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({

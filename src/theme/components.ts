@@ -3,7 +3,7 @@ import { Theme } from "@mui/material";
 
 const components = (theme: Theme) => {
   // @ts-ignore
-  const { white, primary, secondary } = theme.palette;
+  const { white } = theme.palette;
   return {
     MuiCssBaseline: {
       styleOverrides: {

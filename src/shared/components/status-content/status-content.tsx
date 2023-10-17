@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
@@ -13,7 +13,7 @@ const RedHighlightOffIcon = styled(HighlightOffIcon)({
   color: red.main,
 });
 
-const StatusContent: React.FC<IStatusContent> = ({ status }) => {
+const StatusContent: FC<IStatusContent> = ({ status }) => {
   let icon;
   let statusText;
 

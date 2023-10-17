@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import { StyledBox, StyledFooter, StyledLogo } from "./footer.styled";
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return (
     <StyledFooter>
       <StyledBox>

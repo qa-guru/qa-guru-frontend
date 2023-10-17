@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { FC, useContext, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -20,8 +20,8 @@ import LectureSelection from "../../containers/training-lectures";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 import TrainingSelectionByRole from "../../roles/training-selection-by-role";
 
-const Form: React.FC = () => {
-  const { control, handleSubmit, reset } = useForm({
+const Form: FC = () => {
+  const { control, reset } = useForm({
     defaultValues: {
       lectures: "",
       trainings: "",

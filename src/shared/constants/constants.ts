@@ -12,4 +12,5 @@ export const COLORS = [
 ];
 export const DEFAULT_TIME_VALUE = 0;
 export const INPUT_DATE_FORMAT = "YYYY-MM-DDTHH:mm:ss";
+export const MAX_HOMEWORK_LENGTH = 2000;
 export const DATE_FORMAT = "dd.MM.yyyy '|' HH:mm";

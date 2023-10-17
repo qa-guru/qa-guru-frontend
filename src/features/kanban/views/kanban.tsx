@@ -1,4 +1,3 @@
-import React from "react";
 import Form from "./form";
 import Board from "../containers/homeworks";
 import { KanbanFormContext } from "../context/kanban-form-context";

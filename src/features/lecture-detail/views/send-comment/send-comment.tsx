@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, ChangeEvent } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -12,9 +12,9 @@ import {
   StyledStack,
   StyledTypography,
 } from "./send-comment.styled";
-import { MAX_COMMENT_LENGTH } from "../../constants/constants";
+import { MAX_COMMENT_LENGTH } from "../../constants";
 
-const SendComment: React.FC<ISendComment> = (props) => {
+const SendComment: FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
   const { t } = useTranslation();
 
@@ -44,7 +44,7 @@ const SendComment: React.FC<ISendComment> = (props) => {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
       if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {

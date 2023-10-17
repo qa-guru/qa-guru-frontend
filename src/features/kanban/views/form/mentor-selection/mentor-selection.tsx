@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { FormControl } from "@mui/material";
 import RHF from "shared/components/input-RHF";
 import { IMentorSelection } from "./mentor-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
-const MentorSelection: React.FC<IMentorSelection> = ({ data, control }) => {
+const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
   const items = data?.mentors?.items;
   const { setMentorId } = useContext(KanbanFormContext);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
@@ -36,7 +36,7 @@ export interface IColumn {
     };
   }) => void;
   draggingState: IDraggingState;
-  setDraggingState: React.Dispatch<React.SetStateAction<IDraggingState>>;
+  setDraggingState: Dispatch<SetStateAction<IDraggingState>>;
   column: IColumnItem;
   onCardDrop: (
     cardId: string,

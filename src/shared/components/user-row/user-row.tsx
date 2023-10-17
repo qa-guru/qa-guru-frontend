@@ -1,12 +1,12 @@
-import React from "react";
+import { FC } from "react";
 import { Box, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { IUserRow } from "./user-row.types";
 import { StyledDateStack, StyledWrapperStack } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
-import { DATE_FORMAT } from "../../constants/constants";
+import { DATE_FORMAT } from "../../constants";
 
-const UserRow: React.FC<IUserRow> = (props) => {
+const UserRow: FC<IUserRow> = (props) => {
   const {
     icon: Icon,
     user,

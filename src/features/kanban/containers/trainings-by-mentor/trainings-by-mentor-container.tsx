@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Order,
   TrainingSortField,
@@ -6,9 +6,9 @@ import {
 } from "api/graphql/generated/graphql";
 import { ITrainingsByMentorContainer } from "./trainings-by-mentor-container.types";
 import TrainingSelection from "../../views/form/training-selection";
-import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
+import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
-const TrainingsByMentorContainer: React.FC<ITrainingsByMentorContainer> = ({
+const TrainingsByMentorContainer: FC<ITrainingsByMentorContainer> = ({
   control,
 }) => {
   const { data } = useTrainingsByMentorQuery({

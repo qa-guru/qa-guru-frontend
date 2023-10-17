@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Order,
   TrainingSortField,
@@ -6,10 +6,10 @@ import {
 } from "api/graphql/generated/graphql";
 import { ITrainingsContainer } from "./trainings-container.types";
 import TrainingSelection from "../../views/form/training-selection";
-import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
+import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
-const TrainingsContainer: React.FC<ITrainingsContainer> = ({ control }) => {
-  const { data, loading } = useTrainingsQuery({
+const TrainingsContainer: FC<ITrainingsContainer> = ({ control }) => {
+  const { data } = useTrainingsQuery({
     variables: {
       offset: STANDARD_QUERY_DEFAULTS.OFFSET,
       limit: STANDARD_QUERY_DEFAULTS.LIMIT,

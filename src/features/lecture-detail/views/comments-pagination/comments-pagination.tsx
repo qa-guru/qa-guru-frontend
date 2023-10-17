@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import { ICommentsPagination } from "./comments-pagination.types";
 import {
@@ -9,15 +9,15 @@ import {
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
-import { INITIAL_SELECTED_INDEX } from "../../constants/constants";
+import { INITIAL_SELECTED_INDEX } from "../../constants";
 
-const CommentsPagination: React.FC<ICommentsPagination> = (props) => {
+const CommentsPagination: FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
   const [selectedIndex, setSelectedIndex] = useState<number>(
     INITIAL_SELECTED_INDEX
   );
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
-  const { totalElements, items, offset } =
+  const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
 
   const handleLoadMore = () => {

@@ -1,12 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import { UserRole, useUserRolesQuery } from "api/graphql/generated/graphql";
 import { ITrainingSelectionByRole } from "./training-selection-by-role.types";
 import Trainings from "../../containers/trainings";
 import TrainingsByMentor from "../../containers/trainings-by-mentor";
 
-const TrainingSelectionByRole: React.FC<ITrainingSelectionByRole> = ({
-  control,
-}) => {
+const TrainingSelectionByRole: FC<ITrainingSelectionByRole> = ({ control }) => {
   const { data } = useUserRolesQuery();
   const userRoles = data?.user?.roles;
   const rolePriority = [UserRole.Manager, UserRole.Mentor];

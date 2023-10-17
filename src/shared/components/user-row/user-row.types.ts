@@ -1,8 +1,8 @@
-import React from "react";
+import { ComponentType } from "react";
 import { UserDto } from "api/graphql/generated/graphql";
 
 export interface IUserRow {
-  icon?: React.ComponentType;
+  icon?: ComponentType;
   user: UserDto;
   date?: string;
   width?: string | number;

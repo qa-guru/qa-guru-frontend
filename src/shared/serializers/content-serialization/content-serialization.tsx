@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Box, Link, Typography } from "@mui/material";
 import { IContentSerialization } from "./content-serialization.types";
 import {
@@ -8,7 +8,7 @@ import {
 } from "./content-serialization.styled";
 import TextSerialization from "../text-serialization";
 
-const ContentSerialization: React.FC<IContentSerialization> = ({ content }) => {
+const ContentSerialization: FC<IContentSerialization> = ({ content }) => {
   return (
     <>
       {content?.map((item, index) => {

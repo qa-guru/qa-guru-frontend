@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, ChangeEvent } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -17,9 +17,9 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./update-homework.styled";
-import { MAX_HOMEWORK_LENGTH } from "../../../../constants/constants";
+import { MAX_HOMEWORK_LENGTH } from "../../../../constants";
 
-const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
+const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
   const { t } = useTranslation();
 
@@ -55,7 +55,7 @@ const UpdateHomework: React.FC<IUpdateHomeWork> = (props) => {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     trigger("content").then((isValid) => {
       if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
         setError("content", {

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   Order,
   useMentorsQuery,
@@ -6,9 +6,9 @@ import {
 } from "api/graphql/generated/graphql";
 import { IMentorsContainer } from "./mentors-container.types";
 import MentorSelection from "../../views/form/mentor-selection";
-import { STANDARD_QUERY_DEFAULTS } from "../../constants/constants";
+import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
-const MentorsContainer: React.FC<IMentorsContainer> = ({ control }) => {
+const MentorsContainer: FC<IMentorsContainer> = ({ control }) => {
   const { data } = useMentorsQuery({
     variables: {
       offset: STANDARD_QUERY_DEFAULTS.OFFSET,

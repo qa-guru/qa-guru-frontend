@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, MouseEvent, useState } from "react";
 import { Button, ListItemIcon, MenuList } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Menu from "@mui/material/Menu";
@@ -12,10 +12,7 @@ import {
   StyledMenuItem,
 } from "./profile.styled";
 
-const Profile: React.FC<IProfile> = (props) => {
-  const { firstName, lastName } = props.data.user!;
-  const fullName = `${firstName} ${lastName}`;
-
+const Profile: FC<IProfile> = (props) => {
   const settings = [
     {
       title: "Настройки",
@@ -23,11 +20,9 @@ const Profile: React.FC<IProfile> = (props) => {
     },
   ];
 
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-  const handleOpenProfile = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenProfile = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 

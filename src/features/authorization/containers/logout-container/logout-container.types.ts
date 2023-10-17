@@ -1,5 +1,5 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export interface ILogoutContainer {
-  setAnchorElUser: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+  setAnchorElUser: Dispatch<SetStateAction<HTMLElement | null>>;
 }

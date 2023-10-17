@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import { Route } from "react-router-dom";
 import { UserRole } from "api/graphql/generated/graphql";
 import TrainingLectures from "screens/lectures-by-training";
@@ -7,7 +7,7 @@ import Kanban from "features/kanban/views/kanban";
 import Home from "screens/home";
 import KanbanHomeworkDescription from "screens/kanban-homework-description";
 
-const StudentRoutes: React.ReactNode[] = [
+const StudentRoutes: ReactNode[] = [
   <Route key="/" path="/" element={<Home />} />,
   <Route
     key="training-lectures"
@@ -21,7 +21,7 @@ const StudentRoutes: React.ReactNode[] = [
   />,
 ];
 
-const MentorRoutes: React.ReactNode[] = [
+const MentorRoutes: ReactNode[] = [
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
@@ -30,7 +30,7 @@ const MentorRoutes: React.ReactNode[] = [
   />,
 ];
 
-const ManagerRoutes: React.ReactNode[] = [
+const ManagerRoutes: ReactNode[] = [
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
@@ -39,7 +39,7 @@ const ManagerRoutes: React.ReactNode[] = [
   />,
 ];
 
-const MasterRoutes: React.ReactNode[] = [
+const MasterRoutes: ReactNode[] = [
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
@@ -51,13 +51,13 @@ const MasterRoutes: React.ReactNode[] = [
 export const getUserRoutes = (userRoles: Array<UserRole | null>) => {
   return userRoles.reduce((acc, role) => {
     if (role && roleRoutes[role]) {
-      return [...acc, ...(roleRoutes[role] as React.ReactNode[])];
+      return [...acc, ...(roleRoutes[role] as ReactNode[])];
     }
     return acc;
-  }, [] as React.ReactNode[]);
+  }, [] as ReactNode[]);
 };
 
-export const roleRoutes: { [key in UserRole]?: React.ReactNode[] } = {
+export const roleRoutes: { [key in UserRole]?: ReactNode[] } = {
   [UserRole.Student]: StudentRoutes,
   [UserRole.Mentor]: MentorRoutes,
   [UserRole.Manager]: ManagerRoutes,

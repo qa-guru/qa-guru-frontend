@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { FC, useContext } from "react";
 import {
   useHomeWorkByLectureQuery,
   useUserIdQuery,
@@ -8,7 +8,7 @@ import Spinner from "shared/components/spinner";
 import { LectureIdContext } from "../../context/lecture-id-context";
 import Homework from "../../views/homework";
 
-const HomeworkContainer: React.FC = () => {
+const HomeworkContainer: FC = () => {
   const lectureId = useContext(LectureIdContext);
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
 

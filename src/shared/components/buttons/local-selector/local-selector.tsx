@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { IconButton, SvgIcon } from "@mui/material";
 import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
