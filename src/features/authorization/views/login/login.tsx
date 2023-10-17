@@ -27,6 +27,10 @@ const Login: React.FC<ILogin> = (props) => {
     navigate("/register");
   };
 
+  const roureReset = () => {
+    navigate("/reset");
+  };
+
   const {
     handleSubmit,
     control,
@@ -106,7 +110,9 @@ const Login: React.FC<ILogin> = (props) => {
           </StyledStack>
         </form>
         <StyledAlignBox>
-          <StyledButton variant="text">{t("restore")}</StyledButton>
+          <StyledButton variant="text" onClick={roureReset}>
+            {t("restore")}
+          </StyledButton>
         </StyledAlignBox>
         <StyledAlignBox>
           <StyledButton variant="text" onClick={routeRegister}>
