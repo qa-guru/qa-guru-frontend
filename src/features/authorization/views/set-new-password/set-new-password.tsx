@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { FormControl } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ import {
 } from "./set-new-password.styled";
 import { ISetNewPassword } from "./set-new-password.types";
 
-const SetNewPassword: React.FC = () => {
+const SetNewPassword: FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 

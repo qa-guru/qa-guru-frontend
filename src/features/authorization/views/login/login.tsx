@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -18,7 +18,7 @@ import {
   StyledWrapper,
 } from "./login.styled";
 
-const Login: React.FC<ILogin> = (props) => {
+const Login: FC<ILogin> = (props) => {
   const { isLoading, login } = props;
   const { t } = useTranslation();
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,7 +9,7 @@ import {
   StyledWrapper,
 } from "./reset-password-message.styled";
 
-const ResetPasswordMessage: React.FC = () => {
+const ResetPasswordMessage: FC = () => {
   const navigate = useNavigate();
 
   const routeLogin = () => {

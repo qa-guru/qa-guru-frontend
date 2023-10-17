@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { FormControl } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ import {
 } from "./reset-password.styled";
 import RHF from "../../../../shared/components/input-RHF";
 
-const ResetPassword: React.FC = () => {
+const ResetPassword: FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
