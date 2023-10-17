@@ -85,7 +85,6 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
         <Homework
           dataHomeWorkByLecture={data.homeWork!}
           dataUserId={dataUserId!}
-          hideStatusAndMentor
         />
       </StyledAnswerBox>
     </Container>

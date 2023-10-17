@@ -17,7 +17,7 @@ import { LectureIdContext } from "../../context/lecture-id-context";
 import HomeworkItem from "../../../../shared/components/homework-item";
 
 const Homework: FC<IHomework> = (props) => {
-  const { dataHomeWorkByLecture, dataUserId, hideStatusAndMentor } = props;
+  const { dataHomeWorkByLecture, dataUserId } = props;
   const lectureId = useContext(LectureIdContext);
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
@@ -52,7 +52,6 @@ const Homework: FC<IHomework> = (props) => {
       <HomeworkItem
         dataHomeWorkByLecture={dataHomeWorkByLecture}
         dataUserId={dataUserId}
-        hideStatusAndMentor={hideStatusAndMentor}
       />
       {dataHomeWorkByLecture?.id! && (
         <>

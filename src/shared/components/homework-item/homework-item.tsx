@@ -14,7 +14,7 @@ import {
 import ButtonEdit from "./button-edit";
 
 const HomeworkItem: FC<IHomeworkItem> = (props) => {
-  const { dataHomeWorkByLecture, dataUserId, hideStatusAndMentor } = props;
+  const { dataHomeWorkByLecture, dataUserId } = props;
   const {
     status,
     startCheckingDate,
@@ -34,24 +34,20 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     <>
       <StyledWrapper>
         <Typography variant="h5">Ответ на задание</Typography>
-        {!hideStatusAndMentor && (
-          <>
-            <StatusContent status={status!} />
-            <StyledStack>
-              {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
-                <StyledBox>
-                  <UserRow user={mentor!} date={date} />
-                </StyledBox>
-              )}
-            </StyledStack>
-          </>
-        )}
+        <StatusContent status={status!} />
+        <StyledStack>
+          {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
+            <StyledBox>
+              <UserRow user={mentor!} date={date} />
+            </StyledBox>
+          )}
+        </StyledStack>
       </StyledWrapper>
       <Divider />
 
       {status && (
         <StyledUserRowBox>
-          <UserRow user={mentor!} date={date} />
+          <UserRow user={student!} date={date} />
         </StyledUserRowBox>
       )}
 
@@ -64,6 +60,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
           id={id!}
         />
       </StyledHomeworkContentBox>
+
       <ButtonEdit
         editAccess={editAccess}
         openHomeWorkEdit={openHomeWorkEdit}
