@@ -58,7 +58,7 @@ exports[`SignUp > the component is Loading 1`] = `
     >
       <form>
         <div
-          class="MuiStack-root css-1j3p5uw-MuiStack-root"
+          class="MuiStack-root css-1dofk9q-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -581,7 +581,7 @@ exports[`SignUp > the component is not Loading 1`] = `
     >
       <form>
         <div
-          class="MuiStack-root css-1j3p5uw-MuiStack-root"
+          class="MuiStack-root css-1dofk9q-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
