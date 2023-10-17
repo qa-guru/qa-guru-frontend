@@ -10,7 +10,7 @@ import {
 } from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
 import { QUERY_DEFAULTS } from "../../constants";
-import HomeworkItem from "../../../../shared/components/homework-item";
+import HomeworkItem from "../homework-item";
 
 const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;

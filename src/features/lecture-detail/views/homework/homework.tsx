@@ -14,7 +14,7 @@ import Comments from "../../containers/comments";
 import CommentsLimited from "../comments-limited";
 import CommentsPagination from "../comments-pagination";
 import { LectureIdContext } from "../../context/lecture-id-context";
-import HomeworkItem from "../../../../shared/components/homework-item";
+import HomeworkItem from "../homework-item";
 
 const Homework: FC<IHomework> = (props) => {
   const { dataHomeWorkByLecture, dataUserId } = props;

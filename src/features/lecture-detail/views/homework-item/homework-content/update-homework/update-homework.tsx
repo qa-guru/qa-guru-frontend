@@ -1,33 +1,37 @@
-import { FC, useContext, ChangeEvent } from "react";
+import { FC, ChangeEvent } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import * as yup from "yup";
 import { useTranslation } from "react-i18next";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import RHF from "shared/components/input-RHF";
 import { client } from "api";
-import { LectureIdContext } from "features/lecture-detail/context/lecture-id-context";
-import { ISendHomeWorkContent, ISendHomeWork } from "./send-homework.types";
+import {
+  IUpdateHomeWork,
+  IUpdateHomeworkContent,
+} from "./update-homework.types";
 import {
   StyledBox,
+  StyledCancelButton,
   StyledLoadingButton,
   StyledStack,
-} from "./send-homework.styled";
-import { MAX_HOMEWORK_LENGTH } from "../../../../constants";
+  StyledWrapper,
+} from "./update-homework.styled";
+import { MAX_HOMEWORK_LENGTH } from "../../../../../../shared/constants";
 
-const SendHomework: FC<ISendHomeWork> = (props) => {
-  const { sendHomeWorkToCheck, loading } = props;
-  const lectureId = useContext(LectureIdContext);
+const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
+  const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
   const { t } = useTranslation();
+
   const {
     handleSubmit,
     control,
-    setError,
     formState: { errors },
     trigger,
-  } = useForm<ISendHomeWorkContent>({
+    setError,
+  } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
-      content: "",
+      content: answer!,
     },
     resolver: yupResolver(
       yup.object().shape({
@@ -36,11 +40,18 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
     ),
   });
 
-  const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
-    sendHomeWorkToCheck({
-      variables: { lectureId: lectureId!, content: data.content },
-      onCompleted: () =>
-        client.refetchQueries({ include: ["homeWorkByLecture"] }),
+  const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
+    data
+  ) => {
+    updateHomework({
+      variables: {
+        id: id!,
+        content: data.content,
+      },
+      onCompleted: () => {
+        client.refetchQueries({ include: ["homeWorkByLecture"] });
+        setOpenHomeWorkEdit(false);
+      },
     });
   };
 
@@ -57,11 +68,10 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
 
   return (
     <form>
-      <StyledStack>
+      <StyledWrapper>
         <StyledBox>
           <FormControl fullWidth>
             <RHF.InputTextField
-              placeholder="Текст ответа"
               multiline
               maxRows={10}
               minRows={5}
@@ -76,17 +86,21 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
               <FormHelperText error>{errors?.content.message}</FormHelperText>
             )}
           </FormControl>
-          <StyledLoadingButton
-            variant="contained"
-            loading={loading}
-            onClick={handleSubmit(sendHomeWork)}
-          >
-            Отправить
-          </StyledLoadingButton>
+          <StyledStack>
+            <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
+              Отменить
+            </StyledCancelButton>
+            <StyledLoadingButton
+              onClick={handleSubmit(handleUpdateHomework)}
+              loading={loading}
+            >
+              Отправить
+            </StyledLoadingButton>
+          </StyledStack>
         </StyledBox>
-      </StyledStack>
+      </StyledWrapper>
     </form>
   );
 };
 
-export default SendHomework;
+export default UpdateHomework;

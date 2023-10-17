@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useSendHomeWorkToCheckMutation } from "api/graphql/generated/graphql";
-import SendHomework from "../../../../shared/components/homework-item/homework-content/send-homework";
+import SendHomework from "../../views/homework-item/homework-content/send-homework";
 
 const SendHomeworkContainer: FC = () => {
   const [sendHomeWorkToCheck, { loading }] = useSendHomeWorkToCheckMutation();

@@ -1,6 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, Paper, Stack } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Button, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
 export const StyledLogo = styled(Logo)(({ theme }) => ({
@@ -14,26 +13,27 @@ export const StyledLogo = styled(Logo)(({ theme }) => ({
 }));
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
+  justifyContent: "center",
+  alignItems: "center",
   width: "310px",
+  height: "200px",
   marginTop: "16px",
   [theme.breakpoints.up("sm")]: {
     width: "430px",
+    height: "200px",
     marginTop: "22px",
   },
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   padding: "20px 34px 14px",
-  gap: theme.spacing(1),
+  gap: theme.spacing(2),
   [theme.breakpoints.up("md")]: {
-    padding: "32px 60px 10px",
-    gap: theme.spacing(2),
+    padding: "40px 60px 20px",
+    gap: theme.spacing(4),
   },
-}));
-
-export const StyledAlignBox = styled(Box)({
   textAlign: "center",
-});
+}));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   height: "100vh",
@@ -42,11 +42,8 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledButton = styled(Button)(({ theme }) => ({
-  textTransform: "none",
-  color: theme.palette.primary.main,
-}));
-
-export const StyledLoadingButton = styled(LoadingButton)({
-  textTransform: "none",
+export const StyledResetButton = styled(Button)({
+  textTransform: "uppercase",
+  width: "70%",
+  alignSelf: "center",
 });
