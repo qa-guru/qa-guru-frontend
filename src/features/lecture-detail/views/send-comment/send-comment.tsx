@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from "react";
+import { ChangeEvent, FC } from "react";
 import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -13,13 +13,11 @@ import {
   StyledTypography,
 } from "./send-comment.styled";
 import { MAX_COMMENT_LENGTH } from "../../constants";
-import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
 
 const SendComment: FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
-  if (!id) return <NoDataErrorMessage />;
-
   const { t } = useTranslation();
+
   const {
     handleSubmit,
     control,
@@ -39,11 +37,13 @@ const SendComment: FC<ISendComment> = (props) => {
   });
 
   const handleSendComment: SubmitHandler<ISendCommentContent> = (data) => {
-    sendComment({
-      variables: { homeWorkId: id, content: data.content },
-    }).then(() => {
-      reset();
-    });
+    if (id) {
+      sendComment({
+        variables: { homeWorkId: id, content: data.content },
+      }).then(() => {
+        reset();
+      });
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

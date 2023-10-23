@@ -27,7 +27,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     trigger,
   } = useForm<IUpdateCommentContent>({
     defaultValues: {
-      content: content!,
+      content,
     },
     resolver: yupResolver(
       yup.object().shape({
@@ -37,15 +37,17 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
   });
 
   const handleUpdateComment: SubmitHandler<IUpdateCommentContent> = (data) => {
-    updateComment({
-      variables: {
-        id: id!,
-        content: data.content,
-      },
-      onCompleted: () => {
-        setSelectedIndex(INITIAL_SELECTED_INDEX);
-      },
-    });
+    if (data.content && id) {
+      updateComment({
+        variables: {
+          id,
+          content: data.content,
+        },
+        onCompleted: () => {
+          setSelectedIndex(INITIAL_SELECTED_INDEX);
+        },
+      });
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

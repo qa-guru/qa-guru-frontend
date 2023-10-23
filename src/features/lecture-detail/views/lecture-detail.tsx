@@ -12,24 +12,21 @@ import HomeworksOtherStudents from "../containers/homeworks-other-students";
 import Homework from "../containers/homework";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
-  const {
-    dataLecture,
-    dataLectureHomework: { lectureHomeWork },
-    tariffHomework,
-  } = props;
-  const { subject, description, speakers, content } = dataLecture.lecture!;
-  const hasHomework = lectureHomeWork?.length! > 0;
+  const { dataLecture, dataLectureHomework, tariffHomework } = props;
+  const { subject, description, speakers, content } = dataLecture.lecture || {};
+  const lectureHomeWork = dataLectureHomework?.lectureHomeWork || [];
+  const hasHomework = lectureHomeWork?.length > 0;
 
   return (
     <Container>
       <ButtonLessonsList />
-      <LectureTitle title={subject!} />
-      <LectureDescription description={description!} />
-      <LectureSpeakers speakers={speakers!} />
-      <LectureContent content={content!} />
+      <LectureTitle title={subject} />
+      <LectureDescription description={description} />
+      <LectureSpeakers speakers={speakers} />
+      <LectureContent content={content} />
       {tariffHomework && hasHomework && (
         <>
-          <LectureHomework lectureHomeWork={lectureHomeWork!} />
+          <LectureHomework lectureHomeWork={lectureHomeWork} />
           <Homework />
           <HomeworksOtherStudents />
         </>

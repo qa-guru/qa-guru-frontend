@@ -10,5 +10,5 @@ export interface IUpdateComment {
 }
 
 export interface IUpdateCommentContent {
-  content: string;
+  content?: string | null;
 }

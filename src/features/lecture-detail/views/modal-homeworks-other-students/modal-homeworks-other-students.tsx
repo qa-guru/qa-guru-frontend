@@ -41,7 +41,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
 
   return (
     <StyledStack>
-      <Comments id={item?.id!}>
+      <Comments id={item?.id}>
         <CommentsTotalElements />
       </Comments>
       <Box>

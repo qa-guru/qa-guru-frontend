@@ -1,3 +1,3 @@
 export interface ILectureTitle {
-  title: string;
+  title?: string | null;
 }
