@@ -4,5 +4,7 @@ import {
 } from "api/graphql/generated/graphql";
 
 export interface ILectureHomework {
-  lectureHomeWork?: (LectureContentHomeWorkDto | LectureContentDto | null)[];
+  lectureHomeWork?:
+    | (LectureContentHomeWorkDto | LectureContentDto | null)[]
+    | null;
 }

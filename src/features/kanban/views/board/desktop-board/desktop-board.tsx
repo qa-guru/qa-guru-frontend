@@ -66,7 +66,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({
             transition={{ duration: UI_CONSTANTS.ANIMATE_DURATION }}
           >
             <HomeworkDetails
-              card={selectedCard!}
+              card={selectedCard}
               onClose={handleHomeworkDetailsClose}
             />
           </motion.div>

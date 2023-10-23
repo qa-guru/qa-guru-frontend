@@ -35,7 +35,7 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <StyledStack>
           <StyledId>
             <StyledLink to={`/kanban/${card.id}`}>
-              <Typography variant="h6">{getFormattedId(card.id!)}</Typography>
+              <Typography variant="h6">{getFormattedId(card.id)}</Typography>
             </StyledLink>
             <OpenInNewIcon />
           </StyledId>
@@ -47,7 +47,7 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <StyledRowStack>
           <UserRow
             icon={StudentIcon}
-            user={card.student!}
+            user={card.student}
             width={26}
             height={26}
           />
@@ -87,12 +87,12 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
           )}
         </StyledRowStack>
         <StyledStatusContentBox>
-          <StatusContent status={card.status!} />
+          <StatusContent status={card.status} />
         </StyledStatusContentBox>
-        <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork!} />
+        <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork} />
         <StyledPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>
-          <TextSerialization text={card.answer!} />
+          <TextSerialization text={card.answer} />
         </StyledPaper>
       </StyledBox>
     </StyledHomeworkDetails>

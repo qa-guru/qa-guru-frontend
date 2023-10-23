@@ -17,7 +17,9 @@ const TrainingLecturesContainer: FC<ITrainingLecturesContainer> = ({
     skip: !trainingId,
   });
 
-  return <LectureSelection data={data!} control={control} />;
+  if (!trainingId || !data) return <NoDataErrorMessage />;
+
+  return <LectureSelection data={data} control={control} />;
 };
 
 export default TrainingLecturesContainer;
