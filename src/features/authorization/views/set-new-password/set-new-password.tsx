@@ -41,7 +41,7 @@ const SetNewPassword: FC = () => {
               <RHF.InputTextField
                 control={control}
                 name="username"
-                placeholder={t("enter.email")!}
+                placeholder={t("enter.email")}
                 label="E-mail"
               />
             </FormControl>
@@ -49,8 +49,8 @@ const SetNewPassword: FC = () => {
               <RHF.InputTextField
                 control={control}
                 name="password"
-                placeholder={t("enter.password")!}
-                label={t("password")!}
+                placeholder={t("enter.password")}
+                label={t("password")}
                 type="password"
               />
             </FormControl>
@@ -58,8 +58,8 @@ const SetNewPassword: FC = () => {
               <RHF.InputTextField
                 control={control}
                 name="password"
-                placeholder={t("password.confirm")!}
-                label={t("password")!}
+                placeholder={t("password.confirm")}
+                label={t("password")}
                 type="password"
               />
             </FormControl>

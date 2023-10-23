@@ -35,7 +35,7 @@ const Profile: FC<IProfile> = (props) => {
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
           <StyledBox>
-            <UserRow user={props.data.user!} variant="subtitle2" />
+            <UserRow user={props.data.user} variant="subtitle2" />
           </StyledBox>
         </Button>
       </Tooltip>

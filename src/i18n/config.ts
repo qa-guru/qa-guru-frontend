@@ -23,6 +23,7 @@ use(initReactI18next)
     detection: DETECTION_OPTIONS,
     ns: ["translations"],
     defaultNS: "translations",
+    returnNull: false,
   });
 
 i18n.languages = ["en", "ru"];

@@ -26,9 +26,7 @@ const App = () => {
   if (loading) return <Spinner />;
 
   return (
-    <>
-      {isAuth ? <AppRoutes userRoles={data?.user?.roles!} /> : <AuthRoutes />}
-    </>
+    <>{isAuth ? <AppRoutes userRoles={data?.user?.roles} /> : <AuthRoutes />}</>
   );
 };
 

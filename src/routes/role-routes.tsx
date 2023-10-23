@@ -49,7 +49,7 @@ const MasterRoutes: ReactNode[] = [
 ];
 
 export const getUserRoutes = (userRoles: Array<UserRole | null>) => {
-  return userRoles.reduce((acc, role) => {
+  return userRoles?.reduce((acc, role) => {
     if (role && roleRoutes[role]) {
       return [...acc, ...(roleRoutes[role] as ReactNode[])];
     }

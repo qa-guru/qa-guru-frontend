@@ -5,16 +5,16 @@ import { UserRole } from "api/graphql/generated/graphql";
 import { getUserRoutes } from "./role-routes";
 
 interface AppRoutesProps {
-  userRoles: Array<UserRole | null>;
+  userRoles?: Array<UserRole | null> | null;
 }
 
 const AppRoutes: FC<AppRoutesProps> = ({ userRoles }) => {
-  const userRoutes = getUserRoutes(userRoles);
+  const userRoutes = getUserRoutes(userRoles!);
 
   return (
     <Routes>
       <Route path="/" element={<Layout userRoles={userRoles} />}>
-        {userRoutes.map((route) => route)}
+        {userRoutes?.map((route) => route)}
       </Route>
     </Routes>
   );

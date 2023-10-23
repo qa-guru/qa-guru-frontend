@@ -42,8 +42,8 @@ const Login: FC<ILogin> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().required(t("email.required")!),
-        password: yup.string().required(t("password.required")!),
+        username: yup.string().required(t("email.required")),
+        password: yup.string().required(t("password.required")),
       })
     ),
   });
@@ -76,7 +76,7 @@ const Login: FC<ILogin> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="username"
-                placeholder={t("enter.email")!}
+                placeholder={t("enter.email")}
                 label="E-mail"
               />
               {errors?.username && (
@@ -89,8 +89,8 @@ const Login: FC<ILogin> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="password"
-                placeholder={t("enter.password")!}
-                label={t("password")!}
+                placeholder={t("enter.password")}
+                label={t("password")}
                 type="password"
               />
               {errors?.password && (

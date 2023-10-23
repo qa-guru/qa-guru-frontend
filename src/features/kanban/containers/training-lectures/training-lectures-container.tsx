@@ -10,14 +10,12 @@ const TrainingLecturesContainer: FC<ITrainingLecturesContainer> = ({
 }) => {
   const { trainingId } = useContext(KanbanFormContext);
 
-  if (!trainingId) return <NoDataErrorMessage />;
-
   const { data } = useTrainingLecturesQuery({
-    variables: { id: trainingId },
+    variables: { id: trainingId! },
     skip: !trainingId,
   });
 
-  if (!trainingId || !data) return <NoDataErrorMessage />;
+  if (!data) return <NoDataErrorMessage />;
 
   return <LectureSelection data={data} control={control} />;
 };

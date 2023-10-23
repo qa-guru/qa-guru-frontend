@@ -41,15 +41,15 @@ const Signup: FC<ISignUp> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        firstName: yup.string().required(t("firstName.required")!),
-        lastName: yup.string().required(t("lastName.required")!),
-        email: yup.string().required(t("email.required")!),
+        firstName: yup.string().required(t("firstName.required")),
+        lastName: yup.string().required(t("lastName.required")),
+        email: yup.string().required(t("email.required")),
         password: yup
           .string()
-          .min(REQUIRED_SYMBOLS.MIN, t("password.required.min")!)
-          .max(REQUIRED_SYMBOLS.MAX, t("password.required.max")!)
-          .required(t("password.required")!),
-        phoneNumber: yup.string().required(t("phone.required")!),
+          .min(REQUIRED_SYMBOLS.MIN, t("password.required.min"))
+          .max(REQUIRED_SYMBOLS.MAX, t("password.required.max"))
+          .required(t("password.required")),
+        phoneNumber: yup.string().required(t("phone.required")),
       })
     ),
   });
@@ -91,7 +91,7 @@ const Signup: FC<ISignUp> = (props) => {
                 control={control}
                 name="firstName"
                 placeholder="Введите ваше имя"
-                label={t("firstName")!}
+                label={t("firstName")}
               />
               {errors?.firstName && (
                 <FormHelperText error>
@@ -104,7 +104,7 @@ const Signup: FC<ISignUp> = (props) => {
                 control={control}
                 name="lastName"
                 placeholder="Введите фамилию"
-                label={t("lastName")!}
+                label={t("lastName")}
               />
               {errors?.lastName && (
                 <FormHelperText error>
@@ -116,7 +116,7 @@ const Signup: FC<ISignUp> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="email"
-                placeholder={t("enter.email")!}
+                placeholder={t("enter.email")}
                 label="E-mail"
               />
               {errors?.email && (
@@ -140,8 +140,8 @@ const Signup: FC<ISignUp> = (props) => {
               <RHF.InputTextField
                 control={control}
                 name="password"
-                placeholder={t("enter.password")!}
-                label={t("password")!}
+                placeholder={t("enter.password")}
+                label={t("password")}
                 type="password"
               />
               {errors?.password && (
@@ -153,8 +153,8 @@ const Signup: FC<ISignUp> = (props) => {
             <FormControl fullWidth>
               <TextField
                 name="password"
-                placeholder={t("enter.password")!}
-                label={t("password.confirm")!}
+                placeholder={t("enter.password")}
+                label={t("password.confirm")}
                 onChange={(e) => setValueConfirmPassword(e.target.value)}
                 type="password"
               />

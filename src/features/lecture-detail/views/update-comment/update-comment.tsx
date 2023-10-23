@@ -31,7 +31,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("comment")!),
+        content: yup.string().required(t("comment")),
       })
     ),
   });
@@ -55,7 +55,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
       if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {
           type: "manual",
-          message: t("comment.max")!,
+          message: t("comment.max"),
         });
       }
     });

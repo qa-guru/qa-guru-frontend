@@ -13,10 +13,8 @@ const HomeworkContainer: FC = () => {
 
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
 
-  if (!lectureId) return <NoDataErrorMessage />;
-
   const { data, loading } = useHomeWorkQuery({
-    variables: { homeWorkId: lectureId },
+    variables: { homeWorkId: lectureId! },
   });
 
   if (loading || loadingUserId) return <Spinner />;
