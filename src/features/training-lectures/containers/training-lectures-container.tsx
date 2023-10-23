@@ -10,20 +10,24 @@ import TrainingLectures from "../views/training-lectures";
 
 const TrainingLecturesContainer: FC = () => {
   const { trainingId } = useParams();
+
+  if (!trainingId) return <NoDataErrorMessage />;
+
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
-      variables: { id: trainingId! },
+      variables: { id: trainingId },
     });
   const { data: dataTraining, loading: loadingTraining } = useTrainingQuery({
-    variables: { id: trainingId! },
+    variables: { id: trainingId },
   });
 
   if (loadingTrainingLectures || loadingTraining) return <Spinner />;
-  if (!dataTrainingLectures || !dataTraining) return <NoDataErrorMessage />;
+  if (!dataTrainingLectures || !dataTraining || !trainingId)
+    return <NoDataErrorMessage />;
 
   return (
     <TrainingLectures
-      trainingId={trainingId!}
+      trainingId={trainingId}
       dataTrainingLectures={dataTrainingLectures}
       dataTraining={dataTraining}
     />
