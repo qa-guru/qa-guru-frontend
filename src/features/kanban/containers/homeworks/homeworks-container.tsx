@@ -20,8 +20,8 @@ const HomeworksContainer: FC = () => {
       trainingId,
       lectureId,
       mentorId,
-      creationDateFrom: creationDateFrom!,
-      creationDateTo: creationDateTo!,
+      creationDateFrom,
+      creationDateTo,
     };
   }, [trainingId, lectureId, mentorId, creationDateFrom, creationDateTo]);
 

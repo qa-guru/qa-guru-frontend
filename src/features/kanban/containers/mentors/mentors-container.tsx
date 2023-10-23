@@ -7,6 +7,7 @@ import {
 import { IMentorsContainer } from "./mentors-container.types";
 import MentorSelection from "../../views/form/mentor-selection";
 import { STANDARD_QUERY_DEFAULTS } from "../../constants";
+import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
 
 const MentorsContainer: FC<IMentorsContainer> = ({ control }) => {
   const { data } = useMentorsQuery({
@@ -20,7 +21,9 @@ const MentorsContainer: FC<IMentorsContainer> = ({ control }) => {
     },
   });
 
-  return <MentorSelection data={data!} control={control} />;
+  if (!data) return <NoDataErrorMessage />;
+
+  return <MentorSelection data={data} control={control} />;
 };
 
 export default MentorsContainer;

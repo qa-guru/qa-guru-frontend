@@ -12,9 +12,11 @@ const HomeworkContainer: FC = () => {
   const lectureId = useContext(LectureIdContext);
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
 
+  if (!lectureId) return <NoDataErrorMessage />;
+
   const { data: dataHomeWorkByLecture, loading: loadingHomeWorkByLecture } =
     useHomeWorkByLectureQuery({
-      variables: { lectureId: lectureId! },
+      variables: { lectureId },
       fetchPolicy: "cache-first",
     });
 
@@ -23,8 +25,8 @@ const HomeworkContainer: FC = () => {
 
   return (
     <Homework
-      dataHomeWorkByLecture={dataHomeWorkByLecture.homeWorkByLecture!}
-      dataUserId={dataUserId!}
+      dataHomeWorkByLecture={dataHomeWorkByLecture?.homeWorkByLecture}
+      dataUserId={dataUserId}
     />
   );
 };

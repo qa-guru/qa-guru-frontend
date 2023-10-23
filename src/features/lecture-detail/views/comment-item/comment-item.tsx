@@ -25,16 +25,16 @@ const CommentItem: FC<ICommentItem> = ({
     <StyledPaper key={index} editAccess={editAccess}>
       <StyledStack>
         <StyledCommentBox>
-          <UserRow user={creator!} date={creationDate} />
+          <UserRow user={creator} date={creationDate} />
           <StyledBox>
             {isSelected ? (
               <UpdateComment
-                content={content!}
+                content={content}
                 setSelectedIndex={setSelectedIndex}
-                id={id!}
+                id={id}
               />
             ) : (
-              <TextSerialization text={content!} />
+              <TextSerialization text={content} />
             )}
           </StyledBox>
         </StyledCommentBox>

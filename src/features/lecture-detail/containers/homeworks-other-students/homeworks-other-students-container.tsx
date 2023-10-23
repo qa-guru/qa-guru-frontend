@@ -21,17 +21,20 @@ const HomeworksOtherStudentsContainer: FC = () => {
   };
 
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
+
+  if (!lectureId) return <NoDataErrorMessage />;
+
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
       offset: QUERY_DEFAULTS.OFFSET,
       limit: QUERY_DEFAULTS.LIMIT,
       sort: sortOptions,
-      lectureId: lectureId!,
+      lectureId,
     },
   });
 
   if (loading || loadingUserId) return <Spinner />;
-  if (!data || !dataUserId) return <NoDataErrorMessage />;
+  if (!data || !dataUserId || !lectureId) return <NoDataErrorMessage />;
 
   return (
     <HomeworksOtherStudents

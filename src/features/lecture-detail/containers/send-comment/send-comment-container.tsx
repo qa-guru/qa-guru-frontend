@@ -41,14 +41,14 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
         },
         data: {
           commentsHomeWorkByHomeWork: {
-            ...existingComments!.commentsHomeWorkByHomeWork,
+            ...existingComments?.commentsHomeWorkByHomeWork,
             items: [
               newComment,
-              ...existingComments!.commentsHomeWorkByHomeWork!.items!,
+              ...(existingComments?.commentsHomeWorkByHomeWork?.items || []),
             ],
             totalElements:
               parseInt(
-                existingComments!.commentsHomeWorkByHomeWork!.totalElements,
+                existingComments?.commentsHomeWorkByHomeWork?.totalElements,
                 PARSE_INT_RADIX
               ) + INDEX_OFFSET,
           },
