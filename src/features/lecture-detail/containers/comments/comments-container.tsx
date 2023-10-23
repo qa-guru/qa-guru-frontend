@@ -12,6 +12,7 @@ import { QUERY_DEFAULTS } from "../../constants";
 
 const CommentsContainer: FC<ICommentsContainer> = ({ id, children }) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
+  if (!id) return <NoDataErrorMessage />;
 
   const {
     loading: loadingComments,

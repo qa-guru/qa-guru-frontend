@@ -21,6 +21,6 @@ interface CommentsProps {
 }
 
 export interface ICommentsContainer {
-  id: string;
+  id?: string | null;
   children: ReactElement<CommentsProps>;
 }

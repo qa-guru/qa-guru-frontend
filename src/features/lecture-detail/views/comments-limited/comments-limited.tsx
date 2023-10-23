@@ -15,11 +15,11 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
     INITIAL_SELECTED_INDEX
   );
   const { totalElements, items } =
-    dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
+    dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
 
   return (
     <>
-      <SendComment id={id!} />
+      <SendComment id={id} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledStack>
         {items?.slice(0, COMMENTS_DISPLAY_LIMIT).map((item, index) => {
@@ -27,7 +27,7 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
           return (
             <CommentItem
               key={index}
-              item={item!}
+              item={item}
               editAccess={editAccess}
               isSelected={selectedIndex === index}
               setSelectedIndex={setSelectedIndex}

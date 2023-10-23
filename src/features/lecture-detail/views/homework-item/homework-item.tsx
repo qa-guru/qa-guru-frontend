@@ -23,7 +23,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     student,
     answer,
     id,
-  } = dataHomeWorkByLecture! || {};
+  } = dataHomeWorkByLecture || {};
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
   const editAccess = dataUserId.user?.id === student?.id;
@@ -34,30 +34,31 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     <>
       <StyledWrapper>
         <Typography variant="h5">Ответ на задание</Typography>
-        <StatusContent status={status!} />
+        <StatusContent status={status} />
         <StyledStack>
-          {["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status!) && (
-            <StyledBox>
-              <UserRow user={mentor!} date={date} />
-            </StyledBox>
-          )}
+          {status &&
+            ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) && (
+              <StyledBox>
+                <UserRow user={mentor} date={date} />
+              </StyledBox>
+            )}
         </StyledStack>
       </StyledWrapper>
       <Divider />
 
       {status && (
         <StyledUserRowBox>
-          <UserRow user={student!} date={date} />
+          <UserRow user={student} date={date} />
         </StyledUserRowBox>
       )}
 
       <StyledHomeworkContentBox>
         <HomeworkContent
-          status={status!}
-          answer={answer!}
+          status={status}
+          answer={answer}
           openHomeWorkEdit={openHomeWorkEdit}
           setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-          id={id!}
+          id={id}
         />
       </StyledHomeworkContentBox>
 
@@ -65,7 +66,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
         editAccess={editAccess}
         openHomeWorkEdit={openHomeWorkEdit}
         setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-        status={status!}
+        status={status}
       />
     </>
   );

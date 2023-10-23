@@ -19,7 +19,7 @@ const CommentItem: FC<ICommentItem> = ({
   setSelectedIndex,
   index,
 }) => {
-  const { creator, content, creationDate, id } = item;
+  const { creator, content, creationDate, id } = item || {};
 
   return (
     <StyledPaper key={index} editAccess={editAccess}>

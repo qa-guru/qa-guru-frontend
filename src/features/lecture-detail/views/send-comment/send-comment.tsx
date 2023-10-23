@@ -13,11 +13,13 @@ import {
   StyledTypography,
 } from "./send-comment.styled";
 import { MAX_COMMENT_LENGTH } from "../../constants";
+import NoDataErrorMessage from "../../../../shared/components/no-data-error-message";
 
 const SendComment: FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
-  const { t } = useTranslation();
+  if (!id) return <NoDataErrorMessage />;
 
+  const { t } = useTranslation();
   const {
     handleSubmit,
     control,

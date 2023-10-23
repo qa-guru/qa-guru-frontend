@@ -14,12 +14,12 @@ import HomeworkItem from "../homework-item";
 
 const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;
-  const { items, totalElements } = data.homeWorksByLectureId!;
+  const { items, totalElements } = data?.homeWorksByLectureId || {};
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 
   useEffect(() => {
-    if (items?.length! >= totalElements) {
+    if (items && items?.length >= totalElements) {
       setHasMoreHomeworks(false);
     }
   }, [items]);
@@ -37,8 +37,8 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           homeWorksByLectureId: {
             ...fetchMoreResult.homeWorksByLectureId,
             items: [
-              ...prev.homeWorksByLectureId!.items!,
-              ...fetchMoreResult.homeWorksByLectureId!.items!,
+              ...(prev?.homeWorksByLectureId?.items || []),
+              ...(fetchMoreResult?.homeWorksByLectureId?.items || []),
             ],
           },
         };
@@ -59,12 +59,12 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           return (
             <StyledPaper key={index}>
               <HomeworkItem
-                dataHomeWorkByLecture={item!}
+                dataHomeWorkByLecture={item}
                 dataUserId={dataUserId}
               />
               <ModalHomeworksOtherStudents
                 key={index}
-                item={item!}
+                item={item}
                 dataUserId={dataUserId}
               />
             </StyledPaper>

@@ -30,7 +30,7 @@ const Homework: FC<IHomework> = (props) => {
               dataHomeWorkByLecture={dataHomeWorkByLecture}
               dataUserId={dataUserId}
             />
-            <Comments id={dataHomeWorkByLecture?.id!}>
+            <Comments id={dataHomeWorkByLecture?.id}>
               <CommentsPagination />
             </Comments>
           </LectureIdContext.Provider>
@@ -53,9 +53,9 @@ const Homework: FC<IHomework> = (props) => {
         dataHomeWorkByLecture={dataHomeWorkByLecture}
         dataUserId={dataUserId}
       />
-      {dataHomeWorkByLecture?.id! && (
+      {dataHomeWorkByLecture?.id && (
         <>
-          <Comments id={dataHomeWorkByLecture?.id!}>
+          <Comments id={dataHomeWorkByLecture?.id}>
             <CommentsLimited />
           </Comments>
           <StyledBox>

@@ -9,7 +9,7 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
   let homeworkContent;
 
   if (status && !openHomeWorkEdit) {
-    homeworkContent = <TextSerialization text={answer!} />;
+    homeworkContent = <TextSerialization text={answer} />;
   } else if (status && openHomeWorkEdit) {
     homeworkContent = (
       <UpdateHomeworkItem
