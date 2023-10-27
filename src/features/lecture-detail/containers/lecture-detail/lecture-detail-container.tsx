@@ -15,21 +15,19 @@ const LectureDetailContainer: FC = () => {
 
   const { tariffHomework } = useTariff({ trainingId });
 
-  if (!lectureId) return <NoDataErrorMessage />;
-
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
-    variables: { id: lectureId },
+    variables: { id: lectureId! },
   });
 
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
-      variables: { lectureId },
+      variables: { lectureId: lectureId! },
       skip: !tariffHomework,
     });
 
-  if (!dataLecture) return <NoDataErrorMessage />;
-
   if (loadingLecture || loadingLectureHomeWork) return <Spinner />;
+
+  if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
 
   return (
     <LectureIdContext.Provider value={lectureId}>

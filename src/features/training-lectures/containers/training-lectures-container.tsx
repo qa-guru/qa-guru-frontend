@@ -11,14 +11,12 @@ import TrainingLectures from "../views/training-lectures";
 const TrainingLecturesContainer: FC = () => {
   const { trainingId } = useParams();
 
-  if (!trainingId) return <NoDataErrorMessage />;
-
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
-      variables: { id: trainingId },
+      variables: { id: trainingId! },
     });
   const { data: dataTraining, loading: loadingTraining } = useTrainingQuery({
-    variables: { id: trainingId },
+    variables: { id: trainingId! },
   });
 
   if (loadingTrainingLectures || loadingTraining) return <Spinner />;

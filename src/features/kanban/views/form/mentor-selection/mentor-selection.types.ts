@@ -3,6 +3,6 @@ import { MentorsQuery } from "api/graphql/generated/graphql";
 import { IFilterKanban } from "../form.types";
 
 export interface IMentorSelection {
-  data: MentorsQuery;
+  data?: MentorsQuery | null;
   control: Control<IFilterKanban, unknown>;
 }
