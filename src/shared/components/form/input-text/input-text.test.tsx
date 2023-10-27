@@ -1,20 +1,24 @@
 import { MemoryRouter } from "react-router-dom";
-import { FormProvider, useForm } from "react-hook-form";
+import { FieldErrors, FormProvider, useForm } from "react-hook-form";
 import { render } from "test/utils-test";
-import InputPhone from "./input-phone";
+import InputText from "./input-text";
 
-describe("InputPhone", () => {
+describe("InputTextField", () => {
   it("renders correctly", () => {
     function TestComponent() {
       const methods = useForm();
+      const errors: FieldErrors = {};
       return (
         <MemoryRouter>
           <FormProvider {...methods}>
-            <InputPhone
+            <InputText
               control={methods.control}
               name="testDate"
-              label="testDate"
               placeholder="testDate"
+              label="testDate"
+              maxRows="4"
+              minRows="2"
+              errors={errors}
             />
           </FormProvider>
         </MemoryRouter>

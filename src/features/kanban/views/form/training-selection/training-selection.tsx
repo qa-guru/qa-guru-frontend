@@ -1,6 +1,5 @@
 import { FC, useContext } from "react";
-import { FormControl } from "@mui/material";
-import RHF from "shared/components/input-RHF";
+import InputSelect from "shared/components/form/input-select";
 import { ITrainingSelection } from "./training-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
@@ -17,15 +16,13 @@ const TrainingSelection: FC<ITrainingSelection> = ({ items, control }) => {
   };
 
   return (
-    <FormControl fullWidth>
-      <RHF.InputSelect
-        control={control}
-        options={trainingOptions}
-        name="trainings"
-        placeholder="Выберите курс"
-        onChange={handleSelectChange}
-      />
-    </FormControl>
+    <InputSelect
+      control={control}
+      options={trainingOptions}
+      name="trainings"
+      placeholder="Выберите курс"
+      onChange={handleSelectChange}
+    />
   );
 };
 

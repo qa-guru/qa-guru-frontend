@@ -5,9 +5,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import RHF from "shared/components/input-RHF";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import { UserCreateInput } from "api/graphql/generated/graphql";
+import InputText from "shared/components/form/input-text";
+import InputPhone from "shared/components/form/input-phone";
 import {
   StyledAlignBox,
   StyledButton,
@@ -86,70 +87,42 @@ const Signup: FC<ISignUp> = (props) => {
       <StyledPaper>
         <form>
           <StyledStack>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="firstName"
-                placeholder="Введите ваше имя"
-                label={t("firstName")!}
-              />
-              {errors?.firstName && (
-                <FormHelperText error>
-                  {errors?.firstName.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="lastName"
-                placeholder="Введите фамилию"
-                label={t("lastName")!}
-              />
-              {errors?.lastName && (
-                <FormHelperText error>
-                  {errors?.lastName.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="email"
-                placeholder={t("enter.email")!}
-                label="E-mail"
-              />
-              {errors?.email && (
-                <FormHelperText error>{errors?.email.message}</FormHelperText>
-              )}
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputPhone
-                control={control}
-                name="phoneNumber"
-                label="Phone"
-                placeholder="(555) 555-5555"
-              />
-              {errors?.phoneNumber && (
-                <FormHelperText error>
-                  {errors?.phoneNumber.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="password"
-                placeholder={t("enter.password")!}
-                label={t("password")!}
-                type="password"
-              />
-              {errors?.password && (
-                <FormHelperText error>
-                  {errors?.password.message}
-                </FormHelperText>
-              )}
-            </FormControl>
+            <InputText
+              control={control}
+              name="firstName"
+              placeholder="Введите ваше имя"
+              label={t("firstName")!}
+              errors={errors}
+            />
+            <InputText
+              control={control}
+              name="lastName"
+              placeholder="Введите фамилию"
+              label={t("lastName")!}
+              errors={errors}
+            />
+            <InputText
+              control={control}
+              name="email"
+              placeholder={t("enter.email")!}
+              label="E-mail"
+              errors={errors}
+            />
+            <InputPhone
+              control={control}
+              name="phoneNumber"
+              label="Phone"
+              placeholder="(555) 555-5555"
+              errors={errors}
+            />
+            <InputText
+              control={control}
+              name="password"
+              placeholder={t("enter.password")!}
+              label={t("password")!}
+              type="password"
+              errors={errors}
+            />
             <FormControl fullWidth>
               <TextField
                 name="password"

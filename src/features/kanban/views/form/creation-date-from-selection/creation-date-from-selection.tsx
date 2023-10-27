@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import RHF from "shared/components/input-RHF";
+import InputDate from "shared/components/form/input-date";
 import { ICreationDateFromSelection } from "./creation-date-from-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
@@ -13,7 +13,7 @@ const CreationDateFromSelection: FC<ICreationDateFromSelection> = ({
   };
 
   return (
-    <RHF.InputDatePicker
+    <InputDate
       control={control}
       name="creationDateFrom"
       label="Созданные от"

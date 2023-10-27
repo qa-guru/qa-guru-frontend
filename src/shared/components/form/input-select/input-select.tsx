@@ -1,7 +1,7 @@
 import { Controller, FieldValues } from "react-hook-form";
-import { MenuItem, Select } from "@mui/material";
-import { IFormInputProps } from "../input.types";
-import { StyledInputLabel } from "../input.styled";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import { IFormInputSelect } from "./input-select.types";
+import { StyledInputLabel } from "./input-select.styled";
 
 const InputSelect = <T extends FieldValues>({
   control,
@@ -11,9 +11,9 @@ const InputSelect = <T extends FieldValues>({
   defaultValue,
   onChange,
   disabled = false,
-}: IFormInputProps<T>) => {
+}: IFormInputSelect<T>) => {
   return (
-    <>
+    <FormControl fullWidth>
       <StyledInputLabel>{placeholder}</StyledInputLabel>
       <Controller
         name={name}
@@ -37,7 +37,7 @@ const InputSelect = <T extends FieldValues>({
           </Select>
         )}
       />
-    </>
+    </FormControl>
   );
 };
 

@@ -3,16 +3,16 @@ import { Controller, FieldValues } from "react-hook-form";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { IFormInputProps } from "../input.types";
-import { StyledDatePicker } from "../input.styled";
+import { IFormInputDate } from "./input-date.types";
+import { StyledDatePicker } from "./input-date.styled";
 import { DEFAULT_TIME_VALUE, INPUT_DATE_FORMAT } from "../../../constants";
 
-const InputDatePicker = <T extends FieldValues>({
+const InputDate = <T extends FieldValues>({
   control,
   name,
   label,
   onChange,
-}: IFormInputProps<T>) => {
+}: IFormInputDate<T>) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Controller
@@ -40,4 +40,4 @@ const InputDatePicker = <T extends FieldValues>({
   );
 };
 
-export default InputDatePicker;
+export default InputDate;
