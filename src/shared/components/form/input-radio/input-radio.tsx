@@ -6,14 +6,14 @@ import {
   FormControlLabel,
   Radio,
 } from "@mui/material";
-import { IFormInputProps } from "../input.types";
+import { IFormInputRadio } from "./input-radio.types";
 
 const InputRadio = <T extends FieldValues>({
   control,
   label,
   name,
   content,
-}: IFormInputProps<T>) => {
+}: IFormInputRadio<T>) => {
   const generateRadioOptions = () => {
     return content?.map((item, index) => {
       return (

@@ -7,9 +7,7 @@ exports[`Form > renders correctly 1`] = `
       class="MuiStack-root css-1hhol0a-MuiStack-root"
     >
       <div
-        aria-label="Выберите курс"
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-        data-mui-internal-clone-element="true"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1quyj4n-MuiFormLabel-root-MuiInputLabel-root"

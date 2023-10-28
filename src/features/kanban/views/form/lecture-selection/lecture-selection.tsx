@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
-import { FormControl, Tooltip } from "@mui/material";
-import RHF from "shared/components/input-RHF";
+import { Tooltip } from "@mui/material";
+import InputSelect from "shared/components/form/input-select";
 import ISelectLectures from "./lecture-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
@@ -20,16 +20,14 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
 
   return (
     <Tooltip title={isDisabled ? "Выберите курс" : ""} placement="top">
-      <FormControl fullWidth>
-        <RHF.InputSelect
-          control={control}
-          name="lectures"
-          placeholder="Выберите урок"
-          options={lecturesOptions}
-          disabled={isDisabled}
-          onChange={handleSelectChange}
-        />
-      </FormControl>
+      <InputSelect
+        control={control}
+        name="lectures"
+        placeholder="Выберите урок"
+        options={lecturesOptions}
+        disabled={isDisabled}
+        onChange={handleSelectChange}
+      />
     </Tooltip>
   );
 };

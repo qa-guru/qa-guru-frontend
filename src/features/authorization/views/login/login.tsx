@@ -1,12 +1,11 @@
 import { FC, useEffect } from "react";
-import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import RHF from "shared/components/input-RHF";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
+import InputText from "shared/components/form/input-text";
 import { ILogin, ILoginForm } from "./login.types";
 import {
   StyledAlignBox,
@@ -72,33 +71,21 @@ const Login: FC<ILogin> = (props) => {
       <StyledPaper>
         <form>
           <StyledStack>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="username"
-                placeholder={t("enter.email")!}
-                label="E-mail"
-              />
-              {errors?.username && (
-                <FormHelperText error>
-                  {errors?.username.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="password"
-                placeholder={t("enter.password")!}
-                label={t("password")!}
-                type="password"
-              />
-              {errors?.password && (
-                <FormHelperText error>
-                  {errors?.password.message}
-                </FormHelperText>
-              )}
-            </FormControl>
+            <InputText
+              control={control}
+              name="username"
+              placeholder={t("enter.email")!}
+              label="E-mail"
+              errors={errors}
+            />
+            <InputText
+              control={control}
+              name="password"
+              placeholder={t("enter.password")!}
+              label={t("password")!}
+              type="password"
+              errors={errors}
+            />
             <LocalSelector />
             <StyledLoadingButton
               onClick={handleSubmit(doLogin)}

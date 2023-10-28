@@ -1,15 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LectureSelection > renders correctly 1`] = `
+exports[`InputSelect > renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1quyj4n-MuiFormLabel-root-MuiInputLabel-root"
-      data-shrink="false"
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-zvyox5-MuiFormLabel-root-MuiInputLabel-root"
+      data-shrink="true"
     >
-      Выберите урок
+      testDate
     </label>
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
@@ -32,7 +32,7 @@ exports[`LectureSelection > renders correctly 1`] = `
         aria-invalid="false"
         class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
         tabindex="-1"
-        value=""
+        value="testDate"
       />
       <svg
         aria-hidden="true"
@@ -50,10 +50,10 @@ exports[`LectureSelection > renders correctly 1`] = `
         class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-yjsfm1"
+          class="css-14lo706"
         >
           <span>
-            Выберите урок
+            testDate
           </span>
         </legend>
       </fieldset>

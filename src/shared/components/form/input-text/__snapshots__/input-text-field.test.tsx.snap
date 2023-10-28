@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`InputTextField > renders correctly 1`] = `
+exports[`InputText > renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"

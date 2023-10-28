@@ -1,11 +1,11 @@
 import { FC, ChangeEvent } from "react";
-import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import RHF from "shared/components/input-RHF";
 import { client } from "api";
+import { MAX_HOMEWORK_LENGTH } from "shared/constants";
+import InputText from "shared/components/form/input-text";
 import {
   IUpdateHomeWork,
   IUpdateHomeworkContent,
@@ -17,7 +17,6 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./update-homework.styled";
-import { MAX_HOMEWORK_LENGTH } from "../../../../../../shared/constants";
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
@@ -70,22 +69,18 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     <form>
       <StyledWrapper>
         <StyledBox>
-          <FormControl fullWidth>
-            <RHF.InputTextField
-              multiline
-              maxRows={10}
-              minRows={5}
-              name="content"
-              control={control}
-              inputProps={{
-                maxLength: MAX_HOMEWORK_LENGTH,
-                onChange: handleChange,
-              }}
-            />
-            {errors?.content && (
-              <FormHelperText error>{errors?.content.message}</FormHelperText>
-            )}
-          </FormControl>
+          <InputText
+            multiline
+            maxRows={10}
+            minRows={5}
+            name="content"
+            control={control}
+            inputProps={{
+              maxLength: MAX_HOMEWORK_LENGTH,
+              onChange: handleChange,
+            }}
+            errors={errors}
+          />
           <StyledStack>
             <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
               Отменить
