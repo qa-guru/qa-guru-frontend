@@ -33,7 +33,7 @@ const LectureDetailContainer: FC = () => {
     <LectureIdContext.Provider value={lectureId}>
       <LectureDetail
         dataLecture={dataLecture}
-        dataLectureHomework={dataLectureHomework!}
+        dataLectureHomework={dataLectureHomework}
         tariffHomework={tariffHomework}
       />
     </LectureIdContext.Provider>

@@ -189,7 +189,7 @@ const Column: FC<IColumn> = ({
                 sourceColumnId={column.id}
                 setDraggingState={setDraggingState}
                 isCardsHidden={isColumnHighlight(column.id, draggingState)}
-                onCardClick={() => onCardClick!(card)}
+                onCardClick={() => onCardClick && onCardClick(card)}
                 isActive={activeCardId === card.id}
               />
             </StyledCardBox>

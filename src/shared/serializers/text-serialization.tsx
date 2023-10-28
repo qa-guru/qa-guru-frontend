@@ -2,7 +2,7 @@ import { FC, Fragment } from "react";
 import { Box, Link, Typography } from "@mui/material";
 
 export interface ITextSerialization {
-  text: string;
+  text?: string | null;
 }
 
 const TextSerialization: FC<ITextSerialization> = ({ text }) => {

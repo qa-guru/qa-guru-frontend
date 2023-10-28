@@ -18,40 +18,42 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
   );
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items } =
-    dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork! || {};
+    dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
 
   const handleLoadMore = () => {
-    fetchMore!({
-      variables: {
-        offset: items?.length,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult) return prev;
-        return {
-          commentsHomeWorkByHomeWork: {
-            ...fetchMoreResult.commentsHomeWorkByHomeWork,
-            items: [
-              ...prev.commentsHomeWorkByHomeWork.items,
-              ...fetchMoreResult.commentsHomeWorkByHomeWork.items,
-            ],
-          },
-        };
-      },
-    });
+    if (fetchMore) {
+      fetchMore({
+        variables: {
+          offset: items?.length,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return prev;
+          return {
+            commentsHomeWorkByHomeWork: {
+              ...fetchMoreResult.commentsHomeWorkByHomeWork,
+              items: [
+                ...prev.commentsHomeWorkByHomeWork.items,
+                ...fetchMoreResult.commentsHomeWorkByHomeWork.items,
+              ],
+            },
+          };
+        },
+      });
+    }
   };
 
   useEffect(() => {
-    if (items?.length! >= totalElements) {
+    if (items && items?.length >= totalElements) {
       setHasMoreComments(false);
     }
   }, [items]);
 
   return (
     <>
-      <SendComment id={id!} />
+      <SendComment id={id} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledInfiniteScroll
-        dataLength={items?.length!}
+        dataLength={items?.length || 0}
         next={handleLoadMore}
         hasMore={hasMoreComments}
         loader={
@@ -67,7 +69,7 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
             return (
               <CommentItem
                 key={index}
-                item={item!}
+                item={item}
                 editAccess={editAccess}
                 isSelected={selectedIndex === index}
                 setSelectedIndex={setSelectedIndex}

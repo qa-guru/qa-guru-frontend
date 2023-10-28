@@ -3,7 +3,7 @@ import { UserDto } from "api/graphql/generated/graphql";
 
 export interface IUserRow {
   icon?: ComponentType;
-  user: UserDto;
+  user?: UserDto | null;
   date?: string;
   width?: string | number;
   height?: string | number;

@@ -5,6 +5,6 @@ import {
 
 export interface ILectureDetail {
   dataLecture: LectureQuery;
-  dataLectureHomework: LectureHomeWorkQuery;
+  dataLectureHomework?: LectureHomeWorkQuery | null;
   tariffHomework: boolean;
 }

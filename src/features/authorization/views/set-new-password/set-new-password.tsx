@@ -47,23 +47,23 @@ const SetNewPassword: FC = () => {
             <InputText
               control={control}
               name="username"
-              placeholder={t("enter.email")!}
+              placeholder={t("enter.email")}
               label="E-mail"
               errors={errors}
             />
             <InputText
               control={control}
               name="password"
-              placeholder={t("enter.password")!}
-              label={t("password")!}
+              placeholder={t("enter.password")}
+              label={t("password")}
               type="password"
               errors={errors}
             />
             <InputText
               control={control}
               name="password"
-              placeholder={t("password.confirm")!}
-              label={t("password")!}
+              placeholder={t("password.confirm")}
+              label={t("password")}
               type="password"
               errors={errors}
             />

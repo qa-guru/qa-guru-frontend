@@ -10,6 +10,7 @@ import TrainingLectures from "../views/training-lectures";
 
 const TrainingLecturesContainer: FC = () => {
   const { trainingId } = useParams();
+
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
@@ -19,11 +20,12 @@ const TrainingLecturesContainer: FC = () => {
   });
 
   if (loadingTrainingLectures || loadingTraining) return <Spinner />;
-  if (!dataTrainingLectures || !dataTraining) return <NoDataErrorMessage />;
+  if (!dataTrainingLectures || !dataTraining || !trainingId)
+    return <NoDataErrorMessage />;
 
   return (
     <TrainingLectures
-      trainingId={trainingId!}
+      trainingId={trainingId}
       dataTrainingLectures={dataTrainingLectures}
       dataTraining={dataTraining}
     />

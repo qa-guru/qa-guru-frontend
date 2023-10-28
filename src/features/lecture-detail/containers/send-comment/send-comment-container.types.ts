@@ -1,3 +1,3 @@
 export interface ISendCommentContainer {
-  id: string;
+  id?: string | null;
 }

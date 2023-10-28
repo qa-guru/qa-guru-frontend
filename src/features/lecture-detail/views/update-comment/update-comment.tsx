@@ -26,25 +26,27 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     trigger,
   } = useForm<IUpdateCommentContent>({
     defaultValues: {
-      content: content!,
+      content,
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("comment")!),
+        content: yup.string().required(t("comment")),
       })
     ),
   });
 
   const handleUpdateComment: SubmitHandler<IUpdateCommentContent> = (data) => {
-    updateComment({
-      variables: {
-        id: id!,
-        content: data.content,
-      },
-      onCompleted: () => {
-        setSelectedIndex(INITIAL_SELECTED_INDEX);
-      },
-    });
+    if (data.content && id) {
+      updateComment({
+        variables: {
+          id,
+          content: data.content,
+        },
+        onCompleted: () => {
+          setSelectedIndex(INITIAL_SELECTED_INDEX);
+        },
+      });
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -52,7 +54,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
       if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {
           type: "manual",
-          message: t("comment.max")!,
+          message: t("comment.max"),
         });
       }
     });

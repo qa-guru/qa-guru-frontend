@@ -5,10 +5,10 @@ export interface IUpdateHomeWork {
   loading: boolean;
   updateHomework: UpdateHomeworkMutationFn;
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
-  answer: string;
-  id: string;
+  answer?: string | null;
+  id?: string | null;
 }
 
 export interface IUpdateHomeworkContent {
-  content: string;
+  content?: string | null;
 }

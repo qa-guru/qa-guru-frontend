@@ -13,7 +13,7 @@ const LectureHomework: FC<ILectureHomework> = ({ lectureHomeWork }) => {
       <StyledPaper>
         <StyledTypography variant="h5">Домашнее задание</StyledTypography>
         <StyledStack>
-          <ContentSerialization content={lectureHomeWork!} />
+          <ContentSerialization content={lectureHomeWork} />
         </StyledStack>
       </StyledPaper>
     </>

@@ -18,7 +18,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
       <Typography variant="h4">Мои курсы</Typography>
       <StyledGrid container columns={{ xs: 6, md: 12 }}>
         {trainingPurchases?.map((item, index) => {
-          const { id, name } = item!.trainingTariff.training!;
+          const { id, name } = item?.trainingTariff.training || {};
 
           return (
             <Grid item xs={6} key={index}>

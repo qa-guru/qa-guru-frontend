@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface IUpdateCommentContainer {
-  id: string;
+  id?: string | null;
   setSelectedIndex: Dispatch<SetStateAction<number>>;
-  content: string;
+  content?: string | null;
 }

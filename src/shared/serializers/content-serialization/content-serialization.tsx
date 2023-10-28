@@ -22,7 +22,7 @@ const ContentSerialization: FC<IContentSerialization> = ({ content }) => {
               </Typography>
             );
           case "text":
-            return <TextSerialization text={value!} key={index} />;
+            return <TextSerialization text={value} key={index} />;
           case "video":
             return (
               <StyledBox key={index}>

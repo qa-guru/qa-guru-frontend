@@ -23,8 +23,8 @@ const HomeworkContainer: FC = () => {
 
   return (
     <Homework
-      dataHomeWorkByLecture={dataHomeWorkByLecture.homeWorkByLecture!}
-      dataUserId={dataUserId!}
+      dataHomeWorkByLecture={dataHomeWorkByLecture?.homeWorkByLecture}
+      dataUserId={dataUserId}
     />
   );
 };

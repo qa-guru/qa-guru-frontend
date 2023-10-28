@@ -21,6 +21,7 @@ const HomeworksOtherStudentsContainer: FC = () => {
   };
 
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
+
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
       offset: QUERY_DEFAULTS.OFFSET,
@@ -31,7 +32,7 @@ const HomeworksOtherStudentsContainer: FC = () => {
   });
 
   if (loading || loadingUserId) return <Spinner />;
-  if (!data || !dataUserId) return <NoDataErrorMessage />;
+  if (!data || !dataUserId || !lectureId) return <NoDataErrorMessage />;
 
   return (
     <HomeworksOtherStudents

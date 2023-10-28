@@ -17,7 +17,7 @@ import { INDEX_OFFSET } from "../constants";
 const TrainingLectures: FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;
   const { trainingLectures } = dataTrainingLectures;
-  const { name } = dataTraining.training!;
+  const name = dataTraining?.training?.name;
 
   return (
     <Container>
@@ -25,7 +25,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
       <Typography variant="h4">{name}</Typography>
       <StyledGridContainer container>
         {trainingLectures?.map((item, index) => {
-          const { id, subject, description } = item!.lecture!;
+          const { id, subject, description } = item?.lecture || {};
 
           return (
             <Grid item xs={12} key={index}>

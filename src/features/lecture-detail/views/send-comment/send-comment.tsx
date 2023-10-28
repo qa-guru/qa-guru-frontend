@@ -30,17 +30,19 @@ const SendComment: FC<ISendComment> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("comment")!),
+        content: yup.string().required(t("comment")),
       })
     ),
   });
 
   const handleSendComment: SubmitHandler<ISendCommentContent> = (data) => {
-    sendComment({
-      variables: { homeWorkId: id, content: data.content },
-    }).then(() => {
-      reset();
-    });
+    if (id) {
+      sendComment({
+        variables: { homeWorkId: id, content: data.content },
+      }).then(() => {
+        reset();
+      });
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -48,7 +50,7 @@ const SendComment: FC<ISendComment> = (props) => {
       if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
         setError("content", {
           type: "manual",
-          message: t("comment.max")!,
+          message: t("comment.max"),
         });
       }
     });

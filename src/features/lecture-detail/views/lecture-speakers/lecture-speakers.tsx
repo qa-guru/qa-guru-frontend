@@ -19,7 +19,7 @@ const LectureSpeakers: FC<ILectureSpeakers> = (props) => {
           {speakers?.map((item, index) => {
             return (
               <StyledStack key={index}>
-                <UserRow user={item!} width={60} height={60} />
+                <UserRow user={item} width={60} height={60} />
               </StyledStack>
             );
           })}

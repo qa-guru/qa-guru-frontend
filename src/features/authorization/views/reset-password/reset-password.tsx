@@ -31,7 +31,7 @@ const ResetPassword: FC = () => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().required(t("email.required")!),
+        username: yup.string().required(t("email.required")),
       })
     ),
   });
@@ -45,7 +45,7 @@ const ResetPassword: FC = () => {
             <InputText
               control={control}
               name="username"
-              placeholder={t("enter.email")!}
+              placeholder={t("enter.email")}
               label="E-mail"
               errors={errors}
             />

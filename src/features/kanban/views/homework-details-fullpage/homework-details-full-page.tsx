@@ -39,14 +39,14 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
         <StyledTypography variant="subtitle1">К доске заданий</StyledTypography>
       </StyledNavigateButton>
       <StyledTitle variant="h6">
-        {getFormattedId(data!.homeWork?.lecture!.id!)}
+        {getFormattedId(data.homeWork?.lecture?.id)}
       </StyledTitle>
-      <Typography variant="h4">{data!.homeWork?.lecture?.subject}</Typography>
+      <Typography variant="h4">{data.homeWork?.lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>
-          <UserRow icon={StudentIcon} user={data!.homeWork?.student!} />
-          {data!.homeWork?.mentor && (
-            <UserRow icon={MentorIcon} user={data!.homeWork?.mentor} />
+          <UserRow icon={StudentIcon} user={data.homeWork?.student} />
+          {data.homeWork?.mentor && (
+            <UserRow icon={MentorIcon} user={data.homeWork?.mentor} />
           )}
         </StyledRowStack>
         <StyledRowStack>
@@ -70,21 +70,21 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
             <StyledColumnStack>
               <Typography variant="body2">Окончание проверки</Typography>
               <Typography variant="caption">
-                {data!.homeWork?.endCheckingDate &&
+                {data.homeWork?.endCheckingDate &&
                   format(parseISO(data.homeWork?.endCheckingDate), Format)}
               </Typography>
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        <StatusContent status={data.homeWork?.status!} />
+        <StatusContent status={data.homeWork?.status} />
       </StyledStack>
       <LectureHomework
-        lectureHomeWork={data.homeWork?.lecture?.contentHomeWork!}
+        lectureHomeWork={data.homeWork?.lecture?.contentHomeWork}
       />
       <StyledAnswerBox>
         <Homework
-          dataHomeWorkByLecture={data.homeWork!}
-          dataUserId={dataUserId!}
+          dataHomeWorkByLecture={data.homeWork}
+          dataUserId={dataUserId}
         />
       </StyledAnswerBox>
     </Container>

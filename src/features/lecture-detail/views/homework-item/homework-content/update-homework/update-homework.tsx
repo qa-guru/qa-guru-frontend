@@ -20,6 +20,7 @@ import {
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
+
   const { t } = useTranslation();
 
   const {
@@ -30,7 +31,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     setError,
   } = useForm<IUpdateHomeworkContent>({
     defaultValues: {
-      content: answer!,
+      content: answer,
     },
     resolver: yupResolver(
       yup.object().shape({
@@ -42,16 +43,18 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
     data
   ) => {
-    updateHomework({
-      variables: {
-        id: id!,
-        content: data.content,
-      },
-      onCompleted: () => {
-        client.refetchQueries({ include: ["homeWorkByLecture"] });
-        setOpenHomeWorkEdit(false);
-      },
-    });
+    if (data.content && id) {
+      updateHomework({
+        variables: {
+          id,
+          content: data.content,
+        },
+        onCompleted: () => {
+          client.refetchQueries({ include: ["homeWorkByLecture"] });
+          setOpenHomeWorkEdit(false);
+        },
+      });
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

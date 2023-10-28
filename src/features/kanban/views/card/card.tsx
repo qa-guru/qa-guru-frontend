@@ -34,8 +34,8 @@ const Card: FC<ICard> = ({
       sourceColumnId,
       allowedColumns: getUpdatedAllowedColumns(
         sourceColumnId,
-        userId!,
-        card.mentor?.id!,
+        userId,
+        card.mentor?.id,
         userRoles
       ),
     },
@@ -71,7 +71,7 @@ const Card: FC<ICard> = ({
       >
         <StyledCardHeader isActive={isActive}>
           <Typography textTransform="uppercase" variant="subtitle2">
-            {getFormattedId(id!)}
+            {getFormattedId(id)}
           </Typography>
           <Typography variant="body2">
             {card.creationDate &&

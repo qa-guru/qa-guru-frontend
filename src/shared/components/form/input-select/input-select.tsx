@@ -30,7 +30,7 @@ const InputSelect = <T extends FieldValues>({
             disabled={disabled}
           >
             {options?.map((option, index) => (
-              <MenuItem key={index} value={option.value!}>
+              <MenuItem key={index} value={option?.value!}>
                 {option.label}
               </MenuItem>
             ))}

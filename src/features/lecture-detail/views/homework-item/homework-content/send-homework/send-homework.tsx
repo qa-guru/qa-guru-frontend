@@ -36,11 +36,13 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
   });
 
   const sendHomeWork: SubmitHandler<ISendHomeWorkContent> = (data) => {
-    sendHomeWorkToCheck({
-      variables: { lectureId: lectureId!, content: data.content },
-      onCompleted: () =>
-        client.refetchQueries({ include: ["homeWorkByLecture"] }),
-    });
+    if (lectureId) {
+      sendHomeWorkToCheck({
+        variables: { lectureId, content: data.content },
+        onCompleted: () =>
+          client.refetchQueries({ include: ["homeWorkByLecture"] }),
+      });
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

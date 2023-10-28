@@ -23,13 +23,13 @@ const Board: FC<IBoard> = ({
   fetchMoreFunctions,
 }) => {
   const { items: newItems, totalElements: newTotalElements } =
-    newData.homeWorks!;
+    newData?.homeWorks || {};
   const { items: inReviewItems, totalElements: inReviewTotalElements } =
-    inReviewData.homeWorks!;
+    inReviewData?.homeWorks || {};
   const { items: approvedItems, totalElements: approvedTotalElements } =
-    approvedData.homeWorks!;
+    approvedData?.homeWorks || {};
   const { items: notApprovedItems, totalElements: notApprovedTotalElements } =
-    notApprovedData.homeWorks!;
+    notApprovedData?.homeWorks || {};
   const { takeForReview, notApproved, approved } = useUpdateHomeworkStatus();
   const [draggingState, setDraggingState] = useState({
     newItem: false,
@@ -142,7 +142,7 @@ const Board: FC<IBoard> = ({
   const handleCardClick = (card: StudentHomeWorkDto) => {
     const shouldShowDetails = !showHomeworkDetails || card.id !== activeCardId;
     setSelectedCard(shouldShowDetails ? card : null);
-    setActiveCardId(shouldShowDetails ? card.id! : null);
+    setActiveCardId(shouldShowDetails ? card.id ?? null : null);
     setShowHomeworkDetails(shouldShowDetails);
   };
 
