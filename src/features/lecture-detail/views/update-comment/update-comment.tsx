@@ -1,9 +1,9 @@
 import { FC, ChangeEvent } from "react";
-import { FormControl, FormHelperText } from "@mui/material";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import InputText from "shared/components/form/input-text";
 import { IUpdateComment, IUpdateCommentContent } from "./update-comment.types";
 import {
   StyledBox,
@@ -12,7 +12,6 @@ import {
   StyledLoadingButton,
   StyledStack,
 } from "./update-comment.styled";
-import RHF from "../../../../shared/components/input-RHF";
 import { INITIAL_SELECTED_INDEX, MAX_COMMENT_LENGTH } from "../../constants";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
@@ -65,22 +64,18 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     <form>
       <StyledStack>
         <StyledBox>
-          <FormControl fullWidth>
-            <RHF.InputTextField
-              multiline
-              maxRows={10}
-              minRows={2}
-              name="content"
-              control={control}
-              inputProps={{
-                maxLength: MAX_COMMENT_LENGTH,
-                onChange: handleChange,
-              }}
-            />
-            {errors?.content && (
-              <FormHelperText error>{errors?.content.message}</FormHelperText>
-            )}
-          </FormControl>
+          <InputText
+            multiline
+            maxRows={10}
+            minRows={2}
+            name="content"
+            control={control}
+            inputProps={{
+              maxLength: MAX_COMMENT_LENGTH,
+              onChange: handleChange,
+            }}
+            errors={errors}
+          />
           <StyledButtonsStack>
             <StyledButton
               variant="contained"

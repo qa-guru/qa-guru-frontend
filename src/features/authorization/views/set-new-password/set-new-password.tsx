@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { FormControl } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import RHF from "shared/components/input-RHF";
 import { useNavigate } from "react-router-dom";
+import InputText from "shared/components/form/input-text";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import * as yup from "yup";
 import {
   StyledLogo,
   StyledPaper,
@@ -29,6 +30,12 @@ const SetNewPassword: FC = () => {
       username: "",
       password: "",
     },
+    resolver: yupResolver(
+      yup.object().shape({
+        username: yup.string().required(t("email.required")!),
+        password: yup.string().required(t("password.required")!),
+      })
+    ),
   });
 
   return (
@@ -37,32 +44,29 @@ const SetNewPassword: FC = () => {
       <StyledPaper>
         <form>
           <StyledStack>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="username"
-                placeholder={t("enter.email")}
-                label="E-mail"
-              />
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="password"
-                placeholder={t("enter.password")}
-                label={t("password")}
-                type="password"
-              />
-            </FormControl>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="password"
-                placeholder={t("password.confirm")}
-                label={t("password")}
-                type="password"
-              />
-            </FormControl>
+            <InputText
+              control={control}
+              name="username"
+              placeholder={t("enter.email")}
+              label="E-mail"
+              errors={errors}
+            />
+            <InputText
+              control={control}
+              name="password"
+              placeholder={t("enter.password")}
+              label={t("password")}
+              type="password"
+              errors={errors}
+            />
+            <InputText
+              control={control}
+              name="password"
+              placeholder={t("password.confirm")}
+              label={t("password")}
+              type="password"
+              errors={errors}
+            />
             <StyledResetButton variant="contained" onClick={routeLogin}>
               Сохранить
             </StyledResetButton>

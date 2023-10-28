@@ -1,9 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+import { StudentHomeWorkDto, UserRole } from "api/graphql/generated/graphql";
 import { IDraggingState } from "../../views/board/board.types";
-import {
-  StudentHomeWorkDto,
-  UserRole,
-} from "../../../../api/graphql/generated/graphql";
 
 export interface IDragEffectByRole {
   card: StudentHomeWorkDto;

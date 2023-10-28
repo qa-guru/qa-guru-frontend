@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { IColumnItem } from "../../column/column.types";
-import { StudentHomeWorkDto } from "../../../../../api/graphql/generated/graphql";
 
 export interface IDesktopBoard {
   columns: IColumnItem[];

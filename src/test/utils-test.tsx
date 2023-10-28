@@ -8,7 +8,7 @@ import { ModalProvider } from "react-modal-hook";
 import { ThemeProvider } from "@mui/material/styles";
 import { client } from "api";
 import { createCustomTheme } from "theme";
-import useSettings from "../shared/hooks/use-settings";
+import useSettings from "shared/hooks/use-settings";
 
 interface WrapperProps {
   children: ReactNode;

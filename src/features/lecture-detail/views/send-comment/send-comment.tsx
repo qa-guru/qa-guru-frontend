@@ -1,10 +1,9 @@
-import { ChangeEvent, FC } from "react";
-import { FormControl, FormHelperText } from "@mui/material";
+import { FC, ChangeEvent } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import RHF from "shared/components/input-RHF";
+import InputText from "shared/components/form/input-text";
 import { ISendComment, ISendCommentContent } from "./send-comment.types";
 import {
   StyledBox,
@@ -61,23 +60,19 @@ const SendComment: FC<ISendComment> = (props) => {
     <form>
       <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
       <StyledBox>
-        <FormControl fullWidth>
-          <RHF.InputTextField
-            placeholder="Текст ответа"
-            multiline
-            maxRows={10}
-            minRows={2}
-            name="content"
-            control={control}
-            inputProps={{
-              maxLength: MAX_COMMENT_LENGTH,
-              onChange: handleChange,
-            }}
-          />
-          {errors?.content && (
-            <FormHelperText error>{errors?.content.message}</FormHelperText>
-          )}
-        </FormControl>
+        <InputText
+          placeholder="Текст ответа"
+          multiline
+          maxRows={10}
+          minRows={2}
+          name="content"
+          control={control}
+          inputProps={{
+            maxLength: MAX_COMMENT_LENGTH,
+            onChange: handleChange,
+          }}
+          errors={errors}
+        />
       </StyledBox>
       <StyledStack>
         <StyledLoadingButton

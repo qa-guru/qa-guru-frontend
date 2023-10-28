@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { FormControl } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import InputText from "shared/components/form/input-text";
 import { IReset } from "./reset-password.types";
 import {
   StyledLogo,
@@ -13,7 +13,6 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./reset-password.styled";
-import RHF from "../../../../shared/components/input-RHF";
 
 const ResetPassword: FC = () => {
   const { t } = useTranslation();
@@ -43,14 +42,13 @@ const ResetPassword: FC = () => {
       <StyledPaper>
         <form>
           <StyledStack>
-            <FormControl fullWidth>
-              <RHF.InputTextField
-                control={control}
-                name="username"
-                placeholder={t("enter.email")}
-                label="E-mail"
-              />
-            </FormControl>
+            <InputText
+              control={control}
+              name="username"
+              placeholder={t("enter.email")}
+              label="E-mail"
+              errors={errors}
+            />
             <StyledResetButton variant="contained" onClick={routeResetMessage}>
               Сбросить пароль
             </StyledResetButton>

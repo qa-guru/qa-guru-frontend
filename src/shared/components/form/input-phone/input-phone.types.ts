@@ -1,3 +1,13 @@
+import { Control, FieldErrors, FieldValues } from "react-hook-form";
+
+export interface IFormInputPhone<T extends FieldValues> {
+  control: Control<T, unknown>;
+  label?: string;
+  placeholder?: string;
+  name: T[keyof T];
+  errors: FieldErrors<T>;
+}
+
 export interface Country {
   code: string;
   label: string;

@@ -1,6 +1,5 @@
 import React, { FC, useContext } from "react";
-import { FormControl } from "@mui/material";
-import RHF from "shared/components/input-RHF";
+import InputSelect from "shared/components/form/input-select";
 import { IMentorSelection } from "./mentor-selection.types";
 import { KanbanFormContext } from "../../../context/kanban-form-context";
 
@@ -18,15 +17,13 @@ const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
   };
 
   return (
-    <FormControl fullWidth>
-      <RHF.InputSelect
-        control={control}
-        options={mentorsOptions}
-        name="mentors"
-        placeholder="Выберите наставника"
-        onChange={handleSelectChange}
-      />
-    </FormControl>
+    <InputSelect
+      control={control}
+      options={mentorsOptions}
+      name="mentors"
+      placeholder="Выберите наставника"
+      onChange={handleSelectChange}
+    />
   );
 };
 
