@@ -153,10 +153,10 @@ exports[`Homework > renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root css-1ea2917"
+      class="MuiBox-root css-0"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1o2b3dc-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1yyn4lv-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
