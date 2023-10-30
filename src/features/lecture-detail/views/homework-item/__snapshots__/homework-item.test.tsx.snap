@@ -77,14 +77,14 @@ exports[`HomeworkItem > renders correctly 1`] = `
           <h6
             class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
           >
-            10.10.2021 | 13:11
+            10.10.2021 | 12:11
           </h6>
         </div>
       </div>
     </div>
   </div>
   <div
-    class="MuiBox-root css-v0ilmk"
+    class="MuiBox-root css-1kawqjx"
   >
     <div
       class="MuiBox-root css-i6bazn"

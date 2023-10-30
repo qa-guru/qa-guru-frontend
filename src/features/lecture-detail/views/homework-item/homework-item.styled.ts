@@ -34,5 +34,5 @@ export const StyledUserRowBox = styled(Box)({
 });
 
 export const StyledHomeworkContentBox = styled(Box)({
-  marginTop: "7px",
+  marginTop: "16px",
 });

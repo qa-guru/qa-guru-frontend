@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 import SetNewPassword from "../features/authorization/views/set-new-password";
 
-const SetPassword: React.FC = () => {
+const SetPassword: FC = () => {
   return <SetNewPassword />;
 };
 
