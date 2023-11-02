@@ -6,14 +6,14 @@ import { ReactComponent as Clock } from "assets/icons/clock.svg";
 import { ReactComponent as Search } from "assets/icons/search.svg";
 import { ReactComponent as Done } from "assets/icons/done.svg";
 import { red } from "theme/colors";
-import { StyledStack } from "./status-content.styled";
-import { IStatusContent } from "./status-content.types";
+import { StyledStack } from "./status-text.styled";
+import { IStatusText } from "./status-text.types";
 
-const RedHighlightOffIcon = styled(HighlightOffIcon)({
+export const RedHighlightOffIcon = styled(HighlightOffIcon)({
   color: red.main,
 });
 
-const StatusContent: FC<IStatusContent> = ({ status }) => {
+const StatusText: FC<IStatusText> = ({ status }) => {
   let icon;
   let statusText;
 
@@ -48,4 +48,4 @@ const StatusContent: FC<IStatusContent> = ({ status }) => {
   );
 };
 
-export default StatusContent;
+export default StatusText;

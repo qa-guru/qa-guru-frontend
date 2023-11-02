@@ -1,13 +1,13 @@
 import { MemoryRouter } from "react-router-dom";
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 import { render } from "test/utils-test";
-import StatusContent from "./status-content";
+import StatusText from "./status-text";
 
 describe("StatusContent", () => {
   it("status is New", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <StatusContent status={StudentHomeWorkStatus.New} />
+        <StatusText status={StudentHomeWorkStatus.New} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -15,7 +15,7 @@ describe("StatusContent", () => {
   it("status is Approved", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <StatusContent status={StudentHomeWorkStatus.Approved} />
+        <StatusText status={StudentHomeWorkStatus.Approved} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -23,7 +23,7 @@ describe("StatusContent", () => {
   it("status is InReview", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <StatusContent status={StudentHomeWorkStatus.InReview} />
+        <StatusText status={StudentHomeWorkStatus.InReview} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -31,7 +31,7 @@ describe("StatusContent", () => {
   it("status is NotApproved", () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <StatusContent status={StudentHomeWorkStatus.NotApproved} />
+        <StatusText status={StudentHomeWorkStatus.NotApproved} />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
