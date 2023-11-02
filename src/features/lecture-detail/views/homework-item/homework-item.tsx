@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Divider, Typography } from "@mui/material";
-import StatusContent from "shared/components/status-content";
+import StatusText from "shared/components/status-content/status-text";
 import UserRow from "shared/components/user-row";
 import { IHomeworkItem } from "./homework-item.types";
 import HomeworkContent from "./homework-content";
@@ -36,7 +36,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
         <Typography variant="h5">Ответ на задание</Typography>
         {!hideMentorAndStudent && (
           <>
-            <StatusContent status={status} />
+            <StatusText status={status} />
             <StyledStack>
               {status &&
                 ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) && (

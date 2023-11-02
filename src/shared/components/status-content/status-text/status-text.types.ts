@@ -1,5 +1,5 @@
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
-export interface IStatusContent {
+export interface IStatusText {
   status?: StudentHomeWorkStatus | null;
 }

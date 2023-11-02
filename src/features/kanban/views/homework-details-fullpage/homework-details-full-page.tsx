@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import { format, parseISO } from "date-fns";
-import StatusContent from "shared/components/status-content";
 import UserRow from "shared/components/user-row";
 import LectureHomework from "shared/components/lecture-homework";
 import Homework from "features/lecture-detail/views/homework";
@@ -20,6 +19,7 @@ import {
   StyledTypography,
 } from "./homework-details-full-page.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
+import StatusSelect from "../../../../shared/components/status-content/status-select";
 
 const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
   data,
@@ -76,7 +76,12 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        <StatusContent status={data.homeWork?.status} />
+        <StatusSelect
+          currentStatus={data.homeWork?.status}
+          homeworkId={data.homeWork?.id}
+          currentUserId={dataUserId.user?.id}
+          mentorId={data.homeWork?.mentor?.id}
+        />
       </StyledStack>
       <LectureHomework
         lectureHomeWork={data.homeWork?.lecture?.contentHomeWork}
