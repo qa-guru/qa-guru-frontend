@@ -1,10 +1,14 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 import { IDesktopBoard } from "./desktop-board.types";
 import { StyledStack, StyledWrapper } from "../board.styled";
 import Column from "../../column";
 import HomeworkDetails from "../../homework-details/homework-details";
 import { UI_CONSTANTS } from "../../../constants";
+import { StudentHomeWorkDto } from "../../../../../api/graphql/generated/graphql";
 
 const DesktopBoard: FC<IDesktopBoard> = ({
   columns,
@@ -12,13 +16,32 @@ const DesktopBoard: FC<IDesktopBoard> = ({
   setDraggingState,
   moveCard,
   fetchMoreFunctions,
-  showHomeworkDetails,
-  isUpLg,
-  selectedCard,
-  handleCardClick,
-  activeCardId,
-  handleHomeworkDetailsClose,
 }) => {
+  const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
+    null
+  );
+  const theme = useTheme();
+  const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
+  const navigate = useNavigate();
+
+  const handleCardClick = (card: StudentHomeWorkDto) => {
+    if (isUpLg) {
+      const isSameCard = card.id === activeCardId;
+      setSelectedCard(isSameCard ? null : card);
+      setActiveCardId(isSameCard ? null : card.id!);
+      setShowHomeworkDetails(!isSameCard);
+    } else {
+      navigate(`/kanban/${card.id}`);
+    }
+  };
+
+  const handleHomeworkDetailsClose = () => {
+    setSelectedCard(null);
+    setShowHomeworkDetails(false);
+  };
+
   return (
     <StyledWrapper>
       <motion.div

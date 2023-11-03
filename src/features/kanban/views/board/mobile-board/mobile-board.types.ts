@@ -3,8 +3,6 @@ import { IColumnItem } from "../../column/column.types";
 
 export interface IMobileBoard {
   columns: IColumnItem[];
-  activeStep: number;
-  handleStepChange: (step: number) => void;
   draggingState: {
     newItem: boolean;
     fromInReview: boolean;
