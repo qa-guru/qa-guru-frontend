@@ -20,14 +20,16 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
 
   return (
     <Tooltip title={isDisabled ? "Выберите курс" : ""} placement="top">
-      <InputSelect
-        control={control}
-        name="lectures"
-        placeholder="Выберите урок"
-        options={lecturesOptions}
-        disabled={isDisabled}
-        onChange={handleSelectChange}
-      />
+      <>
+        <InputSelect
+          control={control}
+          name="lectures"
+          placeholder="Выберите урок"
+          options={lecturesOptions}
+          disabled={isDisabled}
+          onChange={handleSelectChange}
+        />
+      </>
     </Tooltip>
   );
 };
