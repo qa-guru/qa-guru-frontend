@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react";
-import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { IColumnItem } from "../../column/column.types";
 
 export interface IDesktopBoard {
@@ -24,10 +23,4 @@ export interface IDesktopBoard {
   fetchMoreFunctions: Array<
     (options: { variables: { offset: number } }) => void
   >;
-  showHomeworkDetails: boolean;
-  isUpLg: boolean;
-  selectedCard: StudentHomeWorkDto | null;
-  handleCardClick: (card: StudentHomeWorkDto) => void;
-  activeCardId: string | null;
-  handleHomeworkDetailsClose: () => void;
 }

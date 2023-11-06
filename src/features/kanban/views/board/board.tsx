@@ -39,13 +39,6 @@ const Board: FC<IBoard> = ({
   const [columns, setColumns] = useState<IColumnItem[]>([]);
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
-  const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
-  const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
-    null
-  );
-  const [activeStep, setActiveStep] = useState(0);
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   useEffect(() => {
     setColumns([
@@ -135,29 +128,11 @@ const Board: FC<IBoard> = ({
     [updateStatus]
   );
 
-  const handleStepChange = (step: number) => {
-    setActiveStep(step);
-  };
-
-  const handleCardClick = (card: StudentHomeWorkDto) => {
-    const shouldShowDetails = !showHomeworkDetails || card.id !== activeCardId;
-    setSelectedCard(shouldShowDetails ? card : null);
-    setActiveCardId(shouldShowDetails ? card.id ?? null : null);
-    setShowHomeworkDetails(shouldShowDetails);
-  };
-
-  const handleHomeworkDetailsClose = () => {
-    setSelectedCard(null);
-    setShowHomeworkDetails(false);
-  };
-
   return (
     <DndProvider backend={HTML5Backend}>
       {isDownMd ? (
         <MobileBoard
           columns={columns}
-          activeStep={activeStep}
-          handleStepChange={handleStepChange}
           draggingState={draggingState}
           setDraggingState={setDraggingState}
           moveCard={moveCard}
@@ -170,12 +145,6 @@ const Board: FC<IBoard> = ({
           setDraggingState={setDraggingState}
           moveCard={moveCard}
           fetchMoreFunctions={fetchMoreFunctions}
-          showHomeworkDetails={showHomeworkDetails}
-          isUpLg={isUpLg}
-          selectedCard={selectedCard}
-          handleCardClick={handleCardClick}
-          activeCardId={activeCardId}
-          handleHomeworkDetailsClose={handleHomeworkDetailsClose}
         />
       )}
     </DndProvider>

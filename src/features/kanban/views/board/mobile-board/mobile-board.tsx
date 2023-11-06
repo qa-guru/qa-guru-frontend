@@ -1,6 +1,7 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { IMobileBoard } from "./mobile-board.types";
 import {
   StyledBox,
@@ -9,16 +10,26 @@ import {
 } from "../board.styled";
 import Column from "../../column";
 import { STEP } from "../../../constants";
+import { StudentHomeWorkDto } from "../../../../../api/graphql/generated/graphql";
 
 const MobileBoard: FC<IMobileBoard> = ({
   columns,
-  activeStep,
-  handleStepChange,
   draggingState,
   setDraggingState,
   moveCard,
   fetchMoreFunctions,
 }) => {
+  const navigate = useNavigate();
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleCardClick = (card: StudentHomeWorkDto) => {
+    navigate(`/kanban/${card?.id}`);
+  };
+
+  const handleStepChange = (step: number) => {
+    setActiveStep(step);
+  };
+
   return (
     <StyledMobileWrapper>
       <StyledBox>
@@ -48,6 +59,7 @@ const MobileBoard: FC<IMobileBoard> = ({
               column={column}
               onCardDrop={moveCard}
               fetchMore={fetchMoreFunctions[index]}
+              onCardClick={handleCardClick}
             />
           ))}
         </SwipeableViews>

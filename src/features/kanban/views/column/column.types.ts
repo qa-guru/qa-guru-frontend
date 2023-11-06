@@ -43,7 +43,7 @@ export interface IColumn {
     sourceColumnId: string,
     targetColumnId: string
   ) => void;
-  onCardClick?: (card: StudentHomeWorkDto) => void;
+  onCardClick: ((card: StudentHomeWorkDto) => void) | void;
   isActive?: boolean;
   activeCardId?: string | null;
 }
