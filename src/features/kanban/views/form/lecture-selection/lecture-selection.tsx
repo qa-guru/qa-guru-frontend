@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, Fragment, useContext } from "react";
 import { Tooltip } from "@mui/material";
 import InputSelect from "shared/components/form/input-select";
 import ISelectLectures from "./lecture-selection.types";
@@ -20,7 +20,7 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
 
   return (
     <Tooltip title={isDisabled ? "Выберите курс" : ""} placement="top">
-      <>
+      <Fragment>
         <InputSelect
           control={control}
           name="lectures"
@@ -29,7 +29,7 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
           disabled={isDisabled}
           onChange={handleSelectChange}
         />
-      </>
+      </Fragment>
     </Tooltip>
   );
 };
