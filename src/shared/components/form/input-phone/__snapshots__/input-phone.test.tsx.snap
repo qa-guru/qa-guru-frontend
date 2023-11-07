@@ -6,7 +6,7 @@ exports[`InputPhone > renders correctly 1`] = `
     class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
   >
     <div
-      class="MuiAutocomplete-root css-dd9lfv-MuiAutocomplete-root"
+      class="MuiAutocomplete-root css-1h51icj-MuiAutocomplete-root"
     >
       <div
         class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"

@@ -11,6 +11,7 @@ import InputText from "shared/components/form/input-text";
 import InputPhone from "shared/components/form/input-phone";
 import {
   StyledAlignBox,
+  StyledBottomStack,
   StyledButton,
   StyledLoadingButton,
   StyledLogo,
@@ -111,8 +112,8 @@ const Signup: FC<ISignUp> = (props) => {
             <InputPhone
               control={control}
               name="phoneNumber"
-              label="Phone"
               placeholder="(555) 555-5555"
+              label="Phone"
               errors={errors}
             />
             <InputText
@@ -135,6 +136,8 @@ const Signup: FC<ISignUp> = (props) => {
                 <FormHelperText error>Пароли не совпадают</FormHelperText>
               )}
             </FormControl>
+          </StyledStack>
+          <StyledBottomStack>
             <LocalSelector />
             <StyledLoadingButton
               onClick={handleSubmit(onSubmit)}
@@ -143,7 +146,7 @@ const Signup: FC<ISignUp> = (props) => {
             >
               {t("registration")}
             </StyledLoadingButton>
-          </StyledStack>
+          </StyledBottomStack>
         </form>
         <StyledAlignBox>
           <StyledButton variant="text" onClick={routeLogin}>

@@ -58,7 +58,7 @@ exports[`Login > the component is Loading 1`] = `
     >
       <form>
         <div
-          class="MuiStack-root css-10k4oco-MuiStack-root"
+          class="MuiStack-root css-10krdfb-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -140,6 +140,10 @@ exports[`Login > the component is Loading 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="MuiStack-root css-13z0li9-MuiStack-root"
+        >
           <div
             class="MuiBox-root css-1wcjc1k"
           >
@@ -299,7 +303,7 @@ exports[`Login > the component is Loading 1`] = `
             </button>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-fw3t1w-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium Mui-disabled MuiButton-root MuiLoadingButton-root MuiLoadingButton-loading MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-7gjb26-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             disabled=""
             id=":r2:"
             tabindex="-1"
@@ -424,7 +428,7 @@ exports[`Login > the component is not Loading 1`] = `
     >
       <form>
         <div
-          class="MuiStack-root css-10k4oco-MuiStack-root"
+          class="MuiStack-root css-10krdfb-MuiStack-root"
         >
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
@@ -506,6 +510,10 @@ exports[`Login > the component is not Loading 1`] = `
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="MuiStack-root css-13z0li9-MuiStack-root"
+        >
           <div
             class="MuiBox-root css-1wcjc1k"
           >
@@ -665,7 +673,7 @@ exports[`Login > the component is not Loading 1`] = `
             </button>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-fw3t1w-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-7gjb26-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
             id=":r5:"
             tabindex="0"
             type="button"

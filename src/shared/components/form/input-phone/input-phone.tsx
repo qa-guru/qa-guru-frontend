@@ -1,12 +1,7 @@
 import { Controller, FieldValues } from "react-hook-form";
-import {
-  Autocomplete,
-  FormControl,
-  FormHelperText,
-  TextField,
-} from "@mui/material";
+import { Autocomplete, FormControl, TextField } from "@mui/material";
 import { countries, IFormInputPhone } from "./input-phone.types";
-import { StyledImgBox } from "./input-phone.styled";
+import { StyledFormHelperText, StyledImgBox } from "./input-phone.styled";
 
 const InputPhone = <T extends FieldValues>({
   control,
@@ -57,7 +52,9 @@ const InputPhone = <T extends FieldValues>({
           />
         )}
       />
-      {errors[name] && <FormHelperText>{errors[name].message}</FormHelperText>}
+      {errors[name] && (
+        <StyledFormHelperText>{errors[name].message}</StyledFormHelperText>
+      )}
     </FormControl>
   );
 };

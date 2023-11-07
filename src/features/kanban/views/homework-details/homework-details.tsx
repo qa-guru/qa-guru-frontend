@@ -5,7 +5,7 @@ import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
-import StatusContent from "shared/components/status-content";
+import StatusText from "shared/components/status-content/status-text";
 import TextSerialization from "shared/serializers/text-serialization";
 import LectureHomework from "shared/components/lecture-homework";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -87,7 +87,7 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
           )}
         </StyledRowStack>
         <StyledStatusContentBox>
-          <StatusContent status={card.status} />
+          <StatusText status={card.status} />
         </StyledStatusContentBox>
         <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork} />
         <StyledPaper>
