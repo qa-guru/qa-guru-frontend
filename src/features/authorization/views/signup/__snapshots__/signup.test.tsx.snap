@@ -316,7 +316,7 @@ exports[`SignUp > the component is Loading 1`] = `
           class="MuiStack-root css-av0gty-MuiStack-root"
         >
           <div
-            class="MuiBox-root css-1wcjc1k"
+            class="MuiBox-root css-1rqcvvl"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -843,7 +843,7 @@ exports[`SignUp > the component is not Loading 1`] = `
           class="MuiStack-root css-av0gty-MuiStack-root"
         >
           <div
-            class="MuiBox-root css-1wcjc1k"
+            class="MuiBox-root css-1rqcvvl"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"

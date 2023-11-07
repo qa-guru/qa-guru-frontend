@@ -22,6 +22,12 @@ export const StyledButton = styled(Button)({
   width: "110px",
 });
 
+export const StyledItemStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  gap: theme.spacing(3),
+  padding: "10px 0 0",
+}));
+
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "110px",
   color: theme.palette.black.main,

@@ -14,6 +14,7 @@ export const StyledIcon = styled(ArrowBackIcon)({
 export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
+  marginRight: "1vw",
 });
 
 export const StyledTypography = styled(Typography)({

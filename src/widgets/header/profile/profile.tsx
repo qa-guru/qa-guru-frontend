@@ -1,22 +1,29 @@
 import { FC, MouseEvent, useState } from "react";
-import { Button, ListItemIcon, MenuList } from "@mui/material";
+import {
+  Button,
+  Divider,
+  ListItemIcon,
+  MenuItem,
+  MenuList,
+} from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import Menu from "@mui/material/Menu";
-import SettingsIcon from "@mui/icons-material/Settings";
+import PersonIcon from "@mui/icons-material/Person";
 import Logout from "features/authorization/containers/logout-container";
 import UserRow from "shared/components/user-row";
 import { IProfile } from "./profile.types";
 import {
   StyledBox,
   StyledListItemText,
-  StyledMenuItem,
+  StyledMenu,
+  StyledStack,
+  StyledUserBox,
 } from "./profile.styled";
 
 const Profile: FC<IProfile> = (props) => {
   const settings = [
     {
-      title: "Настройки",
-      icon: <SettingsIcon />,
+      title: "Профиль",
+      icon: <PersonIcon />,
     },
   ];
 
@@ -35,30 +42,46 @@ const Profile: FC<IProfile> = (props) => {
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
           <StyledBox>
-            <UserRow user={props.data.user} variant="subtitle2" />
+            <UserRow user={props.data.user} variant="body1" />
           </StyledBox>
         </Button>
       </Tooltip>
-      <Menu
+      <StyledMenu
         anchorEl={anchorElUser}
         keepMounted
         open={Boolean(anchorElUser)}
         onClose={handleClickSettingsProfile}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
       >
         {settings.map((setting, index) => {
           const { icon, title } = setting;
 
           return (
             <MenuList key={index}>
-              <StyledMenuItem onClick={handleClickSettingsProfile}>
-                <StyledListItemText>{title}</StyledListItemText>
-                <ListItemIcon>{icon}</ListItemIcon>
-              </StyledMenuItem>
-              <Logout setAnchorElUser={setAnchorElUser} />
+              <StyledUserBox>
+                <UserRow
+                  user={props.data.user}
+                  email={props.data.user?.email}
+                  variant="body1"
+                  width={0}
+                />
+              </StyledUserBox>
+              <Divider />
+              <MenuItem onClick={handleClickSettingsProfile}>
+                <StyledStack>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <StyledListItemText>{title}</StyledListItemText>
+                </StyledStack>
+              </MenuItem>
             </MenuList>
           );
         })}
-      </Menu>
+        <Divider />
+        <Logout setAnchorElUser={setAnchorElUser} />
+      </StyledMenu>
     </>
   );
 };
