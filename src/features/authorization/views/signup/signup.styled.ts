@@ -23,12 +23,18 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
-  padding: "20px 34px 14px",
-  gap: theme.spacing(1),
-  [theme.breakpoints.up("md")]: {
+  padding: "25px 40px 10px",
+  gap: theme.spacing(3),
+  [theme.breakpoints.up("sm")]: {
     padding: "32px 60px 10px",
-    gap: theme.spacing(2),
   },
+}));
+
+export const StyledBottomStack = styled(Stack)(({ theme }) => ({
+  gap: theme.spacing(2),
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "8px 0",
 }));
 
 export const StyledAlignBox = styled(Box)({
@@ -49,4 +55,5 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 
 export const StyledLoadingButton = styled(LoadingButton)({
   textTransform: "none",
+  width: "60%",
 });

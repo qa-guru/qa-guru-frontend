@@ -1,6 +1,7 @@
 import { Controller, FieldValues } from "react-hook-form";
-import { FormControl, FormHelperText, TextField } from "@mui/material";
+import { FormControl, TextField } from "@mui/material";
 import { IFormInputText } from "./input-text.types";
+import { StyledFormHelperText } from "./input-text.styled";
 
 const InputText = <T extends FieldValues>({
   control,
@@ -34,7 +35,9 @@ const InputText = <T extends FieldValues>({
           />
         )}
       />
-      {errors[name] && <FormHelperText>{errors[name].message}</FormHelperText>}
+      {errors[name] && (
+        <StyledFormHelperText>{errors[name].message}</StyledFormHelperText>
+      )}
     </FormControl>
   );
 };

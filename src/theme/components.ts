@@ -77,17 +77,6 @@ const components = (theme: Theme) => {
         },
       },
     },
-    MuiAutocomplete: {
-      styleOverrides: {
-        root: {
-          [theme.breakpoints.down("md")]: {
-            "& .MuiOutlinedInput-root": {
-              padding: "5px",
-            },
-          },
-        },
-      },
-    },
   };
 };
 

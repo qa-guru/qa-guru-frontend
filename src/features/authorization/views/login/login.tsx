@@ -9,6 +9,7 @@ import InputText from "shared/components/form/input-text";
 import { ILogin, ILoginForm } from "./login.types";
 import {
   StyledAlignBox,
+  StyledBottomStack,
   StyledButton,
   StyledLoadingButton,
   StyledLogo,
@@ -86,6 +87,8 @@ const Login: FC<ILogin> = (props) => {
               type="password"
               errors={errors}
             />
+          </StyledStack>
+          <StyledBottomStack>
             <LocalSelector />
             <StyledLoadingButton
               onClick={handleSubmit(doLogin)}
@@ -94,7 +97,7 @@ const Login: FC<ILogin> = (props) => {
             >
               {t("login")}
             </StyledLoadingButton>
-          </StyledStack>
+          </StyledBottomStack>
         </form>
         <StyledAlignBox>
           <StyledButton variant="text" onClick={roureReset}>
