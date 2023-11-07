@@ -1,16 +1,30 @@
 import { styled } from "@mui/system";
-import { Box, ListItemText, MenuItem } from "@mui/material";
+import { Box, ListItemText, Stack } from "@mui/material";
+import Menu from "@mui/material/Menu";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-  width: "min-content",
-  marginLeft: "16px",
   color: theme.palette.black.main,
+  textTransform: "none",
 }));
 
-export const StyledMenuItem = styled(MenuItem)({
-  marginBottom: "10px",
-});
+export const StyledMenu = styled(Menu)(({ theme }) => ({
+  marginTop: "7px",
+  "& .MuiPaper-root": {
+    borderRadius: "3px",
+  },
+}));
+
+export const StyledUserBox = styled(Box)(({ theme }) => ({
+  margin: "0 10px 10px",
+  flexWrap: "wrap",
+}));
+
+export const StyledStack = styled(Stack)(({ theme }) => ({
+  marginTop: "8px",
+  flexDirection: "row",
+  gap: theme.spacing(2),
+}));
 
 export const StyledListItemText = styled(ListItemText)({
-  marginRight: "20px",
+  marginRight: "3.5vw",
 });

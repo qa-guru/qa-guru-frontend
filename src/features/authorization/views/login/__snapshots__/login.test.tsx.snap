@@ -145,7 +145,7 @@ exports[`Login > the component is Loading 1`] = `
           class="MuiStack-root css-13z0li9-MuiStack-root"
         >
           <div
-            class="MuiBox-root css-1wcjc1k"
+            class="MuiBox-root css-1rqcvvl"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
@@ -515,7 +515,7 @@ exports[`Login > the component is not Loading 1`] = `
           class="MuiStack-root css-13z0li9-MuiStack-root"
         >
           <div
-            class="MuiBox-root css-1wcjc1k"
+            class="MuiBox-root css-1rqcvvl"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"

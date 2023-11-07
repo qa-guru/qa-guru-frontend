@@ -16,16 +16,16 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
-          aria-disabled="true"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="status-select"
-          class="MuiSelect-select MuiSelect-outlined Mui-disabled MuiInputBase-input MuiOutlinedInput-input Mui-disabled css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+          class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
           id="status-select"
           role="button"
+          tabindex="0"
         >
           <div
             class="MuiStack-root css-19iseno-MuiStack-root"
@@ -54,13 +54,12 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
           aria-hidden="true"
           aria-invalid="false"
           class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-          disabled=""
           tabindex="-1"
           value="APPROVED"
         />
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined Mui-disabled css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
           data-testid="ArrowDropDownIcon"
           focusable="false"
           viewBox="0 0 24 24"

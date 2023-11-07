@@ -10,6 +10,7 @@ const UserRow: FC<IUserRow> = (props) => {
   const {
     icon: Icon,
     user,
+    email,
     date,
     width,
     height,
@@ -35,6 +36,7 @@ const UserRow: FC<IUserRow> = (props) => {
             </Typography>
           </StyledDateStack>
         )}
+        {email && <Typography variant="caption">{email}</Typography>}
       </Box>
     </StyledWrapperStack>
   );

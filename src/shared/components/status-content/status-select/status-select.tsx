@@ -14,15 +14,9 @@ import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 import { IStatusSelect, states } from "./status-select.types";
 import { StyledIcon, StyledStack } from "./status-select.styled";
 
-const StatusSelect: FC<IStatusSelect> = ({
-  currentUserId,
-  mentorId,
-  currentStatus,
-  homeworkId,
-}) => {
+const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
   const [status, setStatus] = useState(currentStatus);
   const { takeForReview, approved, notApproved } = useUpdateHomeworkStatus();
-  const isCurrentMentor = currentUserId === mentorId || mentorId === undefined;
 
   const getAvailableStatuses = (currentStatus: StudentHomeWorkStatus) => {
     switch (currentStatus) {
@@ -70,7 +64,6 @@ const StatusSelect: FC<IStatusSelect> = ({
           value={status!}
           label="Статус"
           onChange={updateStatus}
-          disabled={!isCurrentMentor}
         >
           {states.map(({ value, Icon, text }) => (
             <MenuItem

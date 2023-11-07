@@ -15,6 +15,7 @@ import {
   StyledButton,
   StyledCancelButton,
   StyledDialogContent,
+  StyledItemStack,
   StyledStack,
   StyledWrapper,
 } from "./logout.styled";
@@ -63,10 +64,12 @@ const Logout: FC<ILogout> = (props) => {
   return (
     <>
       <MenuItem onClick={handleClickOpen}>
-        <ListItemText>Выход</ListItemText>
-        <ListItemIcon>
-          <ExitToAppIcon />
-        </ListItemIcon>
+        <StyledItemStack>
+          <ListItemIcon>
+            <ExitToAppIcon />
+          </ListItemIcon>
+          <ListItemText>Выход</ListItemText>
+        </StyledItemStack>
       </MenuItem>
     </>
   );

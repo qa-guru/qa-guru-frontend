@@ -7,8 +7,6 @@ import { RedHighlightOffIcon } from "../status-text/status-text";
 export interface IStatusSelect {
   currentStatus?: StudentHomeWorkStatus | null;
   homeworkId?: string | null;
-  currentUserId?: string | null;
-  mentorId?: string | null;
 }
 
 export const states = [

@@ -10,7 +10,7 @@ exports[`Profile > renders correctly 1`] = `
     type="button"
   >
     <div
-      class="MuiBox-root css-1i83w74"
+      class="MuiBox-root css-1j85rlp"
     >
       <div
         class="MuiStack-root css-19iseno-MuiStack-root"
@@ -27,11 +27,11 @@ exports[`Profile > renders correctly 1`] = `
         <div
           class="MuiBox-root css-0"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
           >
             string string
-          </h6>
+          </p>
         </div>
       </div>
     </div>

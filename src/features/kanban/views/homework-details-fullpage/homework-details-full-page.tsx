@@ -20,6 +20,7 @@ import {
 } from "./homework-details-full-page.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import StatusSelect from "../../../../shared/components/status-content/status-select";
+import StatusText from "../../../../shared/components/status-content/status-text";
 
 const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
   data,
@@ -31,6 +32,10 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
   const handleBack = () => {
     navigate(`/kanban`);
   };
+
+  const isCurrentMentor =
+    dataUserId.user?.id === data.homeWork?.mentor?.id ||
+    data.homeWork?.mentor?.id === undefined;
 
   return (
     <Container>
@@ -76,12 +81,14 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        <StatusSelect
-          currentStatus={data.homeWork?.status}
-          homeworkId={data.homeWork?.id}
-          currentUserId={dataUserId.user?.id}
-          mentorId={data.homeWork?.mentor?.id}
-        />
+        {isCurrentMentor ? (
+          <StatusSelect
+            currentStatus={data.homeWork?.status}
+            homeworkId={data.homeWork?.id}
+          />
+        ) : (
+          <StatusText status={data.homeWork?.status} />
+        )}
       </StyledStack>
       <LectureHomework
         lectureHomeWork={data.homeWork?.lecture?.contentHomeWork}
