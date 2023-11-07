@@ -16,9 +16,12 @@ export const getHeaderByRole = (
 
   if (
     userRoles?.some((role) =>
-      [UserRole.Mentor, UserRole.Manager, UserRole.Master].includes(
-        role || UserRole.Student
-      )
+      [
+        UserRole.Mentor,
+        UserRole.Manager,
+        UserRole.Master,
+        UserRole.Student,
+      ].includes(role || UserRole.Student)
     )
   ) {
     headerPages.push({

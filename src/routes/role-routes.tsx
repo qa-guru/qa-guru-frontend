@@ -19,6 +19,12 @@ const StudentRoutes: ReactNode[] = [
     path="/training/:trainingId/:lectureId/:modalId?"
     element={<Lecture />}
   />,
+  <Route key="kanban" path="/kanban" element={<Kanban />} />,
+  <Route
+    key="kanban-homework-description"
+    path="/kanban/:lectureId"
+    element={<KanbanHomeworkDescription />}
+  />,
 ];
 
 const MentorRoutes: ReactNode[] = [
@@ -31,6 +37,17 @@ const MentorRoutes: ReactNode[] = [
 ];
 
 const ManagerRoutes: ReactNode[] = [
+  <Route key="/" path="/" element={<Home />} />,
+  <Route
+    key="training-lectures"
+    path="/training/:trainingId"
+    element={<TrainingLectures />}
+  />,
+  <Route
+    key="lecture"
+    path="/training/:trainingId/:lectureId/:modalId?"
+    element={<Lecture />}
+  />,
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
@@ -40,10 +57,21 @@ const ManagerRoutes: ReactNode[] = [
 ];
 
 const MasterRoutes: ReactNode[] = [
+  <Route key="/" path="/" element={<Home />} />,
+  <Route
+    key="training-lectures"
+    path="/training/:trainingId"
+    element={<TrainingLectures />}
+  />,
+  <Route
+    key="lecture"
+    path="/training/:trainingId/:lectureId/:modalId?"
+    element={<Lecture />}
+  />,
   <Route key="kanban" path="/kanban" element={<Kanban />} />,
   <Route
     key="kanban-homework-description"
-    path="/kanban/:cardId"
+    path="/kanban/:lectureId"
     element={<KanbanHomeworkDescription />}
   />,
 ];
