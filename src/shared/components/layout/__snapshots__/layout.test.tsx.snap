@@ -3,7 +3,7 @@
 exports[`Layout > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-1u971bb"
+    class="MuiBox-root css-mjc8bl"
   >
     <header
       class="css-gc17go"
@@ -337,6 +337,238 @@ exports[`Layout > renders correctly 1`] = `
     <div
       class="MuiContainer-root MuiContainer-maxWidthLg css-i986fo-MuiContainer-root"
     />
+    <footer>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-vydga-MuiPaper-root"
+      >
+        <div
+          class="MuiBox-root css-1cawv8i"
+        >
+          <div
+            class="MuiBox-root css-1duf5dn"
+          >
+            <svg
+              class="css-1hq6oe6"
+              fill="none"
+              height="31"
+              viewBox="0 0 166 31"
+              width="166"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M90.2224 17.7286C88.1589 15.8597 87.1475 13.4627 87.1475 10.5172C87.1475 7.57175 88.1994 5.15443 90.2426 3.30589C92.2858 1.45735 94.9156 0.502609 98.0714 0.502609C98.851 0.486175 99.6303 0.547415 100.398 0.68543C100.932 0.787928 101.459 0.923613 101.976 1.0917L103.493 1.70111V7.12485C98.3344 4.46376 93.0343 6.23105 93.2163 10.5985C93.2163 12.122 93.6411 13.2799 94.5515 14.1331C95.4286 14.9688 96.5996 15.4217 97.8084 15.3925C98.7997 15.3925 99.5684 15.1894 100.094 14.844V8.91245H106.022V17.5864C105.273 18.3989 104.14 19.1099 102.643 19.6787C101.099 20.2653 99.4591 20.5547 97.8084 20.5319C94.801 20.5319 92.2723 19.5974 90.2224 17.7286Z"
+                fill="white"
+              />
+              <path
+                d="M108.174 0.831146H114.091V12.1797C114.091 14.2375 115.348 15.1543 116.969 15.1543C118.59 15.1543 119.826 14.2375 119.826 12.1797V0.831146H125.723V12.1389C125.723 14.8283 124.913 16.9065 123.231 18.3531C121.549 19.7997 119.502 20.5331 116.969 20.5331C114.436 20.5331 112.348 19.82 110.687 18.3531C109.025 16.8861 108.174 14.8283 108.174 12.1389V0.831146Z"
+                fill="white"
+              />
+              <path
+                d="M147.246 20.202H140.288L135.146 13.2955H134.33V20.202H128.372V0.831146H137.717C139.901 0.831146 141.676 1.40328 143.002 2.58842C143.647 3.13839 144.161 3.82548 144.507 4.59963C144.853 5.37377 145.022 6.21545 145.002 7.06333C145.002 9.49491 143.675 11.5178 141.451 12.6212L147.246 20.202ZM137.024 8.9432C138.146 8.9432 138.88 8.3302 138.88 7.36983C138.88 6.40946 138.146 5.81689 137.024 5.81689H134.33V8.9432H137.024Z"
+                fill="white"
+              />
+              <path
+                d="M148.24 0.831146H154.158V12.1797C154.158 14.2375 155.414 15.1543 157.035 15.1543C158.657 15.1543 159.893 14.2375 159.893 12.1797V0.831146H165.79V12.1389C165.79 14.8283 164.979 16.9065 163.297 18.3531C161.615 19.7997 159.568 20.5331 157.035 20.5331C154.502 20.5331 152.415 19.82 150.733 18.3531C149.051 16.8861 148.24 14.8283 148.24 12.1389V0.831146Z"
+                fill="white"
+              />
+              <path
+                d="M82.1313 8.1721C82.4691 8.49409 82.7362 8.88256 82.9155 9.31289C83.0949 9.74322 83.1826 10.206 83.1732 10.672C83.1732 11.6134 82.8004 12.5167 82.1357 13.1853C81.4711 13.8539 80.5686 14.2336 79.6246 14.2417C78.6652 14.2417 77.8297 13.8919 77.0973 13.1924C76.7613 12.8646 76.4957 12.4722 76.3166 12.0389C76.1375 11.6056 76.0486 11.1406 76.0554 10.672C76.0459 10.206 76.1337 9.74322 76.313 9.31289C76.4924 8.88256 76.7594 8.49409 77.0973 8.1721C77.4246 7.83475 77.8177 7.56765 78.2523 7.38721C78.6869 7.20677 79.1539 7.11679 79.6246 7.12278C80.092 7.11839 80.5555 7.20919 80.9865 7.38962C81.4175 7.57005 81.8071 7.83631 82.1313 8.1721Z"
+                fill="#00DDB5"
+              />
+              <path
+                d="M41.0347 20.5218C38.4335 20.2189 36.3226 19.1083 34.6518 17.2C32.981 15.2917 32.1807 13.0805 32.1807 10.5664C32.1807 7.77974 33.1411 5.4272 35.092 3.45834C37.0429 1.48948 39.504 0.5 42.4554 0.5C45.4067 0.5 47.8579 1.49958 49.7987 3.45834C51.7396 5.4171 52.7101 7.77974 52.7101 10.5664C52.7266 12.451 52.2089 14.3011 51.218 15.8986C50.2272 17.496 48.8044 18.7743 47.1175 19.5828C47.6678 20.2694 48.4281 20.6026 49.4486 20.6026C50.2419 20.6097 51.0238 20.4116 51.7196 20.0271V24.8634C50.6967 25.2955 49.597 25.512 48.4881 25.4995C45.937 25.4995 43.856 24.3888 42.2353 22.208L41.0347 20.5218ZM42.4554 15.2109C43.6959 15.2109 44.7064 14.7667 45.4968 13.9185C46.2871 13.0704 46.7073 11.9194 46.7073 10.5664C46.7073 9.21347 46.2971 8.10283 45.4968 7.25471C44.6964 6.40658 43.6959 5.92194 42.4554 5.92194C41.2148 5.92194 40.2144 6.3662 39.414 7.25471C38.6136 8.14322 38.2134 9.21347 38.2134 10.5664C38.2134 11.9194 38.6236 13.03 39.414 13.9185C40.2043 14.8071 41.2248 15.2109 42.4554 15.2109Z"
+                fill="white"
+              />
+              <path
+                d="M53.207 20.202L61.1287 0.831146H66.7784L74.7302 20.202H68.3768L66.9996 16.5951H60.7165L59.3192 20.202H53.207ZM62.4255 12.1643H65.2604L63.853 7.59286L62.4255 12.1643Z"
+                fill="white"
+              />
+              <rect
+                fill="#00DDB5"
+                height="5.16556"
+                width="20.6623"
+                x="17.9121"
+                y="25.3344"
+              />
+              <path
+                d="M18.4484 10.0325V16.398L0.209961 23.0139V16.9344L11.0457 13.2152L0.209961 9.49603V3.41656L18.4484 10.0325Z"
+                fill="#00DDB5"
+              />
+            </svg>
+          </div>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1w9x7lm-MuiTypography-root-MuiLink-root"
+            href="https://www.facebook.com/QA.guru.education/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3ZM18 5H15.5C14.5717 5 13.6815 5.36875 13.0251 6.02513C12.3687 6.6815 12 7.57174 12 8.5V11H10V14H12V21H15V14H18V11H15V9C15 8.73478 15.1054 8.48043 15.2929 8.29289C15.4804 8.10536 15.7348 8 16 8H18V5Z"
+                  fill="#2CCCA6"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </a>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1w9x7lm-MuiTypography-root-MuiLink-root"
+            href="https://www.youtube.com/c/QAGURU"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 15L15.19 12L10 9V15ZM21.56 7.17C21.69 7.64 21.78 8.27 21.84 9.07C21.91 9.87 21.94 10.56 21.94 11.16L22 12C22 14.19 21.84 15.8 21.56 16.83C21.31 17.73 20.73 18.31 19.83 18.56C19.36 18.69 18.5 18.78 17.18 18.84C15.88 18.91 14.69 18.94 13.59 18.94L12 19C7.81 19 5.2 18.84 4.17 18.56C3.27 18.31 2.69 17.73 2.44 16.83C2.31 16.36 2.22 15.73 2.16 14.93C2.09 14.13 2.06 13.44 2.06 12.84L2 12C2 9.81 2.16 8.2 2.44 7.17C2.69 6.27 3.27 5.69 4.17 5.44C4.64 5.31 5.5 5.22 6.82 5.16C8.12 5.09 9.31 5.06 10.41 5.06L12 5C16.19 5 18.8 5.16 19.83 5.44C20.73 5.69 21.31 6.27 21.56 7.17Z"
+                  fill="#2CCCA6"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </a>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1w9x7lm-MuiTypography-root-MuiLink-root"
+            href="https://www.instagram.com/qa.guru_/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 17.7383 21.3889 19.2135 20.3012 20.3012C19.2135 21.3889 17.7383 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 6.26174 2.61107 4.78649 3.69878 3.69878C4.78649 2.61107 6.26174 2 7.8 2ZM7.6 4C6.64522 4 5.72955 4.37928 5.05442 5.05442C4.37928 5.72955 4 6.64522 4 7.6V16.4C4 18.39 5.61 20 7.6 20H16.4C17.3548 20 18.2705 19.6207 18.9456 18.9456C19.6207 18.2705 20 17.3548 20 16.4V7.6C20 5.61 18.39 4 16.4 4H7.6ZM17.25 5.5C17.5815 5.5 17.8995 5.6317 18.1339 5.86612C18.3683 6.10054 18.5 6.41848 18.5 6.75C18.5 7.08152 18.3683 7.39946 18.1339 7.63388C17.8995 7.8683 17.5815 8 17.25 8C16.9185 8 16.6005 7.8683 16.3661 7.63388C16.1317 7.39946 16 7.08152 16 6.75C16 6.41848 16.1317 6.10054 16.3661 5.86612C16.6005 5.6317 16.9185 5.5 17.25 5.5ZM12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7ZM12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9Z"
+                  fill="#2CCCA6"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </a>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1w9x7lm-MuiTypography-root-MuiLink-root"
+            href="https://t.me/qa_guru_chat"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.77998 18.65L10.06 14.42L17.74 7.49997C18.08 7.18997 17.67 7.03997 17.22 7.30997L7.73998 13.3L3.63998 12C2.75998 11.75 2.74998 11.14 3.83998 10.7L19.81 4.53997C20.54 4.20997 21.24 4.71997 20.96 5.83997L18.24 18.65C18.05 19.56 17.5 19.78 16.74 19.36L12.6 16.3L10.61 18.23C10.38 18.46 10.19 18.65 9.77998 18.65Z"
+                  fill="#2CCCA6"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </a>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1w9x7lm-MuiTypography-root-MuiLink-root"
+            href="https://vk.com/qa.guru"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4.26538 4.26538C3 5.53077 3 7.56697 3 11.64V12.36C3 16.433 3 18.4692 4.26538 19.7346C5.53077 21 7.56697 21 11.64 21H12.36C16.433 21 18.4692 21 19.7346 19.7346C21 18.4692 21 16.433 21 12.36V11.64C21 7.56697 21 5.53077 19.7346 4.26538C18.4692 3 16.433 3 12.36 3H11.64C7.56697 3 5.53077 3 4.26538 4.26538ZM8.09244 8.47496C8.16006 11.9098 9.6753 13.3652 10.875 13.6653V8.47496H12.8101V11.4378C13.995 11.3103 15.2398 9.95993 15.6603 8.47496H17.5954C17.2728 10.3051 15.9224 11.6555 14.9629 12.2099C15.9224 12.6601 17.4601 13.8379 18.0455 15.9674H15.9153C15.4574 14.5424 14.3176 13.4399 12.8101 13.2899V15.9674H12.5776C8.47496 15.9674 6.1348 13.1553 6.03756 8.47496H8.09244Z"
+                  fill="#2CCCA6"
+                  fill-rule="evenodd"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </a>
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1w9x7lm-MuiTypography-root-MuiLink-root"
+            href="https://me.linkedin.com/company/qa-guru"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z"
+                  fill="#2CCCA6"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </a>
+        </div>
+      </div>
+    </footer>
   </div>
 </DocumentFragment>
 `;

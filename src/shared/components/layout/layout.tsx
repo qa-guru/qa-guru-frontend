@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "widgets/header";
 import { StyledBox, StyledContainer } from "./layout.styled";
 import { ILayout } from "./layout.types";
+import Footer from "../../../widgets/footer";
 
 const Layout: FC<ILayout> = ({ userRoles }) => {
   return (
@@ -11,6 +12,7 @@ const Layout: FC<ILayout> = ({ userRoles }) => {
       <StyledContainer>
         <Outlet />
       </StyledContainer>
+      <Footer />
     </StyledBox>
   );
 };
