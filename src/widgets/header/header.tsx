@@ -1,6 +1,6 @@
 import { Box, IconButton } from "@mui/material";
 import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import Profile from "./profile";
@@ -20,6 +20,8 @@ import { getHeaderByRole } from "./roles/header-by-role";
 const Header: FC<IHeader> = ({ userRoles }) => {
   const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isPage404 = location.pathname === "/404";
   const { t } = useTranslation();
 
   const pages = getHeaderByRole(userRoles, t);
@@ -30,7 +32,7 @@ const Header: FC<IHeader> = ({ userRoles }) => {
   };
 
   return (
-    <StyledHeader>
+    <StyledHeader isPage404={isPage404}>
       <StyledPaper>
         <StyledWrapper>
           <MenuBurger
