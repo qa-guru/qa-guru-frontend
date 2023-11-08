@@ -29,7 +29,7 @@ exports[`Board > renders correctly 1`] = `
             </p>
           </div>
           <div
-            class="MuiBox-root css-1dn90kg"
+            class="MuiBox-root css-1gpd24r"
             id="scroll-container-1"
           >
             <div
@@ -94,7 +94,7 @@ exports[`Board > renders correctly 1`] = `
             </p>
           </div>
           <div
-            class="MuiBox-root css-1dn90kg"
+            class="MuiBox-root css-1gpd24r"
             id="scroll-container-2"
           >
             <div
@@ -159,7 +159,7 @@ exports[`Board > renders correctly 1`] = `
             </p>
           </div>
           <div
-            class="MuiBox-root css-1dn90kg"
+            class="MuiBox-root css-1gpd24r"
             id="scroll-container-3"
           >
             <div
@@ -311,7 +311,7 @@ exports[`Board > renders correctly 1`] = `
             </p>
           </div>
           <div
-            class="MuiBox-root css-1dn90kg"
+            class="MuiBox-root css-1gpd24r"
             id="scroll-container-4"
           >
             <div

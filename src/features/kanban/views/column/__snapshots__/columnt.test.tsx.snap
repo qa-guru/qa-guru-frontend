@@ -20,7 +20,7 @@ exports[`Column > items are false 1`] = `
       </p>
     </div>
     <div
-      class="MuiBox-root css-1dn90kg"
+      class="MuiBox-root css-1gpd24r"
       id="scroll-container-column1"
     >
       <div
@@ -287,7 +287,7 @@ exports[`Column > items are true 1`] = `
       </p>
     </div>
     <div
-      class="MuiBox-root css-1dn90kg"
+      class="MuiBox-root css-1gpd24r"
       id="scroll-container-column1"
     >
       <div
