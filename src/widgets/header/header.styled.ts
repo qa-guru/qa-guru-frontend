@@ -2,10 +2,16 @@ import { styled } from "@mui/system";
 import { Box, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "assets/icons/logo-header.svg";
 
-export const StyledHeader = styled("header")({
-  marginBottom: "25px",
+interface IStyledHeader {
+  isPage404?: boolean;
+}
+
+export const StyledHeader = styled("header", {
+  shouldForwardProp: (prop) => prop !== "isPage404",
+})<IStyledHeader>(({ isPage404 }) => ({
+  marginBottom: isPage404 ? 0 : "25px",
   alignItems: "center",
-});
+}));
 
 export const StyledWrapper = styled(Box)(({ theme }) => ({
   maxWidth: "1920px",
