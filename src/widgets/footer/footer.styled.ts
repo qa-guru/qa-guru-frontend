@@ -11,12 +11,12 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledPaper = styled(Paper)({
+export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
-});
+  backgroundColor: theme.palette.purple.main,
+}));
 
 export const StyledWrapper = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.purple.main,
   maxWidth: "1920px",
   margin: "0 auto",
   display: "flex",
