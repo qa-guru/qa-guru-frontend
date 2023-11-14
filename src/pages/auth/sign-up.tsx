@@ -1,7 +1,8 @@
 import SignUp from "features/authorization/containers/signup-container";
+import { FC } from "react";
 
-const Registration = () => {
+const SignUpPage: FC = () => {
   return <SignUp />;
 };
 
-export default Registration;
+export default SignUpPage;

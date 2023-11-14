@@ -38,6 +38,7 @@ export type Scalars = {
 
 export type CommentHomeWorkDto = {
   __typename?: "CommentHomeWorkDto";
+  children?: Maybe<Array<Maybe<CommentHomeWorkDto>>>;
   content?: Maybe<Scalars["String"]>;
   creationDate?: Maybe<Scalars["LocalDateTime"]>;
   creator?: Maybe<UserDto>;
@@ -70,6 +71,12 @@ export type ContentFileDto = {
   name?: Maybe<Scalars["String"]>;
   size?: Maybe<Scalars["Long"]>;
   type?: Maybe<Scalars["String"]>;
+};
+
+export type HomeWorksStatisticDto = {
+  __typename?: "HomeWorksStatisticDto";
+  count?: Maybe<Scalars["Long"]>;
+  status?: Maybe<StudentHomeWorkStatus>;
 };
 
 export type LectureContentDto = {
@@ -180,6 +187,7 @@ export type LecturesDto = {
 /** Mutation root */
 export type Mutation = {
   __typename?: "Mutation";
+  answerComment?: Maybe<CommentHomeWorkDto>;
   approved?: Maybe<StudentHomeWorkDto>;
   changePassword?: Maybe<Scalars["Void"]>;
   changePasswordByUserId?: Maybe<Scalars["Void"]>;
@@ -206,7 +214,7 @@ export type Mutation = {
   updateHomeWork?: Maybe<StudentHomeWorkDto>;
   /** lecture section */
   updateLecture?: Maybe<LectureInfoDto>;
-  /** lecture homework level section */
+  /** lecture home work level section */
   updateLectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   updateRole?: Maybe<UserDto>;
   /** training section */
@@ -218,6 +226,12 @@ export type Mutation = {
   /** training tariff */
   updateTrainingTariff?: Maybe<TrainingTariffDto>;
   updateUser?: Maybe<UserDto>;
+};
+
+/** Mutation root */
+export type MutationAnswerCommentArgs = {
+  content: Scalars["String"];
+  parentID: Scalars["ID"];
 };
 
 /** Mutation root */
@@ -393,10 +407,11 @@ export type Query = {
   homeWorks?: Maybe<StudentHomeWorksDto>;
   homeWorksByLectureId?: Maybe<StudentHomeWorksDto>;
   homeWorksByStatus?: Maybe<StudentHomeWorksDto>;
+  homeWorksStatistic?: Maybe<Array<Maybe<HomeWorksStatisticDto>>>;
   /** lecture section */
   lecture?: Maybe<LectureInfoShortDto>;
   lectureHomeWork?: Maybe<Array<Maybe<LectureContentHomeWorkDto>>>;
-  /** lecture homework level section */
+  /** lecture home work level section */
   lectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
@@ -412,6 +427,10 @@ export type Query = {
   trainingTariffs?: Maybe<TrainingTariffsDto>;
   trainings?: Maybe<TrainingsDto>;
   trainingsByMentor?: Maybe<TrainingsDto>;
+  /** statistics section */
+  trainingsHomeWorksStatistic?: Maybe<
+    Array<Maybe<TrainingHomeWorksStatisticDto>>
+  >;
   /** user section */
   user?: Maybe<UserDto>;
   userRoles?: Maybe<Array<Maybe<UserRoleDto>>>;
@@ -477,6 +496,11 @@ export type QueryHomeWorksByStatusArgs = {
 };
 
 /** Query root */
+export type QueryHomeWorksStatisticArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
+/** Query root */
 export type QueryLectureArgs = {
   id?: InputMaybe<Scalars["ID"]>;
 };
@@ -539,6 +563,11 @@ export type QueryTrainingsByMentorArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<TrainingSort>;
+};
+
+/** Query root */
+export type QueryTrainingsHomeWorksStatisticArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
@@ -612,6 +641,12 @@ export type TrainingDto = {
   name: Scalars["String"];
   tariffs?: Maybe<Array<Maybe<TrainingTariffDto>>>;
   techStack: TechStack;
+};
+
+export type TrainingHomeWorksStatisticDto = {
+  __typename?: "TrainingHomeWorksStatisticDto";
+  homeworks?: Maybe<Array<Maybe<HomeWorksStatisticDto>>>;
+  training?: Maybe<TrainingDto>;
 };
 
 export type TrainingInput = {
@@ -1793,7 +1828,7 @@ export const CommentsHomeWorkByHomeWorkComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useCommentsHomeWorkByHomeWorkQuery({
+ * const { data, loading, error } = useCommentsHomeWorkByHomeWorkQuery({
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
@@ -1890,7 +1925,7 @@ export const SendCommentComponent = (props: SendCommentComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [sendCommentMutation, { data, loading, error }] = useSendCommentMutation({
+ * const [sendCommentMutation, { data, loading, error }] = useSendCommentMutation({
  *   variables: {
  *      homeWorkId: // value for 'homeWorkId'
  *      content: // value for 'content'
@@ -1972,7 +2007,7 @@ export const UpdateCommentComponent = (props: UpdateCommentComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [updateCommentMutation, { data, loading, error }] = useUpdateCommentMutation({
+ * const [updateCommentMutation, { data, loading, error }] = useUpdateCommentMutation({
  *   variables: {
  *      id: // value for 'id'
  *      content: // value for 'content'
@@ -2038,7 +2073,7 @@ export const ApprovedComponent = (props: ApprovedComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [approvedMutation, { data, loading, error }] = useApprovedMutation({
+ * const [approvedMutation, { data, loading, error }] = useApprovedMutation({
  *   variables: {
  *      homeWorkId: // value for 'homeWorkId'
  *   },
@@ -2124,7 +2159,7 @@ export const HomeWorkByLectureComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useHomeWorkByLectureQuery({
+ * const { data, loading, error } = useHomeWorkByLectureQuery({
  *   variables: {
  *      lectureId: // value for 'lectureId'
  *   },
@@ -2223,7 +2258,7 @@ export const HomeWorkComponent = (props: HomeWorkComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useHomeWorkQuery({
+ * const { data, loading, error } = useHomeWorkQuery({
  *   variables: {
  *      homeWorkId: // value for 'homeWorkId'
  *   },
@@ -2331,7 +2366,7 @@ export const HomeWorksByLectureIdComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useHomeWorksByLectureIdQuery({
+ * const { data, loading, error } = useHomeWorksByLectureIdQuery({
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
@@ -2444,7 +2479,7 @@ export const HomeWorksComponent = (props: HomeWorksComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useHomeWorksQuery({
+ * const { data, loading, error } = useHomeWorksQuery({
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
@@ -2523,7 +2558,7 @@ export const NotApprovedComponent = (props: NotApprovedComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [notApprovedMutation, { data, loading, error }] = useNotApprovedMutation({
+ * const [notApprovedMutation, { data, loading, error }] = useNotApprovedMutation({
  *   variables: {
  *      homeWorkId: // value for 'homeWorkId'
  *   },
@@ -2613,7 +2648,7 @@ export const SendHomeWorkToCheckComponent = (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [sendHomeWorkToCheckMutation, { data, loading, error }] = useSendHomeWorkToCheckMutation({
+ * const [sendHomeWorkToCheckMutation, { data, loading, error }] = useSendHomeWorkToCheckMutation({
  *   variables: {
  *      lectureId: // value for 'lectureId'
  *      content: // value for 'content'
@@ -2682,7 +2717,7 @@ export const TakeForReviewComponent = (props: TakeForReviewComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [takeForReviewMutation, { data, loading, error }] = useTakeForReviewMutation({
+ * const [takeForReviewMutation, { data, loading, error }] = useTakeForReviewMutation({
  *   variables: {
  *      homeworkId: // value for 'homeworkId'
  *   },
@@ -2772,7 +2807,7 @@ export const UpdateHomeworkComponent = (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [updateHomeworkMutation, { data, loading, error }] = useUpdateHomeworkMutation({
+ * const [updateHomeworkMutation, { data, loading, error }] = useUpdateHomeworkMutation({
  *   variables: {
  *      id: // value for 'id'
  *      content: // value for 'content'
@@ -2843,7 +2878,7 @@ export const LectureHomeWorkComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useLectureHomeWorkQuery({
+ * const { data, loading, error } = useLectureHomeWorkQuery({
  *   variables: {
  *      lectureId: // value for 'lectureId'
  *   },
@@ -2935,7 +2970,7 @@ export const LectureComponent = (props: LectureComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useLectureQuery({
+ * const { data, loading, error } = useLectureQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
@@ -3029,7 +3064,7 @@ export const UpdateLectureComponent = (props: UpdateLectureComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [updateLectureMutation, { data, loading, error }] = useUpdateLectureMutation({
+ * const [updateLectureMutation, { data, loading, error }] = useUpdateLectureMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
@@ -3109,7 +3144,7 @@ export const TrainingLecturesComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useTrainingLecturesQuery({
+ * const { data, loading, error } = useTrainingLecturesQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
@@ -3205,7 +3240,7 @@ export const TrainingPurchasesComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useTrainingPurchasesQuery({
+ * const { data, loading, error } = useTrainingPurchasesQuery({
  *   variables: {
  *   },
  * });
@@ -3294,7 +3329,7 @@ export const TrainingComponent = (props: TrainingComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useTrainingQuery({
+ * const { data, loading, error } = useTrainingQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
@@ -3384,7 +3419,7 @@ export const TrainingsByMentorComponent = (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useTrainingsByMentorQuery({
+ * const { data, loading, error } = useTrainingsByMentorQuery({
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
@@ -3464,7 +3499,7 @@ export const TrainingsComponent = (props: TrainingsComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useTrainingsQuery({
+ * const { data, loading, error } = useTrainingsQuery({
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
@@ -3545,7 +3580,7 @@ export const UpdateTrainingComponent = (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
+ * const [updateTrainingMutation, { data, loading, error }] = useUpdateTrainingMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
@@ -3620,7 +3655,7 @@ export const CreateUserComponent = (props: CreateUserComponentProps) => (
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * constants [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
  *   variables: {
  *      input: // value for 'input'
  *   },
@@ -3691,7 +3726,7 @@ export const MentorsComponent = (props: MentorsComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useMentorsQuery({
+ * const { data, loading, error } = useMentorsQuery({
  *   variables: {
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
@@ -3755,7 +3790,7 @@ export const UserIdComponent = (props: UserIdComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useUserIdQuery({
+ * const { data, loading, error } = useUserIdQuery({
  *   variables: {
  *   },
  * });
@@ -3816,7 +3851,7 @@ export const UserRolesComponent = (props: UserRolesComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useUserRolesQuery({
+ * const { data, loading, error } = useUserRolesQuery({
  *   variables: {
  *   },
  * });
@@ -3887,7 +3922,7 @@ export const UserComponent = (props: UserComponentProps) => (
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * constants { data, loading, error } = useUserQuery({
+ * const { data, loading, error } = useUserQuery({
  *   variables: {
  *   },
  * });

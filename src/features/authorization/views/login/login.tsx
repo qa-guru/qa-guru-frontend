@@ -24,7 +24,7 @@ const Login: FC<ILogin> = (props) => {
   const navigate = useNavigate();
 
   const routeRegister = () => {
-    navigate("/register");
+    navigate("/signup");
   };
 
   const roureReset = () => {

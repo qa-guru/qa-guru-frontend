@@ -19,7 +19,7 @@ const SetNewPassword: FC = () => {
   const navigate = useNavigate();
 
   const routeLogin = () => {
-    navigate("/authorization");
+    navigate("/login");
   };
 
   const {

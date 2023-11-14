@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Login from "../../views/login";
-import useAuth from "../../hooks/use-auth";
+import { useAuth } from "../../context/auth-context";
 
 const LoginContainer: FC = () => {
   const { login, isLoading } = useAuth();

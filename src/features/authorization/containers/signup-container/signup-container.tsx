@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Signup from "../../views/signup";
-import useAuth from "../../hooks/use-auth";
+import { useAuth } from "../../context/auth-context";
 
 const SignupContainer: FC = () => {
   const { signup, isLoading } = useAuth();

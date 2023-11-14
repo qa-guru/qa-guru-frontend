@@ -1,6 +1,6 @@
 import { HomeWorkQuery, UserIdQuery } from "api/graphql/generated/graphql";
 
-export interface IHomeworkDescriptionFullPage {
+export interface IHomeworkDescriptionFull {
   data: HomeWorkQuery;
   dataUserId: UserIdQuery;
 }
