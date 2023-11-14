@@ -15,6 +15,7 @@ const UserRow: FC<IUserRow> = (props) => {
     width,
     height,
     variant = "subtitle1",
+    hideFullName,
   } = props;
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
@@ -28,7 +29,7 @@ const UserRow: FC<IUserRow> = (props) => {
         variant="subtitle2"
       />
       <Box>
-        <Typography variant={variant}>{fullName}</Typography>
+        {!hideFullName && <Typography variant={variant}>{fullName}</Typography>}
         {date && (
           <StyledDateStack>
             <Typography variant="subtitle2">

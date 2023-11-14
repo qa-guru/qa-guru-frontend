@@ -9,4 +9,5 @@ export interface IUserRow {
   width?: string | number;
   height?: string | number;
   variant?: "body1" | "body2" | "subtitle1" | "subtitle2";
+  hideFullName?: boolean;
 }
