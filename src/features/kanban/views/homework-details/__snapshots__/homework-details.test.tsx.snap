@@ -64,7 +64,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
         class="MuiStack-root css-3t268d-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -88,7 +88,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
@@ -98,7 +98,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -130,7 +130,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
@@ -321,7 +321,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
         class="MuiStack-root css-3t268d-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -345,7 +345,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
@@ -355,7 +355,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -387,7 +387,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"

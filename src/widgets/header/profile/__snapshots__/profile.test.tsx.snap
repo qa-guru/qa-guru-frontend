@@ -13,7 +13,7 @@ exports[`Profile > renders correctly 1`] = `
       class="MuiBox-root css-1j85rlp"
     >
       <div
-        class="MuiStack-root css-19iseno-MuiStack-root"
+        class="MuiStack-root css-czl7p-MuiStack-root"
       >
         <div
           class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -25,7 +25,7 @@ exports[`Profile > renders correctly 1`] = `
           </h6>
         </div>
         <div
-          class="MuiBox-root css-0"
+          class="MuiBox-root css-189yone"
         >
           <p
             class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"

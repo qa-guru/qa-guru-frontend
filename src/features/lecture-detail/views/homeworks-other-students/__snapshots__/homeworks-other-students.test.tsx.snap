@@ -62,7 +62,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
             class="MuiBox-root css-of5zve"
           >
             <div
-              class="MuiStack-root css-19iseno-MuiStack-root"
+              class="MuiStack-root css-czl7p-MuiStack-root"
             >
               <div
                 class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -74,7 +74,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
                 </h6>
               </div>
               <div
-                class="MuiBox-root css-0"
+                class="MuiBox-root css-189yone"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
@@ -102,7 +102,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
         class="MuiBox-root css-1kawqjx"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -114,7 +114,7 @@ exports[`HomeworksOtherStudents > renders correctly 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"

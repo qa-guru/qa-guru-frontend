@@ -17,7 +17,7 @@ exports[`LectureSpeakers > renders correctly 1`] = `
         class="MuiStack-root css-e4wh76-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1mdff12-MuiAvatar-root"
@@ -29,7 +29,7 @@ exports[`LectureSpeakers > renders correctly 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
@@ -43,7 +43,7 @@ exports[`LectureSpeakers > renders correctly 1`] = `
         class="MuiStack-root css-e4wh76-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <div
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1mdff12-MuiAvatar-root"
@@ -55,7 +55,7 @@ exports[`LectureSpeakers > renders correctly 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <h6
               class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"

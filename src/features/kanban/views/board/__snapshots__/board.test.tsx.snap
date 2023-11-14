@@ -200,7 +200,7 @@ exports[`Board > renders correctly 1`] = `
                         class="MuiStack-root css-1qqxfbr-MuiStack-root"
                       >
                         <div
-                          class="MuiStack-root css-19iseno-MuiStack-root"
+                          class="MuiStack-root css-czl7p-MuiStack-root"
                         >
                           <svg
                             fill="none"
@@ -232,7 +232,7 @@ exports[`Board > renders correctly 1`] = `
                             </h6>
                           </div>
                           <div
-                            class="MuiBox-root css-0"
+                            class="MuiBox-root css-189yone"
                           >
                             <p
                               class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
@@ -242,7 +242,7 @@ exports[`Board > renders correctly 1`] = `
                           </div>
                         </div>
                         <div
-                          class="MuiStack-root css-19iseno-MuiStack-root"
+                          class="MuiStack-root css-czl7p-MuiStack-root"
                         >
                           <svg
                             fill="none"
@@ -266,7 +266,7 @@ exports[`Board > renders correctly 1`] = `
                             </h6>
                           </div>
                           <div
-                            class="MuiBox-root css-0"
+                            class="MuiBox-root css-189yone"
                           >
                             <p
                               class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
