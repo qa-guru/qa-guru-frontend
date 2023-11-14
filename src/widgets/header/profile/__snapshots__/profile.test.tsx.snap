@@ -4,7 +4,7 @@ exports[`Profile > renders correctly 1`] = `
 <DocumentFragment>
   <button
     aria-label="Open settings"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1joc3qd-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lkn1t6-MuiButtonBase-root-MuiButton-root"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -19,7 +19,7 @@ exports[`Profile > renders correctly 1`] = `
           class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
           >
             ss
           </h6>
@@ -28,7 +28,7 @@ exports[`Profile > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             string string
           </p>

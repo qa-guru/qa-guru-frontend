@@ -16,7 +16,6 @@ import {
   StyledRowStack,
   StyledStack,
   StyledTitle,
-  StyledTypography,
 } from "./homework-details-full.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import StatusSelect from "../../../../shared/components/status-content/status-select";
@@ -41,12 +40,12 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     <Container>
       <StyledNavigateButton variant="outlined" onClick={handleBack}>
         <StyledIcon />
-        <StyledTypography variant="subtitle1">К доске заданий</StyledTypography>
+        <Typography variant="body2">К доске заданий</Typography>
       </StyledNavigateButton>
       <StyledTitle variant="h6">
         {getFormattedId(data.homeWork?.lecture?.id)}
       </StyledTitle>
-      <Typography variant="h4">{data.homeWork?.lecture?.subject}</Typography>
+      <Typography variant="h2">{data.homeWork?.lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>
           <UserRow icon={StudentIcon} user={data.homeWork?.student} />

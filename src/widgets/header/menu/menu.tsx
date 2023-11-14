@@ -19,7 +19,7 @@ const AppMenu: FC<IAppMenu> = (props) => {
               key={index}
               onClick={() => handleClickNavMenu(pageURL)}
             >
-              <Typography variant="subtitle2">{title}</Typography>
+              <Typography variant="body2">{title}</Typography>
             </Button>
           );
         })}

@@ -47,4 +47,5 @@ export const StyledBox = styled(Box)({
 
 export const StyledSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
+  textTransform: "uppercase",
 }));

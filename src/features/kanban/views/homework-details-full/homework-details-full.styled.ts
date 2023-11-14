@@ -30,10 +30,6 @@ export const StyledIcon = styled(ArrowBackIcon)({
   marginRight: "10px",
 });
 
-export const StyledTypography = styled(Typography)({
-  textTransform: "none",
-});
-
 export const StyledAnswerBox = styled(Box)({
   marginBottom: "24px",
 });

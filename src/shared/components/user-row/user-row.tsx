@@ -14,7 +14,7 @@ const UserRow: FC<IUserRow> = (props) => {
     date,
     width,
     height,
-    variant = "subtitle1",
+    variant = "body2",
   } = props;
   const fullName = `${user?.firstName} ${user?.lastName}`;
 

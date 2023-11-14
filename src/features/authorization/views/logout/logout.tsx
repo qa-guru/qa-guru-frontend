@@ -27,7 +27,7 @@ const Logout: FC<ILogout> = (props) => {
     <Dialog open={open} onClose={hideModal}>
       <StyledWrapper>
         <StyledDialogContent>
-          <Typography variant="h5">{t("logout.confirm")}</Typography>
+          <Typography variant="h4">{t("logout.confirm")}</Typography>
         </StyledDialogContent>
         <DialogActions>
           <StyledStack>
@@ -68,7 +68,7 @@ const Logout: FC<ILogout> = (props) => {
           <ListItemIcon>
             <ExitToAppIcon />
           </ListItemIcon>
-          <ListItemText>Выход</ListItemText>
+          <ListItemText secondary="Выход"></ListItemText>
         </StyledItemStack>
       </MenuItem>
     </>

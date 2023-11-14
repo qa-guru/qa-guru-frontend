@@ -3,7 +3,7 @@ import { Box, Button, DialogContent, Stack } from "@mui/material";
 
 export const StyledWrapper = styled(Box)({
   padding: "25px 10px 5px 20px",
-  width: "350px",
+  width: "300px",
 });
 
 export const StyledDialogContent = styled(DialogContent)({
@@ -24,8 +24,9 @@ export const StyledButton = styled(Button)({
 
 export const StyledItemStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  gap: theme.spacing(3),
+  gap: theme.spacing(2),
   padding: "10px 0 0",
+  alignItems: "center",
 }));
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({

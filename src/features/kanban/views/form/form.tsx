@@ -77,7 +77,7 @@ const Form: FC = () => {
               </StyledRowStack>
               <StyledRowStack>
                 <IconButton onClick={handleReset}>
-                  <RefreshIcon color={"primary"} fontSize={"large"} />
+                  <RefreshIcon color={"primary"} />
                 </IconButton>
               </StyledRowStack>
             </StyledColumnStack>
@@ -92,7 +92,7 @@ const Form: FC = () => {
           <CreationDateToSelection control={control} />
           <Box>
             <IconButton onClick={handleReset}>
-              <RefreshIcon color={"primary"} fontSize={"large"} />
+              <RefreshIcon color={"primary"} fontSize={"medium"} />
             </IconButton>
           </Box>
         </StyledRow>

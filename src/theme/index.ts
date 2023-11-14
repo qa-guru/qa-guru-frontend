@@ -13,6 +13,39 @@ export type themeSettingsTypes = {
 const baseOptions = {
   typography: {
     fontFamily: "'Montserrat', sans-serif",
+    h1: {
+      fontSize: "2.125rem", // ~34px
+    },
+    h2: {
+      fontSize: "1.5rem", // ~24px
+    },
+    h3: {
+      fontSize: "1.29rem", // ~20px
+    },
+    h4: {
+      fontSize: "1.1rem", // ~18px
+    },
+    h5: {
+      fontSize: "1.03rem", // ~16px
+    },
+    h6: {
+      fontSize: "0.875rem", // ~14px
+    },
+    body1: {
+      fontSize: "1rem", // ~16px
+    },
+    body2: {
+      fontSize: "0.8rem", // ~14px
+    },
+    subtitle1: {
+      fontSize: "1rem", // ~16px
+    },
+    subtitle2: {
+      fontSize: "0.875rem", // ~14px
+    },
+    caption: {
+      fontSize: "0.75rem", // ~12px
+    },
   },
 };
 

@@ -14,11 +14,7 @@ const TextSerialization: FC<ITextSerialization> = ({ text }) => {
       {lines?.map((line, i) => {
         const parts = line.split(linkRegex);
         return (
-          <Typography
-            variant="subtitle1"
-            key={i}
-            sx={{ wordWrap: "break-word" }}
-          >
+          <Typography variant="body2" key={i} sx={{ wordWrap: "break-word" }}>
             {parts.map((part, j) =>
               linkRegex.test(part) ? (
                 <Link key={j} href={part} target="_blank" rel="noopener">
