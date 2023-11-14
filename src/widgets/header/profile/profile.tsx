@@ -13,6 +13,7 @@ import UserRow from "shared/components/user-row";
 import { IProfile } from "./profile.types";
 import {
   StyledBox,
+  StyledLink,
   StyledListItemText,
   StyledMenu,
   StyledStack,
@@ -24,6 +25,7 @@ const Profile: FC<IProfile> = (props) => {
     {
       title: "Профиль",
       icon: <PersonIcon />,
+      url: "/profile",
     },
   ];
 
@@ -57,7 +59,7 @@ const Profile: FC<IProfile> = (props) => {
         }}
       >
         {settings.map((setting, index) => {
-          const { icon, title } = setting;
+          const { icon, title, url } = setting;
 
           return (
             <MenuList key={index}>
@@ -71,10 +73,12 @@ const Profile: FC<IProfile> = (props) => {
               </StyledUserBox>
               <Divider />
               <MenuItem onClick={handleClickSettingsProfile}>
-                <StyledStack>
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <StyledListItemText>{title}</StyledListItemText>
-                </StyledStack>
+                <StyledLink to={url}>
+                  <StyledStack>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <StyledListItemText>{title}</StyledListItemText>
+                  </StyledStack>
+                </StyledLink>
               </MenuItem>
             </MenuList>
           );

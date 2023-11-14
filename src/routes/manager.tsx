@@ -3,6 +3,7 @@ import HomePage from "pages/home";
 import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
+import Profile from "pages/profile";
 
 const ManagerRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -22,6 +23,7 @@ const ManagerRoutes = [
     path="/kanban/:lectureId"
     element={<KanbanHomeworkDetailsFullPage />}
   />,
+  <Route key="profile" path="/profile" element={<Profile />} />,
 ];
 
 export default ManagerRoutes;
