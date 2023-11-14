@@ -1,8 +1,8 @@
 import { FC } from "react";
 import TrainingLectures from "features/training-lectures/containers";
 
-const LecturesByTraining: FC = () => {
+const TrainingLecturesPage: FC = () => {
   return <TrainingLectures />;
 };
 
-export default LecturesByTraining;
+export default TrainingLecturesPage;

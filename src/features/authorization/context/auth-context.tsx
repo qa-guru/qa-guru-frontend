@@ -1,22 +1,69 @@
-import { useState } from "react";
-import { useSnackbar } from "notistack";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import AuthService from "api/rest/auth-service";
-import { client } from "api";
 import {
-  useCreateUserMutation,
   UserCreateInput,
+  UserQuery,
+  useCreateUserMutation,
+  useUserQuery,
 } from "api/graphql/generated/graphql";
+import AuthService from "api/rest/auth-service";
+import { FC, ReactNode, createContext, useContext, useState } from "react";
+import { client } from "api";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
+import Spinner from "shared/components/spinner";
 import { RESPONSE_STATUS } from "../constants";
 
-const useAuth = () => {
+interface IAuthProvider {
+  children: ReactNode;
+}
+
+interface AuthContextType {
+  isAuth: boolean;
+  isLoading: boolean;
+  setIsAuth: (isAuth: boolean) => void;
+  login: (username: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  signup: (data: UserCreateInput) => void;
+  data: UserQuery | undefined;
+}
+
+const AuthContext = createContext<AuthContextType>({
+  isAuth: false,
+  isLoading: false,
+  setIsAuth: () => {},
+  login: async () => {},
+  logout: async () => {},
+  signup: () => {},
+  data: undefined,
+});
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth should be used inside AuthProvider");
+  }
+  return context;
+};
+
+export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   const [createUser] = useCreateUserMutation();
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation();
-  const navigate = useNavigate();
+
+  const { data, loading } = useUserQuery({
+    onCompleted: () => {
+      setIsAuth(true);
+    },
+    onError: () => {
+      setIsAuth(false);
+      navigate("/authorization");
+    },
+  });
+
+  if (loading) return <Spinner />;
 
   const login = async (username: string, password: string) => {
     setIsLoading(true);
@@ -49,6 +96,7 @@ const useAuth = () => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
+          navigate("/authorization");
         } else {
           setIsLoading(false);
           enqueueSnackbar(t("logout.unknownError"));
@@ -76,7 +124,19 @@ const useAuth = () => {
     });
   };
 
-  return { login, logout, signup, isAuth, setIsAuth, isLoading };
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuth,
+        isLoading,
+        setIsAuth,
+        login,
+        logout,
+        signup,
+        data,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
-
-export default useAuth;

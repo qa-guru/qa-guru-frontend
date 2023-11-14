@@ -7,7 +7,7 @@ import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
 import LectureHomework from "shared/components/lecture-homework";
 import Homework from "features/lecture-detail/views/homework";
-import { IHomeworkDescriptionFullPage } from "./homework-details-full-page.types";
+import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import {
   StyledAnswerBox,
   StyledColumnStack,
@@ -17,12 +17,12 @@ import {
   StyledStack,
   StyledTitle,
   StyledTypography,
-} from "./homework-details-full-page.styled";
+} from "./homework-details-full.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import StatusSelect from "../../../../shared/components/status-content/status-select";
 import StatusText from "../../../../shared/components/status-content/status-text";
 
-const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
+const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   data,
   dataUserId,
 }) => {
@@ -104,4 +104,4 @@ const HomeworkDetailsFullPage: FC<IHomeworkDescriptionFullPage> = ({
   );
 };
 
-export default HomeworkDetailsFullPage;
+export default HomeworkDetailsFull;

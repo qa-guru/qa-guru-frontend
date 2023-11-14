@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import {
   StyledAlignBox,
@@ -7,9 +7,9 @@ import {
   StyledLensImage,
   StyledTypography,
   StyledWrapper,
-} from "./no-data-error-page.styled";
+} from "./not-found.styled";
 
-const NoDataErrorPage: React.FC = () => {
+const NotFound: FC = () => {
   return (
     <StyledWrapper>
       <StyledLensImage />
@@ -29,4 +29,4 @@ const NoDataErrorPage: React.FC = () => {
   );
 };
 
-export default NoDataErrorPage;
+export default NotFound;

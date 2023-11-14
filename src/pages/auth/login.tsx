@@ -1,7 +1,8 @@
 import Login from "features/authorization/containers/login-container";
+import { FC } from "react";
 
-const Authorization = () => {
+const LoginPage: FC = () => {
   return <Login />;
 };
 
-export default Authorization;
+export default LoginPage;

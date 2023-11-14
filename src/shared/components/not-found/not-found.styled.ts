@@ -3,13 +3,10 @@ import { Button, Stack, Typography } from "@mui/material";
 import { ReactComponent as LensImage } from "assets/images/lens.svg";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  height: "calc(100vh - 128px)",
+  height: "100vh",
   backgroundColor: theme.palette.purple.main,
   justifyContent: "center",
   alignItems: "center",
-  [theme.breakpoints.down("md")]: {
-    height: "calc(100vh - 152px)",
-  },
 }));
 
 export const StyledLensImage = styled(LensImage)({
