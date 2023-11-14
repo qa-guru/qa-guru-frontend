@@ -2,7 +2,7 @@ import { FC } from "react";
 import Spinner from "shared/components/spinner";
 import { ILogoutContainer } from "./logout-container.types";
 import Logout from "../../views/logout";
-import useAuth from "../../hooks/use-auth";
+import { useAuth } from "../../context/auth-context";
 
 const LogoutContainer: FC<ILogoutContainer> = (props) => {
   const { setAnchorElUser } = props;

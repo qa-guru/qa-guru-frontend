@@ -1,7 +1,8 @@
 import TrainingPurchases from "features/training-purchases/containers";
+import { FC } from "react";
 
-const Home = () => {
+const HomePage: FC = () => {
   return <TrainingPurchases />;
 };
 
-export default Home;
+export default HomePage;

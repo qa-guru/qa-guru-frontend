@@ -5,6 +5,7 @@ import { withSnackBar } from "./with-snack-bar";
 import { withMui } from "./with-mui";
 import { withRouter } from "./with-router";
 import { withApollo } from "./with-apollo";
+import { withAuth } from "./with-auth";
 
 export const withProviders = compose(
   withApollo,
@@ -12,5 +13,6 @@ export const withProviders = compose(
   withRouter,
   withStyledEngine,
   withModal,
-  withSnackBar
+  withSnackBar,
+  withAuth
 );
