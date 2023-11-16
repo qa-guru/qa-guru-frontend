@@ -9,7 +9,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledMenu = styled(Menu)(({ theme }) => ({
-  marginTop: "3px",
+  marginTop: "7px",
   "& .MuiPaper-root": {
     borderRadius: "3px",
   },
