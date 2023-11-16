@@ -148,10 +148,10 @@ const Column: FC<IColumn> = ({
   return (
     <StyledWrapperColumnBox>
       <StyledRowStack>
-        <StyledTypographyStatus>
+        <StyledTypographyStatus variant="h4">
           {getFormattedStatus(column.title)}
         </StyledTypographyStatus>
-        <StyledTypographyCount>
+        <StyledTypographyCount variant="h4">
           {Number(column.totalElements) === 0
             ? "(empty)"
             : `(${column.totalElements})`}

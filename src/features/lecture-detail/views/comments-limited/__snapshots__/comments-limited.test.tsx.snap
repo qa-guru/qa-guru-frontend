@@ -4,7 +4,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
 <DocumentFragment>
   <form>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-15e6tim-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-b9edh8-MuiTypography-root"
     >
       Добавить комментарий
     </h5>
@@ -18,7 +18,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
           class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
         >
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-gmvolf-MuiInputBase-root-MuiOutlinedInput-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-1ijgb0h-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <textarea
               aria-invalid="false"
@@ -57,7 +57,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
       class="MuiStack-root css-19fy60o-MuiStack-root"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-13usayb-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1xagkrl-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
         id=":r1:"
         tabindex="0"
         type="button"
@@ -73,12 +73,12 @@ exports[`CommentsLimited > renders correctly 1`] = `
     class="MuiStack-root css-1ohoath-MuiStack-root"
   >
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
     >
       Комментарии
     </h5>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
     >
       (6)
     </h5>
@@ -102,7 +102,7 @@ exports[`CommentsLimited > renders correctly 1`] = `
               class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
             >
               <h6
-                class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
               >
                 ss
               </h6>
@@ -110,16 +110,16 @@ exports[`CommentsLimited > renders correctly 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
               >
                 string string
-              </h6>
+              </p>
               <div
                 class="MuiStack-root css-1je0tgk-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                 >
                   23.03.2023 | 00:00
                 </h6>
@@ -132,12 +132,12 @@ exports[`CommentsLimited > renders correctly 1`] = `
             <div
               class="MuiBox-root css-i6bazn"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+              <p
+                class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
               >
                 string
                 <br />
-              </h6>
+              </p>
             </div>
           </div>
         </div>

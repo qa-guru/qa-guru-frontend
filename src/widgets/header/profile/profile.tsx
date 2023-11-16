@@ -42,7 +42,7 @@ const Profile: FC<IProfile> = (props) => {
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
           <StyledBox>
-            <UserRow user={props.data.user} variant="body1" />
+            <UserRow user={props.data.user} variant="body2" />
           </StyledBox>
         </Button>
       </Tooltip>
@@ -65,7 +65,7 @@ const Profile: FC<IProfile> = (props) => {
                 <UserRow
                   user={props.data.user}
                   email={props.data.user?.email}
-                  variant="body1"
+                  variant="body2"
                   width={0}
                 />
               </StyledUserBox>
@@ -73,7 +73,7 @@ const Profile: FC<IProfile> = (props) => {
               <MenuItem onClick={handleClickSettingsProfile}>
                 <StyledStack>
                   <ListItemIcon>{icon}</ListItemIcon>
-                  <StyledListItemText>{title}</StyledListItemText>
+                  <StyledListItemText secondary={title}></StyledListItemText>
                 </StyledStack>
               </MenuItem>
             </MenuList>

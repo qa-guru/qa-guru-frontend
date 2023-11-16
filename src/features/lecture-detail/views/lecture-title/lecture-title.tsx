@@ -5,7 +5,7 @@ import { StyledTypography } from "./lecture-title.styled";
 const LectureTitle: FC<ILectureTitle> = (props) => {
   const { title } = props;
 
-  return <StyledTypography variant="h4">{title}</StyledTypography>;
+  return <StyledTypography variant="h2">{title}</StyledTypography>;
 };
 
 export default LectureTitle;

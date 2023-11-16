@@ -3,26 +3,26 @@
 exports[`ButtonLessonsList > renders correctly 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1lexyjf-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-86zk83-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
     <svg
       aria-hidden="true"
       class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-qn5tej-MuiSvgIcon-root"
-      data-testid="ArrowBackIcon"
+      data-testid="ChevronLeftIcon"
       focusable="false"
       viewBox="0 0 24 24"
     >
       <path
-        d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+        d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
       />
     </svg>
-    <h6
-      class="MuiTypography-root MuiTypography-subtitle1 css-3ymmqj-MuiTypography-root"
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-xw5kh4-MuiTypography-root"
     >
       К списку уроков
-    </h6>
+    </p>
     <span
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />

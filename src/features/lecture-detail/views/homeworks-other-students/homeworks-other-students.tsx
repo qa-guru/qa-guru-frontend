@@ -51,8 +51,8 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   return (
     <>
       <StyledStack>
-        <Typography variant="h4">Домашние работы других студентов</Typography>
-        <Typography variant="h4">({totalElements})</Typography>
+        <Typography variant="h3">Домашние работы других студентов</Typography>
+        <Typography variant="h3">({totalElements})</Typography>
       </StyledStack>
       <StyledWrapper>
         {items?.map((item, index) => {

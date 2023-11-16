@@ -23,6 +23,7 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   marginTop: "8px",
   flexDirection: "row",
   gap: theme.spacing(2),
+  alignItems: "center",
 }));
 
 export const StyledListItemText = styled(ListItemText)({

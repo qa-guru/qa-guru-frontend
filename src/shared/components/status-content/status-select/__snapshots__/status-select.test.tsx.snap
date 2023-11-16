@@ -9,14 +9,14 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1j82rsr-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -44,7 +44,7 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
               />
             </svg>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               Принято
             </p>
@@ -95,14 +95,14 @@ exports[`StatusSelect > status is IN_REVIEW and user is the current mentor 1`] =
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1j82rsr-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -132,7 +132,7 @@ exports[`StatusSelect > status is IN_REVIEW and user is the current mentor 1`] =
               />
             </svg>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               На проверке
             </p>
@@ -183,14 +183,14 @@ exports[`StatusSelect > status is NEW and user is the current mentor 1`] = `
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1j82rsr-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -224,7 +224,7 @@ exports[`StatusSelect > status is NEW and user is the current mentor 1`] = `
               />
             </svg>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               Ожидает проверки
             </p>
@@ -275,14 +275,14 @@ exports[`StatusSelect > status is NOT_APPROVED and user is the current mentor 1`
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1j82rsr-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-d4zdg1-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -308,7 +308,7 @@ exports[`StatusSelect > status is NOT_APPROVED and user is the current mentor 1`
               />
             </svg>
             <p
-              class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               Не принято
             </p>

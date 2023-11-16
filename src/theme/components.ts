@@ -40,7 +40,7 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           borderRadius: "100px",
-          fontSize: "14px",
+          fontSize: "0.72rem",
           color: white.main,
         },
       },
@@ -74,6 +74,24 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           borderRadius: "12px",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          backgroundColor: white.main,
+          fontSize: "0.9rem",
+        },
+      },
+    },
+    MuiDatePicker: {
+      styleOverrides: {
+        root: {
+          backgroundColor: white.main,
+          "& .MuiInputLabel-root": {
+            fontSize: "0.9rem",
+          },
         },
       },
     },

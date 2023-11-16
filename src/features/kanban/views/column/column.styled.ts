@@ -12,12 +12,12 @@ export const StyledWrapperColumnContainer = styled(Box, {
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
-  maxHeight: "58vh",
+  maxHeight: "57vh",
   [theme.breakpoints.up("md")]: {
-    maxHeight: "63vh",
+    maxHeight: "65.5vh",
   },
   [theme.breakpoints.up("lg")]: {
-    maxHeight: "62vh",
+    maxHeight: "63.5vh",
   },
   overflowY: showButton ? "hidden" : "auto",
 }));
@@ -38,13 +38,11 @@ export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
 }));
 
 export const StyledTypographyStatus = styled(Typography)({
-  fontSize: "20px",
   marginLeft: "8px",
   marginBottom: "5px",
 });
 
 export const StyledTypographyCount = styled(Typography)({
-  fontSize: "20px",
   marginLeft: "5px",
 });
 

@@ -1,7 +1,6 @@
 import { Controller, FieldValues } from "react-hook-form";
-import { FormControl, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { IFormInputSelect } from "./input-select.types";
-import { StyledInputLabel } from "./input-select.styled";
 
 const InputSelect = <T extends FieldValues>({
   control,
@@ -14,7 +13,7 @@ const InputSelect = <T extends FieldValues>({
 }: IFormInputSelect<T>) => {
   return (
     <FormControl fullWidth>
-      <StyledInputLabel>{placeholder}</StyledInputLabel>
+      <InputLabel>{placeholder}</InputLabel>
       <Controller
         name={name}
         control={control}

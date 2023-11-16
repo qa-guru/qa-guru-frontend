@@ -8,19 +8,19 @@ exports[`Column > items are false 1`] = `
     <div
       class="MuiStack-root css-nijip5-MuiStack-root"
     >
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
+      <h4
+        class="MuiTypography-root MuiTypography-h4 css-1i16qwu-MuiTypography-root"
       >
         New
-      </p>
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
+      </h4>
+      <h4
+        class="MuiTypography-root MuiTypography-h4 css-1glzz00-MuiTypography-root"
       >
         (7)
-      </p>
+      </h4>
     </div>
     <div
-      class="MuiBox-root css-1gpd24r"
+      class="MuiBox-root css-14tluqp"
       id="scroll-container-column1"
     >
       <div
@@ -41,12 +41,12 @@ exports[`Column > items are false 1`] = `
                 class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-15wetgh-MuiTypography-root"
                 >
                   JAVA-D1
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 >
                   24.04.2023
                 </p>
@@ -55,7 +55,7 @@ exports[`Column > items are false 1`] = `
                 class="MuiBox-root css-1626bqa"
               >
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 />
                 <div
                   class="MuiStack-root css-1qqxfbr-MuiStack-root"
@@ -87,7 +87,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -96,7 +96,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -121,7 +121,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -130,7 +130,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -151,12 +151,12 @@ exports[`Column > items are false 1`] = `
                 class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-15wetgh-MuiTypography-root"
                 >
                   JAVA-D2
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 >
                   22.04.2023
                 </p>
@@ -165,7 +165,7 @@ exports[`Column > items are false 1`] = `
                 class="MuiBox-root css-1626bqa"
               >
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 />
                 <div
                   class="MuiStack-root css-1qqxfbr-MuiStack-root"
@@ -197,7 +197,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -206,7 +206,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -231,7 +231,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -240,7 +240,7 @@ exports[`Column > items are false 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -254,7 +254,7 @@ exports[`Column > items are false 1`] = `
       </div>
     </div>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1wuj8vu-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
@@ -275,19 +275,19 @@ exports[`Column > items are true 1`] = `
     <div
       class="MuiStack-root css-nijip5-MuiStack-root"
     >
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
+      <h4
+        class="MuiTypography-root MuiTypography-h4 css-1i16qwu-MuiTypography-root"
       >
         New
-      </p>
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
+      </h4>
+      <h4
+        class="MuiTypography-root MuiTypography-h4 css-1glzz00-MuiTypography-root"
       >
         (7)
-      </p>
+      </h4>
     </div>
     <div
-      class="MuiBox-root css-1gpd24r"
+      class="MuiBox-root css-14tluqp"
       id="scroll-container-column1"
     >
       <div
@@ -308,12 +308,12 @@ exports[`Column > items are true 1`] = `
                 class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-15wetgh-MuiTypography-root"
                 >
                   JAVA-D1
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 >
                   24.04.2023
                 </p>
@@ -322,7 +322,7 @@ exports[`Column > items are true 1`] = `
                 class="MuiBox-root css-1626bqa"
               >
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 />
                 <div
                   class="MuiStack-root css-1qqxfbr-MuiStack-root"
@@ -354,7 +354,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -363,7 +363,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -388,7 +388,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -397,7 +397,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -418,12 +418,12 @@ exports[`Column > items are true 1`] = `
                 class="MuiStack-root css-19wm6r8-MuiStack-root"
               >
                 <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-subtitle2 css-15wetgh-MuiTypography-root"
                 >
                   JAVA-D2
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 >
                   22.04.2023
                 </p>
@@ -432,7 +432,7 @@ exports[`Column > items are true 1`] = `
                 class="MuiBox-root css-1626bqa"
               >
                 <p
-                  class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                 />
                 <div
                   class="MuiStack-root css-1qqxfbr-MuiStack-root"
@@ -464,7 +464,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -473,7 +473,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -498,7 +498,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                       >
                         uu
                       </h6>
@@ -507,7 +507,7 @@ exports[`Column > items are true 1`] = `
                       class="MuiBox-root css-0"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         undefined undefined
                       </p>
@@ -521,7 +521,7 @@ exports[`Column > items are true 1`] = `
       </div>
     </div>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1wuj8vu-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >

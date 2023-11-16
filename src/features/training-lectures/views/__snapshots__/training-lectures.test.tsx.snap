@@ -6,35 +6,35 @@ exports[`TrainingLectures > renders correctly 1`] = `
     class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
   >
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1lexyjf-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-86zk83-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-qn5tej-MuiSvgIcon-root"
-        data-testid="ArrowBackIcon"
+        data-testid="ChevronLeftIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >
         <path
-          d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+          d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
         />
       </svg>
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-3ymmqj-MuiTypography-root"
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-xw5kh4-MuiTypography-root"
       >
         К списку курсов
-      </h6>
+      </p>
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
-    <h4
-      class="MuiTypography-root MuiTypography-h4 css-h8ke29-MuiTypography-root"
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-jimv0f-MuiTypography-root"
     >
       string
-    </h4>
+    </h2>
     <div
       class="MuiGrid-root MuiGrid-container css-8pqjud-MuiGrid-root"
     >
@@ -53,11 +53,11 @@ exports[`TrainingLectures > renders correctly 1`] = `
             <div
               class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ou7ve4-MuiPaper-root"
             >
-              <h6
-                class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+              <h4
+                class="MuiTypography-root MuiTypography-h4 css-1evpptq-MuiTypography-root"
               >
                 string
-              </h6>
+              </h4>
               <div
                 class="MuiStack-root css-1yc1p5z-MuiStack-root"
               >
@@ -65,12 +65,12 @@ exports[`TrainingLectures > renders correctly 1`] = `
                   class="MuiStack-root css-idd31a-MuiStack-root"
                 >
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle2 css-1p7jsv9-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle2 css-1bi1ejt-MuiTypography-root"
                   >
                     1
                   </h6>
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle1 css-1pb42qt-MuiTypography-root"
                   >
                     string1
                   </h6>
@@ -79,12 +79,12 @@ exports[`TrainingLectures > renders correctly 1`] = `
                   class="MuiStack-root css-idd31a-MuiStack-root"
                 >
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle2 css-1p7jsv9-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle2 css-1bi1ejt-MuiTypography-root"
                   >
                     2
                   </h6>
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle1 css-1pb42qt-MuiTypography-root"
                   >
                     string1
                   </h6>
@@ -93,11 +93,11 @@ exports[`TrainingLectures > renders correctly 1`] = `
               <div
                 class="MuiBox-root css-fw9znx"
               >
-                <h6
-                  class="MuiTypography-root MuiTypography-subtitle2 css-1hhqpuv-MuiTypography-root"
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-1lm2jbq-MuiTypography-root"
                 >
                   Продолжить
-                </h6>
+                </p>
               </div>
             </div>
             <span
