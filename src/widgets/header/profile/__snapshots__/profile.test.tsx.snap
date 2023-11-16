@@ -28,7 +28,7 @@ exports[`Profile > renders correctly 1`] = `
           class="MuiBox-root css-189yone"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body1 css-7j3w3d-MuiTypography-root"
           >
             string string
           </p>

@@ -68,7 +68,7 @@ const Logout: FC<ILogout> = (props) => {
           <ListItemIcon>
             <ExitToAppIcon />
           </ListItemIcon>
-          <ListItemText secondary="Выход"></ListItemText>
+          <ListItemText secondary="Выход" />
         </StyledItemStack>
       </MenuItem>
     </>
