@@ -6,7 +6,7 @@ exports[`LectureHomework > renders correctly 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
   >
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-1gr94hq-MuiTypography-root"
     >
       Домашнее задание
     </h5>
@@ -16,118 +16,118 @@ exports[`LectureHomework > renders correctly 1`] = `
       <div
         class="MuiBox-root css-i6bazn"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           Здесь будет отображаться текст домашнего задания к текущей лекции.
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           Пример домашнего задания:
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           1. Есть ли разница между $("h1 div"); и $("h1").$("div").
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           Может ли привести к тому что, поиск найдёт разные элементы?
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           2. Разработайте следующий автотест:
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Откройте страницу Selenide в Github
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Перейдите в раздел Wiki проекта
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
           <br />
-        </h6>
+        </p>
       </div>
       <div
         class="MuiBox-root css-i6bazn"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           Здесь будет отображаться текст домашнего задания к текущей лекции.
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           Пример домашнего задания:
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           1. Есть ли разница между $("h1 div"); и $("h1").$("div").
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           Может ли привести к тому что, поиск найдёт разные элементы?
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           2. Разработайте следующий автотест:
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Откройте страницу Selenide в Github
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Перейдите в раздел Wiki проекта
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
           <br />
-        </h6>
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
            - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
           <br />
-        </h6>
+        </p>
       </div>
     </div>
   </div>

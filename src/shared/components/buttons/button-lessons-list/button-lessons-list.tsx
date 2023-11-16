@@ -16,7 +16,7 @@ const ButtonLessonsList: FC = () => {
       onClick={() => navigate(`/training/${trainingId}`)}
     >
       <StyledIcon />
-      <StyledTypography variant="subtitle1">К списку уроков</StyledTypography>
+      <StyledTypography variant="body2">К списку уроков</StyledTypography>
     </StyledNavigateButton>
   );
 };

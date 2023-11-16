@@ -12,7 +12,7 @@ const ButtonTrainingList: FC = () => {
   return (
     <StyledNavigateButton variant="outlined" onClick={() => navigate("/")}>
       <StyledIcon />
-      <StyledTypography variant="subtitle1">К списку курсов</StyledTypography>
+      <StyledTypography variant="body2">К списку курсов</StyledTypography>
     </StyledNavigateButton>
   );
 };

@@ -11,31 +11,31 @@ exports[`HomeworkDescription > renders correctly 1`] = `
       <div
         class="MuiStack-root css-nbehj-MuiStack-root"
       >
-        <div
-          class="MuiStack-root css-88meij-MuiStack-root"
+        <a
+          class="css-1kgkdd1"
+          href="/kanban/123123"
         >
-          <a
-            class="css-1kgkdd1"
-            href="/kanban/123123"
+          <div
+            class="MuiStack-root css-16jryck-MuiStack-root"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1evpptq-MuiTypography-root"
             >
               JAVA-23
-            </h6>
-          </a>
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-testid="OpenInNewIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
-            />
-          </svg>
-        </div>
+            </h4>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-15ef3nj-MuiSvgIcon-root"
+              data-testid="OpenInNewIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+              />
+            </svg>
+          </div>
+        </a>
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ddltag-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
@@ -57,8 +57,8 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           />
         </button>
       </div>
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
       />
       <div
         class="MuiStack-root css-3t268d-MuiStack-root"
@@ -82,7 +82,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
             >
               fl
             </h6>
@@ -90,11 +90,11 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           <div
             class="MuiBox-root css-189yone"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               firstName lastName
-            </h6>
+            </p>
           </div>
         </div>
         <div
@@ -124,7 +124,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
             >
               fl
             </h6>
@@ -132,11 +132,11 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           <div
             class="MuiBox-root css-189yone"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               firstName lastName
-            </h6>
+            </p>
           </div>
         </div>
       </div>
@@ -147,12 +147,12 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           class="MuiStack-root css-fuiiz2-MuiStack-root"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Создано
           </p>
           <span
-            class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
             10.10.2021 | 12:10
           </span>
@@ -161,12 +161,12 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           class="MuiStack-root css-fuiiz2-MuiStack-root"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Начало проверки
           </p>
           <span
-            class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
             10.10.2021 | 14:10
           </span>
@@ -175,12 +175,12 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           class="MuiStack-root css-fuiiz2-MuiStack-root"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Окончание проверки
           </p>
           <span
-            class="MuiTypography-root MuiTypography-caption css-10kve1z-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-caption css-1ta79nt-MuiTypography-root"
           >
             10.10.2021 | 12:11
           </span>
@@ -214,7 +214,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
             class="MuiBox-root css-0"
           >
             <p
-              class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               Ожидает проверки
             </p>
@@ -225,7 +225,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
       >
         <h5
-          class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 css-1gr94hq-MuiTypography-root"
         >
           Домашнее задание
         </h5>
@@ -237,19 +237,19 @@ exports[`HomeworkDescription > renders correctly 1`] = `
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
       >
         <h5
-          class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 css-1rtsxgi-MuiTypography-root"
         >
           Ответ на задание
         </h5>
         <div
           class="MuiBox-root css-i6bazn"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
           >
             answer
             <br />
-          </h6>
+          </p>
         </div>
       </div>
     </div>
@@ -268,31 +268,31 @@ exports[`HomeworkDescription > renders correctly 2`] = `
       <div
         class="MuiStack-root css-nbehj-MuiStack-root"
       >
-        <div
-          class="MuiStack-root css-88meij-MuiStack-root"
+        <a
+          class="css-1kgkdd1"
+          href="/kanban/123123"
         >
-          <a
-            class="css-1kgkdd1"
-            href="/kanban/123123"
+          <div
+            class="MuiStack-root css-16jryck-MuiStack-root"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-h6 css-97ruyc-MuiTypography-root"
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1evpptq-MuiTypography-root"
             >
               JAVA-23
-            </h6>
-          </a>
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-testid="OpenInNewIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
-            />
-          </svg>
-        </div>
+            </h4>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-15ef3nj-MuiSvgIcon-root"
+              data-testid="OpenInNewIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+              />
+            </svg>
+          </div>
+        </a>
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ddltag-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
@@ -314,8 +314,8 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           />
         </button>
       </div>
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-158lv7p-MuiTypography-root"
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
       />
       <div
         class="MuiStack-root css-3t268d-MuiStack-root"
@@ -339,7 +339,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
             >
               fl
             </h6>
@@ -347,11 +347,11 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           <div
             class="MuiBox-root css-189yone"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               firstName lastName
-            </h6>
+            </p>
           </div>
         </div>
         <div
@@ -381,7 +381,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
             >
               fl
             </h6>
@@ -389,11 +389,11 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           <div
             class="MuiBox-root css-189yone"
           >
-            <h6
-              class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+            <p
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               firstName lastName
-            </h6>
+            </p>
           </div>
         </div>
       </div>
@@ -404,12 +404,12 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           class="MuiStack-root css-fuiiz2-MuiStack-root"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Создано
           </p>
           <span
-            class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
             10.10.2021 | 12:10
           </span>
@@ -418,12 +418,12 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           class="MuiStack-root css-fuiiz2-MuiStack-root"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Начало проверки
           </p>
           <span
-            class="MuiTypography-root MuiTypography-caption css-4qpp9w-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
             10.10.2021 | 14:10
           </span>
@@ -432,12 +432,12 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           class="MuiStack-root css-fuiiz2-MuiStack-root"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Окончание проверки
           </p>
           <span
-            class="MuiTypography-root MuiTypography-caption css-10kve1z-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-caption css-1ta79nt-MuiTypography-root"
           >
             10.10.2021 | 12:11
           </span>
@@ -471,7 +471,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
             class="MuiBox-root css-0"
           >
             <p
-              class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
             >
               Ожидает проверки
             </p>
@@ -482,7 +482,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1n8pi7-MuiPaper-root"
       >
         <h5
-          class="MuiTypography-root MuiTypography-h5 css-1bp4jth-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 css-1gr94hq-MuiTypography-root"
         >
           Домашнее задание
         </h5>
@@ -494,19 +494,19 @@ exports[`HomeworkDescription > renders correctly 2`] = `
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1fwp6s7-MuiPaper-root"
       >
         <h5
-          class="MuiTypography-root MuiTypography-h5 css-10tmgob-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 css-1rtsxgi-MuiTypography-root"
         >
           Ответ на задание
         </h5>
         <div
           class="MuiBox-root css-i6bazn"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
           >
             answer
             <br />
-          </h6>
+          </p>
         </div>
       </div>
     </div>

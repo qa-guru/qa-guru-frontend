@@ -9,7 +9,7 @@ exports[`UserRow > renders correctly 1`] = `
       class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
     >
       <h6
-        class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
       >
         uu
       </h6>
@@ -17,11 +17,11 @@ exports[`UserRow > renders correctly 1`] = `
     <div
       class="MuiBox-root css-189yone"
     >
-      <h6
-        class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
       >
         undefined undefined
-      </h6>
+      </p>
     </div>
   </div>
 </DocumentFragment>

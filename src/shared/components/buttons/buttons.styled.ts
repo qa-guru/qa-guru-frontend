@@ -1,13 +1,13 @@
 import { Box, styled } from "@mui/system";
 import { Button, Typography } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 export const StyledNavigateButton = styled(Button)(({ theme }) => ({
   marginBottom: "25px",
   color: theme.palette.primary.main,
 }));
 
-export const StyledIcon = styled(ArrowBackIcon)({
+export const StyledIcon = styled(ChevronLeftIcon)({
   marginRight: "10px",
 });
 
@@ -17,6 +17,4 @@ export const StyledBox = styled(Box)({
   marginRight: "1vw",
 });
 
-export const StyledTypography = styled(Typography)({
-  textTransform: "none",
-});
+export const StyledTypography = styled(Typography)({});

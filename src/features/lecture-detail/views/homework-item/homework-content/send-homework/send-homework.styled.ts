@@ -13,7 +13,6 @@ export const StyledBox = styled(Box)({
 });
 
 export const StyledLoadingButton = styled(LoadingButton)({
-  textTransform: "none",
   minWidth: "151px",
   marginTop: "15px",
 });

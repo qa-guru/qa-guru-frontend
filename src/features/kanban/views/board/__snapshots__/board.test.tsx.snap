@@ -17,19 +17,19 @@ exports[`Board > renders correctly 1`] = `
           <div
             class="MuiStack-root css-nijip5-MuiStack-root"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1i16qwu-MuiTypography-root"
             >
               New
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
+            </h4>
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1glzz00-MuiTypography-root"
             >
               (6)
-            </p>
+            </h4>
           </div>
           <div
-            class="MuiBox-root css-1gpd24r"
+            class="MuiBox-root css-14tluqp"
             id="scroll-container-1"
           >
             <div
@@ -66,7 +66,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1wuj8vu-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -82,19 +82,19 @@ exports[`Board > renders correctly 1`] = `
           <div
             class="MuiStack-root css-nijip5-MuiStack-root"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1i16qwu-MuiTypography-root"
             >
               In review
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
+            </h4>
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1glzz00-MuiTypography-root"
             >
               (6)
-            </p>
+            </h4>
           </div>
           <div
-            class="MuiBox-root css-1gpd24r"
+            class="MuiBox-root css-14tluqp"
             id="scroll-container-2"
           >
             <div
@@ -131,7 +131,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1wuj8vu-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -147,19 +147,19 @@ exports[`Board > renders correctly 1`] = `
           <div
             class="MuiStack-root css-nijip5-MuiStack-root"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1i16qwu-MuiTypography-root"
             >
               Approved
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
+            </h4>
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1glzz00-MuiTypography-root"
             >
               (6)
-            </p>
+            </h4>
           </div>
           <div
-            class="MuiBox-root css-1gpd24r"
+            class="MuiBox-root css-14tluqp"
             id="scroll-container-3"
           >
             <div
@@ -180,19 +180,19 @@ exports[`Board > renders correctly 1`] = `
                       class="MuiStack-root css-19wm6r8-MuiStack-root"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-i30jc5-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-15wetgh-MuiTypography-root"
                       >
                         JAVA-NG
                       </h6>
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       />
                     </div>
                     <div
                       class="MuiBox-root css-1626bqa"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                       >
                         string
                       </p>
@@ -226,7 +226,7 @@ exports[`Board > renders correctly 1`] = `
                             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                           >
                             <h6
-                              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                             >
                               ss
                             </h6>
@@ -235,7 +235,7 @@ exports[`Board > renders correctly 1`] = `
                             class="MuiBox-root css-189yone"
                           >
                             <p
-                              class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                             >
                               string string
                             </p>
@@ -260,7 +260,7 @@ exports[`Board > renders correctly 1`] = `
                             class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-ch1x5y-MuiAvatar-root"
                           >
                             <h6
-                              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+                              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
                             >
                               ss
                             </h6>
@@ -269,7 +269,7 @@ exports[`Board > renders correctly 1`] = `
                             class="MuiBox-root css-189yone"
                           >
                             <p
-                              class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+                              class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
                             >
                               string string
                             </p>
@@ -283,7 +283,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1wuj8vu-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -299,19 +299,19 @@ exports[`Board > renders correctly 1`] = `
           <div
             class="MuiStack-root css-nijip5-MuiStack-root"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-ughqmw-MuiTypography-root"
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1i16qwu-MuiTypography-root"
             >
               Not approved
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 css-gyzx84-MuiTypography-root"
+            </h4>
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-1glzz00-MuiTypography-root"
             >
               (6)
-            </p>
+            </h4>
           </div>
           <div
-            class="MuiBox-root css-1gpd24r"
+            class="MuiBox-root css-14tluqp"
             id="scroll-container-4"
           >
             <div
@@ -348,7 +348,7 @@ exports[`Board > renders correctly 1`] = `
             </div>
           </div>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lvd6au-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1wuj8vu-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >

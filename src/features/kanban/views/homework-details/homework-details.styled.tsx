@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   marginTop: "20px",
@@ -31,6 +32,9 @@ export const StyledId = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
   flexDirection: "row",
   alignItems: "center",
+}));
+
+export const StyledIcon = styled(OpenInNewIcon)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 

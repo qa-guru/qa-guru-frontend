@@ -22,7 +22,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
   return (
     <Container>
       <ButtonTrainingList />
-      <Typography variant="h4">{name}</Typography>
+      <Typography variant="h2">{name}</Typography>
       <StyledGridContainer container>
         {trainingLectures?.map((item, index) => {
           const { id, subject, description } = item?.lecture || {};
@@ -32,7 +32,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
               <StyledLink to={`/training/${trainingId}/${id}`}>
                 <CardActionArea>
                   <StyledPaper>
-                    <Typography variant="h6">{subject}</Typography>
+                    <Typography variant="h4">{subject}</Typography>
                     <StyledWrapper>
                       {description?.map((value, index) => {
                         return (
@@ -46,7 +46,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
                       })}
                     </StyledWrapper>
                     <StyledBox>
-                      <StyledSubtitle variant="subtitle2">
+                      <StyledSubtitle variant="body2">
                         Продолжить
                       </StyledSubtitle>
                     </StyledBox>

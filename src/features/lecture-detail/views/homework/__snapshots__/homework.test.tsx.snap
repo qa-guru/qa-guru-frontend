@@ -9,7 +9,7 @@ exports[`Homework > renders correctly 1`] = `
       class="MuiStack-root css-d3d1h5-MuiStack-root"
     >
       <h5
-        class="MuiTypography-root MuiTypography-h5 css-xlem1t-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
       >
         Ответ на задание
       </h5>
@@ -38,7 +38,7 @@ exports[`Homework > renders correctly 1`] = `
           class="MuiBox-root css-0"
         >
           <p
-            class="MuiTypography-root MuiTypography-body2 css-3c3maz-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             Ожидает проверки
           </p>
@@ -61,7 +61,7 @@ exports[`Homework > renders correctly 1`] = `
           class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
         >
           <h6
-            class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
           >
             fl
           </h6>
@@ -69,16 +69,16 @@ exports[`Homework > renders correctly 1`] = `
         <div
           class="MuiBox-root css-189yone"
         >
-          <h6
-            class="MuiTypography-root MuiTypography-subtitle1 css-v3tflm-MuiTypography-root"
+          <p
+            class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
           >
             firstName lastName
-          </h6>
+          </p>
           <div
             class="MuiStack-root css-1je0tgk-MuiStack-root"
           >
             <h6
-              class="MuiTypography-root MuiTypography-subtitle2 css-4ozz3r-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-subtitle2 css-dfhrm0-MuiTypography-root"
             >
               10.10.2021 | 12:11
             </h6>
@@ -92,12 +92,12 @@ exports[`Homework > renders correctly 1`] = `
       <div
         class="MuiBox-root css-i6bazn"
       >
-        <h6
-          class="MuiTypography-root MuiTypography-subtitle1 css-tm4gf8-MuiTypography-root"
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-2sm3sf-MuiTypography-root"
         >
           answer
           <br />
-        </h6>
+        </p>
       </div>
     </div>
     <div
@@ -156,7 +156,7 @@ exports[`Homework > renders correctly 1`] = `
       class="MuiBox-root css-0"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1yyn4lv-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-5er1hh-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >

@@ -45,7 +45,7 @@ const Profile: FC<IProfile> = (props) => {
             <UserRow
               user={props.data.user}
               roles={props.data?.user?.roles}
-              variant="body1"
+              variant="body2"
             />
           </StyledBox>
         </Button>
@@ -69,7 +69,7 @@ const Profile: FC<IProfile> = (props) => {
                 <UserRow
                   user={props.data.user}
                   email={props.data.user?.email}
-                  variant="body1"
+                  variant="body2"
                   width={0}
                 />
               </StyledUserBox>
@@ -77,7 +77,7 @@ const Profile: FC<IProfile> = (props) => {
               <MenuItem onClick={handleClickSettingsProfile}>
                 <StyledStack>
                   <ListItemIcon>{icon}</ListItemIcon>
-                  <StyledListItemText>{title}</StyledListItemText>
+                  <StyledListItemText secondary={title}></StyledListItemText>
                 </StyledStack>
               </MenuItem>
             </MenuList>

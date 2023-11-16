@@ -8,7 +8,6 @@ import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusText from "shared/components/status-content/status-text";
 import TextSerialization from "shared/serializers/text-serialization";
 import LectureHomework from "shared/components/lecture-homework";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
 import { IHomeworkDescription } from "./homework-details.types";
 import {
@@ -23,6 +22,7 @@ import {
   StyledLink,
   StyledIconButton,
   StyledStatusContentBox,
+  StyledIcon,
 } from "./homework-details.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
@@ -33,17 +33,17 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
     <StyledHomeworkDetails>
       <StyledBox>
         <StyledStack>
-          <StyledId>
-            <StyledLink to={`/kanban/${card.id}`}>
-              <Typography variant="h6">{getFormattedId(card.id)}</Typography>
-            </StyledLink>
-            <OpenInNewIcon />
-          </StyledId>
+          <StyledLink to={`/kanban/${card.id}`}>
+            <StyledId>
+              <Typography variant="h4">{getFormattedId(card.id)}</Typography>
+              <StyledIcon />
+            </StyledId>
+          </StyledLink>
           <StyledIconButton onClick={onClose}>
             <ChevronRightIcon />
           </StyledIconButton>
         </StyledStack>
-        <Typography variant="body1">{card.lecture?.subject}</Typography>
+        <Typography variant="h5">{card.lecture?.subject}</Typography>
         <StyledRowStack>
           <UserRow
             icon={StudentIcon}

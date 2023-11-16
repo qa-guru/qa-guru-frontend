@@ -73,7 +73,7 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
             >
               <StyledStack>
                 <StyledIcon as={Icon} />
-                <Typography>{text}</Typography>
+                <Typography variant="body2">{text}</Typography>
               </StyledStack>
             </MenuItem>
           ))}
