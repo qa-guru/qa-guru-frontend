@@ -10,4 +10,5 @@ export interface IUserRow {
   height?: string | number;
   variant?: "body1" | "body2" | "subtitle1" | "subtitle2";
   roles?: Array<UserRole | null> | null;
+  hideFullName?: boolean;
 }

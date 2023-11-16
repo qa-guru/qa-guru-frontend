@@ -21,6 +21,7 @@ const UserRow: FC<IUserRow> = (props) => {
     height,
     roles,
     variant = "body2",
+    hideFullName,
   } = props;
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
@@ -34,11 +35,15 @@ const UserRow: FC<IUserRow> = (props) => {
         variant="subtitle2"
       />
       <StyledBox>
-        <Typography variant={variant}>{fullName}</Typography>
-        {roles && roles.length > 0 && (
-          <Typography variant="caption">
-            {formatRole(roles[roles.length - 1])}
-          </Typography>
+        {!hideFullName && (
+          <>
+            <Typography variant={variant}>{fullName}</Typography>
+            {roles && roles.length > 0 && (
+              <Typography variant="caption">
+                {formatRole(roles[roles.length - 1])}
+              </Typography>
+            )}
+          </>
         )}
         {date && (
           <StyledDateStack>
