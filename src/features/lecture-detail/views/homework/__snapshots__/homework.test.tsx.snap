@@ -55,7 +55,7 @@ exports[`Homework > renders correctly 1`] = `
       class="MuiBox-root css-1kawqjx"
     >
       <div
-        class="MuiStack-root css-19iseno-MuiStack-root"
+        class="MuiStack-root css-czl7p-MuiStack-root"
       >
         <div
           class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-1d0j7ho-MuiAvatar-root"
@@ -67,7 +67,7 @@ exports[`Homework > renders correctly 1`] = `
           </h6>
         </div>
         <div
-          class="MuiBox-root css-0"
+          class="MuiBox-root css-189yone"
         >
           <p
             class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"

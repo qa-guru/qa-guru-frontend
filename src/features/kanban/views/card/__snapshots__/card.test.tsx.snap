@@ -30,7 +30,7 @@ exports[`Card > card is hidden 1`] = `
         class="MuiStack-root css-1qqxfbr-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -62,7 +62,7 @@ exports[`Card > card is hidden 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <p
               class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
@@ -72,7 +72,7 @@ exports[`Card > card is hidden 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -96,7 +96,7 @@ exports[`Card > card is hidden 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <p
               class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
@@ -141,7 +141,7 @@ exports[`Card > card is visible 1`] = `
         class="MuiStack-root css-1qqxfbr-MuiStack-root"
       >
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -173,7 +173,7 @@ exports[`Card > card is visible 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <p
               class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
@@ -183,7 +183,7 @@ exports[`Card > card is visible 1`] = `
           </div>
         </div>
         <div
-          class="MuiStack-root css-19iseno-MuiStack-root"
+          class="MuiStack-root css-czl7p-MuiStack-root"
         >
           <svg
             fill="none"
@@ -207,7 +207,7 @@ exports[`Card > card is visible 1`] = `
             </h6>
           </div>
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-189yone"
           >
             <p
               class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"

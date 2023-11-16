@@ -5,14 +5,17 @@ import {
   ListItemIcon,
   MenuItem,
   MenuList,
+  useMediaQuery,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import PersonIcon from "@mui/icons-material/Person";
 import Logout from "features/authorization/containers/logout-container";
 import UserRow from "shared/components/user-row";
+import { useTheme } from "@mui/system";
 import { IProfile } from "./profile.types";
 import {
   StyledBox,
+  StyledLink,
   StyledListItemText,
   StyledMenu,
   StyledStack,
@@ -24,10 +27,13 @@ const Profile: FC<IProfile> = (props) => {
     {
       title: "Профиль",
       icon: <PersonIcon />,
+      url: "/profile",
     },
   ];
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const theme = useTheme();
+  const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleOpenProfile = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -42,7 +48,12 @@ const Profile: FC<IProfile> = (props) => {
       <Tooltip title="Open settings">
         <Button variant="text" onClick={handleOpenProfile}>
           <StyledBox>
-            <UserRow user={props.data.user} variant="body2" />
+            <UserRow
+              user={props.data.user}
+              roles={props.data?.user?.roles}
+              hideFullName={isDownSm}
+              variant="body2"
+            />
           </StyledBox>
         </Button>
       </Tooltip>
@@ -57,7 +68,7 @@ const Profile: FC<IProfile> = (props) => {
         }}
       >
         {settings.map((setting, index) => {
-          const { icon, title } = setting;
+          const { icon, title, url } = setting;
 
           return (
             <MenuList key={index}>
@@ -71,10 +82,12 @@ const Profile: FC<IProfile> = (props) => {
               </StyledUserBox>
               <Divider />
               <MenuItem onClick={handleClickSettingsProfile}>
-                <StyledStack>
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <StyledListItemText secondary={title}></StyledListItemText>
-                </StyledStack>
+                <StyledLink to={url}>
+                  <StyledStack>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <StyledListItemText secondary={title} />
+                  </StyledStack>
+                </StyledLink>
               </MenuItem>
             </MenuList>
           );
