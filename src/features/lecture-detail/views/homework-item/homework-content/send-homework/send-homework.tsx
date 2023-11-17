@@ -1,4 +1,4 @@
-import { FC, useContext, ChangeEvent } from "react";
+import { FC, useContext, ChangeEvent, useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
@@ -45,16 +45,19 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
-        setError("content", {
-          type: "manual",
-          message: t("homework.max")!,
-        });
-      }
-    });
-  };
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      trigger("content").then((isValid) => {
+        if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
+          setError("content", {
+            type: "manual",
+            message: t("homework.max")!,
+          });
+        }
+      });
+    },
+    [trigger, setError, MAX_HOMEWORK_LENGTH, t]
+  );
 
   return (
     <form>

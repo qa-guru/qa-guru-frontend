@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from "react";
+import { FC, ChangeEvent, useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -49,16 +49,19 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
-        setError("content", {
-          type: "manual",
-          message: t("comment.max"),
-        });
-      }
-    });
-  };
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      trigger("content").then((isValid) => {
+        if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
+          setError("content", {
+            type: "manual",
+            message: t("comment.max"),
+          });
+        }
+      });
+    },
+    [trigger, setError, MAX_COMMENT_LENGTH, t]
+  );
 
   return (
     <form>

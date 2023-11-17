@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from "react";
+import { FC, ChangeEvent, useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
@@ -57,16 +57,19 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    trigger("content").then((isValid) => {
-      if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
-        setError("content", {
-          type: "manual",
-          message: t("homework.max")!,
-        });
-      }
-    });
-  };
+  const handleChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      trigger("content").then((isValid) => {
+        if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
+          setError("content", {
+            type: "manual",
+            message: t("homework.max")!,
+          });
+        }
+      });
+    },
+    [trigger, setError, MAX_HOMEWORK_LENGTH, t]
+  );
 
   return (
     <form>
