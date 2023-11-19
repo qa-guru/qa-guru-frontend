@@ -1,5 +1,8 @@
 import { Controller, FieldValues } from "react-hook-form";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+// eslint-disable-next-line import/named
+import { SelectChangeEvent } from "@mui/material/Select";
+import { useCallback } from "react";
 import { IFormInputSelect } from "./input-select.types";
 
 const InputSelect = <T extends FieldValues>({
@@ -11,6 +14,17 @@ const InputSelect = <T extends FieldValues>({
   onChange,
   disabled = false,
 }: IFormInputSelect<T>) => {
+  const handleChange = useCallback(
+    (event: SelectChangeEvent, fieldOnChange: (value: string) => void) => {
+      fieldOnChange(event.target.value);
+
+      if (onChange) {
+        onChange(event.target.value);
+      }
+    },
+    [onChange]
+  );
+
   return (
     <FormControl fullWidth>
       <InputLabel>{placeholder}</InputLabel>
@@ -18,13 +32,10 @@ const InputSelect = <T extends FieldValues>({
         name={name}
         control={control}
         defaultValue={defaultValue}
-        render={({ field: { value, onChange: handleChange } }) => (
+        render={({ field: { value, onChange: fieldOnChange } }) => (
           <Select
             label={placeholder}
-            onChange={(event) => {
-              handleChange(event);
-              if (onChange) onChange(event.target.value as string);
-            }}
+            onChange={(event) => handleChange(event, fieldOnChange)}
             value={value}
             disabled={disabled}
           >
