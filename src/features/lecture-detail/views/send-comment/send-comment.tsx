@@ -14,7 +14,7 @@ import {
 import { MAX_COMMENT_LENGTH } from "../../constants";
 
 const SendComment: FC<ISendComment> = (props) => {
-  const { sendComment, loading, id } = props;
+  const { sendComment, loading, id, hideTitile } = props;
   const { t } = useTranslation();
 
   const {
@@ -61,7 +61,9 @@ const SendComment: FC<ISendComment> = (props) => {
 
   return (
     <form>
-      <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
+      {!hideTitile && (
+        <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
+      )}
       <StyledBox>
         <InputText
           placeholder="Текст ответа"

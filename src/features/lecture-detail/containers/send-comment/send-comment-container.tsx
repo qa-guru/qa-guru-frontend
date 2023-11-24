@@ -9,7 +9,7 @@ import SendComment from "../../views/send-comment";
 import { INDEX_OFFSET, PARSE_INT_RADIX, QUERY_DEFAULTS } from "../../constants";
 
 const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
-  const { id } = props;
+  const { id, hideTitile } = props;
 
   const [sendComment, { loading }] = useSendCommentMutation({
     update: (cache, { data }) => {
@@ -57,7 +57,14 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
     },
   });
 
-  return <SendComment loading={loading} sendComment={sendComment} id={id} />;
+  return (
+    <SendComment
+      loading={loading}
+      sendComment={sendComment}
+      id={id}
+      hideTitile={hideTitile}
+    />
+  );
 };
 
 export default SendCommentContainer;

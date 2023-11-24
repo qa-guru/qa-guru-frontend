@@ -285,6 +285,26 @@ exports[`CommentsPagination > renders correctly 1`] = `
               />
             </button>
           </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-1oyzucw-MuiSvgIcon-root"
+              data-testid="ReplyIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
         </div>
       </div>
       <div
