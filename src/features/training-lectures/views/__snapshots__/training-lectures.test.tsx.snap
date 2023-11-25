@@ -22,7 +22,7 @@ exports[`TrainingLectures > renders correctly 1`] = `
         />
       </svg>
       <p
-        class="MuiTypography-root MuiTypography-body2 css-xw5kh4-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
       >
         К списку курсов
       </p>

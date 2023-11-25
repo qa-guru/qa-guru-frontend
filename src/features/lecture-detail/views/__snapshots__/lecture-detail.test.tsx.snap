@@ -22,7 +22,7 @@ exports[`LectureDetail > hasHomework is false 1`] = `
         />
       </svg>
       <p
-        class="MuiTypography-root MuiTypography-body2 css-xw5kh4-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
       >
         К списку уроков
       </p>
@@ -216,7 +216,7 @@ exports[`LectureDetail > hasHomework is true 1`] = `
         />
       </svg>
       <p
-        class="MuiTypography-root MuiTypography-body2 css-xw5kh4-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body2 css-nm8eko-MuiTypography-root"
       >
         К списку уроков
       </p>

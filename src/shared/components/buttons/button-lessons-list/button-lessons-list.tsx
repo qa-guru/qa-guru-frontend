@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  StyledNavigateButton,
-  StyledIcon,
-  StyledTypography,
-} from "../buttons.styled";
+import { Typography } from "@mui/material";
+import { StyledNavigateButton, StyledIcon } from "../buttons.styled";
 
 const ButtonLessonsList: FC = () => {
   const { trainingId } = useParams();
@@ -16,7 +13,7 @@ const ButtonLessonsList: FC = () => {
       onClick={() => navigate(`/training/${trainingId}`)}
     >
       <StyledIcon />
-      <StyledTypography variant="body2">К списку уроков</StyledTypography>
+      <Typography variant="body2">К списку уроков</Typography>
     </StyledNavigateButton>
   );
 };

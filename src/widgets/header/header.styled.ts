@@ -45,7 +45,8 @@ export const StyledLogo = styled(Logo)(({ theme }) => ({
   },
 }));
 
-export const StyledStack = styled(Stack)({
+export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
-});
+  gap: theme.spacing(3),
+}));

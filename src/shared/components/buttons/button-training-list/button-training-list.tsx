@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  StyledNavigateButton,
-  StyledIcon,
-  StyledTypography,
-} from "../buttons.styled";
+import { Typography } from "@mui/material";
+import { StyledNavigateButton, StyledIcon } from "../buttons.styled";
 
 const ButtonTrainingList: FC = () => {
   const navigate = useNavigate();
@@ -12,7 +9,7 @@ const ButtonTrainingList: FC = () => {
   return (
     <StyledNavigateButton variant="outlined" onClick={() => navigate("/")}>
       <StyledIcon />
-      <StyledTypography variant="body2">К списку курсов</StyledTypography>
+      <Typography variant="body2">К списку курсов</Typography>
     </StyledNavigateButton>
   );
 };
