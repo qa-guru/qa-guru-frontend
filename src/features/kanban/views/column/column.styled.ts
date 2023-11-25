@@ -47,9 +47,8 @@ export const StyledTypographyCount = styled(Typography)({
 });
 
 export const StyledWrapperBoxCircle = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
-  marginTop: "10px",
+  textAlign: "center",
+  marginTop: "15px",
 });
 
 export const StyledWrapper = styled(Box)({

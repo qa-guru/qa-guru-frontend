@@ -177,7 +177,7 @@ const Column: FC<IColumn> = ({
           hasMore={hasMoreHomeworks}
           loader={
             <StyledWrapperBoxCircle>
-              <CircularProgress size={25} />
+              <CircularProgress size={20} />
             </StyledWrapperBoxCircle>
           }
           scrollableTarget={`scroll-container-${column.id}`}
