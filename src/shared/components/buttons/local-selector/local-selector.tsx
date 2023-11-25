@@ -1,5 +1,3 @@
-import * as React from "react";
-import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 // eslint-disable-next-line import/named
 import { SelectChangeEvent } from "@mui/material/Select";
@@ -12,28 +10,26 @@ import {
   StyledSelect,
 } from "../buttons.styled";
 
+const languageOptions = [
+  {
+    title: "English",
+    value: "en",
+    icon: <EnglishIcon />,
+  },
+
+  {
+    title: "Русский",
+    value: "ru",
+    icon: <RussiaIcon />,
+  },
+];
+
 const LocaleSelector = () => {
   const { i18n } = useTranslation();
-  const languageOptions = [
-    {
-      title: "English",
-      value: "en",
-      icon: <EnglishIcon />,
-    },
 
-    {
-      title: "Русский",
-      value: "ru",
-      icon: <RussiaIcon />,
-    },
-  ];
-
-  const handleChange = (
-    event: SelectChangeEvent<unknown>,
-    child: ReactNode
-  ) => {
-    const value = event.target.value as string;
-    i18n.changeLanguage(value);
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
+    const { value } = event.target;
+    i18n.changeLanguage(value as string);
   };
 
   return (
@@ -50,8 +46,8 @@ const LocaleSelector = () => {
           },
         }}
       >
-        {languageOptions.map((option) => (
-          <StyledMenuItem key={option.value} value={option.value}>
+        {languageOptions.map((option, index) => (
+          <StyledMenuItem key={index} value={option.value}>
             {option.icon}
             <Typography variant="caption">{option.title}</Typography>
           </StyledMenuItem>
