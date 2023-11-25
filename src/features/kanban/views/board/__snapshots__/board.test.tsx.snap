@@ -40,12 +40,12 @@ exports[`Board > renders correctly 1`] = `
                 style="height: auto; overflow: auto;"
               >
                 <div
-                  class="MuiBox-root css-ozqqb1"
+                  class="MuiBox-root css-2xwkhp"
                 >
                   <span
                     class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
                     role="progressbar"
-                    style="width: 25px; height: 25px;"
+                    style="width: 20px; height: 20px;"
                   >
                     <svg
                       class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
@@ -105,12 +105,12 @@ exports[`Board > renders correctly 1`] = `
                 style="height: auto; overflow: auto;"
               >
                 <div
-                  class="MuiBox-root css-ozqqb1"
+                  class="MuiBox-root css-2xwkhp"
                 >
                   <span
                     class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
                     role="progressbar"
-                    style="width: 25px; height: 25px;"
+                    style="width: 20px; height: 20px;"
                   >
                     <svg
                       class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
@@ -322,12 +322,12 @@ exports[`Board > renders correctly 1`] = `
                 style="height: auto; overflow: auto;"
               >
                 <div
-                  class="MuiBox-root css-ozqqb1"
+                  class="MuiBox-root css-2xwkhp"
                 >
                   <span
                     class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-d3oyhb-MuiCircularProgress-root"
                     role="progressbar"
-                    style="width: 25px; height: 25px;"
+                    style="width: 20px; height: 20px;"
                   >
                     <svg
                       class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"

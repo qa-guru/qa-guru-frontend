@@ -17,6 +17,8 @@ const TrainingSelectionByRole: FC<ITrainingSelectionByRole> = ({ control }) => {
     component = <Trainings control={control} />;
   } else if (primaryRole === UserRole.Mentor) {
     component = <TrainingsByMentor control={control} />;
+  } else {
+    component = <Trainings control={control} />;
   }
 
   return component;

@@ -1,30 +1,60 @@
 import { useTranslation } from "react-i18next";
-import { IconButton, SvgIcon } from "@mui/material";
-import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
+// eslint-disable-next-line import/named
+import { SelectChangeEvent } from "@mui/material/Select";
 import { ReactComponent as RussiaIcon } from "assets/icons/russia.svg";
-import { StyledBox } from "../buttons.styled";
+import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
+import { Typography } from "@mui/material";
+import {
+  StyledFormControl,
+  StyledMenuItem,
+  StyledSelect,
+} from "../buttons.styled";
 
-const LocalSelector = () => {
+const languageOptions = [
+  {
+    title: "English",
+    value: "en",
+    icon: <EnglishIcon />,
+  },
+
+  {
+    title: "Русский",
+    value: "ru",
+    icon: <RussiaIcon />,
+  },
+];
+
+const LocaleSelector = () => {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+  const handleChange = (event: SelectChangeEvent<unknown>) => {
+    const { value } = event.target;
+    i18n.changeLanguage(value as string);
   };
 
   return (
-    <StyledBox>
-      <IconButton onClick={() => changeLanguage("en")}>
-        <SvgIcon>
-          <EnglishIcon />
-        </SvgIcon>
-      </IconButton>
-      <IconButton onClick={() => changeLanguage("ru")}>
-        <SvgIcon>
-          <RussiaIcon />
-        </SvgIcon>
-      </IconButton>
-    </StyledBox>
+    <StyledFormControl variant="standard" size="small">
+      <StyledSelect
+        labelId="language-selector-label"
+        value={i18n.language}
+        onChange={handleChange}
+        label="Language"
+        renderValue={(value) => (value as string).toUpperCase()}
+        MenuProps={{
+          style: {
+            marginTop: "20px",
+          },
+        }}
+      >
+        {languageOptions.map((option, index) => (
+          <StyledMenuItem key={index} value={option.value}>
+            {option.icon}
+            <Typography variant="caption">{option.title}</Typography>
+          </StyledMenuItem>
+        ))}
+      </StyledSelect>
+    </StyledFormControl>
   );
 };
 
-export default LocalSelector;
+export default LocaleSelector;
