@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import * as React from "react";
 import * as Apollo from "@apollo/client";
+import * as React from "react";
 import * as ApolloReactComponents from "@apollo/client/react/components";
 
 export type Maybe<T> = T | null;
@@ -812,6 +812,35 @@ export type UsersDto = {
   totalElements?: Maybe<Scalars["Long"]>;
 };
 
+export type AnswerCommentMutationVariables = Exact<{
+  parentID: Scalars["ID"];
+  content: Scalars["String"];
+}>;
+
+export type AnswerCommentMutation = {
+  __typename?: "Mutation";
+  answerComment?: {
+    __typename?: "CommentHomeWorkDto";
+    id?: string | null;
+    creationDate?: any | null;
+    content?: string | null;
+    creator?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      middleName?: string | null;
+      lastName?: string | null;
+    } | null;
+    homeWork?: {
+      __typename?: "StudentHomeWorkDto";
+      id?: string | null;
+      answer?: string | null;
+      status?: StudentHomeWorkStatus | null;
+    } | null;
+  } | null;
+};
+
 export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
   offset: Scalars["Int"];
   limit: Scalars["Int"];
@@ -843,6 +872,101 @@ export type CommentsHomeWorkByHomeWorkQuery = {
         id?: string | null;
       } | null;
     } | null> | null;
+  } | null;
+};
+
+export type SubCommentHomeWorkDtoRecursiveFragment = {
+  __typename?: "CommentHomeWorkDto";
+  children?: Array<{
+    __typename?: "CommentHomeWorkDto";
+    id?: string | null;
+    content?: string | null;
+    children?: Array<{
+      __typename?: "CommentHomeWorkDto";
+      id?: string | null;
+      content?: string | null;
+      children?: Array<{
+        __typename?: "CommentHomeWorkDto";
+        id?: string | null;
+        content?: string | null;
+        children?: Array<{
+          __typename?: "CommentHomeWorkDto";
+          id?: string | null;
+          content?: string | null;
+          children?: Array<{
+            __typename?: "CommentHomeWorkDto";
+            id?: string | null;
+            content?: string | null;
+            creator?: {
+              __typename?: "UserDto";
+              id?: string | null;
+              email?: string | null;
+              firstName?: string | null;
+              lastName?: string | null;
+              middleName?: string | null;
+              avatarLocation?: string | null;
+              locked?: boolean | null;
+            } | null;
+          } | null> | null;
+          creator?: {
+            __typename?: "UserDto";
+            id?: string | null;
+            email?: string | null;
+            firstName?: string | null;
+            lastName?: string | null;
+            middleName?: string | null;
+            avatarLocation?: string | null;
+            locked?: boolean | null;
+          } | null;
+        } | null> | null;
+        creator?: {
+          __typename?: "UserDto";
+          id?: string | null;
+          email?: string | null;
+          firstName?: string | null;
+          lastName?: string | null;
+          middleName?: string | null;
+          avatarLocation?: string | null;
+          locked?: boolean | null;
+        } | null;
+      } | null> | null;
+      creator?: {
+        __typename?: "UserDto";
+        id?: string | null;
+        email?: string | null;
+        firstName?: string | null;
+        lastName?: string | null;
+        middleName?: string | null;
+        avatarLocation?: string | null;
+        locked?: boolean | null;
+      } | null;
+    } | null> | null;
+    creator?: {
+      __typename?: "UserDto";
+      id?: string | null;
+      email?: string | null;
+      firstName?: string | null;
+      lastName?: string | null;
+      middleName?: string | null;
+      avatarLocation?: string | null;
+      locked?: boolean | null;
+    } | null;
+  } | null> | null;
+};
+
+export type SubCommentHomeWorkDtoFragment = {
+  __typename?: "CommentHomeWorkDto";
+  id?: string | null;
+  content?: string | null;
+  creator?: {
+    __typename?: "UserDto";
+    id?: string | null;
+    email?: string | null;
+    firstName?: string | null;
+    lastName?: string | null;
+    middleName?: string | null;
+    avatarLocation?: string | null;
+    locked?: boolean | null;
   } | null;
 };
 
@@ -1677,6 +1801,41 @@ export type UserQuery = {
   } | null;
 };
 
+export const SubCommentHomeWorkDtoFragmentDoc = gql`
+  fragment subCommentHomeWorkDto on CommentHomeWorkDto {
+    id
+    creator {
+      id
+      email
+      firstName
+      lastName
+      middleName
+      avatarLocation
+      locked
+    }
+    content
+  }
+`;
+export const SubCommentHomeWorkDtoRecursiveFragmentDoc = gql`
+  fragment subCommentHomeWorkDtoRecursive on CommentHomeWorkDto {
+    children {
+      ...subCommentHomeWorkDto
+      children {
+        ...subCommentHomeWorkDto
+        children {
+          ...subCommentHomeWorkDto
+          children {
+            ...subCommentHomeWorkDto
+            children {
+              ...subCommentHomeWorkDto
+            }
+          }
+        }
+      }
+    }
+  }
+  ${SubCommentHomeWorkDtoFragmentDoc}
+`;
 export const ApprovedHomeworkFragmentDoc = gql`
   fragment ApprovedHomework on StudentHomeWorkDto {
     id
@@ -1761,6 +1920,88 @@ export const NewTakeForReviewHomeWorkFragmentDoc = gql`
     endCheckingDate
   }
 `;
+export const AnswerCommentDocument = gql`
+  mutation answerComment($parentID: ID!, $content: String!) {
+    answerComment(parentID: $parentID, content: $content) {
+      id
+      creator {
+        id
+        email
+        firstName
+        middleName
+        lastName
+      }
+      creationDate
+      content
+      homeWork {
+        id
+        answer
+        status
+      }
+    }
+  }
+`;
+export type AnswerCommentMutationFn = Apollo.MutationFunction<
+  AnswerCommentMutation,
+  AnswerCommentMutationVariables
+>;
+export type AnswerCommentComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    AnswerCommentMutation,
+    AnswerCommentMutationVariables
+  >,
+  "mutation"
+>;
+
+export const AnswerCommentComponent = (props: AnswerCommentComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    AnswerCommentMutation,
+    AnswerCommentMutationVariables
+  >
+    mutation={AnswerCommentDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useAnswerCommentMutation__
+ *
+ * To run a mutation, you first call `useAnswerCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAnswerCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [answerCommentMutation, { data, loading, error }] = useAnswerCommentMutation({
+ *   variables: {
+ *      parentID: // value for 'parentID'
+ *      content: // value for 'content'
+ *   },
+ * });
+ */
+export function useAnswerCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AnswerCommentMutation,
+    AnswerCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    AnswerCommentMutation,
+    AnswerCommentMutationVariables
+  >(AnswerCommentDocument, options);
+}
+export type AnswerCommentMutationHookResult = ReturnType<
+  typeof useAnswerCommentMutation
+>;
+export type AnswerCommentMutationResult =
+  Apollo.MutationResult<AnswerCommentMutation>;
+export type AnswerCommentMutationOptions = Apollo.BaseMutationOptions<
+  AnswerCommentMutation,
+  AnswerCommentMutationVariables
+>;
 export const CommentsHomeWorkByHomeWorkDocument = gql`
   query commentsHomeWorkByHomeWork(
     $offset: Int!

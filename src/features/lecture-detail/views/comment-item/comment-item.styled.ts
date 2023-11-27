@@ -34,15 +34,10 @@ export const StyledReplyIcon = styled(ReplyIcon)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-export const StyledCommentBox = styled(Box)({
-  width: "100%",
-});
-
-export const StyledCommentStack = styled(Stack)({
-  flexDirection: "row",
-  alignItems: "start",
-});
-
 export const StyledBox = styled(Box)({
   marginTop: "10px",
+});
+
+export const StyledCommentBox = styled(Box)({
+  width: "100%",
 });

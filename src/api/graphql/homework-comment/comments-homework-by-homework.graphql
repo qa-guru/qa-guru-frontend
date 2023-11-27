@@ -29,3 +29,35 @@ query commentsHomeWorkByHomeWork(
     totalElements
   }
 }
+
+fragment subCommentHomeWorkDtoRecursive on CommentHomeWorkDto {
+  children {
+    ...subCommentHomeWorkDto
+    children {
+      ...subCommentHomeWorkDto
+      children {
+        ...subCommentHomeWorkDto
+        children {
+          ...subCommentHomeWorkDto
+          children {
+            ...subCommentHomeWorkDto
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment subCommentHomeWorkDto on CommentHomeWorkDto {
+  id
+  creator {
+    id
+    email
+    firstName
+    lastName
+    middleName
+    avatarLocation
+    locked
+  }
+  content
+}

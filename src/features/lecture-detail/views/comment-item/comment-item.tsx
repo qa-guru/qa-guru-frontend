@@ -7,13 +7,12 @@ import { ICommentItem } from "./comment-item.types";
 import {
   StyledBox,
   StyledCommentBox,
-  StyledCommentStack,
   StyledPaper,
   StyledReplyIcon,
   StyledStack,
 } from "./comment-item.styled";
 import UpdateComment from "../../containers/update-comment";
-import SendComment from "../../containers/send-comment";
+import AnswerComment from "../../containers/answer-comment";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
@@ -23,7 +22,7 @@ const CommentItem: FC<ICommentItem> = ({
   index,
 }) => {
   const { creator, content, creationDate, id } = item || {};
-  const [isReplying, setIsReplying] = useState(false);
+  const [isReplying, setIsReplying] = useState<boolean>(false);
 
   const handleReplyClick = () => {
     setIsReplying(!isReplying);
@@ -58,14 +57,7 @@ const CommentItem: FC<ICommentItem> = ({
           <StyledReplyIcon fontSize="small" />
         </IconButton>
       </StyledPaper>
-      {isReplying && (
-        <StyledCommentStack>
-          <UserRow hideFullName />
-          <StyledCommentBox>
-            <SendComment hideTitile />
-          </StyledCommentBox>
-        </StyledCommentStack>
-      )}
+      {isReplying && <AnswerComment id={id} />}
     </>
   );
 };

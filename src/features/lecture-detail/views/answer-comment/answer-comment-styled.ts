@@ -1,6 +1,6 @@
+import { Box, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
-import { Stack, Box } from "@mui/material";
 
 export const StyledBox = styled(Box)({
   width: "100%",
@@ -15,4 +15,13 @@ export const StyledStack = styled(Stack)({
 export const StyledLoadingButton = styled(LoadingButton)({
   minWidth: "147px",
   marginTop: "5px",
+});
+
+export const StyledCommentStack = styled(Stack)({
+  flexDirection: "row",
+  alignItems: "start",
+});
+
+export const StyledCommentBox = styled(Box)({
+  width: "100%",
 });

@@ -3,11 +3,6 @@
 exports[`SendComment > the component is Loading 1`] = `
 <DocumentFragment>
   <form>
-    <h5
-      class="MuiTypography-root MuiTypography-h5 css-b9edh8-MuiTypography-root"
-    >
-      Добавить комментарий
-    </h5>
     <div
       class="MuiBox-root css-qsaw8"
     >
