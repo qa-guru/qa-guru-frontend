@@ -16,7 +16,7 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -102,7 +102,7 @@ exports[`StatusSelect > status is IN_REVIEW and user is the current mentor 1`] =
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -190,7 +190,7 @@ exports[`StatusSelect > status is NEW and user is the current mentor 1`] = `
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"
@@ -282,7 +282,7 @@ exports[`StatusSelect > status is NOT_APPROVED and user is the current mentor 1`
         Статус
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-p17d1c-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
           aria-expanded="false"

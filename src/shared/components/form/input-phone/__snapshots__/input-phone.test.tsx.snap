@@ -20,7 +20,7 @@ exports[`InputPhone > renders correctly 1`] = `
           testDate
         </label>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
         >
           <input
             aria-autocomplete="list"

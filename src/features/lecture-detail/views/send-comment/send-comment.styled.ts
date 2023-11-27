@@ -18,5 +18,5 @@ export const StyledStack = styled(Stack)({
 
 export const StyledLoadingButton = styled(LoadingButton)({
   minWidth: "147px",
-  marginTop: "5px",
+  marginTop: "16px",
 });

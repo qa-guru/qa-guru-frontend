@@ -127,10 +127,10 @@ exports[`Header > userRole is Master 1`] = `
             class="MuiBox-root css-0"
           >
             <div
-              class="MuiFormControl-root css-104pzks-MuiFormControl-root"
+              class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
             >
               <div
-                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1w60in6-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
               >
                 <div
                   aria-expanded="false"
@@ -320,10 +320,10 @@ exports[`Header > userRole is MentorsContainer 1`] = `
             class="MuiBox-root css-0"
           >
             <div
-              class="MuiFormControl-root css-104pzks-MuiFormControl-root"
+              class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
             >
               <div
-                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1w60in6-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
               >
                 <div
                   aria-expanded="false"
@@ -532,10 +532,10 @@ exports[`Header > userRole is Student 1`] = `
             class="MuiBox-root css-0"
           >
             <div
-              class="MuiFormControl-root css-104pzks-MuiFormControl-root"
+              class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
             >
               <div
-                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1w60in6-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
               >
                 <div
                   aria-expanded="false"

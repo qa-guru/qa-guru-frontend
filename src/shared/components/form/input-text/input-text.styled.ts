@@ -1,7 +1,13 @@
 import { styled } from "@mui/system";
 import { FormHelperText } from "@mui/material";
 
-export const StyledFormHelperText = styled(FormHelperText)({
+interface IStyledFormHelperText {
+  multiline?: boolean;
+}
+
+export const StyledFormHelperText = styled(FormHelperText, {
+  shouldForwardProp: (prop) => prop !== "multiline",
+})<IStyledFormHelperText>(({ multiline }) => ({
   position: "absolute",
-  top: "52px",
-});
+  top: multiline ? "72px" : "52px",
+}));

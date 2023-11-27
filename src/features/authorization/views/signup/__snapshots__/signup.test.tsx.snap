@@ -75,7 +75,7 @@ exports[`SignUp > the component is Loading 1`] = `
                 FirstName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -115,7 +115,7 @@ exports[`SignUp > the component is Loading 1`] = `
                 LastName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -155,7 +155,7 @@ exports[`SignUp > the component is Loading 1`] = `
                 E-mail
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -198,7 +198,7 @@ exports[`SignUp > the component is Loading 1`] = `
                   Phone
                 </label>
                 <div
-                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-autocomplete="list"
@@ -245,7 +245,7 @@ exports[`SignUp > the component is Loading 1`] = `
                 Password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -285,7 +285,7 @@ exports[`SignUp > the component is Loading 1`] = `
                 Confirm password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-qtseqo-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bn0dpe-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -316,10 +316,10 @@ exports[`SignUp > the component is Loading 1`] = `
           class="MuiStack-root css-av0gty-MuiStack-root"
         >
           <div
-            class="MuiFormControl-root css-104pzks-MuiFormControl-root"
+            class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1w60in6-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
             >
               <div
                 aria-expanded="false"
@@ -480,7 +480,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                 FirstName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -520,7 +520,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                 LastName
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -560,7 +560,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                 E-mail
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -603,7 +603,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                   Phone
                 </label>
                 <div
-                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
                 >
                   <input
                     aria-autocomplete="list"
@@ -650,7 +650,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                 Password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-tc0ri2-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-clh11-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -690,7 +690,7 @@ exports[`SignUp > the component is not Loading 1`] = `
                 Confirm password
               </label>
               <div
-                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-qtseqo-MuiInputBase-root-MuiOutlinedInput-root"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-bn0dpe-MuiInputBase-root-MuiOutlinedInput-root"
               >
                 <input
                   aria-invalid="false"
@@ -721,10 +721,10 @@ exports[`SignUp > the component is not Loading 1`] = `
           class="MuiStack-root css-av0gty-MuiStack-root"
         >
           <div
-            class="MuiFormControl-root css-104pzks-MuiFormControl-root"
+            class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1w60in6-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
             >
               <div
                 aria-expanded="false"
