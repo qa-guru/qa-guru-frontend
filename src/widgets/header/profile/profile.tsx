@@ -21,6 +21,7 @@ import {
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
+import { UserRole } from "../../../api/graphql/generated/graphql";
 
 const Profile: FC<IProfile> = (props) => {
   const settings = [
@@ -31,6 +32,7 @@ const Profile: FC<IProfile> = (props) => {
     },
   ];
 
+  const roles = props.data?.user?.roles;
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -42,6 +44,14 @@ const Profile: FC<IProfile> = (props) => {
   const handleClickSettingsProfile = () => {
     setAnchorElUser(null);
   };
+
+  if (roles?.includes(UserRole.Admin)) {
+    settings.push({
+      title: "Пользователи",
+      icon: <PersonIcon />,
+      url: "/admin",
+    });
+  }
 
   return (
     <>
