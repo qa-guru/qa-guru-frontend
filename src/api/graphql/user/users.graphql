@@ -1,0 +1,19 @@
+query users($offset: Int!, $limit: Int!, $sort: UserSort!) {
+  users(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      email
+      firstName
+      lastName
+      middleName
+      phoneNumber
+      avatarLocation
+      roles
+      locked
+      creationDate
+      confirmationDate
+      updateDate
+    }
+    totalElements
+  }
+}

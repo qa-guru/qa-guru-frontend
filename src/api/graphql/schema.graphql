@@ -8,6 +8,7 @@ schema {
 directive @javaType(name: String!) on SCALAR
 
 type CommentHomeWorkDto {
+    children: [CommentHomeWorkDto]
     content: String
     creationDate: LocalDateTime
     creator: UserDto
@@ -28,6 +29,11 @@ type ContentFileDto {
     name: String
     size: Long
     type: String
+}
+
+type HomeWorksStatisticDto {
+    count: Long
+    status: StudentHomeWorkStatus
 }
 
 type LectureContentDto {
@@ -91,6 +97,7 @@ type LecturesDto {
 
 "Mutation root"
 type Mutation {
+    answerComment(content: String!, parentID: ID!): CommentHomeWorkDto
     approved(homeWorkId: ID!): StudentHomeWorkDto
     changePassword(newPassword: String!, oldPassword: String!): Void
     changePasswordByUserId(password: String!, userId: ID!): Void
@@ -144,6 +151,7 @@ type Query {
     homeWorks(filter: StudentHomeWorkFilter, limit: Int!, offset: Int!, sort: StudentHomeWorkSort): StudentHomeWorksDto
     homeWorksByLectureId(lectureId: ID!, limit: Int!, offset: Int!, sort: StudentHomeWorkSort): StudentHomeWorksDto
     homeWorksByStatus(limit: Int!, offset: Int!, sort: StudentHomeWorkSort, status: StudentHomeWorkStatus!): StudentHomeWorksDto
+    homeWorksStatistic(id: ID): [HomeWorksStatisticDto]
     "lecture section"
     lecture(id: ID): LectureInfoShortDto
     lectureHomeWork(lectureId: ID): [LectureContentHomeWorkDto]
@@ -163,6 +171,8 @@ type Query {
     trainingTariffs(limit: Int!, offset: Int!, sort: TrainingTariffSort): TrainingTariffsDto
     trainings(limit: Int!, offset: Int!, sort: TrainingSort): TrainingsDto
     trainingsByMentor(limit: Int!, offset: Int!, sort: TrainingSort): TrainingsDto
+    "statistics section"
+    trainingsHomeWorksStatistic(id: ID): [TrainingHomeWorksStatisticDto]
     "user section"
     user: UserDto
     userRoles: [UserRoleDto]
@@ -195,6 +205,11 @@ type TrainingDto {
     name: String!
     tariffs: [TrainingTariffDto]
     techStack: TechStack!
+}
+
+type TrainingHomeWorksStatisticDto {
+    homeworks: [HomeWorksStatisticDto]
+    training: TrainingDto
 }
 
 type TrainingLectureDto {
