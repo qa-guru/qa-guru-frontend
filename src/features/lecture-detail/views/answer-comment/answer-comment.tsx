@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
-import { ChangeEvent, FC, useCallback } from "react";
+import { FC } from "react";
 import InputText from "shared/components/form/input-text";
 import {
   StyledBox,
@@ -13,7 +13,6 @@ import {
   StyledStack,
 } from "./answer-comment-styled";
 import { IAnswerComment, IAnswerCommentContent } from "./answer-comment.types";
-import { MAX_COMMENT_LENGTH } from "../../constants";
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, id } = props;
@@ -47,20 +46,6 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
     }
   };
 
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => {
-      trigger("content").then((isValid) => {
-        if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
-          setError("content", {
-            type: "manual",
-            message: t("comment.max"),
-          });
-        }
-      });
-    },
-    [trigger, setError, MAX_COMMENT_LENGTH, t]
-  );
-
   return (
     <StyledCommentStack>
       <UserRow hideFullName />
@@ -74,10 +59,6 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
               minRows={2}
               name="content"
               control={control}
-              inputProps={{
-                maxLength: MAX_COMMENT_LENGTH,
-                onChange: handleChange,
-              }}
               errors={errors}
             />
           </StyledBox>

@@ -21,6 +21,7 @@ export const StyledFormControl = styled(FormControl)({
   "& .MuiInput-underline:after, & .MuiInput-underline:before": {
     display: "none",
   },
+  margin: "auto",
 });
 
 export const StyledSelect = styled(Select)(({ theme }) => ({

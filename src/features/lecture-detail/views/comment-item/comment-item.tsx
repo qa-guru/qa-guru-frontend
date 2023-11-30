@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { IconButton } from "@mui/material";
-import TextSerialization from "shared/serializers/text-serialization";
 import { ReactComponent as Edit } from "assets/icons/button-edit.svg";
 import UserRow from "shared/components/user-row";
+import TextView from "shared/components/text-view";
 import { ICommentItem } from "./comment-item.types";
 import {
   StyledBox,
@@ -42,7 +42,7 @@ const CommentItem: FC<ICommentItem> = ({
                   id={id}
                 />
               ) : (
-                <TextSerialization text={content} />
+                <TextView content={content} />
               )}
             </StyledBox>
           </StyledCommentBox>

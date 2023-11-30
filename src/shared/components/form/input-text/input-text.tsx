@@ -36,7 +36,9 @@ const InputText = <T extends FieldValues>({
         )}
       />
       {errors[name] && (
-        <StyledFormHelperText>{errors[name].message}</StyledFormHelperText>
+        <StyledFormHelperText multiline={multiline}>
+          {errors[name].message}
+        </StyledFormHelperText>
       )}
     </FormControl>
   );

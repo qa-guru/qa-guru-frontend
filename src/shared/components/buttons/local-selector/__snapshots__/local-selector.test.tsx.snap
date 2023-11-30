@@ -3,10 +3,10 @@
 exports[`LocalSelector > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="MuiFormControl-root css-104pzks-MuiFormControl-root"
+    class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
   >
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1w60in6-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
     >
       <div
         aria-expanded="false"

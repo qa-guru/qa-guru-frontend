@@ -60,9 +60,6 @@ const components = (theme: Theme) => {
           fontSize: "14px",
           backgroundColor: white.main,
           [theme.breakpoints.down("sm")]: {
-            "& .MuiInputBase-input": {
-              padding: "16px 15px",
-            },
             "& .MuiFormLabel-root": {
               fontSize: "0.9rem",
             },

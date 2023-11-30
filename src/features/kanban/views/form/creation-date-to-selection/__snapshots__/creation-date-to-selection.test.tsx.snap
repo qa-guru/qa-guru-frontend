@@ -14,7 +14,7 @@ exports[`CreationDateToSelection > renders correctly 1`] = `
       Созданные до
     </label>
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-e2ocq-MuiInputBase-root-MuiOutlinedInput-root"
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-1u6k2ry-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="false"
