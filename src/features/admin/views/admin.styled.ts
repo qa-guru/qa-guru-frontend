@@ -7,7 +7,10 @@ import {
   Table,
   Typography,
 } from "@mui/material";
-import { th } from "date-fns/locale";
+
+interface IStyledNavigationButton {
+  navigationType: string;
+}
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",
@@ -28,6 +31,11 @@ export const StyledAlignStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   gap: theme.spacing(2),
+}));
+
+export const StyledIconBox = styled(Box)(({ theme }) => ({
+  flexShrink: 0,
+  marginLeft: "20px",
 }));
 
 export const StyledRightAlignBox = styled(Box)(({ theme }) => ({
