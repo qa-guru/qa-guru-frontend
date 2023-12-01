@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Divider } from "@mui/material";
-import ContentSerialization from "shared/serializers/content-serialization";
+import TextView from "shared/components/text-view";
 import { ILectureContent } from "./lecture-content.types";
 import {
   StyledPaper,
@@ -15,7 +15,9 @@ const LectureContent: FC<ILectureContent> = ({ content }) => {
         <StyledTypography variant="h5">Материалы урока</StyledTypography>
         <Divider />
         <StyledStack>
-          <ContentSerialization content={content} />
+          {content?.map((item, index) => {
+            return <TextView key={index} content={item?.value} />;
+          })}
         </StyledStack>
       </StyledPaper>
     </>

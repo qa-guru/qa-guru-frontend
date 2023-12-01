@@ -1,15 +1,8 @@
-import { FC, ChangeEvent, useCallback } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { FC, useRef } from "react";
 import { client } from "api";
-import { MAX_HOMEWORK_LENGTH } from "shared/constants";
-import InputText from "shared/components/form/input-text";
-import {
-  IUpdateHomeWork,
-  IUpdateHomeworkContent,
-} from "./update-homework.types";
+import { type RichTextEditorRef } from "mui-tiptap";
+import TextEditor from "shared/components/text-editor";
+import { IUpdateHomeWork } from "./update-homework.types";
 import {
   StyledBox,
   StyledCancelButton,
@@ -20,34 +13,14 @@ import {
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
+  const rteRef = useRef<RichTextEditorRef>(null);
 
-  const { t } = useTranslation();
-
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-    trigger,
-    setError,
-  } = useForm<IUpdateHomeworkContent>({
-    defaultValues: {
-      content: answer,
-    },
-    resolver: yupResolver(
-      yup.object().shape({
-        content: yup.string().required(t("homework")!),
-      })
-    ),
-  });
-
-  const handleUpdateHomework: SubmitHandler<IUpdateHomeworkContent> = (
-    data
-  ) => {
-    if (data.content && id) {
+  const handleUpdateHomework = () => {
+    if (rteRef && id) {
       updateHomework({
         variables: {
           id,
-          content: data.content,
+          content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {
           client.refetchQueries({ include: ["homeWorkByLecture"] });
@@ -57,42 +30,17 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     }
   };
 
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => {
-      trigger("content").then((isValid) => {
-        if (isValid && e.target.value.length >= MAX_HOMEWORK_LENGTH) {
-          setError("content", {
-            type: "manual",
-            message: t("homework.max")!,
-          });
-        }
-      });
-    },
-    [trigger, setError, MAX_HOMEWORK_LENGTH, t]
-  );
-
   return (
     <form>
       <StyledWrapper>
         <StyledBox>
-          <InputText
-            multiline
-            maxRows={10}
-            minRows={5}
-            name="content"
-            control={control}
-            inputProps={{
-              maxLength: MAX_HOMEWORK_LENGTH,
-              onChange: handleChange,
-            }}
-            errors={errors}
-          />
+          <TextEditor content={answer} rteRef={rteRef} />
           <StyledStack>
             <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
               Отменить
             </StyledCancelButton>
             <StyledLoadingButton
-              onClick={handleSubmit(handleUpdateHomework)}
+              onClick={handleUpdateHomework}
               loading={loading}
             >
               Отправить

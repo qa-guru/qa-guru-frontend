@@ -1,10 +1,7 @@
-import { FC, ChangeEvent, useCallback } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import InputText from "shared/components/form/input-text";
-import { IUpdateComment, IUpdateCommentContent } from "./update-comment.types";
+import { FC, useRef } from "react";
+import { type RichTextEditorRef } from "mui-tiptap";
+import TextEditor from "shared/components/text-editor";
+import { IUpdateComment } from "./update-comment.types";
 import {
   StyledBox,
   StyledButton,
@@ -12,35 +9,18 @@ import {
   StyledLoadingButton,
   StyledStack,
 } from "./update-comment.styled";
-import { INITIAL_SELECTED_INDEX, MAX_COMMENT_LENGTH } from "../../constants";
+import { INITIAL_SELECTED_INDEX } from "../../constants";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
   const { loading, updateComment, id, setSelectedIndex, content } = props;
-  const { t } = useTranslation();
+  const rteRef = useRef<RichTextEditorRef>(null);
 
-  const {
-    handleSubmit,
-    control,
-    setError,
-    formState: { errors },
-    trigger,
-  } = useForm<IUpdateCommentContent>({
-    defaultValues: {
-      content,
-    },
-    resolver: yupResolver(
-      yup.object().shape({
-        content: yup.string().required(t("comment")),
-      })
-    ),
-  });
-
-  const handleUpdateComment: SubmitHandler<IUpdateCommentContent> = (data) => {
-    if (data.content && id) {
+  const handleUpdateComment = () => {
+    if (rteRef && id) {
       updateComment({
         variables: {
           id,
-          content: data.content,
+          content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {
           setSelectedIndex(INITIAL_SELECTED_INDEX);
@@ -49,36 +29,11 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     }
   };
 
-  const handleChange = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => {
-      trigger("content").then((isValid) => {
-        if (isValid && e.target.value.length >= MAX_COMMENT_LENGTH) {
-          setError("content", {
-            type: "manual",
-            message: t("comment.max"),
-          });
-        }
-      });
-    },
-    [trigger, setError, MAX_COMMENT_LENGTH, t]
-  );
-
   return (
     <form>
       <StyledStack>
         <StyledBox>
-          <InputText
-            multiline
-            maxRows={10}
-            minRows={2}
-            name="content"
-            control={control}
-            inputProps={{
-              maxLength: MAX_COMMENT_LENGTH,
-              onChange: handleChange,
-            }}
-            errors={errors}
-          />
+          <TextEditor content={content} rteRef={rteRef} />
           <StyledButtonsStack>
             <StyledButton
               variant="contained"
@@ -88,7 +43,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
             </StyledButton>
             <StyledLoadingButton
               variant="contained"
-              onClick={handleSubmit(handleUpdateComment)}
+              onClick={handleUpdateComment}
               loading={loading}
             >
               Отправить

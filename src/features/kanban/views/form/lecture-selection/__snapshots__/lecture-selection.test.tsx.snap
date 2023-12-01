@@ -6,7 +6,7 @@ exports[`LectureSelection > renders correctly 1`] = `
     class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1r4resw-MuiFormLabel-root-MuiInputLabel-root"
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1ia3tc9-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="false"
     >
       Выберите урок
@@ -15,10 +15,11 @@ exports[`LectureSelection > renders correctly 1`] = `
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
     >
       <div
+        aria-controls=":r1:"
         aria-expanded="false"
         aria-haspopup="listbox"
         class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-        role="button"
+        role="combobox"
         tabindex="0"
       >
         <span

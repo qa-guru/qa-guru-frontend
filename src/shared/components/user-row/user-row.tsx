@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
+import { formatRole } from "shared/helpers/format-role";
 import { IUserRow } from "./user-row.types";
 import {
   StyledBox,
@@ -9,7 +10,6 @@ import {
 } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
 import { DATE_FORMAT } from "../../constants";
-import { formatRole } from "../../hooks/format-role";
 
 const UserRow: FC<IUserRow> = (props) => {
   const {

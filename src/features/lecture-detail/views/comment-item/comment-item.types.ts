@@ -7,4 +7,5 @@ export interface ICommentItem {
   isSelected: boolean;
   setSelectedIndex: Dispatch<SetStateAction<number>>;
   index: number;
+  depth?: number;
 }

@@ -1,13 +1,14 @@
 import { styled } from "@mui/system";
 import { Paper, Stack, Box } from "@mui/material";
+import ReplyIcon from "@mui/icons-material/Reply";
 
-interface IStyledPaper {
-  editAccess: boolean;
+interface IStyledComment {
+  editAccess?: boolean;
 }
 
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop) => prop !== "editAccess",
-})<IStyledPaper>(({ theme, editAccess }) => ({
+})<IStyledComment>(({ theme, editAccess }) => ({
   backgroundColor: editAccess
     ? theme.palette.primary.secondary
     : theme.palette.grey.secondary,
@@ -29,10 +30,14 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
 
-export const StyledCommentBox = styled(Box)({
-  width: "100%",
-});
+export const StyledReplyIcon = styled(ReplyIcon)(({ theme }) => ({
+  color: theme.palette.primary.main,
+}));
 
 export const StyledBox = styled(Box)({
   marginTop: "10px",
+});
+
+export const StyledCommentBox = styled(Box)({
+  width: "100%",
 });

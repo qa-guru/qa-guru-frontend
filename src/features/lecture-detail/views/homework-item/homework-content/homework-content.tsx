@@ -1,5 +1,5 @@
 import { FC } from "react";
-import TextSerialization from "shared/serializers/text-serialization";
+import TextView from "shared/components/text-view";
 import { IHomeworkContent } from "./homework-content.types";
 import UpdateHomeworkItem from "../../../containers/update-homework";
 import SendHomeworkItem from "../../../containers/send-homework";
@@ -9,7 +9,7 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
   let homeworkContent;
 
   if (status && !openHomeWorkEdit) {
-    homeworkContent = <TextSerialization text={answer} />;
+    homeworkContent = <TextView content={answer} />;
   } else if (status && openHomeWorkEdit) {
     homeworkContent = (
       <UpdateHomeworkItem

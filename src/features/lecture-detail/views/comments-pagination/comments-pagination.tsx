@@ -5,6 +5,7 @@ import {
   StyledBox,
   StyledInfiniteScroll,
   StyledStack,
+  StyledTypography,
 } from "./comments-pagination.styled";
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
@@ -50,6 +51,7 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
 
   return (
     <>
+      <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
       <SendComment id={id} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledInfiniteScroll

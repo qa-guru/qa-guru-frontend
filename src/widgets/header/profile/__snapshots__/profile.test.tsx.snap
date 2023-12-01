@@ -4,7 +4,7 @@ exports[`Profile > renders correctly 1`] = `
 <DocumentFragment>
   <button
     aria-label="Open settings"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-lkn1t6-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-c8673m-MuiButtonBase-root-MuiButton-root"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
