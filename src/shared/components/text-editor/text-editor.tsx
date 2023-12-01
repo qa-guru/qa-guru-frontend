@@ -1,29 +1,18 @@
 import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
-import { FC, RefObject, useCallback, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import {
   LinkBubbleMenu,
   MenuButton,
   RichTextEditor,
-  type RichTextEditorRef,
   TableBubbleMenu,
   insertImages,
 } from "mui-tiptap";
-import useExtensions from "../../hooks/use-extensions";
 import { EditorMenuControls } from "./ui";
-
-interface ITextEditor {
-  rteRef: RefObject<RichTextEditorRef>;
-  content?: string | null;
-}
-
-function fileListToImageFiles(fileList: FileList): File[] {
-  return Array.from(fileList).filter((file) => {
-    const mimeType = (file.type || "").toLowerCase();
-    return mimeType.startsWith("image/");
-  });
-}
+import { ITextEditor } from "./types";
+import { fileListToImageFiles } from "./utils/fileListToImageFiles";
+import useExtensions from "../../hooks/use-extensions";
 
 const TextEditor: FC<ITextEditor> = ({ rteRef, content }) => {
   const extensions = useExtensions({
@@ -46,7 +35,7 @@ const TextEditor: FC<ITextEditor> = ({ rteRef, content }) => {
       insertImages({
         images: attributesForImageFiles,
         editor: rteRef.current.editor,
-        insertPosition,
+        position: insertPosition,
       });
     },
     []
@@ -115,8 +104,8 @@ const TextEditor: FC<ITextEditor> = ({ rteRef, content }) => {
           editable={isEditable}
           content={content}
           editorProps={{
-            handleDrop: handleDrop,
-            handlePaste: handlePaste,
+            handleDrop,
+            handlePaste,
           }}
           renderControls={() => <EditorMenuControls />}
           RichTextFieldProps={{

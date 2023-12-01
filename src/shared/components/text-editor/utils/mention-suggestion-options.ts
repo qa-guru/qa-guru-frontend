@@ -1,12 +1,8 @@
 import type { MentionOptions } from "@tiptap/extension-mention";
 import { ReactRenderer } from "@tiptap/react";
 import tippy, { type Instance as TippyInstance } from "tippy.js";
-import { SuggestionList, SuggestionListRef } from "../ui";
-
-export type MentionSuggestion = {
-  id: string;
-  mentionLabel: string;
-};
+import { SuggestionList } from "../ui";
+import { MentionSuggestion, SuggestionListRef } from "../types";
 
 const DOM_RECT_FALLBACK: DOMRect = {
   bottom: 0,
@@ -23,7 +19,7 @@ const DOM_RECT_FALLBACK: DOMRect = {
 };
 
 export const mentionSuggestionOptions: MentionOptions["suggestion"] = {
-  items: async ({ query }): Promise<MentionSuggestion[]> =>
+  items: ({ query }): Promise<MentionSuggestion[]> =>
     Promise.resolve(
       [
         "Lea Thompson",

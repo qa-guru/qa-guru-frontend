@@ -9,7 +9,7 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1smbitw-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
@@ -19,12 +19,13 @@ exports[`StatusSelect > status is APPROVED and user is not the current mentor 1`
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
+          aria-controls=":r2:"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="status-select"
           class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
           id="status-select"
-          role="button"
+          role="combobox"
           tabindex="0"
         >
           <div
@@ -95,7 +96,7 @@ exports[`StatusSelect > status is IN_REVIEW and user is the current mentor 1`] =
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1smbitw-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
@@ -105,12 +106,13 @@ exports[`StatusSelect > status is IN_REVIEW and user is the current mentor 1`] =
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
+          aria-controls=":r1:"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="status-select"
           class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
           id="status-select"
-          role="button"
+          role="combobox"
           tabindex="0"
         >
           <div
@@ -183,7 +185,7 @@ exports[`StatusSelect > status is NEW and user is the current mentor 1`] = `
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1smbitw-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
@@ -193,12 +195,13 @@ exports[`StatusSelect > status is NEW and user is the current mentor 1`] = `
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
+          aria-controls=":r0:"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="status-select"
           class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
           id="status-select"
-          role="button"
+          role="combobox"
           tabindex="0"
         >
           <div
@@ -275,7 +278,7 @@ exports[`StatusSelect > status is NOT_APPROVED and user is the current mentor 1`
       class="MuiBox-root css-0"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1smbitw-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink="true"
         id="status-select-label"
       >
@@ -285,12 +288,13 @@ exports[`StatusSelect > status is NOT_APPROVED and user is the current mentor 1`
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
       >
         <div
+          aria-controls=":r3:"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="status-select"
           class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
           id="status-select"
-          role="button"
+          role="combobox"
           tabindex="0"
         >
           <div

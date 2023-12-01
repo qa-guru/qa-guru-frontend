@@ -41,7 +41,6 @@ const components = (theme: Theme) => {
         root: {
           borderRadius: "100px",
           fontSize: "0.72rem",
-          color: white.main,
         },
       },
     },

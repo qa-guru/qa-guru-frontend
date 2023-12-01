@@ -6,7 +6,7 @@ exports[`SkeletonLectureHomework > renders correctly 1`] = `
     class="MuiBox-root css-1c90ci9"
   >
     <span
-      class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-ysrgr0-MuiSkeleton-root"
+      class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-gzvvli-MuiSkeleton-root"
     />
   </div>
 </DocumentFragment>
