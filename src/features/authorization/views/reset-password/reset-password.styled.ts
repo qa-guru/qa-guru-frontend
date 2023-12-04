@@ -41,8 +41,8 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledResetButton = styled(Button)({
-  textTransform: "uppercase",
+export const StyledResetButton = styled(Button)(({ theme }) => ({
   width: "70%",
   alignSelf: "center",
-});
+  color: theme.palette.white.main,
+}));

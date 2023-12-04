@@ -12,7 +12,8 @@ export const StyledBox = styled(Box)({
   width: "100%",
 });
 
-export const StyledLoadingButton = styled(LoadingButton)({
+export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
+  color: theme.palette.white.main,
   minWidth: "151px",
   marginTop: "15px",
-});
+}));

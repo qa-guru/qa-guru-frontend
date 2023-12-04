@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
-import { Button, Dialog } from "@mui/material";
+import { Dialog } from "@mui/material";
 import { IModalHomeworksOtherStudents } from "./modal-homeworks-other-students.types";
 import {
   StyledBox,
+  StyledButton,
   StyledClearIcon,
   StyledDialogContent,
   StyledStack,
@@ -44,9 +45,9 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
       <Comments id={item?.id}>
         <CommentsTotalElements />
       </Comments>
-      <Button variant="contained" onClick={showModalAndSetUrl}>
+      <StyledButton variant="contained" onClick={showModalAndSetUrl}>
         Показать
-      </Button>
+      </StyledButton>
     </StyledStack>
   );
 };

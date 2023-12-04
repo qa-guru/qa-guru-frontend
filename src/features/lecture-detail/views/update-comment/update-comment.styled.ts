@@ -21,9 +21,10 @@ export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const StyledLoadingButton = styled(LoadingButton)({
+export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
+  color: theme.palette.white.main,
   minWidth: "147px",
-});
+}));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   minWidth: "116px",

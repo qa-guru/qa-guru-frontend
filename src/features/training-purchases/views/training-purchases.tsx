@@ -16,12 +16,12 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   return (
     <Container>
       <Typography variant="h2">Мои курсы</Typography>
-      <StyledGrid container columns={{ xs: 6, md: 12 }}>
+      <StyledGrid container spacing={2}>
         {trainingPurchases?.map((item, index) => {
           const { id, name } = item?.trainingTariff.training || {};
 
           return (
-            <Grid item xs={6} key={index}>
+            <Grid item key={index} xs={12} md={6}>
               <StyledLink to={`/training/${id}`}>
                 <StyledCardActionArea>
                   <StyledPaper>

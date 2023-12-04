@@ -78,33 +78,37 @@ const Profile: FC<IProfile> = (props) => {
           horizontal: "right",
         }}
       >
-        <StyledUserBox>
-          <UserRow
-            user={props.data.user}
-            email={props.data.user?.email}
-            variant="body2"
-            width={0}
-          />
-        </StyledUserBox>
-        <Divider />
-        <MenuList>
-          {settings.map((setting, index) => {
-            const { icon, title, url } = setting;
+        {settings.map((setting, index) => {
+          const { icon, title, url } = setting;
 
-            return (
-              <MenuItem key={index} onClick={handleClickSettingsProfile}>
-                <StyledLink to={url}>
-                  <StyledStack>
-                    <ListItemIcon>{icon}</ListItemIcon>
-                    <StyledListItemText secondary={title} />
-                  </StyledStack>
-                </StyledLink>
-              </MenuItem>
-            );
-          })}
-        </MenuList>
-        <Divider />
-        <Logout setAnchorElUser={setAnchorElUser} />
+          return (
+            <>
+              <StyledUserBox>
+                <UserRow
+                  user={props.data.user}
+                  email={props.data.user?.email}
+                  variant="body2"
+                  width={0}
+                />
+              </StyledUserBox>
+              <Divider />
+              <MenuList sx={{ margin: 0 }} key={index}>
+                <MenuItem
+                  sx={{ margin: 0, padding: "10px" }}
+                  onClick={handleClickSettingsProfile}
+                >
+                  <StyledLink to={url}>
+                    <StyledStack sx={{ margin: 0, padding: 0 }}>
+                      <ListItemIcon>{icon}</ListItemIcon>
+                      <StyledListItemText secondary={title} />
+                    </StyledStack>
+                  </StyledLink>
+                </MenuItem>
+                <Logout setAnchorElUser={setAnchorElUser} />
+              </MenuList>
+            </>
+          );
+        })}
       </StyledMenu>
     </>
   );

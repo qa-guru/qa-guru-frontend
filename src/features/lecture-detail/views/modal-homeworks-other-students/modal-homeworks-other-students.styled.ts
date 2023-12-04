@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { DialogContent, Stack, Box } from "@mui/material";
+import { DialogContent, Stack, Box, Button } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
 export const StyledDialogContent = styled(DialogContent)({
@@ -31,4 +31,8 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
   flexDirection: "row",
   marginTop: "10px",
+}));
+
+export const StyledButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.white.main,
 }));

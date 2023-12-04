@@ -23,7 +23,7 @@ const LectureDescription: FC<ILectureDescription> = (props) => {
               <StyledCircle variant="subtitle2">
                 {index + INDEX_OFFSET}
               </StyledCircle>
-              <Typography variant="subtitle1">{value}</Typography>
+              <Typography variant="body1">{value}</Typography>
             </StyledStack>
           );
         })}

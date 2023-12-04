@@ -18,9 +18,10 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   marginBottom: "15px",
 }));
 
-export const StyledButton = styled(Button)({
+export const StyledButton = styled(Button)(({ theme }) => ({
   width: "110px",
-});
+  color: theme.palette.white.main,
+}));
 
 export const StyledItemStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
