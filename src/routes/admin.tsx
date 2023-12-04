@@ -4,6 +4,7 @@ import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
+import Admin from "pages/admin";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -24,6 +25,7 @@ const AdminRoutes = [
     element={<KanbanHomeworkDetailsFullPage />}
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
+  <Route key="admin" path="/admin" element={<Admin />} />,
 ];
 
 export default AdminRoutes;

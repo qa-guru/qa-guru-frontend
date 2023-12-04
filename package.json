@@ -12,6 +12,7 @@
     "@mui/material": "^5.14.18",
     "@mui/system": "^5.12.3",
     "@mui/x-date-pickers": "^6.2.1",
+    "@tanstack/react-table": "^8.10.7",
     "@tiptap/core": "^2.1.12",
     "@tiptap/extension-color": "^2.1.12",
     "@tiptap/extension-font-family": "^2.1.12",
