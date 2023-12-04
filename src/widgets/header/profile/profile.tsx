@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import PersonIcon from "@mui/icons-material/Person";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import Logout from "features/authorization/containers/logout-container";
 import UserRow from "shared/components/user-row";
 import { useTheme } from "@mui/system";
@@ -21,6 +22,7 @@ import {
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
+import { UserRole } from "../../../api/graphql/generated/graphql";
 
 const Profile: FC<IProfile> = (props) => {
   const settings = [
@@ -31,6 +33,7 @@ const Profile: FC<IProfile> = (props) => {
     },
   ];
 
+  const roles = props.data?.user?.roles;
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const theme = useTheme();
   const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -42,6 +45,14 @@ const Profile: FC<IProfile> = (props) => {
   const handleClickSettingsProfile = () => {
     setAnchorElUser(null);
   };
+
+  if (roles?.includes(UserRole.Admin)) {
+    settings.push({
+      title: "Пользователи",
+      icon: <SupervisorAccountIcon />,
+      url: "/admin",
+    });
+  }
 
   return (
     <>
@@ -67,21 +78,21 @@ const Profile: FC<IProfile> = (props) => {
           horizontal: "right",
         }}
       >
-        {settings.map((setting, index) => {
-          const { icon, title, url } = setting;
+        <StyledUserBox>
+          <UserRow
+            user={props.data.user}
+            email={props.data.user?.email}
+            variant="body2"
+            width={0}
+          />
+        </StyledUserBox>
+        <Divider />
+        <MenuList>
+          {settings.map((setting, index) => {
+            const { icon, title, url } = setting;
 
-          return (
-            <MenuList key={index}>
-              <StyledUserBox>
-                <UserRow
-                  user={props.data.user}
-                  email={props.data.user?.email}
-                  variant="body2"
-                  width={0}
-                />
-              </StyledUserBox>
-              <Divider />
-              <MenuItem onClick={handleClickSettingsProfile}>
+            return (
+              <MenuItem key={index} onClick={handleClickSettingsProfile}>
                 <StyledLink to={url}>
                   <StyledStack>
                     <ListItemIcon>{icon}</ListItemIcon>
@@ -89,9 +100,9 @@ const Profile: FC<IProfile> = (props) => {
                   </StyledStack>
                 </StyledLink>
               </MenuItem>
-            </MenuList>
-          );
-        })}
+            );
+          })}
+        </MenuList>
         <Divider />
         <Logout setAnchorElUser={setAnchorElUser} />
       </StyledMenu>
