@@ -71,7 +71,7 @@ const Profile: FC<IProfile> = (props) => {
           const { icon, title, url } = setting;
 
           return (
-            <MenuList key={index}>
+            <>
               <StyledUserBox>
                 <UserRow
                   user={props.data.user}
@@ -81,19 +81,23 @@ const Profile: FC<IProfile> = (props) => {
                 />
               </StyledUserBox>
               <Divider />
-              <MenuItem onClick={handleClickSettingsProfile}>
-                <StyledLink to={url}>
-                  <StyledStack>
-                    <ListItemIcon>{icon}</ListItemIcon>
-                    <StyledListItemText secondary={title} />
-                  </StyledStack>
-                </StyledLink>
-              </MenuItem>
-            </MenuList>
+              <MenuList sx={{ margin: 0 }} key={index}>
+                <MenuItem
+                  sx={{ margin: 0, padding: "10px" }}
+                  onClick={handleClickSettingsProfile}
+                >
+                  <StyledLink to={url}>
+                    <StyledStack sx={{ margin: 0, padding: 0 }}>
+                      <ListItemIcon>{icon}</ListItemIcon>
+                      <StyledListItemText secondary={title} />
+                    </StyledStack>
+                  </StyledLink>
+                </MenuItem>
+                <Logout setAnchorElUser={setAnchorElUser} />
+              </MenuList>
+            </>
           );
         })}
-        <Divider />
-        <Logout setAnchorElUser={setAnchorElUser} />
       </StyledMenu>
     </>
   );

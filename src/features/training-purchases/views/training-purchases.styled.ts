@@ -2,11 +2,10 @@ import { styled } from "@mui/system";
 import { Box, CardActionArea, Grid, Paper, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export const StyledGrid = styled(Grid)(({ theme }) => ({
-  gap: theme.spacing(2),
-  alignItems: "stretch",
+export const StyledGrid = styled(Grid)({
   marginTop: "20px",
-}));
+  justifyContent: "space-between",
+});
 
 export const StyledCardActionArea = styled(CardActionArea)({
   height: "100%",

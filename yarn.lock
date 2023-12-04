@@ -822,12 +822,24 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.43.0.tgz#559ca3d9ddbd6bf907ad524320a0d14b85586af0"
   integrity sha512-s2UHCoiXfxMvmfzqoN+vrQ84ahUSYde9qNO1MdxmoEhyHWsfmwOpFlwYV+ePJEVc7gFnATGUi376WowX1N7tFg==
 
+"@floating-ui/core@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.6.2.tgz#f2813f0e5f3d5ed7af5029e1a082203dadf02b7d"
+  integrity sha512-jktYRmZwmau63adUG3GKOAVCofBXkk55S/zQ94XOorAHhwqFIOFAy1rSp2N0Wp6/tGbe9V3u/ExlGZypyY17rg==
+
 "@floating-ui/core@^1.4.2":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.5.0.tgz#5c05c60d5ae2d05101c3021c1a2a350ddc027f8c"
   integrity sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==
   dependencies:
     "@floating-ui/utils" "^0.1.3"
+
+"@floating-ui/dom@^0.4.5":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-0.4.5.tgz#2e88d16646119cc67d44683f75ee99840475bbfa"
+  integrity sha512-b+prvQgJt8pieaKYMSJBXHxX/DYwdLsAWxKYqnO5dO2V4oo/TYBZJAUQCVNjTWWsrs6o4VDrNcP9+E70HAhJdw==
+  dependencies:
+    "@floating-ui/core" "^0.6.2"
 
 "@floating-ui/dom@^1.5.1":
   version "1.5.3"
@@ -836,6 +848,24 @@
   dependencies:
     "@floating-ui/core" "^1.4.2"
     "@floating-ui/utils" "^0.1.3"
+
+"@floating-ui/react-dom-interactions@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom-interactions/-/react-dom-interactions-0.3.1.tgz#abc0cb4b18e6f095397e50f9846572eee4e34554"
+  integrity sha512-tP2KEh7EHJr5hokSBHcPGojb+AorDNUf0NYfZGg/M+FsMvCOOsSEeEF0O1NDfETIzDnpbHnCs0DuvCFhSMSStg==
+  dependencies:
+    "@floating-ui/react-dom" "^0.6.3"
+    aria-hidden "^1.1.3"
+    point-in-polygon "^1.1.0"
+    use-isomorphic-layout-effect "^1.1.1"
+
+"@floating-ui/react-dom@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-0.6.3.tgz#7b64cfd4fd12e4a0515dbf1b2be16e48c9a06c5a"
+  integrity sha512-hC+pS5D6AgS2wWjbmSQ6UR6Kpy+drvWGJIri6e1EDGADTPsCaa4KzCgmCczHrQeInx9tqs81EyDmbKJYY2swKg==
+  dependencies:
+    "@floating-ui/dom" "^0.4.5"
+    use-isomorphic-layout-effect "^1.1.1"
 
 "@floating-ui/react-dom@^2.0.4":
   version "2.0.4"
@@ -2664,6 +2694,13 @@ argparse@^2.0.1:
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
+aria-hidden@^1.1.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/aria-hidden/-/aria-hidden-1.2.3.tgz#14aeb7fb692bbb72d69bebfa47279c1fd725e954"
+  integrity sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==
+  dependencies:
+    tslib "^2.0.0"
+
 aria-query@^5.0.0:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-5.1.3.tgz#19db27cd101152773631396f7a95a3b58c22c35e"
@@ -3110,6 +3147,15 @@ cli-width@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-3.0.0.tgz#a2f48437a2caa9a22436e794bf071ec9e61cedf6"
   integrity sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==
+
+click-to-react-component@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/click-to-react-component/-/click-to-react-component-1.1.0.tgz#6268659153881d9e6052deee54b1716c63706ff6"
+  integrity sha512-/DjZemufS1BkxyRgZL3r7HXVVOFRWVQi5Xd4EBnjxZMwrHEh0OlUVA2N9CjXkZ0x8zMf8dL1cKnnx+xUWUg4VA==
+  dependencies:
+    "@floating-ui/react-dom-interactions" "^0.3.1"
+    htm "^3.1.0"
+    react-merge-refs "^1.1.0"
 
 cliui@^6.0.0:
   version "6.0.0"
@@ -4308,6 +4354,11 @@ hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
   dependencies:
     react-is "^16.7.0"
+
+htm@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/htm/-/htm-3.1.1.tgz#49266582be0dc66ed2235d5ea892307cc0c24b78"
+  integrity sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==
 
 html-encoding-sniffer@^3.0.0:
   version "3.0.0"
@@ -5595,6 +5646,11 @@ pkg-types@^1.0.3:
     mlly "^1.2.0"
     pathe "^1.1.0"
 
+point-in-polygon@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/point-in-polygon/-/point-in-polygon-1.1.0.tgz#b0af2616c01bdee341cbf2894df643387ca03357"
+  integrity sha512-3ojrFwjnnw8Q9242TzgXuTD+eKiutbzyslcq1ydfu82Db2y+Ogbmyrkpv0Hgj31qwT3lbS9+QAAO/pIQM35XRw==
+
 postcss@^8.4.23:
   version "8.4.24"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.24.tgz#f714dba9b2284be3cc07dbd2fc57ee4dc972d2df"
@@ -5978,6 +6034,11 @@ react-material-ui-carousel@v2:
   dependencies:
     auto-bind "^2.1.1"
     react-swipeable "^6.1.0"
+
+react-merge-refs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
+  integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
 react-modal-hook@^3.0.2:
   version "3.0.2"
@@ -6867,6 +6928,11 @@ urlpattern-polyfill@^8.0.0:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/urlpattern-polyfill/-/urlpattern-polyfill-8.0.2.tgz#99f096e35eff8bf4b5a2aa7d58a1523d6ebc7ce5"
   integrity sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==
+
+use-isomorphic-layout-effect@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.2.tgz#497cefb13d863d687b08477d9e5a164ad8c1a6fb"
+  integrity sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==
 
 util-deprecate@^1.0.1:
   version "1.0.2"

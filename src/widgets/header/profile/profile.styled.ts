@@ -8,17 +8,17 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   textTransform: "none",
 }));
 
-export const StyledMenu = styled(Menu)(({ theme }) => ({
+export const StyledMenu = styled(Menu)({
   marginTop: "7px",
   "& .MuiPaper-root": {
     borderRadius: "3px",
   },
-}));
+});
 
-export const StyledUserBox = styled(Box)(({ theme }) => ({
+export const StyledUserBox = styled(Box)({
   margin: "0 10px 10px",
   flexWrap: "wrap",
-}));
+});
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",

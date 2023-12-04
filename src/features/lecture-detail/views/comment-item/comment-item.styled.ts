@@ -18,6 +18,7 @@ export const StyledPaper = styled(Paper, {
   [theme.breakpoints.up("sm")]: {
     padding: "15px",
   },
+  marginBottom: "5px",
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
