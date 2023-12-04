@@ -1,22 +1,22 @@
 import { FC } from "react";
-import ContentSerialization from "shared/serializers/content-serialization";
 import { ILectureHomework } from "./lecture-homework.types";
 import {
   StyledPaper,
   StyledStack,
   StyledTypography,
 } from "./lecture-homework.styled";
+import TextView from "../text-view";
 
 const LectureHomework: FC<ILectureHomework> = ({ lectureHomeWork }) => {
   return (
-    <>
-      <StyledPaper>
-        <StyledTypography variant="h5">Домашнее задание</StyledTypography>
-        <StyledStack>
-          <ContentSerialization content={lectureHomeWork} />
-        </StyledStack>
-      </StyledPaper>
-    </>
+    <StyledPaper>
+      <StyledTypography variant="h5">Домашнее задание</StyledTypography>
+      <StyledStack>
+        {lectureHomeWork?.map((item, index) => {
+          return <TextView key={index} content={item?.value} />;
+        })}
+      </StyledStack>
+    </StyledPaper>
   );
 };
 

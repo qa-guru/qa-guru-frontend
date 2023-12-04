@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { ICommentsLimited } from "./comments-limited.types";
-import { StyledStack } from "./comments-limited.styled";
+import { StyledStack, StyledTypography } from "./comments-limited.styled";
 import SendComment from "../../containers/send-comment";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
@@ -19,6 +19,7 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
 
   return (
     <>
+      <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
       <SendComment id={id} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledStack>

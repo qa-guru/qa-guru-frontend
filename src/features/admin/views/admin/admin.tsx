@@ -2,7 +2,7 @@ import { FC, useMemo } from "react";
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
 import dayjs from "dayjs";
-import { formatRole } from "shared/hooks/format-role";
+import { formatRole } from "shared/helpers/format-role";
 import AvatarCustom from "shared/components/avatar-custom";
 import { UserDto } from "api/graphql/generated/graphql";
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";

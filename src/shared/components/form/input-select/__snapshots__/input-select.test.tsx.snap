@@ -6,7 +6,7 @@ exports[`InputSelect > renders correctly 1`] = `
     class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
   >
     <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-1dpthlf-MuiFormLabel-root-MuiInputLabel-root"
+      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1smbitw-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink="true"
     >
       testDate
@@ -15,10 +15,11 @@ exports[`InputSelect > renders correctly 1`] = `
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
     >
       <div
+        aria-controls=":r0:"
         aria-expanded="false"
         aria-haspopup="listbox"
         class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-        role="button"
+        role="combobox"
         tabindex="0"
       >
         <span

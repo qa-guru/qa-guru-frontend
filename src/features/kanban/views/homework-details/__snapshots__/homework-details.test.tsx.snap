@@ -154,7 +154,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
-            10.10.2021 | 12:10
+            10.10.2021 | 13:10
           </span>
         </div>
         <div
@@ -168,7 +168,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
-            10.10.2021 | 14:10
+            10.10.2021 | 15:10
           </span>
         </div>
         <div
@@ -182,7 +182,7 @@ exports[`HomeworkDescription > renders correctly 1`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-1ta79nt-MuiTypography-root"
           >
-            10.10.2021 | 12:11
+            10.10.2021 | 13:11
           </span>
         </div>
       </div>
@@ -411,7 +411,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
-            10.10.2021 | 12:10
+            10.10.2021 | 13:10
           </span>
         </div>
         <div
@@ -425,7 +425,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-16ep8en-MuiTypography-root"
           >
-            10.10.2021 | 14:10
+            10.10.2021 | 15:10
           </span>
         </div>
         <div
@@ -439,7 +439,7 @@ exports[`HomeworkDescription > renders correctly 2`] = `
           <span
             class="MuiTypography-root MuiTypography-caption css-1ta79nt-MuiTypography-root"
           >
-            10.10.2021 | 12:11
+            10.10.2021 | 13:11
           </span>
         </div>
       </div>

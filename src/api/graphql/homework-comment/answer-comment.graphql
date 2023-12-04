@@ -1,0 +1,19 @@
+mutation answerComment($parentID: ID!, $content: String!) {
+  answerComment(parentID: $parentID, content: $content) {
+    id
+    creator {
+      id
+      email
+      firstName
+      middleName
+      lastName
+    }
+    creationDate
+    content
+    homeWork {
+      id
+      answer
+      status
+    }
+  }
+}

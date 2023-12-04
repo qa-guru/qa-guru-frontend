@@ -10,7 +10,65 @@ exports[`Form > renders correctly 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1r4resw-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1ia3tc9-MuiFormLabel-root-MuiInputLabel-root"
+          data-shrink="false"
+        >
+          Выберите курс
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        >
+          <div
+            aria-controls=":r0:"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+            role="combobox"
+            tabindex="0"
+          >
+            <span
+              class="notranslate"
+            >
+              ​
+            </span>
+          </div>
+          <input
+            aria-hidden="true"
+            aria-invalid="false"
+            class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+            tabindex="-1"
+            value=""
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+            data-testid="ArrowDropDownIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+          <fieldset
+            aria-hidden="true"
+            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="css-yjsfm1"
+            >
+              <span>
+                Выберите курс
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <div
+        class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1ia3tc9-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
         >
           Выберите курс
@@ -76,11 +134,12 @@ exports[`Form > renders correctly 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         >
           <div
+            aria-controls=":r2:"
             aria-disabled="true"
             aria-expanded="false"
             aria-haspopup="listbox"
             class="MuiSelect-select MuiSelect-outlined Mui-disabled MuiInputBase-input MuiOutlinedInput-input Mui-disabled css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-            role="button"
+            role="combobox"
           >
             <span
               class="notranslate"
@@ -125,7 +184,7 @@ exports[`Form > renders correctly 1`] = `
         class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1r4resw-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1ia3tc9-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
         >
           Выберите наставника
@@ -134,10 +193,11 @@ exports[`Form > renders correctly 1`] = `
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-zux0wn-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         >
           <div
+            aria-controls=":r3:"
             aria-expanded="false"
             aria-haspopup="listbox"
             class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1c0lsac-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
-            role="button"
+            role="combobox"
             tabindex="0"
           >
             <span
@@ -182,10 +242,10 @@ exports[`Form > renders correctly 1`] = `
         class="MuiFormControl-root MuiTextField-root css-hzmf2y-MuiFormControl-root-MuiTextField-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1r4resw-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1ia3tc9-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for=":r1:"
-          id=":r1:-label"
+          for=":r4:"
+          id=":r4:-label"
         >
           Созданные от
         </label>
@@ -196,7 +256,7 @@ exports[`Form > renders correctly 1`] = `
             aria-invalid="false"
             autocomplete="off"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-7053f3-MuiInputBase-input-MuiOutlinedInput-input"
-            id=":r1:"
+            id=":r4:"
             inputmode="text"
             placeholder="MM/DD/YYYY"
             type="text"
@@ -245,10 +305,10 @@ exports[`Form > renders correctly 1`] = `
         class="MuiFormControl-root MuiTextField-root css-hzmf2y-MuiFormControl-root-MuiTextField-root"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-1r4resw-MuiFormLabel-root-MuiInputLabel-root"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1ia3tc9-MuiFormLabel-root-MuiInputLabel-root"
           data-shrink="false"
-          for=":r3:"
-          id=":r3:-label"
+          for=":r6:"
+          id=":r6:-label"
         >
           Созданные до
         </label>
@@ -259,7 +319,7 @@ exports[`Form > renders correctly 1`] = `
             aria-invalid="false"
             autocomplete="off"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-7053f3-MuiInputBase-input-MuiOutlinedInput-input"
-            id=":r3:"
+            id=":r6:"
             inputmode="text"
             placeholder="MM/DD/YYYY"
             type="text"

@@ -12,21 +12,21 @@ exports[`SkeletonComment > renders correctly 1`] = `
         class="MuiStack-root css-16jryck-MuiStack-root"
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-a4z31c-MuiSkeleton-root"
+          class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-w6fb0b-MuiSkeleton-root"
         />
         <div
           class="MuiStack-root css-1gcuwd7-MuiStack-root"
         >
           <span
-            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-m1q3y8-MuiSkeleton-root"
           />
           <span
-            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-m1q3y8-MuiSkeleton-root"
           />
         </div>
       </div>
       <span
-        class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-8hw9pq-MuiSkeleton-root"
+        class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1xxyuiq-MuiSkeleton-root"
       />
     </div>
     <div
@@ -36,21 +36,21 @@ exports[`SkeletonComment > renders correctly 1`] = `
         class="MuiStack-root css-16jryck-MuiStack-root"
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-a4z31c-MuiSkeleton-root"
+          class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-w6fb0b-MuiSkeleton-root"
         />
         <div
           class="MuiStack-root css-1gcuwd7-MuiStack-root"
         >
           <span
-            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-m1q3y8-MuiSkeleton-root"
           />
           <span
-            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-xs38fd-MuiSkeleton-root"
+            class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-m1q3y8-MuiSkeleton-root"
           />
         </div>
       </div>
       <span
-        class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-8hw9pq-MuiSkeleton-root"
+        class="MuiSkeleton-root MuiSkeleton-rounded MuiSkeleton-pulse css-1xxyuiq-MuiSkeleton-root"
       />
     </div>
   </div>
