@@ -2,7 +2,6 @@ import { gql } from "@apollo/client";
 import * as React from "react";
 import * as Apollo from "@apollo/client";
 import * as ApolloReactComponents from "@apollo/client/react/components";
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -636,6 +635,7 @@ export enum TechStack {
 export type TrainingDto = {
   __typename?: "TrainingDto";
   content?: Maybe<Scalars["String"]>;
+  description?: Maybe<Scalars["String"]>;
   id: Scalars["ID"];
   mentors?: Maybe<Array<Maybe<UserDto>>>;
   name: Scalars["String"];
@@ -651,6 +651,7 @@ export type TrainingHomeWorksStatisticDto = {
 
 export type TrainingInput = {
   content?: InputMaybe<Scalars["String"]>;
+  description?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;
   mentors?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   name?: InputMaybe<Scalars["String"]>;
@@ -1616,6 +1617,15 @@ export type CreateUserMutation = {
   } | null;
 };
 
+export type LockUserMutationVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type LockUserMutation = {
+  __typename?: "Mutation";
+  lockUser?: any | null;
+};
+
 export type MentorsQueryVariables = Exact<{
   offset: Scalars["Int"];
   limit: Scalars["Int"];
@@ -1640,6 +1650,15 @@ export type MentorsQuery = {
       locked?: boolean | null;
     } | null> | null;
   } | null;
+};
+
+export type UnlockUserMutationVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type UnlockUserMutation = {
+  __typename?: "Mutation";
+  unlockUser?: any | null;
 };
 
 export type UserIdQueryVariables = Exact<{ [key: string]: never }>;
@@ -3711,6 +3730,65 @@ export type CreateUserMutationOptions = Apollo.BaseMutationOptions<
   CreateUserMutation,
   CreateUserMutationVariables
 >;
+export const LockUserDocument = gql`
+  mutation lockUser($id: ID!) {
+    lockUser(id: $id)
+  }
+`;
+export type LockUserMutationFn = Apollo.MutationFunction<
+  LockUserMutation,
+  LockUserMutationVariables
+>;
+export type LockUserComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    LockUserMutation,
+    LockUserMutationVariables
+  >,
+  "mutation"
+>;
+
+export const LockUserComponent = (props: LockUserComponentProps) => (
+  <ApolloReactComponents.Mutation<LockUserMutation, LockUserMutationVariables>
+    mutation={LockUserDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useLockUserMutation__
+ *
+ * To run a mutation, you first call `useLockUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLockUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [lockUserMutation, { data, loading, error }] = useLockUserMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLockUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LockUserMutation,
+    LockUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LockUserMutation, LockUserMutationVariables>(
+    LockUserDocument,
+    options
+  );
+}
+export type LockUserMutationHookResult = ReturnType<typeof useLockUserMutation>;
+export type LockUserMutationResult = Apollo.MutationResult<LockUserMutation>;
+export type LockUserMutationOptions = Apollo.BaseMutationOptions<
+  LockUserMutation,
+  LockUserMutationVariables
+>;
 export const MentorsDocument = gql`
   query mentors($offset: Int!, $limit: Int!, $sort: UserSort!) {
     mentors(offset: $offset, limit: $limit, sort: $sort) {
@@ -3786,6 +3864,71 @@ export type MentorsLazyQueryHookResult = ReturnType<typeof useMentorsLazyQuery>;
 export type MentorsQueryResult = Apollo.QueryResult<
   MentorsQuery,
   MentorsQueryVariables
+>;
+export const UnlockUserDocument = gql`
+  mutation unlockUser($id: ID!) {
+    unlockUser(id: $id)
+  }
+`;
+export type UnlockUserMutationFn = Apollo.MutationFunction<
+  UnlockUserMutation,
+  UnlockUserMutationVariables
+>;
+export type UnlockUserComponentProps = Omit<
+  ApolloReactComponents.MutationComponentOptions<
+    UnlockUserMutation,
+    UnlockUserMutationVariables
+  >,
+  "mutation"
+>;
+
+export const UnlockUserComponent = (props: UnlockUserComponentProps) => (
+  <ApolloReactComponents.Mutation<
+    UnlockUserMutation,
+    UnlockUserMutationVariables
+  >
+    mutation={UnlockUserDocument}
+    {...props}
+  />
+);
+
+/**
+ * __useUnlockUserMutation__
+ *
+ * To run a mutation, you first call `useUnlockUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUnlockUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [unlockUserMutation, { data, loading, error }] = useUnlockUserMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUnlockUserMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UnlockUserMutation,
+    UnlockUserMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<UnlockUserMutation, UnlockUserMutationVariables>(
+    UnlockUserDocument,
+    options
+  );
+}
+export type UnlockUserMutationHookResult = ReturnType<
+  typeof useUnlockUserMutation
+>;
+export type UnlockUserMutationResult =
+  Apollo.MutationResult<UnlockUserMutation>;
+export type UnlockUserMutationOptions = Apollo.BaseMutationOptions<
+  UnlockUserMutation,
+  UnlockUserMutationVariables
 >;
 export const UserIdDocument = gql`
   query userId {
