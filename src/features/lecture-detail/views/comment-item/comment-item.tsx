@@ -7,6 +7,7 @@ import { ICommentItem } from "./comment-item.types";
 import {
   StyledBox,
   StyledCommentBox,
+  StyledIconBox,
   StyledPaper,
   StyledReplyIcon,
   StyledStack,
@@ -47,11 +48,13 @@ const CommentItem: FC<ICommentItem> = ({
             </StyledBox>
           </StyledCommentBox>
 
-          {!isSelected && editAccess && (
-            <IconButton onClick={() => setSelectedIndex(index)}>
-              <Edit />
-            </IconButton>
-          )}
+          <StyledIconBox>
+            {!isSelected && editAccess && (
+              <IconButton onClick={() => setSelectedIndex(index)}>
+                <Edit />
+              </IconButton>
+            )}
+          </StyledIconBox>
         </StyledStack>
         <IconButton onClick={handleReplyClick}>
           <StyledReplyIcon fontSize="small" />

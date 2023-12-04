@@ -48,12 +48,11 @@ export const StyledAlignBox = styled(Box)({
 });
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  textTransform: "none",
   color: theme.palette.primary.main,
 }));
 
-export const StyledLoadingButton = styled(LoadingButton)({
-  textTransform: "none",
+export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   width: "60%",
   alignSelf: "center",
-});
+  color: theme.palette.white.main,
+}));

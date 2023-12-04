@@ -22,9 +22,10 @@ export const StyledDialogContent = styled(DialogContent)({
   maxHeight: "calc(100vh - 200px)",
 });
 
-export const StyledButton = styled(Button)({
+export const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: "16px",
-});
+  color: theme.palette.white.main,
+}));
 
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
