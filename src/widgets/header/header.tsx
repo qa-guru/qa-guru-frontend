@@ -1,8 +1,8 @@
 import { Box, IconButton } from "@mui/material";
 import { FC, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
+import { getHeaderByRole } from "shared/roles";
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
 import MenuBurger from "./menu-burger/menu-burger";
@@ -15,16 +15,14 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
-import { getHeaderByRole } from "./roles/header-by-role";
 
 const Header: FC<IHeader> = ({ userRoles }) => {
   const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const isPage404 = location.pathname === "/404";
-  const { t } = useTranslation();
 
-  const pages = getHeaderByRole(userRoles, t);
+  const pages = getHeaderByRole(userRoles);
 
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);

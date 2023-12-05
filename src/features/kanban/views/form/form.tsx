@@ -12,13 +12,13 @@ import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import { TrainingSelectionByRole } from "shared/roles";
 import CreationDateFromSelection from "./creation-date-from-selection";
 import CreationDateToSelection from "./creation-date-to-selection";
 import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
 import MentorsSelection from "../../containers/mentors";
 import LectureSelection from "../../containers/training-lectures";
 import { KanbanFormContext } from "../../context/kanban-form-context";
-import TrainingSelectionByRole from "../../roles/training-selection-by-role";
 
 const Form: FC = () => {
   const { control, reset } = useForm({

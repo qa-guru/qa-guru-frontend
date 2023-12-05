@@ -5,6 +5,7 @@ import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
+import { DragEffectByRole } from "shared/roles";
 import {
   StyledBox,
   StyledCardHeader,
@@ -15,7 +16,6 @@ import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
 import { useUserContext } from "../../context/user-context";
 import { getFormattedId } from "../../helpers/get-formatted-id";
-import DragEffectByRole from "../../roles/drag-effect-by-role/drag-effect-by-role";
 
 const Card: FC<ICard> = ({
   card,

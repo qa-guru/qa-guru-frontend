@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { IDragEffectByRole } from "./drag-effect-by-role.types";
-import { STATUS_COLUMN } from "../../constants";
+import { STATUS_COLUMN } from "../../../features/kanban/constants";
 
 const DragEffectByRole: FC<IDragEffectByRole> = ({
   card,

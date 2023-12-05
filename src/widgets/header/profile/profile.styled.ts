@@ -16,7 +16,7 @@ export const StyledMenu = styled(Menu)({
 });
 
 export const StyledUserBox = styled(Box)({
-  margin: "0 10px 10px",
+  padding: "0 10px 10px",
   flexWrap: "wrap",
 });
 

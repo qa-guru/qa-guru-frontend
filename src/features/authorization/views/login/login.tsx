@@ -3,9 +3,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/buttons/local-selector/local-selector";
 import InputText from "shared/components/form/input-text";
+import { useNavigate } from "react-router-dom";
 import { ILogin, ILoginForm } from "./login.types";
 import {
   StyledAlignBox,
