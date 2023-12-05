@@ -152,7 +152,7 @@ exports[`Layout > renders correctly 1`] = `
                 class="MuiFormControl-root css-1w26ffj-MuiFormControl-root"
               >
                 <div
-                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-swhh7k-MuiInputBase-root-MuiInput-root-MuiSelect-root"
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-1n7dkvr-MuiInputBase-root-MuiInput-root-MuiSelect-root"
                 >
                   <div
                     aria-controls=":r0:"

@@ -91,6 +91,11 @@ const components = (theme: Theme) => {
         },
       },
     },
+    MuiDateCalendar: {
+      styleOverrides: {
+        root: {},
+      },
+    },
   };
 };
 

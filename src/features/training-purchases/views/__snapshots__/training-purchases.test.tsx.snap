@@ -11,10 +11,10 @@ exports[`TrainingPurchases > renders correctly 1`] = `
       Мои курсы
     </h2>
     <div
-      class="MuiGrid-root MuiGrid-container css-fz9o5v-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-l7qxlf-MuiGrid-root"
     >
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1tp3ba8-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 css-1fyyp8j-MuiGrid-root"
       >
         <a
           class="css-ytumd6"
@@ -29,7 +29,7 @@ exports[`TrainingPurchases > renders correctly 1`] = `
               class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-b0q2y0-MuiPaper-root"
             >
               <h5
-                class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-h5 css-11q3d9k-MuiTypography-root"
               >
                 string
               </h5>

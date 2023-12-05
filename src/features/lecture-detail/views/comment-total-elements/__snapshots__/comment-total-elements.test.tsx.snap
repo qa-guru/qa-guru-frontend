@@ -6,12 +6,12 @@ exports[`CommentTotalElements > renders correctly 1`] = `
     class="MuiStack-root css-1ohoath-MuiStack-root"
   >
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-11q3d9k-MuiTypography-root"
     >
       Комментарии
     </h5>
     <h5
-      class="MuiTypography-root MuiTypography-h5 css-19fr98w-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-h5 css-11q3d9k-MuiTypography-root"
     >
       (7)
     </h5>

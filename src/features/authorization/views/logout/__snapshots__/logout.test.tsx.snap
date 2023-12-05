@@ -3,12 +3,12 @@
 exports[`Logout > renders correctly 1`] = `
 <DocumentFragment>
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-ebnwnm-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-i0r10f-MuiButtonBase-root-MuiMenuItem-root"
     role="menuitem"
     tabindex="-1"
   >
     <div
-      class="MuiStack-root css-1iq79p1-MuiStack-root"
+      class="MuiStack-root css-yesypw-MuiStack-root"
     >
       <div
         class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"

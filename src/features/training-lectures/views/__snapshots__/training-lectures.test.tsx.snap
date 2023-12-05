@@ -70,7 +70,7 @@ exports[`TrainingLectures > renders correctly 1`] = `
                     1
                   </h6>
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle1 css-1pb42qt-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle1 css-jfji52-MuiTypography-root"
                   >
                     string1
                   </h6>
@@ -84,7 +84,7 @@ exports[`TrainingLectures > renders correctly 1`] = `
                     2
                   </h6>
                   <h6
-                    class="MuiTypography-root MuiTypography-subtitle1 css-1pb42qt-MuiTypography-root"
+                    class="MuiTypography-root MuiTypography-subtitle1 css-jfji52-MuiTypography-root"
                   >
                     string1
                   </h6>
