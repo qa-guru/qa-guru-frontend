@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { UserRole, useUserRolesQuery } from "api/graphql/generated/graphql";
 import { ITrainingSelectionByRole } from "./training-selection-by-role.types";
-import Trainings from "../../containers/trainings";
-import TrainingsByMentor from "../../containers/trainings-by-mentor";
+import Trainings from "../../../features/kanban/containers/trainings";
+import TrainingsByMentor from "../../../features/kanban/containers/trainings-by-mentor";
 
 const TrainingSelectionByRole: FC<ITrainingSelectionByRole> = ({ control }) => {
   const { data } = useUserRolesQuery();

@@ -63,7 +63,7 @@ const Logout: FC<ILogout> = (props) => {
 
   return (
     <>
-      <MenuItem sx={{ margin: 0, padding: "10px" }} onClick={handleClickOpen}>
+      <MenuItem sx={{ margin: 0, padding: "7px" }} onClick={handleClickOpen}>
         <StyledItemStack sx={{ margin: 0, padding: 0 }}>
           <ListItemIcon>
             <ExitToAppIcon />

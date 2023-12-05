@@ -1,15 +1,14 @@
 import { UserRole } from "api/graphql/generated/graphql";
+import { useTranslation } from "react-i18next";
 import { StyledLink } from "./roles.styled";
 
-export const getHeaderByRole = (
-  userRoles?: Array<UserRole | null> | null,
-  t?: (key: string) => string
-) => {
+const getHeaderByRole = (userRoles: (UserRole | null)[] | null | undefined) => {
+  const { t } = useTranslation();
   const headerPages = [];
 
   if (userRoles?.includes(UserRole.Student)) {
     headerPages.push({
-      title: <StyledLink to="/">{t && t("page.home")}</StyledLink>,
+      title: <StyledLink to="/">{t("page.home")}</StyledLink>,
       pageURL: "/",
     });
   }
@@ -21,7 +20,7 @@ export const getHeaderByRole = (
         UserRole.Manager,
         UserRole.Master,
         UserRole.Student,
-      ].includes(role || UserRole.Student)
+      ].includes(role!)
     )
   ) {
     headerPages.push({
@@ -32,3 +31,5 @@ export const getHeaderByRole = (
 
   return headerPages;
 };
+
+export default getHeaderByRole;
