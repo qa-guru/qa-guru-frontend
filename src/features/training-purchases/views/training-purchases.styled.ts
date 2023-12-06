@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export const StyledGrid = styled(Grid)({
   marginTop: "20px",
   justifyContent: "space-between",
+  position: "relative",
 });
 
 export const StyledCardActionArea = styled(CardActionArea)({
