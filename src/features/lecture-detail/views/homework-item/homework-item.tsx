@@ -3,7 +3,6 @@ import { Divider, Typography } from "@mui/material";
 import StatusText from "shared/components/status-content/status-text";
 import UserRow from "shared/components/user-row";
 import { IHomeworkItem } from "./homework-item.types";
-import HomeworkContent from "./homework-content";
 import {
   StyledBox,
   StyledHomeworkContentBox,
@@ -11,7 +10,8 @@ import {
   StyledUserRowBox,
   StyledWrapper,
 } from "./homework-item.styled";
-import ButtonEdit from "./button-edit";
+import HomeworkContent from "../homework-content";
+import ButtonEdit from "../button-edit";
 
 const HomeworkItem: FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLecture, dataUserId, hideMentorAndStudent } = props;

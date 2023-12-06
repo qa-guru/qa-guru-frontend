@@ -1,1 +1,1 @@
-export { default } from "./lock-user";
+export { default } from "./lock-user-container";

@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
-// eslint-disable-next-line import/named
-import { SelectChangeEvent } from "@mui/material/Select";
+import { type SelectChangeEvent } from "@mui/material/Select";
 import { ReactComponent as RussiaIcon } from "assets/icons/russia.svg";
 import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
 import { Typography } from "@mui/material";

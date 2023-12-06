@@ -6,6 +6,7 @@ import { withMui } from "./with-mui";
 import { withRouter } from "./with-router";
 import { withApollo } from "./with-apollo";
 import { withAuth } from "./with-auth";
+import { withClickToCompoment } from "./with-click-to-component";
 
 export const withProviders = compose(
   withApollo,
@@ -14,5 +15,6 @@ export const withProviders = compose(
   withStyledEngine,
   withModal,
   withSnackBar,
-  withAuth
+  withAuth,
+  withClickToCompoment
 );

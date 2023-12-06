@@ -6,7 +6,7 @@ import {
   useLectureHomeWorkQuery,
   useLectureQuery,
 } from "api/graphql/generated/graphql";
-import LectureDetail from "../../views";
+import LectureDetail from "../../views/lecture-detail";
 import useTariff from "../../hooks/use-tariff";
 import { LectureIdContext } from "../../context/lecture-id-context";
 

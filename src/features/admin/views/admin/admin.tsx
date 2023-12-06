@@ -8,8 +8,7 @@ import { UserDto } from "api/graphql/generated/graphql";
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";
-import LockUser from "../../containers/lock-user";
-import UnlockUser from "../../containers/unlock-user";
+import { LockUser, UnlockUser } from "../../containers";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
   const formatDate = (date: number) => {

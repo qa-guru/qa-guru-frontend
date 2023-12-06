@@ -1,4 +1,4 @@
-import Login from "features/authorization/containers/login-container";
+import { Login } from "features/authorization";
 import { FC } from "react";
 
 const LoginPage: FC = () => {

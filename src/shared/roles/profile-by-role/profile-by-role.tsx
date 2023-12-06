@@ -21,8 +21,6 @@ const getProfileByRole = (
     });
   }
 
-  console.log(settings);
-
   return settings;
 };
 

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import TrainingLectures from "features/training-lectures/containers";
+import TrainingLectures from "features/training-lectures";
 
 const TrainingLecturesPage: FC = () => {
   return <TrainingLectures />;

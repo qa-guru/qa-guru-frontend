@@ -5,10 +5,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/buttons/local-selector/local-selector";
+import { LocalSelector } from "shared/components/buttons";
 import { UserCreateInput } from "api/graphql/generated/graphql";
-import InputText from "shared/components/form/input-text";
-import InputPhone from "shared/components/form/input-phone";
+import { InputText, InputPhone } from "shared/components/form";
 import {
   StyledAlignBox,
   StyledBottomStack,

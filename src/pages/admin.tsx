@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Admin from "features/admin/containers/users";
+import { Admin } from "features/admin";
 
 const AdminPage: FC = () => {
   return <Admin />;

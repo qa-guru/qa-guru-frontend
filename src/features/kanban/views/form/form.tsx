@@ -13,11 +13,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { TrainingSelectionByRole } from "shared/roles";
-import CreationDateFromSelection from "./creation-date-from-selection";
-import CreationDateToSelection from "./creation-date-to-selection";
 import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
-import MentorsSelection from "../../containers/mentors";
-import LectureSelection from "../../containers/training-lectures";
+import CreationDateFromSelection from "../creation-date-from-selection";
+import CreationDateToSelection from "../creation-date-to-selection";
+import { MentorsSelection, LectureSelection } from "../../containers";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 
 const Form: FC = () => {

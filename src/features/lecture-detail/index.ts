@@ -1,0 +1,1 @@
+export { LectureDetail } from "./containers";

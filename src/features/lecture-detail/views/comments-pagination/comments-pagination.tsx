@@ -7,7 +7,7 @@ import {
   StyledStack,
   StyledTypography,
 } from "./comments-pagination.styled";
-import SendComment from "../../containers/send-comment";
+import { SendComment } from "../../containers";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
 import { INITIAL_SELECTED_INDEX } from "../../constants";

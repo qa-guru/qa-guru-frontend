@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { ICommentsLimited } from "./comments-limited.types";
 import { StyledStack, StyledTypography } from "./comments-limited.styled";
-import SendComment from "../../containers/send-comment";
+import { SendComment } from "../../containers";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
 import {

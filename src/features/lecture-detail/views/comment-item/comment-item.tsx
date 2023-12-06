@@ -12,8 +12,7 @@ import {
   StyledReplyIcon,
   StyledStack,
 } from "./comment-item.styled";
-import UpdateComment from "../../containers/update-comment";
-import AnswerComment from "../../containers/answer-comment";
+import { UpdateComment, AnswerComment } from "../../containers";
 
 const CommentItem: FC<ICommentItem> = ({
   item,

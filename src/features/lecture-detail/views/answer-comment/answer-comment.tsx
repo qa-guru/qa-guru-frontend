@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useTranslation } from "react-i18next";
 import { FC } from "react";
-import InputText from "shared/components/form/input-text";
+import { InputText } from "shared/components/form";
 import {
   StyledBox,
   StyledCommentBox,

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
-import ButtonTrainingList from "shared/components/buttons/button-training-list/button-training-list";
+import { ButtonTrainingList } from "shared/components/buttons";
 import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,
@@ -28,22 +28,20 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
           const { id, subject, description } = item?.lecture || {};
 
           return (
-            <Grid item xs={12} key={index}>
+            <Grid item xs={12} key={id}>
               <StyledLink to={`/training/${trainingId}/${id}`}>
                 <CardActionArea>
                   <StyledPaper>
                     <Typography variant="h4">{subject}</Typography>
                     <StyledWrapper>
-                      {description?.map((value, index) => {
-                        return (
-                          <StyledStack key={index}>
-                            <StyledTypography variant="subtitle2">
-                              {index + INDEX_OFFSET}
-                            </StyledTypography>
-                            <Typography variant="subtitle1">{value}</Typography>
-                          </StyledStack>
-                        );
-                      })}
+                      <StyledStack>
+                        <StyledTypography variant="subtitle2">
+                          {index + INDEX_OFFSET}
+                        </StyledTypography>
+                        <Typography variant="subtitle1">
+                          {description}
+                        </Typography>
+                      </StyledStack>
                     </StyledWrapper>
                     <StyledBox>
                       <StyledSubtitle variant="body2">

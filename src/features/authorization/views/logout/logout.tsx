@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import {
   Dialog,
   DialogActions,
@@ -62,16 +62,14 @@ const Logout: FC<ILogout> = (props) => {
   };
 
   return (
-    <>
-      <MenuItem sx={{ margin: 0, padding: "7px" }} onClick={handleClickOpen}>
-        <StyledItemStack sx={{ margin: 0, padding: 0 }}>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText secondary="Выход" />
-        </StyledItemStack>
-      </MenuItem>
-    </>
+    <MenuItem sx={{ margin: 0, padding: "7px" }} onClick={handleClickOpen}>
+      <StyledItemStack sx={{ margin: 0, padding: 0 }}>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
+        <ListItemText secondary="Выход" />
+      </StyledItemStack>
+    </MenuItem>
   );
 };
 

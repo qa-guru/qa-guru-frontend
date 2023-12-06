@@ -9,8 +9,8 @@ import {
   StyledDialogContent,
   StyledStack,
 } from "./modal-homeworks-other-students.styled";
-import Comments from "../../containers/comments";
-import CommentsPagination from "../comments-pagination/comments-pagination";
+import { Comments } from "../../containers";
+import CommentsPagination from "../comments-pagination";
 import HomeworkItem from "../homework-item";
 import CommentsTotalElements from "../comment-total-elements";
 

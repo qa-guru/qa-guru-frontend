@@ -5,8 +5,7 @@ import {
   DateCalendar,
   LocalizationProvider,
   PickersDay,
-  // eslint-disable-next-line import/named
-  PickersDayProps,
+  type PickersDayProps,
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DayCalendarSkeleton } from "@mui/x-date-pickers/DayCalendarSkeleton";

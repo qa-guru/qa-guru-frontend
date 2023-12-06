@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState } from "react";
+import React, { FC, MouseEvent, useState } from "react";
 import {
   Button,
   Divider,
@@ -8,7 +8,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import Logout from "features/authorization/containers/logout-container";
+import Logout from "features/authorization/containers/logout";
 import UserRow from "shared/components/user-row";
 import { useTheme } from "@mui/system";
 import { getProfileByRole } from "shared/roles";
@@ -75,8 +75,8 @@ const Profile: FC<IProfile> = (props) => {
           const { icon, title, url } = setting;
 
           return (
-            <>
-              <MenuList sx={{ margin: 0, padding: 0 }} key={index}>
+            <div key={index}>
+              <MenuList sx={{ margin: 0, padding: 0 }}>
                 <MenuItem
                   sx={{ margin: 0, padding: "7px" }}
                   onClick={handleClickSettingsProfile}
@@ -89,7 +89,7 @@ const Profile: FC<IProfile> = (props) => {
                   </StyledLink>
                 </MenuItem>
               </MenuList>
-            </>
+            </div>
           );
         })}
         <Divider />

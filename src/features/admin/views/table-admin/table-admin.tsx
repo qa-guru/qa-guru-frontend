@@ -29,7 +29,6 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
   });
 
   const { pageSize, pageIndex } = table.getState().pagination;

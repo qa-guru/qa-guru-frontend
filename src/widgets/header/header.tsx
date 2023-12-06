@@ -1,7 +1,7 @@
 import { Box, IconButton } from "@mui/material";
 import { FC, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/buttons/local-selector/local-selector";
+import { LocalSelector } from "shared/components/buttons";
 import { getHeaderByRole } from "shared/roles";
 import Profile from "./profile";
 import AppMenu from "./menu/menu";

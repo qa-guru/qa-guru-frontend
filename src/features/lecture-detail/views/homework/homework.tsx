@@ -9,11 +9,11 @@ import {
   StyledModalBox,
   StyledPaper,
 } from "./homework.styled";
-import Comments from "../../containers/comments";
+import HomeworkItem from "../homework-item";
+import { Comments } from "../../containers";
 import CommentsLimited from "../comments-limited";
 import CommentsPagination from "../comments-pagination";
 import { LectureIdContext } from "../../context/lecture-id-context";
-import HomeworkItem from "../homework-item";
 
 const Homework: FC<IHomework> = (props) => {
   const { dataHomeWorkByLecture, dataUserId, hideMentorAndStudent } = props;

@@ -5,7 +5,7 @@ import {
   useTrainingsQuery,
 } from "api/graphql/generated/graphql";
 import { ITrainingsContainer } from "./trainings-container.types";
-import TrainingSelection from "../../views/form/training-selection";
+import TrainingSelection from "../../views/training-selection";
 import { STANDARD_QUERY_DEFAULTS } from "../../constants";
 
 const TrainingsContainer: FC<ITrainingsContainer> = ({ control }) => {

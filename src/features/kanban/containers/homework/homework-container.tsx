@@ -1,5 +1,4 @@
 import { FC } from "react";
-import HomeworkDetailsFull from "features/kanban/views/homework-details-full";
 import {
   useHomeWorkQuery,
   useUserIdQuery,
@@ -7,6 +6,7 @@ import {
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
+import HomeworkDetailsFull from "../../views/homework-details-full";
 
 const HomeworkContainer: FC = () => {
   const { lectureId } = useParams();
