@@ -5,7 +5,7 @@ export interface IUpdateComment {
   updateComment: UpdateCommentMutationFn;
   loading: boolean;
   id?: string | null;
-  setSelectedIndex: Dispatch<SetStateAction<number>>;
+  setSelectedComment: Dispatch<SetStateAction<string | null | undefined>>;
   content?: string | null;
 }
 

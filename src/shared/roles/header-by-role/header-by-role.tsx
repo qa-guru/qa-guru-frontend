@@ -11,6 +11,7 @@ const getHeaderByRole = (userRoles: (UserRole | null)[] | null | undefined) => {
     headerPages.push({
       title: <StyledLink to="/">{t("page.home")}</StyledLink>,
       pageURL: "/",
+      id: 0,
     });
   }
 
@@ -27,6 +28,7 @@ const getHeaderByRole = (userRoles: (UserRole | null)[] | null | undefined) => {
     headerPages.push({
       title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
       pageURL: "/kanban",
+      id: 1,
     });
   }
 

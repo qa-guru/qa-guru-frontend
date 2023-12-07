@@ -10,6 +10,7 @@ const getProfileByRole = (
       title: "Профиль",
       icon: <PersonIcon />,
       url: "/profile",
+      id: 0,
     },
   ];
 
@@ -18,6 +19,7 @@ const getProfileByRole = (
       title: "Пользователи",
       icon: <SupervisorAccountIcon />,
       url: "/admin",
+      id: 1,
     });
   }
 

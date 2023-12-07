@@ -56,15 +56,17 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
         <Typography variant="h3">({totalElements})</Typography>
       </StyledStack>
       <StyledWrapper>
-        {items?.map((item, index) => {
+        {items?.map((item) => {
+          const { id } = item!;
+
           return (
-            <StyledPaper key={index}>
+            <StyledPaper key={id}>
               <HomeworkItem
                 dataHomeWorkByLecture={item}
                 dataUserId={dataUserId}
               />
               <ModalHomeworksOtherStudents
-                key={index}
+                key={id}
                 item={item}
                 dataUserId={dataUserId}
               />

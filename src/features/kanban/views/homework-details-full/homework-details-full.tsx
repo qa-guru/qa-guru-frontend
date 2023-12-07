@@ -7,6 +7,8 @@ import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
 import LectureHomework from "shared/components/lecture-homework";
 import Homework from "features/lecture-detail/views/homework";
+import StatusSelect from "shared/components/status-content/status-select";
+import StatusText from "shared/components/status-content/status-text";
 
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import {
@@ -19,8 +21,6 @@ import {
   StyledTitle,
 } from "./homework-details-full.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
-import StatusSelect from "../../../../shared/components/status-content/status-select";
-import StatusText from "../../../../shared/components/status-content/status-text";
 
 const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   data,

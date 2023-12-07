@@ -17,9 +17,11 @@ const LectureSpeakers: FC<ILectureSpeakers> = (props) => {
       <StyledPaper>
         <StyledTypography variant="h5">Спикеры</StyledTypography>
         <StyledWrapper>
-          {speakers?.map((item, index) => {
+          {speakers?.map((item) => {
+            const { id } = item!;
+
             return (
-              <StyledStack key={index}>
+              <StyledStack key={id}>
                 <UserRow user={item} width={60} height={60} />
               </StyledStack>
             );

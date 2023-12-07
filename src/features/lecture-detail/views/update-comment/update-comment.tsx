@@ -10,10 +10,9 @@ import {
   StyledLoadingButton,
   StyledStack,
 } from "./update-comment.styled";
-import { INITIAL_SELECTED_INDEX } from "../../constants";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
-  const { loading, updateComment, id, setSelectedIndex, content } = props;
+  const { loading, updateComment, id, setSelectedComment, content } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
 
   const handleUpdateComment = () => {
@@ -24,7 +23,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {
-          setSelectedIndex(INITIAL_SELECTED_INDEX);
+          setSelectedComment(null);
         },
       });
     }
@@ -38,7 +37,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
           <StyledButtonsStack>
             <StyledButton
               variant="contained"
-              onClick={() => setSelectedIndex(INITIAL_SELECTED_INDEX)}
+              onClick={() => setSelectedComment(null)}
             >
               Отменить
             </StyledButton>

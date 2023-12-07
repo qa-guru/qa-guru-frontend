@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import { FC, useContext } from "react";
 import { Tooltip } from "@mui/material";
 import { InputSelect } from "shared/components/form";
 

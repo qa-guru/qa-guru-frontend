@@ -20,7 +20,7 @@ const LectureDescription: FC<ILectureDescription> = (props) => {
       <Stack>
         {description?.map((value, index) => {
           return (
-            <StyledStack key={index}>
+            <StyledStack key={value}>
               <StyledCircle variant="subtitle2">
                 {index + INDEX_OFFSET}
               </StyledCircle>

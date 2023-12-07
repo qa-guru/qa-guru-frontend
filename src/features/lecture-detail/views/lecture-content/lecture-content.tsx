@@ -16,8 +16,8 @@ const LectureContent: FC<ILectureContent> = ({ content }) => {
         <StyledTypography variant="h5">Материалы урока</StyledTypography>
         <Divider />
         <StyledStack>
-          {content?.map((item, index) => {
-            return <TextView key={index} content={item?.value} />;
+          {content?.map((item) => {
+            return <TextView key={item?.value} content={item?.value} />;
           })}
         </StyledStack>
       </StyledPaper>

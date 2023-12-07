@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import {
   Button,
   Divider,
@@ -72,11 +72,11 @@ const Profile: FC<IProfile> = (props) => {
           />
         </StyledUserBox>
         <Divider />
-        {settings.map((setting, index) => {
-          const { icon, title, url } = setting;
+        {settings.map((setting) => {
+          const { icon, title, url, id } = setting;
 
           return (
-            <div key={index}>
+            <div key={id}>
               <MenuList sx={{ margin: 0, padding: 0 }}>
                 <MenuItem
                   sx={{ margin: 0, padding: "7px" }}

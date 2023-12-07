@@ -11,13 +11,13 @@ const AppMenu: FC<IAppMenu> = (props) => {
   return (
     <StyledBox>
       <StyledStack>
-        {pages.map((page, index) => {
-          const { pageURL, title } = page;
+        {pages.map((page) => {
+          const { pageURL, title, id } = page;
 
           return (
             <Button
               variant="text"
-              key={index}
+              key={id}
               onClick={() => handleClickNavMenu(pageURL)}
             >
               <Typography variant="body2">{title}</Typography>

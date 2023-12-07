@@ -19,14 +19,14 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
     <Container>
       <Typography variant="h2">Мои курсы</Typography>
       <StyledGrid container spacing={2}>
-        {trainingPurchases?.map((item, index) => {
+        {trainingPurchases?.map((item) => {
           const { id, name } = item?.trainingTariff.training || {};
           const [showCalendar, setShowCalendar] = useState(false);
 
           return (
             <Grid
               item
-              key={index}
+              key={id}
               xs={12}
               md={6}
               onMouseEnter={() => setShowCalendar(true)}

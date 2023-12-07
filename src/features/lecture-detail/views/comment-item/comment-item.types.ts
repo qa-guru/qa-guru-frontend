@@ -5,7 +5,7 @@ export interface ICommentItem {
   item?: CommentHomeWorkDto | null;
   editAccess: boolean;
   isSelected: boolean;
-  setSelectedIndex: Dispatch<SetStateAction<number>>;
-  index: number;
+  setSelectedComment: Dispatch<SetStateAction<string | null | undefined>>;
+  commentId: string | null | undefined;
   depth?: number;
 }

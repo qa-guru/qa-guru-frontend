@@ -19,8 +19,8 @@ const CommentItem: FC<ICommentItem> = ({
   item,
   editAccess,
   isSelected,
-  setSelectedIndex,
-  index,
+  setSelectedComment,
+  commentId,
 }) => {
   const { creator, content, creationDate, id } = item || {};
   const [isReplying, setIsReplying] = useState<boolean>(false);
@@ -31,7 +31,7 @@ const CommentItem: FC<ICommentItem> = ({
 
   return (
     <>
-      <StyledPaper key={index} editAccess={editAccess}>
+      <StyledPaper key={commentId} editAccess={editAccess}>
         <StyledStack>
           <StyledCommentBox>
             <UserRow user={creator} date={creationDate} />
@@ -39,7 +39,7 @@ const CommentItem: FC<ICommentItem> = ({
               {isSelected ? (
                 <UpdateComment
                   content={content}
-                  setSelectedIndex={setSelectedIndex}
+                  setSelectedComment={setSelectedComment}
                   id={id}
                 />
               ) : (
@@ -50,7 +50,7 @@ const CommentItem: FC<ICommentItem> = ({
 
           <StyledIconBox>
             {!isSelected && editAccess && (
-              <IconButton onClick={() => setSelectedIndex(index)}>
+              <IconButton onClick={() => setSelectedComment(commentId)}>
                 <Edit />
               </IconButton>
             )}

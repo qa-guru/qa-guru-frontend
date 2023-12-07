@@ -4,7 +4,7 @@ import { commentHomeWorkDto } from "shared/mocks/comment-homework-dto.mock";
 
 import CommentItem from "./comment-item";
 
-const setSelectedIndex: any = () => {};
+const mockSetSelectedComment: any = () => {};
 describe("CommentItem", () => {
   it("the component is true", () => {
     const { asFragment } = render(
@@ -13,8 +13,8 @@ describe("CommentItem", () => {
           item={commentHomeWorkDto}
           editAccess={true}
           isSelected={true}
-          setSelectedIndex={setSelectedIndex}
-          index={0}
+          setSelectedComment={mockSetSelectedComment}
+          commentId={"0"}
         />
       </MemoryRouter>
     );
@@ -27,8 +27,8 @@ describe("CommentItem", () => {
           item={commentHomeWorkDto}
           editAccess={false}
           isSelected={false}
-          setSelectedIndex={setSelectedIndex}
-          index={0}
+          setSelectedComment={mockSetSelectedComment}
+          commentId={"1"}
         />
       </MemoryRouter>
     );
@@ -41,8 +41,8 @@ describe("CommentItem", () => {
           item={commentHomeWorkDto}
           editAccess={true}
           isSelected={false}
-          setSelectedIndex={setSelectedIndex}
-          index={0}
+          setSelectedComment={mockSetSelectedComment}
+          commentId={"2"}
         />
       </MemoryRouter>
     );
@@ -55,8 +55,8 @@ describe("CommentItem", () => {
           item={commentHomeWorkDto}
           editAccess={false}
           isSelected={true}
-          setSelectedIndex={setSelectedIndex}
-          index={0}
+          setSelectedComment={mockSetSelectedComment}
+          commentId={"3"}
         />
       </MemoryRouter>
     );

@@ -5,7 +5,7 @@ import { IUpdateCommentContainer } from "./update-comment-container.types";
 import UpdateComment from "../../views/update-comment";
 
 const UpdateCommentContainer: FC<IUpdateCommentContainer> = (props) => {
-  const { id, setSelectedIndex, content } = props;
+  const { id, setSelectedComment, content } = props;
   const [updateComment, { loading }] = useUpdateCommentMutation({
     update: (cache, { data }) => {
       const updateComment = data?.updateComment;
@@ -24,7 +24,7 @@ const UpdateCommentContainer: FC<IUpdateCommentContainer> = (props) => {
 
   return (
     <UpdateComment
-      setSelectedIndex={setSelectedIndex}
+      setSelectedComment={setSelectedComment}
       id={id}
       updateComment={updateComment}
       loading={loading}

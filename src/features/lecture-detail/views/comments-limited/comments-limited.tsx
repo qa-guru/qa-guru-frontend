@@ -5,16 +5,13 @@ import { StyledStack, StyledTypography } from "./comments-limited.styled";
 import { SendComment } from "../../containers";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
-import {
-  COMMENTS_DISPLAY_LIMIT,
-  INITIAL_SELECTED_INDEX,
-} from "../../constants";
+import { COMMENTS_DISPLAY_LIMIT } from "../../constants";
 
 const CommentsLimited: FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    INITIAL_SELECTED_INDEX
-  );
+  const [selectedComment, setSelectedComment] = useState<
+    string | null | undefined
+  >(null);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
 
@@ -24,16 +21,18 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
       <SendComment id={id} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledStack>
-        {items?.slice(0, COMMENTS_DISPLAY_LIMIT).map((item, index) => {
+        {items?.slice(0, COMMENTS_DISPLAY_LIMIT).map((item) => {
           const editAccess = dataUserId?.user?.id === item?.creator?.id;
+          const { id } = item!;
+
           return (
             <CommentItem
-              key={index}
+              key={id}
               item={item}
               editAccess={editAccess}
-              isSelected={selectedIndex === index}
-              setSelectedIndex={setSelectedIndex}
-              index={index}
+              isSelected={selectedComment === id}
+              setSelectedComment={setSelectedComment}
+              commentId={id}
             />
           );
         })}

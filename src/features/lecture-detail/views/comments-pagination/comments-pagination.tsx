@@ -11,13 +11,12 @@ import {
 import { SendComment } from "../../containers";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
-import { INITIAL_SELECTED_INDEX } from "../../constants";
 
 const CommentsPagination: FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    INITIAL_SELECTED_INDEX
-  );
+  const [selectedComment, setSelectedComment] = useState<
+    string | null | undefined
+  >(null);
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
@@ -67,16 +66,18 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
         scrollableTarget="scroll-container"
       >
         <StyledStack>
-          {items?.map((item, index) => {
+          {items?.map((item) => {
             const editAccess = dataUserId?.user?.id === item?.creator?.id;
+            const { id } = item!;
+
             return (
               <CommentItem
-                key={index}
+                key={id}
                 item={item}
                 editAccess={editAccess}
-                isSelected={selectedIndex === index}
-                setSelectedIndex={setSelectedIndex}
-                index={index}
+                isSelected={selectedComment === id}
+                setSelectedComment={setSelectedComment}
+                commentId={id}
               />
             );
           })}
