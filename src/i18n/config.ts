@@ -1,6 +1,7 @@
 import i18n, { use } from "i18next"; // явно импортируем use
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+
 import ru from "./locales/ru/ru.json";
 import en from "./locales/en/en.json";
 

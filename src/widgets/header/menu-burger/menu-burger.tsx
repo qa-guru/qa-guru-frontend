@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
+
 import { IMenuBurger } from "./menu-burger.types";
 import { StyledBox } from "./menu-burger.styled";
 

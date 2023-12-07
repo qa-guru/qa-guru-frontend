@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
+
 import { StyledDialogContent, StyledStack } from "./lock-user.styled";
 
 interface ILockUser {

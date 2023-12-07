@@ -3,6 +3,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { kanbanColumn } from "shared/mocks/kanban-column.mock";
 import { render } from "test/utils-test";
+
 import Column from "./column";
 import { UserProvider } from "../../context/user-context";
 

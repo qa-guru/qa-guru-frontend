@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Container, Grid, Typography } from "@mui/material";
+
 import { ITrainings } from "./training-purchases.types";
 import {
   StyledBox,

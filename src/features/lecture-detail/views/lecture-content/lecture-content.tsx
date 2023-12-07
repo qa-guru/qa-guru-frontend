@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Divider } from "@mui/material";
 import TextView from "shared/components/text-view";
+
 import { ILectureContent } from "./lecture-content.types";
 import {
   StyledPaper,

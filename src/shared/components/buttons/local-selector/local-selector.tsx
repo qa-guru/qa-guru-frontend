@@ -3,6 +3,7 @@ import { type SelectChangeEvent } from "@mui/material/Select";
 import { ReactComponent as RussiaIcon } from "assets/icons/russia.svg";
 import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
 import { Typography } from "@mui/material";
+
 import {
   StyledFormControl,
   StyledMenuItem,

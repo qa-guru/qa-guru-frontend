@@ -3,6 +3,7 @@ import LectureHomework from "shared/components/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 import { Container } from "@mui/material";
 import { ButtonLessonsList } from "shared/components/buttons";
+
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
 import LectureDescription from "../lecture-description";

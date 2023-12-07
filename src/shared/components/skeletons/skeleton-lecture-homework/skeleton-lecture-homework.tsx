@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { StyledHomeworkBox, StyledHomeworkSkeleton } from "../skeletons.styled";
 
 const SkeletonLectureHomework: FC = () => {

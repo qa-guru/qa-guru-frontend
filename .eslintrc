@@ -138,13 +138,16 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          ["index", "sibling"],
-          ["parent", "internal"]
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "locales/**",
+            "group": "internal",
+            "position": "after"
+          }
         ],
-        "newlines-between": "never"
+        "pathGroupsExcludedImportTypes": ["locales/**"],
+        "newlines-between": "always"
       }
     ],
     // does not properly work with ts

@@ -7,6 +7,7 @@ import {
   useLockUserMutation,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
+
 import LockUser from "../../views/lock-user";
 
 interface ILockUserContainer {

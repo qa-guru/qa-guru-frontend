@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { ILectureHomework } from "./lecture-homework.types";
 import {
   StyledPaper,

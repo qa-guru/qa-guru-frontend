@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { IProfile } from "./profile.types";
 
 const Profile: FC<IProfile> = () => {

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+
 import { IAppMenu } from "./menu.types";
 import { StyledBox, StyledStack } from "./menu.styled";
 

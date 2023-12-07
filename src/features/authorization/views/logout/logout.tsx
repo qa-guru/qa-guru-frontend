@@ -10,6 +10,7 @@ import {
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useTranslation } from "react-i18next";
 import { useModal } from "react-modal-hook";
+
 import { ILogout } from "./logout.types";
 import {
   StyledButton,

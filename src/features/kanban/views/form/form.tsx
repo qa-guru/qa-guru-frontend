@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { TrainingSelectionByRole } from "shared/roles";
+
 import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
 import CreationDateFromSelection from "../creation-date-from-selection";
 import CreationDateToSelection from "../creation-date-to-selection";

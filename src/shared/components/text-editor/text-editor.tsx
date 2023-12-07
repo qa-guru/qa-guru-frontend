@@ -9,6 +9,7 @@ import {
   TableBubbleMenu,
   insertImages,
 } from "mui-tiptap";
+
 import { EditorMenuControls } from "./ui";
 import { ITextEditor } from "./types";
 import { fileListToImageFiles } from "./utils/fileListToImageFiles";

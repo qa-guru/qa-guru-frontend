@@ -6,6 +6,7 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import { DragEffectByRole } from "shared/roles";
+
 import {
   StyledBox,
   StyledCardHeader,

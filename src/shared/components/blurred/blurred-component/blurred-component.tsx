@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+
 import { StyledBox } from "../blurred.styled";
 
 interface IBlurredComponent {

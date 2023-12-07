@@ -1,4 +1,5 @@
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+
 import { STATUS_COLUMN } from "../constants";
 
 export const getAllowedColumns = (title: StudentHomeWorkStatus) => {

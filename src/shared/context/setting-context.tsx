@@ -1,6 +1,7 @@
 import { createContext, ReactNode } from "react";
 import { themeSettingsTypes } from "theme";
 import { THEMES } from "theme/constans";
+
 import useLocalStorage from "../hooks/use-local-storage";
 
 const initialSettings: themeSettingsTypes = {

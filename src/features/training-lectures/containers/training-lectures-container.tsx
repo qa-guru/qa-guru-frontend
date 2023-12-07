@@ -6,6 +6,7 @@ import {
   useTrainingLecturesQuery,
   useTrainingQuery,
 } from "api/graphql/generated/graphql";
+
 import TrainingLectures from "../views/training-lectures";
 
 const TrainingLecturesContainer: FC = () => {

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Box, Link, Typography } from "@mui/material";
+
 import { IContentSerialization } from "./content-serialization.types";
 import {
   StyledBox,

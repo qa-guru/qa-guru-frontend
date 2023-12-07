@@ -40,6 +40,7 @@ import {
   ResizableImage,
   TableImproved,
 } from "mui-tiptap";
+
 import { mentionSuggestionOptions } from "../components/text-editor/utils/mention-suggestion-options";
 
 export type UseExtensionsOptions = {

@@ -12,6 +12,7 @@ import Logout from "features/authorization/containers/logout";
 import UserRow from "shared/components/user-row";
 import { useTheme } from "@mui/system";
 import { getProfileByRole } from "shared/roles";
+
 import { IProfile } from "./profile.types";
 import {
   StyledBox,

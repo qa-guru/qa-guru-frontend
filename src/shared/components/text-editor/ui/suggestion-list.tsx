@@ -1,5 +1,6 @@
 import { List, ListItem, ListItemButton, Paper } from "@mui/material";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+
 import {
   MentionSuggestion,
   SuggestionListProps,

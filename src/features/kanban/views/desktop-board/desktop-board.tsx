@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+
 import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "./homework-details";
 import { StyledStack, StyledWrapper } from "../board/board.styled";

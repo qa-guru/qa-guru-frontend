@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+
 import { IColumnItem } from "../column/column.types";
 
 export interface IMobileBoard {

@@ -1,6 +1,7 @@
 import React, { FC, useContext } from "react";
 import { Tooltip } from "@mui/material";
 import { InputSelect } from "shared/components/form";
+
 import ISelectLectures from "./lecture-selection.types";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 

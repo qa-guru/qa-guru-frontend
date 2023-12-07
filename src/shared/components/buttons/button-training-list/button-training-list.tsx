@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
+
 import { StyledNavigateButton, StyledIcon } from "../buttons.styled";
 
 const ButtonTrainingList: FC = () => {

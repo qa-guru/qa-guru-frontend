@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog, DialogTitle } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
+
 import {
   StyledBackdropError,
   StyledIconBox,

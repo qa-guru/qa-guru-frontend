@@ -1,5 +1,6 @@
 import { createTheme, responsiveFontSizes } from "@mui/material";
 import merge from "lodash/merge";
+
 import components from "./components";
 import themesOptions from "./theme-options";
 import { THEMES } from "./constans";

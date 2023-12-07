@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { formatRole } from "shared/helpers/format-role";
+
 import { IUserRow } from "./user-row.types";
 import {
   StyledBox,

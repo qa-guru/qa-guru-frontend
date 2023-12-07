@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
+
 import { IDraggingState } from "../board/board.types";
 
 export interface ICard {

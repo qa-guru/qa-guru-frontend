@@ -1,6 +1,7 @@
 import { FC, useRef } from "react";
 import { type RichTextEditorRef } from "mui-tiptap";
 import TextEditor from "shared/components/text-editor";
+
 import { IUpdateComment } from "./update-comment.types";
 import {
   StyledBox,

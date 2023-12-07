@@ -1,10 +1,11 @@
 import { FC, useMemo } from "react";
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
-import dayjs from "dayjs";
 import { formatRole } from "shared/helpers/format-role";
+import dayjs from "dayjs";
 import AvatarCustom from "shared/components/avatar-custom";
 import { UserDto } from "api/graphql/generated/graphql";
+
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";

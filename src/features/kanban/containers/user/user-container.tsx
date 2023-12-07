@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useUserQuery } from "api/graphql/generated/graphql";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
+
 import { IUserContainer } from "./user-container.types";
 import { UserProvider } from "../../context/user-context";
 

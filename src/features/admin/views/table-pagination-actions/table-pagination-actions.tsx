@@ -8,6 +8,7 @@ import {
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { MouseEvent } from "react";
+
 import { StyledIconBox } from "./table-pagination-actions.styled";
 
 const TablePaginationActions = (props: TablePaginationActionsProps) => {

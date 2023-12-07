@@ -3,6 +3,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 // eslint-disable-next-line import/named
 import { SelectChangeEvent } from "@mui/material/Select";
 import { useCallback } from "react";
+
 import { IFormInputSelect } from "./input-select.types";
 
 const InputSelect = <T extends FieldValues>({

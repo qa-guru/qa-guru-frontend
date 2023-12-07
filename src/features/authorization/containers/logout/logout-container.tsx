@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Spinner from "shared/components/spinner";
+
 import { ILogoutContainer } from "./logout-container.types";
 import Logout from "../../views/logout";
 import { useAuth } from "../../context/auth-context";

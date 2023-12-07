@@ -9,6 +9,7 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DayCalendarSkeleton } from "@mui/x-date-pickers/DayCalendarSkeleton";
+
 import { ITrainingCalendar } from "./training-calendar.types";
 
 const TrainingCalendar: React.FC<ITrainingCalendar> = ({ data }) => {

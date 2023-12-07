@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 import {
   StyledLogo,
   StyledPaper,

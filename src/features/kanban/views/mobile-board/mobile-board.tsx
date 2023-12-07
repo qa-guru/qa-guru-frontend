@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 import { IMobileBoard } from "./mobile-board.types";
 import {
   StyledBox,

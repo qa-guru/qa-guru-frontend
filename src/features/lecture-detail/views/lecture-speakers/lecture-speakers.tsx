@@ -1,5 +1,6 @@
 import { FC } from "react";
 import UserRow from "shared/components/user-row";
+
 import { ILectureSpeakers } from "./lecture-speakers.types";
 import {
   StyledPaper,

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { Link } from "@mui/material";
+
 import {
   StyledAlignBox,
   StyledButton,

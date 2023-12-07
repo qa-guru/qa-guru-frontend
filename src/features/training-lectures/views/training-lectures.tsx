@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
 import { ButtonTrainingList } from "shared/components/buttons";
+
 import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,

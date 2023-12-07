@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/named
 import axios, { AxiosResponse } from "axios";
 import qs from "qs";
+
 import { LOGIN_URI, LOGOUT_URI } from "../../config";
 
 export interface LoginResponse {

@@ -2,6 +2,7 @@ import { MemoryRouter } from "react-router-dom";
 import { render } from "test/utils-test";
 import { lecture } from "shared/mocks/lecture.mock";
 import { lectureHomework } from "shared/mocks/lecture-homework.mock";
+
 import LectureDetail from "./lecture-detail";
 
 describe("LectureDetail", () => {

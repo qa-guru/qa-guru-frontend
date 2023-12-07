@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
+
 import { ITableAdmin } from "./table-admin.types";
 import { StyledPaper, StyledTable, StyledTitle } from "./table-admin.styled";
 import TablePaginationActions from "../table-pagination-actions";

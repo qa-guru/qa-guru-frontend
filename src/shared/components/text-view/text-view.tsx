@@ -1,5 +1,6 @@
 import { RichTextReadOnly } from "mui-tiptap";
 import { FC } from "react";
+
 import useExtensions from "../../hooks/use-extensions";
 
 type Maybe<T> = T | undefined | null;

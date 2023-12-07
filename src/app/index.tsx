@@ -1,5 +1,6 @@
 import Routing from "routes";
 import { useAuth } from "features/authorization/context/auth-context";
+
 import { withProviders } from "./providers";
 
 const App = () => {

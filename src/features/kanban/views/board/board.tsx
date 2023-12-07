@@ -7,6 +7,7 @@ import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
+
 import { IBoard } from "./board.types";
 import DesktopBoard from "../desktop-board";
 import MobileBoard from "../mobile-board";

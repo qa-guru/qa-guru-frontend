@@ -1,5 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
 import { render } from "test/utils-test";
+
 import Spinner from "./spinner";
 
 describe("Spinner", () => {

@@ -9,6 +9,7 @@ import StatusText from "shared/components/status-content/status-text";
 import LectureHomework from "shared/components/lecture-homework";
 import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
 import TextView from "shared/components/text-view";
+
 import { IHomeworkDescription } from "./homework-details.types";
 import {
   StyledBox,

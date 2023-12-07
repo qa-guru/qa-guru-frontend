@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog } from "@mui/material";
+
 import { IModalHomeworksOtherStudents } from "./modal-homeworks-other-students.types";
 import {
   StyledBox,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
+
 import TrainingCalendar from "../../views/training-calendar";
 
 type TrainingData = {

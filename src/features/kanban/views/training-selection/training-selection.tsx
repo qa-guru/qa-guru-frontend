@@ -1,5 +1,6 @@
 import { FC, useContext } from "react";
 import { InputSelect } from "shared/components/form";
+
 import { ITrainingSelection } from "./training-selection.types";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 

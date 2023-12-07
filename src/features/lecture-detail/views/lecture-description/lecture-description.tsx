@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Divider, Stack, Typography } from "@mui/material";
+
 import { ILectureDescription } from "./lecture-description.types";
 import {
   StyledCircle,

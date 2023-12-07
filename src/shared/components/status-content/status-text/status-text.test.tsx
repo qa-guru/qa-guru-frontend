@@ -1,6 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 import { render } from "test/utils-test";
+
 import StatusText from "./status-text";
 
 describe("StatusContent", () => {

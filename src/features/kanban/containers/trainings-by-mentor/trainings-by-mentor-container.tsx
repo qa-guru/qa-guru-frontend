@@ -4,6 +4,7 @@ import {
   TrainingSortField,
   useTrainingsByMentorQuery,
 } from "api/graphql/generated/graphql";
+
 import { ITrainingsByMentorContainer } from "./trainings-by-mentor-container.types";
 import TrainingSelection from "../../views/training-selection";
 import { STANDARD_QUERY_DEFAULTS } from "../../constants";

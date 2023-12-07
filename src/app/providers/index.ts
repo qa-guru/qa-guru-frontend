@@ -1,4 +1,5 @@
 import compose from "compose-function";
+
 import { withStyledEngine } from "./with-styled-engine";
 import { withModal } from "./with-modal";
 import { withSnackBar } from "./with-snack-bar";

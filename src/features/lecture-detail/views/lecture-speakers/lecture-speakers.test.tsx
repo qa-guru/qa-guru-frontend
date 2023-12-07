@@ -1,6 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { render } from "test/utils-test";
 import { speakers } from "shared/mocks/speakers.mock";
+
 import LectureSpeakers from "./lecture-speakers";
 
 describe("LectureSpeakers", () => {
