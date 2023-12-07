@@ -6,7 +6,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { InputText } from "shared/components/form";
 
-import { IReset } from "./reset-password.types";
+import { IResetPassword } from "./reset-password.types";
 import {
   StyledLogo,
   StyledPaper,
@@ -15,33 +15,34 @@ import {
   StyledWrapper,
 } from "./reset-password.styled";
 
-const ResetPassword: FC = () => {
+const ResetPassword: FC<IResetPassword> = ({ onPasswordReset, loading }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const routeResetMessage = () => {
-    navigate("/reset/message");
-  };
 
   const {
     control,
     formState: { errors },
-  } = useForm<IReset>({
+    handleSubmit,
+  } = useForm({
     defaultValues: {
       username: "",
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().required(t("email.required")),
+        username: yup.string().email().required(t("email.required")),
       })
     ),
   });
+
+  const onSubmit = () => {
+    navigate("/reset/message");
+  };
 
   return (
     <StyledWrapper>
       <StyledLogo />
       <StyledPaper>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <StyledStack>
             <InputText
               control={control}
@@ -50,7 +51,11 @@ const ResetPassword: FC = () => {
               label="E-mail"
               errors={errors}
             />
-            <StyledResetButton variant="contained" onClick={routeResetMessage}>
+            <StyledResetButton
+              type="submit"
+              variant="contained"
+              disabled={loading}
+            >
               Сбросить пароль
             </StyledResetButton>
           </StyledStack>
