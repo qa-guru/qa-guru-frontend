@@ -1,15 +1,14 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "widgets/header";
+import Footer from "widgets/footer";
 
 import { StyledBox, StyledContainer } from "./layout.styled";
-import { ILayout } from "./layout.types";
-import Footer from "../../../widgets/footer";
 
-const Layout: FC<ILayout> = ({ userRoles }) => {
+const Layout: FC = () => {
   return (
     <StyledBox>
-      <Header userRoles={userRoles} />
+      <Header />
       <StyledContainer>
         <Outlet />
       </StyledContainer>

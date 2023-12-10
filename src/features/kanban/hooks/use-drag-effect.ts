@@ -1,32 +1,45 @@
-import { FC, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { STATUS_COLUMN } from "features/kanban/constants";
+import { StudentHomeWorkDto, UserRole } from "api/graphql/generated/graphql";
+import useRoleAccess from "shared/hooks/use-role-access";
 
-import { IDragEffectByRole } from "./drag-effect-by-role.types";
+import { IDraggingState } from "../views/board/board.types";
 
-const DragEffectByRole: FC<IDragEffectByRole> = ({
+interface IDragEffect {
+  card: StudentHomeWorkDto;
+  sourceColumnId: string;
+  setDraggingState: Dispatch<SetStateAction<IDraggingState>>;
+  isDragging: boolean;
+  userId?: string | null;
+  userRoles?: (UserRole | null)[] | null;
+}
+
+const useDragEffect = ({
   card,
   sourceColumnId,
   setDraggingState,
   isDragging,
   userId,
-  userRoles,
-}) => {
+}: IDragEffect) => {
   const { enqueueSnackbar } = useSnackbar();
-  const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
+  const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
+  const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
+
   const mentorId = card.mentor?.id;
 
   useEffect(() => {
     if (!isDragging) {
-      setDraggingState({
+      setDraggingState((prevState) => ({
+        ...prevState,
         newItem: false,
         fromInReview: false,
         fromNotApproved: false,
-      });
+      }));
       return;
     }
 
-    if (hasManagerRole) {
+    if (hasManagerAccess && !hasMentorAccess) {
       enqueueSnackbar("MANAGER не может менять статус домашнего задания");
       return;
     }
@@ -55,12 +68,9 @@ const DragEffectByRole: FC<IDragEffectByRole> = ({
     sourceColumnId,
     userId,
     mentorId,
-    hasManagerRole,
     enqueueSnackbar,
     setDraggingState,
   ]);
-
-  return null;
 };
 
-export default DragEffectByRole;
+export default useDragEffect;
