@@ -9,20 +9,21 @@ const ConfirmTokenContainer: FC = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const [checkToken, { loading }] = useCheckResetPasswordTokenLazyQuery({
-    onCompleted: (data) => {
-      if (data) {
-        navigate("/reset/password");
-      }
-    },
-    onError: () => {
-      enqueueSnackbar("Неверный токен");
-    },
-  });
+  const [checkToken, { loading }] = useCheckResetPasswordTokenLazyQuery();
 
   const handleTokenSubmit = async (token: string) => {
-    await checkToken({ variables: { token } });
-    navigate(`/reset/password?token=${encodeURIComponent(token)}`);
+    try {
+      const response = await checkToken({ variables: { token } });
+      if (response.data) {
+        navigate(`/reset/password?token=${encodeURIComponent(token)}`);
+      } else {
+        enqueueSnackbar("Неверный токен");
+      }
+    } catch (error) {
+      enqueueSnackbar(
+        "Произошла ошибка при проверке токена. Пожалуйста, попробуйте снова"
+      );
+    }
   };
 
   return (
