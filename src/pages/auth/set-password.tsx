@@ -1,5 +1,5 @@
 import { FC } from "react";
-import SetNewPassword from "features/authorization/views/set-new-password";
+import SetNewPassword from "features/authorization/containers/set-new-password";
 
 const SetPasswordPage: FC = () => {
   return <SetNewPassword />;

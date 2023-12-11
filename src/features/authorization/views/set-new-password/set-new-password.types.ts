@@ -1,4 +1,10 @@
+export interface ISetNewPasswordForm {
+  newPassword: string;
+  confirmPassword: string;
+  token: string;
+}
+
 export interface ISetNewPassword {
-  username: string;
-  password: string;
+  onSet: (token: string, newPassword: string) => void;
+  loading: boolean;
 }

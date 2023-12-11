@@ -1,35 +1,32 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useResetPasswordMutation } from "api/graphql/generated/graphql";
+import { useSnackbar } from "notistack";
 
 import ResetPassword from "../../views/reset-password";
 
-const ResetPasswordContainer: FC = (props) => {
+const ResetPasswordContainer: FC = () => {
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const [resetPassword, { loading }] = useResetPasswordMutation({
-    update: (cache, { data }) => {
-      const resetPasswordData = data?.resetPassword;
-      if (resetPasswordData?.success) {
-        navigate("/reset/message");
-      }
+    onCompleted: () => {
+      navigate("/reset/message");
+    },
+    onError: (error) => {
+      enqueueSnackbar(
+        "Произошла ошибка при отправке письма. Пожалуйста, попробуйте снова"
+      );
     },
   });
 
-  const handleResetPassword = async (email: string) => {
-    try {
-      await resetPassword({
-        variables: { email },
-      });
-      // Handle success - здесь уже обрабатывается уведомление об отправке письма
-    } catch (e) {
-      // Handle error - e.g., display an error message
-    }
+  const handlePasswordReset = async (email: string) => {
+    await resetPassword({
+      variables: { email },
+    });
   };
 
-  return (
-    <ResetPassword onPasswordReset={handleResetPassword} loading={loading} />
-  );
+  return <ResetPassword onReset={handlePasswordReset} loading={loading} />;
 };
 
 export default ResetPasswordContainer;

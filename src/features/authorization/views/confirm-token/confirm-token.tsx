@@ -1,39 +1,37 @@
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { Typography } from "@mui/material";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 
-import { IResetForm, IResetPassword } from "./reset-password.types";
 import {
   StyledLogo,
   StyledPaper,
   StyledResetButton,
   StyledStack,
   StyledWrapper,
-} from "./reset-password.styled";
+} from "./confirm-token.styled";
+import { IConfirmToken, IConfirmTokenForm } from "./confirm-token.types";
 
-const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
-  const { t } = useTranslation();
-
+const ConfirmToken: FC<IConfirmToken> = ({ onTokenConfirmation, loading }) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<IResetForm>({
+  } = useForm<IConfirmTokenForm>({
     defaultValues: {
-      username: "",
+      token: "",
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().email().required(t("email.required")),
+        token: yup.string().required(),
       })
     ),
   });
 
-  const onSubmit = (data: IResetForm) => {
-    onReset(data.username);
+  const onSubmit = (data: IConfirmTokenForm) => {
+    onTokenConfirmation(data.token);
   };
 
   return (
@@ -42,11 +40,15 @@ const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <StyledStack>
+            <Typography>
+              На ваш E-mail был отправлен уникальный токен для сброса пароля
+            </Typography>
             <InputText
               control={control}
-              name="username"
-              placeholder={t("enter.email")}
-              label="E-mail"
+              name="token"
+              placeholder={"Введите токен"}
+              type="password"
+              label="Токен"
               errors={errors}
             />
             <StyledResetButton
@@ -54,7 +56,7 @@ const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
               variant="contained"
               disabled={loading}
             >
-              Сбросить пароль
+              Ok
             </StyledResetButton>
           </StyledStack>
         </form>
@@ -63,4 +65,4 @@ const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
   );
 };
 
-export default ResetPassword;
+export default ConfirmToken;

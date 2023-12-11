@@ -30,4 +30,5 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   maxWidth: "300px",
   alignSelf: "center",
   gap: theme.spacing(1),
+  color: theme.palette.white.main,
 }));

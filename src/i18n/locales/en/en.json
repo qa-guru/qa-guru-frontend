@@ -20,6 +20,7 @@
   "phone.required": "Phone is required",
   "password.required.max": "Must be no more than 15 characters",
   "password.required.min": "Must be more than 8 characters",
+  "passwords.mismatch": "Passwords mismatch",
   "login.unknownError": "Login failed",
   "login.unauthorized": "Login does not exist or incorrect password",
   "create.user": "A user already exists with email, {{email}}",

@@ -1,4 +1,8 @@
+export interface IResetForm {
+  username: string;
+}
+
 export interface IResetPassword {
-  onPasswordReset: (email: string) => void;
+  onReset: (email: string) => void;
   loading: boolean;
 }
