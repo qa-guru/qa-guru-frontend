@@ -1,16 +1,17 @@
 import { UserRole } from "api/graphql/generated/graphql";
+import useRoleAccess from "shared/hooks/use-role-access";
 
 import { STATUS_COLUMN } from "../constants";
 
 export const getUpdatedAllowedColumns = (
   columnId: string,
   userId?: string | null,
-  mentorId?: string | null,
-  userRoles?: (UserRole | null)[] | null
+  mentorId?: string | null
 ) => {
-  const hasManagerRole = userRoles?.some((role) => role === "MANAGER");
+  const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
+  const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
 
-  if (hasManagerRole) {
+  if (hasManagerAccess && !hasMentorAccess) {
     return [];
   }
 

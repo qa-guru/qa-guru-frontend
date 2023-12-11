@@ -1,10 +1,16 @@
 import { styled } from "@mui/system";
 import { Box, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "assets/icons/logo-header.svg";
+import { Link } from "react-router-dom";
 
 interface IStyledHeader {
   isPage404?: boolean;
 }
+
+export const StyledLink = styled(Link)(({ theme }) => ({
+  textDecoration: "none",
+  color: theme.palette.primary.main,
+}));
 
 export const StyledHeader = styled("header", {
   shouldForwardProp: (prop) => prop !== "isPage404",

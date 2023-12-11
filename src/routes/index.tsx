@@ -61,7 +61,7 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
   return (
     <ErrorBoundary fallback={<NotFoundPage />}>
       <Routes>
-        <Route path="/" element={<Layout userRoles={roles} />}>
+        <Route path="/" element={<Layout />}>
           {usersRoutes?.map((route) => (
             <Route
               key={route.key}

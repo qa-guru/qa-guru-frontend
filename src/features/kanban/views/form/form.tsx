@@ -12,13 +12,13 @@ import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { TrainingSelectionByRole } from "shared/roles";
 
 import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
 import CreationDateFromSelection from "../creation-date-from-selection";
 import CreationDateToSelection from "../creation-date-to-selection";
 import { MentorsSelection, LectureSelection } from "../../containers";
 import { KanbanFormContext } from "../../context/kanban-form-context";
+import TrainingSelection from "../../containers/trainings";
 
 const Form: FC = () => {
   const { control, reset } = useForm({
@@ -68,7 +68,7 @@ const Form: FC = () => {
           </AccordionSummary>
           <AccordionDetails>
             <StyledColumnStack>
-              <TrainingSelectionByRole control={control} />
+              <TrainingSelection control={control} />
               <LectureSelection control={control} />
               <MentorsSelection control={control} />
               <StyledRowStack>
@@ -85,7 +85,7 @@ const Form: FC = () => {
         </Accordion>
       ) : (
         <StyledRow>
-          <TrainingSelectionByRole control={control} />
+          <TrainingSelection control={control} />
           <LectureSelection control={control} />
           <MentorsSelection control={control} />
           <CreationDateFromSelection control={control} />

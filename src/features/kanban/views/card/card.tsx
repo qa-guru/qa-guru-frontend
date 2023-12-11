@@ -5,7 +5,6 @@ import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
-import { DragEffectByRole } from "shared/roles";
 
 import {
   StyledBox,
@@ -17,6 +16,7 @@ import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
 import { useUserContext } from "../../context/user-context";
 import { getFormattedId } from "../../helpers/get-formatted-id";
+import useDragEffect from "../../hooks/use-drag-effect";
 
 const Card: FC<ICard> = ({
   card,
@@ -26,7 +26,7 @@ const Card: FC<ICard> = ({
   onCardClick,
   isActive,
 }) => {
-  const { userId, userRoles } = useUserContext();
+  const { userId } = useUserContext();
   const { id, mentor, student, lecture } = card;
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
@@ -36,8 +36,7 @@ const Card: FC<ICard> = ({
       allowedColumns: getUpdatedAllowedColumns(
         sourceColumnId,
         userId,
-        card.mentor?.id,
-        userRoles
+        card.mentor?.id
       ),
     },
     end: () => {
@@ -52,16 +51,16 @@ const Card: FC<ICard> = ({
     }),
   });
 
+  useDragEffect({
+    card,
+    sourceColumnId,
+    setDraggingState,
+    isDragging,
+    userId,
+  });
+
   return (
     <>
-      <DragEffectByRole
-        card={card}
-        sourceColumnId={sourceColumnId}
-        setDraggingState={setDraggingState}
-        isDragging={isDragging}
-        userId={userId}
-        userRoles={userRoles}
-      />
       <StyledPaper
         isDragging={isDragging}
         isCardsHidden={isCardsHidden}
