@@ -1,1 +1,8 @@
-export { Login, Logout, Signup } from "./containers";
+export {
+  Login,
+  Logout,
+  SignUp,
+  ResetPassword,
+  SetNewPassword,
+  ConfirmToken,
+} from "./containers";

@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
@@ -13,48 +12,44 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./set-new-password.styled";
-import { ISetNewPassword } from "./set-new-password.types";
+import { ISetNewPassword, ISetNewPasswordForm } from "./set-new-password.types";
 
-const SetNewPassword: FC = () => {
+const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-
-  const routeLogin = () => {
-    navigate("/login");
-  };
 
   const {
     control,
     formState: { errors },
-  } = useForm<ISetNewPassword>({
+    handleSubmit,
+  } = useForm<ISetNewPasswordForm>({
     defaultValues: {
-      username: "",
-      password: "",
+      newPassword: "",
+      confirmPassword: "",
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().required(t("email.required")!),
-        password: yup.string().required(t("password.required")!),
+        newPassword: yup.string().required(t("password.required")!),
+        confirmPassword: yup
+          .string()
+          .oneOf([yup.ref("newPassword")], t("passwords.mismatch"))
+          .required(t("password.required")),
       })
     ),
   });
+
+  const onSubmit = (data: ISetNewPasswordForm) => {
+    setNewPassword(data.newPassword);
+  };
 
   return (
     <StyledWrapper>
       <StyledLogo />
       <StyledPaper>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <StyledStack>
             <InputText
               control={control}
-              name="username"
-              placeholder={t("enter.email")}
-              label="E-mail"
-              errors={errors}
-            />
-            <InputText
-              control={control}
-              name="password"
+              name="newPassword"
               placeholder={t("enter.password")}
               label={t("password")}
               type="password"
@@ -62,13 +57,17 @@ const SetNewPassword: FC = () => {
             />
             <InputText
               control={control}
-              name="password"
+              name="confirmPassword"
               placeholder={t("password.confirm")}
-              label={t("password")}
+              label="Повторите пароль"
               type="password"
               errors={errors}
             />
-            <StyledResetButton variant="contained" onClick={routeLogin}>
+            <StyledResetButton
+              variant="contained"
+              type="submit"
+              disabled={isLoading}
+            >
               Сохранить
             </StyledResetButton>
           </StyledStack>

@@ -6,7 +6,7 @@ export const StyledLogo = styled(Logo)(({ theme }) => ({
   height: "32px",
   width: "225px",
   viewBox: "0 0 250 38",
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("md")]: {
     height: "48px",
     width: "280px",
   },
@@ -18,7 +18,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   width: "310px",
   height: "200px",
   marginTop: "16px",
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("md")]: {
     width: "430px",
     height: "200px",
     marginTop: "22px",

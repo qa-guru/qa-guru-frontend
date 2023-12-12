@@ -6,7 +6,7 @@ import { UserRole } from "api/graphql/generated/graphql";
 import Layout from "shared/components/layout";
 import {
   LoginPage,
-  ResetMessagePage,
+  ConfirmTokenPage,
   ResetPage,
   SetPasswordPage,
   SignUpPage,
@@ -98,7 +98,7 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
           path="/reset/message"
           element={
             <ProtectedRoute>
-              <ResetMessagePage />
+              <ConfirmTokenPage />
             </ProtectedRoute>
           }
         />
