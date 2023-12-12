@@ -1,7 +1,11 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { STATUS_COLUMN } from "features/kanban/constants";
-import { StudentHomeWorkDto, UserRole } from "api/graphql/generated/graphql";
+import {
+  StudentHomeWorkDto,
+  UserRole,
+  useUserIdQuery,
+} from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 
 import { IDraggingState } from "../views/board/board.types";
@@ -20,9 +24,13 @@ const useDragEffect = ({
   sourceColumnId,
   setDraggingState,
   isDragging,
-  userId,
 }: IDragEffect) => {
   const { enqueueSnackbar } = useSnackbar();
+
+  const { data: userId } = useUserIdQuery({
+    fetchPolicy: "cache-first",
+  });
+
   const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
   const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
 

@@ -14,7 +14,6 @@ import {
 } from "./card.styled";
 import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
-import { useUserContext } from "../../context/user-context";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import useDragEffect from "../../hooks/use-drag-effect";
 
@@ -26,18 +25,13 @@ const Card: FC<ICard> = ({
   onCardClick,
   isActive,
 }) => {
-  const { userId } = useUserContext();
   const { id, mentor, student, lecture } = card;
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
       id: card.id,
       sourceColumnId,
-      allowedColumns: getUpdatedAllowedColumns(
-        sourceColumnId,
-        userId,
-        card.mentor?.id
-      ),
+      allowedColumns: getUpdatedAllowedColumns(sourceColumnId),
     },
     end: () => {
       setDraggingState({
@@ -56,7 +50,6 @@ const Card: FC<ICard> = ({
     sourceColumnId,
     setDraggingState,
     isDragging,
-    userId,
   });
 
   return (
