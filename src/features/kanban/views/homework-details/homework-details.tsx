@@ -25,7 +25,7 @@ import {
   StyledStatusContentBox,
   StyledIcon,
 } from "./homework-details.styled";
-import { getFormattedId } from "../../../helpers/get-formatted-id";
+import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";

@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { Tooltip } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import { InputSelect } from "shared/components/form";
 
 import ISelectLectures from "./lecture-selection.types";
@@ -20,8 +20,8 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
   };
 
   return (
-    <Tooltip title={isDisabled ? "Выберите курс" : ""} placement="top">
-      <>
+    <Tooltip title={isDisabled ? "Выберите курс" : ""}>
+      <Box width="100%">
         <InputSelect
           control={control}
           name="lectures"
@@ -30,7 +30,7 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
           disabled={isDisabled}
           onChange={handleSelectChange}
         />
-      </>
+      </Box>
     </Tooltip>
   );
 };
