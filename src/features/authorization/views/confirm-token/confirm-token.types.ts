@@ -3,6 +3,6 @@ export interface IConfirmTokenForm {
 }
 
 export interface IConfirmToken {
-  onTokenConfirmation: (token: string) => void;
-  loading: boolean;
+  confirmToken: (token: string) => Promise<void>;
+  isLoading: boolean;
 }

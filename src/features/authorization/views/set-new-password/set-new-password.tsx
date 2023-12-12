@@ -14,7 +14,7 @@ import {
 } from "./set-new-password.styled";
 import { ISetNewPassword, ISetNewPasswordForm } from "./set-new-password.types";
 
-const SetNewPassword: FC<ISetNewPassword> = ({ onSet, loading }) => {
+const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   const { t } = useTranslation();
 
   const {
@@ -38,7 +38,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ onSet, loading }) => {
   });
 
   const onSubmit = (data: ISetNewPasswordForm) => {
-    onSet(data.newPassword, data.token);
+    setNewPassword(data.newPassword);
   };
 
   return (
@@ -66,7 +66,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ onSet, loading }) => {
             <StyledResetButton
               variant="contained"
               type="submit"
-              disabled={loading}
+              disabled={isLoading}
             >
               Сохранить
             </StyledResetButton>

@@ -14,7 +14,7 @@ import {
   StyledWrapper,
 } from "./reset-password.styled";
 
-const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
+const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   const { t } = useTranslation();
 
   const {
@@ -32,8 +32,8 @@ const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
     ),
   });
 
-  const onSubmit = (data: IResetForm) => {
-    onReset(data.username);
+  const onSubmit = async (data: IResetForm) => {
+    await resetPassword(data.username);
   };
 
   return (
@@ -52,7 +52,7 @@ const ResetPassword: FC<IResetPassword> = ({ onReset, loading }) => {
             <StyledResetButton
               type="submit"
               variant="contained"
-              disabled={loading}
+              disabled={isLoading}
             >
               Сбросить пароль
             </StyledResetButton>

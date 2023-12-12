@@ -3,6 +3,6 @@ export interface IResetForm {
 }
 
 export interface IResetPassword {
-  onReset: (email: string) => void;
-  loading: boolean;
+  resetPassword: (email: string) => Promise<void>;
+  isLoading: boolean;
 }

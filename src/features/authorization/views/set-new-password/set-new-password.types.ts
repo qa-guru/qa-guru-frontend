@@ -5,6 +5,6 @@ export interface ISetNewPasswordForm {
 }
 
 export interface ISetNewPassword {
-  onSet: (token: string, newPassword: string) => void;
-  loading: boolean;
+  setNewPassword: (newPassword: string) => Promise<void>;
+  isLoading: boolean;
 }

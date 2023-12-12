@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ConfirmToken from "features/authorization/containers/confirm-token";
+import { ConfirmToken } from "features/authorization";
 
 const ConfirmTokenPage: FC = () => {
   return <ConfirmToken />;

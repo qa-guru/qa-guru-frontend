@@ -14,7 +14,7 @@ import {
 } from "./confirm-token.styled";
 import { IConfirmToken, IConfirmTokenForm } from "./confirm-token.types";
 
-const ConfirmToken: FC<IConfirmToken> = ({ onTokenConfirmation, loading }) => {
+const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
   const {
     control,
     formState: { errors },
@@ -31,7 +31,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ onTokenConfirmation, loading }) => {
   });
 
   const onSubmit = (data: IConfirmTokenForm) => {
-    onTokenConfirmation(data.token);
+    confirmToken(data.token);
   };
 
   return (
@@ -54,7 +54,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ onTokenConfirmation, loading }) => {
             <StyledResetButton
               type="submit"
               variant="contained"
-              disabled={loading}
+              disabled={isLoading}
             >
               Ok
             </StyledResetButton>

@@ -9,6 +9,7 @@ axios.defaults.withCredentials = true;
 const client = new ApolloClient({
   link: new HttpLink({ uri: GRAPHQL_URI, fetch }),
   cache: new InMemoryCache(),
+  connectToDevTools: import.meta.env.MODE === "development",
   defaultOptions: {
     watchQuery: {
       fetchPolicy: "cache-and-network",
