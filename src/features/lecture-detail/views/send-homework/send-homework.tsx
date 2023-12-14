@@ -1,7 +1,7 @@
 import { FC, useContext, useRef } from "react";
 import { client } from "api";
-import { type RichTextEditorRef } from "mui-tiptap";
-import TextEditor from "shared/components/text-editor";
+import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { Editor } from "shared/components/text-editor";
 
 import { ISendHomeWork } from "./send-homework.types";
 import {
@@ -33,7 +33,7 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
     <form>
       <StyledStack>
         <StyledBox>
-          <TextEditor rteRef={rteRef} />
+          <Editor rteRef={rteRef} />
           <StyledLoadingButton
             variant="contained"
             loading={loading}

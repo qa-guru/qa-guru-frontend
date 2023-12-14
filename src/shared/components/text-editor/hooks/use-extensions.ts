@@ -1,4 +1,4 @@
-import type { EditorOptions } from "@tiptap/core";
+import { type EditorOptions, Node, mergeAttributes } from "@tiptap/core";
 import { Blockquote } from "@tiptap/extension-blockquote";
 import { Bold } from "@tiptap/extension-bold";
 import { BulletList } from "@tiptap/extension-bullet-list";
@@ -32,16 +32,58 @@ import { Text } from "@tiptap/extension-text";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
+import { Youtube } from "@tiptap/extension-youtube";
 import { useMemo } from "react";
 import {
-  FontSize,
-  HeadingWithAnchor,
   LinkBubbleMenuHandler,
-  ResizableImage,
+  FontSize,
   TableImproved,
-} from "mui-tiptap";
+  ResizableImage,
+} from "shared/lib/mui-tiptap/extensions";
+import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
 
-import { mentionSuggestionOptions } from "../components/text-editor/utils/mention-suggestion-options";
+import { mentionSuggestionOptions } from "../editor/utils/mention-suggestion-options";
+
+const Iframe = Node.create({
+  name: "iframe",
+
+  defaultOptions: {
+    allowFullscreen: true,
+  },
+
+  group: "block",
+
+  atom: true,
+
+  addAttributes() {
+    return {
+      src: {
+        default: null,
+      },
+      frameborder: { default: 0 },
+      allowfullscreen: {
+        default: this.options.allowFullscreen,
+        parseHTML: () => this.options.allowFullscreen,
+      },
+    };
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: "iframe",
+      },
+    ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "div",
+      { class: "iframe-container" },
+      ["iframe", mergeAttributes(HTMLAttributes)],
+    ];
+  },
+});
 
 export type UseExtensionsOptions = {
   placeholder?: string;
@@ -123,6 +165,15 @@ export default function useExtensions({
 
       Placeholder.configure({
         placeholder,
+      }),
+
+      Iframe,
+
+      Youtube.configure({
+        inline: false,
+        width: 480,
+        height: 320,
+        allowFullscreen: false,
       }),
 
       History,

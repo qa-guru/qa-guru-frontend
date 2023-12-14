@@ -1,5 +1,5 @@
 import { FC } from "react";
-import TextView from "shared/components/text-view";
+import { TextView } from "shared/components/text-editor";
 
 import { IHomeworkContent } from "./homework-content.types";
 import { UpdateHomeworkItem, SendHomeworkItem } from "../../containers";
