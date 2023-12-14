@@ -7,7 +7,6 @@ import { StyledBox, StyledContainer } from "./layout.styled";
 
 interface ILayout {
   children?: ReactNode;
-  isAuth?: boolean;
 }
 
 const Layout: FC<ILayout> = ({ children }) => {
