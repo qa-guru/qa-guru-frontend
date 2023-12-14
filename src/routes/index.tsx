@@ -34,7 +34,7 @@ const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
     return <Navigate to="/" />;
   }
 
-  return <>{children}</>;
+  return <Layout>{children}</Layout>;
 };
 
 export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {
@@ -59,7 +59,13 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
   const usersRoutes = getUserRoutes(roles!);
 
   return (
-    <ErrorBoundary fallback={<NotFoundPage />}>
+    <ErrorBoundary
+      fallback={
+        <Layout>
+          <NotFoundPage />
+        </Layout>
+      }
+    >
       <Routes>
         <Route path="/" element={<Layout />}>
           {usersRoutes?.map((route) => (
@@ -95,7 +101,7 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
           }
         />
         <Route
-          path="/reset/message"
+          path="/reset/token"
           element={
             <ProtectedRoute>
               <ConfirmTokenPage />
@@ -110,7 +116,14 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route
+          path="*"
+          element={
+            <Layout>
+              <NotFoundPage />
+            </Layout>
+          }
+        />
       </Routes>
     </ErrorBoundary>
   );

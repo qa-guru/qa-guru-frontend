@@ -20,7 +20,7 @@ import {
   StyledWrapper,
 } from "./signup.styled";
 import { ISignUp } from "./signup.types";
-import { REQUIRED_SYMBOLS } from "../../constants";
+import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -57,7 +57,7 @@ const Signup: FC<ISignUp> = (props) => {
   });
 
   const routeLogin = () => {
-    navigate("/authorization");
+    navigate(ROUTES.AUTHORIZATION);
   };
 
   const passwordsMatch = valueConfirmPassword === getValues("password");

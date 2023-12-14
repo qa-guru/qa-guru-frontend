@@ -9,5 +9,10 @@ export const REQUIRED_SYMBOLS = {
 };
 
 export const ROUTES = {
+  HOME: "/",
   AUTHORIZATION: "/authorization",
+  SIGNUP: "/signup",
+  RESET: "/reset",
+  TOKEN: "/reset/token",
+  PASSWORD: "/reset/password",
 };

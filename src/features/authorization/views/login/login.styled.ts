@@ -24,7 +24,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   padding: "20px 34px 14px",
-  gap: theme.spacing(3),
+  gap: theme.spacing(3.5),
   [theme.breakpoints.up("sm")]: {
     padding: "32px 60px 20px",
   },
@@ -33,14 +33,20 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 export const StyledBottomStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
   justifyContent: "center",
-  margin: "8px 0",
+  margin: "20px 0 8px",
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  height: "100vh",
   backgroundColor: theme.palette.purple.main,
   justifyContent: "center",
   alignItems: "center",
+  position: "absolute",
+  top: "65px",
+  bottom: "65px",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    bottom: "95px",
+  },
 }));
 
 export const StyledAlignBox = styled(Box)({

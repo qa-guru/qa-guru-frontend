@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Stack } from "@mui/material";
+import { Box, Button, DialogContent, MenuItem, Stack } from "@mui/material";
 
 export const StyledWrapper = styled(Box)({
   padding: "25px 10px 5px 20px",
@@ -26,11 +26,17 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 export const StyledItemStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   gap: theme.spacing(2),
-  padding: "10px 0 0",
   alignItems: "center",
+  margin: 0,
+  padding: 0,
 }));
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "110px",
   color: theme.palette.black.main,
 }));
+
+export const StyledMenuItem = styled(MenuItem)({
+  padding: "7px",
+  margin: "5px",
+});

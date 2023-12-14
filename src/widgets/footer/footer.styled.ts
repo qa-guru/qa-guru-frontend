@@ -6,7 +6,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   width: "100%",
   textAlign: "start",
   padding: "10px 0 0",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     textAlign: "center",
   },
 }));
@@ -18,15 +18,17 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 
 export const StyledWrapper = styled(Box)(({ theme }) => ({
   maxWidth: "1920px",
+  height: "65px",
   margin: "0 auto",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "7px 20px 7px",
-  [theme.breakpoints.down("md")]: {
+  padding: "7px 20px",
+  [theme.breakpoints.down("sm")]: {
     alignItems: "center",
     justifyContent: "center",
     flexWrap: "wrap",
+    height: "95px",
   },
 }));
 

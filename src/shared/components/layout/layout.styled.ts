@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Container, Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export const StyledBox = styled(Box)({
   display: "flex",

@@ -3,34 +3,25 @@ import { Box, Paper, Stack } from "@mui/material";
 import { ReactComponent as Logo } from "assets/icons/logo-header.svg";
 import { Link } from "react-router-dom";
 
-interface IStyledHeader {
-  isPage404?: boolean;
-}
-
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.primary.main,
 }));
 
-export const StyledHeader = styled("header", {
-  shouldForwardProp: (prop) => prop !== "isPage404",
-})<IStyledHeader>(({ isPage404 }) => ({
-  marginBottom: isPage404 ? 0 : "25px",
+export const StyledHeader = styled("header")({
   alignItems: "center",
-}));
+  marginBottom: "24px",
+});
 
-export const StyledWrapper = styled(Box)(({ theme }) => ({
+export const StyledWrapper = styled(Box)({
   maxWidth: "1920px",
   margin: "0 auto",
+  padding: "7px 20px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   height: "65px",
-  padding: 0,
-  [theme.breakpoints.up("md")]: {
-    padding: "7px 20px 7px",
-  },
-}));
+});
 
 export const StyledPaper = styled(Paper)({
   borderRadius: 0,

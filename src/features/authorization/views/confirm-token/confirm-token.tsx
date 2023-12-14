@@ -41,7 +41,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <StyledStack>
             <Typography>
-              На ваш E-mail был отправлен уникальный токен для сброса пароля
+              На ваш E-mail был отправлен токен для сброса пароля
             </Typography>
             <InputText
               control={control}

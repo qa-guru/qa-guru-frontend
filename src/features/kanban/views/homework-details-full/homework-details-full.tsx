@@ -21,6 +21,7 @@ import {
   StyledTitle,
 } from "./homework-details-full.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
+import { ROUTES } from "../../constants/constants";
 
 const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   data,
@@ -30,7 +31,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   const Format = "dd.MM.yyyy | HH:mm";
 
   const handleBack = () => {
-    navigate(`/kanban`);
+    navigate(ROUTES.KANBAN);
   };
 
   const isCurrentMentor =

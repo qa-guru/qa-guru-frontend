@@ -1,5 +1,12 @@
 import { styled } from "@mui/system";
-import { DialogContent, Paper, Stack, Table, Typography } from "@mui/material";
+import {
+  Button,
+  DialogContent,
+  Paper,
+  Stack,
+  Table,
+  Typography,
+} from "@mui/material";
 
 export const StyledPaper = styled(Paper)({
   borderRadius: "2px",
@@ -25,3 +32,7 @@ export const StyledStack = styled(Stack)({
   gap: "10px",
   maxWidth: "120px",
 });
+
+export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.white.main,
+}));

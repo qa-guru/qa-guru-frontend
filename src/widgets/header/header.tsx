@@ -1,10 +1,11 @@
 import { Box, IconButton } from "@mui/material";
 import { FC, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LocalSelector } from "shared/components/buttons";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "api/graphql/generated/graphql";
+import { useAuth } from "features/authorization/context/auth-context";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
@@ -28,10 +29,12 @@ interface IPages {
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  const isPage404 = location.pathname === "/404";
+  const { isAuth } = useAuth();
   const { t } = useTranslation();
   const pages: IPages[] = [];
+  const refreshPage = () => {
+    navigate(0);
+  };
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
   const hasKanbanAccess = useRoleAccess({
@@ -65,18 +68,23 @@ const Header: FC = () => {
   };
 
   return (
-    <StyledHeader isPage404={isPage404}>
+    <StyledHeader>
       <StyledPaper>
         <StyledWrapper>
-          <MenuBurger
-            pages={pages}
-            setAnchorElNav={setAnchorElNav}
-            handleClickNavMenu={handleClickNavMenu}
-            anchorElNav={anchorElNav}
-          />
+          {isAuth && (
+            <MenuBurger
+              pages={pages}
+              setAnchorElNav={setAnchorElNav}
+              handleClickNavMenu={handleClickNavMenu}
+              anchorElNav={anchorElNav}
+            />
+          )}
 
           <StyledBox>
-            <IconButton disableRipple onClick={() => handleClickNavMenu("/")}>
+            <IconButton
+              disableRipple
+              onClick={() => (isAuth ? handleClickNavMenu("/") : refreshPage)}
+            >
               <StyledLogo />
             </IconButton>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
@@ -86,7 +94,7 @@ const Header: FC = () => {
             <Box>
               <LocalSelector />
             </Box>
-            <Profile />
+            {isAuth && <Profile />}
           </StyledStack>
         </StyledWrapper>
       </StyledPaper>
