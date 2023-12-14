@@ -1,7 +1,7 @@
-import { RichTextReadOnly } from "mui-tiptap";
 import { FC } from "react";
+import { RichTextReadOnly } from "shared/lib/mui-tiptap";
 
-import useExtensions from "../../hooks/use-extensions";
+import useExtensions from "../hooks/use-extensions";
 
 type Maybe<T> = T | undefined | null;
 

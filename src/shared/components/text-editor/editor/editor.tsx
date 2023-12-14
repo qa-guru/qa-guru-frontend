@@ -2,20 +2,16 @@ import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
-import {
-  LinkBubbleMenu,
-  MenuButton,
-  RichTextEditor,
-  TableBubbleMenu,
-  insertImages,
-} from "mui-tiptap";
+import { insertImages } from "shared/lib/mui-tiptap/utils";
+import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
+import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
 import { EditorMenuControls } from "./ui";
 import { ITextEditor } from "./types";
 import { fileListToImageFiles } from "./utils/fileListToImageFiles";
-import useExtensions from "../../hooks/use-extensions";
+import useExtensions from "../hooks/use-extensions";
 
-const TextEditor: FC<ITextEditor> = ({ rteRef, content }) => {
+const Editor: FC<ITextEditor> = ({ rteRef, content }) => {
   const extensions = useExtensions({
     placeholder: "Add your own content here...",
   });
@@ -167,4 +163,4 @@ const TextEditor: FC<ITextEditor> = ({ rteRef, content }) => {
   );
 };
 
-export default TextEditor;
+export default Editor;

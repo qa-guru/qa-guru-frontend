@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Divider } from "@mui/material";
-import TextView from "shared/components/text-view";
+import { TextView } from "shared/components/text-editor";
 
 import { ILectureContent } from "./lecture-content.types";
 import {

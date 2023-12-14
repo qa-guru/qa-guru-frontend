@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import { client } from "api";
-import { type RichTextEditorRef } from "mui-tiptap";
-import TextEditor from "shared/components/text-editor";
+import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { Editor } from "shared/components/text-editor";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import {
@@ -35,7 +35,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     <form>
       <StyledWrapper>
         <StyledBox>
-          <TextEditor content={answer} rteRef={rteRef} />
+          <Editor content={answer} rteRef={rteRef} />
           <StyledStack>
             <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
               Отменить
