@@ -1,6 +1,6 @@
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { RefObject } from "react";
-import { type RichTextEditorRef } from "mui-tiptap";
+import { RichTextEditorRef } from "shared/lib/mui-tiptap";
 
 export type MentionSuggestion = {
   id: string;

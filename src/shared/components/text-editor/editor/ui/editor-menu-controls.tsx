@@ -1,4 +1,6 @@
-import { useTheme } from "@mui/material";
+import { IconButton, useTheme } from "@mui/material";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import { isTouchDevice } from "shared/lib/mui-tiptap/utils";
 import {
   MenuButtonAddTable,
   MenuButtonBlockquote,
@@ -29,8 +31,7 @@ import {
   MenuSelectFontSize,
   MenuSelectHeading,
   MenuSelectTextAlign,
-  isTouchDevice,
-} from "mui-tiptap";
+} from "shared/lib/mui-tiptap/controls";
 
 export default function EditorMenuControls() {
   const theme = useTheme();
@@ -151,6 +152,12 @@ export default function EditorMenuControls() {
       <MenuDivider />
 
       <MenuButtonRemoveFormatting />
+
+      <MenuDivider />
+
+      <IconButton>
+        <YouTubeIcon />
+      </IconButton>
 
       <MenuDivider />
 

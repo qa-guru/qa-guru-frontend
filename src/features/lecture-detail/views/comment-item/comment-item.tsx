@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { IconButton } from "@mui/material";
 import { ReactComponent as Edit } from "assets/icons/button-edit.svg";
 import UserRow from "shared/components/user-row";
-import TextView from "shared/components/text-view";
+import { TextView } from "shared/components/text-editor";
 
 import { ICommentItem } from "./comment-item.types";
 import {
