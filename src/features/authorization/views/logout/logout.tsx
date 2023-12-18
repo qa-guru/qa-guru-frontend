@@ -4,7 +4,6 @@ import {
   DialogActions,
   ListItemIcon,
   ListItemText,
-  MenuItem,
   Typography,
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
@@ -17,6 +16,7 @@ import {
   StyledCancelButton,
   StyledDialogContent,
   StyledItemStack,
+  StyledMenuItem,
   StyledStack,
   StyledWrapper,
 } from "./logout.styled";
@@ -63,14 +63,14 @@ const Logout: FC<ILogout> = (props) => {
   };
 
   return (
-    <MenuItem sx={{ margin: 0, padding: "7px" }} onClick={handleClickOpen}>
-      <StyledItemStack sx={{ margin: 0, padding: 0 }}>
+    <StyledMenuItem onClick={handleClickOpen}>
+      <StyledItemStack>
         <ListItemIcon>
           <ExitToAppIcon />
         </ListItemIcon>
         <ListItemText secondary="Выход" />
       </StyledItemStack>
-    </MenuItem>
+    </StyledMenuItem>
   );
 };
 

@@ -25,3 +25,7 @@ export const UI_CONSTANTS = {
 };
 
 export const STEP = 1;
+
+export const ROUTES = {
+  KANBAN: "/kanban",
+};

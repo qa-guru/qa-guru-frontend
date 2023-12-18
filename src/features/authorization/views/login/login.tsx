@@ -3,7 +3,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import { LocalSelector } from "shared/components/buttons";
 import { InputText } from "shared/components/form";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +17,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./login.styled";
+import { ROUTES } from "../../constants";
 
 const Login: FC<ILogin> = (props) => {
   const { isLoading, login } = props;
@@ -25,11 +25,11 @@ const Login: FC<ILogin> = (props) => {
   const navigate = useNavigate();
 
   const routeRegister = () => {
-    navigate("/signup");
+    navigate(ROUTES.SIGNUP);
   };
 
   const roureReset = () => {
-    navigate("/reset");
+    navigate(ROUTES.RESET);
   };
 
   const {
@@ -90,7 +90,6 @@ const Login: FC<ILogin> = (props) => {
             />
           </StyledStack>
           <StyledBottomStack>
-            <LocalSelector />
             <StyledLoadingButton
               onClick={handleSubmit(doLogin)}
               loading={isLoading}

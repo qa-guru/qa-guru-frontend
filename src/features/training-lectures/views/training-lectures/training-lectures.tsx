@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
-import { ButtonTrainingList } from "shared/components/buttons";
 
+import ButtonTrainingList from "../button-training-list";
 import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,
@@ -13,7 +13,7 @@ import {
   StyledTypography,
   StyledWrapper,
 } from "./training-lectures.styled";
-import { INDEX_OFFSET } from "../constants";
+import { INDEX_OFFSET } from "../../constants";
 
 const TrainingLectures: FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;

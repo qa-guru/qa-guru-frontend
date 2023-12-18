@@ -1,1 +1,1 @@
-export { INDEX_OFFSET } from "./constants";
+export { INDEX_OFFSET, ROUTES } from "./constants";

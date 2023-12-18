@@ -7,7 +7,7 @@ import {
   useTrainingQuery,
 } from "api/graphql/generated/graphql";
 
-import TrainingLectures from "../views/training-lectures";
+import TrainingLectures from "../../views/training-lectures";
 
 const TrainingLecturesContainer: FC = () => {
   const { trainingId } = useParams();

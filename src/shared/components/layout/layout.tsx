@@ -1,14 +1,19 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "widgets/header";
 import Footer from "widgets/footer";
 
 import { StyledBox, StyledContainer } from "./layout.styled";
 
-const Layout: FC = () => {
+interface ILayout {
+  children?: ReactNode;
+}
+
+const Layout: FC<ILayout> = ({ children }) => {
   return (
     <StyledBox>
       <Header />
+      {children}
       <StyledContainer>
         <Outlet />
       </StyledContainer>

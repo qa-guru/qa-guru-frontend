@@ -88,7 +88,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
           setIsAuth(true);
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
-          navigate("/");
+          navigate(ROUTES.HOME);
         } else {
           setIsLoading(false);
           enqueueSnackbar(t("login.unknownError"));
@@ -113,7 +113,8 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
           setIsAuth(false);
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
-          navigate("/authorization");
+          navigate(ROUTES.AUTHORIZATION);
+          client.resetStore();
         } else {
           setIsLoading(false);
           enqueueSnackbar(t("logout.unknownError"));
@@ -153,7 +154,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
       onCompleted: (response) => {
         if (response) {
           setIsLoading(false);
-          navigate("/reset/message");
+          navigate(ROUTES.TOKEN);
         } else {
           setIsLoading(false);
           enqueueSnackbar(
@@ -201,7 +202,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
       onCompleted: (response) => {
         if (response) {
           setIsLoading(false);
-          navigate(`/reset/password?token=${encodeURIComponent(token)}`);
+          navigate(`${ROUTES.PASSWORD}?token=${encodeURIComponent(token)}`);
         } else {
           setIsLoading(false);
           enqueueSnackbar("Неверный токен");

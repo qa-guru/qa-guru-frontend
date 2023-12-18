@@ -42,10 +42,16 @@ export const StyledAlignBox = styled(Box)({
 });
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  height: "100vh",
   backgroundColor: theme.palette.purple.main,
   justifyContent: "center",
   alignItems: "center",
+  position: "absolute",
+  top: "65px",
+  bottom: "65px",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    bottom: "95px",
+  },
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({

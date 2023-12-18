@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 
 import { IMobileBoard } from "./mobile-board.types";
 import {
@@ -11,7 +12,7 @@ import {
 } from "../board/board.styled";
 import Column from "../column";
 import { STEP } from "../../constants";
-import { StudentHomeWorkDto } from "../../../../api/graphql/generated/graphql";
+import { ROUTES } from "../../constants/constants";
 
 const MobileBoard: FC<IMobileBoard> = ({
   columns,
@@ -24,7 +25,7 @@ const MobileBoard: FC<IMobileBoard> = ({
   const [activeStep, setActiveStep] = useState(0);
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
-    navigate(`/kanban/${card?.id}`);
+    navigate(`${ROUTES.KANBAN}/${card?.id}`);
   };
 
   const handleStepChange = (step: number) => {

@@ -14,27 +14,34 @@ export const StyledLogo = styled(Logo)(({ theme }) => ({
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   width: "310px",
+  height: "240px",
   marginTop: "16px",
   [theme.breakpoints.up("sm")]: {
     width: "430px",
+    height: "260px",
     marginTop: "22px",
   },
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   padding: "20px 34px 14px",
-  gap: theme.spacing(2),
-  [theme.breakpoints.up("md")]: {
+  gap: theme.spacing(3.5),
+  [theme.breakpoints.up("sm")]: {
     padding: "32px 60px 20px",
-    gap: theme.spacing(3),
   },
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  height: "100vh",
   backgroundColor: theme.palette.purple.main,
   justifyContent: "center",
   alignItems: "center",
+  position: "absolute",
+  top: "65px",
+  bottom: "65px",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    bottom: "95px",
+  },
 }));
 
 export const StyledResetButton = styled(Button)(({ theme }) => ({

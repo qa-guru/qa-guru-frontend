@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { LocalSelector } from "shared/components/buttons";
+import LocalSelector from "shared/components/local-selector";
 import { UserCreateInput } from "api/graphql/generated/graphql";
 import { InputText, InputPhone } from "shared/components/form";
 
@@ -20,7 +20,7 @@ import {
   StyledWrapper,
 } from "./signup.styled";
 import { ISignUp } from "./signup.types";
-import { REQUIRED_SYMBOLS } from "../../constants";
+import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -57,7 +57,7 @@ const Signup: FC<ISignUp> = (props) => {
   });
 
   const routeLogin = () => {
-    navigate("/authorization");
+    navigate(ROUTES.AUTHORIZATION);
   };
 
   const passwordsMatch = valueConfirmPassword === getValues("password");

@@ -6,7 +6,6 @@ import {
 } from "@tanstack/react-table";
 import {
   Box,
-  Button,
   Container,
   TableBody,
   TableCell,
@@ -19,7 +18,12 @@ import { UserDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
 
 import { ITableAdmin } from "./table-admin.types";
-import { StyledPaper, StyledTable, StyledTitle } from "./table-admin.styled";
+import {
+  StyledLoadMoreButton,
+  StyledPaper,
+  StyledTable,
+  StyledTitle,
+} from "./table-admin.styled";
 import TablePaginationActions from "../table-pagination-actions";
 
 const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
@@ -117,9 +121,9 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
         />
       </StyledPaper>
       <Box textAlign="center" pb="20px">
-        <Button onClick={handleLoadMore} variant="contained">
+        <StyledLoadMoreButton onClick={handleLoadMore} variant="contained">
           Загрузить еще
-        </Button>
+        </StyledLoadMoreButton>
       </Box>
     </Container>
   );

@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, ListItemText, Stack } from "@mui/material";
+import { Box, MenuItem, MenuList, Stack } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 
@@ -23,15 +23,23 @@ export const StyledUserBox = styled(Box)({
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.black.main,
+  width: "100%",
+}));
+
+export const StyledMenuList = styled(MenuList)({
+  margin: 0,
+  padding: 0,
+});
+
+export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+  margin: 0,
+  height: "40px",
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
-  marginTop: "8px",
   flexDirection: "row",
   gap: theme.spacing(2),
   alignItems: "center",
+  margin: 0,
+  padding: 0,
 }));
-
-export const StyledListItemText = styled(ListItemText)({
-  marginRight: "3.5vw",
-});

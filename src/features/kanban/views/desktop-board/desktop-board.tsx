@@ -3,13 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "../homework-details";
 import { StyledStack, StyledWrapper } from "../board/board.styled";
 import Column from "../column";
-import { UI_CONSTANTS } from "../../constants";
-import { StudentHomeWorkDto } from "../../../../api/graphql/generated/graphql";
+import { ROUTES, UI_CONSTANTS } from "../../constants";
 
 const DesktopBoard: FC<IDesktopBoard> = ({
   columns,
@@ -34,7 +34,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({
       setActiveCardId(isSameCard ? null : card.id!);
       setShowHomeworkDetails(!isSameCard);
     } else {
-      navigate(`/kanban/${card.id}`);
+      navigate(`${ROUTES.KANBAN}/${card.id}`);
     }
   };
 

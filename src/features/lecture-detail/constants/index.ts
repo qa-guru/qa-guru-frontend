@@ -4,4 +4,5 @@ export {
   MAX_HOMEWORK_LENGTH,
   INDEX_OFFSET,
   PARSE_INT_RADIX,
+  ROUTES,
 } from "./constants";

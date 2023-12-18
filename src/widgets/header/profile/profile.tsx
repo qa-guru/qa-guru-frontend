@@ -3,8 +3,7 @@ import {
   Button,
   Divider,
   ListItemIcon,
-  MenuItem,
-  MenuList,
+  ListItemText,
   useMediaQuery,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
@@ -20,8 +19,8 @@ import { IProfile } from "./profile.types";
 import {
   StyledBox,
   StyledLink,
-  StyledListItemText,
   StyledMenu,
+  StyledMenuItem,
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
@@ -93,21 +92,14 @@ const Profile: FC<IProfile> = (props) => {
           const { icon, title, url, id } = setting;
 
           return (
-            <div key={id}>
-              <MenuList sx={{ margin: 0, padding: 0 }}>
-                <MenuItem
-                  sx={{ margin: 0, padding: "7px" }}
-                  onClick={handleClickSettingsProfile}
-                >
-                  <StyledLink to={url}>
-                    <StyledStack sx={{ margin: 0, padding: 0 }}>
-                      <ListItemIcon>{icon}</ListItemIcon>
-                      <StyledListItemText secondary={title} />
-                    </StyledStack>
-                  </StyledLink>
-                </MenuItem>
-              </MenuList>
-            </div>
+            <StyledLink to={url} key={id}>
+              <StyledMenuItem onClick={handleClickSettingsProfile}>
+                <StyledStack>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText secondary={title} />
+                </StyledStack>
+              </StyledMenuItem>
+            </StyledLink>
           );
         })}
         <Divider />
