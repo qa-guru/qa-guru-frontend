@@ -116,7 +116,11 @@ type Mutation {
   "commentHomeWork section"
   sendComment(content: String!, homeWorkId: ID!): CommentHomeWorkDto
   "studentHomeWork section"
-  sendHomeWorkToCheck(content: String!, lectureId: ID!): StudentHomeWorkDto
+  sendHomeWorkToCheck(
+    content: String!
+    lectureId: ID!
+    trainingId: ID!
+  ): StudentHomeWorkDto
   setPassword(newPassword: String!, token: String!): Void
   takeForReview(homeWorkId: ID!): StudentHomeWorkDto
   unlockUser(id: ID!): Void
@@ -181,10 +185,13 @@ type Query {
   lecture(id: ID): LectureInfoShortDto
   lectureHomeWork(lectureId: ID): [LectureContentHomeWorkDto]
   "lecture home work level section"
-  lectureHomeWorkLevel(id: ID): LectureHomeWorkLevelDto
+  lectureHomeWorkLevel(id: ID!): LectureHomeWorkLevelDto
   lectureHomeWorkLevels: [LectureHomeWorkLevelDto]
   lectures(limit: Int!, offset: Int!, sort: LectureSort): LecturesDto
   mentors(limit: Int!, offset: Int!, sort: UserSort): UsersDto
+  "rating"
+  rating: RatingDto
+  ratingByUser(id: ID): RatingDto
   "training section"
   training(id: ID!): TrainingDto
   "training lecture"
@@ -208,6 +215,36 @@ type Query {
   users(limit: Int!, offset: Int!, sort: UserSort): UsersDto
 }
 
+type RatingDto {
+  products: [RatingProductsDto]
+  rating: Long
+}
+
+type RatingProductsByRatingTypeDto {
+  rating: Long
+  type: RatingTypeDto
+}
+
+type RatingProductsByUserRoleDto {
+  rating: Long
+  role: UserRoleDto
+  types: [RatingProductsByRatingTypeDto]
+}
+
+type RatingProductsDto {
+  roles: [RatingProductsByUserRoleDto]
+  training: TrainingDto
+}
+
+type RatingTypeDto {
+  description: String
+  name: String
+}
+
+type RatingUserDto {
+  rating: Long
+}
+
 type StudentHomeWorkDto {
   answer: String
   creationDate: LocalDateTime
@@ -218,6 +255,7 @@ type StudentHomeWorkDto {
   startCheckingDate: LocalDateTime
   status: StudentHomeWorkStatus
   student: UserDto
+  training: TrainingDto
 }
 
 type StudentHomeWorksDto {
@@ -229,6 +267,7 @@ type StudentHomeWorksDto {
 
 type TrainingDto {
   content: String
+  description: String
   id: ID!
   mentors: [UserDto]
   name: String!
@@ -290,6 +329,7 @@ type UserDto {
   locked: Boolean
   middleName: String
   phoneNumber: String
+  rating: RatingUserDto
   roles: [UserRole]
   updateDate: LocalDateTime
 }
@@ -366,6 +406,7 @@ enum UserSortField {
   EMAIL
   LAST_NAME
   PHONE
+  RATING
 }
 
 "An arbitrary precision signed decimal"
@@ -456,6 +497,7 @@ input StudentHomeWorkSort {
 
 input TrainingInput {
   content: String
+  description: String
   id: ID
   mentors: [String]
   name: String

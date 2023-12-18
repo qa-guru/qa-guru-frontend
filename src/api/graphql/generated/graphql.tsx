@@ -316,6 +316,7 @@ export type MutationSendCommentArgs = {
 export type MutationSendHomeWorkToCheckArgs = {
   content: Scalars["String"];
   lectureId: Scalars["ID"];
+  trainingId: Scalars["ID"];
 };
 
 /** Mutation root */
@@ -416,6 +417,9 @@ export type Query = {
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
   mentors?: Maybe<UsersDto>;
+  /** rating */
+  rating?: Maybe<RatingDto>;
+  ratingByUser?: Maybe<RatingDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
   /** training lecture */
@@ -512,7 +516,7 @@ export type QueryLectureHomeWorkArgs = {
 
 /** Query root */
 export type QueryLectureHomeWorkLevelArgs = {
-  id?: InputMaybe<Scalars["ID"]>;
+  id: Scalars["ID"];
 };
 
 /** Query root */
@@ -527,6 +531,11 @@ export type QueryMentorsArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<UserSort>;
+};
+
+/** Query root */
+export type QueryRatingByUserArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
@@ -577,6 +586,42 @@ export type QueryUsersArgs = {
   sort?: InputMaybe<UserSort>;
 };
 
+export type RatingDto = {
+  __typename?: "RatingDto";
+  products?: Maybe<Array<Maybe<RatingProductsDto>>>;
+  rating?: Maybe<Scalars["Long"]>;
+};
+
+export type RatingProductsByRatingTypeDto = {
+  __typename?: "RatingProductsByRatingTypeDto";
+  rating?: Maybe<Scalars["Long"]>;
+  type?: Maybe<RatingTypeDto>;
+};
+
+export type RatingProductsByUserRoleDto = {
+  __typename?: "RatingProductsByUserRoleDto";
+  rating?: Maybe<Scalars["Long"]>;
+  role?: Maybe<UserRoleDto>;
+  types?: Maybe<Array<Maybe<RatingProductsByRatingTypeDto>>>;
+};
+
+export type RatingProductsDto = {
+  __typename?: "RatingProductsDto";
+  roles?: Maybe<Array<Maybe<RatingProductsByUserRoleDto>>>;
+  training?: Maybe<TrainingDto>;
+};
+
+export type RatingTypeDto = {
+  __typename?: "RatingTypeDto";
+  description?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
+export type RatingUserDto = {
+  __typename?: "RatingUserDto";
+  rating?: Maybe<Scalars["Long"]>;
+};
+
 export type StudentHomeWorkDto = {
   __typename?: "StudentHomeWorkDto";
   answer?: Maybe<Scalars["String"]>;
@@ -588,6 +633,7 @@ export type StudentHomeWorkDto = {
   startCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
   status?: Maybe<StudentHomeWorkStatus>;
   student?: Maybe<UserDto>;
+  training?: Maybe<TrainingDto>;
 };
 
 export type StudentHomeWorkFilter = {
@@ -767,6 +813,7 @@ export type UserDto = {
   locked?: Maybe<Scalars["Boolean"]>;
   middleName?: Maybe<Scalars["String"]>;
   phoneNumber?: Maybe<Scalars["String"]>;
+  rating?: Maybe<RatingUserDto>;
   roles?: Maybe<Array<Maybe<UserRole>>>;
   updateDate?: Maybe<Scalars["LocalDateTime"]>;
 };
@@ -795,6 +842,7 @@ export enum UserSortField {
   Email = "EMAIL",
   LastName = "LAST_NAME",
   Phone = "PHONE",
+  Rating = "RATING",
 }
 
 export type UserUpdateInput = {
@@ -1341,6 +1389,7 @@ export type NotApprovedHomeworkFragment = {
 export type SendHomeWorkToCheckMutationVariables = Exact<{
   lectureId: Scalars["ID"];
   content: Scalars["String"];
+  trainingId: Scalars["ID"];
 }>;
 
 export type SendHomeWorkToCheckMutation = {
@@ -1846,6 +1895,7 @@ export type UserQuery = {
     avatarLocation?: string | null;
     roles?: Array<UserRole | null> | null;
     locked?: boolean | null;
+    rating?: { __typename?: "RatingUserDto"; rating?: any | null } | null;
   } | null;
 };
 
@@ -2904,8 +2954,16 @@ export type NotApprovedMutationOptions = Apollo.BaseMutationOptions<
   NotApprovedMutationVariables
 >;
 export const SendHomeWorkToCheckDocument = gql`
-  mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
-    sendHomeWorkToCheck(lectureId: $lectureId, content: $content) {
+  mutation sendHomeWorkToCheck(
+    $lectureId: ID!
+    $content: String!
+    $trainingId: ID!
+  ) {
+    sendHomeWorkToCheck(
+      lectureId: $lectureId
+      content: $content
+      trainingId: $trainingId
+    ) {
       id
       lecture {
         id
@@ -2970,6 +3028,7 @@ export const SendHomeWorkToCheckComponent = (
  *   variables: {
  *      lectureId: // value for 'lectureId'
  *      content: // value for 'content'
+ *      trainingId: // value for 'trainingId'
  *   },
  * });
  */
@@ -4549,6 +4608,9 @@ export const UserDocument = gql`
       avatarLocation
       roles
       locked
+      rating {
+        rating
+      }
     }
   }
 `;

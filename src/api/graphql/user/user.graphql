@@ -9,5 +9,8 @@ query user {
     avatarLocation
     roles
     locked
+    rating {
+      rating
+    }
   }
 }
