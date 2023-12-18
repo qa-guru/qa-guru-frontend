@@ -8,7 +8,7 @@ import {
   StyledFormControl,
   StyledMenuItem,
   StyledSelect,
-} from "../buttons.styled";
+} from "./local-selector.styled";
 
 const languageOptions = [
   {

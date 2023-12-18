@@ -9,8 +9,7 @@ import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "../homework-details";
 import { StyledStack, StyledWrapper } from "../board/board.styled";
 import Column from "../column";
-import { UI_CONSTANTS } from "../../constants";
-import { ROUTES } from "../../constants/constants";
+import { ROUTES, UI_CONSTANTS } from "../../constants";
 
 const DesktopBoard: FC<IDesktopBoard> = ({
   columns,

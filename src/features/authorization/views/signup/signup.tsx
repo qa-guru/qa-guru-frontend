@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { LocalSelector } from "shared/components/buttons";
+import LocalSelector from "shared/components/local-selector";
 import { UserCreateInput } from "api/graphql/generated/graphql";
 import { InputText, InputPhone } from "shared/components/form";
 

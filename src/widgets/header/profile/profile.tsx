@@ -1,5 +1,11 @@
 import { FC, MouseEvent, useState } from "react";
-import { Button, Divider, ListItemIcon, useMediaQuery } from "@mui/material";
+import {
+  Button,
+  Divider,
+  ListItemIcon,
+  ListItemText,
+  useMediaQuery,
+} from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "features/authorization/containers/logout";
 import UserRow from "shared/components/user-row";
@@ -13,10 +19,8 @@ import { IProfile } from "./profile.types";
 import {
   StyledBox,
   StyledLink,
-  StyledListItemText,
   StyledMenu,
   StyledMenuItem,
-  StyledMenuList,
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
@@ -88,18 +92,14 @@ const Profile: FC<IProfile> = (props) => {
           const { icon, title, url, id } = setting;
 
           return (
-            <div key={id}>
-              <StyledMenuList>
-                <StyledMenuItem onClick={handleClickSettingsProfile}>
-                  <StyledLink to={url}>
-                    <StyledStack>
-                      <ListItemIcon>{icon}</ListItemIcon>
-                      <StyledListItemText secondary={title} />
-                    </StyledStack>
-                  </StyledLink>
-                </StyledMenuItem>
-              </StyledMenuList>
-            </div>
+            <StyledLink to={url} key={id}>
+              <StyledMenuItem onClick={handleClickSettingsProfile}>
+                <StyledStack>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText secondary={title} />
+                </StyledStack>
+              </StyledMenuItem>
+            </StyledLink>
           );
         })}
         <Divider />

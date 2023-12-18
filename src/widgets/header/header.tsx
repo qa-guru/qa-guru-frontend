@@ -1,7 +1,7 @@
 import { Box, IconButton } from "@mui/material";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LocalSelector } from "shared/components/buttons";
+import LocalSelector from "shared/components/local-selector";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "api/graphql/generated/graphql";

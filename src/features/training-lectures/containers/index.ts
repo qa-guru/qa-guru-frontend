@@ -1,1 +1,1 @@
-export { default } from "./training-lectures-container";
+export { default } from "./training-lectures";

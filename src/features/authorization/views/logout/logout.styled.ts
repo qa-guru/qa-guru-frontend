@@ -37,6 +37,5 @@ export const StyledCancelButton = styled(Button)(({ theme }) => ({
 }));
 
 export const StyledMenuItem = styled(MenuItem)({
-  padding: "7px",
-  margin: "5px",
+  height: "40px",
 });
