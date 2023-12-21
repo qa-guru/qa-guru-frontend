@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
-// eslint-disable-next-line import/named
-import { ApolloQueryResult, FetchMoreQueryOptions } from "@apollo/client";
+import {
+  type ApolloQueryResult,
+  type FetchMoreQueryOptions,
+} from "@apollo/client";
 import {
   CommentsHomeWorkByHomeWorkQuery,
   CommentsHomeWorkByHomeWorkQueryVariables,

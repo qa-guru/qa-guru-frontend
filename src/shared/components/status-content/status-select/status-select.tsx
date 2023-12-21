@@ -5,8 +5,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  // eslint-disable-next-line import/named
-  SelectChangeEvent,
+  type SelectChangeEvent,
   Typography,
 } from "@mui/material";
 import useUpdateHomeworkStatus from "features/kanban/hooks/use-update-homework-status";
