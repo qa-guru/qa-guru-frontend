@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box, IconButton, Typography, Link } from "@mui/material";
+import { IconButton, Typography, Link } from "@mui/material";
 
 import {
   StyledBox,
