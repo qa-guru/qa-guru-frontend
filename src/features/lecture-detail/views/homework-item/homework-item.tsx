@@ -15,7 +15,8 @@ import HomeworkContent from "../homework-content";
 import ButtonEdit from "../button-edit";
 
 const HomeworkItem: FC<IHomeworkItem> = (props) => {
-  const { dataHomeWorkByLecture, dataUserId, hideMentorAndStudent } = props;
+  const { dataHomeWorkByLectureAndTraining, dataUserId, hideMentorAndStudent } =
+    props;
   const {
     status,
     startCheckingDate,
@@ -24,7 +25,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     student,
     answer,
     id,
-  } = dataHomeWorkByLecture || {};
+  } = dataHomeWorkByLectureAndTraining || {};
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
   const editAccess = dataUserId.user?.id === student?.id;

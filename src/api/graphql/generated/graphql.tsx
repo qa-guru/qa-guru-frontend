@@ -316,6 +316,7 @@ export type MutationSendCommentArgs = {
 export type MutationSendHomeWorkToCheckArgs = {
   content: Scalars["String"];
   lectureId: Scalars["ID"];
+  trainingId: Scalars["ID"];
 };
 
 /** Mutation root */
@@ -402,8 +403,8 @@ export type Query = {
   commentsHomeWorkByHomeWork?: Maybe<CommentHomeWorksDto>;
   /** studentHomeWork section */
   homeWork?: Maybe<StudentHomeWorkDto>;
-  homeWorkByLecture?: Maybe<StudentHomeWorkDto>;
-  homeWorkByStudentAndLecture?: Maybe<StudentHomeWorkDto>;
+  homeWorkByLectureAndTraining?: Maybe<StudentHomeWorkDto>;
+  homeWorkByStudentAndLectureAndTraining?: Maybe<StudentHomeWorkDto>;
   homeWorks?: Maybe<StudentHomeWorksDto>;
   homeWorksByLectureId?: Maybe<StudentHomeWorksDto>;
   homeWorksByStatus?: Maybe<StudentHomeWorksDto>;
@@ -416,6 +417,9 @@ export type Query = {
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
   mentors?: Maybe<UsersDto>;
+  /** rating */
+  rating?: Maybe<RatingDto>;
+  ratingByUser?: Maybe<RatingDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
   /** training lecture */
@@ -461,14 +465,16 @@ export type QueryHomeWorkArgs = {
 };
 
 /** Query root */
-export type QueryHomeWorkByLectureArgs = {
+export type QueryHomeWorkByLectureAndTrainingArgs = {
   lectureId: Scalars["ID"];
+  trainingId: Scalars["ID"];
 };
 
 /** Query root */
-export type QueryHomeWorkByStudentAndLectureArgs = {
+export type QueryHomeWorkByStudentAndLectureAndTrainingArgs = {
   lectureId: Scalars["ID"];
   studentId: Scalars["ID"];
+  trainingId: Scalars["ID"];
 };
 
 /** Query root */
@@ -512,7 +518,7 @@ export type QueryLectureHomeWorkArgs = {
 
 /** Query root */
 export type QueryLectureHomeWorkLevelArgs = {
-  id?: InputMaybe<Scalars["ID"]>;
+  id: Scalars["ID"];
 };
 
 /** Query root */
@@ -527,6 +533,11 @@ export type QueryMentorsArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<UserSort>;
+};
+
+/** Query root */
+export type QueryRatingByUserArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Query root */
@@ -577,6 +588,42 @@ export type QueryUsersArgs = {
   sort?: InputMaybe<UserSort>;
 };
 
+export type RatingDto = {
+  __typename?: "RatingDto";
+  products?: Maybe<Array<Maybe<RatingProductsDto>>>;
+  rating?: Maybe<Scalars["Long"]>;
+};
+
+export type RatingProductsByRatingTypeDto = {
+  __typename?: "RatingProductsByRatingTypeDto";
+  rating?: Maybe<Scalars["Long"]>;
+  type?: Maybe<RatingTypeDto>;
+};
+
+export type RatingProductsByUserRoleDto = {
+  __typename?: "RatingProductsByUserRoleDto";
+  rating?: Maybe<Scalars["Long"]>;
+  role?: Maybe<UserRoleDto>;
+  types?: Maybe<Array<Maybe<RatingProductsByRatingTypeDto>>>;
+};
+
+export type RatingProductsDto = {
+  __typename?: "RatingProductsDto";
+  roles?: Maybe<Array<Maybe<RatingProductsByUserRoleDto>>>;
+  training?: Maybe<TrainingDto>;
+};
+
+export type RatingTypeDto = {
+  __typename?: "RatingTypeDto";
+  description?: Maybe<Scalars["String"]>;
+  name?: Maybe<Scalars["String"]>;
+};
+
+export type RatingUserDto = {
+  __typename?: "RatingUserDto";
+  rating?: Maybe<Scalars["Long"]>;
+};
+
 export type StudentHomeWorkDto = {
   __typename?: "StudentHomeWorkDto";
   answer?: Maybe<Scalars["String"]>;
@@ -588,6 +635,7 @@ export type StudentHomeWorkDto = {
   startCheckingDate?: Maybe<Scalars["LocalDateTime"]>;
   status?: Maybe<StudentHomeWorkStatus>;
   student?: Maybe<UserDto>;
+  training?: Maybe<TrainingDto>;
 };
 
 export type StudentHomeWorkFilter = {
@@ -767,6 +815,7 @@ export type UserDto = {
   locked?: Maybe<Scalars["Boolean"]>;
   middleName?: Maybe<Scalars["String"]>;
   phoneNumber?: Maybe<Scalars["String"]>;
+  rating?: Maybe<RatingUserDto>;
   roles?: Maybe<Array<Maybe<UserRole>>>;
   updateDate?: Maybe<Scalars["LocalDateTime"]>;
 };
@@ -795,6 +844,7 @@ export enum UserSortField {
   Email = "EMAIL",
   LastName = "LAST_NAME",
   Phone = "PHONE",
+  Rating = "RATING",
 }
 
 export type UserUpdateInput = {
@@ -1099,13 +1149,14 @@ export type ApprovedHomeworkFragment = {
   } | null;
 };
 
-export type HomeWorkByLectureQueryVariables = Exact<{
+export type HomeWorkByLectureAndTrainingQueryVariables = Exact<{
   lectureId: Scalars["ID"];
+  trainingId: Scalars["ID"];
 }>;
 
-export type HomeWorkByLectureQuery = {
+export type HomeWorkByLectureAndTrainingQuery = {
   __typename?: "Query";
-  homeWorkByLecture?: {
+  homeWorkByLectureAndTraining?: {
     __typename?: "StudentHomeWorkDto";
     id?: string | null;
     answer?: string | null;
@@ -1131,6 +1182,7 @@ export type HomeWorkByLectureQuery = {
       firstName?: string | null;
       middleName?: string | null;
       lastName?: string | null;
+      email?: string | null;
     } | null;
   } | null;
 };
@@ -1341,6 +1393,7 @@ export type NotApprovedHomeworkFragment = {
 export type SendHomeWorkToCheckMutationVariables = Exact<{
   lectureId: Scalars["ID"];
   content: Scalars["String"];
+  trainingId: Scalars["ID"];
 }>;
 
 export type SendHomeWorkToCheckMutation = {
@@ -2415,9 +2468,12 @@ export type ApprovedMutationOptions = Apollo.BaseMutationOptions<
   ApprovedMutation,
   ApprovedMutationVariables
 >;
-export const HomeWorkByLectureDocument = gql`
-  query homeWorkByLecture($lectureId: ID!) {
-    homeWorkByLecture(lectureId: $lectureId) {
+export const HomeWorkByLectureAndTrainingDocument = gql`
+  query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
+    homeWorkByLectureAndTraining(
+      lectureId: $lectureId
+      trainingId: $trainingId
+    ) {
       id
       lecture {
         id
@@ -2436,6 +2492,7 @@ export const HomeWorkByLectureDocument = gql`
         firstName
         middleName
         lastName
+        email
       }
       creationDate
       startCheckingDate
@@ -2443,79 +2500,80 @@ export const HomeWorkByLectureDocument = gql`
     }
   }
 `;
-export type HomeWorkByLectureComponentProps = Omit<
+export type HomeWorkByLectureAndTrainingComponentProps = Omit<
   ApolloReactComponents.QueryComponentOptions<
-    HomeWorkByLectureQuery,
-    HomeWorkByLectureQueryVariables
+    HomeWorkByLectureAndTrainingQuery,
+    HomeWorkByLectureAndTrainingQueryVariables
   >,
   "query"
 > &
   (
-    | { variables: HomeWorkByLectureQueryVariables; skip?: boolean }
+    | { variables: HomeWorkByLectureAndTrainingQueryVariables; skip?: boolean }
     | { skip: boolean }
   );
 
-export const HomeWorkByLectureComponent = (
-  props: HomeWorkByLectureComponentProps
+export const HomeWorkByLectureAndTrainingComponent = (
+  props: HomeWorkByLectureAndTrainingComponentProps
 ) => (
   <ApolloReactComponents.Query<
-    HomeWorkByLectureQuery,
-    HomeWorkByLectureQueryVariables
+    HomeWorkByLectureAndTrainingQuery,
+    HomeWorkByLectureAndTrainingQueryVariables
   >
-    query={HomeWorkByLectureDocument}
+    query={HomeWorkByLectureAndTrainingDocument}
     {...props}
   />
 );
 
 /**
- * __useHomeWorkByLectureQuery__
+ * __useHomeWorkByLectureAndTrainingQuery__
  *
- * To run a query within a React component, call `useHomeWorkByLectureQuery` and pass it any options that fit your needs.
- * When your component renders, `useHomeWorkByLectureQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useHomeWorkByLectureAndTrainingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomeWorkByLectureAndTrainingQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useHomeWorkByLectureQuery({
+ * const { data, loading, error } = useHomeWorkByLectureAndTrainingQuery({
  *   variables: {
  *      lectureId: // value for 'lectureId'
+ *      trainingId: // value for 'trainingId'
  *   },
  * });
  */
-export function useHomeWorkByLectureQuery(
+export function useHomeWorkByLectureAndTrainingQuery(
   baseOptions: Apollo.QueryHookOptions<
-    HomeWorkByLectureQuery,
-    HomeWorkByLectureQueryVariables
+    HomeWorkByLectureAndTrainingQuery,
+    HomeWorkByLectureAndTrainingQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<
-    HomeWorkByLectureQuery,
-    HomeWorkByLectureQueryVariables
-  >(HomeWorkByLectureDocument, options);
+    HomeWorkByLectureAndTrainingQuery,
+    HomeWorkByLectureAndTrainingQueryVariables
+  >(HomeWorkByLectureAndTrainingDocument, options);
 }
-export function useHomeWorkByLectureLazyQuery(
+export function useHomeWorkByLectureAndTrainingLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    HomeWorkByLectureQuery,
-    HomeWorkByLectureQueryVariables
+    HomeWorkByLectureAndTrainingQuery,
+    HomeWorkByLectureAndTrainingQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
-    HomeWorkByLectureQuery,
-    HomeWorkByLectureQueryVariables
-  >(HomeWorkByLectureDocument, options);
+    HomeWorkByLectureAndTrainingQuery,
+    HomeWorkByLectureAndTrainingQueryVariables
+  >(HomeWorkByLectureAndTrainingDocument, options);
 }
-export type HomeWorkByLectureQueryHookResult = ReturnType<
-  typeof useHomeWorkByLectureQuery
+export type HomeWorkByLectureAndTrainingQueryHookResult = ReturnType<
+  typeof useHomeWorkByLectureAndTrainingQuery
 >;
-export type HomeWorkByLectureLazyQueryHookResult = ReturnType<
-  typeof useHomeWorkByLectureLazyQuery
+export type HomeWorkByLectureAndTrainingLazyQueryHookResult = ReturnType<
+  typeof useHomeWorkByLectureAndTrainingLazyQuery
 >;
-export type HomeWorkByLectureQueryResult = Apollo.QueryResult<
-  HomeWorkByLectureQuery,
-  HomeWorkByLectureQueryVariables
+export type HomeWorkByLectureAndTrainingQueryResult = Apollo.QueryResult<
+  HomeWorkByLectureAndTrainingQuery,
+  HomeWorkByLectureAndTrainingQueryVariables
 >;
 export const HomeWorkDocument = gql`
   query homeWork($homeWorkId: ID!) {
@@ -2904,8 +2962,16 @@ export type NotApprovedMutationOptions = Apollo.BaseMutationOptions<
   NotApprovedMutationVariables
 >;
 export const SendHomeWorkToCheckDocument = gql`
-  mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
-    sendHomeWorkToCheck(lectureId: $lectureId, content: $content) {
+  mutation sendHomeWorkToCheck(
+    $lectureId: ID!
+    $content: String!
+    $trainingId: ID!
+  ) {
+    sendHomeWorkToCheck(
+      lectureId: $lectureId
+      content: $content
+      trainingId: $trainingId
+    ) {
       id
       lecture {
         id
@@ -2970,6 +3036,7 @@ export const SendHomeWorkToCheckComponent = (
  *   variables: {
  *      lectureId: // value for 'lectureId'
  *      content: // value for 'content'
+ *      trainingId: // value for 'trainingId'
  *   },
  * });
  */

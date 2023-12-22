@@ -23,10 +23,6 @@ export {
   type MenuButtonBulletedListProps,
 } from "./menu-button-bulleted-list";
 export {
-  default as MenuButtonCode,
-  type MenuButtonCodeProps,
-} from "./menu-button-code";
-export {
   default as MenuButtonCodeBlock,
   type MenuButtonCodeBlockProps,
 } from "./menu-button-code-block";
@@ -145,3 +141,5 @@ export {
   default as LinkBubbleMenu,
   type LinkBubbleMenuProps,
 } from "./link-bubble-menu";
+export { default as MenuButtonYoutube } from "./menu-button-youtube";
+export { default as MenuButtonEmoji } from "./menu-button-emoji";
