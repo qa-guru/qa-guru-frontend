@@ -34,7 +34,7 @@ const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
     return <Navigate to="/" />;
   }
 
-  return <Layout>{children}</Layout>;
+  return <Layout isLogging>{children}</Layout>;
 };
 
 export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {

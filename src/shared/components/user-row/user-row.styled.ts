@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 export const StyledWrapperStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
@@ -8,11 +8,15 @@ export const StyledWrapperStack = styled(Stack)(({ theme }) => ({
   textAlign: "start",
 }));
 
+export const StyledBox = styled(Box)(({ theme }) => ({
+  lineHeight: "5px",
+}));
+
+export const StyledFullNameTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.main,
+}));
+
 export const StyledDateStack = styled(Stack)({
   flexDirection: "row",
   justifyContent: "space-between",
 });
-
-export const StyledBox = styled(Box)(({ theme }) => ({
-  lineHeight: "5px",
-}));

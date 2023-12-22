@@ -33,7 +33,7 @@ const baseOptions = {
       fontSize: "0.875rem", // ~14px
     },
     body1: {
-      fontSize: "0.9rem", // ~16px
+      fontSize: "0.9375rem", // ~15px
     },
     body2: {
       fontSize: "0.8rem", // ~14px

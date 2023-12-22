@@ -114,7 +114,6 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
           navigate(ROUTES.AUTHORIZATION);
-          client.resetStore();
         } else {
           setIsLoading(false);
           enqueueSnackbar(t("logout.unknownError"));
