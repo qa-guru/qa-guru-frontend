@@ -62,7 +62,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           return (
             <StyledPaper key={id}>
               <HomeworkItem
-                dataHomeWorkByLecture={item}
+                dataHomeWorkByLectureAndTraining={item}
                 dataUserId={dataUserId}
               />
               <ModalHomeworksOtherStudents

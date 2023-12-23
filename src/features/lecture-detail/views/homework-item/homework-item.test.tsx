@@ -10,7 +10,7 @@ describe("HomeworkItem", () => {
     const { asFragment } = render(
       <MemoryRouter>
         <HomeworkItem
-          dataHomeWorkByLecture={studentHomeWorkDto}
+          dataHomeWorkByLectureAndTraining={studentHomeWorkDto}
           dataUserId={userId}
         />
       </MemoryRouter>

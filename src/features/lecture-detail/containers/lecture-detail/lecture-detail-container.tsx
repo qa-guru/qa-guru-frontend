@@ -9,7 +9,6 @@ import {
 
 import LectureDetail from "../../views/lecture-detail";
 import useTariff from "../../hooks/use-tariff";
-import { LectureIdContext } from "../../context/lecture-id-context";
 
 const LectureDetailContainer: FC = () => {
   const { lectureId, trainingId } = useParams();
@@ -31,13 +30,11 @@ const LectureDetailContainer: FC = () => {
   if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
 
   return (
-    <LectureIdContext.Provider value={lectureId}>
-      <LectureDetail
-        dataLecture={dataLecture}
-        dataLectureHomework={dataLectureHomework}
-        tariffHomework={tariffHomework}
-      />
-    </LectureIdContext.Provider>
+    <LectureDetail
+      dataLecture={dataLecture}
+      dataLectureHomework={dataLectureHomework}
+      tariffHomework={tariffHomework}
+    />
   );
 };
 

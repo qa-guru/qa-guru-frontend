@@ -1,7 +1,8 @@
-import { FC, useContext, useRef } from "react";
+import { FC, useRef } from "react";
 import { client } from "api";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
+import { useParams } from "react-router-dom";
 
 import { ISendHomeWork } from "./send-homework.types";
 import {
@@ -9,22 +10,23 @@ import {
   StyledLoadingButton,
   StyledStack,
 } from "./send-homework.styled";
-import { LectureIdContext } from "../../context/lecture-id-context";
 
 const SendHomework: FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
-  const lectureId = useContext(LectureIdContext);
+  const { lectureId, trainingId } = useParams();
+
   const rteRef = useRef<RichTextEditorRef>(null);
 
   const handleSendHomeWork = () => {
     if (lectureId) {
       sendHomeWorkToCheck({
         variables: {
+          trainingId: trainingId!,
           lectureId,
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () =>
-          client.refetchQueries({ include: ["homeWorkByLecture"] }),
+          client.refetchQueries({ include: ["homeWorkByLectureAndTraining"] }),
       });
     }
   };

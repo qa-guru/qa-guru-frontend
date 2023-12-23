@@ -2,8 +2,6 @@ import { type EditorOptions, Node, mergeAttributes } from "@tiptap/core";
 import { Blockquote } from "@tiptap/extension-blockquote";
 import { Bold } from "@tiptap/extension-bold";
 import { BulletList } from "@tiptap/extension-bullet-list";
-import { Code } from "@tiptap/extension-code";
-import { CodeBlock } from "@tiptap/extension-code-block";
 import { Color } from "@tiptap/extension-color";
 import { Document } from "@tiptap/extension-document";
 import { Dropcursor } from "@tiptap/extension-dropcursor";
@@ -33,6 +31,7 @@ import { TextAlign } from "@tiptap/extension-text-align";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
 import { Youtube } from "@tiptap/extension-youtube";
+import { CodeBlockLowlight } from "@tiptap/extension-code-block-lowlight";
 import { useMemo } from "react";
 import {
   LinkBubbleMenuHandler,
@@ -41,14 +40,28 @@ import {
   ResizableImage,
 } from "shared/lib/mui-tiptap/extensions";
 import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
+import { common, createLowlight } from "lowlight";
+import css from "highlight.js/lib/languages/css";
+import js from "highlight.js/lib/languages/javascript";
+import ts from "highlight.js/lib/languages/typescript";
+import html from "highlight.js/lib/languages/xml";
 
 import { mentionSuggestionOptions } from "../editor/utils/mention-suggestion-options";
+
+const lowlight = createLowlight(common);
+
+lowlight.register("html", html);
+lowlight.register("css", css);
+lowlight.register("js", js);
+lowlight.register("ts", ts);
 
 const Iframe = Node.create({
   name: "iframe",
 
-  defaultOptions: {
-    allowFullscreen: true,
+  addOptions() {
+    return {
+      allowFullscreen: true,
+    };
   },
 
   group: "block",
@@ -101,6 +114,16 @@ const CustomSuperscript = Superscript.extend({
   excludes: "subscript",
 });
 
+const CustomYoutube = Youtube.extend({
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "div",
+      { class: "iframe-container" },
+      ["iframe", mergeAttributes(HTMLAttributes)],
+    ];
+  },
+});
+
 export default function useExtensions({
   placeholder,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
@@ -114,7 +137,9 @@ export default function useExtensions({
       TableCell,
 
       BulletList,
-      CodeBlock,
+      CodeBlockLowlight.configure({
+        lowlight,
+      }),
       Document,
       HardBreak,
       ListItem,
@@ -127,7 +152,6 @@ export default function useExtensions({
       Bold,
       Blockquote,
 
-      Code,
       Italic,
       Underline,
       Strike,
@@ -169,10 +193,8 @@ export default function useExtensions({
 
       Iframe,
 
-      Youtube.configure({
+      CustomYoutube.configure({
         inline: false,
-        width: 480,
-        height: 320,
         allowFullscreen: false,
       }),
 

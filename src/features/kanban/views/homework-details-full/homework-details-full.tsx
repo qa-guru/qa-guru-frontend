@@ -96,7 +96,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
       />
       <StyledAnswerBox>
         <Homework
-          dataHomeWorkByLecture={data.homeWork}
+          dataHomeWorkByLectureAndTraining={data.homeWork}
           dataUserId={dataUserId}
           hideMentorAndStudent
         />

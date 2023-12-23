@@ -1,7 +1,7 @@
 import { StudentHomeWorkDto, UserQuery } from "api/graphql/generated/graphql";
 
 export interface IHomeworkItem {
-  dataHomeWorkByLecture?: StudentHomeWorkDto | null;
+  dataHomeWorkByLectureAndTraining?: StudentHomeWorkDto | null;
   dataUserId: UserQuery;
   hideMentorAndStudent?: boolean;
 }

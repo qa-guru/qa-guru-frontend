@@ -14,7 +14,7 @@ export const Z_INDEXES = {
   TABLE_ELEMENT: 1,
   MENU_BAR: 2,
   NOTCHED_OUTLINE: 2,
-  BUBBLE_MENU: 3,
+  BUBBLE_MENU: 3000,
 } as const;
 
 export function getEditorStyles(theme: Theme): StyleRules {
