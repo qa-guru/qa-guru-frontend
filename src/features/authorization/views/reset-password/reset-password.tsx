@@ -7,12 +7,14 @@ import { InputText } from "shared/components/form";
 
 import { IResetForm, IResetPassword } from "./reset-password.types";
 import {
+  StyledLoadingButton,
+  StyledLocalSelectorWrapper,
   StyledLogo,
   StyledPaper,
-  StyledResetButton,
   StyledStack,
   StyledWrapper,
-} from "./reset-password.styled";
+} from "../views.styled";
+import LocalSelector from "../../../../shared/components/local-selector/local-selector";
 
 const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   const { t } = useTranslation();
@@ -38,6 +40,9 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
 
   return (
     <StyledWrapper>
+      <StyledLocalSelectorWrapper>
+        <LocalSelector isLogging />
+      </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,13 +54,13 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
               label="E-mail"
               errors={errors}
             />
-            <StyledResetButton
+            <StyledLoadingButton
               type="submit"
               variant="contained"
               disabled={isLoading}
             >
               Сбросить пароль
-            </StyledResetButton>
+            </StyledLoadingButton>
           </StyledStack>
         </form>
       </StyledPaper>

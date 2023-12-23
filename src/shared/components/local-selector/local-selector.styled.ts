@@ -6,16 +6,24 @@ export const StyledFormControl = styled(FormControl)({
     display: "none",
   },
   margin: "auto",
+  padding: "12px",
 });
 
 export const StyledSelect = styled(Select)(({ theme }) => ({
+  backgroundColor: "transparent",
   alignItems: "center",
   color: theme.palette.primary.main,
   "& .MuiSelect-icon": {
     color: theme.palette.primary.main,
   },
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+  "& .MuiSelect-select:focus": {
+    backgroundColor: "transparent",
+  },
 }));
 
 export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
-  gap: theme.spacing(2),
+  gap: "5px",
 }));

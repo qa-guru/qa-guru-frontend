@@ -7,12 +7,13 @@ import { StyledBox, StyledContainer } from "./layout.styled";
 
 interface ILayout {
   children?: ReactNode;
+  isLogging?: boolean;
 }
 
-const Layout: FC<ILayout> = ({ children }) => {
+const Layout: FC<ILayout> = ({ children, isLogging }) => {
   return (
     <StyledBox>
-      <Header />
+      {!isLogging && <Header />}
       {children}
       <StyledContainer>
         <Outlet />

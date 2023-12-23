@@ -1,5 +1,5 @@
-query homeWorkByLecture($lectureId: ID!) {
-  homeWorkByLecture(lectureId: $lectureId) {
+query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
+  homeWorkByLectureAndTraining(lectureId: $lectureId, trainingId: $trainingId) {
     id
     lecture {
       id
@@ -12,12 +12,19 @@ query homeWorkByLecture($lectureId: ID!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     mentor {
       id
       firstName
       middleName
       lastName
+      email
+      rating {
+        rating
+      }
     }
     creationDate
     startCheckingDate

@@ -14,7 +14,7 @@ query homeWorks(
         id
         subject
         description
-        contentHomeWork{
+        contentHomeWork {
           url
           value
           type
@@ -27,15 +27,21 @@ query homeWorks(
         firstName
         middleName
         lastName
+        rating {
+          rating
+        }
       }
       mentor {
         id
         firstName
         middleName
         lastName
+        rating {
+          rating
+        }
       }
-      creationDate,
-      startCheckingDate,
+      creationDate
+      startCheckingDate
       endCheckingDate
     }
   }

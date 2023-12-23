@@ -13,6 +13,9 @@ query users($offset: Int!, $limit: Int!, $sort: UserSort!) {
       creationDate
       confirmationDate
       updateDate
+      rating {
+        rating
+      }
     }
     totalElements
   }

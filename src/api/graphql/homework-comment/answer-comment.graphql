@@ -7,6 +7,9 @@ mutation answerComment($parentID: ID!, $content: String!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     creationDate
     content

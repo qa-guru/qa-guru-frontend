@@ -5,10 +5,10 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { InputText } from "shared/components/form";
 import { useNavigate } from "react-router-dom";
+import LocalSelector from "shared/components/local-selector/local-selector";
 
 import { ILogin, ILoginForm } from "./login.types";
 import {
-  StyledAlignBox,
   StyledBottomStack,
   StyledButton,
   StyledLoadingButton,
@@ -16,7 +16,8 @@ import {
   StyledPaper,
   StyledStack,
   StyledWrapper,
-} from "./login.styled";
+  StyledLocalSelectorWrapper,
+} from "../views.styled";
 import { ROUTES } from "../../constants";
 
 const Login: FC<ILogin> = (props) => {
@@ -69,6 +70,9 @@ const Login: FC<ILogin> = (props) => {
 
   return (
     <StyledWrapper>
+      <StyledLocalSelectorWrapper>
+        <LocalSelector isLogging />
+      </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form>
@@ -88,8 +92,6 @@ const Login: FC<ILogin> = (props) => {
               type="password"
               errors={errors}
             />
-          </StyledStack>
-          <StyledBottomStack>
             <StyledLoadingButton
               onClick={handleSubmit(doLogin)}
               loading={isLoading}
@@ -97,18 +99,16 @@ const Login: FC<ILogin> = (props) => {
             >
               {t("login")}
             </StyledLoadingButton>
-          </StyledBottomStack>
+          </StyledStack>
         </form>
-        <StyledAlignBox>
+        <StyledBottomStack>
           <StyledButton variant="text" onClick={roureReset}>
             {t("restore")}
           </StyledButton>
-        </StyledAlignBox>
-        <StyledAlignBox>
           <StyledButton variant="text" onClick={routeRegister}>
             {t("reg.route")}
           </StyledButton>
-        </StyledAlignBox>
+        </StyledBottomStack>
       </StyledPaper>
     </StyledWrapper>
   );

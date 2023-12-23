@@ -13,12 +13,18 @@ mutation updateHomework($id: ID!, $content: String!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     mentor {
       id
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     startCheckingDate
     endCheckingDate

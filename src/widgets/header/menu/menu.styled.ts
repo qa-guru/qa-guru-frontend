@@ -6,11 +6,10 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     display: "flex",
   },
-  marginLeft: "52px",
-  height: "50px",
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  gap: theme.spacing(3),
+  gap: "30px",
+  padding: "0 20px",
 }));

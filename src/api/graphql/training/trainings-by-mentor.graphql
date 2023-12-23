@@ -13,6 +13,9 @@ query trainingsByMentor($offset: Int!, $limit: Int!, $sort: TrainingSort) {
         firstName
         middleName
         lastName
+        rating {
+          rating
+        }
       }
     }
   }

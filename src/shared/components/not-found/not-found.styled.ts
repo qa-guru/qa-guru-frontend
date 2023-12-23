@@ -4,8 +4,8 @@ import { ReactComponent as LensImage } from "assets/images/lens.svg";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   position: "absolute",
-  top: "65px",
-  bottom: "65px",
+  top: "76px",
+  bottom: "70px",
   width: "100%",
   backgroundColor: theme.palette.purple.main,
   justifyContent: "center",

@@ -17,6 +17,9 @@ query commentsHomeWorkByHomeWork(
         firstName
         middleName
         lastName
+        rating {
+          rating
+        }
       }
       creationDate
       content
@@ -58,6 +61,9 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
     middleName
     avatarLocation
     locked
+    rating {
+      rating
+    }
   }
   content
 }

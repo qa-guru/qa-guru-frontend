@@ -1,5 +1,13 @@
-mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
-  sendHomeWorkToCheck(lectureId: $lectureId, content: $content) {
+mutation sendHomeWorkToCheck(
+  $lectureId: ID!
+  $content: String!
+  $trainingId: ID!
+) {
+  sendHomeWorkToCheck(
+    lectureId: $lectureId
+    content: $content
+    trainingId: $trainingId
+  ) {
     id
     lecture {
       id
@@ -13,12 +21,18 @@ mutation sendHomeWorkToCheck($lectureId: ID!, $content: String!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     mentor {
       id
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     startCheckingDate
     endCheckingDate

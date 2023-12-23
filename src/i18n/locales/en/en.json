@@ -18,6 +18,7 @@
   "email.required": "E-mail is required",
   "password.required": "Password is required",
   "phone.required": "Phone is required",
+  "token.required": "Token is required",
   "password.required.max": "Must be no more than 15 characters",
   "password.required.min": "Must be more than 8 characters",
   "passwords.mismatch": "Passwords mismatch",
@@ -35,6 +36,7 @@
   "russian": "Russian",
 
   "page.home": "Home",
+  "page.board": "Task board",
 
   "homework": "Answer to homework is required",
   "homework.max": "Answer to homework must be no more than 2000 characters",
