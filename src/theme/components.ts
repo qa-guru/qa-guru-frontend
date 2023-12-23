@@ -39,8 +39,8 @@ const components = (theme: Theme) => {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "100px",
           fontSize: "0.72rem",
+          width: "auto",
         },
       },
     },
@@ -93,9 +93,11 @@ const components = (theme: Theme) => {
         },
       },
     },
-    MuiDateCalendar: {
+    MuiIconButton: {
       styleOverrides: {
-        root: {},
+        root: {
+          padding: "6px",
+        },
       },
     },
   };

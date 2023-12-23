@@ -4,14 +4,16 @@ import { useTranslation } from "react-i18next";
 import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
+import LocalSelector from "shared/components/local-selector/local-selector";
 
 import {
+  StyledLoadingButton,
+  StyledLocalSelectorWrapper,
   StyledLogo,
   StyledPaper,
-  StyledResetButton,
   StyledStack,
   StyledWrapper,
-} from "./set-new-password.styled";
+} from "../views.styled";
 import { ISetNewPassword, ISetNewPasswordForm } from "./set-new-password.types";
 
 const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
@@ -28,7 +30,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        newPassword: yup.string().required(t("password.required")!),
+        newPassword: yup.string().required(t("password.required")),
         confirmPassword: yup
           .string()
           .oneOf([yup.ref("newPassword")], t("passwords.mismatch"))
@@ -43,6 +45,9 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
 
   return (
     <StyledWrapper>
+      <StyledLocalSelectorWrapper>
+        <LocalSelector isLogging />
+      </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,13 +68,13 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
               type="password"
               errors={errors}
             />
-            <StyledResetButton
+            <StyledLoadingButton
               variant="contained"
               type="submit"
               disabled={isLoading}
             >
               Сохранить
-            </StyledResetButton>
+            </StyledLoadingButton>
           </StyledStack>
         </form>
       </StyledPaper>

@@ -19,7 +19,6 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  width: "110px",
   color: theme.palette.white.main,
 }));
 
@@ -32,7 +31,6 @@ export const StyledItemStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
-  width: "110px",
   color: theme.palette.black.main,
 }));
 

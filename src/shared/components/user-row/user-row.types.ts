@@ -11,4 +11,5 @@ export interface IUserRow {
   variant?: "body1" | "body2" | "subtitle1" | "subtitle2";
   roles?: Array<UserRole | null> | null;
   hideFullName?: boolean;
+  hideAvatar?: boolean;
 }

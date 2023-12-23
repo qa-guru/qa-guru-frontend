@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import { FormControl, FormHelperText, TextField } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,18 +6,18 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
 import { UserCreateInput } from "api/graphql/generated/graphql";
-import { InputText, InputPhone } from "shared/components/form";
+import { InputPhone, InputText } from "shared/components/form";
 
 import {
-  StyledAlignBox,
   StyledBottomStack,
   StyledButton,
   StyledLoadingButton,
+  StyledLocalSelectorWrapper,
   StyledLogo,
   StyledPaper,
   StyledStack,
   StyledWrapper,
-} from "./signup.styled";
+} from "../views.styled";
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 
@@ -50,6 +49,10 @@ const Signup: FC<ISignUp> = (props) => {
           .string()
           .min(REQUIRED_SYMBOLS.MIN, t("password.required.min"))
           .max(REQUIRED_SYMBOLS.MAX, t("password.required.max"))
+          .required(t("password.required")),
+        confirmPassword: yup
+          .string()
+          .oneOf([yup.ref("password")], t("passwords.mismatch"))
           .required(t("password.required")),
         phoneNumber: yup.string().required(t("phone.required")),
       })
@@ -84,6 +87,9 @@ const Signup: FC<ISignUp> = (props) => {
 
   return (
     <StyledWrapper>
+      <StyledLocalSelectorWrapper>
+        <LocalSelector isLogging />
+      </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form>
@@ -124,21 +130,14 @@ const Signup: FC<ISignUp> = (props) => {
               type="password"
               errors={errors}
             />
-            <FormControl fullWidth>
-              <TextField
-                name="password"
-                placeholder={t("enter.password")}
-                label={t("password.confirm")}
-                onChange={(e) => setValueConfirmPassword(e.target.value)}
-                type="password"
-              />
-              {valueConfirmPassword !== getValues("password") && (
-                <FormHelperText error>Пароли не совпадают</FormHelperText>
-              )}
-            </FormControl>
-          </StyledStack>
-          <StyledBottomStack>
-            <LocalSelector />
+            <InputText
+              control={control}
+              name="confirmPassword"
+              placeholder={t("password.confirm")}
+              label="Повторите пароль"
+              type="password"
+              errors={errors}
+            />
             <StyledLoadingButton
               onClick={handleSubmit(onSubmit)}
               loading={isLoading}
@@ -146,13 +145,13 @@ const Signup: FC<ISignUp> = (props) => {
             >
               {t("registration")}
             </StyledLoadingButton>
-          </StyledBottomStack>
+          </StyledStack>
         </form>
-        <StyledAlignBox>
+        <StyledBottomStack>
           <StyledButton variant="text" onClick={routeLogin}>
             {t("auth.route")}
           </StyledButton>
-        </StyledAlignBox>
+        </StyledBottomStack>
       </StyledPaper>
     </StyledWrapper>
   );

@@ -1,13 +1,20 @@
 import { styled } from "@mui/system";
-import { Box, Paper } from "@mui/material";
-import { ReactComponent as Logo } from "assets/icons/logo-footer.svg";
+import { Box, Link, Paper, Stack } from "@mui/material";
+import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
-export const StyledBox = styled(Box)(({ theme }) => ({
-  width: "100%",
-  textAlign: "start",
-  padding: "10px 0 0",
-  [theme.breakpoints.down("sm")]: {
+export const StyledWrapper = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  height: "70px",
+  maxWidth: "1920px",
+  margin: "0 auto",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "20px 40px",
+  [theme.breakpoints.down("md")]: {
+    height: "150px",
     textAlign: "center",
+    justifyContent: "center",
+    flexWrap: "wrap",
   },
 }));
 
@@ -16,28 +23,35 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.purple.main,
 }));
 
-export const StyledWrapper = styled(Box)(({ theme }) => ({
-  maxWidth: "1920px",
-  height: "65px",
-  margin: "0 auto",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "7px 20px",
-  [theme.breakpoints.down("sm")]: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    height: "95px",
+export const StyledBox = styled(Box)(({ theme }) => ({
+  width: "100%",
+  marginTop: "7px",
+  [theme.breakpoints.down("md")]: {
+    marginTop: 0,
   },
 }));
 
 export const StyledLogo = styled(Logo)(({ theme }) => ({
-  marginTop: "7px",
+  width: "166px",
   height: "25px",
   viewBox: "0 0 250 38",
-  width: "120px",
-  [theme.breakpoints.up("sm")]: {
-    width: "166px",
+}));
+
+export const StyledSupportLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+  margin: "0 20px",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+    textAlign: "center",
+    marginTop: "20px",
+  },
+}));
+
+export const StyledIconBox = styled(Box)(({ theme }) => ({
+  whiteSpace: "nowrap",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "10px",
   },
 }));
