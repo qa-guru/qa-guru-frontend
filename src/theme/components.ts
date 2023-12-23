@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/named
-import { Theme } from "@mui/material";
+import { type Theme } from "@mui/material";
 
 const components = (theme: Theme) => {
   // @ts-ignore
