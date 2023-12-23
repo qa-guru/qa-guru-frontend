@@ -23,8 +23,7 @@ const HomeworkContainer: FC = () => {
   });
 
   if (loadingUserId || loadingHomeWorkByLecture) return <Spinner />;
-  if (!dataHomeWorkByLectureAndTraining || !dataUserId)
-    return <NoDataErrorMessage />;
+  if (!dataUserId) return <NoDataErrorMessage />;
 
   return (
     <Homework

@@ -24,7 +24,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {
-          client.refetchQueries({ include: ["homeWorkByLecture"] });
+          client.refetchQueries({ include: ["homeWorkByLectureAndTraining"] });
           setOpenHomeWorkEdit(false);
         },
       });

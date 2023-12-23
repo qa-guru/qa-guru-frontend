@@ -80,6 +80,7 @@ type Query {
   user: UserDto
   userRoles: [UserRoleDto]
   users(offset: Int!, limit: Int!, sort: UserSort): UsersDto
+  usersRating(offset: Int!, limit: Int!, sort: UserSort): UsersRatingDto
   mentors(offset: Int!, limit: Int!, sort: UserSort): UsersDto
   checkResetPasswordToken(token: String!): Void
   """
@@ -415,6 +416,15 @@ type UserDto {
   updateDate: LocalDateTime
 }
 
+type UserRatingDto {
+  id: ID
+  firstName: String
+  lastName: String
+  middleName: String
+  rating: RatingUserDto
+  avatarLocation: String
+}
+
 type UserRoleDto {
   name: String
   description: String
@@ -422,6 +432,13 @@ type UserRoleDto {
 
 type UsersDto {
   items: [UserDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type UsersRatingDto {
+  items: [UserRatingDto]
   offset: Int
   limit: Int
   totalElements: Long

@@ -26,7 +26,7 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () =>
-          client.refetchQueries({ include: ["homeWorkByLecture"] }),
+          client.refetchQueries({ include: ["homeWorkByLectureAndTraining"] }),
       });
     }
   };

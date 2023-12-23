@@ -439,6 +439,7 @@ export type Query = {
   user?: Maybe<UserDto>;
   userRoles?: Maybe<Array<Maybe<UserRoleDto>>>;
   users?: Maybe<UsersDto>;
+  usersRating?: Maybe<UsersRatingDto>;
 };
 
 /** Query root */
@@ -583,6 +584,13 @@ export type QueryTrainingsHomeWorksStatisticArgs = {
 
 /** Query root */
 export type QueryUsersArgs = {
+  limit: Scalars["Int"];
+  offset: Scalars["Int"];
+  sort?: InputMaybe<UserSort>;
+};
+
+/** Query root */
+export type QueryUsersRatingArgs = {
   limit: Scalars["Int"];
   offset: Scalars["Int"];
   sort?: InputMaybe<UserSort>;
@@ -820,6 +828,16 @@ export type UserDto = {
   updateDate?: Maybe<Scalars["LocalDateTime"]>;
 };
 
+export type UserRatingDto = {
+  __typename?: "UserRatingDto";
+  avatarLocation?: Maybe<Scalars["String"]>;
+  firstName?: Maybe<Scalars["String"]>;
+  id?: Maybe<Scalars["ID"]>;
+  lastName?: Maybe<Scalars["String"]>;
+  middleName?: Maybe<Scalars["String"]>;
+  rating?: Maybe<RatingUserDto>;
+};
+
 export enum UserRole {
   Admin = "ADMIN",
   Lector = "LECTOR",
@@ -859,6 +877,14 @@ export type UserUpdateInput = {
 export type UsersDto = {
   __typename?: "UsersDto";
   items?: Maybe<Array<Maybe<UserDto>>>;
+  limit?: Maybe<Scalars["Int"]>;
+  offset?: Maybe<Scalars["Int"]>;
+  totalElements?: Maybe<Scalars["Long"]>;
+};
+
+export type UsersRatingDto = {
+  __typename?: "UsersRatingDto";
+  items?: Maybe<Array<Maybe<UserRatingDto>>>;
   limit?: Maybe<Scalars["Int"]>;
   offset?: Maybe<Scalars["Int"]>;
   totalElements?: Maybe<Scalars["Long"]>;
