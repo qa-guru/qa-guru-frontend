@@ -85,7 +85,7 @@ const Profile: FC<IProfile> = (props) => {
         }}
       >
         <StyledUserBox>
-          <UserRow user={user} email={user?.email} variant="body2" width={0} />
+          <UserRow user={user} email={user?.email} variant="body2" hideAvatar />
         </StyledUserBox>
         <Divider />
         {settings.map((setting) => {

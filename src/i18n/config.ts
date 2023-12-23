@@ -25,6 +25,7 @@ use(initReactI18next)
     ns: ["translations"],
     defaultNS: "translations",
     returnNull: false,
+    fallbackLng: "ru",
   });
 
 i18n.languages = ["en", "ru"];

@@ -1,30 +1,35 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import {
-  useHomeWorkByLectureQuery,
+  useHomeWorkByLectureAndTrainingQuery,
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Spinner from "shared/components/spinner";
+import { useParams } from "react-router-dom";
 
-import { LectureIdContext } from "../../context/lecture-id-context";
 import Homework from "../../views/homework";
 
 const HomeworkContainer: FC = () => {
-  const lectureId = useContext(LectureIdContext);
+  const { lectureId, trainingId } = useParams();
+
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
 
-  const { data: dataHomeWorkByLecture, loading: loadingHomeWorkByLecture } =
-    useHomeWorkByLectureQuery({
-      variables: { lectureId: lectureId! },
-      fetchPolicy: "cache-first",
-    });
+  const {
+    data: dataHomeWorkByLectureAndTraining,
+    loading: loadingHomeWorkByLecture,
+  } = useHomeWorkByLectureAndTrainingQuery({
+    variables: { lectureId: lectureId!, trainingId: trainingId! },
+    fetchPolicy: "cache-first",
+  });
 
   if (loadingUserId || loadingHomeWorkByLecture) return <Spinner />;
-  if (!dataHomeWorkByLecture || !dataUserId) return <NoDataErrorMessage />;
+  if (!dataUserId) return <NoDataErrorMessage />;
 
   return (
     <Homework
-      dataHomeWorkByLecture={dataHomeWorkByLecture?.homeWorkByLecture}
+      dataHomeWorkByLectureAndTraining={
+        dataHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining
+      }
       dataUserId={dataUserId}
     />
   );

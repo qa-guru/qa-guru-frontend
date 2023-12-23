@@ -1,17 +1,15 @@
-import { Box, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "api/graphql/generated/graphql";
-import { useAuth } from "features/authorization/context/auth-context";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
 import MenuBurger from "./menu-burger/menu-burger";
 import {
-  StyledBox,
   StyledHeader,
   StyledLink,
   StyledLogo,
@@ -29,12 +27,8 @@ interface IPages {
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
   const navigate = useNavigate();
-  const { isAuth } = useAuth();
   const { t } = useTranslation();
   const pages: IPages[] = [];
-  const refreshPage = () => {
-    navigate(0);
-  };
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
   const hasKanbanAccess = useRoleAccess({
@@ -56,7 +50,7 @@ const Header: FC = () => {
 
   if (hasKanbanAccess) {
     pages.push({
-      title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
+      title: <StyledLink to="/kanban">{t("page.board")}</StyledLink>,
       pageURL: "/kanban",
       id: 1,
     });
@@ -71,30 +65,21 @@ const Header: FC = () => {
     <StyledHeader>
       <StyledPaper>
         <StyledWrapper>
-          {isAuth && (
+          <StyledStack>
             <MenuBurger
               pages={pages}
               setAnchorElNav={setAnchorElNav}
               handleClickNavMenu={handleClickNavMenu}
               anchorElNav={anchorElNav}
             />
-          )}
-
-          <StyledBox>
-            <IconButton
-              disableRipple
-              onClick={() => (isAuth ? handleClickNavMenu("/") : refreshPage)}
-            >
+            <IconButton disableRipple onClick={() => handleClickNavMenu("/")}>
               <StyledLogo />
             </IconButton>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-          </StyledBox>
-
+          </StyledStack>
           <StyledStack>
-            <Box>
-              <LocalSelector />
-            </Box>
-            {isAuth && <Profile />}
+            <LocalSelector />
+            <Profile />
           </StyledStack>
         </StyledWrapper>
       </StyledPaper>

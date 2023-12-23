@@ -7,6 +7,9 @@ query trainingPurchases {
       firstName
       lastName
       middleName
+      rating {
+        rating
+      }
     }
     trainingTariff {
       id

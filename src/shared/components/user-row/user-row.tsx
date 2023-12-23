@@ -25,18 +25,21 @@ const UserRow: FC<IUserRow> = (props) => {
     roles,
     variant = "body2",
     hideFullName,
+    hideAvatar,
   } = props;
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
   return (
     <StyledWrapperStack>
       {Icon && <Icon />}
-      <AvatarCustom
-        fullName={fullName}
-        width={width}
-        height={height}
-        variant="subtitle2"
-      />
+      {!hideAvatar && (
+        <AvatarCustom
+          fullName={fullName}
+          width={width}
+          height={height}
+          variant="subtitle2"
+        />
+      )}
       <StyledBox>
         {!hideFullName && (
           <>

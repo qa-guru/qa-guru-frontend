@@ -24,7 +24,10 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
       <StyledDialogContent id="scroll-container">
         <StyledClearIcon onClick={hideModalAndUpdateUrl} />
         <StyledBox>
-          <HomeworkItem dataHomeWorkByLecture={item} dataUserId={dataUserId} />
+          <HomeworkItem
+            dataHomeWorkByLectureAndTraining={item}
+            dataUserId={dataUserId}
+          />
           <Comments id={item?.id}>
             <CommentsPagination />
           </Comments>

@@ -6,6 +6,9 @@ mutation updateLecture($input: LectureInput!) {
       firstName
       lastName
       middleName
+      rating {
+        rating
+      }
     }
     homeWorkLevel {
       id

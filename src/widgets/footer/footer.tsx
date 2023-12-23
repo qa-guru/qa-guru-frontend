@@ -1,10 +1,12 @@
 import { FC } from "react";
-import { IconButton, Link } from "@mui/material";
+import { IconButton, Typography, Link } from "@mui/material";
 
 import {
   StyledBox,
+  StyledIconBox,
   StyledLogo,
   StyledPaper,
+  StyledSupportLink,
   StyledWrapper,
 } from "./footer.styled";
 import { ISocialIcon, socialIcons } from "./footer.types";
@@ -28,13 +30,18 @@ const Footer: FC = () => {
           <StyledBox>
             <StyledLogo />
           </StyledBox>
-          {socialIcons.map((socialIcon) => (
-            <SocialIcon
-              key={socialIcon.id}
-              icon={socialIcon.component}
-              url={socialIcon.url}
-            />
-          ))}
+          <StyledSupportLink href="https://t.me/qa_guru_support">
+            <Typography variant="body1">Написать в поддержку</Typography>
+          </StyledSupportLink>
+          <StyledIconBox>
+            {socialIcons.map((socialIcon) => (
+              <SocialIcon
+                key={socialIcon.id}
+                icon={socialIcon.component}
+                url={socialIcon.url}
+              />
+            ))}
+          </StyledIconBox>
         </StyledWrapper>
       </StyledPaper>
     </footer>

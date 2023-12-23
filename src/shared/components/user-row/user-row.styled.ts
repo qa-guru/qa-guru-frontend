@@ -34,6 +34,6 @@ export const StyledDateStack = styled(Stack)({
   justifyContent: "space-between",
 });
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   lineHeight: "5px",
-}));
+});

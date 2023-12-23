@@ -11,6 +11,9 @@ query mentors($offset: Int!, $limit: Int!, $sort: UserSort!) {
       lastName
       phoneNumber
       locked
+      rating {
+        rating
+      }
     }
   }
 }

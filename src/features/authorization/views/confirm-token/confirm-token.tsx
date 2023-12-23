@@ -4,14 +4,17 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
+import { t } from "i18next";
+import LocalSelector from "shared/components/local-selector/local-selector";
 
 import {
+  StyledLoadingButton,
+  StyledLocalSelectorWrapper,
   StyledLogo,
   StyledPaper,
-  StyledResetButton,
   StyledStack,
   StyledWrapper,
-} from "./confirm-token.styled";
+} from "../views.styled";
 import { IConfirmToken, IConfirmTokenForm } from "./confirm-token.types";
 
 const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
@@ -25,7 +28,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        token: yup.string().required(),
+        token: yup.string().required(t("token.required")),
       })
     ),
   });
@@ -36,6 +39,9 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
 
   return (
     <StyledWrapper>
+      <StyledLocalSelectorWrapper>
+        <LocalSelector isLogging />
+      </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -51,13 +57,13 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
               label="Токен"
               errors={errors}
             />
-            <StyledResetButton
+            <StyledLoadingButton
               type="submit"
               variant="contained"
               disabled={isLoading}
             >
               Ok
-            </StyledResetButton>
+            </StyledLoadingButton>
           </StyledStack>
         </form>
       </StyledPaper>

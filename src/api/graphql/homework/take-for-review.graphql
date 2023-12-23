@@ -19,6 +19,9 @@ fragment NewTakeForReviewHomeWork on StudentHomeWorkDto {
     firstName
     middleName
     lastName
+    rating {
+      rating
+    }
   }
   mentor {
     id
@@ -26,6 +29,9 @@ fragment NewTakeForReviewHomeWork on StudentHomeWorkDto {
     firstName
     middleName
     lastName
+    rating {
+      rating
+    }
   }
   startCheckingDate
   endCheckingDate

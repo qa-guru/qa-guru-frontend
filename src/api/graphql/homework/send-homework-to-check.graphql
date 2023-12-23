@@ -21,12 +21,18 @@ mutation sendHomeWorkToCheck(
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     mentor {
       id
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     startCheckingDate
     endCheckingDate

@@ -1,7 +1,7 @@
-import { HomeWorkByLectureQuery } from "api/graphql/generated/graphql";
+import { HomeWorkByLectureAndTrainingQuery } from "api/graphql/generated/graphql";
 
-export const homeWorkByLecture: HomeWorkByLectureQuery = {
-  homeWorkByLecture: {
+export const homeWorkByLecture: HomeWorkByLectureAndTrainingQuery = {
+  homeWorkByLectureAndTraining: {
     id: "string",
     answer: "string",
     status: null,
