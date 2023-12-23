@@ -7,7 +7,8 @@ import { IUserRow } from "./user-row.types";
 import {
   StyledBox,
   StyledDateStack,
-  StyledFullNameTypography,
+  StyledRatingChip,
+  StyledStack,
   StyledWrapperStack,
 } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
@@ -42,9 +43,14 @@ const UserRow: FC<IUserRow> = (props) => {
       <StyledBox>
         {!hideFullName && (
           <>
-            <StyledFullNameTypography variant={variant}>
-              {fullName}
-            </StyledFullNameTypography>
+            <StyledStack>
+              <Typography variant={variant}>{fullName}</Typography>
+              <StyledRatingChip
+                size="small"
+                variant="outlined"
+                label={user?.rating?.rating}
+              />
+            </StyledStack>
             {roles && roles.length > 0 && (
               <Typography variant="caption">
                 {formatRole(roles[roles.length - 1])}

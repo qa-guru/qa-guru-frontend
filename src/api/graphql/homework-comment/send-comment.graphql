@@ -7,6 +7,9 @@ mutation sendComment($homeWorkId: ID!, $content: String!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     creationDate
     content

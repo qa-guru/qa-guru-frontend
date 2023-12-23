@@ -12,6 +12,9 @@ query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     mentor {
       id
@@ -19,6 +22,9 @@ query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
       middleName
       lastName
       email
+      rating {
+        rating
+      }
     }
     creationDate
     startCheckingDate

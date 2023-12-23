@@ -17,6 +17,9 @@ query training($id: ID!) {
       firstName
       lastName
       middleName
+      rating {
+        rating
+      }
     }
   }
 }

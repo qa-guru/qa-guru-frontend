@@ -7,6 +7,9 @@ mutation updateComment($id: ID!, $content: String!) {
       firstName
       middleName
       lastName
+      rating {
+        rating
+      }
     }
     creationDate
     content

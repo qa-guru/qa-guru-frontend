@@ -6,6 +6,9 @@ query lecture($id: ID!) {
       firstName
       lastName
       middleName
+      rating {
+        rating
+      }
     }
     subject
     homeWorkLevel {
