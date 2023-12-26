@@ -9,7 +9,8 @@ export default ({ mode }: any) => {
   return defineConfig({
     server: {
       proxy: {
-        "^/(graphql|login|logout)": process.env.VITE_APP_ENDPOINT!,
+        "^/(graphql|login|logout|/api/v1/avatar/upload|/api/v1/avatar)":
+          process.env.VITE_APP_ENDPOINT!,
       },
       host: true,
     },
