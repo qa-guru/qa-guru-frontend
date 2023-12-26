@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,7 +25,6 @@ const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [valueConfirmPassword, setValueConfirmPassword] = useState<string>("");
 
   const {
     handleSubmit,
@@ -63,7 +62,7 @@ const Signup: FC<ISignUp> = (props) => {
     navigate(ROUTES.AUTHORIZATION);
   };
 
-  const passwordsMatch = valueConfirmPassword === getValues("password");
+  const passwordsMatch = getValues("password");
 
   const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
     if (passwordsMatch) {
