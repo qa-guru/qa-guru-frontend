@@ -1,12 +1,11 @@
 import { FC, MouseEvent } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 
 import { IMenuBurger } from "./menu-burger.types";
-import { StyledBox } from "./menu-burger.styled";
+import { StyledBox, StyledMenu } from "./menu-burger.styled";
 
 const MenuBurger: FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;
@@ -24,7 +23,7 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
       <IconButton size="large" onClick={handleOpenNavMenu}>
         <MenuIcon />
       </IconButton>
-      <Menu
+      <StyledMenu
         keepMounted
         anchorEl={anchorElNav}
         open={Boolean(anchorElNav)}
@@ -39,7 +38,7 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
             </MenuItem>
           );
         })}
-      </Menu>
+      </StyledMenu>
     </StyledBox>
   );
 };

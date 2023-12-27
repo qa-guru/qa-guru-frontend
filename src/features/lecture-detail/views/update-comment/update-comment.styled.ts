@@ -22,12 +22,11 @@ export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
-  color: theme.palette.white.main,
-  minWidth: "147px",
+  color: theme.palette.app.white,
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   minWidth: "116px",
-  color: theme.palette.black.main,
-  backgroundColor: theme.palette.secondary.main,
+  color: theme.palette.app.black,
+  backgroundColor: theme.palette.app.secondary,
 }));

@@ -7,10 +7,10 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
     color: "transparent",
   },
   "& .MuiPaginationItem-root.MuiPaginationItem-circular": {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.app.secondary,
   },
   "& .MuiPaginationItem-root.MuiPaginationItem-circular.Mui-selected": {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.app.primary,
     color: "transparent",
   },
 }));

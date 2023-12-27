@@ -71,7 +71,7 @@ const Login: FC<ILogin> = (props) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector isLogging />
+        <LocalSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>

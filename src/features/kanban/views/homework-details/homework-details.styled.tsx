@@ -8,7 +8,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   padding: "35px 25px",
   maxHeight: "73.6vh",
   overflowY: "auto",
-  backgroundColor: theme.palette.grey.light,
+  backgroundColor: theme.palette.app.lightGrey,
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
@@ -24,8 +24,8 @@ export const StyledStatusContentBox = styled(Box)({
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.black.main,
-  "&:hover": { color: theme.palette.primary.main },
+  color: theme.palette.app.black,
+  "&:hover": { color: theme.palette.app.primary },
 }));
 
 export const StyledId = styled(Stack)(({ theme }) => ({
@@ -35,7 +35,7 @@ export const StyledId = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledIcon = styled(OpenInNewIcon)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
 }));
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -65,8 +65,8 @@ export const StyledTitle = styled(Typography)({
 });
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.white.main,
+  backgroundColor: theme.palette.app.primary,
+  color: theme.palette.app.white,
   width: "35px",
   height: "35px",
 }));

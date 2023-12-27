@@ -39,7 +39,7 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           fontSize: "0.72rem",
-          width: "auto",
+          width: "fit-content",
         },
       },
     },

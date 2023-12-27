@@ -34,7 +34,7 @@ export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
 
 export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
   margin: "1vh auto",
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
 }));
 
 export const StyledTypographyStatus = styled(Typography)({
@@ -86,5 +86,5 @@ export const StyledButton = styled(Button)({
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "145px",
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
 }));

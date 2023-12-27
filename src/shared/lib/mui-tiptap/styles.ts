@@ -94,7 +94,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
     },
 
     '& a:not([data-type="mention"])': {
-      color: theme.palette.primary.main,
+      color: theme.palette.app.primary,
       textDecoration: "none",
 
       "&:hover": {
@@ -192,7 +192,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
       backgroundColor: theme.palette.action.hover,
       color:
         theme.palette.mode === "dark"
-          ? theme.palette.secondary.main
+          ? theme.palette.app.secondary
           : darken(theme.palette.secondary.dark, 0.1),
     },
 
@@ -214,7 +214,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
       padding: "0 0.25rem",
       lineHeight: "1.3em",
       borderRadius: theme.shape.borderRadius,
-      color: theme.palette.primary.main,
+      color: theme.palette.app.primary,
       background:
         theme.palette.mode === "dark"
           ? alpha(darken(theme.palette.primary.dark, 0.7), 0.5)
@@ -229,7 +229,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
       ...getImageBackgroundColorStyles(theme),
 
       "&.ProseMirror-selectednode": {
-        outline: `3px solid ${theme.palette.primary.main}`,
+        outline: `3px solid ${theme.palette.app.primary}`,
       },
     },
 
@@ -240,7 +240,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
       borderColor: theme.palette.text.secondary,
 
       "&.ProseMirror-selectednode": {
-        borderColor: theme.palette.primary.main,
+        borderColor: theme.palette.app.primary,
       },
     },
 
@@ -389,6 +389,67 @@ export function getEditorStyles(theme: Theme): StyleRules {
         easing: "linear",
       }),
       animation: `${cursorDelayOpacityChangeAnimation} 3s linear 1`,
+    },
+    ".iframe-container": {
+      position: "relative",
+      width: "100%",
+      "@media (max-width: 768px)": {
+        paddingTop: "56.25%",
+      },
+    },
+
+    ".iframe-container iframe": {
+      width: "640px",
+      height: "360px",
+      "@media (max-width: 768px)": {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+      },
+    },
+
+    ".tiptap": {
+      pre: {
+        background: "#263238 !important",
+        borderRadius: "0.5rem",
+        color: "#fff",
+        fontFamily: '"JetBrainsMono", monospace',
+        padding: "0.75rem 1rem",
+        code: {
+          background: "none",
+          color: "inherit",
+          fontSize: "0.8rem",
+          padding: 0,
+        },
+        ".hljs-comment, .hljs-quote": {
+          color: "#616161",
+        },
+        ".hljs-variable, .hljs-template-variable, .hljs-attribute, .hljs-tag, .hljs-name, .hljs-regexp, .hljs-link, .hljs-name, .hljs-selector-id, .hljs-selector-class":
+          {
+            color: "#f98181",
+          },
+        ".hljs-number, .hljs-meta, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params":
+          {
+            color: "#fbbc88",
+          },
+        ".hljs-string, .hljs-symbol, .hljs-bullet": {
+          color: "#b9f18d",
+        },
+        ".hljs-title, .hljs-section": {
+          color: "#faf594",
+        },
+        ".hljs-keyword, .hljs-selector-tag": {
+          color: "#70cff8",
+        },
+        ".hljs-emphasis": {
+          fontStyle: "italic",
+        },
+        ".hljs-strong": {
+          fontWeight: "700",
+        },
+      },
     },
   };
 }

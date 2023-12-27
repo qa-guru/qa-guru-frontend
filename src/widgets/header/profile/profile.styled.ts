@@ -4,7 +4,7 @@ import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
   textTransform: "none",
 }));
 
@@ -25,7 +25,7 @@ export const StyledUserBox = styled(Box)({
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
   width: "100%",
 }));
 

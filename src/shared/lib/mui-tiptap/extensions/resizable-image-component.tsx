@@ -41,7 +41,7 @@ const useStyles = makeStyles({ name: { ResizableImageComponent } })(
     },
 
     imageSelected: {
-      outline: `3px solid ${theme.palette.primary.main}`,
+      outline: `3px solid ${theme.palette.app.primary}`,
     },
 
     resizer: {

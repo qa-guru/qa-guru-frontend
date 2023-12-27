@@ -20,7 +20,8 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: 0,
-  backgroundColor: theme.palette.purple.main,
+  backgroundColor: theme.palette.app.purple,
+  boxShadow: "none",
 }));
 
 export const StyledBox = styled(Box)(({ theme }) => ({
@@ -38,7 +39,7 @@ export const StyledLogo = styled(Logo)(({ theme }) => ({
 }));
 
 export const StyledSupportLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
   textDecoration: "none",
   whiteSpace: "nowrap",
   margin: "0 20px",

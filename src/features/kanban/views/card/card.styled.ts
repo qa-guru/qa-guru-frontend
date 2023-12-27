@@ -21,7 +21,7 @@ export const StyledPaper = styled(Paper, {
   cursor: isDragging ? "grabbing" : "grab",
   visibility: isCardsHidden && !isDragging ? "hidden" : undefined,
   border: isActive
-    ? `1px solid ${theme.palette.primary.main}80`
+    ? `1px solid ${theme.palette.app.primary}30`
     : `1px solid transparent`,
   marginBottom: isDragging ? "15px" : undefined,
 }));
@@ -30,8 +30,8 @@ export const StyledCardHeader = styled(Stack, {
   shouldForwardProp: (prop) => !["isActive"].includes(prop as string),
 })<IStyledCard>(({ theme, isActive }) => ({
   backgroundColor: isActive
-    ? `1px solid ${theme.palette.primary.main}80`.slice(10)
-    : theme.palette.grey.light,
+    ? `1px solid ${theme.palette.app.primary}30`.slice(10)
+    : theme.palette.app.lightGrey,
   justifyContent: "space-between",
   boxShadow: "0px 3px 3px rgba(0, 0, 0, 0.2)",
   padding: "8px",

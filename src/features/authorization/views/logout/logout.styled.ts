@@ -19,7 +19,8 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.white.main,
+  color: theme.palette.app.white,
+  minWidth: "100px",
 }));
 
 export const StyledItemStack = styled(Stack)(({ theme }) => ({
@@ -31,7 +32,8 @@ export const StyledItemStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
+  minWidth: "100px",
 }));
 
 export const StyledMenuItem = styled(MenuItem)({

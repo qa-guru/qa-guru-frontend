@@ -46,7 +46,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector isLogging />
+        <LocalSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>

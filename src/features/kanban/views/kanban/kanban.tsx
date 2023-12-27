@@ -8,8 +8,10 @@ const Kanban = () => {
 
   return (
     <KanbanFormContext.Provider value={kanbanFormState}>
+      {/*<StyledContentBox>*/}
       <Form />
       <Board />
+      {/*</StyledContentBox>*/}
     </KanbanFormContext.Provider>
   );
 };

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
 }));
 
 export const StyledHeader = styled("header")({
@@ -13,7 +13,7 @@ export const StyledHeader = styled("header")({
   marginBottom: "24px",
 });
 
-export const StyledWrapper = styled(Stack)({
+export const StyledWrapper = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   maxWidth: "1920px",
   margin: "0 auto",
@@ -23,7 +23,10 @@ export const StyledWrapper = styled(Stack)({
   height: "76px",
   gap: "10px",
   padding: "20px 40px",
-});
+  [theme.breakpoints.down("md")]: {
+    padding: 0,
+  },
+}));
 
 export const StyledPaper = styled(Paper)({
   borderRadius: 0,
@@ -38,4 +41,5 @@ export const StyledStack = styled(Stack)({
   flexDirection: "row",
   alignItems: "center",
   gap: "10px",
+  stroke: "#ffffff",
 });

@@ -16,10 +16,10 @@ import {
   StyledLogo,
   StyledPaper,
   StyledStack,
-  StyledWrapper,
 } from "../views.styled";
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
+import { StyledScreenBox, StyledWrapper } from "./signup.styled";
 
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -88,71 +88,73 @@ const Signup: FC<ISignUp> = (props) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector isLogging />
+        <LocalSelector />
       </StyledLocalSelectorWrapper>
-      <StyledLogo />
-      <StyledPaper>
-        <form>
-          <StyledStack>
-            <InputText
-              control={control}
-              name="firstName"
-              placeholder="Введите ваше имя"
-              label={t("firstName")}
-              errors={errors}
-            />
-            <InputText
-              control={control}
-              name="lastName"
-              placeholder="Введите фамилию"
-              label={t("lastName")}
-              errors={errors}
-            />
-            <InputText
-              control={control}
-              name="email"
-              placeholder={t("enter.email")}
-              label="E-mail"
-              errors={errors}
-            />
-            <InputPhone
-              control={control}
-              name="phoneNumber"
-              placeholder="(555) 555-5555"
-              label="Phone"
-              errors={errors}
-            />
-            <InputText
-              control={control}
-              name="password"
-              placeholder={t("enter.password")}
-              label={t("password")}
-              type="password"
-              errors={errors}
-            />
-            <InputText
-              control={control}
-              name="confirmPassword"
-              placeholder={t("password.confirm")}
-              label="Повторите пароль"
-              type="password"
-              errors={errors}
-            />
-            <StyledLoadingButton
-              onClick={handleSubmit(onSubmit)}
-              loading={isLoading}
-              variant="contained"
-            >
-              {t("registration")}
-            </StyledLoadingButton>
-          </StyledStack>
-        </form>
-        <StyledBottomStack>
-          <StyledButton variant="text" onClick={routeLogin}>
-            {t("auth.route")}
-          </StyledButton>
-        </StyledBottomStack>
-      </StyledPaper>
+      <StyledScreenBox>
+        <StyledLogo />
+        <StyledPaper>
+          <form>
+            <StyledStack>
+              <InputText
+                control={control}
+                name="firstName"
+                placeholder="Введите ваше имя"
+                label={t("firstName")}
+                errors={errors}
+              />
+              <InputText
+                control={control}
+                name="lastName"
+                placeholder="Введите фамилию"
+                label={t("lastName")}
+                errors={errors}
+              />
+              <InputText
+                control={control}
+                name="email"
+                placeholder={t("enter.email")}
+                label="E-mail"
+                errors={errors}
+              />
+              <InputPhone
+                control={control}
+                name="phoneNumber"
+                placeholder="(555) 555-5555"
+                label="Phone"
+                errors={errors}
+              />
+              <InputText
+                control={control}
+                name="password"
+                placeholder={t("enter.password")}
+                label={t("password")}
+                type="password"
+                errors={errors}
+              />
+              <InputText
+                control={control}
+                name="confirmPassword"
+                placeholder={t("password.confirm")}
+                label="Повторите пароль"
+                type="password"
+                errors={errors}
+              />
+              <StyledLoadingButton
+                onClick={handleSubmit(onSubmit)}
+                loading={isLoading}
+                variant="contained"
+              >
+                {t("registration")}
+              </StyledLoadingButton>
+            </StyledStack>
+          </form>
+          <StyledBottomStack>
+            <StyledButton variant="text" onClick={routeLogin}>
+              {t("auth.route")}
+            </StyledButton>
+          </StyledBottomStack>
+        </StyledPaper>
+      </StyledScreenBox>
     </StyledWrapper>
   );
 };

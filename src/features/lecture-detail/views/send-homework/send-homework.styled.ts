@@ -13,7 +13,6 @@ export const StyledBox = styled(Box)({
 });
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
-  color: theme.palette.white.main,
-  minWidth: "151px",
+  color: theme.palette.app.white,
   marginTop: "15px",
 }));

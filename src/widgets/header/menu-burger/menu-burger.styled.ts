@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box } from "@mui/material";
+import Menu from "@mui/material/Menu";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: "block",
@@ -7,3 +8,13 @@ export const StyledBox = styled(Box)(({ theme }) => ({
     display: "none",
   },
 }));
+
+export const StyledMenu = styled(Menu)({
+  "& .MuiPaper-root": {
+    marginTop: "21px",
+    borderRadius: "4px",
+    "& .MuiMenu-list": {
+      padding: 0,
+    },
+  },
+});
