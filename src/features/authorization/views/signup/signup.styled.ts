@@ -9,6 +9,6 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   minHeight: "100vh",
 }));
 
-export const StyledScreenBox = styled(Box)(({ theme }) => ({
+export const StyledScreenBox = styled(Box)({
   margin: "0",
-}));
+});

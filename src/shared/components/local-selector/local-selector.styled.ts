@@ -24,6 +24,6 @@ export const StyledSelect = styled(Select)(({ theme }) => ({
   },
 }));
 
-export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+export const StyledMenuItem = styled(MenuItem)({
   gap: "5px",
-}));
+});

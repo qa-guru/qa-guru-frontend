@@ -7,6 +7,6 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const StyledIcon = styled("span")(({ theme }) => ({
+export const StyledIcon = styled("span")({
   minWidth: "25px",
-}));
+});

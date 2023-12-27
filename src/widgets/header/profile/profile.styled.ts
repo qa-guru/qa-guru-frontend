@@ -29,11 +29,11 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   width: "100%",
 }));
 
-export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+export const StyledMenuItem = styled(MenuItem)({
   margin: 0,
   height: "40px",
   padding: "6px 16px",
-}));
+});
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",

@@ -3,17 +3,17 @@ import { Box, Button, DialogContent, Paper, Stack } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import Slider from "@mui/material/Slider";
 
-export const StyledPaper = styled(Paper)(({ theme }) => ({
+export const StyledPaper = styled(Paper)({
   padding: "24px",
-}));
+});
 
-export const StyledIconBox = styled(Box)(({ theme }) => ({
+export const StyledIconBox = styled(Box)({
   position: "relative",
   backgroundColor: "lightgray",
   borderRadius: "12px",
   width: "300px",
   height: "300px",
-}));
+});
 
 export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
   width: "300px",

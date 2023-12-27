@@ -25,7 +25,7 @@ const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [valueConfirmPassword, setValueConfirmPassword] = useState<string>("");
+  const [valueConfirmPassword] = useState<string>("");
 
   const {
     handleSubmit,

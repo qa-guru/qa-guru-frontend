@@ -119,6 +119,6 @@ export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
   );
 }
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   padding: "12px 16px 12px",
-}));
+});

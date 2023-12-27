@@ -44,9 +44,9 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledStack = styled(Stack)({
   gap: "35px",
-}));
+});
 
 export const StyledBottomStack = styled(Stack)({
   gap: "8px",

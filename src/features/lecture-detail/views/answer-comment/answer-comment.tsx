@@ -22,10 +22,8 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
   const {
     handleSubmit,
     control,
-    setError,
     reset,
     formState: { errors },
-    trigger,
   } = useForm({
     defaultValues: {
       content: "",
