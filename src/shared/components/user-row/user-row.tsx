@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
-import { formatRole } from "shared/helpers/format-role";
+import { formatRole } from "shared/helpers";
 
 import { IUserRow } from "./user-row.types";
 import {
@@ -51,11 +51,7 @@ const UserRow: FC<IUserRow> = (props) => {
                 label={user?.rating?.rating}
               />
             </StyledStack>
-            {roles && roles.length > 0 && (
-              <Typography variant="caption">
-                {formatRole(roles[roles.length - 1])}
-              </Typography>
-            )}
+            <Typography variant="caption">{formatRole(roles)}</Typography>
           </>
         )}
         {date && (

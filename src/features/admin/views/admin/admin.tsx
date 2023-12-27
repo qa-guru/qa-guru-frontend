@@ -1,10 +1,9 @@
 import { FC, useMemo } from "react";
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
-import { formatRole } from "shared/helpers/format-role";
-import dayjs from "dayjs";
 import AvatarCustom from "shared/components/avatar-custom";
 import { UserDto } from "api/graphql/generated/graphql";
+import { formatDate, formatRole } from "shared/helpers";
 
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
@@ -12,10 +11,6 @@ import TableAdmin from "../table-admin";
 import { LockUser, UnlockUser } from "../../containers";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
-  const formatDate = (date: number) => {
-    return dayjs(date).format("DD.MM.YYYY");
-  };
-
   const columns = useMemo<ColumnDef<UserDto>[]>(
     () => [
       {
@@ -40,8 +35,11 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         header: "Роль",
         footer: (props) => props.column.id,
         accessorKey: "roles",
-        cell: (info: CellContext<UserDto, unknown>) =>
-          formatRole(info.row.original.roles!.toString()),
+        cell: (info: CellContext<UserDto, unknown>) => (
+          <Typography variant="body2">
+            {formatRole(info.row.original.roles)}
+          </Typography>
+        ),
       },
       {
         header: "Дата регистрации",
@@ -51,7 +49,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
           return (
             <StyledAlignStack>
               <Typography variant="body2">
-                {formatDate(info.row.original.creationDate!)}
+                {formatDate(info.row.original.creationDate, "DD.MM.YYYY")}
               </Typography>
               <StyledRightAlignBox>
                 {info.row.original.locked ? (

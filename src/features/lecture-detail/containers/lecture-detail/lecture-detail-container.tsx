@@ -25,7 +25,8 @@ const LectureDetailContainer: FC = () => {
       skip: !tariffHomework,
     });
 
-  if (loadingLecture || loadingLectureHomeWork) return <Spinner />;
+  if (loadingLecture || loadingLectureHomeWork || !tariffHomework)
+    return <Spinner />;
 
   if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
 

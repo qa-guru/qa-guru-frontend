@@ -63,7 +63,7 @@ const Signup: FC<ISignUp> = (props) => {
     navigate(ROUTES.AUTHORIZATION);
   };
 
-  const passwordsMatch = valueConfirmPassword === getValues("password");
+  const passwordsMatch = getValues("password");
 
   const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
     if (passwordsMatch) {
