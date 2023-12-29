@@ -184,30 +184,44 @@ export function getEditorStyles(theme: Theme): StyleRules {
     },
 
     "& :not(pre) > code": {
-      padding: "2px 3px 1px",
-      borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: theme.palette.divider,
-      borderRadius: 3,
-      backgroundColor: theme.palette.action.hover,
-      color:
-        theme.palette.mode === "dark"
-          ? theme.palette.app.secondary
-          : darken(theme.palette.secondary.dark, 0.1),
+      background: "none",
+      color: "inherit",
+      fontSize: "0.8rem",
+      padding: 0,
     },
 
     "& pre": {
-      marginTop: theme.spacing(0.5),
-      marginBottom: theme.spacing(0.5),
-      padding: theme.spacing(1),
-      borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: theme.palette.divider,
-      borderRadius: theme.shape.borderRadius,
-      background: theme.palette.action.hover,
-      lineHeight: 1.4,
-      overflowX: "auto",
-      whiteSpace: "pre !important" as "pre",
+      background: "#263238",
+      borderRadius: "0.5rem",
+      color: "#fff",
+      fontFamily: '"JetBrainsMono", monospace',
+      padding: "0.75rem 1rem",
+      ".hljs-comment, .hljs-quote": {
+        color: "#616161",
+      },
+      ".hljs-variable, .hljs-template-variable, .hljs-attribute, .hljs-tag, .hljs-name, .hljs-regexp, .hljs-link, .hljs-name, .hljs-selector-id, .hljs-selector-class":
+        {
+          color: "#f98181",
+        },
+      ".hljs-number, .hljs-meta, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params":
+        {
+          color: "#fbbc88",
+        },
+      ".hljs-string, .hljs-symbol, .hljs-bullet": {
+        color: "#b9f18d",
+      },
+      ".hljs-title, .hljs-section": {
+        color: "#faf594",
+      },
+      ".hljs-keyword, .hljs-selector-tag": {
+        color: "#70cff8",
+      },
+      ".hljs-emphasis": {
+        fontStyle: "italic",
+      },
+      ".hljs-strong": {
+        fontWeight: "700",
+      },
     },
 
     '& [data-type="mention"]': {
@@ -407,48 +421,6 @@ export function getEditorStyles(theme: Theme): StyleRules {
         left: 0,
         width: "100%",
         height: "100%",
-      },
-    },
-
-    ".tiptap": {
-      pre: {
-        background: "#263238 !important",
-        borderRadius: "0.5rem",
-        color: "#fff",
-        fontFamily: '"JetBrainsMono", monospace',
-        padding: "0.75rem 1rem",
-        code: {
-          background: "none",
-          color: "inherit",
-          fontSize: "0.8rem",
-          padding: 0,
-        },
-        ".hljs-comment, .hljs-quote": {
-          color: "#616161",
-        },
-        ".hljs-variable, .hljs-template-variable, .hljs-attribute, .hljs-tag, .hljs-name, .hljs-regexp, .hljs-link, .hljs-name, .hljs-selector-id, .hljs-selector-class":
-          {
-            color: "#f98181",
-          },
-        ".hljs-number, .hljs-meta, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params":
-          {
-            color: "#fbbc88",
-          },
-        ".hljs-string, .hljs-symbol, .hljs-bullet": {
-          color: "#b9f18d",
-        },
-        ".hljs-title, .hljs-section": {
-          color: "#faf594",
-        },
-        ".hljs-keyword, .hljs-selector-tag": {
-          color: "#70cff8",
-        },
-        ".hljs-emphasis": {
-          fontStyle: "italic",
-        },
-        ".hljs-strong": {
-          fontWeight: "700",
-        },
       },
     },
   };
