@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
+  Maybe,
 } from "api/graphql/generated/graphql";
 
 import { IDraggingState } from "../board/board.types";
@@ -46,5 +47,5 @@ export interface IColumn {
   ) => void;
   onCardClick: ((card: StudentHomeWorkDto) => void) | void;
   isActive?: boolean;
-  activeCardId?: string | null;
+  activeCardId?: Maybe<string>;
 }

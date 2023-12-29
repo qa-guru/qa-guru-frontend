@@ -1,4 +1,4 @@
-import type React from "react";
+import { type ReactNode } from "react";
 import { makeStyles } from "tss-react/mui";
 
 import { Z_INDEXES, getUtilityClasses } from "./styles";
@@ -7,7 +7,7 @@ export type FieldContainerClasses = ReturnType<typeof useStyles>["classes"];
 
 export type FieldContainerProps = {
   variant?: "outlined" | "standard";
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   classes?: Partial<FieldContainerClasses>;
   focused?: boolean;

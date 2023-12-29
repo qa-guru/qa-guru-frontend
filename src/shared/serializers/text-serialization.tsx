@@ -1,8 +1,9 @@
 import { FC, Fragment } from "react";
 import { Box, Link, Typography } from "@mui/material";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export interface ITextSerialization {
-  text?: string | null;
+  text?: Maybe<string>;
 }
 
 const TextSerialization: FC<ITextSerialization> = ({ text }) => {

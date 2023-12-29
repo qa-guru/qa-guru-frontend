@@ -1,4 +1,5 @@
 import type { Editor, JSONContent } from "@tiptap/core";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export type ImageNodeAttributes = {
   src: string;
@@ -12,7 +13,7 @@ export function insertImages({
   position,
 }: {
   images: ImageNodeAttributes[];
-  editor: Editor | null;
+  editor: Maybe<Editor>;
   position?: number;
 }): void {
   if (!editor || editor.isDestroyed || images.length === 0) {

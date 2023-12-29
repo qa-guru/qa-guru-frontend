@@ -1,10 +1,11 @@
 import {
   LectureHomeWorkQuery,
   LectureQuery,
+  Maybe,
 } from "api/graphql/generated/graphql";
 
 export interface ILectureDetail {
   dataLecture: LectureQuery;
-  dataLectureHomework?: LectureHomeWorkQuery | null;
+  dataLectureHomework?: Maybe<LectureHomeWorkQuery>;
   tariffHomework: boolean;
 }

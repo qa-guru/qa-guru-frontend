@@ -2,7 +2,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes } from "react-router-dom";
 import NotFoundPage from "pages/not-found";
 import { FC, ReactElement, ReactNode } from "react";
-import { UserRole } from "api/graphql/generated/graphql";
+import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import Layout from "shared/components/layout";
 import {
   LoginPage,
@@ -24,7 +24,7 @@ interface IProtectedRoute {
 }
 
 interface IRoutnig {
-  roles: (UserRole | null)[] | null | undefined;
+  roles?: Maybe<Maybe<UserRole>[]>;
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
@@ -45,7 +45,7 @@ export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {
   [UserRole.Admin]: AdminRoutes,
 };
 
-export const getUserRoutes = (userRoles: Array<UserRole | null> | null) => {
+export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
   return userRoles?.reduce<ReactElement[]>((acc, role) => {
     const routes = role && roleRoutes[role];
     routes?.forEach((route) => {

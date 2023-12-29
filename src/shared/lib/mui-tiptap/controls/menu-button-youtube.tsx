@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useRef, useState } from "react";
+import { useRef, useState, ChangeEvent, FormEvent, MouseEvent } from "react";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import {
   MenuButton,
@@ -14,6 +14,7 @@ import {
   useRichTextEditorContext,
 } from "shared/lib/mui-tiptap";
 import { styled } from "@mui/system";
+import { Maybe } from "api/graphql/generated/graphql";
 
 function extractVideoID(url: string) {
   // Regular expression to match various YouTube URL formats
@@ -26,11 +27,11 @@ export type MenuButtonYoutubeProps = Partial<MenuButtonProps>;
 
 export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
   const editor = useRichTextEditorContext();
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<Maybe<HTMLButtonElement>>(null);
+  const [anchorEl, setAnchorEl] = useState<Maybe<HTMLButtonElement>>(null);
   const [inputValue, setInputValue] = useState("");
 
-  const handleOpenPopover = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenPopover = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget as HTMLButtonElement);
   };
 
@@ -41,11 +42,11 @@ export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue) {
       const videoId = extractVideoID(inputValue);

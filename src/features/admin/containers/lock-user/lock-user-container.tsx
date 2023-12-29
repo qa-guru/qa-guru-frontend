@@ -17,7 +17,7 @@ interface ILockUserContainer {
 const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
   const [lockUser] = useLockUserMutation({
     update: (cache) => {
-      const existingUsers: UsersQuery | null = cache.readQuery({
+      const existingUsers: Maybe<UsersQuery> = cache.readQuery({
         query: UsersDocument,
         variables: {
           offset: 0,

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import AvatarUploadService from "api/rest/avatar-upload-service";
 import { enqueueSnackbar } from "notistack";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { RESPONSE_STATUS } from "../constants";
 
 export const useAvatarUpload = () => {
   const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<Maybe<Error>>(null);
 
   const uploadAvatar = async (file: File) => {
     setUploading(true);

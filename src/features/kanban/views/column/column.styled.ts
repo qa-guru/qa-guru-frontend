@@ -14,6 +14,9 @@ export const StyledWrapperColumnContainer = styled(Box, {
   boxSizing: "border-box",
   height: "calc(100vh - 100px - 150px - 70px )",
   overflowY: showButton ? "hidden" : "auto",
+  [theme.breakpoints.down("md")]: {
+    height: "calc(100vh - 100px - 190px - 70px )",
+  },
 }));
 
 export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({

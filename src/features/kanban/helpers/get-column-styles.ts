@@ -1,6 +1,7 @@
 import { type Theme, type SxProps } from "@mui/system";
 import { app } from "theme/colors";
 import { alpha } from "@mui/material";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { isColumnHighlight } from "./is-column-highlight";
 import { IDraggingState } from "../views/board/board.types";
@@ -24,7 +25,7 @@ type GetColumnStylesFunction = (
   canDrop: boolean,
   totalElements: number,
   isOver: boolean
-) => SxProps<Theme> | null;
+) => Maybe<SxProps<Theme>>;
 
 export const getColumnStyles: GetColumnStylesFunction = (
   columnId,

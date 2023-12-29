@@ -1,11 +1,11 @@
-import { UserRole, useUserIdQuery } from "api/graphql/generated/graphql";
+import { UserRole, useUserIdQuery, Maybe } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 
 import { STATUS_COLUMN } from "../constants";
 
 export const getUpdatedAllowedColumns = (
   columnId: string,
-  mentorId?: string | null
+  mentorId?: Maybe<string>
 ) => {
   const { data: userId } = useUserIdQuery({
     fetchPolicy: "cache-first",

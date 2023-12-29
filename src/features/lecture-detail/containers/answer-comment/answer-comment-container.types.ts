@@ -1,3 +1,5 @@
+import { Maybe } from "api/graphql/generated/graphql";
+
 export interface IAnswerCommentContainer {
-  id?: string | null;
+  id?: Maybe<string>;
 }

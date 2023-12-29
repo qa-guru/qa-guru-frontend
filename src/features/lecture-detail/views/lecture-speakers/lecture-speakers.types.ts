@@ -1,5 +1,5 @@
-import { UserDto } from "api/graphql/generated/graphql";
+import { UserDto, Maybe } from "api/graphql/generated/graphql";
 
 export interface ILectureSpeakers {
-  speakers?: (UserDto | null | undefined)[] | null;
+  speakers?: Maybe<Maybe<UserDto | undefined>[]>;
 }

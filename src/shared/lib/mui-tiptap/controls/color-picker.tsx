@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { HexAlphaColorPicker, HexColorPicker } from "react-colorful";
 import { makeStyles } from "tss-react/mui";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { colorToHex as colorToHexDefault } from "../utils/color";
 import { ColorSwatchButton } from "./color-swatch-button";
@@ -18,7 +19,7 @@ export type SwatchColorOption = string | SwatchColorOptionObject;
 export type ColorPickerProps = {
   value: string;
   onChange: (color: string, source: ColorChangeSource) => void;
-  colorToHex?: (color: string) => string | null;
+  colorToHex?: (color: string) => Maybe<string>;
   swatchColors?: SwatchColorOption[];
   disableAlpha?: boolean;
   labels?: {
@@ -56,7 +57,7 @@ export function ColorPicker({
   const { classes } = useStyles();
   const { textFieldPlaceholder = 'Ex: "#7cb5ec"' } = labels;
 
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<Maybe<HTMLInputElement>>(null);
 
   useEffect(() => {
     if (inputRef.current && inputRef.current !== document.activeElement) {

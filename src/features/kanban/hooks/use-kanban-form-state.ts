@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 const useKanbanFormState = () => {
-  const [trainingId, setTrainingId] = useState<string | null>(null);
-  const [lectureId, setLectureId] = useState<string | null>(null);
-  const [creationDateFrom, setCreationDateFrom] = useState<string | null>(null);
-  const [creationDateTo, setCreationDateTo] = useState<string | null>(null);
-  const [mentorId, setMentorId] = useState<string | null>(null);
+  const [trainingId, setTrainingId] = useState<Maybe<string>>(null);
+  const [lectureId, setLectureId] = useState<Maybe<string>>(null);
+  const [creationDateFrom, setCreationDateFrom] = useState<Maybe<string>>(null);
+  const [creationDateTo, setCreationDateTo] = useState<Maybe<string>>(null);
+  const [mentorId, setMentorId] = useState<Maybe<string>>(null);
 
   return {
     trainingId,

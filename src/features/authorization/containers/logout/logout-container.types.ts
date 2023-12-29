@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export interface ILogoutContainer {
-  setAnchorElUser: Dispatch<SetStateAction<HTMLElement | null>>;
+  setAnchorElUser: Dispatch<SetStateAction<Maybe<HTMLElement>>>;
 }

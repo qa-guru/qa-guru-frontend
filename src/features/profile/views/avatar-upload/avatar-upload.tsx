@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { useModal } from "react-modal-hook";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { IAvatarUpload } from "./avatar-upload.types";
 import {
@@ -84,7 +85,7 @@ const AvatarUpload: FC<IAvatarUpload> = () => {
   const handleSave = async () => {
     if (editorRef.current && !uploading) {
       const canvas = editorRef.current.getImageScaledToCanvas();
-      const blob = await new Promise<Blob | null>((resolve) =>
+      const blob = await new Promise<Maybe<Blob>>((resolve) =>
         canvas.toBlob(resolve)
       );
       if (blob) {

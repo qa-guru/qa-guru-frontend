@@ -5,6 +5,7 @@ import {
   StudentHomeWorkDto,
   UserRole,
   useUserIdQuery,
+  Maybe,
 } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 
@@ -15,8 +16,8 @@ interface IDragEffect {
   sourceColumnId: string;
   setDraggingState: Dispatch<SetStateAction<IDraggingState>>;
   isDragging: boolean;
-  userId?: string | null;
-  userRoles?: (UserRole | null)[] | null;
+  userId?: Maybe<string>;
+  userRoles?: Maybe<Maybe<UserRole>[]>;
 }
 
 const useDragEffect = ({
