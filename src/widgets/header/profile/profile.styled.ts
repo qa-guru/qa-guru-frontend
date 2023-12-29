@@ -1,7 +1,11 @@
 import { styled } from "@mui/system";
-import { Box, MenuItem, Stack } from "@mui/material";
+import { Box, Button, MenuItem, Stack } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
+
+export const StyledButton = styled(Button)({
+  padding: 0,
+});
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   color: theme.palette.app.black,
@@ -9,7 +13,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledMenu = styled(Menu)({
-  marginTop: "13px",
+  marginTop: "19px",
   "& .MuiPaper-root": {
     borderRadius: "4px",
   },
