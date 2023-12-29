@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import {
   Box,
   FormControl,
@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import useUpdateHomeworkStatus from "features/kanban/hooks/use-update-homework-status";
-import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 import { IStatusSelect, states } from "./status-select.types";
 import { StyledIcon, StyledStack } from "./status-select.styled";
@@ -18,21 +18,26 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
   const [status, setStatus] = useState(currentStatus);
   const { takeForReview, approved, notApproved } = useUpdateHomeworkStatus();
 
-  const getAvailableStatuses = (currentStatus: StudentHomeWorkStatus) => {
+  const getAvailableStatuses = (
+    currentStatus?: Maybe<StudentHomeWorkStatus>
+  ) => {
     switch (currentStatus) {
-      case "NEW":
-        return ["IN_REVIEW"];
-      case "IN_REVIEW":
-        return ["APPROVED", "NOT_APPROVED"];
-      case "NOT_APPROVED":
-        return ["APPROVED"];
-      case "APPROVED":
+      case StudentHomeWorkStatus.New:
+        return [StudentHomeWorkStatus.InReview];
+      case StudentHomeWorkStatus.InReview:
+        return [
+          StudentHomeWorkStatus.Approved,
+          StudentHomeWorkStatus.NotApproved,
+        ];
+      case StudentHomeWorkStatus.NotApproved:
+        return StudentHomeWorkStatus.Approved;
+      case StudentHomeWorkStatus.Approved:
       default:
         return [];
     }
   };
 
-  const availableStatuses = getAvailableStatuses(status!);
+  const availableStatuses = getAvailableStatuses(status);
 
   const updateStatus = async (
     event: SelectChangeEvent<StudentHomeWorkStatus>
@@ -41,13 +46,13 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
     setStatus(newStatus);
 
     switch (newStatus) {
-      case "IN_REVIEW":
+      case StudentHomeWorkStatus.InReview:
         await takeForReview({ variables: { homeworkId: homeworkId! } });
         break;
-      case "APPROVED":
+      case StudentHomeWorkStatus.Approved:
         await approved({ variables: { homeWorkId: homeworkId! } });
         break;
-      case "NOT_APPROVED":
+      case StudentHomeWorkStatus.NotApproved:
         await notApproved({ variables: { homeWorkId: homeworkId! } });
         break;
       default:
@@ -56,7 +61,7 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
   };
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth size="small">
       <Box>
         <InputLabel id="status-select-label">Статус</InputLabel>
         <Select
@@ -69,7 +74,9 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
             <MenuItem
               key={value}
               value={value}
-              disabled={!availableStatuses.includes(value)}
+              disabled={
+                !availableStatuses.includes(value as StudentHomeWorkStatus)
+              }
             >
               <StyledStack>
                 <StyledIcon as={Icon} />

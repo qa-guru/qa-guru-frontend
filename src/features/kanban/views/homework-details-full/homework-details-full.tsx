@@ -7,8 +7,8 @@ import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
 import LectureHomework from "shared/components/lecture-homework";
 import Homework from "features/lecture-detail/views/homework";
-import StatusSelect from "shared/components/status-content/status-select";
-import StatusText from "shared/components/status-content/status-text";
+import StatusSelect from "features/kanban/views/status-select";
+import StatusText from "shared/components/status-text";
 
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import {
@@ -21,7 +21,7 @@ import {
   StyledTitle,
 } from "./homework-details-full.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
-import { ROUTES } from "../../constants/constants";
+import { ROUTES } from "../../constants";
 
 const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   data,
@@ -29,14 +29,23 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
 }) => {
   const navigate = useNavigate();
   const Format = "dd.MM.yyyy | HH:mm";
+  const { homeWork } = data;
+  const {
+    lecture,
+    student,
+    mentor,
+    creationDate,
+    startCheckingDate,
+    endCheckingDate,
+    status,
+    id,
+  } = homeWork!;
 
   const handleBack = () => {
     navigate(ROUTES.KANBAN);
   };
 
-  const isCurrentMentor =
-    dataUserId.user?.id === data.homeWork?.mentor?.id ||
-    data.homeWork?.mentor?.id === undefined;
+  const isCurrentMentor = dataUserId.user?.id === mentor?.id;
 
   return (
     <Container>
@@ -44,59 +53,48 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
         <StyledIcon />
         <Typography variant="body2">К доске заданий</Typography>
       </StyledNavigateButton>
-      <StyledTitle variant="h6">
-        {getFormattedId(data.homeWork?.lecture?.id)}
-      </StyledTitle>
-      <Typography variant="h2">{data.homeWork?.lecture?.subject}</Typography>
+      <StyledTitle variant="h6">{getFormattedId(lecture?.id)}</StyledTitle>
+      <Typography variant="h2">{lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>
-          <UserRow icon={StudentIcon} user={data.homeWork?.student} />
-          {data.homeWork?.mentor && (
-            <UserRow icon={MentorIcon} user={data.homeWork?.mentor} />
-          )}
+          <UserRow icon={StudentIcon} user={student} />
+          {mentor && <UserRow icon={MentorIcon} user={mentor} />}
         </StyledRowStack>
         <StyledRowStack>
           <StyledColumnStack>
             <Typography variant="body2">Создано</Typography>
             <Typography variant="caption">
-              {data.homeWork?.creationDate &&
-                format(parseISO(data.homeWork?.creationDate), Format)}
+              {creationDate && format(parseISO(creationDate), Format)}
             </Typography>
           </StyledColumnStack>
-          {data.homeWork?.startCheckingDate && (
+          {startCheckingDate && (
             <StyledColumnStack>
               <Typography variant="body2">Начало проверки</Typography>
               <Typography variant="caption">
-                {data.homeWork?.startCheckingDate &&
-                  format(parseISO(data.homeWork?.startCheckingDate), Format)}
+                {startCheckingDate &&
+                  format(parseISO(startCheckingDate), Format)}
               </Typography>
             </StyledColumnStack>
           )}
-          {data.homeWork?.endCheckingDate && (
+          {endCheckingDate && (
             <StyledColumnStack>
               <Typography variant="body2">Окончание проверки</Typography>
               <Typography variant="caption">
-                {data.homeWork?.endCheckingDate &&
-                  format(parseISO(data.homeWork?.endCheckingDate), Format)}
+                {endCheckingDate && format(parseISO(endCheckingDate), Format)}
               </Typography>
             </StyledColumnStack>
           )}
         </StyledRowStack>
         {isCurrentMentor ? (
-          <StatusSelect
-            currentStatus={data.homeWork?.status}
-            homeworkId={data.homeWork?.id}
-          />
+          <StatusSelect currentStatus={status} homeworkId={id} />
         ) : (
-          <StatusText status={data.homeWork?.status} />
+          <StatusText status={status} />
         )}
       </StyledStack>
-      <LectureHomework
-        lectureHomeWork={data.homeWork?.lecture?.contentHomeWork}
-      />
+      <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledAnswerBox>
         <Homework
-          dataHomeWorkByLectureAndTraining={data.homeWork}
+          dataHomeWorkByLectureAndTraining={homeWork}
           dataUserId={dataUserId}
           hideMentorAndStudent
         />

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useCallback } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import { LocalizationProvider } from "@mui/x-date-pickers";
@@ -37,6 +36,7 @@ const InputDate = <T extends FieldValues>({
         control={control}
         render={({ field: { onChange: fieldOnChange, value } }) => (
           <StyledDatePicker
+            slotProps={{ textField: { size: "small" } }}
             label={label}
             value={value ? dayjs(value) : null}
             onChange={(newValue) => handleChange(newValue, fieldOnChange)}

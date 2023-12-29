@@ -26,7 +26,7 @@ const InputSelect = <T extends FieldValues>({
   );
 
   return (
-    <FormControl fullWidth>
+    <FormControl size="small" fullWidth>
       <InputLabel>{placeholder}</InputLabel>
       <Controller
         name={name}
