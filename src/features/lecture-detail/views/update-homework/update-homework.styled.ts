@@ -23,11 +23,9 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
-  backgroundColor: theme.palette.app.primary,
+  color: theme.palette.app.white,
 }));
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
-  minWidth: "116px",
-  backgroundColor: theme.palette.app.secondary,
   color: theme.palette.app.black,
 }));

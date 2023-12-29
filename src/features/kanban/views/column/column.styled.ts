@@ -12,13 +12,7 @@ export const StyledWrapperColumnContainer = styled(Box, {
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
-  maxHeight: "57vh",
-  [theme.breakpoints.up("md")]: {
-    maxHeight: "65.5vh",
-  },
-  [theme.breakpoints.up("lg")]: {
-    maxHeight: "63.5vh",
-  },
+  height: "calc(100vh - 100px - 150px - 70px )",
   overflowY: showButton ? "hidden" : "auto",
 }));
 

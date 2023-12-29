@@ -1,5 +1,6 @@
-import { Box, Pagination, Stack } from "@mui/material";
+import { alpha, Box, Pagination, Stack } from "@mui/material";
 import { styled } from "@mui/system";
+
 
 export const StyledPagination = styled(Pagination)(({ theme }) => ({
   "& .MuiPaginationItem-root": {
@@ -36,6 +37,7 @@ export const StyledBox = styled(Box)({
   marginBottom: "15px",
 });
 
-export const StyledHomeworkDetails = styled(Box)({
+export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
   minWidth: "33.5vw",
-});
+  backgroundColor: alpha(theme.palette.app.secondary, 0.2),
+}));

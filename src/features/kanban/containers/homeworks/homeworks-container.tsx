@@ -11,10 +11,12 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Board from "../../views/board";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
+import { useDynamicCardLimit } from "../../hooks/use-dynamic-card-limit";
 
 const HomeworksContainer: FC = () => {
   const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =
     useContext(KanbanFormContext);
+  const dynamicLimit = useDynamicCardLimit();
 
   const filterObject = useMemo(() => {
     return {
@@ -33,7 +35,7 @@ const HomeworksContainer: FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.CreationDate,
         order: Order.Desc,
@@ -49,7 +51,7 @@ const HomeworksContainer: FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.StartCheckingDate,
         order: Order.Desc,
@@ -65,7 +67,7 @@ const HomeworksContainer: FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,
@@ -81,7 +83,7 @@ const HomeworksContainer: FC = () => {
   } = useHomeWorksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,
@@ -95,6 +97,8 @@ const HomeworksContainer: FC = () => {
 
   if (!newData || !inReviewData || !approvedData || !notApprovedData)
     return <NoDataErrorMessage />;
+
+  console.log(inReviewData);
 
   return (
     <Board
