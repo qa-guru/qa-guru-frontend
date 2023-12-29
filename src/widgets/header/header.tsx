@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { useTranslation } from "react-i18next";
-import { UserRole } from "api/graphql/generated/graphql";
+import { Maybe, UserRole } from "api/graphql/generated/graphql";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
@@ -25,7 +25,7 @@ interface IPages {
 }
 
 const Header: FC = () => {
-  const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
+  const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const pages: IPages[] = [];

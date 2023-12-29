@@ -1,5 +1,5 @@
-import { LectureContentDto } from "api/graphql/generated/graphql";
+import { LectureContentDto, Maybe } from "api/graphql/generated/graphql";
 
 export interface ILectureContent {
-  content?: (LectureContentDto | null | undefined)[] | null;
+  content?: Maybe<Maybe<LectureContentDto | undefined>[]>;
 }

@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef, useState, MouseEvent } from "react";
 import { MenuButton, useRichTextEditorContext } from "shared/lib/mui-tiptap";
 import EmojiPicker, { type EmojiClickData } from "emoji-picker-react";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { Popover } from "@mui/material";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { MenuButtonProps } from "./menu-button";
 
@@ -10,10 +11,10 @@ export type MenuButtonEmojiProps = Partial<MenuButtonProps>;
 
 export default function MenuButtonEmoji(props: MenuButtonEmojiProps) {
   const editor = useRichTextEditorContext();
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const buttonRef = useRef<Maybe<HTMLButtonElement>>(null);
+  const [anchorEl, setAnchorEl] = useState<Maybe<HTMLButtonElement>>(null);
 
-  const handleOpenPopover = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenPopover = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget as HTMLButtonElement);
   };
 

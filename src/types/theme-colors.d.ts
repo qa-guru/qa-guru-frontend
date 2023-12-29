@@ -22,6 +22,12 @@ declare module "@mui/material/styles" {
       yellow: string;
       green: string;
       blue: string;
+      darkGrey: string;
+      lightRed: string;
+      lightOrange: string;
+      lightGreen: string;
+      lightYellow: string;
+      lightBlue: string;
     };
     highlight: {
       darkGrey: string;
@@ -55,6 +61,12 @@ declare module "@mui/material/styles" {
       yellow?: string;
       green?: string;
       blue?: string;
+      darkGrey?: string;
+      lightRed?: string;
+      lightOrange?: string;
+      lightGreen?: string;
+      lightYellow?: string;
+      lightBlue?: string;
     };
     highlight?: {
       darkGrey?: string;

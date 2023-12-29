@@ -4,18 +4,19 @@ import { NodeViewWrapper } from "@tiptap/react";
 import throttle from "lodash/throttle";
 import { useMemo, useRef } from "react";
 import { makeStyles } from "tss-react/mui";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { ResizableImageResizer } from "./resizable-image-resizer";
 
 interface ImageNodeAttributes extends Record<string, unknown> {
   src: string;
-  alt?: string | null;
-  title?: string | null;
+  alt?: Maybe<string>;
+  title?: Maybe<string>;
 }
 
 interface ResizableImageNodeAttributes extends ImageNodeAttributes {
-  width: string | number | null;
-  aspectRatio: string | null;
+  width: Maybe<string | number>;
+  aspectRatio: Maybe<string>;
 }
 
 interface ResizableImageNode extends ProseMirrorNode {
@@ -56,7 +57,7 @@ function ResizableImageComponent({ node, selected, updateAttributes }: Props) {
   const { classes, cx } = useStyles();
   const { attrs } = node;
 
-  const imageRef = useRef<HTMLImageElement | null>(null);
+  const imageRef = useRef<Maybe<HTMLImageElement>>(null);
 
   const handleResize = useMemo(
     () =>

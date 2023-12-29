@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import useKeyDown from "../../hooks/use-key-down";
 import useOutsideClick from "../../hooks/use-outside-click";
@@ -53,8 +54,8 @@ export default function EditLinkMenuContent({
   const [textValue, setTextValue] = useState(initialText);
   const [hrefValue, setHrefValue] = useState(existingHref);
 
-  const textRef = useRef<HTMLInputElement | null>(null);
-  const hrefRef = useRef<HTMLInputElement | null>(null);
+  const textRef = useRef<Maybe<HTMLInputElement>>(null);
+  const hrefRef = useRef<Maybe<HTMLInputElement>>(null);
 
   const isNewLink = !existingHref;
   const addLinkTitle = labels?.editLinkAddTitle ?? "Add link";

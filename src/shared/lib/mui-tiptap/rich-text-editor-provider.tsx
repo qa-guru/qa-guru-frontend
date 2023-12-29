@@ -1,10 +1,12 @@
+import { ReactNode } from "react";
 import type { Editor } from "@tiptap/react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { RichTextEditorContext } from "./context";
 
 export type RichTextEditorProviderProps = {
-  editor: Editor | null;
-  children: React.ReactNode;
+  editor: Maybe<Editor>;
+  children: ReactNode;
 };
 
 export default function RichTextEditorProvider({

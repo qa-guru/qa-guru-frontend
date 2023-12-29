@@ -1,5 +1,6 @@
 /// <reference types="@tiptap/extension-color" />
 import type { Editor } from "@tiptap/core";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { useRichTextEditorContext } from "../context";
 import FormatColorTextNoBar from "../icons/format-color-text-no-bar";
@@ -15,7 +16,7 @@ export interface MenuButtonTextColorProps
 }
 
 interface TextStyleAttrs extends ReturnType<Editor["getAttributes"]> {
-  color?: string | null;
+  color?: Maybe<string>;
 }
 
 export default function MenuButtonTextColor({

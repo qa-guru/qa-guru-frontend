@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
-import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
+import { StudentHomeWorkDto, Maybe } from "api/graphql/generated/graphql";
 
 import { CardType, IColumn } from "./column.types";
 import {
@@ -42,7 +42,7 @@ const Column: FC<IColumn> = ({
 }) => {
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
-  const droppedItem = useRef<CardType | null>(null);
+  const droppedItem = useRef<Maybe<CardType>>(null);
   const [{ isOver, canDrop }, dropRef] = useDrop({
     accept: "card",
     drop: (item: CardType) => {

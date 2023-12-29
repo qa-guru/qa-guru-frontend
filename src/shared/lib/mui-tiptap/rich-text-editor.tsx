@@ -3,27 +3,29 @@ import {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  ReactNode,
   type DependencyList,
 } from "react";
 import type { Except, SetRequired } from "type-fest";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import RichTextEditorProvider from "./rich-text-editor-provider";
 import RichTextField, { type RichTextFieldProps } from "./rich-text-field";
 
 export interface RichTextEditorProps
   extends SetRequired<Partial<EditorOptions>, "extensions"> {
-  renderControls?: (editor: Editor | null) => React.ReactNode;
+  renderControls?: (editor: Maybe<Editor>) => ReactNode;
 
   RichTextFieldProps?: Except<RichTextFieldProps, "controls">;
 
-  children?: (editor: Editor | null) => React.ReactNode;
+  children?: (editor: Maybe<Editor>) => ReactNode;
 
   editorDependencies?: DependencyList;
   className?: string;
 }
 
 export type RichTextEditorRef = {
-  editor: Editor | null;
+  editor: Maybe<Editor>;
 };
 
 const RichTextEditor = forwardRef<RichTextEditorRef, RichTextEditorProps>(

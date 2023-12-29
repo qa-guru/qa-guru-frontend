@@ -1,6 +1,7 @@
 import type { Editor } from "@tiptap/core";
 import { useRef, type ComponentPropsWithoutRef } from "react";
 import type { SetOptional } from "type-fest";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { useRichTextEditorContext } from "../context";
 import { insertImages, type ImageNodeAttributes } from "../utils/images";
@@ -18,7 +19,7 @@ export interface MenuButtonImageUploadProps
     editor,
   }: {
     images: ImageNodeAttributes[];
-    editor: Editor | null;
+    editor: Maybe<Editor>;
   }) => void;
   inputProps?: Partial<ComponentPropsWithoutRef<"input">>;
 }
@@ -30,7 +31,7 @@ export default function MenuButtonImageUpload({
 }: MenuButtonImageUploadProps) {
   const editor = useRichTextEditorContext();
 
-  const fileInput = useRef<HTMLInputElement | null>(null);
+  const fileInput = useRef<Maybe<HTMLInputElement>>(null);
 
   const handleAndInsertNewFiles = async (files: FileList) => {
     if (!editor || editor.isDestroyed || files.length === 0) {

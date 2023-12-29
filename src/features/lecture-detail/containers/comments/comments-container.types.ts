@@ -7,6 +7,7 @@ import {
   CommentsHomeWorkByHomeWorkQuery,
   CommentsHomeWorkByHomeWorkQueryVariables,
   UserIdQuery,
+  Maybe,
 } from "api/graphql/generated/graphql";
 
 interface CommentsProps {
@@ -23,6 +24,6 @@ interface CommentsProps {
 }
 
 export interface ICommentsContainer {
-  id?: string | null;
+  id?: Maybe<string>;
   children: ReactElement<CommentsProps>;
 }

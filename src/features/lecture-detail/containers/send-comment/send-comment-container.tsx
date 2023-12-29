@@ -3,6 +3,7 @@ import {
   CommentsHomeWorkByHomeWorkDocument,
   CommentsHomeWorkByHomeWorkQuery,
   useSendCommentMutation,
+  Maybe,
 } from "api/graphql/generated/graphql";
 
 import { ISendCommentContainer } from "./send-comment-container.types";
@@ -15,7 +16,7 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
   const [sendComment, { loading }] = useSendCommentMutation({
     update: (cache, { data }) => {
       const newComment = data?.sendComment;
-      const existingComments: CommentsHomeWorkByHomeWorkQuery | null =
+      const existingComments: Maybe<CommentsHomeWorkByHomeWorkQuery> =
         cache.readQuery({
           query: CommentsHomeWorkByHomeWorkDocument,
           variables: {

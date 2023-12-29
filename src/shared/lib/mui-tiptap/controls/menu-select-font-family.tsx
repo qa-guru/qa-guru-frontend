@@ -4,6 +4,7 @@ import type { Editor } from "@tiptap/core";
 import type { ReactNode } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { useRichTextEditorContext } from "../context";
 import { getAttributesForEachSelected } from "../utils/get-attributes-for-each-selected";
@@ -29,7 +30,7 @@ const useStyles = makeStyles({ name: { MenuSelectFontFamily } })({
 });
 
 interface TextStyleAttrs extends ReturnType<Editor["getAttributes"]> {
-  fontFamily?: string | null;
+  fontFamily?: Maybe<string>;
 }
 
 const MULTIPLE_FAMILIES_SELECTED_VALUE = "MULTIPLE";

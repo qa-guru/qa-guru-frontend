@@ -28,6 +28,12 @@ export const editor = {
   yellow: "#ffff00",
   green: "#00d000",
   blue: "#0000ff",
+  darkGrey: "#616161",
+  lightRed: "#f98181",
+  lightOrange: "#fbbc88",
+  lightGreen: "#b9f18d",
+  lightYellow: "#faf594",
+  lightBlue: "#70cff8",
 };
 
 export const highlight = {

@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { ICommentsLimited } from "./comments-limited.types";
 import { StyledStack, StyledTypography } from "./comments-limited.styled";
@@ -9,9 +10,8 @@ import { COMMENTS_DISPLAY_LIMIT } from "../../constants";
 
 const CommentsLimited: FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;
-  const [selectedComment, setSelectedComment] = useState<
-    string | null | undefined
-  >(null);
+  const [selectedComment, setSelectedComment] =
+    useState<Maybe<string | undefined>>(null);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
 
