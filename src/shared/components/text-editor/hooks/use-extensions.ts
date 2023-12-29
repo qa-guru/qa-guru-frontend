@@ -41,19 +41,10 @@ import {
 } from "shared/lib/mui-tiptap/extensions";
 import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
 import { common, createLowlight } from "lowlight";
-import css from "highlight.js/lib/languages/css";
-import js from "highlight.js/lib/languages/javascript";
-import ts from "highlight.js/lib/languages/typescript";
-import html from "highlight.js/lib/languages/xml";
 
 import { mentionSuggestionOptions } from "../editor/utils/mention-suggestion-options";
 
 const lowlight = createLowlight(common);
-
-lowlight.register("html", html);
-lowlight.register("css", css);
-lowlight.register("js", js);
-lowlight.register("ts", ts);
 
 const Iframe = Node.create({
   name: "iframe",
