@@ -5,6 +5,7 @@ import { ReactComponent as Clock } from "assets/icons/clock.svg";
 import { ReactComponent as Search } from "assets/icons/search.svg";
 import { ReactComponent as Done } from "assets/icons/done.svg";
 import { styled } from "@mui/system";
+import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 import { StyledStack } from "./status-text.styled";
 import { IStatusText } from "./status-text.types";
@@ -18,19 +19,19 @@ const StatusText: FC<IStatusText> = ({ status }) => {
   let statusText;
 
   switch (status) {
-    case "NEW":
+    case StudentHomeWorkStatus.New:
       icon = <Clock />;
       statusText = "Ожидает проверки";
       break;
-    case "IN_REVIEW":
+    case StudentHomeWorkStatus.InReview:
       icon = <Search />;
       statusText = "На проверке";
       break;
-    case "APPROVED":
+    case StudentHomeWorkStatus.Approved:
       icon = <Done />;
       statusText = "Принято";
       break;
-    case "NOT_APPROVED":
+    case StudentHomeWorkStatus.NotApproved:
       icon = <RedHighlightOffIcon />;
       statusText = "Не принято";
       break;

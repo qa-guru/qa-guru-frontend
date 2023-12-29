@@ -2,13 +2,14 @@ import { FC, useMemo } from "react";
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
-import { formatDate, formatRole } from "shared/helpers";
+import { formatDate } from "shared/helpers";
 import UserRow from "shared/components/user-row";
 
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";
 import { LockUser, UnlockUser } from "../../containers";
+import SelectRole from "../select-role";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
   const columns = useMemo<ColumnDef<UserDto>[]>(
@@ -40,9 +41,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "roles",
         cell: (info: CellContext<UserDto, unknown>) => (
-          <Typography variant="body2">
-            {formatRole(info.row.original.roles)},
-          </Typography>
+          <SelectRole roles={info.row.original.roles} />
         ),
       },
       {

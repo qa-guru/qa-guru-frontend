@@ -5,7 +5,7 @@ import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
-import StatusText from "shared/components/status-content/status-text";
+import StatusText from "shared/components/status-text";
 import LectureHomework from "shared/components/lecture-homework";
 import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
 import { TextView } from "shared/components/text-editor";
