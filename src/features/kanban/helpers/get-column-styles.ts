@@ -1,4 +1,4 @@
-import { type Theme, type SxProps } from "@mui/system";
+import { type Theme, type SxProps, useTheme } from "@mui/system";
 import { app } from "theme/colors";
 import { alpha } from "@mui/material";
 import { Maybe } from "api/graphql/generated/graphql";
@@ -6,13 +6,18 @@ import { Maybe } from "api/graphql/generated/graphql";
 import { isColumnHighlight } from "./is-column-highlight";
 import { IDraggingState } from "../views/board/board.types";
 
+const theme = useTheme();
+
 const style = {
   emptyColumn: {
     backgroundColor: app.lightGray,
     borderRadius: "10px",
-    height: "69vh",
     boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
     margin: "13px",
+    height: "calc(100vh - 100px - 150px - 70px )",
+    [theme.breakpoints.down("md")]: {
+      height: "calc(100vh - 100px - 190px - 70px )",
+    },
   },
   dropColumn: {
     backgroundColor: alpha(app.primary, 0.1),
