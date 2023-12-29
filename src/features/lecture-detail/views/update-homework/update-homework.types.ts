@@ -8,7 +8,3 @@ export interface IUpdateHomeWork {
   answer?: string | null;
   id?: string | null;
 }
-
-export interface IUpdateHomeworkContent {
-  content?: string | null;
-}

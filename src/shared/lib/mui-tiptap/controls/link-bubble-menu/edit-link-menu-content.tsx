@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import useKeyDown from "../../hooks/use-key-down";
+import useOutsideClick from "../../hooks/use-outside-click";
 
 export type EditLinkMenuContentProps = {
   editor: Editor;
@@ -92,6 +93,9 @@ export default function EditLinkMenuContent({
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const formRef = useRef(null);
+  useOutsideClick(formRef, onCancel);
+
   return (
     <form
       onSubmit={(event) => {
@@ -106,6 +110,7 @@ export default function EditLinkMenuContent({
         setIsSubmitting(false);
       }}
       autoComplete="off"
+      ref={formRef}
     >
       <Typography variant="h6">{editMenuTitle}</Typography>
 
@@ -141,16 +146,21 @@ export default function EditLinkMenuContent({
       />
 
       <DialogActions sx={{ px: 0 }}>
-        <Button onClick={onCancel} variant="outlined" size="small">
+        <Button
+          onClick={onCancel}
+          color="secondary"
+          variant="contained"
+          size="small"
+        >
           {labels?.editLinkCancelButtonLabel ?? "Cancel"}
         </Button>
 
         <Button
           type="submit"
-          color="primary"
-          variant="outlined"
+          variant="contained"
           size="small"
           disabled={isSubmitting}
+          style={{ color: "white" }}
         >
           {labels?.editLinkSaveButtonLabel ?? "Save"}
         </Button>

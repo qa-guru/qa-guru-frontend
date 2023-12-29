@@ -12,10 +12,6 @@ import {
   StyledSelect,
 } from "./local-selector.styled";
 
-interface ILocaleSelector {
-  isLogging?: boolean;
-}
-
 const languageOptions = [
   {
     title: "English",
@@ -30,16 +26,12 @@ const languageOptions = [
   },
 ];
 
-const LocaleSelector: FC<ILocaleSelector> = ({ isLogging }) => {
+const LocaleSelector: FC = () => {
   const { i18n } = useTranslation();
 
   const handleChange = (event: SelectChangeEvent<unknown>) => {
     const { value } = event.target;
     i18n.changeLanguage(value as string);
-  };
-
-  const renderValue = (value: unknown) => {
-    return isLogging ? null : (value as string).toUpperCase();
   };
 
   return (
@@ -49,8 +41,8 @@ const LocaleSelector: FC<ILocaleSelector> = ({ isLogging }) => {
         value={i18n.language}
         onChange={handleChange}
         label="Language"
-        IconComponent={isLogging ? LanguageIcon : undefined}
-        renderValue={renderValue}
+        IconComponent={LanguageIcon}
+        renderValue={() => null}
         MenuProps={{
           style: {
             marginTop: "26px",
@@ -58,6 +50,11 @@ const LocaleSelector: FC<ILocaleSelector> = ({ isLogging }) => {
           PaperProps: {
             style: {
               borderRadius: "4px",
+            },
+            sx: {
+              "& .MuiMenu-list": {
+                padding: 0,
+              },
             },
           },
         }}

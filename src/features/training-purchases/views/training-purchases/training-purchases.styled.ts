@@ -28,7 +28,7 @@ export const StyledLink = styled(Link)({
 });
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
   textTransform: "uppercase",
 }));
 

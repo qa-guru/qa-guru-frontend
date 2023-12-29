@@ -8,7 +8,3 @@ export interface IUpdateComment {
   setSelectedComment: Dispatch<SetStateAction<string | null | undefined>>;
   content?: string | null;
 }
-
-export interface IUpdateCommentContent {
-  content?: string | null;
-}

@@ -21,5 +21,5 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   transform: "translate(-50%, -50%)",
   cursor: "default",
   borderRadius: "7px",
-  "&:hover": { backgroundColor: theme.palette.primary.main },
+  "&:hover": { backgroundColor: theme.palette.app.primary },
 }));

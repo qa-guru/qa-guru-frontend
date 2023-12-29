@@ -37,7 +37,7 @@ const useStyles = makeStyles<void, "focused" | "disabled" | "notchedOutline">({
       },
 
       [`&.${classes.focused} .${classes.notchedOutline}`]: {
-        borderColor: theme.palette.primary.main,
+        borderColor: theme.palette.app.primary,
         borderWidth: 2,
       },
 

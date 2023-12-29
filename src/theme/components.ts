@@ -1,8 +1,6 @@
 import { type Theme } from "@mui/material";
 
 const components = (theme: Theme) => {
-  // @ts-ignore
-  const { white } = theme.palette;
   return {
     MuiCssBaseline: {
       styleOverrides: {
@@ -39,7 +37,8 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           fontSize: "0.72rem",
-          width: "auto",
+          width: "fit-content",
+          padding: "6px 16px",
         },
       },
     },
@@ -47,7 +46,7 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           borderRadius: "10px",
-          backgroundColor: white.main,
+          backgroundColor: theme.palette.app.white,
           boxShadow:
             "0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)",
         },
@@ -56,9 +55,9 @@ const components = (theme: Theme) => {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          borderColor: white.main,
+          borderColor: theme.palette.app.white,
           fontSize: "14px",
-          backgroundColor: white.main,
+          backgroundColor: theme.palette.app.white,
           [theme.breakpoints.down("sm")]: {
             "& .MuiFormLabel-root": {
               fontSize: "0.9rem",
@@ -77,7 +76,7 @@ const components = (theme: Theme) => {
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          backgroundColor: white.main,
+          backgroundColor: theme.palette.app.white,
           fontSize: "0.9rem",
         },
       },
@@ -85,7 +84,7 @@ const components = (theme: Theme) => {
     MuiDatePicker: {
       styleOverrides: {
         root: {
-          backgroundColor: white.main,
+          backgroundColor: theme.palette.app.white,
           "& .MuiInputLabel-root": {
             fontSize: "0.9rem",
           },

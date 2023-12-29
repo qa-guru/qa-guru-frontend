@@ -12,13 +12,7 @@ export const StyledWrapperColumnContainer = styled(Box, {
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
-  maxHeight: "57vh",
-  [theme.breakpoints.up("md")]: {
-    maxHeight: "65.5vh",
-  },
-  [theme.breakpoints.up("lg")]: {
-    maxHeight: "63.5vh",
-  },
+  height: "calc(100vh - 100px - 150px - 70px )",
   overflowY: showButton ? "hidden" : "auto",
 }));
 
@@ -34,7 +28,7 @@ export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
 
 export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
   margin: "1vh auto",
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
 }));
 
 export const StyledTypographyStatus = styled(Typography)({
@@ -86,5 +80,5 @@ export const StyledButton = styled(Button)({
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "145px",
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
 }));

@@ -3,14 +3,18 @@ import { Box, Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
-export const StyledLocalSelectorWrapper = styled(Box)({
+export const StyledLocalSelectorWrapper = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "20px",
   right: "40px",
-});
+  [theme.breakpoints.down("md")]: {
+    top: "5px",
+    right: "5px",
+  },
+}));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  backgroundColor: theme.palette.purple.main,
+  backgroundColor: theme.palette.app.purple,
   justifyContent: "center",
   alignItems: "center",
   position: "absolute",
@@ -19,6 +23,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   width: "100%",
   [theme.breakpoints.down("md")]: {
     bottom: "150px",
+    height: "calc(100vh - 150px)",
   },
 }));
 
@@ -28,12 +33,16 @@ export const StyledLogo = styled(Logo)({
   viewBox: "0 0 250 38",
 });
 
-export const StyledPaper = styled(Paper)({
+export const StyledPaper = styled(Paper)(({ theme }) => ({
   width: "390px",
   marginTop: "22px",
   padding: "40px 30px 20px",
-  textAlign: "center",
-});
+  justifyContent: "center",
+  alignItems: "center",
+  [theme.breakpoints.down("sm")]: {
+    width: "290px",
+  },
+}));
 
 export const StyledStack = styled(Stack)({
   gap: "35px",
@@ -42,14 +51,14 @@ export const StyledStack = styled(Stack)({
 export const StyledBottomStack = styled(Stack)({
   gap: "8px",
   marginTop: "20px",
+  alignItems: "center",
 });
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
-  color: theme.palette.white.main,
-  width: "fit-content",
+  color: theme.palette.app.white,
   alignSelf: "center",
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
 }));

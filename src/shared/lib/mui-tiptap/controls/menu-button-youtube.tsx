@@ -96,7 +96,8 @@ export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
             >
               <Button
                 onClick={handleClosePopover}
-                variant="outlined"
+                color="secondary"
+                variant="contained"
                 size="small"
               >
                 Cancel
@@ -104,8 +105,9 @@ export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
               <Button
                 type="submit"
                 color="primary"
-                variant="outlined"
+                variant="contained"
                 size="small"
+                style={{ color: "white" }}
               >
                 Save
               </Button>
@@ -117,6 +119,6 @@ export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
   );
 }
 
-export const StyledBox = styled(Box)(({ theme }) => ({
+export const StyledBox = styled(Box)({
   padding: "12px 16px 12px",
-}));
+});

@@ -4,7 +4,7 @@ import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
   textTransform: "none",
 }));
 
@@ -25,15 +25,15 @@ export const StyledUserBox = styled(Box)({
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.black.main,
+  color: theme.palette.app.black,
   width: "100%",
 }));
 
-export const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+export const StyledMenuItem = styled(MenuItem)({
   margin: 0,
   height: "40px",
   padding: "6px 16px",
-}));
+});
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",

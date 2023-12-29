@@ -14,7 +14,7 @@ const useStyles = makeStyles({ name: { ResizableImageResizer } })((theme) => ({
     right: -3,
     width: 12,
     height: 12,
-    background: theme.palette.primary.main,
+    background: theme.palette.app.primary,
     cursor: "nwse-resize",
   },
 }));

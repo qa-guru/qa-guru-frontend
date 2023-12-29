@@ -21,11 +21,11 @@ export const StyledTypography = styled(Typography)({
 export const StyledCircle = styled(Typography)(({ theme }) => ({
   minWidth: "40px",
   height: "40px",
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.app.primary,
   borderRadius: "50%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  color: theme.palette.white.main,
+  color: theme.palette.app.white,
   marginRight: "15px",
 }));

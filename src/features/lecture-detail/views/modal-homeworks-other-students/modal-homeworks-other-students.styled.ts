@@ -34,5 +34,5 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.white.main,
+  color: theme.palette.app.white,
 }));

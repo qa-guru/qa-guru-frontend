@@ -35,6 +35,7 @@ import {
 
 export default function EditorMenuControls() {
   const theme = useTheme();
+
   return (
     <MenuControlsContainer>
       <MenuSelectFontFamily
@@ -73,28 +74,28 @@ export default function EditorMenuControls() {
       <MenuButtonTextColor
         defaultTextColor={theme.palette.text.primary}
         swatchColors={[
-          { value: "#000000", label: "Black" },
-          { value: "#ffffff", label: "White" },
-          { value: "#888888", label: "Grey" },
-          { value: "#ff0000", label: "Red" },
-          { value: "#ff9900", label: "Orange" },
-          { value: "#ffff00", label: "Yellow" },
-          { value: "#00d000", label: "Green" },
-          { value: "#0000ff", label: "Blue" },
+          { value: theme.palette.editor.black, label: "Black" },
+          { value: theme.palette.editor.white, label: "White" },
+          { value: theme.palette.editor.grey, label: "Grey" },
+          { value: theme.palette.editor.red, label: "Red" },
+          { value: theme.palette.editor.orange, label: "Orange" },
+          { value: theme.palette.editor.yellow, label: "Yellow" },
+          { value: theme.palette.editor.green, label: "Green" },
+          { value: theme.palette.editor.blue, label: "Blue" },
         ]}
       />
 
       <MenuButtonHighlightColor
         swatchColors={[
-          { value: "#595959", label: "Dark grey" },
-          { value: "#dddddd", label: "Light grey" },
-          { value: "#ffa6a6", label: "Light red" },
-          { value: "#ffd699", label: "Light orange" },
+          { value: theme.palette.highlight.darkGrey, label: "Dark grey" },
+          { value: theme.palette.highlight.lightGrey, label: "Light grey" },
+          { value: theme.palette.highlight.lightRed, label: "Light red" },
+          { value: theme.palette.highlight.lightOrange, label: "Light orange" },
 
-          { value: "#ffff00", label: "Yellow" },
-          { value: "#99cc99", label: "Light green" },
-          { value: "#90c6ff", label: "Light blue" },
-          { value: "#8085e9", label: "Light purple" },
+          { value: theme.palette.highlight.yellow, label: "Yellow" },
+          { value: theme.palette.highlight.lightGreen, label: "Light green" },
+          { value: theme.palette.highlight.lightBlue, label: "Light blue" },
+          { value: theme.palette.highlight.lightPurple, label: "Light purple" },
         ]}
       />
 

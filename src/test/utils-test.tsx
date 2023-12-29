@@ -5,7 +5,7 @@ import { SnackbarProvider } from "notistack";
 import "../i18n/config";
 import { TransitionGroup } from "react-transition-group";
 import { ModalProvider } from "react-modal-hook";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material";
 import { client } from "api";
 import { createCustomTheme } from "theme";
 import useSettings from "shared/hooks/use-settings";

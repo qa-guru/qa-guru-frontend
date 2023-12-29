@@ -5,7 +5,3 @@ export interface ISendComment {
   loading: boolean;
   id?: string | null;
 }
-
-export interface ISendCommentContent {
-  content: string;
-}

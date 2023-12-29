@@ -24,7 +24,7 @@ export const StyledDialogContent = styled(DialogContent)({
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: "16px",
-  color: theme.palette.white.main,
+  color: theme.palette.app.white,
 }));
 
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({

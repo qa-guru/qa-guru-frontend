@@ -37,10 +37,15 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
         <StyledBox>
           <Editor content={answer} rteRef={rteRef} />
           <StyledStack>
-            <StyledCancelButton onClick={() => setOpenHomeWorkEdit(false)}>
+            <StyledCancelButton
+              color="secondary"
+              variant="contained"
+              onClick={() => setOpenHomeWorkEdit(false)}
+            >
               Отменить
             </StyledCancelButton>
             <StyledLoadingButton
+              variant="contained"
               onClick={handleUpdateHomework}
               loading={loading}
             >

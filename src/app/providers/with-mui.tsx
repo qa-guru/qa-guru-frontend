@@ -1,6 +1,5 @@
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 import { ReactNode } from "react";
-import { CssBaseline } from "@mui/material";
 import { createCustomTheme } from "theme";
 import useSettings from "shared/hooks/use-settings";
 
