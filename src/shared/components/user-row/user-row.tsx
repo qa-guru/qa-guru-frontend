@@ -26,8 +26,18 @@ const UserRow: FC<IUserRow> = (props) => {
     variant = "body2",
     hideFullName,
     hideAvatar,
+    firstName,
+    lastName,
+    rating,
   } = props;
-  const fullName = `${user?.firstName} ${user?.lastName}`;
+
+  let fullName;
+
+  if (user) {
+    fullName = `${user?.firstName} ${user?.lastName}`;
+  } else {
+    fullName = `${firstName} ${lastName}`;
+  }
 
   return (
     <StyledWrapperStack>
@@ -48,7 +58,7 @@ const UserRow: FC<IUserRow> = (props) => {
               <StyledRatingChip
                 size="small"
                 variant="outlined"
-                label={user?.rating?.rating}
+                label={rating ? rating?.rating : user?.rating?.rating}
               />
             </StyledStack>
             <Typography variant="caption">{formatRole(roles)}</Typography>

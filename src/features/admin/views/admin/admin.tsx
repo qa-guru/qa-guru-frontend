@@ -1,9 +1,9 @@
 import { FC, useMemo } from "react";
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
-import AvatarCustom from "shared/components/avatar-custom";
 import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate, formatRole } from "shared/helpers";
+import UserRow from "shared/components/user-row";
 
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
@@ -17,14 +17,18 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         header: "Пользователь",
         footer: (props) => props.column.id,
         accessorKey: "id",
-        cell: (info: CellContext<UserDto, unknown>) => (
-          <StyledAlignStack>
-            <AvatarCustom
-              fullName={`${info.row.original.firstName} ${info.row.original.lastName}`}
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { firstName, lastName, roles, rating } = info.row.original;
+
+          return (
+            <UserRow
+              firstName={firstName}
+              lastName={lastName}
+              roles={roles}
+              rating={rating}
             />
-            <Typography variant="body2">{`${info.row.original.firstName} ${info.row.original.lastName}`}</Typography>
-          </StyledAlignStack>
-        ),
+          );
+        },
       },
       {
         header: "E-mail",
@@ -37,7 +41,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         accessorKey: "roles",
         cell: (info: CellContext<UserDto, unknown>) => (
           <Typography variant="body2">
-            {formatRole(info.row.original.roles)}
+            {formatRole(info.row.original.roles)},
           </Typography>
         ),
       },
@@ -46,17 +50,15 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "creationDate",
         cell: (info: CellContext<UserDto, unknown>) => {
+          const { creationDate, locked, id } = info.row.original;
+
           return (
             <StyledAlignStack>
               <Typography variant="body2">
-                {formatDate(info.row.original.creationDate, "DD.MM.YYYY")}
+                {formatDate(creationDate, "DD.MM.YYYY")}
               </Typography>
               <StyledRightAlignBox>
-                {info.row.original.locked ? (
-                  <UnlockUser id={info.row.original.id} />
-                ) : (
-                  <LockUser id={info.row.original.id} />
-                )}
+                {locked ? <UnlockUser id={id} /> : <LockUser id={id} />}
               </StyledRightAlignBox>
             </StyledAlignStack>
           );

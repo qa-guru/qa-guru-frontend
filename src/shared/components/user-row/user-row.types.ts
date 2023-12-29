@@ -1,15 +1,23 @@
 import { ComponentType } from "react";
-import { UserDto, UserRole } from "api/graphql/generated/graphql";
+import {
+  Maybe,
+  RatingUserDto,
+  UserDto,
+  UserRole,
+} from "api/graphql/generated/graphql";
 
 export interface IUserRow {
   icon?: ComponentType;
-  user?: UserDto | null;
-  email?: string | null;
+  user?: Maybe<UserDto>;
+  email?: Maybe<string>;
   date?: string;
   width?: string | number;
   height?: string | number;
   variant?: "body1" | "body2" | "subtitle1" | "subtitle2";
-  roles?: Array<UserRole | null> | null;
+  roles?: Maybe<Array<Maybe<UserRole>>>;
   hideFullName?: boolean;
   hideAvatar?: boolean;
+  firstName?: Maybe<string>;
+  lastName?: Maybe<string>;
+  rating?: Maybe<RatingUserDto>;
 }
