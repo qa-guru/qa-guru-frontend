@@ -41,7 +41,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector isLogging />
+        <LocalSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>

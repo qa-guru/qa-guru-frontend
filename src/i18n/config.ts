@@ -8,6 +8,8 @@ import en from "./locales/en/en.json";
 const DETECTION_OPTIONS = {
   order: ["localStorage", "navigator"],
   caches: ["localStorage"],
+  lookupLocalStorage: "i18nextLng",
+  checkWhitelist: true,
 };
 
 use(initReactI18next)
@@ -25,6 +27,7 @@ use(initReactI18next)
     ns: ["translations"],
     defaultNS: "translations",
     returnNull: false,
+    supportedLngs: ["en", "ru"],
     fallbackLng: "ru",
   });
 

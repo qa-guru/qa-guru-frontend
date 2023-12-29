@@ -1,19 +1,20 @@
 import { type Theme, type SxProps } from "@mui/system";
-import { grey, primary } from "theme/colors";
+import { app } from "theme/colors";
+import { alpha } from "@mui/material";
 
 import { isColumnHighlight } from "./is-column-highlight";
 import { IDraggingState } from "../views/board/board.types";
 
 const style = {
   emptyColumn: {
-    backgroundColor: grey.light,
+    backgroundColor: app.lightGray,
     borderRadius: "10px",
     height: "69vh",
     boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
     margin: "13px",
   },
   dropColumn: {
-    backgroundColor: primary.secondary,
+    backgroundColor: alpha(app.primary, 0.1),
   },
 };
 
@@ -46,7 +47,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
     return {
       ...styles,
       border: "2px dashed",
-      borderColor: primary.main,
+      borderColor: app.primary,
       borderRadius: "10px",
     };
   }

@@ -13,8 +13,7 @@ export const StyledStack = styled(Stack)({
 });
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
-  color: theme.palette.white.main,
-  minWidth: "147px",
+  color: theme.palette.app.white,
   marginTop: "5px",
 }));
 

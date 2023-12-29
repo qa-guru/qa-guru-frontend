@@ -8,6 +8,6 @@ export const StyledAlignStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(2),
 }));
 
-export const StyledRightAlignBox = styled(Box)(({ theme }) => ({
+export const StyledRightAlignBox = styled(Box)({
   marginLeft: "auto",
-}));
+});

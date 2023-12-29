@@ -4,7 +4,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 export const StyledNavigateButton = styled(Button)(({ theme }) => ({
   marginBottom: "25px",
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
 }));
 
 export const StyledIcon = styled(ChevronLeftIcon)({

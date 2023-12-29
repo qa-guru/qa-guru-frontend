@@ -1,5 +1,6 @@
-import { Box, Pagination, Stack } from "@mui/material";
+import { alpha, Box, Pagination, Stack } from "@mui/material";
 import { styled } from "@mui/system";
+
 
 export const StyledPagination = styled(Pagination)(({ theme }) => ({
   "& .MuiPaginationItem-root": {
@@ -7,10 +8,10 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
     color: "transparent",
   },
   "& .MuiPaginationItem-root.MuiPaginationItem-circular": {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.app.secondary,
   },
   "& .MuiPaginationItem-root.MuiPaginationItem-circular.Mui-selected": {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.app.primary,
     color: "transparent",
   },
 }));
@@ -36,6 +37,7 @@ export const StyledBox = styled(Box)({
   marginBottom: "15px",
 });
 
-export const StyledHomeworkDetails = styled(Box)({
+export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
   minWidth: "33.5vw",
-});
+  backgroundColor: alpha(theme.palette.app.secondary, 0.2),
+}));

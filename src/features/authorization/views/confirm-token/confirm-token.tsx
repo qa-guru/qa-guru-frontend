@@ -40,7 +40,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector isLogging />
+        <LocalSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>

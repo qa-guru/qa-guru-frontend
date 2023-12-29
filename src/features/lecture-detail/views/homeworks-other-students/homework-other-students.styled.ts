@@ -20,6 +20,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
-  color: theme.palette.primary.main,
-  margin: "15px auto",
+  color: theme.palette.app.primary,
+  alignSelf: "center",
+  margin: "20px",
 }));

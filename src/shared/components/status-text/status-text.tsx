@@ -1,18 +1,17 @@
 import { FC } from "react";
 import { Box, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { ReactComponent as Clock } from "assets/icons/clock.svg";
 import { ReactComponent as Search } from "assets/icons/search.svg";
 import { ReactComponent as Done } from "assets/icons/done.svg";
+import { styled } from "@mui/system";
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
-import { red } from "theme/colors";
 
 import { StyledStack } from "./status-text.styled";
 import { IStatusText } from "./status-text.types";
 
 export const RedHighlightOffIcon = styled(HighlightOffIcon)({
-  color: red.main,
+  color: "red",
 });
 
 const StatusText: FC<IStatusText> = ({ status }) => {

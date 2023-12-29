@@ -25,12 +25,12 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   minWidth: "40px",
   height: "40px",
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.app.primary,
   borderRadius: "50%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  color: theme.palette.white.main,
+  color: theme.palette.app.white,
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
@@ -46,6 +46,6 @@ export const StyledBox = styled(Box)({
 });
 
 export const StyledSubtitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.app.primary,
   textTransform: "uppercase",
 }));
