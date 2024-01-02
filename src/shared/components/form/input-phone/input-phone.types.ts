@@ -1,10 +1,10 @@
-import { Control, FieldErrors, FieldValues } from "react-hook-form";
+import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
 
 export interface IFormInputPhone<T extends FieldValues> {
   control: Control<T, unknown>;
   label?: string;
   placeholder?: string;
-  name: T[keyof T];
+  name: T[Path<T>];
   errors: FieldErrors<T>;
 }
 
