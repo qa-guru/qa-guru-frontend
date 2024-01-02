@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,24 +21,28 @@ import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 import { StyledScreenBox, StyledWrapper } from "./signup.styled";
 
+interface CustomUserCreateInput extends UserCreateInput {
+  confirmPassword: "";
+}
+
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [valueConfirmPassword] = useState<string>("");
 
   const {
     handleSubmit,
     control,
     formState: { errors },
     getValues,
-  } = useForm<UserCreateInput>({
+  } = useForm<CustomUserCreateInput>({
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       phoneNumber: "",
+      confirmPassword: "",
     },
     resolver: yupResolver(
       yup.object().shape({

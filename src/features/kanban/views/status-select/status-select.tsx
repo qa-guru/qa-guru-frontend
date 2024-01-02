@@ -63,13 +63,8 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
   return (
     <FormControl fullWidth size="small">
       <Box>
-        <InputLabel id="status-select-label">Статус</InputLabel>
-        <Select
-          id="status-select"
-          value={status!}
-          label="Статус"
-          onChange={updateStatus}
-        >
+        <InputLabel>Статус</InputLabel>
+        <Select value={status!} label="Статус" onChange={updateStatus}>
           {states.map(({ value, Icon, text }) => (
             <MenuItem
               key={value}

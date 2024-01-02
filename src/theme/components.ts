@@ -98,6 +98,20 @@ const components = (theme: Theme) => {
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          fontSize: "14px",
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontSize: "14px",
+        },
+      },
+    },
   };
 };
 

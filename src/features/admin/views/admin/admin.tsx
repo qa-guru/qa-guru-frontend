@@ -8,8 +8,7 @@ import UserRow from "shared/components/user-row";
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";
-import { LockUser, UnlockUser } from "../../containers";
-import SelectRole from "../select-role";
+import { LockUser, UnlockUser, UpdateRole } from "../../containers";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
   const columns = useMemo<ColumnDef<UserDto>[]>(
@@ -41,7 +40,10 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "roles",
         cell: (info: CellContext<UserDto, unknown>) => (
-          <SelectRole roles={info.row.original.roles} />
+          <UpdateRole
+            roles={info.row.original.roles}
+            id={info.row.original.id}
+          />
         ),
       },
       {
