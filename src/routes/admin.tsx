@@ -5,6 +5,7 @@ import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
 import Admin from "pages/admin";
+import UsersPage from "pages/users";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -26,6 +27,7 @@ const AdminRoutes = [
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
   <Route key="admin" path="/admin" element={<Admin />} />,
+  <Route path="/users" element={<UsersPage />} />,
 ];
 
 export default AdminRoutes;
