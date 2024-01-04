@@ -17,6 +17,8 @@ export interface IUserRow {
   roles?: Maybe<Array<Maybe<UserRole>>>;
   hideFullName?: boolean;
   hideAvatar?: boolean;
+  hideRoles?: boolean;
+  hideRating?: boolean;
   firstName?: Maybe<string>;
   lastName?: Maybe<string>;
   rating?: Maybe<RatingUserDto>;

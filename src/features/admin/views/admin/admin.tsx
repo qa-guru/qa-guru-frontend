@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react";
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate } from "shared/helpers";
 import UserRow from "shared/components/user-row";
@@ -11,6 +11,9 @@ import TableAdmin from "../table-admin";
 import { LockUser, UnlockUser, UpdateRole } from "../../containers";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
+  const theme = useTheme();
+  const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
+
   const columns = useMemo<ColumnDef<UserDto>[]>(
     () => [
       {
@@ -22,6 +25,8 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
 
           return (
             <UserRow
+              hideFullName={!!isOnlyXs}
+              hideRoles
               firstName={firstName}
               lastName={lastName}
               roles={roles}
@@ -66,7 +71,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         },
       },
     ],
-    []
+    [isOnlyXs]
   );
 
   return <TableAdmin {...{ data, columns, fetchMore }} />;

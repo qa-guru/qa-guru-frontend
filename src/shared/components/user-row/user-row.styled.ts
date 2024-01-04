@@ -13,6 +13,7 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
   alignItems: "center",
   textAlign: "start",
+  justifyContent: "space-between",
 }));
 
 export const StyledRatingChip = styled(Chip)(({ theme }) => ({
