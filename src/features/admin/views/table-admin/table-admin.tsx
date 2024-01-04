@@ -1,5 +1,4 @@
 import {
-  flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
@@ -7,12 +6,9 @@ import {
 import {
   Box,
   Container,
-  TableBody,
-  TableCell,
-  TableHead,
   TablePagination,
-  TableRow,
-  Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
@@ -21,13 +17,16 @@ import { ITableAdmin } from "./table-admin.types";
 import {
   StyledLoadMoreButton,
   StyledPaper,
-  StyledTable,
   StyledTitle,
 } from "./table-admin.styled";
 import TablePaginationActions from "../table-pagination-actions";
+import DesktopTable from "../desktop-table";
+import MobileTable from "../mobile-table";
 
 const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
   const users = data?.users?.items;
+  const theme = useTheme();
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const table = useReactTable({
     data: users as UserDto[],
@@ -63,42 +62,11 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
     <Container>
       <StyledTitle variant="h2">{`Пользователи (${data?.users?.totalElements})`}</StyledTitle>
       <StyledPaper>
-        <StyledTable>
-          <TableHead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableCell key={header.id}>
-                    <Typography variant="subtitle2">
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                    </Typography>
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableHead>
-          <TableBody>
-            {table.getRowModel().rows.map((row) => {
-              return (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </StyledTable>
+        {isDownMd ? (
+          <MobileTable table={table} />
+        ) : (
+          <DesktopTable table={table} />
+        )}
         <TablePagination
           rowsPerPageOptions={[
             5,

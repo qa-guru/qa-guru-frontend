@@ -98,8 +98,6 @@ const HomeworksContainer: FC = () => {
   if (!newData || !inReviewData || !approvedData || !notApprovedData)
     return <NoDataErrorMessage />;
 
-  console.log(inReviewData);
-
   return (
     <Board
       newData={newData}

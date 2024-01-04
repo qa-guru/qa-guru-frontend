@@ -25,7 +25,9 @@ const UserRow: FC<IUserRow> = (props) => {
     roles,
     variant = "body2",
     hideFullName,
+    hideRoles,
     hideAvatar,
+    hideRating,
     firstName,
     lastName,
     rating,
@@ -51,19 +53,23 @@ const UserRow: FC<IUserRow> = (props) => {
         />
       )}
       <StyledBox>
-        {!hideFullName && (
-          <>
-            <StyledStack>
-              <Typography variant={variant}>{fullName}</Typography>
-              <StyledRatingChip
-                size="small"
-                variant="outlined"
-                label={rating ? rating?.rating : user?.rating?.rating}
-              />
-            </StyledStack>
-            <Typography variant="caption">{formatRole(roles)}</Typography>
-          </>
+        <StyledStack>
+          {!hideFullName && (
+            <Typography variant={variant}>{fullName}</Typography>
+          )}
+          {!hideRating && (
+            <StyledRatingChip
+              size="small"
+              variant="outlined"
+              label={rating ? rating?.rating : user?.rating?.rating}
+            />
+          )}
+        </StyledStack>
+
+        {!hideRoles && (
+          <Typography variant="caption">{formatRole(roles)}</Typography>
         )}
+
         {date && (
           <StyledDateStack>
             <Typography variant="subtitle2">

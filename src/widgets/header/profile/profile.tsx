@@ -43,6 +43,8 @@ const Profile: FC<IProfile> = (props) => {
 
   const hasAdminAccess = useRoleAccess({ allowedRoles: [UserRole.Admin] });
 
+  const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
+
   if (hasAdminAccess) {
     settings.push({
       title: "Пользователи",
@@ -67,9 +69,9 @@ const Profile: FC<IProfile> = (props) => {
           <StyledBox>
             <UserRow
               user={user}
-              // roles={user?.roles}
               hideFullName={isDownSm}
               variant="body2"
+              hideRating={!!isOnlyXs}
             />
           </StyledBox>
         </StyledButton>

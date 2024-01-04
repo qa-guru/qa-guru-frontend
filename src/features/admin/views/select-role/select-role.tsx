@@ -49,7 +49,7 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
     <Stack direction="row" alignItems="center">
       {edit ? (
         <>
-          <Box width="220px">
+          <Box maxWidth="220px">
             <InputChip<ISelectRoleForm, UserRole>
               control={control}
               options={rolesOptions}

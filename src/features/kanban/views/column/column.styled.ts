@@ -8,7 +8,7 @@ interface IStyledColumn {
 
 export const StyledWrapperColumnContainer = styled(Box, {
   shouldForwardProp: (prop) => prop !== "showButton",
-})<IStyledColumn>(({ theme, showButton }) => ({
+})<IStyledColumn>(({ showButton }) => ({
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",

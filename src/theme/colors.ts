@@ -17,6 +17,7 @@ export const app = {
   whiteGrey: "#EEEEEE",
   indigo: "#303F9F",
   red: "#FF0000",
+  greyRGBA: "rgba(224, 224, 224, 1)",
 };
 
 export const editor = {
