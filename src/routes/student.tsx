@@ -4,6 +4,7 @@ import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
+import UsersPage from "pages/users";
 
 const StudentRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -24,6 +25,7 @@ const StudentRoutes = [
     element={<KanbanHomeworkDetailsFullPage />}
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
+  <Route path="/users" element={<UsersPage />} />,
 ];
 
 export default StudentRoutes;
