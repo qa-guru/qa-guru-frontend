@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
+import { StudentHomeWorkDto, Maybe } from "api/graphql/generated/graphql";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "../homework-details";
@@ -19,10 +19,9 @@ const DesktopBoard: FC<IDesktopBoard> = ({
   fetchMoreFunctions,
 }) => {
   const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
-  const [selectedCard, setSelectedCard] = useState<StudentHomeWorkDto | null>(
-    null
-  );
+  const [activeCardId, setActiveCardId] = useState<Maybe<string>>(null);
+  const [selectedCard, setSelectedCard] =
+    useState<Maybe<StudentHomeWorkDto>>(null);
   const theme = useTheme();
   const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
   const navigate = useNavigate();

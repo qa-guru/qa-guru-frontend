@@ -1,4 +1,6 @@
 /// <reference types="@tiptap/extension-highlight" />
+import { Maybe } from "api/graphql/generated/graphql";
+
 import { useRichTextEditorContext } from "../context";
 import FormatInkHighlighterNoBar from "../icons/formatInk-highlighter-no-bar";
 import {
@@ -17,7 +19,7 @@ export default function MenuButtonHighlightColor({
 }: MenuButtonHighlightColorProps) {
   const editor = useRichTextEditorContext();
   const currentHighlightColor = editor?.isActive("highlight")
-    ? (editor.getAttributes("highlight").color as string | null | undefined) ||
+    ? (editor.getAttributes("highlight").color as Maybe<string | undefined>) ||
       defaultMarkColor
     : "";
   return (

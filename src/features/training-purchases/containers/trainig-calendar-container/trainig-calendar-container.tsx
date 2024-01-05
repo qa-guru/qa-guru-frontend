@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import TrainingCalendar from "../../views/training-calendar";
 
-type TrainingData = {
+type TrainingData = Maybe<{
   classes: string[];
-} | null;
+}>;
 
 const TrainingCalendarContainer: React.FC = () => {
   const [data, setData] = useState<TrainingData>(null);

@@ -1,3 +1,5 @@
+import { Maybe } from "api/graphql/generated/graphql";
+
 export interface ILectureDescription {
-  description?: Array<string | null> | null;
+  description?: Maybe<Array<Maybe<string>>>;
 }

@@ -1,10 +1,11 @@
 import {
   LectureContentDto,
   LectureContentHomeWorkDto,
+  Maybe,
 } from "api/graphql/generated/graphql";
 
 export interface IContentSerialization {
-  content?:
-    | (LectureContentHomeWorkDto | LectureContentDto | null | undefined)[]
-    | null;
+  content?: Maybe<
+    (LectureContentHomeWorkDto | LectureContentDto | undefined)[]
+  >;
 }

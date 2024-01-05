@@ -1,10 +1,11 @@
 import {
   LectureContentDto,
   LectureContentHomeWorkDto,
+  Maybe,
 } from "api/graphql/generated/graphql";
 
 export interface ILectureHomework {
-  lectureHomeWork?:
-    | (LectureContentHomeWorkDto | LectureContentDto | null)[]
-    | null;
+  lectureHomeWork?: Maybe<
+    Maybe<LectureContentHomeWorkDto | LectureContentDto>[]
+  >;
 }

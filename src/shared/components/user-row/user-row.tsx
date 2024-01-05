@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
-import { formatRole } from "shared/helpers";
 
 import { IUserRow } from "./user-row.types";
 import {
@@ -13,6 +12,7 @@ import {
 } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
 import { DATE_FORMAT } from "../../constants";
+import { formatRole } from "../../helpers";
 
 const UserRow: FC<IUserRow> = (props) => {
   const {
@@ -25,7 +25,9 @@ const UserRow: FC<IUserRow> = (props) => {
     roles,
     variant = "body2",
     hideFullName,
+    hideRoles,
     hideAvatar,
+    hideRating,
     firstName,
     lastName,
     rating,
@@ -51,19 +53,23 @@ const UserRow: FC<IUserRow> = (props) => {
         />
       )}
       <StyledBox>
-        {!hideFullName && (
-          <>
-            <StyledStack>
-              <Typography variant={variant}>{fullName}</Typography>
-              <StyledRatingChip
-                size="small"
-                variant="outlined"
-                label={rating ? rating?.rating : user?.rating?.rating}
-              />
-            </StyledStack>
-            <Typography variant="caption">{formatRole(roles)}</Typography>
-          </>
+        <StyledStack>
+          {!hideFullName && (
+            <Typography variant={variant}>{fullName}</Typography>
+          )}
+          {!hideRating && (
+            <StyledRatingChip
+              size="small"
+              variant="outlined"
+              label={rating ? rating?.rating : user?.rating?.rating}
+            />
+          )}
+        </StyledStack>
+
+        {!hideRoles && (
+          <Typography variant="caption">{formatRole(roles)}</Typography>
         )}
+
         {date && (
           <StyledDateStack>
             <Typography variant="subtitle2">

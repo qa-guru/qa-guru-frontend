@@ -1,4 +1,4 @@
-import { type Theme, type SxProps } from "@mui/system";
+import { type Theme, type SxProps, useTheme } from "@mui/system";
 import { app } from "theme/colors";
 import { alpha } from "@mui/material";
 
@@ -33,6 +33,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
   totalElements,
   isOver
 ) => {
+  const theme = useTheme();
   let styles;
 
   if (isOver && canDrop) {
@@ -49,6 +50,9 @@ export const getColumnStyles: GetColumnStylesFunction = (
       border: "2px dashed",
       borderColor: app.primary,
       borderRadius: "10px",
+      [theme.breakpoints.down("md")]: {
+        height: "calc(100vh - 100px - 190px - 70px )",
+      },
     };
   }
 

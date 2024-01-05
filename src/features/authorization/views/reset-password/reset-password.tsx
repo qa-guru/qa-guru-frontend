@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { InputText } from "shared/components/form";
+import LocalSelector from "shared/components/local-selector/local-selector";
 
 import { IResetForm, IResetPassword } from "./reset-password.types";
 import {
@@ -14,7 +15,6 @@ import {
   StyledStack,
   StyledWrapper,
 } from "../views.styled";
-import LocalSelector from "../../../../shared/components/local-selector/local-selector";
 
 const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   const { t } = useTranslation();

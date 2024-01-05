@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { StudentHomeWorkStatus, Maybe } from "api/graphql/generated/graphql";
 
 export interface IHomeworkContent {
-  status?: StudentHomeWorkStatus | null;
-  answer?: string | null;
+  status?: Maybe<StudentHomeWorkStatus>;
+  answer?: Maybe<string>;
   openHomeWorkEdit: boolean;
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
-  id?: string | null;
+  id?: Maybe<string>;
 }

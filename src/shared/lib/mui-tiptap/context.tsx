@@ -1,11 +1,11 @@
 import type { Editor } from "@tiptap/react";
 import { createContext, useContext } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
-export const RichTextEditorContext = createContext<Editor | null | undefined>(
-  undefined
-);
+export const RichTextEditorContext =
+  createContext<Maybe<Editor | undefined>>(undefined);
 
-export function useRichTextEditorContext(): Editor | null {
+export function useRichTextEditorContext(): Maybe<Editor> {
   const editor = useContext(RichTextEditorContext);
   if (editor === undefined) {
     throw new Error(

@@ -1,6 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
 import {
-  Button,
   Divider,
   ListItemIcon,
   ListItemText,
@@ -18,6 +17,7 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { IProfile } from "./profile.types";
 import {
   StyledBox,
+  StyledButton,
   StyledLink,
   StyledMenu,
   StyledMenuItem,
@@ -43,6 +43,8 @@ const Profile: FC<IProfile> = (props) => {
 
   const hasAdminAccess = useRoleAccess({ allowedRoles: [UserRole.Admin] });
 
+  const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
+
   if (hasAdminAccess) {
     settings.push({
       title: "Пользователи",
@@ -63,16 +65,16 @@ const Profile: FC<IProfile> = (props) => {
   return (
     <>
       <Tooltip title="Open settings">
-        <Button variant="text" onClick={handleOpenProfile}>
+        <StyledButton variant="text" onClick={handleOpenProfile}>
           <StyledBox>
             <UserRow
               user={user}
-              roles={user?.roles}
               hideFullName={isDownSm}
               variant="body2"
+              hideRating={!!isOnlyXs}
             />
           </StyledBox>
-        </Button>
+        </StyledButton>
       </Tooltip>
       <StyledMenu
         anchorEl={anchorElUser}

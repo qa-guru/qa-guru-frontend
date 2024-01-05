@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export interface IUpdateCommentContainer {
-  id?: string | null;
-  setSelectedComment: Dispatch<SetStateAction<string | null | undefined>>;
-  content?: string | null;
+  id?: Maybe<string>;
+  setSelectedComment: Dispatch<SetStateAction<Maybe<string | undefined>>>;
+  content?: Maybe<string>;
 }

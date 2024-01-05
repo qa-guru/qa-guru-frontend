@@ -197,24 +197,24 @@ export function getEditorStyles(theme: Theme): StyleRules {
       fontFamily: '"JetBrainsMono", monospace',
       padding: "0.75rem 1rem",
       ".hljs-comment, .hljs-quote": {
-        color: "#616161",
+        color: theme.palette.editor.darkGrey,
       },
       ".hljs-variable, .hljs-template-variable, .hljs-attribute, .hljs-tag, .hljs-name, .hljs-regexp, .hljs-link, .hljs-name, .hljs-selector-id, .hljs-selector-class":
         {
-          color: "#f98181",
+          color: theme.palette.editor.lightRed,
         },
       ".hljs-number, .hljs-meta, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params":
         {
-          color: "#fbbc88",
+          color: theme.palette.editor.lightOrange,
         },
       ".hljs-string, .hljs-symbol, .hljs-bullet": {
-        color: "#b9f18d",
+        color: theme.palette.editor.lightGreen,
       },
       ".hljs-title, .hljs-section": {
-        color: "#faf594",
+        color: theme.palette.editor.lightYellow,
       },
       ".hljs-keyword, .hljs-selector-tag": {
-        color: "#70cff8",
+        color: theme.palette.editor.lightBlue,
       },
       ".hljs-emphasis": {
         fontStyle: "italic",

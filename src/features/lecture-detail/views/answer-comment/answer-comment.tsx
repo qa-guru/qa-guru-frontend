@@ -15,6 +15,10 @@ import {
 } from "./answer-comment-styled";
 import { IAnswerComment, IAnswerCommentContent } from "./answer-comment.types";
 
+interface IAnswerCommentForm {
+  content: string;
+}
+
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, id } = props;
   const { t } = useTranslation();
@@ -24,7 +28,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
     control,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<IAnswerCommentForm>({
     defaultValues: {
       content: "",
     },

@@ -11,13 +11,13 @@ import { FC } from "react";
 import UnlockUser from "../../views/unlock-user";
 
 interface IUnlockUserContainer {
-  id: Maybe<string> | undefined;
+  id?: Maybe<string>;
 }
 
 const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
   const [unlockUser] = useUnlockUserMutation({
     update: (cache) => {
-      const existingUsers: UsersQuery | null = cache.readQuery({
+      const existingUsers: Maybe<UsersQuery> = cache.readQuery({
         query: UsersDocument,
         variables: {
           offset: 0,

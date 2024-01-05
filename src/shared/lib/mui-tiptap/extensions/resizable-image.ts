@@ -5,11 +5,12 @@ import {
 } from "@tiptap/core";
 import { Image, type ImageOptions } from "@tiptap/extension-image";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import ResizableImageComponent from "./resizable-image-component";
 
 export type ResizableImageOptions = ImageOptions & {
-  isAllowedImgSrc(src: string | null): boolean;
+  isAllowedImgSrc(src: Maybe<string>): boolean;
 };
 
 const ResizableImage = Image.extend<ResizableImageOptions>({
@@ -17,7 +18,7 @@ const ResizableImage = Image.extend<ResizableImageOptions>({
     return {
       ...this.parent?.(),
 
-      isAllowedImgSrc: (src: string | null) => {
+      isAllowedImgSrc: (src: Maybe<string>) => {
         return !!src;
       },
     };

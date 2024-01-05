@@ -1,6 +1,5 @@
 import { FC, useContext, useState } from "react";
 import {
-  Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
@@ -13,7 +12,12 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/system";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
-import { StyledColumnStack, StyledRow, StyledRowStack } from "./form.styled";
+import {
+  StyledAccordion,
+  StyledColumnStack,
+  StyledRow,
+  StyledRowStack,
+} from "./form.styled";
 import CreationDateFromSelection from "../creation-date-from-selection";
 import CreationDateToSelection from "../creation-date-to-selection";
 import { MentorsSelection, LectureSelection } from "../../containers";
@@ -59,7 +63,7 @@ const Form: FC = () => {
   return (
     <form>
       {isDownMd ? (
-        <Accordion
+        <StyledAccordion
           expanded={isAccordionExpanded}
           onChange={handleAccordionToggle}
         >
@@ -82,7 +86,7 @@ const Form: FC = () => {
               </StyledRowStack>
             </StyledColumnStack>
           </AccordionDetails>
-        </Accordion>
+        </StyledAccordion>
       ) : (
         <StyledRow>
           <TrainingSelection control={control} />

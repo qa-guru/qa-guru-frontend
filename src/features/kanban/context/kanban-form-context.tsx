@@ -1,16 +1,17 @@
 import { createContext, Dispatch, SetStateAction } from "react";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export interface IKanbanFormContext {
-  trainingId: string | null;
-  setTrainingId: Dispatch<SetStateAction<string | null>>;
-  lectureId: string | null;
-  setLectureId: Dispatch<SetStateAction<string | null>>;
-  creationDateFrom: string | null;
-  setCreationDateFrom: Dispatch<SetStateAction<string | null>>;
-  creationDateTo: string | null;
-  setCreationDateTo: Dispatch<SetStateAction<string | null>>;
-  mentorId: string | null;
-  setMentorId: Dispatch<SetStateAction<string | null>>;
+  trainingId: Maybe<string>;
+  setTrainingId: Dispatch<SetStateAction<Maybe<string>>>;
+  lectureId: Maybe<string>;
+  setLectureId: Dispatch<SetStateAction<Maybe<string>>>;
+  creationDateFrom: Maybe<string>;
+  setCreationDateFrom: Dispatch<SetStateAction<Maybe<string>>>;
+  creationDateTo: Maybe<string>;
+  setCreationDateTo: Dispatch<SetStateAction<Maybe<string>>>;
+  mentorId: Maybe<string>;
+  setMentorId: Dispatch<SetStateAction<Maybe<string>>>;
 }
 
 export const KanbanFormContext = createContext<IKanbanFormContext>({

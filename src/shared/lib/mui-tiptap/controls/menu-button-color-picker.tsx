@@ -2,6 +2,7 @@ import type { PopperProps } from "@mui/material";
 import { useState, type ReactNode } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import FormatColorBar from "../icons/format-color-bar";
 import type { ColorPickerProps, SwatchColorOption } from "./color-picker";
@@ -55,7 +56,7 @@ export function MenuButtonColorPicker({
   ...menuButtonProps
 }: MenuButtonColorPickerProps) {
   const { classes, cx } = useStyles();
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<Maybe<HTMLElement>>(null);
 
   const handleClose = () => setAnchorEl(null);
 

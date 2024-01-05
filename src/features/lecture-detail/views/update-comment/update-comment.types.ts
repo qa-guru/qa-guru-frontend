@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
-import { UpdateCommentMutationFn } from "api/graphql/generated/graphql";
+import { UpdateCommentMutationFn, Maybe } from "api/graphql/generated/graphql";
 
 export interface IUpdateComment {
   updateComment: UpdateCommentMutationFn;
   loading: boolean;
-  id?: string | null;
-  setSelectedComment: Dispatch<SetStateAction<string | null | undefined>>;
-  content?: string | null;
+  id?: Maybe<string>;
+  setSelectedComment: Dispatch<SetStateAction<Maybe<string | undefined>>>;
+  content?: Maybe<string>;
 }
