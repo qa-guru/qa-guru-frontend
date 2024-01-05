@@ -2,7 +2,6 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1185,6 +1184,15 @@ export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatarLocation?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+
+export type UsersRatingQueryVariables = Exact<{
+  offset: Scalars['Int'];
+  limit: Scalars['Int'];
+  sort?: InputMaybe<UserSort>;
+}>;
+
+
+export type UsersRatingQuery = { __typename?: 'Query', usersRating?: { __typename?: 'UsersRatingDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'UserRatingDto', id?: string | null, lastName?: string | null, firstName?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
 
 export type UsersQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -3051,6 +3059,60 @@ export function useUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserQ
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
+export const UsersRatingDocument = gql`
+    query usersRating($offset: Int!, $limit: Int!, $sort: UserSort) {
+  usersRating(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      lastName
+      firstName
+      middleName
+      rating {
+        rating
+      }
+    }
+    offset
+    limit
+    totalElements
+  }
+}
+    `;
+export type UsersRatingComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<UsersRatingQuery, UsersRatingQueryVariables>, 'query'> & ({ variables: UsersRatingQueryVariables; skip?: boolean; } | { skip: boolean; });
+
+    export const UsersRatingComponent = (props: UsersRatingComponentProps) => (
+      <ApolloReactComponents.Query<UsersRatingQuery, UsersRatingQueryVariables> query={UsersRatingDocument} {...props} />
+    );
+    
+
+/**
+ * __useUsersRatingQuery__
+ *
+ * To run a query within a React component, call `useUsersRatingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUsersRatingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUsersRatingQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *      limit: // value for 'limit'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useUsersRatingQuery(baseOptions: Apollo.QueryHookOptions<UsersRatingQuery, UsersRatingQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<UsersRatingQuery, UsersRatingQueryVariables>(UsersRatingDocument, options);
+      }
+export function useUsersRatingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersRatingQuery, UsersRatingQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<UsersRatingQuery, UsersRatingQueryVariables>(UsersRatingDocument, options);
+        }
+export type UsersRatingQueryHookResult = ReturnType<typeof useUsersRatingQuery>;
+export type UsersRatingLazyQueryHookResult = ReturnType<typeof useUsersRatingLazyQuery>;
+export type UsersRatingQueryResult = Apollo.QueryResult<UsersRatingQuery, UsersRatingQueryVariables>;
 export const UsersDocument = gql`
     query users($offset: Int!, $limit: Int!, $sort: UserSort!) {
   users(offset: $offset, limit: $limit, sort: $sort) {
