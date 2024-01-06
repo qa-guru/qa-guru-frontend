@@ -18,6 +18,7 @@ export const app = {
   indigo: "#303F9F",
   red: "#FF0000",
   greyRGBA: "rgba(224, 224, 224, 1)",
+  hoverBlue: "rgba(32, 174, 227, 0.04)",
 };
 
 export const editor = {
