@@ -78,6 +78,7 @@ type Query {
   user section
   """
   user: UserDto
+  userById(id: ID): UserDto
   userRoles: [UserRoleDto]
   users(offset: Int!, limit: Int!, sort: UserSort): UsersDto
   usersRating(offset: Int!, limit: Int!, sort: UserSort): UsersRatingDto

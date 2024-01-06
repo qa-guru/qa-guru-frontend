@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 import { IUserRow } from "./user-row.types";
 import {
@@ -31,7 +32,11 @@ const UserRow: FC<IUserRow> = (props) => {
     firstName,
     lastName,
     rating,
+    userId,
+    hasLink,
   } = props;
+
+  const navigate = useNavigate();
 
   let fullName;
 
@@ -41,9 +46,14 @@ const UserRow: FC<IUserRow> = (props) => {
     fullName = `${firstName} ${lastName}`;
   }
 
+  const handleRowClick = () => {
+    navigate(`/users/${userId}`);
+  };
+
   return (
     <StyledWrapperStack>
       {Icon && <Icon />}
+
       {!hideAvatar && (
         <AvatarCustom
           fullName={fullName}
@@ -52,10 +62,19 @@ const UserRow: FC<IUserRow> = (props) => {
           variant="subtitle2"
         />
       )}
+
       <StyledBox>
         <StyledStack>
           {!hideFullName && (
-            <Typography variant={variant}>{fullName}</Typography>
+            <>
+              {hasLink ? (
+                <Link component="button" onClick={handleRowClick}>
+                  <Typography variant={variant}>{fullName}</Typography>
+                </Link>
+              ) : (
+                <Typography variant={variant}>{fullName}</Typography>
+              )}
+            </>
           )}
           {!hideRating && (
             <StyledRatingChip

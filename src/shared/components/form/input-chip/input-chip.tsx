@@ -26,7 +26,6 @@ const InputChip = <T extends FieldValues, OptionType>({
     const {
       target: { value },
     } = event;
-
     const selectedValues = value as OptionType[];
 
     fieldOnChange(selectedValues);

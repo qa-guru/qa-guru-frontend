@@ -45,6 +45,14 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
     });
   };
 
+  const handleClickEdit = () => {
+    setEdit(true);
+  };
+
+  const handleCloseEdit = () => {
+    setEdit(false);
+  };
+
   return (
     <Stack direction="row" alignItems="center">
       {edit ? (
@@ -57,14 +65,14 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
               onChange={handleSelectRoleChange}
             />
           </Box>
-          <IconButton onClick={() => setEdit(false)}>
+          <IconButton onClick={handleCloseEdit}>
             <CloseIcon fontSize="small" color="primary" />
           </IconButton>
         </>
       ) : (
         <StyledStack>
           <Typography variant="body2">{formatRole(roles)}</Typography>
-          <IconButton onClick={() => setEdit(true)}>
+          <IconButton onClick={handleClickEdit}>
             <EditIcon fontSize="small" color="primary" />
           </IconButton>
         </StyledStack>
