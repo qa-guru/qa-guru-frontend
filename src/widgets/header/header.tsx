@@ -58,7 +58,7 @@ const Header: FC = () => {
 
   pages.push({
     title: <StyledLink to="/top50Users">{t("page.top")}</StyledLink>,
-    pageURL: "/top50Users",
+    pageURL: "/users",
     id: 2,
   });
 

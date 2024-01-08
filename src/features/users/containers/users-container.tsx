@@ -4,12 +4,12 @@ import {
   UserSortField,
   useUsersRatingQuery,
 } from "api/graphql/generated/graphql";
+import Spinner from "shared/components/spinner";
+import NoDataErrorMessage from "shared/components/no-data-error-message";
 
-import Spinner from "../../../shared/components/spinner";
-import NoDataErrorMessage from "../../../shared/components/no-data-error-message";
-import Top50Users from "../views";
+import Users from "../views/users/users";
 
-const Top50UsersContainer: FC = () => {
+const UsersContainer: FC = () => {
   const { data, loading } = useUsersRatingQuery({
     variables: {
       offset: 0,
@@ -21,7 +21,7 @@ const Top50UsersContainer: FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <Top50Users />;
+  return <Users data={data} />;
 };
 
-export default Top50UsersContainer;
+export default UsersContainer;

@@ -7,7 +7,7 @@ import {
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
-import Admin from "../../views/admin/admin";
+import Admin from "../../views/admin";
 
 const UsersContainer: FC = () => {
   const { data, loading, fetchMore } = useUsersQuery({

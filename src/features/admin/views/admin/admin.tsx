@@ -25,7 +25,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
 
           return (
             <UserRow
-              hideFullName={!!isOnlyXs}
+              hideFullName={isOnlyXs}
               hideRoles
               firstName={firstName}
               lastName={lastName}

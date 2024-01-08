@@ -11,7 +11,7 @@ import {
 export const StyledPaper = styled(Paper)({
   borderRadius: "2px",
   padding: "5px 0 0",
-  marginBottom: "15px",
+  margin: "20px 0",
 });
 
 export const StyledTable = styled(Table)({

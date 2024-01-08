@@ -5,7 +5,6 @@ import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
 import UsersPage from "pages/users";
-import Top50Users from "pages/top-50-users";
 
 const ManagerRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -26,7 +25,6 @@ const ManagerRoutes = [
     element={<KanbanHomeworkDetailsFullPage />}
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
-  <Route key="top50users" path="/top50users" element={<Top50Users />} />,
   <Route path="/users" element={<UsersPage />} />,
 ];
 

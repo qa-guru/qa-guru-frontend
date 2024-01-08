@@ -178,6 +178,7 @@ type Query {
     trainingsHomeWorksStatistic(id: ID): [TrainingHomeWorksStatisticDto]
     "user section"
     user: UserDto
+    userById(id: ID): UserDto
     userRoles: [UserRoleDto]
     users(limit: Int!, offset: Int!, sort: UserSort): UsersDto
     usersRating(limit: Int!, offset: Int!, sort: UserSort): UsersRatingDto
