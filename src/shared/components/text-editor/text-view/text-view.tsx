@@ -1,9 +1,9 @@
 import { FC, useMemo } from "react";
 import { RichTextReadOnly } from "shared/lib/mui-tiptap";
 import { Maybe } from "api/graphql/generated/graphql";
+import { FormControl } from "@mui/material";
 
 import useExtensions from "../hooks/use-extensions";
-import { FormControl } from "@mui/material";
 
 interface TextViewProps {
   content?: Maybe<string>;

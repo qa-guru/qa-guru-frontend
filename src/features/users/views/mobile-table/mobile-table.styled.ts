@@ -1,6 +1,6 @@
 import { Table, TableCell, TableRow, Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
-import { UserDto, UserRatingDto } from "api/graphql/generated/graphql";
+import { UserRatingDto } from "api/graphql/generated/graphql";
 import { type Table as TableType } from "@tanstack/react-table";
 
 interface IStyledTableWrapper {
