@@ -22,4 +22,6 @@ export interface IUserRow {
   firstName?: Maybe<string>;
   lastName?: Maybe<string>;
   rating?: Maybe<RatingUserDto>;
+  userId?: Maybe<string>;
+  hasLink?: boolean;
 }

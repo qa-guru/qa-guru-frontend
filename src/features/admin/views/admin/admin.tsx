@@ -31,6 +31,8 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
               lastName={lastName}
               roles={roles}
               rating={rating}
+              userId={info.row.original.id}
+              hasLink
             />
           );
         },

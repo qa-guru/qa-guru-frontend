@@ -458,6 +458,7 @@ export type Query = {
   trainingsHomeWorksStatistic?: Maybe<Array<Maybe<TrainingHomeWorksStatisticDto>>>;
   /** user section */
   user?: Maybe<UserDto>;
+  userById?: Maybe<UserDto>;
   userRoles?: Maybe<Array<Maybe<UserRoleDto>>>;
   users?: Maybe<UsersDto>;
   usersRating?: Maybe<UsersRatingDto>;
@@ -623,6 +624,12 @@ export type QueryTrainingsByMentorArgs = {
 
 /** Query root */
 export type QueryTrainingsHomeWorksStatisticArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+/** Query root */
+export type QueryUserByIdArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -1177,6 +1184,13 @@ export type UpdateRoleMutationVariables = Exact<{
 
 
 export type UpdateRoleMutation = { __typename?: 'Mutation', updateRole?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, locked?: boolean | null, avatarLocation?: string | null, creationDate?: any | null, confirmationDate?: any | null, roles?: Array<UserRole | null> | null } | null };
+
+export type UserByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type UserByIdQuery = { __typename?: 'Query', userById?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatarLocation?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type UserIdQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2987,6 +3001,58 @@ export function useUpdateRoleMutation(baseOptions?: Apollo.MutationHookOptions<U
 export type UpdateRoleMutationHookResult = ReturnType<typeof useUpdateRoleMutation>;
 export type UpdateRoleMutationResult = Apollo.MutationResult<UpdateRoleMutation>;
 export type UpdateRoleMutationOptions = Apollo.BaseMutationOptions<UpdateRoleMutation, UpdateRoleMutationVariables>;
+export const UserByIdDocument = gql`
+    query userById($id: ID) {
+  userById(id: $id) {
+    id
+    email
+    firstName
+    lastName
+    middleName
+    phoneNumber
+    avatarLocation
+    roles
+    locked
+    rating {
+      rating
+    }
+  }
+}
+    `;
+export type UserByIdComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<UserByIdQuery, UserByIdQueryVariables>, 'query'>;
+
+    export const UserByIdComponent = (props: UserByIdComponentProps) => (
+      <ApolloReactComponents.Query<UserByIdQuery, UserByIdQueryVariables> query={UserByIdDocument} {...props} />
+    );
+    
+
+/**
+ * __useUserByIdQuery__
+ *
+ * To run a query within a React component, call `useUserByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useUserByIdQuery(baseOptions?: Apollo.QueryHookOptions<UserByIdQuery, UserByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<UserByIdQuery, UserByIdQueryVariables>(UserByIdDocument, options);
+      }
+export function useUserByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserByIdQuery, UserByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<UserByIdQuery, UserByIdQueryVariables>(UserByIdDocument, options);
+        }
+export type UserByIdQueryHookResult = ReturnType<typeof useUserByIdQuery>;
+export type UserByIdLazyQueryHookResult = ReturnType<typeof useUserByIdLazyQuery>;
+export type UserByIdQueryResult = Apollo.QueryResult<UserByIdQuery, UserByIdQueryVariables>;
 export const UserIdDocument = gql`
     query userId {
   user {

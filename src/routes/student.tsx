@@ -5,6 +5,7 @@ import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
 import UsersPage from "pages/users";
+import UserDetail from "pages/user-detail";
 
 const StudentRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -26,6 +27,7 @@ const StudentRoutes = [
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
   <Route path="/users" element={<UsersPage />} />,
+  <Route key="users" path="/users/:userId" element={<UserDetail />} />,
 ];
 
 export default StudentRoutes;

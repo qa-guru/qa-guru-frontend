@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { UserDto } from "api/graphql/generated/graphql";
+import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import {
-  StyledBox,
   StyledTable,
   StyledTableCell,
   StyledTableRow,
@@ -16,39 +16,41 @@ interface IMobileTable {
 }
 
 const MobileTable: FC<IMobileTable> = ({ table }) => {
-  return (
-    <>
-      {table.getRowModel().rows.map((row, rowIndex) => (
-        <StyledBox key={row.id} rowIndex={rowIndex} table={table}>
-          <StyledTable>
-            <TableBody>
-              {row.getVisibleCells().map((cell, cellIndex) => {
-                const header = table.getHeaderGroups()[0].headers[cellIndex];
+  const navigate = useNavigate();
 
-                return (
-                  <StyledTableRow key={cell.id}>
-                    <StyledTableCell component="th" scope="row">
-                      <StyledTypography variant="subtitle2">
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                      </StyledTypography>
-                    </StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
+  const handleRowClick = (userId?: Maybe<string>) => {
+    navigate(`/users/${userId}`);
+  };
+
+  return (
+    <StyledTable>
+      <TableBody>
+        {table.getRowModel().rows.map((row, rowIndex) => (
+          <StyledTableRow key={row.id} rowIndex={rowIndex} table={table}>
+            {row.getVisibleCells().map((cell, cellIndex) => {
+              const header = table.getHeaderGroups()[0].headers[cellIndex];
+
+              return (
+                <>
+                  <StyledTableCell>
+                    <StyledTypography variant="subtitle2">
                       {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
+                        header.column.columnDef.header,
+                        header.getContext()
                       )}
-                    </StyledTableCell>
-                  </StyledTableRow>
-                );
-              })}
-            </TableBody>
-          </StyledTable>
-        </StyledBox>
-      ))}
-    </>
+                    </StyledTypography>
+                  </StyledTableCell>
+
+                  <StyledTableCell>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </StyledTableCell>
+                </>
+              );
+            })}
+          </StyledTableRow>
+        ))}
+      </TableBody>
+    </StyledTable>
   );
 };
 
