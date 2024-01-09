@@ -4,7 +4,6 @@ import { UserRatingDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
 
 import {
-  StyledBox,
   StyledTable,
   StyledTableCell,
   StyledTableRow,
@@ -17,39 +16,34 @@ interface IMobileTable {
 
 const MobileTable: FC<IMobileTable> = ({ table }) => {
   return (
-    <>
-      {table.getRowModel().rows.map((row, rowIndex) => (
-        <StyledBox key={row.id} rowIndex={rowIndex} table={table}>
-          <StyledTable>
-            <TableBody>
-              {row.getVisibleCells().map((cell, cellIndex) => {
-                const header = table.getHeaderGroups()[0].headers[cellIndex];
+    <StyledTable>
+      <TableBody>
+        {table.getRowModel().rows.map((row, rowIndex) => (
+          <StyledTableRow key={row.id} rowIndex={rowIndex} table={table}>
+            {row.getVisibleCells().map((cell, cellIndex) => {
+              const header = table.getHeaderGroups()[0].headers[cellIndex];
 
-                return (
-                  <StyledTableRow key={cell.id}>
-                    <StyledTableCell component="th" scope="row">
-                      <StyledTypography variant="subtitle2">
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                      </StyledTypography>
-                    </StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
+              return (
+                <>
+                  <StyledTableCell>
+                    <StyledTypography variant="subtitle2">
                       {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
+                        header.column.columnDef.header,
+                        header.getContext()
                       )}
-                    </StyledTableCell>
-                  </StyledTableRow>
-                );
-              })}
-            </TableBody>
-          </StyledTable>
-        </StyledBox>
-      ))}
-    </>
+                    </StyledTypography>
+                  </StyledTableCell>
+
+                  <StyledTableCell>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </StyledTableCell>
+                </>
+              );
+            })}
+          </StyledTableRow>
+        ))}
+      </TableBody>
+    </StyledTable>
   );
 };
-
 export default MobileTable;

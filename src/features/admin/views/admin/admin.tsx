@@ -54,7 +54,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         ),
       },
       {
-        header: "Дата регистрации",
+        header: "Дата\u00A0регистрации",
         footer: (props) => props.column.id,
         accessorKey: "creationDate",
         cell: (info: CellContext<UserDto, unknown>) => {

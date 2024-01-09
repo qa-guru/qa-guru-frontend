@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { Maybe, UserDto } from "api/graphql/generated/graphql";
+import { UserDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 import {
   StyledTable,
@@ -16,12 +15,6 @@ interface IMobileTable {
 }
 
 const MobileTable: FC<IMobileTable> = ({ table }) => {
-  const navigate = useNavigate();
-
-  const handleRowClick = (userId?: Maybe<string>) => {
-    navigate(`/users/${userId}`);
-  };
-
   return (
     <StyledTable>
       <TableBody>

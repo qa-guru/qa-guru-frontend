@@ -7,6 +7,7 @@ import { IUserRow } from "./user-row.types";
 import {
   StyledBox,
   StyledDateStack,
+  StyledLink,
   StyledRatingChip,
   StyledStack,
   StyledWrapperStack,
@@ -68,9 +69,9 @@ const UserRow: FC<IUserRow> = (props) => {
           {!hideFullName && (
             <>
               {hasLink ? (
-                <Link component="button" onClick={handleRowClick}>
+                <StyledLink component="button" onClick={handleRowClick}>
                   <Typography variant={variant}>{fullName}</Typography>
-                </Link>
+                </StyledLink>
               ) : (
                 <Typography variant={variant}>{fullName}</Typography>
               )}

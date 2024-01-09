@@ -16,14 +16,13 @@ import {
 } from "../../../admin/views/table-admin/table-admin.styled";
 import MobileTable from "../../views/mobile-table";
 import DesktopTable from "../../views/desktop-table";
-import { StyledRatingChip } from "../../../../shared/components/user-row/user-row.styled";
+import { StyledRatingChip } from "./users.styled";
 
 const Users: FC<IUsers> = ({ data }) => {
   const users = data.usersRating?.items;
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
-  console.log(users);
 
   const columns = useMemo<ColumnDef<UserRatingDto>[]>(
     () => [
@@ -40,7 +39,9 @@ const Users: FC<IUsers> = ({ data }) => {
               hideRoles
               firstName={firstName}
               lastName={lastName}
-              rating={undefined}
+              hideRating
+              hasLink
+              userId={info.row.original.id}
             />
           );
         },
