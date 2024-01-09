@@ -6,7 +6,6 @@ query usersRating($offset: Int!, $limit: Int!, $sort: UserSort) {
       firstName
       middleName
       #      creationDate
-      #      roles
       rating {
         rating
       }
