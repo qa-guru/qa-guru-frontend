@@ -15,7 +15,7 @@ describe("InputRadio", () => {
               control={methods.control}
               name="testDate"
               label="testDate"
-              content={[{ value: "radio", label: "radio" }]}
+              options={[{ value: "radio", label: "radio" }]}
             />
           </FormProvider>
         </MemoryRouter>

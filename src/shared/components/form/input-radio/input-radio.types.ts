@@ -4,5 +4,5 @@ export interface IFormInputRadio<T extends FieldValues> {
   control: Control<T, unknown>;
   label?: string;
   name: T[Path<T>];
-  content?: Array<{ value: string; label: string }>;
+  options?: Array<{ value: string; label: string }>;
 }

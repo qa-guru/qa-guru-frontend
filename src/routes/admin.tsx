@@ -28,8 +28,8 @@ const AdminRoutes = [
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
   <Route key="admin" path="/admin" element={<Admin />} />,
-  <Route path="/users" element={<UsersPage />} />,
-  <Route key="users" path="/users/:userId" element={<UserDetail />} />,
+  <Route key="users" path="/users" element={<UsersPage />} />,
+  <Route key="users-detail" path="/users/:userId" element={<UserDetail />} />,
 ];
 
 export default AdminRoutes;
