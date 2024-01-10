@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { UserDto } from "api/graphql/generated/graphql";
+import { UserRatingDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
 
 import {
@@ -11,7 +11,7 @@ import {
 } from "./mobile-table.styled";
 
 interface IMobileTable {
-  table: Table<UserDto>;
+  table: Table<UserRatingDto>;
 }
 
 const MobileTable: FC<IMobileTable> = ({ table }) => {
@@ -46,5 +46,4 @@ const MobileTable: FC<IMobileTable> = ({ table }) => {
     </StyledTable>
   );
 };
-
 export default MobileTable;

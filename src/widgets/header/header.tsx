@@ -56,6 +56,12 @@ const Header: FC = () => {
     });
   }
 
+  pages.push({
+    title: <StyledLink to="/top50Users">{t("page.top")}</StyledLink>,
+    pageURL: "/users",
+    id: 2,
+  });
+
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);
     navigate(pageURL);

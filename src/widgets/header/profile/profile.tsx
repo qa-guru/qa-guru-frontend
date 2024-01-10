@@ -71,7 +71,7 @@ const Profile: FC<IProfile> = (props) => {
               user={user}
               hideFullName={isDownSm}
               variant="body2"
-              hideRating={!!isOnlyXs}
+              hideRating={isOnlyXs}
             />
           </StyledBox>
         </StyledButton>
