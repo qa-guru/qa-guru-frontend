@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import { IUserName } from "./user-name.types";
+import { StyledLink } from "./user-name.styled";
 
 const UserName: FC<IUserName> = ({
   fullName,
@@ -19,9 +20,9 @@ const UserName: FC<IUserName> = ({
   return (
     <>
       {hasLink ? (
-        <Link component="button" onClick={handleRowClick}>
+        <StyledLink component="button" onClick={handleRowClick}>
           <Typography variant={variant}>{fullName}</Typography>
-        </Link>
+        </StyledLink>
       ) : (
         <Typography variant={variant}>{fullName}</Typography>
       )}

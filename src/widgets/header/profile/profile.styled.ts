@@ -10,6 +10,9 @@ export const StyledButton = styled(Button)({
 export const StyledBox = styled(Box)(({ theme }) => ({
   color: theme.palette.app.black,
   textTransform: "none",
+  [theme.breakpoints.down("sm")]: {
+    marginRight: "-20px",
+  },
 }));
 
 export const StyledMenu = styled(Menu)({

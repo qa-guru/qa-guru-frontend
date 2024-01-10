@@ -1,6 +1,7 @@
 import { FC, useMemo } from "react";
 import { RichTextReadOnly } from "shared/lib/mui-tiptap";
 import { Maybe } from "api/graphql/generated/graphql";
+import { FormControl } from "@mui/material";
 
 import useExtensions from "../hooks/use-extensions";
 
@@ -42,9 +43,9 @@ const TextView: FC<TextViewProps> = ({ content }) => {
   const modifiedContent = useMemo(() => convertTextToLinks(content), [content]);
 
   return (
-    <>
+    <FormControl>
       <RichTextReadOnly content={modifiedContent} extensions={extensions} />
-    </>
+    </FormControl>
   );
 };
 

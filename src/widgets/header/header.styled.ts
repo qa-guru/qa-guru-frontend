@@ -24,7 +24,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   gap: "10px",
   padding: "20px 40px",
   [theme.breakpoints.down("md")]: {
-    padding: 0,
+    padding: "0 6px",
   },
 }));
 
@@ -37,9 +37,12 @@ export const StyledLogo = styled(Logo)({
   viewBox: "0 0 250 38",
 });
 
-export const StyledStack = styled(Stack)({
+export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   gap: "10px",
   stroke: "#ffffff",
-});
+  [theme.breakpoints.down("sm")]: {
+    gap: 0,
+  },
+}));

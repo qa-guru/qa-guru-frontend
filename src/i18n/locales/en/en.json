@@ -37,6 +37,7 @@
 
   "page.home": "Home",
   "page.board": "Task board",
+  "page.top": "Top 50",
 
   "homework": "Answer to homework is required",
   "homework.max": "Answer to homework must be no more than 2000 characters",
