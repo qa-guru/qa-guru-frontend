@@ -1,5 +1,9 @@
 import { FC, useMemo } from "react";
-import { type CellContext, type ColumnDef } from "@tanstack/react-table";
+import {
+  type CellContext,
+  type ColumnDef,
+  type HeaderContext,
+} from "@tanstack/react-table";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate } from "shared/helpers";
@@ -9,10 +13,12 @@ import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";
 import { LockUser, UnlockUser, UpdateRole } from "../../containers";
+import { StyledRatingChip } from "../../../users/views/users/users.styled";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
   const theme = useTheme();
   const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const columns = useMemo<ColumnDef<UserDto>[]>(
     () => [
@@ -25,12 +31,12 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
 
           return (
             <UserRow
-              hideFullName={isOnlyXs}
+              hideAvatar={isOnlyXs}
               hideRoles
+              hideRating
               firstName={firstName}
               lastName={lastName}
               roles={roles}
-              rating={rating}
               userId={info.row.original.id}
               hasLink
             />
@@ -38,10 +44,33 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         },
       },
       {
-        header: "E-mail",
+        header: "Рейтинг",
         footer: (props) => props.column.id,
-        accessorKey: "email",
+        accessorKey: "rating.rating",
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { rating } = info.row.original;
+
+          return (
+            <StyledRatingChip
+              size="small"
+              variant="outlined"
+              label={rating?.rating}
+            />
+          );
+        },
       },
+
+      ...(!isDownMd
+        ? [
+            {
+              header: "E-mail",
+              footer: (props: HeaderContext<UserDto, unknown>) =>
+                props.column.id,
+              accessorKey: "email",
+            },
+          ]
+        : []),
+
       {
         header: "Роль",
         footer: (props) => props.column.id,

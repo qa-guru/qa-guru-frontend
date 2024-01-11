@@ -30,4 +30,5 @@ export const StyledTableRow = styled(TableRow, {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   alignItems: "center",
+  textAlign: "left",
 }));

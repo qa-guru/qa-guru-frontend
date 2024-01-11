@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { Container, useMediaQuery, useTheme } from "@mui/material";
+import { Container, Typography, useMediaQuery, useTheme } from "@mui/material";
 import {
   type CellContext,
   type ColumnDef,
@@ -17,6 +17,7 @@ import {
 import MobileTable from "../../views/mobile-table";
 import DesktopTable from "../../views/desktop-table";
 import { StyledRatingChip } from "./users.styled";
+import { formatDate } from "../../../../shared/helpers";
 
 const Users: FC<IUsers> = ({ data }) => {
   const users = data.usersRating?.items;
@@ -31,11 +32,11 @@ const Users: FC<IUsers> = ({ data }) => {
         footer: (props) => props.column.id,
         accessorKey: "id",
         cell: (info: CellContext<UserRatingDto, unknown>) => {
-          const { firstName, lastName, rating } = info.row.original;
+          const { firstName, lastName } = info.row.original;
 
           return (
             <UserRow
-              hideFullName={isOnlyXs}
+              hideAvatar={isOnlyXs}
               hideRoles
               firstName={firstName}
               lastName={lastName}
@@ -59,6 +60,20 @@ const Users: FC<IUsers> = ({ data }) => {
               variant="outlined"
               label={rating?.rating}
             />
+          );
+        },
+      },
+      {
+        header: "Дата\u00A0регистрации",
+        footer: (props) => props.column.id,
+        accessorKey: "creationDate",
+        cell: (info: CellContext<UserRatingDto, unknown>) => {
+          const { creationDate } = info.row.original;
+
+          return (
+            <Typography variant="body2">
+              {formatDate(creationDate, "DD.MM.YYYY")}
+            </Typography>
           );
         },
       },

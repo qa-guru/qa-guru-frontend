@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 export const StyledAlignStack = styled(Stack)(({ theme }) => ({
   display: "flex",

@@ -12,7 +12,7 @@ export const StyledWrapperColumnContainer = styled(Box, {
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
-  height: "calc(100vh - 100px - 150px - 70px )",
+  height: "calc(100vh - 100px - 140px - 70px )",
   overflowY: showButton ? "hidden" : "auto",
 }));
 
@@ -46,8 +46,8 @@ export const StyledWrapperBoxCircle = styled(Box)({
 });
 
 export const StyledWrapper = styled(Box)({
-  padding: "25px 10px 5px 20px",
-  width: "390px",
+  padding: "30px 20px 10px",
+  width: "300px",
 });
 
 export const StyledDialogContent = styled(DialogContent)({
@@ -56,9 +56,9 @@ export const StyledDialogContent = styled(DialogContent)({
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   width: "100%",
-  gap: theme.spacing(1),
+  gap: "40px",
   flexDirection: "row",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
   marginBottom: "15px",
 }));
 
@@ -74,9 +74,10 @@ export const StyledCardBox = styled(Box)({
   marginBottom: "16px",
 });
 
-export const StyledButton = styled(Button)({
+export const StyledButton = styled(Button)(({ theme }) => ({
   width: "145px",
-});
+  color: theme.palette.app.white,
+}));
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "145px",
