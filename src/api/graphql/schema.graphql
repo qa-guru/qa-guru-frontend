@@ -305,6 +305,7 @@ type UserDto {
 
 type UserRatingDto {
     avatarLocation: String
+    creationDate: LocalDateTime
     firstName: String
     id: ID
     lastName: String

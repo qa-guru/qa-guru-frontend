@@ -78,8 +78,8 @@ const Card: FC<ICard> = ({
               <UserRow
                 icon={MentorIcon}
                 user={mentor}
-                width={26}
-                height={26}
+                width={24}
+                height={24}
                 variant="body2"
               />
             )}

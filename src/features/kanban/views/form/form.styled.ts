@@ -26,4 +26,5 @@ export const StyledRow = styled(Stack)(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(1),
   minHeight: "100%",
+  margin: "6px 0 0",
 }));

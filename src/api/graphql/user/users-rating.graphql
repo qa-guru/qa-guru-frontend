@@ -5,7 +5,7 @@ query usersRating($offset: Int!, $limit: Int!, $sort: UserSort) {
       lastName
       firstName
       middleName
-      #      creationDate
+      creationDate
       rating {
         rating
       }

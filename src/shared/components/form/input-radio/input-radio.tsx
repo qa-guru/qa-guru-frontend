@@ -13,10 +13,10 @@ const InputRadio = <T extends FieldValues>({
   control,
   label,
   name,
-  content,
+  options,
 }: IFormInputRadio<T>) => {
   const generateRadioOptions = () => {
-    return content?.map((item, index) => {
+    return options?.map((item, index) => {
       return (
         <FormControlLabel
           key={index}

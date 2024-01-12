@@ -36,10 +36,13 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   fullName,
   width,
   height,
-  variant = "h6",
+  variant,
 }) => {
   return (
-    <Avatar sx={{ width, height, ...stringAvatar(fullName).sx }}>
+    <Avatar
+      variant="rounded"
+      sx={{ width, height, ...stringAvatar(fullName).sx }}
+    >
       <Typography variant={variant}>
         {stringAvatar(fullName).children}
       </Typography>
