@@ -16,7 +16,6 @@ interface IDragEffect {
   sourceColumnId: string;
   setDraggingState: Dispatch<SetStateAction<IDraggingState>>;
   isDragging: boolean;
-  userId?: Maybe<string>;
   userRoles?: Maybe<Maybe<UserRole>[]>;
 }
 
@@ -28,13 +27,14 @@ const useDragEffect = ({
 }: IDragEffect) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { data: userId } = useUserIdQuery({
+  const { data: user } = useUserIdQuery({
     fetchPolicy: "cache-first",
   });
 
   const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
   const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
 
+  const userId = user?.user?.id;
   const mentorId = card.mentor?.id;
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const useDragEffect = ({
     }
 
     if (hasManagerAccess && !hasMentorAccess) {
-      enqueueSnackbar("MANAGER не может менять статус домашнего задания");
+      enqueueSnackbar("Менеджер не может менять статус домашнего задания");
       return;
     }
 
@@ -58,7 +58,7 @@ const useDragEffect = ({
       (sourceColumnId === STATUS_COLUMN.IN_REVIEW ||
         sourceColumnId === STATUS_COLUMN.NOT_APPROVED)
     ) {
-      enqueueSnackbar("Вы не можете поменять статус данной домашней работы");
+      enqueueSnackbar("Вы не можете поменять статус этой домашней работы");
       return;
     }
 
