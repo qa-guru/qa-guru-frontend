@@ -31,7 +31,7 @@ const Card: FC<ICard> = ({
     item: {
       id: card.id,
       sourceColumnId,
-      allowedColumns: getUpdatedAllowedColumns(sourceColumnId),
+      allowedColumns: getUpdatedAllowedColumns(sourceColumnId, mentor?.id),
     },
     end: () => {
       setDraggingState({

@@ -7,16 +7,19 @@ export const getUpdatedAllowedColumns = (
   columnId: string,
   mentorId?: Maybe<string>
 ) => {
-  const { data: userId } = useUserIdQuery({
+  const { data: user } = useUserIdQuery({
     fetchPolicy: "cache-first",
   });
 
+  const userId = user?.user?.id;
   const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
   const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
 
   if (hasManagerAccess && !hasMentorAccess) {
     return [];
   }
+
+  console.log(userId, mentorId);
 
   let allowedColumns: string[] = [];
 
