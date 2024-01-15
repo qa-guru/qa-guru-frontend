@@ -7,17 +7,19 @@ export const StyledPaper = styled(Paper)({
   padding: "24px",
 });
 
-export const StyledIconBox = styled(Box)({
+export const StyledIconBox = styled(Box)(({ theme }) => ({
   position: "relative",
-  backgroundColor: "lightgray",
+  backgroundColor: theme.palette.app.primary,
+  alignItems: "center",
+  justifyContent: "center",
   borderRadius: "12px",
-  width: "300px",
-  height: "300px",
-});
+  width: "20vw",
+  height: "20vw",
+}));
 
 export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
-  width: "300px",
-  height: "300px",
+  width: "20vw",
+  height: "20vw",
   color: theme.palette.app.white,
 }));
 
@@ -25,7 +27,7 @@ export const StyledIconButton = styled(Button)(({ theme }) => ({
   position: "absolute",
   bottom: "2px",
   right: "-5px",
-  color: theme.palette.app.purple,
+  color: theme.palette.app.white,
 }));
 
 export const StyledDialogContent = styled(DialogContent)({

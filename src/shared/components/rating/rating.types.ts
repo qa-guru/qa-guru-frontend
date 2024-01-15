@@ -2,7 +2,7 @@ import {
   Maybe,
   RatingUserDto,
   UserDto,
-} from "../../../../api/graphql/generated/graphql";
+} from "../../../api/graphql/generated/graphql";
 
 export interface IUserRating {
   user?: Maybe<UserDto>;
