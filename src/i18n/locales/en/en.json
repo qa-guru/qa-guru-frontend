@@ -2,7 +2,7 @@
   "signup": "Sign up",
   "login": "Login",
   "registration": "Registration",
-  "restore": "Restore password",
+  "restore": "Reset password",
   "reg.route": "Registration",
   "auth.route": "Login",
   "lastName": "LastName",
