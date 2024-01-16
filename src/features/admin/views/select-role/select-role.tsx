@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { InputChip } from "shared/components/form";
 import { formatRole } from "shared/helpers";
 import EditIcon from "@mui/icons-material/Edit";
-import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
 
 import { StyledStack } from "./select-role.styled";
 
@@ -45,6 +45,18 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
     });
   };
 
+  const handleDeleteRole = (value: UserRole) => {
+    const updatedRoles = roles?.filter((role) => role !== value);
+    setValue("roles", updatedRoles);
+
+    updateRole({
+      variables: {
+        id: id!,
+        roles: updatedRoles,
+      },
+    });
+  };
+
   const handleClickEdit = () => {
     setEdit(true);
   };
@@ -63,10 +75,11 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
               options={rolesOptions}
               name="roles"
               onChange={handleSelectRoleChange}
+              onDelete={handleDeleteRole}
             />
           </Box>
           <IconButton onClick={handleCloseEdit}>
-            <CloseIcon fontSize="small" color="primary" />
+            <CheckIcon fontSize="small" color="primary" />
           </IconButton>
         </>
       ) : (

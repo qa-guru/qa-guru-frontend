@@ -7,17 +7,17 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { UserRatingDto } from "api/graphql/generated/graphql";
+import UserRow from "shared/components/user-row";
+import { formatDate } from "shared/helpers";
+import Rating from "shared/components/rating/rating";
 
 import { IUsers } from "./users.types";
-import UserRow from "../../../../shared/components/user-row";
 import {
   StyledPaper,
   StyledTitle,
 } from "../../../admin/views/table-admin/table-admin.styled";
 import MobileTable from "../../views/mobile-table";
 import DesktopTable from "../../views/desktop-table";
-import { StyledRatingChip } from "./users.styled";
-import { formatDate } from "../../../../shared/helpers";
 
 const Users: FC<IUsers> = ({ data }) => {
   const users = data.usersRating?.items;
@@ -54,13 +54,7 @@ const Users: FC<IUsers> = ({ data }) => {
         cell: (info: CellContext<UserRatingDto, unknown>) => {
           const { rating } = info.row.original;
 
-          return (
-            <StyledRatingChip
-              size="small"
-              variant="outlined"
-              label={rating?.rating}
-            />
-          );
+          return <Rating rating={rating} />;
         },
       },
       {

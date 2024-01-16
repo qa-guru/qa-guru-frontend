@@ -5,7 +5,7 @@ import { IUserRow } from "./user-row.types";
 import { StyledBox, StyledStack, StyledWrapperStack } from "./user-row.styled";
 import AvatarCustom from "../../avatar-custom";
 import { formatRole } from "../../../helpers";
-import UserRating from "../user-rating/user-rating";
+import Rating from "../../rating/rating";
 import UserName from "../user-name/user-name";
 import UserDate from "../user-date/user-date";
 
@@ -59,7 +59,7 @@ const UserRow: FC<IUserRow> = (props) => {
               variant={variant}
             />
           )}
-          {!hideRating && <UserRating user={user} rating={rating} />}
+          {!hideRating && <Rating user={user} rating={rating} />}
         </StyledStack>
 
         {!hideRoles && (

@@ -19,6 +19,14 @@ export const app = {
   red: "#FF0000",
   greyRGBA: "rgba(224, 224, 224, 1)",
   hoverBlue: "rgba(32, 174, 227, 0.04)",
+  rating: {
+    upTo50: "#20AEE3",
+    upTo100: "#0097A7",
+    upTo200: "#303F9F",
+    upTo500: "#FFA000",
+    upTo1000: "#C2185B",
+    upTo2000: "#E64A19",
+  },
 };
 
 export const editor = {

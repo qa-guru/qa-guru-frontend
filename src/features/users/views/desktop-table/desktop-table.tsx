@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { StyledTable } from "./desktop-table.styled";
+import { StyledTable, StyledTableRow } from "./desktop-table.styled";
 
 interface IDesktopTable {
   table: Table<UserRatingDto>;
@@ -36,13 +36,13 @@ const DesktopTable: FC<IDesktopTable> = ({ table }) => {
       </TableHead>
       <TableBody>
         {table.getRowModel().rows.map((row) => (
-          <TableRow key={row.id}>
+          <StyledTableRow key={row.id}>
             {row.getVisibleCells().map((cell) => (
               <TableCell key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </TableCell>
             ))}
-          </TableRow>
+          </StyledTableRow>
         ))}
       </TableBody>
     </StyledTable>
