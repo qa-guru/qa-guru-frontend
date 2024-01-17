@@ -11,5 +11,5 @@ export interface IFormInputText<T extends FieldValues> {
   maxRows?: string | number;
   minRows?: string | number;
   inputProps?: InputHTMLAttributes<HTMLTextAreaElement>;
-  errors: FieldErrors<T>;
+  errors?: FieldErrors<T>;
 }

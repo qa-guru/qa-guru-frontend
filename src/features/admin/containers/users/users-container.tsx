@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import {
   Order,
   UserSortField,
@@ -8,8 +8,13 @@ import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import Admin from "../../views/admin";
+import { TableAdminFilterContext } from "../../context/admin-table-context";
 
 const UsersContainer: FC = () => {
+  const { filter } = useContext(TableAdminFilterContext);
+
+  console.log("filter", filter);
+
   const { data, loading, fetchMore } = useUsersQuery({
     variables: {
       offset: 0,

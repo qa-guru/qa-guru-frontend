@@ -1,1 +1,1 @@
-export { Admin } from "./containers";
+export { default } from "./views/table";
