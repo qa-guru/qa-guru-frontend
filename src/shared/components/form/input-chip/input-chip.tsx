@@ -17,6 +17,7 @@ const InputChip = <T extends FieldValues, OptionType>({
   placeholder,
   name,
   options,
+  onDelete,
   onChange,
 }: IFormInputChip<T, OptionType>) => {
   const handleChange = (
@@ -33,6 +34,10 @@ const InputChip = <T extends FieldValues, OptionType>({
     if (onChange) {
       onChange(selectedValues);
     }
+  };
+
+  const handleDelete = (chipToDelete: OptionType) => {
+    onDelete(chipToDelete);
   };
 
   return (
@@ -56,6 +61,10 @@ const InputChip = <T extends FieldValues, OptionType>({
                         size="small"
                         key={String(value)}
                         label={String(value)}
+                        onDelete={() => handleDelete(value)}
+                        onMouseDown={(event) => {
+                          event.stopPropagation();
+                        }}
                       />
                     ))}
                   </StyledBox>

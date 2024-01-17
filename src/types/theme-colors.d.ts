@@ -12,6 +12,14 @@ declare module "@mui/material/styles" {
       lightGray: string;
       indigo: string;
       red: string;
+      rating: {
+        upTo50: string;
+        upTo100: string;
+        upTo200: string;
+        upTo500: string;
+        upTo1000: string;
+        upTo2000: string;
+      };
     };
     editor: {
       black: string;

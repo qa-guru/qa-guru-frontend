@@ -9,11 +9,11 @@ import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate } from "shared/helpers";
 import UserRow from "shared/components/user-row";
 
+import Rating from "shared/components/rating";
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";
 import { LockUser, UnlockUser, UpdateRole } from "../../containers";
-import { StyledRatingChip } from "../../../users/views/users/users.styled";
 
 const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
   const theme = useTheme();
@@ -50,13 +50,7 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
         cell: (info: CellContext<UserDto, unknown>) => {
           const { rating } = info.row.original;
 
-          return (
-            <StyledRatingChip
-              size="small"
-              variant="outlined"
-              label={rating?.rating}
-            />
-          );
+          return <Rating rating={rating} />;
         },
       },
 
