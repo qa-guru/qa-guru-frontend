@@ -70,9 +70,10 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                     <UserRow user={item?.user} userId={item?.user.id} hasLink />
                   </StyledUserBox>
                   <Typography variant="h5">{name}</Typography>
-                  <StyledCalendarBox>
+                  <StyledCalendarBox open={openCalendarById === id}>
                     <StyledCalendarIcon
                       onClick={() => toggleCalendar(id!)}
+                      open={openCalendarById === id}
                       onMouseDown={(event) => event.stopPropagation()}
                     />
                   </StyledCalendarBox>

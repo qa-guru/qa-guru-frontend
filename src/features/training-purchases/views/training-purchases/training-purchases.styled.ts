@@ -5,6 +5,10 @@ import { ReactComponent as CourseImg } from "assets/images/cousrse1.svg";
 import { LoadingButton } from "@mui/lab";
 import { ReactComponent as CalendarIcon } from "assets/icons/calendar.svg";
 
+interface IStyledCalendar {
+  open: boolean;
+}
+
 export const StyledGrid = styled(Grid)({
   marginTop: 0,
   marginBottom: "20px",
@@ -40,7 +44,9 @@ export const StyledLink = styled(Link)({
   textDecoration: "none",
 });
 
-export const StyledCalendarBox = styled(Box)(({ theme }) => ({
+export const StyledCalendarBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<IStyledCalendar>(({ theme, open }) => ({
   marginTop: "15px",
   display: "flex",
   justifyContent: "center",
@@ -48,15 +54,25 @@ export const StyledCalendarBox = styled(Box)(({ theme }) => ({
   width: "32px",
   height: "32px",
   alignSelf: "end",
-  border: `1px solid ${alpha(theme.palette.app.hoverBlue, 0.5)}`,
+  border: !open ? `1px solid ${alpha(theme.palette.app.primary, 0.5)}` : "none",
   borderRadius: "100px",
+  "&:hover": {
+    border: "none",
+  },
 }));
 
-export const StyledCalendarIcon = styled(CalendarIcon)({
-  width: "25px",
-  height: "25px",
+export const StyledCalendarIcon = styled(CalendarIcon, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<IStyledCalendar>(({ open }) => ({
+  width: "27px",
+  height: "27px",
   padding: "4px",
-});
+  transform: open ? "scale(1.2)" : "none",
+  transition: "transform 200ms ease-in-out",
+  "&:hover": {
+    transform: "scale(1.2)",
+  },
+}));
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   marginTop: "15px",
