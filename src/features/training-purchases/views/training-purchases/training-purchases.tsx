@@ -67,7 +67,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                     <StyledCourseImg />
                   </StyledImgBox>
                   <StyledUserBox>
-                    <UserRow user={item?.user} />
+                    <UserRow user={item?.user} userId={item?.user.id} hasLink />
                   </StyledUserBox>
                   <Typography variant="h5">{name}</Typography>
                   <StyledCalendarBox>
