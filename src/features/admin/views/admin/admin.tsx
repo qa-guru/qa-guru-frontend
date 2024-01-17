@@ -8,8 +8,8 @@ import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate } from "shared/helpers";
 import UserRow from "shared/components/user-row";
-
 import Rating from "shared/components/rating";
+
 import { StyledAlignStack, StyledRightAlignBox } from "./admin.styled";
 import { IAdmin } from "./admin.types";
 import TableAdmin from "../table-admin";

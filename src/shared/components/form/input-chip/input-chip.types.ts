@@ -1,4 +1,4 @@
-import { Control, FieldValues, Path, UseFormSetValue } from "react-hook-form";
+import { Control, FieldValues, Path } from "react-hook-form";
 
 export interface IFormInputChip<T extends FieldValues, OptionType> {
   control: Control<T, unknown>;

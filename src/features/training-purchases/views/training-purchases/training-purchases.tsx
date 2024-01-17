@@ -3,14 +3,17 @@ import { Container, Grid, Typography } from "@mui/material";
 
 import { ITrainings } from "./training-purchases.types";
 import {
-  StyledBox,
   StyledCardActionArea,
+  StyledCourseImg,
   StyledGrid,
+  StyledImgBox,
   StyledLink,
+  StyledLoadingButton,
   StyledPaper,
-  StyledTypography,
+  StyledUserBox,
 } from "./training-purchases.styled";
 import { TrainingCalendar } from "../../containers";
+import UserRow from "../../../../shared/components/user-row";
 
 const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;
@@ -35,12 +38,16 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
               <StyledLink to={`/training/${id}`}>
                 <StyledCardActionArea>
                   <StyledPaper>
+                    <StyledImgBox>
+                      <StyledCourseImg />
+                    </StyledImgBox>
+                    <StyledUserBox>
+                      <UserRow user={item?.user} />
+                    </StyledUserBox>
                     <Typography variant="h5">{name}</Typography>
-                    <StyledBox>
-                      <StyledTypography variant="body2">
-                        Продолжить
-                      </StyledTypography>
-                    </StyledBox>
+                    <StyledLoadingButton variant="contained">
+                      Продолжить
+                    </StyledLoadingButton>
                   </StyledPaper>
                 </StyledCardActionArea>
               </StyledLink>

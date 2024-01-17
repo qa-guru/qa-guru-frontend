@@ -9,6 +9,7 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DayCalendarSkeleton } from "@mui/x-date-pickers/DayCalendarSkeleton";
+import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 
 import { ITrainingCalendar } from "./training-calendar.types";
 
@@ -29,7 +30,7 @@ const TrainingCalendar: React.FC<ITrainingCalendar> = ({ data }) => {
       <Badge
         key={day.toString()}
         overlap="circular"
-        badgeContent={isSelected ? "🌚" : undefined}
+        badgeContent={isSelected ? <StudentIcon /> : undefined}
       >
         <PickersDay
           {...other}
