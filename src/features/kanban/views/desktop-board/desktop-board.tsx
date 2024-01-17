@@ -23,7 +23,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({
   const [selectedCard, setSelectedCard] =
     useState<Maybe<StudentHomeWorkDto>>(null);
   const theme = useTheme();
-  const isUpLg = useMediaQuery(theme.breakpoints.up("lg"));
+  const isUpLg = useMediaQuery(theme.breakpoints.up(1475));
   const navigate = useNavigate();
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
