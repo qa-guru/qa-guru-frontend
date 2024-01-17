@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Chip, Paper } from "@mui/material";
+import { Chip } from "@mui/material";
 
 interface IStyledRatingChip {
   ratingColor: string;
