@@ -112,6 +112,13 @@ const components = (theme: Theme) => {
         },
       },
     },
+    MuiDateCalendar: {
+      styleOverrides: {
+        root: {
+          maxHeight: "300px",
+        },
+      },
+    },
   };
 };
 
