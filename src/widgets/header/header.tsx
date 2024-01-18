@@ -1,4 +1,4 @@
-import { IconButton, Switch } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { FC, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
