@@ -70,3 +70,9 @@ export const lightPalette = {
   mode: "light",
   background: { default: "#FFFFFF", paper: "#FFFBFE" },
 };
+
+export const darkPalette = {
+  ...palette,
+  mode: "dark",
+  background: { default: "#3A3448", paper: "#4A4458" },
+};

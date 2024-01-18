@@ -19,8 +19,6 @@ export const getUpdatedAllowedColumns = (
     return [];
   }
 
-  console.log(userId, mentorId);
-
   let allowedColumns: string[] = [];
 
   switch (columnId) {

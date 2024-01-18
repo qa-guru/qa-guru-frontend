@@ -1,10 +1,11 @@
-import { IconButton } from "@mui/material";
-import { FC, useState } from "react";
+import { IconButton, Switch } from "@mui/material";
+import { FC, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { useTranslation } from "react-i18next";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
+import { Brightness7, Brightness4 } from "@mui/icons-material";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
@@ -17,6 +18,8 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
+import { THEMES } from "../../theme/constans";
+import { SettingsContext } from "../../shared/context/setting-context";
 
 interface IPages {
   pageURL: string;
@@ -29,6 +32,7 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const pages: IPages[] = [];
+  const { settings, toggleTheme } = useContext(SettingsContext);
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
   const hasKanbanAccess = useRoleAccess({
@@ -84,6 +88,13 @@ const Header: FC = () => {
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
           </StyledStack>
           <StyledStack>
+            <IconButton onClick={toggleTheme}>
+              {settings.theme === THEMES.DARK ? (
+                <Brightness7 />
+              ) : (
+                <Brightness4 />
+              )}
+            </IconButton>
             <LocalSelector />
             <Profile />
           </StyledStack>

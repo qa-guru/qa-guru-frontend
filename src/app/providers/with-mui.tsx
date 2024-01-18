@@ -1,22 +1,28 @@
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import { createCustomTheme } from "theme";
-import useSettings from "shared/hooks/use-settings";
+import SettingsProvider, {
+  SettingsContext,
+} from "shared/context/setting-context";
 
 export const withMui = (component: () => ReactNode) => {
   return function WithMuiComponent() {
-    const { settings } = useSettings();
+    const { settings } = useContext(SettingsContext);
 
     const theme = createCustomTheme({
       theme: settings.theme,
       responsiveFontSizes: settings.responsiveFontSizes,
     });
 
+    console.log(settings.theme);
+
     return (
-      <>
-        <CssBaseline />
-        <ThemeProvider theme={theme}>{component()}</ThemeProvider>
-      </>
+      <SettingsProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {component()}
+        </ThemeProvider>
+      </SettingsProvider>
     );
   };
 };
