@@ -11,7 +11,7 @@ import {
 import { Maybe } from "api/graphql/generated/graphql";
 
 import useKeyDown from "../../hooks/use-key-down";
-import useOutsideClick from "../../hooks/use-outside-click";
+import useOutsideClick from "../../../../hooks/use-outside-click";
 
 export type EditLinkMenuContentProps = {
   editor: Editor;

@@ -5,9 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { InputText } from "shared/components/form";
 import LocalSelector from "shared/components/local-selector/local-selector";
+import { useNavigate } from "react-router-dom";
 
 import { IResetForm, IResetPassword } from "./reset-password.types";
 import {
+  StyledBottomStack,
+  StyledButton,
   StyledLoadingButton,
   StyledLocalSelectorWrapper,
   StyledLogo,
@@ -15,9 +18,11 @@ import {
   StyledStack,
   StyledWrapper,
 } from "../views.styled";
+import { ROUTES } from "../../constants";
 
 const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const {
     control,
@@ -36,6 +41,10 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
 
   const onSubmit = async (data: IResetForm) => {
     await resetPassword(data.username);
+  };
+
+  const routeLogin = () => {
+    navigate(ROUTES.AUTHORIZATION);
   };
 
   return (
@@ -62,6 +71,11 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
               Сбросить пароль
             </StyledLoadingButton>
           </StyledStack>
+          <StyledBottomStack>
+            <StyledButton variant="text" onClick={routeLogin}>
+              {t("auth.route")}
+            </StyledButton>
+          </StyledBottomStack>
         </form>
       </StyledPaper>
     </StyledWrapper>
