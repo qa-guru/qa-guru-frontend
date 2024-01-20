@@ -9,9 +9,9 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DayCalendarSkeleton } from "@mui/x-date-pickers/DayCalendarSkeleton";
+import { useTheme } from "@mui/system";
 
 import { ITrainingCalendar } from "./training-calendar.types";
-import { app } from "../../../../theme/colors";
 import {
   StyledCalendarBox,
   StyledSchoolIcon,
@@ -19,6 +19,7 @@ import {
 
 const TrainingCalendar: React.FC<ITrainingCalendar> = ({ data }) => {
   const highlightedDates = data.classes.map((date) => dayjs(date));
+  const theme = useTheme();
 
   function isHighlighted(day: Dayjs) {
     return highlightedDates.some((highlightedDay) =>
@@ -40,7 +41,11 @@ const TrainingCalendar: React.FC<ITrainingCalendar> = ({ data }) => {
           {...other}
           outsideCurrentMonth={outsideCurrentMonth}
           day={day}
-          sx={{ color: isSelected ? app.primary : app.black }}
+          sx={{
+            color: isSelected
+              ? theme.palette.app.primary
+              : theme.palette.app.textPrimary,
+          }}
         />
       </Badge>
     );

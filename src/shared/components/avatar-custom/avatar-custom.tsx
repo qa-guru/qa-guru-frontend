@@ -1,16 +1,30 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
-import { Typography } from "@mui/material";
+import { useTheme } from "@mui/system";
 
 import { IAvatarCustom } from "./avatar-custom.types";
-import { COLORS } from "../../constants";
+import { StyledTypography } from "./avatar-custom.styled";
 
 function stringToColor(name: string) {
-  const index = Math.abs(hashCode(name)) % COLORS.length;
-  return COLORS[index];
-}
+  const theme = useTheme();
+  const color = theme.palette.app;
 
-/* eslint-disable no-bitwise */
+  const colors = [
+    color.primary,
+    color.secondary,
+    color.pink,
+    color.amber,
+    color.indigo,
+    color.lightBlue,
+    color.green,
+    color.cyan,
+    color.teal,
+    color.blueGrey,
+  ];
+
+  const index = Math.abs(hashCode(name)) % colors.length;
+  return colors[index];
+}
 
 function hashCode(str: string) {
   let hash = 0;
@@ -36,16 +50,16 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   fullName,
   width,
   height,
-  variant,
+  variant = "body2",
 }) => {
   return (
     <Avatar
       variant="rounded"
       sx={{ width, height, ...stringAvatar(fullName).sx }}
     >
-      <Typography variant={variant}>
+      <StyledTypography variant={variant}>
         {stringAvatar(fullName).children}
-      </Typography>
+      </StyledTypography>
     </Avatar>
   );
 };

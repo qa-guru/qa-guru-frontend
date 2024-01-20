@@ -6,7 +6,7 @@ export const StyledFormControl = styled(FormControl)({
     display: "none",
   },
   margin: "auto",
-  padding: "12px",
+  paddingRight: "12px",
 });
 
 export const StyledSelect = styled(Select)(({ theme }) => ({

@@ -21,10 +21,14 @@ const UserName: FC<IUserName> = ({
     <>
       {hasLink ? (
         <StyledLink component="button" onClick={handleRowClick}>
-          <Typography variant={variant}>{fullName}</Typography>
+          <Typography variant={variant} color="primary">
+            {fullName}
+          </Typography>
         </StyledLink>
       ) : (
-        <Typography variant={variant}>{fullName}</Typography>
+        <Typography variant={variant} color="primary">
+          {fullName}
+        </Typography>
       )}
     </>
   );

@@ -251,7 +251,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
       borderWidth: 0,
       borderTopWidth: "thin",
       borderStyle: "solid",
-      borderColor: theme.palette.text.secondary,
+      borderColor: theme.palette.app.textSecondary,
 
       "&.ProseMirror-selectednode": {
         borderColor: theme.palette.app.primary,

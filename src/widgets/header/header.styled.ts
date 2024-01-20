@@ -1,7 +1,9 @@
 import { styled } from "@mui/system";
-import { Paper, Stack } from "@mui/material";
-import { ReactComponent as Logo } from "assets/icons/logo-header.svg";
+import { Box, IconButton, Paper, Stack } from "@mui/material";
+import { ReactComponent as DarkLogo } from "assets/icons/logo-header.svg";
+import { ReactComponent as Logo } from "assets/icons/logo.svg";
 import { Link } from "react-router-dom";
+
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
@@ -32,16 +34,41 @@ export const StyledPaper = styled(Paper)({
   borderRadius: 0,
 });
 
-export const StyledLogo = styled(Logo)({
-  marginTop: "7px",
-  viewBox: "0 0 250 38",
+export const StyledLogoIconButton = styled(IconButton)({
+  padding: 0,
 });
+
+export const StyledIconBox = styled(Box)({
+  marginTop: "7px",
+});
+
+export const StyledLogo = styled(Logo)({
+  width: "166px",
+  height: "30px",
+});
+
+export const StyledDarkLogo = styled(DarkLogo)({
+  width: "166px",
+  height: "30px",
+});
+
+export const StyledIconButton = styled(IconButton)({
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+  "& .MuiSelect-select:focus": {
+    backgroundColor: "transparent",
+  },
+});
+
+export const StyledSelectorBox = styled(Box)(({ theme }) => ({
+  stroke: theme.palette.app.white,
+}));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   gap: "10px",
-  stroke: "#ffffff",
   [theme.breakpoints.down("sm")]: {
     gap: 0,
   },
