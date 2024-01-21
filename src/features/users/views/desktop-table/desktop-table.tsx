@@ -1,4 +1,4 @@
-import { type Table, flexRender } from "@tanstack/react-table";
+import { flexRender, type Table } from "@tanstack/react-table";
 import { UserRatingDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import {

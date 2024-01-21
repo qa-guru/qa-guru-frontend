@@ -22,7 +22,7 @@ const LectureSpeakers: FC<ILectureSpeakers> = (props) => {
 
             return (
               <StyledStack key={id}>
-                <UserRow user={item} width={60} height={60} />
+                <UserRow user={item} width={40} height={40} />
               </StyledStack>
             );
           })}

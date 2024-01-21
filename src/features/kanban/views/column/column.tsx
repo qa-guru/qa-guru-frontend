@@ -163,13 +163,13 @@ const Column: FC<IColumn> = ({
         ref={dropRef}
         showButton={showButton}
         sx={{
-          ...getColumnStyles(
+          ...(getColumnStyles(
             column.id,
             draggingState,
             canDrop,
             column.totalElements,
             isOver
-          ),
+          ) as {}),
         }}
       >
         <StyledInfiniteScroll

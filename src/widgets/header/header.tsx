@@ -1,22 +1,28 @@
-import { IconButton } from "@mui/material";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { useTranslation } from "react-i18next";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
 import MenuBurger from "./menu-burger/menu-burger";
 import {
+  StyledDarkLogo,
   StyledHeader,
+  StyledIconBox,
+  StyledIconButton,
   StyledLink,
   StyledLogo,
+  StyledLogoIconButton,
   StyledPaper,
+  StyledSelectorBox,
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
+import useSettings from "../../shared/hooks/use-settings";
 
 interface IPages {
   pageURL: string;
@@ -29,6 +35,7 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const pages: IPages[] = [];
+  const { settings, toggleTheme } = useSettings();
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
   const hasKanbanAccess = useRoleAccess({
@@ -78,13 +85,35 @@ const Header: FC = () => {
               handleClickNavMenu={handleClickNavMenu}
               anchorElNav={anchorElNav}
             />
-            <IconButton disableRipple onClick={() => handleClickNavMenu("/")}>
-              <StyledLogo />
-            </IconButton>
+            <StyledIconBox>
+              <StyledLogoIconButton
+                disableRipple
+                onClick={() => handleClickNavMenu("/")}
+              >
+                {settings.theme === "light" ? (
+                  <StyledDarkLogo />
+                ) : (
+                  <StyledLogo />
+                )}
+              </StyledLogoIconButton>
+            </StyledIconBox>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
           </StyledStack>
           <StyledStack>
-            <LocalSelector />
+            <StyledIconButton onClick={toggleTheme}>
+              {settings.theme === "light" ? (
+                <Brightness7 color="primary" />
+              ) : (
+                <Brightness4 color="primary" />
+              )}
+            </StyledIconButton>
+            {settings.theme === "light" ? (
+              <StyledSelectorBox>
+                <LocalSelector />
+              </StyledSelectorBox>
+            ) : (
+              <LocalSelector />
+            )}
             <Profile />
           </StyledStack>
         </StyledWrapper>

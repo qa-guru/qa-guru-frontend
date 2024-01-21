@@ -1,8 +1,9 @@
-import { createContext, ReactNode } from "react";
-import { themeSettingsTypes } from "theme";
-import { THEMES } from "theme/constans";
+import { createContext, ReactNode, useMemo } from "react";
+import { createCustomTheme, themeSettingsTypes } from "theme";
+import { ThemeProvider } from "@mui/material";
 
 import useLocalStorage from "../hooks/use-local-storage";
+import { THEMES } from "../../theme/constans";
 
 const initialSettings: themeSettingsTypes = {
   theme: THEMES.LIGHT,
@@ -12,6 +13,7 @@ const initialSettings: themeSettingsTypes = {
 export const SettingsContext = createContext({
   settings: initialSettings,
   saveSettings: (arg: themeSettingsTypes) => {},
+  toggleTheme: () => {},
 });
 
 type SettingsProviderProps = {
@@ -24,14 +26,31 @@ const SettingsProvider = ({ children }: SettingsProviderProps) => {
     initialSettings
   );
 
+  const theme = useMemo(
+    () =>
+      createCustomTheme({
+        theme: settings.theme,
+        responsiveFontSizes: settings.responsiveFontSizes,
+      }),
+    [settings.theme, settings.responsiveFontSizes]
+  );
+
   const saveSettings = (updateSettings: themeSettingsTypes) => {
     setStoreSettings(updateSettings);
   };
 
+  const toggleTheme = () => {
+    const newTheme =
+      settings.theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT;
+    saveSettings({ ...settings, theme: newTheme });
+  };
+
   return (
-    <SettingsContext.Provider value={{ settings, saveSettings }}>
-      {children}
-    </SettingsContext.Provider>
+    <ThemeProvider theme={theme}>
+      <SettingsContext.Provider value={{ settings, saveSettings, toggleTheme }}>
+        {children}
+      </SettingsContext.Provider>
+    </ThemeProvider>
   );
 };
 

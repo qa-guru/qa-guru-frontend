@@ -7,6 +7,9 @@ export const StyledLocalSelectorWrapper = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "20px",
   right: "40px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   [theme.breakpoints.down("md")]: {
     top: "5px",
     right: "5px",

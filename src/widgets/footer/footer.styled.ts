@@ -34,8 +34,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 
 export const StyledLogo = styled(Logo)({
   width: "166px",
-  height: "25px",
-  viewBox: "0 0 250 38",
+  height: "30px",
 });
 
 export const StyledSupportLink = styled(Link)(({ theme }) => ({

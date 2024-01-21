@@ -26,7 +26,7 @@ export const StyledTableRow = styled(TableRow, {
   borderBottom:
     rowIndex === table.getRowModel().rows.length - 1
       ? "none"
-      : `1px solid ${theme.palette.app.greyRGBA}`,
+      : `1px solid ${theme.palette.app.secondary}`,
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   alignItems: "center",
