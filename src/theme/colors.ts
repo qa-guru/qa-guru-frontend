@@ -10,15 +10,26 @@ export const app = {
   primary: "#20AEE3",
   secondary: "#E0E0E0",
   white: "#FFFFFF",
-  purple: "#4A4458",
+  purple: "#3A3448",
+  purplePaper: "#4A4458",
   black: "#212121",
   grey: "#808080",
   lightGray: "#FAFAFA",
   whiteGrey: "#EEEEEE",
-  indigo: "#303F9F",
   red: "#FF0000",
-  greyRGBA: "rgba(224, 224, 224, 1)",
-  hoverBlue: "rgba(32, 174, 227, 0.04)",
+  hoverBlue: "#20aee3",
+  textPrimary: "#000000DE",
+  textSecondary: "#00000099",
+  deepPurple: "#512DA8",
+  pink: "#C2185B",
+  deepOrange: "#E64A19",
+  amber: "#FFA000",
+  indigo: "#303F9F",
+  lightBlue: "#0288D1",
+  green: "#388E3C",
+  cyan: "#0097A7",
+  teal: "#00796B",
+  blueGrey: "#455A64",
   rating: {
     upTo50: "#20AEE3",
     upTo100: "#0097A7",
@@ -57,6 +68,30 @@ export const highlight = {
   lightPurple: "#8085e9",
 };
 
+export const dark = {
+  ...app,
+  secondary: "#4A4458",
+  textPrimary: "#FFFFFF",
+  textSecondary: "#D9D9D9",
+  deepPurple: "#B39DDB",
+  pink: "#F06292",
+  deepOrange: "#FF7043",
+  indigo: "#C5CAE9",
+  lightBlue: "#29B6F6",
+  green: "#81C784",
+  cyan: "#26C6DA",
+  teal: "#80CBC4",
+  blueGrey: "#B0BEC5",
+  rating: {
+    upTo50: "#20AEE3",
+    upTo100: "#26C6DA",
+    upTo200: "#C5CAE9",
+    upTo500: "#FFA000",
+    upTo1000: "#F06292",
+    upTo2000: "#FF7043",
+  },
+};
+
 const palette = {
   app,
   editor,
@@ -68,5 +103,12 @@ const palette = {
 export const lightPalette = {
   ...palette,
   mode: "light",
-  background: { default: "#FFFFFF", paper: "#FFFBFE" },
+  background: { default: "#FFFFFF", paper: "#FFF" },
+};
+
+export const darkPalette = {
+  ...palette,
+  app: dark,
+  mode: "dark",
+  background: { default: "#3A3448", paper: "#4A4458" },
 };

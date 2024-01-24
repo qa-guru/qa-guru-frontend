@@ -1,5 +1,6 @@
 import { type Theme } from "@mui/material";
 
+
 const components = (theme: Theme) => {
   return {
     MuiCssBaseline: {
@@ -46,7 +47,6 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           borderRadius: "10px",
-          backgroundColor: theme.palette.app.white,
           boxShadow:
             "0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)",
         },
@@ -55,9 +55,7 @@ const components = (theme: Theme) => {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          borderColor: theme.palette.app.white,
           fontSize: "14px",
-          backgroundColor: theme.palette.app.white,
           [theme.breakpoints.down("sm")]: {
             "& .MuiFormLabel-root": {
               fontSize: "0.9rem",
@@ -76,46 +74,37 @@ const components = (theme: Theme) => {
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          backgroundColor: theme.palette.app.white,
           fontSize: "0.9rem",
         },
       },
-    },
-    MuiDatePicker: {
-      styleOverrides: {
-        root: {
-          backgroundColor: theme.palette.app.white,
-          "& .MuiInputLabel-root": {
-            fontSize: "0.9rem",
+      MuiDatePicker: {
+        styleOverrides: {
+          root: {
+            "& .MuiInputLabel-root": {
+              fontSize: "0.9rem",
+            },
           },
         },
       },
-    },
-    MuiIconButton: {
-      styleOverrides: {
-        root: {
-          padding: "6px",
+      MuiIconButton: {
+        styleOverrides: {
+          root: {
+            padding: "6px",
+          },
         },
       },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          fontSize: "14px",
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            fontSize: "14px",
+          },
         },
       },
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          fontSize: "14px",
-        },
-      },
-    },
-    MuiDateCalendar: {
-      styleOverrides: {
-        root: {
-          maxHeight: "300px",
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            fontSize: "14px",
+          },
         },
       },
     },

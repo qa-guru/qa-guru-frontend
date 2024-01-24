@@ -7,11 +7,24 @@ declare module "@mui/material/styles" {
       secondary: string;
       white: string;
       purple: string;
+      purplePaper: string;
       black: string;
       grey: string;
       lightGray: string;
-      indigo: string;
       red: string;
+      hoverBlue: string;
+      textPrimary: string;
+      textSecondary: string;
+      deepPurple: string;
+      pink: string;
+      deepOrange: string;
+      amber: string;
+      indigo: string;
+      lightBlue: string;
+      green: string;
+      cyan: string;
+      teal: string;
+      blueGrey: string;
       rating: {
         upTo50: string;
         upTo100: string;
@@ -47,18 +60,59 @@ declare module "@mui/material/styles" {
       lightBlue: string;
       lightPurple: string;
     };
+    dark: {
+      secondary: string;
+      textPrimary: string;
+      textSecondary: string;
+      deepPurple: string;
+      pink: string;
+      deepOrange: string;
+      indigo: string;
+      lightBlue: string;
+      green: string;
+      cyan: string;
+      teal: string;
+      blueGrey: string;
+      rating: {
+        upTo100: string;
+        upTo200: string;
+        upTo1000: string;
+        upTo2000: string;
+      };
+    };
   }
   interface PaletteOptions {
-    app?: {
+    app: {
       primary?: string;
       secondary?: string;
       white?: string;
       purple?: string;
+      purplePaper?: string;
       black?: string;
       grey?: string;
       lightGray?: string;
-      indigo?: string;
       red?: string;
+      hoverBlue?: string;
+      textPrimary?: string;
+      textSecondary?: string;
+      deepPurple?: string;
+      pink?: string;
+      deepOrange?: string;
+      amber?: string;
+      indigo?: string;
+      lightBlue?: string;
+      green?: string;
+      cyan?: string;
+      teal?: string;
+      blueGrey?: string;
+      rating?: {
+        upTo50?: string;
+        upTo100?: string;
+        upTo200?: string;
+        upTo500?: string;
+        upTo1000?: string;
+        upTo2000?: string;
+      };
     };
     editor?: {
       black?: string;
@@ -85,6 +139,26 @@ declare module "@mui/material/styles" {
       lightGreen?: string;
       lightBlue?: string;
       lightPurple?: string;
+    };
+    dark: {
+      secondary?: string;
+      textPrimary?: string;
+      textSecondary?: string;
+      deepPurple?: string;
+      pink?: string;
+      deepOrange?: string;
+      indigo?: string;
+      lightBlue?: string;
+      green?: string;
+      cyan?: string;
+      teal?: string;
+      blueGrey?: string;
+      rating?: {
+        upTo100?: string;
+        upTo200?: string;
+        upTo1000?: string;
+        upTo2000?: string;
+      };
     };
   }
 }
