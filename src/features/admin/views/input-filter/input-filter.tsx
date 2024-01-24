@@ -1,34 +1,46 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 
 import { TableAdminFilterContext } from "../../context/admin-table-context";
 
-interface InputFilterProps {}
-
-const InputFilter: FC<InputFilterProps> = () => {
+const InputFilter: FC = () => {
   const { setFilter } = useContext(TableAdminFilterContext);
+  const [activeFilter, setActiveFilter] = useState("firstName");
 
   const { control, watch } = useForm({
     defaultValues: {
-      field: "",
+      filterValue: "",
     },
   });
 
-  const fieldValue = watch("field");
+  const filterValue = watch("filterValue");
 
   useEffect(() => {
-    console.log("fieldValue", fieldValue);
-    // @ts-ignore
-    setFilter(fieldValue);
-  }, [fieldValue]);
+    setFilter({
+      [activeFilter]: filterValue,
+    });
+  }, [filterValue, activeFilter]);
+
+  const handleFilterChange = (filterName: string) => {
+    setActiveFilter(filterName);
+  };
 
   return (
-    <InputText
-      control={control}
-      name="field"
-      placeholder="LAST_NAME PHONE EMAIL RATING"
-    />
+    <>
+      <div>
+        <button onClick={() => handleFilterChange("firstName")}>Имя</button>
+        <button onClick={() => handleFilterChange("phoneNumber")}>
+          Телефон
+        </button>
+        <button onClick={() => handleFilterChange("email")}>Email</button>
+      </div>
+      <InputText
+        control={control}
+        name="filterValue"
+        placeholder={`Введите ${activeFilter}`}
+      />
+    </>
   );
 };
 

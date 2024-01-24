@@ -25,9 +25,9 @@ const Admin: FC<IAdmin> = ({ data, fetchMore }) => {
       {
         header: "Пользователь",
         footer: (props) => props.column.id,
-        accessorKey: "id",
+        accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {
-          const { firstName, lastName, roles, rating } = info.row.original;
+          const { firstName, lastName, roles } = info.row.original;
 
           return (
             <UserRow

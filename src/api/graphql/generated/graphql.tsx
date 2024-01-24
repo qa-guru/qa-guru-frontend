@@ -2,7 +2,6 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -637,6 +636,7 @@ export type QueryUserByIdArgs = {
 
 /** Query root */
 export type QueryUsersArgs = {
+  filter?: InputMaybe<UsersFilter>;
   limit: Scalars['Int'];
   offset: Scalars['Int'];
   sort?: InputMaybe<UserSort>;
@@ -698,6 +698,7 @@ export type StudentHomeWorkDto = {
   status?: Maybe<StudentHomeWorkStatus>;
   student?: Maybe<UserDto>;
   training?: Maybe<TrainingDto>;
+  updateDate?: Maybe<Scalars['LocalDateTime']>;
 };
 
 export type StudentHomeWorkFilter = {
@@ -935,6 +936,12 @@ export type UsersDto = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
   totalElements?: Maybe<Scalars['Long']>;
+};
+
+export type UsersFilter = {
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  phoneNumber?: InputMaybe<Scalars['String']>;
 };
 
 export type UsersRatingDto = {
@@ -1221,7 +1228,8 @@ export type UsersRatingQuery = { __typename?: 'Query', usersRating?: { __typenam
 export type UsersQueryVariables = Exact<{
   offset: Scalars['Int'];
   limit: Scalars['Int'];
-  sort: UserSort;
+  sort?: InputMaybe<UserSort>;
+  filter?: InputMaybe<UsersFilter>;
 }>;
 
 
@@ -3242,8 +3250,8 @@ export type UsersRatingQueryHookResult = ReturnType<typeof useUsersRatingQuery>;
 export type UsersRatingLazyQueryHookResult = ReturnType<typeof useUsersRatingLazyQuery>;
 export type UsersRatingQueryResult = Apollo.QueryResult<UsersRatingQuery, UsersRatingQueryVariables>;
 export const UsersDocument = gql`
-    query users($offset: Int!, $limit: Int!, $sort: UserSort!) {
-  users(offset: $offset, limit: $limit, sort: $sort) {
+    query users($offset: Int!, $limit: Int!, $sort: UserSort, $filter: UsersFilter) {
+  users(offset: $offset, limit: $limit, sort: $sort, filter: $filter) {
     items {
       id
       email
@@ -3287,6 +3295,7 @@ export type UsersComponentProps = Omit<ApolloReactComponents.QueryComponentOptio
  *      offset: // value for 'offset'
  *      limit: // value for 'limit'
  *      sort: // value for 'sort'
+ *      filter: // value for 'filter'
  *   },
  * });
  */

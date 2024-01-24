@@ -1,9 +1,9 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { InputMaybe, UserSortField } from "api/graphql/generated/graphql";
+import { InputMaybe, UsersFilter } from "api/graphql/generated/graphql";
 
 export interface ITableAdminFilterContext {
-  filter: InputMaybe<UserSortField>;
-  setFilter: Dispatch<SetStateAction<InputMaybe<UserSortField>>>;
+  filter: InputMaybe<UsersFilter>;
+  setFilter: Dispatch<SetStateAction<InputMaybe<UsersFilter>>>;
 }
 
 export const TableAdminFilterContext = createContext<ITableAdminFilterContext>({

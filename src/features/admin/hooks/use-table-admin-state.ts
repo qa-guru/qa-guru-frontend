@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { InputMaybe, UserSortField } from "api/graphql/generated/graphql";
+import { InputMaybe, UsersFilter } from "api/graphql/generated/graphql";
 
 const useTableAdminState = () => {
-  const [filter, setFilter] = useState<InputMaybe<UserSortField>>(null);
+  const [filter, setFilter] = useState<InputMaybe<UsersFilter>>(null);
 
   return {
     filter,
