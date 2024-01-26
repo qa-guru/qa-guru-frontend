@@ -1,6 +1,7 @@
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import { Editor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { Typography } from "@mui/material";
 
 import { ISendComment } from "./send-comment.types";
 import {
@@ -12,15 +13,21 @@ import {
 const SendComment: FC<ISendComment> = (props) => {
   const { sendComment, loading, id } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
+  const [error, setError] = useState("");
 
   const handleSendComment = () => {
-    if (id && rteRef) {
+    const content = rteRef.current?.editor?.getHTML() ?? "";
+
+    if (id && content.trim() !== "" && content.trim() !== "<p></p>") {
       sendComment({
         variables: {
           homeWorkId: id,
-          content: rteRef.current?.editor?.getHTML() ?? "",
+          content,
         },
       });
+      setError("");
+    } else {
+      setError("Comment cannot be empty.");
     }
   };
 
@@ -28,6 +35,7 @@ const SendComment: FC<ISendComment> = (props) => {
     <form>
       <StyledBox>
         <Editor rteRef={rteRef} />
+        {error && <Typography>{error}</Typography>}
       </StyledBox>
       <StyledStack>
         <StyledLoadingButton
