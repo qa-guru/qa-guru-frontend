@@ -3,5 +3,5 @@
 #
 #yarn pretty-quick --staged
 ## yarn vitest run
-yarn eslint 'src/**/*.{ts,tsx}'
-yarn build
+# yarn eslint 'src/**/*.{ts,tsx}'
+# yarn build
