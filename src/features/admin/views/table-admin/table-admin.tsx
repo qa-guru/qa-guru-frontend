@@ -3,13 +3,7 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import {
-  Box,
-  Container,
-  TablePagination,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, TablePagination, useMediaQuery, useTheme } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
 
@@ -59,7 +53,7 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
   };
 
   return (
-    <Container>
+    <>
       <StyledTitle variant="h2">{`Пользователи (${data?.users?.totalElements})`}</StyledTitle>
       <StyledPaper>
         {isDownMd ? (
@@ -93,7 +87,7 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
           Загрузить еще
         </StyledLoadMoreButton>
       </Box>
-    </Container>
+    </>
   );
 };
 

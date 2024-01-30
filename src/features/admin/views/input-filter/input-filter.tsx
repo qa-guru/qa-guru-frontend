@@ -22,8 +22,8 @@ const InputFilter: FC = () => {
     });
   }, [filterValue, activeFilter]);
 
-  const handleFilterChange = (filterName: string) => {
-    setActiveFilter(filterName);
+  const handleFilterChange = (value: string) => {
+    setActiveFilter(value);
   };
 
   return (
