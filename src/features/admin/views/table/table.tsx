@@ -1,5 +1,4 @@
 import { FC } from "react";
-
 import { Container } from "@mui/material";
 
 import useTableAdminState from "../../hooks/use-table-admin-state";
