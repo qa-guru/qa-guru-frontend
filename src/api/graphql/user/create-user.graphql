@@ -6,7 +6,6 @@ mutation createUser($input: UserCreateInput!) {
     lastName
     middleName
     phoneNumber
-    avatarLocation
     roles
     locked
   }

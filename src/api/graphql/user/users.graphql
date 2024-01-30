@@ -12,7 +12,6 @@ query users(
       lastName
       middleName
       phoneNumber
-      avatarLocation
       roles
       locked
       creationDate
