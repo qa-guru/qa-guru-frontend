@@ -6,7 +6,6 @@ query userById($id: ID) {
     lastName
     middleName
     phoneNumber
-    avatarLocation
     roles
     locked
     rating {

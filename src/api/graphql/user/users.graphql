@@ -7,7 +7,6 @@ query users($offset: Int!, $limit: Int!, $sort: UserSort!) {
       lastName
       middleName
       phoneNumber
-      avatarLocation
       roles
       locked
       creationDate
