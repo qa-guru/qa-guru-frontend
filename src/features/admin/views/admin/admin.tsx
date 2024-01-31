@@ -5,6 +5,7 @@ import useTableAdminState from "../../hooks/use-table-admin-state";
 import { TableAdminFilterContext } from "../../context/admin-table-context";
 import InputFilter from "../input-filter";
 import { Table } from "../../containers";
+import { StyledTitle } from "../table-admin/table-admin.styled";
 
 const Admin: FC = () => {
   const tableAdminFilterState = useTableAdminState();
@@ -12,6 +13,7 @@ const Admin: FC = () => {
   return (
     <TableAdminFilterContext.Provider value={tableAdminFilterState}>
       <Container>
+        <StyledTitle variant="h2">Панель администратора</StyledTitle>
         <InputFilter />
         <Table />
       </Container>

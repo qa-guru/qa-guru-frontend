@@ -8,11 +8,7 @@ import { UserDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
 
 import { ITableAdmin } from "./table-admin.types";
-import {
-  StyledLoadMoreButton,
-  StyledPaper,
-  StyledTitle,
-} from "./table-admin.styled";
+import { StyledLoadMoreButton, StyledPaper } from "./table-admin.styled";
 import TablePaginationActions from "../table-pagination-actions";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
@@ -54,7 +50,7 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
 
   return (
     <>
-      <StyledTitle variant="h2">{`Пользователи (${data?.users?.totalElements})`}</StyledTitle>
+      {/*<StyledTitle variant="h2">{`Пользователи (${data?.users?.totalElements})`}</StyledTitle>*/}
       <StyledPaper>
         {isDownMd ? (
           <MobileTable table={table} />
