@@ -1,8 +1,14 @@
-import { FC, useState, useContext, useEffect } from "react";
+import { FC, SyntheticEvent, useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
+import { TabContext } from "@mui/lab";
 
 import { TableAdminFilterContext } from "../../context/admin-table-context";
+import {
+  StyledTab,
+  StyledTabList,
+  StyledTabPanel,
+} from "./input-filter.styled";
 
 const InputFilter: FC = () => {
   const { setFilter } = useContext(TableAdminFilterContext);
@@ -22,25 +28,25 @@ const InputFilter: FC = () => {
     });
   }, [filterValue, activeFilter]);
 
-  const handleFilterChange = (value: string) => {
+  const handleFilterChange = (event: SyntheticEvent, value: string) => {
     setActiveFilter(value);
   };
 
   return (
-    <>
-      <div>
-        <button onClick={() => handleFilterChange("firstName")}>Имя</button>
-        <button onClick={() => handleFilterChange("phoneNumber")}>
-          Телефон
-        </button>
-        <button onClick={() => handleFilterChange("email")}>Email</button>
-      </div>
-      <InputText
-        control={control}
-        name="filterValue"
-        placeholder={`Введите ${activeFilter}`}
-      />
-    </>
+    <TabContext value={activeFilter}>
+      <StyledTabList onChange={handleFilterChange}>
+        <StyledTab label="Имя" value="firstName" wrapped />
+        <StyledTab label="Телефон" value="phoneNumber" wrapped />
+        <StyledTab label="Email" value="email" wrapped />
+      </StyledTabList>
+      <StyledTabPanel value={activeFilter}>
+        <InputText
+          control={control}
+          name="filterValue"
+          placeholder={`Введите ${activeFilter}`}
+        />
+      </StyledTabPanel>
+    </TabContext>
   );
 };
 

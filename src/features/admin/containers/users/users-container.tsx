@@ -8,12 +8,10 @@ import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import { TableAdminFilterContext } from "../../context/admin-table-context";
-import Admin from "../../views/admin";
+import Table from "../../views/table";
 
 const UsersContainer: FC = () => {
   const { filter } = useContext(TableAdminFilterContext);
-
-  console.log(filter);
 
   const { data, loading, fetchMore } = useUsersQuery({
     variables: {
@@ -27,7 +25,7 @@ const UsersContainer: FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <Admin data={data} fetchMore={fetchMore} />;
+  return <Table data={data} fetchMore={fetchMore} />;
 };
 
 export default UsersContainer;

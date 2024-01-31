@@ -1,1 +1,1 @@
-export { default } from "./views/table";
+export { default } from "./views/admin";
