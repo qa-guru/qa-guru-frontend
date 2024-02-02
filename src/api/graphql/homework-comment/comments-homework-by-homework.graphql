@@ -59,7 +59,6 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
     firstName
     lastName
     middleName
-    avatarLocation
     locked
     rating {
       rating

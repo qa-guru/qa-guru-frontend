@@ -2,7 +2,6 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -185,12 +184,14 @@ export type Mutation = {
   approved?: Maybe<StudentHomeWorkDto>;
   changePassword?: Maybe<Scalars['Void']>;
   changePasswordByUserId?: Maybe<Scalars['Void']>;
+  createSkill?: Maybe<SkillDto>;
   /** user section */
   createUser?: Maybe<UserDto>;
   deleteComment?: Maybe<Scalars['Void']>;
   deleteHomeWork?: Maybe<Scalars['Void']>;
   deleteLecture?: Maybe<Scalars['Void']>;
   deleteLectureHomeWorkLevel?: Maybe<Scalars['Void']>;
+  deleteSkill?: Maybe<Scalars['Void']>;
   deleteTraining?: Maybe<Scalars['Void']>;
   deleteTrainingTariff?: Maybe<Scalars['Void']>;
   lockUser?: Maybe<Scalars['Void']>;
@@ -210,7 +211,10 @@ export type Mutation = {
   updateLecture?: Maybe<LectureInfoDto>;
   /** lecture home work level section */
   updateLectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
+  updateProfile?: Maybe<ProfileDto>;
+  updateProfileById?: Maybe<ProfileDto>;
   updateRole?: Maybe<UserDto>;
+  updateSkill?: Maybe<SkillDto>;
   /** training section */
   updateTraining?: Maybe<TrainingDto>;
   /** training lecture */
@@ -251,6 +255,12 @@ export type MutationChangePasswordByUserIdArgs = {
 
 
 /** Mutation root */
+export type MutationCreateSkillArgs = {
+  name: Scalars['String'];
+};
+
+
+/** Mutation root */
 export type MutationCreateUserArgs = {
   input: UserCreateInput;
 };
@@ -276,6 +286,12 @@ export type MutationDeleteLectureArgs = {
 
 /** Mutation root */
 export type MutationDeleteLectureHomeWorkLevelArgs = {
+  id: Scalars['ID'];
+};
+
+
+/** Mutation root */
+export type MutationDeleteSkillArgs = {
   id: Scalars['ID'];
 };
 
@@ -377,9 +393,29 @@ export type MutationUpdateLectureHomeWorkLevelArgs = {
 
 
 /** Mutation root */
+export type MutationUpdateProfileArgs = {
+  input: ProfileInput;
+};
+
+
+/** Mutation root */
+export type MutationUpdateProfileByIdArgs = {
+  input: ProfileInput;
+  userId: Scalars['ID'];
+};
+
+
+/** Mutation root */
 export type MutationUpdateRoleArgs = {
   id: Scalars['ID'];
   roles?: InputMaybe<Array<InputMaybe<UserRole>>>;
+};
+
+
+/** Mutation root */
+export type MutationUpdateSkillArgs = {
+  id: Scalars['ID'];
+  name: Scalars['String'];
 };
 
 
@@ -418,6 +454,28 @@ export enum Order {
   Desc = 'DESC'
 }
 
+export type ProfileDto = {
+  __typename?: 'ProfileDto';
+  avatar?: Maybe<Scalars['String']>;
+  git?: Maybe<Scalars['String']>;
+  linkedin?: Maybe<Scalars['String']>;
+  skills?: Maybe<Array<Maybe<SkillDto>>>;
+  stackOverflow?: Maybe<Scalars['String']>;
+  telegram?: Maybe<Scalars['String']>;
+  vkId?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+};
+
+export type ProfileInput = {
+  git?: InputMaybe<Scalars['String']>;
+  linkedin?: InputMaybe<Scalars['String']>;
+  skills?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  stackOverflow?: InputMaybe<Scalars['String']>;
+  telegram?: InputMaybe<Scalars['String']>;
+  vkId?: InputMaybe<Scalars['String']>;
+  website?: InputMaybe<Scalars['String']>;
+};
+
 /** Query root */
 export type Query = {
   __typename?: 'Query';
@@ -441,9 +499,12 @@ export type Query = {
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
   mentors?: Maybe<UsersDto>;
+  profile?: Maybe<ProfileDto>;
+  profileById?: Maybe<ProfileDto>;
   /** rating */
   rating?: Maybe<RatingDto>;
   ratingByUser?: Maybe<RatingDto>;
+  skills?: Maybe<SkillsDto>;
   /** training section */
   training?: Maybe<TrainingDto>;
   /** training lecture */
@@ -576,8 +637,23 @@ export type QueryMentorsArgs = {
 
 
 /** Query root */
+export type QueryProfileByIdArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+/** Query root */
 export type QueryRatingByUserArgs = {
   id?: InputMaybe<Scalars['ID']>;
+};
+
+
+/** Query root */
+export type QuerySkillsArgs = {
+  filter?: InputMaybe<SkillFilter>;
+  limit: Scalars['Int'];
+  offset: Scalars['Int'];
+  sort?: InputMaybe<SkillSort>;
 };
 
 
@@ -637,6 +713,7 @@ export type QueryUserByIdArgs = {
 
 /** Query root */
 export type QueryUsersArgs = {
+  filter?: InputMaybe<UsersFilter>;
   limit: Scalars['Int'];
   offset: Scalars['Int'];
   sort?: InputMaybe<UserSort>;
@@ -686,6 +763,33 @@ export type RatingUserDto = {
   rating?: Maybe<Scalars['Long']>;
 };
 
+export type SkillDto = {
+  __typename?: 'SkillDto';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type SkillFilter = {
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type SkillSort = {
+  field?: InputMaybe<SkillSortField>;
+  order?: InputMaybe<Order>;
+};
+
+export enum SkillSortField {
+  Name = 'NAME'
+}
+
+export type SkillsDto = {
+  __typename?: 'SkillsDto';
+  items?: Maybe<Array<Maybe<SkillDto>>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  totalElements?: Maybe<Scalars['Long']>;
+};
+
 export type StudentHomeWorkDto = {
   __typename?: 'StudentHomeWorkDto';
   answer?: Maybe<Scalars['String']>;
@@ -698,6 +802,7 @@ export type StudentHomeWorkDto = {
   status?: Maybe<StudentHomeWorkStatus>;
   student?: Maybe<UserDto>;
   training?: Maybe<TrainingDto>;
+  updateDate?: Maybe<Scalars['LocalDateTime']>;
 };
 
 export type StudentHomeWorkFilter = {
@@ -867,24 +972,30 @@ export type UserCreateInput = {
 
 export type UserDto = {
   __typename?: 'UserDto';
-  avatarLocation?: Maybe<Scalars['String']>;
+  avatar?: Maybe<Scalars['String']>;
   confirmationDate?: Maybe<Scalars['LocalDateTime']>;
   creationDate?: Maybe<Scalars['LocalDateTime']>;
   email?: Maybe<Scalars['String']>;
   firstName?: Maybe<Scalars['String']>;
+  git?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
   lastName?: Maybe<Scalars['String']>;
+  linkedin?: Maybe<Scalars['String']>;
   locked?: Maybe<Scalars['Boolean']>;
   middleName?: Maybe<Scalars['String']>;
   phoneNumber?: Maybe<Scalars['String']>;
   rating?: Maybe<RatingUserDto>;
   roles?: Maybe<Array<Maybe<UserRole>>>;
+  skills?: Maybe<Array<Maybe<Scalars['String']>>>;
+  stackOverflow?: Maybe<Scalars['String']>;
+  telegram?: Maybe<Scalars['String']>;
   updateDate?: Maybe<Scalars['LocalDateTime']>;
+  vkId?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
 };
 
 export type UserRatingDto = {
   __typename?: 'UserRatingDto';
-  avatarLocation?: Maybe<Scalars['String']>;
   creationDate?: Maybe<Scalars['LocalDateTime']>;
   firstName?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
@@ -937,6 +1048,12 @@ export type UsersDto = {
   totalElements?: Maybe<Scalars['Long']>;
 };
 
+export type UsersFilter = {
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  phoneNumber?: InputMaybe<Scalars['String']>;
+};
+
 export type UsersRatingDto = {
   __typename?: 'UsersRatingDto';
   items?: Maybe<Array<Maybe<UserRatingDto>>>;
@@ -963,9 +1080,9 @@ export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
 
 export type CommentsHomeWorkByHomeWorkQuery = { __typename?: 'Query', commentsHomeWorkByHomeWork?: { __typename?: 'CommentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null } | null } | null> | null } | null };
 
-export type SubCommentHomeWorkDtoRecursiveFragment = { __typename?: 'CommentHomeWorkDto', children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatarLocation?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatarLocation?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatarLocation?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatarLocation?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatarLocation?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null };
+export type SubCommentHomeWorkDtoRecursiveFragment = { __typename?: 'CommentHomeWorkDto', children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null };
 
-export type SubCommentHomeWorkDtoFragment = { __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatarLocation?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type SubCommentHomeWorkDtoFragment = { __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type SendCommentMutationVariables = Exact<{
   homeWorkId: Scalars['ID'];
@@ -1139,7 +1256,7 @@ export type CreateUserMutationVariables = Exact<{
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatarLocation?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null } | null };
+export type CreateUserMutation = { __typename?: 'Mutation', createUser?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null } | null };
 
 export type LockUserMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1185,14 +1302,14 @@ export type UpdateRoleMutationVariables = Exact<{
 }>;
 
 
-export type UpdateRoleMutation = { __typename?: 'Mutation', updateRole?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, locked?: boolean | null, avatarLocation?: string | null, creationDate?: any | null, confirmationDate?: any | null, roles?: Array<UserRole | null> | null } | null };
+export type UpdateRoleMutation = { __typename?: 'Mutation', updateRole?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, locked?: boolean | null, creationDate?: any | null, confirmationDate?: any | null, roles?: Array<UserRole | null> | null } | null };
 
 export type UserByIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type UserByIdQuery = { __typename?: 'Query', userById?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatarLocation?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type UserByIdQuery = { __typename?: 'Query', userById?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type UserIdQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1207,7 +1324,7 @@ export type UserRolesQuery = { __typename?: 'Query', user?: { __typename?: 'User
 export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatarLocation?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatar?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type UsersRatingQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -1225,7 +1342,7 @@ export type UsersQueryVariables = Exact<{
 }>;
 
 
-export type UsersQuery = { __typename?: 'Query', users?: { __typename?: 'UsersDto', totalElements?: any | null, items?: Array<{ __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, avatarLocation?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
+export type UsersQuery = { __typename?: 'Query', users?: { __typename?: 'UsersDto', totalElements?: any | null, items?: Array<{ __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
 
 export const SubCommentHomeWorkDtoFragmentDoc = gql`
     fragment subCommentHomeWorkDto on CommentHomeWorkDto {
@@ -1236,7 +1353,6 @@ export const SubCommentHomeWorkDtoFragmentDoc = gql`
     firstName
     lastName
     middleName
-    avatarLocation
     locked
     rating {
       rating
@@ -2708,7 +2824,6 @@ export const CreateUserDocument = gql`
     lastName
     middleName
     phoneNumber
-    avatarLocation
     roles
     locked
   }
@@ -2962,7 +3077,6 @@ export const UpdateRoleDocument = gql`
     middleName
     phoneNumber
     locked
-    avatarLocation
     creationDate
     middleName
     confirmationDate
@@ -3012,7 +3126,6 @@ export const UserByIdDocument = gql`
     lastName
     middleName
     phoneNumber
-    avatarLocation
     roles
     locked
     rating {
@@ -3144,7 +3257,7 @@ export const UserDocument = gql`
     lastName
     middleName
     phoneNumber
-    avatarLocation
+    avatar
     roles
     locked
     rating {
@@ -3251,7 +3364,6 @@ export const UsersDocument = gql`
       lastName
       middleName
       phoneNumber
-      avatarLocation
       roles
       locked
       creationDate
