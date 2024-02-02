@@ -1,15 +1,19 @@
 import { Controller, FieldValues } from "react-hook-form";
 import { Autocomplete, FormControl, TextField } from "@mui/material";
 
-import { IFormInputText } from "./input-autocomplete.types";
+import { IFormInputText, OptionTypeBase } from "./input-autocomplete.types";
 
-const InputAutocomplete = <T extends FieldValues>({
+const InputAutocomplete = <
+  T extends FieldValues,
+  OptionType extends OptionTypeBase
+>({
   control,
   name,
   placeholder,
   options,
   onSelect,
-}: IFormInputText<T>) => {
+  disabled,
+}: IFormInputText<T, OptionType>) => {
   return (
     <FormControl fullWidth>
       <Controller
@@ -24,6 +28,7 @@ const InputAutocomplete = <T extends FieldValues>({
               }
             }}
             disablePortal
+            disabled={disabled}
             options={options}
             size="small"
             isOptionEqualToValue={(option, value) => option.id === value.id}

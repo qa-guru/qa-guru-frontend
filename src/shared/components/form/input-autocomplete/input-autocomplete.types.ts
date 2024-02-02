@@ -1,7 +1,16 @@
 import { InputHTMLAttributes } from "react";
 import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
+import { Maybe } from "api/graphql/generated/graphql";
 
-export interface IFormInputText<T extends FieldValues> {
+export interface OptionTypeBase {
+  id: string;
+  label: string;
+}
+
+export interface IFormInputText<
+  T extends FieldValues,
+  OptionType extends OptionTypeBase
+> {
   control: Control<T, unknown>;
   label?: string;
   placeholder?: string;
@@ -12,6 +21,7 @@ export interface IFormInputText<T extends FieldValues> {
   minRows?: string | number;
   inputProps?: InputHTMLAttributes<HTMLTextAreaElement>;
   errors?: FieldErrors<T>;
-  options: any;
-  onSelect: any;
+  options: OptionType[];
+  onSelect: (item: Maybe<OptionType>) => void;
+  disabled?: boolean;
 }
