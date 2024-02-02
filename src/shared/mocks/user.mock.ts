@@ -8,7 +8,6 @@ export const user: UserQuery = {
     lastName: "string",
     middleName: "string",
     phoneNumber: "string",
-    avatarLocation: "string",
     roles: null,
     locked: false,
   },

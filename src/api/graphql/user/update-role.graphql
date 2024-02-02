@@ -7,7 +7,6 @@ mutation updateRole($id: ID!, $roles: [UserRole]) {
     middleName
     phoneNumber
     locked
-    avatarLocation
     creationDate
     middleName
     confirmationDate
