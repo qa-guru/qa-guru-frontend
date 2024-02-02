@@ -25,8 +25,8 @@ export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
 
 export const StyledIconButton = styled(Button)(({ theme }) => ({
   position: "absolute",
-  bottom: "2px",
-  right: "-5px",
+  bottom: "-10px",
+  right: "-15px",
   color: theme.palette.app.white,
 }));
 
