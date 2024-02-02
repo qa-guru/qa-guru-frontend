@@ -1,5 +1,7 @@
 import { FC, useContext } from "react";
-import { InputSelect } from "shared/components/form";
+import { InputAutocomplete } from "shared/components/form";
+import { Maybe } from "api/graphql/generated/graphql";
+import { OptionTypeBase } from "shared/components/form/input-autocomplete/input-autocomplete.types";
 
 import { ITrainingSelection } from "./training-selection.types";
 import { KanbanFormContext } from "../../context/kanban-form-context";
@@ -7,22 +9,23 @@ import { KanbanFormContext } from "../../context/kanban-form-context";
 const TrainingSelection: FC<ITrainingSelection> = ({ items, control }) => {
   const { setTrainingId } = useContext(KanbanFormContext);
 
-  const trainingOptions = items?.map((item) => ({
-    value: item?.id,
-    label: item?.name,
-  }));
+  const trainingOptions =
+    items?.map((item) => ({
+      id: item?.id || "",
+      label: item?.name || "",
+    })) ?? [];
 
-  const handleSelectChange = (selectedId: string) => {
-    setTrainingId(selectedId);
+  const handleSelectChange = (selected: Maybe<OptionTypeBase>) => {
+    setTrainingId(selected!.id);
   };
 
   return (
-    <InputSelect
+    <InputAutocomplete
       control={control}
-      options={trainingOptions}
       name="trainings"
+      options={trainingOptions}
       placeholder="Выберите курс"
-      onChange={handleSelectChange}
+      onSelect={handleSelectChange}
     />
   );
 };
