@@ -50,7 +50,6 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
 
   return (
     <>
-      {/*<StyledTitle variant="h2">{`Пользователи (${data?.users?.totalElements})`}</StyledTitle>*/}
       <StyledPaper>
         {isDownMd ? (
           <MobileTable table={table} />

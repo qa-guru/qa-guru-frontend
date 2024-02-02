@@ -23,7 +23,7 @@ const Table: FC<ITable> = ({ data, fetchMore }) => {
   const columns = useMemo<ColumnDef<UserDto>[]>(
     () => [
       {
-        header: "Пользователь",
+        header: `Пользователи (${data?.users?.totalElements})`,
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {

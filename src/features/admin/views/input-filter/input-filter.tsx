@@ -28,7 +28,7 @@ const InputFilter: FC = () => {
     });
   }, [filterValue, activeFilter]);
 
-  const handleFilterChange = (event: SyntheticEvent, value: string) => {
+  const handleFilterChange = (_: SyntheticEvent, value: string) => {
     setActiveFilter(value);
   };
 
