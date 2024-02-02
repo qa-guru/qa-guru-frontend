@@ -24,7 +24,7 @@ const Footer: FC = () => {
   );
 
   return (
-    <footer>
+    <footer style={{ zIndex: 2 }}>
       <StyledPaper>
         <StyledWrapper>
           <StyledBox>

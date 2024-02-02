@@ -20,7 +20,7 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
 
   return (
     <StyledBox>
-      <IconButton size="large" onClick={handleOpenNavMenu}>
+      <IconButton size="large" color="primary" onClick={handleOpenNavMenu}>
         <MenuIcon />
       </IconButton>
       <StyledMenu

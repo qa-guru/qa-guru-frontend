@@ -4,7 +4,6 @@ import { ReactComponent as DarkLogo } from "assets/icons/logo-header.svg";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 import { Link } from "react-router-dom";
 
-
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.app.primary,
@@ -42,24 +41,33 @@ export const StyledIconBox = styled(Box)({
   marginTop: "7px",
 });
 
-export const StyledLogo = styled(Logo)({
+export const StyledLogo = styled(Logo)(({ theme }) => ({
   width: "166px",
   height: "30px",
-});
+  [theme.breakpoints.down("sm")]: {
+    width: "146px",
+    height: "25px",
+  },
+}));
 
-export const StyledDarkLogo = styled(DarkLogo)({
+export const StyledDarkLogo = styled(DarkLogo)(({ theme }) => ({
   width: "166px",
   height: "30px",
-});
+  [theme.breakpoints.down("sm")]: {
+    width: "146px",
+    height: "25px",
+  },
+}));
 
-export const StyledIconButton = styled(IconButton)({
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "transparent",
   },
   "& .MuiSelect-select:focus": {
     backgroundColor: "transparent",
   },
-});
+  padding: 0,
+}));
 
 export const StyledSelectorBox = styled(Box)(({ theme }) => ({
   stroke: theme.palette.app.white,
