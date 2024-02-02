@@ -1,7 +1,7 @@
 import { type ApolloQueryResult } from "@apollo/client";
 import { UsersQuery } from "api/graphql/generated/graphql";
 
-export interface IAdmin {
+export interface ITable {
   data: UsersQuery;
   fetchMore: (options: {
     variables: { offset?: number; limit?: number };

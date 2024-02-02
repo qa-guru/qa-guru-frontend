@@ -17,7 +17,7 @@ const InputText = <T extends FieldValues>({
   errors,
 }: IFormInputText<T>) => {
   return (
-    <FormControl fullWidth error={Boolean(errors[name])}>
+    <FormControl fullWidth error={Boolean(errors?.[name])}>
       <Controller
         name={name}
         control={control}
@@ -36,7 +36,7 @@ const InputText = <T extends FieldValues>({
           />
         )}
       />
-      {errors[name] && (
+      {errors?.[name] && (
         <StyledFormHelperText multiline={multiline}>
           {errors[name].message}
         </StyledFormHelperText>

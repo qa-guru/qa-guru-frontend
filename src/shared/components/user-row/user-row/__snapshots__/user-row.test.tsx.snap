@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UserRow > renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiStack-root css-czl7p-MuiStack-root"
+  >
+    <div
+      class="MuiAvatar-root MuiAvatar-rounded MuiAvatar-colorDefault css-i05okq-MuiAvatar-root"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body2 css-1x99iug-MuiTypography-root"
+      >
+        uu
+      </p>
+    </div>
+    <div
+      class="MuiBox-root css-189yone"
+    >
+      <div
+        class="MuiStack-root css-1lu7pdg-MuiStack-root"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2 css-8cl3yd-MuiTypography-root"
+        >
+          undefined undefined
+        </p>
+        <div
+          class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault css-1w2atff-MuiChip-root"
+        >
+          <span
+            class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+          />
+        </div>
+      </div>
+      <span
+        class="MuiTypography-root MuiTypography-caption css-1ta79nt-MuiTypography-root"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

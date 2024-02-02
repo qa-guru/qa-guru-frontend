@@ -1,5 +1,7 @@
 import { FC, useContext } from "react";
-import { InputSelect } from "shared/components/form";
+import { InputAutocomplete } from "shared/components/form";
+import { OptionTypeBase } from "shared/components/form/input-autocomplete/input-autocomplete.types";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { IMentorSelection } from "./mentor-selection.types";
 import { KanbanFormContext } from "../../context/kanban-form-context";
@@ -8,22 +10,23 @@ const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
   const items = data?.mentors?.items;
   const { setMentorId } = useContext(KanbanFormContext);
 
-  const mentorsOptions = items?.map((item) => ({
-    value: item?.id,
-    label: `${item?.firstName} ${item?.lastName}`,
-  }));
+  const mentorsOptions =
+    items?.map((item) => ({
+      id: item?.id || "",
+      label: `${item?.firstName} ${item?.lastName}`,
+    })) || [];
 
-  const handleSelectChange = (selectedId: string) => {
-    setMentorId(selectedId);
+  const handleSelectChange = (selected: Maybe<OptionTypeBase>) => {
+    setMentorId(selected!.id);
   };
 
   return (
-    <InputSelect
+    <InputAutocomplete
       control={control}
-      options={mentorsOptions}
       name="mentors"
       placeholder="Выберите наставника"
-      onChange={handleSelectChange}
+      options={mentorsOptions}
+      onSelect={handleSelectChange}
     />
   );
 };

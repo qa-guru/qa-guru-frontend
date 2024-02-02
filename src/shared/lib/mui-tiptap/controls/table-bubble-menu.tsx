@@ -61,7 +61,7 @@ export default function TableBubbleMenu({
                   nearestTableParent.pos
                 ) as Maybe<HTMLElement | undefined>;
 
-                const tableDomNode = wrapperDomNode?.querySelector("table");
+                const tableDomNode = wrapperDomNode?.querySelector("admin");
                 if (tableDomNode) {
                   return tableDomNode.getBoundingClientRect();
                 }

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import {
   Order,
   UserSortField,
@@ -7,21 +7,25 @@ import {
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
-import Admin from "../../views/admin";
+import { TableAdminFilterContext } from "../../context/admin-table-context";
+import Table from "../../views/table";
 
 const UsersContainer: FC = () => {
+  const { filter } = useContext(TableAdminFilterContext);
+
   const { data, loading, fetchMore } = useUsersQuery({
     variables: {
       offset: 0,
       limit: 50,
       sort: { field: UserSortField.Email, order: Order.Desc },
+      filter: filter || {},
     },
   });
 
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <Admin data={data} fetchMore={fetchMore} />;
+  return <Table data={data} fetchMore={fetchMore} />;
 };
 
 export default UsersContainer;
