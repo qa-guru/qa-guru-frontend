@@ -7,6 +7,6 @@ export const StyledTable = styled(Table)({
 
 export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:hover": {
-    backgroundColor: theme.palette.app.hoverBlue,
+    backgroundColor: theme.palette.app.secondary,
   },
 }));

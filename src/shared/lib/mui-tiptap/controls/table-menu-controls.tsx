@@ -129,7 +129,7 @@ export default function TableMenuControls({
       <MenuDivider />
 
       <MenuButton
-        tooltipLabel={labels?.deleteTable ?? "Delete table"}
+        tooltipLabel={labels?.deleteTable ?? "Delete admin"}
         IconComponent={GridOff}
         onClick={() => editor?.chain().focus().deleteTable().run()}
         disabled={!editor?.can().deleteTable()}

@@ -1,5 +1,10 @@
-query users($offset: Int!, $limit: Int!, $sort: UserSort!) {
-  users(offset: $offset, limit: $limit, sort: $sort) {
+query users(
+  $offset: Int!
+  $limit: Int!
+  $sort: UserSort
+  $filter: UsersFilter
+) {
+  users(offset: $offset, limit: $limit, sort: $sort, filter: $filter) {
     items {
       id
       email

@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
-  backgroundColor: theme.palette.app.whiteGrey,
+  backgroundColor: theme.palette.app.secondary,
   borderRadius: "100px",
   [theme.breakpoints.only("xs")]: {
     borderRadius: "30px",
