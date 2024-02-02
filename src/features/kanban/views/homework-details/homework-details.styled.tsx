@@ -24,7 +24,7 @@ export const StyledStatusContentBox = styled(Box)({
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.app.black,
+  color: theme.palette.app.textPrimary,
   "&:hover": { color: theme.palette.app.primary },
 }));
 

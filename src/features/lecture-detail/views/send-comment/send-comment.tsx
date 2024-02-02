@@ -1,11 +1,11 @@
 import { FC, useRef, useState } from "react";
 import { Editor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
-import { Typography } from "@mui/material";
 
 import { ISendComment } from "./send-comment.types";
 import {
   StyledBox,
+  StyledFormHelperText,
   StyledLoadingButton,
   StyledStack,
 } from "./send-comment.styled";
@@ -27,7 +27,7 @@ const SendComment: FC<ISendComment> = (props) => {
       });
       setError("");
     } else {
-      setError("Comment cannot be empty.");
+      setError("Введите текст");
     }
   };
 
@@ -35,7 +35,7 @@ const SendComment: FC<ISendComment> = (props) => {
     <form>
       <StyledBox>
         <Editor rteRef={rteRef} />
-        {error && <Typography>{error}</Typography>}
+        {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
       <StyledStack>
         <StyledLoadingButton

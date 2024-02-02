@@ -65,7 +65,7 @@ const useStyles = makeStyles<void, "menuBar" | "menuBarContent" | "content">({
 
     menuBar: {},
     menuBarContent: {},
-    content: {},
+    content: { height: "130px" },
   };
 });
 
