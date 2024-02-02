@@ -9,10 +9,14 @@ export const StyledSchoolIcon = styled(StudentIcon)(({ theme }) => ({
 
 export const StyledCalendarBox = styled(Paper)(({ theme }) => ({
   position: "absolute",
-  bottom: "-215px",
-  right: "-32px",
   transform: "scale(0.8)",
   color: theme.palette.app.textPrimary,
   zIndex: 2,
   maxHeight: "310px",
+  bottom: "-215px",
+  right: "-5px",
+  [theme.breakpoints.down("md")]: {
+    bottom: "65px",
+    right: "-5px",
+  },
 }));
