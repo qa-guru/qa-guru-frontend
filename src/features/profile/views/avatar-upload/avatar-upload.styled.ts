@@ -1,11 +1,7 @@
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Paper, Stack } from "@mui/material";
+import { Box, Button, DialogContent, Stack } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import Slider from "@mui/material/Slider";
-
-export const StyledPaper = styled(Paper)({
-  padding: "24px",
-});
 
 export const StyledIconBox = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -13,13 +9,13 @@ export const StyledIconBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "12px",
-  width: "20vw",
-  height: "20vw",
+  width: "17vw",
+  height: "17vw",
 }));
 
 export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
-  width: "20vw",
-  height: "20vw",
+  width: "17vw",
+  height: "17vw",
   color: theme.palette.app.white,
 }));
 

@@ -13,7 +13,6 @@ import {
   StyledDialogContent,
   StyledIconBox,
   StyledIconButton,
-  StyledPaper,
   StyledPersonIcon,
   StyledSlider,
   VisuallyHiddenInput,
@@ -100,17 +99,15 @@ const AvatarUpload: FC<IAvatarUpload> = () => {
   };
 
   return (
-    <StyledPaper>
-      <StyledIconBox>
-        <StyledPersonIcon />
-        <StyledIconButton>
-          <label>
-            <CameraAltIcon />
-            <VisuallyHiddenInput type="file" onChange={handleImageChange} />
-          </label>
-        </StyledIconButton>
-      </StyledIconBox>
-    </StyledPaper>
+    <StyledIconBox>
+      <StyledPersonIcon />
+      <StyledIconButton>
+        <label>
+          <CameraAltIcon />
+          <VisuallyHiddenInput type="file" onChange={handleImageChange} />
+        </label>
+      </StyledIconButton>
+    </StyledIconBox>
   );
 };
 
