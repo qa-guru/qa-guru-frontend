@@ -45,7 +45,8 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     navigate(ROUTES.KANBAN);
   };
 
-  const isCurrentMentor = dataUserId.user?.id === mentor?.id;
+  const isCurrentMentor =
+    mentor?.id === undefined || dataUserId.user?.id === mentor?.id;
 
   return (
     <Container>
