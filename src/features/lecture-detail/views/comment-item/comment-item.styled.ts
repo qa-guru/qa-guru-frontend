@@ -9,7 +9,7 @@ interface IStyledComment {
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop) => prop !== "editAccess",
 })<IStyledComment>(({ theme, editAccess }) => ({
-  border: editAccess ? "none" : `0.5px solid ${theme.palette.app.primary}`,
+  border: editAccess ? `0.5px solid ${theme.palette.app.primary}` : "none",
   boxShadow:
     "0px 1px 5px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20)",
   borderRadius: "12px",
@@ -18,7 +18,6 @@ export const StyledPaper = styled(Paper, {
   [theme.breakpoints.up("sm")]: {
     padding: "15px",
   },
-  margin: "5px",
 }));
 
 export const StyledStack = styled(Stack)(({ theme }) => ({

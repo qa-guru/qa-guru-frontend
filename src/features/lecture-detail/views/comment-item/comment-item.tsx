@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { ReactComponent as Edit } from "assets/icons/button-edit.svg";
 import UserRow from "shared/components/user-row";
 import { TextView } from "shared/components/text-editor";
+import { useComment } from "shared/context/comment-context";
 
 import { ICommentItem } from "./comment-item.types";
 import {
@@ -10,20 +11,24 @@ import {
   StyledCommentBox,
   StyledIconBox,
   StyledPaper,
-  StyledReplyIcon,
   StyledStack,
+  StyledReplyIcon,
 } from "./comment-item.styled";
 import { UpdateComment, AnswerComment } from "../../containers";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
-  editAccess,
-  isSelected,
-  setSelectedComment,
   commentId,
+  currentUserID,
+  parentID = null,
 }) => {
-  const { creator, content, creationDate, id } = item || {};
+  const { creator, content, creationDate, id, children } = item || {};
+  const { selectedComment, setSelectedComment } = useComment();
+
   const [isReplying, setIsReplying] = useState<boolean>(false);
+
+  const editAccess = currentUserID === creator?.id;
+  const isSelected = selectedComment === id;
 
   const handleReplyClick = () => {
     setIsReplying(!isReplying);
@@ -37,11 +42,7 @@ const CommentItem: FC<ICommentItem> = ({
             <UserRow user={creator} date={creationDate} />
             <StyledBox>
               {isSelected ? (
-                <UpdateComment
-                  content={content}
-                  setSelectedComment={setSelectedComment}
-                  id={id}
-                />
+                <UpdateComment content={content} id={id} />
               ) : (
                 <TextView content={content} />
               )}
@@ -60,6 +61,20 @@ const CommentItem: FC<ICommentItem> = ({
           <StyledReplyIcon fontSize="small" />
         </IconButton>
       </StyledPaper>
+
+      <Box padding="0 15px">
+        {children?.map((childComment) => (
+          <CommentItem
+            key={childComment?.id}
+            item={childComment}
+            commentId={childComment?.id}
+            parentID={id}
+            editAccess={editAccess}
+            currentUserID={currentUserID}
+          />
+        ))}
+      </Box>
+
       {isReplying && <AnswerComment id={id} />}
     </>
   );
