@@ -26,6 +26,10 @@ query commentsHomeWorkByHomeWork(
       homeWork {
         id
       }
+      children {
+        ...subCommentHomeWorkDto
+        ...subCommentHomeWorkDtoRecursive
+      }
     }
     offset
     limit

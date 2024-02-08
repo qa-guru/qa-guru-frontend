@@ -1,11 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
 import { CommentHomeWorkDto, Maybe } from "api/graphql/generated/graphql";
 
 export interface ICommentItem {
   item?: Maybe<CommentHomeWorkDto>;
-  editAccess: boolean;
-  isSelected: boolean;
-  setSelectedComment: Dispatch<SetStateAction<Maybe<string | undefined>>>;
+  editAccess?: boolean;
+  isSelected?: boolean;
   commentId?: Maybe<string>;
-  depth?: number;
+  parentID?: Maybe<string>;
+  currentUserID?: Maybe<string>;
 }

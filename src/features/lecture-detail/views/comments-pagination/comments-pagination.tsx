@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
-import { Maybe } from "api/graphql/generated/graphql";
 
 import { ICommentsPagination } from "./comments-pagination.types";
 import {
@@ -15,8 +14,6 @@ import CommentTotalElements from "../comment-total-elements";
 
 const CommentsPagination: FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
-  const [selectedComment, setSelectedComment] =
-    useState<Maybe<string | undefined>>(null);
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
@@ -67,17 +64,14 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
       >
         <StyledStack>
           {items?.map((item) => {
-            const editAccess = dataUserId?.user?.id === item?.creator?.id;
             const { id } = item!;
 
             return (
               <CommentItem
                 key={id}
                 item={item}
-                editAccess={editAccess}
-                isSelected={selectedComment === id}
-                setSelectedComment={setSelectedComment}
                 commentId={id}
+                currentUserID={dataUserId?.user?.id}
               />
             );
           })}
