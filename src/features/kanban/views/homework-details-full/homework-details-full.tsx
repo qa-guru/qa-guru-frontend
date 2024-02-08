@@ -45,7 +45,8 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     navigate(ROUTES.KANBAN);
   };
 
-  const isCurrentMentor = dataUserId.user?.id === mentor?.id;
+  const isCurrentMentorOrNew =
+    mentor?.id === undefined || dataUserId.user?.id === mentor?.id;
 
   return (
     <Container>
@@ -85,7 +86,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        {isCurrentMentor ? (
+        {isCurrentMentorOrNew ? (
           <StatusSelect currentStatus={status} homeworkId={id} />
         ) : (
           <StatusText status={status} />

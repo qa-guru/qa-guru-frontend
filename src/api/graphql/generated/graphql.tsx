@@ -2,7 +2,6 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1079,7 +1078,7 @@ export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
 }>;
 
 
-export type CommentsHomeWorkByHomeWorkQuery = { __typename?: 'Query', commentsHomeWorkByHomeWork?: { __typename?: 'CommentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null } | null } | null> | null } | null };
+export type CommentsHomeWorkByHomeWorkQuery = { __typename?: 'Query', commentsHomeWorkByHomeWork?: { __typename?: 'CommentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null } | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null> | null } | null> | null } | null };
 
 export type SubCommentHomeWorkDtoRecursiveFragment = { __typename?: 'CommentHomeWorkDto', children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null };
 
@@ -1565,13 +1564,18 @@ export const CommentsHomeWorkByHomeWorkDocument = gql`
       homeWork {
         id
       }
+      children {
+        ...subCommentHomeWorkDto
+        ...subCommentHomeWorkDtoRecursive
+      }
     }
     offset
     limit
     totalElements
   }
 }
-    `;
+    ${SubCommentHomeWorkDtoFragmentDoc}
+${SubCommentHomeWorkDtoRecursiveFragmentDoc}`;
 export type CommentsHomeWorkByHomeWorkComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CommentsHomeWorkByHomeWorkQuery, CommentsHomeWorkByHomeWorkQueryVariables>, 'query'> & ({ variables: CommentsHomeWorkByHomeWorkQueryVariables; skip?: boolean; } | { skip: boolean; });
 
     export const CommentsHomeWorkByHomeWorkComponent = (props: CommentsHomeWorkByHomeWorkComponentProps) => (

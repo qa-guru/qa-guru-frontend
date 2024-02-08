@@ -11,11 +11,13 @@ import {
   StyledStack,
   StyledFormHelperText,
 } from "./update-comment.styled";
+import { useComment } from "../../../../shared/context/comment-context";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
-  const { loading, updateComment, id, setSelectedComment, content } = props;
+  const { loading, updateComment, id, content } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
+  const { setSelectedComment } = useComment();
 
   const handleUpdateComment = () => {
     const content = rteRef.current?.editor?.getHTML() ?? "";

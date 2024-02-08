@@ -73,11 +73,8 @@ export const StyledSelectorBox = styled(Box)(({ theme }) => ({
   stroke: theme.palette.app.white,
 }));
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledStack = styled(Stack)({
   flexDirection: "row",
   alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.down("sm")]: {
-    gap: 0,
-  },
-}));
+  marginRight: "10px",
+});

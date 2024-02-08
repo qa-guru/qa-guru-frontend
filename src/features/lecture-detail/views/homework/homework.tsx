@@ -56,6 +56,7 @@ const Homework: FC<IHomework> = (props) => {
           <Comments id={dataHomeWorkByLectureAndTraining?.id}>
             <CommentsLimited />
           </Comments>
+
           <Box>
             <StyledButton variant="contained" onClick={showModalAndSetUrl}>
               Показать другие комментарии
