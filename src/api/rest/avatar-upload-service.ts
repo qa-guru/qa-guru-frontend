@@ -9,7 +9,8 @@ export interface AvatarUploadResponse {
 export default class AvatarUploadService {
   static upload(file: File): Promise<AxiosResponse<AvatarUploadResponse>> {
     const formData = new FormData();
-    formData.append("avatar", file);
+
+    formData.append("file", file);
 
     return axios({
       method: "POST",

@@ -8,6 +8,17 @@ query userById($id: ID) {
     phoneNumber
     roles
     locked
+    vkId
+    git
+    telegram
+    stackOverflow
+    linkedin
+    website
+    avatar
+    skills
+    creationDate
+    confirmationDate
+    updateDate
     rating {
       rating
     }

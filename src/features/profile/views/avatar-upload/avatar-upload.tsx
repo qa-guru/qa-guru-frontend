@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useRef, useState } from "react";
+import { ChangeEvent, FC, useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -89,6 +89,7 @@ const AvatarUpload: FC<IAvatarUpload> = () => {
       );
       if (blob) {
         const file = new File([blob], "avatar", { type: fileType });
+
         await uploadAvatar(file);
       }
     }

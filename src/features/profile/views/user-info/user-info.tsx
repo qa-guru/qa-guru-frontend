@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
 import { formatDate } from "shared/helpers";
@@ -23,7 +23,6 @@ import {
 
 const UserInfo: FC<IUserInfo> = ({ data }) => {
   const { user } = data;
-  console.log(user);
 
   const ratingColor = useRatingColor(user?.rating?.rating);
 
