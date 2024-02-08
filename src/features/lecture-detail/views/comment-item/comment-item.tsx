@@ -1,20 +1,23 @@
 import { FC, useState } from "react";
-import { Box, IconButton } from "@mui/material";
-import { ReactComponent as Edit } from "assets/icons/button-edit.svg";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import UserRow from "shared/components/user-row";
 import { TextView } from "shared/components/text-editor";
 import { useComment } from "shared/context/comment-context";
+import { ExpandMore, ExpandLess } from "@mui/icons-material";
 
 import { ICommentItem } from "./comment-item.types";
 import {
   StyledBox,
   StyledCommentBox,
-  StyledIconBox,
   StyledPaper,
   StyledStack,
   StyledReplyIcon,
+  StyledEditIcon,
+  StyledBottomStack,
+  StyledIconButton,
 } from "./comment-item.styled";
 import { UpdateComment, AnswerComment } from "../../containers";
+import { formatDate } from "../../../../shared/helpers";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
@@ -27,6 +30,12 @@ const CommentItem: FC<ICommentItem> = ({
 
   const [isReplying, setIsReplying] = useState<boolean>(false);
 
+  const [openThreads, setOpenThreads] = useState(false);
+  const handleReplySuccess = () => {
+    setIsReplying(false);
+    setOpenThreads(true);
+  };
+
   const editAccess = currentUserID === creator?.id;
   const isSelected = selectedComment === id;
 
@@ -34,12 +43,16 @@ const CommentItem: FC<ICommentItem> = ({
     setIsReplying(!isReplying);
   };
 
+  const handleOpenThreads = () => {
+    setOpenThreads(!openThreads);
+  };
+
   return (
     <>
       <StyledPaper key={commentId} editAccess={editAccess}>
         <StyledStack>
           <StyledCommentBox>
-            <UserRow user={creator} date={creationDate} />
+            <UserRow user={creator} />
             <StyledBox>
               {isSelected ? (
                 <UpdateComment content={content} id={id} />
@@ -48,34 +61,53 @@ const CommentItem: FC<ICommentItem> = ({
               )}
             </StyledBox>
           </StyledCommentBox>
-
-          <StyledIconBox>
-            {!isSelected && editAccess && (
-              <IconButton onClick={() => setSelectedComment(commentId)}>
-                <Edit />
-              </IconButton>
-            )}
-          </StyledIconBox>
         </StyledStack>
-        <IconButton onClick={handleReplyClick}>
-          <StyledReplyIcon fontSize="small" />
-        </IconButton>
+        <Stack direction="row" justifyContent="space-between">
+          <StyledBottomStack>
+            <Typography variant="caption" color="textSecondary">
+              {formatDate(creationDate, "DD.MM.YYYY | HH:mm")}
+            </Typography>
+            {!isSelected && editAccess && (
+              <StyledIconButton onClick={() => setSelectedComment(commentId)}>
+                <StyledEditIcon />
+              </StyledIconButton>
+            )}
+            <StyledIconButton onClick={handleReplyClick}>
+              <StyledReplyIcon fontSize="small" />
+            </StyledIconButton>
+          </StyledBottomStack>
+          <Stack>
+            {children && children.length > 0 && (
+              <Button onClick={handleOpenThreads}>
+                {!openThreads ? (
+                  <ExpandMore color="primary" fontSize="small" />
+                ) : (
+                  <ExpandLess color="primary" fontSize="small" />
+                )}
+                Ответы ({children.length})
+              </Button>
+            )}
+          </Stack>
+        </Stack>
       </StyledPaper>
+      {openThreads && (
+        <Box paddingLeft="15px">
+          {children?.map((childComment) => (
+            <CommentItem
+              key={childComment?.id}
+              item={childComment}
+              commentId={childComment?.id}
+              parentID={id}
+              editAccess={editAccess}
+              currentUserID={currentUserID}
+            />
+          ))}
+        </Box>
+      )}
 
-      <Box padding="0 15px">
-        {children?.map((childComment) => (
-          <CommentItem
-            key={childComment?.id}
-            item={childComment}
-            commentId={childComment?.id}
-            parentID={id}
-            editAccess={editAccess}
-            currentUserID={currentUserID}
-          />
-        ))}
-      </Box>
-
-      {isReplying && <AnswerComment id={id} />}
+      {isReplying && (
+        <AnswerComment id={id} onReplySuccess={handleReplySuccess} />
+      )}
     </>
   );
 };

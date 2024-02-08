@@ -1,6 +1,7 @@
 import {
   SubCommentHomeWorkDtoFragmentDoc,
   useAnswerCommentMutation,
+  useUserQuery,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
 
@@ -12,7 +13,8 @@ type AnswerCommentItem = {
 };
 
 const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
-  const { id } = props;
+  const { id, onReplySuccess } = props;
+  const { data } = useUserQuery();
 
   const [answerComment, { loading }] = useAnswerCommentMutation({
     update: (cache, { data }) => {
@@ -41,7 +43,13 @@ const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
   });
 
   return (
-    <AnswerComment loading={loading} answerComment={answerComment} id={id} />
+    <AnswerComment
+      loading={loading}
+      answerComment={answerComment}
+      id={id}
+      dataUser={data}
+      onReplySuccess={onReplySuccess}
+    />
   );
 };
 
