@@ -54,7 +54,13 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
 
   return (
     <StyledCommentStack>
-      <UserRow user={dataUser?.user} hideFullName hideRating />
+      <UserRow
+        user={dataUser?.user}
+        userId={dataUser?.user?.id}
+        hideFullName
+        hideRating
+        hasLink
+      />
       <StyledCommentBox>
         <form>
           <StyledBox>

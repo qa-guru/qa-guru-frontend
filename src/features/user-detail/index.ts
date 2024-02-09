@@ -1,1 +1,1 @@
-export { UserById } from "./containers";
+export { default } from "./views/user-detail";

@@ -36,13 +36,13 @@ const Users: FC<IUsers> = ({ data }) => {
 
           return (
             <UserRow
+              userId={info.row.original.id}
               hideAvatar={isOnlyXs}
               hideRoles
               firstName={firstName}
               lastName={lastName}
               hideRating
               hasLink
-              userId={info.row.original.id}
             />
           );
         },

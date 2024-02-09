@@ -1,8 +1,8 @@
-import { UserById } from "features/user-detail";
 import { FC } from "react";
+import UserDetail from "features/user-detail";
 
-const UserDetail: FC = () => {
-  return <UserById />;
+const UserDetailPage: FC = () => {
+  return <UserDetail />;
 };
 
-export default UserDetail;
+export default UserDetailPage;

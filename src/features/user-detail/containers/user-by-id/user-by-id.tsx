@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Spinner from "shared/components/spinner";
 
-import UserDetail from "../../views/user-detail";
+import UserInfo from "../../../profile/views/user-info";
 
 const UserByIdContainer: FC = () => {
   const { userId } = useParams();
@@ -18,7 +18,11 @@ const UserByIdContainer: FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <UserDetail data={data} />;
+  const adaptedData = {
+    user: data.userById,
+  };
+
+  return <UserInfo data={adaptedData} />;
 };
 
 export default UserByIdContainer;

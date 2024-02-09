@@ -51,6 +51,8 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
             user={card.student}
             width={26}
             height={26}
+            userId={card.student?.id}
+            hasLink
           />
           {card.mentor && (
             <UserRow
@@ -58,6 +60,8 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
               user={card.mentor}
               width={26}
               height={26}
+              userId={card.mentor.id}
+              hasLink
             />
           )}
         </StyledRowStack>

@@ -58,8 +58,20 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
       <Typography variant="h2">{lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>
-          <UserRow icon={StudentIcon} user={student} />
-          {mentor && <UserRow icon={MentorIcon} user={mentor} />}
+          <UserRow
+            icon={StudentIcon}
+            user={student}
+            userId={student?.id}
+            hasLink
+          />
+          {mentor && (
+            <UserRow
+              icon={MentorIcon}
+              user={mentor}
+              userId={mentor.id}
+              hasLink
+            />
+          )}
         </StyledRowStack>
         <StyledRowStack>
           <StyledColumnStack>

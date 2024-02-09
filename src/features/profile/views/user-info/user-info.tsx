@@ -55,7 +55,7 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
             </StyledInfoBox>
             <StyledDateStack>
               <Typography variant="subtitle2" color="textPrimary">
-                Зарегистрирован
+                Зарегистрирован(a)
               </Typography>
               <Typography variant="subtitle2" color="textSecondary">
                 {formatDate(user?.creationDate, "DD.MM.YYYY")}
