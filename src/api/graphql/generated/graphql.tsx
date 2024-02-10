@@ -1275,6 +1275,11 @@ export type MentorsQueryVariables = Exact<{
 
 export type MentorsQuery = { __typename?: 'Query', mentors?: { __typename?: 'UsersDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, phoneNumber?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
 
+export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'ProfileDto', avatar?: string | null } | null };
+
 export type ResetPasswordMutationVariables = Exact<{
   email: Scalars['String'];
 }>;
@@ -2957,6 +2962,46 @@ export function useMentorsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Me
 export type MentorsQueryHookResult = ReturnType<typeof useMentorsQuery>;
 export type MentorsLazyQueryHookResult = ReturnType<typeof useMentorsLazyQuery>;
 export type MentorsQueryResult = Apollo.QueryResult<MentorsQuery, MentorsQueryVariables>;
+export const ProfileDocument = gql`
+    query profile {
+  profile {
+    avatar
+  }
+}
+    `;
+export type ProfileComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<ProfileQuery, ProfileQueryVariables>, 'query'>;
+
+    export const ProfileComponent = (props: ProfileComponentProps) => (
+      <ApolloReactComponents.Query<ProfileQuery, ProfileQueryVariables> query={ProfileDocument} {...props} />
+    );
+    
+
+/**
+ * __useProfileQuery__
+ *
+ * To run a query within a React component, call `useProfileQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProfileQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useProfileQuery(baseOptions?: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
+      }
+export function useProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
+        }
+export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
+export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
+export type ProfileQueryResult = Apollo.QueryResult<ProfileQuery, ProfileQueryVariables>;
 export const ResetPasswordDocument = gql`
     mutation resetPassword($email: String!) {
   resetPassword(email: $email)

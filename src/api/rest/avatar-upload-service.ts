@@ -8,15 +8,15 @@ export interface AvatarUploadResponse {
 
 export default class AvatarUploadService {
   static upload(file: File): Promise<AxiosResponse<AvatarUploadResponse>> {
-    const formData = new FormData();
+    const data = new FormData();
 
-    formData.append("file", file);
+    data.append("file", file);
 
     return axios({
       method: "POST",
       url: AVATAR_UPLOAD_URI,
-      headers: { "content-type": "multipart/form-data" },
-      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+      data,
     });
   }
 
