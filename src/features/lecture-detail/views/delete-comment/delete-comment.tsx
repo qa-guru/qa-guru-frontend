@@ -6,16 +6,12 @@ import {
   StyledSpinner,
 } from "./delete-comment.styled";
 import { IDeleteComment } from "./delete-comment.types";
-import { client } from "../../../../api";
 
 const DeleteComment: FC<IDeleteComment> = ({ id, deleteComment, loading }) => {
   const handleDelete = async () => {
     if (id) {
       await deleteComment({
         variables: { id },
-        onCompleted: () => {
-          client.refetchQueries({ include: ["commentsHomeWorkByHomeWork"] });
-        },
       });
     }
   };
