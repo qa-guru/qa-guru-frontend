@@ -1,4 +1,7 @@
-import { useUserByIdQuery } from "api/graphql/generated/graphql";
+import {
+  useProfileQuery,
+  useUserByIdQuery,
+} from "api/graphql/generated/graphql";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
@@ -14,15 +17,16 @@ const UserByIdContainer: FC = () => {
       id: userId,
     },
   });
+  const { loading: loadingProfile, data: dataProfile } = useProfileQuery();
 
-  if (loading) return <Spinner />;
-  if (!data) return <NoDataErrorMessage />;
+  if (loading || loadingProfile) return <Spinner />;
+  if (!data || !dataProfile) return <NoDataErrorMessage />;
 
   const adaptedData = {
     user: data.userById,
   };
 
-  return <UserInfo data={adaptedData} />;
+  return <UserInfo data={adaptedData} dataProfile={dataProfile} />;
 };
 
 export default UserByIdContainer;
