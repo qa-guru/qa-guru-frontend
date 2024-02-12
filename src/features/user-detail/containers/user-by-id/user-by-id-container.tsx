@@ -11,7 +11,6 @@ import UserInfo from "../../../profile/views/user-info";
 
 const UserByIdContainer: FC = () => {
   const { userId } = useParams();
-
   const { data, loading } = useUserByIdQuery({
     variables: {
       id: userId,
