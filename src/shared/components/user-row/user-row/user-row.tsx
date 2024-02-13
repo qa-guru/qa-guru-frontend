@@ -41,7 +41,13 @@ const UserRow: FC<IUserRow> = (props) => {
       {Icon && <Icon />}
 
       {!hideAvatar && (
-        <AvatarCustom fullName={fullName} width={width} height={height} />
+        <AvatarCustom
+          fullName={fullName}
+          width={width}
+          height={height}
+          userId={userId}
+          hasLink={hasLink}
+        />
       )}
 
       <StyledBox>

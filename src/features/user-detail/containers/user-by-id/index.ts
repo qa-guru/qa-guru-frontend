@@ -1,1 +1,1 @@
-export { default } from "./user-by-id";
+export { default } from "./user-by-id-container";

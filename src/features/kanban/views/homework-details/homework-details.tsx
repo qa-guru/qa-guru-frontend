@@ -6,7 +6,7 @@ import UserRow from "shared/components/user-row";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusText from "shared/components/status-text";
-import LectureHomework from "shared/components/lecture-homework";
+import LectureHomework from "features/lecture-detail/views/lecture-homework";
 import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
 import { TextView } from "shared/components/text-editor";
 
@@ -51,6 +51,8 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
             user={card.student}
             width={26}
             height={26}
+            userId={card.student?.id}
+            hasLink
           />
           {card.mentor && (
             <UserRow
@@ -58,6 +60,8 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
               user={card.mentor}
               width={26}
               height={26}
+              userId={card.mentor.id}
+              hasLink
             />
           )}
         </StyledRowStack>

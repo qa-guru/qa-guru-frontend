@@ -11,7 +11,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 
 export const StyledMenu = styled(Menu)({
   "& .MuiPaper-root": {
-    marginTop: "21px",
+    marginTop: "15px",
     borderRadius: "4px",
     "& .MuiMenu-list": {
       padding: 0,

@@ -8,8 +8,10 @@ import { withRouter } from "./with-router";
 import { withApollo } from "./with-apollo";
 import { withAuth } from "./with-auth";
 import { withClickToCompoment } from "./with-click-to-component";
+import { withContext } from "./with-context";
 
 export const withProviders = compose(
+  withContext,
   withApollo,
   withMui,
   withRouter,

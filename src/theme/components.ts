@@ -1,6 +1,5 @@
 import { type Theme } from "@mui/material";
 
-
 const components = (theme: Theme) => {
   return {
     MuiCssBaseline: {
@@ -58,7 +57,7 @@ const components = (theme: Theme) => {
           fontSize: "14px",
           [theme.breakpoints.down("sm")]: {
             "& .MuiFormLabel-root": {
-              fontSize: "0.9rem",
+              fontSize: "1rem",
             },
           },
         },

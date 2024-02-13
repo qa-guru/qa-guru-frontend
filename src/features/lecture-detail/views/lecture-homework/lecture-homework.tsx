@@ -6,7 +6,7 @@ import {
   StyledStack,
   StyledTypography,
 } from "./lecture-homework.styled";
-import { TextView } from "../text-editor";
+import { TextView } from "../../../../shared/components/text-editor";
 
 const LectureHomework: FC<ILectureHomework> = ({ lectureHomeWork }) => {
   return (

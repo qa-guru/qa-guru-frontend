@@ -43,7 +43,12 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
               {status &&
                 ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) && (
                   <StyledBox>
-                    <UserRow user={mentor} date={date} />
+                    <UserRow
+                      user={mentor}
+                      date={date}
+                      userId={mentor?.id}
+                      hasLink
+                    />
                   </StyledBox>
                 )}
             </StyledStack>
@@ -54,7 +59,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
 
       {!hideMentorAndStudent && status && (
         <StyledUserRowBox>
-          <UserRow user={student} date={date} />
+          <UserRow user={student} date={date} userId={student?.id} hasLink />
         </StyledUserRowBox>
       )}
 

@@ -1,9 +1,15 @@
-import { AnswerCommentMutationFn, Maybe } from "api/graphql/generated/graphql";
+import {
+  AnswerCommentMutationFn,
+  Maybe,
+  UserQuery,
+} from "api/graphql/generated/graphql";
 
 export interface IAnswerComment {
   answerComment: AnswerCommentMutationFn;
   loading: boolean;
   id?: Maybe<string>;
+  dataUser?: UserQuery;
+  onReplySuccess?: () => void;
 }
 
 export interface IAnswerCommentContent {

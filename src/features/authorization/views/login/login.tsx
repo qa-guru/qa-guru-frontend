@@ -101,6 +101,7 @@ const Login: FC<ILogin> = (props) => {
               placeholder={t("enter.password")}
               label={t("password")}
               type="password"
+              autoComplete="current-password"
               errors={errors}
             />
             <StyledLoadingButton

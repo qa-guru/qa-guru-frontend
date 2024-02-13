@@ -20,7 +20,7 @@ interface IAnswerCommentForm {
 }
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
-  const { answerComment, loading, id } = props;
+  const { answerComment, loading, id, dataUser, onReplySuccess } = props;
   const { t } = useTranslation();
 
   const {
@@ -45,13 +45,22 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
         variables: { parentID: id, content: data.content },
       }).then(() => {
         reset();
+        if (onReplySuccess) {
+          onReplySuccess();
+        }
       });
     }
   };
 
   return (
     <StyledCommentStack>
-      <UserRow hideFullName />
+      <UserRow
+        user={dataUser?.user}
+        userId={dataUser?.user?.id}
+        hideFullName
+        hideRating
+        hasLink
+      />
       <StyledCommentBox>
         <form>
           <StyledBox>
