@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import {
   AccordionDetails,
   AccordionSummary,
@@ -40,6 +40,7 @@ const Form: FC = () => {
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const {
+    trainingId,
     setTrainingId,
     setLectureId,
     setMentorId,
@@ -59,6 +60,12 @@ const Form: FC = () => {
   const handleAccordionToggle = () => {
     setAccordionExpanded(!isAccordionExpanded);
   };
+
+  useEffect(() => {
+    if (!trainingId) {
+      setLectureId(null);
+    }
+  }, [trainingId, setLectureId]);
 
   return (
     <form>

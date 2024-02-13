@@ -16,7 +16,11 @@ const TrainingSelection: FC<ITrainingSelection> = ({ items, control }) => {
     })) ?? [];
 
   const handleSelectChange = (selected: Maybe<OptionTypeBase>) => {
-    setTrainingId(selected!.id);
+    if (!selected) {
+      setTrainingId(null);
+    } else {
+      setTrainingId(selected.id);
+    }
   };
 
   return (

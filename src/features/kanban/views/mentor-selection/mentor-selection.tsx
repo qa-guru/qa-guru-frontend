@@ -17,7 +17,11 @@ const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
     })) || [];
 
   const handleSelectChange = (selected: Maybe<OptionTypeBase>) => {
-    setMentorId(selected!.id);
+    if (!selected) {
+      setMentorId(null);
+    } else {
+      setMentorId(selected!.id);
+    }
   };
 
   return (

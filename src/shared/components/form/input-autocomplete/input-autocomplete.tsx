@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import { Autocomplete, FormControl, TextField } from "@mui/material";
 
@@ -14,26 +15,33 @@ const InputAutocomplete = <
   onSelect,
   disabled,
 }: IFormInputText<T, OptionType>) => {
+  const [value, setValue] = useState<string | null>("");
+
   return (
     <FormControl fullWidth>
       <Controller
         name={name}
         control={control}
-        render={({ field: { value, onChange } }) => (
+        render={({ field: { onChange } }) => (
           <Autocomplete
-            onChange={(_, item) => {
-              onChange(item);
-              if (onSelect) {
-                onSelect(item);
+            onChange={(_, value) => {
+              onChange(value);
+              if (onSelect && value) {
+                onSelect(value);
+              }
+              if (!value) {
+                onSelect(null);
               }
             }}
             disablePortal
             disabled={disabled}
             options={options}
             size="small"
-            isOptionEqualToValue={(option, value) => option.id === value.id}
+            isOptionEqualToValue={(option, value) =>
+              option && value && option.id === value.id
+            }
             renderInput={(params) => (
-              <TextField {...params} label={placeholder} value={value || ""} />
+              <TextField {...params} label={placeholder} />
             )}
           />
         )}
