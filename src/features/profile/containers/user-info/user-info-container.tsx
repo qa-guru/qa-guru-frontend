@@ -12,7 +12,7 @@ const UserInfoContainer: FC = () => {
   if (loading || loadingProfile) return <Spinner />;
   if (!data || !dataProfile) return <NoDataErrorMessage />;
 
-  return <UserInfo data={data} dataProfile={dataProfile} />;
+  return <UserInfo user={data.user} profile={dataProfile.profile} />;
 };
 
 export default UserInfoContainer;

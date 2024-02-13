@@ -21,13 +21,8 @@ import {
   StyledWebsiteStack,
 } from "./user-info.styled";
 
-const UserInfo: FC<IUserInfo> = ({ data, dataProfile }) => {
-  const { user } = data;
-  const { profile } = dataProfile;
-
+const UserInfo: FC<IUserInfo> = ({ user, profile }) => {
   const ratingColor = useRatingColor(user?.rating?.rating);
-
-  console.log(profile?.avatar);
 
   return (
     <StyledPaper>

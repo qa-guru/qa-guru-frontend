@@ -1,6 +1,6 @@
-import { ProfileQuery, UserQuery } from "api/graphql/generated/graphql";
+import { Maybe, ProfileDto, UserDto } from "api/graphql/generated/graphql";
 
 export interface IUserInfo {
-  data: UserQuery;
-  dataProfile: ProfileQuery;
+  user?: Maybe<UserDto>;
+  profile?: Maybe<ProfileDto>;
 }
