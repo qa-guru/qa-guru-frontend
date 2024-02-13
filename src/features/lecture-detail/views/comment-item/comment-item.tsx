@@ -4,6 +4,7 @@ import UserRow from "shared/components/user-row";
 import { TextView } from "shared/components/text-editor";
 import { useComment } from "shared/context/comment-context";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
+import { formatDate } from "shared/helpers";
 
 import { ICommentItem } from "./comment-item.types";
 import {
@@ -16,8 +17,7 @@ import {
   StyledBottomStack,
   StyledIconButton,
 } from "./comment-item.styled";
-import { UpdateComment, AnswerComment } from "../../containers";
-import { formatDate } from "../../../../shared/helpers";
+import { UpdateComment, AnswerComment, DeleteComment } from "../../containers";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
@@ -72,6 +72,7 @@ const CommentItem: FC<ICommentItem> = ({
                 <StyledEditIcon />
               </StyledIconButton>
             )}
+            {editAccess && <DeleteComment id={id} />}
             <StyledIconButton onClick={handleReplyClick}>
               <StyledReplyIcon fontSize="small" />
             </StyledIconButton>

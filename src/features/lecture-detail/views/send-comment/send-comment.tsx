@@ -15,17 +15,22 @@ const SendComment: FC<ISendComment> = (props) => {
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
 
-  const handleSendComment = () => {
+  const handleSendComment = async () => {
     const content = rteRef.current?.editor?.getHTML() ?? "";
 
     if (id && content.trim() !== "" && content.trim() !== "<p></p>") {
-      sendComment({
-        variables: {
-          homeWorkId: id,
-          content,
-        },
-      });
-      setError("");
+      try {
+        await sendComment({
+          variables: {
+            homeWorkId: id,
+            content,
+          },
+        });
+        setError("");
+        rteRef.current?.editor?.commands.clearContent();
+      } catch (error) {
+        setError("Произошла ошибка при отправке комментария.");
+      }
     } else {
       setError("Введите текст");
     }
