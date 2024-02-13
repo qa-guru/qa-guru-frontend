@@ -7,7 +7,7 @@ import { ITrainingSelection } from "./training-selection.types";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 
 const TrainingSelection: FC<ITrainingSelection> = ({ items, control }) => {
-  const { setTrainingId } = useContext(KanbanFormContext);
+  const { setTrainingId, setLectureId } = useContext(KanbanFormContext);
 
   const trainingOptions =
     items?.map((item) => ({
@@ -18,8 +18,9 @@ const TrainingSelection: FC<ITrainingSelection> = ({ items, control }) => {
   const handleSelectChange = (selected: Maybe<OptionTypeBase>) => {
     if (!selected) {
       setTrainingId(null);
+      setLectureId(null);
     } else {
-      setTrainingId(selected.id);
+      setTrainingId(selected!.id);
     }
   };
 

@@ -20,12 +20,12 @@ import {
 } from "./form.styled";
 import CreationDateFromSelection from "../creation-date-from-selection";
 import CreationDateToSelection from "../creation-date-to-selection";
-import { MentorsSelection, LectureSelection } from "../../containers";
+import { LectureSelection, MentorsSelection } from "../../containers";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 import TrainingSelection from "../../containers/trainings";
 
 const Form: FC = () => {
-  const { control, reset } = useForm({
+  const { control, reset, resetField } = useForm({
     defaultValues: {
       lectures: "",
       trainings: "",
@@ -40,7 +40,7 @@ const Form: FC = () => {
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const {
-    trainingId,
+    lectureId,
     setTrainingId,
     setLectureId,
     setMentorId,
@@ -62,10 +62,10 @@ const Form: FC = () => {
   };
 
   useEffect(() => {
-    if (!trainingId) {
-      setLectureId(null);
+    if (!lectureId) {
+      resetField("lectures");
     }
-  }, [trainingId, setLectureId]);
+  }, [lectureId, resetField]);
 
   return (
     <form>
