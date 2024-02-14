@@ -6,6 +6,7 @@ import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
 import UsersPage from "pages/users";
 import UserDetail from "pages/user-detail";
+import EditProfilePage from "pages/edit-profile";
 
 const ManagerRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -26,6 +27,11 @@ const ManagerRoutes = [
     element={<KanbanHomeworkDetailsFullPage />}
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
+  <Route
+    key="profile-edit"
+    path="/profile/edit"
+    element={<EditProfilePage />}
+  />,
   <Route key="users" path="/users" element={<UsersPage />} />,
   <Route key="users-detail" path="/users/:userId" element={<UserDetail />} />,
 ];
