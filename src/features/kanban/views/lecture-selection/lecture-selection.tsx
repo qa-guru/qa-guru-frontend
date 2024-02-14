@@ -19,7 +19,11 @@ const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
   const isDisabled = lecturesOptions.length === 0;
 
   const handleSelectChange = (selected: Maybe<OptionTypeBase>) => {
-    setLectureId(selected!.id);
+    if (!selected) {
+      setLectureId(null);
+    } else {
+      setLectureId(selected!.id);
+    }
   };
 
   return (
