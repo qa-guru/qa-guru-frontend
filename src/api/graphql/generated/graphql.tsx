@@ -2,7 +2,6 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -1085,6 +1084,13 @@ export type SubCommentHomeWorkDtoRecursiveFragment = { __typename?: 'CommentHome
 
 export type SubCommentHomeWorkDtoFragment = { __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
+export type DeleteCommentMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteCommentMutation = { __typename?: 'Mutation', deleteComment?: any | null };
+
 export type SendCommentMutationVariables = Exact<{
   homeWorkId: Scalars['ID'];
   content: Scalars['String'];
@@ -1626,6 +1632,43 @@ export function useCommentsHomeWorkByHomeWorkLazyQuery(baseOptions?: Apollo.Lazy
 export type CommentsHomeWorkByHomeWorkQueryHookResult = ReturnType<typeof useCommentsHomeWorkByHomeWorkQuery>;
 export type CommentsHomeWorkByHomeWorkLazyQueryHookResult = ReturnType<typeof useCommentsHomeWorkByHomeWorkLazyQuery>;
 export type CommentsHomeWorkByHomeWorkQueryResult = Apollo.QueryResult<CommentsHomeWorkByHomeWorkQuery, CommentsHomeWorkByHomeWorkQueryVariables>;
+export const DeleteCommentDocument = gql`
+    mutation deleteComment($id: ID!) {
+  deleteComment(id: $id)
+}
+    `;
+export type DeleteCommentMutationFn = Apollo.MutationFunction<DeleteCommentMutation, DeleteCommentMutationVariables>;
+export type DeleteCommentComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<DeleteCommentMutation, DeleteCommentMutationVariables>, 'mutation'>;
+
+    export const DeleteCommentComponent = (props: DeleteCommentComponentProps) => (
+      <ApolloReactComponents.Mutation<DeleteCommentMutation, DeleteCommentMutationVariables> mutation={DeleteCommentDocument} {...props} />
+    );
+    
+
+/**
+ * __useDeleteCommentMutation__
+ *
+ * To run a mutation, you first call `useDeleteCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCommentMutation, { data, loading, error }] = useDeleteCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteCommentMutation(baseOptions?: Apollo.MutationHookOptions<DeleteCommentMutation, DeleteCommentMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteCommentMutation, DeleteCommentMutationVariables>(DeleteCommentDocument, options);
+      }
+export type DeleteCommentMutationHookResult = ReturnType<typeof useDeleteCommentMutation>;
+export type DeleteCommentMutationResult = Apollo.MutationResult<DeleteCommentMutation>;
+export type DeleteCommentMutationOptions = Apollo.BaseMutationOptions<DeleteCommentMutation, DeleteCommentMutationVariables>;
 export const SendCommentDocument = gql`
     mutation sendComment($homeWorkId: ID!, $content: String!) {
   sendComment(homeWorkId: $homeWorkId, content: $content) {

@@ -15,7 +15,7 @@ export const StyledPaper = styled(Paper, {
     "0px 1px 5px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20)",
   borderRadius: "12px",
   padding: "10px",
-  marginBottom: "16px",
+  margin: "0 5px 16px",
   [theme.breakpoints.up("sm")]: {
     padding: "15px",
   },

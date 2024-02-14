@@ -20,7 +20,7 @@ export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
 export const StyledCommentStack = styled(Stack)({
   flexDirection: "row",
   alignItems: "start",
-  marginBottom: "10px",
+  margin: "0 5px 10px",
 });
 
 export const StyledCommentBox = styled(Box)({

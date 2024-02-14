@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import {
   AccordionDetails,
   AccordionSummary,
@@ -20,12 +20,12 @@ import {
 } from "./form.styled";
 import CreationDateFromSelection from "../creation-date-from-selection";
 import CreationDateToSelection from "../creation-date-to-selection";
-import { MentorsSelection, LectureSelection } from "../../containers";
+import { LectureSelection, MentorsSelection } from "../../containers";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 import TrainingSelection from "../../containers/trainings";
 
 const Form: FC = () => {
-  const { control, reset } = useForm({
+  const { control, reset, resetField } = useForm({
     defaultValues: {
       lectures: "",
       trainings: "",
@@ -40,6 +40,7 @@ const Form: FC = () => {
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const {
+    lectureId,
     setTrainingId,
     setLectureId,
     setMentorId,
@@ -59,6 +60,12 @@ const Form: FC = () => {
   const handleAccordionToggle = () => {
     setAccordionExpanded(!isAccordionExpanded);
   };
+
+  useEffect(() => {
+    if (!lectureId) {
+      resetField("lectures");
+    }
+  }, [lectureId, resetField]);
 
   return (
     <form>

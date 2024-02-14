@@ -5,5 +5,6 @@ export { default as HomeworksOtherStudents } from "./homeworks-other-students";
 export { default as Comments } from "./comments";
 export { default as SendComment } from "./send-comment";
 export { default as UpdateComment } from "./update-comment";
+export { default as DeleteComment } from "./delete-comment";
 export { default as AnswerComment } from "./answer-comment";
 export { default as LectureDetail } from "./lecture-detail";

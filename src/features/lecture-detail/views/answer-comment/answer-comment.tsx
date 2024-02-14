@@ -12,7 +12,7 @@ import {
   StyledCommentStack,
   StyledLoadingButton,
   StyledStack,
-} from "./answer-comment-styled";
+} from "./answer-comment.styled";
 import { IAnswerComment, IAnswerCommentContent } from "./answer-comment.types";
 
 interface IAnswerCommentForm {
