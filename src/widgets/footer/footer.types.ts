@@ -3,7 +3,7 @@ import { ReactComponent as YouTubeIcon } from "assets/icons/youtube.svg";
 import { ReactComponent as InstagramIcon } from "assets/icons/instagram.svg";
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 import { ReactComponent as VkIcon } from "assets/icons/vk.svg";
-import { ReactComponent as LinkedInIcon } from "assets/icons/linkedIn.svg";
+import { ReactComponent as LinkedInIcon } from "assets/icons/linked-in.svg";
 import { ComponentType } from "react";
 
 export const socialIcons = [

@@ -1,8 +1,13 @@
 import { ReactNode } from "react";
 import { CommentProvider } from "shared/context/comment-context";
+import SettingsProvider from "shared/context/setting-context";
 
 export const withContext = (component: () => ReactNode) => {
   return function WithContextComponent() {
-    return <CommentProvider>{component()}</CommentProvider>;
+    return (
+      <SettingsProvider>
+        <CommentProvider>{component()}</CommentProvider>
+      </SettingsProvider>
+    );
   };
 };

@@ -1,18 +1,17 @@
-import { UserByIdQuery } from "api/graphql/generated/graphql";
 import { FC } from "react";
+import UserInfo from "features/profile/views/user-info";
+import { Container } from "@mui/material";
 
-interface IUserDetail {
-  data: UserByIdQuery;
-}
+import { IUserDetail } from "./user-detail.types";
 
-const UserDetail: FC<IUserDetail> = ({ data }) => {
-  const { firstName, lastName } = data.userById!;
+const UserDetail: FC<IUserDetail> = ({ data, dataProfileById }) => {
+  const { userById } = data;
+  const { profileById } = dataProfileById;
 
   return (
-    <>
-      <div>{firstName}</div>
-      <div>{lastName}</div>
-    </>
+    <Container>
+      <UserInfo user={userById} profile={profileById} />
+    </Container>
   );
 };
 

@@ -30,7 +30,7 @@ const baseOptions = {
       fontSize: "1rem", // ~16px
     },
     h6: {
-      fontSize: "0.875rem", // ~14px
+      fontSize: "0.89rem", // ~14px
     },
     body1: {
       fontSize: "0.9375rem", // ~15px
@@ -42,7 +42,7 @@ const baseOptions = {
       fontSize: "0.9rem", // ~16px
     },
     subtitle2: {
-      fontSize: "0.875rem", // ~14px
+      fontSize: "0.8rem", // ~14px
     },
     caption: {
       fontSize: "0.75rem", // ~12px

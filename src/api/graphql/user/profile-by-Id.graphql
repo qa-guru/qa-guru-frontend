@@ -1,0 +1,5 @@
+query profileById($id: ID) {
+  profileById(id: $id) {
+    avatar
+  }
+}

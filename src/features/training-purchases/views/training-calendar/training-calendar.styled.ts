@@ -11,7 +11,7 @@ export const StyledCalendarBox = styled(Paper)(({ theme }) => ({
   position: "absolute",
   transform: "scale(0.8)",
   color: theme.palette.app.textPrimary,
-  zIndex: 2,
+  zIndex: 10,
   maxHeight: "310px",
   bottom: "-215px",
   right: "-5px",

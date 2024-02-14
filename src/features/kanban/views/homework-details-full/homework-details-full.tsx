@@ -5,7 +5,7 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
-import LectureHomework from "shared/components/lecture-homework";
+import LectureHomework from "features/lecture-detail/views/lecture-homework";
 import Homework from "features/lecture-detail/views/homework";
 import StatusSelect from "features/kanban/views/status-select";
 import StatusText from "shared/components/status-text";
@@ -58,8 +58,20 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
       <Typography variant="h2">{lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>
-          <UserRow icon={StudentIcon} user={student} />
-          {mentor && <UserRow icon={MentorIcon} user={mentor} />}
+          <UserRow
+            icon={StudentIcon}
+            user={student}
+            userId={student?.id}
+            hasLink
+          />
+          {mentor && (
+            <UserRow
+              icon={MentorIcon}
+              user={mentor}
+              userId={mentor.id}
+              hasLink
+            />
+          )}
         </StyledRowStack>
         <StyledRowStack>
           <StyledColumnStack>

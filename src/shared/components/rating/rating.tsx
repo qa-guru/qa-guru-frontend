@@ -8,13 +8,15 @@ const Rating: FC<IUserRating> = ({ rating, user }) => {
   const ratingValue = rating ? rating.rating : user?.rating?.rating;
   const chipColor = useRatingColor(ratingValue);
 
-  return (
+  return ratingValue ? (
     <StyledRatingChip
       size="small"
       variant="outlined"
       label={rating ? rating?.rating : user?.rating?.rating}
       ratingColor={chipColor}
     />
+  ) : (
+    <></>
   );
 };
 

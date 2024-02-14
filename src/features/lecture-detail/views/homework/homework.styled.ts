@@ -30,7 +30,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
   cursor: "pointer",
-  zIndex: "1",
+  zIndex: 20,
   top: "8px",
   [theme.breakpoints.up("xs")]: {
     top: "16px",

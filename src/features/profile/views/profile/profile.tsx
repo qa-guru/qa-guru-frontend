@@ -3,8 +3,8 @@ import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import { IProfile } from "./profile.types";
-import AvatarUpload from "../avatar-upload";
 import { StyledButton, StyledButtonBox } from "./profile.styled";
+import { UserInfo } from "../../containers";
 
 const Profile: FC<IProfile> = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Profile: FC<IProfile> = () => {
           Редактировать профиль
         </StyledButton>
       </StyledButtonBox>
-      <AvatarUpload />
+      <UserInfo />
     </Container>
   );
 };
