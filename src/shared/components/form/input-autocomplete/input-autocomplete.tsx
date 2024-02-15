@@ -21,6 +21,7 @@ const InputAutocomplete = <
         control={control}
         render={({ field: { value, onChange } }) => (
           <Autocomplete
+            value={value || null}
             onChange={(_, item) => {
               onChange(item);
               if (onSelect) {
@@ -33,7 +34,7 @@ const InputAutocomplete = <
             size="small"
             isOptionEqualToValue={(option, value) => option.id === value.id}
             renderInput={(params) => (
-              <TextField {...params} label={placeholder} value={value || ""} />
+              <TextField {...params} label={placeholder} />
             )}
           />
         )}

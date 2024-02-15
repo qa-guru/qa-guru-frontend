@@ -4,13 +4,12 @@ import { Container } from "@mui/material";
 
 import { IUserDetail } from "./user-detail.types";
 
-const UserDetail: FC<IUserDetail> = ({ data, dataProfileById }) => {
+const UserDetail: FC<IUserDetail> = ({ data }) => {
   const { userById } = data;
-  const { profileById } = dataProfileById;
 
   return (
     <Container>
-      <UserInfo user={userById} profile={profileById} />
+      <UserInfo user={userById} />
     </Container>
   );
 };
