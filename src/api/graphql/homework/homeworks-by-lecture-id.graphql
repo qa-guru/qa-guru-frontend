@@ -18,6 +18,7 @@ query homeWorksByLectureId(
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -28,6 +29,7 @@ query homeWorksByLectureId(
         firstName
         middleName
         lastName
+        avatar
         rating {
           rating
         }

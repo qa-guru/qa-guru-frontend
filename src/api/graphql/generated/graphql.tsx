@@ -1032,7 +1032,7 @@ export type AnswerCommentMutationVariables = Exact<{
 }>;
 
 
-export type AnswerCommentMutation = { __typename?: 'Mutation', answerComment?: { __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null } | null } | null };
+export type AnswerCommentMutation = { __typename?: 'Mutation', answerComment?: { __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null } | null } | null };
 
 export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -1042,11 +1042,11 @@ export type CommentsHomeWorkByHomeWorkQueryVariables = Exact<{
 }>;
 
 
-export type CommentsHomeWorkByHomeWorkQuery = { __typename?: 'Query', commentsHomeWorkByHomeWork?: { __typename?: 'CommentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null } | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null> | null } | null> | null } | null };
+export type CommentsHomeWorkByHomeWorkQuery = { __typename?: 'Query', commentsHomeWorkByHomeWork?: { __typename?: 'CommentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, creationDate?: any | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null } | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null> | null } | null> | null } | null };
 
-export type SubCommentHomeWorkDtoRecursiveFragment = { __typename?: 'CommentHomeWorkDto', children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null };
+export type SubCommentHomeWorkDtoRecursiveFragment = { __typename?: 'CommentHomeWorkDto', children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, children?: Array<{ __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null };
 
-export type SubCommentHomeWorkDtoFragment = { __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type SubCommentHomeWorkDtoFragment = { __typename?: 'CommentHomeWorkDto', id?: string | null, content?: string | null, creator?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, lastName?: string | null, middleName?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type DeleteCommentMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1076,9 +1076,9 @@ export type ApprovedMutationVariables = Exact<{
 }>;
 
 
-export type ApprovedMutation = { __typename?: 'Mutation', approved?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type ApprovedMutation = { __typename?: 'Mutation', approved?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
-export type ApprovedHomeworkFragment = { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type ApprovedHomeworkFragment = { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, avatar?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type HomeWorkByLectureAndTrainingQueryVariables = Exact<{
   lectureId: Scalars['ID'];
@@ -1086,14 +1086,14 @@ export type HomeWorkByLectureAndTrainingQueryVariables = Exact<{
 }>;
 
 
-export type HomeWorkByLectureAndTrainingQuery = { __typename?: 'Query', homeWorkByLectureAndTraining?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, email?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type HomeWorkByLectureAndTrainingQuery = { __typename?: 'Query', homeWorkByLectureAndTraining?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, email?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
 export type HomeWorkQueryVariables = Exact<{
   homeWorkId: Scalars['ID'];
 }>;
 
 
-export type HomeWorkQuery = { __typename?: 'Query', homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, contentHomeWork?: Array<{ __typename?: 'LectureContentHomeWorkDto', url?: string | null, value?: string | null, type?: string | null } | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type HomeWorkQuery = { __typename?: 'Query', homeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, contentHomeWork?: Array<{ __typename?: 'LectureContentHomeWorkDto', url?: string | null, value?: string | null, type?: string | null } | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
 export type HomeWorksByLectureIdQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -1103,7 +1103,7 @@ export type HomeWorksByLectureIdQueryVariables = Exact<{
 }>;
 
 
-export type HomeWorksByLectureIdQuery = { __typename?: 'Query', homeWorksByLectureId?: { __typename?: 'StudentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null };
+export type HomeWorksByLectureIdQuery = { __typename?: 'Query', homeWorksByLectureId?: { __typename?: 'StudentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, avatar?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null };
 
 export type HomeWorksQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -1113,16 +1113,16 @@ export type HomeWorksQueryVariables = Exact<{
 }>;
 
 
-export type HomeWorksQuery = { __typename?: 'Query', homeWorks?: { __typename?: 'StudentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null, contentHomeWork?: Array<{ __typename?: 'LectureContentHomeWorkDto', url?: string | null, value?: string | null, type?: string | null } | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null };
+export type HomeWorksQuery = { __typename?: 'Query', homeWorks?: { __typename?: 'StudentHomeWorksDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, creationDate?: any | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null, contentHomeWork?: Array<{ __typename?: 'LectureContentHomeWorkDto', url?: string | null, value?: string | null, type?: string | null } | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null> | null } | null };
 
 export type NotApprovedMutationVariables = Exact<{
   homeWorkId: Scalars['ID'];
 }>;
 
 
-export type NotApprovedMutation = { __typename?: 'Mutation', notApproved?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type NotApprovedMutation = { __typename?: 'Mutation', notApproved?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
-export type NotApprovedHomeworkFragment = { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type NotApprovedHomeworkFragment = { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type SendHomeWorkToCheckMutationVariables = Exact<{
   lectureId: Scalars['ID'];
@@ -1131,16 +1131,16 @@ export type SendHomeWorkToCheckMutationVariables = Exact<{
 }>;
 
 
-export type SendHomeWorkToCheckMutation = { __typename?: 'Mutation', sendHomeWorkToCheck?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type SendHomeWorkToCheckMutation = { __typename?: 'Mutation', sendHomeWorkToCheck?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
 export type TakeForReviewMutationVariables = Exact<{
   homeworkId: Scalars['ID'];
 }>;
 
 
-export type TakeForReviewMutation = { __typename?: 'Mutation', takeForReview?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type TakeForReviewMutation = { __typename?: 'Mutation', takeForReview?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, avatar?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
-export type NewTakeForReviewHomeWorkFragment = { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type NewTakeForReviewHomeWorkFragment = { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, avatar?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type UpdateHomeworkMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1148,7 +1148,7 @@ export type UpdateHomeworkMutationVariables = Exact<{
 }>;
 
 
-export type UpdateHomeworkMutation = { __typename?: 'Mutation', updateHomeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
+export type UpdateHomeworkMutation = { __typename?: 'Mutation', updateHomeWork?: { __typename?: 'StudentHomeWorkDto', id?: string | null, answer?: string | null, status?: StudentHomeWorkStatus | null, startCheckingDate?: any | null, endCheckingDate?: any | null, lecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null } | null, student?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null, mentor?: { __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null } | null };
 
 export type LectureHomeWorkQueryVariables = Exact<{
   lectureId: Scalars['ID'];
@@ -1162,14 +1162,14 @@ export type LectureQueryVariables = Exact<{
 }>;
 
 
-export type LectureQuery = { __typename?: 'Query', lecture?: { __typename?: 'LectureInfoShortDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null, speakers?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null, homeWorkLevel?: { __typename?: 'LectureHomeWorkLevelDto', id?: string | null, code?: string | null, description?: string | null, estimate?: number | null } | null, content?: Array<{ __typename?: 'LectureContentDto', type?: string | null, value?: string | null, url?: string | null } | null> | null } | null };
+export type LectureQuery = { __typename?: 'Query', lecture?: { __typename?: 'LectureInfoShortDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null, speakers?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatar?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null, homeWorkLevel?: { __typename?: 'LectureHomeWorkLevelDto', id?: string | null, code?: string | null, description?: string | null, estimate?: number | null } | null, content?: Array<{ __typename?: 'LectureContentDto', type?: string | null, value?: string | null, url?: string | null } | null> | null } | null };
 
 export type UpdateLectureMutationVariables = Exact<{
   input: LectureInput;
 }>;
 
 
-export type UpdateLectureMutation = { __typename?: 'Mutation', updateLecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null, speakers?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null, homeWorkLevel?: { __typename?: 'LectureHomeWorkLevelDto', id?: string | null, code?: string | null, description?: string | null, estimate?: number | null } | null, content?: Array<{ __typename?: 'LectureContentDto', type?: string | null, value?: string | null, url?: string | null } | null> | null, contentHomeWork?: Array<{ __typename?: 'LectureContentHomeWorkDto', type?: string | null, value?: string | null, url?: string | null } | null> | null } | null };
+export type UpdateLectureMutation = { __typename?: 'Mutation', updateLecture?: { __typename?: 'LectureInfoDto', id?: string | null, subject?: string | null, description?: Array<string | null> | null, speakers?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatar?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null, homeWorkLevel?: { __typename?: 'LectureHomeWorkLevelDto', id?: string | null, code?: string | null, description?: string | null, estimate?: number | null } | null, content?: Array<{ __typename?: 'LectureContentDto', type?: string | null, value?: string | null, url?: string | null } | null> | null, contentHomeWork?: Array<{ __typename?: 'LectureContentHomeWorkDto', type?: string | null, value?: string | null, url?: string | null } | null> | null } | null };
 
 export type TrainingLecturesQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -1181,14 +1181,14 @@ export type TrainingLecturesQuery = { __typename?: 'Query', trainingLectures?: A
 export type TrainingPurchasesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TrainingPurchasesQuery = { __typename?: 'Query', trainingPurchases?: Array<{ __typename?: 'TrainingPurchaseDto', id?: string | null, user: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null }, trainingTariff: { __typename?: 'TrainingTariffDto', id?: string | null, name?: string | null, code?: string | null, price?: number | null, homeWork?: boolean | null, description?: string | null, training?: { __typename?: 'TrainingDto', id: string, name: string } | null } } | null> | null };
+export type TrainingPurchasesQuery = { __typename?: 'Query', trainingPurchases?: Array<{ __typename?: 'TrainingPurchaseDto', id?: string | null, user: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, avatar?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null }, trainingTariff: { __typename?: 'TrainingTariffDto', id?: string | null, name?: string | null, code?: string | null, price?: number | null, homeWork?: boolean | null, description?: string | null, training?: { __typename?: 'TrainingDto', id: string, name: string } | null } } | null> | null };
 
 export type TrainingQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type TrainingQuery = { __typename?: 'Query', training?: { __typename?: 'TrainingDto', id: string, name: string, content?: string | null, techStack: TechStack, tariffs?: Array<{ __typename?: 'TrainingTariffDto', id?: string | null, name?: string | null, code?: string | null, price?: number | null, homeWork?: boolean | null, description?: string | null } | null> | null, mentors?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
+export type TrainingQuery = { __typename?: 'Query', training?: { __typename?: 'TrainingDto', id: string, name: string, content?: string | null, techStack: TechStack, tariffs?: Array<{ __typename?: 'TrainingTariffDto', id?: string | null, name?: string | null, code?: string | null, price?: number | null, homeWork?: boolean | null, description?: string | null } | null> | null, mentors?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, lastName?: string | null, avatar?: string | null, middleName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
 
 export type TrainingsByMentorQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -1197,7 +1197,7 @@ export type TrainingsByMentorQueryVariables = Exact<{
 }>;
 
 
-export type TrainingsByMentorQuery = { __typename?: 'Query', trainingsByMentor?: { __typename?: 'TrainingsDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'TrainingDto', id: string, name: string, content?: string | null, techStack: TechStack, mentors?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null> | null } | null };
+export type TrainingsByMentorQuery = { __typename?: 'Query', trainingsByMentor?: { __typename?: 'TrainingsDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'TrainingDto', id: string, name: string, content?: string | null, techStack: TechStack, mentors?: Array<{ __typename?: 'UserDto', id?: string | null, firstName?: string | null, middleName?: string | null, avatar?: string | null, lastName?: string | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null> | null } | null };
 
 export type TrainingsQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -1314,7 +1314,7 @@ export type UsersQueryVariables = Exact<{
 }>;
 
 
-export type UsersQuery = { __typename?: 'Query', users?: { __typename?: 'UsersDto', totalElements?: any | null, items?: Array<{ __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
+export type UsersQuery = { __typename?: 'Query', users?: { __typename?: 'UsersDto', totalElements?: any | null, items?: Array<{ __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, avatar?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
 
 export const SubCommentHomeWorkDtoFragmentDoc = gql`
     fragment subCommentHomeWorkDto on CommentHomeWorkDto {
@@ -1323,6 +1323,7 @@ export const SubCommentHomeWorkDtoFragmentDoc = gql`
     id
     email
     firstName
+    avatar
     lastName
     middleName
     locked
@@ -1366,6 +1367,7 @@ export const ApprovedHomeworkFragmentDoc = gql`
     id
     email
     firstName
+    avatar
     middleName
     lastName
     rating {
@@ -1376,6 +1378,7 @@ export const ApprovedHomeworkFragmentDoc = gql`
     id
     email
     firstName
+    avatar
     middleName
     lastName
     rating {
@@ -1401,6 +1404,7 @@ export const NotApprovedHomeworkFragmentDoc = gql`
     email
     firstName
     middleName
+    avatar
     lastName
     rating {
       rating
@@ -1411,6 +1415,7 @@ export const NotApprovedHomeworkFragmentDoc = gql`
     email
     firstName
     middleName
+    avatar
     lastName
     rating {
       rating
@@ -1435,6 +1440,7 @@ export const NewTakeForReviewHomeWorkFragmentDoc = gql`
     email
     firstName
     middleName
+    avatar
     lastName
     rating {
       rating
@@ -1446,6 +1452,7 @@ export const NewTakeForReviewHomeWorkFragmentDoc = gql`
     firstName
     middleName
     lastName
+    avatar
     rating {
       rating
     }
@@ -1463,6 +1470,7 @@ export const AnswerCommentDocument = gql`
       email
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -1525,6 +1533,7 @@ export const CommentsHomeWorkByHomeWorkDocument = gql`
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -1788,6 +1797,7 @@ export const HomeWorkByLectureAndTrainingDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -1797,6 +1807,7 @@ export const HomeWorkByLectureAndTrainingDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       email
       rating {
@@ -1863,6 +1874,7 @@ export const HomeWorkDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -1872,6 +1884,7 @@ export const HomeWorkDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -1933,6 +1946,7 @@ export const HomeWorksByLectureIdDocument = gql`
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -1943,6 +1957,7 @@ export const HomeWorksByLectureIdDocument = gql`
         firstName
         middleName
         lastName
+        avatar
         rating {
           rating
         }
@@ -2018,6 +2033,7 @@ export const HomeWorksDocument = gql`
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -2027,6 +2043,7 @@ export const HomeWorksDocument = gql`
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -2134,6 +2151,7 @@ export const SendHomeWorkToCheckDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -2143,6 +2161,7 @@ export const SendHomeWorkToCheckDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -2241,6 +2260,7 @@ export const UpdateHomeworkDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -2250,6 +2270,7 @@ export const UpdateHomeworkDocument = gql`
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -2345,6 +2366,7 @@ export const LectureDocument = gql`
       firstName
       lastName
       middleName
+      avatar
       rating {
         rating
       }
@@ -2408,6 +2430,7 @@ export const UpdateLectureDocument = gql`
       firstName
       lastName
       middleName
+      avatar
       rating {
         rating
       }
@@ -2527,6 +2550,7 @@ export const TrainingPurchasesDocument = gql`
       email
       firstName
       lastName
+      avatar
       middleName
       rating {
         rating
@@ -2599,6 +2623,7 @@ export const TrainingDocument = gql`
       id
       firstName
       lastName
+      avatar
       middleName
       rating {
         rating
@@ -2656,6 +2681,7 @@ export const TrainingsByMentorDocument = gql`
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -3404,6 +3430,7 @@ export const UsersDocument = gql`
       firstName
       lastName
       middleName
+      avatar
       phoneNumber
       roles
       locked

@@ -16,6 +16,7 @@ query commentsHomeWorkByHomeWork(
         id
         firstName
         middleName
+        avatar
         lastName
         rating {
           rating
@@ -61,6 +62,7 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
     id
     email
     firstName
+    avatar
     lastName
     middleName
     locked

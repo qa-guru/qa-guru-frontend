@@ -17,6 +17,7 @@ fragment ApprovedHomework on StudentHomeWorkDto {
     id
     email
     firstName
+    avatar
     middleName
     lastName
     rating {
@@ -27,6 +28,7 @@ fragment ApprovedHomework on StudentHomeWorkDto {
     id
     email
     firstName
+    avatar
     middleName
     lastName
     rating {

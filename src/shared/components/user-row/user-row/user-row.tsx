@@ -45,6 +45,7 @@ const UserRow: FC<IUserRow> = (props) => {
           height={height}
           userId={userId}
           hasLink={hasLink}
+          img={user?.avatar}
         />
       )}
 

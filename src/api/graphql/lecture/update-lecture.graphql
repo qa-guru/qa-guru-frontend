@@ -6,6 +6,7 @@ mutation updateLecture($input: LectureInput!) {
       firstName
       lastName
       middleName
+      avatar
       rating {
         rating
       }

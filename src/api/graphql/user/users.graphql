@@ -11,6 +11,7 @@ query users(
       firstName
       lastName
       middleName
+      avatar
       phoneNumber
       roles
       locked

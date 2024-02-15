@@ -67,9 +67,10 @@ const AvatarCustom: FC<IAvatarCustom> = ({
       {hasLink ? (
         <StyledLink component="button" onClick={handleAvatarClick}>
           <Avatar
-            src={img || ""}
+            src={`data:image/png;base64, ${img}` || ""}
             variant="rounded"
             sx={{ width, height, ...stringAvatar(fullName).sx }}
+            alt="Avatar"
           >
             <StyledTypography variant={variant}>
               {stringAvatar(fullName).children}
@@ -78,6 +79,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
         </StyledLink>
       ) : (
         <Avatar
+          src={`data:image/png;base64, ${img}`}
           variant="rounded"
           sx={{ width, height, ...stringAvatar(fullName).sx }}
         >

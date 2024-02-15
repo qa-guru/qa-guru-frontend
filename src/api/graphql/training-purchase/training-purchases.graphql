@@ -6,6 +6,7 @@ query trainingPurchases {
       email
       firstName
       lastName
+      avatar
       middleName
       rating {
         rating
