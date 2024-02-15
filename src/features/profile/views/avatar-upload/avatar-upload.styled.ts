@@ -9,13 +9,13 @@ export const StyledIconBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "12px",
-  width: "17vw",
-  height: "17vw",
+  width: "20vw",
+  height: "20vw",
 }));
 
 export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
-  width: "17vw",
-  height: "17vw",
+  width: "20vw",
+  height: "20vw",
   color: theme.palette.app.white,
 }));
 
