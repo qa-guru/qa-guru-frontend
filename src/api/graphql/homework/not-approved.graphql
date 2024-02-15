@@ -18,6 +18,7 @@ fragment NotApprovedHomework on StudentHomeWorkDto {
     email
     firstName
     middleName
+    avatar
     lastName
     rating {
       rating
@@ -28,6 +29,7 @@ fragment NotApprovedHomework on StudentHomeWorkDto {
     email
     firstName
     middleName
+    avatar
     lastName
     rating {
       rating

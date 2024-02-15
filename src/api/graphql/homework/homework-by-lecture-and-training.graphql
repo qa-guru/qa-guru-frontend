@@ -11,6 +11,7 @@ query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -20,6 +21,7 @@ query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
       id
       firstName
       middleName
+      avatar
       lastName
       email
       rating {

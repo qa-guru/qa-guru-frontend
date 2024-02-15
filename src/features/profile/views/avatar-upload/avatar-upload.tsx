@@ -1,6 +1,7 @@
-import { ChangeEvent, FC, useRef, useState } from "react";
+import { ChangeEvent, FC } from "react";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import AvatarCustom from "shared/components/avatar-custom";
+import { CircularProgress } from "@mui/material";
 
 import { useAvatarUpload } from "../../hooks/use-avatar-upload";
 import { IAvatarUpload } from "./avatar-upload.types";
@@ -12,49 +13,32 @@ import {
 
 const AvatarUpload: FC<IAvatarUpload> = ({ user }) => {
   const { uploadAvatar, uploading } = useAvatarUpload();
-  const [image, setImage] = useState<string | null>(
-    `data:image/jpeg;base64,${user}`
-  );
-  const inputFileRef = useRef<HTMLInputElement>(null);
 
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
-  const cleanup = () => {
-    if (image) {
-      URL.revokeObjectURL(image);
-      setImage(null);
-    }
-    if (inputFileRef.current) {
-      inputFileRef.current.value = "";
-    }
-  };
-
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];
 
-    if (newImage) {
-      setImage(URL.createObjectURL(newImage));
-    }
+    if (newImage) await uploadAvatar(newImage);
   };
 
   return (
     <>
       <VisuallyHiddenInput
-        ref={inputFileRef}
         id="icon-button-file"
         type="file"
         onChange={handleImageChange}
       />
       <StyledIconBox>
         <AvatarCustom
-          img={`data:image/jpeg;base64,${user?.avatar}`}
+          img={user?.avatar}
           fullName={fullName}
           width={250}
           height={250}
         />
         <label htmlFor="icon-button-file">
           <StyledIconButton>
-            <CameraAltIcon />
+            {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
           </StyledIconButton>
         </label>
       </StyledIconBox>

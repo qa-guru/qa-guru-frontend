@@ -18,6 +18,7 @@ fragment NewTakeForReviewHomeWork on StudentHomeWorkDto {
     email
     firstName
     middleName
+    avatar
     lastName
     rating {
       rating
@@ -29,6 +30,7 @@ fragment NewTakeForReviewHomeWork on StudentHomeWorkDto {
     firstName
     middleName
     lastName
+    avatar
     rating {
       rating
     }

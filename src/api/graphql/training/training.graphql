@@ -16,6 +16,7 @@ query training($id: ID!) {
       id
       firstName
       lastName
+      avatar
       middleName
       rating {
         rating

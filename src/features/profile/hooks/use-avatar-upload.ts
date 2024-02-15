@@ -2,6 +2,7 @@ import { useState } from "react";
 import AvatarUploadService from "api/rest/avatar-upload-service";
 import { enqueueSnackbar } from "notistack";
 import { Maybe } from "api/graphql/generated/graphql";
+import { client } from "api";
 
 import { RESPONSE_STATUS } from "../constants";
 
@@ -16,6 +17,10 @@ export const useAvatarUpload = () => {
       const response = await AvatarUploadService.upload(file);
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setUploading(false);
+        client.refetchQueries({ include: ["user"] });
+        enqueueSnackbar(`изображение успешно загрузилось`, {
+          variant: "success",
+        });
         return response.data;
       } else {
         setUploading(false);
