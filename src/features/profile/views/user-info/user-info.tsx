@@ -21,21 +21,14 @@ import {
   StyledWebsiteStack,
 } from "./user-info.styled";
 
-const UserInfo: FC<IUserInfo> = ({ user, profile }) => {
+const UserInfo: FC<IUserInfo> = ({ user }) => {
   const ratingColor = useRatingColor(user?.rating?.rating);
 
   return (
     <StyledPaper>
       <StyledRowStack>
         <Stack>
-          {profile?.avatar ? (
-            <img
-              src={`data:image/jpeg;base64,${profile?.avatar}`}
-              alt="Аватар пользователя"
-            />
-          ) : (
-            <AvatarUpload />
-          )}
+          <AvatarUpload user={user} />
 
           <StyledIconStack>
             <StackOverflowIcon />

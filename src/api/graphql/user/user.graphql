@@ -15,7 +15,10 @@ query user {
     linkedin
     website
     avatar
-    skills
+    skills {
+      id
+      name
+    }
     creationDate
     confirmationDate
     updateDate

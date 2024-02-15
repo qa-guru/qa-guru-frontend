@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 import * as React from 'react';
 import * as ApolloReactComponents from '@apollo/client/react/components';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -211,8 +212,6 @@ export type Mutation = {
   updateLecture?: Maybe<LectureInfoDto>;
   /** lecture home work level section */
   updateLectureHomeWorkLevel?: Maybe<LectureHomeWorkLevelDto>;
-  updateProfile?: Maybe<ProfileDto>;
-  updateProfileById?: Maybe<ProfileDto>;
   updateRole?: Maybe<UserDto>;
   updateSkill?: Maybe<SkillDto>;
   /** training section */
@@ -393,19 +392,6 @@ export type MutationUpdateLectureHomeWorkLevelArgs = {
 
 
 /** Mutation root */
-export type MutationUpdateProfileArgs = {
-  input: ProfileInput;
-};
-
-
-/** Mutation root */
-export type MutationUpdateProfileByIdArgs = {
-  input: ProfileInput;
-  userId: Scalars['ID'];
-};
-
-
-/** Mutation root */
 export type MutationUpdateRoleArgs = {
   id: Scalars['ID'];
   roles?: InputMaybe<Array<InputMaybe<UserRole>>>;
@@ -454,28 +440,6 @@ export enum Order {
   Desc = 'DESC'
 }
 
-export type ProfileDto = {
-  __typename?: 'ProfileDto';
-  avatar?: Maybe<Scalars['String']>;
-  git?: Maybe<Scalars['String']>;
-  linkedin?: Maybe<Scalars['String']>;
-  skills?: Maybe<Array<Maybe<SkillDto>>>;
-  stackOverflow?: Maybe<Scalars['String']>;
-  telegram?: Maybe<Scalars['String']>;
-  vkId?: Maybe<Scalars['String']>;
-  website?: Maybe<Scalars['String']>;
-};
-
-export type ProfileInput = {
-  git?: InputMaybe<Scalars['String']>;
-  linkedin?: InputMaybe<Scalars['String']>;
-  skills?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  stackOverflow?: InputMaybe<Scalars['String']>;
-  telegram?: InputMaybe<Scalars['String']>;
-  vkId?: InputMaybe<Scalars['String']>;
-  website?: InputMaybe<Scalars['String']>;
-};
-
 /** Query root */
 export type Query = {
   __typename?: 'Query';
@@ -499,8 +463,6 @@ export type Query = {
   lectureHomeWorkLevels?: Maybe<Array<Maybe<LectureHomeWorkLevelDto>>>;
   lectures?: Maybe<LecturesDto>;
   mentors?: Maybe<UsersDto>;
-  profile?: Maybe<ProfileDto>;
-  profileById?: Maybe<ProfileDto>;
   /** rating */
   rating?: Maybe<RatingDto>;
   ratingByUser?: Maybe<RatingDto>;
@@ -633,12 +595,6 @@ export type QueryMentorsArgs = {
   limit: Scalars['Int'];
   offset: Scalars['Int'];
   sort?: InputMaybe<UserSort>;
-};
-
-
-/** Query root */
-export type QueryProfileByIdArgs = {
-  id?: InputMaybe<Scalars['ID']>;
 };
 
 
@@ -855,6 +811,7 @@ export type TrainingDto = {
   id: Scalars['ID'];
   mentors?: Maybe<Array<Maybe<UserDto>>>;
   name: Scalars['String'];
+  picture?: Maybe<Scalars['String']>;
   tariffs?: Maybe<Array<Maybe<TrainingTariffDto>>>;
   techStack: TechStack;
 };
@@ -986,7 +943,7 @@ export type UserDto = {
   phoneNumber?: Maybe<Scalars['String']>;
   rating?: Maybe<RatingUserDto>;
   roles?: Maybe<Array<Maybe<UserRole>>>;
-  skills?: Maybe<Array<Maybe<Scalars['String']>>>;
+  skills?: Maybe<Array<Maybe<SkillDto>>>;
   stackOverflow?: Maybe<Scalars['String']>;
   telegram?: Maybe<Scalars['String']>;
   updateDate?: Maybe<Scalars['LocalDateTime']>;
@@ -1034,10 +991,17 @@ export enum UserSortField {
 export type UserUpdateInput = {
   email: Scalars['String'];
   firstName: Scalars['String'];
+  git?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   lastName: Scalars['String'];
+  linkedin?: InputMaybe<Scalars['String']>;
   middleName?: InputMaybe<Scalars['String']>;
   phoneNumber?: InputMaybe<Scalars['String']>;
+  skills?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  stackOverflow?: InputMaybe<Scalars['String']>;
+  telegram?: InputMaybe<Scalars['String']>;
+  vkId?: InputMaybe<Scalars['String']>;
+  website?: InputMaybe<Scalars['String']>;
 };
 
 export type UsersDto = {
@@ -1281,18 +1245,6 @@ export type MentorsQueryVariables = Exact<{
 
 export type MentorsQuery = { __typename?: 'Query', mentors?: { __typename?: 'UsersDto', offset?: number | null, limit?: number | null, totalElements?: any | null, items?: Array<{ __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, middleName?: string | null, lastName?: string | null, phoneNumber?: string | null, locked?: boolean | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null> | null } | null };
 
-export type ProfileByIdQueryVariables = Exact<{
-  id?: InputMaybe<Scalars['ID']>;
-}>;
-
-
-export type ProfileByIdQuery = { __typename?: 'Query', profileById?: { __typename?: 'ProfileDto', avatar?: string | null } | null };
-
-export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ProfileQuery = { __typename?: 'Query', profile?: { __typename?: 'ProfileDto', avatar?: string | null } | null };
-
 export type ResetPasswordMutationVariables = Exact<{
   email: Scalars['String'];
 }>;
@@ -1328,7 +1280,7 @@ export type UserByIdQueryVariables = Exact<{
 }>;
 
 
-export type UserByIdQuery = { __typename?: 'Query', userById?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, vkId?: string | null, git?: string | null, telegram?: string | null, stackOverflow?: string | null, linkedin?: string | null, website?: string | null, avatar?: string | null, skills?: Array<string | null> | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type UserByIdQuery = { __typename?: 'Query', userById?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, vkId?: string | null, git?: string | null, telegram?: string | null, stackOverflow?: string | null, linkedin?: string | null, website?: string | null, avatar?: string | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, skills?: Array<{ __typename?: 'SkillDto', id?: string | null, name?: string | null } | null> | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type UserIdQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1343,7 +1295,7 @@ export type UserRolesQuery = { __typename?: 'Query', user?: { __typename?: 'User
 export type UserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, vkId?: string | null, git?: string | null, telegram?: string | null, stackOverflow?: string | null, linkedin?: string | null, website?: string | null, avatar?: string | null, skills?: Array<string | null> | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
+export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'UserDto', id?: string | null, email?: string | null, firstName?: string | null, lastName?: string | null, middleName?: string | null, phoneNumber?: string | null, roles?: Array<UserRole | null> | null, locked?: boolean | null, vkId?: string | null, git?: string | null, telegram?: string | null, stackOverflow?: string | null, linkedin?: string | null, website?: string | null, avatar?: string | null, creationDate?: any | null, confirmationDate?: any | null, updateDate?: any | null, skills?: Array<{ __typename?: 'SkillDto', id?: string | null, name?: string | null } | null> | null, rating?: { __typename?: 'RatingUserDto', rating?: any | null } | null } | null };
 
 export type UsersRatingQueryVariables = Exact<{
   offset: Scalars['Int'];
@@ -3017,87 +2969,6 @@ export function useMentorsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Me
 export type MentorsQueryHookResult = ReturnType<typeof useMentorsQuery>;
 export type MentorsLazyQueryHookResult = ReturnType<typeof useMentorsLazyQuery>;
 export type MentorsQueryResult = Apollo.QueryResult<MentorsQuery, MentorsQueryVariables>;
-export const ProfileByIdDocument = gql`
-    query profileById($id: ID) {
-  profileById(id: $id) {
-    avatar
-  }
-}
-    `;
-export type ProfileByIdComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<ProfileByIdQuery, ProfileByIdQueryVariables>, 'query'>;
-
-    export const ProfileByIdComponent = (props: ProfileByIdComponentProps) => (
-      <ApolloReactComponents.Query<ProfileByIdQuery, ProfileByIdQueryVariables> query={ProfileByIdDocument} {...props} />
-    );
-    
-
-/**
- * __useProfileByIdQuery__
- *
- * To run a query within a React component, call `useProfileByIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useProfileByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useProfileByIdQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useProfileByIdQuery(baseOptions?: Apollo.QueryHookOptions<ProfileByIdQuery, ProfileByIdQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ProfileByIdQuery, ProfileByIdQueryVariables>(ProfileByIdDocument, options);
-      }
-export function useProfileByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileByIdQuery, ProfileByIdQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ProfileByIdQuery, ProfileByIdQueryVariables>(ProfileByIdDocument, options);
-        }
-export type ProfileByIdQueryHookResult = ReturnType<typeof useProfileByIdQuery>;
-export type ProfileByIdLazyQueryHookResult = ReturnType<typeof useProfileByIdLazyQuery>;
-export type ProfileByIdQueryResult = Apollo.QueryResult<ProfileByIdQuery, ProfileByIdQueryVariables>;
-export const ProfileDocument = gql`
-    query profile {
-  profile {
-    avatar
-  }
-}
-    `;
-export type ProfileComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<ProfileQuery, ProfileQueryVariables>, 'query'>;
-
-    export const ProfileComponent = (props: ProfileComponentProps) => (
-      <ApolloReactComponents.Query<ProfileQuery, ProfileQueryVariables> query={ProfileDocument} {...props} />
-    );
-    
-
-/**
- * __useProfileQuery__
- *
- * To run a query within a React component, call `useProfileQuery` and pass it any options that fit your needs.
- * When your component renders, `useProfileQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useProfileQuery({
- *   variables: {
- *   },
- * });
- */
-export function useProfileQuery(baseOptions?: Apollo.QueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
-      }
-export function useProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProfileQuery, ProfileQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, options);
-        }
-export type ProfileQueryHookResult = ReturnType<typeof useProfileQuery>;
-export type ProfileLazyQueryHookResult = ReturnType<typeof useProfileLazyQuery>;
-export type ProfileQueryResult = Apollo.QueryResult<ProfileQuery, ProfileQueryVariables>;
 export const ResetPasswordDocument = gql`
     mutation resetPassword($email: String!) {
   resetPassword(email: $email)
@@ -3278,7 +3149,10 @@ export const UserByIdDocument = gql`
     linkedin
     website
     avatar
-    skills
+    skills {
+      id
+      name
+    }
     creationDate
     confirmationDate
     updateDate
@@ -3420,7 +3294,10 @@ export const UserDocument = gql`
     linkedin
     website
     avatar
-    skills
+    skills {
+      id
+      name
+    }
     creationDate
     confirmationDate
     updateDate

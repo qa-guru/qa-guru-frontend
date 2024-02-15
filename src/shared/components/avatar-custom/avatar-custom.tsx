@@ -54,6 +54,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   variant = "body2",
   userId,
   hasLink,
+  img,
 }) => {
   const navigate = useNavigate();
 
@@ -66,6 +67,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
       {hasLink ? (
         <StyledLink component="button" onClick={handleAvatarClick}>
           <Avatar
+            src={img || ""}
             variant="rounded"
             sx={{ width, height, ...stringAvatar(fullName).sx }}
           >

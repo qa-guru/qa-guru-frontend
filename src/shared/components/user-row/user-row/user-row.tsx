@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { Typography } from "@mui/material";
 
 import { IUserRow } from "./user-row.types";
@@ -30,11 +30,9 @@ const UserRow: FC<IUserRow> = (props) => {
     hasLink,
   } = props;
 
-  const fullName = useMemo(() => {
-    return user
-      ? `${user.firstName} ${user.lastName}`
-      : `${firstName} ${lastName}`;
-  }, [user, firstName, lastName]);
+  const fullName = user
+    ? `${user.firstName} ${user.lastName}`
+    : `${firstName} ${lastName}`;
 
   return (
     <StyledWrapperStack>

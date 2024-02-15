@@ -9,7 +9,7 @@ export const useAvatarUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
-  const uploadAvatar = async (file: File) => {
+  const uploadAvatar = async (file: string | File) => {
     setUploading(true);
     setError(null);
     try {
