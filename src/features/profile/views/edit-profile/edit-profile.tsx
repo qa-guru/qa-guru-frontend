@@ -98,22 +98,6 @@ const EditProfile: FC<IEditProfile> = () => {
                   errors={errors}
                 />
               </Stack>
-              <Stack direction="row" spacing="30px">
-                <InputText
-                  control={control}
-                  name="email"
-                  placeholder="Введите должность"
-                  label="Должность"
-                  errors={errors}
-                />
-                <InputText
-                  control={control}
-                  name="email"
-                  placeholder="Введите название компании"
-                  label="Компания"
-                  errors={errors}
-                />
-              </Stack>
             </Stack>
           </Stack>
         </StyledPaper>
