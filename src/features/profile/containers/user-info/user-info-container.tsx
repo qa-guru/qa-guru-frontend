@@ -6,7 +6,9 @@ import { useUserQuery } from "api/graphql/generated/graphql";
 import UserInfo from "../../views/user-info";
 
 const UserInfoContainer: FC = () => {
-  const { loading, data } = useUserQuery();
+  const { loading, data } = useUserQuery({
+    fetchPolicy: "cache-first",
+  });
 
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;

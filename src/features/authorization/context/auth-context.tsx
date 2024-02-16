@@ -76,6 +76,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
       setIsAuth(false);
       navigate(ROUTES.AUTHORIZATION);
     },
+    fetchPolicy: "cache-first",
   });
 
   if (loading) return <Spinner />;
