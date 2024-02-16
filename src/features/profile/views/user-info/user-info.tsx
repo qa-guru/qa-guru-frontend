@@ -21,7 +21,8 @@ import {
   StyledWebsiteStack,
 } from "./user-info.styled";
 
-const UserInfo: FC<IUserInfo> = ({ user }) => {
+const UserInfo: FC<IUserInfo> = ({ data }) => {
+  const { user } = data;
   const ratingColor = useRatingColor(user?.rating?.rating);
 
   return (
