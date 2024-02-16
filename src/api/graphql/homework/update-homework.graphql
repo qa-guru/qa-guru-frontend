@@ -12,6 +12,7 @@ mutation updateHomework($id: ID!, $content: String!) {
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -21,6 +22,7 @@ mutation updateHomework($id: ID!, $content: String!) {
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating

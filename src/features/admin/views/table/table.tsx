@@ -31,6 +31,7 @@ const Table: FC<ITable> = ({ data, fetchMore }) => {
 
           return (
             <UserRow
+              user={info.row.original}
               hideAvatar={isOnlyXs}
               hideRoles
               hideRating

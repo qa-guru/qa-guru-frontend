@@ -81,6 +81,8 @@ const Card: FC<ICard> = ({
                 width={24}
                 height={24}
                 variant="body2"
+                userId={mentor.id}
+                hasLink
               />
             )}
             {student && (
@@ -90,6 +92,8 @@ const Card: FC<ICard> = ({
                 width={26}
                 height={26}
                 variant="body2"
+                userId={student.id}
+                hasLink
               />
             )}
           </StyledUserRowStack>

@@ -9,7 +9,7 @@ import { IUserDate } from "./user-date.types";
 const UserDate: FC<IUserDate> = ({ date }) => {
   return (
     <StyledDateStack>
-      <Typography variant="subtitle2">
+      <Typography variant="caption" color="textSecondary">
         {format(parseISO(date), DATE_FORMAT)}
       </Typography>
     </StyledDateStack>

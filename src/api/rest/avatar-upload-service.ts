@@ -3,18 +3,21 @@ import axios, { type AxiosResponse } from "axios";
 import { AVATAR_UPLOAD_URI, AVATAR_DELETE_URI } from "../../config";
 
 export interface AvatarUploadResponse {
-  file: File;
+  file: string | File;
 }
 
 export default class AvatarUploadService {
-  static upload(file: File): Promise<AxiosResponse<AvatarUploadResponse>> {
+  static upload(
+    file: string | File
+  ): Promise<AxiosResponse<AvatarUploadResponse>> {
     const formData = new FormData();
-    formData.append("avatar", file);
+
+    formData.append("file", file);
 
     return axios({
       method: "POST",
       url: AVATAR_UPLOAD_URI,
-      headers: { "content-type": "multipart/form-data" },
+      headers: { "Content-Type": "multipart/form-data" },
       data: formData,
     });
   }

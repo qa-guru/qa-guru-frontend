@@ -52,7 +52,7 @@ const CommentItem: FC<ICommentItem> = ({
       <StyledPaper key={commentId} editAccess={editAccess}>
         <StyledStack>
           <StyledCommentBox>
-            <UserRow user={creator} />
+            <UserRow user={creator} userId={creator?.id} hasLink />
             <StyledBox>
               {isSelected ? (
                 <UpdateComment content={content} id={id} />

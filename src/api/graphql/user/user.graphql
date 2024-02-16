@@ -6,9 +6,22 @@ query user {
     lastName
     middleName
     phoneNumber
-    avatar
     roles
     locked
+    vkId
+    git
+    telegram
+    stackOverflow
+    linkedin
+    website
+    avatar
+    skills {
+      id
+      name
+    }
+    creationDate
+    confirmationDate
+    updateDate
     rating {
       rating
     }

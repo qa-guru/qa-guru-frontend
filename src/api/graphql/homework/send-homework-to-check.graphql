@@ -20,6 +20,7 @@ mutation sendHomeWorkToCheck(
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating
@@ -29,6 +30,7 @@ mutation sendHomeWorkToCheck(
       id
       firstName
       middleName
+      avatar
       lastName
       rating {
         rating

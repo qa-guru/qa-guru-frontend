@@ -10,8 +10,10 @@ export const StyledButton = styled(Button)({
 export const StyledBox = styled(Box)(({ theme }) => ({
   color: theme.palette.app.black,
   textTransform: "none",
+  marginLeft: "20px",
   [theme.breakpoints.down("sm")]: {
     marginRight: "-20px",
+    marginLeft: 0,
   },
 }));
 

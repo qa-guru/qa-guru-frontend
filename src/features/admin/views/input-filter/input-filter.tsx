@@ -10,9 +10,17 @@ import {
   StyledTabPanel,
 } from "./input-filter.styled";
 
+const filterLabels = {
+  firstName: "Имя",
+  phoneNumber: "Телефон",
+  email: "Email",
+};
+
+type FilterKey = keyof typeof filterLabels;
+
 const InputFilter: FC = () => {
   const { setFilter } = useContext(TableAdminFilterContext);
-  const [activeFilter, setActiveFilter] = useState("firstName");
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("firstName");
 
   const { control, watch } = useForm({
     defaultValues: {
@@ -29,7 +37,7 @@ const InputFilter: FC = () => {
   }, [filterValue, activeFilter]);
 
   const handleFilterChange = (_: SyntheticEvent, value: string) => {
-    setActiveFilter(value);
+    setActiveFilter(value as FilterKey);
   };
 
   return (
@@ -43,7 +51,7 @@ const InputFilter: FC = () => {
         <InputText
           control={control}
           name="filterValue"
-          placeholder={`Введите ${activeFilter}`}
+          placeholder={`Введите ${filterLabels[activeFilter]}`}
         />
       </StyledTabPanel>
     </TabContext>

@@ -1,9 +1,10 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { useTheme } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 import { IAvatarCustom } from "./avatar-custom.types";
-import { StyledTypography } from "./avatar-custom.styled";
+import { StyledTypography, StyledLink } from "./avatar-custom.styled";
 
 function stringToColor(name: string) {
   const theme = useTheme();
@@ -51,16 +52,43 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   width,
   height,
   variant = "body2",
+  userId,
+  hasLink,
+  img,
 }) => {
+  const navigate = useNavigate();
+
+  const handleAvatarClick = () => {
+    navigate(`/users/${userId}`);
+  };
+
   return (
-    <Avatar
-      variant="rounded"
-      sx={{ width, height, ...stringAvatar(fullName).sx }}
-    >
-      <StyledTypography variant={variant}>
-        {stringAvatar(fullName).children}
-      </StyledTypography>
-    </Avatar>
+    <>
+      {hasLink ? (
+        <StyledLink component="button" onClick={handleAvatarClick}>
+          <Avatar
+            src={`data:image/png;base64, ${img}` || ""}
+            variant="rounded"
+            sx={{ width, height, ...stringAvatar(fullName).sx }}
+            alt="Avatar"
+          >
+            <StyledTypography variant={variant}>
+              {stringAvatar(fullName).children}
+            </StyledTypography>
+          </Avatar>
+        </StyledLink>
+      ) : (
+        <Avatar
+          src={`data:image/png;base64, ${img}`}
+          variant="rounded"
+          sx={{ width, height, ...stringAvatar(fullName).sx }}
+        >
+          <StyledTypography variant={variant}>
+            {stringAvatar(fullName).children}
+          </StyledTypography>
+        </Avatar>
+      )}
+    </>
   );
 };
 
