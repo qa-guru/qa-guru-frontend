@@ -8,14 +8,14 @@ jobs:
     runs-on: prod-runner
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
   yarn-and-node:
     runs-on: prod-runner
     needs: checkout
     steps:
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
       - name: Run install
