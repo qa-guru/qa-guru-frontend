@@ -21,10 +21,6 @@ import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 import { StyledScreenBox, StyledWrapper } from "./signup.styled";
 
-interface CustomUserCreateInput extends UserCreateInput {
-  confirmPassword: "";
-}
-
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
@@ -35,7 +31,7 @@ const Signup: FC<ISignUp> = (props) => {
     control,
     formState: { errors },
     getValues,
-  } = useForm<CustomUserCreateInput>({
+  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
