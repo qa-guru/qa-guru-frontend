@@ -1,18 +1,16 @@
 import { FC } from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useTranslation } from "react-i18next";
 import { InputChip, InputPhone, InputText } from "shared/components/form";
 
 import { IEditProfile, IEditProfileForm, skills } from "./edit-profile.types";
 import AvatarUpload from "../avatar-upload";
 import {
+  StyledIcon,
   StyledPaper,
   StyledRouteButton,
-  StyledIcon,
 } from "./edit-profile.styled";
 
 const EditProfile: FC<IEditProfile> = ({ user }) => {
@@ -36,14 +34,14 @@ const EditProfile: FC<IEditProfile> = ({ user }) => {
       linkedin: user?.linkedin,
       skills: [],
     },
-    resolver: yupResolver(
-      yup.object().shape({
-        firstName: yup.string().required(t("firstName.required")),
-        lastName: yup.string().required(t("lastName.required")),
-        email: yup.string().required(t("email.required")),
-        phoneNumber: yup.string().required(t("phone.required")),
-      })
-    ),
+    // resolver: yupResolver(
+    //   yup.object().shape({
+    //     firstName: yup.string().required(t("firstName.required")),
+    //     lastName: yup.string().required(t("lastName.required")),
+    //     email: yup.string().required(t("email.required")),
+    //     phoneNumber: yup.string().required(t("phone.required")),
+    //   })
+    // ),
   });
 
   return (

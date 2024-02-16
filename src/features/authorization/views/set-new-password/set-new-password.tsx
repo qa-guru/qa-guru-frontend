@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
@@ -14,7 +14,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "../views.styled";
-import { ISetNewPassword, ISetNewPasswordForm } from "./set-new-password.types";
+import { ISetNewPassword } from "./set-new-password.types";
 
 const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<ISetNewPasswordForm>({
+  } = useForm({
     defaultValues: {
       newPassword: "",
       confirmPassword: "",
@@ -39,8 +39,11 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
     ),
   });
 
-  const onSubmit = (data: ISetNewPasswordForm) => {
-    setNewPassword(data.newPassword);
+  const onSubmit: SubmitHandler<{
+    newPassword: string;
+    confirmPassword: string;
+  }> = async (data) => {
+    await setNewPassword(data.newPassword);
   };
 
   return (

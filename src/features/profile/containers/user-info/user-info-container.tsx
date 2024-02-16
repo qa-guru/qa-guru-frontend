@@ -11,7 +11,7 @@ const UserInfoContainer: FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <UserInfo user={data.user} />;
+  return <UserInfo data={data} />;
 };
 
 export default UserInfoContainer;

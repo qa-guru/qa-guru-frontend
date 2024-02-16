@@ -31,6 +31,11 @@ import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
 import { getFormattedStatus } from "../../helpers/get-formatted-status";
 
+interface DropCollectedProps {
+  isOver: boolean;
+  canDrop: boolean;
+}
+
 const Column: FC<IColumn> = ({
   column,
   onCardDrop,
@@ -43,7 +48,11 @@ const Column: FC<IColumn> = ({
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
   const droppedItem = useRef<Maybe<CardType>>(null);
-  const [{ isOver, canDrop }, dropRef] = useDrop({
+  const [{ isOver, canDrop }, dropRef] = useDrop<
+    CardType,
+    void,
+    DropCollectedProps
+  >({
     accept: "card",
     drop: (item: CardType) => {
       if (item.allowedColumns.includes(column.id)) {
