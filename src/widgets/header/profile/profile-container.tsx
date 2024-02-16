@@ -6,7 +6,9 @@ import { useUserQuery } from "api/graphql/generated/graphql";
 import Profile from "./profile";
 
 const ProfileContainer: FC = () => {
-  const { loading, data } = useUserQuery();
+  const { loading, data } = useUserQuery({
+    fetchPolicy: "cache-first",
+  });
 
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
