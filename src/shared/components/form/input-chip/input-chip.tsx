@@ -5,12 +5,11 @@ import {
   Select,
   type SelectChangeEvent,
   OutlinedInput,
-  Chip,
 } from "@mui/material";
 import { Controller, FieldValues } from "react-hook-form";
 
 import { IFormInputChip } from "./input-chip.types";
-import { StyledBox } from "./input-chip.styled";
+import { StyledBox, StyledChip } from "./input-chip.styled";
 
 const InputChip = <T extends FieldValues, OptionType>({
   control,
@@ -51,13 +50,14 @@ const InputChip = <T extends FieldValues, OptionType>({
             <Select
               multiple
               value={value}
+              size="medium"
               onChange={(event) => handleChange(event, fieldOnChange)}
               input={<OutlinedInput />}
               renderValue={(selected: OptionType[]) => {
                 return (
                   <StyledBox>
                     {selected.map((value) => (
-                      <Chip
+                      <StyledChip
                         size="small"
                         key={String(value)}
                         label={String(value)}

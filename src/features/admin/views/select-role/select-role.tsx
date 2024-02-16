@@ -45,6 +45,8 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
     });
   };
 
+  console.log(rolesOptions);
+
   const handleDeleteRole = (value: UserRole) => {
     const updatedRoles = roles?.filter((role) => role !== value);
     setValue("roles", updatedRoles);
