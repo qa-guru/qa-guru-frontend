@@ -20,6 +20,7 @@ const UsersContainer: FC = () => {
       sort: { field: UserSortField.Email, order: Order.Desc },
       filter: filter || {},
     },
+    fetchPolicy: "cache-first",
   });
 
   if (loading) return <Spinner />;
