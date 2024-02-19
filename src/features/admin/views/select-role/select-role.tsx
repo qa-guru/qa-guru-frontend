@@ -45,6 +45,8 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
     });
   };
 
+  console.log(rolesOptions);
+
   const handleDeleteRole = (value: UserRole) => {
     const updatedRoles = roles?.filter((role) => role !== value);
     setValue("roles", updatedRoles);
@@ -74,6 +76,7 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
               control={control}
               options={rolesOptions}
               name="roles"
+              size="small"
               onChange={handleSelectRoleChange}
               onDelete={handleDeleteRole}
             />

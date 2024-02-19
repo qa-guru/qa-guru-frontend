@@ -7,4 +7,5 @@ export interface IFormInputChip<T extends FieldValues, OptionType> {
   name: T[Path<T>];
   onDelete: (value: OptionType) => void;
   onChange?: (value: OptionType[]) => void;
+  size?: "small" | "medium";
 }

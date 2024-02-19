@@ -7,8 +7,8 @@ export const StyledIconBox = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
-  width: "17vw",
-  height: "17vw",
+  width: "20vw",
+  height: "20vw",
   color: theme.palette.app.white,
 }));
 

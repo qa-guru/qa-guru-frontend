@@ -19,6 +19,7 @@ const InputChip = <T extends FieldValues, OptionType>({
   options,
   onDelete,
   onChange,
+  size,
 }: IFormInputChip<T, OptionType>) => {
   const handleChange = (
     event: SelectChangeEvent<OptionType[]>,
@@ -51,6 +52,7 @@ const InputChip = <T extends FieldValues, OptionType>({
             <Select
               multiple
               value={value}
+              size={size}
               onChange={(event) => handleChange(event, fieldOnChange)}
               input={<OutlinedInput />}
               renderValue={(selected: OptionType[]) => {
