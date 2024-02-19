@@ -27,7 +27,7 @@ interface IRoutnig {
   roles?: Maybe<Maybe<UserRole>[]>;
 }
 
-const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
+const   ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
   const { isAuth } = useAuth();
 
   if (isAuth) {
