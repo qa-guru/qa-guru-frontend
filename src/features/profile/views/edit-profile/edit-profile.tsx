@@ -148,13 +148,11 @@ const EditProfile: FC<IEditProfile> = ({ user }) => {
             <InputChip
               control={control}
               name="skills"
+              size="medium"
               options={skills}
               onDelete={() => {}}
             />
           </Box>
-        </StyledPaper>
-        <StyledPaper>
-          <Typography variant="h3">Опыт работы</Typography>
         </StyledPaper>
       </Stack>
     </Container>

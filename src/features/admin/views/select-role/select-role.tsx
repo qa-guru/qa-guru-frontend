@@ -76,6 +76,7 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
               control={control}
               options={rolesOptions}
               name="roles"
+              size="small"
               onChange={handleSelectRoleChange}
               onDelete={handleDeleteRole}
             />
