@@ -91,7 +91,8 @@
     "test": "vitest",
     "prettier": "pretty-quick",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "depcheck": "depcheck . --ignore-pattern=\"!package.json\""
+    "depcheck": "depcheck . --ignore-pattern=\"!package.json\"",
+    "precommit-task": "git add src/api/graphql/generated/graphql.tsx && git commit -m 'Update generated graphql.tsx' --no-verify"
   },
   "browserslist": {
     "production": [
