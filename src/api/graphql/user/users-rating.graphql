@@ -4,6 +4,7 @@ query usersRating($offset: Int!, $limit: Int!, $sort: UserSort) {
       id
       lastName
       firstName
+      avatar
       middleName
       creationDate
       rating {

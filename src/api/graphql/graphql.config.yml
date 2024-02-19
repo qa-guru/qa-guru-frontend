@@ -1,8 +1,0 @@
-schema: schema.graphql
-extensions:
-  endpoints:
-    Default GraphQL Endpoint:
-      url: ${VITE_APP_ENDPOINT}${VITE_GRAPHQL_URI}
-      headers:
-        user-agent: JS GraphQL
-      introspect: false
