@@ -82,7 +82,7 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "yarn codegen && vite --host",
-    "build": "tsc && yarn codegen && vite build",
+    "build": "yarn codegen && tsc && vite build",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
