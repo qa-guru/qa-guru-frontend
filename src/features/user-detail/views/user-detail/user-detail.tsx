@@ -2,12 +2,12 @@ import { FC } from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
 import { formatDate } from "shared/helpers";
-import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
-import { ReactComponent as StackOverflowIcon } from "assets/icons/stack-overflow.svg";
-import { ReactComponent as GitIcon } from "assets/icons/git-hub.svg";
-import { ReactComponent as LinkedIn } from "assets/icons/linked-in.svg";
-import { ReactComponent as Telegram } from "assets/icons/telegram.svg";
-import { ReactComponent as WebSiteIcon } from "assets/icons/website.svg";
+import WorkIcon from "assets/icons/work-field.svg";
+import StackOverflowIcon from "assets/icons/stack-overflow.svg";
+import GitIcon from "assets/icons/git-hub.svg";
+import LinkedIn from "assets/icons/linked-in.svg";
+import Telegram from "assets/icons/telegram.svg";
+import WebSiteIcon from "assets/icons/website.svg";
 import AvatarCustom from "shared/components/avatar-custom";
 
 import {
