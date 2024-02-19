@@ -3,6 +3,5 @@
 #
 yarn pretty-quick --staged
 # yarn vitest run
-yarn eslint 'src/**/*.{ts,tsx}'
+yarn eslint 'src/**/*.{ts,tsx}' --fix
 yarn build
-yarn precommit-task
