@@ -15,6 +15,7 @@ const TrainingCalendarContainer: React.FC = () => {
 
   useEffect(() => {
     setData({
+      // эээ, что это за захардкоженые даты?
       classes: [
         "2023-12-07",
         "2023-12-09",

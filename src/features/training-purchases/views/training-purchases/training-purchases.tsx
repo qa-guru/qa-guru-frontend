@@ -34,6 +34,8 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
     }
   };
 
+  // очень очень странное место. не useEffect, так еще и динамический массив Ref
+  // ... что? обсудить отдельно. очень сложная конструкция
   trainingPurchases?.forEach((item) => {
     const id = item?.trainingTariff.training?.id;
     if (id !== undefined) {
@@ -56,6 +58,10 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
     <Container>
       <Typography variant="h2">Мои курсы</Typography>
       <StyledGrid container spacing="30px">
+        {/*
+        дело вкуса, но я бы этот мап написал так
+        trainingPurchases?.map(({trainingTariff: {training: { id, name }}}) => <>other</>
+        */}
         {trainingPurchases?.map((item) => {
           const { id, name } = item?.trainingTariff.training || {};
 

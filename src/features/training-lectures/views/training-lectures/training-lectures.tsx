@@ -18,6 +18,7 @@ import { INDEX_OFFSET } from "../../constants";
 const TrainingLectures: FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;
   const { trainingLectures } = dataTrainingLectures;
+  // передавайте во вьюххи дату уже выковыряную из объекта квери
   const name = dataTraining?.training?.name;
 
   return (

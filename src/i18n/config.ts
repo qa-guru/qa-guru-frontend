@@ -12,6 +12,8 @@ const DETECTION_OPTIONS = {
   checkWhitelist: true,
 };
 
+// Q: зачем вам интернационализация?
+// A: выпилить и писать пока все по русски, запуститесь сначала полностью как продукт
 use(initReactI18next)
   .use(LanguageDetector)
   .init({
