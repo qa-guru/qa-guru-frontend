@@ -6,34 +6,34 @@ import { client } from "api";
 
 import { RESPONSE_STATUS } from "../constants";
 
-export const useAvatarUpload = () => {
-  const [uploading, setUploading] = useState(false);
+export const useAvatarDelete = () => {
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
-  const uploadAvatar = async (file: string | File) => {
-    setUploading(true);
+  const deleteAvatar = async () => {
+    setDeleting(true);
     setError(null);
     try {
-      const response = await AvatarUploadService.upload(file);
+      const response = await AvatarUploadService.delete();
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-        setUploading(false);
+        setDeleting(false);
         client.refetchQueries({ include: ["user"] });
-        enqueueSnackbar(`Изображение успешно загрузилось`, {
+        enqueueSnackbar(`Изображение успешно удалено`, {
           variant: "success",
         });
         return response.data;
       } else {
-        setUploading(false);
-        enqueueSnackbar(`Не удалось загрузить изображение`);
+        setDeleting(false);
+        enqueueSnackbar(`Не удалось удалить изображение`);
         return null;
       }
     } catch (err) {
       setError(err as Error);
-      enqueueSnackbar(`Не удалось загрузить изображение`);
-      setUploading(false);
+      enqueueSnackbar(`Не удалось удалить изображение`);
+      setDeleting(false);
       return null;
     }
   };
 
-  return { uploadAvatar, uploading, error };
+  return { deleteAvatar, deleting, error };
 };

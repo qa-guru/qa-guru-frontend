@@ -25,3 +25,11 @@ export const VisuallyHiddenInput = styled("input")({
   overflow: "hidden",
   position: "absolute",
 });
+
+export const StyledIconButtonDelete = styled("span")(({ theme }) => ({
+  position: "absolute",
+  top: "5px",
+  right: "5px",
+  cursor: "pointer",
+  color: theme.palette.app.white,
+}));
