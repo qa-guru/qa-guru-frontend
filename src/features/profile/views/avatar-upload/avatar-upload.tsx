@@ -1,18 +1,22 @@
 import { ChangeEvent, FC } from "react";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AvatarCustom from "shared/components/avatar-custom";
 import { CircularProgress } from "@mui/material";
 
 import { useAvatarUpload } from "../../hooks/use-avatar-upload";
+import { useAvatarDelete } from "../../hooks/use-avatar-delete";
 import { IAvatarUpload } from "./avatar-upload.types";
 import {
   StyledIconBox,
+  StyledIconButtonDelete,
   StyledIconButton,
   VisuallyHiddenInput,
 } from "./avatar-upload.styled";
 
 const AvatarUpload: FC<IAvatarUpload> = ({ user }) => {
   const { uploadAvatar, uploading } = useAvatarUpload();
+  const { deleteAvatar, deleting } = useAvatarDelete();
 
   const fullName = `${user?.firstName} ${user?.lastName}`;
 
@@ -20,6 +24,10 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user }) => {
     const newImage = e.target.files?.[0];
 
     if (newImage) await uploadAvatar(newImage);
+  };
+
+  const handleDeleteAvatar = async () => {
+    await deleteAvatar();
   };
 
   return (
@@ -41,6 +49,11 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user }) => {
             {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
           </StyledIconButton>
         </label>
+        {user?.avatar && (
+          <StyledIconButtonDelete onClick={handleDeleteAvatar}>
+            {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
+          </StyledIconButtonDelete>
+        )}
       </StyledIconBox>
     </>
   );
