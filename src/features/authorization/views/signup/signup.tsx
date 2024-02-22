@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import LocalSelector from "shared/components/local-selector";
-import { UserCreateInput } from "api/graphql/generated/graphql";
+import { Scalars, UserCreateInput } from "api/graphql/generated/graphql";
 import { InputPhone, InputText } from "shared/components/form";
 
 import {
@@ -20,6 +20,10 @@ import {
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 import { StyledScreenBox, StyledWrapper } from "./signup.styled";
+
+interface UserCreateInputCustom extends UserCreateInput {
+  confirmPassword: Scalars["String"];
+}
 
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
@@ -38,7 +42,6 @@ const Signup: FC<ISignUp> = (props) => {
       email: "",
       password: "",
       phoneNumber: "",
-      confirmPassword: "",
     },
     resolver: yupResolver(
       yup.object().shape({
@@ -48,7 +51,6 @@ const Signup: FC<ISignUp> = (props) => {
         password: yup
           .string()
           .min(REQUIRED_SYMBOLS.MIN, t("password.required.min"))
-          .max(REQUIRED_SYMBOLS.MAX, t("password.required.max"))
           .required(t("password.required")),
         confirmPassword: yup
           .string()
@@ -59,15 +61,17 @@ const Signup: FC<ISignUp> = (props) => {
     ),
   });
 
+  const passwordsMatch = getValues("password") === getValues("confirmPassword");
+
   const routeLogin = () => {
     navigate(ROUTES.AUTHORIZATION);
   };
 
-  const passwordsMatch = getValues("password");
+  const onSubmit: SubmitHandler<UserCreateInputCustom> = (data) => {
+    const { confirmPassword, ...submitData } = data;
 
-  const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
     if (passwordsMatch) {
-      signup(data);
+      signup(submitData);
     }
   };
 
