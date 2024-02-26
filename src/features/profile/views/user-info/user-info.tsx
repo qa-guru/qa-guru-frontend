@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Stack, Typography, useMediaQuery } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
 import { formatDate } from "shared/helpers";
 import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
@@ -8,7 +8,6 @@ import { ReactComponent as GitIcon } from "assets/icons/git-hub.svg";
 import { ReactComponent as LinkedIn } from "assets/icons/linked-in.svg";
 import { ReactComponent as Telegram } from "assets/icons/telegram.svg";
 import { ReactComponent as WebSiteIcon } from "assets/icons/website.svg";
-import { useTheme } from "@mui/system";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 
@@ -34,9 +33,6 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
   const { user } = data;
   const ratingColor = useRatingColor(user?.rating?.rating);
 
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-
   const navigate = useNavigate();
   const routeEdit = () => navigate("/profile/edit");
 
@@ -49,7 +45,7 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
       </StyledButtonBox>
       <StyledRowStack>
         <Stack>
-          <AvatarUpload user={user} hideIcons={isDownMd} />
+          <AvatarUpload user={user} />
           <StyledHiddenIconBox>
             <StyledIconStack>
               <StackOverflowIcon />

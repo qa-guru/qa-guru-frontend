@@ -1,22 +1,17 @@
-import React, { FC } from "react";
-import { Container, Stack, Typography, useMediaQuery } from "@mui/material";
+import { FC } from "react";
+import { Container, Typography, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { InputPhone, InputText } from "shared/components/form";
 import { UserUpdateInput } from "api/graphql/generated/graphql";
-import { useSnackbar } from "notistack";
 import { useTheme } from "@mui/system";
-import ImageIcon from "@mui/icons-material/Image";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { useSnackbar } from "notistack";
 
 import {
-  StyledAvatarButtonStack,
   StyledButtonStack,
   StyledCancelButton,
   StyledCloseIcon,
   StyledContainedButton,
-  StyledDeleteButton,
   StyledInfoStack,
   StyledInputStack,
   StyledPaper,
@@ -29,7 +24,6 @@ import AvatarUpload from "../avatar-upload";
 import { useAvatarDelete } from "../../hooks/use-avatar-delete";
 
 const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { deleteAvatar } = useAvatarDelete();
@@ -62,16 +56,16 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
       variables: {
         input: data,
       },
-    }).then((response) => {
-      if (response.data && response.data.updateUser) {
+      onCompleted: () => {
         navigate("/profile");
         enqueueSnackbar("Профиль обновлен", { variant: "success" });
-      } else {
+      },
+      onError: () => {
         enqueueSnackbar(
           "Не удалось обновить данные. Пожалуйста, попробуйте снова",
           { variant: "error" }
         );
-      }
+      },
     });
   };
 
@@ -95,31 +89,7 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
         <StyledPaperStack>
           <StyledPaper>
             <StyledWrapper>
-              <Stack direction="row">
-                <AvatarUpload user={user} hideIcons={isDownMd} />
-                {isDownMd && (
-                  <StyledAvatarButtonStack>
-                    {user?.avatar && (
-                      <StyledDeleteButton
-                        variant="contained"
-                        startIcon={<DeleteIcon fontSize="small" />}
-                        onClick={() => deleteAvatar()}
-                      >
-                        Удалить фото
-                      </StyledDeleteButton>
-                    )}
-                    <label htmlFor="icon-button-file">
-                      <StyledContainedButton
-                        variant="contained"
-                        component="span"
-                        startIcon={<ImageIcon fontSize="small" />}
-                      >
-                        Загрузить фото
-                      </StyledContainedButton>
-                    </label>
-                  </StyledAvatarButtonStack>
-                )}
-              </Stack>
+              <AvatarUpload user={user} edit />
               <StyledInfoStack>
                 <Typography variant="h3">Личная информация</Typography>
                 <StyledInputStack>
@@ -142,7 +112,7 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
                   <InputText
                     control={control}
                     name="email"
-                    placeholder={t("enter.email")}
+                    placeholder="Введите E-mail"
                     label="E-mail"
                     errors={errors}
                   />

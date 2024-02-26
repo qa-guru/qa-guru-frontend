@@ -12,15 +12,6 @@ export const StyledButtonStack = styled(Stack)(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export const StyledContainedButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.app.white,
-}));
-
-export const StyledDeleteButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.app.white,
-  width: "165px",
-}));
-
 export const StyledInput = styled("input")({
   display: "none",
 });
@@ -60,14 +51,6 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const StyledAvatarButtonStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "column",
-  gap: "20px",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "100%",
-}));
-
 export const StyledPaperStack = styled(Stack)({
   flexDirection: "column",
   gap: "30px",
@@ -86,4 +69,8 @@ export const StyledInputStack = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
   },
+}));
+
+export const StyledContainedButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.app.white,
 }));

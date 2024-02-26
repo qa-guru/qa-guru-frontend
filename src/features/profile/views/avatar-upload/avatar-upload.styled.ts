@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { Stack, styled } from "@mui/system";
 import { Box } from "@mui/material";
 
 export const StyledIconBox = styled(Box)(({ theme }) => ({
@@ -26,3 +26,11 @@ export const StyledIconButtonDelete = styled("span")(({ theme }) => ({
   cursor: "pointer",
   color: theme.palette.app.white,
 }));
+
+export const StyledAvatarButtonStack = styled(Stack)({
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "100%",
+});

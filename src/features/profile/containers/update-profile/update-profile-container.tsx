@@ -1,24 +1,15 @@
 import { FC } from "react";
 import { useUpdateUserMutation } from "api/graphql/generated/graphql";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 import EditProfile from "../../views/edit-profile";
 
 const UpdateProfileContainer: FC = () => {
-  const [updateUser, { loading, error }] = useUpdateUserMutation({
-    update: (cache, { data }) => {
-      const updateUser = data?.updateUser;
-      if (updateUser) {
-        cache.modify({
-          id: cache.identify(updateUser),
-          fields: {
-            input() {
-              return updateUser;
-            },
-          },
-        });
-      }
-    },
-  });
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [updateUser] = useUpdateUserMutation({});
 
   return <EditProfile updateUser={updateUser} />;
 };
