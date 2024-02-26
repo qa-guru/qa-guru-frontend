@@ -1,10 +1,9 @@
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
-import LocalSelector from "shared/components/local-selector/local-selector";
+import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledLoadingButton,
@@ -17,8 +16,6 @@ import {
 import { ISetNewPassword } from "./set-new-password.types";
 
 const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
-  const { t } = useTranslation();
-
   const {
     control,
     formState: { errors },
@@ -30,11 +27,11 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        newPassword: yup.string().required(t("password.required")),
+        newPassword: yup.string().required("Пароль обязательное поле"),
         confirmPassword: yup
           .string()
-          .oneOf([yup.ref("newPassword")], t("passwords.mismatch"))
-          .required(t("password.required")),
+          .oneOf([yup.ref("newPassword")], "Пароли не совпадают")
+          .required("Пароль обязательное поле"),
       })
     ),
   });
@@ -49,7 +46,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
@@ -58,15 +55,15 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
             <InputText
               control={control}
               name="newPassword"
-              placeholder={t("enter.password")}
-              label={t("password")}
+              placeholder="Введите пароль"
+              label="Пароль"
               type="password"
               errors={errors}
             />
             <InputText
               control={control}
               name="confirmPassword"
-              placeholder={t("password.confirm")}
+              placeholder="Повторите пароль"
               label="Повторите пароль"
               type="password"
               errors={errors}

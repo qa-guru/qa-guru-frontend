@@ -1,12 +1,11 @@
 import { FC, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/local-selector";
-import { UserCreateInput } from "api/graphql/generated/graphql";
+import { Scalars, UserCreateInput } from "api/graphql/generated/graphql";
 import { InputPhone, InputText } from "shared/components/form";
+import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledBottomStack,
@@ -21,10 +20,13 @@ import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
 import { StyledScreenBox, StyledWrapper } from "./signup.styled";
 
+interface UserCreateInputCustom extends UserCreateInput {
+  confirmPassword: Scalars["String"];
+}
+
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const {
     handleSubmit,
@@ -38,36 +40,36 @@ const Signup: FC<ISignUp> = (props) => {
       email: "",
       password: "",
       phoneNumber: "",
-      confirmPassword: "",
     },
     resolver: yupResolver(
       yup.object().shape({
-        firstName: yup.string().required(t("firstName.required")),
-        lastName: yup.string().required(t("lastName.required")),
-        email: yup.string().required(t("email.required")),
+        firstName: yup.string().required("Имя обязательное поле"),
+        lastName: yup.string().required("Фамилия обязательное поле"),
+        email: yup.string().required("E-mail обязательное поле"),
         password: yup
           .string()
-          .min(REQUIRED_SYMBOLS.MIN, t("password.required.min"))
-          .max(REQUIRED_SYMBOLS.MAX, t("password.required.max"))
-          .required(t("password.required")),
+          .min(REQUIRED_SYMBOLS.MIN, "Должно быть больше 8 символов")
+          .required("Пароль обязательное поле"),
         confirmPassword: yup
           .string()
-          .oneOf([yup.ref("password")], t("passwords.mismatch"))
-          .required(t("password.required")),
-        phoneNumber: yup.string().required(t("phone.required")),
+          .oneOf([yup.ref("password")], "Пароли не совпадают")
+          .required("Пароль обязательное поле"),
+        phoneNumber: yup.string().required("Телефон обязательное поле"),
       })
     ),
   });
+
+  const passwordsMatch = getValues("password") === getValues("confirmPassword");
 
   const routeLogin = () => {
     navigate(ROUTES.AUTHORIZATION);
   };
 
-  const passwordsMatch = getValues("password");
+  const onSubmit: SubmitHandler<UserCreateInputCustom> = (data) => {
+    const { confirmPassword, ...submitData } = data;
 
-  const onSubmit: SubmitHandler<UserCreateInput> = (data) => {
     if (passwordsMatch) {
-      signup(data);
+      signup(submitData);
     }
   };
 
@@ -88,7 +90,7 @@ const Signup: FC<ISignUp> = (props) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledScreenBox>
         <StyledLogo />
@@ -99,20 +101,20 @@ const Signup: FC<ISignUp> = (props) => {
                 control={control}
                 name="firstName"
                 placeholder="Введите ваше имя"
-                label={t("firstName")}
+                label="Имя"
                 errors={errors}
               />
               <InputText
                 control={control}
                 name="lastName"
                 placeholder="Введите фамилию"
-                label={t("lastName")}
+                label="Фамилия"
                 errors={errors}
               />
               <InputText
                 control={control}
                 name="email"
-                placeholder={t("enter.email")}
+                placeholder="Введите E-mail"
                 label="E-mail"
                 errors={errors}
               />
@@ -126,15 +128,15 @@ const Signup: FC<ISignUp> = (props) => {
               <InputText
                 control={control}
                 name="password"
-                placeholder={t("enter.password")}
-                label={t("password")}
+                placeholder="Введите пароль"
+                label="Пароль"
                 type="password"
                 errors={errors}
               />
               <InputText
                 control={control}
                 name="confirmPassword"
-                placeholder={t("password.confirm")}
+                placeholder="Повторите пароль"
                 label="Повторите пароль"
                 type="password"
                 errors={errors}
@@ -144,13 +146,13 @@ const Signup: FC<ISignUp> = (props) => {
                 loading={isLoading}
                 variant="contained"
               >
-                {t("registration")}
+                Зарегистрироваться
               </StyledLoadingButton>
             </StyledStack>
           </form>
           <StyledBottomStack>
             <StyledButton variant="text" onClick={routeLogin}>
-              {t("auth.route")}
+              Вход
             </StyledButton>
           </StyledBottomStack>
         </StyledPaper>

@@ -5,7 +5,6 @@ export const RESPONSE_STATUS = {
 
 export const REQUIRED_SYMBOLS = {
   MIN: 8,
-  MAX: 15,
 };
 
 export const ROUTES = {

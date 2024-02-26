@@ -2,11 +2,10 @@ import { FC, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
-import { useTranslation } from "react-i18next";
 import { InputText } from "shared/components/form";
 import { useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/local-selector/local-selector";
-import { Brightness4, Brightness7 } from "@mui/icons-material";
+import useSettings from "shared/hooks/use-settings";
+import ThemeSelector from "shared/components/theme-selector";
 
 import { ILogin, ILoginForm } from "./login.types";
 import {
@@ -20,12 +19,9 @@ import {
   StyledLocalSelectorWrapper,
 } from "../views.styled";
 import { ROUTES } from "../../constants";
-import { StyledIconButton } from "../../../../widgets/header/header.styled";
-import useSettings from "../../../../shared/hooks/use-settings";
 
 const Login: FC<ILogin> = (props) => {
   const { isLoading, login } = props;
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const { settings, toggleTheme } = useSettings();
 
@@ -48,8 +44,8 @@ const Login: FC<ILogin> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().required(t("email.required")),
-        password: yup.string().required(t("password.required")),
+        username: yup.string().required("E-mail обязательное поле"),
+        password: yup.string().required("Пароль обязательное поле"),
       })
     ),
   });
@@ -75,14 +71,7 @@ const Login: FC<ILogin> = (props) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <StyledIconButton onClick={toggleTheme}>
-          {settings.theme === "light" ? (
-            <Brightness7 color="primary" />
-          ) : (
-            <Brightness4 color="primary" />
-          )}
-        </StyledIconButton>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
@@ -91,15 +80,15 @@ const Login: FC<ILogin> = (props) => {
             <InputText
               control={control}
               name="username"
-              placeholder={t("enter.email")}
+              placeholder="Введите E-mail"
               label="E-mail"
               errors={errors}
             />
             <InputText
               control={control}
               name="password"
-              placeholder={t("enter.password")}
-              label={t("password")}
+              placeholder="Введите пароль"
+              label="Пароль"
               type="password"
               autoComplete="current-password"
               errors={errors}
@@ -109,16 +98,16 @@ const Login: FC<ILogin> = (props) => {
               loading={isLoading}
               variant="contained"
             >
-              {t("login")}
+              Войти
             </StyledLoadingButton>
           </StyledStack>
         </form>
         <StyledBottomStack>
           <StyledButton variant="text" onClick={roureReset}>
-            {t("restore")}
+            Восстановить пароль
           </StyledButton>
           <StyledButton variant="text" onClick={routeRegister}>
-            {t("reg.route")}
+            Регистрация
           </StyledButton>
         </StyledBottomStack>
       </StyledPaper>

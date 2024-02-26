@@ -2,7 +2,6 @@ import UserRow from "shared/components/user-row";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useTranslation } from "react-i18next";
 import { FC } from "react";
 import { InputText } from "shared/components/form";
 
@@ -21,7 +20,6 @@ interface IAnswerCommentForm {
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, id, dataUser, onReplySuccess } = props;
-  const { t } = useTranslation();
 
   const {
     handleSubmit,
@@ -34,7 +32,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        content: yup.string().required(t("comment")),
+        content: yup.string().required("Комментарий не должен быть пустым"),
       })
     ),
   });

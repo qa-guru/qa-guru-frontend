@@ -1,11 +1,10 @@
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { InputText } from "shared/components/form";
-import LocalSelector from "shared/components/local-selector/local-selector";
 import { useNavigate } from "react-router-dom";
+import ThemeSelector from "shared/components/theme-selector";
 
 import { IResetForm, IResetPassword } from "./reset-password.types";
 import {
@@ -21,7 +20,6 @@ import {
 import { ROUTES } from "../../constants";
 
 const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const {
@@ -34,7 +32,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().email().required(t("email.required")),
+        username: yup.string().email().required("E-mail обязательное поле"),
       })
     ),
   });
@@ -50,7 +48,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
@@ -59,7 +57,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
             <InputText
               control={control}
               name="username"
-              placeholder={t("enter.email")}
+              placeholder="Введите E-mail"
               label="E-mail"
               errors={errors}
             />
@@ -73,7 +71,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
           </StyledStack>
           <StyledBottomStack>
             <StyledButton variant="text" onClick={routeLogin}>
-              {t("auth.route")}
+              Вход
             </StyledButton>
           </StyledBottomStack>
         </form>
