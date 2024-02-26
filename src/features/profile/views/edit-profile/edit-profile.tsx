@@ -1,150 +1,171 @@
 import { FC } from "react";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Container, Typography, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { InputChip, InputPhone, InputText } from "shared/components/form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { InputPhone, InputText } from "shared/components/form";
+import { UserUpdateInput } from "api/graphql/generated/graphql";
+import { useTheme } from "@mui/system";
+import { useSnackbar } from "notistack";
 
-import { IEditProfile, IEditProfileForm, skills } from "./edit-profile.types";
-import AvatarUpload from "../avatar-upload";
 import {
-  StyledIcon,
+  StyledButtonStack,
+  StyledCancelButton,
+  StyledCloseIcon,
+  StyledContainedButton,
+  StyledInfoStack,
+  StyledInputStack,
   StyledPaper,
-  StyledRouteButton,
+  StyledPaperStack,
+  StyledSubmitIcon,
+  StyledWrapper,
 } from "./edit-profile.styled";
+import { IEditProfile } from "./edit-profile.types";
+import AvatarUpload from "../avatar-upload";
+import { useAvatarDelete } from "../../hooks/use-avatar-delete";
 
-const EditProfile: FC<IEditProfile> = ({ user }) => {
+const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
+  const { deleteAvatar } = useAvatarDelete();
+  const theme = useTheme();
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+
   const routeProfile = () => navigate("/profile");
 
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<IEditProfileForm>({
+  } = useForm({
     defaultValues: {
-      firstName: user?.firstName,
-      lastName: user?.lastName,
-      email: user?.email,
-      phoneNumber: user?.phoneNumber,
-      git: user?.git,
-      telegram: user?.telegram,
-      stackOverflow: user?.stackOverflow,
-      linkedin: user?.linkedin,
+      id: user?.id,
+      firstName: user?.firstName || "",
+      lastName: user?.lastName || "",
+      email: user?.email || "",
+      phoneNumber: user?.phoneNumber || "",
+      git: user?.git || "",
+      telegram: user?.telegram || "",
+      stackOverflow: user?.stackOverflow || "",
+      linkedin: user?.linkedin || "",
       skills: [],
     },
   });
 
+  const onSubmit: SubmitHandler<UserUpdateInput> = (data) => {
+    updateUser({
+      variables: {
+        input: data,
+      },
+      onCompleted: () => {
+        navigate("/profile");
+        enqueueSnackbar("Профиль обновлен", { variant: "success" });
+      },
+      onError: () => {
+        enqueueSnackbar(
+          "Не удалось обновить данные. Пожалуйста, попробуйте снова",
+          { variant: "error" }
+        );
+      },
+    });
+  };
+
   return (
     <Container>
-      <StyledRouteButton
-        variant="outlined"
-        color="primary"
-        onClick={routeProfile}
-      >
-        <StyledIcon />
-        Назад
-      </StyledRouteButton>
-      <Stack direction="column" width="100%" spacing="30px" mb="30px">
-        <StyledPaper>
-          <Stack direction="row">
-            <AvatarUpload user={user} />
-            <Stack
-              direction="column"
-              width="100%"
-              padding="0 15px"
-              spacing="20px"
-            >
-              <Typography variant="h3">Личная информация</Typography>
-              <Stack direction="row" spacing="30px">
-                <InputText
-                  control={control}
-                  name="firstName"
-                  placeholder="Введите ваше имя"
-                  label="Имя"
-                  errors={errors}
-                />
-                <InputText
-                  control={control}
-                  name="lastName"
-                  placeholder="Введите фамилию"
-                  label="lastName"
-                  errors={errors}
-                />
-              </Stack>
-              <Stack direction="row" spacing="30px">
-                <InputText
-                  control={control}
-                  name="email"
-                  placeholder="Введите E-mail"
-                  label="E-mail"
-                  errors={errors}
-                />
-                <InputPhone
-                  control={control}
-                  name="phoneNumber"
-                  placeholder="(555) 555-5555"
-                  label="Phone"
-                  errors={errors}
-                />
-              </Stack>
-            </Stack>
-          </Stack>
-        </StyledPaper>
-        <StyledPaper>
-          <Stack
-            direction="column"
-            width="100%"
-            paddingRight="15px"
-            spacing="20px"
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <StyledButtonStack>
+          <StyledCancelButton
+            variant="contained"
+            color="secondary"
+            onClick={routeProfile}
           >
-            <Typography variant="h3">Мои ссылки</Typography>
-            <Stack direction="row" spacing="30px">
-              <InputText
-                control={control}
-                name="stackOverflow"
-                placeholder="Cсылка на stack overflow"
-                label="Stack overflow"
-                errors={errors}
-              />
-              <InputText
-                control={control}
-                name="git"
-                placeholder="Cсылка на gitHub"
-                label="GitHub"
-                errors={errors}
-              />
-            </Stack>
-            <Stack direction="row" spacing="30px">
-              <InputText
-                control={control}
-                name="linkedIn"
-                placeholder="Cсылка на linkedIn"
-                label="LinkedIn"
-                errors={errors}
-              />
-              <InputText
-                control={control}
-                name="telegram"
-                placeholder="Cсылка на telegram"
-                label="Telegram"
-                errors={errors}
-              />
-            </Stack>
-          </Stack>
-        </StyledPaper>
-        <StyledPaper>
-          <Typography variant="h3">Ключевые навыки</Typography>
-          <Box sx={{ marginTop: "20px" }}>
-            <InputChip
-              control={control}
-              name="skills"
-              size="medium"
-              options={skills}
-              onDelete={() => {}}
-            />
-          </Box>
-        </StyledPaper>
-      </Stack>
+            <StyledCloseIcon fontSize="small" />
+            Отмена
+          </StyledCancelButton>
+          <StyledContainedButton type="submit" variant="contained">
+            <StyledSubmitIcon fontSize="small" />
+            Сохранить
+          </StyledContainedButton>
+        </StyledButtonStack>
+        <StyledPaperStack>
+          <StyledPaper>
+            <StyledWrapper>
+              <AvatarUpload user={user} edit />
+              <StyledInfoStack>
+                <Typography variant="h3">Личная информация</Typography>
+                <StyledInputStack>
+                  <InputText
+                    control={control}
+                    name="firstName"
+                    placeholder="Введите ваше имя"
+                    label="Имя"
+                    errors={errors}
+                  />
+                  <InputText
+                    control={control}
+                    name="lastName"
+                    placeholder="Введите фамилию"
+                    label="Фамилия"
+                    errors={errors}
+                  />
+                </StyledInputStack>
+                <StyledInputStack>
+                  <InputText
+                    control={control}
+                    name="email"
+                    placeholder="Введите E-mail"
+                    label="E-mail"
+                    errors={errors}
+                  />
+                  <InputPhone
+                    control={control}
+                    name="phoneNumber"
+                    placeholder="+7 (555) 555-55-55"
+                    label="Телефон"
+                    errors={errors}
+                  />
+                </StyledInputStack>
+              </StyledInfoStack>
+            </StyledWrapper>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Мои ссылки</Typography>
+              <StyledInputStack>
+                <InputText
+                  control={control}
+                  name="stackOverflow"
+                  placeholder="Cсылка на stack overflow"
+                  label="Stack overflow"
+                  errors={errors}
+                />
+                <InputText
+                  control={control}
+                  name="git"
+                  placeholder="Cсылка на gitHub"
+                  label="GitHub"
+                  errors={errors}
+                />
+              </StyledInputStack>
+              <StyledInputStack>
+                <InputText
+                  control={control}
+                  name="linkedIn"
+                  placeholder="Cсылка на linkedIn"
+                  label="LinkedIn"
+                  errors={errors}
+                />
+                <InputText
+                  control={control}
+                  name="telegram"
+                  placeholder="Cсылка на telegram"
+                  label="Telegram"
+                  errors={errors}
+                />
+              </StyledInputStack>
+            </StyledInfoStack>
+          </StyledPaper>
+        </StyledPaperStack>
+      </form>
     </Container>
   );
 };
