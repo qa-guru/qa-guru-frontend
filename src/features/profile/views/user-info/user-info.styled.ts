@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Paper, Stack } from "@mui/material";
+import { Box, Link, Paper, Stack } from "@mui/material";
 
 export const StyledPaper = styled(Paper)({
   padding: "24px",
@@ -44,3 +44,9 @@ export const StyledIconStack = styled(Stack)(({ theme }) => ({
     gap: "8px",
   },
 }));
+
+export const StyledLink = styled(Link)({
+  display: "flex",
+  justifyContent: "center",
+  textDecoration: "none",
+});
