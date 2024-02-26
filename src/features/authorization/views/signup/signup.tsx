@@ -3,9 +3,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/local-selector";
 import { Scalars, UserCreateInput } from "api/graphql/generated/graphql";
 import { InputPhone, InputText } from "shared/components/form";
+import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledBottomStack,
@@ -49,11 +49,11 @@ const Signup: FC<ISignUp> = (props) => {
         password: yup
           .string()
           .min(REQUIRED_SYMBOLS.MIN, "Должно быть больше 8 символов")
-          .required("password.required"),
+          .required("Пароль обязательное поле"),
         confirmPassword: yup
           .string()
           .oneOf([yup.ref("password")], "Пароли не совпадают")
-          .required("password.required"),
+          .required("Пароль обязательное поле"),
         phoneNumber: yup.string().required("Телефон обязательное поле"),
       })
     ),
@@ -90,7 +90,7 @@ const Signup: FC<ISignUp> = (props) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledScreenBox>
         <StyledLogo />

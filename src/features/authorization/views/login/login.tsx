@@ -4,8 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { InputText } from "shared/components/form";
 import { useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/local-selector/local-selector";
-import { Brightness4, Brightness7 } from "@mui/icons-material";
+import useSettings from "shared/hooks/use-settings";
+import ThemeSelector from "shared/components/theme-selector";
 
 import { ILogin, ILoginForm } from "./login.types";
 import {
@@ -19,8 +19,6 @@ import {
   StyledLocalSelectorWrapper,
 } from "../views.styled";
 import { ROUTES } from "../../constants";
-import { StyledIconButton } from "../../../../widgets/header/header.styled";
-import useSettings from "../../../../shared/hooks/use-settings";
 
 const Login: FC<ILogin> = (props) => {
   const { isLoading, login } = props;
@@ -73,14 +71,7 @@ const Login: FC<ILogin> = (props) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <StyledIconButton onClick={toggleTheme}>
-          {settings.theme === "light" ? (
-            <Brightness7 color="primary" />
-          ) : (
-            <Brightness4 color="primary" />
-          )}
-        </StyledIconButton>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
