@@ -36,9 +36,8 @@ const components = (theme: Theme) => {
     MuiButton: {
       styleOverrides: {
         root: {
-          fontSize: "0.72rem",
+          fontSize: "0.7rem",
           width: "fit-content",
-          padding: "6px 16px",
         },
       },
     },

@@ -1,15 +1,8 @@
 import { styled } from "@mui/system";
 import { Box } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
 
 export const StyledIconBox = styled(Box)(({ theme }) => ({
   position: "relative",
-}));
-
-export const StyledPersonIcon = styled(PersonIcon)(({ theme }) => ({
-  width: "20vw",
-  height: "20vw",
-  color: theme.palette.app.white,
 }));
 
 export const StyledIconButton = styled("span")(({ theme }) => ({

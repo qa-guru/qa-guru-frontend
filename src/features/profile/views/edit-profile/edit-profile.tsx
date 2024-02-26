@@ -1,28 +1,41 @@
-import { FC } from "react";
-import { Container, Stack, Typography } from "@mui/material";
+import React, { FC } from "react";
+import { Container, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { InputPhone, InputText } from "shared/components/form";
 import { UserUpdateInput } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
+import { useTheme } from "@mui/system";
 
+import ImageIcon from "@mui/icons-material/Image";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
-  StyledCancelButton,
-  StyledSubmitButton,
-  StyledPaper,
+  StyledAvatarButtonStack,
   StyledButtonStack,
+  StyledCancelButton,
   StyledCloseIcon,
+  StyledContainedButton,
+  StyledDeleteButton,
+  StyledInfoStack,
+  StyledInputStack,
+  StyledPaper,
+  StyledPaperStack,
   StyledSubmitIcon,
+  StyledWrapper,
 } from "./edit-profile.styled";
 import { IEditProfile } from "./edit-profile.types";
 import AvatarUpload from "../avatar-upload";
-import { RESPONSE_STATUS } from "../../../authorization/constants";
+import { useAvatarDelete } from "../../hooks/use-avatar-delete";
 
 const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const { deleteAvatar } = useAvatarDelete();
+  const theme = useTheme();
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+
   const routeProfile = () => navigate("/profile");
 
   const {
@@ -42,18 +55,6 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
       linkedin: user?.linkedin || "",
       skills: [],
     },
-    // resolver: yupResolver(
-    //   yup.object().shape({
-    //     firstName: yup.string().required(t("firstName.required")),
-    //     lastName: yup.string().required(t("lastName.required")),
-    //     email: yup.string().required(t("email.required")),
-    //     phoneNumber: yup.string().required(t("phone.required")),
-    //     git: yup.string(),
-    //     telegram: yup.string(),
-    //     stackOverflow: yup.string(),
-    //     linkedin: yup.string()
-    //   })
-    // ),
   });
 
   const onSubmit: SubmitHandler<UserUpdateInput> = (data) => {
@@ -86,23 +87,42 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
             <StyledCloseIcon fontSize="small" />
             Отмена
           </StyledCancelButton>
-          <StyledSubmitButton type="submit" variant="contained">
+          <StyledContainedButton type="submit" variant="contained">
             <StyledSubmitIcon fontSize="small" />
             Сохранить
-          </StyledSubmitButton>
+          </StyledContainedButton>
         </StyledButtonStack>
-        <Stack direction="column" width="100%" spacing="30px" mb="30px">
+        <StyledPaperStack>
           <StyledPaper>
-            <Stack direction="row">
-              <AvatarUpload user={user} />
-              <Stack
-                direction="column"
-                width="100%"
-                padding="0 15px"
-                spacing="20px"
-              >
+            <StyledWrapper>
+              <Stack direction="row">
+                <AvatarUpload user={user} hideIcons={isDownMd} />
+                {isDownMd && (
+                  <StyledAvatarButtonStack>
+                    {user?.avatar && (
+                      <StyledDeleteButton
+                        variant="contained"
+                        startIcon={<DeleteIcon fontSize="small" />}
+                        onClick={() => deleteAvatar()}
+                      >
+                        Удалить фото
+                      </StyledDeleteButton>
+                    )}
+                    <label htmlFor="icon-button-file">
+                      <StyledContainedButton
+                        variant="contained"
+                        component="span"
+                        startIcon={<ImageIcon fontSize="small" />}
+                      >
+                        Загрузить фото
+                      </StyledContainedButton>
+                    </label>
+                  </StyledAvatarButtonStack>
+                )}
+              </Stack>
+              <StyledInfoStack>
                 <Typography variant="h3">Личная информация</Typography>
-                <Stack direction="row" spacing="30px">
+                <StyledInputStack>
                   <InputText
                     control={control}
                     name="firstName"
@@ -117,8 +137,8 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
                     label="Фамилия"
                     errors={errors}
                   />
-                </Stack>
-                <Stack direction="row" spacing="30px">
+                </StyledInputStack>
+                <StyledInputStack>
                   <InputText
                     control={control}
                     name="email"
@@ -133,19 +153,14 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
                     label="Телефон"
                     errors={errors}
                   />
-                </Stack>
-              </Stack>
-            </Stack>
+                </StyledInputStack>
+              </StyledInfoStack>
+            </StyledWrapper>
           </StyledPaper>
           <StyledPaper>
-            <Stack
-              direction="column"
-              width="100%"
-              paddingRight="15px"
-              spacing="20px"
-            >
+            <StyledInfoStack>
               <Typography variant="h3">Мои ссылки</Typography>
-              <Stack direction="row" spacing="30px">
+              <StyledInputStack>
                 <InputText
                   control={control}
                   name="stackOverflow"
@@ -160,8 +175,8 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
                   label="GitHub"
                   errors={errors}
                 />
-              </Stack>
-              <Stack direction="row" spacing="30px">
+              </StyledInputStack>
+              <StyledInputStack>
                 <InputText
                   control={control}
                   name="linkedIn"
@@ -176,10 +191,10 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
                   label="Telegram"
                   errors={errors}
                 />
-              </Stack>
-            </Stack>
+              </StyledInputStack>
+            </StyledInfoStack>
           </StyledPaper>
-        </Stack>
+        </StyledPaperStack>
       </form>
     </Container>
   );

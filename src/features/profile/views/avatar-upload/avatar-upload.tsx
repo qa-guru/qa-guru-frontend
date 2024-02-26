@@ -14,7 +14,7 @@ import {
   VisuallyHiddenInput,
 } from "./avatar-upload.styled";
 
-const AvatarUpload: FC<IAvatarUpload> = ({ user }) => {
+const AvatarUpload: FC<IAvatarUpload> = ({ user, hideIcons }) => {
   const { uploadAvatar, uploading } = useAvatarUpload();
   const { deleteAvatar, deleting } = useAvatarDelete();
 
@@ -41,18 +41,22 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user }) => {
         <AvatarCustom
           img={user?.avatar}
           fullName={fullName}
-          width={250}
-          height={250}
+          width={{ xs: "100px", sm: "290px", md: "240px" }}
+          height={{ xs: "100px", sm: "290px", md: "240px" }}
         />
-        <label htmlFor="icon-button-file">
-          <StyledIconButton>
-            {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
-          </StyledIconButton>
-        </label>
-        {user?.avatar && (
-          <StyledIconButtonDelete onClick={handleDeleteAvatar}>
-            {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
-          </StyledIconButtonDelete>
+        {!hideIcons && (
+          <>
+            <label htmlFor="icon-button-file">
+              <StyledIconButton>
+                {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
+              </StyledIconButton>
+            </label>
+            {user?.avatar && (
+              <StyledIconButtonDelete onClick={handleDeleteAvatar}>
+                {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
+              </StyledIconButtonDelete>
+            )}
+          </>
         )}
       </StyledIconBox>
     </>
