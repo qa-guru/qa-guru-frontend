@@ -12,7 +12,6 @@ import { FC, ReactNode, createContext, useContext, useState } from "react";
 import { client } from "api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { useTranslation } from "react-i18next";
 import Spinner from "shared/components/spinner";
 
 import { RESPONSE_STATUS, ROUTES } from "../constants";
@@ -60,7 +59,6 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const { t } = useTranslation();
   const location = useLocation();
 
   const [resetPasswordFn] = useResetPasswordMutation();
@@ -92,16 +90,18 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
           navigate(ROUTES.HOME);
         } else {
           setIsLoading(false);
-          enqueueSnackbar(t("login.unknownError"));
+          enqueueSnackbar("Не удалось войти");
         }
       })
       .catch((error) => {
         if (error.response?.data.status === RESPONSE_STATUS.UNAUTHORIZED) {
           setIsLoading(false);
-          enqueueSnackbar(t("login.unauthorized"));
+          enqueueSnackbar(
+            "Не удалось войти. Пользователь не существует или пароль неверный"
+          );
         } else {
           setIsLoading(false);
-          enqueueSnackbar(t("login.unknownError"));
+          enqueueSnackbar("Не удалось войти");
         }
       });
   };
@@ -117,12 +117,12 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
           navigate(ROUTES.AUTHORIZATION);
         } else {
           setIsLoading(false);
-          enqueueSnackbar(t("logout.unknownError"));
+          enqueueSnackbar("Не удалось выйти");
         }
       })
       .catch(() => {
         setIsLoading(false);
-        enqueueSnackbar(t("logout.unknownError"));
+        enqueueSnackbar("Не удалось выйти");
       });
   };
 
@@ -142,7 +142,9 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
         error.graphQLErrors.forEach(({ message }) => {
           setIsLoading(false);
           const email = message.split(" ").reverse()[0].replace(/['"]+/g, "");
-          enqueueSnackbar(t("create.user", { email }));
+          enqueueSnackbar(
+            `Пользователь уже существует с электронной почтой, ${email}`
+          );
         }),
     });
   };

@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
 import { InputChip, InputPhone, InputText } from "shared/components/form";
 
 import { IEditProfile, IEditProfileForm, skills } from "./edit-profile.types";
@@ -14,7 +13,6 @@ import {
 } from "./edit-profile.styled";
 
 const EditProfile: FC<IEditProfile> = ({ user }) => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const routeProfile = () => navigate("/profile");
 
@@ -34,14 +32,6 @@ const EditProfile: FC<IEditProfile> = ({ user }) => {
       linkedin: user?.linkedin,
       skills: [],
     },
-    // resolver: yupResolver(
-    //   yup.object().shape({
-    //     firstName: yup.string().required(t("firstName.required")),
-    //     lastName: yup.string().required(t("lastName.required")),
-    //     email: yup.string().required(t("email.required")),
-    //     phoneNumber: yup.string().required(t("phone.required")),
-    //   })
-    // ),
   });
 
   return (
@@ -70,14 +60,14 @@ const EditProfile: FC<IEditProfile> = ({ user }) => {
                   control={control}
                   name="firstName"
                   placeholder="Введите ваше имя"
-                  label={t("firstName")}
+                  label="Имя"
                   errors={errors}
                 />
                 <InputText
                   control={control}
                   name="lastName"
                   placeholder="Введите фамилию"
-                  label={t("lastName")}
+                  label="lastName"
                   errors={errors}
                 />
               </Stack>
@@ -85,7 +75,7 @@ const EditProfile: FC<IEditProfile> = ({ user }) => {
                 <InputText
                   control={control}
                   name="email"
-                  placeholder={t("enter.email")}
+                  placeholder="Введите E-mail"
                   label="E-mail"
                   errors={errors}
                 />

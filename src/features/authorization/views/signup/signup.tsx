@@ -1,5 +1,4 @@
 import { FC, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -28,7 +27,6 @@ interface UserCreateInputCustom extends UserCreateInput {
 const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   const {
     handleSubmit,
@@ -45,18 +43,18 @@ const Signup: FC<ISignUp> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        firstName: yup.string().required(t("firstName.required")),
-        lastName: yup.string().required(t("lastName.required")),
-        email: yup.string().required(t("email.required")),
+        firstName: yup.string().required("Имя обязательное поле"),
+        lastName: yup.string().required("Фамилия обязательное поле"),
+        email: yup.string().required("E-mail обязательное поле"),
         password: yup
           .string()
-          .min(REQUIRED_SYMBOLS.MIN, t("password.required.min"))
-          .required(t("password.required")),
+          .min(REQUIRED_SYMBOLS.MIN, "Должно быть больше 8 символов")
+          .required("password.required"),
         confirmPassword: yup
           .string()
-          .oneOf([yup.ref("password")], t("passwords.mismatch"))
-          .required(t("password.required")),
-        phoneNumber: yup.string().required(t("phone.required")),
+          .oneOf([yup.ref("password")], "Пароли не совпадают")
+          .required("password.required"),
+        phoneNumber: yup.string().required("Телефон обязательное поле"),
       })
     ),
   });
@@ -103,20 +101,20 @@ const Signup: FC<ISignUp> = (props) => {
                 control={control}
                 name="firstName"
                 placeholder="Введите ваше имя"
-                label={t("firstName")}
+                label="Имя"
                 errors={errors}
               />
               <InputText
                 control={control}
                 name="lastName"
                 placeholder="Введите фамилию"
-                label={t("lastName")}
+                label="Фамилия"
                 errors={errors}
               />
               <InputText
                 control={control}
                 name="email"
-                placeholder={t("enter.email")}
+                placeholder="Введите E-mail"
                 label="E-mail"
                 errors={errors}
               />
@@ -130,15 +128,15 @@ const Signup: FC<ISignUp> = (props) => {
               <InputText
                 control={control}
                 name="password"
-                placeholder={t("enter.password")}
-                label={t("password")}
+                placeholder="Введите пароль"
+                label="Пароль"
                 type="password"
                 errors={errors}
               />
               <InputText
                 control={control}
                 name="confirmPassword"
-                placeholder={t("password.confirm")}
+                placeholder="Повторите пароль"
                 label="Повторите пароль"
                 type="password"
                 errors={errors}
@@ -148,13 +146,13 @@ const Signup: FC<ISignUp> = (props) => {
                 loading={isLoading}
                 variant="contained"
               >
-                {t("registration")}
+                Зарегистрироваться
               </StyledLoadingButton>
             </StyledStack>
           </form>
           <StyledBottomStack>
             <StyledButton variant="text" onClick={routeLogin}>
-              {t("auth.route")}
+              Вход
             </StyledButton>
           </StyledBottomStack>
         </StyledPaper>
