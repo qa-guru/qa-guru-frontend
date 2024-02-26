@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
-import LocalSelector from "shared/components/local-selector/local-selector";
+import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledLoadingButton,
@@ -46,7 +46,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>

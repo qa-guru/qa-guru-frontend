@@ -59,16 +59,6 @@ export const StyledDarkLogo = styled(DarkLogo)(({ theme }) => ({
   },
 }));
 
-export const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  "&:hover": {
-    backgroundColor: "transparent",
-  },
-  "& .MuiSelect-select:focus": {
-    backgroundColor: "transparent",
-  },
-  padding: 0,
-}));
-
 export const StyledSelectorBox = styled(Box)(({ theme }) => ({
   stroke: theme.palette.app.white,
 }));

@@ -4,8 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
-import { t } from "i18next";
-import LocalSelector from "shared/components/local-selector/local-selector";
+import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledLoadingButton,
@@ -28,7 +27,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        token: yup.string().required(t("token.required")),
+        token: yup.string().required("Токен обязательное поле"),
       })
     ),
   });
@@ -40,7 +39,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>

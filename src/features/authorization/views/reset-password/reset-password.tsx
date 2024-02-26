@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { InputText } from "shared/components/form";
-import LocalSelector from "shared/components/local-selector/local-selector";
 import { useNavigate } from "react-router-dom";
+import ThemeSelector from "shared/components/theme-selector";
 
 import { IResetForm, IResetPassword } from "./reset-password.types";
 import {
@@ -48,7 +48,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
   return (
     <StyledWrapper>
       <StyledLocalSelectorWrapper>
-        <LocalSelector />
+        <ThemeSelector />
       </StyledLocalSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
