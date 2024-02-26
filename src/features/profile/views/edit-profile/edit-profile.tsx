@@ -7,9 +7,9 @@ import { InputPhone, InputText } from "shared/components/form";
 import { UserUpdateInput } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
 import { useTheme } from "@mui/system";
-
 import ImageIcon from "@mui/icons-material/Image";
 import DeleteIcon from "@mui/icons-material/Delete";
+
 import {
   StyledAvatarButtonStack,
   StyledButtonStack,
