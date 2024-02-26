@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import {
   Dialog,
   DialogActions,
@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { useTranslation } from "react-i18next";
 import { useModal } from "react-modal-hook";
 
 import { ILogout } from "./logout.types";
@@ -23,12 +22,11 @@ import {
 
 const Logout: FC<ILogout> = (props) => {
   const { logout, setAnchorElUser } = props;
-  const { t } = useTranslation();
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal}>
       <StyledWrapper>
         <StyledDialogContent>
-          <Typography variant="h4">{t("logout.confirm")}</Typography>
+          <Typography variant="h4">"Вы действительно хотите выйти?"</Typography>
         </StyledDialogContent>
         <DialogActions>
           <StyledStack>
@@ -37,10 +35,10 @@ const Logout: FC<ILogout> = (props) => {
               variant="contained"
               onClick={handleCancel}
             >
-              {t("no")}
+              нет
             </StyledCancelButton>
             <StyledButton variant="contained" onClick={handleOk}>
-              {t("yes")}
+              да
             </StyledButton>
           </StyledStack>
         </DialogActions>

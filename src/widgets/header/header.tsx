@@ -1,8 +1,6 @@
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LocalSelector from "shared/components/local-selector";
 import useRoleAccess from "shared/hooks/use-role-access";
-import { useTranslation } from "react-i18next";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 
@@ -18,7 +16,6 @@ import {
   StyledLogo,
   StyledLogoIconButton,
   StyledPaper,
-  StyledSelectorBox,
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
@@ -33,7 +30,6 @@ interface IPages {
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
   const navigate = useNavigate();
-  const { t } = useTranslation();
   const pages: IPages[] = [];
   const { settings, toggleTheme } = useSettings();
 
@@ -49,7 +45,7 @@ const Header: FC = () => {
 
   if (hasHomeAccess) {
     pages.push({
-      title: <StyledLink to="/">{t("page.home")}</StyledLink>,
+      title: <StyledLink to="/">Главная</StyledLink>,
       pageURL: "/",
       id: 0,
     });
@@ -57,14 +53,14 @@ const Header: FC = () => {
 
   if (hasKanbanAccess) {
     pages.push({
-      title: <StyledLink to="/kanban">{t("page.board")}</StyledLink>,
+      title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
       pageURL: "/kanban",
       id: 1,
     });
   }
 
   pages.push({
-    title: <StyledLink to="/users">{t("page.top")}</StyledLink>,
+    title: <StyledLink to="/users">Топ 50</StyledLink>,
     pageURL: "/users",
     id: 2,
   });
@@ -107,13 +103,13 @@ const Header: FC = () => {
                 <Brightness4 color="primary" />
               )}
             </StyledIconButton>
-            {settings.theme === "light" ? (
+            {/* {settings.theme === "light" ? (
               <StyledSelectorBox>
                 <LocalSelector />
               </StyledSelectorBox>
             ) : (
               <LocalSelector />
-            )}
+            )} */}
             <Profile />
           </StyledStack>
         </StyledWrapper>
