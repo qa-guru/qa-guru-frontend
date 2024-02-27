@@ -12,56 +12,78 @@ import { ReactComponent as TelegramIconSecondary } from "assets/icons/telegram-s
 import { ReactComponent as WebSiteIconSecondary } from "assets/icons/website-secondary.svg";
 
 import { StyledIconStack, StyledLink } from "../media-links/media-links.styled";
-import { IMediaLinks } from "./media-links.types";
+
+interface IconLinkProps {
+  href?: string | null;
+  icon: React.ElementType;
+  iconSecondary: React.ElementType;
+}
+
+interface IMediaLinks {
+  user: { [key: string]: Maybe<string> };
+}
+
+const mediaIcons = [
+  {
+    key: "stackOverflow",
+    icon: StackOverflowIcon,
+    iconSecondary: StackOverflowIconSecondary,
+  },
+  { key: "git", icon: GitHubIcon, iconSecondary: GitHubIconSecondary },
+  { key: "linkedin", icon: LinkedInIcon, iconSecondary: LinkedInIconSecondary },
+  {
+    key: "telegram",
+    icon: TelegramIcon,
+    iconSecondary: TelegramIconSecondary,
+    prefix: "https://t.me/",
+  },
+  { key: "website", icon: WebSiteIcon, iconSecondary: WebSiteIconSecondary },
+];
+
+const constructHref = (
+  key: string,
+  link: Maybe<string>,
+  prefix?: string
+): string | null => {
+  if (!link) return null;
+  if (key === "telegram") {
+    return `${prefix}${link.replace(/^@/, "")}`;
+  }
+  return link;
+};
+
+const IconLink: FC<IconLinkProps> = ({
+  href,
+  icon: Icon,
+  iconSecondary: IconSecondary,
+}) => {
+  if (href) {
+    return (
+      <StyledLink href={href}>
+        <Icon />
+      </StyledLink>
+    );
+  } else {
+    return <IconSecondary />;
+  }
+};
 
 const MediaLinks: FC<IMediaLinks> = ({ user }) => {
-  const transformLink = (telegramLink?: Maybe<string>) => {
-    if (user?.telegram) {
-      const regex = /^@/;
-      return telegramLink?.replace(regex, "https://t.me/");
-    }
-    return null;
-  };
-
-  const telegramLink = transformLink(user?.telegram);
-
   return (
     <StyledIconStack>
-      {user?.stackOverflow ? (
-        <StyledLink href={user?.stackOverflow}>
-          <StackOverflowIcon />
-        </StyledLink>
-      ) : (
-        <StackOverflowIconSecondary />
-      )}
-      {user?.git ? (
-        <StyledLink href={user?.git}>
-          <GitHubIcon />
-        </StyledLink>
-      ) : (
-        <GitHubIconSecondary />
-      )}
-      {user?.linkedin ? (
-        <StyledLink href={user?.linkedin}>
-          <LinkedInIcon />
-        </StyledLink>
-      ) : (
-        <LinkedInIconSecondary />
-      )}
-      {user?.telegram ? (
-        <StyledLink href={telegramLink!}>
-          <TelegramIcon />
-        </StyledLink>
-      ) : (
-        <TelegramIconSecondary />
-      )}
-      {user?.website ? (
-        <StyledLink href={user?.website}>
-          <WebSiteIcon />
-        </StyledLink>
-      ) : (
-        <WebSiteIconSecondary />
-      )}
+      {mediaIcons.map(({ key, icon, iconSecondary, prefix }) => {
+        const link = user[key];
+        const href = constructHref(key, link, prefix);
+
+        return (
+          <IconLink
+            key={key}
+            href={href}
+            icon={icon}
+            iconSecondary={iconSecondary}
+          />
+        );
+      })}
     </StyledIconStack>
   );
 };

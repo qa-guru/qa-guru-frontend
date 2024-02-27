@@ -1,10 +1,9 @@
 import { FC } from "react";
-import { Container, Typography, useMediaQuery } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InputPhone, InputText } from "shared/components/form";
 import { UserUpdateInput } from "api/graphql/generated/graphql";
-import { useTheme } from "@mui/system";
 import { useSnackbar } from "notistack";
 
 import {
@@ -21,14 +20,10 @@ import {
 } from "./edit-profile.styled";
 import { IEditProfile } from "./edit-profile.types";
 import AvatarUpload from "../avatar-upload";
-import { useAvatarDelete } from "../../hooks/use-avatar-delete";
 
 const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const { deleteAvatar } = useAvatarDelete();
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const routeProfile = () => navigate("/profile");
 
