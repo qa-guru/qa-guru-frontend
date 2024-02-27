@@ -2,14 +2,9 @@ import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
 import { formatDate } from "shared/helpers";
-import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
-import { ReactComponent as StackOverflowIcon } from "assets/icons/stack-overflow.svg";
-import { ReactComponent as GitIcon } from "assets/icons/git-hub.svg";
-import { ReactComponent as LinkedIn } from "assets/icons/linked-in.svg";
-import { ReactComponent as Telegram } from "assets/icons/telegram.svg";
-import { ReactComponent as WebSiteIcon } from "assets/icons/website.svg";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
 
 import { IUserInfo } from "./user-info.types";
 import AvatarUpload from "../avatar-upload";
@@ -20,7 +15,6 @@ import {
   StyledDesktopStack,
   StyledHiddenIconBox,
   StyledIconButton,
-  StyledIconStack,
   StyledMobileStack,
   StyledNameBox,
   StyledPaper,
@@ -28,6 +22,7 @@ import {
   StyledRowStack,
   StyledWebsiteStack,
 } from "./user-info.styled";
+import MediaLinks from "../media-links/media-links";
 
 const UserInfo: FC<IUserInfo> = ({ data }) => {
   const { user } = data;
@@ -47,13 +42,7 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
         <Stack>
           <AvatarUpload user={user} />
           <StyledHiddenIconBox>
-            <StyledIconStack>
-              <StackOverflowIcon />
-              <GitIcon />
-              <LinkedIn />
-              <Telegram />
-              <WebSiteIcon />
-            </StyledIconStack>
+            <MediaLinks user={user} />
           </StyledHiddenIconBox>
         </Stack>
         <StyledColumnStack>
@@ -92,13 +81,7 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
             {formatDate(user?.creationDate, "DD.MM.YYYY")}
           </Typography>
         </StyledDateStack>
-        <StyledIconStack>
-          <StackOverflowIcon />
-          <GitIcon />
-          <LinkedIn />
-          <Telegram />
-          <WebSiteIcon />
-        </StyledIconStack>
+        <MediaLinks user={user} />
         <StyledWebsiteStack>
           <WorkIcon />
           <Typography variant="h5" color="textSecondary">

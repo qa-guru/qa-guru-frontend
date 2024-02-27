@@ -58,18 +58,6 @@ export const StyledWebsiteStack = styled(Stack)({
   gap: "5px",
 });
 
-export const StyledIconStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "12px",
-  marginTop: "16px",
-  [theme.breakpoints.down("sm")]: {
-    justifyContent: "start",
-    marginTop: 0,
-  },
-}));
-
 export const StyledDesktopStack = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "none",

@@ -23,13 +23,14 @@ import {
 } from "./avatar-upload.styled";
 
 const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
+  const { avatar, firstName, lastName } = user!;
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const { uploadAvatar, uploading } = useAvatarUpload();
   const { deleteAvatar, deleting } = useAvatarDelete();
 
-  const fullName = `${user?.firstName} ${user?.lastName}`;
+  const fullName = `${firstName} ${lastName}`;
 
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];
@@ -50,7 +51,7 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
       />
       <StyledIconBox>
         <AvatarCustom
-          img={user?.avatar}
+          img={avatar}
           fullName={fullName}
           width={{ xs: "100px", sm: "290px", md: "240px" }}
           height={{ xs: "100px", sm: "290px", md: "240px" }}
@@ -62,7 +63,7 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
                 {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
               </StyledIconButton>
             </label>
-            {user?.avatar && (
+            {avatar && (
               <StyledIconButtonDelete onClick={handleDeleteAvatar}>
                 {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
               </StyledIconButtonDelete>
@@ -73,7 +74,7 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
 
       {isDownMd && edit && (
         <StyledAvatarButtonStack>
-          {user?.avatar && (
+          {avatar && (
             <LoadingButton
               sx={{
                 color: "app.white",

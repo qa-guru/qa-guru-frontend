@@ -1,10 +1,15 @@
 import { styled } from "@mui/system";
 import { Box, Paper, Stack } from "@mui/material";
 
-export const StyledPaper = styled(Paper)({
+export const StyledPaper = styled(Paper)(({ theme }) => ({
+  position: "relative",
   padding: "24px",
   width: "50%",
-});
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+    padding: "12px",
+  },
+}));
 
 export const StyledRowStack = styled(Stack)({
   flexDirection: "row",
@@ -16,7 +21,11 @@ export const StyledColumnStack = styled(Stack)({
   gap: "15px",
 });
 
-export const StyledInfoBox = styled(Box)({
+export const StyledNameBox = styled(Box)({
+  width: "fit-content",
+});
+
+export const StyledRatingBox = styled(Box)({
   width: "fit-content",
   display: "flex",
   flexDirection: "column",
@@ -34,13 +43,23 @@ export const StyledWebsiteStack = styled(Stack)({
   gap: "5px",
 });
 
-export const StyledIconStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "12px",
-  marginTop: "16px",
-  [theme.breakpoints.down("lg")]: {
-    gap: "8px",
+export const StyledDesktopStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+  gap: "15px",
+}));
+
+export const StyledMobileStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
+  gap: "15px",
+  marginTop: "15px",
+}));
+
+export const StyledHiddenIconBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
   },
 }));
