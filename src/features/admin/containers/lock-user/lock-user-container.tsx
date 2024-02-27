@@ -6,9 +6,9 @@ import {
   UsersQuery,
   useLockUserMutation,
 } from "api/graphql/generated/graphql";
-import { FC, useContext } from "react";
-import { TableAdminFilterContext } from "features/admin/context/admin-table-context";
+import { FC } from "react";
 
+import { useTableAdminFilter } from "../../context/admin-table-context";
 import LockUser from "../../views/lock-user";
 
 interface ILockUserContainer {
@@ -16,7 +16,7 @@ interface ILockUserContainer {
 }
 
 const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
-  const { filter } = useContext(TableAdminFilterContext);
+  const { filter } = useTableAdminFilter();
 
   const [lockUser] = useLockUserMutation({
     update: (cache) => {

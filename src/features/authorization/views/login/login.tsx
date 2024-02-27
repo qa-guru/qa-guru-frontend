@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import { InputText } from "shared/components/form";
 import { useNavigate } from "react-router-dom";
-import useSettings from "shared/hooks/use-settings";
 import ThemeSelector from "shared/components/theme-selector";
 
 import { ILogin, ILoginForm } from "./login.types";
@@ -23,7 +22,6 @@ import { ROUTES } from "../../constants";
 const Login: FC<ILogin> = (props) => {
   const { isLoading, login } = props;
   const navigate = useNavigate();
-  const { settings, toggleTheme } = useSettings();
 
   const routeRegister = () => {
     navigate(ROUTES.SIGNUP);
