@@ -8,6 +8,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
 
+import { useTableAdminFilter } from "../../context/admin-table-context";
 import UnlockUser from "../../views/unlock-user";
 
 interface IUnlockUserContainer {
@@ -15,6 +16,8 @@ interface IUnlockUserContainer {
 }
 
 const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
+  const { filter } = useTableAdminFilter();
+
   const [unlockUser] = useUnlockUserMutation({
     update: (cache) => {
       const existingUsers: Maybe<UsersQuery> = cache.readQuery({
@@ -23,6 +26,7 @@ const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
           offset: 0,
           limit: 50,
           sort: { field: UserSortField.Email, order: Order.Desc },
+          filter: filter || {},
         },
       });
 
@@ -36,6 +40,7 @@ const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
           offset: 0,
           limit: 50,
           sort: { field: UserSortField.Email, order: Order.Desc },
+          filter: filter || {},
         },
         data: {
           users: {

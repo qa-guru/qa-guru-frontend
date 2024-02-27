@@ -1,9 +1,10 @@
-import { FC, SyntheticEvent, useContext, useEffect, useState } from "react";
+import { FC, SyntheticEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { TabContext } from "@mui/lab";
+import { Button, Stack } from "@mui/material";
 
-import { TableAdminFilterContext } from "../../context/admin-table-context";
+import { useTableAdminFilter } from "../../context/admin-table-context";
 import {
   StyledTab,
   StyledTabList,
@@ -11,15 +12,15 @@ import {
 } from "./input-filter.styled";
 
 const filterLabels = {
-  firstName: "Имя",
-  phoneNumber: "Телефон",
-  email: "Email",
+  firstName: "имя пользователя",
+  phoneNumber: "телефон пользователя",
+  email: "email пользователя",
 };
 
 type FilterKey = keyof typeof filterLabels;
 
 const InputFilter: FC = () => {
-  const { setFilter } = useContext(TableAdminFilterContext);
+  const { setFilter } = useTableAdminFilter();
   const [activeFilter, setActiveFilter] = useState<FilterKey>("firstName");
 
   const { control, watch } = useForm({
@@ -29,12 +30,6 @@ const InputFilter: FC = () => {
   });
 
   const filterValue = watch("filterValue");
-
-  useEffect(() => {
-    setFilter({
-      [activeFilter]: filterValue,
-    });
-  }, [filterValue, activeFilter]);
 
   const handleFilterChange = (_: SyntheticEvent, value: string) => {
     setActiveFilter(value as FilterKey);
@@ -54,6 +49,24 @@ const InputFilter: FC = () => {
           placeholder={`Введите ${filterLabels[activeFilter]}`}
         />
       </StyledTabPanel>
+      <Stack direction="row" spacing={2}>
+        <Button
+          sx={{
+            color: "app.white",
+          }}
+          variant="contained"
+          onClick={() => setFilter({ [activeFilter]: filterValue })}
+        >
+          Поиск
+        </Button>
+        <Button
+          color="secondary"
+          variant="contained"
+          onClick={() => setFilter({})}
+        >
+          Cбросить
+        </Button>
+      </Stack>
     </TabContext>
   );
 };

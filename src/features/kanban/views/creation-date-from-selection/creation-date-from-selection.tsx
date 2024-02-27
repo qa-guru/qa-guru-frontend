@@ -1,13 +1,13 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { InputDate } from "shared/components/form/";
 
 import { ICreationDateFromSelection } from "./creation-date-from-selection.types";
-import { KanbanFormContext } from "../../context/kanban-form-context";
+import { useKanbanForm } from "../../context/kanban-form-context";
 
 const CreationDateFromSelection: FC<ICreationDateFromSelection> = ({
   control,
 }) => {
-  const { setCreationDateFrom } = useContext(KanbanFormContext);
+  const { setCreationDateFrom } = useKanbanForm();
 
   const handleSelectChange = (selectedId: string) => {
     setCreationDateFrom(selectedId);

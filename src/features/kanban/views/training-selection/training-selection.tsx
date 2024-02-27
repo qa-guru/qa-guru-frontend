@@ -1,13 +1,13 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { InputAutocomplete } from "shared/components/form";
 import { Maybe } from "api/graphql/generated/graphql";
 import { OptionTypeBase } from "shared/components/form/input-autocomplete/input-autocomplete.types";
 
 import { ITrainingSelection } from "./training-selection.types";
-import { KanbanFormContext } from "../../context/kanban-form-context";
+import { useKanbanForm } from "../../context/kanban-form-context";
 
 const TrainingSelection: FC<ITrainingSelection> = ({ items, control }) => {
-  const { setTrainingId, setLectureId } = useContext(KanbanFormContext);
+  const { setTrainingId, setLectureId } = useKanbanForm();
 
   const trainingOptions =
     items?.map((item) => ({

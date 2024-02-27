@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   AccordionDetails,
   AccordionSummary,
@@ -21,7 +21,7 @@ import {
 import CreationDateFromSelection from "../creation-date-from-selection";
 import CreationDateToSelection from "../creation-date-to-selection";
 import { LectureSelection, MentorsSelection } from "../../containers";
-import { KanbanFormContext } from "../../context/kanban-form-context";
+import { useKanbanForm } from "../../context/kanban-form-context";
 import TrainingSelection from "../../containers/trainings";
 
 const Form: FC = () => {
@@ -46,7 +46,7 @@ const Form: FC = () => {
     setMentorId,
     setCreationDateFrom,
     setCreationDateTo,
-  } = useContext(KanbanFormContext);
+  } = useKanbanForm();
 
   const handleReset = () => {
     setTrainingId(null);

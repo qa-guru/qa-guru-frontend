@@ -1,14 +1,14 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { InputAutocomplete } from "shared/components/form";
 import { OptionTypeBase } from "shared/components/form/input-autocomplete/input-autocomplete.types";
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { IMentorSelection } from "./mentor-selection.types";
-import { KanbanFormContext } from "../../context/kanban-form-context";
+import { useKanbanForm } from "../../context/kanban-form-context";
 
 const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
   const items = data?.mentors?.items;
-  const { setMentorId } = useContext(KanbanFormContext);
+  const { setMentorId } = useKanbanForm();
 
   const mentorsOptions =
     items?.map((item) => ({
