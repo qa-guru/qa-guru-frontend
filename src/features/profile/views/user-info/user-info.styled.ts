@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Link, IconButton, Paper, Stack } from "@mui/material";
+import { Box, IconButton, Paper, Stack } from "@mui/material";
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   position: "relative",
@@ -58,18 +58,6 @@ export const StyledWebsiteStack = styled(Stack)({
   gap: "5px",
 });
 
-export const StyledIconStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "12px",
-  marginTop: "16px",
-  [theme.breakpoints.down("sm")]: {
-    justifyContent: "start",
-    marginTop: 0,
-  },
-}));
-
 export const StyledDesktopStack = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "none",
@@ -90,9 +78,3 @@ export const StyledHiddenIconBox = styled(Box)(({ theme }) => ({
     display: "none",
   },
 }));
-
-export const StyledLink = styled(Link)({
-  display: "flex",
-  justifyContent: "center",
-  textDecoration: "none",
-});
