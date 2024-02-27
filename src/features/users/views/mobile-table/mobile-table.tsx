@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { type Table, flexRender } from "@tanstack/react-table";
 import { UserRatingDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
@@ -24,8 +24,8 @@ const MobileTable: FC<IMobileTable> = ({ table }) => {
               const header = table.getHeaderGroups()[0].headers[cellIndex];
 
               return (
-                <>
-                  <StyledTableCell>
+                <Fragment key={row.id + cell.id}>
+                  <StyledTableCell key={header.id}>
                     <StyledTypography variant="subtitle2">
                       {flexRender(
                         header.column.columnDef.header,
@@ -34,10 +34,10 @@ const MobileTable: FC<IMobileTable> = ({ table }) => {
                     </StyledTypography>
                   </StyledTableCell>
 
-                  <StyledTableCell>
+                  <StyledTableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </StyledTableCell>
-                </>
+                </Fragment>
               );
             })}
           </StyledTableRow>
