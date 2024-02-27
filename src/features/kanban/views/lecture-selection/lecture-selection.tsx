@@ -1,14 +1,14 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { Box, Tooltip } from "@mui/material";
 import { InputAutocomplete } from "shared/components/form";
 import { Maybe } from "api/graphql/generated/graphql";
 import { OptionTypeBase } from "shared/components/form/input-autocomplete/input-autocomplete.types";
 
 import ISelectLectures from "./lecture-selection.types";
-import { KanbanFormContext } from "../../context/kanban-form-context";
+import { useKanbanForm } from "../../context/kanban-form-context";
 
 const LectureSelection: FC<ISelectLectures> = ({ data, control }) => {
-  const { setLectureId } = useContext(KanbanFormContext);
+  const { setLectureId } = useKanbanForm();
 
   const lecturesOptions =
     data?.trainingLectures?.map((item) => ({

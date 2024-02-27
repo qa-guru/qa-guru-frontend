@@ -10,12 +10,16 @@ import {
 import SelectRole from "features/admin/views/select-role";
 import { FC } from "react";
 
+import { useTableAdminFilter } from "../../context/admin-table-context";
+
 interface IUpdateRoleContainer {
   id?: Maybe<string>;
   roles?: Maybe<Maybe<UserRole>[]>;
 }
 
 const UpdateRoleContainer: FC<IUpdateRoleContainer> = ({ id, roles }) => {
+  const { filter } = useTableAdminFilter();
+
   const [updateRole] = useUpdateRoleMutation({
     update: (cache, { data }) => {
       const existingUsers: Maybe<UsersQuery> = cache.readQuery({
@@ -24,6 +28,7 @@ const UpdateRoleContainer: FC<IUpdateRoleContainer> = ({ id, roles }) => {
           offset: 0,
           limit: 50,
           sort: { field: UserSortField.Email, order: Order.Desc },
+          filter: filter || {},
         },
       });
 
@@ -37,6 +42,7 @@ const UpdateRoleContainer: FC<IUpdateRoleContainer> = ({ id, roles }) => {
           offset: 0,
           limit: 50,
           sort: { field: UserSortField.Email, order: Order.Desc },
+          filter: filter || {},
         },
         data: {
           users: {

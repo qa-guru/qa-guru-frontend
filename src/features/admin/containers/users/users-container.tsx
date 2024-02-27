@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import {
   Order,
   UserSortField,
@@ -7,11 +7,11 @@ import {
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
-import { TableAdminFilterContext } from "../../context/admin-table-context";
+import { useTableAdminFilter } from "../../context/admin-table-context";
 import Table from "../../views/table";
 
 const UsersContainer: FC = () => {
-  const { filter } = useContext(TableAdminFilterContext);
+  const { filter } = useTableAdminFilter();
 
   const { data, loading, fetchMore } = useUsersQuery({
     variables: {
@@ -20,7 +20,6 @@ const UsersContainer: FC = () => {
       sort: { field: UserSortField.Email, order: Order.Desc },
       filter: filter || {},
     },
-    // fetchPolicy: "cache-first",
   });
 
   if (loading) return <Spinner />;

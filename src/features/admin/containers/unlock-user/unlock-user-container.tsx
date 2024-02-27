@@ -6,9 +6,9 @@ import {
   UsersQuery,
   useUnlockUserMutation,
 } from "api/graphql/generated/graphql";
-import { FC, useContext } from "react";
-import { TableAdminFilterContext } from "features/admin/context/admin-table-context";
+import { FC } from "react";
 
+import { useTableAdminFilter } from "../../context/admin-table-context";
 import UnlockUser from "../../views/unlock-user";
 
 interface IUnlockUserContainer {
@@ -16,7 +16,7 @@ interface IUnlockUserContainer {
 }
 
 const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
-  const { filter } = useContext(TableAdminFilterContext);
+  const { filter } = useTableAdminFilter();
 
   const [unlockUser] = useUnlockUserMutation({
     update: (cache) => {
