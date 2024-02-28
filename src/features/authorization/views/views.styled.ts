@@ -20,6 +20,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   backgroundColor: theme.palette.app.purple,
   justifyContent: "center",
   alignItems: "center",
+  textAlign: "center",
   position: "absolute",
   top: 0,
   bottom: "70px",
@@ -53,7 +54,7 @@ export const StyledStack = styled(Stack)({
 
 export const StyledBottomStack = styled(Stack)({
   gap: "8px",
-  marginTop: "20px",
+  marginTop: "15px",
   alignItems: "center",
 });
 
@@ -65,3 +66,8 @@ export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
 export const StyledButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.primary,
 }));
+
+export const StyledSignupStack = styled(Stack)({
+  gap: "22px",
+  marginBottom: "30px",
+});
