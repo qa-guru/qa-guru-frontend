@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useDeleteCommentMutation } from "api/graphql/generated/graphql";
 
 import { IDeleteCommentContainer } from "./delete-comment-container.types";
-import DeleteComment from "../../views/delete-comment/delete-comment";
+import DeleteComment from "../../views/delete-comment";
 
 type DeleteCommentItem = {
   __ref: string;
@@ -26,7 +26,9 @@ const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({ id }) => {
     },
   });
 
-  return <DeleteComment id={id} deleteComment={deleteComment} />;
+  return (
+    <DeleteComment id={id} deleteComment={deleteComment} loading={loading} />
+  );
 };
 
 export default DeleteCommentContainer;
