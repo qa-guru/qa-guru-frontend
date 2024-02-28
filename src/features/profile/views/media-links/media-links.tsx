@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Maybe } from "api/graphql/generated/graphql";
+import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import { ReactComponent as StackOverflowIcon } from "assets/icons/stack-overflow.svg";
 import { ReactComponent as GitHubIcon } from "assets/icons/git-hub.svg";
 import { ReactComponent as LinkedInIcon } from "assets/icons/linked-in.svg";
@@ -12,16 +12,7 @@ import { ReactComponent as TelegramIconSecondary } from "assets/icons/telegram-s
 import { ReactComponent as WebSiteIconSecondary } from "assets/icons/website-secondary.svg";
 
 import { StyledIconStack, StyledLink } from "../media-links/media-links.styled";
-
-interface IconLinkProps {
-  href?: string | null;
-  icon: React.ElementType;
-  iconSecondary: React.ElementType;
-}
-
-interface IMediaLinks {
-  user: { [key: string]: Maybe<string> };
-}
+import { IMediaLinks, IconLinkProps } from "./media-links.types";
 
 const mediaIcons = [
   {
@@ -46,8 +37,9 @@ const constructHref = (
   prefix?: string
 ): string | null => {
   if (!link) return null;
-  if (key === "telegram") {
-    return `${prefix}${link.replace(/^@/, "")}`;
+  const regex = /^@/;
+  if (key === "telegram" && regex.test(link)) {
+    return `${prefix}${link.replace(regex, "")}`;
   }
   return link;
 };
@@ -72,7 +64,7 @@ const MediaLinks: FC<IMediaLinks> = ({ user }) => {
   return (
     <StyledIconStack>
       {mediaIcons.map(({ key, icon, iconSecondary, prefix }) => {
-        const link = user[key];
+        const link = user?.[key as keyof UserDto];
         const href = constructHref(key, link, prefix);
 
         return (

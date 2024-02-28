@@ -25,8 +25,9 @@ import {
 import MediaLinks from "../media-links/media-links";
 
 const UserInfo: FC<IUserInfo> = ({ data }) => {
-  const { user } = data;
-  const ratingColor = useRatingColor(user?.rating?.rating);
+  const { firstName, rating, lastName, creationDate } = data.user!;
+
+  const ratingColor = useRatingColor(rating?.rating);
 
   const navigate = useNavigate();
   const routeEdit = () => navigate("/profile/edit");
@@ -40,19 +41,19 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
       </StyledButtonBox>
       <StyledRowStack>
         <Stack>
-          <AvatarUpload user={user} />
+          <AvatarUpload user={data.user} />
           <StyledHiddenIconBox>
-            <MediaLinks user={user} />
+            <MediaLinks user={data.user} />
           </StyledHiddenIconBox>
         </Stack>
         <StyledColumnStack>
           <StyledNameBox>
-            <Typography variant="h5">{user?.firstName}</Typography>
-            <Typography variant="h5">{user?.lastName}</Typography>
+            <Typography variant="h5">{firstName}</Typography>
+            <Typography variant="h5">{lastName}</Typography>
           </StyledNameBox>
           <StyledRatingBox>
             <Typography variant="h3" color={ratingColor}>
-              {user?.rating?.rating}
+              {rating?.rating}
             </Typography>
             <Typography variant="caption" color={ratingColor}>
               Рейтинг
@@ -62,7 +63,7 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
             <StyledDateStack>
               <Typography variant="body2">Дата регистрации</Typography>
               <Typography variant="body2" color="textSecondary">
-                {formatDate(user?.creationDate, "DD.MM.YYYY")}
+                {formatDate(creationDate, "DD.MM.YYYY")}
               </Typography>
             </StyledDateStack>
             <StyledWebsiteStack>
@@ -78,10 +79,10 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
         <StyledDateStack>
           <Typography variant="body2">Дата регистрации</Typography>
           <Typography variant="body2" color="textSecondary">
-            {formatDate(user?.creationDate, "DD.MM.YYYY")}
+            {formatDate(creationDate, "DD.MM.YYYY")}
           </Typography>
         </StyledDateStack>
-        <MediaLinks user={user} />
+        <MediaLinks user={data.user} />
         <StyledWebsiteStack>
           <WorkIcon />
           <Typography variant="h5" color="textSecondary">
