@@ -27,11 +27,11 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        newPassword: yup.string().required("Пароль обязательное поле"),
+        newPassword: yup.string().required("Введите пароль"),
         confirmPassword: yup
           .string()
           .oneOf([yup.ref("newPassword")], "Пароли не совпадают")
-          .required("Пароль обязательное поле"),
+          .required("Повторите пароль"),
       })
     ),
   });

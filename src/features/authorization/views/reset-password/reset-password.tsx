@@ -32,7 +32,10 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        username: yup.string().email().required("E-mail обязательное поле"),
+        username: yup
+          .string()
+          .email("Некорректный e-mail")
+          .required("Введите e-mail"),
       })
     ),
   });

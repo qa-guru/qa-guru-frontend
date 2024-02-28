@@ -43,18 +43,21 @@ const Signup: FC<ISignUp> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        firstName: yup.string().required("Имя обязательное поле"),
-        lastName: yup.string().required("Фамилия обязательное поле"),
-        email: yup.string().required("E-mail обязательное поле"),
+        firstName: yup.string().required("Введите имя"),
+        lastName: yup.string().required("Введите фамилию"),
+        email: yup
+          .string()
+          .email("Некорректный e-mail")
+          .required("Введите e-mail"),
         password: yup
           .string()
-          .min(REQUIRED_SYMBOLS.MIN, "Должно быть больше 8 символов")
-          .required("Пароль обязательное поле"),
+          .required("Введите пароль")
+          .min(REQUIRED_SYMBOLS.MIN, "Необходимо более 8 символов"),
         confirmPassword: yup
           .string()
           .oneOf([yup.ref("password")], "Пароли не совпадают")
-          .required("Пароль обязательное поле"),
-        phoneNumber: yup.string().required("Телефон обязательное поле"),
+          .required("Повторите пароль"),
+        phoneNumber: yup.string().required("Введите телефон"),
       })
     ),
   });
