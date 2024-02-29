@@ -14,11 +14,14 @@ import {
   StyledLocalSelectorWrapper,
   StyledLogo,
   StyledPaper,
-  StyledStack,
+  StyledSignupBox,
+  StyledSignupStack,
+  StyledSignupWrapper,
+  StyledWrapper,
 } from "../views.styled";
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
-import { StyledScreenBox, StyledWrapper } from "./signup.styled";
+import { Box } from "@mui/material";
 
 interface UserCreateInputCustom extends UserCreateInput {
   confirmPassword: Scalars["String"];
@@ -91,15 +94,15 @@ const Signup: FC<ISignUp> = (props) => {
   }, [handleKeyPress]);
 
   return (
-    <StyledWrapper>
+    <StyledSignupWrapper>
       <StyledLocalSelectorWrapper>
         <ThemeSelector />
       </StyledLocalSelectorWrapper>
-      <StyledScreenBox>
+      <StyledSignupBox>
         <StyledLogo />
         <StyledPaper>
           <form>
-            <StyledStack>
+            <StyledSignupStack>
               <InputText
                 control={control}
                 name="firstName"
@@ -144,14 +147,14 @@ const Signup: FC<ISignUp> = (props) => {
                 type="password"
                 errors={errors}
               />
-              <StyledLoadingButton
-                onClick={handleSubmit(onSubmit)}
-                loading={isLoading}
-                variant="contained"
-              >
-                Зарегистрироваться
-              </StyledLoadingButton>
-            </StyledStack>
+            </StyledSignupStack>
+            <StyledLoadingButton
+              onClick={handleSubmit(onSubmit)}
+              loading={isLoading}
+              variant="contained"
+            >
+              Зарегистрироваться
+            </StyledLoadingButton>
           </form>
           <StyledBottomStack>
             <StyledButton variant="text" onClick={routeLogin}>
@@ -159,8 +162,8 @@ const Signup: FC<ISignUp> = (props) => {
             </StyledButton>
           </StyledBottomStack>
         </StyledPaper>
-      </StyledScreenBox>
-    </StyledWrapper>
+      </StyledSignupBox>
+    </StyledSignupWrapper>
   );
 };
 
