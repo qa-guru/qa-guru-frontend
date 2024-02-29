@@ -17,11 +17,11 @@ export const StyledLocalSelectorWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
+  position: "absolute",
   backgroundColor: theme.palette.app.purple,
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
-  position: "absolute",
   top: 0,
   bottom: "70px",
   width: "100%",
@@ -67,7 +67,25 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.primary,
 }));
 
+export const StyledSignupWrapper = styled(Stack)(({ theme }) => ({
+  position: "absolute",
+  backgroundColor: theme.palette.app.purple,
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  top: 0,
+  bottom: "70px",
+  width: "100%",
+  [theme.breakpoints.down("md")]: {
+    position: "inherit",
+  },
+}));
+
+export const StyledSignupBox = styled(Box)({
+  padding: "25px",
+});
+
 export const StyledSignupStack = styled(Stack)({
-  gap: "22px",
+  gap: "28px",
   marginBottom: "30px",
 });
