@@ -7,11 +7,11 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusText from "shared/components/status-text";
 import LectureHomework from "features/lecture-detail/views/lecture-homework";
-import { StyledHomeworkDetails } from "features/kanban/views/board/board.styled";
 import { TextView } from "shared/components/text-editor";
 
 import { IHomeworkDescription } from "./homework-details.types";
 import {
+  StyledHomeworkDetails,
   StyledBox,
   StyledColumnStack,
   StyledPaper,
@@ -40,10 +40,10 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
               <StyledIcon />
             </StyledId>
           </StyledLink>
-          <StyledIconButton onClick={onClose}>
-            <ChevronRightIcon />
-          </StyledIconButton>
         </StyledStack>
+        <StyledIconButton onClick={onClose}>
+          <ChevronRightIcon />
+        </StyledIconButton>
         <Typography variant="h5">{card.lecture?.subject}</Typography>
         <StyledRowStack>
           <UserRow

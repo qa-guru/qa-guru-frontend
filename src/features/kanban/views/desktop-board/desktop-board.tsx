@@ -1,15 +1,18 @@
 import { FC, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import { StudentHomeWorkDto, Maybe } from "api/graphql/generated/graphql";
+import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "../homework-details";
-import { StyledStack, StyledWrapper } from "../board/board.styled";
+import {
+  StyledColumnBox,
+  StyledStack,
+  StyledWrapper,
+} from "../board/board.styled";
 import Column from "../column";
-import { ROUTES, UI_CONSTANTS } from "../../constants";
+import { ROUTES } from "../../constants";
 
 const DesktopBoard: FC<IDesktopBoard> = ({
   columns,
@@ -40,32 +43,16 @@ const DesktopBoard: FC<IDesktopBoard> = ({
   const handleHomeworkDetailsClose = () => {
     setSelectedCard(null);
     setShowHomeworkDetails(false);
+    setActiveCardId(null);
   };
 
   return (
     <StyledWrapper>
-      <motion.div
-        initial={{
-          width:
-            showHomeworkDetails && isUpLg
-              ? UI_CONSTANTS.MIN_COLUMN_WIDTH
-              : UI_CONSTANTS.MAX_COLUMN_WIDTH,
-        }}
-        animate={{
-          width:
-            showHomeworkDetails && isUpLg
-              ? UI_CONSTANTS.MIN_COLUMN_WIDTH
-              : UI_CONSTANTS.MAX_COLUMN_WIDTH,
-        }}
-        transition={{ duration: UI_CONSTANTS.ANIMATE_DURATION }}
+      <StyledColumnBox
+        showHomeworkDetails={showHomeworkDetails}
+        isUpLg={isUpLg}
       >
-        <StyledStack
-          mr={
-            showHomeworkDetails && isUpLg
-              ? UI_CONSTANTS.ANIMATE_MARGIN
-              : undefined
-          }
-        >
+        <StyledStack>
           {columns?.map((column, index) => (
             <Column
               draggingState={draggingState}
@@ -79,22 +66,15 @@ const DesktopBoard: FC<IDesktopBoard> = ({
             />
           ))}
         </StyledStack>
-      </motion.div>
-      <AnimatePresence>
-        {isUpLg && selectedCard && (
-          <motion.div
-            initial={{ width: UI_CONSTANTS.MIN_DETAILS_WITH }}
-            animate={{ width: UI_CONSTANTS.MAX_DETAILS_WITH }}
-            exit={{ width: UI_CONSTANTS.MIN_DETAILS_WITH }}
-            transition={{ duration: UI_CONSTANTS.ANIMATE_DURATION }}
-          >
-            <HomeworkDetails
-              card={selectedCard}
-              onClose={handleHomeworkDetailsClose}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </StyledColumnBox>
+      {isUpLg && selectedCard && (
+        <Box>
+          <HomeworkDetails
+            card={selectedCard}
+            onClose={handleHomeworkDetailsClose}
+          />
+        </Box>
+      )}
     </StyledWrapper>
   );
 };

@@ -1,6 +1,12 @@
-import { alpha, Box, Pagination, Stack } from "@mui/material";
+import { Box, Pagination, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 
+import { UI_CONSTANTS } from "../../constants";
+
+interface IColumnBox {
+  showHomeworkDetails: boolean;
+  isUpLg: boolean;
+}
 
 export const StyledPagination = styled(Pagination)(({ theme }) => ({
   "& .MuiPaginationItem-root": {
@@ -37,7 +43,12 @@ export const StyledBox = styled(Box)({
   marginBottom: "15px",
 });
 
-export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
-  minWidth: "33.5vw",
-  backgroundColor: alpha(theme.palette.app.secondary, 0.2),
+export const StyledColumnBox = styled(Box, {
+  shouldForwardProp: (prop) =>
+    !["showHomeworkDetails", "isUpLg"].includes(prop as string),
+})<IColumnBox>(({ showHomeworkDetails, isUpLg }) => ({
+  width:
+    showHomeworkDetails && isUpLg
+      ? UI_CONSTANTS.MIN_COLUMN_WIDTH
+      : UI_CONSTANTS.MAX_COLUMN_WIDTH,
 }));
