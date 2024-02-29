@@ -1,13 +1,27 @@
 import { styled } from "@mui/system";
-import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
+import {
+  alpha,
+  Box,
+  IconButton,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+
+export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
+  position: "relative",
+  maxWidth: "33vw",
+  backgroundColor: alpha(theme.palette.app.secondary, 0.2),
+  marginLeft: "10px",
+}));
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   marginTop: "20px",
   padding: "35px 25px",
   maxHeight: "73.6vh",
-  overflowY: "auto",
+  overflowY: "scroll",
   backgroundColor: theme.palette.app.lightGrey,
 }));
 
@@ -65,8 +79,12 @@ export const StyledTitle = styled(Typography)({
 });
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  position: "absolute",
+  top: "35px",
+  right: "28px",
+  cursor: "pointer",
   backgroundColor: theme.palette.app.primary,
   color: theme.palette.app.white,
-  width: "35px",
-  height: "35px",
+  width: "30px",
+  height: "30px",
 }));
