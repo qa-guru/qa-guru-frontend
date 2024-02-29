@@ -105,6 +105,7 @@ export function getEditorStyles(theme: Theme): StyleRules {
     "& ul, & ol": {
       marginBlockStart: 0,
       marginBlockEnd: 0,
+      paddingLeft: 12,
     },
 
     "& ol": {

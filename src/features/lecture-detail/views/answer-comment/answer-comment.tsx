@@ -1,52 +1,40 @@
 import UserRow from "shared/components/user-row";
-import { SubmitHandler, useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { FC } from "react";
-import { InputText } from "shared/components/form";
+import { FC, useState, useRef } from "react";
+import { CommentEditor } from "shared/components/text-editor";
+import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 
 import {
   StyledBox,
   StyledCommentBox,
   StyledCommentStack,
+  StyledFormHelperText,
   StyledLoadingButton,
   StyledStack,
 } from "./answer-comment.styled";
-import { IAnswerComment, IAnswerCommentContent } from "./answer-comment.types";
-
-interface IAnswerCommentForm {
-  content: string;
-}
+import { IAnswerComment } from "./answer-comment.types";
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, id, dataUser, onReplySuccess } = props;
+  const rteRef = useRef<RichTextEditorRef>(null);
+  const [error, setError] = useState("");
 
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<IAnswerCommentForm>({
-    defaultValues: {
-      content: "",
-    },
-    resolver: yupResolver(
-      yup.object().shape({
-        content: yup.string().required("Комментарий не должен быть пустым"),
-      })
-    ),
-  });
+  const handleAnswerComment = async () => {
+    const content = rteRef.current?.editor?.getHTML() ?? "";
 
-  const handleAnswerComment: SubmitHandler<IAnswerCommentContent> = (data) => {
-    if (id) {
-      answerComment({
-        variables: { parentID: id, content: data.content },
-      }).then(() => {
-        reset();
-        if (onReplySuccess) {
-          onReplySuccess();
-        }
-      });
+    if (id && content.trim() !== "" && content.trim() !== "<p></p>") {
+      try {
+        await answerComment({
+          variables: { parentID: id, content },
+        }).then(() => {
+          if (onReplySuccess) onReplySuccess();
+        });
+        setError("");
+        rteRef.current?.editor?.commands.clearContent();
+      } catch (error) {
+        setError("Произошла ошибка при отправке комментария.");
+      }
+    } else {
+      setError("Введите текст");
     }
   };
 
@@ -62,20 +50,13 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
       <StyledCommentBox>
         <form>
           <StyledBox>
-            <InputText
-              placeholder="Текст ответа"
-              multiline
-              maxRows={10}
-              minRows={2}
-              name="content"
-              control={control}
-              errors={errors}
-            />
+            <CommentEditor rteRef={rteRef} />
+            {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
           </StyledBox>
           <StyledStack>
             <StyledLoadingButton
               variant="contained"
-              onClick={handleSubmit(handleAnswerComment)}
+              onClick={handleAnswerComment}
               loading={loading}
             >
               Отправить

@@ -2,7 +2,7 @@ import type { MentionOptions } from "@tiptap/extension-mention";
 import { ReactRenderer } from "@tiptap/react";
 import tippy, { type Instance as TippyInstance } from "tippy.js";
 
-import { SuggestionList } from "../ui";
+import { SuggestionList } from "../comment-editor/ui";
 import { MentionSuggestion, SuggestionListRef } from "../types";
 
 const DOM_RECT_FALLBACK: DOMRect = {

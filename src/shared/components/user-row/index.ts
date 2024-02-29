@@ -1,1 +1,1 @@
-export { default } from "./user-row/user-row";
+export { default } from "./user-row";

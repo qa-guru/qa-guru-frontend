@@ -7,11 +7,11 @@ import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
 import { EditorMenuControls } from "./ui";
-import { ITextEditor } from "../types";
-import useExtensions from "../hooks/use-extensions";
 import { fileListToImageFiles } from "../utils/fileListToImageFiles";
+import useExtensions from "../hooks/use-extensions";
+import { ITextEditor } from "../types";
 
-const Editor: FC<ITextEditor> = ({ rteRef, content }) => {
+const CommentEditor: FC<ITextEditor> = ({ rteRef, content }) => {
   const extensions = useExtensions({
     placeholder: "Add your own content here...",
   });
@@ -163,4 +163,4 @@ const Editor: FC<ITextEditor> = ({ rteRef, content }) => {
   );
 };
 
-export default Editor;
+export default CommentEditor;

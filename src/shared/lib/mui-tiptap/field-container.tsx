@@ -29,7 +29,7 @@ const useStyles = makeStyles<void, "focused" | "disabled" | "notchedOutline">({
 
     outlined: {
       borderRadius: theme.shape.borderRadius,
-      padding: 1, //
+      padding: 1,
       position: "relative",
 
       [`&:hover .${classes.notchedOutline}`]: {

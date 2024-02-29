@@ -5,7 +5,7 @@ import {
   MentionSuggestion,
   SuggestionListProps,
   SuggestionListRef,
-} from "../../types";
+} from "../types";
 
 const SuggestionList = forwardRef<SuggestionListRef, SuggestionListProps>(
   (props, ref) => {

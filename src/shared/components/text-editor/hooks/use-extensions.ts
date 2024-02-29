@@ -42,7 +42,7 @@ import {
 import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
 import { common, createLowlight } from "lowlight";
 
-import { mentionSuggestionOptions } from "../editor/utils/mention-suggestion-options";
+import { mentionSuggestionOptions } from "../utils/mention-suggestion-options";
 
 const lowlight = createLowlight(common);
 
