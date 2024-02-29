@@ -14,7 +14,9 @@ import {
   StyledLocalSelectorWrapper,
   StyledLogo,
   StyledPaper,
+  StyledSignupBox,
   StyledSignupStack,
+  StyledSignupWrapper,
   StyledWrapper,
 } from "../views.styled";
 import { ISignUp } from "./signup.types";
@@ -92,11 +94,11 @@ const Signup: FC<ISignUp> = (props) => {
   }, [handleKeyPress]);
 
   return (
-    <StyledWrapper>
+    <StyledSignupWrapper>
       <StyledLocalSelectorWrapper>
         <ThemeSelector />
       </StyledLocalSelectorWrapper>
-      <Box>
+      <StyledSignupBox>
         <StyledLogo />
         <StyledPaper>
           <form>
@@ -160,8 +162,8 @@ const Signup: FC<ISignUp> = (props) => {
             </StyledButton>
           </StyledBottomStack>
         </StyledPaper>
-      </Box>
-    </StyledWrapper>
+      </StyledSignupBox>
+    </StyledSignupWrapper>
   );
 };
 
