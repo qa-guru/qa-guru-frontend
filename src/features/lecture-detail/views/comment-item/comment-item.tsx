@@ -31,6 +31,7 @@ const CommentItem: FC<ICommentItem> = ({
   const [isReplying, setIsReplying] = useState<boolean>(false);
 
   const [openThreads, setOpenThreads] = useState(false);
+
   const handleReplySuccess = () => {
     setIsReplying(false);
     setOpenThreads(true);

@@ -3,11 +3,11 @@ import { Typography } from "@mui/material";
 
 import { IUserRow } from "./user-row.types";
 import { StyledBox, StyledStack, StyledWrapperStack } from "./user-row.styled";
-import AvatarCustom from "../../avatar-custom";
-import { formatRole } from "../../../helpers";
-import Rating from "../../rating/rating";
-import UserName from "../user-name/user-name";
-import UserDate from "../user-date/user-date";
+import AvatarCustom from "../avatar-custom";
+import { formatRole } from "../../helpers";
+import Rating from "../rating/rating";
+import UserName from "./user-name/user-name";
+import UserDate from "./user-date/user-date";
 
 const UserRow: FC<IUserRow> = (props) => {
   const {

@@ -1,5 +1,5 @@
 import { FC, useRef, useState } from "react";
-import { Editor } from "shared/components/text-editor";
+import { CommentEditor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 
 import { ISendComment } from "./send-comment.types";
@@ -39,7 +39,7 @@ const SendComment: FC<ISendComment> = (props) => {
   return (
     <form>
       <StyledBox>
-        <Editor rteRef={rteRef} />
+        <CommentEditor rteRef={rteRef} />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
       <StyledStack>

@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import { client } from "api";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { ISendHomeWork } from "./send-homework.types";
 import {
   StyledBox,
+  StyledFormHelperText,
   StyledLoadingButton,
   StyledStack,
 } from "./send-homework.styled";
@@ -14,36 +15,50 @@ import {
 const SendHomework: FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
   const { lectureId, trainingId } = useParams();
-
+  const [error, setError] = useState("");
   const rteRef = useRef<RichTextEditorRef>(null);
 
   const handleSendHomeWork = () => {
-    if (lectureId) {
-      sendHomeWorkToCheck({
-        variables: {
-          trainingId: trainingId!,
-          lectureId,
-          content: rteRef.current?.editor?.getHTML() ?? "",
-        },
-        onCompleted: () =>
-          client.refetchQueries({ include: ["homeWorkByLectureAndTraining"] }),
-      });
+    const content = rteRef.current?.editor?.getHTML() ?? "";
+
+    if (content.trim() !== "" && content.trim() !== "<p></p>") {
+      try {
+        sendHomeWorkToCheck({
+          variables: {
+            trainingId: trainingId!,
+            lectureId: lectureId!,
+            content: rteRef.current?.editor?.getHTML() ?? "",
+          },
+          onCompleted: () =>
+            client.refetchQueries({
+              include: ["homeWorkByLectureAndTraining"],
+            }),
+        });
+        setError("");
+        rteRef.current?.editor?.commands.clearContent();
+      } catch (error) {
+        setError("Произошла ошибка при отправке д/з.");
+      }
+    } else {
+      setError("Введите текст");
     }
   };
 
   return (
     <form>
+      <StyledBox>
+        <Editor rteRef={rteRef} />
+        {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
+      </StyledBox>
+
       <StyledStack>
-        <StyledBox>
-          <Editor rteRef={rteRef} />
-          <StyledLoadingButton
-            variant="contained"
-            loading={loading}
-            onClick={handleSendHomeWork}
-          >
-            Отправить
-          </StyledLoadingButton>
-        </StyledBox>
+        <StyledLoadingButton
+          variant="contained"
+          loading={loading}
+          onClick={handleSendHomeWork}
+        >
+          Отправить
+        </StyledLoadingButton>
       </StyledStack>
     </form>
   );

@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, FormHelperText, Stack } from "@mui/material";
 import { styled } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
 
@@ -26,3 +26,9 @@ export const StyledCommentStack = styled(Stack)({
 export const StyledCommentBox = styled(Box)({
   width: "100%",
 });
+
+export const StyledFormHelperText = styled(FormHelperText)(({ theme }) => ({
+  position: "absolute",
+  color: theme.palette.app.red,
+  margin: "5px 5px 0",
+}));
