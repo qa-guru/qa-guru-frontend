@@ -1,3 +1,4 @@
+import { useMediaQuery, useTheme } from "@mui/material";
 import {
   MenuButtonCodeBlock,
   MenuButtonEditLink,
@@ -11,6 +12,9 @@ import {
 } from "shared/lib/mui-tiptap/controls";
 
 export default function EditorMenuControls() {
+  const theme = useTheme();
+  const isUpMd = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
     <MenuControlsContainer>
       <MenuButtonEditLink />
@@ -34,12 +38,17 @@ export default function EditorMenuControls() {
 
       <MenuButtonYoutube />
 
-      <MenuButtonEmoji />
-
       <MenuDivider />
 
-      <MenuButtonUndo />
-      <MenuButtonRedo />
+      <MenuButtonEmoji />
+
+      {isUpMd && (
+        <>
+          <MenuDivider />
+          <MenuButtonUndo />
+          <MenuButtonRedo />
+        </>
+      )}
     </MenuControlsContainer>
   );
 }
