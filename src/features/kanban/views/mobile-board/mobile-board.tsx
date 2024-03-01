@@ -11,8 +11,7 @@ import {
   StyledPagination,
 } from "../board/board.styled";
 import Column from "../column";
-import { STEP } from "../../constants";
-import { ROUTES } from "../../constants/constants";
+import { STEP, ROUTES } from "../../constants";
 
 const MobileBoard: FC<IMobileBoard> = ({
   columns,
