@@ -53,12 +53,7 @@ const components = (theme: Theme) => {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          fontSize: "14px",
-          [theme.breakpoints.down("sm")]: {
-            "& .MuiFormLabel-root": {
-              fontSize: "1rem",
-            },
-          },
+          fontSize: "16px",
         },
       },
     },

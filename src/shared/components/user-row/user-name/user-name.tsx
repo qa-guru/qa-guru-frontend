@@ -14,7 +14,7 @@ const UserName: FC<IUserName> = ({
   const navigate = useNavigate();
 
   const handleRowClick = () => {
-    navigate(`/users/${userId}`);
+    navigate(`/${userId}`);
   };
 
   return (

@@ -12,7 +12,7 @@ import { useTheme } from "@mui/system";
 import PersonIcon from "@mui/icons-material/Person";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { UserRole } from "api/graphql/generated/graphql";
-import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 
 import { IProfile } from "./profile.types";
 import {
@@ -47,9 +47,9 @@ const Profile: FC<IProfile> = (props) => {
 
   if (hasAdminAccess) {
     settings.push({
-      title: "Пользователи",
-      icon: <SupervisorAccountIcon />,
-      url: "/admin",
+      title: "Админ панель",
+      icon: <SpaceDashboardIcon />,
+      url: "/admin-panel",
       id: 1,
     });
   }

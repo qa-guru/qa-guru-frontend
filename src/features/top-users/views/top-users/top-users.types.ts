@@ -1,5 +1,5 @@
 import { UsersRatingQuery } from "api/graphql/generated/graphql";
 
-export interface IUsers {
+export interface ITopUsers {
   data: UsersRatingQuery;
 }
