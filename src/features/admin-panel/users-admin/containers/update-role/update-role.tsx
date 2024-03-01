@@ -7,7 +7,7 @@ import {
   UsersQuery,
   useUpdateRoleMutation,
 } from "api/graphql/generated/graphql";
-import SelectRole from "features/admin/views/select-role";
+import SelectRole from "features/admin-panel/users-admin/views/select-role";
 import { FC } from "react";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";

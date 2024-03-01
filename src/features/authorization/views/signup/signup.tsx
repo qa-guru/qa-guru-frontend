@@ -17,11 +17,9 @@ import {
   StyledSignupBox,
   StyledSignupStack,
   StyledSignupWrapper,
-  StyledWrapper,
 } from "../views.styled";
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
-import { Box } from "@mui/material";
 
 interface UserCreateInputCustom extends UserCreateInput {
   confirmPassword: Scalars["String"];

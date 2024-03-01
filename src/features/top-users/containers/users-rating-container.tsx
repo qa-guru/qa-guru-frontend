@@ -7,9 +7,9 @@ import {
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
-import Users from "../views/users/users";
+import UsersTop from "../views/top-users/top-users";
 
-const UsersContainer: FC = () => {
+const UsersRatingContainer: FC = () => {
   const { data, loading } = useUsersRatingQuery({
     variables: {
       offset: 0,
@@ -21,7 +21,7 @@ const UsersContainer: FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <Users data={data} />;
+  return <UsersTop data={data} />;
 };
 
-export default UsersContainer;
+export default UsersRatingContainer;

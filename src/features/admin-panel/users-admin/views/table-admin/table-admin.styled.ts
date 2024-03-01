@@ -1,12 +1,5 @@
 import { styled } from "@mui/system";
-import {
-  Button,
-  DialogContent,
-  Paper,
-  Stack,
-  Table,
-  Typography,
-} from "@mui/material";
+import { Button, DialogContent, Paper, Stack, Table } from "@mui/material";
 
 export const StyledPaper = styled(Paper)({
   borderRadius: "2px",
@@ -16,10 +9,6 @@ export const StyledPaper = styled(Paper)({
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",
-});
-
-export const StyledTitle = styled(Typography)({
-  marginBottom: "30px",
 });
 
 export const StyledDialogContent = styled(DialogContent)({
