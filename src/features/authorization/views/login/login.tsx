@@ -17,6 +17,7 @@ import {
   StyledWrapper,
   StyledLocalSelectorWrapper,
 } from "../views.styled";
+import InputPassword from "../input-password";
 import { ROUTES } from "../../constants";
 
 const Login: FC<ILogin> = (props) => {
@@ -85,13 +86,11 @@ const Login: FC<ILogin> = (props) => {
               label="E-mail"
               errors={errors}
             />
-            <InputText
+            <InputPassword
               control={control}
               name="password"
               placeholder="Введите пароль"
               label="Пароль"
-              type="password"
-              autoComplete="current-password"
               errors={errors}
             />
             <StyledLoadingButton
