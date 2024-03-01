@@ -17,12 +17,16 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
   const users = data?.users?.items;
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const table = useReactTable({
     data: users as UserDto[],
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    state: {
+      columnVisibility: { email: !isDownMd },
+    },
   });
 
   const { pageSize, pageIndex } = table.getState().pagination;
@@ -51,7 +55,7 @@ const TableAdmin: FC<ITableAdmin> = ({ data, columns, fetchMore }) => {
   return (
     <>
       <StyledPaper>
-        {isDownMd ? (
+        {isDownSm ? (
           <MobileTable table={table} />
         ) : (
           <DesktopTable table={table} />

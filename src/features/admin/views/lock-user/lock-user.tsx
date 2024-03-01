@@ -2,7 +2,6 @@ import { LockUserMutationFn, Maybe } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import { Lock } from "@mui/icons-material";
 import {
-  Button,
   Dialog,
   DialogActions,
   IconButton,
@@ -11,7 +10,13 @@ import {
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
 
-import { StyledDialogContent, StyledStack } from "./lock-user.styled";
+import {
+  StyledButton,
+  StyledCancelButton,
+  StyledDialogContent,
+  StyledStack,
+  StyledWrapper,
+} from "./lock-user.styled";
 
 interface ILockUser {
   lockUser: LockUserMutationFn;
@@ -21,21 +26,27 @@ interface ILockUser {
 const LockUser: FC<ILockUser> = ({ lockUser, id }) => {
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal} maxWidth="xs">
-      <StyledDialogContent>
-        <Typography variant="h4">
-          Вы уверенны, что хотите заблокировать пользователя?
-        </Typography>
-      </StyledDialogContent>
-      <DialogActions>
-        <StyledStack>
-          <Button color="secondary" variant="contained" onClick={handleCancel}>
-            Нет
-          </Button>
-          <Button variant="contained" onClick={handleLock}>
-            Да
-          </Button>
-        </StyledStack>
-      </DialogActions>
+      <StyledWrapper>
+        <StyledDialogContent>
+          <Typography variant="h4">
+            Вы уверены, что хотите заблокировать пользователя?
+          </Typography>
+        </StyledDialogContent>
+        <DialogActions>
+          <StyledStack>
+            <StyledButton
+              color="secondary"
+              variant="contained"
+              onClick={handleCancel}
+            >
+              Нет
+            </StyledButton>
+            <StyledCancelButton variant="contained" onClick={handleLock}>
+              Да
+            </StyledCancelButton>
+          </StyledStack>
+        </DialogActions>
+      </StyledWrapper>
     </Dialog>
   ));
 

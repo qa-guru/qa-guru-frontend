@@ -18,7 +18,6 @@ import { LockUser, UnlockUser, UpdateRole } from "../../containers";
 const Table: FC<ITable> = ({ data, fetchMore }) => {
   const theme = useTheme();
   const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const columns = useMemo<ColumnDef<UserDto>[]>(
     () => [
@@ -53,29 +52,29 @@ const Table: FC<ITable> = ({ data, fetchMore }) => {
 
           return <Rating rating={rating} />;
         },
+        size: 80,
       },
-
-      ...(!isDownMd
-        ? [
-            {
-              header: "E-mail",
-              footer: (props: HeaderContext<UserDto, unknown>) =>
-                props.column.id,
-              accessorKey: "email",
-            },
-          ]
-        : []),
+      {
+        header: "E-mail",
+        footer: (props: HeaderContext<UserDto, unknown>) => props.column.id,
+        accessorKey: "email",
+        size: 170,
+      },
 
       {
         header: "Роль",
         footer: (props) => props.column.id,
         accessorKey: "roles",
-        cell: (info: CellContext<UserDto, unknown>) => (
-          <UpdateRole
-            roles={info.row.original.roles}
-            id={info.row.original.id}
-          />
-        ),
+        cell: (info: CellContext<UserDto, unknown>) =>
+          isOnlyXs ? (
+            <Typography>{info.row.original.roles}</Typography>
+          ) : (
+            <UpdateRole
+              roles={info.row.original.roles}
+              id={info.row.original.id}
+            />
+          ),
+        size: 130,
       },
       {
         header: "Дата\u00A0регистрации",
@@ -85,7 +84,7 @@ const Table: FC<ITable> = ({ data, fetchMore }) => {
           const { creationDate, locked, id } = info.row.original;
 
           return (
-            <StyledAlignStack>
+            <StyledAlignStack position="relative">
               <Typography variant="body2">
                 {formatDate(creationDate, "DD.MM.YYYY")}
               </Typography>
