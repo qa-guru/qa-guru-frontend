@@ -1,23 +1,24 @@
 import { FC, useState } from "react";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import UserRow from "shared/components/user-row";
 import { TextView } from "shared/components/text-editor";
 import { useComment } from "shared/context/comment-context";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { formatDate } from "shared/helpers";
 
 import { ICommentItem } from "./comment-item.types";
 import {
+  StyledBottomStack,
   StyledBox,
   StyledCommentBox,
-  StyledPaper,
-  StyledStack,
-  StyledReplyIcon,
   StyledEditIcon,
-  StyledBottomStack,
   StyledIconButton,
+  StyledPaper,
+  StyledReplyIcon,
+  StyledStack,
+  StyledThreadStack,
 } from "./comment-item.styled";
-import { UpdateComment, AnswerComment, DeleteComment } from "../../containers";
+import { AnswerComment, DeleteComment, UpdateComment } from "../../containers";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
@@ -93,7 +94,7 @@ const CommentItem: FC<ICommentItem> = ({
         </Stack>
       </StyledPaper>
       {openThreads && (
-        <Box paddingLeft="15px">
+        <StyledThreadStack>
           {children?.map((childComment) => (
             <CommentItem
               key={childComment?.id}
@@ -104,7 +105,7 @@ const CommentItem: FC<ICommentItem> = ({
               currentUserID={currentUserID}
             />
           ))}
-        </Box>
+        </StyledThreadStack>
       )}
 
       {isReplying && (
