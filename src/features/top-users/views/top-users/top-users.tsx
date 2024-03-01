@@ -11,15 +11,12 @@ import UserRow from "shared/components/user-row";
 import { formatDate } from "shared/helpers";
 import Rating from "shared/components/rating/rating";
 
-import { IUsers } from "./users.types";
-import {
-  StyledPaper,
-  StyledTitle,
-} from "../../../admin/views/table-admin/table-admin.styled";
-import MobileTable from "../../views/mobile-table";
-import DesktopTable from "../../views/desktop-table";
+import { ITopUsers } from "./top-users.types";
+import MobileTable from "../mobile-table";
+import DesktopTable from "../desktop-table";
+import { StyledPaper, StyledTitle } from "./top-users.styled";
 
-const Users: FC<IUsers> = ({ data }) => {
+const TopUsers: FC<ITopUsers> = ({ data }) => {
   const users = data.usersRating?.items;
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
@@ -83,7 +80,7 @@ const Users: FC<IUsers> = ({ data }) => {
 
   return (
     <Container>
-      <StyledTitle variant="h2">{"Топ 50"}</StyledTitle>
+      <StyledTitle variant="h2">Топ 50</StyledTitle>
       <StyledPaper>
         {isDownMd ? (
           <MobileTable table={table} />
@@ -95,4 +92,4 @@ const Users: FC<IUsers> = ({ data }) => {
   );
 };
 
-export default Users;
+export default TopUsers;

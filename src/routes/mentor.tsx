@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import Profile from "pages/profile";
-import UsersPage from "pages/users";
+import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
 import EditProfilePage from "pages/edit-profile";
 
@@ -18,8 +18,8 @@ const MentorRoutes = [
     path="/profile/edit"
     element={<EditProfilePage />}
   />,
-  <Route key="users" path="/users" element={<UsersPage />} />,
-  <Route key="users-detail" path="/users/:userId" element={<UserDetail />} />,
+  <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
+  <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
 ];
 
 export default MentorRoutes;

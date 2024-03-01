@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from "react";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
-import { Editor } from "shared/components/text-editor";
+import { CommentEditor } from "shared/components/text-editor";
 
 import { IUpdateComment } from "./update-comment.types";
 import {
@@ -42,7 +42,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     <form>
       <StyledStack>
         <StyledBox>
-          <Editor content={content} rteRef={rteRef} />
+          <CommentEditor content={content} rteRef={rteRef} />
           {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
           <StyledButtonsStack>
             <StyledButton
