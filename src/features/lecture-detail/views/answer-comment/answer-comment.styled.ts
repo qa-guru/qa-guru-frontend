@@ -6,22 +6,29 @@ export const StyledBox = styled(Box)({
   width: "100%",
 });
 
-export const StyledStack = styled(Stack)({
-  flexDirection: "column",
-  alignItems: "flex-end",
+export const StyledButtonStack = styled(Stack)(({ theme }) => ({
   marginTop: "15px",
-});
+  gap: "15px",
+  flexDirection: "row",
+  justifyContent: "flex-end",
+  [theme.breakpoints.down("md")]: {
+    gap: 0,
+    marginTop: 0,
+  },
+}));
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   color: theme.palette.app.white,
-  marginTop: "5px",
 }));
 
-export const StyledCommentStack = styled(Stack)({
+export const StyledCommentStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "start",
-  margin: "0 5px 10px",
-});
+  margin: "20px 0 0",
+  [theme.breakpoints.down("md")]: {
+    margin: "20px 0 -10px",
+  },
+}));
 
 export const StyledCommentBox = styled(Box)({
   width: "100%",

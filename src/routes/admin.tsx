@@ -4,8 +4,8 @@ import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
-import Admin from "pages/admin";
-import UsersPage from "pages/users";
+import AdminPanelPage from "pages/admin-panel";
+import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
 import EditProfilePage from "pages/edit-profile";
 
@@ -33,9 +33,9 @@ const AdminRoutes = [
     path="/profile/edit"
     element={<EditProfilePage />}
   />,
-  <Route key="admin" path="/admin" element={<Admin />} />,
-  <Route key="users" path="/users" element={<UsersPage />} />,
-  <Route key="users-detail" path="/users/:userId" element={<UserDetail />} />,
+  <Route key="admin-panel" path="/admin-panel" element={<AdminPanelPage />} />,
+  <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
+  <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
 ];
 
 export default AdminRoutes;
