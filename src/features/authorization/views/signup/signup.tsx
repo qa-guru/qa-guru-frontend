@@ -20,6 +20,7 @@ import {
 } from "../views.styled";
 import { ISignUp } from "./signup.types";
 import { REQUIRED_SYMBOLS, ROUTES } from "../../constants";
+import InputPassword from "../input-password";
 
 interface UserCreateInputCustom extends UserCreateInput {
   confirmPassword: Scalars["String"];
@@ -129,20 +130,18 @@ const Signup: FC<ISignUp> = (props) => {
                 label="Phone"
                 errors={errors}
               />
-              <InputText
+              <InputPassword
                 control={control}
                 name="password"
                 placeholder="Введите пароль"
                 label="Пароль"
-                type="password"
                 errors={errors}
               />
-              <InputText
+              <InputPassword
                 control={control}
                 name="confirmPassword"
                 placeholder="Повторите пароль"
                 label="Повторите пароль"
-                type="password"
                 errors={errors}
               />
             </StyledSignupStack>

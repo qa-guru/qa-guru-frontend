@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import ThemeSelector from "shared/components/theme-selector";
@@ -14,6 +13,7 @@ import {
   StyledWrapper,
 } from "../views.styled";
 import { ISetNewPassword } from "./set-new-password.types";
+import InputPassword from "../input-password";
 
 const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
   const {
@@ -52,20 +52,18 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <StyledStack>
-            <InputText
+            <InputPassword
               control={control}
               name="newPassword"
               placeholder="Введите пароль"
               label="Пароль"
-              type="password"
               errors={errors}
             />
-            <InputText
+            <InputPassword
               control={control}
               name="confirmPassword"
               placeholder="Повторите пароль"
               label="Повторите пароль"
-              type="password"
               errors={errors}
             />
             <StyledLoadingButton
