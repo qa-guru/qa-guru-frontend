@@ -59,7 +59,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   const navigate = useNavigate();
 
   const handleAvatarClick = () => {
-    navigate(`/users/${userId}`);
+    navigate(`/${userId}`);
   };
 
   return (

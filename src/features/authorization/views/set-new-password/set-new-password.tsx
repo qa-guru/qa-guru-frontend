@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { InputText } from "shared/components/form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import * as yup from "yup";
 import ThemeSelector from "shared/components/theme-selector";
