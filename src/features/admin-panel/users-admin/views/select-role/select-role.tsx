@@ -86,7 +86,7 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
       ) : (
         <StyledStack>
           <Typography variant="body2">{formatRole(roles)}</Typography>
-          <IconButton onClick={handleClickEdit}>
+          <IconButton size="small" onClick={handleClickEdit}>
             <EditIcon fontSize="small" color="primary" />
           </IconButton>
         </StyledStack>

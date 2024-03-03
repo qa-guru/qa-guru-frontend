@@ -9,5 +9,6 @@ export const StyledAlignStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledRightAlignBox = styled(Box)({
-  marginLeft: "auto",
+  position: "absolute",
+  right: 0,
 });

@@ -14,7 +14,9 @@ const InputText = <T extends FieldValues>({
   maxRows,
   minRows,
   inputProps,
+  InputProps,
   autoComplete,
+  onKeyDown,
   errors,
 }: IFormInputText<T>) => {
   return (
@@ -34,7 +36,9 @@ const InputText = <T extends FieldValues>({
             maxRows={maxRows}
             minRows={minRows}
             inputProps={inputProps}
+            InputProps={InputProps}
             autoComplete={autoComplete}
+            onKeyDown={onKeyDown}
           />
         )}
       />

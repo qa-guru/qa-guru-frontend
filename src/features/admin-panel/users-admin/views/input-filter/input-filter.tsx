@@ -1,8 +1,11 @@
-import { FC, SyntheticEvent, useState } from "react";
+import { FC, KeyboardEvent, SyntheticEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { TabContext } from "@mui/lab";
-import { Button, Stack } from "@mui/material";
+import { IconButton, InputAdornment, Stack } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import Tooltip from "@mui/material/Tooltip";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";
 import {
@@ -35,6 +38,13 @@ const InputFilter: FC = () => {
     setActiveFilter(value as FilterKey);
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      setFilter({ [activeFilter]: filterValue });
+    }
+  };
+
   return (
     <TabContext value={activeFilter}>
       <StyledTabList onChange={handleFilterChange}>
@@ -47,26 +57,29 @@ const InputFilter: FC = () => {
           control={control}
           name="filterValue"
           placeholder={`Введите ${filterLabels[activeFilter]}`}
+          onKeyDown={handleKeyDown}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Stack direction="row">
+                  <IconButton onClick={() => setFilter({})}>
+                    <Tooltip title="Сбросить">
+                      <RefreshIcon fontSize="small" color="primary" />
+                    </Tooltip>
+                  </IconButton>
+                  <IconButton
+                    onClick={() => setFilter({ [activeFilter]: filterValue })}
+                  >
+                    <Tooltip title="Поиск">
+                      <SearchIcon fontSize="small" color="primary" />
+                    </Tooltip>
+                  </IconButton>
+                </Stack>
+              </InputAdornment>
+            ),
+          }}
         />
       </StyledTabPanel>
-      <Stack direction="row" spacing={2}>
-        <Button
-          sx={{
-            color: "app.white",
-          }}
-          variant="contained"
-          onClick={() => setFilter({ [activeFilter]: filterValue })}
-        >
-          Поиск
-        </Button>
-        <Button
-          color="secondary"
-          variant="contained"
-          onClick={() => setFilter({})}
-        >
-          Cбросить
-        </Button>
-      </Stack>
     </TabContext>
   );
 };
