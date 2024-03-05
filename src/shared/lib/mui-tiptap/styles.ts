@@ -408,21 +408,12 @@ export function getEditorStyles(theme: Theme): StyleRules {
     ".iframe-container": {
       position: "relative",
       width: "100%",
-      "@media (max-width: 768px)": {
-        paddingTop: "56.25%",
-      },
     },
-
     ".iframe-container iframe": {
-      width: "640px",
-      height: "360px",
-      "@media (max-width: 768px)": {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-      },
+      width: "100%",
+      height: "100%",
+      maxWidth: "640px",
+      aspectRatio: 16 / 9,
     },
   };
 }

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
@@ -97,7 +97,9 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork} />
         <StyledPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>
-          <TextView content={card.answer} />
+          <Stack>
+            <TextView content={card.answer} />
+          </Stack>
         </StyledPaper>
       </StyledBox>
     </StyledHomeworkDetails>
