@@ -2,7 +2,7 @@ import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
-import { insertImages } from "shared/lib/mui-tiptap/utils";
+// import { insertImages } from "shared/lib/mui-tiptap/utils";
 import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
@@ -18,71 +18,96 @@ const Editor: FC<ITextEditor> = ({ rteRef, content }) => {
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
 
-  const handleNewImageFiles = useCallback(
-    (files: File[], insertPosition?: number): void => {
-      if (!rteRef.current?.editor) {
-        return;
-      }
+  // const handleNewImageFiles = useCallback(
+  //   (files: File[], insertPosition?: number): void => {
+  //     if (!rteRef.current?.editor) {
+  //       return;
+  //     }
 
-      const attributesForImageFiles = files.map((file) => ({
-        src: URL.createObjectURL(file),
-        alt: file.name,
-      }));
+  //     const attributesForImageFiles = files.map((file) => ({
+  //       src: URL.createObjectURL(file),
+  //       alt: file.name,
+  //     }));
 
-      insertImages({
-        images: attributesForImageFiles,
-        editor: rteRef.current.editor,
-        position: insertPosition,
-      });
-    },
-    []
-  );
+  //     insertImages({
+  //       images: attributesForImageFiles,
+  //       editor: rteRef.current.editor,
+  //       position: insertPosition,
+  //     });
+  //   },
+  //   []
+  // );
+
+  // const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
+  //   useCallback(
+  //     (view, event, _slice, _moved) => {
+  //       if (!(event instanceof DragEvent) || !event.dataTransfer) {
+  //         return false;
+  //       }
+
+  //       const imageFiles = fileListToImageFiles(event.dataTransfer.files);
+  //       if (imageFiles.length > 0) {
+  //         const insertPosition = view.posAtCoords({
+  //           left: event.clientX,
+  //           top: event.clientY,
+  //         })?.pos;
+
+  //         handleNewImageFiles(imageFiles, insertPosition);
+
+  //         event.preventDefault();
+  //         return true;
+  //       }
+
+  //       return false;
+  //     },
+  //     [handleNewImageFiles]
+  //   );
+
+  // const handlePaste: NonNullable<EditorOptions["editorProps"]["handlePaste"]> =
+  //   useCallback(
+  //     (_view, event, _slice) => {
+  //       if (!event.clipboardData) {
+  //         return false;
+  //       }
+
+  //       const pastedImageFiles = fileListToImageFiles(
+  //         event.clipboardData.files
+  //       );
+  //       if (pastedImageFiles.length > 0) {
+  //         handleNewImageFiles(pastedImageFiles);
+
+  //         return true;
+  //       }
+
+  //       return false;
+  //     },
+  //     [handleNewImageFiles]
+  //   );
 
   const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
-    useCallback(
-      (view, event, _slice, _moved) => {
-        if (!(event instanceof DragEvent) || !event.dataTransfer) {
-          return false;
-        }
-
-        const imageFiles = fileListToImageFiles(event.dataTransfer.files);
-        if (imageFiles.length > 0) {
-          const insertPosition = view.posAtCoords({
-            left: event.clientX,
-            top: event.clientY,
-          })?.pos;
-
-          handleNewImageFiles(imageFiles, insertPosition);
-
-          event.preventDefault();
-          return true;
-        }
-
+    useCallback((view, event, _slice, _moved) => {
+      if (!(event instanceof DragEvent) || !event.dataTransfer) {
         return false;
-      },
-      [handleNewImageFiles]
-    );
+      }
+
+      const imageFiles = fileListToImageFiles(event.dataTransfer.files);
+      if (imageFiles.length > 0) {
+        event.preventDefault();
+        return true;
+      }
+
+      return false;
+    }, []);
 
   const handlePaste: NonNullable<EditorOptions["editorProps"]["handlePaste"]> =
-    useCallback(
-      (_view, event, _slice) => {
-        if (!event.clipboardData) {
-          return false;
-        }
-
-        const pastedImageFiles = fileListToImageFiles(
-          event.clipboardData.files
-        );
-        if (pastedImageFiles.length > 0) {
-          handleNewImageFiles(pastedImageFiles);
-
-          return true;
-        }
-
+    useCallback((_view, event, _slice) => {
+      if (!event.clipboardData) {
         return false;
-      },
-      [handleNewImageFiles]
-    );
+      }
+
+      const pastedImageFiles = fileListToImageFiles(event.clipboardData.files);
+      return pastedImageFiles.length > 0;
+    }, []);
 
   return (
     <>

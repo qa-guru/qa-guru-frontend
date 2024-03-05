@@ -165,7 +165,9 @@ export default function useExtensions({
       Highlight.configure({ multicolor: true }),
       HorizontalRule,
 
-      ResizableImage,
+      ResizableImage.configure({
+        allowBase64: true,
+      }),
 
       Dropcursor,
 

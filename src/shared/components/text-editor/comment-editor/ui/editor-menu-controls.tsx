@@ -2,7 +2,6 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import {
   MenuButtonCodeBlock,
   MenuButtonEditLink,
-  MenuButtonImageUpload,
   MenuButtonRedo,
   MenuButtonUndo,
   MenuControlsContainer,
@@ -24,15 +23,6 @@ export default function EditorMenuControls() {
       <MenuButtonCodeBlock />
 
       <MenuDivider />
-
-      <MenuButtonImageUpload
-        onUploadFiles={(files) =>
-          files.map((file) => ({
-            src: URL.createObjectURL(file),
-            alt: file.name,
-          }))
-        }
-      />
 
       <MenuDivider />
 
