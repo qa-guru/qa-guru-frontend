@@ -55,11 +55,6 @@ export default function RichTextContent({
   );
 
   return (
-    <Box
-      maxWidth="81vw"
-      className={editorClasses}
-      component={EditorContent}
-      editor={editor}
-    />
+    <Box className={editorClasses} component={EditorContent} editor={editor} />
   );
 }
