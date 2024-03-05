@@ -30,6 +30,7 @@ import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
 import { getFormattedStatus } from "../../helpers/get-formatted-status";
+import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 
 interface DropCollectedProps {
   isOver: boolean;
@@ -123,6 +124,10 @@ const Column: FC<IColumn> = ({
   };
 
   const handleLoadMore = () => {
+    if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
+      setHasMoreHomeworks(false);
+      return;
+    }
     setShowButton(false);
     fetchMore({
       variables: {
@@ -150,10 +155,13 @@ const Column: FC<IColumn> = ({
   };
 
   useEffect(() => {
-    if (column.cards?.length >= column.totalElements) {
+    if (
+      column.cards?.length >= column.totalElements ||
+      column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX
+    ) {
       setHasMoreHomeworks(false);
     }
-  }, [column.cards?.length]);
+  }, [column.cards?.length, column.totalElements]);
 
   return (
     <StyledWrapperColumnBox>

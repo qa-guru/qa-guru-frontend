@@ -8,6 +8,7 @@ export const STATUS_COLUMN = {
 export const HOMEWORKS_QUERY_DEFAULTS = {
   OFFSET: 0,
   LIMIT: 5,
+  MAX: 500,
 };
 
 export const STANDARD_QUERY_DEFAULTS = {
