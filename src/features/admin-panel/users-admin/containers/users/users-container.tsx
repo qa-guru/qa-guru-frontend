@@ -8,7 +8,7 @@ import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";
-import Table from "../../views/table";
+import Table from "../../views/table-columns";
 
 const UsersContainer: FC = () => {
   const { filter } = useTableAdminFilter();

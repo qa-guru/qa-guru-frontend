@@ -1,19 +1,19 @@
 import { type ApolloQueryResult } from "@apollo/client";
 import { type ColumnDef } from "@tanstack/react-table";
-import { UserDto, UsersQuery } from "api/graphql/generated/graphql";
+import { TrainingDto, TrainingsQuery } from "api/graphql/generated/graphql";
 
 export interface ITable {
-  data: UsersQuery;
+  data: TrainingsQuery;
   fetchMore: (options: {
     variables: { offset?: number; limit?: number };
     updateQuery: (
-      prev: UsersQuery,
+      prev: TrainingsQuery,
       {
         fetchMoreResult,
       }: {
-        fetchMoreResult: UsersQuery;
+        fetchMoreResult: TrainingsQuery;
       }
-    ) => UsersQuery;
-  }) => Promise<ApolloQueryResult<UsersQuery>>;
-  columns: ColumnDef<UserDto>[];
+    ) => TrainingsQuery;
+  }) => Promise<ApolloQueryResult<TrainingsQuery>>;
+  columns: ColumnDef<TrainingDto>[];
 }
