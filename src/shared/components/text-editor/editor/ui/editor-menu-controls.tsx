@@ -9,7 +9,7 @@ import {
   MenuButtonEditLink,
   MenuButtonHighlightColor,
   MenuButtonHorizontalRule,
-  MenuButtonImageUpload,
+  // MenuButtonImageUpload,
   MenuButtonIndent,
   MenuButtonItalic,
   MenuButtonOrderedList,
@@ -133,14 +133,14 @@ export default function EditorMenuControls() {
 
       <MenuDivider />
 
-      <MenuButtonImageUpload
+      {/* <MenuButtonImageUpload
         onUploadFiles={(files) =>
           files.map((file) => ({
             src: URL.createObjectURL(file),
             alt: file.name,
           }))
         }
-      />
+      /> */}
 
       <MenuDivider />
 

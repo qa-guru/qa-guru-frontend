@@ -26,7 +26,7 @@ const Logout: FC<ILogout> = (props) => {
     <Dialog open={open} onClose={hideModal}>
       <StyledWrapper>
         <StyledDialogContent>
-          <Typography variant="h4">"Вы действительно хотите выйти?"</Typography>
+          <Typography variant="h4">Вы действительно хотите выйти?</Typography>
         </StyledDialogContent>
         <DialogActions>
           <StyledStack>
