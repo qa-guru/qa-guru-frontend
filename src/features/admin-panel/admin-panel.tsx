@@ -6,7 +6,7 @@ import TabList from "@mui/lab/TabList";
 import { Container, Typography } from "@mui/material";
 
 import UsersAdmin from "./users-admin";
-import CourseAdmin from "./course-admin";
+import CourseAdmin from "./courses-admin";
 import StatisticsAdmin from "./statistics-admin/statistics-admin";
 import { StyledTabPanel } from "./admin-panel.styled";
 
