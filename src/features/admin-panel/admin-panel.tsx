@@ -18,7 +18,7 @@ const AdminPanel: FC = () => {
   };
   return (
     <Container>
-      <Typography mb={3} variant="h2">
+      <Typography mb={2} variant="h2">
         Панель администратора
       </Typography>
       <TabContext value={value}>

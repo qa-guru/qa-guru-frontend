@@ -16,7 +16,7 @@ const UsersContainer: FC = () => {
   const { data, loading, fetchMore } = useUsersQuery({
     variables: {
       offset: 0,
-      limit: 50,
+      limit: 20,
       sort: { field: UserSortField.Email, order: Order.Desc },
       filter: filter || {},
     },

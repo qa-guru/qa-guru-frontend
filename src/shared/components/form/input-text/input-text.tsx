@@ -18,6 +18,7 @@ const InputText = <T extends FieldValues>({
   autoComplete,
   onKeyDown,
   errors,
+  size,
 }: IFormInputText<T>) => {
   return (
     <FormControl fullWidth error={Boolean(errors?.[name])}>
@@ -26,6 +27,7 @@ const InputText = <T extends FieldValues>({
         control={control}
         render={({ field: { onChange, value } }) => (
           <TextField
+            size={size}
             fullWidth
             value={value}
             onChange={onChange}

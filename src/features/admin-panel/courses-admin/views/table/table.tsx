@@ -1,14 +1,12 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { TrainingDto } from "api/graphql/generated/graphql";
 import {
-  Box,
-  TablePagination,
+  CircularProgress,
   TableBody,
   TableCell,
   TableHead,
@@ -18,24 +16,23 @@ import {
 
 import { ITable } from "./table.types";
 import {
-  StyledLoadMoreButton,
+  StyledBox,
+  StyledInfiniteScroll,
   StyledPaper,
   StyledTable,
   StyledTableRow,
 } from "./table.styled";
-import TablePaginationActions from "../table-pagination-actions";
 
 const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
   const trainings = data?.trainings?.items;
+  const { totalElements } = data?.trainings!;
+  const [hasMoreTrainings, setHasMoreTrainings] = useState<boolean>(true);
 
   const table = useReactTable({
     data: trainings as TrainingDto[],
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
   });
-
-  const { pageSize, pageIndex } = table.getState().pagination;
 
   const handleLoadMore = async () => {
     await fetchMore({
@@ -57,9 +54,29 @@ const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
       },
     });
   };
+
+  useEffect(() => {
+    if (trainings?.length! >= totalElements) {
+      setHasMoreTrainings(false);
+    }
+  }, [trainings]);
+
   return (
-    <>
-      <StyledPaper>
+    <StyledPaper
+      id="scroll-container-lol"
+      sx={{ height: "700px", overflowY: "auto" }}
+    >
+      <StyledInfiniteScroll
+        dataLength={trainings?.length || 0}
+        next={handleLoadMore}
+        hasMore={hasMoreTrainings}
+        loader={
+          <StyledBox>
+            <CircularProgress size={25} />
+          </StyledBox>
+        }
+        scrollableTarget="scroll-container-lol"
+      >
         <StyledTable>
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -95,33 +112,8 @@ const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
             ))}
           </TableBody>
         </StyledTable>
-        <TablePagination
-          rowsPerPageOptions={[
-            5,
-            10,
-            25,
-            { label: "All", value: Number(data?.trainings?.totalElements) },
-          ]}
-          component="div"
-          count={table.getFilteredRowModel().rows.length}
-          rowsPerPage={pageSize}
-          page={pageIndex}
-          onPageChange={(_, page) => {
-            table.setPageIndex(page);
-          }}
-          onRowsPerPageChange={(e) => {
-            const size = e.target.value ? Number(e.target.value) : 10;
-            table.setPageSize(size);
-          }}
-          ActionsComponent={TablePaginationActions}
-        />
-      </StyledPaper>
-      <Box textAlign="center" pb="20px">
-        <StyledLoadMoreButton onClick={handleLoadMore} variant="contained">
-          Загрузить еще
-        </StyledLoadMoreButton>
-      </Box>
-    </>
+      </StyledInfiniteScroll>
+    </StyledPaper>
   );
 };
 
