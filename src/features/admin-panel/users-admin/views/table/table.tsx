@@ -1,41 +1,34 @@
-import {
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import { Box, TablePagination, useMediaQuery, useTheme } from "@mui/material";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { CircularProgress, useMediaQuery, useTheme } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { ITable } from "./table.types";
-import { StyledLoadMoreButton, StyledPaper } from "./table.styled";
-import TablePaginationActions from "../table-pagination-actions";
+import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
 
 const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   const users = data?.users?.items;
+  const { totalElements } = data?.users!;
   const theme = useTheme();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const [hasMoreUsers, setHasMoreUsers] = useState<boolean>(true);
 
   const table = useReactTable({
     data: users as UserDto[],
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     state: {
       columnVisibility: { email: !isDownMd },
     },
   });
 
-  const { pageSize, pageIndex } = table.getState().pagination;
-
   const handleLoadMore = async () => {
     await fetchMore({
       variables: {
         offset: users?.length,
-        limit: 50,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
@@ -52,41 +45,35 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     });
   };
 
+  useEffect(() => {
+    if (users?.length! >= totalElements) {
+      setHasMoreUsers(false);
+    }
+  }, [users]);
+
   return (
-    <>
-      <StyledPaper>
+    <StyledPaper
+      id="scroll-container-lol"
+      sx={{ height: "600px", overflowY: "auto" }}
+    >
+      <StyledInfiniteScroll
+        dataLength={users?.length || 0}
+        next={handleLoadMore}
+        hasMore={hasMoreUsers}
+        loader={
+          <StyledBox>
+            <CircularProgress size={25} />
+          </StyledBox>
+        }
+        scrollableTarget="scroll-container-lol"
+      >
         {isDownSm ? (
           <MobileTable table={table} />
         ) : (
           <DesktopTable table={table} />
         )}
-        <TablePagination
-          rowsPerPageOptions={[
-            5,
-            10,
-            25,
-            { label: "All", value: Number(data?.users?.totalElements) },
-          ]}
-          component="div"
-          count={table.getFilteredRowModel().rows.length}
-          rowsPerPage={pageSize}
-          page={pageIndex}
-          onPageChange={(_, page) => {
-            table.setPageIndex(page);
-          }}
-          onRowsPerPageChange={(e) => {
-            const size = e.target.value ? Number(e.target.value) : 10;
-            table.setPageSize(size);
-          }}
-          ActionsComponent={TablePaginationActions}
-        />
-      </StyledPaper>
-      <Box textAlign="center" pb="20px">
-        <StyledLoadMoreButton onClick={handleLoadMore} variant="contained">
-          Загрузить еще
-        </StyledLoadMoreButton>
-      </Box>
-    </>
+      </StyledInfiniteScroll>
+    </StyledPaper>
   );
 };
 

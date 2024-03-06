@@ -1,5 +1,6 @@
-import { Button, Paper, Table, TableRow } from "@mui/material";
+import { Box, Paper, Table, TableRow } from "@mui/material";
 import { styled } from "@mui/system";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",
@@ -17,6 +18,11 @@ export const StyledPaper = styled(Paper)({
   margin: "20px 0 40px",
 });
 
-export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.app.white,
-}));
+export const StyledInfiniteScroll = styled(InfiniteScroll)({
+  overflow: "visible",
+});
+
+export const StyledBox = styled(Box)({
+  marginTop: "25px",
+  textAlign: "center",
+});

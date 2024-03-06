@@ -4,7 +4,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   marginTop: "5px",
-  // gap: theme.spacing(2),
 }));
 
 export const StyledInfiniteScroll = styled(InfiniteScroll)({

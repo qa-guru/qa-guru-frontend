@@ -54,6 +54,7 @@ const InputFilter: FC = () => {
       </StyledTabList>
       <StyledTabPanel value={activeFilter}>
         <InputText
+          size="small"
           control={control}
           name="filterValue"
           placeholder={`Введите ${filterLabels[activeFilter]}`}
