@@ -15,7 +15,9 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export const StyledPaper = styled(Paper)({
   borderRadius: "2px",
   padding: "5px 0 0",
-  margin: "20px 0 40px",
+  margin: "20px 5px 40px",
+  height: "calc(100vh - 100px - 160px - 70px )",
+  overflowY: "auto",
 });
 
 export const StyledInfiniteScroll = styled(InfiniteScroll)({

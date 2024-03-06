@@ -62,10 +62,7 @@ const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [trainings]);
 
   return (
-    <StyledPaper
-      id="scroll-container-lol"
-      sx={{ height: "700px", overflowY: "auto" }}
-    >
+    <StyledPaper id="scroll-container-lol">
       <StyledInfiniteScroll
         dataLength={trainings?.length || 0}
         next={handleLoadMore}

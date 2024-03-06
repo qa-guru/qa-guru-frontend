@@ -16,7 +16,7 @@ const components = (theme: Theme) => {
           MozOsxFontSmoothing: "grayscale",
           WebkitFontSmoothing: "antialiased",
         },
-        body: { width: "100%", height: "100%" },
+        body: { width: "100%", height: "100%", overscrollBehavior: "none" },
         "*::-webkit-scrollbar": {
           width: "4px",
           height: "4px",
