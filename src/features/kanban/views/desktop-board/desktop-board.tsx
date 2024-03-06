@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
-import { Box, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/system";
+import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "../homework-details";
@@ -25,12 +25,12 @@ const DesktopBoard: FC<IDesktopBoard> = ({
   const [activeCardId, setActiveCardId] = useState<Maybe<string>>(null);
   const [selectedCard, setSelectedCard] =
     useState<Maybe<StudentHomeWorkDto>>(null);
-  const theme = useTheme();
-  const isUpLg = useMediaQuery(theme.breakpoints.up(1475));
+  const { isLargeDesktop } = useResponsive();
+
   const navigate = useNavigate();
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
-    if (isUpLg) {
+    if (isLargeDesktop) {
       const isSameCard = card.id === activeCardId;
       setSelectedCard(isSameCard ? null : card);
       setActiveCardId(isSameCard ? null : card.id!);
@@ -50,7 +50,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({
     <StyledWrapper>
       <StyledColumnBox
         showHomeworkDetails={showHomeworkDetails}
-        isUpLg={isUpLg}
+        isUpLg={isLargeDesktop}
       >
         <StyledStack>
           {columns?.map((column, index) => (
@@ -67,7 +67,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({
           ))}
         </StyledStack>
       </StyledColumnBox>
-      {isUpLg && selectedCard && (
+      {isLargeDesktop && selectedCard && (
         <Box>
           <HomeworkDetails
             card={selectedCard}

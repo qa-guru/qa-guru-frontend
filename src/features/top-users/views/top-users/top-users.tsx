@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { Container, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import {
   type CellContext,
   type ColumnDef,
@@ -10,6 +10,7 @@ import { UserRatingDto } from "api/graphql/generated/graphql";
 import UserRow from "shared/components/user-row";
 import { formatDate } from "shared/helpers";
 import Rating from "shared/components/rating/rating";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { ITopUsers } from "./top-users.types";
 import MobileTable from "../mobile-table";
@@ -18,9 +19,7 @@ import { StyledPaper, StyledTitle } from "./top-users.styled";
 
 const TopUsers: FC<ITopUsers> = ({ data }) => {
   const users = data.usersRating?.items;
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
+  const { isMobile } = useResponsive();
 
   const columns = useMemo<ColumnDef<UserRatingDto>[]>(
     () => [
@@ -34,7 +33,7 @@ const TopUsers: FC<ITopUsers> = ({ data }) => {
           return (
             <UserRow
               userId={info.row.original.id}
-              hideAvatar={isOnlyXs}
+              hideAvatar={isMobile}
               hideRoles
               firstName={firstName}
               lastName={lastName}
@@ -43,6 +42,7 @@ const TopUsers: FC<ITopUsers> = ({ data }) => {
             />
           );
         },
+        size: 200,
       },
       {
         header: "Рейтинг",
@@ -69,7 +69,7 @@ const TopUsers: FC<ITopUsers> = ({ data }) => {
         },
       },
     ],
-    [isOnlyXs]
+    [isMobile]
   );
 
   const table = useReactTable({
@@ -82,7 +82,7 @@ const TopUsers: FC<ITopUsers> = ({ data }) => {
     <Container>
       <StyledTitle variant="h2">Топ 50</StyledTitle>
       <StyledPaper>
-        {isDownMd ? (
+        {isMobile ? (
           <MobileTable table={table} />
         ) : (
           <DesktopTable table={table} />
