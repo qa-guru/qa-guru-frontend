@@ -30,8 +30,8 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
 
           return (
             <Grid item xs={12} key={id}>
-              <StyledLink to={`/training/${trainingId}/${id}`}>
-                <CardActionArea>
+              <CardActionArea>
+                <StyledLink to={`/training/${trainingId}/${id}`}>
                   <StyledPaper>
                     <Typography variant="h4">{subject}</Typography>
                     <StyledWrapper>
@@ -50,8 +50,8 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
                       </StyledSubtitle>
                     </StyledBox>
                   </StyledPaper>
-                </CardActionArea>
-              </StyledLink>
+                </StyledLink>
+              </CardActionArea>
             </Grid>
           );
         })}

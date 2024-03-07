@@ -451,3 +451,21 @@ export function getUtilityClasses<T extends string>(
 
   return result;
 }
+
+export function getCustomPickerStyles(theme: Theme) {
+  const isDarkMode = theme.palette.mode === "dark";
+
+  return {
+    backgroundColor: isDarkMode
+      ? theme.palette.app.secondary
+      : theme.palette.app.white,
+    ...(isDarkMode && {
+      "--epr-category-label-bg-color": theme.palette.app.secondary,
+      "--epr-search-input-bg-color": theme.palette.app.purple,
+      "--epr-search-input-bg-color-active": theme.palette.app.purple,
+      "--epr-picker-border-color": theme.palette.app.purple,
+      "--epr-focus-bg-color": theme.palette.app.purple,
+      "--epr-hover-bg-color": theme.palette.app.purple,
+    }),
+  };
+}

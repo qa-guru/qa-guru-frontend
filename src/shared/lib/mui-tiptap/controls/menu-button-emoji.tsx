@@ -2,10 +2,11 @@ import { useRef, useState, MouseEvent } from "react";
 import { MenuButton, useRichTextEditorContext } from "shared/lib/mui-tiptap";
 import EmojiPicker, { type EmojiClickData } from "emoji-picker-react";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import { Popover } from "@mui/material";
+import { Popover, useTheme } from "@mui/material";
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { MenuButtonProps } from "./menu-button";
+import { getCustomPickerStyles } from "../styles";
 
 export type MenuButtonEmojiProps = Partial<MenuButtonProps>;
 
@@ -13,6 +14,9 @@ export default function MenuButtonEmoji(props: MenuButtonEmojiProps) {
   const editor = useRichTextEditorContext();
   const buttonRef = useRef<Maybe<HTMLButtonElement>>(null);
   const [anchorEl, setAnchorEl] = useState<Maybe<HTMLButtonElement>>(null);
+
+  const theme = useTheme();
+  const customPickerStyles = getCustomPickerStyles(theme);
 
   const handleOpenPopover = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget as HTMLButtonElement);
@@ -50,7 +54,12 @@ export default function MenuButtonEmoji(props: MenuButtonEmojiProps) {
           horizontal: "left",
         }}
       >
-        <EmojiPicker onEmojiClick={onClick} />
+        <EmojiPicker
+          onEmojiClick={onClick}
+          width={300}
+          height={400}
+          style={customPickerStyles}
+        />
       </Popover>
     </>
   );
