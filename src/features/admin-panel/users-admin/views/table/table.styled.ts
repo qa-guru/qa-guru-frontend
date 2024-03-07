@@ -2,11 +2,13 @@ import { styled } from "@mui/system";
 import { Box, Button, DialogContent, Paper, Stack, Table } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-export const StyledPaper = styled(Paper)({
+export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "2px",
   padding: "5px 0 0",
   margin: "20px 0 40px",
-});
+  height: "calc(100vh - 100px - 220px - 70px )",
+  overflowY: "auto",
+}));
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",

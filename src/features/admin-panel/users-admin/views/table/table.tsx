@@ -1,7 +1,8 @@
-import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { CircularProgress, useMediaQuery, useTheme } from "@mui/material";
-import { UserDto } from "api/graphql/generated/graphql";
 import { FC, useEffect, useState } from "react";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { CircularProgress } from "@mui/material";
+import { UserDto } from "api/graphql/generated/graphql";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { ITable } from "./table.types";
 import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";
@@ -11,9 +12,8 @@ import MobileTable from "../mobile-table";
 const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   const users = data?.users?.items;
   const { totalElements } = data?.users!;
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile, isMobileOrTablet, isDownDesktop } = useResponsive();
+
   const [hasMoreUsers, setHasMoreUsers] = useState<boolean>(true);
 
   const table = useReactTable({
@@ -21,7 +21,10 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: {
-      columnVisibility: { email: !isDownMd },
+      columnVisibility: {
+        email: !isDownDesktop,
+        phoneNumber: !isMobileOrTablet,
+      },
     },
   });
 
@@ -52,10 +55,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [users]);
 
   return (
-    <StyledPaper
-      id="scroll-container-lol"
-      sx={{ height: "600px", overflowY: "auto" }}
-    >
+    <StyledPaper id="scroll-container-lol">
       <StyledInfiniteScroll
         dataLength={users?.length || 0}
         next={handleLoadMore}
@@ -67,7 +67,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
         }
         scrollableTarget="scroll-container-lol"
       >
-        {isDownSm ? (
+        {isMobile ? (
           <MobileTable table={table} />
         ) : (
           <DesktopTable table={table} />

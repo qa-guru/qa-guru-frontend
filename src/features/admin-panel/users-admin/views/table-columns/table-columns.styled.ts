@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 export const StyledAlignStack = styled(Stack)(({ theme }) => ({
   display: "flex",
@@ -7,3 +7,9 @@ export const StyledAlignStack = styled(Stack)(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(2),
 }));
+
+export const StyledRightAlignBox = styled(Box)({
+  marginLeft: "auto",
+  position: "absolute",
+  right: 0,
+});

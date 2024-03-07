@@ -2,10 +2,10 @@ import UserRow from "shared/components/user-row";
 import { FC, useRef, useState } from "react";
 import { CommentEditor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
-import { useTheme } from "@mui/system";
-import { Button, IconButton, useMediaQuery } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import SendIcon from "@mui/icons-material/Send";
+import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledBox,
@@ -25,8 +25,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, id, dataUser, onReplySuccess } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobileOrTablet } = useResponsive();
 
   const handleAnswerComment = async () => {
     const content = rteRef.current?.editor?.getHTML() ?? "";
@@ -64,7 +63,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
             {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
           </StyledBox>
           <StyledButtonStack>
-            {isDownMd ? (
+            {isMobileOrTablet ? (
               <IconButton onClick={onReplySuccess}>
                 <ClearIcon color="primary" fontSize="small" />
               </IconButton>
@@ -77,7 +76,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
                 Отменить
               </Button>
             )}
-            {isDownMd ? (
+            {isMobileOrTablet ? (
               <IconButton onClick={handleAnswerComment}>
                 <SendIcon color="primary" fontSize="small" />
               </IconButton>

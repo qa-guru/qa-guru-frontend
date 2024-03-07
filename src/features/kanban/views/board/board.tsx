@@ -1,12 +1,11 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/system";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { IBoard } from "./board.types";
 import DesktopBoard from "../desktop-board";
@@ -38,8 +37,7 @@ const Board: FC<IBoard> = ({
     fromNotApproved: false,
   });
   const [columns, setColumns] = useState<IColumnItem[]>([]);
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobileOrTablet } = useResponsive();
 
   useEffect(() => {
     setColumns([
@@ -131,7 +129,7 @@ const Board: FC<IBoard> = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      {isDownMd ? (
+      {isMobileOrTablet ? (
         <MobileBoard
           columns={columns}
           draggingState={draggingState}

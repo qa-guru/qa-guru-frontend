@@ -5,12 +5,11 @@ import {
   Box,
   IconButton,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useTheme } from "@mui/system";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledAccordion,
@@ -36,8 +35,7 @@ const Form: FC = () => {
   });
 
   const [isAccordionExpanded, setAccordionExpanded] = useState(false);
-  const theme = useTheme();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobileOrTablet } = useResponsive();
 
   const {
     lectureId,
@@ -69,7 +67,7 @@ const Form: FC = () => {
 
   return (
     <form>
-      {isDownMd ? (
+      {isMobileOrTablet ? (
         <StyledAccordion
           expanded={isAccordionExpanded}
           onChange={handleAccordionToggle}

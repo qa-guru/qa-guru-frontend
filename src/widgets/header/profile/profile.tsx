@@ -1,18 +1,13 @@
 import { FC, MouseEvent, useState } from "react";
-import {
-  Divider,
-  ListItemIcon,
-  ListItemText,
-  useMediaQuery,
-} from "@mui/material";
+import { Divider, ListItemIcon, ListItemText } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "features/authorization/containers/logout";
 import UserRow from "shared/components/user-row";
-import { useTheme } from "@mui/system";
 import PersonIcon from "@mui/icons-material/Person";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { UserRole } from "api/graphql/generated/graphql";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { IProfile } from "./profile.types";
 import {
@@ -30,8 +25,8 @@ const Profile: FC<IProfile> = (props) => {
     data: { user },
   } = props;
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const theme = useTheme();
-  const isDownSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile } = useResponsive();
+
   const settings = [
     {
       title: "Профиль",
@@ -42,8 +37,6 @@ const Profile: FC<IProfile> = (props) => {
   ];
 
   const hasAdminAccess = useRoleAccess({ allowedRoles: [UserRole.Admin] });
-
-  const isOnlyXs = useMediaQuery(theme.breakpoints.only("xs"));
 
   if (hasAdminAccess) {
     settings.push({
@@ -69,9 +62,9 @@ const Profile: FC<IProfile> = (props) => {
           <StyledBox>
             <UserRow
               user={user}
-              hideFullName={isDownSm}
+              hideFullName={isMobile}
               variant="body2"
-              hideRating={isOnlyXs}
+              hideRating={isMobile}
             />
           </StyledBox>
         </StyledButton>

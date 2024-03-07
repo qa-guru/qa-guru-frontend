@@ -1,18 +1,17 @@
-import { useMediaQuery, useTheme } from "@mui/material";
 import {
   MenuButtonCodeBlock,
   MenuButtonEditLink,
+  MenuButtonEmoji,
   MenuButtonRedo,
   MenuButtonUndo,
+  MenuButtonYoutube,
   MenuControlsContainer,
   MenuDivider,
-  MenuButtonYoutube,
-  MenuButtonEmoji,
 } from "shared/lib/mui-tiptap/controls";
+import useResponsive from "shared/hooks/use-responsive";
 
 export default function EditorMenuControls() {
-  const theme = useTheme();
-  const isUpMd = useMediaQuery(theme.breakpoints.up("md"));
+  const { isDesktop } = useResponsive();
 
   return (
     <MenuControlsContainer>
@@ -32,7 +31,7 @@ export default function EditorMenuControls() {
 
       <MenuButtonEmoji />
 
-      {isUpMd && (
+      {isDesktop && (
         <>
           <MenuDivider />
           <MenuButtonUndo />
