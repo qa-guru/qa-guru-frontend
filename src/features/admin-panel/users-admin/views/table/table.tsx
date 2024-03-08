@@ -1,11 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Dialog } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
 import useResponsive from "shared/hooks/use-responsive";
+import { useModal } from "react-modal-hook";
 
 import { ITable } from "./table.types";
-import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";
+import {
+  StyledBox,
+  StyledClearIcon,
+  StyledInfiniteScroll,
+  StyledLoadMoreButton,
+  StyledPaper,
+  StyledUsersDialogContent,
+} from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
 
@@ -27,6 +35,27 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
       },
     },
   });
+
+  const [showModal, hideModal] = useModal(({ in: open }) => (
+    <Dialog open={open} onClose={hideModal} maxWidth="sm" fullWidth>
+      <StyledUsersDialogContent id="scroll-mobile-container">
+        <StyledClearIcon onClick={hideModal} />
+        <StyledInfiniteScroll
+          dataLength={users?.length || 0}
+          next={handleLoadMore}
+          hasMore={hasMoreUsers}
+          loader={
+            <StyledBox>
+              <CircularProgress size={25} />
+            </StyledBox>
+          }
+          scrollableTarget="scroll-mobile-container"
+        >
+          <MobileTable table={table} />
+        </StyledInfiniteScroll>
+      </StyledUsersDialogContent>
+    </Dialog>
+  ));
 
   const handleLoadMore = async () => {
     await fetchMore({
@@ -55,25 +84,34 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [users]);
 
   return (
-    <StyledPaper id="scroll-container-lol">
-      <StyledInfiniteScroll
-        dataLength={users?.length || 0}
-        next={handleLoadMore}
-        hasMore={hasMoreUsers}
-        loader={
-          <StyledBox>
-            <CircularProgress size={25} />
-          </StyledBox>
-        }
-        scrollableTarget="scroll-container-lol"
-      >
-        {isMobile ? (
-          <MobileTable table={table} />
-        ) : (
-          <DesktopTable table={table} />
-        )}
-      </StyledInfiniteScroll>
-    </StyledPaper>
+    <>
+      {isMobile ? (
+        <>
+          <StyledPaper>
+            <MobileTable table={table} />
+          </StyledPaper>
+          <StyledLoadMoreButton onClick={showModal}>
+            Загрузить еще
+          </StyledLoadMoreButton>
+        </>
+      ) : (
+        <StyledPaper id="scroll-container">
+          <StyledInfiniteScroll
+            dataLength={users?.length || 0}
+            next={handleLoadMore}
+            hasMore={hasMoreUsers}
+            loader={
+              <StyledBox>
+                <CircularProgress size={25} />
+              </StyledBox>
+            }
+            scrollableTarget="scroll-container"
+          >
+            <DesktopTable table={table} />
+          </StyledInfiniteScroll>
+        </StyledPaper>
+      )}
+    </>
   );
 };
 

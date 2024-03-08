@@ -13,6 +13,7 @@ import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledAccordion,
+  StyledAccordionDetails,
   StyledColumnStack,
   StyledRow,
   StyledRowStack,
@@ -71,11 +72,12 @@ const Form: FC = () => {
         <StyledAccordion
           expanded={isAccordionExpanded}
           onChange={handleAccordionToggle}
+          disableGutters
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>Фильтр</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <StyledAccordionDetails>
             <StyledColumnStack>
               <TrainingSelection control={control} />
               <LectureSelection control={control} />
@@ -90,7 +92,7 @@ const Form: FC = () => {
                 </IconButton>
               </StyledRowStack>
             </StyledColumnStack>
-          </AccordionDetails>
+          </StyledAccordionDetails>
         </StyledAccordion>
       ) : (
         <StyledRow>

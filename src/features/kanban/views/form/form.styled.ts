@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Accordion, Stack } from "@mui/material";
+import { Accordion, AccordionDetails, Stack } from "@mui/material";
 
 export const StyledAccordion = styled(Accordion)({
   boxShadow:
@@ -7,6 +7,19 @@ export const StyledAccordion = styled(Accordion)({
   "& .MuiPaper": {
     borderRadius: 0,
   },
+  margin: "0 5px",
+});
+
+export const StyledAccordionDetails = styled(AccordionDetails)({
+  position: "absolute",
+  backgroundColor: "white",
+  top: "45px",
+  paddingTop: "20px",
+  zIndex: 10,
+  width: "100%",
+  borderRadius: "0 0 5px 5px",
+  boxShadow:
+    "0px 2px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.20)",
 });
 
 export const StyledColumnStack = styled(Stack)(({ theme }) => ({

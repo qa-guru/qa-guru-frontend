@@ -12,13 +12,16 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const StyledPaper = styled(Paper)({
+export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "2px",
   padding: "5px 0 0",
   margin: "20px 5px 40px",
   height: "calc(100vh - 100px - 160px - 70px )",
   overflowY: "auto",
-});
+  [theme.breakpoints.down("md")]: {
+    height: "calc(100vh - 100px - 160px - 150px )",
+  },
+}));
 
 export const StyledInfiniteScroll = styled(InfiniteScroll)({
   overflow: "visible",
