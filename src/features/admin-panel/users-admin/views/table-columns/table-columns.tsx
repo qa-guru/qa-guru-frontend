@@ -28,17 +28,12 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {
-          const { firstName, lastName, roles } = info.row.original;
-
           return (
             <UserRow
               user={info.row.original}
               hideAvatar={isMobile}
               hideRoles
               hideRating
-              firstName={firstName}
-              lastName={lastName}
-              roles={roles}
               userId={info.row.original.id}
               hasLink
             />
