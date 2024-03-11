@@ -1,8 +1,10 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { TrainingDto } from "api/graphql/generated/graphql";
 import { FC, Fragment, useMemo } from "react";
-import { IconButton, Typography } from "@mui/material";
+import { Avatar, IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import UserRow from "shared/components/user-row";
+import { Stack } from "@mui/system";
 
 import Table from "../table";
 import { ITableColumns } from "./table-columns.types";
@@ -15,9 +17,18 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "name",
         cell: (info: CellContext<TrainingDto, unknown>) => {
-          const { name } = info.row.original;
+          const { name, picture } = info.row.original;
 
-          return <Typography>{name}</Typography>;
+          return (
+            <Stack direction="row" alignItems="center" spacing={2}>
+              <Avatar
+                src={`data:image/png;base64, ${picture}` || ""}
+                variant="rounded"
+                alt="Picture Training"
+              />
+              <Typography>{name}</Typography>
+            </Stack>
+          );
         },
       },
       {
@@ -30,11 +41,17 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
           return (
             <>
               {mentors?.map((mentor) => {
-                const { id, firstName } = mentor!;
+                const { id, roles } = mentor!;
 
                 return (
                   <Fragment key={id}>
-                    <Typography>{firstName}</Typography>
+                    <UserRow
+                      user={mentor}
+                      hideRating
+                      roles={roles}
+                      userId={id}
+                      hasLink
+                    />
                   </Fragment>
                 );
               })}
@@ -51,7 +68,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         cell: () => {
           return (
             <IconButton>
-              <ModeEditIcon />
+              <ModeEditIcon color="primary" />
             </IconButton>
           );
         },
