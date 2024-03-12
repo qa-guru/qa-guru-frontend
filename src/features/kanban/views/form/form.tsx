@@ -1,11 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import {
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { AccordionSummary, Box, IconButton, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RefreshIcon from "@mui/icons-material/Refresh";
