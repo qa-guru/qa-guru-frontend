@@ -19,6 +19,7 @@ import {
   StyledThreadStack,
 } from "./comment-item.styled";
 import { AnswerComment, DeleteComment, UpdateComment } from "../../containers";
+import LikeComment from "../../containers/like-comment";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
@@ -26,7 +27,7 @@ const CommentItem: FC<ICommentItem> = ({
   currentUserID,
   parentID = null,
 }) => {
-  const { creator, content, creationDate, id, children } = item || {};
+  const { creator, content, creationDate, likes, id, children } = item || {};
   const { selectedComment, setSelectedComment } = useComment();
 
   const [isReplying, setIsReplying] = useState<boolean>(false);
@@ -66,6 +67,7 @@ const CommentItem: FC<ICommentItem> = ({
         </StyledStack>
         <Stack direction="row" justifyContent="space-between">
           <StyledBottomStack>
+            <LikeComment id={id} likes={likes} />
             <Typography variant="caption" color="textSecondary">
               {formatDate(creationDate, "DD.MM.YYYY | HH:mm")}
             </Typography>
@@ -76,7 +78,7 @@ const CommentItem: FC<ICommentItem> = ({
             )}
             {editAccess && <DeleteComment id={id} />}
             <StyledIconButton onClick={handleReplyClick}>
-              <StyledReplyIcon fontSize="small" />
+              <StyledReplyIcon color="primary" />
             </StyledIconButton>
           </StyledBottomStack>
           <Stack>

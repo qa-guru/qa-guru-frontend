@@ -1,0 +1,3 @@
+mutation likeComment($id: ID!) {
+  likeComment(id: $id)
+}

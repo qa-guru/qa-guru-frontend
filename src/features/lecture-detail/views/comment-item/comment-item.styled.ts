@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
-import { Paper, Stack, Box, IconButton } from "@mui/material";
-import ReplyIcon from "@mui/icons-material/Reply";
+import { Box, IconButton, Paper, Stack } from "@mui/material";
+import { Reply } from "@mui/icons-material";
 import { ReactComponent as EditIcon } from "assets/icons/button-edit.svg";
 
 interface IStyledComment {
@@ -46,8 +46,7 @@ export const StyledEditIcon = styled(EditIcon)(({ theme }) => ({
   width: "16px",
 }));
 
-export const StyledReplyIcon = styled(ReplyIcon)(({ theme }) => ({
-  color: theme.palette.app.primary,
+export const StyledReplyIcon = styled(Reply)(({ theme }) => ({
   width: "16px",
 }));
 
