@@ -5,7 +5,6 @@ import { StyledStack, StyledTypography } from "./comments-limited.styled";
 import { SendComment } from "../../containers";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
-import { COMMENTS_DISPLAY_LIMIT } from "../../constants";
 
 const CommentsLimited: FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;
@@ -18,7 +17,7 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
       <SendComment id={id} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledStack>
-        {items?.slice(0, COMMENTS_DISPLAY_LIMIT).map((item) => {
+        {items?.map((item) => {
           const { id } = item!;
 
           return (

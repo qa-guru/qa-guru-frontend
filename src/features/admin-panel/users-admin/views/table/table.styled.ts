@@ -7,13 +7,13 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "2px",
   padding: "5px 0 0",
   margin: "20px 0 40px",
-  height: "calc(100vh - 100px - 220px - 70px )",
+  height: "calc(100vh - 100px - 220px - 70px)",
   overflowY: "auto",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100vh - 100px - 220px - 150px )",
+    height: "calc(100vh - 100px - 220px - 150px)",
   },
   [theme.breakpoints.down("sm")]: {
-    height: "calc(100vh - 100px - 255px - 150px )",
+    height: "calc(100vh - 100px - 255px - 150px)",
     margin: "20px 0 10px",
   },
 }));
