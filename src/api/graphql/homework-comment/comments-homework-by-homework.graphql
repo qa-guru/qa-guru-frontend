@@ -24,6 +24,7 @@ query commentsHomeWorkByHomeWork(
       }
       creationDate
       content
+      likes
       homeWork {
         id
       }

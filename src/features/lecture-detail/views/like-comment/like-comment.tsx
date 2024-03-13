@@ -16,7 +16,7 @@ const LikeComment: FC<ILikeComment> = ({ id, likeComment, likes }) => {
       await likeComment({
         variables: { id },
       });
-      setIsFavourite(isFavourite ? false : true);
+      setIsFavourite(!isFavourite);
     }
   };
 
