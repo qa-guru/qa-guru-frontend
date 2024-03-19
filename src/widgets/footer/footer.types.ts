@@ -4,6 +4,7 @@ import { ReactComponent as InstagramIcon } from "assets/icons/instagram.svg";
 import { ReactComponent as TelegramIcon } from "assets/icons/telegram.svg";
 import { ReactComponent as VkIcon } from "assets/icons/vk.svg";
 import { ReactComponent as LinkedInIcon } from "assets/icons/linked-in.svg";
+import { SupportAgent } from "@mui/icons-material";
 import { ComponentType } from "react";
 
 export const socialIcons = [
@@ -29,6 +30,11 @@ export const socialIcons = [
     component: LinkedInIcon,
     url: "https://me.linkedin.com/company/qa-guru",
   },
+  // {
+  //   id: "support",
+  //   component: SupportAgent,
+  //   url: "https://t.me/qa_guru_support",
+  // },
 ];
 
 export interface ISocialIcon {

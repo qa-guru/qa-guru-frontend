@@ -4,7 +4,7 @@ import { TableAdminFilterProvider } from "../../context/admin-table-context";
 import InputFilter from "../input-filter";
 import { Table } from "../../containers";
 
-const UsersAdmin: FC = () => {
+const UsersAdminPage: FC = () => {
   return (
     <TableAdminFilterProvider>
       <InputFilter />
@@ -13,4 +13,4 @@ const UsersAdmin: FC = () => {
   );
 };
 
-export default UsersAdmin;
+export default UsersAdminPage;

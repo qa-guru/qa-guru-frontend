@@ -8,6 +8,7 @@ import { CircularProgress, Dialog } from "@mui/material";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import useResponsive from "shared/hooks/use-responsive";
 import { useModal } from "react-modal-hook";
+import { Fullscreen } from "@mui/icons-material";
 
 import { ITable } from "./table.types";
 import {
@@ -39,7 +40,7 @@ const ModalMobileTable = ({
   table,
 }: IModalMobileTable) => {
   return (
-    <Dialog open={open} onClose={hideModal} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={hideModal} fullWidth fullScreen>
       <StyledUsersDialogContent id="scroll-container">
         <StyledClearIcon onClick={hideModal} />
         <StyledInfiniteScroll
@@ -122,12 +123,24 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     <>
       {isMobile ? (
         <>
-          <StyledPaper>
-            <MobileTable table={table} />
-          </StyledPaper>
           <StyledLoadMoreButton onClick={showModal}>
-            Загрузить еще
+            <Fullscreen color="primary" />
           </StyledLoadMoreButton>
+          <StyledPaper id="scroll-mobile-container">
+            <StyledInfiniteScroll
+              dataLength={users?.length || 0}
+              next={handleLoadMore}
+              hasMore={hasMoreUsers}
+              loader={
+                <StyledBox>
+                  <CircularProgress size={25} />
+                </StyledBox>
+              }
+              scrollableTarget="scroll-mobile-container"
+            >
+              <MobileTable table={table} />
+            </StyledInfiniteScroll>
+          </StyledPaper>
         </>
       ) : (
         <StyledPaper id="scroll-container">

@@ -1,26 +1,32 @@
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Paper, Stack, Table } from "@mui/material";
+import {
+  Box,
+  DialogContent,
+  IconButton,
+  Paper,
+  Stack,
+  Table,
+} from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ClearIcon from "@mui/icons-material/Clear";
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
-  borderRadius: "2px",
+  borderRadius: "10px",
   padding: "5px 0 0",
   margin: "20px 0 40px",
-  height: "calc(100vh - 100px - 220px - 70px)",
+  height: "calc(100vh - 100px - 215px - 60px)",
   overflowY: "auto",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100vh - 100px - 220px - 150px)",
+    height: "calc(100dvh - 100px - 145px - 60px)",
   },
   [theme.breakpoints.down("sm")]: {
-    height: "calc(100vh - 100px - 255px - 150px)",
-    margin: "20px 0 10px",
+    height: "calc(100dvh - 100px - 140px - 60px)",
+    margin: "20px 0 0",
   },
 }));
 
 export const StyledUsersDialogContent = styled(DialogContent)({
   overflowY: "auto",
-  maxHeight: "calc(100vh - 200px)",
   margin: 0,
   padding: 0,
 });
@@ -37,12 +43,12 @@ export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   },
 }));
 
-export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
-  margin: "5px 0",
-  color: theme.palette.app.primary,
-  textAlign: "center",
-  width: "100%",
-}));
+export const StyledLoadMoreButton = styled(IconButton)({
+  position: "absolute",
+  right: "1px",
+  top: "83px",
+  margin: 0,
+});
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",

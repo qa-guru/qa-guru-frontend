@@ -17,7 +17,7 @@ const Footer: FC = () => {
     url,
   }) => (
     <Link href={url} target="_blank" rel="noopener noreferrer">
-      <IconButton>
+      <IconButton color="primary" sx={{ padding: 0 }}>
         <Icon />
       </IconButton>
     </Link>
@@ -31,7 +31,7 @@ const Footer: FC = () => {
             <StyledLogo />
           </StyledBox>
           <StyledSupportLink href="https://t.me/qa_guru_support">
-            <Typography variant="body1">Написать в поддержку</Typography>
+            <Typography variant="body1">Техподдержка</Typography>
           </StyledSupportLink>
           <StyledIconBox>
             {socialIcons.map((socialIcon) => (

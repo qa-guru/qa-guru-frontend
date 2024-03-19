@@ -1,16 +1,18 @@
 import { styled } from "@mui/system";
-import { DialogContent, Stack, Box, Button } from "@mui/material";
+import { Box, Button, DialogContent, Stack } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
-export const StyledDialogContent = styled(DialogContent)({
+export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
   overflowY: "auto",
-  maxHeight: "calc(100vh - 200px)",
-});
+  [theme.breakpoints.up("sm")]: {
+    height: "calc(100dvh - 50px)",
+  },
+}));
 
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
   cursor: "pointer",
-  zIndex: "1",
+  zIndex: 2000,
   top: "8px",
   right: "12px",
   [theme.breakpoints.up("sm")]: {

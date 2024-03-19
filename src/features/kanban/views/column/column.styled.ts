@@ -12,12 +12,12 @@ export const StyledWrapperColumnContainer = styled(Box, {
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
-  height: "calc(100vh - 100px - 140px - 70px )",
+  height: "calc(100vh - 100px - 130px - 60px )",
   overflowY: showButton ? "hidden" : "auto",
   [theme.breakpoints.down("md")]: {
     height: showButton
-      ? "calc(100vh - 100px - 195px - 150px )"
-      : "calc(100vh - 100px - 145px - 150px )",
+      ? "calc(100dvh - 100px - 175px - 60px )"
+      : "calc(100dvh - 100px - 130px - 60px )",
   },
 }));
 
@@ -32,7 +32,7 @@ export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
-  margin: "1vh auto",
+  margin: "5px auto",
   color: theme.palette.app.primary,
   textAlign: "center",
   width: "100%",
