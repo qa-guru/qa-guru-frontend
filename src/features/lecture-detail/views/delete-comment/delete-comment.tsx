@@ -6,11 +6,10 @@ import { StyledDeleteIcon, StyledIconButton } from "./delete-comment.styled";
 
 const DeleteComment: FC<IDeleteComment> = ({ id, deleteComment, loading }) => {
   const handleDelete = async () => {
-    if (id) {
+    if (id)
       await deleteComment({
         variables: { id },
       });
-    }
   };
 
   return (

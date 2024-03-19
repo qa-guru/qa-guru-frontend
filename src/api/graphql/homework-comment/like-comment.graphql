@@ -1,3 +1,25 @@
 mutation likeComment($id: ID!) {
-  likeComment(id: $id)
+  likeComment(id: $id) {
+    id
+    creator {
+      id
+      email
+      firstName
+      middleName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    userLike
+    likes
+    creationDate
+    content
+    homeWork {
+      id
+      answer
+      status
+    }
+  }
 }

@@ -8,8 +8,13 @@ import {
 } from "./like-comment.styled";
 import { ILikeComment } from "./like-comment.types";
 
-const LikeComment: FC<ILikeComment> = ({ id, likeComment, likes }) => {
-  const [isFavourite, setIsFavourite] = useState(false);
+const LikeComment: FC<ILikeComment> = ({
+  id,
+  likeComment,
+  likes,
+  userLike,
+}) => {
+  const [isFavourite, setIsFavourite] = useState(userLike);
 
   const handleFavourite = async () => {
     if (id) {
@@ -31,11 +36,9 @@ const LikeComment: FC<ILikeComment> = ({ id, likeComment, likes }) => {
           <StyledFavoriteBorder color="primary" />
         </StyledIconButton>
       )}
-      {likes && (
-        <Typography variant="caption" color="textSecondary">
-          {likes}
-        </Typography>
-      )}
+      <Typography variant="caption" color="textSecondary">
+        {likes}
+      </Typography>
     </Stack>
   );
 };

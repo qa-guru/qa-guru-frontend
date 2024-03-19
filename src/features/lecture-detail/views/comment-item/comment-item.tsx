@@ -27,7 +27,8 @@ const CommentItem: FC<ICommentItem> = ({
   currentUserID,
   parentID = null,
 }) => {
-  const { creator, content, creationDate, likes, id, children } = item || {};
+  const { creator, content, creationDate, likes, id, children, userLike } =
+    item || {};
   const { selectedComment, setSelectedComment } = useComment();
 
   const [isReplying, setIsReplying] = useState<boolean>(false);
@@ -67,7 +68,7 @@ const CommentItem: FC<ICommentItem> = ({
         </StyledStack>
         <Stack direction="row" justifyContent="space-between">
           <StyledBottomStack>
-            <LikeComment id={id} likes={likes} />
+            <LikeComment id={id} likes={likes} userLike={userLike} />
             <Typography variant="caption" color="textSecondary">
               {formatDate(creationDate, "DD.MM.YYYY | HH:mm")}
             </Typography>

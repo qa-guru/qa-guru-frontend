@@ -9,6 +9,7 @@ const UpdateCommentContainer: FC<IUpdateCommentContainer> = (props) => {
   const [updateComment, { loading }] = useUpdateCommentMutation({
     update: (cache, { data }) => {
       const updateComment = data?.updateComment;
+
       if (updateComment) {
         cache.modify({
           id: cache.identify(updateComment),

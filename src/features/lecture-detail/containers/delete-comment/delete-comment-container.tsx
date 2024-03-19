@@ -16,6 +16,7 @@ const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({ id }) => {
       cache.modify({
         fields: {
           commentsHomeWorkByHomeWork(existingCommentsRef, { readField }) {
+            console.log(existingCommentsRef);
             return existingCommentsRef.items.filter(
               (commentRef: DeleteCommentItem) =>
                 deletedCommentId !== readField("id", commentRef)

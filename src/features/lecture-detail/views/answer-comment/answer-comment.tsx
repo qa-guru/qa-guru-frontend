@@ -17,10 +17,6 @@ import {
 } from "./answer-comment.styled";
 import { IAnswerComment } from "./answer-comment.types";
 
-interface IAnswerCommentForm {
-  content: string;
-}
-
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, id, dataUser, onReplySuccess } = props;
   const rteRef = useRef<RichTextEditorRef>(null);

@@ -4,4 +4,5 @@ export interface ILikeComment {
   id?: Maybe<string>;
   likes: Maybe<Array<string>>;
   likeComment: LikeCommentMutationFn;
+  userLike?: Maybe<boolean>;
 }
