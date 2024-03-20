@@ -24,7 +24,7 @@ const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
         query: UsersDocument,
         variables: {
           offset: 0,
-          limit: 50,
+          limit: 20,
           sort: { field: UserSortField.Email, order: Order.Desc },
           filter: filter || {},
         },
@@ -38,7 +38,7 @@ const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
         query: UsersDocument,
         variables: {
           offset: 0,
-          limit: 50,
+          limit: 20,
           sort: { field: UserSortField.Email, order: Order.Desc },
           filter: filter || {},
         },

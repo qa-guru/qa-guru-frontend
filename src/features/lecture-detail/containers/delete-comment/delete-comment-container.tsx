@@ -1,26 +1,54 @@
 import { FC } from "react";
-import { useDeleteCommentMutation } from "api/graphql/generated/graphql";
+import {
+  CommentHomeWorkSortField,
+  CommentsHomeWorkByHomeWorkDocument,
+  CommentsHomeWorkByHomeWorkQuery,
+  Maybe,
+  Order,
+  useDeleteCommentMutation,
+} from "api/graphql/generated/graphql";
 
 import { IDeleteCommentContainer } from "./delete-comment-container.types";
 import DeleteComment from "../../views/delete-comment";
-
-type DeleteCommentItem = {
-  __ref: string;
-};
+import { QUERY_DEFAULTS } from "../../constants";
 
 const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({ id }) => {
   const [deleteComment, { loading }] = useDeleteCommentMutation({
-    update: (cache, { data }) => {
-      const deletedCommentId = data?.deleteComment?.id;
+    update: (cache) => {
+      const existingComments: Maybe<CommentsHomeWorkByHomeWorkQuery> =
+        cache.readQuery({
+          query: CommentsHomeWorkByHomeWorkDocument,
+          variables: {
+            offset: QUERY_DEFAULTS.OFFSET,
+            limit: QUERY_DEFAULTS.LIMIT,
+            sort: {
+              field: CommentHomeWorkSortField.CreationDate,
+              order: Order.Desc,
+            },
+            homeWorkId: id,
+          },
+        });
 
-      cache.modify({
-        fields: {
-          commentsHomeWorkByHomeWork(existingCommentsRef, { readField }) {
-            console.log(existingCommentsRef);
-            return existingCommentsRef.items.filter(
-              (commentRef: DeleteCommentItem) =>
-                deletedCommentId !== readField("id", commentRef)
-            );
+      const updatedComments =
+        existingComments?.commentsHomeWorkByHomeWork?.items?.filter(
+          (comment) => comment?.id !== id
+        );
+
+      cache.writeQuery({
+        query: CommentsHomeWorkByHomeWorkDocument,
+        variables: {
+          offset: QUERY_DEFAULTS.OFFSET,
+          limit: QUERY_DEFAULTS.LIMIT,
+          sort: {
+            field: CommentHomeWorkSortField.CreationDate,
+            order: Order.Desc,
+          },
+          homeWorkId: id,
+        },
+        data: {
+          commentsHomeWorkByHomeWork: {
+            ...existingComments?.commentsHomeWorkByHomeWork,
+            items: [updatedComments],
           },
         },
       });
