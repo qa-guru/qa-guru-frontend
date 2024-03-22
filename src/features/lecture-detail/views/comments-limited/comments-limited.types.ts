@@ -6,5 +6,5 @@ import {
 export interface ICommentsLimited {
   dataCommentsHomeWorkByHomeWork?: CommentsHomeWorkByHomeWorkQuery;
   dataUserId?: UserIdQuery;
-  id?: string;
+  homeworkId?: string;
 }

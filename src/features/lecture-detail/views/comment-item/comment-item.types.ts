@@ -7,4 +7,5 @@ export interface ICommentItem {
   commentId?: Maybe<string>;
   parentID?: Maybe<string>;
   currentUserID?: Maybe<string>;
+  homeworkId?: string;
 }

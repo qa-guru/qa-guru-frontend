@@ -17,10 +17,12 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   marginTop: "25px",
 }));
 
-export const StyledDialogContent = styled(DialogContent)({
+export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
   overflowY: "auto",
-  maxHeight: "calc(100vh - 200px)",
-});
+  [theme.breakpoints.up("sm")]: {
+    height: "calc(100dvh - 50px)",
+  },
+}));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: "16px",
@@ -30,7 +32,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
   cursor: "pointer",
-  zIndex: 20,
+  zIndex: 2000,
   top: "8px",
   [theme.breakpoints.up("xs")]: {
     top: "16px",

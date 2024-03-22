@@ -6,7 +6,12 @@ import UserRow from "shared/components/user-row";
 import PersonIcon from "@mui/icons-material/Person";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { UserRole } from "api/graphql/generated/graphql";
-import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import {
+  SpaceDashboard,
+  Leaderboard,
+  Group,
+  School,
+} from "@mui/icons-material";
 import useResponsive from "shared/hooks/use-responsive";
 
 import { IProfile } from "./profile.types";
@@ -25,7 +30,7 @@ const Profile: FC<IProfile> = (props) => {
     data: { user },
   } = props;
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const { isMobile } = useResponsive();
+  const { isMobile, isDesktop } = useResponsive();
 
   const settings = [
     {
@@ -39,12 +44,35 @@ const Profile: FC<IProfile> = (props) => {
   const hasAdminAccess = useRoleAccess({ allowedRoles: [UserRole.Admin] });
 
   if (hasAdminAccess) {
-    settings.push({
-      title: "Админ панель",
-      icon: <SpaceDashboardIcon />,
-      url: "/admin-panel",
-      id: 1,
-    });
+    if (isDesktop) {
+      settings.push({
+        title: "Админ панель",
+        icon: <SpaceDashboard />,
+        url: "/admin-panel",
+        id: 1,
+      });
+    } else {
+      settings.push(
+        {
+          title: "Курсы",
+          icon: <School />,
+          url: "/admin-panel/courses",
+          id: 2,
+        },
+        {
+          title: "Пользователи",
+          icon: <Group />,
+          url: "/admin-panel/users",
+          id: 3,
+        },
+        {
+          title: "Статистика",
+          icon: <Leaderboard />,
+          url: "/admin-panel/statistics",
+          id: 4,
+        }
+      );
+    }
   }
 
   const handleOpenProfile = (event: MouseEvent<HTMLElement>) => {

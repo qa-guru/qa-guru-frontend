@@ -7,7 +7,7 @@ import {
 export interface IAnswerComment {
   answerComment: AnswerCommentMutationFn;
   loading: boolean;
-  id?: Maybe<string>;
+  commentId?: Maybe<string>;
   dataUser?: UserQuery;
   onReplySuccess?: () => void;
 }

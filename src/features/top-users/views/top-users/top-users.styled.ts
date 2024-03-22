@@ -6,7 +6,7 @@ export const StyledTitle = styled(Typography)({
 });
 
 export const StyledPaper = styled(Paper)({
-  borderRadius: "2px",
+  borderRadius: "10px",
   padding: "5px 0 0",
   margin: "20px 0 40px",
 });

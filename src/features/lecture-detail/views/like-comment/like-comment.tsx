@@ -1,5 +1,6 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
+import { app } from "theme/colors";
 
 import {
   StyledIconButton,
@@ -9,33 +10,28 @@ import {
 import { ILikeComment } from "./like-comment.types";
 
 const LikeComment: FC<ILikeComment> = ({
-  id,
+  commentId,
   likeComment,
   likes,
   userLike,
 }) => {
-  const [isFavourite, setIsFavourite] = useState(userLike);
-
   const handleFavourite = async () => {
-    if (id) {
+    if (commentId) {
       await likeComment({
-        variables: { id },
+        variables: { id: commentId },
       });
-      setIsFavourite(!isFavourite);
     }
   };
 
   return (
-    <Stack direction="row">
-      {isFavourite ? (
-        <StyledIconButton onClick={handleFavourite}>
-          <StyledFavorite color="primary" />
-        </StyledIconButton>
-      ) : (
-        <StyledIconButton onClick={handleFavourite}>
-          <StyledFavoriteBorder color="primary" />
-        </StyledIconButton>
-      )}
+    <Stack direction="row" alignItems="center" spacing={0.3}>
+      <StyledIconButton onClick={handleFavourite}>
+        {userLike ? (
+          <StyledFavorite sx={{ color: app.red }} />
+        ) : (
+          <StyledFavoriteBorder sx={{ color: app.red }} />
+        )}
+      </StyledIconButton>
       <Typography variant="caption" color="textSecondary">
         {likes}
       </Typography>

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog, Box } from "@mui/material";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { IHomework } from "./homework.types";
 import {
@@ -18,9 +19,16 @@ import CommentsPagination from "../comments-pagination";
 const Homework: FC<IHomework> = (props) => {
   const { dataHomeWorkByLectureAndTraining, dataUserId, hideMentorAndStudent } =
     props;
+  const { isMobile } = useResponsive();
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
+    <Dialog
+      open={open}
+      onClose={hideModalAndUpdateUrl}
+      fullScreen={isMobile}
+      maxWidth="xl"
+      fullWidth
+    >
       <StyledDialogContent id="scroll-container">
         <StyledClearIcon onClick={hideModalAndUpdateUrl} />
         <StyledModalBox>
@@ -28,7 +36,7 @@ const Homework: FC<IHomework> = (props) => {
             dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
             dataUserId={dataUserId}
           />
-          <Comments id={dataHomeWorkByLectureAndTraining?.id}>
+          <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
             <CommentsPagination />
           </Comments>
         </StyledModalBox>
@@ -53,7 +61,7 @@ const Homework: FC<IHomework> = (props) => {
       />
       {dataHomeWorkByLectureAndTraining?.id && (
         <>
-          <Comments id={dataHomeWorkByLectureAndTraining?.id}>
+          <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
             <CommentsLimited />
           </Comments>
 

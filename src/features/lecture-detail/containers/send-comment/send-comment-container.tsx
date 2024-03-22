@@ -11,7 +11,7 @@ import SendComment from "../../views/send-comment";
 import { INDEX_OFFSET, PARSE_INT_RADIX, QUERY_DEFAULTS } from "../../constants";
 
 const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
-  const { id } = props;
+  const { homeworkId } = props;
 
   const [sendComment, { loading }] = useSendCommentMutation({
     update: (cache, { data }) => {
@@ -26,7 +26,7 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
               field: "CREATION_DATE",
               order: "DESC",
             },
-            homeWorkId: id,
+            homeWorkId: homeworkId,
           },
         });
 
@@ -39,7 +39,7 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
             field: "CREATION_DATE",
             order: "DESC",
           },
-          homeWorkId: id,
+          homeWorkId: homeworkId,
         },
         data: {
           commentsHomeWorkByHomeWork: {
@@ -59,7 +59,13 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
     },
   });
 
-  return <SendComment loading={loading} sendComment={sendComment} id={id} />;
+  return (
+    <SendComment
+      loading={loading}
+      sendComment={sendComment}
+      homeworkId={homeworkId}
+    />
+  );
 };
 
 export default SendCommentContainer;

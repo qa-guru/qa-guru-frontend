@@ -34,6 +34,21 @@ const AdminRoutes = [
     element={<EditProfilePage />}
   />,
   <Route key="admin-panel" path="/admin-panel" element={<AdminPanelPage />} />,
+  <Route
+    key="courses-admin"
+    path="/admin-panel/courses"
+    element={<AdminPanelPage />}
+  />,
+  <Route
+    key="users-admin"
+    path="/admin-panel/users"
+    element={<AdminPanelPage />}
+  />,
+  <Route
+    key="statistics-admin"
+    path="/admin-panel/statistics"
+    element={<AdminPanelPage />}
+  />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
 ];

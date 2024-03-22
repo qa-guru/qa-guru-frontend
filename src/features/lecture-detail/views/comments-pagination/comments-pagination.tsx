@@ -13,7 +13,8 @@ import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
 
 const CommentsPagination: FC<ICommentsPagination> = (props) => {
-  const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, id } = props;
+  const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, homeworkId } =
+    props;
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
@@ -49,7 +50,7 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
   return (
     <>
       <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
-      <SendComment id={id} />
+      <SendComment homeworkId={homeworkId} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledInfiniteScroll
         dataLength={items?.length || 0}
@@ -72,6 +73,7 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
                 item={item}
                 commentId={id}
                 currentUserID={dataUserId?.user?.id}
+                homeworkId={homeworkId}
               />
             );
           })}

@@ -11,18 +11,18 @@ import {
 } from "./send-comment.styled";
 
 const SendComment: FC<ISendComment> = (props) => {
-  const { sendComment, loading, id } = props;
+  const { sendComment, loading, homeworkId } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
 
   const handleSendComment = async () => {
     const content = rteRef.current?.editor?.getHTML() ?? "";
 
-    if (id && content.trim() !== "" && content.trim() !== "<p></p>") {
+    if (homeworkId && content.trim() !== "" && content.trim() !== "<p></p>") {
       try {
         await sendComment({
           variables: {
-            homeWorkId: id,
+            homeWorkId: homeworkId,
             content,
           },
         });

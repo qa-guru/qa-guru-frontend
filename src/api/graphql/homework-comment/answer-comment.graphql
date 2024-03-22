@@ -22,6 +22,10 @@ mutation answerComment($parentID: ID!, $content: String!) {
       answer
       status
     }
+    children {
+      ...subCommentHomeWorkDto
+      ...subCommentHomeWorkDtoRecursive
+    }
   }
 }
 

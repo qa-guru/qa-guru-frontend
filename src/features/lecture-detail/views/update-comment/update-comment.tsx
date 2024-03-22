@@ -14,7 +14,7 @@ import {
 import { useComment } from "../../../../shared/context/comment-context";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
-  const { loading, updateComment, id, content } = props;
+  const { loading, updateComment, commentId, content } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
   const { setSelectedComment } = useComment();
@@ -22,10 +22,10 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
   const handleUpdateComment = () => {
     const content = rteRef.current?.editor?.getHTML() ?? "";
 
-    if (id && content.trim() !== "" && content.trim() !== "<p></p>") {
+    if (commentId && content.trim() !== "" && content.trim() !== "<p></p>") {
       updateComment({
         variables: {
-          id,
+          id: commentId,
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {

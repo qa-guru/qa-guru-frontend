@@ -2,7 +2,7 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 const useResponsive = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.only("xs"));
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md"));
   const isDownDesktop = useMediaQuery(theme.breakpoints.down("lg"));
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));

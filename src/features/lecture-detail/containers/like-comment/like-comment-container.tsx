@@ -5,7 +5,7 @@ import { ILikeCommentContainer } from "./like-comment-container.types";
 import LikeComment from "../../views/like-comment";
 
 const LikeCommentContainer: FC<ILikeCommentContainer> = ({
-  id,
+  commentId,
   likes,
   userLike,
 }) => {
@@ -26,7 +26,7 @@ const LikeCommentContainer: FC<ILikeCommentContainer> = ({
 
   return (
     <LikeComment
-      id={id}
+      commentId={commentId}
       likeComment={likeComment}
       likes={likes}
       userLike={userLike}

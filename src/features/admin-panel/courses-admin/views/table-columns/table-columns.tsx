@@ -1,13 +1,14 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { TrainingDto } from "api/graphql/generated/graphql";
 import { FC, Fragment, useMemo } from "react";
-import { Avatar, IconButton, Typography } from "@mui/material";
+import { Avatar, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
 
-import Table from "../table";
+import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";
+import { StyledIconButton } from "./table-columns.styled";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const columns = useMemo<ColumnDef<TrainingDto>[]>(
@@ -26,10 +27,11 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
                 variant="rounded"
                 alt="Picture Training"
               />
-              <Typography>{name}</Typography>
+              <Typography variant="body2">{name}</Typography>
             </Stack>
           );
         },
+        size: 180,
       },
       {
         header: "Менторы",
@@ -58,26 +60,26 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
             </>
           );
         },
+        size: 120,
       },
       {
         header: () => null,
         footer: (props) => props.column.id,
         accessorKey: "lock",
-        size: 5,
-
         cell: () => {
           return (
-            <IconButton>
-              <ModeEditIcon color="primary" />
-            </IconButton>
+            <StyledIconButton>
+              <ModeEditIcon fontSize="small" color="primary" />
+            </StyledIconButton>
           );
         },
+        size: 10,
       },
     ],
     []
   );
 
-  return <Table {...{ data, columns, fetchMore }} />;
+  return <TableAdmin {...{ data, columns, fetchMore }} />;
 };
 
 export default TableColumns;

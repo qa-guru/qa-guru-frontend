@@ -15,6 +15,7 @@ const components = (theme: Theme) => {
           WebkitOverflowScrolling: "touch",
           MozOsxFontSmoothing: "grayscale",
           WebkitFontSmoothing: "antialiased",
+          overscrollBehavior: "none",
         },
         body: { width: "100%", height: "100%", overscrollBehavior: "none" },
         "*::-webkit-scrollbar": {
@@ -38,6 +39,18 @@ const components = (theme: Theme) => {
         root: {
           fontSize: "0.7rem",
           width: "fit-content",
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          [theme.breakpoints.only("sm")]: {
+            padding: "0 10px",
+          },
+          [theme.breakpoints.only("xs")]: {
+            padding: "0 5px",
+          },
         },
       },
     },

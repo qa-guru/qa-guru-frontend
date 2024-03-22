@@ -10,9 +10,45 @@ import {
 
 import { IDeleteCommentContainer } from "./delete-comment-container.types";
 import DeleteComment from "../../views/delete-comment";
-import { QUERY_DEFAULTS } from "../../constants";
+import { INDEX_OFFSET, PARSE_INT_RADIX, QUERY_DEFAULTS } from "../../constants";
 
-const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({ id }) => {
+interface Comment {
+  id?: string;
+  children?: Comment[];
+}
+
+function removeCommentAndChildren(
+  comments: Comment[],
+  commentId?: Maybe<string>
+): Comment[] {
+  function recursivelyRemove(
+    comments: Comment[],
+    commentId?: Maybe<string>
+  ): Comment[] {
+    const result: Comment[] = [];
+
+    for (const comment of comments) {
+      if (comment.id === commentId) continue;
+
+      const commentCopy = { ...comment };
+
+      if (comment.children && comment.children.length > 0) {
+        commentCopy.children = recursivelyRemove(comment.children, commentId);
+      }
+
+      result.push(commentCopy);
+    }
+
+    return result;
+  }
+
+  return recursivelyRemove(comments, commentId);
+}
+
+const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({
+  id,
+  homeworkId,
+}) => {
   const [deleteComment, { loading }] = useDeleteCommentMutation({
     update: (cache) => {
       const existingComments: Maybe<CommentsHomeWorkByHomeWorkQuery> =
@@ -25,14 +61,15 @@ const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({ id }) => {
               field: CommentHomeWorkSortField.CreationDate,
               order: Order.Desc,
             },
-            homeWorkId: id,
+            homeWorkId: homeworkId,
           },
         });
 
-      const updatedComments =
-        existingComments?.commentsHomeWorkByHomeWork?.items?.filter(
-          (comment) => comment?.id !== id
-        );
+      let updatedComments: Comment[] = [];
+      const items = existingComments?.commentsHomeWorkByHomeWork
+        ?.items as Comment[];
+
+      updatedComments = removeCommentAndChildren(items, id);
 
       cache.writeQuery({
         query: CommentsHomeWorkByHomeWorkDocument,
@@ -43,12 +80,17 @@ const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({ id }) => {
             field: CommentHomeWorkSortField.CreationDate,
             order: Order.Desc,
           },
-          homeWorkId: id,
+          homeWorkId: homeworkId,
         },
         data: {
           commentsHomeWorkByHomeWork: {
             ...existingComments?.commentsHomeWorkByHomeWork,
-            items: [updatedComments],
+            items: updatedComments,
+            totalElements:
+              parseInt(
+                existingComments?.commentsHomeWorkByHomeWork?.totalElements,
+                PARSE_INT_RADIX
+              ) - INDEX_OFFSET,
           },
         },
       });

@@ -18,7 +18,7 @@ import {
 import { IAnswerComment } from "./answer-comment.types";
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
-  const { answerComment, loading, id, dataUser, onReplySuccess } = props;
+  const { answerComment, loading, commentId, dataUser, onReplySuccess } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
   const { isMobileOrTablet } = useResponsive();
@@ -26,10 +26,10 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
   const handleAnswerComment = async () => {
     const content = rteRef.current?.editor?.getHTML() ?? "";
 
-    if (id && content.trim() !== "" && content.trim() !== "<p></p>") {
+    if (commentId && content.trim() !== "" && content.trim() !== "<p></p>") {
       try {
         await answerComment({
-          variables: { parentID: id, content },
+          variables: { parentID: commentId, content },
         }).then(() => {
           if (onReplySuccess) onReplySuccess();
         });
