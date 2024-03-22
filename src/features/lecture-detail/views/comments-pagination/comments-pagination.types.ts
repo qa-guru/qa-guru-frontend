@@ -6,7 +6,7 @@ import {
 export interface ICommentsPagination {
   dataCommentsHomeWorkByHomeWork?: CommentsHomeWorkByHomeWorkQuery;
   dataUserId?: UserIdQuery;
-  id?: string;
+  homeworkId?: string;
   fetchMore?: (options: {
     variables: { offset?: number };
     updateQuery: (

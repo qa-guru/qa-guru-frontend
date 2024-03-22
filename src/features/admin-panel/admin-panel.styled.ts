@@ -1,15 +1,18 @@
 import { styled } from "@mui/system";
 import { TabPanel } from "@mui/lab";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
-export const StyledContentBox = styled(Box)(({ theme }) => ({
-  height: "calc(100vh - 76px - 24px - 70px)",
+export const StyledTypography = styled(Typography)({
+  marginBottom: "15px",
+});
+
+export const StyledContentBox = styled(Box)({
+  height: "calc(100dvh - 66px - 24px - 60px)",
+});
+
+export const StyledTabPanel = styled(TabPanel)(({ theme }) => ({
+  padding: "10px 0 0",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100vh - 157px - 24px - 70px )",
-    overflow: "auto",
+    padding: 0,
   },
 }));
-
-export const StyledTabPanel = styled(TabPanel)({
-  padding: "15px 0 0",
-});

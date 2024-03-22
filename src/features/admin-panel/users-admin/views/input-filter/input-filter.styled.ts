@@ -4,7 +4,7 @@ import { TabList, TabPanel } from "@mui/lab";
 
 export const StyledTabList = styled(TabList)(({ theme }) => ({
   padding: 0,
-  margin: "0 0 -1.3px",
+  margin: "10px 0 -1.3px",
   minHeight: 0,
   "& .Mui-selected": {
     borderBottom: "none",

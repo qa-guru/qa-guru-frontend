@@ -4,16 +4,13 @@ import { ReactComponent as LensImage } from "assets/images/lens.svg";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   position: "absolute",
-  top: "76px",
-  bottom: "70px",
-  width: "100%",
   backgroundColor: theme.palette.app.purple,
   justifyContent: "center",
   alignItems: "center",
-  [theme.breakpoints.down("md")]: {
-    marginTop: "-24px",
-    position: "static",
-  },
+  textAlign: "center",
+  top: "66px",
+  bottom: "60px",
+  width: "100%",
 }));
 
 export const StyledLensImage = styled(LensImage)({
@@ -23,7 +20,10 @@ export const StyledLensImage = styled(LensImage)({
 export const StyledAlignBox = styled(Stack)(({ theme }) => ({
   textAlign: "center",
   gap: theme.spacing(2),
-  margin: "0 0 8vh",
+  margin: "0 0 50px",
+  [theme.breakpoints.down("md")]: {
+    margin: "0 0 120px",
+  },
 }));
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({

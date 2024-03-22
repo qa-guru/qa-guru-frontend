@@ -14,13 +14,22 @@ import { Comments } from "../../containers";
 import CommentsPagination from "../comments-pagination";
 import HomeworkItem from "../homework-item";
 import CommentsTotalElements from "../comment-total-elements";
+import useResponsive from "../../../../shared/hooks/use-responsive";
 
 const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
   item,
   dataUserId,
 }) => {
+  const { isMobile } = useResponsive();
+
   const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={hideModalAndUpdateUrl} maxWidth="xl" fullWidth>
+    <Dialog
+      open={open}
+      onClose={hideModalAndUpdateUrl}
+      fullScreen={isMobile}
+      fullWidth
+      maxWidth="xl"
+    >
       <StyledDialogContent id="scroll-container">
         <StyledClearIcon onClick={hideModalAndUpdateUrl} />
         <StyledBox>
@@ -28,7 +37,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
             dataHomeWorkByLectureAndTraining={item}
             dataUserId={dataUserId}
           />
-          <Comments id={item?.id}>
+          <Comments homeworkId={item?.id}>
             <CommentsPagination />
           </Comments>
         </StyledBox>
@@ -46,7 +55,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
 
   return (
     <StyledStack>
-      <Comments id={item?.id}>
+      <Comments homeworkId={item?.id}>
         <CommentsTotalElements />
       </Comments>
       <StyledButton variant="contained" onClick={showModalAndSetUrl}>

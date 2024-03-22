@@ -1,5 +1,9 @@
 import {
-  SubCommentHomeWorkDtoFragmentDoc,
+  CommentHomeWorkSortField,
+  CommentsHomeWorkByHomeWorkDocument,
+  CommentsHomeWorkByHomeWorkQuery,
+  Maybe,
+  Order,
   useAnswerCommentMutation,
   useUserQuery,
 } from "api/graphql/generated/graphql";
@@ -7,35 +11,63 @@ import { FC } from "react";
 
 import { IAnswerCommentContainer } from "./answer-comment-container.types";
 import AnswerComment from "../../views/answer-comment";
-
-type AnswerCommentItem = {
-  __ref: string;
-};
+import { INDEX_OFFSET, PARSE_INT_RADIX, QUERY_DEFAULTS } from "../../constants";
 
 const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
-  const { id, onReplySuccess } = props;
+  const { commentId, onReplySuccess, homeworkId } = props;
   const { data } = useUserQuery();
 
   const [answerComment, { loading }] = useAnswerCommentMutation({
     update: (cache, { data }) => {
       const newAnswerComment = data?.answerComment;
 
-      const newCommentRef = cache.writeFragment({
-        data: newAnswerComment,
-        fragment: SubCommentHomeWorkDtoFragmentDoc,
-      });
+      const existingComments: Maybe<CommentsHomeWorkByHomeWorkQuery> =
+        cache.readQuery({
+          query: CommentsHomeWorkByHomeWorkDocument,
+          variables: {
+            offset: QUERY_DEFAULTS.OFFSET,
+            limit: QUERY_DEFAULTS.LIMIT,
+            sort: {
+              field: CommentHomeWorkSortField.CreationDate,
+              order: Order.Desc,
+            },
+            homeWorkId: homeworkId,
+          },
+        });
 
-      cache.modify({
-        fields: {
-          commentsHomeWorkByHomeWork(existingComments = { items: [] }) {
-            const updatedItems = existingComments.items.filter(
-              (itemRef: AnswerCommentItem) =>
-                itemRef.__ref !== newCommentRef?.__ref
-            );
+      const updatedComments =
+        existingComments?.commentsHomeWorkByHomeWork?.items?.map((item) => {
+          if (item?.id === commentId) {
             return {
-              ...existingComments,
-              items: [newCommentRef, ...updatedItems],
+              ...item,
+              children: item?.children
+                ? [...item.children, newAnswerComment]
+                : [newAnswerComment],
             };
+          }
+          return item;
+        });
+
+      cache.writeQuery({
+        query: CommentsHomeWorkByHomeWorkDocument,
+        variables: {
+          offset: QUERY_DEFAULTS.OFFSET,
+          limit: QUERY_DEFAULTS.LIMIT,
+          sort: {
+            field: CommentHomeWorkSortField.CreationDate,
+            order: Order.Desc,
+          },
+          homeWorkId: homeworkId,
+        },
+        data: {
+          commentsHomeWorkByHomeWork: {
+            ...existingComments?.commentsHomeWorkByHomeWork,
+            items: updatedComments,
+            totalElements:
+              parseInt(
+                existingComments?.commentsHomeWorkByHomeWork?.totalElements,
+                PARSE_INT_RADIX
+              ) + INDEX_OFFSET,
           },
         },
       });
@@ -46,7 +78,7 @@ const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
     <AnswerComment
       loading={loading}
       answerComment={answerComment}
-      id={id}
+      commentId={commentId}
       dataUser={data}
       onReplySuccess={onReplySuccess}
     />

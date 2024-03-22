@@ -11,7 +11,7 @@ import {
 } from "api/graphql/generated/graphql";
 
 interface CommentsProps {
-  id: string;
+  homeworkId?: Maybe<string>;
   dataCommentsHomeWorkByHomeWork: CommentsHomeWorkByHomeWorkQuery;
   dataUserId: UserIdQuery;
   fetchMore: (
@@ -24,6 +24,6 @@ interface CommentsProps {
 }
 
 export interface ICommentsContainer {
-  id?: Maybe<string>;
+  homeworkId?: Maybe<string>;
   children: ReactElement<CommentsProps>;
 }

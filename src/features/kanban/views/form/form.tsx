@@ -1,11 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import {
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { AccordionSummary, Box, IconButton, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -13,6 +7,7 @@ import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledAccordion,
+  StyledAccordionDetails,
   StyledColumnStack,
   StyledRow,
   StyledRowStack,
@@ -71,11 +66,12 @@ const Form: FC = () => {
         <StyledAccordion
           expanded={isAccordionExpanded}
           onChange={handleAccordionToggle}
+          disableGutters
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>Фильтр</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <StyledAccordionDetails>
             <StyledColumnStack>
               <TrainingSelection control={control} />
               <LectureSelection control={control} />
@@ -90,7 +86,7 @@ const Form: FC = () => {
                 </IconButton>
               </StyledRowStack>
             </StyledColumnStack>
-          </AccordionDetails>
+          </StyledAccordionDetails>
         </StyledAccordion>
       ) : (
         <StyledRow>

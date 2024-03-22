@@ -5,28 +5,28 @@ import { StyledStack, StyledTypography } from "./comments-limited.styled";
 import { SendComment } from "../../containers";
 import CommentItem from "../comment-item";
 import CommentTotalElements from "../comment-total-elements";
-import { COMMENTS_DISPLAY_LIMIT } from "../../constants";
 
 const CommentsLimited: FC<ICommentsLimited> = (props) => {
-  const { dataCommentsHomeWorkByHomeWork, dataUserId, id } = props;
+  const { dataCommentsHomeWorkByHomeWork, dataUserId, homeworkId } = props;
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
 
   return (
     <>
       <StyledTypography variant="h5">Добавить комментарий</StyledTypography>
-      <SendComment id={id} />
+      <SendComment homeworkId={homeworkId} />
       <CommentTotalElements totalElements={totalElements} />
       <StyledStack>
-        {items?.slice(0, COMMENTS_DISPLAY_LIMIT).map((item) => {
+        {items?.map((item, index) => {
           const { id } = item!;
 
           return (
             <CommentItem
-              key={id}
+              key={`${id}-${index}`}
               item={item}
               commentId={id}
               currentUserID={dataUserId?.user?.id}
+              homeworkId={homeworkId}
             />
           );
         })}

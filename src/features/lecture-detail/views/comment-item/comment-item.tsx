@@ -18,15 +18,22 @@ import {
   StyledStack,
   StyledThreadStack,
 } from "./comment-item.styled";
-import { AnswerComment, DeleteComment, UpdateComment } from "../../containers";
+import {
+  AnswerComment,
+  DeleteComment,
+  UpdateComment,
+  LikeComment,
+} from "../../containers";
 
 const CommentItem: FC<ICommentItem> = ({
   item,
   commentId,
   currentUserID,
   parentID = null,
+  homeworkId,
 }) => {
-  const { creator, content, creationDate, id, children } = item || {};
+  const { creator, content, creationDate, likes, id, children, userLike } =
+    item || {};
   const { selectedComment, setSelectedComment } = useComment();
 
   const [isReplying, setIsReplying] = useState<boolean>(false);
@@ -57,7 +64,7 @@ const CommentItem: FC<ICommentItem> = ({
             <UserRow user={creator} userId={creator?.id} hasLink />
             <StyledBox>
               {isSelected ? (
-                <UpdateComment content={content} id={id} />
+                <UpdateComment content={content} commentId={id} />
               ) : (
                 <TextView content={content} />
               )}
@@ -66,6 +73,7 @@ const CommentItem: FC<ICommentItem> = ({
         </StyledStack>
         <Stack direction="row" justifyContent="space-between">
           <StyledBottomStack>
+            <LikeComment commentId={id} likes={likes} userLike={userLike} />
             <Typography variant="caption" color="textSecondary">
               {formatDate(creationDate, "DD.MM.YYYY | HH:mm")}
             </Typography>
@@ -74,9 +82,9 @@ const CommentItem: FC<ICommentItem> = ({
                 <StyledEditIcon />
               </StyledIconButton>
             )}
-            {editAccess && <DeleteComment id={id} />}
+            {editAccess && <DeleteComment id={id} homeworkId={homeworkId} />}
             <StyledIconButton onClick={handleReplyClick}>
-              <StyledReplyIcon fontSize="small" />
+              <StyledReplyIcon color="primary" />
             </StyledIconButton>
           </StyledBottomStack>
           <Stack>
@@ -97,6 +105,7 @@ const CommentItem: FC<ICommentItem> = ({
         <StyledThreadStack>
           {children?.map((childComment) => (
             <CommentItem
+              homeworkId={homeworkId}
               key={childComment?.id}
               item={childComment}
               commentId={childComment?.id}
@@ -109,7 +118,11 @@ const CommentItem: FC<ICommentItem> = ({
       )}
 
       {isReplying && (
-        <AnswerComment id={id} onReplySuccess={handleReplySuccess} />
+        <AnswerComment
+          homeworkId={homeworkId}
+          commentId={id}
+          onReplySuccess={handleReplySuccess}
+        />
       )}
     </>
   );

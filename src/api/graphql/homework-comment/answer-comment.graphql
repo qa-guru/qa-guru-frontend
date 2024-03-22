@@ -5,6 +5,7 @@ mutation answerComment($parentID: ID!, $content: String!) {
       id
       email
       firstName
+      locked
       middleName
       avatar
       lastName
@@ -12,6 +13,8 @@ mutation answerComment($parentID: ID!, $content: String!) {
         rating
       }
     }
+    userLike
+    likes
     creationDate
     content
     homeWork {
@@ -19,5 +22,46 @@ mutation answerComment($parentID: ID!, $content: String!) {
       answer
       status
     }
+    children {
+      ...subCommentHomeWorkDto
+      ...subCommentHomeWorkDtoRecursive
+    }
   }
+}
+
+fragment subCommentHomeWorkDtoRecursive on CommentHomeWorkDto {
+  children {
+    ...subCommentHomeWorkDto
+    children {
+      ...subCommentHomeWorkDto
+      children {
+        ...subCommentHomeWorkDto
+        children {
+          ...subCommentHomeWorkDto
+          children {
+            ...subCommentHomeWorkDto
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment subCommentHomeWorkDto on CommentHomeWorkDto {
+  id
+  creator {
+    id
+    email
+    firstName
+    avatar
+    lastName
+    middleName
+    locked
+    rating {
+      rating
+    }
+  }
+  userLike
+  likes
+  content
 }

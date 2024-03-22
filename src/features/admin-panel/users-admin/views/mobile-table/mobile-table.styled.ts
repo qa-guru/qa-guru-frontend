@@ -14,6 +14,7 @@ export const StyledTable = styled(Table)({
 
 export const StyledTableCell = styled(TableCell)({
   borderBottom: "none",
+  padding: "13px",
 });
 
 export const StyledTypography = styled(Typography)({

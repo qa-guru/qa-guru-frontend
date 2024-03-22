@@ -1,32 +1,70 @@
 import { FC, useEffect, useState } from "react";
 import {
-  flexRender,
   getCoreRowModel,
+  type Table,
   useReactTable,
 } from "@tanstack/react-table";
-import { TrainingDto } from "api/graphql/generated/graphql";
-import {
-  CircularProgress,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography,
-} from "@mui/material";
+import { Maybe, TrainingDto } from "api/graphql/generated/graphql";
+import { CircularProgress, Dialog } from "@mui/material";
+import { useModal } from "react-modal-hook";
+import useResponsive from "shared/hooks/use-responsive";
+import { Fullscreen } from "@mui/icons-material";
 
 import { ITable } from "./table.types";
 import {
   StyledBox,
+  StyledClearIcon,
   StyledInfiniteScroll,
   StyledPaper,
-  StyledTable,
-  StyledTableRow,
+  StyledUsersDialogContent,
+  StyledLoadMoreButton,
 } from "./table.styled";
+import DesktopTable from "../desktop-table";
 
-const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
+interface IModalMobileTable {
+  hideModal: () => void;
+  open: boolean;
+  table: Table<TrainingDto>;
+  hasMoreTrainings: boolean;
+  handleLoadMore: () => Promise<void>;
+  trainings?: Maybe<Array<Maybe<TrainingDto>>>;
+}
+
+const ModalMobileTable = ({
+  hideModal,
+  open,
+  trainings,
+  hasMoreTrainings,
+  handleLoadMore,
+  table,
+}: IModalMobileTable) => {
+  return (
+    <Dialog open={open} onClose={hideModal} fullWidth fullScreen>
+      <StyledUsersDialogContent id="scroll-container">
+        <StyledClearIcon onClick={hideModal} />
+        <StyledInfiniteScroll
+          dataLength={trainings?.length || 0}
+          next={handleLoadMore}
+          hasMore={hasMoreTrainings}
+          loader={
+            <StyledBox>
+              <CircularProgress size={25} />
+            </StyledBox>
+          }
+          scrollableTarget="scroll-container"
+        >
+          <DesktopTable table={table} />
+        </StyledInfiniteScroll>
+      </StyledUsersDialogContent>
+    </Dialog>
+  );
+};
+
+const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   const trainings = data?.trainings?.items;
   const { totalElements } = data?.trainings!;
   const [hasMoreTrainings, setHasMoreTrainings] = useState<boolean>(true);
+  const { isMobile } = useResponsive();
 
   const table = useReactTable({
     data: trainings as TrainingDto[],
@@ -55,6 +93,20 @@ const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
     });
   };
 
+  const [showModal, hideModal] = useModal(
+    ({ in: open }) => (
+      <ModalMobileTable
+        hideModal={hideModal}
+        open={open}
+        trainings={trainings}
+        handleLoadMore={handleLoadMore}
+        hasMoreTrainings={hasMoreTrainings}
+        table={table}
+      />
+    ),
+    [trainings, table, hasMoreTrainings]
+  );
+
   useEffect(() => {
     if (trainings?.length! >= totalElements) {
       setHasMoreTrainings(false);
@@ -62,56 +114,47 @@ const Table: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [trainings]);
 
   return (
-    <StyledPaper id="scroll-container">
-      <StyledInfiniteScroll
-        dataLength={trainings?.length || 0}
-        next={handleLoadMore}
-        hasMore={hasMoreTrainings}
-        loader={
-          <StyledBox>
-            <CircularProgress size={25} />
-          </StyledBox>
-        }
-        scrollableTarget="scroll-container"
-      >
-        <StyledTable>
-          <TableHead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableCell
-                    key={header.id}
-                    sx={{ width: header.column.getSize() }}
-                  >
-                    <Typography variant="subtitle2">
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                    </Typography>
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableHead>
-          <TableBody>
-            {table.getRowModel().rows.map((row) => (
-              <StyledTableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell
-                    key={cell.id}
-                    style={{ width: cell.column.getSize() }}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </StyledTable>
-      </StyledInfiniteScroll>
-    </StyledPaper>
+    <>
+      {isMobile ? (
+        <>
+          <StyledLoadMoreButton onClick={showModal}>
+            <Fullscreen color="primary" />
+          </StyledLoadMoreButton>
+          <StyledPaper id="scroll-mobile-container">
+            <StyledInfiniteScroll
+              dataLength={trainings?.length || 0}
+              next={handleLoadMore}
+              hasMore={hasMoreTrainings}
+              loader={
+                <StyledBox>
+                  <CircularProgress size={25} />
+                </StyledBox>
+              }
+              scrollableTarget="scroll-mobile-container"
+            >
+              <DesktopTable table={table} />
+            </StyledInfiniteScroll>
+          </StyledPaper>
+        </>
+      ) : (
+        <StyledPaper id="scroll-container">
+          <StyledInfiniteScroll
+            dataLength={trainings?.length || 0}
+            next={handleLoadMore}
+            hasMore={hasMoreTrainings}
+            loader={
+              <StyledBox>
+                <CircularProgress size={25} />
+              </StyledBox>
+            }
+            scrollableTarget="scroll-container"
+          >
+            <DesktopTable table={table} />
+          </StyledInfiniteScroll>
+        </StyledPaper>
+      )}
+    </>
   );
 };
 
-export default Table;
+export default TableAdmin;

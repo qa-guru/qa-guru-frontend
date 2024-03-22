@@ -24,6 +24,8 @@ query commentsHomeWorkByHomeWork(
       }
       creationDate
       content
+      userLike
+      likes
       homeWork {
         id
       }
@@ -70,5 +72,7 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
       rating
     }
   }
+  userLike
+  likes
   content
 }

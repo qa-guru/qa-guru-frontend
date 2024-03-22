@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Paper, Stack, Box, IconButton } from "@mui/material";
+import { Box, IconButton, Paper, Stack } from "@mui/material";
 import ReplyIcon from "@mui/icons-material/Reply";
 import { ReactComponent as EditIcon } from "assets/icons/button-edit.svg";
 
@@ -15,7 +15,7 @@ export const StyledPaper = styled(Paper, {
     "0px 1px 5px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.20)",
   borderRadius: "12px",
   padding: "10px",
-  marginTop: "20px",
+  margin: "20px 2px 2px",
   wordBreak: "break-all",
   [theme.breakpoints.up("sm")]: {
     padding: "15px",
@@ -47,7 +47,6 @@ export const StyledEditIcon = styled(EditIcon)(({ theme }) => ({
 }));
 
 export const StyledReplyIcon = styled(ReplyIcon)(({ theme }) => ({
-  color: theme.palette.app.primary,
   width: "16px",
 }));
 

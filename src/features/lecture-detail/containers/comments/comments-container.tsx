@@ -11,9 +11,11 @@ import {
 import { ICommentsContainer } from "./comments-container.types";
 import { QUERY_DEFAULTS } from "../../constants";
 
-const CommentsContainer: FC<ICommentsContainer> = ({ id, children }) => {
+const CommentsContainer: FC<ICommentsContainer> = ({
+  homeworkId,
+  children,
+}) => {
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
-  if (!id) return <NoDataErrorMessage />;
 
   const {
     loading: loadingComments,
@@ -23,7 +25,7 @@ const CommentsContainer: FC<ICommentsContainer> = ({ id, children }) => {
     variables: {
       offset: QUERY_DEFAULTS.OFFSET,
       limit: QUERY_DEFAULTS.LIMIT,
-      homeWorkId: id,
+      homeWorkId: homeworkId!,
       sort: {
         field: CommentHomeWorkSortField.CreationDate,
         order: Order.Desc,
@@ -35,20 +37,17 @@ const CommentsContainer: FC<ICommentsContainer> = ({ id, children }) => {
     return <SkeletonComment />;
   }
 
-  if (
-    !dataUserId ||
-    !dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork?.totalElements
-  ) {
+  if (!dataUserId || !dataCommentsHomeWorkByHomeWork) {
     return <NoDataErrorMessage />;
   }
 
   return cloneElement(children, {
-    id,
+    homeworkId,
     dataUserId,
     dataCommentsHomeWorkByHomeWork,
     fetchMore,
     totalElements:
-      dataCommentsHomeWorkByHomeWork.commentsHomeWorkByHomeWork.totalElements,
+      dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork?.totalElements,
   });
 };
 

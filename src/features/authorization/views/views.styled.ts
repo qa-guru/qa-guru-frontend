@@ -17,18 +17,14 @@ export const StyledLocalSelectorWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  position: "absolute",
   backgroundColor: theme.palette.app.purple,
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
   top: 0,
-  bottom: "70px",
+  bottom: "60px",
   width: "100%",
-  [theme.breakpoints.down("md")]: {
-    bottom: "150px",
-    height: "calc(100vh - 150px)",
-  },
+  height: "calc(100dvh - 60px)",
 }));
 
 export const StyledLogo = styled(Logo)({
@@ -74,7 +70,7 @@ export const StyledSignupWrapper = styled(Stack)(({ theme }) => ({
   alignItems: "center",
   textAlign: "center",
   top: 0,
-  bottom: "70px",
+  bottom: "60px",
   width: "100%",
   [theme.breakpoints.down("md")]: {
     position: "inherit",

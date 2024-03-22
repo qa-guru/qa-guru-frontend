@@ -168,9 +168,11 @@
   },
   "overrides": [
     {
-      "files": ["**/generated/**/*", "*.test.tsx"],
+      "files": ["**/generated/**/*"],
       "rules": {
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "import/newline-after-import": "off",
+        "max-lines": "off"
       }
     }
   ]
