@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import Spinner from "shared/components/spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
-  useHomeWorksByLectureIdQuery,
   useLectureHomeWorkQuery,
   useLectureQuery,
 } from "api/graphql/generated/graphql";

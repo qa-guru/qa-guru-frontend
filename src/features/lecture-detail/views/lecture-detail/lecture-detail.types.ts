@@ -1,5 +1,4 @@
 import {
-  HomeWorksByLectureIdQuery,
   LectureHomeWorkQuery,
   LectureQuery,
   Maybe,

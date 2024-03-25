@@ -1,5 +1,4 @@
 import { type Theme } from "@mui/material";
-import { lightTheme } from "./constans";
 
 const components = (theme: Theme) => {
   return {

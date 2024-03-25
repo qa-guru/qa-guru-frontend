@@ -1,5 +1,5 @@
 import { Controller, FieldValues } from "react-hook-form";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem, Select } from "@mui/material";
 import { type SelectChangeEvent } from "@mui/material/Select";
 
 import { IFormInputSelect } from "./input-select.types";
