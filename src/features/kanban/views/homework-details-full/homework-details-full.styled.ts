@@ -32,5 +32,4 @@ export const StyledIcon = styled(ArrowBackIcon)({
 
 export const StyledAnswerBox = styled(Box)({
   marginBottom: "24px",
-  wordBreak: "break-all",
 });

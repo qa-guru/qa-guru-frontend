@@ -16,7 +16,6 @@ export const StyledPaper = styled(Paper, {
   borderRadius: "12px",
   padding: "10px",
   margin: "20px 2px 2px",
-  wordBreak: "break-all",
   [theme.breakpoints.up("sm")]: {
     padding: "15px",
   },

@@ -14,7 +14,6 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
-  wordBreak: "break-all",
   [theme.breakpoints.up("md")]: {
     padding: "20px",
   },
