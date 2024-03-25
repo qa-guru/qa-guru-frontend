@@ -9,8 +9,13 @@ import LectureTitle from "../lecture-title";
 import LectureDescription from "../lecture-description";
 import LectureSpeakers from "../lecture-speakers";
 import LectureContent from "../lecture-content";
-import { Homework, HomeworksOtherStudents } from "../../containers";
+import {
+  Homework,
+  HomeworksOtherStudents,
+  HomeworksOtherStudentsTotalElements,
+} from "../../containers";
 import { HomeworksFormProvider } from "../../context/homeworks-form-context";
+import Form from "../form";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
   const { dataLecture, dataLectureHomework, tariffHomework } = props;
@@ -19,23 +24,25 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   const hasHomework = lectureHomeWork?.length > 0;
 
   return (
-    <Container>
-      <ButtonLessonsList />
-      <LectureTitle title={subject} />
-      <LectureDescription description={description} />
-      <LectureSpeakers speakers={speakers} />
-      <LectureContent content={content} />
-      {tariffHomework && hasHomework && (
-        <>
-          <LectureHomework lectureHomeWork={lectureHomeWork} />
-          <Homework />
-          <HomeworksFormProvider>
+    <HomeworksFormProvider>
+      <Container>
+        <ButtonLessonsList />
+        <LectureTitle title={subject} />
+        <LectureDescription description={description} />
+        <LectureSpeakers speakers={speakers} />
+        <LectureContent content={content} />
+        {tariffHomework && hasHomework && (
+          <>
+            <LectureHomework lectureHomeWork={lectureHomeWork} />
+            <Homework />
+            <HomeworksOtherStudentsTotalElements />
+            <Form />
             <HomeworksOtherStudents />
-          </HomeworksFormProvider>
-        </>
-      )}
-      {!tariffHomework && <BlurredHomework />}
-    </Container>
+          </>
+        )}
+        {!tariffHomework && <BlurredHomework />}
+      </Container>
+    </HomeworksFormProvider>
   );
 };
 

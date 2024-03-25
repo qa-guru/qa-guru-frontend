@@ -6,12 +6,6 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   marginBottom: "20px",
 }));
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  margin: "25px 0 20px",
-  gap: theme.spacing(1),
-}));
-
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(2),
 }));

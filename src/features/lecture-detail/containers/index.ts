@@ -9,3 +9,4 @@ export { default as DeleteComment } from "./delete-comment";
 export { default as AnswerComment } from "./answer-comment";
 export { default as LectureDetail } from "./lecture-detail";
 export { default as LikeComment } from "./like-comment";
+export { default as HomeworksOtherStudentsTotalElements } from "./homeworks-other-students-total-elements";
