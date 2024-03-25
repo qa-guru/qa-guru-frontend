@@ -24,6 +24,12 @@ const useStyles = makeStyles({ name: { RichTextContent } })((theme) => {
     root: {
       "& .ProseMirror": {
         ...getEditorStyles(theme),
+        '&[contenteditable="true"]': {
+          fontSize: "16px",
+        },
+        "& input": {
+          fontSize: "16px",
+        },
       } as CSSObject,
     },
 
