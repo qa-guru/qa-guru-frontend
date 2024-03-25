@@ -24,15 +24,16 @@ interface IHomeworksFormContext {
   setSortOrder: Dispatch<SetStateAction<Maybe<Order>>>;
 }
 
-export const HomeworksFormContext = createContext<IHomeworksFormContext>({
-  status: null,
-  setStatus: () => {},
-  sortOrder: null,
-  setSortOrder: () => {},
-});
+export const HomeworksOtherStudentsFormContext =
+  createContext<IHomeworksFormContext>({
+    status: null,
+    setStatus: () => {},
+    sortOrder: null,
+    setSortOrder: () => {},
+  });
 
 export const useHomeworksForm = () => {
-  const context = useContext(HomeworksFormContext);
+  const context = useContext(HomeworksOtherStudentsFormContext);
   if (!context) {
     throw new Error("useKanbanForm must be used within a KanbanFormProvider");
   }
@@ -46,7 +47,7 @@ export const HomeworksFormProvider: FC<IHomeworksFormProvider> = ({
   const [sortOrder, setSortOrder] = useState<Maybe<Order>>(null);
 
   return (
-    <HomeworksFormContext.Provider
+    <HomeworksOtherStudentsFormContext.Provider
       value={{
         status,
         setStatus,
@@ -55,6 +56,6 @@ export const HomeworksFormProvider: FC<IHomeworksFormProvider> = ({
       }}
     >
       {children}
-    </HomeworksFormContext.Provider>
+    </HomeworksOtherStudentsFormContext.Provider>
   );
 };

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { InputSelect } from "shared/components/form";
 import { Maybe, Order } from "api/graphql/generated/graphql";
 
-import { useHomeworksForm } from "../../context/homeworks-form-context";
+import { useHomeworksForm } from "../../context/homeworks-other-students-form-context";
 import { ISortByCreationDate, options } from "./sort-by-creation-date.types";
 
 const SortByCreationDate: FC<ISortByCreationDate> = ({ control }) => {

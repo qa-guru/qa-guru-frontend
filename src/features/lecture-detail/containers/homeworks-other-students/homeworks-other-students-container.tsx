@@ -10,12 +10,12 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
 import { QUERY_DEFAULTS } from "../../constants";
-import { HomeworksFormContext } from "../../context/homeworks-form-context";
+import { HomeworksOtherStudentsFormContext } from "../../context/homeworks-other-students-form-context";
 import SkeletonHomeworks from "../../../../shared/components/skeletons/skeleton-homeworks/skeleton-homeworks";
 
 const HomeworksOtherStudentsContainer: FC = () => {
   const { lectureId } = useParams();
-  const { status, sortOrder } = useContext(HomeworksFormContext);
+  const { status, sortOrder } = useContext(HomeworksOtherStudentsFormContext);
 
   const sortOptions = {
     field: "CREATION_DATE" as StudentHomeWorkSortField,

@@ -14,8 +14,8 @@ import {
   HomeworksOtherStudents,
   HomeworksOtherStudentsTotalElements,
 } from "../../containers";
-import { HomeworksFormProvider } from "../../context/homeworks-form-context";
-import Form from "../form";
+import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
+import HomeworksOtherStudentsForm from "../homeworks-other-students-form";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
   const { dataLecture, dataLectureHomework, tariffHomework } = props;
@@ -36,7 +36,7 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
             <LectureHomework lectureHomeWork={lectureHomeWork} />
             <Homework />
             <HomeworksOtherStudentsTotalElements />
-            <Form />
+            <HomeworksOtherStudentsForm />
             <HomeworksOtherStudents />
           </>
         )}

@@ -3,12 +3,15 @@ import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
-import { useHomeworksForm } from "../../context/homeworks-form-context";
+import { useHomeworksForm } from "../../context/homeworks-other-students-form-context";
 import StatusSelection from "../status-selection";
 import SortByCreationDate from "../sort-by-creation-date";
-import { StyledIconButton, StyledWrapper } from "./form.styled";
+import {
+  StyledIconButton,
+  StyledWrapper,
+} from "./homeworks-other-students-form.styled";
 
-const Form: FC = () => {
+const HomeworksOtherStudentsForm: FC = () => {
   const { control, reset } = useForm({
     defaultValues: {
       status: "",
@@ -39,4 +42,4 @@ const Form: FC = () => {
   );
 };
 
-export default Form;
+export default HomeworksOtherStudentsForm;

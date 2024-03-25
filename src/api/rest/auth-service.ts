@@ -16,7 +16,10 @@ export default class AuthService {
     return axios({
       method: "POST",
       url: LOGIN_URI,
-      headers: { "content-type": "application/x-www-form-urlencoded" },
+      headers: {
+        "content-type":
+          "application/x-www-homeworks-other-students-form-urlencoded",
+      },
       data: qs.stringify({
         username,
         password,
