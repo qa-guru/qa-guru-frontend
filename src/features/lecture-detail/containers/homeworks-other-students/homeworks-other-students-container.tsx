@@ -1,24 +1,25 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useParams } from "react-router-dom";
 import {
-  InputMaybe,
   Order,
   StudentHomeWorkSortField,
   useHomeWorksByLectureIdQuery,
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import Spinner from "shared/components/spinner";
 
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
 import { QUERY_DEFAULTS } from "../../constants";
+import { HomeworksFormContext } from "../../context/homeworks-form-context";
+import SkeletonHomeworks from "../../../../shared/components/skeletons/skeleton-homeworks/skeleton-homeworks";
 
 const HomeworksOtherStudentsContainer: FC = () => {
   const { lectureId } = useParams();
+  const { status, sortOrder } = useContext(HomeworksFormContext);
 
   const sortOptions = {
-    field: "CREATION_DATE" as InputMaybe<StudentHomeWorkSortField>,
-    order: "DESC" as InputMaybe<Order>,
+    field: "CREATION_DATE" as StudentHomeWorkSortField,
+    order: sortOrder || ("DESC" as Order),
   };
 
   const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
@@ -28,11 +29,12 @@ const HomeworksOtherStudentsContainer: FC = () => {
       offset: QUERY_DEFAULTS.OFFSET,
       limit: QUERY_DEFAULTS.LIMIT,
       sort: sortOptions,
+      filter: { status },
       lectureId: lectureId!,
     },
   });
 
-  if (loading || loadingUserId) return <Spinner />;
+  if (loading || loadingUserId) return <SkeletonHomeworks />;
   if (!data || !dataUserId || !lectureId) return <NoDataErrorMessage />;
 
   return (

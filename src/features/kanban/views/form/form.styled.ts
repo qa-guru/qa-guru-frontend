@@ -10,9 +10,12 @@ export const StyledAccordion = styled(Accordion)({
   margin: "0 5px",
 });
 
-export const StyledAccordionDetails = styled(AccordionDetails)({
+export const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
   position: "absolute",
-  backgroundColor: "white",
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? theme.palette.app.white
+      : theme.palette.app.secondary,
   top: "45px",
   paddingTop: "20px",
   zIndex: 10,
@@ -20,7 +23,7 @@ export const StyledAccordionDetails = styled(AccordionDetails)({
   borderRadius: "0 0 5px 5px",
   boxShadow:
     "0px 2px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.20)",
-});
+}));
 
 export const StyledColumnStack = styled(Stack)(({ theme }) => ({
   flexDirection: "column",

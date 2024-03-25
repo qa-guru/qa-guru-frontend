@@ -4,6 +4,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {
+  StyledBox,
   StyledLoadingButton,
   StyledPaper,
   StyledStack,
@@ -12,6 +13,7 @@ import {
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
 import { QUERY_DEFAULTS } from "../../constants";
 import HomeworkItem from "../homework-item";
+import Form from "../form";
 
 const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;
@@ -50,11 +52,12 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   };
 
   return (
-    <>
+    <StyledBox>
       <StyledStack>
         <Typography variant="h3">Домашние работы других студентов</Typography>
         <Typography variant="h3">({totalElements})</Typography>
       </StyledStack>
+      <Form />
       <StyledWrapper>
         {items?.map((item) => {
           const { id } = item!;
@@ -85,7 +88,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           </StyledLoadingButton>
         </Stack>
       )}
-    </>
+    </StyledBox>
   );
 };
 

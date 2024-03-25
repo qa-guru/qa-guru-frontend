@@ -1,9 +1,15 @@
 import { styled } from "@mui/system";
-import { Box, Skeleton, Stack } from "@mui/material";
+import { Box, Skeleton, Stack, Typography } from "@mui/material";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   marginTop: "20px",
   gap: theme.spacing(1),
+  width: "100%",
+}));
+
+export const StyledHomeworksWrapper = styled(Stack)(({ theme }) => ({
+  margin: "25px 0 20px",
+  gap: "10px",
   width: "100%",
 }));
 
@@ -42,4 +48,13 @@ export const StyledHomeworkBox = styled(Box)({
 export const StyledHomeworkSkeleton = styled(Skeleton)({
   width: "100%",
   height: "130px",
+});
+
+export const StyledHomeworksSkeleton = styled(Skeleton)({
+  width: "100%",
+  height: "200px",
+});
+
+export const StyledTypography = styled(Typography)({
+  margin: "0 0 15px",
 });

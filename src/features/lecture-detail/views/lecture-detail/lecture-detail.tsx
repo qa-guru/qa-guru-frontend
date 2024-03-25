@@ -10,6 +10,7 @@ import LectureDescription from "../lecture-description";
 import LectureSpeakers from "../lecture-speakers";
 import LectureContent from "../lecture-content";
 import { Homework, HomeworksOtherStudents } from "../../containers";
+import { HomeworksFormProvider } from "../../context/homeworks-form-context";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
   const { dataLecture, dataLectureHomework, tariffHomework } = props;
@@ -28,7 +29,9 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
         <>
           <LectureHomework lectureHomeWork={lectureHomeWork} />
           <Homework />
-          <HomeworksOtherStudents />
+          <HomeworksFormProvider>
+            <HomeworksOtherStudents />
+          </HomeworksFormProvider>
         </>
       )}
       {!tariffHomework && <BlurredHomework />}

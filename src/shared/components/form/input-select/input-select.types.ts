@@ -1,12 +1,21 @@
 import { Control, FieldValues, Path } from "react-hook-form";
 import { Maybe } from "api/graphql/generated/graphql";
 
-export interface IFormInputSelect<T extends FieldValues> {
+export interface OptionTypeBase {
+  id: string;
+  label: string;
+}
+
+export interface IFormInputSelect<
+  T extends FieldValues,
+  OptionType extends OptionTypeBase,
+  SelectType
+> {
   control: Control<T, unknown>;
   placeholder?: string;
-  options?: Array<{ value?: Maybe<string>; label?: Maybe<string> }>;
+  options: OptionType[];
   name: T[Path<T>];
   defaultValue?: T[keyof T];
-  onChange?: (value: string) => void;
+  onSelect: (item: Maybe<SelectType>) => void;
   disabled?: boolean;
 }
