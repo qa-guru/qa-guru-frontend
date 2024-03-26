@@ -65,7 +65,12 @@ const useStyles = makeStyles<void, "menuBar" | "menuBarContent" | "content">({
 
     menuBar: {},
     menuBarContent: {},
-    content: { minHeight: "130px" },
+    content: {
+      minHeight: "130px",
+      [theme.breakpoints.down("sm")]: {
+        minHeight: "50px",
+      },
+    },
   };
 });
 
