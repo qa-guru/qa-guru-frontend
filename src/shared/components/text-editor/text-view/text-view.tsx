@@ -25,7 +25,7 @@ const convertTextToLinks = (content?: Maybe<string>) => {
       segments.push(content.substring(lastIndex, matchStart));
 
       segments.push(
-        `<a href="${match[0]}" target="_blank" rel="noopener noreferrer">${match[0]}</a>`
+        `<a style="word-break: break-all" href="${match[0]}" target="_blank" rel="noopener noreferrer">${match[0]}</a>`
       );
 
       lastIndex = matchEnd;
@@ -43,7 +43,7 @@ const TextView: FC<TextViewProps> = ({ content }) => {
   const modifiedContent = useMemo(() => convertTextToLinks(content), [content]);
 
   return (
-    <FormControl>
+    <FormControl sx={{ wordBreak: "break-word" }}>
       <RichTextReadOnly content={modifiedContent} extensions={extensions} />
     </FormControl>
   );

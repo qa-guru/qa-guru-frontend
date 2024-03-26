@@ -55,7 +55,6 @@ export const StyledIcon = styled(OpenInNewIcon)(({ theme }) => ({
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   marginTop: "30px",
   padding: "15px",
-  wordBreak: "break-all",
   [theme.breakpoints.up("sm")]: {
     padding: "20px",
   },
