@@ -32,6 +32,7 @@ export const StyledCommentStack = styled(Stack)(({ theme }) => ({
 
 export const StyledCommentBox = styled(Box)({
   width: "100%",
+  position: "relative",
 });
 
 export const StyledFormHelperText = styled(FormHelperText)(({ theme }) => ({

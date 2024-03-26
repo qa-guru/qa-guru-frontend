@@ -1,13 +1,13 @@
 export const getFormattedStatus = (status: string) => {
   switch (status) {
     case "APPROVED":
-      return "Approved";
+      return "Принято";
     case "IN_REVIEW":
-      return "In review";
+      return "На проверке";
     case "NEW":
-      return "New";
+      return "Ожидает проверки";
     case "NOT_APPROVED":
-      return "Not approved";
+      return "Не принято";
     default:
       return status;
   }

@@ -1,11 +1,9 @@
 import { styled } from "@mui/system";
-import { Paper, Stack } from "@mui/material";
+import { Box, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  margin: "30px 0",
-  gap: theme.spacing(1),
+export const StyledBox = styled(Box)(({ theme }) => ({
+  marginBottom: "20px",
 }));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
@@ -23,5 +21,6 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   color: theme.palette.app.primary,
   alignSelf: "center",
-  margin: "20px",
+  margin: "15px 0 0",
+  paddingBottom: 0,
 }));

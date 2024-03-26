@@ -1,0 +1,9 @@
+query homeWorksByLectureIdTotalElements(
+  $offset: Int!
+  $limit: Int!
+  $lectureId: ID!
+) {
+  homeWorksByLectureId(offset: $offset, limit: $limit, lectureId: $lectureId) {
+    totalElements
+  }
+}

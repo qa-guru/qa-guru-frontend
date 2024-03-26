@@ -2,12 +2,14 @@ query homeWorksByLectureId(
   $offset: Int!
   $limit: Int!
   $sort: StudentHomeWorkSort!
+  $filter: HomeWorksFilter!
   $lectureId: ID!
 ) {
   homeWorksByLectureId(
     offset: $offset
     limit: $limit
     sort: $sort
+    filter: $filter
     lectureId: $lectureId
   ) {
     items {

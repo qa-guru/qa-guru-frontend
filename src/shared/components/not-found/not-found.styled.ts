@@ -27,11 +27,11 @@ export const StyledAlignBox = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.app.secondary,
+  color: theme.palette.app.white,
 }));
 
 export const StyledCaptionTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.app.secondary,
+  color: theme.palette.app.white,
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({

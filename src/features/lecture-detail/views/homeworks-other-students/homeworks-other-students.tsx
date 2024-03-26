@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {
+  StyledBox,
   StyledLoadingButton,
   StyledPaper,
-  StyledStack,
   StyledWrapper,
 } from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
@@ -50,11 +50,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   };
 
   return (
-    <>
-      <StyledStack>
-        <Typography variant="h3">Домашние работы других студентов</Typography>
-        <Typography variant="h3">({totalElements})</Typography>
-      </StyledStack>
+    <StyledBox>
       <StyledWrapper>
         {items?.map((item) => {
           const { id } = item!;
@@ -85,7 +81,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           </StyledLoadingButton>
         </Stack>
       )}
-    </>
+    </StyledBox>
   );
 };
 
