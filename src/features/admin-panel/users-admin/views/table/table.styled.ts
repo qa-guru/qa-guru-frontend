@@ -34,12 +34,13 @@ export const StyledUsersDialogContent = styled(DialogContent)({
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
   cursor: "pointer",
-  zIndex: "1",
+  color: theme.palette.app.primary,
+  zIndex: 2000,
   top: "8px",
-  right: "12px",
+  right: "8px",
   [theme.breakpoints.up("sm")]: {
     top: "12px",
-    right: "24px",
+    right: "12px",
   },
 }));
 

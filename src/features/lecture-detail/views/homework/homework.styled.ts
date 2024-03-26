@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Button, DialogContent, Paper, Box } from "@mui/material";
+import { Box, Button, DialogContent, Paper } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
 export const StyledModalBox = styled(Box)(({ theme }) => ({
@@ -19,6 +19,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 
 export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
   overflowY: "auto",
+  padding: "20px 35px",
   [theme.breakpoints.up("sm")]: {
     height: "calc(100dvh - 50px)",
   },
@@ -32,13 +33,12 @@ export const StyledButton = styled(Button)(({ theme }) => ({
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
   cursor: "pointer",
+  color: theme.palette.app.primary,
   zIndex: 2000,
   top: "8px",
-  [theme.breakpoints.up("xs")]: {
-    top: "16px",
-  },
-  right: "12px",
-  [theme.breakpoints.up("xs")]: {
-    right: "24px",
+  right: "8px",
+  [theme.breakpoints.up("sm")]: {
+    top: "12px",
+    right: "12px",
   },
 }));

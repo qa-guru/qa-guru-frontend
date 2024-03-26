@@ -4,6 +4,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
   overflowY: "auto",
+  padding: "20px 35px",
   [theme.breakpoints.up("sm")]: {
     height: "calc(100dvh - 50px)",
   },
@@ -12,12 +13,13 @@ export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   position: "absolute",
   cursor: "pointer",
+  color: theme.palette.app.primary,
   zIndex: 2000,
   top: "8px",
-  right: "12px",
+  right: "8px",
   [theme.breakpoints.up("sm")]: {
     top: "12px",
-    right: "24px",
+    right: "12px",
   },
 }));
 
