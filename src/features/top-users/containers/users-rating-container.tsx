@@ -4,7 +4,7 @@ import {
   UserSortField,
   useUsersRatingQuery,
 } from "api/graphql/generated/graphql";
-import Spinner from "shared/components/spinner";
+import AppSpinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import UsersTop from "../views/top-users/top-users";
@@ -18,7 +18,7 @@ const UsersRatingContainer: FC = () => {
     },
   });
 
-  if (loading) return <Spinner />;
+  if (loading) return <AppSpinner />;
   if (!data) return <NoDataErrorMessage />;
 
   return <UsersTop data={data} />;

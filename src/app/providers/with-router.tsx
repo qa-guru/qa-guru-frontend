@@ -1,11 +1,11 @@
 import { ComponentType, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Spinner from "shared/components/spinner";
+import AppSpinner from "shared/components/spinners/app-spinner";
 
 export const withRouter = (Component: ComponentType) => () =>
   (
     <BrowserRouter>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<AppSpinner />}>
         <Component />
       </Suspense>
     </BrowserRouter>

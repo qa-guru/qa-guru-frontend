@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "shared/components/spinner";
+import AppSpinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
   useTrainingLecturesQuery,
@@ -20,7 +20,7 @@ const TrainingLecturesContainer: FC = () => {
     variables: { id: trainingId! },
   });
 
-  if (loadingTrainingLectures || loadingTraining) return <Spinner />;
+  if (loadingTrainingLectures || loadingTraining) return <AppSpinner />;
   if (!dataTrainingLectures || !dataTraining || !trainingId)
     return <NoDataErrorMessage />;
 

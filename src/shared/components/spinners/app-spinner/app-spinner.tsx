@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { CircularProgress } from "@mui/material";
 
-import { StyledGrid } from "./spinner.styled";
+import { StyledGrid } from "../spinners.styled";
 
-const Spinner: FC = () => {
+const AppSpinner: FC = () => {
   return (
     <StyledGrid container>
       <CircularProgress />
@@ -11,4 +11,4 @@ const Spinner: FC = () => {
   );
 };
 
-export default Spinner;
+export default AppSpinner;

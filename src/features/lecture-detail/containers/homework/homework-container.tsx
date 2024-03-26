@@ -4,7 +4,7 @@ import {
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import Spinner from "shared/components/spinner";
+import AppSpinner from "shared/components/spinners/app-spinner";
 import { useParams } from "react-router-dom";
 
 import Homework from "../../views/homework";
@@ -22,7 +22,7 @@ const HomeworkContainer: FC = () => {
     fetchPolicy: "cache-first",
   });
 
-  if (loadingUserId || loadingHomeWorkByLecture) return <Spinner />;
+  if (loadingUserId || loadingHomeWorkByLecture) return <AppSpinner />;
   if (!dataUserId) return <NoDataErrorMessage />;
 
   return (

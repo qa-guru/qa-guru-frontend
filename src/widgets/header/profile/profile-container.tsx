@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Spinner from "shared/components/spinner";
+import AppSpinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useUserQuery } from "api/graphql/generated/graphql";
 
@@ -10,7 +10,7 @@ const ProfileContainer: FC = () => {
     fetchPolicy: "cache-first",
   });
 
-  if (loading) return <Spinner />;
+  if (loading) return <AppSpinner />;
   if (!data) return <NoDataErrorMessage />;
 
   return <Profile data={data} />;

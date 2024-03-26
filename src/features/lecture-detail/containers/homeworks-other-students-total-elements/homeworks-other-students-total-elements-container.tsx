@@ -1,24 +1,27 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHomeWorksByLectureIdTotalElementsQuery } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import SkeletonTitle from "shared/components/skeletons/skeleton-title/skeleton-title";
+import HomeworksTitleSpinner from "shared/components/spinners/homeworks-title-spinner/homeworks-title-spinner";
 
 import { QUERY_DEFAULTS } from "../../constants";
 import HomeworksOtherStudentsTotalElements from "../../views/homeworks-other-students-total-elements";
+import { HomeworksOtherStudentsFormContext } from "../../context/homeworks-other-students-form-context";
 
 const HomeworksOtherStudentsTotalElementsContainer: FC = () => {
   const { lectureId } = useParams();
+  const { status } = useContext(HomeworksOtherStudentsFormContext);
 
   const { data, loading } = useHomeWorksByLectureIdTotalElementsQuery({
     variables: {
       offset: QUERY_DEFAULTS.OFFSET,
       limit: QUERY_DEFAULTS.LIMIT,
+      filter: { status },
       lectureId: lectureId!,
     },
   });
 
-  if (loading) return <SkeletonTitle />;
+  if (loading) return <HomeworksTitleSpinner />;
   if (!data || !lectureId) return <NoDataErrorMessage />;
 
   return <HomeworksOtherStudentsTotalElements data={data} />;

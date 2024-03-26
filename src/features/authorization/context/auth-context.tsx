@@ -12,7 +12,7 @@ import { FC, ReactNode, createContext, useContext, useState } from "react";
 import { client } from "api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import Spinner from "shared/components/spinner";
+import AppSpinner from "shared/components/spinners/app-spinner";
 
 import { RESPONSE_STATUS, ROUTES } from "../constants";
 
@@ -77,7 +77,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
     fetchPolicy: "cache-first",
   });
 
-  if (loading) return <Spinner />;
+  if (loading) return <AppSpinner />;
 
   const login = async (username: string, password: string) => {
     setIsLoading(true);

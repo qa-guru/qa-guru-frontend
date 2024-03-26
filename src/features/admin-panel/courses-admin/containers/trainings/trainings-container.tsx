@@ -5,7 +5,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import Spinner from "shared/components/spinner/spinner";
+import Spinner from "shared/components/spinners/app-spinner";
 
 import TableColumns from "../../views/table-columns";
 
