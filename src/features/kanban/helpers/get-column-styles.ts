@@ -29,7 +29,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
         ? theme.palette.app.lightGray
         : theme.palette.app.secondary,
       borderRadius: "10px",
-      height: "calc(100dvh - 100px - 140px - 150px )",
+      height: "calc(100vh - 100px - 130px - 60px )",
       boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
       margin: "13px",
     },
