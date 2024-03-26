@@ -3,12 +3,8 @@ import { CommentEditor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 
 import { ISendComment } from "./send-comment.types";
-import {
-  StyledBox,
-  StyledFormHelperText,
-  StyledLoadingButton,
-  StyledStack,
-} from "./send-comment.styled";
+import { StyledBox, StyledFormHelperText } from "./send-comment.styled";
+import SendButtons from "../../../../shared/components/send-buttons";
 
 const SendComment: FC<ISendComment> = (props) => {
   const { sendComment, loading, homeworkId } = props;
@@ -42,15 +38,7 @@ const SendComment: FC<ISendComment> = (props) => {
         <CommentEditor rteRef={rteRef} />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
-      <StyledStack>
-        <StyledLoadingButton
-          variant="contained"
-          onClick={handleSendComment}
-          loading={loading}
-        >
-          Отправить
-        </StyledLoadingButton>
-      </StyledStack>
+      <SendButtons onReply={handleSendComment} loading={loading} hideCancel />
     </form>
   );
 };

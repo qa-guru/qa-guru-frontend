@@ -4,13 +4,8 @@ import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 
 import { IUpdateHomeWork } from "./update-homework.types";
-import {
-  StyledBox,
-  StyledCancelButton,
-  StyledLoadingButton,
-  StyledStack,
-  StyledWrapper,
-} from "./update-homework.styled";
+import { StyledBox, StyledWrapper } from "./update-homework.styled";
+import SendButtons from "../../../../shared/components/send-buttons";
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
@@ -36,22 +31,11 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
       <StyledWrapper>
         <StyledBox>
           <Editor content={answer} rteRef={rteRef} />
-          <StyledStack>
-            <StyledCancelButton
-              color="secondary"
-              variant="contained"
-              onClick={() => setOpenHomeWorkEdit(false)}
-            >
-              Отменить
-            </StyledCancelButton>
-            <StyledLoadingButton
-              variant="contained"
-              onClick={handleUpdateHomework}
-              loading={loading}
-            >
-              Отправить
-            </StyledLoadingButton>
-          </StyledStack>
+          <SendButtons
+            onReply={handleUpdateHomework}
+            onCancel={() => setOpenHomeWorkEdit(false)}
+            loading={loading}
+          />
         </StyledBox>
       </StyledWrapper>
     </form>

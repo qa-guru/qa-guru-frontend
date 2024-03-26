@@ -12,7 +12,7 @@ import { ITextEditor } from "../types";
 
 const CommentEditor: FC<ITextEditor> = ({ rteRef, content }) => {
   const extensions = useExtensions({
-    placeholder: "Add your own content here...",
+    placeholder: "Введите текст...",
   });
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
