@@ -4,7 +4,7 @@ import {
   UserSortField,
   useUsersRatingQuery,
 } from "api/graphql/generated/graphql";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import UsersTop from "../views/top-users/top-users";

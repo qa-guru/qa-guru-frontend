@@ -2,7 +2,7 @@ import { FC, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHomeWorksByLectureIdTotalElementsQuery } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import HomeworksTitleSpinner from "shared/components/spinners/homeworks-title-spinner/homeworks-title-spinner";
+import { HomeworksOtherStudentsTotalElementsSpinner } from "shared/components/spinners";
 
 import { QUERY_DEFAULTS } from "../../constants";
 import HomeworksOtherStudentsTotalElements from "../../views/homeworks-other-students-total-elements";
@@ -21,7 +21,7 @@ const HomeworksOtherStudentsTotalElementsContainer: FC = () => {
     },
   });
 
-  if (loading) return <HomeworksTitleSpinner />;
+  if (loading) return <HomeworksOtherStudentsTotalElementsSpinner />;
   if (!data || !lectureId) return <NoDataErrorMessage />;
 
   return <HomeworksOtherStudentsTotalElements data={data} />;

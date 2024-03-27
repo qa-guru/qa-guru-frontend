@@ -5,7 +5,7 @@ import {
   StudentHomeWorkStatus,
   useHomeWorksQuery,
 } from "api/graphql/generated/graphql";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 import Board from "../../views/board";

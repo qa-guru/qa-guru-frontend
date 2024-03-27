@@ -4,7 +4,7 @@ import {
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 import { useParams } from "react-router-dom";
 
 import Homework from "../../views/homework";

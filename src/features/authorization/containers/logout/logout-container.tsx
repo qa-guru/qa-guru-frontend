@@ -1,5 +1,5 @@
 import { FC } from "react";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 
 import { ILogoutContainer } from "./logout-container.types";
 import Logout from "../../views/logout";

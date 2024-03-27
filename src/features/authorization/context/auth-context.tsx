@@ -12,7 +12,7 @@ import { FC, ReactNode, createContext, useContext, useState } from "react";
 import { client } from "api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 
 import { RESPONSE_STATUS, ROUTES } from "../constants";
 

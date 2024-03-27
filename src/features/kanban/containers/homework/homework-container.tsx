@@ -3,7 +3,7 @@ import {
   useHomeWorkQuery,
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
 

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CircularProgress } from "@mui/material";
 
-import { StyledGrid } from "../spinners.styled";
+import { StyledGrid } from "./app-spinner.styled";
 
 const AppSpinner: FC = () => {
   return (

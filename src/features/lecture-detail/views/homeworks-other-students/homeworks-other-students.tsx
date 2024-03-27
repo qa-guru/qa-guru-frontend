@@ -51,9 +51,11 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
     });
   };
 
+  const hasItems = items?.length !== 0;
+
   return (
     <StyledBox>
-      {items?.length !== 0 ? (
+      {hasItems ? (
         <StyledWrapper>
           {items?.map((item) => {
             const { id } = item!;

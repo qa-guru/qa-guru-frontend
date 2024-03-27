@@ -1,16 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, CircularProgress, Grid, Typography } from "@mui/material";
-
-export const StyledGrid = styled(Grid)({
-  position: "fixed",
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  zIndex: 1000,
-  justifyContent: "center",
-  alignItems: "center",
-});
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 export const StyledHomeworksBox = styled(Box)({
   display: "flex",

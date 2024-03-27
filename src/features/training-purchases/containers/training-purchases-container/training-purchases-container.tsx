@@ -1,5 +1,5 @@
 import { FC } from "react";
-import AppSpinner from "shared/components/spinners/app-spinner";
+import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useTrainingPurchasesQuery } from "api/graphql/generated/graphql";
 

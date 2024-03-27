@@ -4,9 +4,9 @@ import {
   StyledHomeworksBox,
   StyledSpinner,
   StyledTitle,
-} from "../spinners.styled";
+} from "./homeworks-other-students-total-elements-spinner.styled";
 
-const HomeworksTitleSpinner: FC = () => {
+const HomeworksOtherStudentsTotalElementsSpinner: FC = () => {
   return (
     <StyledHomeworksBox>
       <StyledTitle variant="h3">Домашние работы других студентов</StyledTitle>
@@ -15,4 +15,4 @@ const HomeworksTitleSpinner: FC = () => {
   );
 };
 
-export default HomeworksTitleSpinner;
+export default HomeworksOtherStudentsTotalElementsSpinner;
