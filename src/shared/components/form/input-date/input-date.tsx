@@ -16,7 +16,7 @@ const InputDate = <T extends FieldValues>({
 }: IFormInputDate<T>) => {
   const handleChange = useCallback(
     (newValue: unknown, fieldOnChange: (value: string) => void) => {
-      if (newValue) {
+      if (newValue && dayjs(Number(newValue)).isValid()) {
         const formattedDate = dayjs(Number(newValue))
           .set("hour", DEFAULT_TIME_VALUE)
           .set("minute", DEFAULT_TIME_VALUE)
