@@ -5,12 +5,8 @@ import { Editor } from "shared/components/text-editor";
 import { useParams } from "react-router-dom";
 
 import { ISendHomeWork } from "./send-homework.types";
-import {
-  StyledBox,
-  StyledFormHelperText,
-  StyledLoadingButton,
-  StyledStack,
-} from "./send-homework.styled";
+import { StyledBox, StyledFormHelperText } from "./send-homework.styled";
+import SendButtons from "../../../../shared/components/send-buttons";
 
 const SendHomework: FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
@@ -50,16 +46,7 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
         <Editor rteRef={rteRef} />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
-
-      <StyledStack>
-        <StyledLoadingButton
-          variant="contained"
-          loading={loading}
-          onClick={handleSendHomeWork}
-        >
-          Отправить
-        </StyledLoadingButton>
-      </StyledStack>
+      <SendButtons onReply={handleSendHomeWork} loading={loading} />
     </form>
   );
 };

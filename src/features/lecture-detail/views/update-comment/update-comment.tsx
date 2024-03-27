@@ -5,13 +5,11 @@ import { CommentEditor } from "shared/components/text-editor";
 import { IUpdateComment } from "./update-comment.types";
 import {
   StyledBox,
-  StyledButton,
-  StyledButtonsStack,
-  StyledLoadingButton,
   StyledStack,
   StyledFormHelperText,
 } from "./update-comment.styled";
 import { useComment } from "../../../../shared/context/comment-context";
+import SendButtons from "../../../../shared/components/send-buttons";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
   const { loading, updateComment, commentId, content } = props;
@@ -44,21 +42,11 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
         <StyledBox>
           <CommentEditor content={content} rteRef={rteRef} />
           {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
-          <StyledButtonsStack>
-            <StyledButton
-              variant="contained"
-              onClick={() => setSelectedComment(null)}
-            >
-              Отменить
-            </StyledButton>
-            <StyledLoadingButton
-              variant="contained"
-              onClick={handleUpdateComment}
-              loading={loading}
-            >
-              Отправить
-            </StyledLoadingButton>
-          </StyledButtonsStack>
+          <SendButtons
+            onReply={handleUpdateComment}
+            onCancel={() => setSelectedComment(null)}
+            loading={loading}
+          />
         </StyledBox>
       </StyledStack>
     </form>
