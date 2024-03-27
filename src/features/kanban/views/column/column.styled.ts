@@ -12,12 +12,12 @@ export const StyledWrapperColumnContainer = styled(Box, {
   flexGrow: 1,
   marginTop: "5px",
   boxSizing: "border-box",
-  height: "calc(100vh - 100px - 130px - 60px )",
+  height: "calc(100vh - 100px - 120px - 60px )",
   overflowY: showButton ? "hidden" : "auto",
   [theme.breakpoints.down("md")]: {
     height: showButton
-      ? "calc(100dvh - 100px - 175px - 60px )"
-      : "calc(100dvh - 100px - 130px - 60px )",
+      ? "calc(100dvh - 100px - 132px - 60px )"
+      : "calc(100dvh - 100px - 90px - 60px )",
   },
 }));
 

@@ -14,7 +14,7 @@ export const states = [
   {
     value: "NEW",
     Icon: Clock,
-    text: "Ожидает проверки",
+    text: "Новые",
   },
   {
     value: "IN_REVIEW",
