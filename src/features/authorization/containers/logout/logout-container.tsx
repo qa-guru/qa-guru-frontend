@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Spinner from "shared/components/spinner";
+import { AppSpinner } from "shared/components/spinners";
 
 import { ILogoutContainer } from "./logout-container.types";
 import Logout from "../../views/logout";
@@ -9,7 +9,7 @@ const LogoutContainer: FC<ILogoutContainer> = (props) => {
   const { setAnchorElUser } = props;
   const { logout, isLoading } = useAuth();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <AppSpinner />;
 
   return <Logout logout={logout} setAnchorElUser={setAnchorElUser} />;
 };

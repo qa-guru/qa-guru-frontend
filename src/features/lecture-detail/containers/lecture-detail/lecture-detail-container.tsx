@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "shared/components/spinner";
+import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
   useLectureHomeWorkQuery,
@@ -26,7 +26,7 @@ const LectureDetailContainer: FC = () => {
     });
 
   if (loadingLecture || loadingLectureHomeWork || !tariffHomework)
-    return <Spinner />;
+    return <AppSpinner />;
 
   if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
 

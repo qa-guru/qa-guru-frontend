@@ -1,11 +1,13 @@
 import { FC, useEffect, useState } from "react";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {
   StyledBox,
   StyledLoadingButton,
+  StyledNotFoundBox,
   StyledPaper,
   StyledWrapper,
 } from "./homework-other-students.styled";
@@ -49,27 +51,38 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
     });
   };
 
+  const hasItems = items?.length !== 0;
+
   return (
     <StyledBox>
-      <StyledWrapper>
-        {items?.map((item) => {
-          const { id } = item!;
+      {hasItems ? (
+        <StyledWrapper>
+          {items?.map((item) => {
+            const { id } = item!;
 
-          return (
-            <StyledPaper key={id}>
-              <HomeworkItem
-                dataHomeWorkByLectureAndTraining={item}
-                dataUserId={dataUserId}
-              />
-              <ModalHomeworksOtherStudents
-                key={id}
-                item={item}
-                dataUserId={dataUserId}
-              />
-            </StyledPaper>
-          );
-        })}
-      </StyledWrapper>
+            return (
+              <StyledPaper key={id}>
+                <HomeworkItem
+                  dataHomeWorkByLectureAndTraining={item}
+                  dataUserId={dataUserId}
+                />
+                <ModalHomeworksOtherStudents
+                  key={id}
+                  item={item}
+                  dataUserId={dataUserId}
+                />
+              </StyledPaper>
+            );
+          })}
+        </StyledWrapper>
+      ) : (
+        <StyledNotFoundBox>
+          <HomeworksNotFound />
+          <Typography variant="h3" color="textSecondary">
+            Нет домашних работ
+          </Typography>
+        </StyledNotFoundBox>
+      )}
       {hasMoreHomeworks && (
         <Stack>
           <StyledLoadingButton

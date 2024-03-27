@@ -3,7 +3,7 @@ import {
   useHomeWorkQuery,
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
-import Spinner from "shared/components/spinner";
+import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const HomeworkContainer: FC = () => {
     variables: { homeWorkId: lectureId! },
   });
 
-  if (loading || loadingUserId) return <Spinner />;
+  if (loading || loadingUserId) return <AppSpinner />;
 
   if (!data || !dataUserId) return <NoDataErrorMessage />;
 
