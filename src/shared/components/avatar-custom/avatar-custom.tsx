@@ -57,7 +57,9 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   hasLink,
   img,
 }) => {
-  const { data } = useUserIdQuery();
+  const { data } = useUserIdQuery({
+    fetchPolicy: "cache-first",
+  });
 
   const navigate = useNavigate();
   const currentUserId = data?.user?.id;
