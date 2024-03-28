@@ -5,7 +5,7 @@ export const getFormattedStatus = (status: string) => {
     case "IN_REVIEW":
       return "На проверке";
     case "NEW":
-      return "Ожидает проверки";
+      return "Новые";
     case "NOT_APPROVED":
       return "Не принято";
     default:
