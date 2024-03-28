@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useResponsive from "shared/hooks/use-responsive";
 
 const useWindowHeight = () => {
   const [height, setHeight] = useState(window.innerHeight);
@@ -19,6 +20,7 @@ const useWindowHeight = () => {
 };
 
 export const useDynamicCardLimit = () => {
+  const { isMobileOrTablet } = useResponsive();
   const height = useWindowHeight();
 
   const getLimit = () => {
@@ -26,7 +28,7 @@ export const useDynamicCardLimit = () => {
     if (height >= 2160) return 7;
     if (height >= 1440) return 6;
     if (height >= 1080) return 5;
-    return 5;
+    return isMobileOrTablet ? 6 : 5;
   };
 
   const [limit, setLimit] = useState(getLimit());

@@ -218,7 +218,7 @@ const Column: FC<IColumn> = ({
           ))}
         </StyledInfiniteScroll>
       </StyledWrapperColumnContainer>
-      {showButton && hasMoreHomeworks && (
+      {!isMobileOrTablet && showButton && hasMoreHomeworks && (
         <StyledLoadMoreButton onClick={handleLoadMore}>
           Загрузить еще
         </StyledLoadMoreButton>
