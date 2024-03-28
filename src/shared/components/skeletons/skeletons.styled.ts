@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Skeleton, Stack, Typography } from "@mui/material";
+import { Box, Skeleton, Stack } from "@mui/material";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   marginTop: "20px",
@@ -41,12 +41,6 @@ export const StyledSkeleton = styled(Skeleton)({
   fontSize: "0.7rem",
 });
 
-export const StyledTitleSkeleton = styled(Skeleton)({
-  margin: "10px 0",
-  height: "40px",
-  width: "40%",
-});
-
 export const StyledHomeworkBox = styled(Box)({
   marginTop: "15px",
 });
@@ -59,8 +53,4 @@ export const StyledHomeworkSkeleton = styled(Skeleton)({
 export const StyledHomeworksSkeleton = styled(Skeleton)({
   width: "100%",
   height: "240px",
-});
-
-export const StyledTypography = styled(Typography)({
-  margin: "0 0 15px",
 });

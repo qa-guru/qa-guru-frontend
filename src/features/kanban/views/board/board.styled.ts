@@ -1,4 +1,4 @@
-import { Box, Pagination, Stack } from "@mui/material";
+import { Box, Button, Stack, StepLabel, Stepper } from "@mui/material";
 import { styled } from "@mui/system";
 
 import { UI_CONSTANTS } from "../../constants";
@@ -7,20 +7,6 @@ interface IColumnBox {
   showHomeworkDetails: boolean;
   isUpLg: boolean;
 }
-
-export const StyledPagination = styled(Pagination)(({ theme }) => ({
-  "& .MuiPaginationItem-root": {
-    margin: "0 6px",
-    color: "transparent",
-  },
-  "& .MuiPaginationItem-root.MuiPaginationItem-circular": {
-    backgroundColor: theme.palette.app.secondary,
-  },
-  "& .MuiPaginationItem-root.MuiPaginationItem-circular.Mui-selected": {
-    backgroundColor: theme.palette.app.primary,
-    color: "transparent",
-  },
-}));
 
 export const StyledWrapper = styled(Box)({
   display: "flex",
@@ -34,13 +20,36 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const StyledMobileWrapper = styled(Box)({
-  marginTop: "20px",
+  marginTop: "15px",
 });
 
 export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
-  marginBottom: "15px",
+});
+
+export const StyledStepper = styled(Stepper)(({ theme }) => ({
+  overflowX: "scroll",
+  "& .MuiStepLabel-iconContainer": {
+    display: "none",
+  },
+  "& .MuiStepLabel-label.Mui-active": {
+    color: theme.palette.app.primary,
+  },
+  "& .MuiStepLabel-label.Mui-completed": {
+    color: theme.palette.app.textSecondary,
+    fontWeight: "normal",
+  },
+  scrollbarWidth: "none",
+}));
+
+export const StyledStepLabel = styled(StepLabel)({
+  whiteSpace: "nowrap",
+  textTransform: "uppercase",
+});
+
+export const StyledStepperButton = styled(Button)({
+  minWidth: "5px",
 });
 
 export const StyledColumnBox = styled(Box, {

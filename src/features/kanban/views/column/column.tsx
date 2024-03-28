@@ -31,6 +31,7 @@ import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
 import { getFormattedStatus } from "../../helpers/get-formatted-status";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
+import useResponsive from "../../../../shared/hooks/use-responsive";
 
 interface DropCollectedProps {
   isOver: boolean;
@@ -46,6 +47,7 @@ const Column: FC<IColumn> = ({
   onCardClick,
   activeCardId,
 }) => {
+  const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const [showButton, setShowButton] = useState<boolean>(true);
   const droppedItem = useRef<Maybe<CardType>>(null);
@@ -165,16 +167,18 @@ const Column: FC<IColumn> = ({
 
   return (
     <StyledWrapperColumnBox>
-      <StyledRowStack>
-        <StyledTypographyStatus variant="h4">
-          {getFormattedStatus(column.title)}
-        </StyledTypographyStatus>
-        <StyledTypographyCount variant="h4">
-          {Number(column.totalElements) === 0
-            ? "(empty)"
-            : `(${column.totalElements})`}
-        </StyledTypographyCount>
-      </StyledRowStack>
+      {!isMobileOrTablet && (
+        <StyledRowStack>
+          <StyledTypographyStatus variant="h4">
+            {getFormattedStatus(column.title)}
+          </StyledTypographyStatus>
+          <StyledTypographyCount variant="h4">
+            {Number(column.totalElements) === 0
+              ? "(0)"
+              : `(${column.totalElements})`}
+          </StyledTypographyCount>
+        </StyledRowStack>
+      )}
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
@@ -214,7 +218,7 @@ const Column: FC<IColumn> = ({
           ))}
         </StyledInfiniteScroll>
       </StyledWrapperColumnContainer>
-      {showButton && hasMoreHomeworks && (
+      {!isMobileOrTablet && showButton && hasMoreHomeworks && (
         <StyledLoadMoreButton onClick={handleLoadMore}>
           Загрузить еще
         </StyledLoadMoreButton>

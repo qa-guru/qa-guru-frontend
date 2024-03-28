@@ -21,7 +21,7 @@ const StatusText: FC<IStatusText> = ({ status }) => {
   switch (status) {
     case StudentHomeWorkStatus.New:
       icon = <Clock />;
-      statusText = "Ожидает проверки";
+      statusText = "Новые";
       break;
     case StudentHomeWorkStatus.InReview:
       icon = <Search />;

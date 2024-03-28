@@ -7,4 +7,7 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
 
 export const StyledLink = styled(Link)({
   textDecoration: "none",
+  "&:hover": {
+    opacity: "0.7",
+  },
 }) as typeof Link;

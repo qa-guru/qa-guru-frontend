@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { IAvatarCustom } from "./avatar-custom.types";
 import { StyledTypography, StyledLink } from "./avatar-custom.styled";
+import { useUserIdQuery } from "../../../api/graphql/generated/graphql";
 
 function stringToColor(name: string) {
   const theme = useTheme();
@@ -56,10 +57,17 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   hasLink,
   img,
 }) => {
+  const { data } = useUserIdQuery({
+    fetchPolicy: "cache-first",
+  });
+
   const navigate = useNavigate();
+  const currentUserId = data?.user?.id;
 
   const handleAvatarClick = () => {
-    navigate(`/${userId}`);
+    if (userId === currentUserId) {
+      navigate("/profile");
+    } else navigate(`/${userId}`);
   };
 
   return (

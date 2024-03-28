@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 
 import { IUserName } from "./user-name.types";
 import { StyledLink } from "./user-name.styled";
+import { useUserIdQuery } from "../../../../api/graphql/generated/graphql";
 
 const UserName: FC<IUserName> = ({
   fullName,
@@ -11,10 +12,15 @@ const UserName: FC<IUserName> = ({
   hasLink,
   variant = "body2",
 }) => {
+  const { data } = useUserIdQuery();
+
   const navigate = useNavigate();
+  const currentUserId = data?.user?.id;
 
   const handleRowClick = () => {
-    navigate(`/${userId}`);
+    if (userId === currentUserId) {
+      navigate("/profile");
+    } else navigate(`/${userId}`);
   };
 
   return (
