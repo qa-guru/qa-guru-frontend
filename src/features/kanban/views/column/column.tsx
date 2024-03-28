@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
-import { StudentHomeWorkDto, Maybe } from "api/graphql/generated/graphql";
+import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
 
 import { CardType, IColumn } from "./column.types";
 import {
@@ -16,7 +16,6 @@ import {
   StyledCardBox,
   StyledDialogContent,
   StyledInfiniteScroll,
-  StyledLoadMoreButton,
   StyledRowStack,
   StyledStack,
   StyledTypographyCount,
@@ -49,7 +48,6 @@ const Column: FC<IColumn> = ({
 }) => {
   const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
-  const [showButton, setShowButton] = useState<boolean>(true);
   const droppedItem = useRef<Maybe<CardType>>(null);
   const [{ isOver, canDrop }, dropRef] = useDrop<
     CardType,
@@ -130,7 +128,6 @@ const Column: FC<IColumn> = ({
       setHasMoreHomeworks(false);
       return;
     }
-    setShowButton(false);
     fetchMore({
       variables: {
         offset: column.cards?.length,
@@ -182,7 +179,6 @@ const Column: FC<IColumn> = ({
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
-        showButton={showButton}
         sx={{
           ...(getColumnStyles(
             column.id,
@@ -218,11 +214,6 @@ const Column: FC<IColumn> = ({
           ))}
         </StyledInfiniteScroll>
       </StyledWrapperColumnContainer>
-      {!isMobileOrTablet && showButton && hasMoreHomeworks && (
-        <StyledLoadMoreButton onClick={handleLoadMore}>
-          Загрузить еще
-        </StyledLoadMoreButton>
-      )}
     </StyledWrapperColumnBox>
   );
 };

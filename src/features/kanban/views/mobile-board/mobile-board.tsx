@@ -41,7 +41,7 @@ const MobileBoard: FC<IMobileBoard> = ({
 
   useEffect(() => {
     const stepElement = document.getElementById(`step-${activeStep}`);
-    stepElement?.scrollIntoView({ behavior: "smooth", block: "center" });
+    stepElement?.scrollIntoView({ behavior: "smooth" });
   }, [activeStep]);
 
   return (

@@ -29,7 +29,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
         ? theme.palette.app.lightGray
         : theme.palette.app.secondary,
       borderRadius: "10px",
-      height: "calc(100dvh - 100px - 130px - 60px )",
+      maxHeight: "calc(100dvh - 275px )",
       boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
       margin: "13px",
     },
@@ -49,12 +49,9 @@ export const getColumnStyles: GetColumnStylesFunction = (
   if (isColumnHighlight(columnId, draggingState)) {
     return {
       ...styles,
-      border: "2px dashed",
-      borderColor: theme.palette.app.primary,
+      border: `2px dashed ${theme.palette.app.primary}`,
       borderRadius: "10px",
-      [theme.breakpoints.down("md")]: {
-        height: "calc(100dvh - 100px - 190px - 60px )",
-      },
+      maxHeight: "calc(100dvh - 265px )",
     };
   }
 

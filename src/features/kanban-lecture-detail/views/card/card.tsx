@@ -4,6 +4,7 @@ import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
+import { useUserIdQuery } from "api/graphql/generated/graphql";
 
 import {
   StyledBox,
@@ -14,12 +15,19 @@ import {
 import { ICard } from "./card.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const Card: FC<ICard> = ({ card, onCardClick, isActive }) => {
+const Card: FC<ICard> = ({ card, onCardClick }) => {
   const { id, mentor, student, lecture } = card;
 
+  const { data } = useUserIdQuery({ fetchPolicy: "cache-first" });
+  const isCurrentHomeworkActive = student?.id === data?.user?.id;
+
   return (
-    <StyledPaper isActive={isActive} onClick={onCardClick} elevation={4}>
-      <StyledCardHeader isActive={isActive}>
+    <StyledPaper
+      isCurrentHomeworkActive={isCurrentHomeworkActive}
+      onClick={onCardClick}
+      elevation={4}
+    >
+      <StyledCardHeader isCurrentHomeworkActive={isCurrentHomeworkActive}>
         <Typography textTransform="uppercase" variant="subtitle2">
           {getFormattedId(id)}
         </Typography>

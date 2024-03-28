@@ -15,8 +15,9 @@ const HomeworksOtherStudentsTotalElements: FC<
 
   return (
     <StyledStack>
-      <Typography variant="h3">Домашние работы других студентов</Typography>
-      <Typography variant="h3">({totalElements})</Typography>
+      <Typography variant="h3">
+        Домашние работы других студентов ({totalElements})
+      </Typography>
     </StyledStack>
   );
 };

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
+import { Box } from "@mui/material";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import {
@@ -13,9 +13,6 @@ import Column from "../column";
 import { ROUTES } from "../../constants";
 
 const DesktopBoard: FC<IDesktopBoard> = ({ columns, fetchMoreFunctions }) => {
-  const [activeCardId, setActiveCardId] = useState<Maybe<string>>(null);
-  const { isLargeDesktop } = useResponsive();
-
   const navigate = useNavigate();
 
   const handleCardClick = (card: StudentHomeWorkDto) => {
@@ -24,7 +21,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({ columns, fetchMoreFunctions }) => {
 
   return (
     <StyledWrapper>
-      <StyledColumnBox showHomeworkDetails={false} isUpLg={isLargeDesktop}>
+      <StyledColumnBox>
         <StyledStack>
           {columns?.map((column, index) => (
             <Column
@@ -32,7 +29,6 @@ const DesktopBoard: FC<IDesktopBoard> = ({ columns, fetchMoreFunctions }) => {
               column={column}
               fetchMore={fetchMoreFunctions[index]}
               onCardClick={handleCardClick}
-              activeCardId={activeCardId}
             />
           ))}
         </StyledStack>

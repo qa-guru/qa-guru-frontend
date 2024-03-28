@@ -2,21 +2,15 @@ import { styled } from "@mui/system";
 import { Box, Button, DialogContent, Stack, Typography } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-interface IStyledColumn {
-  showButton?: boolean;
-}
-
-export const StyledWrapperColumnContainer = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "showButton",
-})<IStyledColumn>(({ showButton, theme }) => ({
+export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   flexGrow: 1,
-  marginTop: "5px",
+  marginTop: "12px",
   boxSizing: "border-box",
-  height: "calc(100vh - 100px - 120px - 60px)",
-  overflowY: showButton ? "hidden" : "auto",
+  height: "calc(100vh - 245px)",
+  overflowY: "auto",
+  scrollbarWidth: "none",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100dvh - 100px - 132px - 18px)",
-    overflowY: "auto",
+    height: "calc(100dvh - 253px)",
   },
 }));
 
@@ -70,6 +64,7 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 
 export const StyledInfiniteScroll = styled(InfiniteScroll)({
   overflow: "visible",
+  marginTop: "-4px",
 });
 
 export const StyledRowStack = styled(Stack)({

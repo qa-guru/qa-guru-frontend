@@ -52,14 +52,14 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
               justifyContent="space-between"
             >
               <HomeworksOtherStudentsTotalElements />
-              <Box>
+              <Stack direction="row">
                 <IconButton size="small" onClick={handleKanbanView}>
                   <ViewKanbanIcon color="primary" />
                 </IconButton>
                 <IconButton size="small" onClick={handleListView}>
                   <ViewListIcon color="primary" />
                 </IconButton>
-              </Box>
+              </Stack>
             </Stack>
 
             {view === "list" && (

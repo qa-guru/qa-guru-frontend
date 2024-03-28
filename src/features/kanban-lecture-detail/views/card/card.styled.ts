@@ -2,34 +2,29 @@ import { styled } from "@mui/system";
 import { Box, Paper, Stack } from "@mui/material";
 
 interface IStyledCard {
-  isDragging?: boolean;
-  isCardsHidden?: boolean;
-  isActive?: boolean;
+  isCurrentHomeworkActive?: boolean;
 }
 
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop) =>
     !["isDragging", "isCardsHidden", "isActive"].includes(prop as string),
-})<IStyledCard>(({ theme, isDragging, isCardsHidden, isActive }) => ({
+})<IStyledCard>(({ theme, isCurrentHomeworkActive }) => ({
   flexGrow: "1",
   margin: "8px",
   "&:hover": {
     transform: "scale(1.02)",
     transition: "transform 300ms ease-in-out",
   },
-  opacity: isDragging ? "0.5" : undefined,
-  visibility: isCardsHidden && !isDragging ? "hidden" : undefined,
-  border: isActive
+  border: isCurrentHomeworkActive
     ? `1px solid ${theme.palette.app.primary}30`
     : `1px solid transparent`,
-  marginBottom: isDragging ? "15px" : undefined,
   cursor: "pointer",
 }));
 
 export const StyledCardHeader = styled(Stack, {
   shouldForwardProp: (prop) => !["isActive"].includes(prop as string),
-})<IStyledCard>(({ theme, isActive }) => ({
-  backgroundColor: isActive
+})<IStyledCard>(({ theme, isCurrentHomeworkActive }) => ({
+  backgroundColor: isCurrentHomeworkActive
     ? `1px solid ${theme.palette.app.primary}30`.slice(10)
     : theme.palette.app.lightGrey,
   justifyContent: "space-between",

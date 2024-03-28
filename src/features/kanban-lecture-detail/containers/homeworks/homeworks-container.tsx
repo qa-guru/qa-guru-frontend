@@ -5,7 +5,7 @@ import {
   StudentHomeWorkStatus,
   useHomeWorksQuery,
 } from "api/graphql/generated/graphql";
-import Spinner from "shared/components/spinner";
+import Spinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
 
