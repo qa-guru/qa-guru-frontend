@@ -1,7 +1,11 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import LectureHomework from "features/lecture-detail/views/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
-import { Container } from "@mui/material";
+import { Box, Container, IconButton } from "@mui/material";
+import { KanbanLectureDetail } from "features/kanban-lecture-detail";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
+import ViewListIcon from "@mui/icons-material/ViewList";
+import { Stack } from "@mui/system";
 
 import ButtonLessonsList from "../button-lessons-list";
 import { ILectureDetail } from "./lecture-detail.types";
@@ -23,6 +27,12 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   const lectureHomeWork = dataLectureHomework?.lectureHomeWork || [];
   const hasHomework = lectureHomeWork?.length > 0;
 
+  const [view, setView] = useState("kanban");
+
+  const handleKanbanView = () => setView("kanban");
+
+  const handleListView = () => setView("list");
+
   return (
     <HomeworksFormProvider>
       <Container>
@@ -35,9 +45,31 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
           <>
             <LectureHomework lectureHomeWork={lectureHomeWork} />
             <Homework />
-            <HomeworksOtherStudentsTotalElements />
-            <HomeworksOtherStudentsForm />
-            <HomeworksOtherStudents />
+
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <HomeworksOtherStudentsTotalElements />
+              <Box>
+                <IconButton size="small" onClick={handleKanbanView}>
+                  <ViewKanbanIcon color="primary" />
+                </IconButton>
+                <IconButton size="small" onClick={handleListView}>
+                  <ViewListIcon color="primary" />
+                </IconButton>
+              </Box>
+            </Stack>
+
+            {view === "list" && (
+              <>
+                <HomeworksOtherStudentsForm />
+                <HomeworksOtherStudents />
+              </>
+            )}
+
+            {view === "kanban" && <KanbanLectureDetail />}
           </>
         )}
         {!tariffHomework && <BlurredHomework />}
