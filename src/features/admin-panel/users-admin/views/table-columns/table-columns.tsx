@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
-import { formatDate } from "shared/helpers";
+import { formatDate, formatRole } from "shared/helpers";
 import UserRow from "shared/components/user-row";
 import Rating from "shared/components/rating";
 import useResponsive from "shared/hooks/use-responsive";
@@ -68,7 +68,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         accessorKey: "roles",
         cell: (info: CellContext<UserDto, unknown>) =>
           isMobileOrTablet ? (
-            <Typography>{info.row.original.roles}</Typography>
+            <Typography>{formatRole(info.row.original.roles)}</Typography>
           ) : (
             <UpdateRole
               roles={info.row.original.roles}
