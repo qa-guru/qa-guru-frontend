@@ -6,8 +6,7 @@ interface IStyledCard {
 }
 
 export const StyledPaper = styled(Paper, {
-  shouldForwardProp: (prop) =>
-    !["isDragging", "isCardsHidden", "isActive"].includes(prop as string),
+  shouldForwardProp: (prop) => prop !== "isCurrentHomeworkActive",
 })<IStyledCard>(({ theme, isCurrentHomeworkActive }) => ({
   flexGrow: "1",
   margin: "8px",
@@ -22,7 +21,7 @@ export const StyledPaper = styled(Paper, {
 }));
 
 export const StyledCardHeader = styled(Stack, {
-  shouldForwardProp: (prop) => !["isActive"].includes(prop as string),
+  shouldForwardProp: (prop) => prop !== "isCurrentHomeworkActive",
 })<IStyledCard>(({ theme, isCurrentHomeworkActive }) => ({
   backgroundColor: isCurrentHomeworkActive
     ? `1px solid ${theme.palette.app.primary}30`.slice(10)
