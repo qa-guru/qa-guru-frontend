@@ -8,7 +8,6 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { IMobileBoard } from "./mobile-board.types";
 import {
   StyledBox,
-  StyledMobileWrapper,
   StyledStepLabel,
   StyledStepper,
   StyledStepperButton,
@@ -17,13 +16,7 @@ import Column from "../column";
 import { ROUTES } from "../../constants";
 import { states } from "../status-select/status-select.types";
 
-const MobileBoard: FC<IMobileBoard> = ({
-  columns,
-  draggingState,
-  setDraggingState,
-  moveCard,
-  fetchMoreFunctions,
-}) => {
+const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -45,7 +38,7 @@ const MobileBoard: FC<IMobileBoard> = ({
   }, [activeStep]);
 
   return (
-    <StyledMobileWrapper>
+    <Box>
       <StyledBox>
         <StyledStepperButton
           size="small"
@@ -85,18 +78,15 @@ const MobileBoard: FC<IMobileBoard> = ({
         >
           {columns.map((column, index) => (
             <Column
-              draggingState={draggingState}
-              setDraggingState={setDraggingState}
               key={`${column.id}-${index}`}
               column={column}
-              onCardDrop={moveCard}
               fetchMore={fetchMoreFunctions[index]}
               onCardClick={handleCardClick}
             />
           ))}
         </SwipeableViews>
       </Box>
-    </StyledMobileWrapper>
+    </Box>
   );
 };
 

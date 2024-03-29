@@ -14,13 +14,13 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "10px",
   padding: "5px 0 0",
   margin: "20px 0 40px",
-  height: "calc(100dvh - 100px - 140px - 60px)",
+  height: "calc(100dvh - 300px)",
   overflowY: "auto",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100dvh - 100px - 65px - 60px)",
+    height: "calc(100dvh - 225px)",
   },
   [theme.breakpoints.down("sm")]: {
-    height: "calc(100dvh - 100px - 55px - 60px)",
+    height: "calc(100dvh - 215px)",
   },
 }));
 

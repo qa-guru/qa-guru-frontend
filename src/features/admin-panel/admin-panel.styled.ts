@@ -7,7 +7,7 @@ export const StyledTypography = styled(Typography)({
 });
 
 export const StyledContentBox = styled(Box)({
-  height: "calc(100dvh - 66px - 24px - 60px)",
+  height: "calc(100dvh - 150px)",
 });
 
 export const StyledTabPanel = styled(TabPanel)(({ theme }) => ({

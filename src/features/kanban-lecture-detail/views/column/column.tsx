@@ -1,0 +1,110 @@
+import { FC, useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
+import useResponsive from "shared/hooks/use-responsive";
+
+import { IColumn } from "./column.types";
+import {
+  StyledCardBox,
+  StyledInfiniteScroll,
+  StyledRowStack,
+  StyledTypographyCount,
+  StyledTypographyStatus,
+  StyledWrapperBoxCircle,
+  StyledWrapperColumnBox,
+  StyledWrapperColumnContainer,
+} from "./column.styled";
+import Card from "../card";
+import { getFormattedStatus } from "../../helpers/get-formatted-status";
+import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
+import { getColumnStyles } from "../../helpers/get-column-styles";
+
+const Column: FC<IColumn> = ({ column, fetchMore, onCardClick }) => {
+  const { isMobileOrTablet } = useResponsive();
+  const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
+
+  const handleLoadMore = () => {
+    if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
+      setHasMoreHomeworks(false);
+      return;
+    }
+    fetchMore({
+      variables: {
+        offset: column.cards?.length,
+      },
+      updateQuery: (
+        prev: { homeWorks: { items: StudentHomeWorkDto[] } },
+        {
+          fetchMoreResult,
+        }: { fetchMoreResult: { homeWorks: { items: StudentHomeWorkDto[] } } }
+      ) => {
+        if (!fetchMoreResult) return prev;
+
+        return {
+          homeWorks: {
+            ...fetchMoreResult.homeWorks,
+            items: [
+              ...prev.homeWorks.items,
+              ...fetchMoreResult.homeWorks.items,
+            ],
+          },
+        };
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (
+      column.cards?.length >= column.totalElements ||
+      column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX
+    ) {
+      setHasMoreHomeworks(false);
+    }
+  }, [column.cards?.length, column.totalElements]);
+
+  return (
+    <StyledWrapperColumnBox>
+      {!isMobileOrTablet && (
+        <StyledRowStack>
+          <StyledTypographyStatus variant="h4">
+            {getFormattedStatus(column.title)}
+          </StyledTypographyStatus>
+          <StyledTypographyCount variant="h4">
+            {Number(column.totalElements) === 0
+              ? "(0)"
+              : `(${column.totalElements})`}
+          </StyledTypographyCount>
+        </StyledRowStack>
+      )}
+      <StyledWrapperColumnContainer
+        id={`scroll-container-${column.id}`}
+        sx={{
+          ...(getColumnStyles(column.totalElements) as {}),
+        }}
+      >
+        <StyledInfiniteScroll
+          dataLength={column.cards?.length}
+          next={handleLoadMore}
+          hasMore={hasMoreHomeworks}
+          loader={
+            <StyledWrapperBoxCircle>
+              <CircularProgress size={20} />
+            </StyledWrapperBoxCircle>
+          }
+          scrollableTarget={`scroll-container-${column.id}`}
+        >
+          {column.cards?.map((card, index) => (
+            <StyledCardBox key={`${card.id}-${index}`}>
+              <Card
+                card={card}
+                onCardClick={() => onCardClick && onCardClick(card)}
+              />
+            </StyledCardBox>
+          ))}
+        </StyledInfiniteScroll>
+      </StyledWrapperColumnContainer>
+    </StyledWrapperColumnBox>
+  );
+};
+
+export default Column;

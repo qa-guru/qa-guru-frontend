@@ -4,13 +4,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   flexGrow: 1,
-  marginTop: "12px",
   boxSizing: "border-box",
-  height: "calc(100vh - 245px)",
+  height: "calc(100vh - 295px)",
+  marginTop: "12px",
   overflowY: "auto",
   scrollbarWidth: "none",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100dvh - 253px)",
+    height: "calc(100dvh - 260px )",
   },
 }));
 
@@ -43,11 +43,6 @@ export const StyledTypographyCount = styled(Typography)({
 export const StyledWrapperBoxCircle = styled(Box)({
   textAlign: "center",
   marginTop: "15px",
-});
-
-export const StyledWrapper = styled(Box)({
-  padding: "30px 20px 10px",
-  width: "300px",
 });
 
 export const StyledDialogContent = styled(DialogContent)({
