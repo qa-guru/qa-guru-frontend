@@ -1,8 +1,8 @@
-import { FC, KeyboardEvent, useState } from "react";
+import { FC, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { TabContext } from "@mui/lab";
-import { IconButton, InputAdornment } from "@mui/material";
+import { InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import Tooltip from "@mui/material/Tooltip";
@@ -11,6 +11,7 @@ import { MailOutline, Person } from "@mui/icons-material";
 import { useTableAdminFilter } from "../../context/admin-table-context";
 import {
   StyledIconButton,
+  StyledIconInputButton,
   StyledIconsStack,
   StyledStack,
   StyledTabPanel,
@@ -28,13 +29,15 @@ const InputFilter: FC = () => {
   const { setFilter } = useTableAdminFilter();
   const [activeFilter, setActiveFilter] = useState<FilterKey>("firstName");
 
-  const { control, watch, reset } = useForm({
+  const { control, watch, reset, resetField } = useForm({
     defaultValues: {
       filterValue: "",
+      role: "",
     },
   });
 
   const filterValue = watch("filterValue");
+  const role = watch("role");
 
   const handleFilterChange = (newFilter: FilterKey) => {
     setActiveFilter(newFilter);
@@ -44,6 +47,7 @@ const InputFilter: FC = () => {
     if (event.key === "Enter") {
       event.preventDefault();
       setFilter({ [activeFilter]: filterValue });
+      resetField("role");
     }
   };
 
@@ -51,6 +55,12 @@ const InputFilter: FC = () => {
     setFilter(null);
     reset();
   };
+
+  useEffect(() => {
+    if (role) {
+      resetField("filterValue");
+    }
+  }, [role, resetField]);
 
   return (
     <TabContext value={activeFilter}>
@@ -66,20 +76,22 @@ const InputFilter: FC = () => {
               startAdornment: (
                 <InputAdornment position="start">
                   <StyledIconsStack>
-                    <StyledIconButton
+                    <StyledIconInputButton
+                      isActive={activeFilter === "firstName"}
                       onClick={() => handleFilterChange("firstName")}
                     >
                       <Tooltip title="Имя">
-                        <Person fontSize="small" color="primary" />
+                        <Person fontSize="small" />
                       </Tooltip>
-                    </StyledIconButton>
-                    <StyledIconButton
+                    </StyledIconInputButton>
+                    <StyledIconInputButton
+                      isActive={activeFilter === "email"}
                       onClick={() => handleFilterChange("email")}
                     >
                       <Tooltip title="Email">
-                        <MailOutline fontSize="small" color="primary" />
+                        <MailOutline fontSize="small" />
                       </Tooltip>
-                    </StyledIconButton>
+                    </StyledIconInputButton>
                   </StyledIconsStack>
                 </InputAdornment>
               ),
@@ -99,11 +111,11 @@ const InputFilter: FC = () => {
             }}
           />
           <RoleSelection control={control} />
-          <IconButton onClick={handleReset}>
+          <StyledIconButton onClick={handleReset}>
             <Tooltip title="Сбросить">
               <RefreshIcon fontSize="small" color="primary" />
             </Tooltip>
-          </IconButton>
+          </StyledIconButton>
         </StyledStack>
       </StyledTabPanel>
     </TabContext>

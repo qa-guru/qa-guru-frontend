@@ -10,6 +10,17 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 import ClearIcon from "@mui/icons-material/Clear";
 
+export const StyledNotFoundBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "400px",
+  [theme.breakpoints.down("md")]: {
+    height: "200px",
+  },
+}));
+
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "10px",
   padding: "5px 0 0",
@@ -20,8 +31,8 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     height: "calc(100dvh - 275px)",
   },
   [theme.breakpoints.down("sm")]: {
-    height: "calc(100dvh - 270px)",
-    margin: "20px 0 0",
+    height: "calc(100dvh - 340px)",
+    margin: 0,
   },
 }));
 
@@ -53,13 +64,6 @@ export const StyledLoadMoreButton = styled(IconButton)({
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",
-});
-
-export const StyledStack = styled(Stack)({
-  flexDirection: "column",
-  margin: "0 auto",
-  gap: "10px",
-  maxWidth: "120px",
 });
 
 export const StyledBox = styled(Box)({

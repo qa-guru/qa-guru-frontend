@@ -4,11 +4,12 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { CircularProgress, Dialog } from "@mui/material";
+import { CircularProgress, Dialog, Typography } from "@mui/material";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import useResponsive from "shared/hooks/use-responsive";
 import { useModal } from "react-modal-hook";
 import { Fullscreen } from "@mui/icons-material";
+import { ReactComponent as UsersNotFound } from "assets/images/homework-not-found.svg";
 
 import { ITable } from "./table.types";
 import {
@@ -16,6 +17,7 @@ import {
   StyledClearIcon,
   StyledInfiniteScroll,
   StyledLoadMoreButton,
+  StyledNotFoundBox,
   StyledPaper,
   StyledUsersDialogContent,
 } from "./table.styled";
@@ -121,7 +123,14 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
 
   return (
     <>
-      {isMobile ? (
+      {!users?.length ? (
+        <StyledNotFoundBox>
+          <UsersNotFound />
+          <Typography variant="h3" color="textSecondary">
+            Нет домашних работ
+          </Typography>
+        </StyledNotFoundBox>
+      ) : isMobile ? (
         <>
           <StyledLoadMoreButton onClick={showModal}>
             <Fullscreen color="primary" />
