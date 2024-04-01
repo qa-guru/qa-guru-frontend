@@ -42,6 +42,7 @@ export default function MenuButtonEmoji(props: MenuButtonEmojiProps) {
         tooltipLabel="Emoji"
         IconComponent={InsertEmoticonIcon}
         onClick={handleOpenPopover}
+        disabled={!editor?.isEditable}
         {...props}
       />
       <Popover

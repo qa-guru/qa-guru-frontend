@@ -30,6 +30,7 @@ const Board: FC<IBoard> = ({
     approvedData?.homeWorks || {};
   const { items: notApprovedItems, totalElements: notApprovedTotalElements } =
     notApprovedData?.homeWorks || {};
+
   const { takeForReview, notApproved, approved } = useUpdateHomeworkStatus();
   const [draggingState, setDraggingState] = useState({
     newItem: false,

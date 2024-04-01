@@ -30,6 +30,7 @@ const Form: FC = () => {
   });
 
   const [isAccordionExpanded, setAccordionExpanded] = useState(false);
+  const [resetCounter, setResetCounter] = useState(0);
   const { isMobileOrTablet } = useResponsive();
 
   const {
@@ -48,6 +49,7 @@ const Form: FC = () => {
     setCreationDateFrom(null);
     setCreationDateTo(null);
     reset();
+    setResetCounter((n) => n + 1);
   };
 
   const handleAccordionToggle = () => {
@@ -77,8 +79,14 @@ const Form: FC = () => {
               <LectureSelection control={control} />
               <MentorsSelection control={control} />
               <StyledRowStack>
-                <CreationDateFromSelection control={control} />
-                <CreationDateToSelection control={control} />
+                <CreationDateFromSelection
+                  control={control}
+                  key={`creationDateFrom-${resetCounter}`}
+                />
+                <CreationDateToSelection
+                  control={control}
+                  key={`creationDateTo-${resetCounter}`}
+                />
               </StyledRowStack>
               <StyledRowStack>
                 <IconButton onClick={handleReset}>
@@ -93,8 +101,14 @@ const Form: FC = () => {
           <TrainingSelection control={control} />
           <LectureSelection control={control} />
           <MentorsSelection control={control} />
-          <CreationDateFromSelection control={control} />
-          <CreationDateToSelection control={control} />
+          <CreationDateFromSelection
+            control={control}
+            key={`creationDateFrom-${resetCounter}`}
+          />
+          <CreationDateToSelection
+            control={control}
+            key={`creationDateTo-${resetCounter}`}
+          />
           <Box>
             <IconButton onClick={handleReset}>
               <RefreshIcon color={"primary"} fontSize={"medium"} />

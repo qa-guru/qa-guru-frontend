@@ -4,7 +4,10 @@ import { InputDate } from "shared/components/form";
 import { ICreationDateToSelection } from "./creation-date-to-selection.types";
 import { useKanbanForm } from "../../context/kanban-form-context";
 
-const CreationDateToSelection: FC<ICreationDateToSelection> = ({ control }) => {
+const CreationDateToSelection: FC<ICreationDateToSelection> = ({
+  control,
+  key,
+}) => {
   const { setCreationDateTo } = useKanbanForm();
 
   const handleSelectChange = (selectedId: string) => {
@@ -16,6 +19,7 @@ const CreationDateToSelection: FC<ICreationDateToSelection> = ({ control }) => {
       control={control}
       name="creationDateTo"
       label="Созданные до"
+      key={key}
       onChange={handleSelectChange}
     />
   );

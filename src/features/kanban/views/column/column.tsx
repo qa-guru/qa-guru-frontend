@@ -96,9 +96,9 @@ const Column: FC<IColumn> = ({
     </Dialog>
   ));
 
-  const handleOk = async () => {
+  const handleOk = () => {
     if (droppedItem.current) {
-      await onCardDrop(
+      onCardDrop(
         droppedItem.current.id,
         droppedItem.current.sourceColumnId,
         column.id

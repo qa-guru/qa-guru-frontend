@@ -66,6 +66,7 @@ export default function MenuButtonYoutube(props: MenuButtonYoutubeProps) {
         tooltipLabel="Youtube"
         IconComponent={YouTubeIcon}
         onClick={handleOpenPopover}
+        disabled={!editor?.isEditable}
         {...props}
       />
       <Popover
