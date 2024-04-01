@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { FC, KeyboardEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { TabContext } from "@mui/lab";
