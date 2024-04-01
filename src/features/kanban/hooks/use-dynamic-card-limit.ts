@@ -23,10 +23,10 @@ export const useDynamicCardLimit = () => {
 
   const getLimit = () => {
     if (height >= 3840) return 9;
-    if (height >= 2160) return 7;
-    if (height >= 1440) return 6;
-    if (height >= 1080) return 5;
-    return 5;
+    if (height >= 2160) return 8;
+    if (height >= 1440) return 7;
+    if (height >= 1080) return 6;
+    return 6;
   };
 
   const [limit, setLimit] = useState(getLimit());
