@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import LectureHomework from "features/lecture-detail/views/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 import { Container, IconButton } from "@mui/material";
-import { KanbanView } from "features/kanban-view";
+import { KanbanLecture } from "features/kanban-lecture";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import { Stack } from "@mui/system";
@@ -69,7 +69,7 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
               </>
             )}
 
-            {view === "kanban" && <KanbanView />}
+            {view === "kanban" && <KanbanLecture />}
           </>
         )}
         {!tariffHomework && <BlurredHomework />}
