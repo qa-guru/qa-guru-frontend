@@ -1,2 +1,2 @@
 export { HomeworkDetailsFull } from "./containers";
-export { default as KanbanView } from "./views/kanban";
+export { default as KanbanLecture } from "./views/kanban";
