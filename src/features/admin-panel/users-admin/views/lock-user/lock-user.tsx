@@ -17,6 +17,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./lock-user.styled";
+import useResponsive from "../../../../../shared/hooks/use-responsive";
 
 interface ILockUser {
   lockUser: LockUserMutationFn;
@@ -24,6 +25,7 @@ interface ILockUser {
 }
 
 const LockUser: FC<ILockUser> = ({ lockUser, id }) => {
+  const { isMobile } = useResponsive();
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal} maxWidth="xs">
       <StyledWrapper>
@@ -70,7 +72,7 @@ const LockUser: FC<ILockUser> = ({ lockUser, id }) => {
   return (
     <Tooltip title="Заблокировать">
       <IconButton onClick={handleOpenModal}>
-        <Lock color="primary" />
+        <Lock fontSize={isMobile ? "small" : "medium"} color="primary" />
       </IconButton>
     </Tooltip>
   );

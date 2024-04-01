@@ -66,7 +66,8 @@ const ModalMobileTable = ({
 const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   const users = data?.users?.items;
   const { totalElements } = data?.users!;
-  const { isMobile, isMobileOrTablet, isDownDesktop } = useResponsive();
+  const { isMobile, isTablet, isMobileOrTablet, isDownDesktop } =
+    useResponsive();
   const [hasMoreUsers, setHasMoreUsers] = useState<boolean>(true);
 
   const table = useReactTable({
@@ -75,8 +76,8 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     getCoreRowModel: getCoreRowModel(),
     state: {
       columnVisibility: {
-        email: !isDownDesktop,
-        phoneNumber: !isMobileOrTablet,
+        phoneNumber: !isDownDesktop,
+        email: !isTablet,
       },
     },
   });

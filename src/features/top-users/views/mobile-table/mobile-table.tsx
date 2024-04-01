@@ -6,6 +6,7 @@ import { TableBody } from "@mui/material";
 import {
   StyledTable,
   StyledTableCell,
+  StyledTableHeader,
   StyledTableRow,
   StyledTypography,
 } from "./mobile-table.styled";
@@ -25,14 +26,14 @@ const MobileTable: FC<IMobileTable> = ({ table }) => {
 
               return (
                 <Fragment key={row.id + cell.id}>
-                  <StyledTableCell key={header.id}>
+                  <StyledTableHeader key={header.id}>
                     <StyledTypography variant="subtitle2">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
                     </StyledTypography>
-                  </StyledTableCell>
+                  </StyledTableHeader>
 
                   <StyledTableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

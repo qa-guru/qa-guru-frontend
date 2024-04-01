@@ -1,12 +1,5 @@
 import { styled } from "@mui/system";
-import {
-  Box,
-  DialogContent,
-  IconButton,
-  Paper,
-  Stack,
-  Table,
-} from "@mui/material";
+import { Box, DialogContent, IconButton, Paper, Table } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ClearIcon from "@mui/icons-material/Clear";
 
@@ -27,6 +20,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   margin: "20px 0 40px",
   height: "calc(100vh - 330px)",
   overflowY: "auto",
+  scrollbarWidth: "none",
   [theme.breakpoints.down("md")]: {
     height: "calc(100dvh - 275px)",
   },

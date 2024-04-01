@@ -1,4 +1,4 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import {
   Maybe,
   UpdateRoleMutationFn,
@@ -8,10 +8,15 @@ import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputChip } from "shared/components/form";
 import { formatRole } from "shared/helpers";
-import EditIcon from "@mui/icons-material/Edit";
-import CheckIcon from "@mui/icons-material/Check";
+import { Edit, Check } from "@mui/icons-material";
+import useResponsive from "shared/hooks/use-responsive";
 
-import { StyledStack } from "./select-role.styled";
+import {
+  StyledBox,
+  StyledIconButton,
+  StyledStack,
+  StyledWrapper,
+} from "./select-role.styled";
 
 interface ISelectRole {
   roles?: Maybe<Maybe<UserRole>[]>;
@@ -25,6 +30,7 @@ interface ISelectRoleForm {
 
 const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
   const [edit, setEdit] = useState(false);
+  const { isMobile } = useResponsive();
   const { control, setValue } = useForm<ISelectRoleForm>({
     defaultValues: {
       roles: [],
@@ -66,10 +72,10 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
   };
 
   return (
-    <Stack direction="row" alignItems="center">
+    <StyledWrapper>
       {edit ? (
         <>
-          <Box maxWidth="220px">
+          <StyledBox>
             <InputChip<ISelectRoleForm, UserRole>
               control={control}
               options={rolesOptions}
@@ -78,20 +84,20 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
               onChange={handleSelectRoleChange}
               onDelete={handleDeleteRole}
             />
-          </Box>
+          </StyledBox>
           <IconButton onClick={handleCloseEdit}>
-            <CheckIcon fontSize="small" color="primary" />
+            <Check fontSize="small" color="primary" />
           </IconButton>
         </>
       ) : (
         <StyledStack>
           <Typography variant="body2">{formatRole(roles)}</Typography>
-          <IconButton size="small" onClick={handleClickEdit}>
-            <EditIcon fontSize="small" color="primary" />
-          </IconButton>
+          <StyledIconButton size="small" onClick={handleClickEdit}>
+            <Edit fontSize="small" color="primary" />
+          </StyledIconButton>
         </StyledStack>
       )}
-    </Stack>
+    </StyledWrapper>
   );
 };
 
