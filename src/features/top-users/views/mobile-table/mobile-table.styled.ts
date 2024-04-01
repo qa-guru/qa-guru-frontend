@@ -12,9 +12,20 @@ export const StyledTable = styled(Table)({
   tableLayout: "fixed",
 });
 
-export const StyledTableCell = styled(TableCell)({
+export const StyledTableHeader = styled(TableCell)({
+  marginLeft: "59px",
   borderBottom: "none",
+  padding: "6px 0",
 });
+
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  marginLeft: "59px",
+  borderBottom: "none",
+  padding: "6px 0",
+  [theme.breakpoints.down("md")]: {
+    marginRight: "10px",
+  },
+}));
 
 export const StyledTypography = styled(Typography)({
   fontWeight: "bold",
@@ -23,6 +34,7 @@ export const StyledTypography = styled(Typography)({
 export const StyledTableRow = styled(TableRow, {
   shouldForwardProp: (prop) => !["table", "rowIndex"].includes(prop as string),
 })<IStyledTableWrapper>(({ table, rowIndex, theme }) => ({
+  position: "relative",
   borderBottom:
     rowIndex === table.getRowModel().rows.length - 1
       ? "none"
@@ -30,5 +42,5 @@ export const StyledTableRow = styled(TableRow, {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   alignItems: "center",
-  textAlign: "left",
+  padding: "10px 0",
 }));

@@ -6,12 +6,21 @@ import {
 } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
 import { UserDto } from "api/graphql/generated/graphql";
-import { formatDate } from "shared/helpers";
+import { formatDate, formatRole } from "shared/helpers";
 import UserRow from "shared/components/user-row";
 import Rating from "shared/components/rating";
 import useResponsive from "shared/hooks/use-responsive";
 
-import { StyledAlignStack, StyledRightAlignBox } from "./table-columns.styled";
+import {
+  StyledAlignStack,
+  StyledDate,
+  StyledEmail,
+  StyledMobileBox,
+  StyledRating,
+  StyledRatingBox,
+  StyledRightAlignBox,
+  StyledUserRowBox,
+} from "./table-columns.styled";
 import { ITableColumns } from "./table-columns.types";
 import Table from "../table";
 import { LockUser, UnlockUser, UpdateRole } from "../../containers";
@@ -19,19 +28,18 @@ import { LockUser, UnlockUser, UpdateRole } from "../../containers";
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile, isMobileOrTablet } = useResponsive();
 
-  const columns = useMemo<ColumnDef<UserDto>[]>(
+  const desktopColumns = useMemo<ColumnDef<UserDto>[]>(
     () => [
       {
-        header: isMobile
-          ? "Пользователь"
-          : `Пользователи (${data?.users?.totalElements})`,
+        header: `Пользователи (${data?.users?.totalElements})`,
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {
+          const { locked, id } = info.row.original;
+
           return (
             <UserRow
               user={info.row.original}
-              hideAvatar={isMobile}
               hideRoles
               hideRating
               userId={info.row.original.id}
@@ -66,15 +74,12 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         header: "Роль",
         footer: (props) => props.column.id,
         accessorKey: "roles",
-        cell: (info: CellContext<UserDto, unknown>) =>
-          isMobileOrTablet ? (
-            <Typography>{info.row.original.roles}</Typography>
-          ) : (
-            <UpdateRole
-              roles={info.row.original.roles}
-              id={info.row.original.id}
-            />
-          ),
+        cell: (info: CellContext<UserDto, unknown>) => (
+          <UpdateRole
+            roles={info.row.original.roles}
+            id={info.row.original.id}
+          />
+        ),
         size: isMobileOrTablet ? 110 : 160,
       },
       {
@@ -85,7 +90,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
           const { creationDate, locked, id } = info.row.original;
 
           return (
-            <StyledAlignStack position="relative">
+            <StyledAlignStack>
               <Typography variant="body2">
                 {formatDate(creationDate, "DD.MM.YYYY")}
               </Typography>
@@ -97,8 +102,108 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         },
       },
     ],
-    [isMobile, isMobileOrTablet]
+    [isMobileOrTablet]
   );
+
+  const mobileColumns = useMemo<ColumnDef<UserDto>[]>(
+    () => [
+      {
+        header: "",
+        footer: (props) => props.column.id,
+        accessorKey: "firstName",
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { locked, id } = info.row.original;
+
+          return (
+            <>
+              <StyledUserRowBox>
+                <UserRow
+                  user={info.row.original}
+                  hideRating
+                  roles={info.row.original.roles}
+                  userId={info.row.original.id}
+                  variant="body1"
+                  hasLink
+                />
+              </StyledUserRowBox>
+              <StyledRightAlignBox>
+                {locked ? <UnlockUser id={id} /> : <LockUser id={id} />}
+              </StyledRightAlignBox>
+            </>
+          );
+        },
+      },
+      {
+        header: () => {
+          return <StyledRating variant="body2">Рейтинг</StyledRating>;
+        },
+        footer: (props) => props.column.id,
+        accessorKey: "rating.rating",
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { rating } = info.row.original;
+
+          return (
+            <StyledRatingBox>
+              <Rating rating={rating} />
+            </StyledRatingBox>
+          );
+        },
+      },
+      {
+        header: () => {
+          return <Typography variant="body2">E-mail</Typography>;
+        },
+        footer: (props) => props.column.id,
+        accessorKey: "email",
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { email } = info.row.original;
+
+          return (
+            <StyledMobileBox>
+              <StyledEmail variant="caption">{email}</StyledEmail>
+            </StyledMobileBox>
+          );
+        },
+      },
+      {
+        header: () => {
+          return <Typography variant="body2">Роль</Typography>;
+        },
+        footer: (props) => props.column.id,
+        accessorKey: "roles",
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { roles, id } = info.row.original;
+
+          return (
+            <StyledMobileBox>
+              <Typography variant="body2">{formatRole(roles)}</Typography>
+            </StyledMobileBox>
+          );
+        },
+      },
+      {
+        header: () => {
+          return <StyledDate variant="body2">Дата регистрации</StyledDate>;
+        },
+        footer: (props) => props.column.id,
+        accessorKey: "creationDate",
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const { creationDate } = info.row.original;
+
+          return (
+            <StyledMobileBox>
+              <Typography variant="body2">
+                {formatDate(creationDate, "DD.MM.YYYY")}
+              </Typography>
+            </StyledMobileBox>
+          );
+        },
+      },
+    ],
+    []
+  );
+
+  const columns = isMobile ? mobileColumns : desktopColumns;
 
   return <Table {...{ data, columns, fetchMore }} />;
 };
