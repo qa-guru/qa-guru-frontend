@@ -1,7 +1,6 @@
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
-  Maybe,
 } from "api/graphql/generated/graphql";
 
 export interface IColumnItem {
