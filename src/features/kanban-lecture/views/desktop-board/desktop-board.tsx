@@ -1,7 +1,6 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
-import { Box } from "@mui/material";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import {

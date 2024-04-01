@@ -1,14 +1,5 @@
-import {
-  Box,
-  Button,
-  Pagination,
-  Stack,
-  StepLabel,
-  Stepper,
-} from "@mui/material";
+import { Box, Button, Stack, StepLabel, Stepper } from "@mui/material";
 import { styled } from "@mui/system";
-
-import { UI_CONSTANTS } from "../../constants";
 
 interface IColumnBox {
   showHomeworkDetails: boolean;
