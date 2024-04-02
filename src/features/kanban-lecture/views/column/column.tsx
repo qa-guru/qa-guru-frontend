@@ -19,7 +19,7 @@ import { getFormattedStatus } from "../../helpers/get-formatted-status";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 
-const Column: FC<IColumn> = ({ column, fetchMore, onCardClick }) => {
+const Column: FC<IColumn> = ({ column, fetchMore }) => {
   const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 
@@ -95,10 +95,7 @@ const Column: FC<IColumn> = ({ column, fetchMore, onCardClick }) => {
         >
           {column.cards?.map((card, index) => (
             <StyledCardBox key={`${card.id}-${index}`}>
-              <Card
-                card={card}
-                onCardClick={() => onCardClick && onCardClick(card)}
-              />
+              <Card card={card} />
             </StyledCardBox>
           ))}
         </StyledInfiniteScroll>

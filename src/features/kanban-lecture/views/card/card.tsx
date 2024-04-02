@@ -1,30 +1,70 @@
 import { FC } from "react";
-import { Typography } from "@mui/material";
+import { Dialog, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import { useUserIdQuery } from "api/graphql/generated/graphql";
+import { useModal } from "react-modal-hook";
+import HomeworkItem from "features/lecture-detail/views/homework-item";
+import { Comments } from "features/lecture-detail/containers";
+import CommentsPagination from "features/lecture-detail/views/comments-pagination";
+import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledBox,
   StyledCardHeader,
+  StyledClearIcon,
+  StyledDialogContent,
   StyledPaper,
   StyledUserRowStack,
 } from "./card.styled";
 import { ICard } from "./card.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
-const Card: FC<ICard> = ({ card, onCardClick }) => {
+const Card: FC<ICard> = ({ card }) => {
   const { id, mentor, student, lecture } = card;
 
-  const { data } = useUserIdQuery({ fetchPolicy: "cache-first" });
-  const isCurrentHomeworkActive = student?.id === data?.user?.id;
+  const { isMobile } = useResponsive();
+
+  const { data: dataUserId } = useUserIdQuery({ fetchPolicy: "cache-first" });
+  const isCurrentHomeworkActive = student?.id === dataUserId?.user?.id;
+
+  const [showModal, hideModal] = useModal(({ in: open }) => (
+    <Dialog
+      open={open}
+      onClose={handleHideModal}
+      fullScreen={isMobile}
+      fullWidth
+      maxWidth="xl"
+    >
+      <StyledDialogContent id="scroll-container">
+        <StyledClearIcon onClick={handleHideModal} />
+        <StyledBox>
+          <HomeworkItem
+            dataHomeWorkByLectureAndTraining={card!}
+            dataUserId={dataUserId!}
+          />
+          <Comments homeworkId={card.id}>
+            <CommentsPagination />
+          </Comments>
+        </StyledBox>
+      </StyledDialogContent>
+    </Dialog>
+  ));
+
+  const handleShowModal = () => {
+    showModal();
+  };
+
+  const handleHideModal = () => {
+    hideModal();
+  };
 
   return (
     <StyledPaper
       isCurrentHomeworkActive={isCurrentHomeworkActive}
-      onClick={onCardClick}
+      onClick={handleShowModal}
       elevation={4}
     >
       <StyledCardHeader isCurrentHomeworkActive={isCurrentHomeworkActive}>

@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
-import { Box, Paper, Stack } from "@mui/material";
+import { Box, DialogContent, Paper, Stack } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 interface IStyledCard {
   isCurrentHomeworkActive?: boolean;
@@ -45,4 +46,25 @@ export const StyledBox = styled(Box)({
 export const StyledUserRowStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
   marginTop: "10px",
+}));
+
+export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
+  position: "absolute",
+  cursor: "pointer",
+  color: theme.palette.app.primary,
+  zIndex: 2000,
+  top: "8px",
+  right: "8px",
+  [theme.breakpoints.up("sm")]: {
+    top: "12px",
+    right: "12px",
+  },
+}));
+
+export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
+  overflowY: "auto",
+  padding: "20px 35px",
+  [theme.breakpoints.up("sm")]: {
+    height: "calc(100dvh - 50px)",
+  },
 }));

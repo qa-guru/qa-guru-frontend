@@ -25,13 +25,13 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog
       open={open}
-      onClose={hideModalAndUpdateUrl}
+      onClose={handleHideModal}
       fullScreen={isMobile}
       fullWidth
       maxWidth="xl"
     >
       <StyledDialogContent id="scroll-container">
-        <StyledClearIcon onClick={hideModalAndUpdateUrl} />
+        <StyledClearIcon onClick={handleHideModal} />
         <StyledBox>
           <HomeworkItem
             dataHomeWorkByLectureAndTraining={item}
@@ -45,11 +45,11 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
     </Dialog>
   ));
 
-  const showModalAndSetUrl = () => {
+  const handleShowModal = () => {
     showModal();
   };
 
-  const hideModalAndUpdateUrl = () => {
+  const handleHideModal = () => {
     hideModal();
   };
 
@@ -58,7 +58,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
       <Comments homeworkId={item?.id}>
         <CommentsTotalElements />
       </Comments>
-      <StyledButton variant="contained" onClick={showModalAndSetUrl}>
+      <StyledButton variant="contained" onClick={handleShowModal}>
         Показать
       </StyledButton>
     </StyledStack>

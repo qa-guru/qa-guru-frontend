@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box, Step } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 
 import { IMobileBoard } from "./mobile-board.types";
@@ -13,16 +12,11 @@ import {
   StyledStepperButton,
 } from "../board/board.styled";
 import Column from "../column";
-import { ROUTES } from "../../constants";
 import { states } from "../status-select/status-select.types";
 
 const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
-
-  const handleCardClick = (card: StudentHomeWorkDto) => {
-    navigate(`${ROUTES.KANBAN}/${card?.id}`);
-  };
 
   const handleStepChange = (step: number) => {
     setActiveStep(step);
@@ -49,7 +43,6 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
         </StyledStepperButton>
         <StyledStepper activeStep={activeStep}>
           {states.map((state, index) => {
-            const column = columns[index];
             return (
               <Step key={state.text} id={`step-${index}`}>
                 <StyledStepLabel onClick={() => handleStepChange(index)}>
@@ -81,7 +74,6 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
               key={`${column.id}-${index}`}
               column={column}
               fetchMore={fetchMoreFunctions[index]}
-              onCardClick={handleCardClick}
             />
           ))}
         </SwipeableViews>
