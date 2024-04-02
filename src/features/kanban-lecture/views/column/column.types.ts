@@ -25,5 +25,4 @@ export interface IColumn {
     };
   }) => void;
   column: IColumnItem;
-  onCardClick: ((card: StudentHomeWorkDto) => void) | void;
 }

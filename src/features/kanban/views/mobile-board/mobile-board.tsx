@@ -56,7 +56,6 @@ const MobileBoard: FC<IMobileBoard> = ({
         </StyledStepperButton>
         <StyledStepper activeStep={activeStep}>
           {states.map((state, index) => {
-            const column = columns[index];
             return (
               <Step key={state.text} id={`step-${index}`}>
                 <StyledStepLabel onClick={() => handleStepChange(index)}>
