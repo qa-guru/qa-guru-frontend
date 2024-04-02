@@ -7,7 +7,6 @@ import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import { Stack } from "@mui/system";
 
-import ButtonLessonsList from "../button-lessons-list";
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
 import LectureDescription from "../lecture-description";
@@ -36,7 +35,6 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   return (
     <HomeworksFormProvider>
       <Container>
-        <ButtonLessonsList />
         <LectureTitle title={subject} />
         <LectureDescription description={description} />
         <LectureSpeakers speakers={speakers} />

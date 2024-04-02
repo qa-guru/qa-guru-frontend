@@ -14,14 +14,11 @@ import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import {
   StyledAnswerBox,
   StyledColumnStack,
-  StyledIcon,
-  StyledNavigateButton,
   StyledRowStack,
   StyledStack,
   StyledTitle,
 } from "./homework-details-full.styled";
 import { getFormattedId } from "../../helpers/get-formatted-id";
-import { ROUTES } from "../../constants";
 
 const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   data,
@@ -41,19 +38,11 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     id,
   } = homeWork!;
 
-  const handleBack = () => {
-    navigate(ROUTES.KANBAN);
-  };
-
   const isCurrentMentorOrNew =
     mentor?.id === undefined || dataUserId.user?.id === mentor?.id;
 
   return (
     <Container>
-      <StyledNavigateButton variant="outlined" onClick={handleBack}>
-        <StyledIcon />
-        <Typography variant="body2">К доске заданий</Typography>
-      </StyledNavigateButton>
       <StyledTitle variant="h6">{getFormattedId(lecture?.id)}</StyledTitle>
       <Typography variant="h2">{lecture?.subject}</Typography>
       <StyledStack>

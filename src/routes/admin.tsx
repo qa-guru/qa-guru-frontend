@@ -18,7 +18,7 @@ const AdminRoutes = [
   />,
   <Route
     key="lecture"
-    path="/training/:trainingId/:lectureId/:modalId?"
+    path="/training/:trainingId/:lectureId"
     element={<LectureDetailPage />}
   />,
   <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
