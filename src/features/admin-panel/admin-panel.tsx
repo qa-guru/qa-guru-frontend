@@ -21,18 +21,35 @@ const AdminPanel: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const tabPaths: { [key: string]: string } = {
-    "1": "/admin-panel/courses",
-    "2": "/admin-panel/users",
-    "3": "/admin-panel/statistics",
-  };
+  const routes = [
+    {
+      label: "Курсы",
+      value: "1",
+      path: "/admin-panel/courses",
+      component: CourseAdmin,
+    },
+    {
+      label: "Пользователи",
+      value: "2",
+      path: "/admin-panel/users",
+      component: UsersAdmin,
+    },
+    {
+      label: "Статистика",
+      value: "3",
+      path: "/admin-panel/statistics",
+      component: StatisticsAdmin,
+    },
+  ];
 
-  const currentTabValue =
-    Object.keys(tabPaths).find((key) => tabPaths[key] === location.pathname) ||
-    "1";
+  const currentRoute =
+    routes.find((route) => route.path === location.pathname) || routes[0];
+  const currentTabValue = currentRoute.value;
 
   const handleChange = (_: SyntheticEvent, newValue: string) => {
-    navigate(tabPaths[newValue] || "/admin-panel");
+    const newPath =
+      routes.find((route) => route.value === newValue)?.path || routes[0].path;
+    navigate(newPath);
   };
 
   return (
@@ -43,21 +60,21 @@ const AdminPanel: FC = () => {
           {isDesktop && (
             <Box sx={{ borderColor: "divider" }}>
               <TabList onChange={handleChange}>
-                <Tab label="Курсы" value="1" />
-                <Tab label="Пользователи" value="2" />
-                <Tab label="Статистика" value="3" />
+                {routes.map((route) => (
+                  <Tab
+                    key={route.value}
+                    label={route.label}
+                    value={route.value}
+                  />
+                ))}
               </TabList>
             </Box>
           )}
-          <StyledTabPanel value="1">
-            <CourseAdmin />
-          </StyledTabPanel>
-          <StyledTabPanel value="2">
-            <UsersAdmin />
-          </StyledTabPanel>
-          <StyledTabPanel value="3">
-            <StatisticsAdmin />
-          </StyledTabPanel>
+          {routes.map((route) => (
+            <StyledTabPanel key={route.value} value={route.value}>
+              <route.component />
+            </StyledTabPanel>
+          ))}
         </TabContext>
       </StyledContentBox>
     </Container>

@@ -48,7 +48,7 @@ const Profile: FC<IProfile> = (props) => {
       settings.push({
         title: "Админ панель",
         icon: <SpaceDashboard />,
-        url: "/admin-panel",
+        url: "/admin-panel/courses",
         id: 1,
       });
     } else {

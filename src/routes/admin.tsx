@@ -33,7 +33,6 @@ const AdminRoutes = [
     path="/profile/edit"
     element={<EditProfilePage />}
   />,
-  <Route key="admin-panel" path="/admin-panel" element={<AdminPanelPage />} />,
   <Route
     key="courses-admin"
     path="/admin-panel/courses"
