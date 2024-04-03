@@ -15,7 +15,6 @@ import Column from "../column";
 import { states } from "../status-select/status-select.types";
 
 const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
-  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleStepChange = (step: number) => {
