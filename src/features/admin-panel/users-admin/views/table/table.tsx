@@ -122,16 +122,20 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     }
   }, [users]);
 
+  if (!users?.length) {
+    return (
+      <StyledNotFoundBox>
+        <UsersNotFound />
+        <Typography variant="h3" color="textSecondary">
+          Нет домашних работ
+        </Typography>
+      </StyledNotFoundBox>
+    );
+  }
+
   return (
     <>
-      {!users?.length ? (
-        <StyledNotFoundBox>
-          <UsersNotFound />
-          <Typography variant="h3" color="textSecondary">
-            Нет домашних работ
-          </Typography>
-        </StyledNotFoundBox>
-      ) : isMobile ? (
+      {isMobile ? (
         <>
           <StyledLoadMoreButton onClick={showModal}>
             <Fullscreen color="primary" />
