@@ -18,10 +18,7 @@ const useWindowHeight = () => {
   return height;
 };
 
-export const useDynamicCardLimit = (
-  currentCardsCount: number,
-  addCard: () => {}
-) => {
+export const useDynamicCardLimit = () => {
   const height = useWindowHeight();
 
   const getLimit = () => {
@@ -36,12 +33,7 @@ export const useDynamicCardLimit = (
 
   useEffect(() => {
     setLimit(getLimit());
-    let cardsToAdd = Math.max(0, 5 - currentCardsCount);
-    while (cardsToAdd > 0) {
-      addCard();
-      cardsToAdd--;
-    }
-  }, [height, currentCardsCount]);
+  }, [height]);
 
   return limit;
 };
