@@ -28,7 +28,6 @@ const Card: FC<ICard> = ({ card }) => {
   const { isMobile } = useResponsive();
 
   const { data: dataUserId } = useUserIdQuery({ fetchPolicy: "cache-first" });
-  const isCurrentHomeworkActive = student?.id === dataUserId?.user?.id;
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog
@@ -62,12 +61,8 @@ const Card: FC<ICard> = ({ card }) => {
   };
 
   return (
-    <StyledPaper
-      isCurrentHomeworkActive={isCurrentHomeworkActive}
-      onClick={handleShowModal}
-      elevation={4}
-    >
-      <StyledCardHeader isCurrentHomeworkActive={isCurrentHomeworkActive}>
+    <StyledPaper onClick={handleShowModal} elevation={4}>
+      <StyledCardHeader>
         <Typography textTransform="uppercase" variant="subtitle2">
           {getFormattedId(id)}
         </Typography>

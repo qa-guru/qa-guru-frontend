@@ -2,33 +2,19 @@ import { styled } from "@mui/system";
 import { Box, DialogContent, Paper, Stack } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
-interface IStyledCard {
-  isCurrentHomeworkActive?: boolean;
-}
-
-export const StyledPaper = styled(Paper, {
-  shouldForwardProp: (prop) =>
-    !["isCurrentHomeworkActive"].includes(prop as string),
-})<IStyledCard>(({ theme, isCurrentHomeworkActive }) => ({
+export const StyledPaper = styled(Paper)({
   flexGrow: "1",
   margin: "8px",
   "&:hover": {
     transform: "scale(1.02)",
     transition: "transform 300ms ease-in-out",
   },
-  border: isCurrentHomeworkActive
-    ? `1px solid ${theme.palette.app.primary}30`
-    : `1px solid transparent`,
+  border: "1px solid transparent",
   cursor: "pointer",
-}));
+});
 
-export const StyledCardHeader = styled(Stack, {
-  shouldForwardProp: (prop) =>
-    !["isCurrentHomeworkActive"].includes(prop as string),
-})<IStyledCard>(({ theme, isCurrentHomeworkActive }) => ({
-  backgroundColor: isCurrentHomeworkActive
-    ? `1px solid ${theme.palette.app.primary}30`.slice(10)
-    : theme.palette.app.lightGrey,
+export const StyledCardHeader = styled(Stack)(({ theme }) => ({
+  backgroundColor: theme.palette.app.lightGrey,
   justifyContent: "space-between",
   boxShadow: "0px 3px 3px rgba(0, 0, 0, 0.2)",
   padding: "8px",
