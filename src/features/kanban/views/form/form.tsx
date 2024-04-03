@@ -63,7 +63,7 @@ const Form: FC = () => {
   }, [lectureId, resetField]);
 
   return (
-    <form>
+    <form style={{ minWidth: "100%" }}>
       {isMobileOrTablet ? (
         <StyledAccordion
           expanded={isAccordionExpanded}

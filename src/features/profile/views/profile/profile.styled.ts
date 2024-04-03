@@ -8,7 +8,7 @@ export const StyledButtonBox = styled(Box)(({ theme }) => ({
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.white,
-  margin: "0 0 15px",
+  margin: "-40px 0 15px",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },

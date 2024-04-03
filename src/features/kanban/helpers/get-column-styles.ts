@@ -32,6 +32,9 @@ export const getColumnStyles: GetColumnStylesFunction = (
       maxHeight: "calc(100dvh - 275px )",
       boxShadow: "0px 2px 6px 2px rgba(0, 0, 0, 0.1)",
       margin: "13px",
+      [theme.breakpoints.only("sm")]: {
+        margin: "8px 5px 5px",
+      },
     },
     dropColumn: {
       backgroundColor: alpha(theme.palette.app.primary, 0.1),

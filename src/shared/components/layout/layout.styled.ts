@@ -12,3 +12,14 @@ export const StyledContainer = styled(Container)({
   flexGrow: 1,
   minWidth: "100%",
 });
+
+export const StyledBreadcrumbsContainer = styled(Container)(({ theme }) => ({
+  marginBottom: "15px",
+}));
+
+export const StyledBreadcrumbsBox = styled(Box)(({ theme }) => ({
+  marginLeft: "20px",
+  [theme.breakpoints.up(1920)]: {
+    marginLeft: 0,
+  },
+}));
