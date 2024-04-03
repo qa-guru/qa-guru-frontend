@@ -9,10 +9,13 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.app.primary,
 }));
 
-export const StyledHeader = styled("header")({
+export const StyledHeader = styled("header")(({ theme }) => ({
   alignItems: "center",
-  marginBottom: "24px",
-});
+  marginBottom: "10px",
+  [theme.breakpoints.only("xs")]: {
+    marginBottom: "24px",
+  },
+}));
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
@@ -57,10 +60,6 @@ export const StyledDarkLogo = styled(DarkLogo)(({ theme }) => ({
     width: "146px",
     height: "25px",
   },
-}));
-
-export const StyledSelectorBox = styled(Box)(({ theme }) => ({
-  stroke: theme.palette.app.white,
 }));
 
 export const StyledStack = styled(Stack)({

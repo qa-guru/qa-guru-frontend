@@ -7,14 +7,10 @@ import ImageIcon from "@mui/icons-material/Image";
 
 export const StyledButtonStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  margin: "0 0 15px",
+  margin: "-40px 0 15px",
   gap: "10px",
   justifyContent: "flex-end",
 }));
-
-export const StyledInput = styled("input")({
-  display: "none",
-});
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.black,
