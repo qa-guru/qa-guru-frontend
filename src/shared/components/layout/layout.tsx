@@ -20,10 +20,11 @@ interface ILayout {
 const Layout: FC<ILayout> = ({ children, isLogging }) => {
   const { isMobile } = useResponsive();
   const location = useLocation();
-  const isKanban = useMemo(
-    () => location.pathname === "/kanban",
-    [location.pathname]
-  );
+
+  const isKanban = useMemo(() => {
+    const regex = /^\/kanban(-mentor)?\/?$/;
+    return regex.test(location.pathname);
+  }, [location.pathname]);
 
   return (
     <StyledBox>
