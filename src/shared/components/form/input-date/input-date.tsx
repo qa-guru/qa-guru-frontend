@@ -13,7 +13,6 @@ const InputDate = <T extends FieldValues>({
   name,
   label,
   onChange,
-  key,
 }: IFormInputDate<T>) => {
   const handleChange = useCallback(
     (newValue: unknown, fieldOnChange: (value: string) => void) => {
@@ -39,7 +38,7 @@ const InputDate = <T extends FieldValues>({
           <StyledDatePicker
             slotProps={{ textField: { size: "small" } }}
             label={label}
-            key={key}
+            key={name}
             value={value ? dayjs(value) : null}
             onChange={(newValue) => handleChange(newValue, fieldOnChange)}
           />
