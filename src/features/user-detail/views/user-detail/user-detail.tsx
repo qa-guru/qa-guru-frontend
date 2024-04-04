@@ -5,6 +5,9 @@ import { formatDate } from "shared/helpers";
 import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
 import AvatarUpload from "features/profile/views/avatar-upload";
 import MediaLinks from "features/profile/views/media-links/media-links";
+import KanbanProfileMentor from "features/kanban-profile-mentor/views/kanban";
+import KanbanProfileStudent from "features/kanban-profile-student/views/kanban";
+import { UserRole } from "api/graphql/generated/graphql";
 
 import {
   StyledColumnStack,
@@ -21,9 +24,10 @@ import {
 import { IUserDetail } from "./user-detail.types";
 
 const UserDetail: FC<IUserDetail> = ({ data }) => {
-  const { rating, firstName, lastName, creationDate } = data?.userById!;
+  const { rating, firstName, lastName, creationDate, roles } = data?.userById!;
 
   const ratingColor = useRatingColor(rating?.rating);
+  const hasRoleAccess = (role: UserRole) => roles?.includes(role);
 
   return (
     <Container>
@@ -80,6 +84,8 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
           </StyledWebsiteStack>
         </StyledMobileStack>
       </StyledPaper>
+      {hasRoleAccess(UserRole.Student) && <KanbanProfileStudent />}
+      {hasRoleAccess(UserRole.Mentor) && <KanbanProfileMentor />}
     </Container>
   );
 };
