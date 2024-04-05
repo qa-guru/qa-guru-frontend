@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import KanbanProfileMentor from "features/kanban-profile-mentor/views/kanban";
+import KanbanProfileStudent from "features/kanban-profile-student/views/kanban";
 import { UserRole } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 
@@ -12,6 +13,10 @@ import { UserInfo } from "../../containers";
 const Profile: FC<IProfile> = () => {
   const navigate = useNavigate();
   const routeEdit = () => navigate("/profile/edit");
+
+  const hasStudentKanbanAccess = useRoleAccess({
+    allowedRoles: [UserRole.Student],
+  });
 
   const hasMentorKanbanAccess = useRoleAccess({
     allowedRoles: [UserRole.Mentor],
@@ -25,6 +30,7 @@ const Profile: FC<IProfile> = () => {
         </StyledButton>
       </StyledButtonBox>
       <UserInfo />
+      {hasStudentKanbanAccess && <KanbanProfileStudent />}
       {hasMentorKanbanAccess && <KanbanProfileMentor />}
     </Container>
   );

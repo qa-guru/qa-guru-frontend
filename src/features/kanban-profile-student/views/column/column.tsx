@@ -77,7 +77,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
         </StyledRowStack>
       )}
       <StyledWrapperColumnContainer
-        id={`scroll-container-${column.id}`}
+        id={`scroll-student-container-${column.id}`}
         sx={{
           ...(getColumnStyles(column.totalElements) as {}),
         }}
@@ -91,7 +91,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
               <CircularProgress size={20} />
             </StyledWrapperBoxCircle>
           }
-          scrollableTarget={`scroll-container-${column.id}`}
+          scrollableTarget={`scroll-student-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (
             <StyledCardBox key={`${card.id}-${index}`}>

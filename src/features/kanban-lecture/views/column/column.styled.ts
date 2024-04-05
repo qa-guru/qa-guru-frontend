@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Stack, Typography } from "@mui/material";
+import { Box, DialogContent, Stack, Typography } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
@@ -10,7 +10,7 @@ export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   overflowY: "auto",
   scrollbarWidth: "none",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100dvh - 260px )",
+    height: "calc(100dvh - 280px )",
   },
 }));
 
@@ -22,13 +22,6 @@ export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     maxHeight: "25%",
   },
-}));
-
-export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
-  margin: "5px auto",
-  color: theme.palette.app.primary,
-  textAlign: "center",
-  width: "100%",
 }));
 
 export const StyledTypographyStatus = styled(Typography)({
@@ -69,13 +62,3 @@ export const StyledRowStack = styled(Stack)({
 export const StyledCardBox = styled(Box)({
   marginBottom: "16px",
 });
-
-export const StyledButton = styled(Button)(({ theme }) => ({
-  width: "145px",
-  color: theme.palette.app.white,
-}));
-
-export const StyledCancelButton = styled(Button)(({ theme }) => ({
-  width: "145px",
-  color: theme.palette.app.black,
-}));

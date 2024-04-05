@@ -3,13 +3,13 @@ import { Typography } from "@mui/material";
 import { Board } from "../../containers";
 import { StyledContentBox } from "./kanban.styled";
 
-const KanbanProfileMentor = () => {
+const KanbanProfileStudent = () => {
   return (
     <StyledContentBox>
-      <Typography variant="h5">Доска ментора</Typography>
+      <Typography variant="h5">Доска студента</Typography>
       <Board />
     </StyledContentBox>
   );
 };
 
-export default KanbanProfileMentor;
+export default KanbanProfileStudent;

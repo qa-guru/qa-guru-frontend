@@ -19,9 +19,9 @@ const HomeworksContainer: FC = () => {
   const matchProfile = useMatch("/profile");
 
   const filterObject = useMemo(() => {
-    const mentorId = matchProfile ? dataUserId?.user?.id : routeUserId;
+    const studentId = matchProfile ? dataUserId?.user?.id : routeUserId;
     return {
-      mentorId,
+      studentId,
     };
   }, [dataUserId, routeUserId, matchProfile]);
 
