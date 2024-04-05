@@ -58,10 +58,18 @@ const Header: FC = () => {
     });
   }
 
+  if (hasKanbanAccess) {
+    pages.push({
+      title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
+      pageURL: "/kanban-mentor",
+      id: 2,
+    });
+  }
+
   pages.push({
     title: <StyledLink to="/top-users">Топ 50</StyledLink>,
     pageURL: "/top-users",
-    id: 2,
+    id: 3,
   });
 
   const handleClickNavMenu = (pageURL: string) => {

@@ -18,8 +18,13 @@ export const StyledBreadcrumbsContainer = styled(Container)(({ theme }) => ({
 }));
 
 export const StyledBreadcrumbsBox = styled(Box)(({ theme }) => ({
-  marginLeft: "20px",
-  [theme.breakpoints.up(1920)]: {
+  [theme.breakpoints.only("sm")]: {
+    marginLeft: "10px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    marginLeft: "20px",
+  },
+  [theme.breakpoints.up(1955)]: {
     marginLeft: 0,
   },
 }));
