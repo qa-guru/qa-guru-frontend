@@ -9,7 +9,6 @@ import {
   Leaderboard,
   Person,
   School,
-  SpaceDashboard,
   Star,
   ViewKanban,
 } from "@mui/icons-material";
