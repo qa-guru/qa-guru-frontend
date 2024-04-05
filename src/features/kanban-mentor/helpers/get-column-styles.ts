@@ -54,7 +54,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
       ...styles,
       border: `2px dashed ${theme.palette.app.primary}`,
       borderRadius: "10px",
-      maxHeight: "calc(100dvh - 225px )",
+      maxHeight: "calc(100dvh - 215px )",
     };
   }
 

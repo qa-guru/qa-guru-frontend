@@ -43,6 +43,11 @@ const routePatterns = [
     icon: <ViewKanban fontSize="small" />,
   },
   {
+    path: "/kanban-student",
+    name: "Доска студента",
+    icon: <ViewKanban fontSize="small" />,
+  },
+  {
     path: "/kanban/:lectureId",
     name: "Домашнее задание",
     icon: <School fontSize="small" />,
