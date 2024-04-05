@@ -24,13 +24,6 @@ export const StyledWrapperColumnBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledLoadMoreButton = styled(Button)(({ theme }) => ({
-  margin: "5px auto",
-  color: theme.palette.app.primary,
-  textAlign: "center",
-  width: "100%",
-}));
-
 export const StyledTypographyStatus = styled(Typography)({
   marginLeft: "8px",
   marginBottom: "5px",

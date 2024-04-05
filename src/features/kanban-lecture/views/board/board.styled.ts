@@ -19,7 +19,7 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
-  marginBottom: 0,
+  margin: 0,
 });
 
 export const StyledStepper = styled(Stepper)(({ theme }) => ({
