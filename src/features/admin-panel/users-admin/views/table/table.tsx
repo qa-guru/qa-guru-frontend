@@ -9,7 +9,7 @@ import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import useResponsive from "shared/hooks/use-responsive";
 import { useModal } from "react-modal-hook";
 import { Fullscreen } from "@mui/icons-material";
-import { ReactComponent as UsersNotFound } from "assets/images/homework-not-found.svg";
+import { ReactComponent as UsersNotFound } from "assets/images/user-not-found.svg";
 
 import { ITable } from "./table.types";
 import {
@@ -128,7 +128,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
         <StyledNotFoundBox>
           <UsersNotFound />
           <Typography variant="h3" color="textSecondary">
-            Нет домашних работ
+            Пользователь не найден
           </Typography>
         </StyledNotFoundBox>
       ) : isMobile ? (
