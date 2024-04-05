@@ -23,6 +23,9 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 
+  const isTotalElements = column.cards?.length >= column.totalElements;
+  const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
+
   const handleLoadMore = () => {
     if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
       setHasMoreHomeworks(false);
@@ -54,10 +57,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   };
 
   useEffect(() => {
-    if (
-      column.cards?.length >= column.totalElements ||
-      column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX
-    ) {
+    if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
     }
   }, [column.cards?.length, column.totalElements]);
