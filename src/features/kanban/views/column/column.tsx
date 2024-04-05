@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import { useDrop } from "react-dnd";
 import {
+  Button,
   CircularProgress,
   Dialog,
   DialogActions,
@@ -8,9 +9,11 @@ import {
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
 import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { CardType, IColumn } from "./column.types";
 import {
+  StyledBoxWrapper,
   StyledButton,
   StyledCancelButton,
   StyledCardBox,
@@ -29,8 +32,10 @@ import Card from "../card";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 import { isColumnHighlight } from "../../helpers/is-column-highlight";
 import { getFormattedStatus } from "../../helpers/get-formatted-status";
-import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
-import useResponsive from "../../../../shared/hooks/use-responsive";
+import {
+  HOMEWORKS_QUERY_DEFAULTS,
+  MAX_CARDS_BEFORE_SHOW_MORE,
+} from "../../constants";
 
 interface DropCollectedProps {
   isOver: boolean;
@@ -69,6 +74,11 @@ const Column: FC<IColumn> = ({
       canDrop: monitor.canDrop(),
     }),
   });
+
+  const isTotalElements = column.cards?.length >= column.totalElements;
+  const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
+  const shouldShowLoadMoreButton =
+    column.cards?.length <= MAX_CARDS_BEFORE_SHOW_MORE;
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal}>
@@ -124,7 +134,7 @@ const Column: FC<IColumn> = ({
   };
 
   const handleLoadMore = () => {
-    if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
+    if (isMaxLimit) {
       setHasMoreHomeworks(false);
       return;
     }
@@ -154,10 +164,7 @@ const Column: FC<IColumn> = ({
   };
 
   useEffect(() => {
-    if (
-      column.cards?.length >= column.totalElements ||
-      column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX
-    ) {
+    if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
     }
   }, [column.cards?.length, column.totalElements]);
@@ -212,6 +219,11 @@ const Column: FC<IColumn> = ({
               />
             </StyledCardBox>
           ))}
+          <StyledBoxWrapper>
+            {hasMoreHomeworks && shouldShowLoadMoreButton && (
+              <Button onClick={handleLoadMore}>Загрузить еще</Button>
+            )}
+          </StyledBoxWrapper>
         </StyledInfiniteScroll>
       </StyledWrapperColumnContainer>
     </StyledWrapperColumnBox>
