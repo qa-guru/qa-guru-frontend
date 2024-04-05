@@ -66,10 +66,18 @@ const Header: FC = () => {
     });
   }
 
+  if (hasKanbanAccess) {
+    pages.push({
+      title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
+      pageURL: "/kanban-student",
+      id: 3,
+    });
+  }
+
   pages.push({
     title: <StyledLink to="/top-users">Топ 50</StyledLink>,
     pageURL: "/top-users",
-    id: 3,
+    id: 4,
   });
 
   const handleClickNavMenu = (pageURL: string) => {

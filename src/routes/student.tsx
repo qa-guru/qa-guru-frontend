@@ -7,6 +7,10 @@ import Profile from "pages/profile";
 import UsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
 import EditProfilePage from "pages/edit-profile";
+import {
+  KanbanStudentPage,
+  KanbanStudentHomeworkDetailsFullPage,
+} from "pages/kanban-student";
 
 const StudentRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -22,9 +26,19 @@ const StudentRoutes = [
   />,
   <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
   <Route
+    key="kanban-student"
+    path="/kanban-student"
+    element={<KanbanStudentPage />}
+  />,
+  <Route
     key="kanban-homework-description"
     path="/kanban/:lectureId"
     element={<KanbanHomeworkDetailsFullPage />}
+  />,
+  <Route
+    key="kanban-student-homework-description"
+    path="/kanban-student/:lectureId"
+    element={<KanbanStudentHomeworkDetailsFullPage />}
   />,
   <Route key="profile" path="/profile" element={<Profile />} />,
   <Route

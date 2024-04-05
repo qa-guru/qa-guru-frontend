@@ -127,7 +127,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
       <StyledNotFoundBox>
         <UsersNotFound />
         <Typography variant="h3" color="textSecondary">
-          Нет домашних работ
+          Пользователь не найден
         </Typography>
       </StyledNotFoundBox>
     );
