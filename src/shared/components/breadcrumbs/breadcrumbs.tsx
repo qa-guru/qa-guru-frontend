@@ -105,15 +105,13 @@ function CustomizedBreadcrumbs() {
           icon={<Home fontSize="small" />}
         />
         {breadcrumbs.map((crumb, index) => (
-          <>
-            <StyledBreadcrumb
-              key={index}
-              component={Link}
-              to={crumb.path}
-              label={crumb.name}
-              icon={crumb.icon}
-            />
-          </>
+          <StyledBreadcrumb
+            key={`${crumb}-${index}`}
+            component={Link}
+            to={crumb.path}
+            label={crumb.name}
+            icon={crumb.icon}
+          />
         ))}
       </Breadcrumbs>
     </StyledWrapper>

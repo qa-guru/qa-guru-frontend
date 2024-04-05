@@ -6,7 +6,6 @@ import { useKanbanForm } from "../../context/kanban-form-context";
 
 const CreationDateFromSelection: FC<ICreationDateFromSelection> = ({
   control,
-  key,
 }) => {
   const { setCreationDateFrom } = useKanbanForm();
 
@@ -19,7 +18,7 @@ const CreationDateFromSelection: FC<ICreationDateFromSelection> = ({
       control={control}
       name="creationDateFrom"
       label="Созданные от"
-      key={key}
+      key="creationDateFrom"
       onChange={handleSelectChange}
     />
   );

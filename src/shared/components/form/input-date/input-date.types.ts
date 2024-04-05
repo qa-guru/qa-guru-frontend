@@ -5,5 +5,4 @@ export interface IFormInputDate<T extends FieldValues> {
   label?: string;
   name: T[Path<T>];
   onChange?: (value: string) => void;
-  key?: string;
 }
