@@ -27,7 +27,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
 
   const handleLoadMore = () => {
-    if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
+    if (isMaxLimit) {
       setHasMoreHomeworks(false);
       return;
     }

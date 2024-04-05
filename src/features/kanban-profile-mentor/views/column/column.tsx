@@ -27,7 +27,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
 
   const handleLoadMore = () => {
-    if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
+    if (isMaxLimit) {
       setHasMoreHomeworks(false);
       return;
     }
@@ -60,7 +60,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
     }
-  }, [column.cards?.length, column.totalElements, hasMoreHomeworks]);
+  }, [column.cards?.length, column.totalElements]);
 
   return (
     <StyledWrapperColumnBox>

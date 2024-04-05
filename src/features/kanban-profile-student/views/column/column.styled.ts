@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
