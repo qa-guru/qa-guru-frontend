@@ -26,3 +26,5 @@ export const STEP = 1;
 export const ROUTES = {
   KANBAN: "/kanban-mentor",
 };
+
+export const MAX_CARDS_BEFORE_SHOW_MORE = 5;

@@ -80,3 +80,9 @@ export const StyledCancelButton = styled(Button)(({ theme }) => ({
   width: "145px",
   color: theme.palette.app.black,
 }));
+
+export const StyledBoxWrapper = styled(Box)({
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+});
