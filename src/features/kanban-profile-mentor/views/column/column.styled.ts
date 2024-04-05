@@ -10,7 +10,7 @@ export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   overflowY: "auto",
   scrollbarWidth: "none",
   [theme.breakpoints.down("md")]: {
-    height: "calc(100dvh - 260px )",
+    height: "calc(100dvh - 283px )",
   },
 }));
 

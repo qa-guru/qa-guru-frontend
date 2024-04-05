@@ -61,23 +61,18 @@ const routePatterns = [
   },
   { path: "/top-users", name: "Топ 50", icon: <Star fontSize="small" /> },
   {
-    path: "/admin-panel",
-    name: "Панель администратора",
-    icon: <SpaceDashboard fontSize="small" />,
-  },
-  {
     path: "/admin-panel/courses",
-    name: "Курсы",
+    name: "Админ панель / Курсы",
     icon: <School fontSize="small" />,
   },
   {
     path: "/admin-panel/users",
-    name: "Пользователи",
+    name: "Админ панель / Пользователи",
     icon: <Group fontSize="small" />,
   },
   {
     path: "/admin-panel/statistics",
-    name: "Статистика",
+    name: "Админ панель / Статистика",
     icon: <Leaderboard fontSize="small" />,
   },
 ];
@@ -115,15 +110,13 @@ function CustomizedBreadcrumbs() {
           icon={<Home fontSize="small" />}
         />
         {breadcrumbs.map((crumb, index) => (
-          <>
-            <StyledBreadcrumb
-              key={index}
-              component={Link}
-              to={crumb.path}
-              label={crumb.name}
-              icon={crumb.icon}
-            />
-          </>
+          <StyledBreadcrumb
+            key={`${crumb}-${index}`}
+            component={Link}
+            to={crumb.path}
+            label={crumb.name}
+            icon={crumb.icon}
+          />
         ))}
       </Breadcrumbs>
     </StyledWrapper>

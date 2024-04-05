@@ -1,11 +1,6 @@
 import { Box, Button, Stack, StepLabel, Stepper } from "@mui/material";
 import { styled } from "@mui/system";
 
-interface IColumnBox {
-  showHomeworkDetails: boolean;
-  isUpLg: boolean;
-}
-
 export const StyledWrapper = styled(Box)({
   display: "flex",
   minWidth: "100%",
@@ -24,7 +19,7 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 export const StyledBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
-  marginBottom: "15px",
+  marginBottom: 0,
 });
 
 export const StyledStepper = styled(Stepper)(({ theme }) => ({

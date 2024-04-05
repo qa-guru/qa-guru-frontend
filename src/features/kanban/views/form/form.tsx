@@ -79,14 +79,8 @@ const Form: FC = () => {
               <LectureSelection control={control} />
               <MentorsSelection control={control} />
               <StyledRowStack>
-                <CreationDateFromSelection
-                  control={control}
-                  key={`creationDateFrom-${resetCounter}`}
-                />
-                <CreationDateToSelection
-                  control={control}
-                  key={`creationDateTo-${resetCounter}`}
-                />
+                <CreationDateFromSelection control={control} />
+                <CreationDateToSelection control={control} />
               </StyledRowStack>
               <StyledRowStack>
                 <IconButton onClick={handleReset}>

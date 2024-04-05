@@ -6,7 +6,7 @@ import { StyledContentBox } from "./kanban.styled";
 const KanbanProfileMentor = () => {
   return (
     <StyledContentBox>
-      <Typography variant="h5">Доска заданий ментора</Typography>
+      <Typography variant="h5">Доска ментора</Typography>
       <Board />
     </StyledContentBox>
   );

@@ -23,8 +23,11 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 
+  const isTotalElements = column.cards?.length >= column.totalElements;
+  const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
+
   const handleLoadMore = () => {
-    if (column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX) {
+    if (isMaxLimit) {
       setHasMoreHomeworks(false);
       return;
     }
@@ -54,10 +57,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   };
 
   useEffect(() => {
-    if (
-      column.cards?.length >= column.totalElements ||
-      column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX
-    ) {
+    if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
     }
   }, [column.cards?.length, column.totalElements]);
@@ -77,7 +77,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
         </StyledRowStack>
       )}
       <StyledWrapperColumnContainer
-        id={`scroll-container-${column.id}`}
+        id={`scroll-mentor-container-${column.id}`}
         sx={{
           ...(getColumnStyles(column.totalElements) as {}),
         }}
@@ -91,7 +91,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
               <CircularProgress size={20} />
             </StyledWrapperBoxCircle>
           }
-          scrollableTarget={`scroll-container-${column.id}`}
+          scrollableTarget={`scroll-mentor-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (
             <StyledCardBox key={`${card.id}-${index}`}>
