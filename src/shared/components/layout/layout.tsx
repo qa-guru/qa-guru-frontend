@@ -22,7 +22,7 @@ const Layout: FC<ILayout> = ({ children, isLogging }) => {
   const location = useLocation();
 
   const isKanban = useMemo(() => {
-    const regex = /^\/kanban(-mentor)?\/?$/;
+    const regex = /^\/kanban(-mentor|-student)?\/?$/;
     return regex.test(location.pathname);
   }, [location.pathname]);
 
