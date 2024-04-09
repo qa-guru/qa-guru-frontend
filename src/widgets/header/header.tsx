@@ -4,6 +4,7 @@ import useRoleAccess from "shared/hooks/use-role-access";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
 import useSettings from "shared/hooks/use-settings";
+import useResponsive from "shared/hooks/use-responsive";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
@@ -20,7 +21,6 @@ import {
   StyledWrapper,
 } from "./header.styled";
 import KanbanMenuBurger from "./kanban-menu-burger";
-import useResponsive from "../../shared/hooks/use-responsive";
 
 interface IPages {
   pageURL: string;
@@ -42,12 +42,11 @@ const Header: FC = () => {
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
   const hasStudentAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor],
+    allowedRoles: [UserRole.Student],
   });
   const hasMentorAccess = useRoleAccess({
     allowedRoles: [UserRole.Mentor],
   });
-
   const hasKanbanAccess = useRoleAccess({
     allowedRoles: [
       UserRole.Mentor,

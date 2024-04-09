@@ -31,7 +31,8 @@ const Board: FC<IBoard> = ({
   const { items: notApprovedItems, totalElements: notApprovedTotalElements } =
     notApprovedData?.homeWorks || {};
 
-  const { takeForReview, notApproved, approved } = useUpdateHomeworkStatus();
+  const { takeForReview, notApproved, approved, notApprovedToApproved } =
+    useUpdateHomeworkStatus();
   const [draggingState, setDraggingState] = useState({
     newItem: false,
     fromInReview: false,
@@ -70,13 +71,17 @@ const Board: FC<IBoard> = ({
   }, [newItems, inReviewItems, approvedItems, notApprovedItems]);
 
   const updateStatus = useCallback(
-    async (cardId: string, targetColumnId: string) => {
+    async (cardId: string, sourceColumnId: string, targetColumnId: string) => {
       switch (targetColumnId) {
         case STATUS_COLUMN.IN_REVIEW:
           await takeForReview({ variables: { homeworkId: cardId } });
           break;
         case STATUS_COLUMN.APPROVED:
-          await approved({ variables: { homeWorkId: cardId } });
+          if (sourceColumnId === STATUS_COLUMN.NOT_APPROVED) {
+            await notApprovedToApproved({ variables: { homeWorkId: cardId } });
+          } else {
+            await approved({ variables: { homeWorkId: cardId } });
+          }
           break;
         case STATUS_COLUMN.NOT_APPROVED:
           await notApproved({ variables: { homeWorkId: cardId } });
@@ -85,12 +90,12 @@ const Board: FC<IBoard> = ({
           break;
       }
     },
-    [takeForReview, notApproved, approved]
+    [takeForReview, notApproved, approved, notApprovedToApproved]
   );
 
   const moveCard = useCallback(
     async (cardId: string, sourceColumnId: string, targetColumnId: string) => {
-      await updateStatus(cardId, targetColumnId);
+      await updateStatus(cardId, sourceColumnId, targetColumnId);
       setColumns((prevColumns) => {
         const sourceColumnIndex = prevColumns.findIndex(
           (col) => col.id === sourceColumnId

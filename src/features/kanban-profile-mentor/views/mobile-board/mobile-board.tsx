@@ -11,7 +11,21 @@ import {
   StyledStepperButton,
 } from "../board/board.styled";
 import Column from "../column";
-import { states } from "../status-select/status-select.types";
+
+export const states = [
+  {
+    text: "Новые",
+  },
+  {
+    text: "На проверке",
+  },
+  {
+    text: "Принято",
+  },
+  {
+    text: "Не принято",
+  },
+];
 
 const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const [activeStep, setActiveStep] = useState(0);

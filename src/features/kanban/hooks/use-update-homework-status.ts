@@ -1,32 +1,121 @@
 import {
-  ApprovedHomeworkFragmentDoc,
-  NewTakeForReviewHomeWorkFragmentDoc,
-  NotApprovedHomeworkFragmentDoc,
+  HomeworksDocument,
+  HomeworksQuery,
+  Maybe,
+  Order,
+  StudentHomeWorkSortField,
+  StudentHomeWorkStatus,
   useApprovedMutation,
   useNotApprovedMutation,
   useTakeForReviewMutation,
 } from "api/graphql/generated/graphql";
+import { useContext, useMemo } from "react";
+
+import { KanbanFormContext } from "../context/kanban-form-context";
+import { useDynamicCardLimit } from "./use-dynamic-card-limit";
+import { HOMEWORKS_QUERY_DEFAULTS } from "../constants";
 
 const useUpdateHomeworkStatus = () => {
+  const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =
+    useContext(KanbanFormContext);
+  const dynamicLimit = useDynamicCardLimit();
+
+  const filterObject = useMemo(() => {
+    return {
+      trainingId,
+      lectureId,
+      mentorId,
+      creationDateFrom,
+      creationDateTo,
+    };
+  }, [trainingId, lectureId, mentorId, creationDateFrom, creationDateTo]);
+
   const [takeForReview] = useTakeForReviewMutation({
     update: (cache, { data }) => {
       const takeForReviewHomework = data?.takeForReview;
 
-      const newRef = cache.writeFragment({
-        data: takeForReviewHomework,
-        fragment: NewTakeForReviewHomeWorkFragmentDoc,
+      const existingHomeworksNew: Maybe<HomeworksQuery> = cache.readQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.CreationDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.New,
+            mentorId: undefined,
+          },
+        },
       });
 
-      cache.modify({
-        fields: {
-          homeWorks(existingHomeWorks = { items: [] }) {
-            const updatedItems = existingHomeWorks.items.filter(
-              (itemRef: { __ref: string }) => itemRef.__ref !== newRef?.__ref
-            );
-            return {
-              ...existingHomeWorks,
-              items: [newRef, ...updatedItems],
-            };
+      const existingHomeworksReview: Maybe<HomeworksQuery> = cache.readQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.StartCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.InReview,
+          },
+        },
+      });
+
+      const updatedItems = existingHomeworksReview?.homeWorks?.items?.filter(
+        (item) => item?.id !== takeForReviewHomework?.id
+      );
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.CreationDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.New,
+            mentorId: undefined,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksNew?.homeWorks,
+            totalElements:
+              parseInt(existingHomeworksNew?.homeWorks?.totalElements, 10) - 1,
+          },
+        },
+      });
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.StartCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.InReview,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksReview?.homeWorks,
+            items: [takeForReviewHomework, ...(updatedItems || [])],
+            totalElements:
+              parseInt(existingHomeworksReview?.homeWorks?.totalElements, 10) +
+              1,
           },
         },
       });
@@ -37,21 +126,89 @@ const useUpdateHomeworkStatus = () => {
     update: (cache, { data }) => {
       const approvedHomework = data?.approved;
 
-      const newRef = cache.writeFragment({
-        data: approvedHomework,
-        fragment: ApprovedHomeworkFragmentDoc,
+      const existingHomeworksReview: Maybe<HomeworksQuery> = cache.readQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.StartCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.InReview,
+          },
+        },
       });
 
-      cache.modify({
-        fields: {
-          homeWorks(existingHomeWorks = { items: [] }) {
-            const updatedItems = existingHomeWorks.items.filter(
-              (itemRef: { __ref: string }) => itemRef.__ref !== newRef?.__ref
-            );
-            return {
-              ...existingHomeWorks,
-              items: [newRef, ...updatedItems],
-            };
+      const existingHomeworksApproved: Maybe<HomeworksQuery> = cache.readQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.EndCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.Approved,
+          },
+        },
+      });
+
+      const updatedItems = existingHomeworksApproved?.homeWorks?.items?.filter(
+        (item) => item?.id !== approvedHomework?.id
+      );
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.StartCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.InReview,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksReview?.homeWorks,
+            totalElements:
+              parseInt(existingHomeworksReview?.homeWorks?.totalElements, 10) -
+              1,
+          },
+        },
+      });
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.EndCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.Approved,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksApproved?.homeWorks,
+            items: [approvedHomework, ...(updatedItems || [])],
+            totalElements:
+              parseInt(
+                existingHomeworksApproved?.homeWorks?.totalElements,
+                10
+              ) + 1,
           },
         },
       });
@@ -62,28 +219,194 @@ const useUpdateHomeworkStatus = () => {
     update: (cache, { data }) => {
       const notApprovedHomework = data?.notApproved;
 
-      const newRef = cache.writeFragment({
-        data: notApprovedHomework,
-        fragment: NotApprovedHomeworkFragmentDoc,
+      const existingHomeworksReview: Maybe<HomeworksQuery> = cache.readQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.StartCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.InReview,
+          },
+        },
       });
 
-      cache.modify({
-        fields: {
-          homeWorks(existingHomeWorks = { items: [] }) {
-            const updatedItems = existingHomeWorks.items.filter(
-              (itemRef: { __ref: string }) => itemRef.__ref !== newRef?.__ref
-            );
-            return {
-              ...existingHomeWorks,
-              items: [newRef, ...updatedItems],
-            };
+      const existingHomeworksNotApproved: Maybe<HomeworksQuery> =
+        cache.readQuery({
+          query: HomeworksDocument,
+          variables: {
+            offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+            limit: dynamicLimit,
+            sort: {
+              field: StudentHomeWorkSortField.EndCheckingDate,
+              order: Order.Desc,
+            },
+            filter: {
+              ...filterObject,
+              status: StudentHomeWorkStatus.NotApproved,
+            },
+          },
+        });
+
+      const updatedItems =
+        existingHomeworksNotApproved?.homeWorks?.items?.filter(
+          (item) => item?.id !== notApprovedHomework?.id
+        );
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.StartCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.InReview,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksReview?.homeWorks,
+            totalElements:
+              parseInt(existingHomeworksReview?.homeWorks?.totalElements, 10) -
+              1,
+          },
+        },
+      });
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.EndCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.NotApproved,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksNotApproved?.homeWorks,
+            items: [notApprovedHomework, ...(updatedItems || [])],
+            totalElements:
+              parseInt(
+                existingHomeworksNotApproved?.homeWorks?.totalElements,
+                10
+              ) + 1,
           },
         },
       });
     },
   });
 
-  return { takeForReview, approved, notApproved };
+  const [notApprovedToApproved] = useApprovedMutation({
+    update: (cache, { data }) => {
+      const approvedHomework = data?.approved;
+
+      const existingHomeworksNotApproved: Maybe<HomeworksQuery> =
+        cache.readQuery({
+          query: HomeworksDocument,
+          variables: {
+            offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+            limit: dynamicLimit,
+            sort: {
+              field: StudentHomeWorkSortField.EndCheckingDate,
+              order: Order.Desc,
+            },
+            filter: {
+              ...filterObject,
+              status: StudentHomeWorkStatus.NotApproved,
+            },
+          },
+        });
+
+      const existingHomeworksApproved: Maybe<HomeworksQuery> = cache.readQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.EndCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.Approved,
+          },
+        },
+      });
+
+      const updatedItems = existingHomeworksApproved?.homeWorks?.items?.filter(
+        (item) => item?.id !== approvedHomework?.id
+      );
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.EndCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.NotApproved,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksNotApproved?.homeWorks,
+            totalElements:
+              parseInt(
+                existingHomeworksNotApproved?.homeWorks?.totalElements,
+                10
+              ) - 1,
+          },
+        },
+      });
+
+      cache.writeQuery({
+        query: HomeworksDocument,
+        variables: {
+          offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
+          limit: dynamicLimit,
+          sort: {
+            field: StudentHomeWorkSortField.EndCheckingDate,
+            order: Order.Desc,
+          },
+          filter: {
+            ...filterObject,
+            status: StudentHomeWorkStatus.Approved,
+          },
+        },
+        data: {
+          homeWorks: {
+            ...existingHomeworksApproved?.homeWorks,
+            items: [approvedHomework, ...(updatedItems || [])],
+            totalElements:
+              parseInt(
+                existingHomeworksApproved?.homeWorks?.totalElements,
+                10
+              ) + 1,
+          },
+        },
+      });
+    },
+  });
+
+  return { takeForReview, approved, notApproved, notApprovedToApproved };
 };
 
 export default useUpdateHomeworkStatus;

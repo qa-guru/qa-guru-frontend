@@ -1,6 +1,6 @@
-import Form from "../form";
 import { Board } from "../../containers";
 import { KanbanFormProvider } from "../../context/kanban-form-context";
+import Form from "../form";
 import { StyledContentBox } from "./kanban.styled";
 
 const Kanban = () => {

@@ -3,7 +3,7 @@ import {
   Order,
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
-  useHomeWorksQuery,
+  useHomeworksQuery,
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
@@ -27,7 +27,7 @@ const HomeworksContainer: FC = () => {
     data: newData,
     loading: newLoading,
     fetchMore: fetchMoreNew,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -43,7 +43,7 @@ const HomeworksContainer: FC = () => {
     data: inReviewData,
     loading: inReviewLoading,
     fetchMore: fetchMoreInReview,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -59,7 +59,7 @@ const HomeworksContainer: FC = () => {
     data: approvedData,
     loading: approvedLoading,
     fetchMore: fetchMoreApproved,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -75,7 +75,7 @@ const HomeworksContainer: FC = () => {
     data: notApprovedData,
     loading: notApprovedLoading,
     fetchMore: fetchMoreNotApproved,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,

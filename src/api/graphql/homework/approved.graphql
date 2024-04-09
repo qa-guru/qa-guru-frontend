@@ -1,40 +1,36 @@
 mutation approved($homeWorkId: ID!) {
   approved(homeWorkId: $homeWorkId) {
-    ...ApprovedHomework
-  }
-}
-
-fragment ApprovedHomework on StudentHomeWorkDto {
-  id
-  lecture {
     id
-    subject
-    description
-  }
-  answer
-  status
-  student {
-    id
-    email
-    firstName
-    avatar
-    middleName
-    lastName
-    rating {
-      rating
+    lecture {
+      id
+      subject
+      description
     }
-  }
-  mentor {
-    id
-    email
-    firstName
-    avatar
-    middleName
-    lastName
-    rating {
-      rating
+    answer
+    status
+    student {
+      id
+      email
+      firstName
+      avatar
+      middleName
+      lastName
+      rating {
+        rating
+      }
     }
+    mentor {
+      id
+      email
+      firstName
+      avatar
+      middleName
+      lastName
+      rating {
+        rating
+      }
+    }
+    startCheckingDate
+    endCheckingDate
   }
-  startCheckingDate
-  endCheckingDate
 }

@@ -14,8 +14,13 @@ export const getUpdatedAllowedColumns = (
   const userId = user?.user?.id;
   const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
   const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
+  const hasStudentAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
 
   if (hasManagerAccess && !hasMentorAccess) {
+    return [];
+  }
+
+  if (hasStudentAccess && !hasMentorAccess) {
     return [];
   }
 
