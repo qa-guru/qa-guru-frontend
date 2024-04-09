@@ -187,13 +187,7 @@ const Column: FC<IColumn> = ({
         id={`scroll-container-${column.id}`}
         ref={dropRef}
         sx={{
-          ...(getColumnStyles(
-            column.id,
-            draggingState,
-            canDrop,
-            column.totalElements,
-            isOver
-          ) as {}),
+          ...(getColumnStyles(column.totalElements) as {}),
         }}
       >
         <StyledInfiniteScroll

@@ -33,13 +33,12 @@ const Header: FC = () => {
   const { settings } = useSettings();
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
-  const hasStudentAccess = useRoleAccess({
+  const hasKanbanStudentAccess = useRoleAccess({
+    allowedRoles: [UserRole.Student],
+  });
+  const hasKanbanMentorAccess = useRoleAccess({
     allowedRoles: [UserRole.Mentor],
   });
-  const hasMentorAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor],
-  });
-
   const hasKanbanAccess = useRoleAccess({
     allowedRoles: [
       UserRole.Mentor,
@@ -65,7 +64,7 @@ const Header: FC = () => {
     });
   }
 
-  if (hasMentorAccess) {
+  if (hasKanbanMentorAccess) {
     pages.push({
       title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
       pageURL: "/kanban-mentor",
@@ -73,7 +72,7 @@ const Header: FC = () => {
     });
   }
 
-  if (hasStudentAccess) {
+  if (hasKanbanStudentAccess) {
     pages.push({
       title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
       pageURL: "/kanban-student",

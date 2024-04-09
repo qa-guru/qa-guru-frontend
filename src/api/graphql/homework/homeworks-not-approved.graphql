@@ -1,4 +1,4 @@
-query homeworks(
+query homeworksNotApproved(
   $offset: Int!
   $limit: Int!
   $sort: StudentHomeWorkSort

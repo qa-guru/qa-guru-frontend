@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box, Step } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 
 import { IMobileBoard } from "./mobile-board.types";
@@ -12,10 +11,23 @@ import {
   StyledStepperButton,
 } from "../board/board.styled";
 import Column from "../column";
-import { states } from "../status-select/status-select.types";
+
+export const states = [
+  {
+    text: "Новые",
+  },
+  {
+    text: "На проверке",
+  },
+  {
+    text: "Принято",
+  },
+  {
+    text: "Не принято",
+  },
+];
 
 const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
-  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleStepChange = (step: number) => {
