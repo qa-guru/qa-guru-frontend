@@ -104,7 +104,7 @@ const Profile: FC<IProfile> = (props) => {
         onClose={handleClickSettingsProfile}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "right",
+          horizontal: "center",
         }}
       >
         <StyledUserBox>

@@ -32,91 +32,60 @@ const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
   const [anchorKanbanNav, setAnchorKanbanNav] =
     useState<Maybe<HTMLElement>>(null);
+  const navigate = useNavigate();
+  const { settings } = useSettings();
   const { isMobileOrTablet } = useResponsive();
 
-  const navigate = useNavigate();
   const pages: IPages[] = [];
   const kanbanPages: IPages[] = [];
 
-  const { settings } = useSettings();
-
-  const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
-  const hasStudentAccess = useRoleAccess({
-    allowedRoles: [UserRole.Student],
-  });
-  const hasMentorAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor],
-  });
-  const hasKanbanAccess = useRoleAccess({
-    allowedRoles: [
-      UserRole.Mentor,
-      UserRole.Manager,
-      UserRole.Master,
-      UserRole.Student,
-    ],
-  });
-
-  if (hasHomeAccess) {
-    pages.push({
-      title: <StyledLink to="/">Главная</StyledLink>,
-      pageURL: "/",
-      id: 0,
+  const addPage = (
+    pageList: IPages[],
+    title: string,
+    pageURL: string,
+    id: number
+  ) => {
+    pageList.push({
+      title: <StyledLink to={pageURL}>{title}</StyledLink>,
+      pageURL,
+      id,
     });
+  };
+
+  const hasAccess = (roles: UserRole[]) =>
+    useRoleAccess({ allowedRoles: roles });
+
+  if (hasAccess([UserRole.Student])) {
+    addPage(pages, "Главная", "/", 0);
   }
 
-  if (hasKanbanAccess) {
-    if (!isMobileOrTablet) {
-      kanbanPages.push({
-        title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
-        pageURL: "/kanban",
-        id: 1,
-      });
-    } else {
-      pages.push({
-        title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
-        pageURL: "/kanban",
-        id: 1,
-      });
-    }
+  const kanbanAccess = hasAccess([
+    UserRole.Mentor,
+    UserRole.Manager,
+    UserRole.Master,
+    UserRole.Student,
+  ]);
+
+  if (kanbanAccess) {
+    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+    addPage(targetPages, "Доска заданий", "/kanban", 1);
   }
 
-  if (hasMentorAccess) {
-    if (!isMobileOrTablet) {
-      kanbanPages.push({
-        title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
-        pageURL: "/kanban-mentor",
-        id: 2,
-      });
-    } else {
-      pages.push({
-        title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
-        pageURL: "/kanban-mentor",
-        id: 2,
-      });
-    }
+  if (hasAccess([UserRole.Mentor])) {
+    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+    addPage(targetPages, "Доска ментора", "/kanban-mentor", 2);
   }
 
-  if (hasStudentAccess) {
-    if (!isMobileOrTablet) {
-      kanbanPages.push({
-        title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
-        pageURL: "/kanban-student",
-        id: 3,
-      });
-    } else {
-      pages.push({
-        title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
-        pageURL: "/kanban-student",
-        id: 3,
-      });
-    }
+  if (hasAccess([UserRole.Student])) {
+    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+    addPage(targetPages, "Доска студента", "/kanban-student", 3);
   }
 
-  pages.push({
-    title: <StyledLink to="/top-users">Топ 50</StyledLink>,
-    pageURL: "/top-users",
-    id: 4,
-  });
+  if (kanbanAccess && kanbanPages.length === 1) {
+    addPage(pages, "Доска заданий", "/kanban", 4);
+  }
+
+  addPage(pages, "Топ 50", "/top-users", 5);
 
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);
@@ -147,12 +116,14 @@ const Header: FC = () => {
               </StyledLogoIconButton>
             </StyledIconBox>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-            <KanbanMenuBurger
-              pages={kanbanPages}
-              setAnchorElNav={setAnchorKanbanNav}
-              handleClickNavMenu={handleClickNavMenu}
-              anchorElNav={anchorKanbanNav}
-            />
+            {kanbanPages.length > 1 && (
+              <KanbanMenuBurger
+                pages={kanbanPages}
+                setAnchorElNav={setAnchorKanbanNav}
+                handleClickNavMenu={handleClickNavMenu}
+                anchorElNav={anchorKanbanNav}
+              />
+            )}
           </StyledStack>
           <StyledStack>
             <ThemeSelector />
