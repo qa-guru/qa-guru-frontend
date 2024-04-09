@@ -24,7 +24,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  height: "66px",
+  height: "60px",
   gap: "10px",
   padding: "20px 40px",
   [theme.breakpoints.down("md")]: {

@@ -19,6 +19,8 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
+import KanbanMenuBurger from "./kanban-menu-burger";
+import useResponsive from "../../shared/hooks/use-responsive";
 
 interface IPages {
   pageURL: string;
@@ -28,8 +30,14 @@ interface IPages {
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
+  const [anchorKanbanNav, setAnchorKanbanNav] =
+    useState<Maybe<HTMLElement>>(null);
+  const { isMobileOrTablet } = useResponsive();
+
   const navigate = useNavigate();
   const pages: IPages[] = [];
+  const kanbanPages: IPages[] = [];
+
   const { settings } = useSettings();
 
   const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
@@ -58,27 +66,51 @@ const Header: FC = () => {
   }
 
   if (hasKanbanAccess) {
-    pages.push({
-      title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
-      pageURL: "/kanban",
-      id: 1,
-    });
+    if (!isMobileOrTablet) {
+      kanbanPages.push({
+        title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
+        pageURL: "/kanban",
+        id: 1,
+      });
+    } else {
+      pages.push({
+        title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
+        pageURL: "/kanban",
+        id: 1,
+      });
+    }
   }
 
   if (hasMentorAccess) {
-    pages.push({
-      title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
-      pageURL: "/kanban-mentor",
-      id: 2,
-    });
+    if (!isMobileOrTablet) {
+      kanbanPages.push({
+        title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
+        pageURL: "/kanban-mentor",
+        id: 2,
+      });
+    } else {
+      pages.push({
+        title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
+        pageURL: "/kanban-mentor",
+        id: 2,
+      });
+    }
   }
 
   if (hasStudentAccess) {
-    pages.push({
-      title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
-      pageURL: "/kanban-student",
-      id: 3,
-    });
+    if (!isMobileOrTablet) {
+      kanbanPages.push({
+        title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
+        pageURL: "/kanban-student",
+        id: 3,
+      });
+    } else {
+      pages.push({
+        title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
+        pageURL: "/kanban-student",
+        id: 3,
+      });
+    }
   }
 
   pages.push({
@@ -116,6 +148,12 @@ const Header: FC = () => {
               </StyledLogoIconButton>
             </StyledIconBox>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
+            <KanbanMenuBurger
+              pages={kanbanPages}
+              setAnchorElNav={setAnchorKanbanNav}
+              handleClickNavMenu={handleClickNavMenu}
+              anchorElNav={anchorKanbanNav}
+            />
           </StyledStack>
           <StyledStack>
             <ThemeSelector />

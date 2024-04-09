@@ -10,6 +10,6 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 
 export const StyledStack = styled(Stack)({
   flexDirection: "row",
-  padding: "0 20px",
+  paddingLeft: "20px",
   whiteSpace: "nowrap",
 });
