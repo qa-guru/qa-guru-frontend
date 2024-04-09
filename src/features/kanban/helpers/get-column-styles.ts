@@ -41,12 +41,12 @@ export const getColumnStyles: GetColumnStylesFunction = (
     },
   };
 
-  if (isOver && canDrop) {
-    styles = style.dropColumn;
-  }
-
   if (Number(totalElements) === 0) {
     styles = style.emptyColumn;
+  }
+
+  if (isOver && canDrop) {
+    styles = style.dropColumn;
   }
 
   if (isColumnHighlight(columnId, draggingState)) {
@@ -54,7 +54,7 @@ export const getColumnStyles: GetColumnStylesFunction = (
       ...styles,
       border: `2px dashed ${theme.palette.app.primary}`,
       borderRadius: "10px",
-      maxHeight: "calc(100dvh - 270px )",
+      maxHeight: "calc(100dvh - 270px)",
     };
   }
 

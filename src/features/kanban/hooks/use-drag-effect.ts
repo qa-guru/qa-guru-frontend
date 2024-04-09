@@ -33,6 +33,7 @@ const useDragEffect = ({
 
   const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
   const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
+  const hasStudentAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
 
   const userId = user?.user?.id;
   const mentorId = card.mentor?.id;
@@ -50,6 +51,11 @@ const useDragEffect = ({
 
     if (hasManagerAccess && !hasMentorAccess) {
       enqueueSnackbar("Менеджер не может менять статус домашнего задания");
+      return;
+    }
+
+    if (hasStudentAccess && !hasMentorAccess) {
+      enqueueSnackbar("Студент не может менять статус домашнего задания");
       return;
     }
 

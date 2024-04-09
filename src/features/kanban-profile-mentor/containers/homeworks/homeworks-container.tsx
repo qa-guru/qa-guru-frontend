@@ -3,13 +3,14 @@ import {
   Order,
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
-  useHomeWorksQuery,
+  useHomeworksQuery,
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import Spinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams, useMatch } from "react-router-dom";
 
+import { useDynamicCardLimit } from "../../hooks/use-dynamic-card-limit";
 import Board from "../../views/board";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 
@@ -17,6 +18,7 @@ const HomeworksContainer: FC = () => {
   const { data: dataUserId } = useUserIdQuery();
   const { userId: routeUserId } = useParams<{ userId?: string }>();
   const matchProfile = useMatch("/profile");
+  const dynamicLimit = useDynamicCardLimit();
 
   const filterObject = useMemo(() => {
     const mentorId = matchProfile ? dataUserId?.user?.id : routeUserId;
@@ -29,10 +31,10 @@ const HomeworksContainer: FC = () => {
     data: newData,
     loading: newLoading,
     fetchMore: fetchMoreNew,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.CreationDate,
         order: Order.Desc,
@@ -45,10 +47,10 @@ const HomeworksContainer: FC = () => {
     data: inReviewData,
     loading: inReviewLoading,
     fetchMore: fetchMoreInReview,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.StartCheckingDate,
         order: Order.Desc,
@@ -61,10 +63,10 @@ const HomeworksContainer: FC = () => {
     data: approvedData,
     loading: approvedLoading,
     fetchMore: fetchMoreApproved,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,
@@ -77,10 +79,10 @@ const HomeworksContainer: FC = () => {
     data: notApprovedData,
     loading: notApprovedLoading,
     fetchMore: fetchMoreNotApproved,
-  } = useHomeWorksQuery({
+  } = useHomeworksQuery({
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
-      limit: HOMEWORKS_QUERY_DEFAULTS.LIMIT,
+      limit: dynamicLimit,
       sort: {
         field: StudentHomeWorkSortField.EndCheckingDate,
         order: Order.Desc,
