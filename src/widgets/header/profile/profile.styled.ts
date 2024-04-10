@@ -17,15 +17,19 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledMenu = styled(Menu)({
-  marginTop: "14px",
+export const StyledMenu = styled(Menu)(({ theme }) => ({
+  marginTop: "10.5px",
+  marginLeft: "-25px",
   "& .MuiPaper-root": {
     borderRadius: "4px",
   },
   "& .MuiMenu-list": {
     padding: 0,
   },
-});
+  [theme.breakpoints.down("md")]: {
+    marginLeft: 0,
+  },
+}));
 
 export const StyledUserBox = styled(Box)({
   padding: "8px 16px",

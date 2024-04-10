@@ -4,6 +4,7 @@ import useRoleAccess from "shared/hooks/use-role-access";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
 import useSettings from "shared/hooks/use-settings";
+import useResponsive from "shared/hooks/use-responsive";
 
 import Profile from "./profile";
 import AppMenu from "./menu/menu";
@@ -19,6 +20,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
+import KanbanMenuBurger from "./kanban-menu-burger";
 
 interface IPages {
   pageURL: string;
@@ -28,63 +30,62 @@ interface IPages {
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
+  const [anchorKanbanNav, setAnchorKanbanNav] =
+    useState<Maybe<HTMLElement>>(null);
   const navigate = useNavigate();
-  const pages: IPages[] = [];
   const { settings } = useSettings();
+  const { isMobileOrTablet } = useResponsive();
 
-  const hasHomeAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
-  const hasKanbanStudentAccess = useRoleAccess({
-    allowedRoles: [UserRole.Student],
-  });
-  const hasKanbanMentorAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor],
-  });
-  const hasKanbanAccess = useRoleAccess({
-    allowedRoles: [
-      UserRole.Mentor,
-      UserRole.Manager,
-      UserRole.Master,
-      UserRole.Student,
-    ],
-  });
+  const pages: IPages[] = [];
+  const kanbanPages: IPages[] = [];
 
-  if (hasHomeAccess) {
-    pages.push({
-      title: <StyledLink to="/">Главная</StyledLink>,
-      pageURL: "/",
-      id: 0,
+  const addPage = (
+    pageList: IPages[],
+    title: string,
+    pageURL: string,
+    id: number
+  ) => {
+    pageList.push({
+      title: <StyledLink to={pageURL}>{title}</StyledLink>,
+      pageURL,
+      id,
     });
+  };
+
+  const hasAccess = (roles: UserRole[]) =>
+    useRoleAccess({ allowedRoles: roles });
+
+  if (hasAccess([UserRole.Student])) {
+    addPage(pages, "Главная", "/", 0);
   }
 
-  if (hasKanbanAccess) {
-    pages.push({
-      title: <StyledLink to="/kanban">Доска заданий</StyledLink>,
-      pageURL: "/kanban",
-      id: 1,
-    });
+  const kanbanAccess = hasAccess([
+    UserRole.Mentor,
+    UserRole.Manager,
+    UserRole.Master,
+    UserRole.Student,
+  ]);
+
+  if (kanbanAccess) {
+    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+    addPage(targetPages, "Доска заданий", "/kanban", 1);
   }
 
-  if (hasKanbanMentorAccess) {
-    pages.push({
-      title: <StyledLink to="/kanban-mentor">Доска ментора</StyledLink>,
-      pageURL: "/kanban-mentor",
-      id: 2,
-    });
+  if (hasAccess([UserRole.Mentor])) {
+    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+    addPage(targetPages, "Доска ментора", "/kanban-mentor", 2);
   }
 
-  if (hasKanbanStudentAccess) {
-    pages.push({
-      title: <StyledLink to="/kanban-student">Доска студента</StyledLink>,
-      pageURL: "/kanban-student",
-      id: 3,
-    });
+  if (hasAccess([UserRole.Student])) {
+    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+    addPage(targetPages, "Доска студента", "/kanban-student", 3);
   }
 
-  pages.push({
-    title: <StyledLink to="/top-users">Топ 50</StyledLink>,
-    pageURL: "/top-users",
-    id: 4,
-  });
+  if (kanbanAccess && kanbanPages.length === 1) {
+    addPage(pages, "Доска заданий", "/kanban", 4);
+  }
+
+  addPage(pages, "Топ 50", "/top-users", 5);
 
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);
@@ -115,6 +116,14 @@ const Header: FC = () => {
               </StyledLogoIconButton>
             </StyledIconBox>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
+            {kanbanPages.length > 1 && (
+              <KanbanMenuBurger
+                pages={kanbanPages}
+                setAnchorElNav={setAnchorKanbanNav}
+                handleClickNavMenu={handleClickNavMenu}
+                anchorElNav={anchorKanbanNav}
+              />
+            )}
           </StyledStack>
           <StyledStack>
             <ThemeSelector />

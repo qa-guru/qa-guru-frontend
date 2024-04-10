@@ -6,14 +6,14 @@ export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
   flexGrow: 1,
   marginTop: "12px",
   boxSizing: "border-box",
-  height: "calc(100vh - 205px)",
+  height: "calc(100vh - 199px)",
   overflowY: "auto",
   scrollbarWidth: "none",
   [theme.breakpoints.only("sm")]: {
-    height: "calc(100dvh - 216px)",
+    height: "calc(100dvh - 210px)",
   },
   [theme.breakpoints.only("xs")]: {
-    height: "calc(100dvh - 200px)",
+    height: "calc(100dvh - 194px)",
   },
 }));
 
