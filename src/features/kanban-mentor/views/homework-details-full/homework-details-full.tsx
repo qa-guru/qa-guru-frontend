@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import { format, parseISO } from "date-fns";
@@ -24,7 +23,6 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   data,
   dataUserId,
 }) => {
-  const navigate = useNavigate();
   const Format = "dd.MM.yyyy | HH:mm";
   const { homeWork } = data;
   const {

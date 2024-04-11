@@ -2,10 +2,11 @@ import { FC, MouseEvent } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { ArrowDropDown } from "@mui/icons-material";
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 
 import { IMenuBurger } from "./kanban-menu-burger.types";
 import { StyledMenu, StyledWrapperBox } from "./kanban-menu-burger.styled";
+import { StyledStack } from "../menu-burger/menu-burger.styled";
 
 const KanbanMenuBurger: FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;
@@ -20,13 +21,13 @@ const KanbanMenuBurger: FC<IMenuBurger> = (props) => {
 
   return (
     <StyledWrapperBox width="max-content">
-      <Button onMouseOver={handleOpenNavMenu}>
-        <Stack direction="row" alignItems="center" spacing="3px">
+      <Button onMouseEnter={handleOpenNavMenu}>
+        <StyledStack onMouseLeave={handleCloseMenuBurger}>
           <Typography textTransform="uppercase" variant="body2" color="primary">
             Доска заданий
           </Typography>
           <ArrowDropDown fontSize="small" color="primary" />
-        </Stack>
+        </StyledStack>
       </Button>
       <StyledMenu
         anchorEl={anchorElNav}
@@ -36,6 +37,10 @@ const KanbanMenuBurger: FC<IMenuBurger> = (props) => {
           vertical: "bottom",
           horizontal: "left",
         }}
+        MenuListProps={{
+          onMouseLeave: handleCloseMenuBurger,
+        }}
+        disableAutoFocusItem
       >
         {pages.map((page) => {
           const { pageURL, title, id } = page;
