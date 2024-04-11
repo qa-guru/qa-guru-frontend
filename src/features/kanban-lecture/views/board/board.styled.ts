@@ -24,6 +24,7 @@ export const StyledBox = styled(Box)({
 
 export const StyledStepper = styled(Stepper)(({ theme }) => ({
   overflowX: "scroll",
+  scrollBehavior: "smooth",
   "& .MuiStepLabel-iconContainer": {
     display: "none",
   },

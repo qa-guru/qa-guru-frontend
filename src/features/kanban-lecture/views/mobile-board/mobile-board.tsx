@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box, Step } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
@@ -29,6 +29,7 @@ export const states = [
 
 const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const stepperRef = useRef<HTMLDivElement>(null);
 
   const handleStepChange = (step: number) => {
     setActiveStep(step);
@@ -39,8 +40,17 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   };
 
   useEffect(() => {
-    const stepElement = document.getElementById(`step-${activeStep}`);
-    stepElement?.scrollIntoView({ behavior: "smooth" });
+    const stepper = stepperRef.current;
+    if (stepper && stepper.scrollWidth > stepper.clientWidth) {
+      const stepElement = document.getElementById(`step-${activeStep}`);
+      if (stepElement) {
+        const stepLeft = stepElement.offsetLeft + stepElement.clientWidth / 2;
+        const stepperCenter = stepper.clientWidth / 2;
+        const scrollPosition = stepLeft - stepperCenter;
+
+        stepper.scrollLeft = scrollPosition;
+      }
+    }
   }, [activeStep]);
 
   return (
@@ -53,7 +63,7 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
         >
           <KeyboardArrowLeft />
         </StyledStepperButton>
-        <StyledStepper activeStep={activeStep}>
+        <StyledStepper activeStep={activeStep} ref={stepperRef}>
           {states.map((state, index) => {
             return (
               <Step key={state.text} id={`step-${index}`}>
