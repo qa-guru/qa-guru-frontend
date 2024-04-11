@@ -20,6 +20,30 @@ query homeworks(
           type
         }
       }
+      training {
+        id
+        name
+        content
+        techStack
+        tariffs {
+          id
+          name
+          code
+          price
+          homeWork
+          description
+        }
+        mentors {
+          id
+          firstName
+          lastName
+          avatar
+          middleName
+          rating {
+            rating
+          }
+        }
+      }
       answer
       status
       student {

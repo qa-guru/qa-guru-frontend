@@ -1,6 +1,6 @@
-import { Maybe } from "api/graphql/generated/graphql";
+import { Maybe, TechStack } from "api/graphql/generated/graphql";
 
-export const getFormattedId = (id?: Maybe<string>) => {
+export const getFormattedId = (techStack?: TechStack, id?: Maybe<string>) => {
   const lastTwoChars = id?.slice(-2).toUpperCase();
-  return `JAVA-${lastTwoChars}`;
+  return `${techStack}-${lastTwoChars}`;
 };
