@@ -20,6 +20,9 @@ query homeworks(
           type
         }
       }
+      training {
+        techStack
+      }
       answer
       status
       student {
