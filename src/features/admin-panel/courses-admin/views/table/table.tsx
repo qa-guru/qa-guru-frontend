@@ -20,6 +20,7 @@ import {
   StyledLoadMoreButton,
 } from "./table.styled";
 import DesktopTable from "../desktop-table";
+import MobileTable from "../mobile-table";
 
 interface IModalMobileTable {
   hideModal: () => void;
@@ -53,7 +54,7 @@ const ModalMobileTable = ({
           }
           scrollableTarget="scroll-container"
         >
-          <DesktopTable table={table} />
+          <MobileTable table={table} />
         </StyledInfiniteScroll>
       </StyledUsersDialogContent>
     </Dialog>
@@ -132,7 +133,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
               }
               scrollableTarget="scroll-mobile-container"
             >
-              <DesktopTable table={table} />
+              <MobileTable table={table} />
             </StyledInfiniteScroll>
           </StyledPaper>
         </>
