@@ -3,13 +3,13 @@ import Menu from "@mui/material/Menu";
 import { Box } from "@mui/material";
 
 export const StyledWrapperBox = styled(Box)(({ theme }) => ({
+  width: "100%",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
 }));
 
 export const StyledMenu = styled(Menu)(({ theme }) => ({
-  marginTop: "14.5px",
   "& .MuiPaper-root": {
     borderRadius: "5px",
     width: "140px",
