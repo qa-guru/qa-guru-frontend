@@ -23,7 +23,7 @@ import { ICard } from "./card.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const Card: FC<ICard> = ({ card }) => {
-  const { id, mentor, student, lecture } = card;
+  const { id, mentor, student, lecture, training } = card;
 
   const { isMobile } = useResponsive();
 
@@ -69,7 +69,7 @@ const Card: FC<ICard> = ({ card }) => {
     >
       <StyledCardHeader isCurrentHomeworkActive={isCurrentHomeworkActive}>
         <Typography textTransform="uppercase" variant="subtitle2">
-          {getFormattedId(id)}
+          {getFormattedId(training?.techStack, id)}
         </Typography>
         <Typography variant="body2">
           {card.creationDate &&

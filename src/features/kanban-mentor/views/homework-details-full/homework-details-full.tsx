@@ -27,6 +27,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
   const { homeWork } = data;
   const {
     lecture,
+    training,
     student,
     mentor,
     creationDate,
@@ -41,7 +42,9 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
 
   return (
     <Container>
-      <StyledTitle variant="h6">{getFormattedId(lecture?.id)}</StyledTitle>
+      <StyledTitle variant="h6">
+        {getFormattedId(training?.techStack, id)}
+      </StyledTitle>
       <Typography variant="h2">{lecture?.subject}</Typography>
       <StyledStack>
         <StyledRowStack>

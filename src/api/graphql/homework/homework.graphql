@@ -12,6 +12,9 @@ query homeWork($homeWorkId: ID!) {
     }
     answer
     status
+    training {
+      techStack
+    }
     student {
       id
       firstName
