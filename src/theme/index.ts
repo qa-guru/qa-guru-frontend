@@ -36,13 +36,13 @@ const baseOptions = {
       fontSize: "0.9375rem", // ~15px
     },
     body2: {
-      fontSize: "0.8rem", // ~14px
+      fontSize: "0.73rem", // ~13px
     },
     subtitle1: {
       fontSize: "0.9rem", // ~16px
     },
     subtitle2: {
-      fontSize: "0.8rem", // ~14px
+      fontSize: "0.73rem", // ~13px
     },
     caption: {
       fontSize: "0.75rem", // ~12px

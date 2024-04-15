@@ -3,9 +3,9 @@ import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useUserQuery } from "api/graphql/generated/graphql";
 
-import Profile from "./profile";
+import Profile from "../../views/profile";
 
-const ProfileContainer: FC = () => {
+const UserContainer: FC = () => {
   const { loading, data } = useUserQuery({
     fetchPolicy: "cache-first",
   });
@@ -16,4 +16,4 @@ const ProfileContainer: FC = () => {
   return <Profile data={data} />;
 };
 
-export default ProfileContainer;
+export default UserContainer;

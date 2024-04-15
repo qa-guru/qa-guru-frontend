@@ -49,11 +49,17 @@ const routePatterns = [
   },
   {
     path: "/kanban/:lectureId",
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     name: "Домашнее задание",
     icon: <School fontSize="small" />,
   },
   {
     path: "/kanban-mentor/:lectureId",
+    name: "Домашнее задание",
+    icon: <School fontSize="small" />,
+  },
+  {
+    path: "/kanban-student/:lectureId",
     name: "Домашнее задание",
     icon: <School fontSize="small" />,
   },

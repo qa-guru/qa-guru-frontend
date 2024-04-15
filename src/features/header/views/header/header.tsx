@@ -6,9 +6,9 @@ import ThemeSelector from "shared/components/theme-selector";
 import useSettings from "shared/hooks/use-settings";
 import useResponsive from "shared/hooks/use-responsive";
 
-import Profile from "./profile";
-import AppMenu from "./menu/menu";
-import MenuBurger from "./menu-burger/menu-burger";
+import Profile from "../../containers";
+import AppMenu from "../menu/menu";
+import MenuBurger from "../menu-burger/menu-burger";
 import {
   StyledDarkLogo,
   StyledHeader,
@@ -20,7 +20,7 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
-import KanbanMenuBurger from "./kanban-menu-burger";
+import KanbanMenu from "../kanban-menu";
 
 interface IPages {
   pageURL: string;
@@ -30,8 +30,6 @@ interface IPages {
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
-  const [anchorKanbanNav, setAnchorKanbanNav] =
-    useState<Maybe<HTMLElement>>(null);
   const navigate = useNavigate();
   const { settings } = useSettings();
   const { isMobileOrTablet } = useResponsive();
@@ -116,14 +114,7 @@ const Header: FC = () => {
               </StyledLogoIconButton>
             </StyledIconBox>
             <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-            {kanbanPages.length > 1 && (
-              <KanbanMenuBurger
-                pages={kanbanPages}
-                setAnchorElNav={setAnchorKanbanNav}
-                handleClickNavMenu={handleClickNavMenu}
-                anchorElNav={anchorKanbanNav}
-              />
-            )}
+            {kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />}
           </StyledStack>
           <StyledStack>
             <ThemeSelector />

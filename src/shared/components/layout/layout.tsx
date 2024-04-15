@@ -1,7 +1,7 @@
 import { FC, ReactNode, useMemo } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "widgets/header";
-import Footer from "widgets/footer";
+import { Header } from "features/header";
+import Footer from "shared/components/footer";
 
 import {
   StyledBox,

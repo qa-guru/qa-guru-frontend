@@ -34,7 +34,7 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
     <StyledHomeworkDetails>
       <StyledBox>
         <StyledStack>
-          <StyledLink to={`/kanban/${card.id}`}>
+          <StyledLink to={`/kanban-student/${card.id}`}>
             <StyledId>
               <Typography variant="h4">
                 {getFormattedId(card?.training?.techStack, card.id)}

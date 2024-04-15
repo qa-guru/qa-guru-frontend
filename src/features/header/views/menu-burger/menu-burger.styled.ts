@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import Menu from "@mui/material/Menu";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
@@ -7,6 +7,12 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     display: "none",
   },
+}));
+
+export const StyledStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  alignItems: "center",
+  gap: "3px",
 }));
 
 export const StyledMenu = styled(Menu)({
