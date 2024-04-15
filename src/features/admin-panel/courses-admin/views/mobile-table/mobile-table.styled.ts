@@ -1,10 +1,4 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-} from "@mui/material";
+import { Table, TableCell, TableRow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { TrainingDto } from "api/graphql/generated/graphql";
 import { type Table as TableType } from "@tanstack/react-table";

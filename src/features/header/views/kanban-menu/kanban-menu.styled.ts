@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 import Menu from "@mui/material/Menu";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 export const StyledWrapperBox = styled(Box)(({ theme }) => ({
   width: "100%",
@@ -9,10 +9,9 @@ export const StyledWrapperBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const StyledMenu = styled(Menu)(({ theme }) => ({
+export const StyledMenu = styled(Menu)({
   "& .MuiPaper-root": {
-    borderRadius: "5px",
-    width: "140px",
+    borderRadius: "0",
 
     "& .MuiMenu-list": {
       padding: 0,
@@ -22,4 +21,9 @@ export const StyledMenu = styled(Menu)(({ theme }) => ({
       padding: "10px",
     },
   },
-}));
+});
+
+export const StyledButton = styled(Button)({
+  height: "60.8px",
+  "&:hover": { backgroundColor: "transparent" },
+}) as typeof Button;
