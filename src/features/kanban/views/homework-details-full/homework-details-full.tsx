@@ -38,8 +38,8 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     id,
   } = homeWork!;
 
-  const isCurrentMentorOrNew =
-    mentor?.id === undefined || dataUserId.user?.id === mentor?.id;
+  const isCurrentMentor = dataUserId.user?.id === mentor?.id;
+  const hasNoMentor = mentor?.id === undefined;
 
   return (
     <Container>
@@ -87,7 +87,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        {isCurrentMentorOrNew ? (
+        {isCurrentMentor && hasNoMentor ? (
           <StatusSelect currentStatus={status} homeworkId={id} />
         ) : (
           <StatusText status={status} />
