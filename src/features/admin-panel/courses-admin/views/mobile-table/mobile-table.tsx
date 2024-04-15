@@ -7,7 +7,6 @@ import {
   StyledTable,
   StyledTableCell,
   StyledTableRow,
-  StyledTypography,
 } from "./mobile-table.styled";
 
 interface IMobileTable {

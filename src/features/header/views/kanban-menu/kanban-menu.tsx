@@ -2,11 +2,15 @@ import { FC, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { ArrowDropDown } from "@mui/icons-material";
-import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { type Theme } from "@mui/material/styles"; // Ensure you have imported the Theme type
 
 import { IKanbanMenu } from "./kanban-menu.types";
-import { StyledMenu, StyledWrapperBox } from "./kanban-menu.styled";
+import {
+  StyledButton,
+  StyledMenu,
+  StyledWrapperBox,
+} from "./kanban-menu.styled";
 import { StyledStack } from "../menu-burger/menu-burger.styled";
 
 const KanbanMenu: FC<IKanbanMenu> = (props) => {
@@ -43,14 +47,16 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
   };
 
   const handleClickNavMenu = (pageURL: string) => {
-    setAnchorEl(null);
+    handleClose();
     navigate(pageURL);
   };
 
   return (
     <StyledWrapperBox>
-      <Button
-        sx={{ zIndex: (theme) => theme.zIndex.modal + 1 }}
+      <StyledButton
+        sx={{
+          zIndex: (theme: Theme) => theme.zIndex.modal + 1,
+        }}
         onClick={handleOpen}
         onMouseEnter={handleOpen}
         onMouseLeave={handleClose}
@@ -61,7 +67,7 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
           </Typography>
           <ArrowDropDown fontSize="small" color="primary" />
         </StyledStack>
-      </Button>
+      </StyledButton>
       <StyledMenu
         anchorEl={anchorEl}
         open={open}
