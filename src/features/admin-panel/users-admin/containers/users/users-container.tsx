@@ -25,7 +25,7 @@ const UsersContainer: FC = () => {
   if (loading) return <Spinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <Table data={data} fetchMore={fetchMore} />;
+  return <Table {...{ data, fetchMore }} />;
 };
 
 export default UsersContainer;

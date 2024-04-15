@@ -23,12 +23,9 @@ const TrainingsByMentorContainer: FC<ITrainingsByMentorContainer> = ({
     },
   });
 
-  return (
-    <TrainingSelection
-      items={data?.trainingsByMentor?.items}
-      control={control}
-    />
-  );
+  const items = data?.trainingsByMentor?.items;
+
+  return <TrainingSelection {...{ control, items }} />;
 };
 
 export default TrainingsByMentorContainer;

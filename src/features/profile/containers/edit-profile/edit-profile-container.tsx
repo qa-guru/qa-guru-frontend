@@ -10,12 +10,13 @@ import EditProfile from "../../views/edit-profile";
 
 const EditProfileContainer: FC = () => {
   const { data, loading: loadingUser } = useUserQuery();
+  const user = data?.user;
   const [updateUser, { loading: loadingUpdateUser }] = useUpdateUserMutation();
 
   if (loadingUser || loadingUpdateUser) return <AppSpinner />;
   if (!data) return <NoDataErrorMessage />;
 
-  return <EditProfile user={data.user} updateUser={updateUser} />;
+  return <EditProfile {...{ user, updateUser }} />;
 };
 
 export default EditProfileContainer;

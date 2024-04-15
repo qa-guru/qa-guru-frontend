@@ -6,9 +6,7 @@ import SendHomework from "../../views/send-homework";
 const SendHomeworkContainer: FC = () => {
   const [sendHomeWorkToCheck, { loading }] = useSendHomeWorkToCheckMutation();
 
-  return (
-    <SendHomework loading={loading} sendHomeWorkToCheck={sendHomeWorkToCheck} />
-  );
+  return <SendHomework {...{ loading, sendHomeWorkToCheck }} />;
 };
 
 export default SendHomeworkContainer;

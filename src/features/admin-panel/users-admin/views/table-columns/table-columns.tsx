@@ -35,16 +35,10 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {
-          const { locked, id } = info.row.original;
+          const user = info.row.original;
 
           return (
-            <UserRow
-              user={info.row.original}
-              hideRoles
-              hideRating
-              userId={info.row.original.id}
-              hasLink
-            />
+            <UserRow {...user} email={null} hideRoles hideRating hasLink />
           );
         },
       },
@@ -74,12 +68,10 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         header: "Роль",
         footer: (props) => props.column.id,
         accessorKey: "roles",
-        cell: (info: CellContext<UserDto, unknown>) => (
-          <UpdateRole
-            roles={info.row.original.roles}
-            id={info.row.original.id}
-          />
-        ),
+        cell: (info: CellContext<UserDto, unknown>) => {
+          const roles = info.row.original;
+          return <UpdateRole {...roles} />;
+        },
         size: isMobileOrTablet ? 110 : 160,
       },
       {
@@ -112,19 +104,13 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {
+          const user = info.row.original;
           const { locked, id } = info.row.original;
 
           return (
             <>
               <StyledUserRowBox>
-                <UserRow
-                  user={info.row.original}
-                  hideRating
-                  roles={info.row.original.roles}
-                  userId={info.row.original.id}
-                  variant="body1"
-                  hasLink
-                />
+                <UserRow {...user} variant="body1" hideRating hasLink />
               </StyledUserRowBox>
               <StyledRightAlignBox>
                 {locked ? <UnlockUser id={id} /> : <LockUser id={id} />}
@@ -172,7 +158,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "roles",
         cell: (info: CellContext<UserDto, unknown>) => {
-          const { roles, id } = info.row.original;
+          const { roles } = info.row.original;
 
           return (
             <StyledMobileBox>

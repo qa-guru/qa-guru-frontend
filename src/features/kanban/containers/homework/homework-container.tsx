@@ -22,7 +22,7 @@ const HomeworkContainer: FC = () => {
 
   if (!data || !dataUserId) return <NoDataErrorMessage />;
 
-  return <HomeworkDetailsFull data={data} dataUserId={dataUserId} />;
+  return <HomeworkDetailsFull {...{ data, dataUserId }} />;
 };
 
 export default HomeworkContainer;

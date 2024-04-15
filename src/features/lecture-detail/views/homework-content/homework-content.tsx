@@ -12,11 +12,7 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
     homeworkContent = <TextView content={answer} />;
   } else if (status && openHomeWorkEdit) {
     homeworkContent = (
-      <UpdateHomeworkItem
-        answer={answer}
-        setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-        id={id}
-      />
+      <UpdateHomeworkItem {...{ answer, setOpenHomeWorkEdit, id }} />
     );
   } else {
     homeworkContent = <SendHomeworkItem />;

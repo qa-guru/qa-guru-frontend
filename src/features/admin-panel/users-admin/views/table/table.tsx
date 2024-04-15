@@ -103,16 +103,18 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   };
 
   const [showModal, hideModal] = useModal(
-    ({ in: open }) => (
-      <ModalMobileTable
-        hideModal={hideModal}
-        open={open}
-        users={users}
-        handleLoadMore={handleLoadMore}
-        hasMoreUsers={hasMoreUsers}
-        table={table}
-      />
-    ),
+    ({ in: open }) => {
+      const tableProps = {
+        hideModal,
+        open,
+        users,
+        handleLoadMore,
+        hasMoreUsers,
+        table,
+      };
+
+      return <ModalMobileTable {...tableProps} />;
+    },
     [users, table, hasMoreUsers]
   );
 

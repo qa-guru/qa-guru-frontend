@@ -36,18 +36,9 @@ const TopUsers: FC<ITopUsers> = ({ data }) => {
         footer: (props) => props.column.id,
         accessorKey: "id",
         cell: (info: CellContext<UserRatingDto, unknown>) => {
-          const { firstName, lastName, id } = info.row.original;
+          const user = info.row.original;
 
-          return (
-            <UserRow
-              userId={id}
-              hideRoles
-              firstName={firstName}
-              lastName={lastName}
-              hideRating
-              hasLink
-            />
-          );
+          return <UserRow {...user} hideRoles hideRating hasLink />;
         },
         size: 200,
       },
@@ -86,17 +77,11 @@ const TopUsers: FC<ITopUsers> = ({ data }) => {
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserRatingDto, unknown>) => {
-          const { firstName, lastName, id } = info.row.original;
+          const user = info.row.original;
 
           return (
             <StyledUserRowBox>
-              <UserRow
-                userId={id}
-                firstName={firstName}
-                lastName={lastName}
-                hideRating
-                hasLink
-              />
+              <UserRow {...user} hideRating hasLink />
             </StyledUserRowBox>
           );
         },

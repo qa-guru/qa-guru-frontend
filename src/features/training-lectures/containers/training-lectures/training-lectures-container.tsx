@@ -25,11 +25,7 @@ const TrainingLecturesContainer: FC = () => {
     return <NoDataErrorMessage />;
 
   return (
-    <TrainingLectures
-      trainingId={trainingId}
-      dataTrainingLectures={dataTrainingLectures}
-      dataTraining={dataTraining}
-    />
+    <TrainingLectures {...{ trainingId, dataTrainingLectures, dataTraining }} />
   );
 };
 

@@ -20,11 +20,12 @@ import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 
 const Column: FC<IColumn> = ({ column, fetchMore }) => {
+  const { title, id, cards, totalElements } = column;
   const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
 
-  const isTotalElements = column.cards?.length >= column.totalElements;
-  const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
+  const isTotalElements = cards?.length >= totalElements;
+  const isMaxLimit = cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
 
   const handleLoadMore = () => {
     if (isMaxLimit) {
@@ -33,7 +34,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     }
     fetchMore({
       variables: {
-        offset: column.cards?.length,
+        offset: cards?.length,
       },
       updateQuery: (
         prev: { homeWorks: { items: StudentHomeWorkDto[] } },
@@ -60,30 +61,28 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
     }
-  }, [column.cards?.length, column.totalElements]);
+  }, [cards?.length, totalElements]);
 
   return (
     <StyledWrapperColumnBox>
       {!isMobileOrTablet && (
         <StyledRowStack>
           <StyledTypographyStatus variant="h4">
-            {getFormattedStatus(column.title)}
+            {getFormattedStatus(title)}
           </StyledTypographyStatus>
           <StyledTypographyCount variant="h4">
-            {Number(column.totalElements) === 0
-              ? "(0)"
-              : `(${column.totalElements})`}
+            {Number(totalElements) === 0 ? "(0)" : `(${totalElements})`}
           </StyledTypographyCount>
         </StyledRowStack>
       )}
       <StyledWrapperColumnContainer
-        id={`scroll-mentor-container-${column.id}`}
+        id={`scroll-mentor-container-${id}`}
         sx={{
-          ...(getColumnStyles(column.totalElements) as {}),
+          ...(getColumnStyles(totalElements) as {}),
         }}
       >
         <StyledInfiniteScroll
-          dataLength={column.cards?.length}
+          dataLength={cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
           loader={
@@ -91,9 +90,9 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
               <CircularProgress size={20} />
             </StyledWrapperBoxCircle>
           }
-          scrollableTarget={`scroll-mentor-container-${column.id}`}
+          scrollableTarget={`scroll-mentor-container-${id}`}
         >
-          {column.cards?.map((card, index) => (
+          {cards?.map((card, index) => (
             <StyledCardBox key={`${card.id}-${index}`}>
               <Card card={card} />
             </StyledCardBox>

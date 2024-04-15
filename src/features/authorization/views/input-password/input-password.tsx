@@ -31,35 +31,37 @@ const InputPassword = <T extends FieldValues>({
       <Controller
         name={name}
         control={control}
-        render={({ field: { onChange, value } }) => (
-          <TextField
-            fullWidth
-            type={showPassword ? "text" : "password"}
-            value={value}
-            onChange={onChange}
-            label={label}
-            placeholder={placeholder}
-            autoComplete="current-password"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={togglePasswordVisibility}>
-                    {showPassword ? (
-                      <Tooltip title="Скрыть пароль">
-                        <VisibilityOffIcon fontSize="small" color="primary" />
-                      </Tooltip>
-                    ) : (
-                      <Tooltip title="Показать пароль">
-                        <VisibilityIcon fontSize="small" color="primary" />
-                      </Tooltip>
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        )}
+        render={({ field: { onChange, value } }) => {
+          const inputProps = {
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={togglePasswordVisibility}>
+                  {showPassword ? (
+                    <Tooltip title="Скрыть пароль">
+                      <VisibilityOffIcon fontSize="small" color="primary" />
+                    </Tooltip>
+                  ) : (
+                    <Tooltip title="Показать пароль">
+                      <VisibilityIcon fontSize="small" color="primary" />
+                    </Tooltip>
+                  )}
+                </IconButton>
+              </InputAdornment>
+            ),
+          };
+
+          return (
+            <TextField
+              {...{ value, onChange, label, placeholder }}
+              type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
+              fullWidth
+              InputProps={inputProps}
+            />
+          );
+        }}
       />
+
       {errors?.[name] && (
         <StyledFormHelperText>{errors[name].message}</StyledFormHelperText>
       )}

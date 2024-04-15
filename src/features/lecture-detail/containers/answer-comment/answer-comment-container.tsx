@@ -74,15 +74,14 @@ const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
     },
   });
 
-  return (
-    <AnswerComment
-      loading={loading}
-      answerComment={answerComment}
-      commentId={commentId}
-      dataUser={data}
-      onReplySuccess={onReplySuccess}
-    />
-  );
+  const answerCommentProps = {
+    loading,
+    answerComment,
+    commentId,
+    onReplySuccess,
+  };
+
+  return <AnswerComment {...answerCommentProps} dataUser={data} />;
 };
 
 export default AnswerCommentContainer;

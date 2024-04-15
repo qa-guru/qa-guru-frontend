@@ -25,6 +25,7 @@ import { IUserDetail } from "./user-detail.types";
 
 const UserDetail: FC<IUserDetail> = ({ data }) => {
   const { rating, firstName, lastName, creationDate, roles } = data?.userById!;
+  const user = data.userById;
 
   const ratingColor = useRatingColor(rating?.rating);
   const hasRoleAccess = (role: UserRole) => roles?.includes(role);
@@ -34,9 +35,9 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
       <StyledPaper>
         <StyledRowStack>
           <Stack>
-            <AvatarUpload user={data?.userById} />
+            <AvatarUpload user={user} />
             <StyledHiddenIconBox>
-              <MediaLinks user={data?.userById} />
+              <MediaLinks user={user} />
             </StyledHiddenIconBox>
           </Stack>
           <StyledColumnStack>
@@ -75,7 +76,7 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
               {formatDate(creationDate, "DD.MM.YYYY")}
             </Typography>
           </StyledDateStack>
-          <MediaLinks user={data?.userById} />
+          <MediaLinks user={user} />
           <StyledWebsiteStack>
             <WorkIcon />
             <Typography variant="h5" color="textSecondary">

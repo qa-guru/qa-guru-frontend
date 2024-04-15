@@ -54,7 +54,7 @@ const UpdateRoleContainer: FC<IUpdateRoleContainer> = ({ id, roles }) => {
     },
   });
 
-  return <SelectRole updateRole={updateRole} id={id} roles={roles} />;
+  return <SelectRole {...{ updateRole, id, roles }} />;
 };
 
 export default UpdateRoleContainer;

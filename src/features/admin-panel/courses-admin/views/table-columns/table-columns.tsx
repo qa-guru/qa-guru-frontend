@@ -47,24 +47,13 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         accessorKey: "rating.rating",
         cell: (info: CellContext<TrainingDto, unknown>) => {
           const { mentors } = info.row.original;
-
           return (
             <>
-              {mentors?.map((mentor) => {
-                const { id, roles } = mentor!;
-
-                return (
-                  <Fragment key={id}>
-                    <UserRow
-                      user={mentor}
-                      hideRating
-                      roles={roles}
-                      userId={id}
-                      hasLink
-                    />
-                  </Fragment>
-                );
-              })}
+              {mentors?.map((mentor) => (
+                <Fragment key={mentor?.id}>
+                  <UserRow {...mentor} hideRating hasLink />
+                </Fragment>
+              ))}
             </>
           );
         },
@@ -119,18 +108,10 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
           return (
             <>
               {mentors?.map((mentor) => {
-                const { id, roles } = mentor!;
-
                 return (
-                  <Fragment key={id}>
+                  <Fragment key={mentor?.id}>
                     <StyledUserRowBox>
-                      <UserRow
-                        user={mentor}
-                        hideRating
-                        roles={roles}
-                        userId={id}
-                        hasLink
-                      />
+                      <UserRow {...mentor} email={null} hideRating hasLink />
                     </StyledUserRowBox>
                   </Fragment>
                 );

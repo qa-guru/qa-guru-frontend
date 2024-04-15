@@ -65,19 +65,12 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
 
       <StyledHomeworkContentBox>
         <HomeworkContent
-          status={status}
-          answer={answer}
-          openHomeWorkEdit={openHomeWorkEdit}
-          setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-          id={id}
+          {...{ status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, id }}
         />
       </StyledHomeworkContentBox>
 
       <ButtonEdit
-        editAccess={editAccess}
-        openHomeWorkEdit={openHomeWorkEdit}
-        setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-        status={status}
+        {...{ editAccess, openHomeWorkEdit, setOpenHomeWorkEdit, status }}
       />
     </>
   );

@@ -15,7 +15,7 @@ const TrainingLecturesContainer: FC<ITrainingLecturesContainer> = ({
     skip: !trainingId,
   });
 
-  return <LectureSelection data={data!} control={control} />;
+  return <LectureSelection {...{ data, control }} />;
 };
 
 export default TrainingLecturesContainer;

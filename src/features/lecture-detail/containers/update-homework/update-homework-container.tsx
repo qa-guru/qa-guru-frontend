@@ -13,11 +13,7 @@ const UpdateHomeworkContainer: FC<IUpdateHomeworkContainer> = ({
 
   return (
     <UpdateHomework
-      setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-      loading={loading}
-      updateHomework={updateHomework}
-      answer={answer}
-      id={id}
+      {...{ setOpenHomeWorkEdit, updateHomework, loading, answer, id }}
     />
   );
 };

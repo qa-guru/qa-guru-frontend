@@ -14,6 +14,7 @@ import { IAnswerComment } from "./answer-comment.types";
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, commentId, dataUser, onReplySuccess } = props;
+  const user = dataUser?.user;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
 
@@ -39,13 +40,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
 
   return (
     <StyledCommentStack>
-      <UserRow
-        user={dataUser?.user}
-        userId={dataUser?.user?.id}
-        hideFullName
-        hideRating
-        hasLink
-      />
+      <UserRow user={user} userId={user?.id} hideFullName hideRating hasLink />
       <StyledCommentBox>
         <form>
           <StyledBox>

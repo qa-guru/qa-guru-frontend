@@ -23,14 +23,7 @@ const UpdateCommentContainer: FC<IUpdateCommentContainer> = (props) => {
     },
   });
 
-  return (
-    <UpdateComment
-      commentId={commentId}
-      updateComment={updateComment}
-      loading={loading}
-      content={content}
-    />
-  );
+  return <UpdateComment {...{ commentId, updateComment, content, loading }} />;
 };
 
 export default UpdateCommentContainer;

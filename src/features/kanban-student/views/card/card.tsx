@@ -55,9 +55,7 @@ const Card: FC<ICard> = ({
   return (
     <>
       <StyledPaper
-        isDragging={isDragging}
-        isCardsHidden={isCardsHidden}
-        isActive={isActive}
+        {...{ isDragging, isCardsHidden, isActive }}
         ref={dragRef}
         onClick={onCardClick}
         elevation={4}

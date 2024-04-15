@@ -6,7 +6,7 @@ import { useAuth } from "../../context/auth-context";
 const ResetPasswordContainer: FC = () => {
   const { resetPassword, isLoading } = useAuth();
 
-  return <ResetPassword resetPassword={resetPassword} isLoading={isLoading} />;
+  return <ResetPassword {...{ resetPassword, isLoading }} />;
 };
 
 export default ResetPasswordContainer;

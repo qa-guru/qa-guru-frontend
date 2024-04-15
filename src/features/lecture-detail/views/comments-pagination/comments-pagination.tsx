@@ -69,11 +69,10 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
 
             return (
               <CommentItem
+                {...{ item, homeworkId }}
                 key={id}
-                item={item}
                 commentId={id}
                 currentUserID={dataUserId?.user?.id}
-                homeworkId={homeworkId}
               />
             );
           })}

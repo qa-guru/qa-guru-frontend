@@ -6,9 +6,7 @@ import { useAuth } from "../../context/auth-context";
 const SetNewPasswordContainer: FC = () => {
   const { setNewPassword, isLoading } = useAuth();
 
-  return (
-    <SetNewPassword setNewPassword={setNewPassword} isLoading={isLoading} />
-  );
+  return <SetNewPassword {...{ setNewPassword, isLoading }} />;
 };
 
 export default SetNewPasswordContainer;

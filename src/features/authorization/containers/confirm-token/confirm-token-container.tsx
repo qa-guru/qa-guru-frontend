@@ -6,7 +6,7 @@ import { useAuth } from "../../context/auth-context";
 const ConfirmTokenContainer: FC = () => {
   const { confirmToken, isLoading } = useAuth();
 
-  return <ConfirmToken confirmToken={confirmToken} isLoading={isLoading} />;
+  return <ConfirmToken {...{ confirmToken, isLoading }} />;
 };
 
 export default ConfirmTokenContainer;

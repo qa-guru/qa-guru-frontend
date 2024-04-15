@@ -67,9 +67,8 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
                   dataUserId={dataUserId}
                 />
                 <ModalHomeworksOtherStudents
+                  {...{ item, dataUserId }}
                   key={id}
-                  item={item}
-                  dataUserId={dataUserId}
                 />
               </StyledPaper>
             );

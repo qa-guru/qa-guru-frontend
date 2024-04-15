@@ -21,7 +21,7 @@ const MentorsContainer: FC<IMentorsContainer> = ({ control }) => {
     },
   });
 
-  return <MentorSelection data={data} control={control} />;
+  return <MentorSelection {...{ data, control }} />;
 };
 
 export default MentorsContainer;

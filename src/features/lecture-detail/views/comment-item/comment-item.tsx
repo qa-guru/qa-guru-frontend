@@ -105,13 +105,11 @@ const CommentItem: FC<ICommentItem> = ({
         <StyledThreadStack>
           {children?.map((childComment) => (
             <CommentItem
-              homeworkId={homeworkId}
+              {...{ homeworkId, editAccess, currentUserID }}
               key={childComment?.id}
               item={childComment}
               commentId={childComment?.id}
               parentID={id}
-              editAccess={editAccess}
-              currentUserID={currentUserID}
             />
           ))}
         </StyledThreadStack>

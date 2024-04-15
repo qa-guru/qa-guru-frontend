@@ -55,14 +55,11 @@ const DesktopBoard: FC<IDesktopBoard> = ({
         <StyledStack>
           {columns?.map((column, index) => (
             <Column
-              draggingState={draggingState}
-              setDraggingState={setDraggingState}
+              {...{ draggingState, setDraggingState, column, activeCardId }}
               key={`${column.id}-${index}`}
-              column={column}
               onCardDrop={moveCard}
               fetchMore={fetchMoreFunctions[index]}
               onCardClick={handleCardClick}
-              activeCardId={activeCardId}
             />
           ))}
         </StyledStack>

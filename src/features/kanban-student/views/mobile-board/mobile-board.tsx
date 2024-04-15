@@ -84,10 +84,8 @@ const MobileBoard: FC<IMobileBoard> = ({
         >
           {columns.map((column, index) => (
             <Column
-              draggingState={draggingState}
-              setDraggingState={setDraggingState}
+              {...{ draggingState, setDraggingState, column }}
               key={`${column.id}-${index}`}
-              column={column}
               onCardDrop={moveCard}
               fetchMore={fetchMoreFunctions[index]}
               onCardClick={handleCardClick}

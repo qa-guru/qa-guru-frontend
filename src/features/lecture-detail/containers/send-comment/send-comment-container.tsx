@@ -59,13 +59,7 @@ const SendCommentContainer: FC<ISendCommentContainer> = (props) => {
     },
   });
 
-  return (
-    <SendComment
-      loading={loading}
-      sendComment={sendComment}
-      homeworkId={homeworkId}
-    />
-  );
+  return <SendComment {...{ loading, sendComment, homeworkId }} />;
 };
 
 export default SendCommentContainer;

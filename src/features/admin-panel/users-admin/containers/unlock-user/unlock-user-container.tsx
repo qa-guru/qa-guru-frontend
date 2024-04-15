@@ -54,7 +54,7 @@ const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
     },
   });
 
-  return <UnlockUser unlockUser={unlockUser} id={id} />;
+  return <UnlockUser {...{ unlockUser, id }} />;
 };
 
 export default UnlockUserContainer;

@@ -97,9 +97,7 @@ const DeleteCommentContainer: FC<IDeleteCommentContainer> = ({
     },
   });
 
-  return (
-    <DeleteComment id={id} deleteComment={deleteComment} loading={loading} />
-  );
+  return <DeleteComment {...{ id, deleteComment, loading }} />;
 };
 
 export default DeleteCommentContainer;

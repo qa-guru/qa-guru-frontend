@@ -11,7 +11,7 @@ const LogoutContainer: FC<ILogoutContainer> = (props) => {
 
   if (isLoading) return <AppSpinner />;
 
-  return <Logout logout={logout} setAnchorElUser={setAnchorElUser} />;
+  return <Logout {...{ logout, setAnchorElUser }} />;
 };
 
 export default LogoutContainer;

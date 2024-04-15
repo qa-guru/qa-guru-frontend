@@ -19,6 +19,7 @@ import CommentsPagination from "../comments-pagination";
 const Homework: FC<IHomework> = (props) => {
   const { dataHomeWorkByLectureAndTraining, dataUserId, hideMentorAndStudent } =
     props;
+  const id = dataHomeWorkByLectureAndTraining?.id;
   const { isMobile } = useResponsive();
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
@@ -32,11 +33,8 @@ const Homework: FC<IHomework> = (props) => {
       <StyledDialogContent id="scroll-container">
         <StyledClearIcon onClick={hideModalAndUpdateUrl} />
         <StyledModalBox>
-          <HomeworkItem
-            dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
-            dataUserId={dataUserId}
-          />
-          <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
+          <HomeworkItem {...{ dataHomeWorkByLectureAndTraining, dataUserId }} />
+          <Comments homeworkId={id}>
             <CommentsPagination />
           </Comments>
         </StyledModalBox>
@@ -55,13 +53,15 @@ const Homework: FC<IHomework> = (props) => {
   return (
     <StyledPaper>
       <HomeworkItem
-        dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
-        dataUserId={dataUserId}
-        hideMentorAndStudent={hideMentorAndStudent}
+        {...{
+          dataHomeWorkByLectureAndTraining,
+          dataUserId,
+          hideMentorAndStudent,
+        }}
       />
-      {dataHomeWorkByLectureAndTraining?.id && (
+      {id && (
         <>
-          <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
+          <Comments homeworkId={id}>
             <CommentsLimited />
           </Comments>
 

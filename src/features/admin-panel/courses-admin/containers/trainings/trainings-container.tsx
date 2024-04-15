@@ -22,7 +22,7 @@ const TrainingsContainer: FC = () => {
 
   if (!data) return <NoDataErrorMessage />;
 
-  return <TableColumns data={data} fetchMore={fetchMore} />;
+  return <TableColumns {...{ data, fetchMore }} />;
 };
 
 export default TrainingsContainer;

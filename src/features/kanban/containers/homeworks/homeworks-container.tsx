@@ -102,20 +102,22 @@ const HomeworksContainer: FC = () => {
   if (!newData || !inReviewData || !approvedData || !notApprovedData)
     return <NoDataErrorMessage />;
 
-  return (
-    <Board
-      newData={newData}
-      inReviewData={inReviewData}
-      approvedData={approvedData}
-      notApprovedData={notApprovedData}
-      fetchMoreFunctions={[
-        fetchMoreNew,
-        fetchMoreInReview,
-        fetchMoreApproved,
-        fetchMoreNotApproved,
-      ]}
-    />
-  );
+  const fetchMoreFunctions = [
+    fetchMoreNew,
+    fetchMoreInReview,
+    fetchMoreApproved,
+    fetchMoreNotApproved,
+  ];
+
+  const boardProps = {
+    newData,
+    inReviewData,
+    approvedData,
+    notApprovedData,
+    fetchMoreFunctions,
+  };
+
+  return <Board {...boardProps} />;
 };
 
 export default HomeworksContainer;

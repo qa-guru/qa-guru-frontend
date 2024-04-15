@@ -31,11 +31,7 @@ const LectureDetailContainer: FC = () => {
   if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
 
   return (
-    <LectureDetail
-      dataLecture={dataLecture}
-      dataLectureHomework={dataLectureHomework}
-      tariffHomework={tariffHomework}
-    />
+    <LectureDetail {...{ dataLecture, dataLectureHomework, tariffHomework }} />
   );
 };
 

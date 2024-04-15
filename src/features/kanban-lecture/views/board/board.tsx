@@ -62,15 +62,9 @@ const Board: FC<IBoard> = ({
   return (
     <>
       {isMobileOrTablet ? (
-        <MobileBoard
-          columns={columns}
-          fetchMoreFunctions={fetchMoreFunctions}
-        />
+        <MobileBoard {...{ columns, fetchMoreFunctions }} />
       ) : (
-        <DesktopBoard
-          columns={columns}
-          fetchMoreFunctions={fetchMoreFunctions}
-        />
+        <DesktopBoard {...{ columns, fetchMoreFunctions }} />
       )}
     </>
   );

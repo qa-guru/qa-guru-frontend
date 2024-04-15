@@ -54,7 +54,7 @@ const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
     },
   });
 
-  return <LockUser lockUser={lockUser} id={id} />;
+  return <LockUser {...{ lockUser, id }} />;
 };
 
 export default LockUserContainer;

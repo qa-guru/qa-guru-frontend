@@ -26,11 +26,7 @@ const LikeComment: FC<ILikeComment> = ({
   return (
     <Stack direction="row" alignItems="center" spacing={0.3}>
       <StyledIconButton onClick={handleFavourite}>
-        {userLike ? (
-          <StyledFavorite sx={{ color: app.red }} />
-        ) : (
-          <StyledFavoriteBorder sx={{ color: app.red }} />
-        )}
+        {userLike ? <StyledFavorite /> : <StyledFavoriteBorder />}
       </StyledIconButton>
       <Typography variant="caption" color="textSecondary">
         {likes}

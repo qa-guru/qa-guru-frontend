@@ -51,6 +51,7 @@ const Column: FC<IColumn> = ({
   onCardClick,
   activeCardId,
 }) => {
+  const { title, id, cards, totalElements } = column;
   const { isMobileOrTablet } = useResponsive();
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
   const droppedItem = useRef<Maybe<CardType>>(null);
@@ -61,24 +62,23 @@ const Column: FC<IColumn> = ({
   >({
     accept: "card",
     drop: (item: CardType) => {
-      if (item.allowedColumns.includes(column.id)) {
+      if (item.allowedColumns.includes(id)) {
         droppedItem.current = item;
         showModal();
       }
     },
 
     canDrop: (item: { allowedColumns: string[] }) =>
-      item.allowedColumns.includes(column.id),
+      item.allowedColumns.includes(id),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
   });
 
-  const isTotalElements = column.cards?.length >= column.totalElements;
-  const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
-  const shouldShowLoadMoreButton =
-    column.cards?.length <= MAX_CARDS_BEFORE_SHOW_MORE;
+  const isTotalElements = cards?.length >= totalElements;
+  const isMaxLimit = cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
+  const shouldShowLoadMoreButton = cards?.length <= MAX_CARDS_BEFORE_SHOW_MORE;
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal}>
@@ -111,13 +111,13 @@ const Column: FC<IColumn> = ({
       onCardDrop(
         droppedItem.current.id,
         droppedItem.current.sourceColumnId,
-        column.id
+        id
       );
       droppedItem.current = null;
       hideModal();
 
       const containerElement = document.getElementById(
-        `scroll-container-${column.id}`
+        `scroll-container-${id}`
       );
       if (containerElement) {
         containerElement.scrollTo({
@@ -140,7 +140,7 @@ const Column: FC<IColumn> = ({
     }
     fetchMore({
       variables: {
-        offset: column.cards?.length,
+        offset: cards?.length,
       },
       updateQuery: (
         prev: { homeWorks: { items: StudentHomeWorkDto[] } },
@@ -167,31 +167,29 @@ const Column: FC<IColumn> = ({
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
     }
-  }, [column.cards?.length, column.totalElements]);
+  }, [cards?.length, totalElements]);
 
   return (
     <StyledWrapperColumnBox>
       {!isMobileOrTablet && (
         <StyledRowStack>
           <StyledTypographyStatus variant="h4">
-            {getFormattedStatus(column.title)}
+            {getFormattedStatus(title)}
           </StyledTypographyStatus>
           <StyledTypographyCount variant="h4">
-            {Number(column.totalElements) === 0
-              ? "(0)"
-              : `(${column.totalElements})`}
+            {Number(totalElements) === 0 ? "(0)" : `(${totalElements})`}
           </StyledTypographyCount>
         </StyledRowStack>
       )}
       <StyledWrapperColumnContainer
-        id={`scroll-container-${column.id}`}
+        id={`scroll-container-${id}`}
         ref={dropRef}
         sx={{
-          ...(getColumnStyles(column.totalElements) as {}),
+          ...(getColumnStyles(totalElements) as {}),
         }}
       >
         <StyledInfiniteScroll
-          dataLength={column.cards?.length}
+          dataLength={cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
           loader={
@@ -199,15 +197,15 @@ const Column: FC<IColumn> = ({
               <CircularProgress size={20} />
             </StyledWrapperBoxCircle>
           }
-          scrollableTarget={`scroll-container-${column.id}`}
+          scrollableTarget={`scroll-container-${id}`}
         >
-          {column.cards?.map((card, index) => (
+          {cards?.map((card, index) => (
             <StyledCardBox key={`${card.id}-${index}`}>
               <Card
                 card={card}
-                sourceColumnId={column.id}
+                sourceColumnId={id}
                 setDraggingState={setDraggingState}
-                isCardsHidden={isColumnHighlight(column.id, draggingState)}
+                isCardsHidden={isColumnHighlight(id, draggingState)}
                 onCardClick={() => onCardClick?.(card)}
                 isActive={activeCardId === card.id}
               />

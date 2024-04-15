@@ -24,14 +24,7 @@ const LikeCommentContainer: FC<ILikeCommentContainer> = ({
     },
   });
 
-  return (
-    <LikeComment
-      commentId={commentId}
-      likeComment={likeComment}
-      likes={likes}
-      userLike={userLike}
-    />
-  );
+  return <LikeComment {...{ commentId, likeComment, likes, userLike }} />;
 };
 
 export default LikeCommentContainer;

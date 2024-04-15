@@ -25,7 +25,7 @@ const Card: FC<ICard> = ({
   onCardClick,
   isActive,
 }) => {
-  const { id, mentor, student, lecture, training } = card;
+  const { id, mentor, student, lecture, training, creationDate } = card;
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -55,9 +55,7 @@ const Card: FC<ICard> = ({
   return (
     <>
       <StyledPaper
-        isDragging={isDragging}
-        isCardsHidden={isCardsHidden}
-        isActive={isActive}
+        {...{ isDragging, isCardsHidden, isActive }}
         ref={dragRef}
         onClick={onCardClick}
         elevation={4}
@@ -67,8 +65,7 @@ const Card: FC<ICard> = ({
             {getFormattedId(training?.techStack, id)}
           </Typography>
           <Typography variant="body2">
-            {card.creationDate &&
-              format(parseISO(card.creationDate), "dd.MM.yyyy")}
+            {card.creationDate && format(parseISO(creationDate), "dd.MM.yyyy")}
           </Typography>
         </StyledCardHeader>
         <StyledBox>

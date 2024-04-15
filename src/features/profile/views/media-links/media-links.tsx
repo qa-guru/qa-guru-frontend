@@ -67,14 +67,7 @@ const MediaLinks: FC<IMediaLinks> = ({ user }) => {
         const link = user?.[key as keyof UserDto];
         const href = constructHref(key, link, prefix);
 
-        return (
-          <IconLink
-            key={key}
-            href={href}
-            icon={icon}
-            iconSecondary={iconSecondary}
-          />
-        );
+        return <IconLink {...{ key, href, icon, iconSecondary }} />;
       })}
     </StyledIconStack>
   );

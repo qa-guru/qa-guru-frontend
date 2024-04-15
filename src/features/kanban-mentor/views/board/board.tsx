@@ -133,24 +133,20 @@ const Board: FC<IBoard> = ({
     [updateStatus]
   );
 
+  const boardProps = {
+    columns,
+    draggingState,
+    setDraggingState,
+    moveCard,
+    fetchMoreFunctions,
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       {isMobileOrTablet ? (
-        <MobileBoard
-          columns={columns}
-          draggingState={draggingState}
-          setDraggingState={setDraggingState}
-          moveCard={moveCard}
-          fetchMoreFunctions={fetchMoreFunctions}
-        />
+        <MobileBoard {...boardProps} />
       ) : (
-        <DesktopBoard
-          columns={columns}
-          draggingState={draggingState}
-          setDraggingState={setDraggingState}
-          moveCard={moveCard}
-          fetchMoreFunctions={fetchMoreFunctions}
-        />
+        <DesktopBoard {...boardProps} />
       )}
     </DndProvider>
   );

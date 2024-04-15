@@ -21,6 +21,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
   dataUserId,
 }) => {
   const { isMobile } = useResponsive();
+  const id = item?.id;
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog
@@ -37,7 +38,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
             dataHomeWorkByLectureAndTraining={item}
             dataUserId={dataUserId}
           />
-          <Comments homeworkId={item?.id}>
+          <Comments homeworkId={id}>
             <CommentsPagination />
           </Comments>
         </StyledBox>
@@ -55,7 +56,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
 
   return (
     <StyledStack>
-      <Comments homeworkId={item?.id}>
+      <Comments homeworkId={id}>
         <CommentsTotalElements />
       </Comments>
       <StyledButton variant="contained" onClick={handleShowModal}>

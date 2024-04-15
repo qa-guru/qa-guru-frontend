@@ -29,15 +29,27 @@ import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
   const Format = "dd.MM.yyyy | HH:mm";
+  const {
+    training,
+    id,
+    mentor,
+    student,
+    lecture,
+    status,
+    answer,
+    endCheckingDate,
+    startCheckingDate,
+    creationDate,
+  } = card;
 
   return (
     <StyledHomeworkDetails>
       <StyledBox>
         <StyledStack>
-          <StyledLink to={`/kanban-student/${card.id}`}>
+          <StyledLink to={`/kanban-student/${id}`}>
             <StyledId>
               <Typography variant="h4">
-                {getFormattedId(card?.training?.techStack, card.id)}
+                {getFormattedId(training?.techStack, id)}
               </Typography>
               <StyledIcon />
             </StyledId>
@@ -46,23 +58,23 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <StyledIconButton onClick={onClose}>
           <ChevronRightIcon />
         </StyledIconButton>
-        <Typography variant="h5">{card.lecture?.subject}</Typography>
+        <Typography variant="h5">{lecture?.subject}</Typography>
         <StyledRowStack>
           <UserRow
             icon={StudentIcon}
-            user={card.student}
+            user={student}
             width={26}
             height={26}
-            userId={card.student?.id}
+            userId={student?.id}
             hasLink
           />
-          {card.mentor && (
+          {mentor && (
             <UserRow
               icon={MentorIcon}
-              user={card.mentor}
+              user={mentor}
               width={26}
               height={26}
-              userId={card.mentor.id}
+              userId={mentor?.id}
               hasLink
             />
           )}
@@ -71,36 +83,35 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
           <StyledColumnStack>
             <Typography variant="body2">Создано</Typography>
             <StyledTypography variant="caption">
-              {card.creationDate && format(parseISO(card.creationDate), Format)}
+              {creationDate && format(parseISO(creationDate), Format)}
             </StyledTypography>
           </StyledColumnStack>
-          {card.startCheckingDate && (
+          {startCheckingDate && (
             <StyledColumnStack>
               <Typography variant="body2">Начало проверки</Typography>
               <StyledTypography variant="caption">
-                {card.startCheckingDate &&
-                  format(parseISO(card.startCheckingDate), Format)}
+                {startCheckingDate &&
+                  format(parseISO(startCheckingDate), Format)}
               </StyledTypography>
             </StyledColumnStack>
           )}
-          {card.endCheckingDate && (
+          {endCheckingDate && (
             <StyledColumnStack>
               <Typography variant="body2">Окончание проверки</Typography>
               <Typography variant="caption">
-                {card.endCheckingDate &&
-                  format(parseISO(card.endCheckingDate), Format)}
+                {endCheckingDate && format(parseISO(endCheckingDate), Format)}
               </Typography>
             </StyledColumnStack>
           )}
         </StyledRowStack>
         <StyledStatusContentBox>
-          <StatusText status={card.status} />
+          <StatusText status={status} />
         </StyledStatusContentBox>
-        <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork} />
+        <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
         <StyledPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>
           <Stack>
-            <TextView content={card.answer} />
+            <TextView content={answer} />
           </Stack>
         </StyledPaper>
       </StyledBox>

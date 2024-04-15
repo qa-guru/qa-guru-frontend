@@ -37,13 +37,7 @@ const HomeworksOtherStudentsContainer: FC = () => {
   if (loading || loadingUserId) return <SkeletonHomeworks />;
   if (!data || !dataUserId || !lectureId) return <NoDataErrorMessage />;
 
-  return (
-    <HomeworksOtherStudents
-      dataUserId={dataUserId}
-      fetchMore={fetchMore}
-      data={data}
-    />
-  );
+  return <HomeworksOtherStudents {...{ data, dataUserId, fetchMore }} />;
 };
 
 export default HomeworksOtherStudentsContainer;

@@ -21,7 +21,9 @@ const TrainingsContainer: FC<ITrainingsContainer> = ({ control }) => {
     },
   });
 
-  return <TrainingSelection control={control} items={data?.trainings?.items} />;
+  const items = data?.trainings?.items;
+
+  return <TrainingSelection {...{ control, items }} />;
 };
 
 export default TrainingsContainer;

@@ -6,7 +6,7 @@ import { useAuth } from "../../context/auth-context";
 const LoginContainer: FC = () => {
   const { login, isLoading } = useAuth();
 
-  return <Login login={login} isLoading={isLoading} />;
+  return <Login {...{ login, isLoading }} />;
 };
 
 export default LoginContainer;

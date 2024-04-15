@@ -22,11 +22,10 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
 
           return (
             <CommentItem
+              {...{ item, homeworkId }}
               key={`${id}-${index}`}
-              item={item}
               commentId={id}
               currentUserID={dataUserId?.user?.id}
-              homeworkId={homeworkId}
             />
           );
         })}

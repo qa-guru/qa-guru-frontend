@@ -40,11 +40,7 @@ const UserRow: FC<IUserRow> = (props) => {
 
       {!hideAvatar && (
         <AvatarCustom
-          fullName={fullName}
-          width={width}
-          height={height}
-          userId={userId}
-          hasLink={hasLink}
+          {...{ fullName, width, height, userId, hasLink }}
           img={user?.avatar}
         />
       )}
@@ -52,12 +48,7 @@ const UserRow: FC<IUserRow> = (props) => {
       <StyledBox>
         <StyledStack>
           {!hideFullName && (
-            <UserName
-              fullName={fullName}
-              userId={userId}
-              hasLink={hasLink}
-              variant={variant}
-            />
+            <UserName {...{ fullName, userId, hasLink, variant }} />
           )}
           {!hideRating && <Rating user={user} rating={rating} />}
         </StyledStack>
