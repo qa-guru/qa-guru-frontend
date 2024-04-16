@@ -30,8 +30,6 @@ export default function MenuButtonEmoji(props: MenuButtonEmojiProps) {
   const id = open ? "simple-popover" : undefined;
 
   const onClick = (emojiData: EmojiClickData) => {
-    console.log(emojiData);
-
     editor?.commands.insertContent(emojiData.emoji);
   };
 

@@ -88,7 +88,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        {isCurrentMentor && hasNoMentor ? (
+        {isCurrentMentor || hasNoMentor ? (
           <StatusSelect currentStatus={status} homeworkId={id} />
         ) : (
           <StatusText status={status} />

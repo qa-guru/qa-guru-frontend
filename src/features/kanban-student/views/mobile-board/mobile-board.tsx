@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 
-import { IMobileBoard } from "./mobile-board.types";
+import { IMobileBoard, states } from "./mobile-board.types";
 import {
   StyledBox,
   StyledMobileWrapper,
@@ -15,7 +15,6 @@ import {
 } from "../board/board.styled";
 import Column from "../column";
 import { ROUTES } from "../../constants";
-import { states } from "../status-select/status-select.types";
 
 const MobileBoard: FC<IMobileBoard> = ({
   columns,
