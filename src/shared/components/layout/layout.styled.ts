@@ -8,16 +8,21 @@ export const StyledBox = styled(Box)({
   minWidth: "100%",
 });
 
-export const StyledContainer = styled(Container)({
+export const StyledContainer = styled(Container)(({ theme }) => ({
   flexGrow: 1,
   minWidth: "100%",
-});
-
-export const StyledBreadcrumbsContainer = styled(Container)(({ theme }) => ({
-  marginBottom: "15px",
+  [theme.breakpoints.only("xs")]: {
+    marginTop: "70px",
+  },
 }));
 
+export const StyledBreadcrumbsContainer = styled(Container)({
+  marginBottom: "15px",
+  paddingTop: "65px",
+});
+
 export const StyledBreadcrumbsBox = styled(Box)(({ theme }) => ({
+  paddingTop: "65px",
   [theme.breakpoints.only("sm")]: {
     marginLeft: "10px",
   },

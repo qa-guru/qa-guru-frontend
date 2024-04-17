@@ -55,6 +55,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
           </>
         )}
       </StyledWrapper>
+
       <Divider />
 
       {!hideMentorAndStudent && status && (

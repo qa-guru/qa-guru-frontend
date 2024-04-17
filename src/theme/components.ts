@@ -113,6 +113,13 @@ const components = (theme: Theme) => {
           },
         },
       },
+      MuiDialogContent: {
+        styleOverrides: {
+          root: {
+            zIndex: 3000,
+          },
+        },
+      },
     },
   };
 };

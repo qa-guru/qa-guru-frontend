@@ -8,6 +8,7 @@ import {
   StyledButton,
   StyledClearIcon,
   StyledDialogContent,
+  StyledIconBox,
   StyledStack,
 } from "./modal-homeworks-other-students.styled";
 import { Comments } from "../../containers";
@@ -31,7 +32,9 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
       maxWidth="xl"
     >
       <StyledDialogContent id="scroll-container">
-        <StyledClearIcon onClick={handleHideModal} />
+        <StyledIconBox>
+          <StyledClearIcon onClick={handleHideModal} />
+        </StyledIconBox>
         <StyledBox>
           <HomeworkItem
             dataHomeWorkByLectureAndTraining={item}

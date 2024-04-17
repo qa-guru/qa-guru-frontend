@@ -10,8 +10,12 @@ export const StyledLink = styled(Link)(({ theme }) => ({
 }));
 
 export const StyledHeader = styled("header")(({ theme }) => ({
+  position: "fixed",
+  top: 0,
   alignItems: "center",
   marginBottom: "10px",
+  width: "100%",
+  zIndex: 150,
   [theme.breakpoints.only("xs")]: {
     marginBottom: "24px",
   },
