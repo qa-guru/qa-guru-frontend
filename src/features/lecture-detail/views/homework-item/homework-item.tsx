@@ -28,7 +28,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
   } = dataHomeWorkByLectureAndTraining || {};
 
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
-  const editAccess = dataUserId.user?.id === student?.id;
+  const editAccess = dataUserId?.user?.id === student?.id;
 
   const date = status === "IN_REVIEW" ? startCheckingDate : endCheckingDate;
 
