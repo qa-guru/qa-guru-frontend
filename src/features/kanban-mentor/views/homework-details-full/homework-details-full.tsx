@@ -37,9 +37,6 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     id,
   } = homeWork!;
 
-  const isCurrentMentor = dataUserId.user?.id === mentor?.id;
-  const hasNoMentor = mentor?.id === undefined;
-
   return (
     <Container>
       <StyledTitle variant="h6">
@@ -88,11 +85,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        {isCurrentMentor && hasNoMentor ? (
-          <StatusSelect currentStatus={status} homeworkId={id} />
-        ) : (
-          <StatusText status={status} />
-        )}
+        <StatusSelect currentStatus={status} homeworkId={id} />
       </StyledStack>
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledAnswerBox>
