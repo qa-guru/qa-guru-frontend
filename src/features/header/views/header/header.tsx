@@ -21,6 +21,7 @@ import {
   StyledWrapper,
 } from "./header.styled";
 import KanbanMenu from "../kanban-menu";
+import { Box } from "@mui/material";
 
 interface IPages {
   pageURL: string;
