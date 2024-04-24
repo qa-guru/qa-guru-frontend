@@ -5,8 +5,6 @@ export const QUERY_DEFAULTS = {
 
 export const PARSE_INT_RADIX = 10;
 
-export const MAX_HOMEWORK_LENGTH = 2000;
-
 export const INDEX_OFFSET = 1;
 
 export const ROUTES = {
