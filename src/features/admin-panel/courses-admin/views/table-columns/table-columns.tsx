@@ -1,23 +1,29 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { TrainingDto } from "api/graphql/generated/graphql";
 import { FC, Fragment, useMemo } from "react";
-import { Avatar, Typography } from "@mui/material";
+import { Avatar, IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
+import useResponsive from "shared/hooks/use-responsive";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";
 import {
   StyledEditBox,
-  StyledIconButton,
   StyledTrainingStack,
   StyledUserRowBox,
 } from "./table-columns.styled";
-import useResponsive from "../../../../../shared/hooks/use-responsive";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile } = useResponsive();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigateEditCourse = (trainingId: string) => {
+    navigate(`${location.pathname}/edit-training/${trainingId}`);
+  };
 
   const desktopColumns = useMemo<ColumnDef<TrainingDto>[]>(
     () => [
@@ -74,11 +80,13 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         header: () => null,
         footer: (props) => props.column.id,
         accessorKey: "lock",
-        cell: () => {
+        cell: (info: CellContext<TrainingDto, unknown>) => {
+          const { id } = info.row.original;
+
           return (
-            <StyledIconButton>
+            <IconButton onClick={() => handleNavigateEditCourse(id)}>
               <ModeEditIcon fontSize="small" color="primary" />
-            </StyledIconButton>
+            </IconButton>
           );
         },
         size: 10,
@@ -147,9 +155,9 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         cell: () => {
           return (
             <StyledEditBox>
-              <StyledIconButton>
+              <IconButton>
                 <ModeEditIcon fontSize="small" color="primary" />
-              </StyledIconButton>
+              </IconButton>
             </StyledEditBox>
           );
         },

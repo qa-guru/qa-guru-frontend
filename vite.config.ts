@@ -6,12 +6,17 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default ({ mode }: any) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
+  const proxyConfig = {
+    "^/graphql": process.env.VITE_APP_ENDPOINT,
+    "^/login": process.env.VITE_APP_ENDPOINT,
+    "^/logout": process.env.VITE_APP_ENDPOINT,
+    "^/api/v1/upload/avatar": process.env.VITE_APP_ENDPOINT,
+    "^/api/v1/upload/training/:id": process.env.VITE_APP_ENDPOINT,
+  };
+
   return defineConfig({
     server: {
-      proxy: {
-        "^/(graphql|login|logout|api/v1/upload/avatar)":
-          process.env.VITE_APP_ENDPOINT!,
-      },
+      proxy: proxyConfig,
       host: true,
     },
     plugins: [react(), svgr(), tsconfigPaths()],
