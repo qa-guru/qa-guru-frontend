@@ -8,7 +8,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   textAlign: "center",
-  top: "66px",
+  top: "60px",
   bottom: "60px",
   width: "100%",
 }));
