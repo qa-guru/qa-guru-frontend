@@ -16,10 +16,10 @@ export const StyledContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-export const StyledBreadcrumbsContainer = styled(Container)({
+export const StyledBreadcrumbsContainer = styled(Container)(({ theme }) => ({
   marginBottom: "15px",
   paddingTop: "65px",
-});
+}));
 
 export const StyledBreadcrumbsBox = styled(Box)(({ theme }) => ({
   paddingTop: "65px",

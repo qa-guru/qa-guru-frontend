@@ -11,7 +11,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   justifyContent: "space-between",
   padding: "20px 40px",
   gap: "20px",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     padding: "10px 20px",
   },
 }));
