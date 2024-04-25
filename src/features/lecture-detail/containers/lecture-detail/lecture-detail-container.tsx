@@ -5,6 +5,7 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
   useLectureHomeWorkQuery,
   useLectureQuery,
+  useTrainingLecturesQuery, // Import the query for fetching all lectures in a training
 } from "api/graphql/generated/graphql";
 
 import LectureDetail from "../../views/lecture-detail";
@@ -19,22 +20,35 @@ const LectureDetailContainer: FC = () => {
     variables: { id: lectureId! },
   });
 
+  const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
+    useTrainingLecturesQuery({
+      variables: { id: trainingId! },
+    });
+
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
       variables: { lectureId: lectureId! },
       skip: !tariffHomework,
     });
 
-  if (loadingLecture || loadingLectureHomeWork || !tariffHomework)
+  if (
+    loadingLecture ||
+    loadingLectureHomeWork ||
+    loadingTrainingLectures ||
+    !tariffHomework
+  )
     return <AppSpinner />;
 
-  if (!dataLecture || !lectureId) return <NoDataErrorMessage />;
+  if (!dataLecture || !lectureId || !dataTrainingLectures)
+    return <NoDataErrorMessage />;
 
   return (
     <LectureDetail
       dataLecture={dataLecture}
+      dataTrainingLectures={dataTrainingLectures}
       dataLectureHomework={dataLectureHomework}
       tariffHomework={tariffHomework}
+      trainingId={trainingId}
     />
   );
 };

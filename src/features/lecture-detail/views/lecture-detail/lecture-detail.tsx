@@ -19,9 +19,17 @@ import {
 } from "../../containers";
 import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
 import HomeworksOtherStudentsForm from "../homeworks-other-students-form";
+import Stepper from "../../containers/stepper";
+import StepperButtons from "../stepper-buttons";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
-  const { dataLecture, dataLectureHomework, tariffHomework } = props;
+  const {
+    dataLecture,
+    dataLectureHomework,
+    dataTrainingLectures,
+    tariffHomework,
+    trainingId,
+  } = props;
   const { subject, description, speakers, content } = dataLecture.lecture || {};
   const lectureHomeWork = dataLectureHomework?.lectureHomeWork || [];
   const hasHomework = lectureHomeWork?.length > 0;
@@ -35,6 +43,7 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   return (
     <HomeworksFormProvider>
       <Container>
+        <Stepper />
         <LectureTitle title={subject} />
         <LectureDescription description={description} />
         <LectureSpeakers speakers={speakers} />
@@ -71,6 +80,10 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
           </>
         )}
         {!tariffHomework && <BlurredHomework />}
+        <StepperButtons
+          dataTrainingLectures={dataTrainingLectures}
+          trainingId={trainingId}
+        />
       </Container>
     </HomeworksFormProvider>
   );
