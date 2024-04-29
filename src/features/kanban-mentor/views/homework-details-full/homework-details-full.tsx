@@ -7,7 +7,6 @@ import UserRow from "shared/components/user-row";
 import LectureHomework from "features/lecture-detail/views/lecture-homework";
 import Homework from "features/lecture-detail/views/homework";
 import StatusSelect from "features/kanban/views/status-select";
-import StatusText from "shared/components/status-text";
 
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import {

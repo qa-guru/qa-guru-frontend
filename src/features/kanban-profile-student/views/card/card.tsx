@@ -16,6 +16,7 @@ import {
   StyledCardHeader,
   StyledClearIcon,
   StyledDialogContent,
+  StyledIconBox,
   StyledPaper,
   StyledUserRowStack,
 } from "./card.styled";
@@ -38,16 +39,16 @@ const Card: FC<ICard> = ({ card }) => {
       maxWidth="xl"
     >
       <StyledDialogContent id="scroll-container">
-        <StyledClearIcon onClick={handleHideModal} />
-        <StyledBox>
-          <HomeworkItem
-            dataHomeWorkByLectureAndTraining={card!}
-            dataUserId={dataUserId!}
-          />
-          <Comments homeworkId={card.id}>
-            <CommentsPagination />
-          </Comments>
-        </StyledBox>
+        <StyledIconBox>
+          <StyledClearIcon onClick={handleHideModal} />
+        </StyledIconBox>
+        <HomeworkItem
+          dataHomeWorkByLectureAndTraining={card!}
+          dataUserId={dataUserId!}
+        />
+        <Comments homeworkId={card.id}>
+          <CommentsPagination />
+        </Comments>
       </StyledDialogContent>
     </Dialog>
   ));

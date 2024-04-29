@@ -10,13 +10,12 @@ import Profile from "../../containers";
 import AppMenu from "../menu/menu";
 import MenuBurger from "../menu-burger/menu-burger";
 import {
+  StyledAppBar,
   StyledDarkLogo,
-  StyledHeader,
   StyledIconBox,
   StyledLink,
   StyledLogo,
   StyledLogoIconButton,
-  StyledPaper,
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
@@ -91,38 +90,32 @@ const Header: FC = () => {
   };
 
   return (
-    <StyledHeader>
-      <StyledPaper>
-        <StyledWrapper>
-          <StyledStack>
-            <MenuBurger
-              pages={pages}
-              setAnchorElNav={setAnchorElNav}
-              handleClickNavMenu={handleClickNavMenu}
-              anchorElNav={anchorElNav}
-            />
-            <StyledIconBox>
-              <StyledLogoIconButton
-                disableRipple
-                onClick={() => handleClickNavMenu("/")}
-              >
-                {settings.theme === "light" ? (
-                  <StyledDarkLogo />
-                ) : (
-                  <StyledLogo />
-                )}
-              </StyledLogoIconButton>
-            </StyledIconBox>
-            <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-            {kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />}
-          </StyledStack>
-          <StyledStack>
-            <ThemeSelector />
-            <Profile />
-          </StyledStack>
-        </StyledWrapper>
-      </StyledPaper>
-    </StyledHeader>
+    <StyledAppBar position="fixed">
+      <StyledWrapper>
+        <StyledStack>
+          <MenuBurger
+            pages={pages}
+            setAnchorElNav={setAnchorElNav}
+            handleClickNavMenu={handleClickNavMenu}
+            anchorElNav={anchorElNav}
+          />
+          <StyledIconBox>
+            <StyledLogoIconButton
+              disableRipple
+              onClick={() => handleClickNavMenu("/")}
+            >
+              {settings.theme === "light" ? <StyledDarkLogo /> : <StyledLogo />}
+            </StyledLogoIconButton>
+          </StyledIconBox>
+          <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
+          {kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />}
+        </StyledStack>
+        <StyledStack>
+          <ThemeSelector />
+          <Profile />
+        </StyledStack>
+      </StyledWrapper>
+    </StyledAppBar>
   );
 };
 

@@ -46,10 +46,12 @@ const components = (theme: Theme) => {
       styleOverrides: {
         root: {
           [theme.breakpoints.only("sm")]: {
-            padding: "0 10px",
+            paddingRight: "10px",
+            paddingLeft: "10px",
           },
           [theme.breakpoints.only("xs")]: {
-            padding: "0 5px",
+            paddingRight: "5px",
+            paddingLeft: "5px",
           },
         },
       },
@@ -110,6 +112,13 @@ const components = (theme: Theme) => {
         styleOverrides: {
           root: {
             fontSize: "14px",
+          },
+        },
+      },
+      MuiDialogContent: {
+        styleOverrides: {
+          root: {
+            zIndex: 3000,
           },
         },
       },

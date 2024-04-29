@@ -9,6 +9,10 @@ export const StyledModalBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+export const StyledBox = styled(Box)({
+  padding: "8px",
+});
+
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
   [theme.breakpoints.up("sm")]: {
@@ -17,28 +21,38 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   marginTop: "25px",
 }));
 
-export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
-  overflowY: "auto",
-  padding: "20px 35px",
-  [theme.breakpoints.up("sm")]: {
-    height: "calc(100dvh - 50px)",
-  },
-}));
-
 export const StyledButton = styled(Button)(({ theme }) => ({
   marginTop: "16px",
   color: theme.palette.app.white,
 }));
 
-export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
+export const StyledIconBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "flex-end",
   position: "absolute",
-  cursor: "pointer",
-  color: theme.palette.app.primary,
+  top: 0,
+  right: 0,
   zIndex: 2000,
-  top: "8px",
-  right: "8px",
+  width: "100%",
+  backgroundColor: theme.palette.app.white,
+}));
+
+export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
+  color: theme.palette.app.primary,
+  marginRight: "5px",
   [theme.breakpoints.up("sm")]: {
-    top: "12px",
-    right: "12px",
+    margin: "5px 15px 0 0",
+    cursor: "pointer",
+  },
+}));
+
+export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
+  overflowY: "auto",
+  scrollbarWidth: "none",
+  height: "calc(100dvh - 50px)",
+  padding: "6px 10px 10px",
+  [theme.breakpoints.up("sm")]: {
+    height: "calc(100dvh - 50px)",
+    padding: "25px 15px 15px",
   },
 }));
