@@ -1,1 +1,1 @@
-export { default } from "./create-training";
+export { default } from "./edit-training";
