@@ -33,26 +33,40 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 export const StyledUsersDialogContent = styled(DialogContent)({
   overflowY: "auto",
   margin: 0,
-  padding: 0,
+  padding: "20px 0 0",
+  scrollbarWidth: "none",
 });
 
+export const StyledIconBox = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  justifyContent: "flex-end",
+  [theme.breakpoints.only("xs")]: {
+    position: "fixed",
+    top: 0,
+    right: 0,
+    zIndex: 2000,
+    width: "100%",
+    backgroundColor: theme.palette.app.white,
+  },
+}));
+
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
-  position: "absolute",
-  cursor: "pointer",
   color: theme.palette.app.primary,
-  zIndex: 2000,
-  top: "8px",
-  right: "8px",
+  marginRight: "5px",
   [theme.breakpoints.up("sm")]: {
-    top: "12px",
-    right: "12px",
+    position: "absolute",
+    cursor: "pointer",
+    zIndex: 2000,
+    top: "2px",
+    right: "4px",
   },
 }));
 
 export const StyledLoadMoreButton = styled(IconButton)({
   position: "absolute",
   right: "1px",
-  top: "83px",
+  top: "63px",
   margin: 0,
 });
 

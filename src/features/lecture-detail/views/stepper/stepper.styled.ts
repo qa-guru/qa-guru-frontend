@@ -1,11 +1,17 @@
 import { styled } from "@mui/system";
 import { Button, IconButton, Step, Stepper } from "@mui/material";
 
-export const StyledIconButton = styled(IconButton)({
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   position: "fixed",
-  bottom: "5px",
-  left: "5px",
-});
+  top: "70px",
+  left: "45px",
+  color: theme.palette.app.white,
+  backgroundColor: theme.palette.app.primary,
+  "&:hover": {
+    color: theme.palette.app.textSecondary,
+    backgroundColor: theme.palette.app.secondary,
+  },
+}));
 
 export const StyledStepper = styled(Stepper)({
   width: "40vw",

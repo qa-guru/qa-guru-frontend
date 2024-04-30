@@ -18,6 +18,7 @@ import {
   StyledPaper,
   StyledUsersDialogContent,
   StyledLoadMoreButton,
+  StyledIconBox,
 } from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
@@ -42,7 +43,9 @@ const ModalMobileTable = ({
   return (
     <Dialog open={open} onClose={hideModal} fullWidth fullScreen>
       <StyledUsersDialogContent id="scroll-container">
-        <StyledClearIcon onClick={hideModal} />
+        <StyledIconBox>
+          <StyledClearIcon onClick={hideModal} />
+        </StyledIconBox>
         <StyledInfiniteScroll
           dataLength={trainings?.length || 0}
           next={handleLoadMore}

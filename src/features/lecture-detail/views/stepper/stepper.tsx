@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import { Maybe } from "api/graphql/generated/graphql";
-import { LibraryBooks, SchoolRounded } from "@mui/icons-material";
+import { Reorder, SchoolRounded } from "@mui/icons-material";
 
 import { IStepper } from "./stepper.types";
 import {
@@ -57,7 +57,7 @@ const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
     <>
       <Tooltip title="Программа курса">
         <StyledIconButton color="primary" onClick={toggleDrawer(true)}>
-          <LibraryBooks />
+          <Reorder fontSize="small" />
         </StyledIconButton>
       </Tooltip>
       <Drawer open={open} onClose={toggleDrawer(false)} sx={{ zIndex: 1500 }}>

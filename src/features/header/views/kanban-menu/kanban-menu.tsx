@@ -81,6 +81,7 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
           onMouseEnter: handleMenuEnter,
         }}
         disableAutoFocusItem
+        disablePortal
       >
         {pages.map((page) => {
           const { pageURL, title, id } = page;

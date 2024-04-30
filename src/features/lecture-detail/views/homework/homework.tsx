@@ -10,6 +10,7 @@ import {
   StyledDialogContent,
   StyledModalBox,
   StyledPaper,
+  StyledIconBox,
 } from "./homework.styled";
 import HomeworkItem from "../homework-item";
 import { Comments } from "../../containers";
@@ -30,7 +31,9 @@ const Homework: FC<IHomework> = (props) => {
       fullWidth
     >
       <StyledDialogContent id="scroll-container">
-        <StyledClearIcon onClick={hideModalAndUpdateUrl} />
+        <StyledIconBox>
+          <StyledClearIcon onClick={hideModalAndUpdateUrl} />
+        </StyledIconBox>
         <StyledModalBox>
           <HomeworkItem
             dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}

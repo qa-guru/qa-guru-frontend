@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, IconButton, Paper, Stack } from "@mui/material";
+import { AppBar, Box, IconButton, Stack } from "@mui/material";
 import { ReactComponent as DarkLogo } from "assets/icons/logo-header.svg";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 import { Link } from "react-router-dom";
@@ -9,18 +9,9 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.app.primary,
 }));
 
-export const StyledHeader = styled("header")(({ theme }) => ({
-  alignItems: "center",
-  marginBottom: "10px",
-  [theme.breakpoints.only("xs")]: {
-    marginBottom: "24px",
-  },
-}));
-
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   maxWidth: "1920px",
-  margin: "0 auto",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -32,9 +23,10 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const StyledPaper = styled(Paper)({
+export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   borderRadius: 0,
-});
+  backgroundColor: theme.palette.app.white,
+}));
 
 export const StyledLogoIconButton = styled(IconButton)({
   padding: 0,
