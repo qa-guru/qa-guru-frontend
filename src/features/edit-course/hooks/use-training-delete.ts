@@ -10,14 +10,14 @@ export const useTrainingDelete = () => {
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
-  const deleteTraining = async (id: string) => {
+  const deleteTraining = async (trainingId: string) => {
     setDeleting(true);
     setError(null);
     try {
-      const response = await TrainingUploadService.delete(id);
+      const response = await TrainingUploadService.delete(trainingId);
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setDeleting(false);
-        client.refetchQueries({ include: ["user"] });
+        client.refetchQueries({ include: ["training"] });
         enqueueSnackbar(`Изображение успешно удалено`, {
           variant: "success",
         });

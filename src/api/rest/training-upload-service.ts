@@ -9,13 +9,14 @@ export interface TrainingUploadResponse {
 export default class TrainingUploadService {
   static upload(
     file: string | File,
-    id: string
+    trainingId: string
   ): Promise<AxiosResponse<TrainingUploadResponse>> {
     const formData = new FormData();
 
     formData.append("file", file);
 
-    const uploadUrl = TRAINING_UPLOAD_URI.replace(":id", id);
+    const uploadUrl = TRAINING_UPLOAD_URI.replace(":id", trainingId);
+
     return axios({
       method: "POST",
       url: uploadUrl,
@@ -24,8 +25,8 @@ export default class TrainingUploadService {
     });
   }
 
-  static delete(id: string): Promise<AxiosResponse<void>> {
-    const deleteUrl = TRAINING_DELETE_URI.replace(":id", id);
+  static delete(trainingId: string): Promise<AxiosResponse<void>> {
+    const deleteUrl = TRAINING_DELETE_URI.replace(":id", trainingId);
     return axios({
       method: "DELETE",
       url: deleteUrl,

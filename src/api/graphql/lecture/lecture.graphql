@@ -4,6 +4,7 @@ query lecture($id: ID!) {
     speakers {
       id
       firstName
+      email
       lastName
       middleName
       avatar

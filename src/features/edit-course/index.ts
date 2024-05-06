@@ -1,1 +1,3 @@
-export { default as EditTraining } from "./views/edit-training";
+export { EditTraining } from "./containers";
+export { EditLectures } from "./containers";
+export { EditLecture } from "./containers";

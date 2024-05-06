@@ -10,14 +10,16 @@ export const useTrainingUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
-  const uploadTraining = async (file: string | File, id: string) => {
+  const uploadTraining = async (file: string | File, trainingId: string) => {
     setUploading(true);
     setError(null);
+
     try {
-      const response = await TrainingUploadService.upload(file, id);
+      const response = await TrainingUploadService.upload(file, trainingId);
+
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setUploading(false);
-        client.refetchQueries({ include: ["user"] });
+        client.refetchQueries({ include: ["training"] });
         enqueueSnackbar(`Изображение успешно загрузилось`, {
           variant: "success",
         });

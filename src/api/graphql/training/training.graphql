@@ -4,6 +4,7 @@ query training($id: ID!) {
     name
     content
     techStack
+    picture
     tariffs {
       id
       name
@@ -15,6 +16,7 @@ query training($id: ID!) {
     mentors {
       id
       firstName
+      email
       lastName
       avatar
       middleName

@@ -1,6 +1,6 @@
-import { Maybe, UserDto } from "api/graphql/generated/graphql";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export interface ITrainingUpload {
-  user?: Maybe<UserDto>;
+  picture?: Maybe<string>;
   edit?: boolean;
 }

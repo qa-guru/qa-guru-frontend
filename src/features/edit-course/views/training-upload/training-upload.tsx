@@ -2,9 +2,10 @@ import { ChangeEvent, FC } from "react";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImageIcon from "@mui/icons-material/Image";
-import { CircularProgress, Stack } from "@mui/material";
+import { Box, CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import useResponsive from "shared/hooks/use-responsive";
+import { useParams } from "react-router-dom";
 
 import { useTrainingUpload } from "../../hooks/use-training-upload";
 import { useTrainingDelete } from "../../hooks/use-training-delete";
@@ -17,12 +18,9 @@ import {
   VisuallyHiddenInput,
 } from "./training-upload.styled";
 
-const TrainingUpload: FC<ITrainingUpload> = ({ edit }) => {
+const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
+  const { trainingId } = useParams();
   const { isMobileOrTablet } = useResponsive();
-
-  const id = "12314";
-
-  const pictire = "sadf";
 
   const { deleteTraining, deleting } = useTrainingDelete();
   const { uploadTraining, uploading } = useTrainingUpload();
@@ -30,11 +28,11 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit }) => {
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];
 
-    if (newImage) await uploadTraining(newImage, id);
+    if (newImage) await uploadTraining(newImage, trainingId!);
   };
 
   const handleDeleteAvatar = async () => {
-    await deleteTraining(id);
+    await deleteTraining(trainingId!);
   };
 
   return (
@@ -45,7 +43,13 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit }) => {
         onChange={handleImageChange}
       />
       <StyledIconBox>
-        <img src={`data:image/png;base64, ${pictire}`} />
+        {picture ? (
+          <img width="200px" src={`data:image/png;base64, ${picture}`} />
+        ) : (
+          <Box
+            sx={{ width: "100px", height: "100px", backgroundColor: "red" }}
+          ></Box>
+        )}
         {!isMobileOrTablet && (
           <>
             <label htmlFor="icon-button-file">
@@ -53,7 +57,7 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit }) => {
                 {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
               </StyledIconButton>
             </label>
-            {pictire && (
+            {picture && (
               <StyledIconButtonDelete onClick={handleDeleteAvatar}>
                 {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
               </StyledIconButtonDelete>
@@ -64,7 +68,7 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit }) => {
 
       {isMobileOrTablet && edit && (
         <StyledAvatarButtonStack>
-          {pictire && (
+          {picture && (
             <LoadingButton
               sx={{
                 color: "app.white",

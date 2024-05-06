@@ -1,7 +1,8 @@
-import { FC } from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
+import { FC } from "react";
+import { useLocation } from "react-router-dom";
+import { TrainingLecturesQuery } from "api/graphql/generated/graphql";
 
-import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,
   StyledGridContainer,
@@ -11,17 +12,19 @@ import {
   StyledSubtitle,
   StyledTypography,
   StyledWrapper,
-} from "./training-lectures.styled";
-import { INDEX_OFFSET } from "../../constants";
+} from "./edit-lectures.styled";
 
-const TrainingLectures: FC<ITrainingLectures> = (props) => {
-  const { dataTrainingLectures, trainingId, dataTraining } = props;
-  const { trainingLectures } = dataTrainingLectures;
-  const name = dataTraining?.training?.name;
+interface IEditLectures {
+  data: TrainingLecturesQuery;
+}
+
+const EditLectures: FC<IEditLectures> = (props) => {
+  const { data } = props;
+  const { trainingLectures } = data;
+  const location = useLocation();
 
   return (
     <Container>
-      <Typography variant="h2">{name}</Typography>
       <StyledGridContainer container>
         {trainingLectures?.map((item, index) => {
           const { id, subject, description } = item?.lecture || {};
@@ -29,14 +32,14 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
           return (
             <Grid item xs={12} key={id}>
               <CardActionArea>
-                <StyledLink to={`/training/${trainingId}/${id}`}>
+                <StyledLink to={`${location.pathname}/${id}`}>
                   <StyledPaper>
                     <Typography variant="h4">{subject}</Typography>
                     <StyledWrapper>
                       {description?.map((desc, index) => (
                         <StyledStack key={index}>
                           <StyledTypography variant="subtitle2">
-                            {index + INDEX_OFFSET}
+                            {index + 1}
                           </StyledTypography>
                           <Typography variant="subtitle1">{desc}</Typography>
                         </StyledStack>
@@ -58,4 +61,4 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
   );
 };
 
-export default TrainingLectures;
+export default EditLectures;

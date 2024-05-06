@@ -11,7 +11,7 @@ export default ({ mode }: any) => {
     "^/login": process.env.VITE_APP_ENDPOINT,
     "^/logout": process.env.VITE_APP_ENDPOINT,
     "^/api/v1/upload/avatar": process.env.VITE_APP_ENDPOINT,
-    "^/api/v1/upload/training/:id": process.env.VITE_APP_ENDPOINT,
+    "^/api/v1/upload/training/.*": process.env.VITE_APP_ENDPOINT,
   };
 
   return defineConfig({
