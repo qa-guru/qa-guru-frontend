@@ -25,6 +25,7 @@ declare module "@mui/material/styles" {
       cyan: string;
       teal: string;
       blueGrey: string;
+      menu: string;
       rating: {
         upTo50: string;
         upTo100: string;
@@ -73,6 +74,7 @@ declare module "@mui/material/styles" {
       cyan: string;
       teal: string;
       blueGrey: string;
+      menu: string;
       rating: {
         upTo100: string;
         upTo200: string;
@@ -105,6 +107,7 @@ declare module "@mui/material/styles" {
       cyan?: string;
       teal?: string;
       blueGrey?: string;
+      menu: string;
       rating?: {
         upTo50?: string;
         upTo100?: string;
@@ -153,6 +156,7 @@ declare module "@mui/material/styles" {
       cyan?: string;
       teal?: string;
       blueGrey?: string;
+      menu: string;
       rating?: {
         upTo100?: string;
         upTo200?: string;

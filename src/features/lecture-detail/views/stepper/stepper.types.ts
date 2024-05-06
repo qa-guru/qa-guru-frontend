@@ -4,7 +4,7 @@ import {
 } from "api/graphql/generated/graphql";
 
 export interface IStepper {
-  dataTrainingLectures: TrainingLecturesQuery;
-  dataTraining: TrainingQuery;
-  trainingId: string;
+  dataTrainingLectures?: TrainingLecturesQuery;
+  dataTraining?: TrainingQuery;
+  trainingId?: string;
 }

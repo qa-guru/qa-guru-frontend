@@ -30,6 +30,7 @@ export const app = {
   cyan: "#0097A7",
   teal: "#00796B",
   blueGrey: "#455A64",
+  menu: "#FFFFFF",
   rating: {
     upTo50: "#20AEE3",
     upTo100: "#0097A7",
@@ -82,6 +83,7 @@ export const dark = {
   cyan: "#26C6DA",
   teal: "#80CBC4",
   blueGrey: "#B0BEC5",
+  menu: "#676273",
   rating: {
     upTo50: "#20AEE3",
     upTo100: "#26C6DA",
