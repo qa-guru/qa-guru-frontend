@@ -27,7 +27,8 @@ import {
   StyledStepper,
 } from "./stepper.styled";
 
-const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
+const Stepper: FC<IStepper> = ({ dataTrainingLectures }) => {
+  const { trainingId, lectureId } = useParams();
   const [activeStep, setActiveStep] = useState(0);
   const [open, setOpen] = useState(() => {
     const isDrawerOpen = localStorage.getItem("drawerOpen");
@@ -35,8 +36,7 @@ const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
   });
   const { isDesktop } = useResponsive();
   const navigate = useNavigate();
-  const { lectureId } = useParams();
-  const { trainingLectures } = dataTrainingLectures!;
+  const lectures = dataTrainingLectures?.trainingLectures;
 
   const handleNavigation = (step: number, id?: Maybe<string>) => {
     if (id) {
@@ -47,7 +47,7 @@ const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
 
   const changeStep = (direction: number) => {
     const newStep = activeStep + direction;
-    const lecture = trainingLectures?.[newStep]?.lecture;
+    const lecture = lectures?.[newStep]?.lecture;
     if (lecture) {
       handleNavigation(newStep, lecture.id);
     }
@@ -62,13 +62,13 @@ const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
   };
 
   useEffect(() => {
-    const stepIndex = trainingLectures?.findIndex(
+    const stepIndex = lectures?.findIndex(
       (lecture) => lecture?.lecture?.id === lectureId
     );
     if (stepIndex !== undefined && stepIndex !== -1) {
       setActiveStep(stepIndex);
     }
-  }, [lectureId, trainingLectures]);
+  }, [lectureId, lectures]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -96,9 +96,9 @@ const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
               orientation="vertical"
               connector={null}
             >
-              {trainingLectures?.map((item, index) => {
+              {lectures?.map((item, index) => {
                 const { id, subject, description } = item?.lecture || {};
-                const isLastStep = index === trainingLectures.length - 1;
+                const isLastStep = index === lectures.length - 1;
 
                 return (
                   <StyledStep key={id} id={`step-${index}`}>
@@ -173,9 +173,9 @@ const Stepper: FC<IStepper> = ({ dataTrainingLectures, trainingId }) => {
               orientation="vertical"
               connector={null}
             >
-              {trainingLectures?.map((item, index) => {
+              {lectures?.map((item, index) => {
                 const { id, subject, description } = item?.lecture || {};
-                const isLastStep = index === trainingLectures.length - 1;
+                const isLastStep = index === lectures.length - 1;
 
                 return (
                   <StyledStep key={id} id={`step-${index}`}>

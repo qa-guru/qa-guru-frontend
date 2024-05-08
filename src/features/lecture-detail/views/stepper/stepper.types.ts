@@ -6,5 +6,4 @@ import {
 export interface IStepper {
   dataTrainingLectures?: TrainingLecturesQuery;
   dataTraining?: TrainingQuery;
-  trainingId?: string;
 }

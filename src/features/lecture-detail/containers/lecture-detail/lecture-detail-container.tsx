@@ -6,7 +6,6 @@ import {
   useLectureHomeWorkQuery,
   useLectureQuery,
   useTrainingLecturesQuery,
-  useTrainingQuery, // Import the query for fetching all lectures in a training
 } from "api/graphql/generated/graphql";
 
 import LectureDetail from "../../views/lecture-detail";
@@ -25,10 +24,6 @@ const LectureDetailContainer: FC = () => {
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
     });
-
-  const { data: dataTraining, loading: loadingTraining } = useTrainingQuery({
-    variables: { id: trainingId! },
-  });
 
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
@@ -51,7 +46,6 @@ const LectureDetailContainer: FC = () => {
     <LectureDetail
       dataLecture={dataLecture}
       dataTrainingLectures={dataTrainingLectures}
-      dataTraining={dataTraining}
       dataLectureHomework={dataLectureHomework}
       tariffHomework={tariffHomework}
       trainingId={trainingId}

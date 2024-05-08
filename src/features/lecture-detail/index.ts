@@ -1,1 +1,1 @@
-export { LectureDetail } from "./containers";
+export { default as Lecture } from "./views/lecture";
