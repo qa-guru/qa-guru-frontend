@@ -2,10 +2,11 @@ import { ChangeEvent, FC } from "react";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImageIcon from "@mui/icons-material/Image";
-import { Box, CircularProgress, Stack } from "@mui/material";
+import { CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import useResponsive from "shared/hooks/use-responsive";
 import { useParams } from "react-router-dom";
+import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 
 import { useTrainingUpload } from "../../hooks/use-training-upload";
 import { useTrainingDelete } from "../../hooks/use-training-delete";
@@ -15,6 +16,9 @@ import {
   StyledIconBox,
   StyledIconButton,
   StyledIconButtonDelete,
+  StyledImageBox,
+  StyledLoadingButton,
+  StyledLogoBox,
   VisuallyHiddenInput,
 } from "./training-upload.styled";
 
@@ -44,11 +48,14 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
       />
       <StyledIconBox>
         {picture ? (
-          <img width="200px" src={`data:image/png;base64, ${picture}`} />
+          <StyledImageBox
+            component="img"
+            src={`data:image/png;base64, ${picture}`}
+          />
         ) : (
-          <Box
-            sx={{ width: "100px", height: "100px", backgroundColor: "red" }}
-          ></Box>
+          <StyledLogoBox>
+            <LogoWhite />
+          </StyledLogoBox>
         )}
         {!isMobileOrTablet && (
           <>
@@ -69,30 +76,24 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
       {isMobileOrTablet && edit && (
         <StyledAvatarButtonStack>
           {picture && (
-            <LoadingButton
-              sx={{
-                color: "app.white",
-              }}
+            <StyledLoadingButton
               variant="contained"
               loading={deleting}
               startIcon={<DeleteIcon fontSize="small" />}
               onClick={handleDeleteAvatar}
             >
               Удалить фото
-            </LoadingButton>
+            </StyledLoadingButton>
           )}
           <label htmlFor="icon-button-file">
-            <LoadingButton
-              sx={{
-                color: "app.white",
-              }}
+            <StyledLoadingButton
               variant="contained"
               component="span"
               loading={uploading}
               startIcon={<ImageIcon fontSize="small" />}
             >
               Загрузить фото
-            </LoadingButton>
+            </StyledLoadingButton>
           </label>
         </StyledAvatarButtonStack>
       )}

@@ -1,35 +1,27 @@
-import { Button, Container, Paper, Typography } from "@mui/material";
-import { FC } from "react";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import { FC, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
-import {
-  InputMaybe,
-  Scalars,
-  TechStack,
-  TrainingQuery,
-  UpdateTrainingMutationFn,
-} from "api/graphql/generated/graphql";
+import { UserRole } from "api/graphql/generated/graphql";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { client } from "api";
+import { Add, Clear } from "@mui/icons-material";
 
 import TrainingUpload from "../training-upload";
-import { SelectMentors } from "../../containers";
-
-interface IEditTraining {
-  data: TrainingQuery;
-  updateTraining: UpdateTrainingMutationFn;
-}
-
-type TrainingInput = {
-  content?: InputMaybe<Scalars["String"]>;
-  description?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["ID"]>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mentors?: InputMaybe<Array<InputMaybe<any>>>;
-  name?: InputMaybe<Scalars["String"]>;
-  techStack: TechStack;
-};
+import SelectMentors from "../../containers";
+import {
+  StyledButtonsStack,
+  StyledCancelButton,
+  StyledContinueButton,
+  StyledCoursesButton,
+  StyledInfoStack,
+  StyledPaper,
+  StyledPaperStack,
+  StyledSubmitButtonsStack,
+  StyledWrapper,
+} from "./edit-training.styled";
+import { IEditTraining, TrainingInput } from "./edit-training.types";
 
 const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
   const { trainingId } = useParams();
@@ -37,6 +29,7 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const location = useLocation();
+  const [redirectPath, setRedirectPath] = useState<string | null>(null);
 
   const { handleSubmit, control } = useForm<TrainingInput>({
     defaultValues: {
@@ -49,21 +42,18 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
 
   const onSubmit: SubmitHandler<TrainingInput> = async (data) => {
     const { mentors, ...restData } = data;
-
     const emails = mentors?.map((mentor) => mentor?.email);
-
-    const submissionData = {
-      ...restData,
-      mentors: emails,
-    };
+    const submissionData = { ...restData, mentors: emails };
 
     await updateTraining({
-      variables: {
-        input: submissionData,
-      },
+      variables: { input: submissionData },
       onCompleted: () => {
         enqueueSnackbar("Курс обновлен", { variant: "success" });
         client.refetchQueries({ include: ["training"] });
+
+        if (redirectPath) {
+          navigate(redirectPath);
+        }
       },
       onError: () => {
         enqueueSnackbar(
@@ -74,33 +64,67 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
     });
   };
 
-  const handleNavigateTrainingLecture = () => {
-    navigate(`${location.pathname}/edit-lectures`);
-  };
-
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant="h2">Редактирование курса</Typography>
-        <Paper>
-          <TrainingUpload edit picture={picture} />
-          <Typography variant="h3">Название курса</Typography>
-          <InputText
-            control={control}
-            name="name"
-            placeholder="Введите название курса"
-          />
-        </Paper>
-        <Paper>
-          <Typography variant="h3">Ведущие преподаватели</Typography>
-          <SelectMentors name="mentors" control={control} />
-        </Paper>
-        <Button type="submit" variant="contained">
-          Сохранить
-        </Button>
-        <Button onClick={handleNavigateTrainingLecture} variant="contained">
-          Далее
-        </Button>
+        <StyledPaperStack>
+          <Typography variant="h2">Редактирование курса</Typography>
+          <StyledPaper>
+            <StyledWrapper>
+              <TrainingUpload edit picture={picture} />
+              <StyledInfoStack>
+                <Typography variant="h3">Название курса</Typography>
+                <InputText
+                  control={control}
+                  name="name"
+                  placeholder="Введите название курса"
+                />
+              </StyledInfoStack>
+            </StyledWrapper>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Ведущие преподаватели</Typography>
+              <SelectMentors
+                name="mentors"
+                control={control}
+                role={UserRole.Mentor}
+              />
+            </StyledInfoStack>
+          </StyledPaper>
+        </StyledPaperStack>
+        <StyledButtonsStack>
+          <StyledSubmitButtonsStack>
+            <StyledCoursesButton
+              type="submit"
+              variant="contained"
+              onClick={() => setRedirectPath("/admin-panel/courses")}
+            >
+              <Clear fontSize="small" />
+              Сохранить и закрыть
+            </StyledCoursesButton>
+            <StyledContinueButton
+              type="submit"
+              variant="contained"
+              onClick={() =>
+                setRedirectPath(`${location.pathname}/edit-lectures`)
+              }
+            >
+              <Add fontSize="small" />
+              Сохранить и продолжить
+            </StyledContinueButton>
+          </StyledSubmitButtonsStack>
+          <Box>
+            <StyledCancelButton
+              color="secondary"
+              variant="contained"
+              onClick={() => navigate("/admin-panel/courses")}
+            >
+              <Clear fontSize="small" />
+              Отмена
+            </StyledCancelButton>
+          </Box>
+        </StyledButtonsStack>
       </form>
     </Container>
   );

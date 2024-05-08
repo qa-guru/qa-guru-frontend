@@ -9,6 +9,7 @@ export const secondary = {
 export const app = {
   primary: "#20AEE3",
   secondary: "#E0E0E0",
+  pinkMain: "#c93ae0",
   white: "#FFFFFF",
   purple: "#3A3448",
   purplePaper: "#4A4458",

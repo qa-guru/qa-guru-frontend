@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 
 import TrainingUpload from "../training-upload";
+import {
+  StyledInfoStack,
+  StyledPaper,
+  StyledPaperStack,
+} from "./create-training.styled";
 
 const CreateTraining: FC = () => {
   const { handleSubmit, control } = useForm({
@@ -12,16 +17,20 @@ const CreateTraining: FC = () => {
 
   return (
     <Container>
-      <Typography variant="h2">Новый курс</Typography>
-      <Paper>
-        <TrainingUpload />
-        <Typography variant="h3">Название курса</Typography>
-        <InputText
-          control={control}
-          name="name"
-          placeholder="Введите название курса"
-        />
-      </Paper>
+      <StyledPaperStack>
+        <Typography variant="h2">Новый курс</Typography>
+        <StyledPaper>
+          <StyledInfoStack>
+            <TrainingUpload />
+            <Typography variant="h3">Название курса</Typography>
+            <InputText
+              control={control}
+              name="name"
+              placeholder="Введите название курса"
+            />
+          </StyledInfoStack>
+        </StyledPaper>
+      </StyledPaperStack>
     </Container>
   );
 };

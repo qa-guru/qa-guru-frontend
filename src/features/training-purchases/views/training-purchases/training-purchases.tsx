@@ -6,15 +6,15 @@ import useOutsideClick from "shared/hooks/use-outside-click";
 
 import { ITrainings } from "./training-purchases.types";
 import {
-  StyledCardActionArea,
+  StyledCalendarBox,
   StyledCalendarIcon,
+  StyledCardActionArea,
   StyledCourseImg,
   StyledGrid,
   StyledImgBox,
   StyledLoadingButton,
   StyledPaper,
-  StyledUserBox,
-  StyledCalendarBox,
+  StyledUserGrid,
 } from "./training-purchases.styled";
 import { TrainingCalendar } from "../../containers";
 
@@ -57,7 +57,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
       <Typography variant="h2">Мои курсы</Typography>
       <StyledGrid container spacing="30px">
         {trainingPurchases?.map((item) => {
-          const { id, name } = item?.trainingTariff.training || {};
+          const { id, name, mentors } = item?.trainingTariff.training || {};
 
           return (
             <Grid item key={id} xs={12} md={gridMdValue}>
@@ -66,9 +66,15 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                   <StyledImgBox>
                     <StyledCourseImg />
                   </StyledImgBox>
-                  <StyledUserBox>
-                    <UserRow user={item?.user} userId={item?.user.id} hasLink />
-                  </StyledUserBox>
+                  <StyledUserGrid container>
+                    {mentors?.map((mentor) => {
+                      return (
+                        <Grid item xs={5}>
+                          <UserRow user={mentor} userId={mentor?.id} hasLink />
+                        </Grid>
+                      );
+                    })}
+                  </StyledUserGrid>
                   <Typography variant="h5">{name}</Typography>
                   <StyledCalendarBox open={openCalendarById === id}>
                     <StyledCalendarIcon

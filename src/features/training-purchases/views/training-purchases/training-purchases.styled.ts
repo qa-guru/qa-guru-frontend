@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { alpha, Box, Grid, Paper, Typography } from "@mui/material";
+import { alpha, Box, Grid, Paper, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ReactComponent as CourseImg } from "assets/images/cousrse1.svg";
 import { LoadingButton } from "@mui/lab";
@@ -85,9 +85,9 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
   textTransform: "uppercase",
 }));
 
-export const StyledUserBox = styled(Box)({
-  marginTop: "11px",
+export const StyledUserGrid = styled(Grid)({
   padding: "16px 0",
+  gap: "10px",
 });
 
 export const StyledBox = styled(Box)({

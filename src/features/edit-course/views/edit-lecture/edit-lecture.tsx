@@ -1,61 +1,26 @@
-import {
-  Button,
-  Container,
-  Paper,
-  TextField,
-  Typography,
-  Stack,
-  IconButton,
-} from "@mui/material";
-import { styled } from "@mui/system";
+import { Button, Container, Typography } from "@mui/material";
 import { client } from "api";
-import {
-  InputMaybe,
-  LectureContentHomeWorkInput,
-  LectureContentInput,
-  LectureHomeWorkQuery,
-  LectureQuery,
-  Scalars,
-  UpdateLectureMutationFn,
-} from "api/graphql/generated/graphql";
+import { UserRole } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
-import { Dispatch, FC, SetStateAction, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
 import { Editor } from "shared/components/text-editor";
 import { RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { Add, Clear } from "@mui/icons-material";
 
-import { SelectMentors } from "../../containers";
-
-interface IEditLecture {
-  updateLecture: UpdateLectureMutationFn;
-  dataLectureHomework: LectureHomeWorkQuery;
-  dataLecture: LectureQuery;
-}
-
-type LectureInput = {
-  content?: InputMaybe<Array<InputMaybe<LectureContentInput>>>;
-  contentHomeWork?: InputMaybe<Array<InputMaybe<LectureContentHomeWorkInput>>>;
-  description?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  homeWorkLevelCode?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["ID"]>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  speakers?: InputMaybe<Array<InputMaybe<any>>>;
-  subject?: InputMaybe<Scalars["String"]>;
-};
-
-export const StyledTypography = styled(Typography)(({ theme }) => ({
-  minWidth: "40px",
-  height: "40px",
-  backgroundColor: theme.palette.app.primary,
-  borderRadius: "50%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  color: theme.palette.app.white,
-}));
+import SelectLectors from "../../containers";
+import {
+  StyledButtonsStack,
+  StyledCancelButton,
+  StyledContinueButton,
+  StyledInfoStack,
+  StyledPaper,
+  StyledPaperStack,
+} from "./edit-lecture.styled";
+import { IEditLecture, LectureInput } from "./edit-lecture.types";
+import EditDescription from "../edit-description";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const EditLecture: FC<IEditLecture> = ({
   dataLecture,
@@ -65,6 +30,9 @@ const EditLecture: FC<IEditLecture> = ({
   const { id, subject, speakers, content } = dataLecture.lecture!;
   const contentHomework = dataLectureHomework.lectureHomeWork;
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [description, setDescription] = useState(
     dataLecture?.lecture?.description!
   );
@@ -115,6 +83,7 @@ const EditLecture: FC<IEditLecture> = ({
       onCompleted: () => {
         enqueueSnackbar("Урок обновлен", { variant: "success" });
         client.refetchQueries({ include: ["lecture"] });
+        navigate(-1);
       },
       onError: () => {
         enqueueSnackbar(
@@ -128,89 +97,65 @@ const EditLecture: FC<IEditLecture> = ({
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant="h2">Редактирование урока</Typography>
-        <Paper>
-          <Typography variant="h3">Название урока</Typography>
-          <InputText
-            control={control}
-            name="subject"
-            placeholder="Введите название урока"
-          />
-          <EditDescription
-            description={description}
-            setDescription={setDescription}
-          />
-        </Paper>
-        <Paper>
-          <Typography variant="h3">Преподаватели</Typography>
-          <SelectMentors name="speakers" control={control} />
-        </Paper>
-        <Paper>
-          <Typography variant="h3">Материалы урока</Typography>
-          <Editor content={aggregatedContent} rteRef={rteRefContent} />
-        </Paper>
-        <Paper>
-          <Typography variant="h3">Домашнее задание</Typography>
-          <Editor
-            content={aggregatedContentHomework}
-            rteRef={rteRefСontentHomeWork}
-          />
-        </Paper>
-        <Button type="submit" variant="contained">
-          Сохранить
-        </Button>
+        <StyledPaperStack>
+          <Typography variant="h2">Редактирование урока</Typography>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Название урока</Typography>
+              <InputText
+                control={control}
+                name="subject"
+                placeholder="Введите название урока"
+              />
+              <EditDescription
+                description={description}
+                setDescription={setDescription}
+              />
+            </StyledInfoStack>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Преподаватели</Typography>
+              <SelectLectors
+                name="speakers"
+                control={control}
+                role={UserRole.Lector}
+              />
+            </StyledInfoStack>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Материалы урока</Typography>
+              <Editor content={aggregatedContent} rteRef={rteRefContent} />
+            </StyledInfoStack>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Домашнее задание</Typography>
+              <Editor
+                content={aggregatedContentHomework}
+                rteRef={rteRefСontentHomeWork}
+              />
+            </StyledInfoStack>
+          </StyledPaper>
+        </StyledPaperStack>
+        <StyledButtonsStack>
+          <StyledCancelButton
+            variant="contained"
+            onClick={() => navigate(-1)}
+            color="secondary"
+          >
+            <Clear fontSize="small" />
+            Отменить
+          </StyledCancelButton>
+          <StyledContinueButton type="submit" variant="contained">
+            <Add fontSize="small" />
+            Сохранить
+          </StyledContinueButton>
+        </StyledButtonsStack>
       </form>
     </Container>
   );
 };
 
 export default EditLecture;
-
-interface IEditDescription {
-  description: (string | null)[];
-  setDescription: Dispatch<SetStateAction<(string | null)[]>>;
-}
-
-const EditDescription: FC<IEditDescription> = ({
-  description,
-  setDescription,
-}) => {
-  const handleAddDescription = () => {
-    setDescription([...description, ""]);
-  };
-
-  const handleDescriptionChange = (index: number, value: string | null) => {
-    const newDescription = [...description];
-    newDescription[index] = value;
-    setDescription(newDescription);
-  };
-
-  const handleRemoveDescription = (index: number) => {
-    const newDescription = [...description];
-    newDescription.splice(index, 1);
-    setDescription(newDescription);
-  };
-
-  return (
-    <>
-      <Typography variant="h3">Содержание урока</Typography>
-      {description.map((desc, index) => (
-        <Stack key={index} direction="row" alignItems="center">
-          <StyledTypography variant="subtitle2">{index + 1}</StyledTypography>
-          <TextField
-            multiline
-            value={desc}
-            onChange={(e) => handleDescriptionChange(index, e.target.value)}
-            placeholder="Введите содержание урока"
-          />
-          <IconButton onClick={() => handleRemoveDescription(index)}>
-            <RemoveIcon color="primary" />
-          </IconButton>
-        </Stack>
-      ))}
-      <IconButton onClick={handleAddDescription}>
-        <AddIcon color="primary" />
-      </IconButton>
-    </>
-  );
-};

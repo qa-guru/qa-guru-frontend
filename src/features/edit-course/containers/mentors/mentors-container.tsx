@@ -14,9 +14,10 @@ interface IMentorsContainer {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any>;
   name: string;
+  role: UserRole;
 }
 
-const MentorsContainer: FC<IMentorsContainer> = ({ control, name }) => {
+const UsersContainer: FC<IMentorsContainer> = ({ control, name, role }) => {
   const [filterName, setFilterName] = useState("");
 
   const { data, loading, refetch } = useUsersQuery({
@@ -25,7 +26,7 @@ const MentorsContainer: FC<IMentorsContainer> = ({ control, name }) => {
       limit: 150,
       sort: { field: UserSortField.Email, order: Order.Desc },
       filter: {
-        role: UserRole.Lector,
+        role,
         firstName: filterName,
       },
     },
@@ -50,4 +51,4 @@ const MentorsContainer: FC<IMentorsContainer> = ({ control, name }) => {
   );
 };
 
-export default MentorsContainer;
+export default UsersContainer;

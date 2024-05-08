@@ -22,6 +22,16 @@ query trainingPurchases {
       training {
         id
         name
+        mentors {
+          id
+          firstName
+          middleName
+          avatar
+          lastName
+          rating {
+            rating
+          }
+        }
       }
     }
   }

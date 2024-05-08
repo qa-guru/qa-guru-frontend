@@ -14,11 +14,11 @@ import { ITable } from "./table.types";
 import {
   StyledBox,
   StyledClearIcon,
+  StyledIconBox,
   StyledInfiniteScroll,
+  StyledLoadMoreButton,
   StyledPaper,
   StyledUsersDialogContent,
-  StyledLoadMoreButton,
-  StyledIconBox,
 } from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";

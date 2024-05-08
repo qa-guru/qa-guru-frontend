@@ -4,7 +4,7 @@ import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 
 export const StyledGridContainer = styled(Grid)(({ theme }) => ({
   gap: theme.spacing(3),
-  margin: "30px 0",
+  margin: "10px 0",
 }));
 
 export const StyledLink = styled(Link)({
@@ -33,12 +33,12 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.app.white,
 }));
 
-export const StyledStack = styled(Stack)(({ theme }) => ({
+export const StyledStack = styled(Stack)({
   marginTop: "15px",
   flexDirection: "row",
-  gap: theme.spacing(1.5),
+  gap: "12px",
   alignItems: "center",
-}));
+});
 
 export const StyledBox = styled(Box)({
   display: "flex",

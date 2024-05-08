@@ -1,31 +1,15 @@
 import {
   Autocomplete,
-  Box,
-  Chip,
   CircularProgress,
   FormControl,
   TextField,
 } from "@mui/material";
-import { styled } from "@mui/system";
-import { UsersQuery } from "api/graphql/generated/graphql";
-import { DebouncedFunc } from "lodash";
 import { FC } from "react";
-import { Control, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import UserRow from "shared/components/user-row";
 
-export const StyledBox = styled(Box)({
-  marginTop: "25px",
-  textAlign: "center",
-});
-
-interface ISelectMentors {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  control: Control<any>;
-  data?: UsersQuery;
-  onSearchChange: DebouncedFunc<(searchValue: string) => void>;
-  loading: boolean;
-  name: string;
-}
+import { ISelectMentors } from "./select-mentors.types";
+import { StyledChip, StyledOptionChip } from "./select-mentors.styled";
 
 const SelectMentors: FC<ISelectMentors> = ({
   control,
@@ -72,21 +56,22 @@ const SelectMentors: FC<ISelectMentors> = ({
             )}
             renderTags={(tagValue, getTagProps) =>
               tagValue.map((option, index) => (
-                <Chip
+                <StyledChip
                   {...getTagProps({ index })}
                   key={option.id}
-                  variant="outlined"
-                  sx={{ border: "none" }}
-                  avatar={<UserRow width={30} height={30} user={option} />}
+                  avatar={
+                    <UserRow width={22} height={22} user={option} hideRating />
+                  }
                 />
               ))
             }
             renderOption={(props, option) => (
               <li {...props} key={option.id}>
-                <Chip
+                <StyledOptionChip
                   variant="outlined"
-                  sx={{ border: "none" }}
-                  avatar={<UserRow width={30} height={30} user={option} />}
+                  avatar={
+                    <UserRow width={30} height={30} user={option} hideRating />
+                  }
                 />
               </li>
             )}

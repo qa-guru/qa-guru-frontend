@@ -1,7 +1,6 @@
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
-import { TrainingLecturesQuery } from "api/graphql/generated/graphql";
 
 import {
   StyledBox,
@@ -13,10 +12,7 @@ import {
   StyledTypography,
   StyledWrapper,
 } from "./edit-lectures.styled";
-
-interface IEditLectures {
-  data: TrainingLecturesQuery;
-}
+import { IEditLectures } from "./edit-lectures.types";
 
 const EditLectures: FC<IEditLectures> = (props) => {
   const { data } = props;
