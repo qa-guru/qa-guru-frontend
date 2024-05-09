@@ -7,7 +7,7 @@ import ImageIcon from "@mui/icons-material/Image";
 
 export const StyledButtonStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  margin: "-40px 0 15px",
+  margin: "0 10px 15px",
   gap: "10px",
   justifyContent: "flex-end",
 }));

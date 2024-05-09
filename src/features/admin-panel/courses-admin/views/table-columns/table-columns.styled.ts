@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, IconButton, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 export const StyledTrainingStack = styled(Stack)({
   flexDirection: "row",
@@ -15,8 +15,4 @@ export const StyledUserRowBox = styled(Box)({
 export const StyledEditBox = styled(Box)({
   display: "flex",
   justifyContent: "flex-end",
-});
-
-export const StyledIconButton = styled(IconButton)({
-  paddingTop: 0,
 });

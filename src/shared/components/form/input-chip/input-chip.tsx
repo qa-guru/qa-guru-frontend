@@ -47,7 +47,7 @@ const InputChip = <T extends FieldValues, OptionType>({
       <Controller
         name={name}
         control={control}
-        render={({ field: { value, onChange: fieldOnChange } }) => {
+        render={({ field: { value = [], onChange: fieldOnChange } }) => {
           return (
             <Select
               multiple

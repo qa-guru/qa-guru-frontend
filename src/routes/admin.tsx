@@ -8,6 +8,10 @@ import AdminPanelPage from "pages/admin-panel";
 import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
 import EditProfilePage from "pages/edit-profile";
+import CreateTrainingPage from "pages/create-training";
+import EditTrainingPage from "pages/edit-training";
+import EditLecturesPage from "pages/edit-lectures";
+import EditLecturePage from "pages/edit-lecture";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -50,6 +54,26 @@ const AdminRoutes = [
   />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
+  <Route
+    key="create-training"
+    path="/admin-panel/courses/create-training"
+    element={<CreateTrainingPage />}
+  />,
+  <Route
+    key="edit-training"
+    path="/admin-panel/courses/edit-training/:trainingId"
+    element={<EditTrainingPage />}
+  />,
+  <Route
+    key="edit-lectures"
+    path="/admin-panel/courses/edit-training/:trainingId/edit-lectures"
+    element={<EditLecturesPage />}
+  />,
+  <Route
+    key="edit-lecture"
+    path="/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId"
+    element={<EditLecturePage />}
+  />,
 ];
 
 export default AdminRoutes;

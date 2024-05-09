@@ -5,6 +5,7 @@ declare module "@mui/material/styles" {
     app: {
       primary: string;
       secondary: string;
+      pinkMain: string;
       white: string;
       purple: string;
       purplePaper: string;
@@ -85,6 +86,7 @@ declare module "@mui/material/styles" {
     app: {
       primary?: string;
       secondary?: string;
+      pinkMain?: string;
       white?: string;
       purple?: string;
       purplePaper?: string;
