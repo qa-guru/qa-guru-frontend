@@ -3,7 +3,6 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImageIcon from "@mui/icons-material/Image";
 import { CircularProgress, Stack } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
 import useResponsive from "shared/hooks/use-responsive";
 import { useParams } from "react-router-dom";
 import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";

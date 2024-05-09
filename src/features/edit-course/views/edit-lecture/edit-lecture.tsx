@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { client } from "api";
 import { UserRole } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
@@ -8,6 +8,7 @@ import { InputText } from "shared/components/form";
 import { Editor } from "shared/components/text-editor";
 import { RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Add, Clear } from "@mui/icons-material";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import SelectLectors from "../../containers";
 import {
@@ -20,7 +21,6 @@ import {
 } from "./edit-lecture.styled";
 import { IEditLecture, LectureInput } from "./edit-lecture.types";
 import EditDescription from "../edit-description";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const EditLecture: FC<IEditLecture> = ({
   dataLecture,

@@ -1,4 +1,4 @@
-import { Container, Paper, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";

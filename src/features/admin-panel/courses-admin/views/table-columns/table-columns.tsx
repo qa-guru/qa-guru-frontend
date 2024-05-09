@@ -1,7 +1,7 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { TrainingDto } from "api/graphql/generated/graphql";
 import { FC, Fragment, useMemo } from "react";
-import { Avatar, Box, IconButton, Typography } from "@mui/material";
+import { Avatar, IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
