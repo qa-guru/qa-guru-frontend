@@ -69,7 +69,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                   <StyledUserGrid container>
                     {mentors?.map((mentor) => {
                       return (
-                        <Grid item xs={5}>
+                        <Grid key={mentor?.id} item xs={5}>
                           <UserRow user={mentor} userId={mentor?.id} hasLink />
                         </Grid>
                       );
