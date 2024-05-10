@@ -13,7 +13,7 @@ export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
     height: "calc(100dvh - 210px)",
   },
   [theme.breakpoints.only("xs")]: {
-    height: "calc(100dvh - 194px)",
+    height: "calc(100dvh - 184px)",
   },
 }));
 

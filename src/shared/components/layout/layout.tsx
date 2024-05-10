@@ -29,20 +29,23 @@ const Layout: FC<ILayout> = ({ children, isLogging }) => {
   return (
     <StyledBox>
       {!isLogging && <Header />}
-      {!isLogging && !isKanban && !isMobile && (
-        <StyledBreadcrumbsContainer>
-          <CustomizedBreadcrumbs />
-        </StyledBreadcrumbsContainer>
-      )}
-      {!isLogging && isKanban && !isMobile && (
-        <StyledBreadcrumbsBox>
-          <CustomizedBreadcrumbs />
-        </StyledBreadcrumbsBox>
-      )}
+      {!isLogging &&
+        !isMobile &&
+        (isKanban ? (
+          <StyledBreadcrumbsBox>
+            <CustomizedBreadcrumbs />
+          </StyledBreadcrumbsBox>
+        ) : (
+          <StyledBreadcrumbsContainer>
+            <CustomizedBreadcrumbs />
+          </StyledBreadcrumbsContainer>
+        ))}
       {children}
-      <StyledContainer>
-        <Outlet />
-      </StyledContainer>
+      {!isLogging && (
+        <StyledContainer>
+          <Outlet />
+        </StyledContainer>
+      )}
       <Footer />
     </StyledBox>
   );

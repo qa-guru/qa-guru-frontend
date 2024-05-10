@@ -15,7 +15,7 @@ const LectureSpeakers: FC<ILectureSpeakers> = (props) => {
   return (
     <>
       <StyledPaper>
-        <StyledTypography variant="h5">Спикеры</StyledTypography>
+        <StyledTypography variant="h5">Преподаватели</StyledTypography>
         <StyledWrapper>
           {speakers?.map((item) => {
             const { id } = item!;

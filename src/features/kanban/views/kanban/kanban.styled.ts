@@ -8,6 +8,6 @@ export const StyledContentBox = styled(Box)(({ theme }) => ({
   margin: "0 auto",
   justifyContent: "center",
   [theme.breakpoints.only("xs")]: {
-    height: "calc(100dvh - 146px)",
+    height: "calc(100dvh - 136px)",
   },
 }));
