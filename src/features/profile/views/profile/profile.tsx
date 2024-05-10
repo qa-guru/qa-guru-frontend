@@ -6,11 +6,10 @@ import KanbanProfileStudent from "features/kanban-profile-student/views/kanban";
 import { UserRole } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 
-import { IProfile } from "./profile.types";
 import { StyledButton, StyledButtonBox } from "./profile.styled";
 import { UserInfo } from "../../containers";
 
-const Profile: FC<IProfile> = () => {
+const Profile: FC = () => {
   const navigate = useNavigate();
   const routeEdit = () => navigate("/profile/edit");
 

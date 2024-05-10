@@ -25,7 +25,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   borderRadius: 0,
-  backgroundColor: theme.palette.app.white,
+  backgroundColor: theme.palette.mode === "light" && theme.palette.app.white,
 }));
 
 export const StyledLogoIconButton = styled(IconButton)({

@@ -33,14 +33,14 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
                   <StyledPaper>
                     <Typography variant="h4">{subject}</Typography>
                     <StyledWrapper>
-                      <StyledStack>
-                        <StyledTypography variant="subtitle2">
-                          {index + INDEX_OFFSET}
-                        </StyledTypography>
-                        <Typography variant="subtitle1">
-                          {description}
-                        </Typography>
-                      </StyledStack>
+                      {description?.map((desc, index) => (
+                        <StyledStack key={index}>
+                          <StyledTypography variant="subtitle2">
+                            {index + INDEX_OFFSET}
+                          </StyledTypography>
+                          <Typography variant="subtitle1">{desc}</Typography>
+                        </StyledStack>
+                      ))}
                     </StyledWrapper>
                     <StyledBox>
                       <StyledSubtitle variant="body2">

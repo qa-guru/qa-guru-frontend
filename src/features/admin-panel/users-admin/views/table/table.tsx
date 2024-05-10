@@ -69,8 +69,7 @@ const ModalMobileTable = ({
 const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   const users = data?.users?.items;
   const { totalElements } = data?.users!;
-  const { isMobile, isTablet, isMobileOrTablet, isDownDesktop } =
-    useResponsive();
+  const { isMobile, isTablet, isDownDesktop } = useResponsive();
   const [hasMoreUsers, setHasMoreUsers] = useState<boolean>(true);
 
   const table = useReactTable({

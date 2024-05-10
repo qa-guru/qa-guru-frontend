@@ -76,6 +76,26 @@ const routePatterns = [
     icon: <School fontSize="small" />,
   },
   {
+    path: "/admin-panel/courses/create-training",
+    name: "Создание курса",
+    icon: <Edit fontSize="small" />,
+  },
+  {
+    path: "/admin-panel/courses/edit-training/:trainingId",
+    name: "Редактирование курса",
+    icon: <Edit fontSize="small" />,
+  },
+  {
+    path: "/admin-panel/courses/edit-training/:trainingId/edit-lectures",
+    name: "Список уроков",
+    icon: <Edit fontSize="small" />,
+  },
+  {
+    path: "/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId",
+    name: "Редактирование урока",
+    icon: <Edit fontSize="small" />,
+  },
+  {
     path: "/admin-panel/users",
     name: "Админ панель / Пользователи",
     icon: <Group fontSize="small" />,

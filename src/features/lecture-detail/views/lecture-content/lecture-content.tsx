@@ -11,17 +11,15 @@ import {
 
 const LectureContent: FC<ILectureContent> = ({ content }) => {
   return (
-    <>
-      <StyledPaper>
-        <StyledTypography variant="h5">Материалы урока</StyledTypography>
-        <Divider />
-        <StyledStack>
-          {content?.map((item) => {
-            return <TextView key={item?.value} content={item?.value} />;
-          })}
-        </StyledStack>
-      </StyledPaper>
-    </>
+    <StyledPaper>
+      <StyledTypography variant="h5">Материалы урока</StyledTypography>
+      <Divider />
+      <StyledStack>
+        {content?.map((item) => {
+          return <TextView key={item?.value} content={item?.value} />;
+        })}
+      </StyledStack>
+    </StyledPaper>
   );
 };
 

@@ -35,8 +35,6 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "firstName",
         cell: (info: CellContext<UserDto, unknown>) => {
-          const { locked, id } = info.row.original;
-
           return (
             <UserRow
               user={info.row.original}
@@ -172,7 +170,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         footer: (props) => props.column.id,
         accessorKey: "roles",
         cell: (info: CellContext<UserDto, unknown>) => {
-          const { roles, id } = info.row.original;
+          const { roles } = info.row.original;
 
           return (
             <StyledMobileBox>

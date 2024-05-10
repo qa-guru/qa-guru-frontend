@@ -85,9 +85,9 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
   textTransform: "uppercase",
 }));
 
-export const StyledUserBox = styled(Box)({
-  marginTop: "11px",
+export const StyledUserGrid = styled(Grid)({
   padding: "16px 0",
+  gap: "10px",
 });
 
 export const StyledBox = styled(Box)({
