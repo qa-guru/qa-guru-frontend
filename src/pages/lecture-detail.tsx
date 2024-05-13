@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { LectureDetail } from "features/lecture-detail";
+import { Lecture } from "features/lecture-detail";
 
 const LectureDetailPage: FC = () => {
-  return <LectureDetail />;
+  return <Lecture />;
 };
 
 export default LectureDetailPage;

@@ -34,7 +34,7 @@ export const StyledIconBox = styled(Box)(({ theme }) => ({
   right: 0,
   zIndex: 2000,
   width: "100%",
-  backgroundColor: theme.palette.app.white,
+  backgroundColor: theme.palette.app.menu,
 }));
 
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({

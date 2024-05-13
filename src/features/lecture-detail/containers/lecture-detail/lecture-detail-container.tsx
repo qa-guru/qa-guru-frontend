@@ -5,7 +5,7 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
   useLectureHomeWorkQuery,
   useLectureQuery,
-  useTrainingLecturesQuery, // Import the query for fetching all lectures in a training
+  useTrainingLecturesQuery,
 } from "api/graphql/generated/graphql";
 
 import LectureDetail from "../../views/lecture-detail";
