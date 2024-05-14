@@ -6,7 +6,7 @@ import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledLoadingButton,
-  StyledLocalSelectorWrapper,
+  StyledSelectorWrapper,
   StyledLogo,
   StyledPaper,
   StyledStack,
@@ -45,9 +45,9 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
 
   return (
     <StyledWrapper>
-      <StyledLocalSelectorWrapper>
+      <StyledSelectorWrapper>
         <ThemeSelector />
-      </StyledLocalSelectorWrapper>
+      </StyledSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>

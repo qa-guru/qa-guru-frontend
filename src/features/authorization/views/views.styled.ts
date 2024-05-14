@@ -3,7 +3,7 @@ import { Box, Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
-export const StyledLocalSelectorWrapper = styled(Box)(({ theme }) => ({
+export const StyledSelectorWrapper = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "20px",
   right: "40px",
@@ -27,11 +27,14 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   height: "calc(100dvh - 60px)",
 }));
 
-export const StyledLogo = styled(Logo)({
+export const StyledLogo = styled(Logo)(({ theme }) => ({
   height: "auto",
   width: "250px",
   viewBox: "0 0 250 38",
-});
+  [theme.breakpoints.down("sm")]: {
+    width: "210px",
+  },
+}));
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   width: "390px",
@@ -72,6 +75,7 @@ export const StyledSignupWrapper = styled(Stack)(({ theme }) => ({
   top: 0,
   bottom: "60px",
   width: "100%",
+  minHeight: "calc(100dvh - 60px)",
   [theme.breakpoints.down("md")]: {
     position: "inherit",
   },
