@@ -1,4 +1,4 @@
-import { Stack, styled } from "@mui/system";
+import { Stack, darken, styled } from "@mui/system";
 import { Button, Paper } from "@mui/material";
 
 export const StyledPaperStack = styled(Stack)({
@@ -35,3 +35,12 @@ export const StyledContinueButton = styled(Button)(({ theme }) => ({
 export const StyledCancelButton = styled(Button)({
   gap: "8px",
 });
+
+export const StyledSaveButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.app.pinkMain,
+  color: theme.palette.app.white,
+  gap: "8px",
+  "&:hover": {
+    backgroundColor: darken(theme.palette.app.pinkMain, 0.25),
+  },
+}));

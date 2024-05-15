@@ -45,7 +45,7 @@ export const StyledSubmitButtonsStack = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const StyledCoursesButton = styled(Button)(({ theme }) => ({
+export const StyledSaveButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.app.pinkMain,
   color: theme.palette.app.white,
   gap: "8px",

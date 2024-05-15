@@ -1,12 +1,14 @@
 import { Box, Container, Typography } from "@mui/material";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { UserRole } from "api/graphql/generated/graphql";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { client } from "api";
-import { Add, Clear } from "@mui/icons-material";
+import { Clear } from "@mui/icons-material";
+import SaveIcon from "@mui/icons-material/Save";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import TrainingUpload from "../training-upload";
 import SelectMentors from "../../containers";
@@ -14,7 +16,7 @@ import {
   StyledButtonsStack,
   StyledCancelButton,
   StyledContinueButton,
-  StyledCoursesButton,
+  StyledSaveButton,
   StyledInfoStack,
   StyledPaper,
   StyledPaperStack,
@@ -29,7 +31,6 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const location = useLocation();
-  const [redirectPath, setRedirectPath] = useState<string | null>(null);
 
   const { handleSubmit, control } = useForm<TrainingInput>({
     defaultValues: {
@@ -50,10 +51,6 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
       onCompleted: () => {
         enqueueSnackbar("Курс обновлен", { variant: "success" });
         client.refetchQueries({ include: ["training"] });
-
-        if (redirectPath) {
-          navigate(redirectPath);
-        }
       },
       onError: () => {
         enqueueSnackbar(
@@ -95,23 +92,17 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
         </StyledPaperStack>
         <StyledButtonsStack>
           <StyledSubmitButtonsStack>
-            <StyledCoursesButton
-              type="submit"
-              variant="contained"
-              onClick={() => setRedirectPath("/admin-panel/courses")}
-            >
-              <Clear fontSize="small" />
-              Сохранить и закрыть
-            </StyledCoursesButton>
+            <StyledSaveButton type="submit" variant="contained">
+              <SaveIcon fontSize="small" />
+              Сохранить
+            </StyledSaveButton>
             <StyledContinueButton
               type="submit"
               variant="contained"
-              onClick={() =>
-                setRedirectPath(`${location.pathname}/edit-lectures`)
-              }
+              onClick={() => navigate(`${location.pathname}/edit-lectures`)}
             >
-              <Add fontSize="small" />
-              Сохранить и продолжить
+              Продолжить
+              <ArrowForwardIosIcon sx={{ fontSize: "16px" }} />
             </StyledContinueButton>
           </StyledSubmitButtonsStack>
           <Box>
