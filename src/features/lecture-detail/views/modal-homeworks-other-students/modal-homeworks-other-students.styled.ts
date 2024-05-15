@@ -26,7 +26,7 @@ export const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
   overflowY: "auto",
   scrollbarWidth: "none",
   height: "calc(100dvh - 50px)",
-  padding: "10px",
+  padding: "10px 10px 80px",
   [theme.breakpoints.up("sm")]: {
     height: "calc(100dvh - 50px)",
     padding: "30px 15px 15px",
