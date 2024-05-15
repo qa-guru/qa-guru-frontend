@@ -17,6 +17,7 @@ import {
   StyledIconButtonDelete,
   VisuallyHiddenInput,
 } from "./avatar-upload.styled";
+import { useUserIdQuery } from "../../../../api/graphql/generated/graphql";
 
 const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
   const { avatar, firstName, lastName } = user!;
@@ -25,7 +26,10 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
   const { uploadAvatar, uploading } = useAvatarUpload();
   const { deleteAvatar, deleting } = useAvatarDelete();
 
+  const { data: dataUserId } = useUserIdQuery({ fetchPolicy: "cache-first" });
+
   const fullName = `${firstName} ${lastName}`;
+  const isCurrentUser = user?.id === dataUserId?.user?.id;
 
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];
@@ -54,11 +58,17 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
         {!isMobileOrTablet && (
           <>
             <label htmlFor="icon-button-file">
-              <StyledIconButton>
-                {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
-              </StyledIconButton>
+              {isCurrentUser && (
+                <StyledIconButton>
+                  {uploading ? (
+                    <CircularProgress size={24} />
+                  ) : (
+                    <CameraAltIcon />
+                  )}
+                </StyledIconButton>
+              )}
             </label>
-            {avatar && (
+            {isCurrentUser && avatar && (
               <StyledIconButtonDelete onClick={handleDeleteAvatar}>
                 {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
               </StyledIconButtonDelete>
