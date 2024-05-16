@@ -19,6 +19,7 @@ const AppMenu: FC<IAppMenu> = (props) => {
               variant="text"
               key={id}
               onClick={() => handleClickNavMenu(pageURL)}
+              disableRipple
             >
               <Typography variant="body2">{title}</Typography>
             </Button>

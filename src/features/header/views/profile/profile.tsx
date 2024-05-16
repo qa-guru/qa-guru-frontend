@@ -86,7 +86,7 @@ const Profile: FC<IProfile> = (props) => {
   return (
     <>
       <Tooltip title="Open settings">
-        <StyledButton variant="text" onClick={handleOpenProfile}>
+        <StyledButton variant="text" onClick={handleOpenProfile} disableRipple>
           <StyledBox>
             <UserRow
               user={user}

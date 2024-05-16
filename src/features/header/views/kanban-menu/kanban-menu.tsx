@@ -1,26 +1,25 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { ArrowDropDown } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-import { type Theme } from "@mui/material/styles"; // Ensure you have imported the Theme type
+import { type Theme } from "@mui/material/styles";
 
 import { IKanbanMenu } from "./kanban-menu.types";
 import {
   StyledButton,
+  StyledLink,
   StyledMenu,
   StyledWrapperBox,
 } from "./kanban-menu.styled";
 import { StyledStack } from "../menu-burger/menu-burger.styled";
 
 const KanbanMenu: FC<IKanbanMenu> = (props) => {
-  const navigate = useNavigate();
   const { pages } = props;
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const open = Boolean(anchorEl);
 
-  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOpen = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -46,9 +45,8 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
     }
   };
 
-  const handleClickNavMenu = (pageURL: string) => {
+  const handleClickNavMenu = () => {
     handleClose();
-    navigate(pageURL);
   };
 
   return (
@@ -60,6 +58,7 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
         onClick={handleOpen}
         onMouseEnter={handleOpen}
         onMouseLeave={handleClose}
+        disableRipple
       >
         <StyledStack>
           <Typography textTransform="uppercase" variant="body2" color="primary">
@@ -87,14 +86,20 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
-              <Typography
-                textTransform="uppercase"
-                textAlign="center"
-                variant="body2"
+            <MenuItem key={id} onClick={handleClickNavMenu}>
+              <StyledLink
+                href={pageURL}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {title}
-              </Typography>
+                <Typography
+                  textTransform="uppercase"
+                  textAlign="center"
+                  variant="body2"
+                >
+                  {title}
+                </Typography>
+              </StyledLink>
             </MenuItem>
           );
         })}

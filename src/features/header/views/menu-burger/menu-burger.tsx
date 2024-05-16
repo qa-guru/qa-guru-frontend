@@ -5,7 +5,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 
 import { IMenuBurger } from "./menu-burger.types";
-import { StyledBox, StyledMenu } from "./menu-burger.styled";
+import { StyledBox, StyledLink, StyledMenu } from "./menu-burger.styled";
+import { ListItemText } from "@mui/material";
 
 const MenuBurger: FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;
@@ -33,9 +34,11 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
-              <Typography textAlign="center">{title}</Typography>
-            </MenuItem>
+            <StyledLink to={pageURL} key={id}>
+              <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
+                <ListItemText>{title}</ListItemText>
+              </MenuItem>
+            </StyledLink>
           );
         })}
       </StyledMenu>
