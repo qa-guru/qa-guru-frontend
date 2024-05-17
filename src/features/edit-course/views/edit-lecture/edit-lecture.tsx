@@ -7,8 +7,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { Editor } from "shared/components/text-editor";
 import { RichTextEditorRef } from "shared/lib/mui-tiptap";
-import { Add, Clear } from "@mui/icons-material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Clear } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import SaveIcon from "@mui/icons-material/Save";
 
 import SelectLectors from "../../containers";
 import {
@@ -18,6 +20,7 @@ import {
   StyledInfoStack,
   StyledPaper,
   StyledPaperStack,
+  StyledSaveButton,
 } from "./edit-lecture.styled";
 import { IEditLecture, LectureInput } from "./edit-lecture.types";
 import EditDescription from "../edit-description";
@@ -31,7 +34,6 @@ const EditLecture: FC<IEditLecture> = ({
   const contentHomework = dataLectureHomework.lectureHomeWork;
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [description, setDescription] = useState(
     dataLecture?.lecture?.description!
@@ -83,7 +85,6 @@ const EditLecture: FC<IEditLecture> = ({
       onCompleted: () => {
         enqueueSnackbar("Урок обновлен", { variant: "success" });
         client.refetchQueries({ include: ["lecture"] });
-        navigate(-1);
       },
       onError: () => {
         enqueueSnackbar(
@@ -148,9 +149,16 @@ const EditLecture: FC<IEditLecture> = ({
             <Clear fontSize="small" />
             Отменить
           </StyledCancelButton>
-          <StyledContinueButton type="submit" variant="contained">
-            <Add fontSize="small" />
+          <StyledSaveButton type="submit" variant="contained">
+            <SaveIcon />
             Сохранить
+          </StyledSaveButton>
+          <StyledContinueButton
+            onClick={() => navigate(-3)}
+            variant="contained"
+          >
+            Вернуться к списку курсов
+            <ArrowForwardIosIcon sx={{ fontSize: "16px" }} />
           </StyledContinueButton>
         </StyledButtonsStack>
       </form>

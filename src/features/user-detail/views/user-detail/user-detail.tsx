@@ -8,6 +8,7 @@ import MediaLinks from "features/profile/views/media-links/media-links";
 import KanbanProfileMentor from "features/kanban-profile-mentor/views/kanban";
 import KanbanProfileStudent from "features/kanban-profile-student/views/kanban";
 import { UserRole } from "api/graphql/generated/graphql";
+import useRoleAccess from "shared/hooks/use-role-access";
 
 import {
   StyledColumnStack,
@@ -27,7 +28,16 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
   const { rating, firstName, lastName, creationDate, roles } = data?.userById!;
 
   const ratingColor = useRatingColor(rating?.rating);
-  const hasRoleAccess = (role: UserRole) => roles?.includes(role);
+
+  const hasStudentKanbanAccess = useRoleAccess({
+    roles,
+    allowedRoles: [UserRole.Student, UserRole.Admin],
+  });
+
+  const hasMentorKanbanAccess = useRoleAccess({
+    roles,
+    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  });
 
   return (
     <Container>
@@ -84,8 +94,8 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
           </StyledWebsiteStack>
         </StyledMobileStack>
       </StyledPaper>
-      {hasRoleAccess(UserRole.Student) && <KanbanProfileStudent />}
-      {hasRoleAccess(UserRole.Mentor) && <KanbanProfileMentor />}
+      {hasStudentKanbanAccess && <KanbanProfileStudent />}
+      {hasMentorKanbanAccess && <KanbanProfileMentor />}
     </Container>
   );
 };

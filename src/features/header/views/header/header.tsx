@@ -49,40 +49,33 @@ const Header: FC = () => {
     });
   };
 
-  const hasAccess = (roles: UserRole[]) =>
-    useRoleAccess({ allowedRoles: roles });
+  const targetPages = isMobileOrTablet ? pages : kanbanPages;
 
-  if (hasAccess([UserRole.Student])) {
-    addPage(pages, "Главная", "/", 0);
-  }
+  const hasStudentKanbanAccess = useRoleAccess({
+    allowedRoles: [UserRole.Student, UserRole.Admin],
+  });
 
-  const kanbanAccess = hasAccess([
-    UserRole.Mentor,
-    UserRole.Manager,
-    UserRole.Master,
-    UserRole.Student,
-  ]);
+  const hasMentorKanbanAccess = useRoleAccess({
+    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  });
 
-  if (kanbanAccess) {
-    const targetPages = isMobileOrTablet ? pages : kanbanPages;
-    addPage(targetPages, "Доска заданий", "/kanban", 1);
-  }
+  const hasKanbanAccess = useRoleAccess({
+    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  });
 
-  if (hasAccess([UserRole.Mentor])) {
-    const targetPages = isMobileOrTablet ? pages : kanbanPages;
+  const hasMainAccess = useRoleAccess({
+    allowedRoles: [UserRole.Student, UserRole.Admin],
+  });
+
+  if (hasMainAccess) addPage(pages, "Главная", "/", 0);
+  if (hasKanbanAccess) addPage(targetPages, "Доска заданий", "/kanban", 1);
+  if (hasMentorKanbanAccess)
     addPage(targetPages, "Доска ментора", "/kanban-mentor", 2);
-  }
-
-  if (hasAccess([UserRole.Student])) {
-    const targetPages = isMobileOrTablet ? pages : kanbanPages;
-    addPage(targetPages, "Доска студента", "/kanban-student", 3);
-  }
-
-  if (kanbanAccess && kanbanPages.length === 1) {
-    addPage(pages, "Доска заданий", "/kanban", 4);
-  }
-
-  addPage(pages, "Топ 50", "/top-users", 5);
+  addPage(pages, "Топ 50", "/top-users", 3);
+  if (hasStudentKanbanAccess)
+    addPage(targetPages, "Доска студента", "/kanban-student", 4);
+  if (kanbanPages.length === 1)
+    addPage(pages, "Доска студента", "/kanban-student", 5);
 
   const handleClickNavMenu = (pageURL: string) => {
     setAnchorElNav(null);

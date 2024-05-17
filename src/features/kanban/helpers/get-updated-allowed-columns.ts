@@ -12,15 +12,12 @@ export const getUpdatedAllowedColumns = (
   });
 
   const userId = user?.user?.id;
-  const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
-  const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
-  const hasStudentAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
 
-  if (hasManagerAccess && !hasMentorAccess) {
-    return [];
-  }
+  const hasDraggAccess = useRoleAccess({
+    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  });
 
-  if (hasStudentAccess && !hasMentorAccess) {
+  if (!hasDraggAccess) {
     return [];
   }
 

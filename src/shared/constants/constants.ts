@@ -7,8 +7,6 @@ export const DATE_FORMAT = "dd.MM.yyyy '|' HH:mm";
 export const ROLES = [
   { text: "Admin", value: "ADMIN" },
   { text: "Lector", value: "LECTOR" },
-  { text: "Manager", value: "MANAGER" },
-  { text: "Master", value: "MASTER" },
   { text: "Mentor", value: "MENTOR" },
   { text: "Student", value: "STUDENT" },
 ];

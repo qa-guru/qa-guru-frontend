@@ -14,13 +14,7 @@ import {
 import Column from "../column";
 import { ROUTES } from "../../constants";
 
-const DesktopBoard: FC<IDesktopBoard> = ({
-  columns,
-  draggingState,
-  setDraggingState,
-  moveCard,
-  fetchMoreFunctions,
-}) => {
+const DesktopBoard: FC<IDesktopBoard> = ({ columns, fetchMoreFunctions }) => {
   const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
   const [activeCardId, setActiveCardId] = useState<Maybe<string>>(null);
   const [selectedCard, setSelectedCard] =
@@ -55,11 +49,8 @@ const DesktopBoard: FC<IDesktopBoard> = ({
         <StyledStack>
           {columns?.map((column, index) => (
             <Column
-              draggingState={draggingState}
-              setDraggingState={setDraggingState}
               key={`${column.id}-${index}`}
               column={column}
-              onCardDrop={moveCard}
               fetchMore={fetchMoreFunctions[index]}
               onCardClick={handleCardClick}
               activeCardId={activeCardId}

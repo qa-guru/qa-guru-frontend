@@ -16,13 +16,7 @@ import {
 import Column from "../column";
 import { ROUTES } from "../../constants";
 
-const MobileBoard: FC<IMobileBoard> = ({
-  columns,
-  draggingState,
-  setDraggingState,
-  moveCard,
-  fetchMoreFunctions,
-}) => {
+const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -83,11 +77,8 @@ const MobileBoard: FC<IMobileBoard> = ({
         >
           {columns.map((column, index) => (
             <Column
-              draggingState={draggingState}
-              setDraggingState={setDraggingState}
               key={`${column.id}-${index}`}
               column={column}
-              onCardDrop={moveCard}
               fetchMore={fetchMoreFunctions[index]}
               onCardClick={handleCardClick}
             />

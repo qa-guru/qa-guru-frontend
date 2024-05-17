@@ -15,9 +15,8 @@ import { useAuth } from "features/authorization/context/auth-context";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
-import ManagerRoutes from "./manager";
-import MasterRoutes from "./master";
 import AdminRoutes from "./admin";
+import LectorRoutes from "./lector";
 
 interface IProtectedRoute {
   children: ReactNode;
@@ -40,8 +39,7 @@ const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
 export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {
   [UserRole.Student]: StudentRoutes,
   [UserRole.Mentor]: MentorRoutes,
-  [UserRole.Manager]: ManagerRoutes,
-  [UserRole.Master]: MasterRoutes,
+  [UserRole.Lector]: LectorRoutes,
   [UserRole.Admin]: AdminRoutes,
 };
 

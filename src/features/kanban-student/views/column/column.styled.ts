@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, DialogContent, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export const StyledWrapperColumnContainer = styled(Box)(({ theme }) => ({
@@ -41,23 +41,6 @@ export const StyledWrapperBoxCircle = styled(Box)({
   marginTop: "15px",
 });
 
-export const StyledWrapper = styled(Box)({
-  padding: "30px 20px 10px",
-  width: "300px",
-});
-
-export const StyledDialogContent = styled(DialogContent)({
-  textAlign: "center",
-});
-
-export const StyledStack = styled(Stack)(({ theme }) => ({
-  width: "100%",
-  gap: "40px",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  marginBottom: "15px",
-}));
-
 export const StyledInfiniteScroll = styled(InfiniteScroll)({
   overflow: "visible",
   marginTop: "-4px",
@@ -70,16 +53,6 @@ export const StyledRowStack = styled(Stack)({
 export const StyledCardBox = styled(Box)({
   marginBottom: "16px",
 });
-
-export const StyledButton = styled(Button)(({ theme }) => ({
-  width: "145px",
-  color: theme.palette.app.white,
-}));
-
-export const StyledCancelButton = styled(Button)(({ theme }) => ({
-  width: "145px",
-  color: theme.palette.app.black,
-}));
 
 export const StyledBoxWrapper = styled(Box)({
   width: "100%",
