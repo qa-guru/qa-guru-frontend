@@ -1,14 +1,6 @@
-import { darken, styled } from "@mui/system";
+import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 export const StyledGridContainer = styled(Grid)(({ theme }) => ({
   gap: theme.spacing(3),
@@ -57,29 +49,6 @@ export const StyledSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.app.primary,
   textTransform: "uppercase",
 }));
-
-export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
-  flexDirection: "row",
-  gap: "20px",
-  paddingBottom: "20px",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    gap: "16px",
-  },
-}));
-
-export const StyledSaveButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.app.pinkMain,
-  color: theme.palette.app.white,
-  gap: "8px",
-  "&:hover": {
-    backgroundColor: darken(theme.palette.app.pinkMain, 0.25),
-  },
-}));
-
-export const StyledCancelButton = styled(Button)({
-  gap: "8px",
-});
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.app.primary,

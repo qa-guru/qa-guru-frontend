@@ -1,4 +1,5 @@
 import {
+  useDeleteLectureMutation,
   useTrainingLecturesQuery,
   useUpdateLectureMutation,
   useUpdateTrainingLectureMutation,
@@ -13,6 +14,9 @@ import EditLectures from "../../views/edit-lectures";
 const EditLecturesContainer: FC = () => {
   const { trainingId } = useParams();
 
+  const [deleteLecture, { loading: loadingDeleteLecture }] =
+    useDeleteLectureMutation();
+
   const [updatLecture, { loading: loadingUpdateLectureQuery }] =
     useUpdateLectureMutation();
 
@@ -26,7 +30,8 @@ const EditLecturesContainer: FC = () => {
   if (
     loadingUpdateTrainingLecture ||
     loadingTrainingLectures ||
-    loadingUpdateLectureQuery
+    loadingUpdateLectureQuery ||
+    loadingDeleteLecture
   )
     return <AppSpinner />;
   if (!data) return <NoDataErrorMessage />;
@@ -36,6 +41,7 @@ const EditLecturesContainer: FC = () => {
       data={data}
       updateTrainingLecture={updateTrainingLecture}
       updatLecture={updatLecture}
+      deleteLecture={deleteLecture}
     />
   );
 };

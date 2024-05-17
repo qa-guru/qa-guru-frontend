@@ -6,7 +6,7 @@ import { Maybe } from "api/graphql/generated/graphql";
 import { IMentorSelection } from "./mentor-selection.types";
 import { useKanbanForm } from "../../context/kanban-form-context";
 
-const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
+const MentorSelection: FC<IMentorSelection> = ({ data, control, loading }) => {
   const items = data?.mentors?.items;
   const { setMentorId } = useKanbanForm();
 
@@ -31,6 +31,7 @@ const MentorSelection: FC<IMentorSelection> = ({ data, control }) => {
       placeholder="Выберите наставника"
       options={mentorsOptions}
       onSelect={handleSelectChange}
+      loading={loading}
     />
   );
 };

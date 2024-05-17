@@ -8,21 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import { FC } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Clear } from "@mui/icons-material";
-import SaveIcon from "@mui/icons-material/Save";
 import AddIcon from "@mui/icons-material/Add";
+import { client } from "api";
 
 import {
   StyledBox,
-  StyledButtonsStack,
-  StyledCancelButton,
   StyledGridContainer,
   StyledIconButton,
   StyledLink,
   StyledPaper,
-  StyledSaveButton,
   StyledStack,
   StyledSubtitle,
   StyledTypography,
@@ -31,13 +27,14 @@ import {
 import { IEditLectures } from "./edit-lectures.types";
 
 const EditLectures: FC<IEditLectures> = (props) => {
-  const { data, updatLecture, updateTrainingLecture } = props;
+  const { data, updatLecture, updateTrainingLecture, deleteLecture } = props;
   const { trainingLectures } = data;
   const location = useLocation();
   const { trainingId } = useParams();
-  const navigate = useNavigate();
 
-  console.log(trainingLectures);
+  const lectureIds = trainingLectures?.map(
+    (trainingLecture) => trainingLecture?.lecture?.id!
+  );
 
   const handleAddLecture = () => {
     updatLecture({
@@ -45,19 +42,39 @@ const EditLectures: FC<IEditLectures> = (props) => {
         input: {},
       },
       onCompleted: (result) => {
-        const lectureIds = trainingLectures?.map((lecture) => lecture?.id!);
+        lectureIds?.push(result?.updateLecture?.id!);
 
         updateTrainingLecture({
           variables: {
             id: trainingId!,
-            lectureIds: [...lectureIds!, result?.updateLecture?.id!],
+            lectureIds: lectureIds!,
+          },
+          onCompleted: () => {
+            client.refetchQueries({ include: ["trainingLectures"] });
           },
         });
       },
     });
   };
 
-  const handleRemoveLecture = () => {};
+  const handleRemoveLecture = (lectureId: string | null | undefined) => {
+    const newLectureIds = lectureIds?.filter((id) => id !== lectureId);
+
+    updateTrainingLecture({
+      variables: {
+        id: trainingId!,
+        lectureIds: newLectureIds,
+      },
+      onCompleted: () => {
+        deleteLecture({
+          variables: { id: lectureId! },
+          onCompleted: () => {
+            client.refetchQueries({ include: ["trainingLectures"] });
+          },
+        });
+      },
+    });
+  };
 
   return (
     <Container>
@@ -68,15 +85,19 @@ const EditLectures: FC<IEditLectures> = (props) => {
       </Box>
       <StyledGridContainer container>
         {trainingLectures?.map((item) => {
-          const { id, subject, description } = item?.lecture || {};
+          const { id: lectureId, subject, description } = item?.lecture || {};
 
           return (
-            <Grid item xs={12} key={id}>
+            <Grid item xs={12} key={lectureId}>
               <Stack direction="row" alignItems="center">
                 <CardActionArea>
-                  <StyledLink to={`${location.pathname}/${id}`}>
+                  <StyledLink to={`${location.pathname}/${lectureId}`}>
                     <StyledPaper>
-                      <Typography variant="h4">{subject}</Typography>
+                      {!subject ? (
+                        <Typography variant="h4">Новый урок</Typography>
+                      ) : (
+                        <Typography variant="h4">{subject}</Typography>
+                      )}
                       <StyledWrapper>
                         {description?.map((desc, index) => (
                           <StyledStack key={index}>
@@ -96,7 +117,7 @@ const EditLectures: FC<IEditLectures> = (props) => {
                   </StyledLink>
                 </CardActionArea>
                 <Box>
-                  <IconButton onClick={() => handleRemoveLecture()}>
+                  <IconButton onClick={() => handleRemoveLecture(lectureId)}>
                     <RemoveIcon color="primary" />
                   </IconButton>
                 </Box>
@@ -105,20 +126,6 @@ const EditLectures: FC<IEditLectures> = (props) => {
           );
         })}
       </StyledGridContainer>
-      <StyledButtonsStack>
-        <StyledSaveButton type="submit" variant="contained">
-          <SaveIcon fontSize="small" />
-          Сохранить
-        </StyledSaveButton>
-        <StyledCancelButton
-          color="secondary"
-          variant="contained"
-          onClick={() => navigate(-1)}
-        >
-          <Clear fontSize="small" />
-          Отмена
-        </StyledCancelButton>
-      </StyledButtonsStack>
     </Container>
   );
 };

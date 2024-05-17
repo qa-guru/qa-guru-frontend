@@ -1,4 +1,5 @@
 import {
+  DeleteLectureMutationFn,
   TrainingLecturesQuery,
   UpdateLectureMutationFn,
   UpdateTrainingLectureMutationFn,
@@ -8,4 +9,5 @@ export interface IEditLectures {
   data: TrainingLecturesQuery;
   updateTrainingLecture: UpdateTrainingLectureMutationFn;
   updatLecture: UpdateLectureMutationFn;
+  deleteLecture: DeleteLectureMutationFn;
 }

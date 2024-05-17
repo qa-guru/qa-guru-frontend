@@ -12,6 +12,14 @@ import CreateTrainingPage from "pages/create-training";
 import EditTrainingPage from "pages/edit-training";
 import EditLecturesPage from "pages/edit-lectures";
 import EditLecturePage from "pages/edit-lecture";
+import {
+  KanbanMentorHomeworkDetailsFullPage,
+  KanbanMentorPage,
+} from "pages/kanban-mentor";
+import {
+  KanbanStudentHomeworkDetailsFullPage,
+  KanbanStudentPage,
+} from "pages/kanban-student";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -26,6 +34,26 @@ const AdminRoutes = [
     element={<LectureDetailPage />}
   />,
   <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
+  <Route
+    key="kanban-mentor"
+    path="/kanban-mentor"
+    element={<KanbanMentorPage />}
+  />,
+  <Route
+    key="kanban-mentor-homework-description"
+    path="/kanban-mentor/:lectureId"
+    element={<KanbanMentorHomeworkDetailsFullPage />}
+  />,
+  <Route
+    key="kanban-student"
+    path="/kanban-student"
+    element={<KanbanStudentPage />}
+  />,
+  <Route
+    key="kanban-student-homework-description"
+    path="/kanban-student/:lectureId"
+    element={<KanbanStudentHomeworkDetailsFullPage />}
+  />,
   <Route
     key="kanban-homework-description"
     path="/kanban/:lectureId"

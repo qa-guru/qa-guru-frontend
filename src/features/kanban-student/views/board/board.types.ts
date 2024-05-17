@@ -9,9 +9,3 @@ export interface IBoard {
     (options: { variables: { offset: number } }) => void
   >;
 }
-
-export interface IDraggingState {
-  newItem: boolean;
-  fromInReview: boolean;
-  fromNotApproved: boolean;
-}

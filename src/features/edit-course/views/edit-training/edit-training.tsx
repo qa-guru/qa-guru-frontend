@@ -85,7 +85,7 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
               <SelectMentors
                 name="mentors"
                 control={control}
-                role={UserRole.Mentor}
+                role={UserRole.Lector}
               />
             </StyledInfoStack>
           </StyledPaper>
