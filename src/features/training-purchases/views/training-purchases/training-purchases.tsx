@@ -23,8 +23,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState<Maybe<HTMLElement>>(null);
   const [openMentorsById, setOpenMentorsById] = useState<string | null>(null);
 
-  const gridMdValue =
-    trainingPurchases && trainingPurchases.length >= 3 ? 4 : 6;
+  const gridMdValue = trainingPurchases?.length! >= 3 ? 4 : 6;
 
   // const [openCalendarById, setOpenCalendarById] = useState<string | null>(null);
   // const calendarRefs = useRef<{ [key: string]: RefObject<HTMLElement> }>({});
