@@ -6,6 +6,7 @@ import AvatarCustom from "shared/components/avatar-custom";
 import { CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import useResponsive from "shared/hooks/use-responsive";
+import { useUserIdQuery } from "api/graphql/generated/graphql";
 
 import { useAvatarUpload } from "../../hooks/use-avatar-upload";
 import { useAvatarDelete } from "../../hooks/use-avatar-delete";
@@ -17,7 +18,6 @@ import {
   StyledIconButtonDelete,
   VisuallyHiddenInput,
 } from "./avatar-upload.styled";
-import { useUserIdQuery } from "../../../../api/graphql/generated/graphql";
 
 const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
   const { avatar, firstName, lastName } = user!;
