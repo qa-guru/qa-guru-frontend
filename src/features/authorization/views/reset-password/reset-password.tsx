@@ -11,7 +11,7 @@ import {
   StyledBottomStack,
   StyledButton,
   StyledLoadingButton,
-  StyledLocalSelectorWrapper,
+  StyledSelectorWrapper,
   StyledLogo,
   StyledPaper,
   StyledStack,
@@ -50,9 +50,9 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
 
   return (
     <StyledWrapper>
-      <StyledLocalSelectorWrapper>
+      <StyledSelectorWrapper>
         <ThemeSelector />
-      </StyledLocalSelectorWrapper>
+      </StyledSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>

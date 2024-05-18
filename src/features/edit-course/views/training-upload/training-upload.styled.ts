@@ -1,6 +1,7 @@
 import { Stack, styled } from "@mui/system";
 import { Box } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 
 export const StyledIconBox = styled(Box)({
   position: "relative",
@@ -31,6 +32,13 @@ export const StyledLogoBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.only("xs")]: {
     width: "100px",
     height: "100px",
+  },
+}));
+
+export const StyledLogoWhite = styled(LogoWhite)(({ theme }) => ({
+  [theme.breakpoints.only("xs")]: {
+    width: "90px",
+    height: "90px",
   },
 }));
 
