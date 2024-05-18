@@ -35,7 +35,7 @@ const UserRow: FC<IUserRow> = (props) => {
     : `${firstName} ${lastName}`;
 
   return (
-    <StyledWrapperStack>
+    <StyledWrapperStack hideFullName={hideFullName}>
       {Icon && <Icon />}
 
       {!hideAvatar && (
