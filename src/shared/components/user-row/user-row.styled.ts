@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Paper, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 interface IStyledWrapperStack {
   hideFullName?: boolean;

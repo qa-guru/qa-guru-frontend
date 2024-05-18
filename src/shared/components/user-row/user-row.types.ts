@@ -5,7 +5,6 @@ import {
   UserDto,
   UserRole,
 } from "api/graphql/generated/graphql";
-import { SxProps } from "@mui/material/styles";
 
 export interface IUserRow {
   icon?: ComponentType;
