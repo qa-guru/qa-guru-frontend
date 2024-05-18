@@ -154,10 +154,12 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         header: () => null,
         footer: (props) => props.column.id,
         accessorKey: "lock",
-        cell: () => {
+        cell: (info: CellContext<TrainingDto, unknown>) => {
+          const { id } = info.row.original;
+
           return (
             <StyledEditBox>
-              <IconButton>
+              <IconButton onClick={() => handleNavigateEditCourse(id)}>
                 <ModeEditIcon fontSize="small" color="primary" />
               </IconButton>
             </StyledEditBox>

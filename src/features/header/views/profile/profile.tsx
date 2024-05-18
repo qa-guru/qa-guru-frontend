@@ -43,7 +43,7 @@ const Profile: FC<IProfile> = (props) => {
 
   const hasAdminAccess = useRoleAccess({ allowedRoles: [UserRole.Admin] });
 
-  if (hasAdminAccess) {
+  if (hasAdminAccess)
     if (isDesktop) {
       settings.push({
         title: "Админ панель",
@@ -73,7 +73,6 @@ const Profile: FC<IProfile> = (props) => {
         }
       );
     }
-  }
 
   const handleOpenProfile = (event: MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);

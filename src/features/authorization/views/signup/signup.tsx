@@ -11,7 +11,7 @@ import {
   StyledBottomStack,
   StyledButton,
   StyledLoadingButton,
-  StyledLocalSelectorWrapper,
+  StyledSelectorWrapper,
   StyledLogo,
   StyledPaper,
   StyledSignupBox,
@@ -41,6 +41,7 @@ const Signup: FC<ISignUp> = (props) => {
       lastName: "",
       email: "",
       password: "",
+      confirmPassword: "",
       phoneNumber: "",
     },
     resolver: yupResolver(
@@ -94,9 +95,9 @@ const Signup: FC<ISignUp> = (props) => {
 
   return (
     <StyledSignupWrapper>
-      <StyledLocalSelectorWrapper>
+      <StyledSelectorWrapper>
         <ThemeSelector />
-      </StyledLocalSelectorWrapper>
+      </StyledSelectorWrapper>
       <StyledSignupBox>
         <StyledLogo />
         <StyledPaper>

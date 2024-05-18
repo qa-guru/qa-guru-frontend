@@ -116,6 +116,7 @@ function CustomizedBreadcrumbs() {
         { path: routePattern.path, end: false },
         location.pathname
       );
+
       if (match) {
         acc.push({
           path: match.pathname,

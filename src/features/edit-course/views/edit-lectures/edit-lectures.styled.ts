@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
 
 export const StyledGridContainer = styled(Grid)(({ theme }) => ({
   gap: theme.spacing(3),
@@ -48,4 +48,13 @@ export const StyledBox = styled(Box)({
 export const StyledSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.app.primary,
   textTransform: "uppercase",
+}));
+
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  backgroundColor: theme.palette.app.primary,
+  color: theme.palette.app.white,
+  "&:hover": {
+    color: theme.palette.app.textSecondary,
+    backgroundColor: theme.palette.app.secondary,
+  },
 }));

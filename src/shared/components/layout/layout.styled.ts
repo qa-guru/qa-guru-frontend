@@ -1,6 +1,10 @@
 import { styled } from "@mui/system";
 import { Box, Container } from "@mui/material";
 
+interface IStyledContainer {
+  isLogging?: boolean;
+}
+
 export const StyledBox = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -8,11 +12,13 @@ export const StyledBox = styled(Box)({
   minWidth: "100%",
 });
 
-export const StyledContainer = styled(Container)(({ theme }) => ({
+export const StyledContainer = styled(Container, {
+  shouldForwardProp: (prop) => prop !== "isLogging",
+})<IStyledContainer>(({ theme, isLogging }) => ({
   flexGrow: 1,
   minWidth: "100%",
   [theme.breakpoints.only("xs")]: {
-    marginTop: "70px",
+    marginTop: !isLogging && "70px",
   },
 }));
 

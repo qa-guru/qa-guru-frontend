@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
 import HomePage from "pages/home";
-import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
+import { KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
 import Profile from "pages/profile";
@@ -24,7 +24,6 @@ const StudentRoutes = [
     path="/training/:trainingId/:lectureId/:modalId?"
     element={<LectureDetailPage />}
   />,
-  <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
   <Route
     key="kanban-student"
     path="/kanban-student"
