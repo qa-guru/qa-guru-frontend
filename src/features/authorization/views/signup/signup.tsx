@@ -41,6 +41,7 @@ const Signup: FC<ISignUp> = (props) => {
       lastName: "",
       email: "",
       password: "",
+      confirmPassword: "",
       phoneNumber: "",
     },
     resolver: yupResolver(
