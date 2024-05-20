@@ -110,6 +110,7 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
                     placeholder="Введите E-mail"
                     label="E-mail"
                     errors={errors}
+                    disabled
                   />
                   <InputPhone
                     control={control}

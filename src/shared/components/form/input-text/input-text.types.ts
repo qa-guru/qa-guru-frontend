@@ -23,4 +23,5 @@ export interface IFormInputText<T extends FieldValues> {
   size?:
     | OverridableStringUnion<"small" | "medium", TextFieldPropsSizeOverrides>
     | undefined;
+  disabled?: boolean;
 }
