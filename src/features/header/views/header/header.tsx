@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
@@ -23,13 +22,12 @@ import KanbanMenu from "../kanban-menu";
 
 interface IPages {
   pageURL: string;
-  title: JSX.Element;
+  title: string;
   id: number;
 }
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
-  const navigate = useNavigate();
   const { settings } = useSettings();
   const { isMobileOrTablet } = useResponsive();
 
@@ -43,7 +41,7 @@ const Header: FC = () => {
     id: number
   ) => {
     pageList.push({
-      title: <StyledLink to={pageURL}>{title}</StyledLink>,
+      title,
       pageURL,
       id,
     });
@@ -77,9 +75,8 @@ const Header: FC = () => {
   if (kanbanPages.length === 1)
     addPage(pages, "Доска студента", "/kanban-student", 5);
 
-  const handleClickNavMenu = (pageURL: string) => {
+  const handleClickNavMenu = () => {
     setAnchorElNav(null);
-    navigate(pageURL);
   };
 
   return (
@@ -93,12 +90,15 @@ const Header: FC = () => {
             anchorElNav={anchorElNav}
           />
           <StyledIconBox>
-            <StyledLogoIconButton
-              disableRipple
-              onClick={() => handleClickNavMenu("/")}
-            >
-              {settings.theme === "light" ? <StyledDarkLogo /> : <StyledLogo />}
-            </StyledLogoIconButton>
+            <StyledLink to="/">
+              <StyledLogoIconButton disableRipple onClick={handleClickNavMenu}>
+                {settings.theme === "light" ? (
+                  <StyledDarkLogo />
+                ) : (
+                  <StyledLogo />
+                )}
+              </StyledLogoIconButton>
+            </StyledLink>
           </StyledIconBox>
           <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
           {kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />}

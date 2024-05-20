@@ -2,10 +2,10 @@ import { FC, MouseEvent } from "react";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
+import { ListItemText } from "@mui/material";
 
 import { IMenuBurger } from "./menu-burger.types";
-import { StyledBox, StyledMenu } from "./menu-burger.styled";
+import { StyledBox, StyledLink, StyledMenu } from "./menu-burger.styled";
 
 const MenuBurger: FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;
@@ -33,9 +33,11 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
-              <Typography textAlign="center">{title}</Typography>
-            </MenuItem>
+            <StyledLink to={pageURL} key={id}>
+              <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
+                <ListItemText>{title}</ListItemText>
+              </MenuItem>
+            </StyledLink>
           );
         })}
       </StyledMenu>

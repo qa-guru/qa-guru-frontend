@@ -1,4 +1,4 @@
-import { FC, Fragment, MouseEvent, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import { Container, Grid, Popover, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UserRow from "shared/components/user-row";
@@ -94,14 +94,13 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                       onClick={(event) => toggleMentorsMenu(event, id!)}
                     >
                       {otherMentors?.map((mentor) => (
-                        <Fragment key={mentor?.id}>
-                          <UserRow
-                            user={mentor}
-                            userId={mentor?.id}
-                            hideFullName
-                            hideRating
-                          />
-                        </Fragment>
+                        <UserRow
+                          user={mentor}
+                          userId={mentor?.id}
+                          hideFullName
+                          hideRating
+                          key={mentor?.id}
+                        />
                       ))}
                     </StyledAvatarGroup>
                   </StyledUserRowStack>
