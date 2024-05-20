@@ -1,0 +1,17 @@
+mutation updateTrainingLecture($id: ID!, $lectureIds: [ID!]) {
+  updateTrainingLecture(id: $id, lectureIds: $lectureIds) {
+    id
+    number
+    lecture {
+      id
+      subject
+      description
+    }
+    lastLecture {
+      id
+      subject
+      description
+    }
+    locking
+  }
+}

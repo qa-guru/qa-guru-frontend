@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import Menu from "@mui/material/Menu";
-import { Box, Button, Link } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const StyledWrapperBox = styled(Box)(({ theme }) => ({
   width: "100%",
@@ -27,7 +28,7 @@ export const StyledButton = styled(Button)({
   "&:hover": { backgroundColor: "transparent" },
 }) as typeof Button;
 
-export const StyledLink = styled(Link)({
+export const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  textAlign: "start",
-});
+  color: theme.palette.app.primary,
+}));

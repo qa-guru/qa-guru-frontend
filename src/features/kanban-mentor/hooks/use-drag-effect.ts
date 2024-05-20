@@ -31,12 +31,15 @@ const useDragEffect = ({
     fetchPolicy: "cache-first",
   });
 
-  const hasManagerAccess = useRoleAccess({ allowedRoles: [UserRole.Manager] });
-  const hasMentorAccess = useRoleAccess({ allowedRoles: [UserRole.Mentor] });
-  const hasStudentAccess = useRoleAccess({ allowedRoles: [UserRole.Student] });
+  const hasDraggAccess = useRoleAccess({
+    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  });
 
   const userId = user?.user?.id;
   const mentorId = card.mentor?.id;
+
+  const isFromInReview = sourceColumnId === STATUS_COLUMN.IN_REVIEW;
+  const isFromNotApproved = sourceColumnId === STATUS_COLUMN.NOT_APPROVED;
 
   useEffect(() => {
     if (!isDragging) {
@@ -49,22 +52,13 @@ const useDragEffect = ({
       return;
     }
 
-    if (hasManagerAccess && !hasMentorAccess) {
-      enqueueSnackbar("Менеджер не может менять статус домашнего задания");
-      return;
-    }
-
-    if (hasStudentAccess && !hasMentorAccess) {
-      enqueueSnackbar("Студент не может менять статус домашнего задания");
-      return;
-    }
-
-    if (
-      userId !== mentorId &&
-      (sourceColumnId === STATUS_COLUMN.IN_REVIEW ||
-        sourceColumnId === STATUS_COLUMN.NOT_APPROVED)
-    ) {
+    if (!hasDraggAccess) {
       enqueueSnackbar("Вы не можете поменять статус этой домашней работы");
+      return;
+    }
+
+    if (userId !== mentorId && (isFromInReview || isFromNotApproved)) {
+      enqueueSnackbar("Вы не можете поменять статус чужой домашней работы");
       return;
     }
 

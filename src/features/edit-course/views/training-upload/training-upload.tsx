@@ -5,7 +5,6 @@ import ImageIcon from "@mui/icons-material/Image";
 import { CircularProgress, Stack } from "@mui/material";
 import useResponsive from "shared/hooks/use-responsive";
 import { useParams } from "react-router-dom";
-import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 
 import { useTrainingUpload } from "../../hooks/use-training-upload";
 import { useTrainingDelete } from "../../hooks/use-training-delete";
@@ -18,6 +17,7 @@ import {
   StyledImageBox,
   StyledLoadingButton,
   StyledLogoBox,
+  StyledLogoWhite,
   VisuallyHiddenInput,
 } from "./training-upload.styled";
 
@@ -53,7 +53,7 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
           />
         ) : (
           <StyledLogoBox>
-            <LogoWhite />
+            <StyledLogoWhite />
           </StyledLogoBox>
         )}
         {!isMobileOrTablet && (

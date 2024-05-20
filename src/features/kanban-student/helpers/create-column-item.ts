@@ -3,8 +3,7 @@ import {
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
 
-import { getAllowedColumns } from "./get-allowed-columns";
-import { IColumnItem, IExtendedCard } from "../views/column/column.types";
+import { IColumnItem } from "../views/column/column.types";
 
 export const createColumnItem = (
   id: string,
@@ -12,19 +11,18 @@ export const createColumnItem = (
   items: StudentHomeWorkDto[],
   totalElements: number
 ): IColumnItem => {
-  const extendedCards: IExtendedCard[] = items
+  const cards = items
     ?.filter((homework) => homework.status === title)
     ?.map((card) => {
       return {
         ...card,
-        allowedColumns: getAllowedColumns(title),
       };
     });
 
   return {
     id,
     title,
-    cards: extendedCards,
+    cards,
     totalElements,
   };
 };

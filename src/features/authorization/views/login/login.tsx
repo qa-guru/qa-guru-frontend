@@ -15,7 +15,7 @@ import {
   StyledPaper,
   StyledStack,
   StyledWrapper,
-  StyledLocalSelectorWrapper,
+  StyledSelectorWrapper,
 } from "../views.styled";
 import InputPassword from "../input-password";
 import { ROUTES } from "../../constants";
@@ -72,9 +72,9 @@ const Login: FC<ILogin> = (props) => {
 
   return (
     <StyledWrapper>
-      <StyledLocalSelectorWrapper>
+      <StyledSelectorWrapper>
         <ThemeSelector />
-      </StyledLocalSelectorWrapper>
+      </StyledSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form>

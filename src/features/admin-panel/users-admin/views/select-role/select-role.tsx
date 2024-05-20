@@ -9,7 +9,6 @@ import { useForm } from "react-hook-form";
 import { InputChip } from "shared/components/form";
 import { formatRole } from "shared/helpers";
 import { Edit, Check } from "@mui/icons-material";
-import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledBox,
@@ -30,7 +29,6 @@ interface ISelectRoleForm {
 
 const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
   const [edit, setEdit] = useState(false);
-  const { isMobile } = useResponsive();
   const { control, setValue } = useForm<ISelectRoleForm>({
     defaultValues: {
       roles: [],

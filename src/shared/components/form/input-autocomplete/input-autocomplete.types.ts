@@ -24,4 +24,5 @@ export interface IFormInputText<
   options: OptionType[];
   onSelect: (item: Maybe<OptionType>) => void;
   disabled?: boolean;
+  loading?: boolean;
 }

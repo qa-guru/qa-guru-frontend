@@ -14,11 +14,11 @@ const Profile: FC = () => {
   const routeEdit = () => navigate("/profile/edit");
 
   const hasStudentKanbanAccess = useRoleAccess({
-    allowedRoles: [UserRole.Student],
+    allowedRoles: [UserRole.Student, UserRole.Admin],
   });
 
   const hasMentorKanbanAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor],
+    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
   });
 
   return (

@@ -8,7 +8,7 @@ import ThemeSelector from "shared/components/theme-selector";
 
 import {
   StyledLoadingButton,
-  StyledLocalSelectorWrapper,
+  StyledSelectorWrapper,
   StyledLogo,
   StyledPaper,
   StyledStack,
@@ -38,9 +38,9 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
 
   return (
     <StyledWrapper>
-      <StyledLocalSelectorWrapper>
+      <StyledSelectorWrapper>
         <ThemeSelector />
-      </StyledLocalSelectorWrapper>
+      </StyledSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
         <form onSubmit={handleSubmit(onSubmit)}>

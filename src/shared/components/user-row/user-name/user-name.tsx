@@ -11,17 +11,16 @@ const UserName: FC<IUserName> = ({
   hasLink,
   variant = "body2",
 }) => {
-  const { data } = useUserIdQuery();
+  const { data } = useUserIdQuery({ fetchPolicy: "cache-first" });
 
   const currentUserId = data?.user?.id;
   const isCurrentUser = userId === currentUserId;
-
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 
   return (
     <>
       {hasLink ? (
-        <StyledLink href={profilePath} key={userId}>
+        <StyledLink to={profilePath} key={userId}>
           <Typography variant={variant} color="primary">
             {fullName}
           </Typography>

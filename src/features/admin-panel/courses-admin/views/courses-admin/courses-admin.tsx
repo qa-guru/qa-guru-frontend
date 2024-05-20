@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { app } from "theme/colors";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,8 +16,7 @@ const CoursesAdmin: FC = () => {
 
   return (
     <>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
-        <TextField size="small" />
+      <Stack direction="row" justifyContent="flex-end" alignItems="center">
         <Button
           onClick={handleNavigateCreateCourse}
           sx={{ color: app.white }}

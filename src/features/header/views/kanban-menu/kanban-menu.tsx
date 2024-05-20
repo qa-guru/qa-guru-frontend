@@ -86,12 +86,8 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <MenuItem key={id} onClick={handleClickNavMenu}>
-              <StyledLink
-                href={pageURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <StyledLink to={pageURL} key={id}>
+              <MenuItem onClick={handleClickNavMenu}>
                 <Typography
                   textTransform="uppercase"
                   textAlign="center"
@@ -99,8 +95,8 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
                 >
                   {title}
                 </Typography>
-              </StyledLink>
-            </MenuItem>
+              </MenuItem>
+            </StyledLink>
           );
         })}
       </StyledMenu>

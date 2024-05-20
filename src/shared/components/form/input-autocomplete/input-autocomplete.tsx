@@ -1,5 +1,10 @@
 import { Controller, FieldValues } from "react-hook-form";
-import { Autocomplete, FormControl, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  CircularProgress,
+  FormControl,
+  TextField,
+} from "@mui/material";
 
 import { IFormInputText, OptionTypeBase } from "./input-autocomplete.types";
 
@@ -13,6 +18,7 @@ const InputAutocomplete = <
   options,
   onSelect,
   disabled,
+  loading,
 }: IFormInputText<T, OptionType>) => {
   return (
     <FormControl fullWidth>
@@ -34,7 +40,21 @@ const InputAutocomplete = <
             size="small"
             isOptionEqualToValue={(option, value) => option.id === value.id}
             renderInput={(params) => (
-              <TextField {...params} label={placeholder} />
+              <TextField
+                {...params}
+                label={placeholder}
+                InputProps={{
+                  ...params.InputProps,
+                  endAdornment: (
+                    <>
+                      {loading ? (
+                        <CircularProgress color="primary" size={20} />
+                      ) : null}
+                      {params.InputProps.endAdornment}
+                    </>
+                  ),
+                }}
+              />
             )}
           />
         )}
