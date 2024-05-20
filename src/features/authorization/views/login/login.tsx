@@ -84,6 +84,7 @@ const Login: FC<ILogin> = (props) => {
               name="username"
               placeholder="Введите E-mail"
               label="E-mail"
+              InputLabelProps={{ shrink: true }}
               errors={errors}
             />
             <InputPassword
@@ -91,6 +92,7 @@ const Login: FC<ILogin> = (props) => {
               name="password"
               placeholder="Введите пароль"
               label="Пароль"
+              InputLabelProps={{ shrink: true }}
               errors={errors}
             />
             <StyledLoadingButton

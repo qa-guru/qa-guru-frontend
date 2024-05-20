@@ -108,6 +108,7 @@ const Signup: FC<ISignUp> = (props) => {
                 name="firstName"
                 placeholder="Введите ваше имя"
                 label="Имя"
+                InputLabelProps={{ shrink: true }}
                 errors={errors}
               />
               <InputText
@@ -115,6 +116,7 @@ const Signup: FC<ISignUp> = (props) => {
                 name="lastName"
                 placeholder="Введите фамилию"
                 label="Фамилия"
+                InputLabelProps={{ shrink: true }}
                 errors={errors}
               />
               <InputText
@@ -122,6 +124,7 @@ const Signup: FC<ISignUp> = (props) => {
                 name="email"
                 placeholder="Введите E-mail"
                 label="E-mail"
+                InputLabelProps={{ shrink: true }}
                 errors={errors}
               />
               <InputPhone
@@ -129,6 +132,7 @@ const Signup: FC<ISignUp> = (props) => {
                 name="phoneNumber"
                 placeholder="(555) 555-5555"
                 label="Phone"
+                InputLabelProps={{ shrink: true }}
                 errors={errors}
               />
               <InputPassword
@@ -136,6 +140,7 @@ const Signup: FC<ISignUp> = (props) => {
                 name="password"
                 placeholder="Введите пароль"
                 label="Пароль"
+                InputLabelProps={{ shrink: true }}
                 errors={errors}
               />
               <InputPassword
@@ -143,6 +148,7 @@ const Signup: FC<ISignUp> = (props) => {
                 name="confirmPassword"
                 placeholder="Повторите пароль"
                 label="Повторите пароль"
+                InputLabelProps={{ shrink: true }}
                 errors={errors}
               />
             </StyledSignupStack>

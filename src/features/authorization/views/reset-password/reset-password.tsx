@@ -62,6 +62,7 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
               name="username"
               placeholder="Введите E-mail"
               label="E-mail"
+              InputLabelProps={{ shrink: true }}
               errors={errors}
             />
             <StyledLoadingButton
