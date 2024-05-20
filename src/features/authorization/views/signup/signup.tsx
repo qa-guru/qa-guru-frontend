@@ -50,6 +50,7 @@ const Signup: FC<ISignUp> = (props) => {
         lastName: yup.string().required("Введите фамилию"),
         email: yup
           .string()
+          .transform((value) => value.toLowerCase())
           .email("Некорректный e-mail")
           .required("Введите e-mail"),
         password: yup
