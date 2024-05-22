@@ -76,7 +76,7 @@ export const StyledSignupWrapper = styled(Stack)(({ theme }) => ({
   bottom: "60px",
   width: "100%",
   minHeight: "calc(100dvh - 60px)",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down(1380)]: {
     position: "inherit",
   },
 }));
