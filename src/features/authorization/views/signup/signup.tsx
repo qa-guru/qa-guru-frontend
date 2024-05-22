@@ -126,6 +126,7 @@ const Signup: FC<ISignUp> = (props) => {
                 label="E-mail"
                 InputLabelProps={{ shrink: true }}
                 errors={errors}
+                autoComplete="email"
               />
               <InputPhone
                 control={control}

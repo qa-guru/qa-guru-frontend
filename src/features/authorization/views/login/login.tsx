@@ -85,6 +85,7 @@ const Login: FC<ILogin> = (props) => {
               placeholder="Введите E-mail"
               label="E-mail"
               InputLabelProps={{ shrink: true }}
+              autoComplete="username"
               errors={errors}
             />
             <InputPassword
