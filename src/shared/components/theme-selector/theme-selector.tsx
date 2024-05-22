@@ -8,7 +8,7 @@ const ThemeSelector: FC = () => {
   const { settings, toggleTheme } = useSettings();
 
   return (
-    <StyledIconButton onClick={toggleTheme}>
+    <StyledIconButton onClick={toggleTheme} disableRipple>
       {settings.theme === "light" ? (
         <Brightness7 color="primary" />
       ) : (

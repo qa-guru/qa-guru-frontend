@@ -1,7 +1,6 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { useTheme } from "@mui/system";
-import { useNavigate } from "react-router-dom";
 
 import { IAvatarCustom } from "./avatar-custom.types";
 import { StyledTypography, StyledLink } from "./avatar-custom.styled";
@@ -61,19 +60,14 @@ const AvatarCustom: FC<IAvatarCustom> = ({
     fetchPolicy: "cache-first",
   });
 
-  const navigate = useNavigate();
   const currentUserId = data?.user?.id;
-
-  const handleAvatarClick = () => {
-    if (userId === currentUserId) {
-      navigate("/profile");
-    } else navigate(`/${userId}`);
-  };
+  const isCurrentUser = userId === currentUserId;
+  const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 
   return (
     <>
       {hasLink ? (
-        <StyledLink component="button" onClick={handleAvatarClick}>
+        <StyledLink to={profilePath} key={userId}>
           <Avatar
             src={`data:image/png;base64, ${img}` || ""}
             variant="rounded"

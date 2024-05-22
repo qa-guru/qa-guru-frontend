@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 
 import { IAppMenu } from "./menu.types";
 import { StyledBox, StyledStack } from "./menu.styled";
+import { StyledLink } from "../header/header.styled";
 
 const AppMenu: FC<IAppMenu> = (props) => {
   const { handleClickNavMenu, pages } = props;
@@ -15,13 +16,15 @@ const AppMenu: FC<IAppMenu> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <Button
-              variant="text"
-              key={id}
-              onClick={() => handleClickNavMenu(pageURL)}
-            >
-              <Typography variant="body2">{title}</Typography>
-            </Button>
+            <StyledLink to={pageURL} key={id}>
+              <Button
+                variant="text"
+                onClick={() => handleClickNavMenu(pageURL)}
+                disableRipple
+              >
+                <Typography variant="body2">{title}</Typography>
+              </Button>
+            </StyledLink>
           );
         })}
       </StyledStack>

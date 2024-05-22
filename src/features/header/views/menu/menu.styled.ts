@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: "none",
@@ -13,3 +14,8 @@ export const StyledStack = styled(Stack)({
   paddingLeft: "20px",
   whiteSpace: "nowrap",
 });
+
+export const StyledLink = styled(Link)(({ theme }) => ({
+  textDecoration: "none",
+  color: theme.palette.app.primary,
+}));

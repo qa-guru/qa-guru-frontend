@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
-import { Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.app.white,
@@ -10,4 +11,4 @@ export const StyledLink = styled(Link)({
   "&:hover": {
     opacity: "0.7",
   },
-}) as typeof Link;
+});
