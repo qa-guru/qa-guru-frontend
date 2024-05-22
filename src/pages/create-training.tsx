@@ -1,4 +1,4 @@
-import { CreateTraining } from "features/create-course";
+import { CreateTraining } from "features/course-editor";
 import { FC } from "react";
 
 const CreateTrainingPage: FC = () => {
