@@ -3,6 +3,7 @@ import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
 import {
   type TextFieldPropsSizeOverrides,
   type InputProps,
+  type InputLabelProps,
 } from "@mui/material";
 import { OverridableStringUnion } from "@mui/types";
 
@@ -23,5 +24,6 @@ export interface IFormInputText<T extends FieldValues> {
   size?:
     | OverridableStringUnion<"small" | "medium", TextFieldPropsSizeOverrides>
     | undefined;
+  InputLabelProps?: InputLabelProps;
   disabled?: boolean;
 }

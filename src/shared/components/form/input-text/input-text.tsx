@@ -19,6 +19,7 @@ const InputText = <T extends FieldValues>({
   onKeyDown,
   errors,
   size,
+  InputLabelProps,
   disabled,
 }: IFormInputText<T>) => {
   return (
@@ -42,6 +43,7 @@ const InputText = <T extends FieldValues>({
             InputProps={InputProps}
             autoComplete={autoComplete}
             onKeyDown={onKeyDown}
+            InputLabelProps={InputLabelProps}
             disabled={disabled}
           />
         )}

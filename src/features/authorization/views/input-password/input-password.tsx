@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { Controller, FieldValues } from "react-hook-form";
-import {
-  FormControl,
-  TextField,
-  IconButton,
-  InputAdornment,
-  Tooltip,
-} from "@mui/material";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { FormControl, InputAdornment, TextField, Tooltip } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import { StyledFormHelperText } from "./input-password.styled";
+import {
+  StyledFormHelperText,
+  StyledIconButton,
+} from "./input-password.styled";
 import { IInputPassword } from "./input-password.types";
 
 const InputPassword = <T extends FieldValues>({
@@ -19,6 +15,7 @@ const InputPassword = <T extends FieldValues>({
   label,
   placeholder,
   errors,
+  InputLabelProps,
 }: IInputPassword<T>) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -40,20 +37,21 @@ const InputPassword = <T extends FieldValues>({
             label={label}
             placeholder={placeholder}
             autoComplete="current-password"
+            InputLabelProps={InputLabelProps}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={togglePasswordVisibility}>
+                  <StyledIconButton onClick={togglePasswordVisibility}>
                     {showPassword ? (
                       <Tooltip title="Скрыть пароль">
-                        <VisibilityOffIcon fontSize="small" color="primary" />
+                        <VisibilityOff fontSize="small" color="primary" />
                       </Tooltip>
                     ) : (
                       <Tooltip title="Показать пароль">
-                        <VisibilityIcon fontSize="small" color="primary" />
+                        <Visibility fontSize="small" color="primary" />
                       </Tooltip>
                     )}
-                  </IconButton>
+                  </StyledIconButton>
                 </InputAdornment>
               ),
             }}

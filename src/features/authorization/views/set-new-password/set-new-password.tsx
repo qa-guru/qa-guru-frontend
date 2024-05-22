@@ -57,6 +57,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
               name="newPassword"
               placeholder="Введите пароль"
               label="Пароль"
+              InputLabelProps={{ shrink: true }}
               errors={errors}
             />
             <InputPassword
@@ -64,6 +65,7 @@ const SetNewPassword: FC<ISetNewPassword> = ({ setNewPassword, isLoading }) => {
               name="confirmPassword"
               placeholder="Повторите пароль"
               label="Повторите пароль"
+              InputLabelProps={{ shrink: true }}
               errors={errors}
             />
             <StyledLoadingButton

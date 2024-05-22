@@ -10,6 +10,7 @@ const InputPhone = <T extends FieldValues>({
   label,
   placeholder,
   errors,
+  InputLabelProps,
 }: IFormInputPhone<T>) => {
   return (
     <FormControl fullWidth error={Boolean(errors[name])}>
@@ -48,6 +49,7 @@ const InputPhone = <T extends FieldValues>({
                 }}
                 label={label}
                 placeholder={placeholder}
+                InputLabelProps={InputLabelProps}
               />
             )}
           />
