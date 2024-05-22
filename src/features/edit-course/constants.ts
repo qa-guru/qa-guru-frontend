@@ -1,4 +1,0 @@
-export const RESPONSE_STATUS = {
-  SUCCESSFUL: 200,
-  UNAUTHORIZED: 401,
-};

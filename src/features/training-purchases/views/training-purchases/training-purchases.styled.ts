@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { AvatarGroup, Box, Grid, Paper, Stack } from "@mui/material";
-import { ReactComponent as CourseImg } from "assets/images/cousrse1.svg";
 import { LoadingButton } from "@mui/lab";
+import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 
 // interface IStyledCalendar {
 //   open: boolean;
@@ -45,12 +45,25 @@ export const StyledAvatarGroup = styled(AvatarGroup)({
   },
 });
 
-export const StyledCourseImg = styled(CourseImg)({
-  width: "100%",
-  height: "auto",
-  objectFit: "contain",
+export const StyledLogoBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: theme.palette.app.primary,
   borderRadius: "10px 10px 0 0",
-});
+  width: "100%",
+  height: "175px",
+  objectFit: "cover",
+  marginBottom: "10px",
+}));
+
+export const StyledLogoWhite = styled(LogoWhite)(({ theme }) => ({
+  [theme.breakpoints.only("xs")]: {
+    width: "90px",
+    height: "90px",
+  },
+}));
+
 //
 // export const StyledLink = styled(Link)({
 //   textDecoration: "none",
