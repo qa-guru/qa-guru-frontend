@@ -24,6 +24,7 @@ interface Breadcrumb {
 const routePatterns = [
   {
     path: "/training/:trainingId",
+    // eslint-disable-next-line sonarjs/no-duplicate-string
     name: "Список уроков",
     icon: <School fontSize="small" />,
   },
@@ -78,6 +79,16 @@ const routePatterns = [
   {
     path: "/admin-panel/courses/create-training",
     name: "Создание курса",
+    icon: <Edit fontSize="small" />,
+  },
+  {
+    path: "/admin-panel/courses/create-training/:trainingId/create-lectures",
+    name: "Список уроков",
+    icon: <Edit fontSize="small" />,
+  },
+  {
+    path: "/admin-panel/courses/create-training/:trainingId/create-lectures/:lectureId",
+    name: "Cоздание урока",
     icon: <Edit fontSize="small" />,
   },
   {

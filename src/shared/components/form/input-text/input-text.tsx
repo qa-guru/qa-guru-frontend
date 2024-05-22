@@ -20,6 +20,7 @@ const InputText = <T extends FieldValues>({
   errors,
   size,
   InputLabelProps,
+  disabled,
 }: IFormInputText<T>) => {
   return (
     <FormControl fullWidth error={Boolean(errors?.[name])}>
@@ -43,6 +44,7 @@ const InputText = <T extends FieldValues>({
             autoComplete={autoComplete}
             onKeyDown={onKeyDown}
             InputLabelProps={InputLabelProps}
+            disabled={disabled}
           />
         )}
       />

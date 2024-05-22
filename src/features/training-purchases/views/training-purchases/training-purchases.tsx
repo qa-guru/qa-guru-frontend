@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
-import { Container, Grid, Popover, Typography } from "@mui/material";
+import { Box, Container, Grid, Popover, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UserRow from "shared/components/user-row";
 import { Maybe } from "api/graphql/generated/graphql";
@@ -8,13 +8,14 @@ import { ITrainings } from "./training-purchases.types";
 import {
   StyledAvatarGroup,
   StyledCardActionArea,
-  StyledCourseImg,
   StyledGrid,
   StyledImgBox,
   StyledLoadingButton,
   StyledTeachersBox,
   StyledPaper,
   StyledUserRowStack,
+  StyledLogoBox,
+  StyledLogoWhite,
 } from "./training-purchases.styled";
 
 const TrainingPurchases: FC<ITrainings> = ({ data }) => {
@@ -68,8 +69,9 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
     <Container>
       <Typography variant="h2">Мои курсы</Typography>
       <StyledGrid container spacing="30px">
-        {trainingPurchases?.map((item, index) => {
-          const { id, name, mentors } = item?.trainingTariff.training || {};
+        {trainingPurchases?.map((item) => {
+          const { id, name, mentors, picture } =
+            item?.trainingTariff.training || {};
           const [firstMentor, ...otherMentors] = mentors || [];
 
           return (
@@ -77,7 +79,24 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
               <StyledCardActionArea>
                 <StyledPaper>
                   <StyledImgBox>
-                    <StyledCourseImg />
+                    {picture ? (
+                      <Box
+                        component="img"
+                        sx={{
+                          borderRadius: "10px 10px 0 0",
+                          width: "100%",
+                          height: "175px",
+                          objectFit: "cover",
+                          marginBottom: "10px",
+                        }}
+                        alt="Course picture"
+                        src={`data:image/png;base64, ${picture}` || ""}
+                      />
+                    ) : (
+                      <StyledLogoBox>
+                        <StyledLogoWhite />
+                      </StyledLogoBox>
+                    )}
                   </StyledImgBox>
                   <StyledUserRowStack>
                     <UserRow

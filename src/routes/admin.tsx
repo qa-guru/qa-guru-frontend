@@ -20,6 +20,8 @@ import {
   KanbanStudentHomeworkDetailsFullPage,
   KanbanStudentPage,
 } from "pages/kanban-student";
+import CreateLecturesPage from "pages/create-lectures";
+import CreateLecturePage from "pages/create-lecture";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -86,6 +88,16 @@ const AdminRoutes = [
     key="create-training"
     path="/admin-panel/courses/create-training"
     element={<CreateTrainingPage />}
+  />,
+  <Route
+    key="create-lectures"
+    path="/admin-panel/courses/create-training/:trainingId/create-lectures"
+    element={<CreateLecturesPage />}
+  />,
+  <Route
+    key="create-lecture"
+    path="/admin-panel/courses/create-training/:trainingId/create-lectures/:lectureId"
+    element={<CreateLecturePage />}
   />,
   <Route
     key="edit-training"
