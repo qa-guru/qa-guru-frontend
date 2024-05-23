@@ -16,3 +16,7 @@ export const StyledEditBox = styled(Box)({
   display: "flex",
   justifyContent: "flex-end",
 });
+
+export const StyledTeachersBox = styled(Box)({
+  padding: "5px",
+});
