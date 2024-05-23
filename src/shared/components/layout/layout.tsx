@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useMemo } from "react";
+import { FC, ReactNode, useMemo } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "features/header";
 import Footer from "shared/components/footer";
