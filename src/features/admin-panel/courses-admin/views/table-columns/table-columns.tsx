@@ -1,7 +1,7 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
-import { Maybe, TrainingDto } from "api/graphql/generated/graphql";
-import { FC, Fragment, MouseEvent, useMemo, useState } from "react";
-import { Avatar, IconButton, Popover, Typography } from "@mui/material";
+import { TrainingDto } from "api/graphql/generated/graphql";
+import { FC, Fragment, useMemo } from "react";
+import { Avatar, IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
@@ -14,29 +14,16 @@ import {
   StyledEditBox,
   StyledTrainingStack,
   StyledUserRowBox,
-  StyledAvatarGroup,
   StyledTeachersBox,
-  StyledUserRowStack,
 } from "./table-columns.styled";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile } = useResponsive();
   const navigate = useNavigate();
   const location = useLocation();
-  const [anchorEl, setAnchorEl] = useState<Maybe<HTMLElement>>(null);
-  const [openMentorsById, setOpenMentorsById] = useState<string | null>(null);
 
   const handleNavigateEditCourse = (trainingId: string) => {
     navigate(`${location.pathname}/edit-training/${trainingId}`);
-  };
-
-  const toggleMentorsMenu = (event: MouseEvent<HTMLElement>, id: string) => {
-    if (openMentorsById === id) {
-      setOpenMentorsById(null);
-    } else {
-      setOpenMentorsById(id);
-      setAnchorEl(event.currentTarget);
-    }
   };
 
   const desktopColumns = useMemo<ColumnDef<TrainingDto>[]>(
@@ -62,61 +49,20 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         size: 180,
       },
       {
-        header: "Менторы",
+        header: "Ведущие преподаватели",
         footer: (props) => props.column.id,
         accessorKey: "rating.rating",
         cell: (info: CellContext<TrainingDto, unknown>) => {
-          const { mentors, id } = info.row.original;
-          const [firstMentor, ...otherMentors] = mentors || [];
+          const { mentors } = info.row.original;
 
           return (
-            <StyledUserRowStack>
-              <UserRow
-                user={firstMentor}
-                userId={firstMentor?.id}
-                width="35px"
-                height="35px"
-                hasLink
-              />
-              {otherMentors.length > 0 && (
-                <StyledAvatarGroup
-                  total={otherMentors.length}
-                  max={3}
-                  variant="rounded"
-                  onClick={(event) => toggleMentorsMenu(event, id)}
-                >
-                  {otherMentors.map((mentor) => (
-                    <UserRow
-                      user={mentor}
-                      userId={mentor?.id}
-                      hideFullName
-                      hideRating
-                      key={mentor?.id}
-                    />
-                  ))}
-                </StyledAvatarGroup>
-              )}
-              <Popover
-                id={id}
-                open={openMentorsById === id}
-                anchorEl={anchorEl}
-                onClose={(event: MouseEvent<HTMLElement>) =>
-                  toggleMentorsMenu(event, id!)
-                }
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-              >
-                <StyledTeachersBox>
-                  {mentors?.map((mentor) => (
-                    <StyledTeachersBox key={mentor?.id}>
-                      <UserRow user={mentor} userId={mentor?.id} hasLink />
-                    </StyledTeachersBox>
-                  ))}
+            <StyledTeachersBox>
+              {mentors?.map((mentor) => (
+                <StyledTeachersBox key={mentor?.id}>
+                  <UserRow user={mentor} userId={mentor?.id} hasLink />
                 </StyledTeachersBox>
-              </Popover>
-            </StyledUserRowStack>
+              ))}
+            </StyledTeachersBox>
           );
         },
         size: 120,
@@ -139,7 +85,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         size: 10,
       },
     ],
-    [openMentorsById, anchorEl]
+    []
   );
 
   const mobileColumns = useMemo<ColumnDef<TrainingDto>[]>(
@@ -213,7 +159,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         size: 10,
       },
     ],
-    [openMentorsById, anchorEl]
+    []
   );
 
   const columns = isMobile ? mobileColumns : desktopColumns;

@@ -8,7 +8,6 @@ import { useSnackbar } from "notistack";
 import { client } from "api";
 import { Clear } from "@mui/icons-material";
 import SaveIcon from "@mui/icons-material/Save";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import TrainingUpload from "../training-upload";
 import SelectMentors from "../../containers";
@@ -30,6 +29,7 @@ const CreateTraining: FC<ICreateTraining> = ({ updateTraining }) => {
 
   const { handleSubmit, control } = useForm<TrainingInput>({
     defaultValues: {
+      name: "",
       techStack: TechStack.Python,
     },
   });
@@ -89,8 +89,7 @@ const CreateTraining: FC<ICreateTraining> = ({ updateTraining }) => {
         <StyledButtonsStack>
           <StyledSaveButton type="submit" variant="contained">
             <SaveIcon fontSize="small" />
-            Сохранить и продолжить
-            <ArrowForwardIosIcon sx={{ fontSize: "16px" }} />
+            Создать курс и продолжить
           </StyledSaveButton>
           <Box>
             <StyledCancelButton
