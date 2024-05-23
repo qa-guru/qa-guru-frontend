@@ -25,8 +25,3 @@ export const StyledMenu = styled(Menu)({
     },
   },
 });
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.primary,
-}));

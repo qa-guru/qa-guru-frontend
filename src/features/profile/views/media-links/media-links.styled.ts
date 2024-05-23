@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Link, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 export const StyledIconStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
@@ -12,9 +12,3 @@ export const StyledIconStack = styled(Stack)(({ theme }) => ({
     marginTop: 0,
   },
 }));
-
-export const StyledLink = styled(Link)({
-  display: "flex",
-  justifyContent: "center",
-  textDecoration: "none",
-});

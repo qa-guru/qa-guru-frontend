@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import CustomLink from "shared/components/custom-link";
 
 import { IAppMenu } from "./menu.types";
 import { StyledBox, StyledStack } from "./menu.styled";
-import { StyledLink } from "../header/header.styled";
 
 const AppMenu: FC<IAppMenu> = (props) => {
   const { handleClickNavMenu, pages } = props;
@@ -16,15 +16,17 @@ const AppMenu: FC<IAppMenu> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <StyledLink to={pageURL} key={id}>
-              <Button
-                variant="text"
-                onClick={() => handleClickNavMenu(pageURL)}
-                disableRipple
-              >
-                <Typography variant="body2">{title}</Typography>
-              </Button>
-            </StyledLink>
+            <Fragment key={id}>
+              <CustomLink path={pageURL}>
+                <Button
+                  variant="text"
+                  onClick={() => handleClickNavMenu(pageURL)}
+                  disableRipple
+                >
+                  <Typography variant="body2">{title}</Typography>
+                </Button>
+              </CustomLink>
+            </Fragment>
           );
         })}
       </StyledStack>

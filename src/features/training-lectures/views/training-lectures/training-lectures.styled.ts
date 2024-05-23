@@ -7,10 +7,6 @@ export const StyledGridContainer = styled(Grid)(({ theme }) => ({
   margin: "30px 0",
 }));
 
-export const StyledLink = styled(Link)({
-  textDecoration: "none",
-});
-
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
   [theme.breakpoints.up("sm")]: {

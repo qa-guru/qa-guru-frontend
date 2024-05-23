@@ -27,8 +27,3 @@ export const StyledButton = styled(Button)({
   height: "60.8px",
   "&:hover": { backgroundColor: "transparent" },
 }) as typeof Button;
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.primary,
-}));

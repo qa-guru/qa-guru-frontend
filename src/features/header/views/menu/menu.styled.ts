@@ -14,8 +14,3 @@ export const StyledStack = styled(Stack)({
   paddingLeft: "20px",
   whiteSpace: "nowrap",
 });
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.primary,
-}));

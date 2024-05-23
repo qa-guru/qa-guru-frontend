@@ -1,10 +1,10 @@
 import { FC, useRef, useState } from "react";
 import { CommentEditor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import SendButtons from "shared/components/send-buttons";
 
 import { ISendComment } from "./send-comment.types";
 import { StyledBox, StyledFormHelperText } from "./send-comment.styled";
-import SendButtons from "../../../../shared/components/send-buttons";
 
 const SendComment: FC<ISendComment> = (props) => {
   const { sendComment, loading, homeworkId } = props;

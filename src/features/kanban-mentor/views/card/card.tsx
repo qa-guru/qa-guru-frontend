@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { useDrag } from "react-dnd";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
@@ -16,6 +16,7 @@ import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
 import { getFormattedId } from "../../helpers/get-formatted-id";
 import useDragEffect from "../../hooks/use-drag-effect";
+import { ROUTES } from "../../../kanban/constants";
 
 const Card: FC<ICard> = ({
   card,
@@ -52,6 +53,14 @@ const Card: FC<ICard> = ({
     isDragging,
   });
 
+  const handleCardClick = (event: MouseEvent<HTMLElement>) => {
+    if (event.ctrlKey || event.metaKey || event.button === 1) {
+      window.open(`${ROUTES.KANBAN}/${card.id}`);
+    } else if (onCardClick) {
+      onCardClick();
+    }
+  };
+
   return (
     <>
       <StyledPaper
@@ -59,7 +68,7 @@ const Card: FC<ICard> = ({
         isCardsHidden={isCardsHidden}
         isActive={isActive}
         ref={dragRef}
-        onClick={onCardClick}
+        onClick={handleCardClick}
         elevation={4}
       >
         <StyledCardHeader isActive={isActive}>

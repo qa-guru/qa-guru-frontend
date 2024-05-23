@@ -54,8 +54,3 @@ export const StyledStack = styled(Stack)({
   alignItems: "center",
   marginRight: "10px",
 });
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.primary,
-}));

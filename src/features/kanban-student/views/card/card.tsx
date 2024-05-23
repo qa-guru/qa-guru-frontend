@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
@@ -13,12 +13,22 @@ import {
 } from "./card.styled";
 import { ICard } from "./card.types";
 import { getFormattedId } from "../../helpers/get-formatted-id";
+import { ROUTES } from "../../../kanban/constants";
 
 const Card: FC<ICard> = ({ card, onCardClick, isActive }) => {
   const { id, mentor, student, lecture, training } = card;
+
+  const handleCardClick = (event: MouseEvent<HTMLElement>) => {
+    if (event.ctrlKey || event.metaKey || event.button === 1) {
+      window.open(`${ROUTES.KANBAN}/${card.id}`);
+    } else if (onCardClick) {
+      onCardClick();
+    }
+  };
+
   return (
     <>
-      <StyledPaper isActive={isActive} onClick={onCardClick} elevation={4}>
+      <StyledPaper isActive={isActive} onClick={handleCardClick} elevation={4}>
         <StyledCardHeader isActive={isActive}>
           <Typography textTransform="uppercase" variant="subtitle2">
             {getFormattedId(training?.techStack, id)}

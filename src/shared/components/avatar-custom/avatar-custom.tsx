@@ -1,10 +1,11 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { useTheme } from "@mui/system";
+import { useUserIdQuery } from "api/graphql/generated/graphql";
 
 import { IAvatarCustom } from "./avatar-custom.types";
-import { StyledTypography, StyledLink } from "./avatar-custom.styled";
-import { useUserIdQuery } from "../../../api/graphql/generated/graphql";
+import { StyledTypography } from "./avatar-custom.styled";
+import CustomLink from "../custom-link";
 
 function stringToColor(name: string) {
   const theme = useTheme();
@@ -67,7 +68,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   return (
     <>
       {hasLink ? (
-        <StyledLink to={profilePath} key={userId}>
+        <CustomLink path={profilePath} isAvatar>
           <Avatar
             src={`data:image/png;base64, ${img}` || ""}
             variant="rounded"
@@ -78,7 +79,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
               {stringAvatar(fullName).children}
             </StyledTypography>
           </Avatar>
-        </StyledLink>
+        </CustomLink>
       ) : (
         <Avatar
           src={`data:image/png;base64, ${img}`}

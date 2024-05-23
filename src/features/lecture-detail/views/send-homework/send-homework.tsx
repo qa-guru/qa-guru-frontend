@@ -3,10 +3,10 @@ import { client } from "api";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import { useParams } from "react-router-dom";
+import SendButtons from "shared/components/send-buttons";
 
 import { ISendHomeWork } from "./send-homework.types";
 import { StyledBox, StyledFormHelperText } from "./send-homework.styled";
-import SendButtons from "../../../../shared/components/send-buttons";
 
 const SendHomework: FC<ISendHomeWork> = (props) => {
   const { sendHomeWorkToCheck, loading } = props;
