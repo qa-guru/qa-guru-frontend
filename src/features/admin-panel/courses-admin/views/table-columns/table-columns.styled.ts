@@ -12,10 +12,13 @@ export const StyledUserRowBox = styled(Box)({
   padding: "3px 10px",
 });
 
-export const StyledEditBox = styled(Box)({
+export const StyledEditBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
-});
+  [theme.breakpoints.only("sm")]: {
+    flexDirection: "column",
+  },
+}));
 
 export const StyledTeachersBox = styled(Box)({
   padding: "5px",
