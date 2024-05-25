@@ -7,14 +7,15 @@ import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
 import useResponsive from "shared/hooks/use-responsive";
 import { useLocation, useNavigate } from "react-router-dom";
+import DeleteTraining from "features/course-editor/containers/delete-training";
 
 import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";
 import {
   StyledEditBox,
+  StyledTeachersBox,
   StyledTrainingStack,
   StyledUserRowBox,
-  StyledTeachersBox,
 } from "./table-columns.styled";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
@@ -46,7 +47,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
             </Stack>
           );
         },
-        size: 180,
+        size: 160,
       },
       {
         header: "Ведущие преподаватели",
@@ -70,7 +71,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
       {
         header: () => null,
         footer: (props) => props.column.id,
-        accessorKey: "lock",
+        accessorKey: "edit",
         cell: (info: CellContext<TrainingDto, unknown>) => {
           const { id } = info.row.original;
 
@@ -79,6 +80,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
               <IconButton onClick={() => handleNavigateEditCourse(id)}>
                 <ModeEditIcon fontSize="small" color="primary" />
               </IconButton>
+              <DeleteTraining trainingId={id} />
             </StyledEditBox>
           );
         },
@@ -144,7 +146,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
       {
         header: () => null,
         footer: (props) => props.column.id,
-        accessorKey: "lock",
+        accessorKey: "edit",
         cell: (info: CellContext<TrainingDto, unknown>) => {
           const { id } = info.row.original;
 
@@ -153,6 +155,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
               <IconButton onClick={() => handleNavigateEditCourse(id)}>
                 <ModeEditIcon fontSize="small" color="primary" />
               </IconButton>
+              <DeleteTraining trainingId={id} />
             </StyledEditBox>
           );
         },
