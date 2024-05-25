@@ -14,6 +14,7 @@ import {
   StyledEditBox,
   StyledTrainingStack,
   StyledUserRowBox,
+  StyledTeachersBox,
 } from "./table-columns.styled";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
@@ -48,30 +49,20 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         size: 180,
       },
       {
-        header: "Менторы",
+        header: "Ведущие преподаватели",
         footer: (props) => props.column.id,
         accessorKey: "rating.rating",
         cell: (info: CellContext<TrainingDto, unknown>) => {
           const { mentors } = info.row.original;
 
           return (
-            <Stack spacing="5px">
-              {mentors?.map((mentor) => {
-                const { id, roles } = mentor!;
-
-                return (
-                  <Fragment key={id}>
-                    <UserRow
-                      user={mentor}
-                      hideRating
-                      roles={roles}
-                      userId={id}
-                      hasLink
-                    />
-                  </Fragment>
-                );
-              })}
-            </Stack>
+            <StyledTeachersBox>
+              {mentors?.map((mentor) => (
+                <StyledTeachersBox key={mentor?.id}>
+                  <UserRow user={mentor} userId={mentor?.id} hasLink />
+                </StyledTeachersBox>
+              ))}
+            </StyledTeachersBox>
           );
         },
         size: 120,
