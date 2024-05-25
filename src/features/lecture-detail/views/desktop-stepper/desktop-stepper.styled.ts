@@ -1,13 +1,5 @@
 import { styled } from "@mui/system";
-import {
-  Box,
-  Button,
-  Icon,
-  IconButton,
-  Paper,
-  Step,
-  Stepper,
-} from "@mui/material";
+import { Box, Button, IconButton, Step, Stepper } from "@mui/material";
 import { Clear } from "@mui/icons-material";
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({

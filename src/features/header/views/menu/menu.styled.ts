@@ -1,6 +1,5 @@
 import { styled } from "@mui/system";
 import { Box, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: "none",

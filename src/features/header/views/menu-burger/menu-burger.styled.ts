@@ -1,7 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Stack } from "@mui/material";
 import Menu from "@mui/material/Menu";
-import { Link } from "react-router-dom";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: "block",

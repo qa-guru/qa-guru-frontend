@@ -1,5 +1,4 @@
 import { styled } from "@mui/system";
-import { Link } from "react-router-dom";
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 
 export const StyledGridContainer = styled(Grid)(({ theme }) => ({
