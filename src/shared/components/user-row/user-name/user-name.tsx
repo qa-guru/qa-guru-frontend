@@ -20,7 +20,7 @@ const UserName: FC<IUserName> = ({
   return (
     <>
       {hasLink ? (
-        <CustomLink path={profilePath} isUserRow>
+        <CustomLink path={profilePath} textDecorationHover="underline">
           <Typography variant={variant} color="primary">
             {fullName}
           </Typography>

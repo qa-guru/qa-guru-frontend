@@ -68,7 +68,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   return (
     <>
       {hasLink ? (
-        <CustomLink path={profilePath} isAvatar>
+        <CustomLink path={profilePath} opacity="0.7">
           <Avatar
             src={`data:image/png;base64, ${img}` || ""}
             variant="rounded"

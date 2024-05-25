@@ -9,6 +9,8 @@ import { client } from "api";
 import { Clear } from "@mui/icons-material";
 import SaveIcon from "@mui/icons-material/Save";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import TrainingUpload from "../training-upload";
 import SelectMentors from "../../containers";
@@ -28,10 +30,21 @@ const CreateTraining: FC<ICreateTraining> = ({ updateTraining }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { handleSubmit, control } = useForm<TrainingInput>({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<TrainingInput>({
     defaultValues: {
+      name: "",
       techStack: TechStack.Python,
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: yupResolver<any>(
+      yup.object().shape({
+        name: yup.string().required("Введите название курса"),
+      })
+    ),
   });
 
   const onSubmit: SubmitHandler<TrainingInput> = async (data) => {
@@ -69,6 +82,7 @@ const CreateTraining: FC<ICreateTraining> = ({ updateTraining }) => {
                 <Typography variant="h3">Название курса</Typography>
                 <InputText
                   control={control}
+                  errors={errors}
                   name="name"
                   placeholder="Введите название курса"
                 />

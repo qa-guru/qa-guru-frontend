@@ -2,20 +2,20 @@ import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 
 interface IStyledLink {
-  isAvatar?: boolean;
-  isUserRow?: boolean;
-  isButton?: boolean;
+  opacity?: string;
+  textDecorationHover?: string;
+  color?: string;
 }
 
 export const StyledLink = styled(Link, {
   shouldForwardProp: (prop) =>
-    !["isAvatar", "isUserRow", "isButton"].includes(prop as string),
-})<IStyledLink>(({ theme, isAvatar, isUserRow, isButton }) => ({
+    !["opacity", "textDecorationHover", "color"].includes(prop as string),
+})<IStyledLink>(({ theme, opacity, textDecorationHover, color }) => ({
   cursor: "pointer",
-  color: isButton ? theme.palette.app.white : theme.palette.app.primary,
+  color: color ?? theme.palette.app.primary,
   textDecoration: "none",
   "&:hover": {
-    textDecoration: isUserRow && "underline",
-    opacity: isAvatar && "0.7",
+    textDecoration: textDecorationHover,
+    opacity,
   },
 }));

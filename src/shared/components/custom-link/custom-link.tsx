@@ -6,16 +6,16 @@ import { ICustomLink } from "./custom-link.types";
 const CustomLink: FC<ICustomLink> = ({
   path,
   children,
-  isAvatar,
-  isUserRow,
-  isButton,
+  opacity,
+  textDecorationHover,
+  color,
 }) => {
   return (
     <StyledLink
       to={path}
-      isAvatar={isAvatar}
-      isUserRow={isUserRow}
-      isButton={isButton}
+      opacity={opacity}
+      textDecorationHover={textDecorationHover}
+      color={color}
     >
       {children}
     </StyledLink>

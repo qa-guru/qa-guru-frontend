@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UserRow from "shared/components/user-row";
 import { Maybe } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";
+import { app } from "theme/colors";
 
 import { ITrainings } from "./training-purchases.types";
 import {
@@ -134,7 +135,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                   {/*  </Box>*/}
                   {/*)}*/}
                   <StyledLoadingButton variant="contained">
-                    <CustomLink path={`/training/${id}`} isButton>
+                    <CustomLink path={`/training/${id}`} color={app.white}>
                       Продолжить
                     </CustomLink>
                   </StyledLoadingButton>
