@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { InputChip } from "shared/components/form";
 import { formatRole } from "shared/helpers";
 import { Edit, Check } from "@mui/icons-material";
+import { useSnackbar } from "notistack";
 
 import {
   StyledBox,
@@ -27,8 +28,23 @@ interface ISelectRoleForm {
   roles?: Maybe<Maybe<UserRole>[]>;
 }
 
+const isValidateSelectRole = (select: UserRole[]) => {
+  const allowedCombinations = [
+    [UserRole.Student],
+    [UserRole.Student, UserRole.Lector],
+    [UserRole.Student, UserRole.Mentor],
+    [UserRole.Admin],
+    [],
+  ];
+
+  return allowedCombinations.some(
+    (combination) => JSON.stringify(combination) === JSON.stringify(select)
+  );
+};
+
 const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
   const [edit, setEdit] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
   const { control, setValue } = useForm<ISelectRoleForm>({
     defaultValues: {
       roles: [],
@@ -41,24 +57,41 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
   }, [roles, setValue]);
 
   const handleSelectRoleChange = (select: UserRole[]) => {
-    updateRole({
-      variables: {
-        id: id!,
-        roles: select,
-      },
-    });
+    const isValidCombination = isValidateSelectRole(select);
+
+    if (isValidCombination) {
+      updateRole({
+        variables: {
+          id: id!,
+          roles: select,
+        },
+      });
+    } else {
+      setValue("roles", roles);
+      enqueueSnackbar("Нельзя назначить данную комбинацию ролей", {
+        variant: "error",
+      });
+    }
   };
 
   const handleDeleteRole = (value: UserRole) => {
-    const updatedRoles = roles?.filter((role) => role !== value);
-    setValue("roles", updatedRoles);
+    const updatedRoles = roles?.filter((role) => role !== value) as UserRole[];
+    const isValidCombination = isValidateSelectRole(updatedRoles);
 
-    updateRole({
-      variables: {
-        id: id!,
-        roles: updatedRoles,
-      },
-    });
+    if (isValidCombination) {
+      setValue("roles", updatedRoles);
+
+      updateRole({
+        variables: {
+          id: id!,
+          roles: updatedRoles,
+        },
+      });
+    } else {
+      enqueueSnackbar("Нельзя назначить данную комбинацию ролей", {
+        variant: "error",
+      });
+    }
   };
 
   const handleClickEdit = () => {
