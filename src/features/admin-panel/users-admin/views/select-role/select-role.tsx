@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { InputChip } from "shared/components/form";
 import { formatRole } from "shared/helpers";
 import { Edit, Check } from "@mui/icons-material";
-import { useSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
 
 import {
   StyledBox,
@@ -37,14 +37,21 @@ const isValidateSelectRole = (select: UserRole[]) => {
     [],
   ];
 
-  return allowedCombinations.some(
+  const isValid = allowedCombinations.some(
     (combination) => JSON.stringify(combination) === JSON.stringify(select)
   );
+
+  if (!isValid) {
+    enqueueSnackbar("Нельзя назначить данную комбинацию ролей", {
+      variant: "error",
+    });
+  }
+
+  return isValid;
 };
 
 const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
   const [edit, setEdit] = useState(false);
-  const { enqueueSnackbar } = useSnackbar();
   const { control, setValue } = useForm<ISelectRoleForm>({
     defaultValues: {
       roles: [],
@@ -68,9 +75,6 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
       });
     } else {
       setValue("roles", roles);
-      enqueueSnackbar("Нельзя назначить данную комбинацию ролей", {
-        variant: "error",
-      });
     }
   };
 
@@ -86,10 +90,6 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
           id: id!,
           roles: updatedRoles,
         },
-      });
-    } else {
-      enqueueSnackbar("Нельзя назначить данную комбинацию ролей", {
-        variant: "error",
       });
     }
   };
