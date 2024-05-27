@@ -34,9 +34,10 @@ const ResetPassword: FC<IResetPassword> = ({ resetPassword, isLoading }) => {
       yup.object().shape({
         username: yup
           .string()
-          .transform((value) => value.toLowerCase())
+          .lowercase()
           .email("Некорректный e-mail")
-          .required("Введите e-mail"),
+          .required("Введите e-mail")
+          .trim(),
       })
     ),
   });

@@ -45,10 +45,11 @@ const Login: FC<ILogin> = (props) => {
       yup.object().shape({
         username: yup
           .string()
-          .transform((value) => value.toLowerCase())
+          .lowercase()
           .email("Некорректный e-mail")
-          .required("Введите e-mail"),
-        password: yup.string().required("Введите пароль"),
+          .required("Введите e-mail")
+          .trim(),
+        password: yup.string().required("Введите пароль").trim(),
       })
     ),
   });
