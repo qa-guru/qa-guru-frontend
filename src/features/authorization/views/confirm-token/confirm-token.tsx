@@ -27,7 +27,7 @@ const ConfirmToken: FC<IConfirmToken> = ({ confirmToken, isLoading }) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        token: yup.string().required("Введите токен"),
+        token: yup.string().required("Введите токен").trim(),
       })
     ),
   });
