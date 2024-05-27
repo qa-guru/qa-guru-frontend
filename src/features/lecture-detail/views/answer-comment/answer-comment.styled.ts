@@ -25,6 +25,7 @@ export const StyledCommentStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "start",
   margin: "20px 0 0",
+  gap: "10px",
   [theme.breakpoints.down("md")]: {
     margin: "20px 0 -10px",
   },
