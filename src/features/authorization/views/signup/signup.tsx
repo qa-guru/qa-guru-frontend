@@ -30,6 +30,9 @@ const Signup: FC<ISignUp> = (props) => {
   const { signup, isLoading } = props;
   const navigate = useNavigate();
 
+  const digitsOnlyPattern = /^[+0-9]+$/;
+  const internationalPhonePattern = /^\([A-Za-z]{2}\)\+\d+$/;
+
   const {
     handleSubmit,
     control,
@@ -46,22 +49,35 @@ const Signup: FC<ISignUp> = (props) => {
     },
     resolver: yupResolver(
       yup.object().shape({
-        firstName: yup.string().required("Введите имя"),
-        lastName: yup.string().required("Введите фамилию"),
+        firstName: yup.string().required("Введите имя").trim(),
+        lastName: yup.string().required("Введите фамилию").trim(),
         email: yup
           .string()
-          .transform((value) => value.toLowerCase())
+          .lowercase()
           .email("Некорректный e-mail")
-          .required("Введите e-mail"),
+          .required("Введите e-mail")
+          .trim(),
         password: yup
           .string()
           .required("Введите пароль")
-          .min(REQUIRED_SYMBOLS.MIN, "Необходимо более 8 символов"),
+          .min(REQUIRED_SYMBOLS.MIN, "Необходимо более 8 символов")
+          .trim(),
         confirmPassword: yup
           .string()
           .oneOf([yup.ref("password")], "Пароли не совпадают")
-          .required("Повторите пароль"),
-        phoneNumber: yup.string().required("Введите телефон"),
+          .required("Повторите пароль")
+          .trim(),
+        phoneNumber: yup
+          .string()
+          .required("Введите телефон")
+          .test("phone-number", "Неверный формат номера телефона", (value) => {
+            if (digitsOnlyPattern.test(value)) {
+              return digitsOnlyPattern.test(value);
+            } else {
+              return internationalPhonePattern.test(value);
+            }
+          })
+          .trim(),
       })
     ),
   });
