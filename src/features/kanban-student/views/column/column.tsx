@@ -108,7 +108,7 @@ const Column: FC<IColumn> = ({
             <StyledCardBox key={`${card.id}-${index}`}>
               <Card
                 card={card}
-                onCardClick={() => onCardClick?.(card)}
+                onCardClick={(event) => onCardClick?.(card, event)}
                 isActive={activeCardId === card.id}
               />
             </StyledCardBox>

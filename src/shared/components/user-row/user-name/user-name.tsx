@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { useUserIdQuery } from "api/graphql/generated/graphql";
 
 import { IUserName } from "./user-name.types";
-import { StyledLink } from "./user-name.styled";
+import CustomLink from "../../custom-link";
 
 const UserName: FC<IUserName> = ({
   fullName,
@@ -20,11 +20,11 @@ const UserName: FC<IUserName> = ({
   return (
     <>
       {hasLink ? (
-        <StyledLink to={profilePath} key={userId}>
+        <CustomLink path={profilePath} textDecorationHover="underline">
           <Typography variant={variant} color="primary">
             {fullName}
           </Typography>
-        </StyledLink>
+        </CustomLink>
       ) : (
         <Typography variant={variant} color="primary">
           {fullName}

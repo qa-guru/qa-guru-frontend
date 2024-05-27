@@ -2,7 +2,6 @@ import { styled } from "@mui/system";
 import { AppBar, Box, IconButton, Stack } from "@mui/material";
 import { ReactComponent as DarkLogo } from "assets/icons/logo-header.svg";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
-import { Link } from "react-router-dom";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
@@ -54,8 +53,3 @@ export const StyledStack = styled(Stack)({
   alignItems: "center",
   marginRight: "10px",
 });
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.primary,
-}));

@@ -1,13 +1,5 @@
 import { styled } from "@mui/system";
-import {
-  Box,
-  Button,
-  Icon,
-  IconButton,
-  Paper,
-  Step,
-  Stepper,
-} from "@mui/material";
+import { Box, Button, IconButton, Step, Stepper } from "@mui/material";
 import { Clear } from "@mui/icons-material";
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
@@ -55,15 +47,6 @@ export const StyledStepper = styled(Stepper)(({ theme }) => ({
   },
 }));
 
-export const StyledMobilePaper = styled(Paper)(({ theme }) => ({
-  position: "fixed",
-  bottom: 0,
-  left: 0,
-  right: 0,
-  zIndex: 3000,
-  height: "60px",
-}));
-
 export const StyledStep = styled(Step)(({ theme }) => ({
   "& .MuiStepLabel-root .Mui-completed": {
     color: theme.palette.app.grey,
@@ -74,6 +57,7 @@ export const StyledStep = styled(Step)(({ theme }) => ({
   "& .MuiStepLabel-label": {
     color: theme.palette.app.textPrimary,
   },
+  cursor: "pointer",
 }));
 
 export const StyledBackButton = styled(Button)({
@@ -85,19 +69,4 @@ export const StyledNextButton = styled(Button)(({ theme }) => ({
   marginTop: "8px",
   marginRight: "8px",
   color: theme.palette.app.white,
-}));
-
-export const StyledMobileIcon = styled(Icon)(({ theme }) => ({
-  display: "flex",
-  color: theme.palette.app.white,
-  backgroundColor: theme.palette.app.primary,
-  borderRadius: "50%",
-  height: "35px",
-  width: "35px",
-  alignItems: "center",
-  justifyContent: "center",
-  "&:hover": {
-    color: theme.palette.app.textSecondary,
-    backgroundColor: theme.palette.app.secondary,
-  },
 }));

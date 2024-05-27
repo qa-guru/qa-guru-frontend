@@ -7,7 +7,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
@@ -20,7 +19,7 @@ export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
 export const StyledBox = styled(Box)(({ theme }) => ({
   marginTop: "20px",
   padding: "35px 25px",
-  maxHeight: "73.6vh",
+  maxHeight: "calc(100vh - 220px)",
   overflowY: "scroll",
   backgroundColor: theme.palette.app.lightGrey,
 }));
@@ -35,12 +34,6 @@ export const StyledStack = styled(Stack)(({ theme }) => ({
 export const StyledStatusContentBox = styled(Box)({
   marginTop: "15px",
 });
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.textPrimary,
-  "&:hover": { color: theme.palette.app.primary },
-}));
 
 export const StyledId = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),

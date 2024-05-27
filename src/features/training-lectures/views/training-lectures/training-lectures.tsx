@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
+import CustomLink from "shared/components/custom-link";
 
 import { ITrainingLectures } from "./training-lectures.types";
 import {
   StyledBox,
   StyledGridContainer,
-  StyledLink,
   StyledPaper,
   StyledStack,
   StyledSubtitle,
@@ -29,7 +29,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
           return (
             <Grid item xs={12} key={id}>
               <CardActionArea>
-                <StyledLink to={`/training/${trainingId}/${id}`}>
+                <CustomLink path={`/training/${trainingId}/${id}`}>
                   <StyledPaper>
                     <Typography variant="h4">{subject}</Typography>
                     <StyledWrapper>
@@ -48,7 +48,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
                       </StyledSubtitle>
                     </StyledBox>
                   </StyledPaper>
-                </StyledLink>
+                </CustomLink>
               </CardActionArea>
             </Grid>
           );

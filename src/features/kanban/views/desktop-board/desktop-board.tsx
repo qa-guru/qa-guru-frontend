@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, MouseEvent, useState } from "react";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
@@ -29,13 +29,18 @@ const DesktopBoard: FC<IDesktopBoard> = ({
 
   const navigate = useNavigate();
 
-  const handleCardClick = (card: StudentHomeWorkDto) => {
-    if (isLargeDesktop) {
+  const handleCardClick = (
+    card: StudentHomeWorkDto,
+    event: MouseEvent<HTMLDivElement>
+  ) => {
+    const isModifierKey = event.metaKey || event.ctrlKey || event.shiftKey;
+
+    if (isLargeDesktop && !isModifierKey) {
       const isSameCard = card.id === activeCardId;
       setSelectedCard(isSameCard ? null : card);
       setActiveCardId(isSameCard ? null : card.id!);
       setShowHomeworkDetails(!isSameCard);
-    } else {
+    } else if (!isModifierKey) {
       navigate(`${ROUTES.KANBAN}/${card.id}`);
     }
   };

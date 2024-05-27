@@ -4,6 +4,7 @@ import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
 import useSettings from "shared/hooks/use-settings";
 import useResponsive from "shared/hooks/use-responsive";
+import CustomLink from "shared/components/custom-link";
 
 import Profile from "../../containers";
 import AppMenu from "../menu/menu";
@@ -12,7 +13,6 @@ import {
   StyledAppBar,
   StyledDarkLogo,
   StyledIconBox,
-  StyledLink,
   StyledLogo,
   StyledLogoIconButton,
   StyledStack,
@@ -90,7 +90,7 @@ const Header: FC = () => {
             anchorElNav={anchorElNav}
           />
           <StyledIconBox>
-            <StyledLink to="/">
+            <CustomLink path="/">
               <StyledLogoIconButton disableRipple onClick={handleClickNavMenu}>
                 {settings.theme === "light" ? (
                   <StyledDarkLogo />
@@ -98,7 +98,7 @@ const Header: FC = () => {
                   <StyledLogo />
                 )}
               </StyledLogoIconButton>
-            </StyledLink>
+            </CustomLink>
           </StyledIconBox>
           <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
           {kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />}

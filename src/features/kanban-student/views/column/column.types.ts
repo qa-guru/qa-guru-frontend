@@ -3,6 +3,7 @@ import {
   StudentHomeWorkStatus,
   Maybe,
 } from "api/graphql/generated/graphql";
+import { MouseEvent } from "react";
 
 export interface IColumnItem {
   id: string;
@@ -26,7 +27,10 @@ export interface IColumn {
     };
   }) => void;
   column: IColumnItem;
-  onCardClick: ((card: StudentHomeWorkDto) => void) | void;
+  onCardClick?: (
+    card: StudentHomeWorkDto,
+    event: MouseEvent<HTMLDivElement>
+  ) => void;
   isActive?: boolean;
   activeCardId?: Maybe<string>;
 }

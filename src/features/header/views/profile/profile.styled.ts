@@ -1,7 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Button, MenuItem, Stack } from "@mui/material";
 import Menu from "@mui/material/Menu";
-import { Link } from "react-router-dom";
 
 export const StyledButton = styled(Button)({
   padding: 0,
@@ -35,12 +34,6 @@ export const StyledUserBox = styled(Box)({
   padding: "8px 16px",
   flexWrap: "wrap",
 });
-
-export const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.app.black,
-  width: "100%",
-}));
 
 export const StyledMenuItem = styled(MenuItem)({
   margin: 0,

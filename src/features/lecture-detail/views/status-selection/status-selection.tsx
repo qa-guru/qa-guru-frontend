@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { InputSelect } from "shared/components/form";
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { states } from "features/kanban/views/status-select/status-select.types";
 
 import { IStatusSelection } from "./status-selection.types";
 import { useHomeworksForm } from "../../context/homeworks-other-students-form-context";
-import { states } from "../../../kanban/views/status-select/status-select.types";
 
 const StatusSelection: FC<IStatusSelection> = ({ control }) => {
   const { setStatus } = useHomeworksForm();

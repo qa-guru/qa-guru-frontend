@@ -3,9 +3,10 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { ListItemText } from "@mui/material";
+import CustomLink from "shared/components/custom-link";
 
 import { IMenuBurger } from "./menu-burger.types";
-import { StyledBox, StyledLink, StyledMenu } from "./menu-burger.styled";
+import { StyledBox, StyledMenu } from "./menu-burger.styled";
 
 const MenuBurger: FC<IMenuBurger> = (props) => {
   const { setAnchorElNav, handleClickNavMenu, anchorElNav, pages } = props;
@@ -33,11 +34,11 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <StyledLink to={pageURL} key={id}>
-              <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
+            <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
+              <CustomLink path={pageURL}>
                 <ListItemText>{title}</ListItemText>
-              </MenuItem>
-            </StyledLink>
+              </CustomLink>
+            </MenuItem>
           );
         })}
       </StyledMenu>

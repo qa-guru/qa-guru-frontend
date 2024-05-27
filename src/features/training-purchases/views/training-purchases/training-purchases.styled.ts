@@ -64,11 +64,6 @@ export const StyledLogoWhite = styled(LogoWhite)(({ theme }) => ({
   },
 }));
 
-//
-// export const StyledLink = styled(Link)({
-//   textDecoration: "none",
-// });
-
 // export const StyledCalendarBox = styled(Box, {
 //   shouldForwardProp: (prop) => prop !== "open",
 // })<IStyledCalendar>(({ theme, open }) => ({
@@ -101,8 +96,7 @@ export const StyledLogoWhite = styled(LogoWhite)(({ theme }) => ({
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   marginTop: "15px",
-  color: theme.palette.app.white,
-  alignSelf: "end",
+  alignSelf: "flex-end",
 }));
 
 // export const StyledTypography = styled(Typography)(({ theme }) => ({

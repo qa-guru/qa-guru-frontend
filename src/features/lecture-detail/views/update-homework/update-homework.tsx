@@ -2,10 +2,10 @@ import { FC, useRef } from "react";
 import { client } from "api";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
+import SendButtons from "shared/components/send-buttons";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import { StyledBox, StyledWrapper } from "./update-homework.styled";
-import SendButtons from "../../../../shared/components/send-buttons";
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;

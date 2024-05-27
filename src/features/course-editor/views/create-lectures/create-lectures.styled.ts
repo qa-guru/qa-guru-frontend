@@ -1,15 +1,10 @@
 import { styled } from "@mui/system";
-import { Link } from "react-router-dom";
 import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
 
 export const StyledGridContainer = styled(Grid)(({ theme }) => ({
   gap: theme.spacing(3),
   margin: "10px 0",
 }));
-
-export const StyledLink = styled(Link)({
-  textDecoration: "none",
-});
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: "15px",
