@@ -63,7 +63,9 @@ const UserRow: FC<IUserRow> = (props) => {
         </StyledStack>
 
         {!hideRoles && (
-          <Typography variant="caption">{formatRole(roles)}</Typography>
+          <Typography variant="caption" color="textSecondary">
+            {formatRole(roles)}
+          </Typography>
         )}
 
         {date && <UserDate date={date} />}

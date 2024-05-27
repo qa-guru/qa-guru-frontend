@@ -24,6 +24,7 @@ import {
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
+import { formatRole } from "../../../../shared/helpers";
 
 const Profile: FC<IProfile> = (props) => {
   const {
@@ -92,6 +93,7 @@ const Profile: FC<IProfile> = (props) => {
               hideFullName={isMobile}
               variant="body2"
               hideRating={isMobile}
+              roles={!isMobile ? user?.roles : null}
             />
           </StyledBox>
         </StyledButton>

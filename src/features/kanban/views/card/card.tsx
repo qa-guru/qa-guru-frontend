@@ -6,6 +6,7 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import CustomLink from "shared/components/custom-link";
+import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledBox,
@@ -28,6 +29,7 @@ const Card: FC<ICard> = ({
   isActive,
 }) => {
   const { id, mentor, student, lecture, training } = card;
+  const { isLargeDesktop } = useResponsive();
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
     item: {
@@ -54,7 +56,13 @@ const Card: FC<ICard> = ({
     isDragging,
   });
 
-  return (
+  const headerContent = (
+    <Typography variant="subtitle2">
+      {getFormattedId(training?.techStack, id)}
+    </Typography>
+  );
+
+  const cardContent = (
     <StyledPaper
       isDragging={isDragging}
       isCardsHidden={isCardsHidden}
@@ -64,12 +72,17 @@ const Card: FC<ICard> = ({
       elevation={4}
     >
       <StyledCardHeader isActive={isActive}>
-        <CustomLink
-          textDecorationHover="underline"
-          path={`${ROUTES.KANBAN}/${card.id}`}
-        >
-          {getFormattedId(training?.techStack, id)}
-        </CustomLink>
+        {isLargeDesktop ? (
+          <CustomLink
+            textDecorationHover="underline"
+            path={`${ROUTES.KANBAN}/${card.id}`}
+            color="black"
+          >
+            {headerContent}
+          </CustomLink>
+        ) : (
+          headerContent
+        )}
         <Typography variant="body2">
           {card.creationDate &&
             format(parseISO(card.creationDate), "dd.MM.yyyy")}
@@ -86,7 +99,7 @@ const Card: FC<ICard> = ({
               height={24}
               variant="body2"
               userId={mentor.id}
-              hasLink
+              hasLink={isLargeDesktop}
             />
           )}
           {student && (
@@ -97,12 +110,18 @@ const Card: FC<ICard> = ({
               height={26}
               variant="body2"
               userId={student.id}
-              hasLink
+              hasLink={isLargeDesktop}
             />
           )}
         </StyledUserRowStack>
       </StyledBox>
     </StyledPaper>
+  );
+
+  return !isLargeDesktop ? (
+    <CustomLink path={`${ROUTES.KANBAN}/${card.id}`}>{cardContent}</CustomLink>
+  ) : (
+    cardContent
   );
 };
 

@@ -5,8 +5,8 @@ export const INPUT_DATE_FORMAT = "YYYY-MM-DDTHH:mm:ss";
 export const DATE_FORMAT = "dd.MM.yyyy '|' HH:mm";
 
 export const ROLES = [
-  { text: "Admin", value: "ADMIN" },
-  { text: "Lector + Student", value: "LECTOR" },
-  { text: "Mentor + Student", value: "MENTOR" },
-  { text: "Student", value: "STUDENT" },
+  { text: "Админ", value: "ADMIN" },
+  { text: "Преподаватель и Студент", value: "LECTOR" },
+  { text: "Ментор и Студент", value: "MENTOR" },
+  { text: "Студент", value: "STUDENT" },
 ];
