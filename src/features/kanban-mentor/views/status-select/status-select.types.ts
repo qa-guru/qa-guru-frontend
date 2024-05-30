@@ -2,8 +2,7 @@ import { ReactComponent as Clock } from "assets/icons/clock.svg";
 import { ReactComponent as Search } from "assets/icons/search.svg";
 import { ReactComponent as Done } from "assets/icons/done.svg";
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
-
-import { RedHighlightOffIcon } from "../../../../shared/components/status-text/status-text";
+import { RedHighlightOffIcon } from "shared/components/status-text/status-text";
 
 export interface IStatusSelect {
   currentStatus?: Maybe<StudentHomeWorkStatus>;

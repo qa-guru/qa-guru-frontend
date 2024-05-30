@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, MouseEvent, useEffect, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box, Step } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -20,8 +20,12 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
-  const handleCardClick = (card: StudentHomeWorkDto) => {
-    navigate(`${ROUTES.KANBAN}/${card?.id}`);
+  const handleCardClick = (
+    card: StudentHomeWorkDto,
+    event: MouseEvent<HTMLDivElement>
+  ) => {
+    const isModifierKey = event.metaKey || event.ctrlKey || event.shiftKey;
+    if (!isModifierKey) navigate(`${ROUTES.KANBAN}/${card?.id}`);
   };
 
   const handleStepChange = (step: number) => {

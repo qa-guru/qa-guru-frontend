@@ -10,8 +10,9 @@ import { ReactComponent as GitHubIconSecondary } from "assets/icons/git-hub-seco
 import { ReactComponent as LinkedInIconSecondary } from "assets/icons/linked-in-secondary.svg";
 import { ReactComponent as TelegramIconSecondary } from "assets/icons/telegram-secondary.svg";
 import { ReactComponent as WebSiteIconSecondary } from "assets/icons/website-secondary.svg";
+import CustomLink from "shared/components/custom-link";
 
-import { StyledIconStack, StyledLink } from "../media-links/media-links.styled";
+import { StyledIconStack } from "../media-links/media-links.styled";
 import { IMediaLinks, IconLinkProps } from "./media-links.types";
 
 const mediaIcons = [
@@ -51,9 +52,9 @@ const IconLink: FC<IconLinkProps> = ({
 }) => {
   if (href) {
     return (
-      <StyledLink href={href}>
+      <CustomLink path={href}>
         <Icon />
-      </StyledLink>
+      </CustomLink>
     );
   } else {
     return <IconSecondary />;

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, MouseEvent, useEffect, useState } from "react";
 import {
   Box,
   Drawer,
@@ -10,6 +10,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { Maybe } from "api/graphql/generated/graphql";
 import { Reorder, SchoolRounded } from "@mui/icons-material";
+import CustomLink from "shared/components/custom-link";
 
 import { IStepper } from "./desktop-stepper.types";
 import {
@@ -37,6 +38,17 @@ const DesktopStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
       navigate(`/training/${trainingId}/${id}`);
       setActiveStep(step);
     }
+  };
+
+  const handleLabelClick = (
+    event: MouseEvent<HTMLElement>,
+    step: number,
+    id?: Maybe<string>
+  ) => {
+    if (event.ctrlKey || event.metaKey || event.button === 1) {
+      return;
+    }
+    handleNavigation(step, id);
   };
 
   const changeStep = (direction: number) => {
@@ -94,12 +106,14 @@ const DesktopStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
 
             return (
               <StyledStep key={id} id={`step-${index}`}>
-                <StepLabel
-                  icon={<SchoolRounded fontSize="small" />}
-                  onClick={() => handleNavigation(index, id)}
-                >
-                  <Typography variant="caption">{subject}</Typography>
-                </StepLabel>
+                <CustomLink path={`/training/${trainingId}/${id}`}>
+                  <StepLabel
+                    icon={<SchoolRounded fontSize="small" />}
+                    onClick={(event) => handleLabelClick(event, index, id)}
+                  >
+                    <Typography variant="caption">{subject}</Typography>
+                  </StepLabel>
+                </CustomLink>
                 <StepContent>
                   <Typography variant="caption">{description}</Typography>
                   <Box sx={{ mb: 2 }}>

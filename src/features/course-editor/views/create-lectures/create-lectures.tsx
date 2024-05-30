@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
+import CustomLink from "shared/components/custom-link";
 
 import {
   StyledBox,
   StyledGridContainer,
-  StyledLink,
   StyledPaper,
   StyledStack,
   StyledSubtitle,
@@ -44,7 +44,7 @@ const CreateLectures: FC<IEditLectures> = (props) => {
             <Grid item xs={12} key={lectureId}>
               <Stack direction="row" alignItems="center">
                 <CardActionArea>
-                  <StyledLink to={`${location.pathname}/${lectureId}`}>
+                  <CustomLink path={`${location.pathname}/${lectureId}`}>
                     <StyledPaper>
                       {!subject ? (
                         <Typography variant="h4">Новый урок</Typography>
@@ -67,7 +67,7 @@ const CreateLectures: FC<IEditLectures> = (props) => {
                         </StyledSubtitle>
                       </StyledBox>
                     </StyledPaper>
-                  </StyledLink>
+                  </CustomLink>
                 </CardActionArea>
                 <DeleteLecture lectureId={lectureId} lectureIds={lectureIds} />
               </Stack>

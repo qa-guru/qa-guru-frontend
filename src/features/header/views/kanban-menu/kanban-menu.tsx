@@ -3,11 +3,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { ArrowDropDown } from "@mui/icons-material";
 import { type Theme } from "@mui/material/styles";
+import CustomLink from "shared/components/custom-link";
 
 import { IKanbanMenu } from "./kanban-menu.types";
 import {
   StyledButton,
-  StyledLink,
   StyledMenu,
   StyledWrapperBox,
 } from "./kanban-menu.styled";
@@ -86,8 +86,8 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <StyledLink to={pageURL} key={id}>
-              <MenuItem onClick={handleClickNavMenu}>
+            <MenuItem onClick={handleClickNavMenu} key={id}>
+              <CustomLink path={pageURL}>
                 <Typography
                   textTransform="uppercase"
                   textAlign="center"
@@ -95,8 +95,8 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
                 >
                   {title}
                 </Typography>
-              </MenuItem>
-            </StyledLink>
+              </CustomLink>
+            </MenuItem>
           );
         })}
       </StyledMenu>

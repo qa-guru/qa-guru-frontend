@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
-import { Divider, ListItemIcon, ListItemText } from "@mui/material";
+import { Box, Divider, ListItemIcon, ListItemText } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "features/authorization/containers/logout";
 import UserRow from "shared/components/user-row";
@@ -7,23 +7,24 @@ import PersonIcon from "@mui/icons-material/Person";
 import useRoleAccess from "shared/hooks/use-role-access";
 import { UserRole } from "api/graphql/generated/graphql";
 import {
-  SpaceDashboard,
-  Leaderboard,
   Group,
+  Leaderboard,
   School,
+  SpaceDashboard,
 } from "@mui/icons-material";
 import useResponsive from "shared/hooks/use-responsive";
+import CustomLink from "shared/components/custom-link";
 
 import { IProfile } from "./profile.types";
 import {
   StyledBox,
   StyledButton,
-  StyledLink,
   StyledMenu,
   StyledMenuItem,
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
+import { formatRole } from "../../../../shared/helpers";
 
 const Profile: FC<IProfile> = (props) => {
   const {
@@ -84,7 +85,7 @@ const Profile: FC<IProfile> = (props) => {
 
   return (
     <>
-      <Tooltip title="Open settings">
+      <Tooltip title="Профиль пользователя">
         <StyledButton variant="text" onClick={handleOpenProfile} disableRipple>
           <StyledBox>
             <UserRow
@@ -92,6 +93,7 @@ const Profile: FC<IProfile> = (props) => {
               hideFullName={isMobile}
               variant="body2"
               hideRating={isMobile}
+              roles={!isMobile ? user?.roles : null}
             />
           </StyledBox>
         </StyledButton>
@@ -114,14 +116,16 @@ const Profile: FC<IProfile> = (props) => {
           const { icon, title, url, id } = setting;
 
           return (
-            <StyledLink to={url} key={id}>
-              <StyledMenuItem onClick={handleClickSettingsProfile}>
-                <StyledStack>
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <ListItemText secondary={title} />
-                </StyledStack>
-              </StyledMenuItem>
-            </StyledLink>
+            <Box key={id}>
+              <CustomLink path={url}>
+                <StyledMenuItem onClick={handleClickSettingsProfile} key={id}>
+                  <StyledStack>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText secondary={title} />
+                  </StyledStack>
+                </StyledMenuItem>
+              </CustomLink>
+            </Box>
           );
         })}
         <Divider />

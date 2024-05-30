@@ -8,12 +8,13 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
+import CustomLink from "shared/components/custom-link";
+import { ReactComponent as ClassesNotFound } from "assets/images/homework-not-found.svg";
 
 import { AddLecture, DeleteLecture } from "../../containers";
 import {
   StyledBox,
   StyledGridContainer,
-  StyledLink,
   StyledPaper,
   StyledStack,
   StyledSubtitle,
@@ -21,6 +22,7 @@ import {
   StyledWrapper,
 } from "./edit-lectures.styled";
 import { IEditLectures } from "./edit-lectures.types";
+import { StyledNotFoundBox } from "../../../lecture-detail/views/homeworks-other-students/homework-other-students.styled";
 
 const EditLectures: FC<IEditLectures> = (props) => {
   const { data } = props;
@@ -36,6 +38,14 @@ const EditLectures: FC<IEditLectures> = (props) => {
       <Box display="flex" justifyContent="flex-end">
         <AddLecture lectureIds={lectureIds} />
       </Box>
+      {trainingLectures?.length === 0 && (
+        <StyledNotFoundBox>
+          <ClassesNotFound />
+          <Typography variant="h3" color="textSecondary">
+            Нет созданных уроков
+          </Typography>
+        </StyledNotFoundBox>
+      )}
       <StyledGridContainer container>
         {trainingLectures?.map((item) => {
           const { id: lectureId, subject, description } = item?.lecture || {};
@@ -44,7 +54,7 @@ const EditLectures: FC<IEditLectures> = (props) => {
             <Grid item xs={12} key={lectureId}>
               <Stack direction="row" alignItems="center">
                 <CardActionArea>
-                  <StyledLink to={`${location.pathname}/${lectureId}`}>
+                  <CustomLink path={`${location.pathname}/${lectureId}`}>
                     <StyledPaper>
                       {!subject ? (
                         <Typography variant="h4">Новый урок</Typography>
@@ -67,7 +77,7 @@ const EditLectures: FC<IEditLectures> = (props) => {
                         </StyledSubtitle>
                       </StyledBox>
                     </StyledPaper>
-                  </StyledLink>
+                  </CustomLink>
                 </CardActionArea>
                 <DeleteLecture lectureId={lectureId} lectureIds={lectureIds} />
               </Stack>

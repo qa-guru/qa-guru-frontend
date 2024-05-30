@@ -8,6 +8,7 @@ import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusText from "shared/components/status-text";
 import LectureHomework from "features/lecture-detail/views/lecture-homework";
 import { TextView } from "shared/components/text-editor";
+import CustomLink from "shared/components/custom-link";
 
 import { IHomeworkDescription } from "./homework-details.types";
 import {
@@ -20,7 +21,6 @@ import {
   StyledTitle,
   StyledTypography,
   StyledId,
-  StyledLink,
   StyledIconButton,
   StyledStatusContentBox,
   StyledIcon,
@@ -34,14 +34,18 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
     <StyledHomeworkDetails>
       <StyledBox>
         <StyledStack>
-          <StyledLink to={`/kanban-student/${card.id}`}>
+          <CustomLink
+            path={`/kanban/${card.id}`}
+            color="black"
+            textDecorationHover="underline"
+          >
             <StyledId>
-              <Typography variant="h4">
+              <Typography textTransform="uppercase" variant="h5">
                 {getFormattedId(card?.training?.techStack, card.id)}
               </Typography>
-              <StyledIcon />
+              <StyledIcon fontSize="small" />
             </StyledId>
-          </StyledLink>
+          </CustomLink>
         </StyledStack>
         <StyledIconButton onClick={onClose}>
           <ChevronRightIcon />

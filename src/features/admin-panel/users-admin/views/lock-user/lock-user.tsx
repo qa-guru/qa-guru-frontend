@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
+import useResponsive from "shared/hooks/use-responsive";
 
 import {
   StyledButton,
@@ -17,7 +18,6 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./lock-user.styled";
-import useResponsive from "../../../../../shared/hooks/use-responsive";
 
 interface ILockUser {
   lockUser: LockUserMutationFn;

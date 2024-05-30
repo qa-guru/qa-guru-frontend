@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { TextView } from "shared/components/text-editor";
 
 import { ILectureHomework } from "./lecture-homework.types";
 import {
@@ -6,7 +7,6 @@ import {
   StyledStack,
   StyledTypography,
 } from "./lecture-homework.styled";
-import { TextView } from "../../../../shared/components/text-editor";
 
 const LectureHomework: FC<ILectureHomework> = ({ lectureHomeWork }) => {
   return (

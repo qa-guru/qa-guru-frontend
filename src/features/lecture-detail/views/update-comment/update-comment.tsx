@@ -1,6 +1,8 @@
 import { FC, useRef, useState } from "react";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { CommentEditor } from "shared/components/text-editor";
+import { useComment } from "shared/context/comment-context";
+import SendButtons from "shared/components/send-buttons";
 
 import { IUpdateComment } from "./update-comment.types";
 import {
@@ -8,8 +10,6 @@ import {
   StyledStack,
   StyledFormHelperText,
 } from "./update-comment.styled";
-import { useComment } from "../../../../shared/context/comment-context";
-import SendButtons from "../../../../shared/components/send-buttons";
 
 const UpdateComment: FC<IUpdateComment> = (props) => {
   const { loading, updateComment, commentId, content } = props;

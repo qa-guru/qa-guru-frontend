@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog } from "@mui/material";
+import useResponsive from "shared/hooks/use-responsive";
 
 import { IModalHomeworksOtherStudents } from "./modal-homeworks-other-students.types";
 import {
@@ -15,7 +16,6 @@ import { Comments } from "../../containers";
 import CommentsPagination from "../comments-pagination";
 import HomeworkItem from "../homework-item";
 import CommentsTotalElements from "../comment-total-elements";
-import useResponsive from "../../../../shared/hooks/use-responsive";
 
 const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
   item,

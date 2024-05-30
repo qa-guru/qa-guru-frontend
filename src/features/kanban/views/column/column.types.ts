@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
@@ -45,7 +45,10 @@ export interface IColumn {
     sourceColumnId: string,
     targetColumnId: string
   ) => void;
-  onCardClick: ((card: StudentHomeWorkDto) => void) | void;
+  onCardClick?: (
+    card: StudentHomeWorkDto,
+    event: MouseEvent<HTMLDivElement>
+  ) => void;
   isActive?: boolean;
   activeCardId?: Maybe<string>;
 }
