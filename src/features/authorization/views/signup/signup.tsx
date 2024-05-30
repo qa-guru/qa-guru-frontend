@@ -69,6 +69,7 @@ const Signup: FC<ISignUp> = (props) => {
           .trim(),
         phoneNumber: yup
           .string()
+          .min(10, "Должно быть минимум 10 символов")
           .required("Введите телефон")
           .test("phone-number", "Неверный формат номера телефона", (value) => {
             if (digitsOnlyPattern.test(value)) {
