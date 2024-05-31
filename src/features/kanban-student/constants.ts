@@ -17,7 +17,7 @@ export const UI_CONSTANTS = {
 };
 
 export const ROUTES = {
-  KANBAN: "/kanban-mentor",
+  KANBAN: "/kanban-student",
 };
 
 export const MAX_CARDS_BEFORE_SHOW_MORE = 5;
