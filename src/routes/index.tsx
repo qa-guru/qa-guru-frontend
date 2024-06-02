@@ -1,7 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import NotFoundPage from "pages/not-found";
-import { FC, ReactElement, ReactNode } from "react";
+import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import Layout from "shared/components/layout";
 import {
@@ -54,10 +54,20 @@ export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
 };
 
 const Routing: FC<IRoutnig> = ({ roles }) => {
+  const location = useLocation();
+  const [errorBoundaryKey, setErrorBoundaryKey] = useState<string>(
+    location.pathname
+  );
+
+  useEffect(() => {
+    setErrorBoundaryKey(location.pathname);
+  }, [location]);
+
   const usersRoutes = getUserRoutes(roles!);
 
   return (
     <ErrorBoundary
+      key={errorBoundaryKey}
       fallback={
         <Layout>
           <NotFoundPage />
