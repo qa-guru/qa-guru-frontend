@@ -24,7 +24,6 @@ import {
   StyledStack,
   StyledUserBox,
 } from "./profile.styled";
-import { formatRole } from "../../../../shared/helpers";
 
 const Profile: FC<IProfile> = (props) => {
   const {

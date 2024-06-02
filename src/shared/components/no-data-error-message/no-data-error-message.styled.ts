@@ -1,11 +1,13 @@
 import { styled } from "@mui/system";
 import zIndex from "@mui/material/styles/zIndex";
-import { Backdrop, Box } from "@mui/material";
+import { Backdrop, Stack } from "@mui/material";
 
-export const StyledIconBox = styled(Box)({
+export const StyledIconStack = styled(Stack)({
   display: "flex",
+  flexDirection: "row",
   justifyContent: "center",
   paddingBottom: "20px",
+  gap: "10px",
 });
 
 export const StyledBackdropError = styled(Backdrop)({
