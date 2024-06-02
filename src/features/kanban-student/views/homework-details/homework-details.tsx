@@ -35,7 +35,7 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
       <StyledBox>
         <StyledStack>
           <CustomLink
-            path={`/kanban/${card.id}`}
+            path={`/kanban-student/${card.id}`}
             color="black"
             textDecorationHover="underline"
           >

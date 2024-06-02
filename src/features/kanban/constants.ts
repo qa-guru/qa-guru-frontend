@@ -23,8 +23,6 @@ export const UI_CONSTANTS = {
   MAX_COLUMN_WIDTH: "100%",
 };
 
-export const STEP = 1;
-
 export const ROUTES = {
   KANBAN: "/kanban",
 };

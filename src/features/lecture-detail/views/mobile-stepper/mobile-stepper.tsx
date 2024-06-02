@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, MouseEvent, useEffect, useState } from "react";
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -20,14 +20,12 @@ import {
   StyledStep,
   StyledStepper,
 } from "./mobile-stepper.styled";
+import CustomLink from "../../../../shared/components/custom-link";
 
 const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
   const { trainingId, lectureId } = useParams();
   const [activeStep, setActiveStep] = useState(0);
-  const [open, setOpen] = useState(() => {
-    const isDrawerOpen = localStorage.getItem("drawerOpen");
-    return isDrawerOpen === "true";
-  });
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const lectures = dataTrainingLectures?.trainingLectures;
 
@@ -37,6 +35,17 @@ const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
       setActiveStep(step);
       setOpen(false);
     }
+  };
+
+  const handleLabelClick = (
+    event: MouseEvent<HTMLElement>,
+    step: number,
+    id?: Maybe<string>
+  ) => {
+    if (event.ctrlKey || event.metaKey || event.button === 1) {
+      return;
+    }
+    handleNavigation(step, id);
   };
 
   const toggleDrawer = () => {
@@ -55,13 +64,6 @@ const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
       setActiveStep(stepIndex);
     }
   }, [lectureId, lectures]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const stepElement = document.getElementById(`step-${activeStep}`);
-      stepElement?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 0);
-  }, [activeStep]);
 
   return (
     <StyledMobilePaper>
@@ -96,12 +98,14 @@ const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
 
             return (
               <StyledStep key={id} id={`step-${index}`}>
-                <StepLabel
-                  icon={<SchoolRounded fontSize="small" />}
-                  onClick={() => handleNavigation(index, id)}
-                >
-                  <Typography variant="caption">{subject}</Typography>
-                </StepLabel>
+                <CustomLink path={`/training/${trainingId}/${id}`}>
+                  <StepLabel
+                    icon={<SchoolRounded fontSize="small" />}
+                    onClick={(event) => handleLabelClick(event, index, id)}
+                  >
+                    <Typography variant="caption">{subject}</Typography>
+                  </StepLabel>
+                </CustomLink>
               </StyledStep>
             );
           })}
