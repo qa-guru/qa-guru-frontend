@@ -1,6 +1,6 @@
 import { FC } from "react";
-import LectureHomework from "features/lecture-detail/views/lecture-homework";
-import Homework from "features/lecture-detail/containers/homework";
+import LectureHomework from "common/lecture-homework";
+import Homework from "common/homework/container";
 
 import BlurredComponent from "../blurred-component/blurred-component";
 import {

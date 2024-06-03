@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { useSnackbar } from "notistack";
-import { STATUS_COLUMN } from "features/kanban/constants";
 import {
   StudentHomeWorkDto,
   UserRole,
@@ -10,6 +9,7 @@ import {
 import useRoleAccess from "shared/hooks/use-role-access";
 
 import { IDraggingState } from "../views/board/board.types";
+import { STATUS_COLUMN } from "../constants";
 
 interface IDragEffect {
   card: StudentHomeWorkDto;

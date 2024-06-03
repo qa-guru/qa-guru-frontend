@@ -2,6 +2,8 @@ import { FC, useEffect, useState } from "react";
 import { Stack, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
+import HomeworkItem from "common/homework-item";
+import { QUERY_DEFAULTS } from "shared/constants";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {
@@ -12,8 +14,6 @@ import {
   StyledWrapper,
 } from "./homework-other-students.styled";
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
-import { QUERY_DEFAULTS } from "../../constants";
-import HomeworkItem from "../homework-item";
 
 const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   const { data, fetchMore, dataUserId } = props;

@@ -5,9 +5,10 @@ import { formatDate } from "shared/helpers";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
+import AvatarUpload from "shared/components/avatar-upload";
+import MediaLinks from "shared/components/media-links/media-links";
 
 import { IUserInfo } from "./user-info.types";
-import AvatarUpload from "../avatar-upload";
 import {
   StyledButtonBox,
   StyledColumnStack,
@@ -22,7 +23,6 @@ import {
   StyledRowStack,
   StyledWebsiteStack,
 } from "./user-info.styled";
-import MediaLinks from "../media-links/media-links";
 
 const UserInfo: FC<IUserInfo> = ({ data }) => {
   const { firstName, rating, lastName, creationDate } = data.user!;

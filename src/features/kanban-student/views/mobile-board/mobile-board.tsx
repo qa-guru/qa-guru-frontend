@@ -4,8 +4,9 @@ import { Box, Step } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+import { STATES } from "shared/constants";
 
-import { IMobileBoard, states } from "./mobile-board.types";
+import { IMobileBoard } from "./mobile-board.types";
 import {
   StyledBox,
   StyledMobileWrapper,
@@ -52,7 +53,7 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
           <KeyboardArrowLeft />
         </StyledStepperButton>
         <StyledStepper activeStep={activeStep}>
-          {states.map((state, index) => {
+          {STATES.map((state, index) => {
             return (
               <Step key={state.text} id={`step-${index}`}>
                 <StyledStepLabel onClick={() => handleStepChange(index)}>
@@ -65,7 +66,7 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
         <StyledStepperButton
           size="small"
           onClick={() => handleChangeStep(1)}
-          disabled={activeStep === states.length - 1}
+          disabled={activeStep === STATES.length - 1}
         >
           <KeyboardArrowRight />
         </StyledStepperButton>

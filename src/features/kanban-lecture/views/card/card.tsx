@@ -6,9 +6,9 @@ import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import { useUserIdQuery } from "api/graphql/generated/graphql";
 import { useModal } from "react-modal-hook";
-import HomeworkItem from "features/lecture-detail/views/homework-item";
-import { Comments } from "features/lecture-detail/containers";
-import CommentsPagination from "features/lecture-detail/views/comments-pagination";
+import HomeworkItem from "common/homework-item";
+import Comments from "common/comments";
+import CommentsPagination from "common/comments-pagination";
 import useResponsive from "shared/hooks/use-responsive";
 
 import {

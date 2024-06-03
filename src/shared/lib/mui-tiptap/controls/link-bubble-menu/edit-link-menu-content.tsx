@@ -9,9 +9,9 @@ import {
   type ReactNode,
 } from "react";
 import { Maybe } from "api/graphql/generated/graphql";
+import useOutsideClick from "shared/hooks/use-outside-click";
 
 import useKeyDown from "../../hooks/use-key-down";
-import useOutsideClick from "../../../../hooks/use-outside-click";
 
 export type EditLinkMenuContentProps = {
   editor: Editor;

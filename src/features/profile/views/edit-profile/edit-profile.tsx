@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { InputPhone, InputText } from "shared/components/form";
 import { UserUpdateInput } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
+import AvatarUpload from "shared/components/avatar-upload";
 
 import {
   StyledButtonStack,
@@ -19,7 +20,6 @@ import {
   StyledWrapper,
 } from "./edit-profile.styled";
 import { IEditProfile } from "./edit-profile.types";
-import AvatarUpload from "../avatar-upload";
 
 const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
   const navigate = useNavigate();

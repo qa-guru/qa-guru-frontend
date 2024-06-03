@@ -8,11 +8,12 @@ import {
   type SelectChangeEvent,
   Typography,
 } from "@mui/material";
-import useUpdateHomeworkStatus from "features/kanban/hooks/use-update-homework-status";
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { STATES } from "shared/constants";
 
-import { IStatusSelect, states } from "./status-select.types";
+import { IStatusSelect } from "./status-select.types";
 import { StyledIcon, StyledStack } from "./status-select.styled";
+import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 
 const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
   const [status, setStatus] = useState(currentStatus);
@@ -65,7 +66,7 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
       <Box>
         <InputLabel>Статус</InputLabel>
         <Select value={status!} label="Статус" onChange={updateStatus}>
-          {states.map(({ value, Icon, text }) => (
+          {STATES.map(({ value, Icon, text }) => (
             <MenuItem
               key={value}
               value={value}
