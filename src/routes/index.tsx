@@ -4,6 +4,7 @@ import NotFoundPage from "pages/not-found";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import Layout from "shared/components/layout";
+import ScrollPageSectionPage from "pages/scroll-page-section";
 import {
   LoginPage,
   ConfirmTokenPage,
@@ -123,6 +124,11 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
               <SetPasswordPage />
             </ProtectedRoute>
           }
+        />
+        <Route
+          key="scroll-page-section"
+          path="/scroll-page-section"
+          element={<ScrollPageSectionPage />}
         />
         <Route
           path="*"
