@@ -82,12 +82,17 @@ const routePatterns = [
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/create-training/:trainingId/create-lectures",
+    path: "/admin-panel/courses/create-training/:trainingId/create-training-upload",
+    name: "Загрузка изображения курса",
+    icon: <Edit fontSize="small" />,
+  },
+  {
+    path: "/admin-panel/courses/create-training/:trainingId/create-training-upload/create-lectures",
     name: "Список уроков",
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/create-training/:trainingId/create-lectures/:lectureId",
+    path: "/admin-panel/courses/create-training/:trainingId/create-training-upload/create-lectures/:lectureId",
     name: "Cоздание урока",
     icon: <Edit fontSize="small" />,
   },

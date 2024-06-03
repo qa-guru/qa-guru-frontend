@@ -22,6 +22,7 @@ import {
 } from "pages/kanban-student";
 import CreateLecturesPage from "pages/create-lectures";
 import CreateLecturePage from "pages/create-lecture";
+import CreateTrainingUploadPage from "pages/create-training-upload";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -90,13 +91,18 @@ const AdminRoutes = [
     element={<CreateTrainingPage />}
   />,
   <Route
+    key="create-training-upload"
+    path="/admin-panel/courses/create-training/:trainingId/create-training-upload"
+    element={<CreateTrainingUploadPage />}
+  />,
+  <Route
     key="create-lectures"
-    path="/admin-panel/courses/create-training/:trainingId/create-lectures"
+    path="/admin-panel/courses/create-training/:trainingId/create-training-upload/create-lectures"
     element={<CreateLecturesPage />}
   />,
   <Route
     key="create-lecture"
-    path="/admin-panel/courses/create-training/:trainingId/create-lectures/:lectureId"
+    path="/admin-panel/courses/create-training/:trainingId/create-training-upload/create-lectures/:lectureId"
     element={<CreateLecturePage />}
   />,
   <Route
