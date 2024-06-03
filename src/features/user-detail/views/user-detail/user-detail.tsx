@@ -3,10 +3,10 @@ import { Container, Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
 import { formatDate } from "shared/helpers";
 import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
-import AvatarUpload from "features/profile/views/avatar-upload";
-import MediaLinks from "features/profile/views/media-links/media-links";
-import KanbanProfileMentor from "features/kanban-profile-mentor/views/kanban";
-import KanbanProfileStudent from "features/kanban-profile-student/views/kanban";
+import MediaLinks from "shared/components/media-links/media-links";
+import KanbanProfileStudent from "common/kanban-profile-student/views/kanban";
+import KanbanProfileMentor from "common/kanban-profile-mentor/views/kanban";
+import AvatarUpload from "shared/components/avatar-upload";
 import { UserRole } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 

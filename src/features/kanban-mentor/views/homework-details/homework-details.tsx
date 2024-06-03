@@ -6,7 +6,7 @@ import UserRow from "shared/components/user-row";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusText from "shared/components/status-text";
-import LectureHomework from "features/lecture-detail/views/lecture-homework";
+import LectureHomework from "common/lecture-homework";
 import { TextView } from "shared/components/text-editor";
 import CustomLink from "shared/components/custom-link";
 

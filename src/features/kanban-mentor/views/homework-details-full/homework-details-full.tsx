@@ -4,10 +4,10 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
-import LectureHomework from "features/lecture-detail/views/lecture-homework";
-import Homework from "features/lecture-detail/views/homework";
-import StatusSelect from "features/kanban/views/status-select";
+import LectureHomework from "common/lecture-homework";
+import Homework from "common/homework/view";
 
+import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import {
   StyledAnswerBox,

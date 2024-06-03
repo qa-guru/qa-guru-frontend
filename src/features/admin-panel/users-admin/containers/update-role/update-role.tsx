@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   Maybe,
   Order,
@@ -7,9 +8,8 @@ import {
   UsersQuery,
   useUpdateRoleMutation,
 } from "api/graphql/generated/graphql";
-import SelectRole from "features/admin-panel/users-admin/views/select-role";
-import { FC } from "react";
 
+import SelectRole from "../../views/select-role";
 import { useTableAdminFilter } from "../../context/admin-table-context";
 
 interface IUpdateRoleContainer {

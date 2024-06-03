@@ -8,9 +8,9 @@ import {
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { SkeletonHomeworks } from "shared/components/skeletons";
+import { QUERY_DEFAULTS } from "shared/constants";
 
 import HomeworksOtherStudents from "../../views/homeworks-other-students";
-import { QUERY_DEFAULTS } from "../../constants";
 import { HomeworksOtherStudentsFormContext } from "../../context/homeworks-other-students-form-context";
 
 const HomeworksOtherStudentsContainer: FC = () => {

@@ -4,9 +4,8 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import { format, parseISO } from "date-fns";
 import UserRow from "shared/components/user-row";
-import LectureHomework from "features/lecture-detail/views/lecture-homework";
-import Homework from "features/lecture-detail/views/homework";
-import StatusSelect from "features/kanban/views/status-select";
+import LectureHomework from "common/lecture-homework";
+import Homework from "common/homework/view";
 import StatusText from "shared/components/status-text";
 
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
@@ -88,11 +87,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
             </StyledColumnStack>
           )}
         </StyledRowStack>
-        {isCurrentMentor && hasNoMentor ? (
-          <StatusSelect currentStatus={status} homeworkId={id} />
-        ) : (
-          <StatusText status={status} />
-        )}
+        <StatusText status={status} />
       </StyledStack>
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledAnswerBox>

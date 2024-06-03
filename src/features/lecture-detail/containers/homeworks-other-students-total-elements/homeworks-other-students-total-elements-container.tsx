@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useHomeWorksByLectureIdTotalElementsQuery } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { HomeworksOtherStudentsTotalElementsSpinner } from "shared/components/spinners";
+import { QUERY_DEFAULTS } from "shared/constants";
 
-import { QUERY_DEFAULTS } from "../../constants";
 import HomeworksOtherStudentsTotalElements from "../../views/homeworks-other-students-total-elements";
 import { HomeworksOtherStudentsFormContext } from "../../context/homeworks-other-students-form-context";
 

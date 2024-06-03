@@ -1,11 +1,12 @@
 import { FC, useState } from "react";
-import LectureHomework from "features/lecture-detail/views/lecture-homework";
+import LectureHomework from "common/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 import { Container, IconButton } from "@mui/material";
 import { KanbanLecture } from "features/kanban-lecture";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import { Stack } from "@mui/system";
+import Homework from "common/homework/container";
 
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
@@ -13,7 +14,6 @@ import LectureDescription from "../lecture-description";
 import LectureSpeakers from "../lecture-speakers";
 import LectureContent from "../lecture-content";
 import {
-  Homework,
   HomeworksOtherStudents,
   HomeworksOtherStudentsTotalElements,
 } from "../../containers";

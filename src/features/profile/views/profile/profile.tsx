@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import KanbanProfileMentor from "features/kanban-profile-mentor/views/kanban";
-import KanbanProfileStudent from "features/kanban-profile-student/views/kanban";
+import KanbanProfileMentor from "common/kanban-profile-mentor/views/kanban";
+import KanbanProfileStudent from "common/kanban-profile-student/views/kanban";
 import { UserRole } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
 

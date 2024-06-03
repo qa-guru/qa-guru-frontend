@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { InputSelect } from "shared/components/form";
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
-import { states } from "features/kanban/views/status-select/status-select.types";
+import { STATES } from "shared/constants";
 
 import { IStatusSelection } from "./status-selection.types";
 import { useHomeworksForm } from "../../context/homeworks-other-students-form-context";
@@ -10,7 +10,7 @@ const StatusSelection: FC<IStatusSelection> = ({ control }) => {
   const { setStatus } = useHomeworksForm();
 
   const statusOptions =
-    states?.map((state) => ({
+    STATES?.map((state) => ({
       id: state?.value,
       label: state?.text,
     })) || [];
