@@ -2,7 +2,7 @@ import { Container, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
-import { TrainingPictureQuery } from "api/graphql/generated/graphql";
+import { TrainingQuery } from "api/graphql/generated/graphql";
 
 import TrainingUpload from "../training-upload";
 import {
@@ -12,7 +12,7 @@ import {
 } from "./create-training-upload.styled";
 
 interface ICreateTrainingUpload {
-  data: TrainingPictureQuery;
+  data: TrainingQuery;
 }
 
 const CreateTrainingUpload: FC<ICreateTrainingUpload> = ({ data }) => {

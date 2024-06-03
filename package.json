@@ -72,6 +72,7 @@
     "react-swipeable-views": "^0.14.0",
     "react-transition-group": "^4.4.5",
     "sass": "^1.57.1",
+    "swiper": "^11.1.4",
     "tss-react": "^4.9.3",
     "type-fest": "^4.8.3",
     "vite-plugin-svgr": "^3.2.0",
