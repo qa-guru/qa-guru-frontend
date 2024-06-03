@@ -5,4 +5,5 @@ export {
   CreateTraining,
   CreateLectures,
   CreateLecture,
+  CreateTrainingUpload,
 } from "./containers";

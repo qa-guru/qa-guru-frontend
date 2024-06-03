@@ -7,3 +7,4 @@ export { default as CreateLectures } from "./edit-lectures";
 export { default as CreateLecture } from "./create-lecture";
 export { default as DeleteLecture } from "./delete-lecture";
 export { default as AddLecture } from "./add-lecture";
+export { default as CreateTrainingUpload } from "./create-training-upload";

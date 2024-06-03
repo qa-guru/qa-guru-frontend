@@ -37,14 +37,6 @@ export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
   },
 }));
 
-// export const StyledSubmitButtonsStack = styled(Stack)(({ theme }) => ({
-//   flexDirection: "row",
-//   gap: "16px",
-//   [theme.breakpoints.down("sm")]: {
-//     flexDirection: "column",
-//   },
-// }));
-
 export const StyledSaveButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.app.pinkMain,
   color: theme.palette.app.white,

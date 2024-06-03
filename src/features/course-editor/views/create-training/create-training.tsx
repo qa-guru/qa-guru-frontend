@@ -12,7 +12,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddIcon from "@mui/icons-material/Add";
 
-import TrainingUpload from "../training-upload";
 import SelectMentors from "../../containers";
 import {
   StyledButtonsStack,
@@ -58,7 +57,7 @@ const CreateTraining: FC<ICreateTraining> = ({ updateTraining }) => {
         enqueueSnackbar("Курс создан", { variant: "success" });
         client.refetchQueries({ include: ["training"] });
         navigate(
-          `${location.pathname}/${response.updateTraining?.id}/create-lectures`
+          `${location.pathname}/${response.updateTraining?.id}/create-training-upload`
         );
       },
       onError: () => {
@@ -77,7 +76,6 @@ const CreateTraining: FC<ICreateTraining> = ({ updateTraining }) => {
           <Typography variant="h2">Создание курса</Typography>
           <StyledPaper>
             <StyledWrapper>
-              <TrainingUpload edit />
               <StyledInfoStack>
                 <Typography variant="h3">Название курса</Typography>
                 <InputText
