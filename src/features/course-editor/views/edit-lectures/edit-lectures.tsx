@@ -9,7 +9,7 @@ import {
 import { FC } from "react";
 import { useLocation } from "react-router-dom";
 import CustomLink from "shared/components/custom-link";
-import { ReactComponent as ClassesNotFound } from "assets/images/homework-not-found.svg";
+import ContentNotFound from "shared/components/content-not-found";
 
 import { AddLecture, DeleteLecture } from "../../containers";
 import {
@@ -22,7 +22,6 @@ import {
   StyledWrapper,
 } from "./edit-lectures.styled";
 import { IEditLectures } from "./edit-lectures.types";
-import { StyledNotFoundBox } from "../../../lecture-detail/views/homeworks-other-students/homework-other-students.styled";
 
 const EditLectures: FC<IEditLectures> = (props) => {
   const { data } = props;
@@ -39,12 +38,7 @@ const EditLectures: FC<IEditLectures> = (props) => {
         <AddLecture lectureIds={lectureIds} />
       </Box>
       {trainingLectures?.length === 0 && (
-        <StyledNotFoundBox>
-          <ClassesNotFound />
-          <Typography variant="h3" color="textSecondary">
-            Нет созданных уроков
-          </Typography>
-        </StyledNotFoundBox>
+        <ContentNotFound text="Нет созданных уроков" />
       )}
       <StyledGridContainer container>
         {trainingLectures?.map((item) => {

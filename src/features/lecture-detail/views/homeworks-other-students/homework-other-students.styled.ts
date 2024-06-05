@@ -17,17 +17,6 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const StyledNotFoundBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "400px",
-  [theme.breakpoints.down("md")]: {
-    height: "200px",
-  },
-}));
-
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   color: theme.palette.app.primary,
   alignSelf: "center",

@@ -31,6 +31,14 @@ export const StyledImgBox = styled(Box)({
   margin: "-15px",
 });
 
+export const StyledInnerBox = styled(Box)({
+  borderRadius: "10px 10px 0 0",
+  width: "100%",
+  height: "175px",
+  objectFit: "cover",
+  marginBottom: "10px",
+}) as typeof Box;
+
 export const StyledUserRowStack = styled(Stack)({
   flexDirection: "row",
   gap: "20px",

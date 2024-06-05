@@ -1,26 +1,25 @@
 import { FC, useEffect, useState } from "react";
 import {
-  type Table,
   getCoreRowModel,
+  type Table,
   useReactTable,
 } from "@tanstack/react-table";
-import { CircularProgress, Dialog, Typography } from "@mui/material";
+import { CircularProgress, Dialog } from "@mui/material";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import useResponsive from "shared/hooks/use-responsive";
 import { useModal } from "react-modal-hook";
 import { Fullscreen } from "@mui/icons-material";
-import { ReactComponent as UsersNotFound } from "assets/images/user-not-found.svg";
+import ContentNotFound from "shared/components/content-not-found";
 
 import { ITable } from "./table.types";
 import {
   StyledBox,
   StyledClearIcon,
+  StyledIconBox,
   StyledInfiniteScroll,
   StyledLoadMoreButton,
-  StyledNotFoundBox,
   StyledPaper,
   StyledUsersDialogContent,
-  StyledIconBox,
 } from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
@@ -125,14 +124,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [users]);
 
   if (!users?.length) {
-    return (
-      <StyledNotFoundBox>
-        <UsersNotFound />
-        <Typography variant="h3" color="textSecondary">
-          Пользователь не найден
-        </Typography>
-      </StyledNotFoundBox>
-    );
+    return <ContentNotFound text="Пользователь не найден" isUsers />;
   }
 
   return (

@@ -18,11 +18,11 @@ import {
   StyledUserRowStack,
   StyledLogoBox,
   StyledLogoWhite,
+  StyledInnerBox,
 } from "./training-purchases.styled";
 
 const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   const { trainingPurchases } = data;
-  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<Maybe<HTMLElement>>(null);
   const [openMentorsById, setOpenMentorsById] = useState<string | null>(null);
 
@@ -78,15 +78,8 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                 <StyledPaper>
                   <StyledImgBox>
                     {picture ? (
-                      <Box
+                      <StyledInnerBox
                         component="img"
-                        sx={{
-                          borderRadius: "10px 10px 0 0",
-                          width: "100%",
-                          height: "175px",
-                          objectFit: "cover",
-                          marginBottom: "10px",
-                        }}
                         alt="Course picture"
                         src={`data:image/png;base64, ${picture}` || ""}
                       />
