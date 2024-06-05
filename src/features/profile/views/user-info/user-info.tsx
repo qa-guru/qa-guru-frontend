@@ -1,32 +1,29 @@
 import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
-import { formatDate } from "shared/helpers";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
 import AvatarUpload from "shared/components/avatar-upload";
 import MediaLinks from "shared/components/media-links/media-links";
+import UserInfoMobile from "shared/user-info/user-info-mobile";
+import UserInfoDesktop from "shared/user-info/user-info-desktop";
 
 import { IUserInfo } from "./user-info.types";
 import {
   StyledButtonBox,
   StyledColumnStack,
-  StyledDateStack,
-  StyledDesktopStack,
   StyledHiddenIconBox,
   StyledIconButton,
-  StyledMobileStack,
   StyledNameBox,
   StyledPaper,
   StyledRatingBox,
   StyledRowStack,
-  StyledWebsiteStack,
 } from "./user-info.styled";
 
 const UserInfo: FC<IUserInfo> = ({ data }) => {
   const { firstName, rating, lastName, creationDate } = data.user!;
 
+  const user = data?.user;
   const ratingColor = useRatingColor(rating?.rating);
 
   const navigate = useNavigate();
@@ -41,9 +38,9 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
       </StyledButtonBox>
       <StyledRowStack>
         <Stack>
-          <AvatarUpload user={data.user} />
+          <AvatarUpload user={user} />
           <StyledHiddenIconBox>
-            <MediaLinks user={data.user} />
+            <MediaLinks user={user} />
           </StyledHiddenIconBox>
         </Stack>
         <StyledColumnStack>
@@ -59,37 +56,10 @@ const UserInfo: FC<IUserInfo> = ({ data }) => {
               Рейтинг
             </Typography>
           </StyledRatingBox>
-          <StyledDesktopStack>
-            <StyledDateStack>
-              <Typography variant="body2">Дата регистрации</Typography>
-              <Typography variant="body2" color="textSecondary">
-                {formatDate(creationDate, "DD.MM.YYYY")}
-              </Typography>
-            </StyledDateStack>
-            <StyledWebsiteStack>
-              <WorkIcon />
-              <Typography variant="h5" color="textSecondary">
-                QA Automation Engineer
-              </Typography>
-            </StyledWebsiteStack>
-          </StyledDesktopStack>
+          <UserInfoDesktop creationDate={creationDate} />
         </StyledColumnStack>
       </StyledRowStack>
-      <StyledMobileStack>
-        <StyledDateStack>
-          <Typography variant="body2">Дата регистрации</Typography>
-          <Typography variant="body2" color="textSecondary">
-            {formatDate(creationDate, "DD.MM.YYYY")}
-          </Typography>
-        </StyledDateStack>
-        <MediaLinks user={data.user} />
-        <StyledWebsiteStack>
-          <WorkIcon />
-          <Typography variant="h5" color="textSecondary">
-            QA Automation Engineer
-          </Typography>
-        </StyledWebsiteStack>
-      </StyledMobileStack>
+      <UserInfoMobile user={user} creationDate={creationDate} />
     </StyledPaper>
   );
 };
