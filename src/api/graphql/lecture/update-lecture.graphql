@@ -19,15 +19,7 @@ mutation updateLecture($input: LectureInput!) {
     }
     subject
     description
-    content {
-      type
-      value
-      url
-    }
-    contentHomeWork {
-      type
-      value
-      url
-    }
+    content
+    contentHomeWork
   }
 }

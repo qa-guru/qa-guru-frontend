@@ -1,11 +1,5 @@
-import {
-  LectureContentDto,
-  LectureContentHomeWorkDto,
-  Maybe,
-} from "api/graphql/generated/graphql";
+import { Maybe } from "api/graphql/generated/graphql";
 
 export interface ILectureHomework {
-  lectureHomeWork?: Maybe<
-    Maybe<LectureContentHomeWorkDto | LectureContentDto>[]
-  >;
+  lectureHomeWork?: Maybe<string>;
 }

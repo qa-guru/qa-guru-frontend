@@ -20,10 +20,6 @@ query lecture($id: ID!) {
       estimate
     }
     description
-    content {
-      type
-      value
-      url
-    }
+    content
   }
 }

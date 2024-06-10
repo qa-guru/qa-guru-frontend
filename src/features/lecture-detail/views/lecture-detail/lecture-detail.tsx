@@ -20,8 +20,9 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
     trainingId,
   } = props;
   const { subject, description, speakers, content } = dataLecture.lecture || {};
-  const lectureHomeWork = dataLectureHomework?.lectureHomeWork || [];
-  const hasHomework = lectureHomeWork?.length > 0;
+  const lectureHomeWork = dataLectureHomework?.lectureHomeWork;
+
+  const hasHomework = !!lectureHomeWork;
 
   const [view, setView] = useState("kanban");
 
