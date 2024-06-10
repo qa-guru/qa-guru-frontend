@@ -5,8 +5,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import AvatarUpload from "shared/components/avatar-upload";
 import MediaLinks from "shared/components/media-links/media-links";
-import UserInfoMobile from "shared/user-info/user-info-mobile";
-import UserInfoDesktop from "shared/user-info/user-info-desktop";
+import UserInfoMobile from "shared/components/user-info/user-info-mobile";
+import UserInfoDesktop from "shared/components/user-info/user-info-desktop";
 
 import { IUserInfo } from "./user-info.types";
 import {

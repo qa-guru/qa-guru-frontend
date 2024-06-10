@@ -1,25 +1,15 @@
 import { FC, useState } from "react";
-import LectureHomework from "common/lecture-homework";
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
-import { Container, IconButton } from "@mui/material";
-import { KanbanLecture } from "features/kanban-lecture";
-import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
-import ViewListIcon from "@mui/icons-material/ViewList";
-import { Stack } from "@mui/system";
-import Homework from "common/homework/container";
+import { Container } from "@mui/material";
 
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
 import LectureDescription from "../lecture-description";
 import LectureSpeakers from "../lecture-speakers";
 import LectureContent from "../lecture-content";
-import {
-  HomeworksOtherStudents,
-  HomeworksOtherStudentsTotalElements,
-} from "../../containers";
 import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
-import HomeworksOtherStudentsForm from "../homeworks-other-students-form";
 import StepperButtons from "../stepper-buttons";
+import HomeworkSection from "../homework-section";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
   const {
@@ -36,7 +26,6 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   const [view, setView] = useState("kanban");
 
   const handleKanbanView = () => setView("kanban");
-
   const handleListView = () => setView("list");
 
   return (
@@ -47,35 +36,12 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
         <LectureSpeakers speakers={speakers} />
         <LectureContent content={content} />
         {tariffHomework && hasHomework && (
-          <>
-            <LectureHomework lectureHomeWork={lectureHomeWork} />
-            <Homework />
-
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <HomeworksOtherStudentsTotalElements />
-              <Stack direction="row">
-                <IconButton size="small" onClick={handleKanbanView}>
-                  <ViewKanbanIcon color="primary" />
-                </IconButton>
-                <IconButton size="small" onClick={handleListView}>
-                  <ViewListIcon color="primary" />
-                </IconButton>
-              </Stack>
-            </Stack>
-
-            {view === "list" && (
-              <>
-                <HomeworksOtherStudentsForm />
-                <HomeworksOtherStudents />
-              </>
-            )}
-
-            {view === "kanban" && <KanbanLecture />}
-          </>
+          <HomeworkSection
+            lectureHomeWork={lectureHomeWork}
+            view={view}
+            onKanbanView={handleKanbanView}
+            onListView={handleListView}
+          />
         )}
         {!tariffHomework && <BlurredHomework />}
         <StepperButtons

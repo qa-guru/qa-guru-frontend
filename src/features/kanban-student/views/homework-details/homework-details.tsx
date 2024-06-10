@@ -1,47 +1,52 @@
 import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { format, parseISO } from "date-fns";
-import UserRow from "shared/components/user-row";
-import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
-import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import StatusText from "shared/components/status-text";
 import LectureHomework from "common/lecture-homework";
 import { TextView } from "shared/components/text-editor";
 import CustomLink from "shared/components/custom-link";
+import HomeworkBaseInfo from "shared/components/homework-base-info";
+import { formatId } from "shared/helpers/format-id";
 
 import { IHomeworkDescription } from "./homework-details.types";
 import {
-  StyledHomeworkDetails,
   StyledBox,
-  StyledColumnStack,
-  StyledPaper,
-  StyledRowStack,
-  StyledStack,
-  StyledTitle,
-  StyledTypography,
-  StyledId,
-  StyledIconButton,
-  StyledStatusContentBox,
+  StyledHomeworkDetails,
   StyledIcon,
+  StyledIconButton,
+  StyledId,
+  StyledPaper,
+  StyledStack,
+  StyledStatusContentBox,
+  StyledTitle,
 } from "./homework-details.styled";
-import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
-  const Format = "dd.MM.yyyy | HH:mm";
+  const {
+    lecture,
+    training,
+    student,
+    mentor,
+    creationDate,
+    startCheckingDate,
+    endCheckingDate,
+    status,
+    answer,
+    id,
+  } = card;
 
   return (
     <StyledHomeworkDetails>
       <StyledBox>
         <StyledStack>
           <CustomLink
-            path={`/kanban-student/${card.id}`}
+            path={`/kanban-student/${id}`}
             color="black"
             textDecorationHover="underline"
           >
             <StyledId>
               <Typography textTransform="uppercase" variant="h5">
-                {getFormattedId(card?.training?.techStack, card.id)}
+                {formatId(training?.techStack, id)}
               </Typography>
               <StyledIcon fontSize="small" />
             </StyledId>
@@ -50,61 +55,23 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <StyledIconButton onClick={onClose}>
           <ChevronRightIcon />
         </StyledIconButton>
-        <Typography variant="h5">{card.lecture?.subject}</Typography>
-        <StyledRowStack>
-          <UserRow
-            icon={StudentIcon}
-            user={card.student}
-            width={26}
-            height={26}
-            userId={card.student?.id}
-            hasLink
-          />
-          {card.mentor && (
-            <UserRow
-              icon={MentorIcon}
-              user={card.mentor}
-              width={26}
-              height={26}
-              userId={card.mentor.id}
-              hasLink
-            />
-          )}
-        </StyledRowStack>
-        <StyledRowStack>
-          <StyledColumnStack>
-            <Typography variant="body2">Создано</Typography>
-            <StyledTypography variant="caption">
-              {card.creationDate && format(parseISO(card.creationDate), Format)}
-            </StyledTypography>
-          </StyledColumnStack>
-          {card.startCheckingDate && (
-            <StyledColumnStack>
-              <Typography variant="body2">Начало проверки</Typography>
-              <StyledTypography variant="caption">
-                {card.startCheckingDate &&
-                  format(parseISO(card.startCheckingDate), Format)}
-              </StyledTypography>
-            </StyledColumnStack>
-          )}
-          {card.endCheckingDate && (
-            <StyledColumnStack>
-              <Typography variant="body2">Окончание проверки</Typography>
-              <Typography variant="caption">
-                {card.endCheckingDate &&
-                  format(parseISO(card.endCheckingDate), Format)}
-              </Typography>
-            </StyledColumnStack>
-          )}
-        </StyledRowStack>
+        <Typography variant="h5">{lecture?.subject}</Typography>
+        <HomeworkBaseInfo
+          student={student}
+          mentor={mentor}
+          creationDate={creationDate}
+          startCheckingDate={startCheckingDate}
+          endCheckingDate={endCheckingDate}
+          iconSize={{ width: 26, height: 26 }}
+        />
         <StyledStatusContentBox>
-          <StatusText status={card.status} />
+          <StatusText status={status} />
         </StyledStatusContentBox>
-        <LectureHomework lectureHomeWork={card.lecture?.contentHomeWork} />
+        <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
         <StyledPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>
           <Stack>
-            <TextView content={card.answer} />
+            <TextView content={answer} />
           </Stack>
         </StyledPaper>
       </StyledBox>

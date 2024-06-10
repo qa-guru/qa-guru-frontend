@@ -1,1 +1,1 @@
-export { default } from "./homeworks-view-swither";
+export { default } from "./homeworks-view-switcher";

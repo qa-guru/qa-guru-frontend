@@ -1,6 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
-import { Box, Container, Grid, Popover, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Container, Grid, Popover, Typography } from "@mui/material";
 import UserRow from "shared/components/user-row";
 import { Maybe } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";

@@ -10,6 +10,7 @@ import { FC } from "react";
 import { useLocation } from "react-router-dom";
 import CustomLink from "shared/components/custom-link";
 import ContentNotFound from "shared/components/content-not-found";
+import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 
 import { AddLecture, DeleteLecture } from "../../containers";
 import {
@@ -38,7 +39,10 @@ const EditLectures: FC<IEditLectures> = (props) => {
         <AddLecture lectureIds={lectureIds} />
       </Box>
       {trainingLectures?.length === 0 && (
-        <ContentNotFound text="Нет созданных уроков" />
+        <ContentNotFound
+          text="Нет созданных уроков"
+          icon={<HomeworksNotFound />}
+        />
       )}
       <StyledGridContainer container>
         {trainingLectures?.map((item) => {

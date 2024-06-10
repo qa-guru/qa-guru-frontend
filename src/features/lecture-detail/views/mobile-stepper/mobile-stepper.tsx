@@ -1,15 +1,11 @@
-import { FC, MouseEvent, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import {
   BottomNavigation,
   BottomNavigationAction,
   Drawer,
-  StepLabel,
   Tooltip,
-  Typography,
 } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
-import { Maybe } from "api/graphql/generated/graphql";
-import { Reorder, SchoolRounded } from "@mui/icons-material";
+import { Reorder } from "@mui/icons-material";
 
 import { IStepper } from "./mobile-stepper.types";
 import {
@@ -17,36 +13,19 @@ import {
   StyledIcon,
   StyledIconBox,
   StyledMobilePaper,
-  StyledStep,
-  StyledStepper,
 } from "./mobile-stepper.styled";
-import CustomLink from "../../../../shared/components/custom-link";
+import {
+  useStepEffect,
+  useStepNavigation,
+} from "../../hooks/use-step-navigation";
+import StepperContent from "../stepper-content";
 
 const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
-  const { trainingId, lectureId } = useParams();
   const [activeStep, setActiveStep] = useState(0);
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const lectures = dataTrainingLectures?.trainingLectures;
+  const { handleNavigation } = useStepNavigation(setActiveStep, setOpen);
 
-  const handleNavigation = (step: number, id?: Maybe<string>) => {
-    if (id) {
-      navigate(`/training/${trainingId}/${id}`);
-      setActiveStep(step);
-      setOpen(false);
-    }
-  };
-
-  const handleLabelClick = (
-    event: MouseEvent<HTMLElement>,
-    step: number,
-    id?: Maybe<string>
-  ) => {
-    if (event.ctrlKey || event.metaKey || event.button === 1) {
-      return;
-    }
-    handleNavigation(step, id);
-  };
+  const lectures = dataTrainingLectures?.trainingLectures!;
 
   const toggleDrawer = () => {
     setOpen((prevOpen) => {
@@ -56,14 +35,15 @@ const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
     });
   };
 
-  useEffect(() => {
-    const stepIndex = lectures?.findIndex(
-      (lecture) => lecture?.lecture?.id === lectureId
-    );
-    if (stepIndex !== undefined && stepIndex !== -1) {
-      setActiveStep(stepIndex);
+  useStepEffect(lectures, setActiveStep);
+
+  const changeStep = (direction: number) => {
+    const newStep = activeStep + direction;
+    const lecture = lectures?.[newStep]?.lecture;
+    if (lecture) {
+      handleNavigation(newStep, lecture.id);
     }
-  }, [lectureId, lectures]);
+  };
 
   return (
     <StyledMobilePaper>
@@ -82,34 +62,16 @@ const MobileStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
         open={open}
         anchor="bottom"
         onClose={toggleDrawer}
-        sx={{ zIndex: 1500 }}
+        sx={{ zIndex: 2000 }}
       >
         <StyledIconBox>
           <StyledClearIcon fontSize="small" onClick={toggleDrawer} />
         </StyledIconBox>
-        <StyledStepper
-          key={activeStep}
+        <StepperContent
+          lectures={lectures}
           activeStep={activeStep}
-          orientation="vertical"
-          connector={null}
-        >
-          {lectures?.map((item, index) => {
-            const { id, subject, description } = item?.lecture || {};
-
-            return (
-              <StyledStep key={id} id={`step-${index}`}>
-                <CustomLink path={`/training/${trainingId}/${id}`}>
-                  <StepLabel
-                    icon={<SchoolRounded fontSize="small" />}
-                    onClick={(event) => handleLabelClick(event, index, id)}
-                  >
-                    <Typography variant="caption">{subject}</Typography>
-                  </StepLabel>
-                </CustomLink>
-              </StyledStep>
-            );
-          })}
-        </StyledStepper>
+          changeStep={changeStep}
+        />
       </Drawer>
     </StyledMobilePaper>
   );

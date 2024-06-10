@@ -4,6 +4,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HomeworkItem from "common/homework-item";
 import { QUERY_DEFAULTS } from "shared/constants";
 import ContentNotFound from "shared/components/content-not-found";
+import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {
@@ -75,7 +76,10 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           })}
         </StyledWrapper>
       ) : (
-        <ContentNotFound text="Нет домашних работ" />
+        <ContentNotFound
+          text="Нет домашних работ"
+          icon={<HomeworksNotFound />}
+        />
       )}
       {hasMoreHomeworks && (
         <Stack>

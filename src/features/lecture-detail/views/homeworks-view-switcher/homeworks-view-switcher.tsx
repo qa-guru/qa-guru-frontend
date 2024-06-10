@@ -3,11 +3,10 @@ import { IconButton, Stack } from "@mui/material";
 import { ViewKanban, ViewList } from "@mui/icons-material";
 
 import { HomeworksOtherStudentsTotalElements } from "../../containers";
-import { IHomeworksViewSwitcher } from "./homeworks-view-swither.types";
-import { StyledWrapper } from "./homeworks-view-swither.styled";
+import { IHomeworksViewSwitcher } from "./homeworks-view-switcher.types";
+import { StyledWrapper } from "./homeworks-view-switcher.styled";
 
 const HomeworksViewSwitcher: FC<IHomeworksViewSwitcher> = ({
-  view,
   onKanbanView,
   onListView,
 }) => (

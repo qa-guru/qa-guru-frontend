@@ -7,8 +7,8 @@ import KanbanProfileMentor from "common/kanban-profile-mentor/views/kanban";
 import AvatarUpload from "shared/components/avatar-upload";
 import { UserRole } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
-import UserInfoMobile from "shared/user-info/user-info-mobile";
-import UserInfoDesktop from "shared/user-info/user-info-desktop";
+import UserInfoMobile from "shared/components/user-info/user-info-mobile";
+import UserInfoDesktop from "shared/components/user-info/user-info-desktop";
 
 import {
   StyledColumnStack,

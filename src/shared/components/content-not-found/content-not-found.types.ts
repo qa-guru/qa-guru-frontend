@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
+
 export interface IContentNotFound {
   text: string;
-  isUsers?: boolean;
+  icon: ReactNode;
 }

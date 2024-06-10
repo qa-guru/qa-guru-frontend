@@ -10,6 +10,7 @@ import useResponsive from "shared/hooks/use-responsive";
 import { useModal } from "react-modal-hook";
 import { Fullscreen } from "@mui/icons-material";
 import ContentNotFound from "shared/components/content-not-found";
+import { ReactComponent as UsersNotFound } from "assets/images/user-not-found.svg";
 
 import { ITable } from "./table.types";
 import {
@@ -124,7 +125,9 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [users]);
 
   if (!users?.length) {
-    return <ContentNotFound text="Пользователь не найден" isUsers />;
+    return (
+      <ContentNotFound text="Пользователь не найден" icon={<UsersNotFound />} />
+    );
   }
 
   return (

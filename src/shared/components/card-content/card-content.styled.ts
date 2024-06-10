@@ -9,33 +9,21 @@ interface IStyledCard {
 
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop) =>
-    !["isCardsHidden", "isActive"].includes(prop as string),
-})<IStyledCard>(({ theme, isActive }) => ({
+    !["isDragging", "isCardsHidden", "isActive"].includes(prop as string),
+})<IStyledCard>(({ theme, isDragging, isCardsHidden, isActive }) => ({
   flexGrow: "1",
   margin: "8px",
   "&:hover": {
     transform: "scale(1.02)",
     transition: "transform 300ms ease-in-out",
   },
+  opacity: isDragging ? "0.5" : undefined,
+  cursor: isDragging ? "grabbing" : "grab",
+  visibility: isCardsHidden && !isDragging ? "hidden" : undefined,
   border: isActive
     ? `1px solid ${theme.palette.app.primary}30`
     : `1px solid transparent`,
-}));
-
-export const StyledCardHeader = styled(Stack, {
-  shouldForwardProp: (prop) => !["isActive"].includes(prop as string),
-})<IStyledCard>(({ theme, isActive }) => ({
-  backgroundColor: isActive
-    ? `1px solid ${theme.palette.app.primary}30`.slice(10)
-    : theme.palette.app.lightGrey,
-  justifyContent: "space-between",
-  boxShadow: "0px 3px 3px rgba(0, 0, 0, 0.2)",
-  padding: "8px",
-  width: "100%",
-  borderTopLeftRadius: "8px",
-  borderTopRightRadius: "8px",
-  position: "relative",
-  flexDirection: "row",
+  marginBottom: isDragging ? "15px" : undefined,
 }));
 
 export const StyledBox = styled(Box)({
