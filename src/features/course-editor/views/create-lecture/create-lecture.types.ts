@@ -1,9 +1,8 @@
 import {
   InputMaybe,
-  LectureContentHomeWorkInput,
-  LectureContentInput,
   LectureHomeWorkQuery,
   LectureQuery,
+  Maybe,
   Scalars,
   UpdateLectureMutationFn,
 } from "api/graphql/generated/graphql";
@@ -16,8 +15,8 @@ export interface IEditLecture {
 }
 
 export type LectureInput = {
-  content?: InputMaybe<Array<InputMaybe<LectureContentInput>>>;
-  contentHomeWork?: InputMaybe<Array<InputMaybe<LectureContentHomeWorkInput>>>;
+  content?: Maybe<string>;
+  contentHomeWork?: Maybe<string>;
   description?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   homeWorkLevelCode?: InputMaybe<Scalars["String"]>;
   id?: InputMaybe<Scalars["ID"]>;

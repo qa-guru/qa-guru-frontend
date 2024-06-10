@@ -14,11 +14,7 @@ query homeworksReview(
         id
         subject
         description
-        contentHomeWork {
-          url
-          value
-          type
-        }
+        contentHomeWork
       }
       answer
       status

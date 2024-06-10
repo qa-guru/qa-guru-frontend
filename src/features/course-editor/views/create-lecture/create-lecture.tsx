@@ -40,16 +40,6 @@ const EditLecture: FC<IEditLecture> = ({
   const rteRefContent = useRef<RichTextEditorRef>(null);
   const rteRefСontentHomeWork = useRef<RichTextEditorRef>(null);
 
-  const aggregatedContentHomework = contentHomework
-    ?.map((item) => item?.value)
-    .filter(Boolean)
-    .join("\n\n");
-
-  const aggregatedContent = content
-    ?.map((item) => item?.value)
-    .filter(Boolean)
-    .join("\n\n");
-
   const { handleSubmit, control } = useForm({
     defaultValues: { id, subject, description, speakers },
   });
@@ -63,18 +53,8 @@ const EditLecture: FC<IEditLecture> = ({
       ...restData,
       speakers: emails,
       description,
-      content: [
-        {
-          value: rteRefContent.current?.editor?.getHTML() ?? "",
-          type: "text",
-        },
-      ],
-      contentHomeWork: [
-        {
-          value: rteRefСontentHomeWork.current?.editor?.getHTML() ?? "",
-          type: "text",
-        },
-      ],
+      content: rteRefContent.current?.editor?.getHTML(),
+      contentHomeWork: rteRefСontentHomeWork.current?.editor?.getHTML(),
     };
 
     await updateLecture({
@@ -127,14 +107,14 @@ const EditLecture: FC<IEditLecture> = ({
           <StyledPaper>
             <StyledInfoStack>
               <Typography variant="h3">Материалы урока</Typography>
-              <Editor content={aggregatedContent} rteRef={rteRefContent} />
+              <Editor content={content} rteRef={rteRefContent} />
             </StyledInfoStack>
           </StyledPaper>
           <StyledPaper>
             <StyledInfoStack>
               <Typography variant="h3">Домашнее задание</Typography>
               <Editor
-                content={aggregatedContentHomework}
+                content={contentHomework}
                 rteRef={rteRefСontentHomeWork}
               />
             </StyledInfoStack>

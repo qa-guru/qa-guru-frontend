@@ -13,9 +13,7 @@ const LectureHomework: FC<ILectureHomework> = ({ lectureHomeWork }) => {
     <StyledPaper>
       <StyledTypography variant="h5">Домашнее задание</StyledTypography>
       <StyledStack>
-        {lectureHomeWork?.map((item, index) => {
-          return <TextView key={index} content={item?.value} />;
-        })}
+        <TextView content={lectureHomeWork} />;
       </StyledStack>
     </StyledPaper>
   );

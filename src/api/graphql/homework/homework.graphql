@@ -4,11 +4,7 @@ query homeWork($homeWorkId: ID!) {
     lecture {
       id
       subject
-      contentHomeWork {
-        url
-        value
-        type
-      }
+      contentHomeWork
     }
     answer
     status

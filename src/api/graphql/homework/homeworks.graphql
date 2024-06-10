@@ -14,11 +14,7 @@ query homeworks(
         id
         subject
         description
-        contentHomeWork {
-          url
-          value
-          type
-        }
+        contentHomeWork
       }
       training {
         techStack
