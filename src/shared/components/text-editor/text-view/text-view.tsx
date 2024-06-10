@@ -6,7 +6,8 @@ import { FormControl } from "@mui/material";
 import useExtensions from "../hooks/use-extensions";
 
 interface TextViewProps {
-  content?: Maybe<string>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content?: Maybe<any>;
 }
 
 const convertTextToLinks = (content?: Maybe<string>) => {

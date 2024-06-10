@@ -1,6 +1,5 @@
 import {
   StudentHomeWorkStatus,
-  TechStack,
   UserQuery,
 } from "api/graphql/generated/graphql";
 
@@ -17,15 +16,7 @@ export interface IHomework {
       __typename?: "LectureInfoDto";
       id?: string | null;
       subject?: string | null;
-      description?: Array<string | null> | null;
-      contentHomeWork?: Array<{
-        __typename?: "LectureContentHomeWorkDto";
-        url?: string | null;
-        value?: string | null;
-        type?: string | null;
-      } | null> | null;
     } | null;
-    training?: { __typename?: "TrainingDto"; techStack: TechStack } | null;
     student?: {
       __typename?: "UserDto";
       id?: string | null;
@@ -42,6 +33,7 @@ export interface IHomework {
       middleName?: string | null;
       avatar?: string | null;
       lastName?: string | null;
+      email?: string | null;
       rating?: { __typename?: "RatingUserDto"; rating?: any | null } | null;
     } | null;
   } | null;
