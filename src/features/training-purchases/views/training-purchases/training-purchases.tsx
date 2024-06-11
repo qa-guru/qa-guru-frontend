@@ -134,11 +134,11 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                   {/*    {openCalendarById === id && <TrainingCalendar />}*/}
                   {/*  </Box>*/}
                   {/*)}*/}
-                  <StyledLoadingButton variant="contained">
-                    <CustomLink path={`/training/${id}`} color={app.white}>
+                  <CustomLink path={`/training/${id}`}>
+                    <StyledLoadingButton variant="contained">
                       Продолжить
-                    </CustomLink>
-                  </StyledLoadingButton>
+                    </StyledLoadingButton>
+                  </CustomLink>
                 </StyledPaper>
               </StyledCardActionArea>
               <Popover
