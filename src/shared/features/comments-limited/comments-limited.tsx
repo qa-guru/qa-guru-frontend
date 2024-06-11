@@ -1,10 +1,10 @@
 import { FC } from "react";
-import SendComment from "common/send-comment/container";
+import SendComment from "shared/features/send-comment/container";
 
 import { ICommentsLimited } from "./comments-limited.types";
 import { StyledStack, StyledTypography } from "./comments-limited.styled";
 import CommentItem from "../comment-item";
-import CommentTotalElements from "../../shared/components/comment-total-elements";
+import CommentTotalElements from "../../components/comment-total-elements";
 
 const CommentsLimited: FC<ICommentsLimited> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, homeworkId } = props;

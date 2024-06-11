@@ -2,10 +2,10 @@ import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog, Box } from "@mui/material";
 import useResponsive from "shared/hooks/use-responsive";
-import Comments from "common/comments";
-import CommentsLimited from "common/comments-limited";
-import CommentsPagination from "common/comments-pagination";
-import HomeworkItem from "common/homework-item";
+import Comments from "shared/features/comments";
+import CommentsLimited from "shared/features/comments-limited";
+import CommentsPagination from "shared/features/comments-pagination";
+import HomeworkItem from "shared/features/homework-item";
 
 import { IHomework } from "./homework.types";
 import {

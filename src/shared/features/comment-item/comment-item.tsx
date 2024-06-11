@@ -5,10 +5,10 @@ import { TextView } from "shared/components/text-editor";
 import { useComment } from "shared/context/comment-context";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { formatDate } from "shared/helpers";
-import AnswerComment from "common/answer-comment/container";
-import DeleteComment from "common/delete-comment/container";
-import UpdateComment from "common/update-comment/container";
-import LikeComment from "common/like-comment/container";
+import AnswerComment from "shared/features/answer-comment/container";
+import DeleteComment from "shared/features/delete-comment/container";
+import UpdateComment from "shared/features/update-comment/container";
+import LikeComment from "shared/features/like-comment/container";
 
 import { ICommentItem } from "./comment-item.types";
 import {

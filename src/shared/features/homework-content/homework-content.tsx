@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { TextView } from "shared/components/text-editor";
-import UpdateHomeworkItem from "common/update-homework/container";
-import SendHomeworkItem from "common/send-homework/container";
+import UpdateHomeworkItem from "shared/features/update-homework/container";
+import SendHomeworkItem from "shared/features/send-homework/container";
 
 import { IHomeworkContent } from "./homework-content.types";
 

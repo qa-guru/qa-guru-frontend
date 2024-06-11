@@ -31,6 +31,5 @@ export interface IColumn {
     card: StudentHomeWorkDto,
     event: MouseEvent<HTMLDivElement>
   ) => void;
-  isActive?: boolean;
   activeCardId?: Maybe<string>;
 }

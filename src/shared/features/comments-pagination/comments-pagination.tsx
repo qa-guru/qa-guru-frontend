@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
-import SendComment from "common/send-comment/container";
+import SendComment from "shared/features/send-comment/container";
 
 import { ICommentsPagination } from "./comments-pagination.types";
 import {
@@ -10,7 +10,7 @@ import {
   StyledTypography,
 } from "./comments-pagination.styled";
 import CommentItem from "../comment-item";
-import CommentTotalElements from "../../shared/components/comment-total-elements";
+import CommentTotalElements from "../../components/comment-total-elements";
 
 const CommentsPagination: FC<ICommentsPagination> = (props) => {
   const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, homeworkId } =

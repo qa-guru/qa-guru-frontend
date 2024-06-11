@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
-import LectureHomework from "common/lecture-homework";
-import Homework from "common/homework/view";
+import LectureHomework from "shared/features/lecture-homework";
+import Homework from "shared/features/homework/view";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
 import { formatId } from "shared/helpers/format-id";
 

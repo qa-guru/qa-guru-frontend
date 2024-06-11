@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import StatusText from "shared/components/status-text";
-import LectureHomework from "common/lecture-homework";
+import LectureHomework from "shared/features/lecture-homework";
 import { TextView } from "shared/components/text-editor";
 import CustomLink from "shared/components/custom-link";
 import HomeworkBaseInfo from "shared/components/homework-base-info";

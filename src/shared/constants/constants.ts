@@ -65,3 +65,5 @@ export const STATES = [
     text: "Не принято",
   },
 ];
+
+export const MAX_CARDS_BEFORE_SHOW_MORE = 5;

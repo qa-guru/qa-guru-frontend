@@ -12,7 +12,7 @@ import {
   StyledWrapper,
 } from "./homework-item.styled";
 import HomeworkContent from "../homework-content";
-import ButtonEdit from "../../shared/components/button-edit";
+import ButtonEdit from "../../components/button-edit";
 
 const HomeworkItem: FC<IHomeworkItem> = (props) => {
   const { dataHomeWorkByLectureAndTraining, dataUserId, hideMentorAndStudent } =
