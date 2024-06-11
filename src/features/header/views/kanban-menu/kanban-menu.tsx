@@ -86,8 +86,8 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <CustomLink path={pageURL}>
-              <MenuItem onClick={handleClickNavMenu} key={id}>
+            <CustomLink path={pageURL} key={id}>
+              <MenuItem onClick={handleClickNavMenu}>
                 <Typography
                   textTransform="uppercase"
                   textAlign="center"
