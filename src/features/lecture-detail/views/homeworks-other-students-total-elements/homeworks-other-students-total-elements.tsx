@@ -1,12 +1,8 @@
 import { Typography } from "@mui/material";
 import { FC } from "react";
-import { HomeWorksByLectureIdTotalElementsQuery } from "api/graphql/generated/graphql";
 
 import { StyledStack } from "./homeworks-other-students-total-elements.styled";
-
-interface IHomeworksOtherStudentsTotalElements {
-  data: HomeWorksByLectureIdTotalElementsQuery;
-}
+import { IHomeworksOtherStudentsTotalElements } from "./homeworks-other-students-total-elements.types";
 
 const HomeworksOtherStudentsTotalElements: FC<
   IHomeworksOtherStudentsTotalElements

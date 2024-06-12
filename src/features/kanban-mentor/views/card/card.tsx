@@ -1,22 +1,11 @@
 import { FC } from "react";
 import { useDrag } from "react-dnd";
-import { Typography } from "@mui/material";
-import { format, parseISO } from "date-fns";
-import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
-import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
-import UserRow from "shared/components/user-row";
 import CustomLink from "shared/components/custom-link";
 import useResponsive from "shared/hooks/use-responsive";
+import CardContent from "shared/components/card-content";
 
-import {
-  StyledBox,
-  StyledCardHeader,
-  StyledPaper,
-  StyledUserRowStack,
-} from "./card.styled";
 import { ICard } from "./card.types";
 import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
-import { getFormattedId } from "../../helpers/get-formatted-id";
 import useDragEffect from "../../hooks/use-drag-effect";
 import { ROUTES } from "../../constants";
 
@@ -28,7 +17,7 @@ const Card: FC<ICard> = ({
   onCardClick,
   isActive,
 }) => {
-  const { id, mentor, student, lecture, training } = card;
+  const { id, mentor } = card;
   const { isLargeDesktop } = useResponsive();
   const [{ isDragging }, dragRef] = useDrag({
     type: "card",
@@ -56,70 +45,20 @@ const Card: FC<ICard> = ({
     isDragging,
   });
 
-  const headerContent = (
-    <Typography variant="subtitle2">
-      {getFormattedId(training?.techStack, id)}
-    </Typography>
-  );
-
   const cardContent = (
-    <StyledPaper
+    <CardContent
+      card={card}
+      dragRef={dragRef}
       isDragging={isDragging}
       isCardsHidden={isCardsHidden}
       isActive={isActive}
-      ref={dragRef}
-      onClick={onCardClick}
-      elevation={4}
-    >
-      <StyledCardHeader isActive={isActive}>
-        {isLargeDesktop ? (
-          <CustomLink
-            textDecorationHover="underline"
-            path={`${ROUTES.KANBAN}/${card.id}`}
-            color="black"
-          >
-            {headerContent}
-          </CustomLink>
-        ) : (
-          headerContent
-        )}
-        <Typography variant="body2">
-          {card.creationDate &&
-            format(parseISO(card.creationDate), "dd.MM.yyyy")}
-        </Typography>
-      </StyledCardHeader>
-      <StyledBox>
-        <Typography variant="body2">{lecture?.subject}</Typography>
-        <StyledUserRowStack>
-          {mentor && (
-            <UserRow
-              icon={MentorIcon}
-              user={mentor}
-              width={24}
-              height={24}
-              variant="body2"
-              userId={mentor.id}
-              hasLink={isLargeDesktop}
-            />
-          )}
-          {student && (
-            <UserRow
-              icon={StudentIcon}
-              user={student}
-              width={26}
-              height={26}
-              variant="body2"
-              userId={student.id}
-              hasLink={isLargeDesktop}
-            />
-          )}
-        </StyledUserRowStack>
-      </StyledBox>
-    </StyledPaper>
+      onCardClick={onCardClick}
+      route={ROUTES.KANBAN}
+    />
   );
 
   return !isLargeDesktop ? (
-    <CustomLink path={`${ROUTES.KANBAN}/${card.id}`}>{cardContent}</CustomLink>
+    <CustomLink path={`${ROUTES.KANBAN}/${id}`}>{cardContent}</CustomLink>
   ) : (
     cardContent
   );

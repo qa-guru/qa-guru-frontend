@@ -1,32 +1,29 @@
 import { FC } from "react";
 import { Container, Stack, Typography } from "@mui/material";
 import useRatingColor from "shared/hooks/use-rating-color";
-import { formatDate } from "shared/helpers";
-import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
 import MediaLinks from "shared/components/media-links/media-links";
-import KanbanProfileStudent from "common/kanban-profile-student/views/kanban";
-import KanbanProfileMentor from "common/kanban-profile-mentor/views/kanban";
+import KanbanProfileStudent from "shared/features/kanban-profile-student/views/kanban";
+import KanbanProfileMentor from "shared/features/kanban-profile-mentor/views/kanban";
 import AvatarUpload from "shared/components/avatar-upload";
 import { UserRole } from "api/graphql/generated/graphql";
 import useRoleAccess from "shared/hooks/use-role-access";
+import UserInfoMobile from "shared/components/user-info/user-info-mobile";
+import UserInfoDesktop from "shared/components/user-info/user-info-desktop";
 
 import {
   StyledColumnStack,
-  StyledDateStack,
-  StyledDesktopStack,
   StyledHiddenIconBox,
-  StyledMobileStack,
   StyledNameBox,
   StyledPaper,
   StyledRatingBox,
   StyledRowStack,
-  StyledWebsiteStack,
 } from "./user-detail.styled";
 import { IUserDetail } from "./user-detail.types";
 
 const UserDetail: FC<IUserDetail> = ({ data }) => {
   const { rating, firstName, lastName, creationDate, roles } = data?.userById!;
 
+  const user = data?.userById;
   const ratingColor = useRatingColor(rating?.rating);
 
   const hasStudentKanbanAccess = useRoleAccess({
@@ -44,9 +41,9 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
       <StyledPaper>
         <StyledRowStack>
           <Stack>
-            <AvatarUpload user={data?.userById} />
+            <AvatarUpload user={user} />
             <StyledHiddenIconBox>
-              <MediaLinks user={data?.userById} />
+              <MediaLinks user={user} />
             </StyledHiddenIconBox>
           </Stack>
           <StyledColumnStack>
@@ -62,37 +59,10 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
                 Рейтинг
               </Typography>
             </StyledRatingBox>
-            <StyledDesktopStack>
-              <StyledDateStack>
-                <Typography variant="body2">Дата регистрации</Typography>
-                <Typography variant="body2" color="textSecondary">
-                  {formatDate(creationDate, "DD.MM.YYYY")}
-                </Typography>
-              </StyledDateStack>
-              <StyledWebsiteStack>
-                <WorkIcon />
-                <Typography variant="h5" color="textSecondary">
-                  QA Automation Engineer
-                </Typography>
-              </StyledWebsiteStack>
-            </StyledDesktopStack>
+            <UserInfoDesktop creationDate={creationDate} />
           </StyledColumnStack>
         </StyledRowStack>
-        <StyledMobileStack>
-          <StyledDateStack>
-            <Typography variant="body2">Дата регистрации</Typography>
-            <Typography variant="body2" color="textSecondary">
-              {formatDate(creationDate, "DD.MM.YYYY")}
-            </Typography>
-          </StyledDateStack>
-          <MediaLinks user={data?.userById} />
-          <StyledWebsiteStack>
-            <WorkIcon />
-            <Typography variant="h5" color="textSecondary">
-              QA Automation Engineer
-            </Typography>
-          </StyledWebsiteStack>
-        </StyledMobileStack>
+        <UserInfoMobile user={user} creationDate={creationDate} />
       </StyledPaper>
       {hasStudentKanbanAccess && <KanbanProfileStudent />}
       {hasMentorKanbanAccess && <KanbanProfileMentor />}

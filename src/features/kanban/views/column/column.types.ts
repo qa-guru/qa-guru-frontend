@@ -4,15 +4,13 @@ import {
   StudentHomeWorkStatus,
   Maybe,
 } from "api/graphql/generated/graphql";
+import { IExtendedCard } from "shared/hooks/use-card-drop/use-card-drop.types";
 
 import { IDraggingState } from "../board/board.types";
 
 export interface CardType {
   id: string;
   sourceColumnId: string;
-  allowedColumns: string[];
-}
-export interface IExtendedCard extends StudentHomeWorkDto {
   allowedColumns: string[];
 }
 
@@ -51,4 +49,5 @@ export interface IColumn {
   ) => void;
   isActive?: boolean;
   activeCardId?: Maybe<string>;
+  card: StudentHomeWorkDto;
 }

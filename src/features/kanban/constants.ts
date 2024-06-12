@@ -16,8 +16,6 @@ export const STANDARD_QUERY_DEFAULTS = {
   LIMIT: 100,
 };
 
-export const MAX_CARDS_BEFORE_SHOW_MORE = 5;
-
 export const UI_CONSTANTS = {
   MIN_COLUMN_WIDTH: "65%",
   MAX_COLUMN_WIDTH: "100%",

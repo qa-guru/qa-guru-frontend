@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
-import HomeworkItem from "common/homework-item";
+import HomeworkItem from "shared/features/homework-item";
 import { QUERY_DEFAULTS } from "shared/constants";
+import ContentNotFound from "shared/components/content-not-found";
+import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {
   StyledBox,
   StyledLoadingButton,
-  StyledNotFoundBox,
   StyledPaper,
   StyledWrapper,
 } from "./homework-other-students.styled";
@@ -76,12 +76,10 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
           })}
         </StyledWrapper>
       ) : (
-        <StyledNotFoundBox>
-          <HomeworksNotFound />
-          <Typography variant="h3" color="textSecondary">
-            Нет домашних работ
-          </Typography>
-        </StyledNotFoundBox>
+        <ContentNotFound
+          text="Нет домашних работ"
+          icon={<HomeworksNotFound />}
+        />
       )}
       {hasMoreHomeworks && (
         <Stack>

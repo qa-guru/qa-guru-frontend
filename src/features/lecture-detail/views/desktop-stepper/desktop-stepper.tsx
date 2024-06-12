@@ -1,63 +1,27 @@
-import { FC, MouseEvent, useEffect, useState } from "react";
-import {
-  Box,
-  Drawer,
-  StepContent,
-  StepLabel,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
-import { Maybe } from "api/graphql/generated/graphql";
-import { Reorder, SchoolRounded } from "@mui/icons-material";
-import CustomLink from "shared/components/custom-link";
+import { FC, useState } from "react";
+import { Drawer, Tooltip } from "@mui/material";
+import { Reorder } from "@mui/icons-material";
 
 import { IStepper } from "./desktop-stepper.types";
 import {
-  StyledBackButton,
   StyledClearIcon,
   StyledIconBox,
   StyledIconButton,
-  StyledNextButton,
-  StyledStep,
-  StyledStepper,
 } from "./desktop-stepper.styled";
+import {
+  useStepEffect,
+  useStepNavigation,
+} from "../../hooks/use-step-navigation";
+import StepperContent from "../stepper-content";
 
 const DesktopStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
-  const { trainingId, lectureId } = useParams();
   const [activeStep, setActiveStep] = useState(0);
-  const [open, setOpen] = useState(() => {
-    const isDrawerOpen = localStorage.getItem("drawerOpen");
-    return isDrawerOpen === "true";
-  });
-  const navigate = useNavigate();
-  const lectures = dataTrainingLectures?.trainingLectures;
+  const [open, setOpen] = useState(
+    () => localStorage.getItem("drawerOpen") === "true"
+  );
+  const { handleNavigation } = useStepNavigation(setActiveStep, setOpen);
 
-  const handleNavigation = (step: number, id?: Maybe<string>) => {
-    if (id) {
-      navigate(`/training/${trainingId}/${id}`);
-      setActiveStep(step);
-    }
-  };
-
-  const handleLabelClick = (
-    event: MouseEvent<HTMLElement>,
-    step: number,
-    id?: Maybe<string>
-  ) => {
-    if (event.ctrlKey || event.metaKey || event.button === 1) {
-      return;
-    }
-    handleNavigation(step, id);
-  };
-
-  const changeStep = (direction: number) => {
-    const newStep = activeStep + direction;
-    const lecture = lectures?.[newStep]?.lecture;
-    if (lecture) {
-      handleNavigation(newStep, lecture.id);
-    }
-  };
+  const lectures = dataTrainingLectures?.trainingLectures!;
 
   const toggleDrawer = () => {
     setOpen((prevOpen) => {
@@ -67,21 +31,15 @@ const DesktopStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
     });
   };
 
-  useEffect(() => {
-    const stepIndex = lectures?.findIndex(
-      (lecture) => lecture?.lecture?.id === lectureId
-    );
-    if (stepIndex !== undefined && stepIndex !== -1) {
-      setActiveStep(stepIndex);
-    }
-  }, [lectureId, lectures]);
+  useStepEffect(lectures, setActiveStep);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const stepElement = document.getElementById(`step-${activeStep}`);
-      stepElement?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 0);
-  }, [activeStep]);
+  const changeStep = (direction: number) => {
+    const newStep = activeStep + direction;
+    const lecture = lectures?.[newStep]?.lecture;
+    if (lecture) {
+      handleNavigation(newStep, lecture.id);
+    }
+  };
 
   return (
     <>
@@ -94,61 +52,11 @@ const DesktopStepper: FC<IStepper> = ({ dataTrainingLectures }) => {
         <StyledIconBox>
           <StyledClearIcon fontSize="small" onClick={toggleDrawer} />
         </StyledIconBox>
-        <StyledStepper
-          key={activeStep}
+        <StepperContent
+          lectures={lectures}
           activeStep={activeStep}
-          orientation="vertical"
-          connector={null}
-        >
-          {lectures?.map((item, index) => {
-            const { id, subject, description } = item?.lecture || {};
-            const isLastStep = index === lectures.length - 1;
-
-            return (
-              <StyledStep key={id} id={`step-${index}`}>
-                <CustomLink path={`/training/${trainingId}/${id}`}>
-                  <StepLabel
-                    icon={<SchoolRounded fontSize="small" />}
-                    onClick={(event) => handleLabelClick(event, index, id)}
-                  >
-                    <Typography variant="caption">{subject}</Typography>
-                  </StepLabel>
-                </CustomLink>
-                <StepContent>
-                  <Typography variant="caption">{description}</Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <StyledBackButton
-                      variant="contained"
-                      color="secondary"
-                      size="small"
-                      disabled={index === 0}
-                      onClick={() => changeStep(-1)}
-                    >
-                      Назад
-                    </StyledBackButton>
-                    {!isLastStep && (
-                      <StyledNextButton
-                        variant="contained"
-                        size="small"
-                        onClick={() => changeStep(1)}
-                      >
-                        Далее
-                      </StyledNextButton>
-                    )}
-                    {isLastStep && (
-                      <StyledNextButton
-                        variant="contained"
-                        onClick={() => navigate("/")}
-                      >
-                        Завершить курс
-                      </StyledNextButton>
-                    )}
-                  </Box>
-                </StepContent>
-              </StyledStep>
-            );
-          })}
-        </StyledStepper>
+          changeStep={changeStep}
+        />
       </Drawer>
     </>
   );

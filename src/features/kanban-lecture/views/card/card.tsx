@@ -6,10 +6,11 @@ import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import { useUserIdQuery } from "api/graphql/generated/graphql";
 import { useModal } from "react-modal-hook";
-import HomeworkItem from "common/homework-item";
-import Comments from "common/comments";
-import CommentsPagination from "common/comments-pagination";
+import HomeworkItem from "shared/features/homework-item";
+import Comments from "shared/features/comments";
+import CommentsPagination from "shared/features/comments-pagination";
 import useResponsive from "shared/hooks/use-responsive";
+import { formatId } from "shared/helpers/format-id";
 
 import {
   StyledBox,
@@ -21,7 +22,6 @@ import {
   StyledUserRowStack,
 } from "./card.styled";
 import { ICard } from "./card.types";
-import { getFormattedId } from "../../helpers/get-formatted-id";
 
 const Card: FC<ICard> = ({ card }) => {
   const { id, mentor, student, lecture, training } = card;
@@ -70,7 +70,7 @@ const Card: FC<ICard> = ({ card }) => {
     >
       <StyledCardHeader isCurrentHomeworkActive={isCurrentHomeworkActive}>
         <Typography textTransform="uppercase" variant="subtitle2">
-          {getFormattedId(training?.techStack, id)}
+          {formatId(training?.techStack, id)}
         </Typography>
         <Typography variant="body2">
           {card.creationDate &&

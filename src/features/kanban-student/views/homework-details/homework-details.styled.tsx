@@ -53,20 +53,6 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const StyledRowStack = styled(Stack)(({ theme }) => ({
-  marginTop: "25px",
-  gap: theme.spacing(2),
-  flexDirection: "row",
-}));
-
-export const StyledColumnStack = styled(Stack)({
-  flexDirection: "column",
-});
-
-export const StyledTypography = styled(Typography)({
-  flexWrap: "nowrap",
-});
-
 export const StyledTitle = styled(Typography)({
   marginBottom: "15px",
 });

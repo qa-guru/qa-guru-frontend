@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Icon, Paper, Step, Stepper } from "@mui/material";
+import { Box, Icon, Paper } from "@mui/material";
 import { Clear } from "@mui/icons-material";
 
 export const StyledIconBox = styled(Box)(({ theme }) => ({
@@ -9,21 +9,12 @@ export const StyledIconBox = styled(Box)(({ theme }) => ({
   zIndex: 5,
   backgroundColor: theme.palette.app.menu,
   width: "100vw",
-  top: "60px",
 }));
 
 export const StyledClearIcon = styled(Clear)(({ theme }) => ({
   color: theme.palette.app.primary,
   marginRight: 0,
   cursor: "pointer",
-}));
-
-export const StyledStepper = styled(Stepper)(({ theme }) => ({
-  padding: "16px 16px 70px",
-  height: "calc(100dvh - 60px)",
-  width: "100vw",
-  overflowY: "scroll",
-  scrollbarWidth: "none",
 }));
 
 export const StyledMobilePaper = styled(Paper)(({ theme }) => ({
@@ -34,18 +25,6 @@ export const StyledMobilePaper = styled(Paper)(({ theme }) => ({
   zIndex: 3000,
   height: "60px",
   borderRadius: 0,
-}));
-
-export const StyledStep = styled(Step)(({ theme }) => ({
-  "& .MuiStepLabel-root .Mui-completed": {
-    color: theme.palette.app.grey,
-  },
-  "& .MuiStepLabel-iconContainer": {
-    color: theme.palette.app.primary,
-  },
-  "& .MuiStepLabel-label": {
-    color: theme.palette.app.textPrimary,
-  },
 }));
 
 export const StyledIcon = styled(Icon)(({ theme }) => ({

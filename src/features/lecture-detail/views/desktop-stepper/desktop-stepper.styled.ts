@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Button, IconButton, Step, Stepper } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { Clear } from "@mui/icons-material";
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
@@ -36,37 +36,4 @@ export const StyledClearIcon = styled(Clear)(({ theme }) => ({
   color: theme.palette.app.primary,
   marginRight: 0,
   cursor: "pointer",
-}));
-
-export const StyledStepper = styled(Stepper)(({ theme }) => ({
-  width: "43vw",
-  padding: "16px",
-  maxHeight: "calc(100vh - 65px)",
-  [theme.breakpoints.down("md")]: {
-    width: "100vw",
-  },
-}));
-
-export const StyledStep = styled(Step)(({ theme }) => ({
-  "& .MuiStepLabel-root .Mui-completed": {
-    color: theme.palette.app.grey,
-  },
-  "& .MuiStepLabel-iconContainer": {
-    color: theme.palette.app.primary,
-  },
-  "& .MuiStepLabel-label": {
-    color: theme.palette.app.textPrimary,
-  },
-  cursor: "pointer",
-}));
-
-export const StyledBackButton = styled(Button)({
-  marginTop: "8px",
-  marginRight: "8px",
-});
-
-export const StyledNextButton = styled(Button)(({ theme }) => ({
-  marginTop: "8px",
-  marginRight: "8px",
-  color: theme.palette.app.white,
 }));
