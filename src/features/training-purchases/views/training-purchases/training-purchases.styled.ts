@@ -97,6 +97,7 @@ export const StyledLogoWhite = styled(LogoWhite)(({ theme }) => ({
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   marginTop: "15px",
   alignSelf: "flex-end",
+  color: theme.palette.app.white,
 }));
 
 // export const StyledTypography = styled(Typography)(({ theme }) => ({
