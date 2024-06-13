@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { Container, Stack, Typography } from "@mui/material";
-import useRatingColor from "shared/hooks/use-rating-color";
+import { useRatingColor, useRoleAccess } from "shared/hooks";
 import MediaLinks from "shared/components/media-links/media-links";
 import KanbanProfileStudent from "shared/features/kanban-profile-student/views/kanban";
 import KanbanProfileMentor from "shared/features/kanban-profile-mentor/views/kanban";
 import AvatarUpload from "shared/components/avatar-upload";
 import { UserRole } from "api/graphql/generated/graphql";
-import useRoleAccess from "shared/hooks/use-role-access";
 import UserInfoMobile from "shared/components/user-info/user-info-mobile";
 import UserInfoDesktop from "shared/components/user-info/user-info-desktop";
 

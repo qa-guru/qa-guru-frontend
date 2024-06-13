@@ -8,7 +8,7 @@ import {
   MenuControlsContainer,
   MenuDivider,
 } from "shared/lib/mui-tiptap/controls";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 export default function EditorMenuControls() {
   const { isDesktop } = useResponsive();

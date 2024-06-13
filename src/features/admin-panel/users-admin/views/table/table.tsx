@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-table";
 import { CircularProgress, Dialog } from "@mui/material";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import { useModal } from "react-modal-hook";
 import { Fullscreen } from "@mui/icons-material";
 import ContentNotFound from "shared/components/content-not-found";

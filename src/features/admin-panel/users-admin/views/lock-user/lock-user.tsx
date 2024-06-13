@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useModal } from "react-modal-hook";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import {
   StyledButton,

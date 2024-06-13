@@ -2,6 +2,7 @@ import { FC, ReactNode, useMemo } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "features/header";
 import Footer from "shared/components/footer";
+import { useResponsive } from "shared/hooks";
 
 import {
   StyledBox,
@@ -10,7 +11,6 @@ import {
   StyledContainer,
 } from "./layout.styled";
 import CustomizedBreadcrumbs from "../breadcrumbs";
-import useResponsive from "../../hooks/use-responsive";
 
 interface ILayout {
   children?: ReactNode;

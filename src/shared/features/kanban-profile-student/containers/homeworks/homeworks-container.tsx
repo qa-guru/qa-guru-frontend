@@ -10,9 +10,9 @@ import Spinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams, useMatch } from "react-router-dom";
 import { HOMEWORKS_QUERY_DEFAULTS } from "shared/constants";
+import { useDynamicCardLimit } from "shared/hooks";
 
 import Board from "../../views/board";
-import { useDynamicCardLimit } from "../../hooks/use-dynamic-card-limit";
 
 const HomeworksContainer: FC = () => {
   const { data: dataUserId } = useUserIdQuery();

@@ -7,7 +7,7 @@ import {
   useUnlockUserMutation,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";
 import UnlockUser from "../../views/unlock-user";

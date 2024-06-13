@@ -1,6 +1,6 @@
 import { FC } from "react";
 import CustomLink from "shared/components/custom-link";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import CardContent from "shared/components/card-content";
 
 import { ICard } from "./card.types";

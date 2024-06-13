@@ -7,7 +7,7 @@ import {
   StyledIconButton,
   StyledLoadingButton,
 } from "./send-buttons.styled";
-import useResponsive from "../../hooks/use-responsive";
+import { useResponsive } from "../../hooks";
 import { ISendButtons } from "./send-buttons.types";
 
 const SendButtons: FC<ISendButtons> = ({

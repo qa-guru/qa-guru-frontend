@@ -10,7 +10,7 @@ interface UseRoleAccessProps {
   roles?: Maybe<Maybe<UserRole>[]>;
 }
 
-const useRoleAccess = ({ allowedRoles, roles }: UseRoleAccessProps) => {
+export const useRoleAccess = ({ allowedRoles, roles }: UseRoleAccessProps) => {
   const { data } = useUserRolesQuery({
     fetchPolicy: "cache-first",
     skip: !!roles,
@@ -22,5 +22,3 @@ const useRoleAccess = ({ allowedRoles, roles }: UseRoleAccessProps) => {
     return allowedRoles.some((role) => userRoles.includes(role!));
   }, [userRoles, allowedRoles]);
 };
-
-export default useRoleAccess;

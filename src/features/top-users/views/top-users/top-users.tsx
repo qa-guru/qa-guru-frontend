@@ -10,7 +10,7 @@ import { UserRatingDto } from "api/graphql/generated/graphql";
 import UserRow from "shared/components/user-row";
 import { formatDate } from "shared/helpers";
 import Rating from "shared/components/rating/rating";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import { ITopUsers } from "./top-users.types";
 import MobileTable from "../mobile-table";

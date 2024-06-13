@@ -7,7 +7,7 @@ import {
 import { Maybe, TrainingDto } from "api/graphql/generated/graphql";
 import { CircularProgress, Dialog } from "@mui/material";
 import { useModal } from "react-modal-hook";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import { Fullscreen } from "@mui/icons-material";
 
 import { ITable } from "./table.types";

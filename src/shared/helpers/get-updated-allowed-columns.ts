@@ -1,5 +1,5 @@
 import { UserRole, useUserIdQuery, Maybe } from "api/graphql/generated/graphql";
-import useRoleAccess from "shared/hooks/use-role-access";
+import { useRoleAccess } from "shared/hooks";
 
 import { STATUS_COLUMN } from "../constants";
 

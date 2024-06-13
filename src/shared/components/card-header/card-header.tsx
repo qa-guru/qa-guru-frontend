@@ -2,11 +2,11 @@ import { FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import CustomLink from "shared/components/custom-link";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
+import { formatId } from "shared/helpers";
 
 import { StyledCardHeader } from "./card-header.styled";
 import { ICardHeader } from "./card-header.types";
-import { formatId } from "../../helpers/format-id";
 
 const CardHeader: FC<ICardHeader> = ({
   cardId,

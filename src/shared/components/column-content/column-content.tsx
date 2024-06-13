@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { Button, CircularProgress } from "@mui/material";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
-import { getFormattedStatus } from "features/kanban/helpers/get-formatted-status";
+import { formatStatus } from "shared/helpers";
 import { type SxProps } from "@mui/material/styles";
 
 import {
@@ -39,7 +39,7 @@ const ColumnContent: FC<IColumnContent> = ({
   const statusColumn = !isMobileOrTablet && (
     <StyledRowStack>
       <StyledTypographyStatus variant="h4">
-        {getFormattedStatus(column.title)}
+        {formatStatus(column.title)}
       </StyledTypographyStatus>
       <StyledTypographyCount variant="h4">
         {Number(column.totalElements) === 0

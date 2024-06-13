@@ -1,9 +1,7 @@
 import { FC, useState } from "react";
-import useRoleAccess from "shared/hooks/use-role-access";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
-import useSettings from "shared/hooks/use-settings";
-import useResponsive from "shared/hooks/use-responsive";
+import { useRoleAccess, useSettings, useResponsive } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
 
 import Profile from "../../containers";

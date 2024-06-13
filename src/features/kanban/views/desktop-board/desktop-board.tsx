@@ -2,7 +2,7 @@ import { FC, MouseEvent, useState } from "react";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Maybe, StudentHomeWorkDto } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import { IDesktopBoard } from "./desktop-board.types";
 import HomeworkDetails from "../homework-details";

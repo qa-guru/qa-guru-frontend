@@ -4,7 +4,7 @@ import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
-import { formatId } from "shared/helpers/format-id";
+import { formatId } from "shared/helpers";
 
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";

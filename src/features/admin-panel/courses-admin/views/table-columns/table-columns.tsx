@@ -5,7 +5,7 @@ import { Avatar, IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
 import DeleteTraining from "features/course-editor/containers/delete-training";
 

@@ -8,10 +8,10 @@ import {
 import Spinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
+import { useDynamicCardLimit } from "shared/hooks";
 
 import Board from "../../views/board";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
-import { useDynamicCardLimit } from "../../hooks/use-dynamic-card-limit";
 
 const HomeworksContainer: FC = () => {
   const dynamicLimit = useDynamicCardLimit();
