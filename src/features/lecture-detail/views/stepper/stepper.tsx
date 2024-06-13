@@ -1,5 +1,5 @@
 import { FC } from "react";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import { IStepper } from "./stepper.types";
 import DesktopStepper from "../desktop-stepper";

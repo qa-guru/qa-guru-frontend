@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { useDrag } from "react-dnd";
+import { useDragEffect, useResponsive } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
-import useResponsive from "shared/hooks/use-responsive";
 import CardContent from "shared/components/card-content";
+import { getUpdatedAllowedColumns } from "shared/helpers";
 
 import { ICard } from "./card.types";
-import { getUpdatedAllowedColumns } from "../../helpers/get-updated-allowed-columns";
-import useDragEffect from "../../hooks/use-drag-effect";
 import { ROUTES } from "../../constants";
 
 const Card: FC<ICard> = ({

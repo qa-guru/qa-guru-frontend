@@ -14,7 +14,7 @@ import {
   StyledTabPanel,
   StyledTypography,
 } from "./admin-panel.styled";
-import useResponsive from "../../shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 const AdminPanel: FC = () => {
   const { isDesktop } = useResponsive();

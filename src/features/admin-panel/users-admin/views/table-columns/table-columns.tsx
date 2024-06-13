@@ -9,7 +9,7 @@ import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate, formatRole } from "shared/helpers";
 import UserRow from "shared/components/user-row";
 import Rating from "shared/components/rating";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import {
   StyledAlignStack,

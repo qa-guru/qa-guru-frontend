@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useTheme } from "@mui/system";
 
-const useRatingColor = (rating: string) => {
+export const useRatingColor = (rating: string) => {
   const theme = useTheme();
 
   return useMemo(() => {
@@ -18,5 +18,3 @@ const useRatingColor = (rating: string) => {
     return theme.palette.app.rating[colorKey];
   }, [rating, theme]);
 };
-
-export default useRatingColor;

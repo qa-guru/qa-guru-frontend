@@ -3,7 +3,7 @@ import { StepContent, StepLabel, Typography } from "@mui/material";
 import { SchoolRounded } from "@mui/icons-material";
 import CustomLink from "shared/components/custom-link";
 import { useNavigate, useParams } from "react-router-dom";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import {
   StyledBackButton,

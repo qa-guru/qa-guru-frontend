@@ -1,4 +1,4 @@
-export const getFormattedStatus = (status: string) => {
+export const formatStatus = (status: string) => {
   switch (status) {
     case "APPROVED":
       return "Принято";

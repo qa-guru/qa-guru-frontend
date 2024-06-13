@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
+import { formatStatus } from "shared/helpers";
 
 import { IColumn } from "./column.types";
 import {
@@ -15,7 +16,6 @@ import {
   StyledWrapperColumnContainer,
 } from "./column.styled";
 import Card from "../card";
-import { getFormattedStatus } from "../../helpers/get-formatted-status";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 
@@ -67,7 +67,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
       {!isMobileOrTablet && (
         <StyledRowStack>
           <StyledTypographyStatus variant="h4">
-            {getFormattedStatus(column.title)}
+            {formatStatus(column.title)}
           </StyledTypographyStatus>
           <StyledTypographyCount variant="h4">
             {Number(column.totalElements) === 0

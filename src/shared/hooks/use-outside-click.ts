@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from "react";
 
-export default function useOutsideClick<T extends Element>(
+export function useOutsideClick<T extends Element>(
   ref: RefObject<T>,
   callback: () => void
 ) {

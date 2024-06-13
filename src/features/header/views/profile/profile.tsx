@@ -4,7 +4,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Logout from "features/authorization/containers/logout";
 import UserRow from "shared/components/user-row";
 import PersonIcon from "@mui/icons-material/Person";
-import useRoleAccess from "shared/hooks/use-role-access";
+import { useRoleAccess } from "shared/hooks";
 import { UserRole } from "api/graphql/generated/graphql";
 import {
   Group,
@@ -12,7 +12,7 @@ import {
   School,
   SpaceDashboard,
 } from "@mui/icons-material";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
 
 import { IProfile } from "./profile.types";

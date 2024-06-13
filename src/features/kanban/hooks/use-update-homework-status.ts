@@ -10,9 +10,9 @@ import {
   useTakeForReviewMutation,
 } from "api/graphql/generated/graphql";
 import { useContext, useMemo } from "react";
+import { useDynamicCardLimit } from "shared/hooks";
 
 import { KanbanFormContext } from "../context/kanban-form-context";
-import { useDynamicCardLimit } from "./use-dynamic-card-limit";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../constants";
 
 const useUpdateHomeworkStatus = () => {

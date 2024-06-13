@@ -1,5 +1,5 @@
 import { FC } from "react";
-import useSettings from "shared/hooks/use-settings";
+import { useSettings } from "shared/hooks";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 
 import { StyledIconButton } from "./theme-selector.styled";

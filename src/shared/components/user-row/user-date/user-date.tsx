@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
+import { DATE_FORMAT } from "shared/constants";
 
-import { DATE_FORMAT } from "../../../constants";
 import { StyledDateStack } from "./user-date.styled";
 import { IUserDate } from "./user-date.types";
 

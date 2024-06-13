@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog, Box } from "@mui/material";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import Comments from "shared/features/comments";
 import CommentsLimited from "shared/features/comments-limited";
 import CommentsPagination from "shared/features/comments-pagination";

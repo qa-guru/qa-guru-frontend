@@ -1,10 +1,5 @@
-import {
-  LectureContentHomeWorkDto,
-  Maybe,
-} from "api/graphql/generated/graphql";
-
 export interface IHomeworkSection {
-  lectureHomeWork: Maybe<LectureContentHomeWorkDto>[];
+  lectureHomeWork: string;
   view: string;
   onKanbanView: () => void;
   onListView: () => void;

@@ -4,7 +4,7 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import CardHeader from "shared/components/card-header";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import {
   StyledBox,

@@ -49,5 +49,4 @@ export interface IColumn {
   ) => void;
   isActive?: boolean;
   activeCardId?: Maybe<string>;
-  card: StudentHomeWorkDto;
 }

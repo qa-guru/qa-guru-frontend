@@ -2,11 +2,11 @@ import { FC } from "react";
 import useCardDrop from "shared/hooks/use-card-drop";
 import { useTheme } from "@mui/material/styles";
 import ColumnContent from "shared/components/column-content";
+import { isColumnHighlight } from "shared/helpers";
 
 import { IColumn } from "./column.types";
 import { StyledCardBox } from "./column.styled";
 import Card from "../card";
-import { isColumnHighlight } from "../../helpers/is-column-highlight";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 
 const Column: FC<IColumn> = ({

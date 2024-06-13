@@ -5,10 +5,8 @@ import ImageIcon from "@mui/icons-material/Image";
 import AvatarCustom from "shared/components/avatar-custom";
 import { CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import useResponsive from "shared/hooks/use-responsive";
 import { useUserIdQuery } from "api/graphql/generated/graphql";
-import { useAvatarUpload } from "shared/hooks/use-avatar-upload";
-import { useAvatarDelete } from "shared/hooks/use-avatar-delete";
+import { useAvatarDelete, useAvatarUpload, useResponsive } from "shared/hooks";
 
 import { IAvatarUpload } from "./avatar-upload.types";
 import {

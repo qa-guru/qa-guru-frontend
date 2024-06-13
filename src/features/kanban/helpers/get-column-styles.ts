@@ -1,8 +1,8 @@
 import { type Theme, type SxProps, useTheme } from "@mui/material/styles";
 import { alpha } from "@mui/material";
 import { lightTheme } from "theme/constans";
+import { isColumnHighlight } from "shared/helpers";
 
-import { isColumnHighlight } from "./is-column-highlight";
 import { IDraggingState } from "../views/board/board.types";
 
 type GetColumnStylesFunction = (

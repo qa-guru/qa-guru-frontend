@@ -6,10 +6,10 @@ import {
   useUserIdQuery,
   Maybe,
 } from "api/graphql/generated/graphql";
-import useRoleAccess from "shared/hooks/use-role-access";
+import { useRoleAccess } from "shared/hooks/index";
 
-import { IDraggingState } from "../views/board/board.types";
-import { STATUS_COLUMN } from "../constants";
+import { IDraggingState } from "../../features/kanban-mentor/views/board/board.types";
+import { STATUS_COLUMN } from "../../features/kanban-mentor/constants";
 
 interface IDragEffect {
   card: StudentHomeWorkDto;
@@ -19,7 +19,7 @@ interface IDragEffect {
   userRoles?: Maybe<Maybe<UserRole>[]>;
 }
 
-const useDragEffect = ({
+export const useDragEffect = ({
   card,
   sourceColumnId,
   setDraggingState,
@@ -81,5 +81,3 @@ const useDragEffect = ({
     setDraggingState,
   ]);
 };
-
-export default useDragEffect;

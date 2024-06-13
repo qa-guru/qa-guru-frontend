@@ -9,8 +9,8 @@ import { useModal } from "react-modal-hook";
 import HomeworkItem from "shared/features/homework-item";
 import Comments from "shared/features/comments";
 import CommentsPagination from "shared/features/comments-pagination";
-import useResponsive from "shared/hooks/use-responsive";
-import { formatId } from "shared/helpers/format-id";
+import { useResponsive } from "shared/hooks";
+import { formatId } from "shared/helpers";
 
 import {
   StyledBox,

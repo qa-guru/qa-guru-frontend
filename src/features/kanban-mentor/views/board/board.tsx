@@ -5,14 +5,14 @@ import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
+import { createColumnItem } from "shared/helpers";
 
 import { IBoard } from "./board.types";
 import DesktopBoard from "../desktop-board";
 import MobileBoard from "../mobile-board";
 import { IColumnItem } from "../column/column.types";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
-import { createColumnItem } from "../../helpers/create-column-item";
 import { STATUS_COLUMN } from "../../constants";
 
 const Board: FC<IBoard> = ({

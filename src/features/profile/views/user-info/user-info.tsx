@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
-import useRatingColor from "shared/hooks/use-rating-color";
+import { useRatingColor } from "shared/hooks";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import AvatarUpload from "shared/components/avatar-upload";

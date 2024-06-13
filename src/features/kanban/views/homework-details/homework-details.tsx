@@ -6,7 +6,7 @@ import LectureHomework from "shared/features/lecture-homework";
 import { TextView } from "shared/components/text-editor";
 import CustomLink from "shared/components/custom-link";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
-import { formatId } from "shared/helpers/format-id";
+import { formatId } from "shared/helpers";
 
 import { IHomeworkDescription } from "./homework-details.types";
 import {
