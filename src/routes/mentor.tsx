@@ -8,6 +8,7 @@ import {
   KanbanMentorPage,
   KanbanMentorHomeworkDetailsFullPage,
 } from "pages/kanban-mentor";
+
 import InfoSystemPage from "../pages/info-system";
 
 const MentorRoutes = [

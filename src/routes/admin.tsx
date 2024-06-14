@@ -23,6 +23,7 @@ import {
 import CreateLecturesPage from "pages/create-lectures";
 import CreateLecturePage from "pages/create-lecture";
 import CreateTrainingUploadPage from "pages/create-training-upload";
+
 import InfoSystemPage from "../pages/info-system";
 
 const AdminRoutes = [

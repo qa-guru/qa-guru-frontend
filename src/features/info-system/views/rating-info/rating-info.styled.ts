@@ -29,6 +29,9 @@ export const StyledRating = styled(Chip, {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "10px",
+    },
   },
 }));
 

@@ -11,6 +11,7 @@ import {
   KanbanStudentPage,
   KanbanStudentHomeworkDetailsFullPage,
 } from "pages/kanban-student";
+
 import InfoSystemPage from "../pages/info-system";
 
 const StudentRoutes = [
