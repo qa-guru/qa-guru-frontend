@@ -12,6 +12,8 @@ import {
   KanbanStudentHomeworkDetailsFullPage,
 } from "pages/kanban-student";
 
+import InfoSystemPage from "../pages/info-system";
+
 const StudentRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
   <Route
@@ -47,6 +49,7 @@ const StudentRoutes = [
   />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
+  <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
 ];
 
 export default StudentRoutes;

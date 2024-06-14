@@ -2,7 +2,7 @@ import { Box, Paper, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledTitle = styled(Typography)({
-  marginBottom: "25px",
+  marginBottom: "20px",
 });
 
 export const StyledPaper = styled(Paper)({
