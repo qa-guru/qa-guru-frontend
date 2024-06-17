@@ -70,7 +70,18 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
     onCompleted: () => {
       setIsAuth(true);
     },
-    onError: () => {
+    onError: async () => {
+      await AuthService.refreshToken().then((response) => {
+        console.log(response.status);
+        if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
+          setIsAuth(true);
+          setIsLoading(false);
+          client.refetchQueries({ include: ["user"] });
+        } else {
+          setIsLoading(false);
+        }
+      });
+
       setIsAuth(false);
       navigate(ROUTES.AUTHORIZATION);
     },

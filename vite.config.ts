@@ -10,8 +10,9 @@ export default ({ mode }: any) => {
     "^/graphql": process.env.VITE_APP_ENDPOINT,
     "^/login": process.env.VITE_APP_ENDPOINT,
     "^/logout": process.env.VITE_APP_ENDPOINT,
-    "^/api/v1/upload/avatar": process.env.VITE_APP_ENDPOINT,
-    "^/api/v1/upload/training/.*": process.env.VITE_APP_ENDPOINT,
+    "^/refreshtoken": process.env.VITE_APP_ENDPOINT,
+    "^/upload/avatar": process.env.VITE_APP_ENDPOINT,
+    "^/upload/training/.*": process.env.VITE_APP_ENDPOINT,
   };
 
   return defineConfig({
