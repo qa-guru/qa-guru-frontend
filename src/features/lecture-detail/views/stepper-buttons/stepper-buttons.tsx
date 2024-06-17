@@ -19,6 +19,10 @@ const StepperButtons: FC<IStepperButtons> = ({
     (lecture) => lecture?.lecture?.id === lectureId
   );
 
+  const isAtFirstLecture = activeStep === 0;
+  const isAtLastLecture = activeStep === lectures.length - 1;
+  const canGoToNextLecture = activeStep < lectures.length - 1;
+
   const handleNavigation = (step: number) => {
     const lecture = lectures[step]?.lecture;
     if (lecture) {
@@ -46,18 +50,18 @@ const StepperButtons: FC<IStepperButtons> = ({
     <StyledBox>
       <Button
         onClick={goToPreviousLecture}
-        disabled={activeStep === 0}
+        disabled={isAtFirstLecture}
         variant="contained"
         color="secondary"
       >
         К предыдущему уроку
       </Button>
-      {activeStep < lectures.length - 1 && (
+      {canGoToNextLecture && (
         <StyledButton onClick={goToNextLecture} variant="contained">
           К следующему уроку
         </StyledButton>
       )}
-      {activeStep === lectures.length - 1 && (
+      {isAtLastLecture && (
         <StyledButton
           onClick={finishCourse}
           variant="contained"

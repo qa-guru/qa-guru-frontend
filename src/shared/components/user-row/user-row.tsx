@@ -34,42 +34,55 @@ const UserRow: FC<IUserRow> = (props) => {
     ? `${user.firstName} ${user.lastName}`
     : `${firstName} ${lastName}`;
 
+  const renderAvatar = () =>
+    !hideAvatar && (
+      <AvatarCustom
+        fullName={fullName}
+        width={width}
+        height={height}
+        userId={userId}
+        hasLink={hasLink}
+        img={user?.avatar}
+      />
+    );
+
+  const renderFullName = () =>
+    !hideFullName && (
+      <UserName
+        fullName={fullName}
+        userId={userId}
+        hasLink={hasLink}
+        variant={variant}
+      />
+    );
+
+  const renderRating = () =>
+    !hideRating && <Rating user={user} rating={rating} />;
+
+  const renderRoles = () =>
+    !hideRoles && (
+      <Typography variant="caption" color="textSecondary">
+        {formatRole(roles)}
+      </Typography>
+    );
+
+  const renderDate = () => date && <UserDate date={date} />;
+
+  const renderEmail = () =>
+    email && <Typography variant="caption">{email}</Typography>;
+
   return (
     <StyledWrapperStack hideFullName={hideFullName}>
       {Icon && <Icon />}
-
-      {!hideAvatar && (
-        <AvatarCustom
-          fullName={fullName}
-          width={width}
-          height={height}
-          userId={userId}
-          hasLink={hasLink}
-          img={user?.avatar}
-        />
-      )}
-
+      {renderAvatar()}
       <StyledBox>
         <StyledStack>
-          {!hideFullName && (
-            <UserName
-              fullName={fullName}
-              userId={userId}
-              hasLink={hasLink}
-              variant={variant}
-            />
-          )}
-          {!hideRating && <Rating user={user} rating={rating} />}
+          {renderFullName()}
+          {renderRating()}
         </StyledStack>
-
-        {!hideRoles && (
-          <Typography variant="caption" color="textSecondary">
-            {formatRole(roles)}
-          </Typography>
-        )}
-
-        {date && <UserDate date={date} />}
-        {email && <Typography variant="caption">{email}</Typography>}
+        {renderRoles()}
+        {renderDate()}
+        {renderEmail()}
       </StyledBox>
     </StyledWrapperStack>
   );

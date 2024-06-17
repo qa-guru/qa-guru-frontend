@@ -117,48 +117,48 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     }
   }, [trainings]);
 
-  return (
+  const renderMobileTable = () => (
     <>
-      {isMobile ? (
-        <>
-          <StyledLoadMoreButton onClick={showModal}>
-            <Fullscreen color="primary" />
-          </StyledLoadMoreButton>
-          <StyledPaper id="scroll-mobile-container">
-            <StyledInfiniteScroll
-              dataLength={trainings?.length || 0}
-              next={handleLoadMore}
-              hasMore={hasMoreTrainings}
-              loader={
-                <StyledBox>
-                  <CircularProgress size={25} />
-                </StyledBox>
-              }
-              scrollableTarget="scroll-mobile-container"
-            >
-              <MobileTable table={table} />
-            </StyledInfiniteScroll>
-          </StyledPaper>
-        </>
-      ) : (
-        <StyledPaper id="scroll-container">
-          <StyledInfiniteScroll
-            dataLength={trainings?.length || 0}
-            next={handleLoadMore}
-            hasMore={hasMoreTrainings}
-            loader={
-              <StyledBox>
-                <CircularProgress size={25} />
-              </StyledBox>
-            }
-            scrollableTarget="scroll-container"
-          >
-            <DesktopTable table={table} />
-          </StyledInfiniteScroll>
-        </StyledPaper>
-      )}
+      <StyledLoadMoreButton onClick={showModal}>
+        <Fullscreen color="primary" />
+      </StyledLoadMoreButton>
+      <StyledPaper id="scroll-mobile-container">
+        <StyledInfiniteScroll
+          dataLength={trainings?.length || 0}
+          next={handleLoadMore}
+          hasMore={hasMoreTrainings}
+          loader={
+            <StyledBox>
+              <CircularProgress size={25} />
+            </StyledBox>
+          }
+          scrollableTarget="scroll-mobile-container"
+        >
+          <MobileTable table={table} />
+        </StyledInfiniteScroll>
+      </StyledPaper>
     </>
   );
+
+  const renderDesktopTable = () => (
+    <StyledPaper id="scroll-container">
+      <StyledInfiniteScroll
+        dataLength={trainings?.length || 0}
+        next={handleLoadMore}
+        hasMore={hasMoreTrainings}
+        loader={
+          <StyledBox>
+            <CircularProgress size={25} />
+          </StyledBox>
+        }
+        scrollableTarget="scroll-container"
+      >
+        <DesktopTable table={table} />
+      </StyledInfiniteScroll>
+    </StyledPaper>
+  );
+
+  return isMobile ? renderMobileTable() : renderDesktopTable();
 };
 
 export default TableAdmin;

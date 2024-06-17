@@ -56,6 +56,26 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     });
   };
 
+  const renderColumnHeader = () =>
+    !isMobileOrTablet && (
+      <StyledRowStack>
+        <StyledTypographyStatus variant="h4">
+          {formatStatus(column.title)}
+        </StyledTypographyStatus>
+        <StyledTypographyCount variant="h4">
+          {Number(column.totalElements) === 0
+            ? "(0)"
+            : `(${column.totalElements})`}
+        </StyledTypographyCount>
+      </StyledRowStack>
+    );
+
+  const renderLoader = () => (
+    <StyledWrapperBoxCircle>
+      <CircularProgress size={20} />
+    </StyledWrapperBoxCircle>
+  );
+
   useEffect(() => {
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
@@ -64,18 +84,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
 
   return (
     <StyledWrapperColumnBox>
-      {!isMobileOrTablet && (
-        <StyledRowStack>
-          <StyledTypographyStatus variant="h4">
-            {formatStatus(column.title)}
-          </StyledTypographyStatus>
-          <StyledTypographyCount variant="h4">
-            {Number(column.totalElements) === 0
-              ? "(0)"
-              : `(${column.totalElements})`}
-          </StyledTypographyCount>
-        </StyledRowStack>
-      )}
+      {renderColumnHeader()}
       <StyledWrapperColumnContainer
         id={`scroll-student-container-${column.id}`}
         sx={{
@@ -86,11 +95,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
           dataLength={column.cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
-          loader={
-            <StyledWrapperBoxCircle>
-              <CircularProgress size={20} />
-            </StyledWrapperBoxCircle>
-          }
+          loader={renderLoader()}
           scrollableTarget={`scroll-student-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (

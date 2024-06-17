@@ -17,21 +17,21 @@ const UserName: FC<IUserName> = ({
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 
-  return (
-    <>
-      {hasLink ? (
-        <CustomLink path={profilePath} textDecorationHover="underline">
-          <Typography variant={variant} color="primary">
-            {fullName}
-          </Typography>
-        </CustomLink>
-      ) : (
-        <Typography variant={variant} color="primary">
-          {fullName}
-        </Typography>
-      )}
-    </>
+  const fullNameLink = (
+    <CustomLink path={profilePath} textDecorationHover="underline">
+      <Typography variant={variant} color="primary">
+        {fullName}
+      </Typography>
+    </CustomLink>
   );
+
+  const plainFullName = (
+    <Typography variant={variant} color="primary">
+      {fullName}
+    </Typography>
+  );
+
+  return hasLink ? fullNameLink : plainFullName;
 };
 
 export default UserName;

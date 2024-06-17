@@ -26,6 +26,8 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
   const isTotalElements = column.cards?.length >= column.totalElements;
   const isMaxLimit = column.cards?.length >= HOMEWORKS_QUERY_DEFAULTS.MAX;
 
+  const emptyColumn = Number(column.totalElements) === 0;
+
   const handleLoadMore = () => {
     if (isMaxLimit) {
       setHasMoreHomeworks(false);
@@ -56,6 +58,17 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     });
   };
 
+  const desktopColumnTitle = !isMobileOrTablet && (
+    <StyledRowStack>
+      <StyledTypographyStatus variant="h4">
+        {formatStatus(column.title)}
+      </StyledTypographyStatus>
+      <StyledTypographyCount variant="h4">
+        {emptyColumn ? "(0)" : `(${column.totalElements})`}
+      </StyledTypographyCount>
+    </StyledRowStack>
+  );
+
   useEffect(() => {
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
@@ -64,18 +77,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
 
   return (
     <StyledWrapperColumnBox>
-      {!isMobileOrTablet && (
-        <StyledRowStack>
-          <StyledTypographyStatus variant="h4">
-            {formatStatus(column.title)}
-          </StyledTypographyStatus>
-          <StyledTypographyCount variant="h4">
-            {Number(column.totalElements) === 0
-              ? "(0)"
-              : `(${column.totalElements})`}
-          </StyledTypographyCount>
-        </StyledRowStack>
-      )}
+      {desktopColumnTitle}
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         sx={{

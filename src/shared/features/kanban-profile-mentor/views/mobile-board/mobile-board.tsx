@@ -17,6 +17,9 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
   const [activeStep, setActiveStep] = useState(0);
   const stepperRef = useRef<HTMLDivElement>(null);
 
+  const disabledBackButton = activeStep === 0;
+  const disabledNextButton = activeStep === STATES.length - 1;
+
   const handleStepChange = (step: number) => {
     setActiveStep(step);
   };
@@ -45,7 +48,7 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
         <StyledStepperButton
           size="small"
           onClick={() => handleChangeStep(-1)}
-          disabled={activeStep === 0}
+          disabled={disabledBackButton}
         >
           <KeyboardArrowLeft />
         </StyledStepperButton>
@@ -63,7 +66,7 @@ const MobileBoard: FC<IMobileBoard> = ({ columns, fetchMoreFunctions }) => {
         <StyledStepperButton
           size="small"
           onClick={() => handleChangeStep(1)}
-          disabled={activeStep === STATES.length - 1}
+          disabled={disabledNextButton}
         >
           <KeyboardArrowRight />
         </StyledStepperButton>

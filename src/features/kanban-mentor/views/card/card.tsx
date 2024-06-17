@@ -44,7 +44,7 @@ const Card: FC<ICard> = ({
     isDragging,
   });
 
-  const cardContent = (
+  const renderCardContent = () => (
     <CardContent
       card={card}
       dragRef={dragRef}
@@ -55,12 +55,13 @@ const Card: FC<ICard> = ({
       route={ROUTES.KANBAN}
     />
   );
-
-  return !isLargeDesktop ? (
-    <CustomLink path={`${ROUTES.KANBAN}/${id}`}>{cardContent}</CustomLink>
-  ) : (
-    cardContent
+  const renderLink = () => (
+    <CustomLink path={`${ROUTES.KANBAN}/${id}`}>
+      {renderCardContent()}
+    </CustomLink>
   );
+
+  return !isLargeDesktop ? renderLink() : renderCardContent();
 };
 
 export default Card;

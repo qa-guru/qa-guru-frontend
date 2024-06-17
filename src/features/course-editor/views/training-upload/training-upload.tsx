@@ -28,6 +28,15 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
   const { deleteTraining, deleting } = useTrainingDelete();
   const { uploadTraining, uploading } = useTrainingUpload();
 
+  const avatarBox = (
+    <StyledImageBox component="img" src={`data:image/png;base64, ${picture}`} />
+  );
+  const logoBox = (
+    <StyledLogoBox>
+      <StyledLogoWhite />
+    </StyledLogoBox>
+  );
+
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];
 
@@ -38,6 +47,49 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
     await deleteTraining(trainingId!);
   };
 
+  const renderDesktop = () =>
+    !isMobileOrTablet && (
+      <>
+        <label htmlFor="icon-button-file">
+          <StyledIconButton>
+            {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
+          </StyledIconButton>
+        </label>
+        {picture && (
+          <StyledIconButtonDelete onClick={handleDeleteAvatar}>
+            {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
+          </StyledIconButtonDelete>
+        )}
+      </>
+    );
+
+  const renderMobile = () =>
+    isMobileOrTablet &&
+    edit && (
+      <StyledAvatarButtonStack>
+        {picture && (
+          <StyledLoadingButton
+            variant="contained"
+            loading={deleting}
+            startIcon={<DeleteIcon fontSize="small" />}
+            onClick={handleDeleteAvatar}
+          >
+            Удалить фото
+          </StyledLoadingButton>
+        )}
+        <label htmlFor="icon-button-file">
+          <StyledLoadingButton
+            variant="contained"
+            component="span"
+            loading={uploading}
+            startIcon={<ImageIcon fontSize="small" />}
+          >
+            Загрузить фото
+          </StyledLoadingButton>
+        </label>
+      </StyledAvatarButtonStack>
+    );
+
   return (
     <Stack direction="row">
       <VisuallyHiddenInput
@@ -46,56 +98,11 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
         onChange={handleImageChange}
       />
       <StyledIconBox>
-        {picture ? (
-          <StyledImageBox
-            component="img"
-            src={`data:image/png;base64, ${picture}`}
-          />
-        ) : (
-          <StyledLogoBox>
-            <StyledLogoWhite />
-          </StyledLogoBox>
-        )}
-        {!isMobileOrTablet && (
-          <>
-            <label htmlFor="icon-button-file">
-              <StyledIconButton>
-                {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
-              </StyledIconButton>
-            </label>
-            {picture && (
-              <StyledIconButtonDelete onClick={handleDeleteAvatar}>
-                {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
-              </StyledIconButtonDelete>
-            )}
-          </>
-        )}
+        {picture ? avatarBox : logoBox}
+        {renderDesktop()}
       </StyledIconBox>
 
-      {isMobileOrTablet && edit && (
-        <StyledAvatarButtonStack>
-          {picture && (
-            <StyledLoadingButton
-              variant="contained"
-              loading={deleting}
-              startIcon={<DeleteIcon fontSize="small" />}
-              onClick={handleDeleteAvatar}
-            >
-              Удалить фото
-            </StyledLoadingButton>
-          )}
-          <label htmlFor="icon-button-file">
-            <StyledLoadingButton
-              variant="contained"
-              component="span"
-              loading={uploading}
-              startIcon={<ImageIcon fontSize="small" />}
-            >
-              Загрузить фото
-            </StyledLoadingButton>
-          </label>
-        </StyledAvatarButtonStack>
-      )}
+      {renderMobile()}
     </Stack>
   );
 };

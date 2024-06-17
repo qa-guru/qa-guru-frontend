@@ -23,6 +23,33 @@ const StepperContent: FC<IStepperContent> = ({
   const { trainingId } = useParams();
   const { isDesktop } = useResponsive();
 
+  const handleBack = () => changeStep(-1);
+  const handleNext = () => changeStep(1);
+  const handleFinish = () => navigate("/");
+
+  const renderStepButtons = (index: number, isLastStep: boolean) => (
+    <StyledButtonBox>
+      <StyledBackButton
+        variant="contained"
+        color="secondary"
+        size="small"
+        disabled={index === 0}
+        onClick={handleBack}
+      >
+        Назад
+      </StyledBackButton>
+      {!isLastStep ? (
+        <StyledNextButton variant="contained" size="small" onClick={handleNext}>
+          Далее
+        </StyledNextButton>
+      ) : (
+        <StyledNextButton variant="contained" onClick={handleFinish}>
+          Завершить курс
+        </StyledNextButton>
+      )}
+    </StyledButtonBox>
+  );
+
   return (
     <StyledStepper
       key={activeStep}
@@ -44,34 +71,7 @@ const StepperContent: FC<IStepperContent> = ({
             {isDesktop && (
               <StepContent>
                 <Typography variant="caption">{description}</Typography>
-                <StyledButtonBox>
-                  <StyledBackButton
-                    variant="contained"
-                    color="secondary"
-                    size="small"
-                    disabled={index === 0}
-                    onClick={() => changeStep(-1)}
-                  >
-                    Назад
-                  </StyledBackButton>
-                  {!isLastStep && (
-                    <StyledNextButton
-                      variant="contained"
-                      size="small"
-                      onClick={() => changeStep(1)}
-                    >
-                      Далее
-                    </StyledNextButton>
-                  )}
-                  {isLastStep && (
-                    <StyledNextButton
-                      variant="contained"
-                      onClick={() => navigate("/")}
-                    >
-                      Завершить курс
-                    </StyledNextButton>
-                  )}
-                </StyledButtonBox>
+                {renderStepButtons(index, isLastStep)}
               </StepContent>
             )}
           </StyledStep>

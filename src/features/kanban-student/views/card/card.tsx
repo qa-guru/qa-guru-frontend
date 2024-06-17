@@ -18,12 +18,11 @@ const Card: FC<ICard> = ({ card, onCardClick, isActive }) => {
       route={ROUTES.KANBAN}
     />
   );
-
-  return !isLargeDesktop ? (
+  const cardAsLink = (
     <CustomLink path={`${ROUTES.KANBAN}/${id}`}>{cardContent}</CustomLink>
-  ) : (
-    cardContent
   );
+
+  return !isLargeDesktop ? cardAsLink : cardContent;
 };
 
 export default Card;

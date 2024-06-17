@@ -38,6 +38,9 @@ const CommentItem: FC<ICommentItem> = ({
 
   const [openThreads, setOpenThreads] = useState(false);
 
+  const updateComment = <UpdateComment content={content} commentId={id} />;
+  const comment = <TextView content={content} />;
+
   const handleReplySuccess = () => {
     setIsReplying(false);
     setOpenThreads(true);
@@ -45,6 +48,40 @@ const CommentItem: FC<ICommentItem> = ({
 
   const editAccess = currentUserID === creator?.id;
   const isSelected = selectedComment === id;
+
+  const notSelectedEditComment = !isSelected && editAccess && (
+    <StyledIconButton onClick={() => setSelectedComment(commentId)}>
+      <StyledEditIcon />
+    </StyledIconButton>
+  );
+
+  const deleteAccessComment = editAccess && (
+    <DeleteComment id={id} homeworkId={homeworkId} />
+  );
+
+  const commentsInThread = openThreads && (
+    <StyledThreadStack>
+      {children?.map((childComment) => (
+        <CommentItem
+          homeworkId={homeworkId}
+          key={childComment?.id}
+          item={childComment}
+          commentId={childComment?.id}
+          parentID={id}
+          editAccess={editAccess}
+          currentUserID={currentUserID}
+        />
+      ))}
+    </StyledThreadStack>
+  );
+
+  const replyComment = isReplying && (
+    <AnswerComment
+      homeworkId={homeworkId}
+      commentId={id}
+      onReplySuccess={handleReplySuccess}
+    />
+  );
 
   const handleReplyClick = () => {
     setIsReplying(!isReplying);
@@ -54,19 +91,26 @@ const CommentItem: FC<ICommentItem> = ({
     setOpenThreads(!openThreads);
   };
 
+  const renderThreadToggleButton = () =>
+    children &&
+    children.length > 0 && (
+      <Button onClick={handleOpenThreads}>
+        {!openThreads ? (
+          <ExpandMore color="primary" fontSize="small" />
+        ) : (
+          <ExpandLess color="primary" fontSize="small" />
+        )}
+        Ответы ({children.length})
+      </Button>
+    );
+
   return (
     <>
       <StyledPaper key={commentId} editAccess={editAccess}>
         <StyledStack>
           <StyledCommentBox>
             <UserRow user={creator} userId={creator?.id} hasLink />
-            <StyledBox>
-              {isSelected ? (
-                <UpdateComment content={content} commentId={id} />
-              ) : (
-                <TextView content={content} />
-              )}
-            </StyledBox>
+            <StyledBox>{isSelected ? updateComment : comment}</StyledBox>
           </StyledCommentBox>
         </StyledStack>
         <Stack direction="row" justifyContent="space-between">
@@ -75,53 +119,18 @@ const CommentItem: FC<ICommentItem> = ({
             <Typography variant="caption" color="textSecondary">
               {formatDate(creationDate, "DD.MM.YYYY | HH:mm")}
             </Typography>
-            {!isSelected && editAccess && (
-              <StyledIconButton onClick={() => setSelectedComment(commentId)}>
-                <StyledEditIcon />
-              </StyledIconButton>
-            )}
-            {editAccess && <DeleteComment id={id} homeworkId={homeworkId} />}
+            {notSelectedEditComment}
+            {deleteAccessComment}
             <StyledIconButton onClick={handleReplyClick}>
               <StyledReplyIcon color="primary" />
             </StyledIconButton>
           </StyledBottomStack>
-          <Stack>
-            {children && children.length > 0 && (
-              <Button onClick={handleOpenThreads}>
-                {!openThreads ? (
-                  <ExpandMore color="primary" fontSize="small" />
-                ) : (
-                  <ExpandLess color="primary" fontSize="small" />
-                )}
-                Ответы ({children.length})
-              </Button>
-            )}
-          </Stack>
+          <Stack>{renderThreadToggleButton()}</Stack>
         </Stack>
       </StyledPaper>
-      {openThreads && (
-        <StyledThreadStack>
-          {children?.map((childComment) => (
-            <CommentItem
-              homeworkId={homeworkId}
-              key={childComment?.id}
-              item={childComment}
-              commentId={childComment?.id}
-              parentID={id}
-              editAccess={editAccess}
-              currentUserID={currentUserID}
-            />
-          ))}
-        </StyledThreadStack>
-      )}
+      {commentsInThread}
 
-      {isReplying && (
-        <AnswerComment
-          homeworkId={homeworkId}
-          commentId={id}
-          onReplySuccess={handleReplySuccess}
-        />
-      )}
+      {replyComment}
     </>
   );
 };
