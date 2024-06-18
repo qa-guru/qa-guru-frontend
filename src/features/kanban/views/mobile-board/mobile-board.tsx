@@ -27,6 +27,9 @@ const MobileBoard: FC<IMobileBoard> = ({
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
 
+  const disabledBackButton = activeStep === 0;
+  const disabledNextButton = activeStep === STATES.length - 1;
+
   const handleCardClick = (
     card: StudentHomeWorkDto,
     event: MouseEvent<HTMLDivElement>
@@ -54,7 +57,7 @@ const MobileBoard: FC<IMobileBoard> = ({
         <StyledStepperButton
           size="small"
           onClick={() => handleChangeStep(-1)}
-          disabled={activeStep === 0}
+          disabled={disabledBackButton}
         >
           <KeyboardArrowLeft />
         </StyledStepperButton>
@@ -72,7 +75,7 @@ const MobileBoard: FC<IMobileBoard> = ({
         <StyledStepperButton
           size="small"
           onClick={() => handleChangeStep(1)}
-          disabled={activeStep === STATES.length - 1}
+          disabled={disabledNextButton}
         >
           <KeyboardArrowRight />
         </StyledStepperButton>

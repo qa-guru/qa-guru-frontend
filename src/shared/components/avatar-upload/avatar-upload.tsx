@@ -39,6 +39,54 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
     await deleteAvatar();
   };
 
+  const renderDesktopButtons = () => (
+    <>
+      <label htmlFor="icon-button-file">
+        {isCurrentUser && (
+          <StyledIconButton>
+            {uploading ? <CircularProgress size={24} /> : <CameraAltIcon />}
+          </StyledIconButton>
+        )}
+      </label>
+      {isCurrentUser && avatar && (
+        <StyledIconButtonDelete onClick={handleDeleteAvatar}>
+          {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
+        </StyledIconButtonDelete>
+      )}
+    </>
+  );
+
+  const renderMobileButtons = () => (
+    <StyledAvatarButtonStack>
+      {avatar && (
+        <LoadingButton
+          sx={{
+            color: "app.white",
+          }}
+          variant="contained"
+          loading={deleting}
+          startIcon={<DeleteIcon fontSize="small" />}
+          onClick={handleDeleteAvatar}
+        >
+          Удалить фото
+        </LoadingButton>
+      )}
+      <label htmlFor="icon-button-file">
+        <LoadingButton
+          sx={{
+            color: "app.white",
+          }}
+          variant="contained"
+          component="span"
+          loading={uploading}
+          startIcon={<ImageIcon fontSize="small" />}
+        >
+          Загрузить фото
+        </LoadingButton>
+      </label>
+    </StyledAvatarButtonStack>
+  );
+
   return (
     <Stack direction="row">
       <VisuallyHiddenInput
@@ -53,58 +101,10 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
           width={{ xs: "100px", sm: "290px", md: "240px" }}
           height={{ xs: "100px", sm: "290px", md: "240px" }}
         />
-        {!isMobileOrTablet && (
-          <>
-            <label htmlFor="icon-button-file">
-              {isCurrentUser && (
-                <StyledIconButton>
-                  {uploading ? (
-                    <CircularProgress size={24} />
-                  ) : (
-                    <CameraAltIcon />
-                  )}
-                </StyledIconButton>
-              )}
-            </label>
-            {isCurrentUser && avatar && (
-              <StyledIconButtonDelete onClick={handleDeleteAvatar}>
-                {deleting ? <CircularProgress size={24} /> : <DeleteIcon />}
-              </StyledIconButtonDelete>
-            )}
-          </>
-        )}
+        {!isMobileOrTablet && renderDesktopButtons()}
       </StyledIconBox>
 
-      {isMobileOrTablet && edit && (
-        <StyledAvatarButtonStack>
-          {avatar && (
-            <LoadingButton
-              sx={{
-                color: "app.white",
-              }}
-              variant="contained"
-              loading={deleting}
-              startIcon={<DeleteIcon fontSize="small" />}
-              onClick={handleDeleteAvatar}
-            >
-              Удалить фото
-            </LoadingButton>
-          )}
-          <label htmlFor="icon-button-file">
-            <LoadingButton
-              sx={{
-                color: "app.white",
-              }}
-              variant="contained"
-              component="span"
-              loading={uploading}
-              startIcon={<ImageIcon fontSize="small" />}
-            >
-              Загрузить фото
-            </LoadingButton>
-          </label>
-        </StyledAvatarButtonStack>
-      )}
+      {isMobileOrTablet && edit && renderMobileButtons()}
     </Stack>
   );
 };

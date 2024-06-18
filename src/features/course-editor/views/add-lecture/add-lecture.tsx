@@ -42,17 +42,14 @@ const AddLecture: FC<IAddLecture> = ({
     });
   };
 
-  return (
-    <>
-      {loadingUpdateTrainingLecture ? (
-        <CircularProgress size={40} />
-      ) : (
-        <StyledIconButton onClick={handleAddLecture}>
-          <AddIcon />
-        </StyledIconButton>
-      )}
-    </>
+  const renderLoading = () => <CircularProgress size={40} />;
+  const renderAddIcon = () => (
+    <StyledIconButton onClick={handleAddLecture}>
+      <AddIcon />
+    </StyledIconButton>
   );
+
+  return loadingUpdateTrainingLecture ? renderLoading() : renderAddIcon();
 };
 
 export default AddLecture;

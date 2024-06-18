@@ -29,6 +29,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
 
   const isCurrentMentor = dataUserId.user?.id === mentor?.id;
   const hasNoMentor = mentor?.id === undefined;
+  const showSelect = isCurrentMentor || hasNoMentor;
 
   return (
     <Container>
@@ -45,7 +46,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
           endCheckingDate={endCheckingDate}
         />
       </StyledInfoBox>
-      {isCurrentMentor || hasNoMentor ? (
+      {showSelect ? (
         <StatusSelect currentStatus={status} homeworkId={id} />
       ) : (
         <StatusText status={status} />

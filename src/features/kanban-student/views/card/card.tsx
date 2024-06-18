@@ -10,7 +10,7 @@ const Card: FC<ICard> = ({ card, onCardClick, isActive }) => {
   const { id } = card;
   const { isLargeDesktop } = useResponsive();
 
-  const cardContent = (
+  const renderCardContent = () => (
     <CardContent
       card={card}
       isActive={isActive}
@@ -18,12 +18,13 @@ const Card: FC<ICard> = ({ card, onCardClick, isActive }) => {
       route={ROUTES.KANBAN}
     />
   );
-
-  return !isLargeDesktop ? (
-    <CustomLink path={`${ROUTES.KANBAN}/${id}`}>{cardContent}</CustomLink>
-  ) : (
-    cardContent
+  const renderLink = () => (
+    <CustomLink path={`${ROUTES.KANBAN}/${id}`}>
+      {renderCardContent()}
+    </CustomLink>
   );
+
+  return !isLargeDesktop ? renderLink() : renderCardContent();
 };
 
 export default Card;

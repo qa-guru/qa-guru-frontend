@@ -7,9 +7,8 @@ import {
   Maybe,
 } from "api/graphql/generated/graphql";
 import { useRoleAccess } from "shared/hooks/index";
-
-import { IDraggingState } from "../../features/kanban-mentor/views/board/board.types";
-import { STATUS_COLUMN } from "../../features/kanban-mentor/constants";
+import { IDraggingState } from "features/kanban-mentor/views/board/board.types";
+import { STATUS_COLUMN } from "features/kanban-mentor/constants";
 
 interface IDragEffect {
   card: StudentHomeWorkDto;

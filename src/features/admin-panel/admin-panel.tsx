@@ -52,29 +52,33 @@ const AdminPanel: FC = () => {
     navigate(newPath);
   };
 
+  const renderTabList = () => (
+    <Box sx={{ borderColor: "divider" }}>
+      <TabList onChange={handleChange}>
+        {routes.map((route) => (
+          <Tab key={route.value} label={route.label} value={route.value} />
+        ))}
+      </TabList>
+    </Box>
+  );
+
+  const renderTabPanels = () => (
+    <>
+      {routes.map((route) => (
+        <StyledTabPanel key={route.value} value={route.value}>
+          <route.component />
+        </StyledTabPanel>
+      ))}
+    </>
+  );
+
   return (
     <Container>
       <StyledContentBox>
         <StyledTypography variant="h2">Панель администратора</StyledTypography>
         <TabContext value={currentTabValue}>
-          {isDesktop && (
-            <Box sx={{ borderColor: "divider" }}>
-              <TabList onChange={handleChange}>
-                {routes.map((route) => (
-                  <Tab
-                    key={route.value}
-                    label={route.label}
-                    value={route.value}
-                  />
-                ))}
-              </TabList>
-            </Box>
-          )}
-          {routes.map((route) => (
-            <StyledTabPanel key={route.value} value={route.value}>
-              <route.component />
-            </StyledTabPanel>
-          ))}
+          {isDesktop && renderTabList()}
+          {renderTabPanels()}
         </TabContext>
       </StyledContentBox>
     </Container>

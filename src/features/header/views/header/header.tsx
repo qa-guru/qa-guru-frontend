@@ -27,6 +27,8 @@ interface IPages {
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
   const { settings } = useSettings();
+  const lightTheme = settings.theme === "light";
+
   const { isMobileOrTablet } = useResponsive();
 
   const pages: IPages[] = [];
@@ -78,6 +80,9 @@ const Header: FC = () => {
     setAnchorElNav(null);
   };
 
+  const renderKanbanMenu = () =>
+    kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />;
+
   return (
     <StyledAppBar position="fixed">
       <StyledWrapper>
@@ -91,16 +96,12 @@ const Header: FC = () => {
           <StyledIconBox>
             <CustomLink path="/">
               <StyledLogoIconButton disableRipple onClick={handleClickNavMenu}>
-                {settings.theme === "light" ? (
-                  <StyledDarkLogo />
-                ) : (
-                  <StyledLogo />
-                )}
+                {lightTheme ? <StyledDarkLogo /> : <StyledLogo />}
               </StyledLogoIconButton>
             </CustomLink>
           </StyledIconBox>
           <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-          {kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />}
+          {renderKanbanMenu()}
         </StyledStack>
         <StyledStack>
           <ThemeSelector />

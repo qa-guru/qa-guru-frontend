@@ -17,28 +17,29 @@ const HomeworkSection: FC<IHomeworkSection> = ({
 }) => {
   const hasHomework = lectureHomeWork?.length > 0;
 
-  return (
+  const renderListView = () =>
+    view === "list" && (
+      <>
+        <HomeworksOtherStudentsForm />
+        <HomeworksOtherStudents />
+      </>
+    );
+  const renderKanbanView = () => view === "kanban" && <KanbanLecture />;
+
+  const homework = (
     <>
-      {hasHomework && (
-        <>
-          <LectureHomework lectureHomeWork={lectureHomeWork} />
-          <Homework />
-          <HomeworksViewSwitcher
-            onKanbanView={onKanbanView}
-            onListView={onListView}
-          />
-          {view === "list" && (
-            <>
-              <HomeworksOtherStudentsForm />
-              <HomeworksOtherStudents />
-            </>
-          )}
-          {view === "kanban" && <KanbanLecture />}
-        </>
-      )}
-      {!hasHomework && <BlurredHomework />}
+      <LectureHomework lectureHomeWork={lectureHomeWork} />
+      <Homework />
+      <HomeworksViewSwitcher
+        onKanbanView={onKanbanView}
+        onListView={onListView}
+      />
+      {renderListView()}
+      {renderKanbanView()}
     </>
   );
+
+  return hasHomework ? homework : <BlurredHomework />;
 };
 
 export default HomeworkSection;

@@ -69,13 +69,14 @@ const DeleteTraining: FC<IDeleteTraining> = ({
     hideModal();
   };
 
+  const renderLoading = () => <CircularProgress size={20} />;
+  const renderDeleteIcon = () => (
+    <DeleteIcon fontSize="small" color="primary" />
+  );
+
   return (
     <IconButton onClick={handleOpen}>
-      {loadingDeleteTraining ? (
-        <CircularProgress size={20} />
-      ) : (
-        <DeleteIcon fontSize="small" color="primary" />
-      )}
+      {loadingDeleteTraining ? renderLoading() : renderDeleteIcon()}
     </IconButton>
   );
 };

@@ -1,18 +1,14 @@
 import { FC, useEffect, useState } from "react";
-import {
-  getCoreRowModel,
-  type Table,
-  useReactTable,
-} from "@tanstack/react-table";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { CircularProgress, Dialog } from "@mui/material";
-import { Maybe, UserDto } from "api/graphql/generated/graphql";
+import { UserDto } from "api/graphql/generated/graphql";
 import { useResponsive } from "shared/hooks";
 import { useModal } from "react-modal-hook";
 import { Fullscreen } from "@mui/icons-material";
 import ContentNotFound from "shared/components/content-not-found";
 import { ReactComponent as UsersNotFound } from "assets/images/user-not-found.svg";
 
-import { ITable } from "./table.types";
+import { IModalMobileTable, ITable } from "./table.types";
 import {
   StyledBox,
   StyledClearIcon,
@@ -25,14 +21,11 @@ import {
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
 
-interface IModalMobileTable {
-  hideModal: () => void;
-  open: boolean;
-  table: Table<UserDto>;
-  hasMoreUsers: boolean;
-  handleLoadMore: () => Promise<void>;
-  users?: Maybe<Array<Maybe<UserDto>>>;
-}
+const renderLoader = () => (
+  <StyledBox>
+    <CircularProgress size={25} />
+  </StyledBox>
+);
 
 const ModalMobileTable = ({
   hideModal,
@@ -52,11 +45,7 @@ const ModalMobileTable = ({
           dataLength={users?.length || 0}
           next={handleLoadMore}
           hasMore={hasMoreUsers}
-          loader={
-            <StyledBox>
-              <CircularProgress size={25} />
-            </StyledBox>
-          }
+          loader={renderLoader()}
           scrollableTarget="scroll-container"
         >
           <MobileTable table={table} />
@@ -118,60 +107,52 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     [users, table, hasMoreUsers]
   );
 
-  useEffect(() => {
-    if (users?.length! >= totalElements) {
-      setHasMoreUsers(false);
-    }
-  }, [users]);
-
   if (!users?.length) {
     return (
       <ContentNotFound text="Пользователь не найден" icon={<UsersNotFound />} />
     );
   }
 
-  return (
+  const renderMobileTable = () => (
     <>
-      {isMobile ? (
-        <>
-          <StyledLoadMoreButton onClick={showModal}>
-            <Fullscreen color="primary" />
-          </StyledLoadMoreButton>
-          <StyledPaper id="scroll-mobile-container">
-            <StyledInfiniteScroll
-              dataLength={users?.length || 0}
-              next={handleLoadMore}
-              hasMore={hasMoreUsers}
-              loader={
-                <StyledBox>
-                  <CircularProgress size={25} />
-                </StyledBox>
-              }
-              scrollableTarget="scroll-mobile-container"
-            >
-              <MobileTable table={table} />
-            </StyledInfiniteScroll>
-          </StyledPaper>
-        </>
-      ) : (
-        <StyledPaper id="scroll-container">
-          <StyledInfiniteScroll
-            dataLength={users?.length || 0}
-            next={handleLoadMore}
-            hasMore={hasMoreUsers}
-            loader={
-              <StyledBox>
-                <CircularProgress size={25} />
-              </StyledBox>
-            }
-            scrollableTarget="scroll-container"
-          >
-            <DesktopTable table={table} />
-          </StyledInfiniteScroll>
-        </StyledPaper>
-      )}
+      <StyledLoadMoreButton onClick={showModal}>
+        <Fullscreen color="primary" />
+      </StyledLoadMoreButton>
+      <StyledPaper id="scroll-mobile-container">
+        <StyledInfiniteScroll
+          dataLength={users?.length || 0}
+          next={handleLoadMore}
+          hasMore={hasMoreUsers}
+          loader={renderLoader()}
+          scrollableTarget="scroll-mobile-container"
+        >
+          <MobileTable table={table} />
+        </StyledInfiniteScroll>
+      </StyledPaper>
     </>
   );
+
+  const renderDesktopTable = () => (
+    <StyledPaper id="scroll-container">
+      <StyledInfiniteScroll
+        dataLength={users?.length || 0}
+        next={handleLoadMore}
+        hasMore={hasMoreUsers}
+        loader={renderLoader()}
+        scrollableTarget="scroll-container"
+      >
+        <DesktopTable table={table} />
+      </StyledInfiniteScroll>
+    </StyledPaper>
+  );
+
+  useEffect(() => {
+    if (users?.length! >= totalElements) {
+      setHasMoreUsers(false);
+    }
+  }, [users]);
+
+  return isMobile ? renderMobileTable() : renderDesktopTable();
 };
 
 export default TableAdmin;

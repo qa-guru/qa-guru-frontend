@@ -41,6 +41,12 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
     }
   };
 
+  const renderLoader = () => (
+    <StyledBox>
+      <CircularProgress size={25} />
+    </StyledBox>
+  );
+
   useEffect(() => {
     if (items && items?.length >= totalElements) {
       setHasMoreComments(false);
@@ -56,11 +62,7 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
         dataLength={items?.length || 0}
         next={handleLoadMore}
         hasMore={hasMoreComments}
-        loader={
-          <StyledBox>
-            <CircularProgress size={25} />
-          </StyledBox>
-        }
+        loader={renderLoader()}
         scrollableTarget="scroll-container"
       >
         <StyledStack>

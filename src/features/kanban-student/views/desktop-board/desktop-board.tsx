@@ -45,6 +45,17 @@ const DesktopBoard: FC<IDesktopBoard> = ({ columns, fetchMoreFunctions }) => {
     setActiveCardId(null);
   };
 
+  const renderHomeworkDetails = () =>
+    isLargeDesktop &&
+    selectedCard && (
+      <Box>
+        <HomeworkDetails
+          card={selectedCard}
+          onClose={handleHomeworkDetailsClose}
+        />
+      </Box>
+    );
+
   return (
     <StyledWrapper>
       <StyledColumnBox
@@ -63,14 +74,7 @@ const DesktopBoard: FC<IDesktopBoard> = ({ columns, fetchMoreFunctions }) => {
           ))}
         </StyledStack>
       </StyledColumnBox>
-      {isLargeDesktop && selectedCard && (
-        <Box>
-          <HomeworkDetails
-            card={selectedCard}
-            onClose={handleHomeworkDetailsClose}
-          />
-        </Box>
-      )}
+      {renderHomeworkDetails()}
     </StyledWrapper>
   );
 };
