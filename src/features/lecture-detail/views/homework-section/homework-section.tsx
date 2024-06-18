@@ -17,13 +17,14 @@ const HomeworkSection: FC<IHomeworkSection> = ({
 }) => {
   const hasHomework = lectureHomeWork?.length > 0;
 
-  const listView = view === "list" && (
-    <>
-      <HomeworksOtherStudentsForm />
-      <HomeworksOtherStudents />
-    </>
-  );
-  const kanbanView = view === "kanban" && <KanbanLecture />;
+  const renderListView = () =>
+    view === "list" && (
+      <>
+        <HomeworksOtherStudentsForm />
+        <HomeworksOtherStudents />
+      </>
+    );
+  const renderKanbanView = () => view === "kanban" && <KanbanLecture />;
 
   const homework = (
     <>
@@ -33,8 +34,8 @@ const HomeworkSection: FC<IHomeworkSection> = ({
         onKanbanView={onKanbanView}
         onListView={onListView}
       />
-      {listView}
-      {kanbanView}
+      {renderListView()}
+      {renderKanbanView()}
     </>
   );
 

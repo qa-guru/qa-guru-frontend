@@ -28,15 +28,6 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
   const { deleteTraining, deleting } = useTrainingDelete();
   const { uploadTraining, uploading } = useTrainingUpload();
 
-  const avatarBox = (
-    <StyledImageBox component="img" src={`data:image/png;base64, ${picture}`} />
-  );
-  const logoBox = (
-    <StyledLogoBox>
-      <StyledLogoWhite />
-    </StyledLogoBox>
-  );
-
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];
 
@@ -46,6 +37,16 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
   const handleDeleteAvatar = async () => {
     await deleteTraining(trainingId!);
   };
+
+  const renderAvatar = () => (
+    <StyledImageBox component="img" src={`data:image/png;base64, ${picture}`} />
+  );
+
+  const renderLogo = () => (
+    <StyledLogoBox>
+      <StyledLogoWhite />
+    </StyledLogoBox>
+  );
 
   const renderDesktop = () =>
     !isMobileOrTablet && (
@@ -98,7 +99,7 @@ const TrainingUpload: FC<ITrainingUpload> = ({ edit, picture }) => {
         onChange={handleImageChange}
       />
       <StyledIconBox>
-        {picture ? avatarBox : logoBox}
+        {picture ? renderAvatar() : renderLogo()}
         {renderDesktop()}
       </StyledIconBox>
 

@@ -46,43 +46,6 @@ const CommentItem: FC<ICommentItem> = ({
     setOpenThreads(true);
   };
 
-  const editAccess = currentUserID === creator?.id;
-  const isSelected = selectedComment === id;
-
-  const notSelectedEditComment = !isSelected && editAccess && (
-    <StyledIconButton onClick={() => setSelectedComment(commentId)}>
-      <StyledEditIcon />
-    </StyledIconButton>
-  );
-
-  const deleteAccessComment = editAccess && (
-    <DeleteComment id={id} homeworkId={homeworkId} />
-  );
-
-  const commentsInThread = openThreads && (
-    <StyledThreadStack>
-      {children?.map((childComment) => (
-        <CommentItem
-          homeworkId={homeworkId}
-          key={childComment?.id}
-          item={childComment}
-          commentId={childComment?.id}
-          parentID={id}
-          editAccess={editAccess}
-          currentUserID={currentUserID}
-        />
-      ))}
-    </StyledThreadStack>
-  );
-
-  const replyComment = isReplying && (
-    <AnswerComment
-      homeworkId={homeworkId}
-      commentId={id}
-      onReplySuccess={handleReplySuccess}
-    />
-  );
-
   const handleReplyClick = () => {
     setIsReplying(!isReplying);
   };
@@ -90,6 +53,46 @@ const CommentItem: FC<ICommentItem> = ({
   const handleOpenThreads = () => {
     setOpenThreads(!openThreads);
   };
+
+  const editAccess = currentUserID === creator?.id;
+  const isSelected = selectedComment === id;
+
+  const renderEditIcon = () =>
+    !isSelected &&
+    editAccess && (
+      <StyledIconButton onClick={() => setSelectedComment(commentId)}>
+        <StyledEditIcon />
+      </StyledIconButton>
+    );
+
+  const renderDeleteComment = () =>
+    editAccess && <DeleteComment id={id} homeworkId={homeworkId} />;
+
+  const renderThread = () =>
+    openThreads && (
+      <StyledThreadStack>
+        {children?.map((childComment) => (
+          <CommentItem
+            homeworkId={homeworkId}
+            key={childComment?.id}
+            item={childComment}
+            commentId={childComment?.id}
+            parentID={id}
+            editAccess={editAccess}
+            currentUserID={currentUserID}
+          />
+        ))}
+      </StyledThreadStack>
+    );
+
+  const renderAnswerComment = () =>
+    isReplying && (
+      <AnswerComment
+        homeworkId={homeworkId}
+        commentId={id}
+        onReplySuccess={handleReplySuccess}
+      />
+    );
 
   const renderThreadToggleButton = () =>
     children &&
@@ -119,8 +122,8 @@ const CommentItem: FC<ICommentItem> = ({
             <Typography variant="caption" color="textSecondary">
               {formatDate(creationDate, "DD.MM.YYYY | HH:mm")}
             </Typography>
-            {notSelectedEditComment}
-            {deleteAccessComment}
+            {renderEditIcon()}
+            {renderDeleteComment()}
             <StyledIconButton onClick={handleReplyClick}>
               <StyledReplyIcon color="primary" />
             </StyledIconButton>
@@ -128,9 +131,9 @@ const CommentItem: FC<ICommentItem> = ({
           <Stack>{renderThreadToggleButton()}</Stack>
         </Stack>
       </StyledPaper>
-      {commentsInThread}
+      {renderThread()}
 
-      {replyComment}
+      {renderAnswerComment()}
     </>
   );
 };

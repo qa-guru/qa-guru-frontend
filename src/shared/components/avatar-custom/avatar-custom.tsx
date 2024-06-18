@@ -65,7 +65,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 
-  const avatarLink = (
+  const renderLink = () => (
     <CustomLink path={profilePath} opacity="0.7">
       <Avatar
         src={`data:image/png;base64, ${img}` || ""}
@@ -80,7 +80,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
     </CustomLink>
   );
 
-  const avatar = (
+  const renderAvatar = () => (
     <Avatar
       src={`data:image/png;base64, ${img}`}
       variant="rounded"
@@ -92,7 +92,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
     </Avatar>
   );
 
-  return hasLink ? avatarLink : avatar;
+  return hasLink ? renderLink() : renderAvatar();
 };
 
 export default AvatarCustom;

@@ -1,16 +1,12 @@
 import { FC, useEffect, useState } from "react";
-import {
-  getCoreRowModel,
-  type Table,
-  useReactTable,
-} from "@tanstack/react-table";
-import { Maybe, TrainingDto } from "api/graphql/generated/graphql";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { TrainingDto } from "api/graphql/generated/graphql";
 import { CircularProgress, Dialog } from "@mui/material";
 import { useModal } from "react-modal-hook";
 import { useResponsive } from "shared/hooks";
 import { Fullscreen } from "@mui/icons-material";
 
-import { ITable } from "./table.types";
+import { IModalMobileTable, ITable } from "./table.types";
 import {
   StyledBox,
   StyledClearIcon,
@@ -23,14 +19,11 @@ import {
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
 
-interface IModalMobileTable {
-  hideModal: () => void;
-  open: boolean;
-  table: Table<TrainingDto>;
-  hasMoreTrainings: boolean;
-  handleLoadMore: () => Promise<void>;
-  trainings?: Maybe<Array<Maybe<TrainingDto>>>;
-}
+const renderLoader = () => (
+  <StyledBox>
+    <CircularProgress size={25} />
+  </StyledBox>
+);
 
 const ModalMobileTable = ({
   hideModal,
@@ -50,11 +43,7 @@ const ModalMobileTable = ({
           dataLength={trainings?.length || 0}
           next={handleLoadMore}
           hasMore={hasMoreTrainings}
-          loader={
-            <StyledBox>
-              <CircularProgress size={25} />
-            </StyledBox>
-          }
+          loader={renderLoader()}
           scrollableTarget="scroll-container"
         >
           <MobileTable table={table} />
@@ -127,11 +116,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
           dataLength={trainings?.length || 0}
           next={handleLoadMore}
           hasMore={hasMoreTrainings}
-          loader={
-            <StyledBox>
-              <CircularProgress size={25} />
-            </StyledBox>
-          }
+          loader={renderLoader()}
           scrollableTarget="scroll-mobile-container"
         >
           <MobileTable table={table} />
@@ -146,11 +131,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
         dataLength={trainings?.length || 0}
         next={handleLoadMore}
         hasMore={hasMoreTrainings}
-        loader={
-          <StyledBox>
-            <CircularProgress size={25} />
-          </StyledBox>
-        }
+        loader={renderLoader()}
         scrollableTarget="scroll-container"
       >
         <DesktopTable table={table} />

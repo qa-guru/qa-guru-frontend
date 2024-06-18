@@ -52,7 +52,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
     });
   };
 
-  const presentHomeworks = (
+  const renderHomeworks = () => (
     <StyledWrapper>
       {items?.map((item) => {
         const { id } = item!;
@@ -73,26 +73,28 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
       })}
     </StyledWrapper>
   );
-  const notFound = (
+
+  const renderNotFound = () => (
     <ContentNotFound text="Нет домашних работ" icon={<HomeworksNotFound />} />
   );
 
-  const loadMoreHomeworks = hasMoreHomeworks && (
-    <Stack>
-      <StyledLoadingButton
-        loading={loading}
-        onClick={handleLoadMore}
-        endIcon={<ExpandMoreIcon />}
-      >
-        Загрузить еще
-      </StyledLoadingButton>
-    </Stack>
-  );
+  const renderLoadMoreHomeworks = () =>
+    hasMoreHomeworks && (
+      <Stack>
+        <StyledLoadingButton
+          loading={loading}
+          onClick={handleLoadMore}
+          endIcon={<ExpandMoreIcon />}
+        >
+          Загрузить еще
+        </StyledLoadingButton>
+      </Stack>
+    );
 
   return (
     <StyledBox>
-      {hasItems ? presentHomeworks : notFound}
-      {loadMoreHomeworks}
+      {hasItems ? renderHomeworks() : renderNotFound()}
+      {renderLoadMoreHomeworks()}
     </StyledBox>
   );
 };

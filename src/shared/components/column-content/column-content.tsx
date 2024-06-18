@@ -36,19 +36,6 @@ const ColumnContent: FC<IColumnContent> = ({
   const shouldShowLoadMoreButton =
     column.cards?.length <= MAX_CARDS_BEFORE_SHOW_MORE;
 
-  const statusColumn = !isMobileOrTablet && (
-    <StyledRowStack>
-      <StyledTypographyStatus variant="h4">
-        {formatStatus(column.title)}
-      </StyledTypographyStatus>
-      <StyledTypographyCount variant="h4">
-        {Number(column.totalElements) === 0
-          ? "(0)"
-          : `(${column.totalElements})`}
-      </StyledTypographyCount>
-    </StyledRowStack>
-  );
-
   const handleLoadMore = () => {
     if (isMaxLimit) {
       setHasMoreHomeworks(false);
@@ -79,6 +66,31 @@ const ColumnContent: FC<IColumnContent> = ({
     });
   };
 
+  const renderColumnTitle = () =>
+    !isMobileOrTablet && (
+      <StyledRowStack>
+        <StyledTypographyStatus variant="h4">
+          {formatStatus(column.title)}
+        </StyledTypographyStatus>
+        <StyledTypographyCount variant="h4">
+          {Number(column.totalElements) === 0
+            ? "(0)"
+            : `(${column.totalElements})`}
+        </StyledTypographyCount>
+      </StyledRowStack>
+    );
+  const renderLoader = () => (
+    <StyledWrapperBoxCircle>
+      <CircularProgress size={20} />
+    </StyledWrapperBoxCircle>
+  );
+
+  const renderLoadMoreButton = () =>
+    hasMoreHomeworks &&
+    shouldShowLoadMoreButton && (
+      <Button onClick={handleLoadMore}>Загрузить еще</Button>
+    );
+
   useEffect(() => {
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
@@ -87,7 +99,7 @@ const ColumnContent: FC<IColumnContent> = ({
 
   return (
     <StyledWrapperColumnBox>
-      {statusColumn}
+      {renderColumnTitle()}
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         ref={dropRef}
@@ -97,19 +109,11 @@ const ColumnContent: FC<IColumnContent> = ({
           dataLength={column.cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
-          loader={
-            <StyledWrapperBoxCircle>
-              <CircularProgress size={20} />
-            </StyledWrapperBoxCircle>
-          }
+          loader={renderLoader()}
           scrollableTarget={`scroll-container-${column.id}`}
         >
           {children}
-          <StyledBoxWrapper>
-            {hasMoreHomeworks && shouldShowLoadMoreButton && (
-              <Button onClick={handleLoadMore}>Загрузить еще</Button>
-            )}
-          </StyledBoxWrapper>
+          <StyledBoxWrapper>{renderLoadMoreButton()}</StyledBoxWrapper>
         </StyledInfiniteScroll>
       </StyledWrapperColumnContainer>
     </StyledWrapperColumnBox>

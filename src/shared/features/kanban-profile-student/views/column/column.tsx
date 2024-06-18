@@ -56,7 +56,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     });
   };
 
-  const renderColumnHeader = () =>
+  const renderColumnTitle = () =>
     !isMobileOrTablet && (
       <StyledRowStack>
         <StyledTypographyStatus variant="h4">
@@ -84,7 +84,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
 
   return (
     <StyledWrapperColumnBox>
-      {renderColumnHeader()}
+      {renderColumnTitle()}
       <StyledWrapperColumnContainer
         id={`scroll-student-container-${column.id}`}
         sx={{

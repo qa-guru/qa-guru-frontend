@@ -17,7 +17,7 @@ const UserName: FC<IUserName> = ({
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 
-  const fullNameLink = (
+  const renderLink = () => (
     <CustomLink path={profilePath} textDecorationHover="underline">
       <Typography variant={variant} color="primary">
         {fullName}
@@ -25,13 +25,13 @@ const UserName: FC<IUserName> = ({
     </CustomLink>
   );
 
-  const plainFullName = (
+  const renderFullName = () => (
     <Typography variant={variant} color="primary">
       {fullName}
     </Typography>
   );
 
-  return hasLink ? fullNameLink : plainFullName;
+  return hasLink ? renderLink() : renderFullName();
 };
 
 export default UserName;

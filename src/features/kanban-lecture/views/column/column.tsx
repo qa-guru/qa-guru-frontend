@@ -58,15 +58,22 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     });
   };
 
-  const desktopColumnTitle = !isMobileOrTablet && (
-    <StyledRowStack>
-      <StyledTypographyStatus variant="h4">
-        {formatStatus(column.title)}
-      </StyledTypographyStatus>
-      <StyledTypographyCount variant="h4">
-        {emptyColumn ? "(0)" : `(${column.totalElements})`}
-      </StyledTypographyCount>
-    </StyledRowStack>
+  const renderColumnTitle = () =>
+    !isMobileOrTablet && (
+      <StyledRowStack>
+        <StyledTypographyStatus variant="h4">
+          {formatStatus(column.title)}
+        </StyledTypographyStatus>
+        <StyledTypographyCount variant="h4">
+          {emptyColumn ? "(0)" : `(${column.totalElements})`}
+        </StyledTypographyCount>
+      </StyledRowStack>
+    );
+
+  const renderLoader = () => (
+    <StyledWrapperBoxCircle>
+      <CircularProgress size={20} />
+    </StyledWrapperBoxCircle>
   );
 
   useEffect(() => {
@@ -77,7 +84,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
 
   return (
     <StyledWrapperColumnBox>
-      {desktopColumnTitle}
+      {renderColumnTitle()}
       <StyledWrapperColumnContainer
         id={`scroll-container-${column.id}`}
         sx={{
@@ -88,11 +95,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
           dataLength={column.cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
-          loader={
-            <StyledWrapperBoxCircle>
-              <CircularProgress size={20} />
-            </StyledWrapperBoxCircle>
-          }
+          loader={renderLoader()}
           scrollableTarget={`scroll-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (

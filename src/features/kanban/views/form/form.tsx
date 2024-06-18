@@ -56,7 +56,7 @@ const Form: FC = () => {
     setAccordionExpanded(!isAccordionExpanded);
   };
 
-  const mobileForm = (
+  const renderMobileForm = () => (
     <StyledAccordion
       expanded={isAccordionExpanded}
       onChange={handleAccordionToggle}
@@ -84,7 +84,7 @@ const Form: FC = () => {
     </StyledAccordion>
   );
 
-  const desktopForm = (
+  const renderDesktopForm = () => (
     <StyledRow>
       <TrainingSelection control={control} />
       <LectureSelection control={control} />
@@ -113,7 +113,7 @@ const Form: FC = () => {
 
   return (
     <form style={{ minWidth: "100%" }}>
-      {isMobileOrTablet ? mobileForm : desktopForm}
+      {isMobileOrTablet ? renderMobileForm() : renderDesktopForm()}
     </form>
   );
 };

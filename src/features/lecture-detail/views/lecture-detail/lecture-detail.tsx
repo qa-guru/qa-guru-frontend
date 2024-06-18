@@ -29,14 +29,16 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   const handleKanbanView = () => setView("kanban");
   const handleListView = () => setView("list");
 
-  const presentHomework = tariffHomework && hasHomework && (
-    <HomeworkSection
-      lectureHomeWork={lectureHomeWork}
-      view={view}
-      onKanbanView={handleKanbanView}
-      onListView={handleListView}
-    />
-  );
+  const renderHomework = () =>
+    tariffHomework &&
+    hasHomework && (
+      <HomeworkSection
+        lectureHomeWork={lectureHomeWork}
+        view={view}
+        onKanbanView={handleKanbanView}
+        onListView={handleListView}
+      />
+    );
 
   return (
     <HomeworksFormProvider>
@@ -45,7 +47,7 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
         <LectureDescription description={description} />
         <LectureSpeakers speakers={speakers} />
         <LectureContent content={content} />
-        {!tariffHomework ? <BlurredHomework /> : presentHomework}
+        {!tariffHomework ? <BlurredHomework /> : renderHomework()}
         <StepperButtons
           dataTrainingLectures={dataTrainingLectures}
           trainingId={trainingId}
