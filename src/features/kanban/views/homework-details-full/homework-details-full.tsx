@@ -4,7 +4,7 @@ import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
-import { formatId } from "shared/helpers/format-id";
+import { formatId } from "shared/helpers";
 
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
@@ -29,6 +29,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
 
   const isCurrentMentor = dataUserId.user?.id === mentor?.id;
   const hasNoMentor = mentor?.id === undefined;
+  const showSelect = isCurrentMentor || hasNoMentor;
 
   return (
     <Container>
@@ -45,7 +46,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
           endCheckingDate={endCheckingDate}
         />
       </StyledInfoBox>
-      {isCurrentMentor || hasNoMentor ? (
+      {showSelect ? (
         <StatusSelect currentStatus={status} homeworkId={id} />
       ) : (
         <StatusText status={status} />

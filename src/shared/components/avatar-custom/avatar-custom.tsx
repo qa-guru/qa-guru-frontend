@@ -65,34 +65,34 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 
-  return (
-    <>
-      {hasLink ? (
-        <CustomLink path={profilePath} opacity="0.7">
-          <Avatar
-            src={`data:image/png;base64, ${img}` || ""}
-            variant="rounded"
-            sx={{ width, height, ...stringAvatar(fullName).sx }}
-            alt="Avatar"
-          >
-            <StyledTypography variant={variant}>
-              {stringAvatar(fullName).children}
-            </StyledTypography>
-          </Avatar>
-        </CustomLink>
-      ) : (
-        <Avatar
-          src={`data:image/png;base64, ${img}`}
-          variant="rounded"
-          sx={{ width, height, ...stringAvatar(fullName).sx }}
-        >
-          <StyledTypography variant={variant}>
-            {stringAvatar(fullName).children}
-          </StyledTypography>
-        </Avatar>
-      )}
-    </>
+  const renderLink = () => (
+    <CustomLink path={profilePath} opacity="0.7">
+      <Avatar
+        src={`data:image/png;base64, ${img}` || ""}
+        variant="rounded"
+        sx={{ width, height, ...stringAvatar(fullName).sx }}
+        alt="Avatar"
+      >
+        <StyledTypography variant={variant}>
+          {stringAvatar(fullName).children}
+        </StyledTypography>
+      </Avatar>
+    </CustomLink>
   );
+
+  const renderAvatar = () => (
+    <Avatar
+      src={`data:image/png;base64, ${img}`}
+      variant="rounded"
+      sx={{ width, height, ...stringAvatar(fullName).sx }}
+    >
+      <StyledTypography variant={variant}>
+        {stringAvatar(fullName).children}
+      </StyledTypography>
+    </Avatar>
+  );
+
+  return hasLink ? renderLink() : renderAvatar();
 };
 
 export default AvatarCustom;

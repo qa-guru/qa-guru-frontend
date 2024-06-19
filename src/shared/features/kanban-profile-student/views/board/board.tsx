@@ -3,14 +3,14 @@ import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import { STATUS_COLUMN } from "shared/constants";
 
+import { createColumnItem } from "../../helpers/create-column-item";
 import { IBoard } from "./board.types";
 import DesktopBoard from "../desktop-board";
 import MobileBoard from "../mobile-board";
 import { IColumnItem } from "../column/column.types";
-import { createColumnItem } from "../../helpers/create-column-item";
 
 const Board: FC<IBoard> = ({
   newData,

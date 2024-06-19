@@ -7,11 +7,11 @@ import {
 } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
+import { useDynamicCardLimit } from "shared/hooks";
 
 import Board from "../../views/board";
 import { KanbanFormContext } from "../../context/kanban-form-context";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
-import { useDynamicCardLimit } from "../../hooks/use-dynamic-card-limit";
 
 const HomeworksContainer: FC = () => {
   const { trainingId, lectureId, creationDateFrom, creationDateTo, mentorId } =

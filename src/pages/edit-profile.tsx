@@ -1,6 +1,5 @@
 import { FC } from "react";
-
-import { EditProfile } from "../features/profile/containers";
+import { EditProfile } from "features/profile/containers";
 
 const EditProfilePage: FC = () => {
   return <EditProfile />;

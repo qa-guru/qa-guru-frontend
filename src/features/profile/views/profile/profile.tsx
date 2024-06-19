@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import KanbanProfileMentor from "shared/features/kanban-profile-mentor/views/kanban";
 import KanbanProfileStudent from "shared/features/kanban-profile-student/views/kanban";
 import { UserRole } from "api/graphql/generated/graphql";
-import useRoleAccess from "shared/hooks/use-role-access";
+import { useRoleAccess } from "shared/hooks";
 
 import { StyledButton, StyledButtonBox } from "./profile.styled";
 import { UserInfo } from "../../containers";

@@ -1,16 +1,16 @@
-import { FC } from "react";
+import { ComponentType, FC } from "react";
 import { Dialog, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
-import { useUserIdQuery } from "api/graphql/generated/graphql";
+import { Maybe, UserDto, useUserIdQuery } from "api/graphql/generated/graphql";
 import { useModal } from "react-modal-hook";
 import HomeworkItem from "shared/features/homework-item";
 import Comments from "shared/features/comments";
 import CommentsPagination from "shared/features/comments-pagination";
-import useResponsive from "shared/hooks/use-responsive";
-import { formatId } from "shared/helpers/format-id";
+import { useResponsive } from "shared/hooks";
+import { formatId } from "shared/helpers";
 
 import {
   StyledBox,
@@ -62,6 +62,23 @@ const Card: FC<ICard> = ({ card }) => {
     hideModal();
   };
 
+  const renderUserRow = (
+    icon: ComponentType,
+    size: { width: number; height: number },
+    user?: Maybe<UserDto>
+  ) =>
+    user && (
+      <UserRow
+        icon={icon}
+        user={user}
+        width={size.width}
+        height={size.height}
+        variant="body2"
+        userId={user.id}
+        hasLink
+      />
+    );
+
   return (
     <StyledPaper
       isCurrentHomeworkActive={isCurrentHomeworkActive}
@@ -80,28 +97,8 @@ const Card: FC<ICard> = ({ card }) => {
       <StyledBox>
         <Typography variant="body2">{lecture?.subject}</Typography>
         <StyledUserRowStack>
-          {mentor && (
-            <UserRow
-              icon={MentorIcon}
-              user={mentor}
-              width={24}
-              height={24}
-              variant="body2"
-              userId={mentor.id}
-              hasLink
-            />
-          )}
-          {student && (
-            <UserRow
-              icon={StudentIcon}
-              user={student}
-              width={26}
-              height={26}
-              variant="body2"
-              userId={student.id}
-              hasLink
-            />
-          )}
+          {renderUserRow(MentorIcon, { width: 24, height: 24 }, mentor)}
+          {renderUserRow(StudentIcon, { width: 26, height: 26 }, student)}
         </StyledUserRowStack>
       </StyledBox>
     </StyledPaper>

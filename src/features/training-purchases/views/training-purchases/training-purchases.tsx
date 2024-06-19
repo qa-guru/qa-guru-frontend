@@ -1,9 +1,8 @@
 import { FC, MouseEvent, useState } from "react";
 import { Container, Grid, Popover, Typography } from "@mui/material";
 import UserRow from "shared/components/user-row";
-import { Maybe } from "api/graphql/generated/graphql";
+import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";
-import { app } from "theme/colors";
 
 import { ITrainings } from "./training-purchases.types";
 import {
@@ -62,6 +61,44 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   //   }
   // });
 
+  const renderMentorsPopover = (
+    id?: string,
+    mentors?: Maybe<Array<Maybe<UserDto>>>
+  ) => (
+    <Popover
+      open={openMentorsById === id}
+      anchorEl={anchorEl}
+      onClose={(event: MouseEvent<HTMLElement>) =>
+        toggleMentorsMenu(event, id!)
+      }
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+    >
+      <StyledTeachersBox>
+        {mentors?.map((mentor) => (
+          <StyledTeachersBox key={mentor?.id}>
+            <UserRow user={mentor} userId={mentor?.id} hasLink />
+          </StyledTeachersBox>
+        ))}
+      </StyledTeachersBox>
+    </Popover>
+  );
+
+  const renderCourseImage = (picture?: Maybe<string>) =>
+    picture ? (
+      <StyledInnerBox
+        component="img"
+        alt="Course picture"
+        src={`data:image/png;base64, ${picture}` || ""}
+      />
+    ) : (
+      <StyledLogoBox>
+        <StyledLogoWhite />
+      </StyledLogoBox>
+    );
+
   return (
     <Container>
       <Typography variant="h2">Мои курсы</Typography>
@@ -75,19 +112,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
             <Grid item key={id} xs={12} md={gridMdValue}>
               <StyledCardActionArea>
                 <StyledPaper>
-                  <StyledImgBox>
-                    {picture ? (
-                      <StyledInnerBox
-                        component="img"
-                        alt="Course picture"
-                        src={`data:image/png;base64, ${picture}` || ""}
-                      />
-                    ) : (
-                      <StyledLogoBox>
-                        <StyledLogoWhite />
-                      </StyledLogoBox>
-                    )}
-                  </StyledImgBox>
+                  <StyledImgBox>{renderCourseImage(picture)}</StyledImgBox>
                   <StyledUserRowStack>
                     <UserRow
                       user={firstMentor}
@@ -133,25 +158,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                   </CustomLink>
                 </StyledPaper>
               </StyledCardActionArea>
-              <Popover
-                open={openMentorsById === id}
-                anchorEl={anchorEl}
-                onClose={(event: MouseEvent<HTMLElement>) =>
-                  toggleMentorsMenu(event, id!)
-                }
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-              >
-                <StyledTeachersBox>
-                  {mentors?.map((mentor) => (
-                    <StyledTeachersBox key={mentor?.id}>
-                      <UserRow user={mentor} userId={mentor?.id} hasLink />
-                    </StyledTeachersBox>
-                  ))}
-                </StyledTeachersBox>
-              </Popover>
+              {renderMentorsPopover(id, mentors)}
             </Grid>
           );
         })}

@@ -1,15 +1,16 @@
 import { FC } from "react";
-import useSettings from "shared/hooks/use-settings";
+import { useSettings } from "shared/hooks";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 
 import { StyledIconButton } from "./theme-selector.styled";
 
 const ThemeSelector: FC = () => {
   const { settings, toggleTheme } = useSettings();
+  const lightTheme = settings.theme === "light";
 
   return (
     <StyledIconButton onClick={toggleTheme} disableRipple>
-      {settings.theme === "light" ? (
+      {lightTheme ? (
         <Brightness7 color="primary" />
       ) : (
         <Brightness4 color="primary" />

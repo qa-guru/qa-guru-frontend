@@ -1,11 +1,10 @@
 import { FC } from "react";
 import { Stack, Typography } from "@mui/material";
-import { app } from "theme/colors";
 
 import {
-  StyledIconButton,
   StyledFavorite,
   StyledFavoriteBorder,
+  StyledIconButton,
 } from "./like-comment.styled";
 import { ILikeComment } from "./like-comment.types";
 
@@ -23,14 +22,13 @@ const LikeComment: FC<ILikeComment> = ({
     }
   };
 
+  const renderIcon = () =>
+    userLike ? <StyledFavorite /> : <StyledFavoriteBorder />;
+
   return (
     <Stack direction="row" alignItems="center" spacing={0.3}>
       <StyledIconButton onClick={handleFavourite}>
-        {userLike ? (
-          <StyledFavorite sx={{ color: app.red }} />
-        ) : (
-          <StyledFavoriteBorder sx={{ color: app.red }} />
-        )}
+        {renderIcon()}
       </StyledIconButton>
       <Typography variant="caption" color="textSecondary">
         {likes}

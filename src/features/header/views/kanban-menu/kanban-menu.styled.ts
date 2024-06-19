@@ -4,6 +4,7 @@ import { Box, Button } from "@mui/material";
 
 export const StyledWrapperBox = styled(Box)(({ theme }) => ({
   width: "100%",
+  marginLeft: "10px",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
@@ -20,6 +21,7 @@ export const StyledMenu = styled(Menu)({
       padding: "10px",
     },
   },
+  marginLeft: "-28px",
 });
 
 export const StyledButton = styled(Button)({

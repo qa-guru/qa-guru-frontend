@@ -11,8 +11,8 @@ import {
   useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { useMemo } from "react";
+import { useDynamicCardLimit } from "shared/hooks";
 
-import { useDynamicCardLimit } from "./use-dynamic-card-limit";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../constants";
 
 const useUpdateHomeworkStatus = () => {

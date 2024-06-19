@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import { HOMEWORKS_QUERY_DEFAULTS } from "shared/constants";
+import { formatStatus } from "shared/helpers";
 
 import { IColumn } from "./column.types";
 import {
@@ -16,7 +17,6 @@ import {
   StyledWrapperColumnContainer,
 } from "./column.styled";
 import Card from "../card";
-import { getFormattedStatus } from "../../helpers/get-formatted-status";
 import { getColumnStyles } from "../../helpers/get-column-styles";
 
 const Column: FC<IColumn> = ({ column, fetchMore }) => {
@@ -56,6 +56,26 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
     });
   };
 
+  const renderColumnTitle = () =>
+    !isMobileOrTablet && (
+      <StyledRowStack>
+        <StyledTypographyStatus variant="h4">
+          {formatStatus(column.title)}
+        </StyledTypographyStatus>
+        <StyledTypographyCount variant="h4">
+          {Number(column.totalElements) === 0
+            ? "(0)"
+            : `(${column.totalElements})`}
+        </StyledTypographyCount>
+      </StyledRowStack>
+    );
+
+  const renderLoader = () => (
+    <StyledWrapperBoxCircle>
+      <CircularProgress size={20} />
+    </StyledWrapperBoxCircle>
+  );
+
   useEffect(() => {
     if (isTotalElements || isMaxLimit) {
       setHasMoreHomeworks(false);
@@ -64,18 +84,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
 
   return (
     <StyledWrapperColumnBox>
-      {!isMobileOrTablet && (
-        <StyledRowStack>
-          <StyledTypographyStatus variant="h4">
-            {getFormattedStatus(column.title)}
-          </StyledTypographyStatus>
-          <StyledTypographyCount variant="h4">
-            {Number(column.totalElements) === 0
-              ? "(0)"
-              : `(${column.totalElements})`}
-          </StyledTypographyCount>
-        </StyledRowStack>
-      )}
+      {renderColumnTitle()}
       <StyledWrapperColumnContainer
         id={`scroll-student-container-${column.id}`}
         sx={{
@@ -86,11 +95,7 @@ const Column: FC<IColumn> = ({ column, fetchMore }) => {
           dataLength={column.cards?.length}
           next={handleLoadMore}
           hasMore={hasMoreHomeworks}
-          loader={
-            <StyledWrapperBoxCircle>
-              <CircularProgress size={20} />
-            </StyledWrapperBoxCircle>
-          }
+          loader={renderLoader()}
           scrollableTarget={`scroll-student-container-${column.id}`}
         >
           {column.cards?.map((card, index) => (

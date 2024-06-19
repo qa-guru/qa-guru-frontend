@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { themeSettingsTypes } from "theme";
 
-const useLocalStorage = (key: string, initialValue: themeSettingsTypes) => {
+export const useLocalStorage = (
+  key: string,
+  initialValue: themeSettingsTypes
+) => {
   const [data, setData] = useState(initialValue);
 
   useEffect(() => {
@@ -18,5 +21,3 @@ const useLocalStorage = (key: string, initialValue: themeSettingsTypes) => {
 
   return { data, storeData };
 };
-
-export default useLocalStorage;

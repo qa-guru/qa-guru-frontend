@@ -102,32 +102,36 @@ const SelectRole: FC<ISelectRole> = ({ roles, updateRole, id }) => {
     setEdit(false);
   };
 
+  const renderEditSelect = () => (
+    <>
+      <StyledBox>
+        <InputChip<ISelectRoleForm, UserRole>
+          control={control}
+          options={rolesOptions}
+          name="roles"
+          size="small"
+          onChange={handleSelectRoleChange}
+          onDelete={handleDeleteRole}
+        />
+      </StyledBox>
+      <IconButton onClick={handleCloseEdit}>
+        <Check fontSize="small" color="primary" />
+      </IconButton>
+    </>
+  );
+
+  const renderEditIcon = () => (
+    <StyledStack>
+      <Typography variant="body2">{formatRole(roles)}</Typography>
+      <StyledIconButton size="small" onClick={handleClickEdit}>
+        <Edit fontSize="small" color="primary" />
+      </StyledIconButton>
+    </StyledStack>
+  );
+
   return (
     <StyledWrapper>
-      {edit ? (
-        <>
-          <StyledBox>
-            <InputChip<ISelectRoleForm, UserRole>
-              control={control}
-              options={rolesOptions}
-              name="roles"
-              size="small"
-              onChange={handleSelectRoleChange}
-              onDelete={handleDeleteRole}
-            />
-          </StyledBox>
-          <IconButton onClick={handleCloseEdit}>
-            <Check fontSize="small" color="primary" />
-          </IconButton>
-        </>
-      ) : (
-        <StyledStack>
-          <Typography variant="body2">{formatRole(roles)}</Typography>
-          <StyledIconButton size="small" onClick={handleClickEdit}>
-            <Edit fontSize="small" color="primary" />
-          </StyledIconButton>
-        </StyledStack>
-      )}
+      {edit ? renderEditSelect() : renderEditIcon()}
     </StyledWrapper>
   );
 };

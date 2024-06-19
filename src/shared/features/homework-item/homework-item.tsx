@@ -32,38 +32,42 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
 
   const date = status === "IN_REVIEW" ? startCheckingDate : endCheckingDate;
 
+  const renderStatusAndMentor = () =>
+    !hideMentorAndStudent && (
+      <>
+        <StatusText status={status} />
+        <StyledStack>
+          {status &&
+            ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) && (
+              <StyledBox>
+                <UserRow
+                  user={mentor}
+                  date={date}
+                  userId={mentor?.id}
+                  hasLink
+                />
+              </StyledBox>
+            )}
+        </StyledStack>
+      </>
+    );
+
+  const renderStudent = () =>
+    !hideMentorAndStudent &&
+    status && (
+      <StyledUserRowBox>
+        <UserRow user={student} date={date} userId={student?.id} hasLink />
+      </StyledUserRowBox>
+    );
+
   return (
     <>
       <StyledWrapper>
         <Typography variant="h5">Ответ на задание</Typography>
-        {!hideMentorAndStudent && (
-          <>
-            <StatusText status={status} />
-            <StyledStack>
-              {status &&
-                ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) && (
-                  <StyledBox>
-                    <UserRow
-                      user={mentor}
-                      date={date}
-                      userId={mentor?.id}
-                      hasLink
-                    />
-                  </StyledBox>
-                )}
-            </StyledStack>
-          </>
-        )}
+        {renderStatusAndMentor()}
       </StyledWrapper>
-
       <Divider />
-
-      {!hideMentorAndStudent && status && (
-        <StyledUserRowBox>
-          <UserRow user={student} date={date} userId={student?.id} hasLink />
-        </StyledUserRowBox>
-      )}
-
+      {renderStudent()}
       <StyledHomeworkContentBox>
         <HomeworkContent
           status={status}

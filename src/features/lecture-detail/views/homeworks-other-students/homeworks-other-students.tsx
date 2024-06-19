@@ -20,6 +20,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
   const { items, totalElements } = data?.homeWorksByLectureId || {};
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
+  const hasItems = items?.length !== 0;
 
   useEffect(() => {
     if (items && items?.length >= totalElements) {
@@ -51,47 +52,49 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
     });
   };
 
-  const hasItems = items?.length !== 0;
+  const renderHomeworks = () => (
+    <StyledWrapper>
+      {items?.map((item) => {
+        const { id } = item!;
+
+        return (
+          <StyledPaper key={id}>
+            <HomeworkItem
+              dataHomeWorkByLectureAndTraining={item}
+              dataUserId={dataUserId}
+            />
+            <ModalHomeworksOtherStudents
+              key={id}
+              item={item}
+              dataUserId={dataUserId}
+            />
+          </StyledPaper>
+        );
+      })}
+    </StyledWrapper>
+  );
+
+  const renderNotFound = () => (
+    <ContentNotFound text="Нет домашних работ" icon={<HomeworksNotFound />} />
+  );
+
+  const renderLoadMoreHomeworks = () =>
+    hasMoreHomeworks && (
+      <Stack>
+        <StyledLoadingButton
+          loading={loading}
+          onClick={handleLoadMore}
+          endIcon={<ExpandMoreIcon />}
+        >
+          Загрузить еще
+        </StyledLoadingButton>
+      </Stack>
+    );
 
   return (
     <StyledBox>
-      {hasItems ? (
-        <StyledWrapper>
-          {items?.map((item) => {
-            const { id } = item!;
-
-            return (
-              <StyledPaper key={id}>
-                <HomeworkItem
-                  dataHomeWorkByLectureAndTraining={item}
-                  dataUserId={dataUserId}
-                />
-                <ModalHomeworksOtherStudents
-                  key={id}
-                  item={item}
-                  dataUserId={dataUserId}
-                />
-              </StyledPaper>
-            );
-          })}
-        </StyledWrapper>
-      ) : (
-        <ContentNotFound
-          text="Нет домашних работ"
-          icon={<HomeworksNotFound />}
-        />
-      )}
-      {hasMoreHomeworks && (
-        <Stack>
-          <StyledLoadingButton
-            loading={loading}
-            onClick={handleLoadMore}
-            endIcon={<ExpandMoreIcon />}
-          >
-            Загрузить еще
-          </StyledLoadingButton>
-        </Stack>
-      )}
+      {hasItems ? renderHomeworks() : renderNotFound()}
+      {renderLoadMoreHomeworks()}
     </StyledBox>
   );
 };

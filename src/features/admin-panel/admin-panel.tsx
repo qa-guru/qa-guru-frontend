@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import { Container } from "@mui/material";
+import { useResponsive } from "shared/hooks";
 
 import UsersAdmin from "./users-admin";
 import CourseAdmin from "./courses-admin";
@@ -14,7 +15,6 @@ import {
   StyledTabPanel,
   StyledTypography,
 } from "./admin-panel.styled";
-import useResponsive from "../../shared/hooks/use-responsive";
 
 const AdminPanel: FC = () => {
   const { isDesktop } = useResponsive();
@@ -52,29 +52,33 @@ const AdminPanel: FC = () => {
     navigate(newPath);
   };
 
+  const renderTabList = () => (
+    <Box sx={{ borderColor: "divider" }}>
+      <TabList onChange={handleChange}>
+        {routes.map((route) => (
+          <Tab key={route.value} label={route.label} value={route.value} />
+        ))}
+      </TabList>
+    </Box>
+  );
+
+  const renderTabPanels = () => (
+    <>
+      {routes.map((route) => (
+        <StyledTabPanel key={route.value} value={route.value}>
+          <route.component />
+        </StyledTabPanel>
+      ))}
+    </>
+  );
+
   return (
     <Container>
       <StyledContentBox>
         <StyledTypography variant="h2">Панель администратора</StyledTypography>
         <TabContext value={currentTabValue}>
-          {isDesktop && (
-            <Box sx={{ borderColor: "divider" }}>
-              <TabList onChange={handleChange}>
-                {routes.map((route) => (
-                  <Tab
-                    key={route.value}
-                    label={route.label}
-                    value={route.value}
-                  />
-                ))}
-              </TabList>
-            </Box>
-          )}
-          {routes.map((route) => (
-            <StyledTabPanel key={route.value} value={route.value}>
-              <route.component />
-            </StyledTabPanel>
-          ))}
+          {isDesktop && renderTabList()}
+          {renderTabPanels()}
         </TabContext>
       </StyledContentBox>
     </Container>

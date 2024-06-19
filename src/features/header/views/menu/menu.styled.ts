@@ -12,4 +12,5 @@ export const StyledStack = styled(Stack)({
   flexDirection: "row",
   paddingLeft: "20px",
   whiteSpace: "nowrap",
+  gap: "5px",
 });

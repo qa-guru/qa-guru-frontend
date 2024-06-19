@@ -62,7 +62,7 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
       >
         <StyledStack>
           <Typography textTransform="uppercase" variant="body2" color="primary">
-            Доска заданий
+            Доски
           </Typography>
           <ArrowDropDown fontSize="small" color="primary" />
         </StyledStack>

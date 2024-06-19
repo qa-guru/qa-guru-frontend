@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { Maybe } from "api/graphql/generated/graphql";
-import useOutsideClick from "shared/hooks/use-outside-click";
+import { useOutsideClick } from "shared/hooks";
 
 import useKeyDown from "../../hooks/use-key-down";
 

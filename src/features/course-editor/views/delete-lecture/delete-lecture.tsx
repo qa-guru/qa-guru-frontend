@@ -41,13 +41,12 @@ const DeleteLecture: FC<IDeleteLecture> = ({
     });
   };
 
+  const renderLoading = () => <CircularProgress size={25} />;
+  const renderDeleteIcon = () => <RemoveIcon color="primary" />;
+
   return (
     <IconButton onClick={() => handleRemoveLecture(lectureId)}>
-      {loadingUpdateTrainingLecture ? (
-        <CircularProgress size={25} />
-      ) : (
-        <RemoveIcon color="primary" />
-      )}
+      {loadingUpdateTrainingLecture ? renderLoading() : renderDeleteIcon()}
     </IconButton>
   );
 };

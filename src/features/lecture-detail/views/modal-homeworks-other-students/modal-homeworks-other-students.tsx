@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog } from "@mui/material";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 import CommentsPagination from "shared/features/comments-pagination";
 import HomeworkItem from "shared/features/homework-item";
 import CommentsTotalElements from "shared/components/comment-total-elements";

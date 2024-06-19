@@ -3,7 +3,7 @@ import { AccordionSummary, Box, IconButton, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import useResponsive from "shared/hooks/use-responsive";
+import { useResponsive } from "shared/hooks";
 
 import {
   StyledAccordion,
@@ -56,6 +56,55 @@ const Form: FC = () => {
     setAccordionExpanded(!isAccordionExpanded);
   };
 
+  const renderMobileForm = () => (
+    <StyledAccordion
+      expanded={isAccordionExpanded}
+      onChange={handleAccordionToggle}
+      disableGutters
+    >
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography>Фильтр</Typography>
+      </AccordionSummary>
+      <StyledAccordionDetails>
+        <StyledColumnStack>
+          <TrainingSelection control={control} />
+          <LectureSelection control={control} />
+          <MentorsSelection control={control} />
+          <StyledRowStack>
+            <CreationDateFromSelection control={control} />
+            <CreationDateToSelection control={control} />
+          </StyledRowStack>
+          <StyledRowStack>
+            <IconButton onClick={handleReset}>
+              <RefreshIcon color={"primary"} />
+            </IconButton>
+          </StyledRowStack>
+        </StyledColumnStack>
+      </StyledAccordionDetails>
+    </StyledAccordion>
+  );
+
+  const renderDesktopForm = () => (
+    <StyledRow>
+      <TrainingSelection control={control} />
+      <LectureSelection control={control} />
+      <MentorsSelection control={control} />
+      <CreationDateFromSelection
+        control={control}
+        key={`creationDateFrom-${resetCounter}`}
+      />
+      <CreationDateToSelection
+        control={control}
+        key={`creationDateTo-${resetCounter}`}
+      />
+      <Box>
+        <IconButton onClick={handleReset}>
+          <RefreshIcon color={"primary"} fontSize={"medium"} />
+        </IconButton>
+      </Box>
+    </StyledRow>
+  );
+
   useEffect(() => {
     if (!lectureId) {
       resetField("lectures");
@@ -64,52 +113,7 @@ const Form: FC = () => {
 
   return (
     <form style={{ minWidth: "100%" }}>
-      {isMobileOrTablet ? (
-        <StyledAccordion
-          expanded={isAccordionExpanded}
-          onChange={handleAccordionToggle}
-          disableGutters
-        >
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>Фильтр</Typography>
-          </AccordionSummary>
-          <StyledAccordionDetails>
-            <StyledColumnStack>
-              <TrainingSelection control={control} />
-              <LectureSelection control={control} />
-              <MentorsSelection control={control} />
-              <StyledRowStack>
-                <CreationDateFromSelection control={control} />
-                <CreationDateToSelection control={control} />
-              </StyledRowStack>
-              <StyledRowStack>
-                <IconButton onClick={handleReset}>
-                  <RefreshIcon color={"primary"} />
-                </IconButton>
-              </StyledRowStack>
-            </StyledColumnStack>
-          </StyledAccordionDetails>
-        </StyledAccordion>
-      ) : (
-        <StyledRow>
-          <TrainingSelection control={control} />
-          <LectureSelection control={control} />
-          <MentorsSelection control={control} />
-          <CreationDateFromSelection
-            control={control}
-            key={`creationDateFrom-${resetCounter}`}
-          />
-          <CreationDateToSelection
-            control={control}
-            key={`creationDateTo-${resetCounter}`}
-          />
-          <Box>
-            <IconButton onClick={handleReset}>
-              <RefreshIcon color={"primary"} fontSize={"medium"} />
-            </IconButton>
-          </Box>
-        </StyledRow>
-      )}
+      {isMobileOrTablet ? renderMobileForm() : renderDesktopForm()}
     </form>
   );
 };

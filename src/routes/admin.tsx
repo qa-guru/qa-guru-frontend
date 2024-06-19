@@ -24,6 +24,8 @@ import CreateLecturesPage from "pages/create-lectures";
 import CreateLecturePage from "pages/create-lecture";
 import CreateTrainingUploadPage from "pages/create-training-upload";
 
+import InfoSystemPage from "../pages/info-system";
+
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
   <Route
@@ -120,6 +122,7 @@ const AdminRoutes = [
     path="/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId"
     element={<EditLecturePage />}
   />,
+  <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
 ];
 
 export default AdminRoutes;

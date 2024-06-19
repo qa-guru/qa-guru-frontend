@@ -11,6 +11,7 @@ import {
   School,
   Star,
   ViewKanban,
+  Stars,
 } from "@mui/icons-material";
 
 import { StyledBreadcrumb, StyledWrapper } from "./breadcrumbs.styled";
@@ -120,6 +121,11 @@ const routePatterns = [
     path: "/admin-panel/statistics",
     name: "Админ панель / Статистика",
     icon: <Leaderboard fontSize="small" />,
+  },
+  {
+    path: "/info-system",
+    name: "Наша система",
+    icon: <Stars fontSize="small" />,
   },
 ];
 
