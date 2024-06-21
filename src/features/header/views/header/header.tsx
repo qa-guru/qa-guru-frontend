@@ -66,15 +66,21 @@ const Header: FC = () => {
   });
 
   if (hasMainAccess) addPage(pages, "Домой", "/", 0);
-  if (hasKanbanAccess) addPage(targetPages, "Доска заданий", "/kanban", 2);
+
+  if (hasKanbanAccess) addPage(targetPages, "Доска заданий", "/kanban", 1);
+
   if (hasMentorKanbanAccess)
-    addPage(targetPages, "Доска ментора", "/kanban-mentor", 3);
-  addPage(pages, "Топ 50", "/top-users", 4);
+    addPage(targetPages, "Доска ментора", "/kanban-mentor", 2);
+
+  addPage(pages, "Топ 50", "/top-users", 3);
+
   if (hasStudentKanbanAccess)
-    addPage(targetPages, "Доска студента", "/kanban-student", 5);
+    addPage(targetPages, "Доска студента", "/kanban-student", 4);
+
   if (kanbanPages.length === 1)
-    addPage(pages, "Доска студента", "/kanban-student", 6);
-  addPage(pages, "О Системе", "/info-system", 1);
+    addPage(pages, "Доска студента", "/kanban-student", 5);
+
+  addPage(pages, "О Системе", "/info-system", 6);
 
   const handleClickNavMenu = () => {
     setAnchorElNav(null);
