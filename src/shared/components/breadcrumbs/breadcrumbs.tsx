@@ -103,12 +103,12 @@ const routePatterns = [
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/edit-training/:trainingId/edit-lectures",
+    path: "/admin-panel/courses/edit-training/:trainingId/table",
     name: "Список уроков",
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId",
+    path: "/admin-panel/courses/edit-training/:trainingId/table/:lectureId",
     name: "Редактирование урока",
     icon: <Edit fontSize="small" />,
   },

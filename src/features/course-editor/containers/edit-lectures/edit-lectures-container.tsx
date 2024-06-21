@@ -4,12 +4,16 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
 import { AppSpinner } from "shared/components/spinners";
 
-import EditLectures from "../../views/edit-lectures";
+import TableColumns from "../../views/table-columns";
 
 const EditLecturesContainer: FC = () => {
   const { trainingId } = useParams();
 
-  const { data, loading: loadingTrainingLectures } = useTrainingLecturesQuery({
+  const {
+    data,
+    loading: loadingTrainingLectures,
+    fetchMore,
+  } = useTrainingLecturesQuery({
     variables: { id: trainingId! },
   });
 
@@ -17,7 +21,7 @@ const EditLecturesContainer: FC = () => {
 
   if (!data) return <NoDataErrorMessage />;
 
-  return <EditLectures data={data} />;
+  return <TableColumns data={data} fetchMore={fetchMore} />;
 };
 
 export default EditLecturesContainer;

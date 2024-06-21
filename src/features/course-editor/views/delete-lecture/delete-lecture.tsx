@@ -1,7 +1,7 @@
 import { CircularProgress, IconButton } from "@mui/material";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   DeleteLectureMutationFn,
   Maybe,
@@ -42,7 +42,7 @@ const DeleteLecture: FC<IDeleteLecture> = ({
   };
 
   const renderLoading = () => <CircularProgress size={25} />;
-  const renderDeleteIcon = () => <RemoveIcon color="primary" />;
+  const renderDeleteIcon = () => <DeleteIcon color="error" fontSize="small" />;
 
   return (
     <IconButton onClick={() => handleRemoveLecture(lectureId)}>

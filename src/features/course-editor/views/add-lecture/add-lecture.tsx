@@ -7,7 +7,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { CircularProgress } from "@mui/material";
 
-import { StyledIconButton } from "./add-lecture.styled";
+import { StyledButton, StyledStack } from "./add-lecture.styled";
 
 interface IAddLecture {
   updateLecture: UpdateLectureMutationFn;
@@ -44,9 +44,15 @@ const AddLecture: FC<IAddLecture> = ({
 
   const renderLoading = () => <CircularProgress size={40} />;
   const renderAddIcon = () => (
-    <StyledIconButton onClick={handleAddLecture}>
-      <AddIcon />
-    </StyledIconButton>
+    <StyledStack>
+      <StyledButton
+        variant="contained"
+        onClick={handleAddLecture}
+        startIcon={<AddIcon />}
+      >
+        Создать новый
+      </StyledButton>
+    </StyledStack>
   );
 
   return loadingUpdateTrainingLecture ? renderLoading() : renderAddIcon();
