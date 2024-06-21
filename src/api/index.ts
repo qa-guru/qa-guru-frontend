@@ -8,6 +8,7 @@ import {
 import { onError } from "@apollo/client/link/error";
 import fetch from "cross-fetch";
 import AuthService from "api/rest/auth-service";
+import { isAuthVar } from "features/authorization/auth-state";
 
 import { GRAPHQL_URI } from "../config";
 
@@ -22,7 +23,9 @@ const errorLink = onError(
   ({ graphQLErrors, networkError, operation, forward }) => {
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        if (err.message === "Acess is denied") {
+        if (err.message === "Access is denied1") {
+          isAuthVar(false);
+
           return new Observable((observer) => {
             AuthService.refreshToken()
               .then(() => {

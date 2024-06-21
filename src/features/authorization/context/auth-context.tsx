@@ -15,15 +15,14 @@ import { useSnackbar } from "notistack";
 import { AppSpinner } from "shared/components/spinners";
 
 import { RESPONSE_STATUS, ROUTES } from "../constants";
+import { isAuthVar } from "../auth-state";
 
 interface IAuthProvider {
   children: ReactNode;
 }
 
 interface AuthContextType {
-  isAuth: boolean;
   isLoading: boolean;
-  setIsAuth: (isAuth: boolean) => void;
   login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   signup: (data: UserCreateInput) => Promise<void>;
@@ -34,9 +33,7 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType>({
-  isAuth: false,
   isLoading: false,
-  setIsAuth: () => {},
   login: async () => {},
   logout: async () => {},
   signup: async () => {},
@@ -83,7 +80,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
     await AuthService.login(username, password)
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-          setIsAuth(true);
+          isAuthVar(true);
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
           navigate(ROUTES.HOME);
@@ -110,7 +107,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
     await AuthService.logout()
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-          setIsAuth(false);
+          isAuthVar(false);
           setIsLoading(false);
           client.refetchQueries({ include: ["user"] });
           navigate(ROUTES.AUTHORIZATION);
@@ -221,9 +218,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuth,
         isLoading,
-        setIsAuth,
         login,
         logout,
         signup,

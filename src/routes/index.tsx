@@ -12,7 +12,8 @@ import {
   SetPasswordPage,
   SignUpPage,
 } from "pages/auth";
-import { useAuth } from "features/authorization/context/auth-context";
+import { useReactiveVar } from "@apollo/client";
+import { isAuthVar } from "features/authorization/auth-state";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -28,7 +29,7 @@ interface IRoutnig {
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
-  const { isAuth } = useAuth();
+  const isAuth = useReactiveVar(isAuthVar);
 
   if (isAuth) {
     return <Navigate to="/" />;
