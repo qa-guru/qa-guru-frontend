@@ -6,19 +6,24 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { useResponsive } from "shared/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";
 import { StyledBox, StyledEditBox } from "./table-columns.styled";
 import { DeleteLecture } from "../../containers";
+import TableEditLectures from "../edit-lectures";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile } = useResponsive();
+  const { trainingLectures } = data;
   const navigate = useNavigate();
   const location = useLocation();
 
-  const lectureIds = data?.trainingLectures?.map(
+  const lectureIds = trainingLectures?.map(
     (trainingLecture) => trainingLecture?.lecture?.id!
   );
+
+  const handleNavigateEditLecture = (lectureId?: Maybe<string>) => {
+    navigate(`${location.pathname}/${lectureId}`);
+  };
 
   const desktopColumns = useMemo<ColumnDef<TrainingLectureDto>[]>(
     () => [
@@ -34,35 +39,13 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         },
         size: 160,
       },
-      // {
-      //   header: "Ведущие преподаватели",
-      //   footer: (props) => props.column.id,
-      //   accessorKey: "mentors",
-      //   cell: (info: CellContext<TrainingLectureDto, unknown>) => {
-      //     const { mentors } = info.row.original.lecture;
-      //
-      //     return (
-      //       <StyledTeachersBox>
-      //         {mentors?.map((mentor) => (
-      //           <StyledTeachersBox key={mentor?.id}>
-      //             <UserRow user={mentor} userId={mentor?.id} hasLink />
-      //           </StyledTeachersBox>
-      //         ))}
-      //       </StyledTeachersBox>
-      //     );
-      //   },
-      //   size: 120,
-      // },
       {
         header: () => null,
         footer: (props) => props.column.id,
         accessorKey: "edit",
         cell: (info: CellContext<TrainingLectureDto, unknown>) => {
-          const { id: lectureId } = info.row.original;
-
-          const handleNavigateEditLecture = (lectureId?: Maybe<string>) => {
-            navigate(`${location.pathname}/${lectureId}`);
-          };
+          const { lecture } = info.row.original;
+          const { id: lectureId } = lecture || {};
 
           return (
             <StyledEditBox>
@@ -97,43 +80,13 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
         },
         size: 160,
       },
-      // {
-      //   header: () => null,
-      //   footer: (props) => props.column.id,
-      //   accessorKey: "rating.rating",
-      //   cell: (info: CellContext<TrainingDto, unknown>) => {
-      //     const { mentors } = info.row.original;
-      //
-      //     return (
-      //       <>
-      //         {mentors?.map((mentor) => {
-      //           const { id, roles } = mentor!;
-      //
-      //           return (
-      //             <Fragment key={id}>
-      //               <StyledUserRowBox>
-      //                 <UserRow
-      //                   user={mentor}
-      //                   hideRating
-      //                   roles={roles}
-      //                   userId={id}
-      //                   hasLink
-      //                 />
-      //               </StyledUserRowBox>
-      //             </Fragment>
-      //           );
-      //         })}
-      //       </>
-      //     );
-      //   },
-      //   size: 120,
-      // },
       {
         header: () => null,
         footer: (props) => props.column.id,
         accessorKey: "edit",
         cell: (info: CellContext<TrainingLectureDto, unknown>) => {
-          const { id: lectureId } = info.row.original;
+          const { lecture } = info.row.original;
+          const { id: lectureId } = lecture || {};
 
           const handleNavigateEditLecture = (lectureId?: Maybe<string>) => {
             navigate(`${location.pathname}/${lectureId}`);
@@ -156,7 +109,7 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
 
   const columns = isMobile ? mobileColumns : desktopColumns;
 
-  return <TableAdmin {...{ data, columns, fetchMore }} />;
+  return <TableEditLectures {...{ data, columns, fetchMore }} />;
 };
 
 export default TableColumns;

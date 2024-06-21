@@ -68,6 +68,11 @@ export const StyledTable = styled(Table)({
   tableLayout: "fixed",
 });
 
+export const StyledButtonBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "flex-end",
+}));
+
 export const StyledStack = styled(Stack)({
   flexDirection: "column",
   margin: "0 auto",
