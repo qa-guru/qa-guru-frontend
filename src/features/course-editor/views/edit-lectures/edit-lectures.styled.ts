@@ -1,46 +1,90 @@
 import { styled } from "@mui/system";
-import { Box, Grid, Paper, Stack, Typography } from "@mui/material";
-
-export const StyledGridContainer = styled(Grid)(({ theme }) => ({
-  gap: theme.spacing(3),
-  margin: "10px 0",
-}));
+import {
+  Box,
+  DialogContent,
+  IconButton,
+  Paper,
+  Stack,
+  Table,
+} from "@mui/material";
+import InfiniteScroll from "react-infinite-scroll-component";
+import ClearIcon from "@mui/icons-material/Clear";
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: "15px",
-  [theme.breakpoints.up("sm")]: {
-    padding: "20px",
+  borderRadius: "10px",
+  padding: "5px 0 0",
+  margin: "20px 0 40px",
+  height: "calc(100dvh - 278px)",
+  overflowY: "auto",
+  [theme.breakpoints.down("md")]: {
+    height: "calc(100dvh - 305px)",
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "calc(100dvh - 222px)",
   },
 }));
 
-export const StyledWrapper = styled(Stack)(({ theme }) => ({
-  gap: theme.spacing(0.5),
+export const StyledUsersDialogContent = styled(DialogContent)({
+  overflowY: "auto",
+  margin: 0,
+  padding: "15px 0 0",
+  scrollbarWidth: "none",
+});
+
+export const StyledIconBox = styled(Box)(({ theme }) => ({
+  position: "relative",
+  display: "flex",
+  justifyContent: "flex-end",
+  [theme.breakpoints.only("xs")]: {
+    position: "fixed",
+    top: 0,
+    right: 0,
+    zIndex: 2000,
+    width: "100%",
+    backgroundColor: theme.palette.app.menu,
+  },
 }));
 
-export const StyledTypography = styled(Typography)(({ theme }) => ({
-  minWidth: "40px",
-  height: "40px",
-  backgroundColor: theme.palette.app.primary,
-  borderRadius: "50%",
+export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
+  color: theme.palette.app.primary,
+  marginRight: "5px",
+  [theme.breakpoints.up("sm")]: {
+    position: "absolute",
+    cursor: "pointer",
+    zIndex: 2000,
+    top: "2px",
+    right: "4px",
+  },
+}));
+
+export const StyledLoadMoreButton = styled(IconButton)({
+  position: "absolute",
+  right: "1px",
+  top: "63px",
+  margin: 0,
+});
+
+export const StyledTable = styled(Table)({
+  tableLayout: "fixed",
+});
+
+export const StyledButtonBox = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  color: theme.palette.app.white,
+  justifyContent: "flex-end",
 }));
 
 export const StyledStack = styled(Stack)({
-  marginTop: "15px",
-  flexDirection: "row",
-  gap: "12px",
-  alignItems: "center",
+  flexDirection: "column",
+  margin: "0 auto",
+  gap: "10px",
+  maxWidth: "120px",
 });
 
 export const StyledBox = styled(Box)({
-  display: "flex",
-  justifyContent: "flex-end",
+  marginTop: "25px",
+  textAlign: "center",
 });
 
-export const StyledSubtitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.app.primary,
-  textTransform: "uppercase",
-}));
+export const StyledInfiniteScroll = styled(InfiniteScroll)({
+  overflow: "visible",
+});

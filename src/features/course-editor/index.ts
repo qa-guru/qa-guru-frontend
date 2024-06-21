@@ -1,6 +1,6 @@
 export {
-  EditLectures,
   EditLecture,
+  EditLectures,
   EditTraining,
   CreateTraining,
   CreateLectures,

@@ -70,9 +70,7 @@ const DeleteTraining: FC<IDeleteTraining> = ({
   };
 
   const renderLoading = () => <CircularProgress size={20} />;
-  const renderDeleteIcon = () => (
-    <DeleteIcon fontSize="small" color="primary" />
-  );
+  const renderDeleteIcon = () => <DeleteIcon fontSize="small" color="error" />;
 
   return (
     <IconButton onClick={handleOpen}>

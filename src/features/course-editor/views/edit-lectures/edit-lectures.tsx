@@ -1,95 +1,116 @@
-import {
-  Box,
-  CardActionArea,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { FC } from "react";
-import { useLocation } from "react-router-dom";
-import CustomLink from "shared/components/custom-link";
-import ContentNotFound from "shared/components/content-not-found";
+import { FC, useEffect, useState } from "react";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { TrainingLectureDto } from "api/graphql/generated/graphql";
+import { CircularProgress, Container, Typography } from "@mui/material";
+import { useResponsive } from "shared/hooks";
 import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
-import { Maybe, TrainingLectureDto } from "api/graphql/generated/graphql";
+import ContentNotFound from "shared/components/content-not-found";
 
-import { AddLecture, DeleteLecture } from "../../containers";
+import { ITable } from "./edit-lectures.types";
 import {
   StyledBox,
-  StyledGridContainer,
+  StyledButtonBox,
+  StyledInfiniteScroll,
   StyledPaper,
-  StyledStack,
-  StyledSubtitle,
-  StyledTypography,
-  StyledWrapper,
 } from "./edit-lectures.styled";
-import { IEditLectures } from "./edit-lectures.types";
+import DesktopTable from "../desktop-table";
+import MobileTable from "../mobile-table";
+import { AddLecture } from "../../containers";
 
-const EditLectures: FC<IEditLectures> = (props) => {
-  const { data } = props;
-  const { trainingLectures } = data;
-  const location = useLocation();
+const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
+  const trainingLectures = data?.trainingLectures;
+  const totalElements = data?.trainingLectures?.length;
 
-  const lectureIds = trainingLectures?.map(
+  const noContent = data?.trainingLectures?.length === 0;
+  const lectureIds = data?.trainingLectures?.map(
     (trainingLecture) => trainingLecture?.lecture?.id!
   );
 
-  const noContent = trainingLectures?.length === 0;
+  const [hasMoreTrainingLectures, setHasMoreTrainingLectures] =
+    useState<boolean>(true);
+  const { isMobile } = useResponsive();
 
-  const renderNotFound = () => (
-    <ContentNotFound text="Нет домашних работ" icon={<HomeworksNotFound />} />
+  const table = useReactTable({
+    data: trainingLectures as TrainingLectureDto[],
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
+  const handleLoadMore = async () => {
+    await fetchMore({
+      variables: {
+        offset: trainingLectures?.length,
+        limit: 50,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return {
+          trainingLectures: [
+            ...(prev?.trainingLectures || []),
+            ...(fetchMoreResult?.trainingLectures || []),
+          ],
+        };
+      },
+    });
+  };
+
+  const renderLoader = () => (
+    <StyledBox>
+      <CircularProgress size={25} />
+    </StyledBox>
   );
 
-  const renderLectureItem = (item: Maybe<TrainingLectureDto>) => {
-    const { id: lectureId, subject, description } = item?.lecture || {};
+  useEffect(() => {
+    if (trainingLectures?.length! >= totalElements!) {
+      setHasMoreTrainingLectures(false);
+    }
+  }, [trainingLectures]);
 
-    return (
-      <Grid item xs={12} key={lectureId}>
-        <Stack direction="row" alignItems="center">
-          <CardActionArea>
-            <CustomLink path={`${location.pathname}/${lectureId}`}>
-              <StyledPaper>
-                {!subject ? (
-                  <Typography variant="h4">Новый урок</Typography>
-                ) : (
-                  <Typography variant="h4">{subject}</Typography>
-                )}
-                <StyledWrapper>
-                  {description?.map((desc, index) => (
-                    <StyledStack key={index}>
-                      <StyledTypography variant="subtitle2">
-                        {index + 1}
-                      </StyledTypography>
-                      <Typography variant="subtitle1">{desc}</Typography>
-                    </StyledStack>
-                  ))}
-                </StyledWrapper>
-                <StyledBox>
-                  <StyledSubtitle variant="body2">Продолжить</StyledSubtitle>
-                </StyledBox>
-              </StyledPaper>
-            </CustomLink>
-          </CardActionArea>
-          <DeleteLecture lectureId={lectureId} lectureIds={lectureIds} />
-        </Stack>
-      </Grid>
-    );
-  };
+  const renderMobileTable = () => (
+    <StyledPaper id="scroll-mobile-container">
+      <StyledInfiniteScroll
+        dataLength={trainingLectures?.length || 0}
+        next={handleLoadMore}
+        hasMore={hasMoreTrainingLectures}
+        loader={renderLoader()}
+        scrollableTarget="scroll-mobile-container"
+      >
+        <MobileTable table={table} />
+      </StyledInfiniteScroll>
+    </StyledPaper>
+  );
+
+  const renderDesktopTable = () => (
+    <>
+      <Typography variant="h5">Уроки ({trainingLectures?.length})</Typography>
+      <StyledPaper id="scroll-container">
+        <StyledInfiniteScroll
+          dataLength={trainingLectures?.length || 0}
+          next={handleLoadMore}
+          hasMore={hasMoreTrainingLectures}
+          loader={renderLoader()}
+          scrollableTarget="scroll-container"
+        >
+          <DesktopTable table={table} />
+        </StyledInfiniteScroll>
+      </StyledPaper>
+    </>
+  );
 
   return (
     <Container>
-      <Box display="flex" justifyContent="flex-end">
+      <StyledButtonBox>
         <AddLecture lectureIds={lectureIds} />
-      </Box>
+      </StyledButtonBox>
       {noContent ? (
-        renderNotFound()
+        <ContentNotFound text="Нет лекций" icon={<HomeworksNotFound />} />
+      ) : isMobile ? (
+        renderMobileTable()
       ) : (
-        <StyledGridContainer container>
-          {trainingLectures?.map(renderLectureItem)}
-        </StyledGridContainer>
+        renderDesktopTable()
       )}
     </Container>
   );
 };
 
-export default EditLectures;
+export default TableEditLectures;
