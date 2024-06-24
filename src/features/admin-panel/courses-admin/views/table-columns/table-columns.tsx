@@ -7,7 +7,6 @@ import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
 import { useResponsive } from "shared/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
-import DeleteTraining from "features/course-editor/containers/delete-training";
 
 import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";
@@ -17,6 +16,7 @@ import {
   StyledTrainingStack,
   StyledUserRowBox,
 } from "./table-columns.styled";
+import { DeleteTraining } from "../../containers";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile } = useResponsive();
