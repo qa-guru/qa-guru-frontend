@@ -5,6 +5,7 @@ import {
   UsersDocument,
   UsersQuery,
   useLockUserMutation,
+  UserDto,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import { useResponsive } from "shared/hooks";
@@ -14,9 +15,10 @@ import LockUser from "../../views/lock-user";
 
 interface ILockUserContainer {
   id: Maybe<string> | undefined;
+  user: Maybe<UserDto>;
 }
 
-const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
+const LockUserContainer: FC<ILockUserContainer> = ({ id, user }) => {
   const { filter } = useTableAdminFilter();
   const { isMobile } = useResponsive();
 
@@ -54,7 +56,7 @@ const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
     },
   });
 
-  return <LockUser lockUser={lockUser} id={id} />;
+  return <LockUser lockUser={lockUser} id={id} user={user} />;
 };
 
 export default LockUserContainer;

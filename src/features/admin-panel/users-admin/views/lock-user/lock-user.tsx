@@ -1,52 +1,35 @@
-import { LockUserMutationFn, Maybe } from "api/graphql/generated/graphql";
 import { FC } from "react";
-import { Lock } from "@mui/icons-material";
-import {
-  Dialog,
-  DialogActions,
-  IconButton,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Lock, Menu } from "@mui/icons-material";
+import { Dialog, DialogActions, IconButton, Tooltip } from "@mui/material";
 import { useModal } from "react-modal-hook";
 import { useResponsive } from "shared/hooks";
+import UserRow from "shared/components/user-row";
 
 import {
-  StyledButton,
   StyledCancelButton,
+  StyledClearIcon,
   StyledDialogContent,
-  StyledStack,
   StyledWrapper,
 } from "./lock-user.styled";
+import { ILockUser } from "./lock-user.types";
 
-interface ILockUser {
-  lockUser: LockUserMutationFn;
-  id: Maybe<string> | undefined;
-}
-
-const LockUser: FC<ILockUser> = ({ lockUser, id }) => {
+const LockUser: FC<ILockUser> = ({ lockUser, id, user }) => {
   const { isMobile } = useResponsive();
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open} onClose={hideModal} maxWidth="xs">
       <StyledWrapper>
+        <StyledClearIcon onClick={hideModal} fontSize="small" />
         <StyledDialogContent>
-          <Typography variant="h4">
-            Вы уверены, что хотите заблокировать пользователя?
-          </Typography>
+          <UserRow userId={id} user={user} date={user?.creationDate} hasLink />
         </StyledDialogContent>
         <DialogActions>
-          <StyledStack>
-            <StyledButton
-              color="secondary"
-              variant="contained"
-              onClick={handleCancel}
-            >
-              Нет
-            </StyledButton>
-            <StyledCancelButton variant="contained" onClick={handleLock}>
-              Да
-            </StyledCancelButton>
-          </StyledStack>
+          <StyledCancelButton
+            variant="outlined"
+            onClick={handleLock}
+            startIcon={<Lock color="primary" fontSize="small" />}
+          >
+            Заблокировать пользователя
+          </StyledCancelButton>
         </DialogActions>
       </StyledWrapper>
     </Dialog>
@@ -72,7 +55,7 @@ const LockUser: FC<ILockUser> = ({ lockUser, id }) => {
   return (
     <Tooltip title="Заблокировать">
       <IconButton onClick={handleOpenModal}>
-        <Lock fontSize={isMobile ? "small" : "medium"} color="primary" />
+        <Menu fontSize={isMobile ? "small" : "medium"} color="primary" />
       </IconButton>
     </Tooltip>
   );

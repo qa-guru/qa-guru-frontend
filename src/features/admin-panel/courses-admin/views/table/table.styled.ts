@@ -20,7 +20,8 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     height: "calc(100dvh - 280px)",
   },
   [theme.breakpoints.down("sm")]: {
-    height: "calc(100dvh - 249px)",
+    height: "calc(100dvh - 220px)",
+    borderRadius: "10px 10px 0 0",
   },
 }));
 
