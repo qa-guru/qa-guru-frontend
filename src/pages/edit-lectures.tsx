@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { EditLectures } from "features/course-editor";
+import { EditLectures } from "features/edit-training";
 
 const EditLecturesPage: FC = () => {
   return <EditLectures />;

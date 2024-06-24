@@ -4,7 +4,6 @@ import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import CardHeader from "shared/components/card-header";
-import { useResponsive } from "shared/hooks";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 
 import {
@@ -24,7 +23,6 @@ const CardContent: FC<ICardContent> = ({
   route,
 }) => {
   const { id, mentor, student, lecture, training, creationDate } = card;
-  const { isLargeDesktop } = useResponsive();
 
   const renderUserRow = (
     icon: ComponentType,

@@ -1,4 +1,4 @@
-import { EditLecture } from "features/course-editor";
+import { EditLecture } from "features/edit-training";
 import { FC } from "react";
 
 const EditLecturePage: FC = () => {
