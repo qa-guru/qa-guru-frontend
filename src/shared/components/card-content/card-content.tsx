@@ -12,6 +12,7 @@ import {
   StyledUserRowStack,
 } from "./card-content.styled";
 import { ICardContent } from "./card-content.types";
+import { useResponsive } from "../../hooks";
 
 const CardContent: FC<ICardContent> = ({
   card,
@@ -23,6 +24,7 @@ const CardContent: FC<ICardContent> = ({
   route,
 }) => {
   const { id, mentor, student, lecture, training, creationDate } = card;
+  const { isLargeDesktop } = useResponsive();
 
   const renderUserRow = (
     icon: ComponentType,
@@ -37,7 +39,7 @@ const CardContent: FC<ICardContent> = ({
         height={size.height}
         variant="body2"
         userId={user.id}
-        hasLink
+        hasLink={isLargeDesktop}
       />
     );
 
