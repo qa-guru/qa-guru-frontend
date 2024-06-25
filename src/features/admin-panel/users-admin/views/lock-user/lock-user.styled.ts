@@ -1,13 +1,13 @@
 import { Box, Button, DialogContent, Stack } from "@mui/material";
 import { styled } from "@mui/system";
+import ClearIcon from "@mui/icons-material/Clear";
 
 export const StyledWrapper = styled(Box)({
-  padding: "30px 20px 10px",
-  width: "300px",
+  padding: "15px",
 });
 
 export const StyledDialogContent = styled(DialogContent)({
-  textAlign: "center",
+  padding: "9px",
 });
 
 export const StyledStack = styled(Stack)({
@@ -18,11 +18,18 @@ export const StyledStack = styled(Stack)({
   marginBottom: "15px",
 });
 
-export const StyledButton = styled(Button)(({ theme }) => ({
-  width: "145px",
+export const StyledCancelButton = styled(Button)(({ theme }) => ({
+  width: "100%",
 }));
 
-export const StyledCancelButton = styled(Button)(({ theme }) => ({
-  width: "145px",
-  color: theme.palette.app.white,
+export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
+  position: "absolute",
+  top: "5px",
+  right: "5px",
+  color: theme.palette.app.primary,
+  marginRight: "5px",
+  [theme.breakpoints.up("sm")]: {
+    margin: "5px 15px 0 0",
+    cursor: "pointer",
+  },
 }));

@@ -93,7 +93,11 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
                 {formatDate(creationDate, "DD.MM.YYYY")}
               </Typography>
               <StyledRightAlignBox>
-                {locked ? <UnlockUser id={id} /> : <LockUser id={id} />}
+                {locked ? (
+                  <UnlockUser id={id} user={info.row.original} />
+                ) : (
+                  <LockUser id={id} user={info.row.original} />
+                )}
               </StyledRightAlignBox>
             </StyledAlignStack>
           );
@@ -125,7 +129,11 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
                 />
               </StyledUserRowBox>
               <StyledRightAlignBox>
-                {locked ? <UnlockUser id={id} /> : <LockUser id={id} />}
+                {locked ? (
+                  <UnlockUser id={id} user={info.row.original} />
+                ) : (
+                  <LockUser id={id} user={info.row.original} />
+                )}
               </StyledRightAlignBox>
             </>
           );

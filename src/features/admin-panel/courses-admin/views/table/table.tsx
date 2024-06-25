@@ -1,21 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { TrainingDto } from "api/graphql/generated/graphql";
-import { CircularProgress, Dialog } from "@mui/material";
-import { useModal } from "react-modal-hook";
+import { CircularProgress } from "@mui/material";
 import { useResponsive } from "shared/hooks";
-import { Fullscreen } from "@mui/icons-material";
 
-import { IModalMobileTable, ITable } from "./table.types";
-import {
-  StyledBox,
-  StyledClearIcon,
-  StyledIconBox,
-  StyledInfiniteScroll,
-  StyledLoadMoreButton,
-  StyledPaper,
-  StyledUsersDialogContent,
-} from "./table.styled";
+import { ITable } from "./table.types";
+import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
 
@@ -24,34 +14,6 @@ const renderLoader = () => (
     <CircularProgress size={25} />
   </StyledBox>
 );
-
-const ModalMobileTable = ({
-  hideModal,
-  open,
-  trainings,
-  hasMoreTrainings,
-  handleLoadMore,
-  table,
-}: IModalMobileTable) => {
-  return (
-    <Dialog open={open} onClose={hideModal} fullWidth fullScreen>
-      <StyledUsersDialogContent id="scroll-container">
-        <StyledIconBox>
-          <StyledClearIcon onClick={hideModal} />
-        </StyledIconBox>
-        <StyledInfiniteScroll
-          dataLength={trainings?.length || 0}
-          next={handleLoadMore}
-          hasMore={hasMoreTrainings}
-          loader={renderLoader()}
-          scrollableTarget="scroll-container"
-        >
-          <MobileTable table={table} />
-        </StyledInfiniteScroll>
-      </StyledUsersDialogContent>
-    </Dialog>
-  );
-};
 
 const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   const trainings = data?.trainings?.items;
@@ -86,20 +48,6 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
     });
   };
 
-  const [showModal, hideModal] = useModal(
-    ({ in: open }) => (
-      <ModalMobileTable
-        hideModal={hideModal}
-        open={open}
-        trainings={trainings}
-        handleLoadMore={handleLoadMore}
-        hasMoreTrainings={hasMoreTrainings}
-        table={table}
-      />
-    ),
-    [trainings, table, hasMoreTrainings]
-  );
-
   useEffect(() => {
     if (trainings?.length! >= totalElements) {
       setHasMoreTrainings(false);
@@ -107,22 +55,17 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [trainings]);
 
   const renderMobileTable = () => (
-    <>
-      <StyledLoadMoreButton onClick={showModal}>
-        <Fullscreen color="primary" />
-      </StyledLoadMoreButton>
-      <StyledPaper id="scroll-mobile-container">
-        <StyledInfiniteScroll
-          dataLength={trainings?.length || 0}
-          next={handleLoadMore}
-          hasMore={hasMoreTrainings}
-          loader={renderLoader()}
-          scrollableTarget="scroll-mobile-container"
-        >
-          <MobileTable table={table} />
-        </StyledInfiniteScroll>
-      </StyledPaper>
-    </>
+    <StyledPaper id="scroll-mobile-container">
+      <StyledInfiniteScroll
+        dataLength={trainings?.length || 0}
+        next={handleLoadMore}
+        hasMore={hasMoreTrainings}
+        loader={renderLoader()}
+        scrollableTarget="scroll-mobile-container"
+      >
+        <MobileTable table={table} />
+      </StyledInfiniteScroll>
+    </StyledPaper>
   );
 
   const renderDesktopTable = () => (

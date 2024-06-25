@@ -73,7 +73,7 @@ const AdminPanel: FC = () => {
   );
 
   return (
-    <Container>
+    <Container sx={{ marginBottom: "-100px", padding: 0 }}>
       <StyledContentBox>
         <StyledTypography variant="h2">Панель администратора</StyledTypography>
         <TabContext value={currentTabValue}>
