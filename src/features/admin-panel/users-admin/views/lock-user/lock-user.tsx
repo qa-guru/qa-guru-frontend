@@ -1,63 +1,33 @@
 import { FC } from "react";
-import { Lock, Menu } from "@mui/icons-material";
-import { Dialog, DialogActions, IconButton, Tooltip } from "@mui/material";
-import { useModal } from "react-modal-hook";
-import { useResponsive } from "shared/hooks";
-import UserRow from "shared/components/user-row";
+import { Lock } from "@mui/icons-material";
+import { CircularProgress } from "@mui/material";
 
-import {
-  StyledCancelButton,
-  StyledClearIcon,
-  StyledDialogContent,
-  StyledWrapper,
-} from "./lock-user.styled";
 import { ILockUser } from "./lock-user.types";
+import { StyledButton } from "./lock-user.styled";
 
-const LockUser: FC<ILockUser> = ({ lockUser, id, user }) => {
-  const { isMobile } = useResponsive();
-  const [showModal, hideModal] = useModal(({ in: open }) => (
-    <Dialog open={open} onClose={hideModal} maxWidth="xs">
-      <StyledWrapper>
-        <StyledClearIcon onClick={hideModal} fontSize="small" />
-        <StyledDialogContent>
-          <UserRow userId={id} user={user} date={user?.creationDate} hasLink />
-        </StyledDialogContent>
-        <DialogActions>
-          <StyledCancelButton
-            variant="outlined"
-            onClick={handleLock}
-            startIcon={<Lock color="primary" fontSize="small" />}
-          >
-            Заблокировать пользователя
-          </StyledCancelButton>
-        </DialogActions>
-      </StyledWrapper>
-    </Dialog>
-  ));
-
-  const handleOpenModal = () => {
-    showModal();
-  };
-
+const LockUser: FC<ILockUser> = ({ lockUser, id, loading }) => {
   const handleLock = async () => {
     if (id)
       await lockUser({
         variables: { id },
       });
-
-    hideModal();
-  };
-
-  const handleCancel = () => {
-    hideModal();
   };
 
   return (
-    <Tooltip title="Заблокировать">
-      <IconButton onClick={handleOpenModal}>
-        <Menu fontSize={isMobile ? "small" : "medium"} color="primary" />
-      </IconButton>
-    </Tooltip>
+    <StyledButton
+      variant="outlined"
+      onClick={handleLock}
+      startIcon={
+        loading ? (
+          <CircularProgress color="primary" size={20} />
+        ) : (
+          <Lock color="primary" fontSize="small" />
+        )
+      }
+      disabled={loading}
+    >
+      Заблокировать пользователя
+    </StyledButton>
   );
 };
 
