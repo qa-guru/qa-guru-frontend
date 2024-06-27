@@ -1,23 +1,22 @@
-import { FC } from "react";
 import {
-  Maybe,
   TrainingLecturesDocument,
+  useUpdateLectureMutation,
   useUpdateTrainingLectureMutation,
 } from "api/graphql/generated/graphql";
+import { FC } from "react";
+import { useParams } from "react-router-dom";
 
-import AddLecture from "../../views/add-lecture";
+import CreateLecture from "../../views/create-lecture";
 
-interface IAddLectureContainer {
+interface ICreateLectureContainer {
   lectureIds?: string[];
-  selectedLectureId?: Maybe<string>;
-  trainingId?: string;
 }
 
-const AddLectureContainer: FC<IAddLectureContainer> = ({
+const CreateLectureContainer: FC<ICreateLectureContainer> = ({
   lectureIds,
-  selectedLectureId,
-  trainingId,
 }) => {
+  const { trainingId } = useParams();
+
   const [updateTrainingLecture, { loading: loadingUpdateTrainingLecture }] =
     useUpdateTrainingLectureMutation({
       update: (cache, { data }) => {
@@ -25,7 +24,9 @@ const AddLectureContainer: FC<IAddLectureContainer> = ({
 
         cache.writeQuery({
           query: TrainingLecturesDocument,
-          variables: { id: trainingId! },
+          variables: {
+            id: trainingId,
+          },
           data: {
             trainingLectures: newUpdateTrainingLecture,
           },
@@ -33,15 +34,16 @@ const AddLectureContainer: FC<IAddLectureContainer> = ({
       },
     });
 
+  const [updateLecture] = useUpdateLectureMutation();
+
   return (
-    <AddLecture
+    <CreateLecture
+      updateLecture={updateLecture}
       updateTrainingLecture={updateTrainingLecture}
       lectureIds={lectureIds}
       loadingUpdateTrainingLecture={loadingUpdateTrainingLecture}
-      selectedLectureId={selectedLectureId}
-      trainingId={trainingId}
     />
   );
 };
 
-export default AddLectureContainer;
+export default CreateLectureContainer;

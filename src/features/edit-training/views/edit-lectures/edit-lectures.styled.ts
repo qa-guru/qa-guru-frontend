@@ -1,12 +1,5 @@
 import { styled } from "@mui/system";
-import {
-  Box,
-  DialogContent,
-  IconButton,
-  Paper,
-  Stack,
-  Table,
-} from "@mui/material";
+import { Box, DialogContent, Paper, Stack, Table } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ClearIcon from "@mui/icons-material/Clear";
 
@@ -19,8 +12,8 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     height: "calc(100dvh - 305px)",
   },
-  [theme.breakpoints.down("sm")]: {
-    height: "calc(100dvh - 222px)",
+  [theme.breakpoints.only("xs")]: {
+    height: "calc(100dvh - 265px)",
   },
 }));
 
@@ -32,45 +25,31 @@ export const StyledUsersDialogContent = styled(DialogContent)({
 });
 
 export const StyledIconBox = styled(Box)(({ theme }) => ({
-  position: "relative",
-  display: "flex",
-  justifyContent: "flex-end",
-  [theme.breakpoints.only("xs")]: {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    zIndex: 2000,
-    width: "100%",
-    backgroundColor: theme.palette.app.menu,
-  },
+  position: "fixed",
+  top: 0,
+  right: 0,
+  zIndex: 2000,
+  width: "100%",
+  backgroundColor: theme.palette.app.menu,
 }));
 
 export const StyledClearIcon = styled(ClearIcon)(({ theme }) => ({
   color: theme.palette.app.primary,
   marginRight: "5px",
-  [theme.breakpoints.up("sm")]: {
-    position: "absolute",
-    cursor: "pointer",
-    zIndex: 2000,
-    top: "2px",
-    right: "4px",
-  },
 }));
-
-export const StyledLoadMoreButton = styled(IconButton)({
-  position: "absolute",
-  right: "1px",
-  top: "63px",
-  margin: 0,
-});
 
 export const StyledTable = styled(Table)({
   tableLayout: "fixed",
 });
 
-export const StyledButtonBox = styled(Box)(({ theme }) => ({
-  display: "flex",
+export const StyledButtonStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
   justifyContent: "flex-end",
+  gap: "10px",
+  [theme.breakpoints.only("xs")]: {
+    flexDirection: "column",
+    justifyContent: "flex-start",
+  },
 }));
 
 export const StyledStack = styled(Stack)({

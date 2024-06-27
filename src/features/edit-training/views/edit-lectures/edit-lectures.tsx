@@ -5,19 +5,22 @@ import { CircularProgress, Container, Typography } from "@mui/material";
 import { useResponsive } from "shared/hooks";
 import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 import ContentNotFound from "shared/components/content-not-found";
+import { useParams } from "react-router-dom";
 
 import { ITable } from "./edit-lectures.types";
 import {
   StyledBox,
-  StyledButtonBox,
+  StyledButtonStack,
   StyledInfiniteScroll,
   StyledPaper,
 } from "./edit-lectures.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
-import { AddLecture } from "../../containers";
+import { CreateLecture, SelectLecture } from "../../containers";
 
 const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
+  const { trainingId } = useParams();
+
   const trainingLectures = data?.trainingLectures;
   const totalElements = data?.trainingLectures?.length;
 
@@ -75,7 +78,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
         loader={renderLoader()}
         scrollableTarget="scroll-mobile-container"
       >
-        <MobileTable table={table} />
+        <MobileTable<TrainingLectureDto> table={table} />
       </StyledInfiniteScroll>
     </StyledPaper>
   );
@@ -91,7 +94,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
           loader={renderLoader()}
           scrollableTarget="scroll-container"
         >
-          <DesktopTable table={table} />
+          <DesktopTable<TrainingLectureDto> table={table} />
         </StyledInfiniteScroll>
       </StyledPaper>
     </>
@@ -99,9 +102,10 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
 
   return (
     <Container>
-      <StyledButtonBox>
-        <AddLecture lectureIds={lectureIds} />
-      </StyledButtonBox>
+      <StyledButtonStack>
+        <SelectLecture lectureIds={lectureIds} trainingId={trainingId} />
+        <CreateLecture lectureIds={lectureIds} />
+      </StyledButtonStack>
       {noContent ? (
         <ContentNotFound text="Нет лекций" icon={<HomeworksNotFound />} />
       ) : isMobile ? (

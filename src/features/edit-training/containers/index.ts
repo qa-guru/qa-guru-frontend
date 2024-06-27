@@ -4,4 +4,6 @@ export { default as EditLecture } from "./edit-lecture";
 export { default as EditLectures } from "./edit-lectures";
 export { default as CreateLectures } from "./edit-lectures";
 export { default as DeleteLecture } from "./delete-lecture";
+export { default as CreateLecture } from "./create-lecture";
+export { default as SelectLecture } from "./select-lecture";
 export { default as AddLecture } from "./add-lecture";

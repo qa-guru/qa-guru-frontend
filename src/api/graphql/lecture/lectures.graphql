@@ -1,0 +1,23 @@
+query lectures($offset: Int!, $limit: Int!, $sort: LectureSort) {
+  lectures(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      subject
+      description
+      creationDate
+      speakers {
+        id
+        email
+        roles
+        firstName
+        lastName
+        middleName
+        phoneNumber
+        avatar
+      }
+    }
+    offset
+    limit
+    totalElements
+  }
+}
