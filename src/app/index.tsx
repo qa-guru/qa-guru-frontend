@@ -1,13 +1,9 @@
 import Routing from "routes";
-import { useAuth } from "features/authorization/context/auth-context";
 
 import { withProviders } from "./providers";
 
 const App = () => {
-  const { data } = useAuth();
-  const roles = data?.user?.roles;
-
-  return <Routing roles={roles} />;
+  return <Routing />;
 };
 
 export default withProviders(App);
