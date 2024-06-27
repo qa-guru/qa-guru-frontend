@@ -61,6 +61,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           localStorage.setItem("isAuth", "true");
+          setIsLoading(false);
           navigate(ROUTES.HOME);
         } else {
           setIsLoading(false);
