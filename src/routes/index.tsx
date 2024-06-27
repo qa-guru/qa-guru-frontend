@@ -2,7 +2,11 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import NotFoundPage from "pages/not-found";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
-import { Maybe, UserRole } from "api/graphql/generated/graphql";
+import {
+  Maybe,
+  UserRole,
+  useUserRolesQuery,
+} from "api/graphql/generated/graphql";
 import Layout from "shared/components/layout";
 import ScrollPageSectionPage from "pages/scroll-page-section";
 import {
@@ -12,6 +16,7 @@ import {
   SetPasswordPage,
   SignUpPage,
 } from "pages/auth";
+import { AppSpinner } from "shared/components/spinners";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -27,16 +32,6 @@ interface IRoutnig {
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
-  const isAuth = localStorage.getItem("isAuth");
-
-  if (!isAuth) {
-    return <Navigate to="/authorization" replace />;
-  }
-
-  return <>{children}</>;
-};
-
-const AuthRoute: FC<IProtectedRoute> = ({ children }) => {
   const isAuth = localStorage.getItem("isAuth");
 
   if (isAuth) {
@@ -63,7 +58,26 @@ export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
   }, []);
 };
 
-const Routing: FC<IRoutnig> = ({ roles }) => {
+export const useUserRoutes = () => {
+  const location = useLocation();
+  const isAuthPage =
+    location.pathname === "/authorization" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/reset" ||
+    location.pathname === "/reset/token" ||
+    location.pathname === "/reset/password";
+
+  const { data, loading } = useUserRolesQuery({
+    skip: isAuthPage,
+  });
+
+  const roles = data?.user?.roles ?? [];
+  const usersRoutes = getUserRoutes(roles);
+
+  return { usersRoutes, loading };
+};
+
+const Routing: FC<IRoutnig> = () => {
   const location = useLocation();
   const [errorBoundaryKey, setErrorBoundaryKey] = useState<string>(
     location.pathname
@@ -73,7 +87,11 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
     setErrorBoundaryKey(location.pathname);
   }, [location]);
 
-  const usersRoutes = getUserRoutes(roles!);
+  const { usersRoutes, loading } = useUserRoutes();
+
+  if (loading) {
+    return <AppSpinner />;
+  }
 
   return (
     <ErrorBoundary
@@ -90,48 +108,48 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
             <Route
               key={route.key}
               path={route.props.path}
-              element={<ProtectedRoute>{route.props.element}</ProtectedRoute>}
+              element={route.props.element}
             />
           ))}
         </Route>
         <Route
           path="/authorization"
           element={
-            <AuthRoute>
+            <ProtectedRoute>
               <LoginPage />
-            </AuthRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/signup"
           element={
-            <AuthRoute>
+            <ProtectedRoute>
               <SignUpPage />
-            </AuthRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/reset"
           element={
-            <AuthRoute>
+            <ProtectedRoute>
               <ResetPage />
-            </AuthRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/reset/token"
           element={
-            <AuthRoute>
+            <ProtectedRoute>
               <ConfirmTokenPage />
-            </AuthRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/reset/password"
           element={
-            <AuthRoute>
+            <ProtectedRoute>
               <SetPasswordPage />
-            </AuthRoute>
+            </ProtectedRoute>
           }
         />
         <Route
