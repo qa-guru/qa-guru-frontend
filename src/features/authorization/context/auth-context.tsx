@@ -1,21 +1,16 @@
 import {
   UserCreateInput,
-  UserQuery,
   useCheckResetPasswordTokenLazyQuery,
   useCreateUserMutation,
   useResetPasswordMutation,
   useSetPasswordMutation,
-  useUserQuery,
 } from "api/graphql/generated/graphql";
 import AuthService from "api/rest/auth-service";
 import { FC, ReactNode, createContext, useContext, useState } from "react";
-import { client } from "api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { AppSpinner } from "shared/components/spinners";
 
 import { RESPONSE_STATUS, ROUTES } from "../constants";
-import { isAuthVar } from "../auth-state";
 
 interface IAuthProvider {
   children: ReactNode;
@@ -26,7 +21,6 @@ interface AuthContextType {
   login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   signup: (data: UserCreateInput) => Promise<void>;
-  data: UserQuery | undefined;
   resetPassword: (email: string) => Promise<void>;
   setNewPassword: (newPassword: string) => Promise<void>;
   confirmToken: (token: string) => Promise<void>;
@@ -37,7 +31,6 @@ const AuthContext = createContext<AuthContextType>({
   login: async () => {},
   logout: async () => {},
   signup: async () => {},
-  data: undefined,
   resetPassword: async () => {},
   setNewPassword: async () => {},
   confirmToken: async () => {},
@@ -52,7 +45,6 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -63,26 +55,12 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   const [createUser] = useCreateUserMutation();
   const [checkToken] = useCheckResetPasswordTokenLazyQuery();
 
-  const { data, loading } = useUserQuery({
-    onCompleted: () => {
-      setIsAuth(true);
-    },
-    onError: () => {
-      setIsAuth(false);
-      navigate(ROUTES.AUTHORIZATION);
-    },
-  });
-
-  if (loading) return <AppSpinner />;
-
   const login = async (username: string, password: string) => {
     setIsLoading(true);
     await AuthService.login(username, password)
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-          isAuthVar(true);
-          setIsLoading(false);
-          client.refetchQueries({ include: ["user"] });
+          localStorage.setItem("isAuth", "true");
           navigate(ROUTES.HOME);
         } else {
           setIsLoading(false);
@@ -107,9 +85,8 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
     await AuthService.logout()
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-          isAuthVar(false);
+          localStorage.removeItem("isAuth");
           setIsLoading(false);
-          client.refetchQueries({ include: ["user"] });
           navigate(ROUTES.AUTHORIZATION);
         } else {
           setIsLoading(false);
@@ -222,7 +199,6 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
         login,
         logout,
         signup,
-        data,
         resetPassword,
         setNewPassword,
         confirmToken,

@@ -1,14 +1,8 @@
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  ApolloLink,
-  Observable,
-} from "@apollo/client";
+import { ApolloClient, HttpLink, ApolloLink, Observable } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import fetch from "cross-fetch";
 import AuthService from "api/rest/auth-service";
-import { isAuthVar } from "features/authorization/auth-state";
+import { cache } from "cache";
 
 import { GRAPHQL_URI } from "../config";
 
@@ -23,9 +17,7 @@ const errorLink = onError(
   ({ graphQLErrors, networkError, operation, forward }) => {
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        if (err.message === "Access is denied1") {
-          isAuthVar(false);
-
+        if (err.message === "Access is denied") {
           return new Observable((observer) => {
             AuthService.refreshToken()
               .then(() => {
@@ -37,6 +29,7 @@ const errorLink = onError(
               })
               .catch((error) => {
                 AuthService.logout().then(() => {
+                  localStorage.removeItem("isAuth");
                   window.location.href = "/authorization";
                 });
                 observer.error(error);
@@ -54,7 +47,7 @@ const errorLink = onError(
 
 const client = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),
-  cache: new InMemoryCache(),
+  cache,
   connectToDevTools: import.meta.env.MODE === "development",
   defaultOptions: {
     watchQuery: {

@@ -12,8 +12,6 @@ import {
   SetPasswordPage,
   SignUpPage,
 } from "pages/auth";
-import { useReactiveVar } from "@apollo/client";
-import { isAuthVar } from "features/authorization/auth-state";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -29,10 +27,20 @@ interface IRoutnig {
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
-  const isAuth = useReactiveVar(isAuthVar);
+  const isAuth = localStorage.getItem("isAuth");
+
+  if (!isAuth) {
+    return <Navigate to="/authorization" replace />;
+  }
+
+  return <>{children}</>;
+};
+
+const AuthRoute: FC<IProtectedRoute> = ({ children }) => {
+  const isAuth = localStorage.getItem("isAuth");
 
   if (isAuth) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
 
   return <Layout isLogging>{children}</Layout>;
@@ -82,48 +90,48 @@ const Routing: FC<IRoutnig> = ({ roles }) => {
             <Route
               key={route.key}
               path={route.props.path}
-              element={route.props.element}
+              element={<ProtectedRoute>{route.props.element}</ProtectedRoute>}
             />
           ))}
         </Route>
         <Route
           path="/authorization"
           element={
-            <ProtectedRoute>
+            <AuthRoute>
               <LoginPage />
-            </ProtectedRoute>
+            </AuthRoute>
           }
         />
         <Route
           path="/signup"
           element={
-            <ProtectedRoute>
+            <AuthRoute>
               <SignUpPage />
-            </ProtectedRoute>
+            </AuthRoute>
           }
         />
         <Route
           path="/reset"
           element={
-            <ProtectedRoute>
+            <AuthRoute>
               <ResetPage />
-            </ProtectedRoute>
+            </AuthRoute>
           }
         />
         <Route
           path="/reset/token"
           element={
-            <ProtectedRoute>
+            <AuthRoute>
               <ConfirmTokenPage />
-            </ProtectedRoute>
+            </AuthRoute>
           }
         />
         <Route
           path="/reset/password"
           element={
-            <ProtectedRoute>
+            <AuthRoute>
               <SetPasswordPage />
-            </ProtectedRoute>
+            </AuthRoute>
           }
         />
         <Route
