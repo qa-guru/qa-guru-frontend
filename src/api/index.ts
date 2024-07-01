@@ -17,7 +17,7 @@ const errorLink = onError(
   ({ graphQLErrors, networkError, operation, forward }) => {
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        if (err.message === "Access is denied") {
+        if (err.extensions.classification === "UNAUTHORIZED") {
           return new Observable((observer) => {
             AuthService.refreshToken()
               .then(() => {
