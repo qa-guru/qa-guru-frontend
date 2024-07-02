@@ -1,8 +1,6 @@
 import { FC } from "react";
 import {
   Maybe,
-  TrainingLecturesDocument,
-  TrainingLecturesQuery,
   useDeleteLectureMutation,
   useUpdateTrainingLectureMutation,
 } from "api/graphql/generated/graphql";
