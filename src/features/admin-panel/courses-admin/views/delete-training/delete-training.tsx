@@ -70,6 +70,7 @@ const DeleteTraining: FC<IDeleteTraining> = ({
       await deleteTraining({
         variables: { id: trainingIdRef.current },
       });
+
       trainingIdRef.current = null;
       hideModal();
     }

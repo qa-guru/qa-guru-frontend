@@ -25,30 +25,28 @@ const DeleteLectureContainer: FC<IDeleteLectureContainer> = ({
     useUpdateTrainingLectureMutation();
 
   const [deleteLecture] = useDeleteLectureMutation({
-    update: (cache) => {
-      const existingTrainingLectures: Maybe<TrainingLecturesQuery> =
-        cache.readQuery({
-          query: TrainingLecturesDocument,
-          variables: {
-            id: trainingId,
-          },
-        });
-
-      const updateTrainingLectures =
-        existingTrainingLectures?.trainingLectures?.filter(
-          (trainingLecture) => trainingLecture?.lecture?.id !== lectureId
-        );
-
-      cache.writeQuery({
-        query: TrainingLecturesDocument,
-        variables: {
-          id: trainingId,
-        },
-        data: {
-          trainingLectures: updateTrainingLectures,
-        },
-      });
-    },
+    // update: (cache) => {
+    //   const existingTrainingLectures: Maybe<TrainingLecturesQuery> =
+    //     cache.readQuery({
+    //       query: TrainingLecturesDocument,
+    //       variables: {
+    //         id: trainingId,
+    //       },
+    //     });
+    //   const updateTrainingLectures =
+    //     existingTrainingLectures?.trainingLectures?.filter(
+    //       (trainingLecture) => trainingLecture?.lecture?.id !== lectureId
+    //     );
+    //   cache.writeQuery({
+    //     query: TrainingLecturesDocument,
+    //     variables: {
+    //       id: trainingId,
+    //     },
+    //     data: {
+    //       trainingLectures: updateTrainingLectures,
+    //     },
+    //   });
+    // },
   });
 
   return (

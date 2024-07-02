@@ -8,6 +8,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
 import { LoadingButton } from "@mui/lab";
+import { generateUniqueId } from "shared/helpers";
 
 interface ICreateTrainingButton {
   updateTraining: UpdateTrainingMutationFn;
@@ -19,10 +20,6 @@ const СreateTrainingButton: FC<ICreateTrainingButton> = ({
   loading,
 }) => {
   const { enqueueSnackbar } = useSnackbar();
-
-  const generateUniqueId = () => {
-    return `_${Math.random().toString(36).slice(2, 11)}_${Date.now()}`;
-  };
 
   const handleCreateCourse = () => {
     const courseName = `Курс ${generateUniqueId()}`;

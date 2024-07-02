@@ -100,6 +100,9 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
     </>
   );
 
+  const renderTable = () =>
+    isMobile ? renderMobileTable() : renderDesktopTable();
+
   return (
     <Container>
       <StyledButtonStack>
@@ -108,10 +111,8 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
       </StyledButtonStack>
       {noContent ? (
         <ContentNotFound text="Нет лекций" icon={<HomeworksNotFound />} />
-      ) : isMobile ? (
-        renderMobileTable()
       ) : (
-        renderDesktopTable()
+        renderTable()
       )}
     </Container>
   );
