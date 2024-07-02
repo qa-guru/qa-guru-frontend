@@ -10,11 +10,7 @@ import { useResponsive } from "shared/hooks";
 import UsersAdmin from "./users-admin";
 import CourseAdmin from "./courses-admin";
 import StatisticsAdmin from "./statistics-admin/statistics-admin";
-import {
-  StyledContentBox,
-  StyledTabPanel,
-  StyledTypography,
-} from "./admin-panel.styled";
+import { StyledTabPanel, StyledTypography } from "./admin-panel.styled";
 
 const AdminPanel: FC = () => {
   const { isDesktop } = useResponsive();
@@ -73,14 +69,12 @@ const AdminPanel: FC = () => {
   );
 
   return (
-    <Container sx={{ marginBottom: "-100px", padding: 0 }}>
-      <StyledContentBox>
-        <StyledTypography variant="h2">Панель администратора</StyledTypography>
-        <TabContext value={currentTabValue}>
-          {isDesktop && renderTabList()}
-          {renderTabPanels()}
-        </TabContext>
-      </StyledContentBox>
+    <Container>
+      <StyledTypography variant="h2">Панель администратора</StyledTypography>
+      <TabContext value={currentTabValue}>
+        {isDesktop && renderTabList()}
+        {renderTabPanels()}
+      </TabContext>
     </Container>
   );
 };
