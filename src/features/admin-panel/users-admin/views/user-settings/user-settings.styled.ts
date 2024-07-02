@@ -1,13 +1,37 @@
-import { Box, DialogContent, Stack } from "@mui/material";
+import {
+  DialogActions,
+  DialogContent,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import ClearIcon from "@mui/icons-material/Clear";
 
-export const StyledWrapper = styled(Box)({
+export const StyledPaper = styled(Paper)({
+  padding: "20px",
+  width: "100%",
+  overflow: "visible",
+});
+
+export const StyledTypography = styled(Typography)({
+  marginBottom: "15px",
+});
+
+export const StyledWrapper = styled(Stack)({
   padding: "15px",
 });
 
 export const StyledDialogContent = styled(DialogContent)({
+  display: "flex",
+  flexDirection: "column",
   padding: "9px",
+  gap: "20px",
+});
+
+export const StyledDialogActions = styled(DialogActions)({
+  flexDirection: "column",
+  gap: "15px",
 });
 
 export const StyledStack = styled(Stack)({

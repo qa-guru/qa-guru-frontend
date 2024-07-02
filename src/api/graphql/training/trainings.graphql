@@ -17,6 +17,21 @@ query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
           rating
         }
       }
+      tariffs {
+        id
+        name
+        code
+        price
+        homeWork
+        training {
+          id
+          tariffs {
+            id
+            code
+          }
+        }
+        description
+      }
     }
     totalElements
   }

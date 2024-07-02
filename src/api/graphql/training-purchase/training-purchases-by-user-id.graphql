@@ -1,0 +1,40 @@
+query trainingPurchasesByUserId($userId: ID!) {
+  trainingPurchasesByUserId(userId: $userId) {
+    id
+    user {
+      id
+      email
+      firstName
+      lastName
+      avatar
+      middleName
+      rating {
+        rating
+      }
+    }
+    trainingTariff {
+      id
+      name
+      code
+      price
+      homeWork
+      description
+      training {
+        id
+        name
+        picture
+        techStack
+        mentors {
+          id
+          firstName
+          middleName
+          avatar
+          lastName
+          rating {
+            rating
+          }
+        }
+      }
+    }
+  }
+}
