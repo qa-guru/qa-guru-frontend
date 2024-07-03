@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import { useResponsive } from "shared/hooks";
 import UserRow from "shared/components/user-row";
 import { formatDate } from "shared/helpers";
+import { useParams } from "react-router-dom";
 
 import { ITableColumns } from "./table-columns.types";
 import {
@@ -15,13 +16,9 @@ import {
 import SelectLecture from "../select-lecture";
 import { AddLecture } from "../../containers";
 
-const TableColumns: FC<ITableColumns> = ({
-  data,
-  fetchMore,
-  lectureIds,
-  trainingId,
-}) => {
+const TableColumns: FC<ITableColumns> = ({ data, fetchMore, lectureIds }) => {
   const { isMobile } = useResponsive();
+  const { trainingId } = useParams();
 
   const desktopColumns = useMemo<ColumnDef<LectureDto>[]>(
     () => [
@@ -82,9 +79,9 @@ const TableColumns: FC<ITableColumns> = ({
           return (
             <StyledIconBox>
               <AddLecture
+                trainingId={trainingId}
                 selectedLectureId={lectureId}
                 lectureIds={lectureIds}
-                trainingId={trainingId}
               />
             </StyledIconBox>
           );
@@ -160,9 +157,9 @@ const TableColumns: FC<ITableColumns> = ({
           return (
             <StyledIconBox>
               <AddLecture
+                trainingId={trainingId}
                 selectedLectureId={lectureId}
                 lectureIds={lectureIds}
-                trainingId={trainingId}
               />
             </StyledIconBox>
           );

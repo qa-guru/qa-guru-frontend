@@ -15,5 +15,4 @@ export interface ITableColumns {
     ) => LecturesQuery;
   }) => Promise<ApolloQueryResult<LecturesQuery>>;
   lectureIds?: string[];
-  trainingId?: string;
 }

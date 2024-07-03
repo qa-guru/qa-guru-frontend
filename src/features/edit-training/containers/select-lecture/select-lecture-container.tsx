@@ -11,12 +11,10 @@ import TableColumns from "../../views/table-columns-lectures";
 
 interface ISelectLectureContainer {
   lectureIds?: string[];
-  trainingId?: string;
 }
 
 const SelectLectureContainer: FC<ISelectLectureContainer> = ({
   lectureIds,
-  trainingId,
 }) => {
   const { data, loading, fetchMore } = useLecturesQuery({
     variables: {
@@ -33,12 +31,7 @@ const SelectLectureContainer: FC<ISelectLectureContainer> = ({
   if (!data) return <NoDataErrorMessage />;
 
   return (
-    <TableColumns
-      data={data}
-      fetchMore={fetchMore}
-      lectureIds={lectureIds}
-      trainingId={trainingId}
-    />
+    <TableColumns data={data} fetchMore={fetchMore} lectureIds={lectureIds} />
   );
 };
 

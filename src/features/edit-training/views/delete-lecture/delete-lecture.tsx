@@ -7,14 +7,12 @@ import {
 } from "@mui/material";
 import { FC, useRef } from "react";
 import { useParams } from "react-router-dom";
-import DeleteIcon from "@mui/icons-material/Delete";
+import CloseIcon from "@mui/icons-material/Close";
 import {
-  DeleteLectureMutationFn,
   Maybe,
   UpdateTrainingLectureMutationFn,
 } from "api/graphql/generated/graphql";
 import { useModal } from "react-modal-hook";
-import { client } from "api";
 
 import {
   StyledButton,
@@ -25,7 +23,6 @@ import {
 } from "./delete-lecture.styled";
 
 interface IDeleteLecture {
-  deleteLecture: DeleteLectureMutationFn;
   lectureIds?: string[];
   lectureId?: Maybe<string>;
   updateTrainingLecture: UpdateTrainingLectureMutationFn;
@@ -33,7 +30,6 @@ interface IDeleteLecture {
 }
 
 const DeleteLecture: FC<IDeleteLecture> = ({
-  deleteLecture,
   lectureIds,
   updateTrainingLecture,
   lectureId,
@@ -47,7 +43,7 @@ const DeleteLecture: FC<IDeleteLecture> = ({
       <StyledWrapper>
         <StyledDialogContent>
           <Typography variant="h4">
-            Вы уверены, что хотите удалить лекцию?
+            Вы уверены, что хотите удалить лекцию из курса?
           </Typography>
         </StyledDialogContent>
         <DialogActions>
@@ -81,24 +77,16 @@ const DeleteLecture: FC<IDeleteLecture> = ({
     hideModal();
   };
 
-  const handleDeleteLecture = async () => {
-    console.log(lectureIdRef.current);
-
+  const handleDeleteLecture = () => {
     if (lectureIdRef.current) {
       const newLectureIds = lectureIds?.filter(
         (id) => id !== lectureIdRef.current
       );
 
-      await deleteLecture({
-        variables: { id: lectureIdRef.current },
-        onCompleted: () => {
-          updateTrainingLecture({
-            variables: {
-              id: trainingId!,
-              lectureIds: newLectureIds,
-            },
-          });
-          client.refetchQueries({ include: ["trainingLectures"] });
+      updateTrainingLecture({
+        variables: {
+          id: trainingId!,
+          lectureIds: newLectureIds,
         },
       });
 
@@ -108,7 +96,7 @@ const DeleteLecture: FC<IDeleteLecture> = ({
   };
 
   const renderLoading = () => <CircularProgress size={25} />;
-  const renderDeleteIcon = () => <DeleteIcon color="error" fontSize="small" />;
+  const renderDeleteIcon = () => <CloseIcon />;
 
   return (
     <IconButton onClick={handleOpen}>

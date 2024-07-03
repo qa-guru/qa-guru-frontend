@@ -5,7 +5,6 @@ import { CircularProgress, Container, Typography } from "@mui/material";
 import { useResponsive } from "shared/hooks";
 import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 import ContentNotFound from "shared/components/content-not-found";
-import { useParams } from "react-router-dom";
 
 import { ITable } from "./edit-lectures.types";
 import {
@@ -19,8 +18,6 @@ import MobileTable from "../mobile-table";
 import { CreateLecture, SelectLecture } from "../../containers";
 
 const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
-  const { trainingId } = useParams();
-
   const trainingLectures = data?.trainingLectures;
   const totalElements = data?.trainingLectures?.length;
 
@@ -106,7 +103,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   return (
     <Container>
       <StyledButtonStack>
-        <SelectLecture lectureIds={lectureIds} trainingId={trainingId} />
+        <SelectLecture lectureIds={lectureIds} />
         <CreateLecture lectureIds={lectureIds} />
       </StyledButtonStack>
       {noContent ? (
