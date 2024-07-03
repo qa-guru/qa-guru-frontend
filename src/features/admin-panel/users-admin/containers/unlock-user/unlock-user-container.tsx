@@ -8,7 +8,6 @@ import {
   UserDto,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
-import { useResponsive } from "shared/hooks";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";
 import UnlockUser from "../../views/unlock-user";
@@ -20,7 +19,6 @@ interface IUnlockUserContainer {
 
 const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id, user }) => {
   const { filter } = useTableAdminFilter();
-  const { isMobile } = useResponsive();
 
   const [unlockUser] = useUnlockUserMutation({
     update: (cache) => {
@@ -28,7 +26,7 @@ const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id, user }) => {
         query: UsersDocument,
         variables: {
           offset: 0,
-          limit: isMobile ? 2 : 20,
+          limit: 10,
           sort: { field: UserSortField.Email, order: Order.Desc },
           filter: filter || {},
         },
@@ -42,7 +40,7 @@ const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id, user }) => {
         query: UsersDocument,
         variables: {
           offset: 0,
-          limit: 20,
+          limit: 10,
           sort: { field: UserSortField.Email, order: Order.Desc },
           filter: filter || {},
         },
