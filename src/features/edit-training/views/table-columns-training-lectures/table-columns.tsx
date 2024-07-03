@@ -5,9 +5,15 @@ import { IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { useResponsive } from "shared/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
+import { formatDate } from "shared/helpers";
+import UserRow from "shared/components/user-row";
 
 import { ITableColumns } from "./table-columns.types";
-import { StyledBox, StyledEditBox } from "./table-columns.styled";
+import {
+  StyledBox,
+  StyledEditBox,
+  StyledTeachersBox,
+} from "./table-columns.styled";
 import { DeleteLecture } from "../../containers";
 import TableEditLectures from "../edit-lectures";
 
@@ -38,6 +44,42 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
           return <Typography variant="body2">{subject}</Typography>;
         },
         size: 160,
+      },
+      {
+        header: "Ведущие преподаватели",
+        footer: (props) => props.column.id,
+        accessorKey: "speakers",
+        cell: (info: CellContext<TrainingLectureDto, unknown>) => {
+          const { lecture } = info.row.original;
+          const { speakers } = lecture || {};
+
+          return (
+            <StyledTeachersBox>
+              {speakers?.map((speaker, index) => (
+                <StyledTeachersBox key={`${speaker?.id} + ${index}`}>
+                  <UserRow user={speaker} userId={speaker?.id} hasLink />
+                </StyledTeachersBox>
+              ))}
+            </StyledTeachersBox>
+          );
+        },
+        size: 160,
+      },
+      {
+        header: "Дата создания",
+        footer: (props) => props.column.id,
+        accessorKey: "creationDate",
+        cell: (info: CellContext<TrainingLectureDto, unknown>) => {
+          const { lecture } = info.row.original;
+          const { creationDate } = lecture || {};
+
+          return (
+            <Typography variant="body2">
+              {formatDate(creationDate, "DD.MM.YYYY")}
+            </Typography>
+          );
+        },
+        size: 90,
       },
       {
         header: () => null,

@@ -1,15 +1,28 @@
-import { CircularProgress, IconButton } from "@mui/material";
-import { FC } from "react";
-import { useParams } from "react-router-dom";
-import DeleteIcon from "@mui/icons-material/Delete";
 import {
-  DeleteLectureMutationFn,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { FC, useRef } from "react";
+import { useParams } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import {
   Maybe,
   UpdateTrainingLectureMutationFn,
 } from "api/graphql/generated/graphql";
+import { useModal } from "react-modal-hook";
+
+import {
+  StyledButton,
+  StyledConfirmButton,
+  StyledDialogContent,
+  StyledStack,
+  StyledWrapper,
+} from "./delete-lecture.styled";
 
 interface IDeleteLecture {
-  deleteLecture: DeleteLectureMutationFn;
   lectureIds?: string[];
   lectureId?: Maybe<string>;
   updateTrainingLecture: UpdateTrainingLectureMutationFn;
@@ -17,35 +30,76 @@ interface IDeleteLecture {
 }
 
 const DeleteLecture: FC<IDeleteLecture> = ({
-  deleteLecture,
   lectureIds,
   updateTrainingLecture,
   lectureId,
   loadingUpdateTrainingLecture,
 }) => {
   const { trainingId } = useParams();
+  const lectureIdRef = useRef<Maybe<string | undefined>>(lectureId);
 
-  const handleRemoveLecture = (lectureId: string | null | undefined) => {
-    const newLectureIds = lectureIds?.filter((id) => id !== lectureId);
+  const [showModal, hideModal] = useModal(({ in: open }) => (
+    <Dialog open={open} onClose={hideModal} maxWidth="xs">
+      <StyledWrapper>
+        <StyledDialogContent>
+          <Typography variant="h4">
+            Вы уверены, что хотите удалить лекцию из курса?
+          </Typography>
+        </StyledDialogContent>
+        <DialogActions>
+          <StyledStack>
+            <StyledButton
+              color="secondary"
+              variant="contained"
+              onClick={handleCancel}
+            >
+              Нет
+            </StyledButton>
+            <StyledConfirmButton
+              variant="contained"
+              onClick={handleDeleteLecture}
+            >
+              Да
+            </StyledConfirmButton>
+          </StyledStack>
+        </DialogActions>
+      </StyledWrapper>
+    </Dialog>
+  ));
 
-    updateTrainingLecture({
-      variables: {
-        id: trainingId!,
-        lectureIds: newLectureIds,
-      },
-      onCompleted: () => {
-        deleteLecture({
-          variables: { id: lectureId! },
-        });
-      },
-    });
+  const handleOpen = () => {
+    lectureIdRef.current = lectureId;
+    showModal();
+  };
+
+  const handleCancel = () => {
+    lectureIdRef.current = null;
+    hideModal();
+  };
+
+  const handleDeleteLecture = () => {
+    if (lectureIdRef.current) {
+      const newLectureIds = lectureIds?.filter(
+        (id) => id !== lectureIdRef.current
+      );
+
+      updateTrainingLecture({
+        variables: {
+          id: trainingId!,
+          lectureIds: newLectureIds,
+        },
+      });
+
+      lectureIdRef.current = null;
+      hideModal();
+    }
   };
 
   const renderLoading = () => <CircularProgress size={25} />;
-  const renderDeleteIcon = () => <DeleteIcon color="error" fontSize="small" />;
+  const renderDeleteIcon = () => <CloseIcon />;
 
   return (
-    <IconButton onClick={() => handleRemoveLecture(lectureId)}>
+    <IconButton onClick={handleOpen}>
       {loadingUpdateTrainingLecture ? renderLoading() : renderDeleteIcon()}
     </IconButton>
   );
