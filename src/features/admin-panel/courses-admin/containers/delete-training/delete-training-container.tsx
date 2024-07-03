@@ -24,7 +24,7 @@ const DeleteTrainingContainer: FC<IDeleteTrainingContainer> = ({
           query: TrainingsDocument,
           variables: {
             offset: 0,
-            limit: 30,
+            limit: 10,
             sort: { field: TrainingSortField.CreationDate, order: Order.Desc },
           },
         });
@@ -43,7 +43,7 @@ const DeleteTrainingContainer: FC<IDeleteTrainingContainer> = ({
           query: TrainingsDocument,
           variables: {
             offset: 0,
-            limit: 30,
+            limit: 10,
             sort: { field: TrainingSortField.CreationDate, order: Order.Desc },
           },
           data: updatedTrainings,
