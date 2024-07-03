@@ -35,10 +35,6 @@ const Layout: FC<ILayout> = ({ children, isLogging }) => {
     [isLogging, isMobile, determineIsKanban]
   );
 
-  const showFooter = useMemo(() => {
-    return !location.pathname.startsWith("/admin-panel");
-  }, [location.pathname]);
-
   return (
     <StyledBox>
       {!isLogging && <Header />}
@@ -56,7 +52,7 @@ const Layout: FC<ILayout> = ({ children, isLogging }) => {
       <StyledContainer isLogging={isLogging}>
         <Outlet />
       </StyledContainer>
-      {showFooter && <Footer />}
+      <Footer />
     </StyledBox>
   );
 };

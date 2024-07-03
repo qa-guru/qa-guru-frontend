@@ -34,11 +34,11 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
           const { pageURL, title, id } = page;
 
           return (
-            <CustomLink path={pageURL}>
-              <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
+            <MenuItem key={id} onClick={() => handleClickNavMenu(pageURL)}>
+              <CustomLink path={pageURL}>
                 <ListItemText>{title}</ListItemText>
-              </MenuItem>
-            </CustomLink>
+              </CustomLink>
+            </MenuItem>
           );
         })}
       </StyledMenu>
