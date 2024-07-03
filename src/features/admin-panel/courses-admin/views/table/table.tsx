@@ -55,7 +55,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [trainings]);
 
   const renderMobileTable = () => (
-    <StyledPaper hasMoreTrainings={hasMoreTrainings}>
+    <StyledPaper id="scroll-mobile-container">
       <StyledInfiniteScroll
         dataLength={trainings?.length || 0}
         next={handleLoadMore}
@@ -69,7 +69,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
   );
 
   const renderDesktopTable = () => (
-    <StyledPaper hasMoreTrainings={hasMoreTrainings}>
+    <StyledPaper id="scroll-container">
       <StyledInfiniteScroll
         dataLength={trainings?.length || 0}
         next={handleLoadMore}
