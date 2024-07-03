@@ -67,7 +67,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [trainingLectures]);
 
   const renderMobileTable = () => (
-    <StyledPaper id="scroll-mobile-container">
+    <StyledPaper hasMoreTrainingLectures={hasMoreTrainingLectures}>
       <StyledInfiniteScroll
         dataLength={trainingLectures?.length || 0}
         next={handleLoadMore}
@@ -83,7 +83,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   const renderDesktopTable = () => (
     <>
       <Typography variant="h5">Уроки ({trainingLectures?.length})</Typography>
-      <StyledPaper id="scroll-container">
+      <StyledPaper hasMoreTrainingLectures={hasMoreTrainingLectures}>
         <StyledInfiniteScroll
           dataLength={trainingLectures?.length || 0}
           next={handleLoadMore}

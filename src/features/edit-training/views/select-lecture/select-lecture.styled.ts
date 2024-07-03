@@ -1,17 +1,38 @@
 import { styled } from "@mui/system";
-import { Box, Button, darken } from "@mui/material";
+import { Box, Button, darken, DialogContent, Paper } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import InfiniteScroll from "react-infinite-scroll-component";
+
+export const StyledPaper = styled(Paper)(({ theme }) => ({
+  borderRadius: "10px",
+  padding: "5px 0 0",
+  margin: "20px 0",
+  height: "calc(100dvh - 278px)",
+  overflowY: "auto",
+  [theme.breakpoints.down("md")]: {
+    height: "calc(100dvh - 305px)",
+  },
+  [theme.breakpoints.only("xs")]: {
+    height: "calc(100dvh - 265px)",
+  },
+}));
+
+export const StyledDialogContent = styled(DialogContent)({
+  overflowY: "auto",
+  margin: 0,
+  padding: "15px 0 0",
+  scrollbarWidth: "none",
+});
 
 export const StyledBox = styled(Box)({
   marginTop: "25px",
   textAlign: "center",
 });
 
-export const StyledButtonBox = styled(Box)(({ theme }) => ({
+export const StyledButtonBox = styled(Box)({
   display: "flex",
   justifyContent: "flex-end",
-}));
+});
 
 export const StyledModalButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.white,
