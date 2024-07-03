@@ -41,9 +41,10 @@ const CreateLecture: FC<ICreateLecture> = ({
     <StyledButton
       variant="contained"
       onClick={handleAddLecture}
+      disabled={loadingUpdateTrainingLecture}
       startIcon={
         loadingUpdateTrainingLecture ? (
-          <CircularProgress size={20} color="secondary" />
+          <CircularProgress size={20} color="primary" />
         ) : (
           <AddIcon />
         )
