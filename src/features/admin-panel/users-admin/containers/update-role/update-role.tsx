@@ -11,6 +11,7 @@ import {
 
 import SelectRole from "../../views/select-role";
 import { useTableAdminFilter } from "../../context/admin-table-context";
+import { useResponsive } from "../../../../../shared/hooks";
 
 interface IUpdateRoleContainer {
   id?: Maybe<string>;
@@ -19,6 +20,7 @@ interface IUpdateRoleContainer {
 
 const UpdateRoleContainer: FC<IUpdateRoleContainer> = ({ id, roles }) => {
   const { filter } = useTableAdminFilter();
+  const { isMobile } = useResponsive();
 
   const [updateRole] = useUpdateRoleMutation({
     update: (cache, { data }) => {

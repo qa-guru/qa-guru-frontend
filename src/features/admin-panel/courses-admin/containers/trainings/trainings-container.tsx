@@ -13,7 +13,7 @@ const TrainingsContainer: FC = () => {
   const { data, loading, fetchMore } = useTrainingsQuery({
     variables: {
       offset: 0,
-      limit: 30,
+      limit: 10,
       sort: { field: TrainingSortField.CreationDate, order: Order.Desc },
     },
   });
