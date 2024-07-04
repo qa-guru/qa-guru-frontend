@@ -1,6 +1,5 @@
-import React, { FC } from "react";
+import React from "react";
 import { flexRender, type Table } from "@tanstack/react-table";
-import { TrainingLectureDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
 
 import {
@@ -9,11 +8,11 @@ import {
   StyledTableRow,
 } from "./mobile-table.styled";
 
-interface IMobileTable {
-  table: Table<TrainingLectureDto>;
+interface IMobileTable<T> {
+  table: Table<T>;
 }
 
-const MobileTable: FC<IMobileTable> = ({ table }) => {
+const MobileTable = <T,>({ table }: IMobileTable<T>) => {
   return (
     <StyledTable>
       <TableBody>

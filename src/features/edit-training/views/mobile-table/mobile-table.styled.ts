@@ -1,10 +1,9 @@
 import { Table, TableCell, TableRow, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import { TrainingLectureDto } from "api/graphql/generated/graphql";
 import { type Table as TableType } from "@tanstack/react-table";
 
-interface IStyledTableWrapper {
-  table: TableType<TrainingLectureDto>;
+interface IStyledTableWrapper<T> {
+  table: TableType<T>;
   rowIndex: number;
 }
 
@@ -27,7 +26,7 @@ export const StyledTypography = styled(Typography)({
 
 export const StyledTableRow = styled(TableRow, {
   shouldForwardProp: (prop) => !["table", "rowIndex"].includes(prop as string),
-})<IStyledTableWrapper>(({ table, rowIndex, theme }) => ({
+})<IStyledTableWrapper<any>>(({ table, rowIndex, theme }) => ({
   borderBottom:
     rowIndex === table.getRowModel().rows.length - 1
       ? "none"

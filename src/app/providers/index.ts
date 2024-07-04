@@ -11,8 +11,8 @@ import { withClickToCompoment } from "./with-click-to-component";
 import { withContext } from "./with-context";
 
 export const withProviders = compose(
-  withContext,
   withApollo,
+  withContext,
   withMui,
   withRouter,
   withStyledEngine,

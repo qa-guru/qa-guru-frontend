@@ -1,61 +1,37 @@
 import { FC } from "react";
-import { useParams } from "react-router-dom";
+import { CircularProgress, IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import {
-  UpdateLectureMutationFn,
-  UpdateTrainingLectureMutationFn,
-} from "api/graphql/generated/graphql";
-import { CircularProgress } from "@mui/material";
 
-import { StyledButton } from "./add-lecture.styled";
-
-interface IAddLecture {
-  updateLecture: UpdateLectureMutationFn;
-  lectureIds?: string[];
-  updateTrainingLecture: UpdateTrainingLectureMutationFn;
-  loadingUpdateTrainingLecture: boolean;
-}
+import { IAddLecture } from "./add-lecture.types";
 
 const AddLecture: FC<IAddLecture> = ({
-  updateLecture,
-  lectureIds,
   updateTrainingLecture,
+  lectureIds,
   loadingUpdateTrainingLecture,
+  selectedLectureId,
+  trainingId,
 }) => {
-  const { trainingId } = useParams();
-
   const handleAddLecture = () => {
-    updateLecture({
-      variables: {
-        input: {},
-      },
-      onCompleted: (result) => {
-        lectureIds?.push(result?.updateLecture?.id!);
+    if (selectedLectureId) {
+      lectureIds?.push(selectedLectureId);
 
-        updateTrainingLecture({
-          variables: {
-            id: trainingId!,
-            lectureIds: lectureIds!,
-          },
-        });
-      },
-    });
+      updateTrainingLecture({
+        variables: {
+          id: trainingId!,
+          lectureIds: lectureIds!,
+        },
+      });
+    }
   };
 
   return (
-    <StyledButton
-      variant="contained"
-      onClick={handleAddLecture}
-      startIcon={
-        loadingUpdateTrainingLecture ? (
-          <CircularProgress size={20} color="secondary" />
-        ) : (
-          <AddIcon />
-        )
-      }
-    >
-      Создать новый
-    </StyledButton>
+    <IconButton onClick={handleAddLecture}>
+      {loadingUpdateTrainingLecture ? (
+        <CircularProgress size={20} color="primary" />
+      ) : (
+        <AddIcon color="primary" />
+      )}
+    </IconButton>
   );
 };
 

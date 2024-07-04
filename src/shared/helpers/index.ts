@@ -6,3 +6,4 @@ export { createColumnItem } from "./create-column-item";
 export { isColumnHighlight } from "./is-column-highlight";
 export { getUpdatedAllowedColumns } from "./get-updated-allowed-columns";
 export { getAllowedColumns } from "./get-allowed-columns";
+export { generateUniqueId } from "./generate-unique-id";

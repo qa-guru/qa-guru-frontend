@@ -1,6 +1,4 @@
 import { flexRender, type Table } from "@tanstack/react-table";
-import { TrainingLectureDto } from "api/graphql/generated/graphql";
-import { FC } from "react";
 import {
   TableBody,
   TableCell,
@@ -11,11 +9,11 @@ import {
 
 import { StyledTable, StyledTableRow } from "./desktop-table.styled";
 
-interface IDesktopTable {
-  table: Table<TrainingLectureDto>;
+interface IDesktopTable<T> {
+  table: Table<T>;
 }
 
-const DesktopTable: FC<IDesktopTable> = ({ table }) => {
+const DesktopTable = <T,>({ table }: IDesktopTable<T>) => {
   return (
     <StyledTable>
       <TableHead>

@@ -9,13 +9,13 @@ import ContentNotFound from "shared/components/content-not-found";
 import { ITable } from "./edit-lectures.types";
 import {
   StyledBox,
-  StyledButtonBox,
+  StyledButtonStack,
   StyledInfiniteScroll,
   StyledPaper,
 } from "./edit-lectures.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
-import { AddLecture } from "../../containers";
+import { CreateLecture, SelectLecture } from "../../containers";
 
 const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   const trainingLectures = data?.trainingLectures;
@@ -67,7 +67,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   }, [trainingLectures]);
 
   const renderMobileTable = () => (
-    <StyledPaper id="scroll-mobile-container">
+    <StyledPaper hasMoreTrainingLectures={hasMoreTrainingLectures}>
       <StyledInfiniteScroll
         dataLength={trainingLectures?.length || 0}
         next={handleLoadMore}
@@ -75,7 +75,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
         loader={renderLoader()}
         scrollableTarget="scroll-mobile-container"
       >
-        <MobileTable table={table} />
+        <MobileTable<TrainingLectureDto> table={table} />
       </StyledInfiniteScroll>
     </StyledPaper>
   );
@@ -83,7 +83,7 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   const renderDesktopTable = () => (
     <>
       <Typography variant="h5">Уроки ({trainingLectures?.length})</Typography>
-      <StyledPaper id="scroll-container">
+      <StyledPaper hasMoreTrainingLectures={hasMoreTrainingLectures}>
         <StyledInfiniteScroll
           dataLength={trainingLectures?.length || 0}
           next={handleLoadMore}
@@ -91,23 +91,25 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
           loader={renderLoader()}
           scrollableTarget="scroll-container"
         >
-          <DesktopTable table={table} />
+          <DesktopTable<TrainingLectureDto> table={table} />
         </StyledInfiniteScroll>
       </StyledPaper>
     </>
   );
 
+  const renderTable = () =>
+    isMobile ? renderMobileTable() : renderDesktopTable();
+
   return (
     <Container>
-      <StyledButtonBox>
-        <AddLecture lectureIds={lectureIds} />
-      </StyledButtonBox>
+      <StyledButtonStack>
+        <SelectLecture lectureIds={lectureIds} />
+        <CreateLecture lectureIds={lectureIds} />
+      </StyledButtonStack>
       {noContent ? (
         <ContentNotFound text="Нет лекций" icon={<HomeworksNotFound />} />
-      ) : isMobile ? (
-        renderMobileTable()
       ) : (
-        renderDesktopTable()
+        renderTable()
       )}
     </Container>
   );

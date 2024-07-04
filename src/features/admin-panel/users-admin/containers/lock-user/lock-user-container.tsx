@@ -7,7 +7,6 @@ import {
   useLockUserMutation,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
-import { useResponsive } from "shared/hooks";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";
 import LockUser from "../../views/lock-user";
@@ -18,7 +17,6 @@ interface ILockUserContainer {
 
 const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
   const { filter } = useTableAdminFilter();
-  const { isMobile } = useResponsive();
 
   const [lockUser, { loading }] = useLockUserMutation({
     update: (cache) => {
@@ -26,7 +24,7 @@ const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
         query: UsersDocument,
         variables: {
           offset: 0,
-          limit: isMobile ? 2 : 20,
+          limit: 10,
           sort: { field: UserSortField.Email, order: Order.Desc },
           filter: filter || {},
         },
@@ -40,7 +38,7 @@ const LockUserContainer: FC<ILockUserContainer> = ({ id }) => {
         query: UsersDocument,
         variables: {
           offset: 0,
-          limit: 20,
+          limit: 10,
           sort: { field: UserSortField.Email, order: Order.Desc },
           filter: filter || {},
         },

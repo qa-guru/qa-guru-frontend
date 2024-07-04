@@ -6,6 +6,13 @@ query trainingLectures($id: ID!) {
       id
       subject
       description
+      creationDate
+      speakers {
+        id
+        firstName
+        lastName
+        middleName
+      }
     }
     lastLecture {
       id
