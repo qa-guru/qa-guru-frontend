@@ -26,6 +26,24 @@ export const StyledButtonStack = styled(Stack)(({ theme }) => ({
   },
 }));
 
+export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  justifyContent: "space-between",
+  marginBottom: "30px",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "16px",
+  },
+}));
+
+export const StyledSubmitButtonsStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  gap: "8px",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
+
 export const StyledBox = styled(Box)({
   marginTop: "25px",
   textAlign: "center",

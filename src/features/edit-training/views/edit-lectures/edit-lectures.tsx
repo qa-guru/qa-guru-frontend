@@ -1,17 +1,26 @@
 import { FC, useEffect, useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { TrainingLectureDto } from "api/graphql/generated/graphql";
-import { CircularProgress, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@mui/material";
 import { useResponsive } from "shared/hooks";
 import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 import ContentNotFound from "shared/components/content-not-found";
+import { Clear } from "@mui/icons-material";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { ITable } from "./edit-lectures.types";
 import {
   StyledBox,
-  StyledButtonStack,
+  StyledButtonsStack,
   StyledInfiniteScroll,
   StyledPaper,
+  StyledSubmitButtonsStack,
 } from "./edit-lectures.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
@@ -20,6 +29,9 @@ import { CreateLecture, SelectLecture } from "../../containers";
 const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
   const trainingLectures = data?.trainingLectures;
   const totalElements = data?.trainingLectures?.length;
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const noContent = data?.trainingLectures?.length === 0;
   const lectureIds = data?.trainingLectures?.map(
@@ -52,6 +64,11 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
         };
       },
     });
+  };
+
+  const handleBack = () => {
+    const newPathname = location.pathname.replace("/edit-lectures", "");
+    navigate(newPathname);
   };
 
   const renderLoader = () => (
@@ -102,10 +119,22 @@ const TableEditLectures: FC<ITable> = ({ data, columns, fetchMore }) => {
 
   return (
     <Container>
-      <StyledButtonStack>
-        <SelectLecture lectureIds={lectureIds} />
-        <CreateLecture lectureIds={lectureIds} />
-      </StyledButtonStack>
+      <StyledButtonsStack>
+        <Box>
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={handleBack}
+            endIcon={<Clear fontSize="small" />}
+          >
+            Отменить
+          </Button>
+        </Box>
+        <StyledSubmitButtonsStack>
+          <SelectLecture lectureIds={lectureIds} />
+          <CreateLecture lectureIds={lectureIds} />
+        </StyledSubmitButtonsStack>
+      </StyledButtonsStack>
       {noContent ? (
         <ContentNotFound text="Нет лекций" icon={<HomeworksNotFound />} />
       ) : (
