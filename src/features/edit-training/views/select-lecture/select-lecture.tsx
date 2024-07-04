@@ -15,11 +15,11 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { StyledPaper } from "../edit-lectures/edit-lectures.styled";
 import MobileTable from "../mobile-table";
 import DesktopTable from "../desktop-table";
 import { ISelectLecture } from "./select-lecture.types";
 import {
+  StyledPaper,
   StyledBox,
   StyledButton,
   StyledButtonBox,
@@ -27,6 +27,7 @@ import {
   StyledModalButton,
   StyledInfiniteScroll,
   StyledClearIcon,
+  StyledDialogContent,
 } from "./select-lecture.styled";
 
 interface IModalTable {
@@ -56,15 +57,7 @@ const ModalTable = ({
 
   const renderMobileTable = () => (
     <Dialog open={open} onClose={hideModal} maxWidth="lg" fullScreen>
-      <DialogContent
-        id="scroll-modal-container"
-        sx={{
-          overflowY: "auto",
-          margin: 0,
-          padding: "15px 0 0",
-          scrollbarWidth: "none",
-        }}
-      >
+      <StyledDialogContent id="scroll-modal-container">
         <StyledIconBox>
           <IconButton onClick={hideModal}>
             <StyledClearIcon fontSize="small" />
@@ -79,12 +72,12 @@ const ModalTable = ({
         >
           <MobileTable<LectureDto> table={table} />
         </StyledInfiniteScroll>
-      </DialogContent>
+      </StyledDialogContent>
     </Dialog>
   );
 
   const renderDesktopTable = () => (
-    <Dialog open={open} onClose={hideModal} maxWidth="lg">
+    <Dialog open={open} onClose={hideModal} maxWidth="lg" scroll="body">
       <DialogContent>
         <StyledButtonBox>
           <StyledModalButton
@@ -95,7 +88,7 @@ const ModalTable = ({
             Закрыть
           </StyledModalButton>
         </StyledButtonBox>
-        <StyledPaper id="scroll-modal-container">
+        <StyledPaper>
           <StyledInfiniteScroll
             dataLength={lectures?.length || 0}
             next={handleLoadMore}
