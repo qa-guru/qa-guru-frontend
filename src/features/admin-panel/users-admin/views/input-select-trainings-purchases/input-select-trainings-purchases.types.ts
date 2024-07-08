@@ -14,10 +14,11 @@ export interface ITrainingOption {
   techStack?: TechStack;
 }
 
-export interface IInputSelectTrainings {
-  data?: TrainingsQuery;
-  loading: boolean;
+export interface IInputSelectTrainingsPurchases {
+  dataTrainings?: TrainingsQuery;
+  dataTrainingPurchasesByUserId?: TrainingPurchasesByUserIdQuery;
+  loadingTrainings: boolean;
+  loadingUpdateTrainingPurchase: boolean;
   updateTrainingPurchase: UpdateTrainingPurchaseMutationFn;
-  trainingPurchases?: TrainingPurchasesByUserIdQuery;
   user: Maybe<UserDto>;
 }

@@ -1,4 +1,4 @@
-mutation updateTrainingPurchase($input: TrainingPurchaseInput!) {
+mutation updateTrainingPurchase($input: [TrainingPurchaseInput]!) {
   updateTrainingPurchase(input: $input) {
     id
     user {
