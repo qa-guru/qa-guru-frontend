@@ -1,5 +1,6 @@
 import { Stack, styled } from "@mui/system";
 import { Button, darken, Paper } from "@mui/material";
+import { ArrowForwardIos } from "@mui/icons-material";
 
 export const StyledPaperStack = styled(Stack)({
   flexDirection: "column",
@@ -39,7 +40,7 @@ export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
 
 export const StyledSubmitButtonsStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  gap: "16px",
+  gap: "8px",
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   },
@@ -48,7 +49,6 @@ export const StyledSubmitButtonsStack = styled(Stack)(({ theme }) => ({
 export const StyledSaveButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.app.pinkMain,
   color: theme.palette.app.white,
-  gap: "8px",
   "&:hover": {
     backgroundColor: darken(theme.palette.app.pinkMain, 0.25),
   },
@@ -59,6 +59,6 @@ export const StyledContinueButton = styled(Button)(({ theme }) => ({
   gap: "8px",
 }));
 
-export const StyledCancelButton = styled(Button)({
-  gap: "8px",
+export const StyledArrowForwardIosIcon = styled(ArrowForwardIos)({
+  fontSize: "15px",
 });

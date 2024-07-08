@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
@@ -8,18 +8,17 @@ import { useSnackbar } from "notistack";
 import { client } from "api";
 import { Clear } from "@mui/icons-material";
 import SaveIcon from "@mui/icons-material/Save";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import TrainingUpload from "../training-upload";
 import { SelectLectors } from "../../containers";
 import {
+  StyledArrowForwardIosIcon,
   StyledButtonsStack,
-  StyledCancelButton,
   StyledContinueButton,
-  StyledSaveButton,
   StyledInfoStack,
   StyledPaper,
   StyledPaperStack,
+  StyledSaveButton,
   StyledSubmitButtonsStack,
   StyledWrapper,
 } from "./edit-training.styled";
@@ -61,6 +60,13 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
     });
   };
 
+  const handleContinue = () => {
+    handleSubmit(async (data) => {
+      await onSubmit(data);
+      navigate(`${location.pathname}/edit-lectures`);
+    })();
+  };
+
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -91,30 +97,29 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
           </StyledPaper>
         </StyledPaperStack>
         <StyledButtonsStack>
-          <StyledSubmitButtonsStack>
-            <StyledSaveButton type="submit" variant="contained">
-              <SaveIcon fontSize="small" />
-              Сохранить
-            </StyledSaveButton>
-            <StyledContinueButton
-              type="submit"
-              variant="contained"
-              onClick={() => navigate(`${location.pathname}/edit-lectures`)}
-            >
-              Продолжить
-              <ArrowForwardIosIcon sx={{ fontSize: "16px" }} />
-            </StyledContinueButton>
-          </StyledSubmitButtonsStack>
           <Box>
-            <StyledCancelButton
+            <Button
               color="secondary"
               variant="contained"
               onClick={() => navigate("/admin-panel/courses")}
+              endIcon={<Clear fontSize="small" />}
             >
-              <Clear fontSize="small" />
-              Отмена
-            </StyledCancelButton>
+              Отменить
+            </Button>
           </Box>
+          <StyledSubmitButtonsStack>
+            <StyledSaveButton
+              type="submit"
+              variant="contained"
+              startIcon={<SaveIcon />}
+            >
+              Сохранить
+            </StyledSaveButton>
+            <StyledContinueButton variant="contained" onClick={handleContinue}>
+              Продолжить
+              <StyledArrowForwardIosIcon />
+            </StyledContinueButton>
+          </StyledSubmitButtonsStack>
         </StyledButtonsStack>
       </form>
     </Container>
