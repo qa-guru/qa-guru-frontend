@@ -19,7 +19,6 @@ import {
 const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
   dataTrainings,
   dataTrainingPurchasesByUserId,
-  loadingTrainings,
   loadingUpdateTrainingPurchase,
   updateTrainingPurchase,
   user,
@@ -65,11 +64,15 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
   const handleSelectChange = (trainings: ITrainingOption[]) => {
     setValue("trainings", trainings);
 
-    console.log(trainings);
+    const trainingInput = trainings.map(({ id, code }) => ({
+      id,
+      trainingTariffCode: code,
+      userEmail: user?.email,
+    }));
 
     updateTrainingPurchase({
       variables: {
-        input: trainings,
+        input: trainingInput,
       },
     });
   };
@@ -100,7 +103,7 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
                   ...params.InputProps,
                   endAdornment: (
                     <>
-                      {loadingTrainings ? (
+                      {loadingUpdateTrainingPurchase ? (
                         <CircularProgress color="inherit" size={20} />
                       ) : null}
                       {params.InputProps.endAdornment}
@@ -134,7 +137,7 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
                 <StyledOptionChip variant="outlined" label={option.name} />
               </li>
             )}
-            loading={loadingTrainings}
+            loading={loadingUpdateTrainingPurchase}
             loadingText="Загрузка..."
           />
         )}

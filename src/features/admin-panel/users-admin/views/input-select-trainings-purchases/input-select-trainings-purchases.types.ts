@@ -17,7 +17,6 @@ export interface ITrainingOption {
 export interface IInputSelectTrainingsPurchases {
   dataTrainings?: TrainingsQuery;
   dataTrainingPurchasesByUserId?: TrainingPurchasesByUserIdQuery;
-  loadingTrainings: boolean;
   loadingUpdateTrainingPurchase: boolean;
   updateTrainingPurchase: UpdateTrainingPurchaseMutationFn;
   user: Maybe<UserDto>;

@@ -39,7 +39,8 @@ const InputSelectTrainingsPurchasesContainer: FC<ITrainingsContainer> = ({
   const [updateTrainingPurchase, { loading: loadingUpdateTrainingPurchase }] =
     useUpdateTrainingPurchaseMutation();
 
-  if (loadingTrainingsPurchases) return <CircularProgress size={20} />;
+  if (loadingTrainingsPurchases || loadingTrainings)
+    return <CircularProgress size={20} />;
   if (!dataTrainings || !dataTrainingPurchasesByUserId)
     return <NoDataErrorMessage />;
 
@@ -47,7 +48,6 @@ const InputSelectTrainingsPurchasesContainer: FC<ITrainingsContainer> = ({
     <InputSelectTrainingsPurchases
       dataTrainings={dataTrainings}
       dataTrainingPurchasesByUserId={dataTrainingPurchasesByUserId}
-      loadingTrainings={loadingTrainings}
       loadingUpdateTrainingPurchase={loadingUpdateTrainingPurchase}
       updateTrainingPurchase={updateTrainingPurchase}
       user={user}
