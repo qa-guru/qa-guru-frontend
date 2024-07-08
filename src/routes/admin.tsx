@@ -21,8 +21,9 @@ import {
 } from "pages/kanban-student";
 
 import InfoSystemPage from "../pages/info-system";
+import LayoutAdmin from "../shared/components/layouts/layout-admin/layout-admin";
 
-const AdminRoutes = [
+const routes = [
   <Route key="/" path="/" element={<HomePage />} />,
   <Route
     key="training-lectures"
@@ -100,5 +101,9 @@ const AdminRoutes = [
   />,
   <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
 ];
+
+const AdminRoutes = () => {
+  return <LayoutAdmin>{routes}</LayoutAdmin>;
+};
 
 export default AdminRoutes;

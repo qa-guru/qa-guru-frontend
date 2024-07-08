@@ -7,7 +7,7 @@ import {
   UserRole,
   useUserRolesQuery,
 } from "api/graphql/generated/graphql";
-import Layout from "shared/components/layout";
+import Layout from "shared/components/layouts/layout";
 import ScrollPageSectionPage from "pages/scroll-page-section";
 import {
   LoginPage,
@@ -41,19 +41,19 @@ const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
   return <Layout isLogging>{children}</Layout>;
 };
 
-export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {
-  [UserRole.Student]: StudentRoutes,
-  [UserRole.Mentor]: MentorRoutes,
-  [UserRole.Lector]: LectorRoutes,
+export const roleRoutes: { [key in UserRole]?: FC } = {
+  // [UserRole.Student]: StudentRoutes,
+  // [UserRole.Mentor]: MentorRoutes,
+  // [UserRole.Lector]: LectorRoutes,
   [UserRole.Admin]: AdminRoutes,
 };
 
 export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
   return userRoles?.reduce<ReactElement[]>((acc, role) => {
-    const routes = role && roleRoutes[role];
-    routes?.forEach((route) => {
-      if (!acc.some((accRoute) => accRoute.key === route.key)) acc.push(route);
-    });
+    const RouteComponent = role && roleRoutes[role];
+    if (RouteComponent) {
+      acc.push(<RouteComponent key={role} />);
+    }
     return acc;
   }, []);
 };
@@ -73,6 +73,8 @@ export const useUserRoutes = () => {
 
   const roles = data?.user?.roles ?? [];
   const usersRoutes = getUserRoutes(roles);
+
+  console.log(usersRoutes);
 
   return { usersRoutes, loading };
 };
@@ -103,15 +105,15 @@ const Routing: FC<IRoutnig> = () => {
       }
     >
       <Routes>
-        <Route path="/" element={<Layout />}>
-          {usersRoutes?.map((route) => (
-            <Route
-              key={route.key}
-              path={route.props.path}
-              element={route.props.element}
-            />
-          ))}
-        </Route>
+        {/*<Route path="/" element={<Layout />}>*/}
+        {usersRoutes?.map((route) => (
+          <Route
+            key={route.key}
+            path={route.props.path}
+            element={route.props.element}
+          />
+        ))}
+        {/*</Route>*/}
         <Route
           path="/authorization"
           element={
