@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IconButton, Stack } from "@mui/material";
+import { IconButton, Stack, Tooltip } from "@mui/material";
 import { ViewKanban, ViewList } from "@mui/icons-material";
 
 import { HomeworksOtherStudentsTotalElements } from "../../containers";
@@ -13,12 +13,16 @@ const HomeworksViewSwitcher: FC<IHomeworksViewSwitcher> = ({
   <StyledWrapper>
     <HomeworksOtherStudentsTotalElements />
     <Stack direction="row">
-      <IconButton size="small" onClick={onKanbanView}>
-        <ViewKanban color="primary" />
-      </IconButton>
-      <IconButton size="small" onClick={onListView}>
-        <ViewList color="primary" />
-      </IconButton>
+      <Tooltip title="Отобразить доской">
+        <IconButton size="small" onClick={onKanbanView}>
+          <ViewKanban color="primary" />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Отобразить списком">
+        <IconButton size="small" onClick={onListView}>
+          <ViewList color="primary" />
+        </IconButton>
+      </Tooltip>
     </Stack>
   </StyledWrapper>
 );
