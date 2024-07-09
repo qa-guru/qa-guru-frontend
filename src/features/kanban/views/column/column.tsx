@@ -29,12 +29,12 @@ const Column: FC<IColumn> = ({
       column.totalElements,
       isOver
     ),
-    height: "calc(100vh - 252px)",
+    height: "calc(100vh - 243px)",
     [theme.breakpoints.down("md")]: {
       height: "calc(100dvh - 269px)",
     },
     [theme.breakpoints.only("xs")]: {
-      height: "calc(100dvh - 244px)",
+      height: "calc(100dvh - 239px)",
     },
   };
 

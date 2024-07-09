@@ -19,7 +19,7 @@ export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
 export const StyledBox = styled(Box)(({ theme }) => ({
   marginTop: "20px",
   padding: "35px 25px",
-  maxHeight: "calc(100vh - 220px)",
+  maxHeight: "calc(100vh - 217px)",
   overflowY: "scroll",
   backgroundColor: theme.palette.app.lightGrey,
 }));
