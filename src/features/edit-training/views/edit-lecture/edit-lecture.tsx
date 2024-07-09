@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 
 import { SelectLectors } from "../../containers";
 import {
-  StyledArrowForwardIosIcon,
   StyledButtonsStack,
   StyledContinueButton,
   StyledInfoStack,
@@ -152,7 +151,6 @@ const EditLecture: FC<IEditLecture> = ({
             </StyledSaveButton>
             <StyledContinueButton onClick={handleComplete} variant="contained">
               Завершить
-              <StyledArrowForwardIosIcon />
             </StyledContinueButton>
           </StyledSubmitButtonsStack>
         </StyledButtonsStack>

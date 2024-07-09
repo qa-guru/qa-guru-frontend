@@ -9,8 +9,6 @@ import {
   KanbanMentorHomeworkDetailsFullPage,
 } from "pages/kanban-mentor";
 
-import InfoSystemPage from "../pages/info-system";
-
 const LectorRoutes = [
   <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
   <Route
@@ -36,7 +34,7 @@ const LectorRoutes = [
   />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
-  <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  // <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
 ];
 
 export default LectorRoutes;

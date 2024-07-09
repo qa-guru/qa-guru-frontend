@@ -11,6 +11,7 @@ import EditProfilePage from "pages/edit-profile";
 import EditTrainingPage from "pages/edit-training";
 import EditLecturesPage from "pages/edit-lectures";
 import EditLecturePage from "pages/edit-lecture";
+import ScrollPageSectionPage from "pages/scroll-page-section";
 import {
   KanbanMentorHomeworkDetailsFullPage,
   KanbanMentorPage,
@@ -19,8 +20,6 @@ import {
   KanbanStudentHomeworkDetailsFullPage,
   KanbanStudentPage,
 } from "pages/kanban-student";
-
-import InfoSystemPage from "../pages/info-system";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -98,7 +97,12 @@ const AdminRoutes = [
     path="/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId"
     element={<EditLecturePage />}
   />,
-  <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  // <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  <Route
+    key="scroll-page-section"
+    path="/scroll-page-section"
+    element={<ScrollPageSectionPage />}
+  />,
 ];
 
 export default AdminRoutes;

@@ -25,6 +25,5 @@ export const StyledMenu = styled(Menu)({
 });
 
 export const StyledButton = styled(Button)({
-  height: "60.8px",
   "&:hover": { backgroundColor: "transparent" },
 }) as typeof Button;

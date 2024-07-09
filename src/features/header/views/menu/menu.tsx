@@ -13,10 +13,10 @@ const AppMenu: FC<IAppMenu> = (props) => {
     <StyledBox>
       <StyledStack>
         {pages.map((page) => {
-          const { pageURL, title, id } = page;
+          const { pageURL, title } = page;
 
           return (
-            <Fragment key={id}>
+            <Fragment key={pageURL}>
               <CustomLink path={pageURL}>
                 <Button
                   variant="text"
