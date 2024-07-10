@@ -13,6 +13,7 @@ export const StyledWrapperBox = styled(Box)(({ theme }) => ({
 export const StyledMenu = styled(Menu)({
   "& .MuiPaper-root": {
     borderRadius: "0",
+    marginTop: "14px",
     "& .MuiMenu-list": {
       padding: 0,
     },
@@ -25,6 +26,5 @@ export const StyledMenu = styled(Menu)({
 });
 
 export const StyledButton = styled(Button)({
-  height: "60.8px",
   "&:hover": { backgroundColor: "transparent" },
 }) as typeof Button;

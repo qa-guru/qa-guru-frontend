@@ -101,7 +101,7 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
             <Button
               color="secondary"
               variant="contained"
-              onClick={() => navigate("/admin-panel/courses")}
+              onClick={() => navigate("/")}
               endIcon={<Clear fontSize="small" />}
             >
               Отменить

@@ -1,5 +1,4 @@
 import { Route } from "react-router-dom";
-import HomePage from "pages/home";
 import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
@@ -11,6 +10,7 @@ import EditProfilePage from "pages/edit-profile";
 import EditTrainingPage from "pages/edit-training";
 import EditLecturesPage from "pages/edit-lectures";
 import EditLecturePage from "pages/edit-lecture";
+import ScrollPageSectionPage from "pages/scroll-page-section";
 import {
   KanbanMentorHomeworkDetailsFullPage,
   KanbanMentorPage,
@@ -20,10 +20,14 @@ import {
   KanbanStudentPage,
 } from "pages/kanban-student";
 
-import InfoSystemPage from "../pages/info-system";
-
 const AdminRoutes = [
-  <Route key="/" path="/" element={<HomePage />} />,
+  <Route key="/" path="/" element={<AdminPanelPage />} />,
+  <Route key="users-admin" path="/users" element={<AdminPanelPage />} />,
+  <Route
+    key="statistics-admin"
+    path="/statistics"
+    element={<AdminPanelPage />}
+  />,
   <Route
     key="training-lectures"
     path="/training/:trainingId"
@@ -66,39 +70,29 @@ const AdminRoutes = [
     path="/profile/edit"
     element={<EditProfilePage />}
   />,
-  <Route
-    key="courses-admin"
-    path="/admin-panel/courses"
-    element={<AdminPanelPage />}
-  />,
-  <Route
-    key="users-admin"
-    path="/admin-panel/users"
-    element={<AdminPanelPage />}
-  />,
-  <Route
-    key="statistics-admin"
-    path="/admin-panel/statistics"
-    element={<AdminPanelPage />}
-  />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
   <Route
     key="edit-training"
-    path="/admin-panel/courses/edit-training/:trainingId"
+    path="/edit-training/:trainingId"
     element={<EditTrainingPage />}
   />,
   <Route
     key="edit-lectures"
-    path="/admin-panel/courses/edit-training/:trainingId/edit-lectures"
+    path="/edit-training/:trainingId/edit-lectures"
     element={<EditLecturesPage />}
   />,
   <Route
     key="edit-lecture"
-    path="/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId"
+    path="/edit-training/:trainingId/edit-lectures/:lectureId"
     element={<EditLecturePage />}
   />,
-  <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  // <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  <Route
+    key="scroll-page-section"
+    path="/scroll-page-section"
+    element={<ScrollPageSectionPage />}
+  />,
 ];
 
 export default AdminRoutes;
