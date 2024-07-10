@@ -13,11 +13,11 @@ const AppMenu: FC<IAppMenu> = (props) => {
   return (
     <StyledBox>
       <StyledStack>
-        {pages.map((page) => {
-          const { pageURL, title, kanbanPages } = page;
+        {pages?.map((page) => {
+          const { pageURL, title, menuPages } = page;
 
-          if (kanbanPages) {
-            return <KanbanMenu key={title} pages={kanbanPages} />;
+          if (menuPages) {
+            return <KanbanMenu key={title} pages={menuPages} />;
           }
 
           return (

@@ -32,7 +32,7 @@ const configPages: IPages[] = [
   },
   {
     title: "Доски",
-    kanbanPages: [
+    menuPages: [
       {
         title: "Доска заданий",
         pageURL: "/kanban",

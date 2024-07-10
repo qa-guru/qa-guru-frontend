@@ -1,12 +1,12 @@
 import { UserRole } from "api/graphql/generated/graphql";
 
-import { IKanbanPage } from "../../types";
+import { IMenuPage } from "../../types";
 
 export interface IPages {
   pageURL?: string;
   title: string;
   roles?: UserRole[];
-  kanbanPages?: IKanbanPage[];
+  menuPages?: IMenuPage[];
 }
 
 export interface IAppMenu {
