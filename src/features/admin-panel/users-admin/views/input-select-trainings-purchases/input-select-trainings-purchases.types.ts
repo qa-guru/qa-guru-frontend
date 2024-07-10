@@ -3,7 +3,7 @@ import {
   TechStack,
   TrainingPurchasesByUserIdQuery,
   TrainingsQuery,
-  UpdateTrainingPurchaseMutationFn,
+  UpdateUserTrainingPurchaseMutationFn,
   UserDto,
 } from "api/graphql/generated/graphql";
 
@@ -17,7 +17,7 @@ export interface ITrainingOption {
 export interface IInputSelectTrainingsPurchases {
   dataTrainings?: TrainingsQuery;
   dataTrainingPurchasesByUserId?: TrainingPurchasesByUserIdQuery;
-  loadingUpdateTrainingPurchase: boolean;
-  updateTrainingPurchase: UpdateTrainingPurchaseMutationFn;
+  loadingUpdateUserTrainingPurchase: boolean;
+  updateUserTrainingPurchase: UpdateUserTrainingPurchaseMutationFn;
   user: Maybe<UserDto>;
 }

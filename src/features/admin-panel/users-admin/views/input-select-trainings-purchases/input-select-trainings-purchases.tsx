@@ -19,38 +19,27 @@ import {
 const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
   dataTrainings,
   dataTrainingPurchasesByUserId,
-  loadingUpdateTrainingPurchase,
-  updateTrainingPurchase,
+  loadingUpdateUserTrainingPurchase,
+  updateUserTrainingPurchase,
   user,
 }) => {
-  const trainingItems = dataTrainings?.trainings?.items || [];
-  const arrayTrainingPurchasesByUserId =
-    dataTrainingPurchasesByUserId?.trainingPurchasesByUserId;
+  const defaultTrainingPurchasesByUserId =
+    dataTrainingPurchasesByUserId?.trainingPurchasesByUserId?.map(
+      (trainingPurchaseByUserId) => {
+        const { trainingTariff, id } = trainingPurchaseByUserId!;
+        const { name, code, training } = trainingTariff!;
+        const { techStack } = training!;
 
-  const defaultTrainingPurchasesByUserId = arrayTrainingPurchasesByUserId?.map(
-    (trainingPurchaseByUserId) => {
-      const { trainingTariff, id } = trainingPurchaseByUserId!;
-      const { name, code, training } = trainingTariff!;
-      const { techStack } = training!;
+        return {
+          id: id!,
+          name: name!,
+          code: code!,
+          techStack: techStack!,
+        };
+      }
+    );
 
-      return {
-        id: id!,
-        name: name!,
-        code: code!,
-        techStack: techStack!,
-      };
-    }
-  );
-
-  const { control, setValue } = useForm<{
-    trainings: ITrainingOption[];
-  }>({
-    defaultValues: {
-      trainings: defaultTrainingPurchasesByUserId,
-    },
-  });
-
-  const trainingsOptions = trainingItems.map((item) => {
+  const trainingsOptions = dataTrainings?.trainings?.items?.map((item) => {
     const { id, name, tariffs, techStack } = item!;
 
     return {
@@ -61,18 +50,23 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
     };
   });
 
+  const { control, setValue } = useForm<{
+    trainings: ITrainingOption[];
+  }>({
+    defaultValues: {
+      trainings: defaultTrainingPurchasesByUserId,
+    },
+  });
+
   const handleSelectChange = (trainings: ITrainingOption[]) => {
     setValue("trainings", trainings);
 
-    const trainingInput = trainings.map(({ id, code }) => ({
-      id,
-      trainingTariffCode: code,
-      userEmail: user?.email,
-    }));
+    console.log("trainings", trainings);
 
-    updateTrainingPurchase({
+    updateUserTrainingPurchase({
       variables: {
-        input: trainingInput,
+        tariffCodes: trainings?.map(({ code }) => code!),
+        userEmail: user?.email!,
       },
     });
   };
@@ -85,7 +79,7 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
         render={({ field: { onChange, value = [] } }) => (
           <Autocomplete
             multiple
-            options={trainingsOptions}
+            options={trainingsOptions || []}
             getOptionLabel={(option) => option.name}
             isOptionEqualToValue={(option, value) => option.code === value.code}
             value={value || []}
@@ -103,7 +97,7 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
                   ...params.InputProps,
                   endAdornment: (
                     <>
-                      {loadingUpdateTrainingPurchase ? (
+                      {loadingUpdateUserTrainingPurchase ? (
                         <CircularProgress color="inherit" size={20} />
                       ) : null}
                       {params.InputProps.endAdornment}
@@ -137,7 +131,7 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
                 <StyledOptionChip variant="outlined" label={option.name} />
               </li>
             )}
-            loading={loadingUpdateTrainingPurchase}
+            loading={loadingUpdateUserTrainingPurchase}
             loadingText="Загрузка..."
           />
         )}

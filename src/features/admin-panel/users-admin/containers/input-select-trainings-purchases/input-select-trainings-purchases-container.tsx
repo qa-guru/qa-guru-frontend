@@ -6,7 +6,7 @@ import {
   UserDto,
   useTrainingPurchasesByUserIdQuery,
   useTrainingsQuery,
-  useUpdateTrainingPurchaseMutation,
+  useUpdateUserTrainingPurchaseMutation,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { CircularProgress } from "@mui/material";
@@ -36,8 +36,10 @@ const InputSelectTrainingsPurchasesContainer: FC<ITrainingsContainer> = ({
     variables: { userId: user?.id! },
   });
 
-  const [updateTrainingPurchase, { loading: loadingUpdateTrainingPurchase }] =
-    useUpdateTrainingPurchaseMutation();
+  const [
+    updateUserTrainingPurchase,
+    { loading: loadingUpdateUserTrainingPurchase },
+  ] = useUpdateUserTrainingPurchaseMutation();
 
   if (loadingTrainingsPurchases || loadingTrainings)
     return <CircularProgress size={20} />;
@@ -48,8 +50,8 @@ const InputSelectTrainingsPurchasesContainer: FC<ITrainingsContainer> = ({
     <InputSelectTrainingsPurchases
       dataTrainings={dataTrainings}
       dataTrainingPurchasesByUserId={dataTrainingPurchasesByUserId}
-      loadingUpdateTrainingPurchase={loadingUpdateTrainingPurchase}
-      updateTrainingPurchase={updateTrainingPurchase}
+      loadingUpdateUserTrainingPurchase={loadingUpdateUserTrainingPurchase}
+      updateUserTrainingPurchase={updateUserTrainingPurchase}
       user={user}
     />
   );
