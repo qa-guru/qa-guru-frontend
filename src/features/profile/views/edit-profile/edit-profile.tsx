@@ -74,7 +74,7 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
             onClick={routeProfile}
           >
             <StyledCloseIcon fontSize="small" />
-            Отмена
+            Отменить
           </StyledCancelButton>
           <StyledContainedButton type="submit" variant="contained">
             <StyledSubmitIcon fontSize="small" />

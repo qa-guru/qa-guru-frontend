@@ -1,4 +1,4 @@
-import { Stack, darken, styled } from "@mui/system";
+import { darken, Stack, styled } from "@mui/system";
 import { Button, Paper } from "@mui/material";
 
 export const StyledPaperStack = styled(Stack)({
@@ -20,26 +20,32 @@ export const StyledInfoStack = styled(Stack)({
   gap: "20px",
 });
 
-export const StyledButtonsStack = styled(Stack)({
+export const StyledButtonsStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
-  justifyContent: "flex-end",
-  gap: "16px",
+  justifyContent: "space-between",
   marginBottom: "35px",
-});
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: "16px",
+  },
+}));
+
+export const StyledSubmitButtonsStack = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  gap: "8px",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
 
 export const StyledContinueButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.white,
   gap: "8px",
 }));
 
-export const StyledCancelButton = styled(Button)({
-  gap: "8px",
-});
-
 export const StyledSaveButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.app.pinkMain,
   color: theme.palette.app.white,
-  gap: "8px",
   "&:hover": {
     backgroundColor: darken(theme.palette.app.pinkMain, 0.25),
   },

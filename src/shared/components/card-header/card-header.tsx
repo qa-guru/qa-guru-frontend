@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Typography } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import CustomLink from "shared/components/custom-link";
 import { useResponsive } from "shared/hooks";
@@ -16,6 +16,7 @@ const CardHeader: FC<ICardHeader> = ({
   route,
 }) => {
   const { isLargeDesktop } = useResponsive();
+  const theme = useTheme();
 
   const headerTitle = (
     <Typography variant="subtitle2">{formatId(techStack, cardId)}</Typography>
@@ -27,7 +28,7 @@ const CardHeader: FC<ICardHeader> = ({
         <CustomLink
           textDecorationHover="underline"
           path={`${route}/${cardId}`}
-          color="black"
+          color={theme.palette.app.textPrimary}
         >
           {headerTitle}
         </CustomLink>

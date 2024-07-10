@@ -18,7 +18,8 @@ export const useRoleAccess = ({ allowedRoles, roles }: UseRoleAccessProps) => {
 
   const userRoles = roles || data?.user?.roles || [];
 
-  return useMemo(() => {
-    return allowedRoles.some((role) => userRoles.includes(role!));
-  }, [userRoles, allowedRoles]);
+  return useMemo(
+    () => allowedRoles.some((role) => userRoles.includes(role!)),
+    [userRoles, allowedRoles]
+  );
 };

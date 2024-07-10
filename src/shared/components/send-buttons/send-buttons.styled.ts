@@ -3,7 +3,7 @@ import { IconButton, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 export const StyledButtonStack = styled(Stack)(({ theme }) => ({
-  marginTop: "15px",
+  margin: "15px 0 5px",
   gap: "15px",
   flexDirection: "row",
   justifyContent: "flex-end",
