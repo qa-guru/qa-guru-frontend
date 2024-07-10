@@ -32,7 +32,7 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
 
     timeoutId = setTimeout(() => {
       setAnchorEl(null);
-    }, 0);
+    }, 300);
   };
 
   const handleMenuClose = () => {

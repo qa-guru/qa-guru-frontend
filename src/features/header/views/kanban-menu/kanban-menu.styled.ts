@@ -13,6 +13,7 @@ export const StyledWrapperBox = styled(Box)(({ theme }) => ({
 export const StyledMenu = styled(Menu)({
   "& .MuiPaper-root": {
     borderRadius: "0",
+    marginTop: "14px",
     "& .MuiMenu-list": {
       padding: 0,
     },

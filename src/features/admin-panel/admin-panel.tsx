@@ -21,19 +21,19 @@ const AdminPanel: FC = () => {
     {
       label: "Курсы",
       value: "1",
-      path: "/admin-panel/courses",
+      path: "/",
       component: CourseAdmin,
     },
     {
       label: "Пользователи",
       value: "2",
-      path: "/admin-panel/users",
+      path: "/users",
       component: UsersAdmin,
     },
     {
       label: "Статистика",
       value: "3",
-      path: "/admin-panel/statistics",
+      path: "/statistics",
       component: StatisticsAdmin,
     },
   ];

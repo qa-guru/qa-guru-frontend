@@ -5,6 +5,7 @@ import CustomLink from "shared/components/custom-link";
 
 import { IAppMenu } from "./menu.types";
 import { StyledBox, StyledStack } from "./menu.styled";
+import KanbanMenu from "../kanban-menu";
 
 const AppMenu: FC<IAppMenu> = (props) => {
   const { handleClickNavMenu, pages } = props;
@@ -13,7 +14,11 @@ const AppMenu: FC<IAppMenu> = (props) => {
     <StyledBox>
       <StyledStack>
         {pages.map((page) => {
-          const { pageURL, title } = page;
+          const { pageURL, title, kanbanPages } = page;
+
+          if (kanbanPages) {
+            return <KanbanMenu key={title} pages={kanbanPages} />;
+          }
 
           return (
             <Fragment key={pageURL}>

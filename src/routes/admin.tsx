@@ -1,5 +1,4 @@
 import { Route } from "react-router-dom";
-import HomePage from "pages/home";
 import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
@@ -22,7 +21,13 @@ import {
 } from "pages/kanban-student";
 
 const AdminRoutes = [
-  <Route key="/" path="/" element={<HomePage />} />,
+  <Route key="/" path="/" element={<AdminPanelPage />} />,
+  <Route key="users-admin" path="/users" element={<AdminPanelPage />} />,
+  <Route
+    key="statistics-admin"
+    path="/statistics"
+    element={<AdminPanelPage />}
+  />,
   <Route
     key="training-lectures"
     path="/training/:trainingId"
@@ -65,36 +70,21 @@ const AdminRoutes = [
     path="/profile/edit"
     element={<EditProfilePage />}
   />,
-  <Route
-    key="courses-admin"
-    path="/admin-panel/courses"
-    element={<AdminPanelPage />}
-  />,
-  <Route
-    key="users-admin"
-    path="/admin-panel/users"
-    element={<AdminPanelPage />}
-  />,
-  <Route
-    key="statistics-admin"
-    path="/admin-panel/statistics"
-    element={<AdminPanelPage />}
-  />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
   <Route
     key="edit-training"
-    path="/admin-panel/courses/edit-training/:trainingId"
+    path="/edit-training/:trainingId"
     element={<EditTrainingPage />}
   />,
   <Route
     key="edit-lectures"
-    path="/admin-panel/courses/edit-training/:trainingId/edit-lectures"
+    path="/edit-training/:trainingId/edit-lectures"
     element={<EditLecturesPage />}
   />,
   <Route
     key="edit-lecture"
-    path="/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId"
+    path="/edit-training/:trainingId/edit-lectures/:lectureId"
     element={<EditLecturePage />}
   />,
   // <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,

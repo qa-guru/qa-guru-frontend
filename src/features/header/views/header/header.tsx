@@ -5,7 +5,7 @@ import { useSettings } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
 import { IPages } from "features/header/types";
 
-import { useRoleFilterPages } from "../../hooks";
+import { useRoleFilterPages } from "../../hooks/use-role-filter-pages";
 import Profile from "../../containers";
 import AppMenu from "../menu/menu";
 import MenuBurger from "../menu-burger/menu-burger";
@@ -23,7 +23,45 @@ const configPages: IPages[] = [
   {
     title: "Домой",
     pageURL: "/",
-    roles: [UserRole.Student, UserRole.Admin],
+    roles: [UserRole.Student],
+  },
+  {
+    title: "Топ 50",
+    pageURL: "/top-users",
+    roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
+  {
+    title: "Доски",
+    kanbanPages: [
+      {
+        title: "Доска заданий",
+        pageURL: "/kanban",
+        roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+      },
+      {
+        title: "Доска ментора",
+        pageURL: "/kanban-mentor",
+        roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+      },
+      {
+        title: "Доска студента",
+        pageURL: "/kanban-student",
+        roles: [UserRole.Student, UserRole.Admin],
+      },
+    ],
+  },
+  // {
+  //   title: "О Системе",
+  //   pageURL: "/info-system",
+  //   roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  // },
+];
+
+const configMobilePages: IPages[] = [
+  {
+    title: "Домой",
+    pageURL: "/",
+    roles: [UserRole.Student],
   },
   {
     title: "Топ 50",
@@ -58,6 +96,7 @@ const Header: FC = () => {
   const lightTheme = settings.theme === "light";
 
   const pages = useRoleFilterPages(configPages);
+  const mobilePages = useRoleFilterPages(configMobilePages);
 
   const handleClickNavMenu = () => {
     setAnchorElNav(null);
@@ -68,7 +107,7 @@ const Header: FC = () => {
       <StyledWrapper>
         <StyledStack>
           <MenuBurger
-            pages={pages}
+            pages={mobilePages}
             setAnchorElNav={setAnchorElNav}
             handleClickNavMenu={handleClickNavMenu}
             anchorElNav={anchorElNav}

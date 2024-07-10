@@ -81,7 +81,7 @@ const EditLecture: FC<IEditLecture> = ({
   const handleComplete = () => {
     handleSubmit(async (data) => {
       await onSubmit(data);
-      navigate("/admin-panel/courses");
+      navigate("/");
     })();
   };
 
