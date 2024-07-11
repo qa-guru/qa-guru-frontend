@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
-import { useUserIdQuery } from "api/graphql/generated/graphql";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
 
 import { IUserName } from "./user-name.types";
 import CustomLink from "../../custom-link";
@@ -11,9 +12,7 @@ const UserName: FC<IUserName> = ({
   hasLink,
   variant = "body2",
 }) => {
-  const { data } = useUserIdQuery({ fetchPolicy: "cache-first" });
-
-  const currentUserId = data?.user?.id;
+  const currentUserId = useReactiveVar(userIdVar);
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 

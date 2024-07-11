@@ -1,8 +1,5 @@
 import { type ApolloQueryResult } from "@apollo/client";
-import {
-  HomeWorksByLectureIdQuery,
-  UserIdQuery,
-} from "api/graphql/generated/graphql";
+import { HomeWorksByLectureIdQuery } from "api/graphql/generated/graphql";
 
 export interface IHomeworksOtherStudents {
   data: HomeWorksByLectureIdQuery;
@@ -17,5 +14,4 @@ export interface IHomeworksOtherStudents {
       }
     ) => HomeWorksByLectureIdQuery;
   }) => Promise<ApolloQueryResult<HomeWorksByLectureIdQuery>>;
-  dataUserId: UserIdQuery;
 }

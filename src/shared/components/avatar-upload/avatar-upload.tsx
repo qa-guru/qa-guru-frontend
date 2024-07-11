@@ -5,8 +5,9 @@ import ImageIcon from "@mui/icons-material/Image";
 import AvatarCustom from "shared/components/avatar-custom";
 import { CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { useUserIdQuery } from "api/graphql/generated/graphql";
 import { useAvatarDelete, useAvatarUpload, useResponsive } from "shared/hooks";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
 
 import { IAvatarUpload } from "./avatar-upload.types";
 import {
@@ -24,10 +25,9 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
   const { uploadAvatar, uploading } = useAvatarUpload();
   const { deleteAvatar, deleting } = useAvatarDelete();
 
-  const { data: dataUserId } = useUserIdQuery({ fetchPolicy: "cache-first" });
-
+  const currentUserId = useReactiveVar(userIdVar);
   const fullName = `${firstName} ${lastName}`;
-  const isCurrentUser = user?.id === dataUserId?.user?.id;
+  const isCurrentUser = user?.id === currentUserId;
 
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const newImage = e.target.files?.[0];

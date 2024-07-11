@@ -4,24 +4,25 @@ import {
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
   useHomeworksQuery,
-  useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useDynamicCardLimit } from "shared/hooks";
+import { userIdVar } from "cache";
+import { useReactiveVar } from "@apollo/client";
 
 import Board from "../../views/board";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 
 const HomeworksContainer: FC = () => {
   const dynamicLimit = useDynamicCardLimit();
-  const { data: dataUserId } = useUserIdQuery();
+  const currentUserId = useReactiveVar(userIdVar);
 
   const filterObject = useMemo(() => {
     return {
-      mentorId: dataUserId?.user?.id,
+      mentorId: currentUserId,
     };
-  }, [dataUserId]);
+  }, [currentUserId]);
 
   const {
     data: newData,
