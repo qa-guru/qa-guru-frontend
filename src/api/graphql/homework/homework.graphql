@@ -14,7 +14,6 @@ query homeWork($homeWorkId: ID!) {
     student {
       id
       firstName
-      middleName
       avatar
       lastName
       rating {
@@ -24,7 +23,6 @@ query homeWork($homeWorkId: ID!) {
     mentor {
       id
       firstName
-      middleName
       avatar
       lastName
       rating {

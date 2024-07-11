@@ -15,7 +15,6 @@ query commentsHomeWorkByHomeWork(
       creator {
         id
         firstName
-        middleName
         avatar
         lastName
         rating {
@@ -26,16 +25,11 @@ query commentsHomeWorkByHomeWork(
       content
       userLike
       likes
-      homeWork {
-        id
-      }
       children {
         ...subCommentHomeWorkDto
         ...subCommentHomeWorkDtoRecursive
       }
     }
-    offset
-    limit
     totalElements
   }
 }

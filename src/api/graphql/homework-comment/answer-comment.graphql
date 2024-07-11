@@ -1,27 +1,6 @@
 mutation answerComment($parentID: ID!, $content: String!) {
   answerComment(parentID: $parentID, content: $content) {
     id
-    creator {
-      id
-      email
-      firstName
-      locked
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    userLike
-    likes
-    creationDate
-    content
-    homeWork {
-      id
-      answer
-      status
-    }
     children {
       ...subCommentHomeWorkDto
       ...subCommentHomeWorkDtoRecursive

@@ -1,20 +1,5 @@
 mutation updateTraining($input: TrainingInput!) {
   updateTraining(input: $input) {
     id
-    name
-    techStack
-    description
-    content
-    picture
-    mentors {
-      id
-      firstName
-      lastName
-      avatar
-      middleName
-      rating {
-        rating
-      }
-    }
   }
 }

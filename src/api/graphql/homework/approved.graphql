@@ -1,36 +1,9 @@
 mutation approved($homeWorkId: ID!) {
   approved(homeWorkId: $homeWorkId) {
     id
-    lecture {
-      id
-      subject
-      description
-    }
-    answer
     status
-    student {
-      id
-      email
-      firstName
-      avatar
-      middleName
-      lastName
-      rating {
-        rating
-      }
-    }
     mentor {
       id
-      email
-      firstName
-      avatar
-      middleName
-      lastName
-      rating {
-        rating
-      }
     }
-    startCheckingDate
-    endCheckingDate
   }
 }

@@ -1,36 +1,9 @@
 mutation takeForReview($homeworkId: ID!) {
   takeForReview(homeWorkId: $homeworkId) {
     id
-    lecture {
-      id
-      subject
-      description
-    }
-    answer
     status
-    student {
-      id
-      email
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
     mentor {
       id
-      email
-      firstName
-      middleName
-      lastName
-      avatar
-      rating {
-        rating
-      }
     }
-    startCheckingDate
-    endCheckingDate
   }
 }

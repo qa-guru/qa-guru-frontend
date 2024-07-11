@@ -1,34 +1,5 @@
 mutation updateHomework($id: ID!, $content: String!) {
   updateHomeWork(id: $id, content: $content) {
     id
-    lecture {
-      id
-      subject
-      description
-    }
-    answer
-    status
-    student {
-      id
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    mentor {
-      id
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    startCheckingDate
-    endCheckingDate
   }
 }

@@ -4,24 +4,13 @@ query userById($id: ID) {
     email
     firstName
     lastName
-    middleName
-    phoneNumber
     roles
-    locked
-    vkId
     git
     telegram
     stackOverflow
     linkedin
-    website
     avatar
-    skills {
-      id
-      name
-    }
     creationDate
-    confirmationDate
-    updateDate
     rating {
       rating
     }

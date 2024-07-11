@@ -6,19 +6,12 @@ query lecture($id: ID!) {
       firstName
       email
       lastName
-      middleName
       avatar
       rating {
         rating
       }
     }
     subject
-    homeWorkLevel {
-      id
-      code
-      description
-      estimate
-    }
     description
     content
   }

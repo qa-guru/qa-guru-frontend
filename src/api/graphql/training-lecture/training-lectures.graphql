@@ -1,7 +1,6 @@
 query trainingLectures($id: ID!) {
   trainingLectures(id: $id) {
     id
-    number
     lecture {
       id
       subject
@@ -11,14 +10,7 @@ query trainingLectures($id: ID!) {
         id
         firstName
         lastName
-        middleName
       }
     }
-    lastLecture {
-      id
-      subject
-      description
-    }
-    locking
   }
 }

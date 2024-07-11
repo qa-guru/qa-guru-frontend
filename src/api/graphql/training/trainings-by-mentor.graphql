@@ -1,23 +1,9 @@
 query trainingsByMentor($offset: Int!, $limit: Int!, $sort: TrainingSort) {
   trainingsByMentor(offset: $offset, limit: $limit, sort: $sort) {
-    offset
-    limit
-    totalElements
     items {
       id
       name
-      content
       techStack
-      mentors {
-        id
-        firstName
-        middleName
-        avatar
-        lastName
-        rating {
-          rating
-        }
-      }
     }
   }
 }

@@ -1,26 +1,6 @@
 mutation sendComment($homeWorkId: ID!, $content: String!) {
   sendComment(homeWorkId: $homeWorkId, content: $content) {
     id
-    creator {
-      id
-      email
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    creationDate
-    content
-    userLike
-    likes
-    homeWork {
-      id
-      answer
-      status
-    }
     children {
       ...subCommentHomeWorkDto
       ...subCommentHomeWorkDtoRecursive

@@ -9,34 +9,5 @@ mutation sendHomeWorkToCheck(
     trainingId: $trainingId
   ) {
     id
-    lecture {
-      id
-      subject
-      description
-    }
-    answer
-    status
-    student {
-      id
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    mentor {
-      id
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    startCheckingDate
-    endCheckingDate
   }
 }

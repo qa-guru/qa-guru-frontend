@@ -1,7 +1,6 @@
 mutation updateTrainingLecture($id: ID!, $lectureIds: [ID!]) {
   updateTrainingLecture(id: $id, lectureIds: $lectureIds) {
     id
-    number
     lecture {
       id
       subject
@@ -14,18 +13,5 @@ mutation updateTrainingLecture($id: ID!, $lectureIds: [ID!]) {
         middleName
       }
     }
-    lastLecture {
-      id
-      subject
-      description
-      creationDate
-      speakers {
-        id
-        firstName
-        lastName
-        middleName
-      }
-    }
-    locking
   }
 }
