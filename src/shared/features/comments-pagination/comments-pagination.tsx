@@ -13,8 +13,7 @@ import CommentItem from "../comment-item";
 import CommentTotalElements from "../../components/comment-total-elements";
 
 const CommentsPagination: FC<ICommentsPagination> = (props) => {
-  const { dataCommentsHomeWorkByHomeWork, dataUserId, fetchMore, homeworkId } =
-    props;
+  const { dataCommentsHomeWorkByHomeWork, fetchMore, homeworkId } = props;
   const [hasMoreComments, setHasMoreComments] = useState<boolean>(true);
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
@@ -74,7 +73,6 @@ const CommentsPagination: FC<ICommentsPagination> = (props) => {
                 key={id}
                 item={item}
                 commentId={id}
-                currentUserID={dataUserId?.user?.id}
                 homeworkId={homeworkId}
               />
             );

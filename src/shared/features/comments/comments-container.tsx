@@ -5,7 +5,6 @@ import {
   CommentHomeWorkSortField,
   Order,
   useCommentsHomeWorkByHomeWorkQuery,
-  useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { QUERY_DEFAULTS } from "shared/constants";
 
@@ -15,8 +14,6 @@ const CommentsContainer: FC<ICommentsContainer> = ({
   homeworkId,
   children,
 }) => {
-  const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
-
   const {
     loading: loadingComments,
     data: dataCommentsHomeWorkByHomeWork,
@@ -33,17 +30,16 @@ const CommentsContainer: FC<ICommentsContainer> = ({
     },
   });
 
-  if (loadingComments || loadingUserId) {
+  if (loadingComments) {
     return <SkeletonComment />;
   }
 
-  if (!dataUserId || !dataCommentsHomeWorkByHomeWork) {
+  if (!dataCommentsHomeWorkByHomeWork) {
     return <NoDataErrorMessage />;
   }
 
   return cloneElement(children, {
     homeworkId,
-    dataUserId,
     dataCommentsHomeWorkByHomeWork,
     fetchMore,
     totalElements:
