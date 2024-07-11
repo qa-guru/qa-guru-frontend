@@ -3,7 +3,7 @@ import { Maybe } from "api/graphql/generated/graphql";
 
 export interface IMenuBurger {
   setAnchorElNav: Dispatch<SetStateAction<Maybe<HTMLElement>>>;
-  handleClickNavMenu: (pageURL: string) => void;
+  handleClickNavMenu: (pageURL?: string) => void;
   anchorElNav: Maybe<HTMLElement>;
-  pages: { pageURL: string; title: string; id: number }[];
+  pages: { pageURL?: string; title: string }[];
 }

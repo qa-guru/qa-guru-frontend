@@ -1,3 +1,3 @@
 export interface IKanbanMenu {
-  pages: { pageURL: string; title: string; id: number }[];
+  pages: { pageURL: string; title: string }[];
 }

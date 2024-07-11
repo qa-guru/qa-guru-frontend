@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import { client } from "api";
 import { UserRole } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
@@ -7,20 +7,18 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { InputText } from "shared/components/form";
 import { Editor } from "shared/components/text-editor";
 import { RichTextEditorRef } from "shared/lib/mui-tiptap";
-import { Clear } from "@mui/icons-material";
+import { Clear, Save } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import SaveIcon from "@mui/icons-material/Save";
 
 import { SelectLectors } from "../../containers";
 import {
   StyledButtonsStack,
-  StyledCancelButton,
   StyledContinueButton,
   StyledInfoStack,
   StyledPaper,
   StyledPaperStack,
   StyledSaveButton,
+  StyledSubmitButtonsStack,
 } from "./edit-lecture.styled";
 import { IEditLecture, LectureInput } from "./edit-lecture.types";
 import EditDescription from "../edit-description";
@@ -75,6 +73,18 @@ const EditLecture: FC<IEditLecture> = ({
     });
   };
 
+  const handleBack = () => {
+    const newPathname = location.pathname.replace(`/${id}`, "");
+    navigate(newPathname);
+  };
+
+  const handleComplete = () => {
+    handleSubmit(async (data) => {
+      await onSubmit(data);
+      navigate("/");
+    })();
+  };
+
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,25 +131,28 @@ const EditLecture: FC<IEditLecture> = ({
           </StyledPaper>
         </StyledPaperStack>
         <StyledButtonsStack>
-          <StyledCancelButton
-            variant="contained"
-            onClick={() => navigate(-1)}
-            color="secondary"
-          >
-            <Clear fontSize="small" />
-            Отменить
-          </StyledCancelButton>
-          <StyledSaveButton type="submit" variant="contained">
-            <SaveIcon />
-            Сохранить
-          </StyledSaveButton>
-          <StyledContinueButton
-            onClick={() => navigate(-3)}
-            variant="contained"
-          >
-            Вернуться к списку курсов
-            <ArrowForwardIosIcon sx={{ fontSize: "16px" }} />
-          </StyledContinueButton>
+          <Box>
+            <Button
+              variant="contained"
+              onClick={handleBack}
+              color="secondary"
+              endIcon={<Clear />}
+            >
+              Отменить
+            </Button>
+          </Box>
+          <StyledSubmitButtonsStack>
+            <StyledSaveButton
+              type="submit"
+              variant="contained"
+              startIcon={<Save />}
+            >
+              Сохранить
+            </StyledSaveButton>
+            <StyledContinueButton onClick={handleComplete} variant="contained">
+              Завершить
+            </StyledContinueButton>
+          </StyledSubmitButtonsStack>
         </StyledButtonsStack>
       </form>
     </Container>

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export interface ICustomLink {
-  path: string;
+  path?: string;
   children?: ReactNode;
   opacity?: string;
   textDecorationHover?: string;

@@ -16,12 +16,12 @@ const Column: FC<IColumn> = ({
   const theme = useTheme();
   const columnStyles = {
     ...getColumnStyles(column.totalElements),
-    height: "calc(100vh - 199px)",
+    height: "calc(100vh - 190px)",
     [theme.breakpoints.only("sm")]: {
-      height: "calc(100dvh - 210px)",
+      height: "calc(100dvh - 204px)",
     },
     [theme.breakpoints.only("xs")]: {
-      height: "calc(100dvh - 178px)",
+      height: "calc(100dvh - 175px)",
     },
   };
 

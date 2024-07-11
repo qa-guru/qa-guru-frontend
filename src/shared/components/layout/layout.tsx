@@ -10,12 +10,11 @@ import {
   StyledBreadcrumbsContainer,
   StyledContainer,
 } from "./layout.styled";
-import CustomizedBreadcrumbs from "../../breadcrumbs";
+import CustomizedBreadcrumbs from "../breadcrumbs";
 
 interface ILayout {
   children?: ReactNode;
   isLogging?: boolean;
-  showFooter?: boolean;
 }
 
 const determineIsKanban = (pathname: string): boolean => {

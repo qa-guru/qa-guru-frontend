@@ -12,7 +12,7 @@ const CustomLink: FC<ICustomLink> = ({
 }) => {
   return (
     <StyledLink
-      to={path}
+      to={path || ""}
       opacity={opacity}
       textDecorationHover={textDecorationHover}
       color={color}

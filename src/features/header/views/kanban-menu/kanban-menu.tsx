@@ -32,7 +32,7 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
 
     timeoutId = setTimeout(() => {
       setAnchorEl(null);
-    }, 0);
+    }, 300);
   };
 
   const handleMenuClose = () => {
@@ -82,23 +82,19 @@ const KanbanMenu: FC<IKanbanMenu> = (props) => {
         disableAutoFocusItem
         disablePortal
       >
-        {pages.map((page) => {
-          const { pageURL, title, id } = page;
-
-          return (
-            <CustomLink path={pageURL} key={id}>
-              <MenuItem onClick={handleClickNavMenu}>
-                <Typography
-                  textTransform="uppercase"
-                  textAlign="center"
-                  variant="body2"
-                >
-                  {title}
-                </Typography>
-              </MenuItem>
-            </CustomLink>
-          );
-        })}
+        {pages.map(({ pageURL, title }) => (
+          <CustomLink path={pageURL} key={pageURL}>
+            <MenuItem onClick={handleClickNavMenu}>
+              <Typography
+                textTransform="uppercase"
+                textAlign="center"
+                variant="body2"
+              >
+                {title}
+              </Typography>
+            </MenuItem>
+          </CustomLink>
+        ))}
       </StyledMenu>
     </StyledWrapperBox>
   );
