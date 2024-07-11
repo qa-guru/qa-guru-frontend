@@ -18,8 +18,7 @@ import {
 } from "./homework.styled";
 
 const Homework: FC<IHomework> = (props) => {
-  const { dataHomeWorkByLectureAndTraining, dataUserId, hideMentorAndStudent } =
-    props;
+  const { dataHomeWorkByLectureAndTraining, hideMentorAndStudent } = props;
   const { isMobile } = useResponsive();
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
@@ -37,7 +36,6 @@ const Homework: FC<IHomework> = (props) => {
         <StyledModalBox>
           <HomeworkItem
             dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
-            dataUserId={dataUserId}
           />
           <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
             <CommentsPagination />
@@ -59,7 +57,6 @@ const Homework: FC<IHomework> = (props) => {
     <StyledPaper>
       <HomeworkItem
         dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
-        dataUserId={dataUserId}
         hideMentorAndStudent={hideMentorAndStudent}
       />
       {dataHomeWorkByLectureAndTraining?.id && (

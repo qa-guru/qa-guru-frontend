@@ -1,5 +1,5 @@
-import { InMemoryCache } from "@apollo/client";
+import { InMemoryCache, makeVar } from "@apollo/client";
 
-// export const isAuthVar = makeVar<boolean>(isAuthenticated);
+export const userIdVar = makeVar<string | null>(null);
 
 export const cache = new InMemoryCache();

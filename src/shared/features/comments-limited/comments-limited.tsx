@@ -7,7 +7,7 @@ import CommentItem from "../comment-item";
 import CommentTotalElements from "../../components/comment-total-elements";
 
 const CommentsLimited: FC<ICommentsLimited> = (props) => {
-  const { dataCommentsHomeWorkByHomeWork, dataUserId, homeworkId } = props;
+  const { dataCommentsHomeWorkByHomeWork, homeworkId } = props;
   const { totalElements, items } =
     dataCommentsHomeWorkByHomeWork?.commentsHomeWorkByHomeWork || {};
 
@@ -25,7 +25,6 @@ const CommentsLimited: FC<ICommentsLimited> = (props) => {
               key={`${id}-${index}`}
               item={item}
               commentId={id}
-              currentUserID={dataUserId?.user?.id}
               homeworkId={homeworkId}
             />
           );

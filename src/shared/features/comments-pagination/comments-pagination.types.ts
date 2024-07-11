@@ -1,11 +1,7 @@
-import {
-  CommentsHomeWorkByHomeWorkQuery,
-  UserIdQuery,
-} from "api/graphql/generated/graphql";
+import { CommentsHomeWorkByHomeWorkQuery } from "api/graphql/generated/graphql";
 
 export interface ICommentsPagination {
   dataCommentsHomeWorkByHomeWork?: CommentsHomeWorkByHomeWorkQuery;
-  dataUserId?: UserIdQuery;
   homeworkId?: string;
   fetchMore?: (options: {
     variables: { offset?: number };

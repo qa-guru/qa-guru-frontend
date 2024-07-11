@@ -5,15 +5,14 @@ import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
 import { formatId } from "shared/helpers";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
 
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import { StyledInfoBox, StyledTitle } from "./homework-details-full.styled";
 
-const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
-  data,
-  dataUserId,
-}) => {
+const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
   const homeWork = data?.homeWork;
   const {
     lecture,
@@ -27,7 +26,8 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
     id,
   } = data?.homeWork!;
 
-  const isCurrentMentor = dataUserId.user?.id === mentor?.id;
+  const currentUserId = useReactiveVar(userIdVar);
+  const isCurrentMentor = currentUserId === mentor?.id;
   const hasNoMentor = mentor?.id === undefined;
   const showSelect = isCurrentMentor || hasNoMentor;
 
@@ -55,7 +55,6 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({
       <StyledInfoBox>
         <Homework
           dataHomeWorkByLectureAndTraining={homeWork}
-          dataUserId={dataUserId}
           hideMentorAndStudent
         />
       </StyledInfoBox>

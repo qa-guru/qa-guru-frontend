@@ -19,7 +19,6 @@ import {
 
 const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
   item,
-  dataUserId,
 }) => {
   const { isMobile } = useResponsive();
 
@@ -36,10 +35,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
           <StyledClearIcon onClick={handleHideModal} />
         </StyledIconBox>
         <StyledBox>
-          <HomeworkItem
-            dataHomeWorkByLectureAndTraining={item}
-            dataUserId={dataUserId}
-          />
+          <HomeworkItem dataHomeWorkByLectureAndTraining={item} />
           <Comments homeworkId={item?.id}>
             <CommentsPagination />
           </Comments>
