@@ -1,8 +1,6 @@
-import {
-  Maybe,
-  UserRole,
-  useUserRolesQuery,
-} from "api/graphql/generated/graphql";
+import { useReactiveVar } from "@apollo/client";
+import { Maybe, UserRole } from "api/graphql/generated/graphql";
+import { userRolesVar } from "cache";
 import { useMemo } from "react";
 
 interface UseRoleAccessProps {
@@ -11,12 +9,9 @@ interface UseRoleAccessProps {
 }
 
 export const useRoleAccess = ({ allowedRoles, roles }: UseRoleAccessProps) => {
-  const { data } = useUserRolesQuery({
-    fetchPolicy: "cache-first",
-    skip: !!roles,
-  });
+  const currentRoles = useReactiveVar(userRolesVar);
 
-  const userRoles = roles || data?.user?.roles || [];
+  const userRoles = roles || currentRoles || [];
 
   return useMemo(
     () => allowedRoles.some((role) => userRoles.includes(role!)),
