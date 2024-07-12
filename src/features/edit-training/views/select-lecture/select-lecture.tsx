@@ -57,7 +57,7 @@ const ModalTable = ({
 
   const renderMobileTable = () => (
     <Dialog open={open} onClose={hideModal} maxWidth="lg" fullScreen>
-      <StyledDialogContent id="scroll-modal-container">
+      <StyledDialogContent id="scroll-mobile-modal-container">
         <StyledIconBox>
           <IconButton onClick={hideModal}>
             <StyledClearIcon fontSize="small" />
@@ -68,7 +68,7 @@ const ModalTable = ({
           next={handleLoadMore}
           hasMore={hasMoreLectures}
           loader={renderLoader()}
-          scrollableTarget="scroll-modal-container"
+          scrollableTarget="scroll-mobile-modal-container"
         >
           <MobileTable<LectureDto> table={table} />
         </StyledInfiniteScroll>
@@ -88,7 +88,7 @@ const ModalTable = ({
             Закрыть
           </StyledModalButton>
         </StyledButtonBox>
-        <StyledPaper>
+        <StyledPaper id="scroll-modal-container">
           <StyledInfiniteScroll
             dataLength={lectures?.length || 0}
             next={handleLoadMore}
