@@ -14,7 +14,6 @@ const HomeworkContainer: FC = () => {
     loading: loadingHomeWorkByLectureAndTraining,
   } = useHomeWorkByLectureAndTrainingQuery({
     variables: { lectureId: lectureId!, trainingId: trainingId! },
-    fetchPolicy: "cache-first",
   });
 
   if (loadingHomeWorkByLectureAndTraining) return <AppSpinner />;

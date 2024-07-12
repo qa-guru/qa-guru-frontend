@@ -15,6 +15,7 @@ import {
   SignUpPage,
 } from "pages/auth";
 import { AppSpinner } from "shared/components/spinners";
+import { userRolesVar } from "cache";
 import Layout from "shared/components/layout";
 
 import StudentRoutes from "./student";
@@ -71,6 +72,9 @@ export const useUserRoutes = () => {
 
   const { data, loading } = useUserRolesQuery({
     skip: isAuthPage,
+    onCompleted: (data) => {
+      userRolesVar(data?.user?.roles);
+    },
   });
 
   const roles = data?.user?.roles ?? [];
