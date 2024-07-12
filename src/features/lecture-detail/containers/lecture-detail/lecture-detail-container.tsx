@@ -7,6 +7,7 @@ import {
   useLectureQuery,
   useTrainingLecturesQuery,
 } from "api/graphql/generated/graphql";
+import { FETCH_POLICY } from "shared/constants";
 
 import LectureDetail from "../../views/lecture-detail";
 import useTariff from "../../hooks/use-tariff";
@@ -18,17 +19,20 @@ const LectureDetailContainer: FC = () => {
 
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
     variables: { id: lectureId! },
+    fetchPolicy: FETCH_POLICY,
   });
 
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
+      fetchPolicy: FETCH_POLICY,
     });
 
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
       variables: { lectureId: lectureId! },
       skip: !tariffHomework,
+      fetchPolicy: FETCH_POLICY,
     });
 
   if (

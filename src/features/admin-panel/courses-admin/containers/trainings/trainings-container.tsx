@@ -16,6 +16,7 @@ const TrainingsContainer: FC = () => {
       limit: 10,
       sort: { field: TrainingSortField.CreationDate, order: Order.Desc },
     },
+    fetchPolicy: "network-only",
   });
 
   if (loading) return <Spinner />;

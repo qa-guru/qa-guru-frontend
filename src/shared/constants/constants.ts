@@ -67,3 +67,5 @@ export const STATES = [
 ];
 
 export const MAX_CARDS_BEFORE_SHOW_MORE = 5;
+
+export const FETCH_POLICY = "cache-first";
