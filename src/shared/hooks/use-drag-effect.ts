@@ -3,12 +3,13 @@ import { useSnackbar } from "notistack";
 import {
   StudentHomeWorkDto,
   UserRole,
-  useUserIdQuery,
   Maybe,
 } from "api/graphql/generated/graphql";
 import { useRoleAccess } from "shared/hooks/index";
 import { IDraggingState } from "features/kanban-mentor/views/board/board.types";
 import { STATUS_COLUMN } from "features/kanban-mentor/constants";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
 
 interface IDragEffect {
   card: StudentHomeWorkDto;
@@ -26,15 +27,11 @@ export const useDragEffect = ({
 }: IDragEffect) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { data: user } = useUserIdQuery({
-    fetchPolicy: "cache-first",
-  });
-
   const hasDraggAccess = useRoleAccess({
     allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
   });
 
-  const userId = user?.user?.id;
+  const currentUserId = useReactiveVar(userIdVar);
   const mentorId = card.mentor?.id;
 
   const isFromInReview = sourceColumnId === STATUS_COLUMN.IN_REVIEW;
@@ -56,7 +53,7 @@ export const useDragEffect = ({
       return;
     }
 
-    if (userId !== mentorId && (isFromInReview || isFromNotApproved)) {
+    if (currentUserId !== mentorId && (isFromInReview || isFromNotApproved)) {
       enqueueSnackbar("Вы не можете поменять статус чужой домашней работы");
       return;
     }
@@ -74,7 +71,7 @@ export const useDragEffect = ({
   }, [
     isDragging,
     sourceColumnId,
-    userId,
+    currentUserId,
     mentorId,
     enqueueSnackbar,
     setDraggingState,

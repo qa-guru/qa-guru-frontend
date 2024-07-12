@@ -13,4 +13,5 @@ export const StyledStack = styled(Stack)({
   paddingLeft: "20px",
   whiteSpace: "nowrap",
   gap: "5px",
+  alignItems: "center",
 });

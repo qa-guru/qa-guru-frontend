@@ -6,7 +6,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
 import { useResponsive } from "shared/hooks";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";
@@ -21,10 +21,9 @@ import { DeleteTraining } from "../../containers";
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile } = useResponsive();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleNavigateEditCourse = (trainingId: string) => {
-    navigate(`${location.pathname}/edit-training/${trainingId}`);
+    navigate(`/edit-training/${trainingId}`);
   };
 
   const desktopColumns = useMemo<ColumnDef<TrainingDto>[]>(

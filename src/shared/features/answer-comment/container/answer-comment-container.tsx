@@ -1,5 +1,6 @@
 import { FC } from "react";
 import {
+  CommentHomeWorkDto,
   CommentHomeWorkSortField,
   CommentsHomeWorkByHomeWorkDocument,
   CommentsHomeWorkByHomeWorkQuery,
@@ -39,9 +40,12 @@ const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
           },
         });
 
-      const updatedComments =
-        existingComments?.commentsHomeWorkByHomeWork?.items?.map((item) => {
-          if (item?.id === commentId) {
+      const updateNestedComments = (
+        comments: Maybe<CommentHomeWorkDto>[],
+        parentId: string
+      ): Maybe<CommentHomeWorkDto[]> => {
+        return comments?.map((item) => {
+          if (item?.id === parentId) {
             return {
               ...item,
               children: item?.children
@@ -49,8 +53,22 @@ const AnswerCommentContainer: FC<IAnswerCommentContainer> = (props) => {
                 : [newAnswerComment],
             };
           }
+
+          if (item?.children) {
+            return {
+              ...item,
+              children: updateNestedComments(item.children, parentId),
+            };
+          }
+
           return item;
-        });
+        }) as Maybe<CommentHomeWorkDto[]>;
+      };
+
+      const updatedComments = updateNestedComments(
+        existingComments?.commentsHomeWorkByHomeWork?.items!,
+        commentId!
+      );
 
       cache.writeQuery({
         query: CommentsHomeWorkByHomeWorkDocument,

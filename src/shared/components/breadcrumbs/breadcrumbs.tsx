@@ -73,33 +73,33 @@ const routePatterns = [
   },
   { path: "/top-users", name: "Топ 50", icon: <Star fontSize="small" /> },
   {
-    path: "/admin-panel/courses",
-    name: "Админ панель / Курсы",
+    path: "/courses",
+    name: "Курсы",
     icon: <School fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/edit-training/:trainingId",
+    path: "/edit-training/:trainingId",
     name: "Редактирование курса",
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/edit-training/:trainingId/edit-lectures",
+    path: "/edit-training/:trainingId/edit-lectures",
     name: "Список уроков",
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/courses/edit-training/:trainingId/edit-lectures/:lectureId",
+    path: "/edit-training/:trainingId/edit-lectures/:lectureId",
     name: "Редактирование урока",
     icon: <Edit fontSize="small" />,
   },
   {
-    path: "/admin-panel/users",
-    name: "Админ панель / Пользователи",
+    path: "/users",
+    name: "Пользователи",
     icon: <Group fontSize="small" />,
   },
   {
-    path: "/admin-panel/statistics",
-    name: "Админ панель / Статистика",
+    path: "/statistics",
+    name: "Статистика",
     icon: <Leaderboard fontSize="small" />,
   },
   {

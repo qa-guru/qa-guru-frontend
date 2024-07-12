@@ -1,6 +1,5 @@
 import { darken, Stack, styled } from "@mui/system";
 import { Button, Paper } from "@mui/material";
-import { ArrowForwardIos } from "@mui/icons-material";
 
 export const StyledPaperStack = styled(Stack)({
   flexDirection: "column",
@@ -51,7 +50,3 @@ export const StyledSaveButton = styled(Button)(({ theme }) => ({
     backgroundColor: darken(theme.palette.app.pinkMain, 0.25),
   },
 }));
-
-export const StyledArrowForwardIosIcon = styled(ArrowForwardIos)({
-  fontSize: "15px",
-});

@@ -1,9 +1,11 @@
 import { FC, useState } from "react";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
-import { useRoleAccess, useSettings, useResponsive } from "shared/hooks";
+import { useSettings } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
+import { IPages } from "features/header/types";
 
+import { useRoleFilterPages } from "../../hooks/use-role-filter-pages";
 import Profile from "../../containers";
 import AppMenu from "../menu/menu";
 import MenuBurger from "../menu-burger/menu-burger";
@@ -16,85 +18,96 @@ import {
   StyledStack,
   StyledWrapper,
 } from "./header.styled";
-import KanbanMenu from "../kanban-menu";
 
-interface IPages {
-  pageURL: string;
-  title: string;
-  id: number;
-}
+const configPages: IPages[] = [
+  {
+    title: "Домой",
+    pageURL: "/",
+    roles: [UserRole.Student],
+  },
+  {
+    title: "Топ 50",
+    pageURL: "/top-users",
+    roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
+  {
+    title: "Доски",
+    menuPages: [
+      {
+        title: "Доска заданий",
+        pageURL: "/kanban",
+        roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+      },
+      {
+        title: "Доска ментора",
+        pageURL: "/kanban-mentor",
+        roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+      },
+      {
+        title: "Доска студента",
+        pageURL: "/kanban-student",
+        roles: [UserRole.Student, UserRole.Admin],
+      },
+    ],
+  },
+  // {
+  //   title: "О Системе",
+  //   pageURL: "/info-system",
+  //   roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  // },
+];
+
+const configMobilePages: IPages[] = [
+  {
+    title: "Домой",
+    pageURL: "/",
+    roles: [UserRole.Student],
+  },
+  {
+    title: "Топ 50",
+    pageURL: "/top-users",
+    roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
+  {
+    title: "Доска заданий",
+    pageURL: "/kanban",
+    roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
+  {
+    title: "Доска ментора",
+    pageURL: "/kanban-mentor",
+    roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
+  {
+    title: "Доска студента",
+    pageURL: "/kanban-student",
+    roles: [UserRole.Student, UserRole.Admin],
+  },
+  // {
+  //   title: "О Системе",
+  //   pageURL: "/info-system",
+  //   roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  // },
+];
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
   const { settings } = useSettings();
   const lightTheme = settings.theme === "light";
 
-  const { isMobileOrTablet } = useResponsive();
-
-  const pages: IPages[] = [];
-  const kanbanPages: IPages[] = [];
-
-  const addPage = (
-    pageList: IPages[],
-    title: string,
-    pageURL: string,
-    id: number
-  ) => {
-    pageList.push({
-      title,
-      pageURL,
-      id,
-    });
-  };
-
-  const targetPages = isMobileOrTablet ? pages : kanbanPages;
-
-  const hasStudentKanbanAccess = useRoleAccess({
-    allowedRoles: [UserRole.Student, UserRole.Admin],
-  });
-
-  const hasMentorKanbanAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
-  });
-
-  const hasKanbanAccess = useRoleAccess({
-    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
-  });
-
-  const hasMainAccess = useRoleAccess({
-    allowedRoles: [UserRole.Student, UserRole.Admin],
-  });
-
-  if (hasMainAccess) addPage(pages, "Домой", "/", 0);
-
-  if (hasKanbanAccess) addPage(targetPages, "Доска заданий", "/kanban", 1);
-
-  if (hasMentorKanbanAccess)
-    addPage(targetPages, "Доска ментора", "/kanban-mentor", 2);
-
-  addPage(pages, "Топ 50", "/top-users", 3);
-
-  if (hasStudentKanbanAccess)
-    addPage(targetPages, "Доска студента", "/kanban-student", 4);
-
-  if (kanbanPages.length === 1)
-    addPage(pages, "Доска студента", "/kanban-student", 5);
-
-  addPage(pages, "О Системе", "/info-system", 6);
+  const pages = useRoleFilterPages(configPages);
+  const mobilePages = useRoleFilterPages(configMobilePages);
 
   const handleClickNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  const renderKanbanMenu = () =>
-    kanbanPages.length > 1 && <KanbanMenu pages={kanbanPages} />;
 
   return (
     <StyledAppBar position="fixed">
       <StyledWrapper>
         <StyledStack>
           <MenuBurger
-            pages={pages}
+            pages={mobilePages}
             setAnchorElNav={setAnchorElNav}
             handleClickNavMenu={handleClickNavMenu}
             anchorElNav={anchorElNav}
@@ -107,7 +120,6 @@ const Header: FC = () => {
             </CustomLink>
           </StyledIconBox>
           <AppMenu handleClickNavMenu={handleClickNavMenu} pages={pages} />
-          {renderKanbanMenu()}
         </StyledStack>
         <StyledStack>
           <ThemeSelector />

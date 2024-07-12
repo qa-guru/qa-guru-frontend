@@ -47,7 +47,7 @@ const Profile: FC<IProfile> = (props) => {
       settings.push({
         title: "Админ панель",
         icon: <SpaceDashboard />,
-        url: "/admin-panel/courses",
+        url: "/",
         id: 1,
       });
     } else {
@@ -55,19 +55,19 @@ const Profile: FC<IProfile> = (props) => {
         {
           title: "Курсы",
           icon: <School />,
-          url: "/admin-panel/courses",
+          url: "/courses",
           id: 2,
         },
         {
           title: "Пользователи",
           icon: <Group />,
-          url: "/admin-panel/users",
+          url: "/users",
           id: 3,
         },
         {
           title: "Статистика",
           icon: <Leaderboard />,
-          url: "/admin-panel/statistics",
+          url: "/statistics",
           id: 4,
         }
       );

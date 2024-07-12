@@ -9,6 +9,8 @@ import AnswerComment from "shared/features/answer-comment/container";
 import DeleteComment from "shared/features/delete-comment/container";
 import UpdateComment from "shared/features/update-comment/container";
 import LikeComment from "shared/features/like-comment/container";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
 
 import { ICommentItem } from "./comment-item.types";
 import {
@@ -26,7 +28,6 @@ import {
 const CommentItem: FC<ICommentItem> = ({
   item,
   commentId,
-  currentUserID,
   parentID = null,
   homeworkId,
 }) => {
@@ -54,7 +55,8 @@ const CommentItem: FC<ICommentItem> = ({
     setOpenThreads(!openThreads);
   };
 
-  const editAccess = currentUserID === creator?.id;
+  const currentUserId = useReactiveVar(userIdVar);
+  const editAccess = currentUserId === creator?.id;
   const isSelected = selectedComment === id;
 
   const renderEditIcon = () =>
@@ -79,7 +81,6 @@ const CommentItem: FC<ICommentItem> = ({
             commentId={childComment?.id}
             parentID={id}
             editAccess={editAccess}
-            currentUserID={currentUserID}
           />
         ))}
       </StyledThreadStack>

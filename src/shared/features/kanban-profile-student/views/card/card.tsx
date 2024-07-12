@@ -4,7 +4,7 @@ import { format, parseISO } from "date-fns";
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
-import { Maybe, UserDto, useUserIdQuery } from "api/graphql/generated/graphql";
+import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import { useModal } from "react-modal-hook";
 import HomeworkItem from "shared/features/homework-item";
 import Comments from "shared/features/comments";
@@ -28,8 +28,6 @@ const Card: FC<ICard> = ({ card }) => {
 
   const { isMobile } = useResponsive();
 
-  const { data: dataUserId } = useUserIdQuery({ fetchPolicy: "cache-first" });
-
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog
       open={open}
@@ -42,10 +40,7 @@ const Card: FC<ICard> = ({ card }) => {
         <StyledIconBox>
           <StyledClearIcon onClick={handleHideModal} />
         </StyledIconBox>
-        <HomeworkItem
-          dataHomeWorkByLectureAndTraining={card!}
-          dataUserId={dataUserId!}
-        />
+        <HomeworkItem dataHomeWorkByLectureAndTraining={card!} />
         <Comments homeworkId={card.id}>
           <CommentsPagination />
         </Comments>

@@ -16,7 +16,7 @@ import {
 import ModalHomeworksOtherStudents from "../modal-homeworks-other-students";
 
 const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
-  const { data, fetchMore, dataUserId } = props;
+  const { data, fetchMore } = props;
   const { items, totalElements } = data?.homeWorksByLectureId || {};
   const [loading, setLoading] = useState<boolean>(false);
   const [hasMoreHomeworks, setHasMoreHomeworks] = useState<boolean>(true);
@@ -59,15 +59,8 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
 
         return (
           <StyledPaper key={id}>
-            <HomeworkItem
-              dataHomeWorkByLectureAndTraining={item}
-              dataUserId={dataUserId}
-            />
-            <ModalHomeworksOtherStudents
-              key={id}
-              item={item}
-              dataUserId={dataUserId}
-            />
+            <HomeworkItem dataHomeWorkByLectureAndTraining={item} />
+            <ModalHomeworksOtherStudents key={id} item={item} />
           </StyledPaper>
         );
       })}

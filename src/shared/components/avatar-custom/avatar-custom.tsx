@@ -1,7 +1,8 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { useTheme } from "@mui/system";
-import { useUserIdQuery } from "api/graphql/generated/graphql";
+import { userIdVar } from "cache";
+import { useReactiveVar } from "@apollo/client";
 
 import { IAvatarCustom } from "./avatar-custom.types";
 import { StyledTypography } from "./avatar-custom.styled";
@@ -57,11 +58,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   hasLink,
   img,
 }) => {
-  const { data } = useUserIdQuery({
-    fetchPolicy: "cache-first",
-  });
-
-  const currentUserId = data?.user?.id;
+  const currentUserId = useReactiveVar(userIdVar);
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
 

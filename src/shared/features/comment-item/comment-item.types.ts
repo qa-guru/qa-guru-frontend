@@ -6,6 +6,5 @@ export interface ICommentItem {
   isSelected?: boolean;
   commentId?: Maybe<string>;
   parentID?: Maybe<string>;
-  currentUserID?: Maybe<string>;
   homeworkId?: string;
 }

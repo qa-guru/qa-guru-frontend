@@ -7,8 +7,6 @@ import {
   UserRole,
   useUserRolesQuery,
 } from "api/graphql/generated/graphql";
-import Layout from "shared/components/layout";
-import ScrollPageSectionPage from "pages/scroll-page-section";
 import {
   LoginPage,
   ConfirmTokenPage,
@@ -17,6 +15,8 @@ import {
   SignUpPage,
 } from "pages/auth";
 import { AppSpinner } from "shared/components/spinners";
+import { userRolesVar } from "cache";
+import Layout from "shared/components/layout";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -49,13 +49,16 @@ export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {
 };
 
 export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
-  return userRoles?.reduce<ReactElement[]>((acc, role) => {
-    const routes = role && roleRoutes[role];
-    routes?.forEach((route) => {
-      if (!acc.some((accRoute) => accRoute.key === route.key)) acc.push(route);
-    });
-    return acc;
-  }, []);
+  if (!userRoles) return [];
+
+  const routesSet = new Set<ReactElement>();
+
+  userRoles.forEach((role) => {
+    const routes = roleRoutes[role!];
+    routes?.forEach((route) => routesSet.add(route));
+  });
+
+  return Array.from(routesSet);
 };
 
 export const useUserRoutes = () => {
@@ -69,6 +72,9 @@ export const useUserRoutes = () => {
 
   const { data, loading } = useUserRolesQuery({
     skip: isAuthPage,
+    onCompleted: (data) => {
+      userRolesVar(data?.user?.roles);
+    },
   });
 
   const roles = data?.user?.roles ?? [];
@@ -151,11 +157,6 @@ const Routing: FC<IRoutnig> = () => {
               <SetPasswordPage />
             </ProtectedRoute>
           }
-        />
-        <Route
-          key="scroll-page-section"
-          path="/scroll-page-section"
-          element={<ScrollPageSectionPage />}
         />
         <Route
           path="*"

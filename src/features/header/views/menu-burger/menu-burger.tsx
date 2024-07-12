@@ -31,10 +31,10 @@ const MenuBurger: FC<IMenuBurger> = (props) => {
         onClose={handleCloseMenuBurger}
       >
         {pages.map((page) => {
-          const { pageURL, title, id } = page;
+          const { pageURL, title } = page;
 
           return (
-            <CustomLink key={id} path={pageURL}>
+            <CustomLink key={pageURL} path={pageURL}>
               <MenuItem onClick={() => handleClickNavMenu(pageURL)}>
                 <ListItemText>{title}</ListItemText>
               </MenuItem>

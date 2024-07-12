@@ -1,7 +1,4 @@
-import {
-  UserQuery,
-  StudentHomeWorkStatus,
-} from "api/graphql/generated/graphql";
+import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 export interface IHomeworkItem {
   dataHomeWorkByLectureAndTraining?: {
@@ -37,6 +34,5 @@ export interface IHomeworkItem {
       rating?: { __typename?: "RatingUserDto"; rating?: any | null } | null;
     } | null;
   } | null;
-  dataUserId: UserQuery;
   hideMentorAndStudent?: boolean;
 }
