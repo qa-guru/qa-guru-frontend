@@ -5,15 +5,17 @@ mutation approved($homeWorkId: ID!) {
       id
       subject
       description
+      contentHomeWork
+    }
+    training {
+      techStack
     }
     answer
     status
     student {
       id
-      email
       firstName
       avatar
-      middleName
       lastName
       rating {
         rating
@@ -21,15 +23,14 @@ mutation approved($homeWorkId: ID!) {
     }
     mentor {
       id
-      email
       firstName
       avatar
-      middleName
       lastName
       rating {
         rating
       }
     }
+    creationDate
     startCheckingDate
     endCheckingDate
   }

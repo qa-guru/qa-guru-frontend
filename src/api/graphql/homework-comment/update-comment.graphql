@@ -1,25 +1,6 @@
 mutation updateComment($id: ID!, $content: String!) {
   updateComment(id: $id, content: $content) {
     id
-    creator {
-      id
-      email
-      firstName
-      middleName
-      avatar
-      lastName
-      rating {
-        rating
-      }
-    }
-    creationDate
     content
-    userLike
-    likes
-    homeWork {
-      id
-      answer
-      status
-    }
   }
 }

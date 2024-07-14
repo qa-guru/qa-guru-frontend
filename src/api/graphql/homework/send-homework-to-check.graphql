@@ -12,14 +12,16 @@ mutation sendHomeWorkToCheck(
     lecture {
       id
       subject
-      description
+      contentHomeWork
     }
     answer
     status
+    training {
+      techStack
+    }
     student {
       id
       firstName
-      middleName
       avatar
       lastName
       rating {
@@ -29,13 +31,13 @@ mutation sendHomeWorkToCheck(
     mentor {
       id
       firstName
-      middleName
       avatar
       lastName
       rating {
         rating
       }
     }
+    creationDate
     startCheckingDate
     endCheckingDate
   }

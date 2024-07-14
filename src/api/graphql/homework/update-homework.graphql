@@ -4,14 +4,16 @@ mutation updateHomework($id: ID!, $content: String!) {
     lecture {
       id
       subject
-      description
+      contentHomeWork
     }
     answer
     status
+    training {
+      techStack
+    }
     student {
       id
       firstName
-      middleName
       avatar
       lastName
       rating {
@@ -21,13 +23,13 @@ mutation updateHomework($id: ID!, $content: String!) {
     mentor {
       id
       firstName
-      middleName
       avatar
       lastName
       rating {
         rating
       }
     }
+    creationDate
     startCheckingDate
     endCheckingDate
   }

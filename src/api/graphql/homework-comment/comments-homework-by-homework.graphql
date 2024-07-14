@@ -15,7 +15,6 @@ query commentsHomeWorkByHomeWork(
       creator {
         id
         firstName
-        middleName
         avatar
         lastName
         rating {
@@ -26,16 +25,11 @@ query commentsHomeWorkByHomeWork(
       content
       userLike
       likes
-      homeWork {
-        id
-      }
       children {
         ...subCommentHomeWorkDto
         ...subCommentHomeWorkDtoRecursive
       }
     }
-    offset
-    limit
     totalElements
   }
 }
@@ -62,12 +56,9 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
   id
   creator {
     id
-    email
     firstName
     avatar
     lastName
-    middleName
-    locked
     rating {
       rating
     }

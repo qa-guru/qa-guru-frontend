@@ -1,5 +1,4 @@
 import { FC, useRef, useState } from "react";
-import { client } from "api";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import { useParams } from "react-router-dom";
@@ -25,10 +24,6 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
             lectureId: lectureId!,
             content: rteRef.current?.editor?.getHTML() ?? "",
           },
-          onCompleted: () =>
-            client.refetchQueries({
-              include: ["homeWorkByLectureAndTraining"],
-            }),
         });
         setError("");
         rteRef.current?.editor?.commands.clearContent();

@@ -10,14 +10,11 @@ query users(
       email
       firstName
       lastName
-      middleName
       avatar
       phoneNumber
       roles
       locked
       creationDate
-      confirmationDate
-      updateDate
       rating {
         rating
       }
