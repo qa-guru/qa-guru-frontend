@@ -41,12 +41,12 @@ const configPages: IPages[] = [
       {
         title: "Доска ментора",
         pageURL: "/kanban-mentor",
-        roles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+        roles: [UserRole.Mentor, UserRole.Lector],
       },
       {
         title: "Доска студента",
         pageURL: "/kanban-student",
-        roles: [UserRole.Student, UserRole.Admin],
+        roles: [UserRole.Student],
       },
     ],
   },

@@ -27,12 +27,12 @@ const UserDetail: FC<IUserDetail> = ({ data }) => {
 
   const hasStudentKanbanAccess = useRoleAccess({
     roles,
-    allowedRoles: [UserRole.Student, UserRole.Admin],
+    allowedRoles: [UserRole.Student],
   });
 
   const hasMentorKanbanAccess = useRoleAccess({
     roles,
-    allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+    allowedRoles: [UserRole.Mentor, UserRole.Lector],
   });
 
   return (

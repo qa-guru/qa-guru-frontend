@@ -6,6 +6,7 @@ import { FC } from "react";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { AppSpinner } from "shared/components/spinners";
 import { useParams } from "react-router-dom";
+import { FETCH_POLICY } from "shared/constants";
 
 import EditTraining from "../../views/edit-training";
 
@@ -14,6 +15,7 @@ const EditTrainingContainer: FC = () => {
 
   const { data, loading: loadingTraining } = useTrainingQuery({
     variables: { id: trainingId! },
+    fetchPolicy: FETCH_POLICY.NETWORK_ONLY,
   });
 
   const [updateTraining, { loading: loadingUpdateTraining }] =

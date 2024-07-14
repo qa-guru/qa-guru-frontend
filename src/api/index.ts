@@ -3,6 +3,7 @@ import { onError } from "@apollo/client/link/error";
 import fetch from "cross-fetch";
 import AuthService from "api/rest/auth-service";
 import { cache } from "cache";
+import { FETCH_POLICY } from "shared/constants";
 
 import { GRAPHQL_URI } from "../config";
 
@@ -51,7 +52,7 @@ const client = new ApolloClient({
   connectToDevTools: import.meta.env.MODE === "development",
   defaultOptions: {
     watchQuery: {
-      fetchPolicy: "cache-and-network",
+      fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     },
   },
 });
