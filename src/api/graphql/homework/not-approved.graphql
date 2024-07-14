@@ -1,9 +1,37 @@
 mutation notApproved($homeWorkId: ID!) {
   notApproved(homeWorkId: $homeWorkId) {
     id
+    lecture {
+      id
+      subject
+      description
+      contentHomeWork
+    }
+    training {
+      techStack
+    }
+    answer
     status
+    student {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
     mentor {
       id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
     }
+    creationDate
+    startCheckingDate
+    endCheckingDate
   }
 }

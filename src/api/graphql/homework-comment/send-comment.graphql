@@ -1,6 +1,19 @@
 mutation sendComment($homeWorkId: ID!, $content: String!) {
   sendComment(homeWorkId: $homeWorkId, content: $content) {
     id
+    creator {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    creationDate
+    content
+    userLike
+    likes
     children {
       ...subCommentHomeWorkDto
       ...subCommentHomeWorkDtoRecursive
@@ -30,12 +43,9 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
   id
   creator {
     id
-    email
     firstName
     avatar
     lastName
-    middleName
-    locked
     rating {
       rating
     }

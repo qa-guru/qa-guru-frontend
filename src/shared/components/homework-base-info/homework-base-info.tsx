@@ -37,8 +37,6 @@ const HomeworkBaseInfo: FC<IHomeworkBaseInfo> = ({
     />
   );
 
-  console.log(creationDate, startCheckingDate, endCheckingDate);
-
   const renderDate = (label: string, date?: string) =>
     date && (
       <StyledColumnStack>

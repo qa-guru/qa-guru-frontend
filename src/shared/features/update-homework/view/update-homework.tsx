@@ -1,5 +1,4 @@
 import { FC, useRef } from "react";
-import { client } from "api";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import SendButtons from "shared/components/send-buttons";
@@ -19,7 +18,6 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {
-          client.refetchQueries({ include: ["homeWorkByLectureAndTraining"] });
           setOpenHomeWorkEdit(false);
         },
       });

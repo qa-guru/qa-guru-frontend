@@ -56,12 +56,9 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
   id
   creator {
     id
-    email
     firstName
     avatar
     lastName
-    middleName
-    locked
     rating {
       rating
     }
