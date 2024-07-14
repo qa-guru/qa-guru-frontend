@@ -19,20 +19,20 @@ const LectureDetailContainer: FC = () => {
 
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
     variables: { id: lectureId! },
-    fetchPolicy: FETCH_POLICY,
+    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
   });
 
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
-      fetchPolicy: FETCH_POLICY,
+      fetchPolicy: FETCH_POLICY.CACHE_FIRST,
     });
 
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
       variables: { lectureId: lectureId! },
       skip: !tariffHomework,
-      fetchPolicy: FETCH_POLICY,
+      fetchPolicy: FETCH_POLICY.CACHE_FIRST,
     });
 
   if (

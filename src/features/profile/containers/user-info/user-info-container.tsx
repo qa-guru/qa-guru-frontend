@@ -8,7 +8,7 @@ import UserInfo from "../../views/user-info";
 
 const UserInfoContainer: FC = () => {
   const { loading, data } = useUserQuery({
-    fetchPolicy: FETCH_POLICY,
+    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
   });
 
   if (loading) return <AppSpinner />;

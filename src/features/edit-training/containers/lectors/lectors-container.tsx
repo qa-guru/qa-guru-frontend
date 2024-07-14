@@ -7,6 +7,7 @@ import {
 import { FC, useCallback, useState } from "react";
 import { debounce } from "lodash";
 import { Control } from "react-hook-form";
+import { FETCH_POLICY } from "shared/constants";
 
 import SelectLectors from "../../views/select-lectors";
 
@@ -30,6 +31,7 @@ const UsersContainer: FC<ILectorsContainer> = ({ control, name, role }) => {
         firstName: filterName,
       },
     },
+    fetchPolicy: FETCH_POLICY.NETWORK_ONLY,
   });
 
   const debouncedSearch = useCallback(

@@ -1,3 +1,4 @@
+import { type WatchQueryFetchPolicy } from "@apollo/client";
 import { ReactComponent as Clock } from "assets/icons/clock.svg";
 import { ReactComponent as Search } from "assets/icons/search.svg";
 import { ReactComponent as Done } from "assets/icons/done.svg";
@@ -68,4 +69,8 @@ export const STATES = [
 
 export const MAX_CARDS_BEFORE_SHOW_MORE = 5;
 
-export const FETCH_POLICY = "cache-first";
+export const FETCH_POLICY: Record<string, WatchQueryFetchPolicy> = {
+  CACHE_FIRST: "cache-first",
+  NETWORK_ONLY: "network-only",
+  CACHE_AND_NETWORK: "cache-and-network",
+};
