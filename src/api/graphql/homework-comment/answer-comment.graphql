@@ -3,25 +3,17 @@ mutation answerComment($parentID: ID!, $content: String!) {
     id
     creator {
       id
-      email
       firstName
-      locked
-      middleName
       avatar
       lastName
       rating {
         rating
       }
     }
-    userLike
-    likes
     creationDate
     content
-    homeWork {
-      id
-      answer
-      status
-    }
+    userLike
+    likes
     children {
       ...subCommentHomeWorkDto
       ...subCommentHomeWorkDtoRecursive
@@ -51,12 +43,9 @@ fragment subCommentHomeWorkDto on CommentHomeWorkDto {
   id
   creator {
     id
-    email
     firstName
     avatar
     lastName
-    middleName
-    locked
     rating {
       rating
     }

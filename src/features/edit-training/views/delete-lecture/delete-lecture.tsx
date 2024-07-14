@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { FC, useRef } from "react";
 import { useParams } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Maybe,
   UpdateTrainingLectureMutationFn,
@@ -96,7 +96,7 @@ const DeleteLecture: FC<IDeleteLecture> = ({
   };
 
   const renderLoading = () => <CircularProgress size={25} />;
-  const renderDeleteIcon = () => <CloseIcon />;
+  const renderDeleteIcon = () => <DeleteIcon fontSize="small" color="error" />;
 
   return (
     <IconButton onClick={handleOpen}>

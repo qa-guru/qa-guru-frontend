@@ -19,7 +19,6 @@ query homeWorksByLectureId(
       student {
         id
         firstName
-        middleName
         avatar
         lastName
         rating {
@@ -29,7 +28,6 @@ query homeWorksByLectureId(
       mentor {
         id
         firstName
-        middleName
         lastName
         avatar
         rating {
@@ -40,8 +38,6 @@ query homeWorksByLectureId(
       startCheckingDate
       endCheckingDate
     }
-    offset
-    limit
     totalElements
   }
 }

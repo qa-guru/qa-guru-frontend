@@ -16,12 +16,12 @@ const CreateLecture: FC<ICreateLecture> = ({
   const { trainingId } = useParams();
 
   const handleAddLecture = () => {
-    const lectureeName = `Урок ${generateUniqueId()}`;
+    const lectureName = `Урок ${generateUniqueId()}`;
 
     updateLecture({
       variables: {
         input: {
-          subject: lectureeName,
+          subject: lectureName,
         },
       },
       onCompleted: (result) => {

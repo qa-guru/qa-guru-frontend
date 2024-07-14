@@ -5,14 +5,10 @@ query usersRating($offset: Int!, $limit: Int!, $sort: UserSort) {
       lastName
       firstName
       avatar
-      middleName
       creationDate
       rating {
         rating
       }
     }
-    offset
-    limit
-    totalElements
   }
 }

@@ -1,24 +1,10 @@
 query trainingPurchases {
   trainingPurchases {
     id
-    user {
-      id
-      email
-      firstName
-      lastName
-      avatar
-      middleName
-      rating {
-        rating
-      }
-    }
     trainingTariff {
       id
       name
-      code
-      price
       homeWork
-      description
       training {
         id
         name
@@ -26,12 +12,8 @@ query trainingPurchases {
         mentors {
           id
           firstName
-          middleName
           avatar
           lastName
-          rating {
-            rating
-          }
         }
       }
     }
