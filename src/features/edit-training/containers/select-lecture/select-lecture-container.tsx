@@ -6,6 +6,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
+import { FETCH_POLICY } from "shared/constants";
 
 import TableColumns from "../../views/table-columns-lectures";
 
@@ -25,6 +26,7 @@ const SelectLectureContainer: FC<ISelectLectureContainer> = ({
         order: Order.Asc,
       },
     },
+    fetchPolicy: FETCH_POLICY.NETWORK_ONLY,
   });
 
   if (loading) return <AppSpinner />;

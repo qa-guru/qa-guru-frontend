@@ -6,6 +6,7 @@ import {
   useTrainingLecturesQuery,
   useTrainingQuery,
 } from "api/graphql/generated/graphql";
+import { FETCH_POLICY } from "shared/constants";
 
 import TrainingLectures from "../../views/training-lectures";
 
@@ -15,9 +16,11 @@ const TrainingLecturesContainer: FC = () => {
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
+      fetchPolicy: FETCH_POLICY.CACHE_FIRST,
     });
   const { data: dataTraining, loading: loadingTraining } = useTrainingQuery({
     variables: { id: trainingId! },
+    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
   });
 
   if (loadingTrainingLectures || loadingTraining) return <AppSpinner />;

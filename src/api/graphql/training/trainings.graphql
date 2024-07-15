@@ -4,15 +4,12 @@ query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
       id
       name
       techStack
-      description
-      content
       picture
       mentors {
         id
         firstName
         lastName
         avatar
-        middleName
         rating {
           rating
         }

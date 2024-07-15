@@ -6,14 +6,12 @@ import {
 import {
   CommentsHomeWorkByHomeWorkQuery,
   CommentsHomeWorkByHomeWorkQueryVariables,
-  UserIdQuery,
   Maybe,
 } from "api/graphql/generated/graphql";
 
 interface CommentsProps {
   homeworkId?: Maybe<string>;
   dataCommentsHomeWorkByHomeWork: CommentsHomeWorkByHomeWorkQuery;
-  dataUserId: UserIdQuery;
   fetchMore: (
     fetchMoreOptions: FetchMoreQueryOptions<
       CommentsHomeWorkByHomeWorkQueryVariables,

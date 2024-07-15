@@ -6,7 +6,9 @@ import { useTrainingPurchasesQuery } from "api/graphql/generated/graphql";
 import TrainingPurchases from "../../views/training-purchases";
 
 const TrainingPurchasesContainer: FC = () => {
-  const { data, loading } = useTrainingPurchasesQuery();
+  const { data, loading } = useTrainingPurchasesQuery({
+    fetchPolicy: "cache-first",
+  });
 
   if (loading) return <AppSpinner />;
   if (!data) return <NoDataErrorMessage />;

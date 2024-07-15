@@ -4,28 +4,29 @@ import {
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
   useHomeworksQuery,
-  useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import Spinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams, useMatch } from "react-router-dom";
 import { HOMEWORKS_QUERY_DEFAULTS } from "shared/constants";
 import { useDynamicCardLimit } from "shared/hooks";
+import { userIdVar } from "cache";
+import { useReactiveVar } from "@apollo/client";
 
 import Board from "../../views/board";
 
 const HomeworksContainer: FC = () => {
-  const { data: dataUserId } = useUserIdQuery();
+  const currentUserId = useReactiveVar(userIdVar);
   const { userId: routeUserId } = useParams<{ userId?: string }>();
   const matchProfile = useMatch("/profile");
   const dynamicLimit = useDynamicCardLimit();
 
   const filterObject = useMemo(() => {
-    const mentorId = matchProfile ? dataUserId?.user?.id : routeUserId;
+    const mentorId = matchProfile ? currentUserId : routeUserId;
     return {
       mentorId,
     };
-  }, [dataUserId, routeUserId, matchProfile]);
+  }, [currentUserId, routeUserId, matchProfile]);
 
   const {
     data: newData,

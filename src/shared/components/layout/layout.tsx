@@ -1,4 +1,4 @@
-import { FC, ReactNode, useMemo } from "react";
+import { FC, ReactNode } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "features/header";
 import Footer from "shared/components/footer";
@@ -17,27 +17,19 @@ interface ILayout {
   isLogging?: boolean;
 }
 
+const determineIsKanban = (pathname: string): boolean => {
+  const regex = /^\/kanban(-mentor|-student)?\/?$/;
+  return regex.test(pathname);
+};
+
 const Layout: FC<ILayout> = ({ children, isLogging }) => {
   const { isMobile } = useResponsive();
   const location = useLocation();
 
-  const determineIsKanban = useMemo(() => {
-    const regex = /^\/kanban(-mentor|-student)?\/?$/;
-    return regex.test(location.pathname);
-  }, [location.pathname]);
+  const isKanban = determineIsKanban(location.pathname);
 
-  const showBreadcrumbs = useMemo(
-    () => !isLogging && !isMobile && !determineIsKanban,
-    [isLogging, isMobile, determineIsKanban]
-  );
-  const showKanbanBreadcrumbs = useMemo(
-    () => !isLogging && !isMobile && determineIsKanban,
-    [isLogging, isMobile, determineIsKanban]
-  );
-
-  const showFooter = useMemo(() => {
-    return !location.pathname.startsWith("/admin-panel");
-  }, [location.pathname]);
+  const showBreadcrumbs = !isLogging && !isMobile && !isKanban;
+  const showKanbanBreadcrumbs = !isLogging && !isMobile && isKanban;
 
   return (
     <StyledBox>
@@ -56,7 +48,7 @@ const Layout: FC<ILayout> = ({ children, isLogging }) => {
       <StyledContainer isLogging={isLogging}>
         <Outlet />
       </StyledContainer>
-      {showFooter && <Footer />}
+      <Footer />
     </StyledBox>
   );
 };

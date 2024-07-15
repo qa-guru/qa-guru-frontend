@@ -4,7 +4,6 @@ import {
   Order,
   StudentHomeWorkSortField,
   useHomeWorksByLectureIdQuery,
-  useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { SkeletonHomeworks } from "shared/components/skeletons";
@@ -22,8 +21,6 @@ const HomeworksOtherStudentsContainer: FC = () => {
     order: sortOrder || ("DESC" as Order),
   };
 
-  const { data: dataUserId, loading: loadingUserId } = useUserIdQuery();
-
   const { data, loading, fetchMore } = useHomeWorksByLectureIdQuery({
     variables: {
       offset: QUERY_DEFAULTS.OFFSET,
@@ -34,16 +31,10 @@ const HomeworksOtherStudentsContainer: FC = () => {
     },
   });
 
-  if (loading || loadingUserId) return <SkeletonHomeworks />;
-  if (!data || !dataUserId || !lectureId) return <NoDataErrorMessage />;
+  if (loading) return <SkeletonHomeworks />;
+  if (!data || !lectureId) return <NoDataErrorMessage />;
 
-  return (
-    <HomeworksOtherStudents
-      dataUserId={dataUserId}
-      fetchMore={fetchMore}
-      data={data}
-    />
-  );
+  return <HomeworksOtherStudents fetchMore={fetchMore} data={data} />;
 };
 
 export default HomeworksOtherStudentsContainer;

@@ -37,7 +37,7 @@ const EditLecture: FC<IEditLecture> = ({
     dataLecture?.lecture?.description!
   );
   const rteRefContent = useRef<RichTextEditorRef>(null);
-  const rteRefСontentHomeWork = useRef<RichTextEditorRef>(null);
+  const rteRefContentHomeWork = useRef<RichTextEditorRef>(null);
 
   const { handleSubmit, control } = useForm({
     defaultValues: { id, subject, description, speakers },
@@ -53,7 +53,7 @@ const EditLecture: FC<IEditLecture> = ({
       speakers: emails,
       description,
       content: rteRefContent.current?.editor?.getHTML(),
-      contentHomeWork: rteRefСontentHomeWork.current?.editor?.getHTML(),
+      contentHomeWork: rteRefContentHomeWork.current?.editor?.getHTML(),
     };
 
     await updateLecture({
@@ -125,7 +125,7 @@ const EditLecture: FC<IEditLecture> = ({
               <Typography variant="h3">Домашнее задание</Typography>
               <Editor
                 content={contentHomework}
-                rteRef={rteRefСontentHomeWork}
+                rteRef={rteRefContentHomeWork}
               />
             </StyledInfoStack>
           </StyledPaper>

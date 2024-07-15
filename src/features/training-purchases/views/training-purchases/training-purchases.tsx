@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
-import { Container, Grid, Popover, Typography } from "@mui/material";
+import { Container, Grid, Popover, Tooltip, Typography } from "@mui/material";
 import UserRow from "shared/components/user-row";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";
@@ -121,22 +121,24 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                       height="35px"
                       hasLink
                     />
-                    <StyledAvatarGroup
-                      total={otherMentors?.length}
-                      max={4}
-                      variant="rounded"
-                      onClick={(event) => toggleMentorsMenu(event, id!)}
-                    >
-                      {otherMentors?.map((mentor) => (
-                        <UserRow
-                          user={mentor}
-                          userId={mentor?.id}
-                          hideFullName
-                          hideRating
-                          key={mentor?.id}
-                        />
-                      ))}
-                    </StyledAvatarGroup>
+                    <Tooltip title="Преподаватели">
+                      <StyledAvatarGroup
+                        total={otherMentors?.length}
+                        max={4}
+                        variant="rounded"
+                        onClick={(event) => toggleMentorsMenu(event, id!)}
+                      >
+                        {otherMentors?.map((mentor) => (
+                          <UserRow
+                            user={mentor}
+                            userId={mentor?.id}
+                            hideFullName
+                            hideRating
+                            key={mentor?.id}
+                          />
+                        ))}
+                      </StyledAvatarGroup>
+                    </Tooltip>
                   </StyledUserRowStack>
                   <Typography variant="h5">{name}</Typography>
                   {/*<StyledCalendarBox open={openCalendarById === id}>*/}

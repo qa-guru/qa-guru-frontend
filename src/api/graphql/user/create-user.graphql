@@ -7,6 +7,5 @@ mutation createUser($input: UserCreateInput!) {
     middleName
     phoneNumber
     roles
-    locked
   }
 }

@@ -5,14 +5,16 @@ mutation takeForReview($homeworkId: ID!) {
       id
       subject
       description
+      contentHomeWork
+    }
+    training {
+      techStack
     }
     answer
     status
     student {
       id
-      email
       firstName
-      middleName
       avatar
       lastName
       rating {
@@ -21,15 +23,14 @@ mutation takeForReview($homeworkId: ID!) {
     }
     mentor {
       id
-      email
       firstName
-      middleName
-      lastName
       avatar
+      lastName
       rating {
         rating
       }
     }
+    creationDate
     startCheckingDate
     endCheckingDate
   }

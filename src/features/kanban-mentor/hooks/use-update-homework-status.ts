@@ -8,22 +8,23 @@ import {
   useApprovedMutation,
   useNotApprovedMutation,
   useTakeForReviewMutation,
-  useUserIdQuery,
 } from "api/graphql/generated/graphql";
 import { useMemo } from "react";
 import { useDynamicCardLimit } from "shared/hooks";
+import { userIdVar } from "cache";
+import { useReactiveVar } from "@apollo/client";
 
 import { HOMEWORKS_QUERY_DEFAULTS } from "../constants";
 
 const useUpdateHomeworkStatus = () => {
-  const { data: dataUserId } = useUserIdQuery();
+  const currentUserId = useReactiveVar(userIdVar);
   const dynamicLimit = useDynamicCardLimit();
 
   const filterObject = useMemo(() => {
     return {
-      mentorId: dataUserId?.user?.id,
+      mentorId: currentUserId,
     };
-  }, [dataUserId]);
+  }, [currentUserId]);
 
   const [takeForReview] = useTakeForReviewMutation({
     update: (cache, { data }) => {

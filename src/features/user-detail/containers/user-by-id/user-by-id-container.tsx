@@ -2,6 +2,7 @@ import { useUserByIdQuery } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { AppSpinner } from "shared/components/spinners";
+import { FETCH_POLICY } from "shared/constants";
 
 import UserDetail from "../../views/user-detail";
 
@@ -12,6 +13,7 @@ const UserByIdContainer: FC = () => {
     variables: {
       id: userId,
     },
+    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
     onError: () => {
       return <Navigate to="/404" />;
     },
