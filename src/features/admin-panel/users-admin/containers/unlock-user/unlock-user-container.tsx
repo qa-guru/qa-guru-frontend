@@ -5,7 +5,6 @@ import {
   UsersDocument,
   UsersQuery,
   useUnlockUserMutation,
-  UserDto,
 } from "api/graphql/generated/graphql";
 import { FC } from "react";
 
@@ -14,13 +13,12 @@ import UnlockUser from "../../views/unlock-user";
 
 interface IUnlockUserContainer {
   id?: Maybe<string>;
-  user: Maybe<UserDto>;
 }
 
-const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id, user }) => {
+const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id }) => {
   const { filter } = useTableAdminFilter();
 
-  const [unlockUser] = useUnlockUserMutation({
+  const [unlockUser, { loading }] = useUnlockUserMutation({
     update: (cache) => {
       const existingUsers: Maybe<UsersQuery> = cache.readQuery({
         query: UsersDocument,
@@ -54,7 +52,7 @@ const UnlockUserContainer: FC<IUnlockUserContainer> = ({ id, user }) => {
     },
   });
 
-  return <UnlockUser unlockUser={unlockUser} id={id} user={user} />;
+  return <UnlockUser unlockUser={unlockUser} id={id} loading={loading} />;
 };
 
 export default UnlockUserContainer;

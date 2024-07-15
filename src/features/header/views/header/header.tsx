@@ -21,7 +21,7 @@ import {
 
 const configPages: IPages[] = [
   {
-    title: "Домой",
+    title: "Главная",
     pageURL: "/",
     roles: [UserRole.Student],
   },
@@ -59,7 +59,7 @@ const configPages: IPages[] = [
 
 const configMobilePages: IPages[] = [
   {
-    title: "Домой",
+    title: "Главная",
     pageURL: "/",
     roles: [UserRole.Student],
   },

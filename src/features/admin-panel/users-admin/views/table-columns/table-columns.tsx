@@ -23,7 +23,8 @@ import {
 } from "./table-columns.styled";
 import { ITableColumns } from "./table-columns.types";
 import Table from "../table";
-import { LockUser, UnlockUser, UpdateRole } from "../../containers";
+import { UpdateRole } from "../../containers";
+import UserSettings from "../user-settings";
 
 const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
   const { isMobile, isMobileOrTablet } = useResponsive();
@@ -93,11 +94,11 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
                 {formatDate(creationDate, "DD.MM.YYYY")}
               </Typography>
               <StyledRightAlignBox>
-                {locked ? (
-                  <UnlockUser id={id} user={info.row.original} />
-                ) : (
-                  <LockUser id={id} user={info.row.original} />
-                )}
+                <UserSettings
+                  id={id}
+                  user={info.row.original}
+                  locked={locked}
+                />
               </StyledRightAlignBox>
             </StyledAlignStack>
           );
@@ -129,11 +130,11 @@ const TableColumns: FC<ITableColumns> = ({ data, fetchMore }) => {
                 />
               </StyledUserRowBox>
               <StyledRightAlignBox>
-                {locked ? (
-                  <UnlockUser id={id} user={info.row.original} />
-                ) : (
-                  <LockUser id={id} user={info.row.original} />
-                )}
+                <UserSettings
+                  id={id}
+                  user={info.row.original}
+                  locked={locked}
+                />
               </StyledRightAlignBox>
             </>
           );

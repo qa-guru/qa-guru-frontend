@@ -1,11 +1,7 @@
-import {
-  LockUserMutationFn,
-  Maybe,
-  UserDto,
-} from "api/graphql/generated/graphql";
+import { LockUserMutationFn, Maybe } from "api/graphql/generated/graphql";
 
 export interface ILockUser {
   lockUser: LockUserMutationFn;
-  id: Maybe<string> | undefined;
-  user: Maybe<UserDto>;
+  id?: Maybe<string>;
+  loading: boolean;
 }

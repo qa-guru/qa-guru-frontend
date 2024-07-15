@@ -1,0 +1,8 @@
+mutation updateUserTrainingPurchase(
+  $userEmail: String!
+  $tariffCodes: [String]!
+) {
+  updateUserTrainingPurchase(userEmail: $userEmail, tariffCodes: $tariffCodes) {
+    id
+  }
+}
