@@ -13,6 +13,11 @@ export const StyledHomeworksWrapper = styled(Stack)(({ theme }) => ({
   width: "100%",
 }));
 
+export const StyledKanbanWrapper = styled(Stack)(({ theme }) => ({
+  flexDirection: "row",
+  gap: "25px",
+}));
+
 export const StyledStack = styled(Stack)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
@@ -54,3 +59,13 @@ export const StyledHomeworksSkeleton = styled(Skeleton)({
   width: "100%",
   height: "240px",
 });
+
+export const StyledKanbanSkeleton = styled(Skeleton)(({ theme }) => ({
+  marginTop: "20px",
+  width: "25%",
+  height: "calc(100vh - 295px)",
+  [theme.breakpoints.down("md")]: {
+    height: "calc(100dvh - 270px )",
+    width: "100%",
+  },
+}));

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useTheme } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import StatusText from "shared/components/status-text";
 import LectureHomework from "shared/features/lecture-homework";
@@ -34,6 +34,7 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
     answer,
     id,
   } = card;
+  const theme = useTheme();
 
   return (
     <StyledHomeworkDetails>
@@ -41,11 +42,15 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <StyledStack>
           <CustomLink
             path={`/kanban-student/${id}`}
-            color="black"
             textDecorationHover="underline"
+            color={theme.palette.app.textPrimary}
           >
             <StyledId>
-              <Typography textTransform="uppercase" variant="h5">
+              <Typography
+                textTransform="uppercase"
+                variant="h5"
+                color="textPrimary"
+              >
                 {formatId(training?.techStack, id)}
               </Typography>
               <StyledIcon fontSize="small" />
