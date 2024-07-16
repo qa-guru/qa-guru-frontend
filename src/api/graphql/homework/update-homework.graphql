@@ -1,0 +1,36 @@
+mutation updateHomework($id: ID!, $content: String!) {
+  updateHomeWork(id: $id, content: $content) {
+    id
+    lecture {
+      id
+      subject
+      contentHomeWork
+    }
+    answer
+    status
+    training {
+      techStack
+    }
+    student {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    mentor {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    creationDate
+    startCheckingDate
+    endCheckingDate
+  }
+}

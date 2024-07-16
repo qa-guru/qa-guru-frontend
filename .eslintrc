@@ -18,9 +18,11 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["import", "sonarjs"],
+  "plugins": ["import", "sonarjs", "unused-imports", "@typescript-eslint"],
   "rules": {
+    "unused-imports/no-unused-imports": "error",
     "no-unsafe-optional-chaining": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
     // possible errors
     "for-direction": "error",
     "no-prototype-builtins": "error",
@@ -95,7 +97,7 @@
     "no-multi-assign": "warn",
     "no-nested-ternary": "warn",
     "no-new-object": "warn",
-    "no-underscore-dangle": "warn",
+    "no-underscore-dangle": "off",
     "no-unneeded-ternary": "warn",
     "one-var": ["warn", "never"],
     "operator-assignment": "warn",
@@ -136,13 +138,16 @@
     "import/order": [
       "error",
       {
-        "groups": [
-          "builtin",
-          "external",
-          ["index", "sibling"],
-          ["parent", "internal"]
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "locales/**",
+            "group": "internal",
+            "position": "after"
+          }
         ],
-        "newlines-between": "never"
+        "pathGroupsExcludedImportTypes": ["locales/**"],
+        "newlines-between": "always"
       }
     ],
     // does not properly work with ts
@@ -154,8 +159,21 @@
       "never",
       {
         "types": "always",
-        "json": "always"
+        "json": "always",
+        "mock": "always",
+        "styled": "always",
+        "svg": "always"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/generated/**/*"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "import/newline-after-import": "off",
+        "max-lines": "off"
+      }
+    }
+  ]
 }

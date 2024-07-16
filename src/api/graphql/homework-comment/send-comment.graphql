@@ -1,0 +1,56 @@
+mutation sendComment($homeWorkId: ID!, $content: String!) {
+  sendComment(homeWorkId: $homeWorkId, content: $content) {
+    id
+    creator {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    creationDate
+    content
+    userLike
+    likes
+    children {
+      ...subCommentHomeWorkDto
+      ...subCommentHomeWorkDtoRecursive
+    }
+  }
+}
+
+fragment subCommentHomeWorkDtoRecursive on CommentHomeWorkDto {
+  children {
+    ...subCommentHomeWorkDto
+    children {
+      ...subCommentHomeWorkDto
+      children {
+        ...subCommentHomeWorkDto
+        children {
+          ...subCommentHomeWorkDto
+          children {
+            ...subCommentHomeWorkDto
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment subCommentHomeWorkDto on CommentHomeWorkDto {
+  id
+  creator {
+    id
+    firstName
+    avatar
+    lastName
+    rating {
+      rating
+    }
+  }
+  userLike
+  likes
+  content
+}

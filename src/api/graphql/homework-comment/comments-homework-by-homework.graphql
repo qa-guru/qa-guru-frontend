@@ -1,0 +1,69 @@
+query commentsHomeWorkByHomeWork(
+  $offset: Int!
+  $limit: Int!
+  $sort: CommentHomeWorkSort!
+  $homeWorkId: ID!
+) {
+  commentsHomeWorkByHomeWork(
+    offset: $offset
+    limit: $limit
+    sort: $sort
+    homeWorkId: $homeWorkId
+  ) {
+    items {
+      id
+      creator {
+        id
+        firstName
+        avatar
+        lastName
+        rating {
+          rating
+        }
+      }
+      creationDate
+      content
+      userLike
+      likes
+      children {
+        ...subCommentHomeWorkDto
+        ...subCommentHomeWorkDtoRecursive
+      }
+    }
+    totalElements
+  }
+}
+
+fragment subCommentHomeWorkDtoRecursive on CommentHomeWorkDto {
+  children {
+    ...subCommentHomeWorkDto
+    children {
+      ...subCommentHomeWorkDto
+      children {
+        ...subCommentHomeWorkDto
+        children {
+          ...subCommentHomeWorkDto
+          children {
+            ...subCommentHomeWorkDto
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment subCommentHomeWorkDto on CommentHomeWorkDto {
+  id
+  creator {
+    id
+    firstName
+    avatar
+    lastName
+    rating {
+      rating
+    }
+  }
+  userLike
+  likes
+  content
+}

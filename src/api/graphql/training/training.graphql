@@ -2,21 +2,14 @@ query training($id: ID!) {
   training(id: $id) {
     id
     name
-    content
     techStack
-    tariffs {
-      id
-      name
-      code
-      price
-      homeWork
-      description
-    }
+    picture
     mentors {
       id
+      email
       firstName
       lastName
-      middleName
+      avatar
     }
   }
 }

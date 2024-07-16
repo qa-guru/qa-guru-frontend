@@ -1,0 +1,16 @@
+query trainingLectures($id: ID!) {
+  trainingLectures(id: $id) {
+    id
+    lecture {
+      id
+      subject
+      description
+      creationDate
+      speakers {
+        id
+        firstName
+        lastName
+      }
+    }
+  }
+}

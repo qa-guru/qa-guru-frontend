@@ -1,0 +1,43 @@
+query homeWorksByLectureId(
+  $offset: Int!
+  $limit: Int!
+  $sort: StudentHomeWorkSort!
+  $filter: HomeWorksFilter!
+  $lectureId: ID!
+) {
+  homeWorksByLectureId(
+    offset: $offset
+    limit: $limit
+    sort: $sort
+    filter: $filter
+    lectureId: $lectureId
+  ) {
+    items {
+      id
+      answer
+      status
+      student {
+        id
+        firstName
+        avatar
+        lastName
+        rating {
+          rating
+        }
+      }
+      mentor {
+        id
+        firstName
+        lastName
+        avatar
+        rating {
+          rating
+        }
+      }
+      creationDate
+      startCheckingDate
+      endCheckingDate
+    }
+    totalElements
+  }
+}

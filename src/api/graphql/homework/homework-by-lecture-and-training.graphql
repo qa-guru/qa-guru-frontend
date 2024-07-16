@@ -1,0 +1,23 @@
+query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
+  homeWorkByLectureAndTraining(lectureId: $lectureId, trainingId: $trainingId) {
+    id
+    lecture {
+      id
+      subject
+    }
+    answer
+    status
+    student {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    creationDate
+    startCheckingDate
+    endCheckingDate
+  }
+}

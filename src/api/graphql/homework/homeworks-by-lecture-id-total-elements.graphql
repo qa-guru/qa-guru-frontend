@@ -1,0 +1,15 @@
+query homeWorksByLectureIdTotalElements(
+  $offset: Int!
+  $limit: Int!
+  $filter: HomeWorksFilter!
+  $lectureId: ID!
+) {
+  homeWorksByLectureId(
+    offset: $offset
+    limit: $limit
+    filter: $filter
+    lectureId: $lectureId
+  ) {
+    totalElements
+  }
+}

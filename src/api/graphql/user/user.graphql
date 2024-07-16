@@ -4,10 +4,15 @@ query user {
     email
     firstName
     lastName
-    middleName
-    phoneNumber
-    avatarLocation
     roles
-    locked
+    git
+    telegram
+    stackOverflow
+    linkedin
+    avatar
+    creationDate
+    rating {
+      rating
+    }
   }
 }

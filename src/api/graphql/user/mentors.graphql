@@ -1,0 +1,9 @@
+query mentors($offset: Int!, $limit: Int!, $sort: UserSort!) {
+  mentors(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      firstName
+      lastName
+    }
+  }
+}

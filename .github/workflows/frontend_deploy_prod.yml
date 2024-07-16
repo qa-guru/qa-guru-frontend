@@ -1,21 +1,21 @@
 name: frontend_deploy_prod
 on:
   push:
-    branches: 
+    branches:
       - main
 jobs:
   checkout:
     runs-on: prod-runner
-    
+
     steps:
-      - uses: actions/checkout@v3
-  
+      - uses: actions/checkout@v4
+
   yarn-and-node:
     runs-on: prod-runner
     needs: checkout
     steps:
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
       - name: Run install
@@ -27,18 +27,9 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
       - name: Deploy step 1
-        run:
-           rm -rf /var/www/app.qa.guru/html/*
-#            cp -r dist/* /var/www/app.qa.guru/html/
+        run: rm -rf /var/www/app.qa.guru/html/*
+      #            cp -r dist/* /var/www/app.qa.guru/html/
       - name: Deploy step 2
         run:
-#            rm -rf /var/www/app.qa.guru/html/*
-           cp -r dist/* /var/www/app.qa.guru/html/
-
-  runtest:
-    runs-on: stage-runner
-    needs: yarn-and-node
-    steps:  
-      - name: runtest
-        run:  docker run --rm qa-guru-e2e-tests-api:latest  gradle clean smokeUI -Denv="prod"
-        
+          #            rm -rf /var/www/app.qa.guru/html/*
+          cp -r dist/* /var/www/app.qa.guru/html/

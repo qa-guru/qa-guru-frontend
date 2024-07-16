@@ -1,0 +1,14 @@
+query usersRating($offset: Int!, $limit: Int!, $sort: UserSort) {
+  usersRating(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      lastName
+      firstName
+      avatar
+      creationDate
+      rating {
+        rating
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { TrainingPurchases } from "./containers";

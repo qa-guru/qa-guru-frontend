@@ -1,0 +1,5 @@
+mutation updateLecture($input: LectureInput!) {
+  updateLecture(input: $input) {
+    id
+  }
+}

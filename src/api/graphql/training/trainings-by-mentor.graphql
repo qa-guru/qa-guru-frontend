@@ -1,0 +1,9 @@
+query trainingsByMentor($offset: Int!, $limit: Int!, $sort: TrainingSort) {
+  trainingsByMentor(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      name
+      techStack
+    }
+  }
+}

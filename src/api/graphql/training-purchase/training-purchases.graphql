@@ -1,0 +1,21 @@
+query trainingPurchases {
+  trainingPurchases {
+    id
+    trainingTariff {
+      id
+      name
+      homeWork
+      training {
+        id
+        name
+        picture
+        mentors {
+          id
+          firstName
+          avatar
+          lastName
+        }
+      }
+    }
+  }
+}

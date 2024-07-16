@@ -1,0 +1,35 @@
+query trainings($offset: Int!, $limit: Int!, $sort: TrainingSort) {
+  trainings(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      name
+      techStack
+      picture
+      mentors {
+        id
+        firstName
+        lastName
+        avatar
+        rating {
+          rating
+        }
+      }
+      tariffs {
+        id
+        name
+        code
+        price
+        homeWork
+        training {
+          id
+          tariffs {
+            id
+            code
+          }
+        }
+        description
+      }
+    }
+    totalElements
+  }
+}
