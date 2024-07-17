@@ -16,7 +16,7 @@ export const StyledNestedPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export const StyledNestedPaperStack = styled(Stack)({
-  gap: "8px",
+  gap: "16px",
 });
 
 export const StyledCoPresentIcon = styled(CoPresentOutlined)(({ theme }) => ({

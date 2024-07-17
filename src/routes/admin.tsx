@@ -19,6 +19,7 @@ import {
   KanbanStudentHomeworkDetailsFullPage,
   KanbanStudentPage,
 } from "pages/kanban-student";
+import InfoSystemPage from "pages/info-system";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<AdminPanelPage />} />,
@@ -87,7 +88,7 @@ const AdminRoutes = [
     path="/edit-training/:trainingId/edit-lectures/:lectureId"
     element={<EditLecturePage />}
   />,
-  // <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
   <Route
     key="scroll-page-section"
     path="/scroll-page-section"

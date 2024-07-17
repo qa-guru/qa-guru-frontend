@@ -50,11 +50,11 @@ const configPages: IPages[] = [
       },
     ],
   },
-  // {
-  //   title: "О Системе",
-  //   pageURL: "/info-system",
-  //   roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
-  // },
+  {
+    title: "О Системе",
+    pageURL: "/info-system",
+    roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
 ];
 
 const configMobilePages: IPages[] = [
@@ -83,11 +83,11 @@ const configMobilePages: IPages[] = [
     pageURL: "/kanban-student",
     roles: [UserRole.Student, UserRole.Admin],
   },
-  // {
-  //   title: "О Системе",
-  //   pageURL: "/info-system",
-  //   roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
-  // },
+  {
+    title: "О Системе",
+    pageURL: "/info-system",
+    roles: [UserRole.Student, UserRole.Mentor, UserRole.Lector, UserRole.Admin],
+  },
 ];
 
 const Header: FC = () => {

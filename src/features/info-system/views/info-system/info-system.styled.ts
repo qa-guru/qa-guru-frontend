@@ -17,7 +17,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export const StyledInfoStack = styled(Stack)(({ theme }) => ({
-  gap: "15px",
+  gap: "20px",
 }));
 
 export const StyledIconStack = styled(Stack)({
