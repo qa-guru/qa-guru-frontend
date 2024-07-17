@@ -5,10 +5,10 @@ import {
   StudentHomeWorkStatus,
   useHomeworksQuery,
 } from "api/graphql/generated/graphql";
-import Spinner from "shared/components/spinners/app-spinner";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
 import { useDynamicCardLimit } from "shared/hooks";
+import SkeletonKanban from "shared/components/skeletons/skeleton-kanban";
 
 import Board from "../../views/board";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
@@ -89,7 +89,7 @@ const HomeworksContainer: FC = () => {
   });
 
   if (newLoading || inReviewLoading || approvedLoading || notApprovedLoading)
-    return <Spinner />;
+    return <SkeletonKanban />;
 
   if (!newData || !inReviewData || !approvedData || !notApprovedData)
     return <NoDataErrorMessage />;
