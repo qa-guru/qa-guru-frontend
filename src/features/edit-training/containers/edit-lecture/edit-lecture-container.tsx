@@ -1,5 +1,9 @@
 import { FC } from "react";
 import {
+  LectureDocument,
+  LectureHomeWorkDocument,
+  LectureQuery,
+  Maybe,
   useLectureHomeWorkQuery,
   useLectureQuery,
   useUpdateLectureMutation,
@@ -28,7 +32,43 @@ const EditLectureContainer: FC = () => {
     });
 
   const [updateLecture, { loading: loadingUpdateLecture }] =
-    useUpdateLectureMutation();
+    useUpdateLectureMutation({
+      update: (cache, { data }) => {
+        const newUpdateLecture = data?.updateLecture;
+
+        const existingLecture: Maybe<LectureQuery> = cache.readQuery({
+          query: LectureDocument,
+          variables: {
+            id: lectureId,
+          },
+        });
+
+        const updatedLecture = {
+          lecture: {
+            ...existingLecture?.lecture,
+            ...newUpdateLecture,
+          },
+        };
+
+        const updatedLectureHomeWork = {
+          lectureHomeWork: newUpdateLecture?.contentHomeWork,
+        };
+
+        cache.writeQuery({
+          query: LectureDocument,
+          variables: {
+            id: lectureId,
+          },
+          data: updatedLecture,
+        });
+
+        cache.writeQuery({
+          query: LectureHomeWorkDocument,
+          variables: { lectureId },
+          data: updatedLectureHomeWork,
+        });
+      },
+    });
 
   if (loadingUpdateLecture || loadingLecture || loadingLectureHomeWork)
     return <AppSpinner />;
