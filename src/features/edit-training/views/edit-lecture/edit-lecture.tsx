@@ -1,5 +1,4 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import { client } from "api";
 import { UserRole } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
 import { FC, useRef, useState } from "react";
@@ -62,7 +61,7 @@ const EditLecture: FC<IEditLecture> = ({
       },
       onCompleted: () => {
         enqueueSnackbar("Урок обновлен", { variant: "success" });
-        client.refetchQueries({ include: ["lecture"] });
+        // client.refetchQueries({ include: ["lecture"] });
       },
       onError: () => {
         enqueueSnackbar(

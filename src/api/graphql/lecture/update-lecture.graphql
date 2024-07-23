@@ -1,5 +1,21 @@
 mutation updateLecture($input: LectureInput!) {
   updateLecture(input: $input) {
     id
+    subject
+    description
+    content
+    contentHomeWork
+    speakers {
+      id
+      firstName
+      email
+      lastName
+      avatar
+      rating {
+        rating
+      }
+    }
+    creationDate
+    modificationDate
   }
 }
