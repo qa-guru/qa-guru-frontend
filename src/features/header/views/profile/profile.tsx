@@ -55,7 +55,7 @@ const Profile: FC<IProfile> = (props) => {
         {
           title: "Курсы",
           icon: <School />,
-          url: "/courses",
+          url: "/",
           id: 2,
         },
         {
