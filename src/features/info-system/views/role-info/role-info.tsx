@@ -11,6 +11,7 @@ import {
 } from "../info-system/info-system.styled";
 import {
   StyledCoPresentIcon,
+  StyledDescriptionTypography,
   StyledNestedPaper,
   StyledNestedPaperStack,
   StyledPaperStack,
@@ -20,42 +21,65 @@ const RoleInfo: React.FC = () => {
   const theme = useTheme();
   const { indigo, rating } = theme.palette.app;
 
-  const basicAccess =
-    "1. Доступ к купленным курсам по выбранному тарифу\n" +
-    "2. Доска заданий для студента\n";
-
   const roles = [
     {
       title: "Студент",
-      description:
-        basicAccess +
-        "3. Чат с менторами, преподавателями и другими студентами в комментариях к домашним заданиям",
+      description: (
+        <ol>
+          <li>Доступ к купленным курсам по выбранному тарифу</li>
+          <li>Доска заданий для студента</li>
+          <li>
+            Чат с менторами, преподавателями и другими студентами в комментариях
+            к домашним заданиям
+          </li>
+        </ol>
+      ),
       color: rating.upTo50,
     },
     {
       title: "Студент + Ментор",
-      description:
-        basicAccess +
-        "3. Доска заданий для ментора\n" +
-        "4. Проверка домашних заданий других студентов и смена их статуса\n" +
-        "5. Чат со студентами, преподавателями и другими менторами в комментариях к домашним заданиям",
+      description: (
+        <ol>
+          <li>Доступ к купленным курсам по выбранному тарифу</li>
+          <li>Доска заданий для студента</li>
+          <li>Доска заданий для ментора</li>
+          <li>Проверка домашних заданий других студентов и смена их статуса</li>
+          <li>
+            Чат со студентами, преподавателями и другими менторами в
+            комментариях к домашним заданиям
+          </li>
+        </ol>
+      ),
       color: rating.upTo100,
     },
     {
       title: "Студент + Преподаватель",
-      description:
-        basicAccess +
-        "3. Доска заданий для ментора\n" +
-        "4. Проверка домашних заданий других студентов и смена их статуса\n" +
-        "5. Возможность создавать собственные курсы и вести занятия по согласованию с админом\n" +
-        "6. Чат со студентами, преподавателями и другими менторами в комментариях к домашним заданиям",
+      description: (
+        <ol>
+          <li>Доступ к купленным курсам по выбранному тарифу</li>
+          <li>Доска заданий для студента</li>
+          <li>Доска заданий для ментора</li>
+          <li>Проверка домашних заданий других студентов и смена их статуса</li>
+          <li>
+            Возможность создавать собственные курсы и вести занятия по
+            согласованию с админом
+          </li>
+          <li>
+            Чат со студентами, преподавателями и другими менторами в
+            комментариях к домашним заданиям
+          </li>
+        </ol>
+      ),
       color: rating.upTo200,
     },
     {
       title: "Админ",
-      description:
-        "1. Полный доступ к редактированию и созданию курсов, занятий\n" +
-        "2. Мониторинг платформы",
+      description: (
+        <ol>
+          <li>Полный доступ к редактированию и созданию курсов, занятий</li>
+          <li>Мониторинг платформы</li>
+        </ol>
+      ),
       color: rating.upTo500,
     },
   ];
@@ -125,9 +149,9 @@ const RoleInfo: React.FC = () => {
             >
               <StyledNestedPaperStack>
                 <Typography variant="h5">{role.title}</Typography>
-                <Typography variant="body2" sx={{ whiteSpace: "pre-line" }}>
+                <StyledDescriptionTypography variant="body2">
                   {role.description}
-                </Typography>
+                </StyledDescriptionTypography>
               </StyledNestedPaperStack>
             </StyledNestedPaper>
           ))}
