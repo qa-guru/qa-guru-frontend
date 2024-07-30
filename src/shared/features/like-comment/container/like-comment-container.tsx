@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { useLikeCommentMutation } from "api/graphql/generated/graphql";
 
 import { ILikeCommentContainer } from "./like-comment-container.types";

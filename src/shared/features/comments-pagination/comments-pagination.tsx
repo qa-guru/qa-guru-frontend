@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+
 import SendComment from "shared/features/send-comment/container";
 
 import { ICommentsPagination } from "./comments-pagination.types";

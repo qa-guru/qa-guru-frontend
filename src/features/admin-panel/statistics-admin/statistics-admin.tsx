@@ -1,5 +1,5 @@
-import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
+import { Stack, Typography } from "@mui/material";
 
 const StatisticsAdmin: FC = (props) => {
   return (

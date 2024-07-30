@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm } from "react-hook-form";
+
 import { InputText } from "shared/components/form";
 import ThemeSelector from "shared/components/theme-selector";
 

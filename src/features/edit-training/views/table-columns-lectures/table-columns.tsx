@@ -1,11 +1,12 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
-import { LectureDto } from "api/graphql/generated/graphql";
 import { FC, useMemo } from "react";
 import { Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
+
+import { LectureDto } from "api/graphql/generated/graphql";
 import { useResponsive } from "shared/hooks";
 import UserRow from "shared/components/user-row";
 import { formatDate } from "shared/helpers";
-import { useParams } from "react-router-dom";
 
 import { ITableColumns } from "./table-columns.types";
 import {

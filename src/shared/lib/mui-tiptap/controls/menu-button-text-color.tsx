@@ -1,5 +1,6 @@
 /// <reference types="@tiptap/extension-color" />
 import type { Editor } from "@tiptap/core";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { useRichTextEditorContext } from "../context";

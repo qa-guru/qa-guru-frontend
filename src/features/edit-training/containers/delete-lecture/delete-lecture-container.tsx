@@ -1,11 +1,12 @@
 import { FC } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   Maybe,
   TrainingLecturesDocument,
   TrainingLecturesQuery,
   useUpdateTrainingLectureMutation,
 } from "api/graphql/generated/graphql";
-import { useParams } from "react-router-dom";
 
 import DeleteLecture from "../../views/delete-lecture";
 

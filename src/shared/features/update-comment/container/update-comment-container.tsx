@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { useUpdateCommentMutation } from "api/graphql/generated/graphql";
 
 import { IUpdateCommentContainer } from "./update-comment-container.types";

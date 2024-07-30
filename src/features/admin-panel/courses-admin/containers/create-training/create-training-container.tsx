@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   Maybe,
   Order,
@@ -6,9 +8,8 @@ import {
   TrainingsQuery,
   useUpdateTrainingMutation,
 } from "api/graphql/generated/graphql";
-import { FC } from "react";
 
-import СreateTrainingButton from "../../views/create-training-button";
+import CreateTrainingButton from "../../views/create-training-button";
 
 const CreateTrainingContainer: FC = () => {
   const [updateTraining, { loading }] = useUpdateTrainingMutation({
@@ -48,7 +49,7 @@ const CreateTrainingContainer: FC = () => {
   });
 
   return (
-    <СreateTrainingButton updateTraining={updateTraining} loading={loading} />
+    <CreateTrainingButton updateTraining={updateTraining} loading={loading} />
   );
 };
 

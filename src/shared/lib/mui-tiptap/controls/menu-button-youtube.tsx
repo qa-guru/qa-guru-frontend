@@ -8,12 +8,13 @@ import {
 } from "@mui/material";
 import { useRef, useState, ChangeEvent, FormEvent, MouseEvent } from "react";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { styled } from "@mui/system";
+
 import {
   MenuButton,
   MenuButtonProps,
   useRichTextEditorContext,
 } from "shared/lib/mui-tiptap";
-import { styled } from "@mui/system";
 import { Maybe } from "api/graphql/generated/graphql";
 
 function extractVideoID(url: string) {

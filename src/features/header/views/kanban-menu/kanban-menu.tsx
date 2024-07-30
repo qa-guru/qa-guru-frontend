@@ -3,6 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import { ArrowDropDown } from "@mui/icons-material";
 import { type Theme } from "@mui/material/styles";
+
 import CustomLink from "shared/components/custom-link";
 
 import { IKanbanMenu } from "./kanban-menu.types";

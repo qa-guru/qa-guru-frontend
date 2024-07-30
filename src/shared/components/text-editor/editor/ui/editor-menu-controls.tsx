@@ -1,4 +1,5 @@
 import { useTheme } from "@mui/material";
+
 import { isTouchDevice } from "shared/lib/mui-tiptap/utils";
 import {
   MenuButtonAddTable,

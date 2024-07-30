@@ -1,6 +1,7 @@
-import { LectureDto, LecturesQuery } from "api/graphql/generated/graphql";
 import { type ApolloQueryResult } from "@apollo/client";
 import { type ColumnDef } from "@tanstack/react-table";
+
+import { LectureDto, LecturesQuery } from "api/graphql/generated/graphql";
 
 export interface ISelectLecture {
   data: LecturesQuery;

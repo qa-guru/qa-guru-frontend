@@ -1,6 +1,7 @@
 import type { Editor } from "@tiptap/core";
 import { useRef, type ComponentPropsWithoutRef } from "react";
 import type { SetOptional } from "type-fest";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { useRichTextEditorContext } from "../context";

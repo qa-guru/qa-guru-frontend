@@ -2,6 +2,7 @@ import { FC, useEffect, useRef, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box, Step } from "@mui/material";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+
 import { STATES } from "shared/constants";
 
 import { IMobileBoard } from "./mobile-board.types";

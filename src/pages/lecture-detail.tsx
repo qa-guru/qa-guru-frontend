@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Lecture } from "features/lecture-detail";
 
 const LectureDetailPage: FC = () => {

@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { AvatarGroup, Box, Grid, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+
 import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 
 // interface IStyledCalendar {

@@ -2,9 +2,10 @@ import { FC } from "react";
 import { Container, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useSnackbar } from "notistack";
+
 import { InputPhone, InputText } from "shared/components/form";
 import { UserUpdateInput } from "api/graphql/generated/graphql";
-import { useSnackbar } from "notistack";
 import AvatarUpload from "shared/components/avatar-upload";
 
 import {

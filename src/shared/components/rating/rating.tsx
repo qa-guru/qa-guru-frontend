@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { useRatingColor } from "shared/hooks";
 
 import { StyledRatingChip } from "./rating.styled";

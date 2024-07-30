@@ -3,8 +3,9 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImageIcon from "@mui/icons-material/Image";
 import { CircularProgress, Stack } from "@mui/material";
-import { useResponsive } from "shared/hooks";
 import { useParams } from "react-router-dom";
+
+import { useResponsive } from "shared/hooks";
 
 import { useTrainingUpload } from "../../hooks/use-training-upload";
 import { useTrainingDelete } from "../../hooks/use-training-delete";

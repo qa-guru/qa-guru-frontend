@@ -138,15 +138,18 @@
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal"],
+        "groups": [["external"], ["internal"], ["parent", "sibling", "index"]],
         "pathGroups": [
           {
-            "pattern": "locales/**",
-            "group": "internal",
-            "position": "after"
+            "pattern": "@/**",
+            "group": "external"
+          },
+          {
+            "pattern": "{api,assets,features,pages,shared,theme}/**",
+            "group": "internal"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["locales/**"],
+        "pathGroupsExcludedImportTypes": ["object"],
         "newlines-between": "always"
       }
     ],

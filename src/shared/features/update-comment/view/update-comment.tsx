@@ -1,4 +1,5 @@
 import { FC, useRef, useState } from "react";
+
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { CommentEditor } from "shared/components/text-editor";
 import { useComment } from "shared/context/comment-context";

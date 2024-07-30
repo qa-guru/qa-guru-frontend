@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Box, Tooltip } from "@mui/material";
+
 import { InputAutocomplete } from "shared/components/form";
 import { Maybe } from "api/graphql/generated/graphql";
 import { OptionTypeBase } from "shared/components/form/input-autocomplete/input-autocomplete.types";

@@ -1,12 +1,13 @@
-import { type CellContext, type ColumnDef } from "@tanstack/react-table";
-import { TrainingDto } from "api/graphql/generated/graphql";
 import { FC, Fragment, useMemo } from "react";
+import { type CellContext, type ColumnDef } from "@tanstack/react-table";
 import { Avatar, IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import UserRow from "shared/components/user-row";
 import { Stack } from "@mui/system";
-import { useResponsive } from "shared/hooks";
 import { useNavigate } from "react-router-dom";
+
+import UserRow from "shared/components/user-row";
+import { useResponsive } from "shared/hooks";
+import { TrainingDto } from "api/graphql/generated/graphql";
 
 import TableAdmin from "../table";
 import { ITableColumns } from "./table-columns.types";

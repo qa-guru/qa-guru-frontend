@@ -8,11 +8,12 @@ import {
 import { FC, useRef } from "react";
 import { useParams } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useModal } from "react-modal-hook";
+
 import {
   Maybe,
   UpdateTrainingLectureMutationFn,
 } from "api/graphql/generated/graphql";
-import { useModal } from "react-modal-hook";
 
 import {
   StyledButton,

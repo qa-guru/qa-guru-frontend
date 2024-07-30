@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import { useTrainingPurchasesQuery } from "api/graphql/generated/graphql";
 
 interface ITariffHook {

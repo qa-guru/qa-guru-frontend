@@ -1,3 +1,5 @@
+import { FieldValues } from "react-hook-form";
+
 import {
   InputMaybe,
   Scalars,
@@ -5,7 +7,6 @@ import {
   TrainingQuery,
   UpdateTrainingMutationFn,
 } from "api/graphql/generated/graphql";
-import { FieldValues } from "react-hook-form";
 
 export interface IEditTraining {
   updateTraining: UpdateTrainingMutationFn;

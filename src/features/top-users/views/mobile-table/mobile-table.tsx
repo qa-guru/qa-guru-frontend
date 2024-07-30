@@ -1,7 +1,8 @@
 import { FC, Fragment } from "react";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { UserRatingDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
+
+import { UserRatingDto } from "api/graphql/generated/graphql";
 
 import {
   StyledTable,

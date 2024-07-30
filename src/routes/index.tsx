@@ -1,12 +1,9 @@
 import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import NotFoundPage from "pages/not-found";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
-import {
-  Maybe,
-  UserRole,
-  useUserRolesQuery,
-} from "api/graphql/generated/graphql";
+import { userRolesVar } from "cache";
+
+import NotFoundPage from "pages/not-found";
 import {
   LoginPage,
   ConfirmTokenPage,
@@ -14,8 +11,12 @@ import {
   SetPasswordPage,
   SignUpPage,
 } from "pages/auth";
+import {
+  Maybe,
+  UserRole,
+  useUserRolesQuery,
+} from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
-import { userRolesVar } from "cache";
 import Layout from "shared/components/layout";
 
 import StudentRoutes from "./student";

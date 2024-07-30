@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
+
+import { IPages } from "features/header/types";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
 import { useSettings } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
-import { IPages } from "features/header/types";
 
 import { useRoleFilterPages } from "../../hooks/use-role-filter-pages";
 import Profile from "../../containers";

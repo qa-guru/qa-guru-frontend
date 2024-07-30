@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { useModal } from "react-modal-hook";
-import { useResponsive } from "shared/hooks";
 import { Dialog, IconButton, Tooltip } from "@mui/material";
-import UserRow from "shared/components/user-row";
 import { Menu } from "@mui/icons-material";
+
+import { useResponsive } from "shared/hooks";
+import UserRow from "shared/components/user-row";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 
 import {

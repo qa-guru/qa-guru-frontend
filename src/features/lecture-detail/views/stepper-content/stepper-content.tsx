@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { StepContent, StepLabel, Typography } from "@mui/material";
 import { SchoolRounded } from "@mui/icons-material";
-import CustomLink from "shared/components/custom-link";
 import { useNavigate, useParams } from "react-router-dom";
+
+import CustomLink from "shared/components/custom-link";
 import { useResponsive } from "shared/hooks";
 
 import {

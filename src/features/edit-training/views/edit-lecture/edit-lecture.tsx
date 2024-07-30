@@ -1,13 +1,14 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import { UserRole } from "api/graphql/generated/graphql";
 import { useSnackbar } from "notistack";
 import { FC, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { Clear, Save } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+
 import { InputText } from "shared/components/form";
 import { Editor } from "shared/components/text-editor";
 import { RichTextEditorRef } from "shared/lib/mui-tiptap";
-import { Clear, Save } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { UserRole } from "api/graphql/generated/graphql";
 
 import { SelectLectors } from "../../containers";
 import {

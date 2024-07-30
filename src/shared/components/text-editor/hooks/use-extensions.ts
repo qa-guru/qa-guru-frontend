@@ -33,6 +33,8 @@ import { Underline } from "@tiptap/extension-underline";
 import { Youtube } from "@tiptap/extension-youtube";
 import { CodeBlockLowlight } from "@tiptap/extension-code-block-lowlight";
 import { useMemo } from "react";
+import { common, createLowlight } from "lowlight";
+
 import {
   LinkBubbleMenuHandler,
   FontSize,
@@ -40,7 +42,6 @@ import {
   ResizableImage,
 } from "shared/lib/mui-tiptap/extensions";
 import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
-import { common, createLowlight } from "lowlight";
 
 import { mentionSuggestionOptions } from "../utils/mention-suggestion-options";
 

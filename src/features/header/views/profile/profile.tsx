@@ -1,17 +1,18 @@
 import { FC, MouseEvent, useState } from "react";
 import { Box, Divider, ListItemIcon, ListItemText } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import Logout from "features/authorization/containers/logout";
-import UserRow from "shared/components/user-row";
 import PersonIcon from "@mui/icons-material/Person";
-import { useRoleAccess, useResponsive } from "shared/hooks";
-import { UserRole } from "api/graphql/generated/graphql";
 import {
   Group,
   Leaderboard,
   School,
   SpaceDashboard,
 } from "@mui/icons-material";
+
+import Logout from "features/authorization/containers/logout";
+import UserRow from "shared/components/user-row";
+import { useRoleAccess, useResponsive } from "shared/hooks";
+import { UserRole } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";
 
 import { IProfile } from "./profile.types";

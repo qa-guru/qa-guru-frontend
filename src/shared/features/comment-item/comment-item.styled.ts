@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, IconButton, Paper, Stack } from "@mui/material";
 import ReplyIcon from "@mui/icons-material/Reply";
+
 import { ReactComponent as EditIcon } from "assets/icons/button-edit.svg";
 
 interface IStyledComment {

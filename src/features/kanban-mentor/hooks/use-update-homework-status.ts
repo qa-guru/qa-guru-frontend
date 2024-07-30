@@ -1,3 +1,8 @@
+import { useMemo } from "react";
+import { userIdVar } from "cache";
+import { useReactiveVar } from "@apollo/client";
+
+import { useDynamicCardLimit } from "shared/hooks";
 import {
   HomeworksDocument,
   HomeworksQuery,
@@ -9,10 +14,6 @@ import {
   useNotApprovedMutation,
   useTakeForReviewMutation,
 } from "api/graphql/generated/graphql";
-import { useMemo } from "react";
-import { useDynamicCardLimit } from "shared/hooks";
-import { userIdVar } from "cache";
-import { useReactiveVar } from "@apollo/client";
 
 import { HOMEWORKS_QUERY_DEFAULTS } from "../constants";
 

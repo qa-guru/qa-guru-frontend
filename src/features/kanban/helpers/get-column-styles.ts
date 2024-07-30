@@ -1,5 +1,6 @@
 import { type Theme, type SxProps, useTheme } from "@mui/material/styles";
 import { alpha } from "@mui/material";
+
 import { lightTheme } from "theme/constans";
 import { isColumnHighlight } from "shared/helpers";
 

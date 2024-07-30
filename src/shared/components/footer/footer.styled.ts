@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Box, Link, Paper, Stack } from "@mui/material";
+
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({

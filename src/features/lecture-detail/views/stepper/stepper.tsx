@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { useResponsive } from "shared/hooks";
 
 import { IStepper } from "./stepper.types";

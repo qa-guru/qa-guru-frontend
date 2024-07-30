@@ -1,5 +1,4 @@
 import { type Table, flexRender } from "@tanstack/react-table";
-import { UserDto } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import {
   TableBody,
@@ -8,6 +7,8 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+
+import { UserDto } from "api/graphql/generated/graphql";
 
 import { StyledTable, StyledTableRow } from "./desktop-table.styled";
 

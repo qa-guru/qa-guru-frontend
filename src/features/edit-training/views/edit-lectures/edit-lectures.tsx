@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { TrainingLectureDto } from "api/graphql/generated/graphql";
 import {
   Box,
   Button,
@@ -8,11 +7,13 @@ import {
   Container,
   Typography,
 } from "@mui/material";
-import { useResponsive } from "shared/hooks";
-import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
-import ContentNotFound from "shared/components/content-not-found";
 import { Clear } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
+import ContentNotFound from "shared/components/content-not-found";
+import { useResponsive } from "shared/hooks";
+import { TrainingLectureDto } from "api/graphql/generated/graphql";
 
 import { ITable } from "./edit-lectures.types";
 import {

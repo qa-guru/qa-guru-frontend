@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { HomeworkDetailsFull } from "features/kanban";
 
 const KanbanHomeworkDetailsFullPage: FC = () => {

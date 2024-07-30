@@ -1,18 +1,19 @@
 import { ComponentType, FC } from "react";
 import { Dialog, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
-import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
+import { useModal } from "react-modal-hook";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
+
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
+import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import UserRow from "shared/components/user-row";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
-import { useModal } from "react-modal-hook";
 import HomeworkItem from "shared/features/homework-item";
 import Comments from "shared/features/comments";
 import CommentsPagination from "shared/features/comments-pagination";
 import { useResponsive } from "shared/hooks";
 import { formatId } from "shared/helpers";
-import { useReactiveVar } from "@apollo/client";
-import { userIdVar } from "cache";
 
 import {
   StyledBox,

@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { Box, Typography } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { styled } from "@mui/system";
+
 import { ReactComponent as Clock } from "assets/icons/clock.svg";
 import { ReactComponent as Search } from "assets/icons/search.svg";
 import { ReactComponent as Done } from "assets/icons/done.svg";
-import { styled } from "@mui/system";
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 import { StyledStack } from "./status-text.styled";

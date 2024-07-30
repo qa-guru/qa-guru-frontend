@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { AppBar, Box, IconButton, Stack } from "@mui/material";
+
 import { ReactComponent as DarkLogo } from "assets/icons/logo-header.svg";
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 

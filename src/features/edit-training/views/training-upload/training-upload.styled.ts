@@ -1,6 +1,7 @@
 import { Stack, styled } from "@mui/system";
 import { Box } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+
 import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 
 export const StyledIconBox = styled(Box)({

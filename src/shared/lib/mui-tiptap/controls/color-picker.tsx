@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { HexAlphaColorPicker, HexColorPicker } from "react-colorful";
 import { makeStyles } from "tss-react/mui";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { colorToHex as colorToHexDefault } from "../utils/color";
