@@ -62,7 +62,6 @@ const EditLecture: FC<IEditLecture> = ({
       },
       onCompleted: () => {
         enqueueSnackbar("Урок обновлен", { variant: "success" });
-        // client.refetchQueries({ include: ["lecture"] });
       },
       onError: () => {
         enqueueSnackbar(

@@ -1,5 +1,6 @@
 import React from "react";
 import { alpha, Typography, useTheme } from "@mui/material";
+import CustomLink from "shared/components/custom-link";
 
 import {
   StyledIconBox,
@@ -10,11 +11,11 @@ import {
 } from "../info-system/info-system.styled";
 import {
   StyledCoPresentIcon,
+  StyledDescription,
   StyledNestedPaper,
   StyledNestedPaperStack,
   StyledPaperStack,
 } from "./role-info.styled";
-import CustomLink from "../../../../shared/components/custom-link";
 
 const RoleInfo: React.FC = () => {
   const theme = useTheme();
@@ -23,26 +24,62 @@ const RoleInfo: React.FC = () => {
   const roles = [
     {
       title: "Студент",
-      description:
-        "Доступ к купленным курсам по выбранному тарифу, доска заданий для студента, чат с менторами, преподавателями и другими студентами в комментариях к домашним заданиям.",
+      description: (
+        <ol>
+          <li>Доступ к купленным курсам по выбранному тарифу</li>
+          <li>Доска заданий для студента</li>
+          <li>
+            Чат с менторами, преподавателями и другими студентами в комментариях
+            к домашним заданиям
+          </li>
+        </ol>
+      ),
       color: rating.upTo50,
     },
     {
-      title: "Ментор",
-      description:
-        "Доступ к купленным курсам по выбранному тарифу, доска заданий для студента, доска заданий для ментора, проверка домашних заданий других студентов и смена их статуса, чат со студентами, преподавателями и другими менторами в комментариях к домашним заданиям.",
+      title: "Студент + Ментор",
+      description: (
+        <ol>
+          <li>Доступ к купленным курсам по выбранному тарифу</li>
+          <li>Доска заданий для студента</li>
+          <li>Доска заданий для ментора</li>
+          <li>Проверка домашних заданий других студентов и смена их статуса</li>
+          <li>
+            Чат со студентами, преподавателями и другими менторами в
+            комментариях к домашним заданиям
+          </li>
+        </ol>
+      ),
       color: rating.upTo100,
     },
     {
-      title: "Преподаватель",
-      description:
-        "Доступ к купленным курсам по выбранному тарифу, доска заданий для студента, доска заданий для ментора. Возможность создавать собственные курсы и вести занятия по согласованию с админом, проверка домашних заданий других студентов и смена их статуса, чат со студентами, менторами и другими преподавателями в комментариях к домашним заданиям.",
+      title: "Студент + Преподаватель",
+      description: (
+        <ol>
+          <li>Доступ к купленным курсам по выбранному тарифу</li>
+          <li>Доска заданий для студента</li>
+          <li>Доска заданий для ментора</li>
+          <li>Проверка домашних заданий других студентов и смена их статуса</li>
+          <li>
+            Возможность создавать собственные курсы и вести занятия по
+            согласованию с админом
+          </li>
+          <li>
+            Чат со студентами, преподавателями и другими менторами в
+            комментариях к домашним заданиям
+          </li>
+        </ol>
+      ),
       color: rating.upTo200,
     },
     {
       title: "Админ",
-      description:
-        "Полный доступ к редактированию и созданию курсов, занятий, мониторинг платформы.",
+      description: (
+        <ol>
+          <li>Полный доступ к редактированию и созданию курсов, занятий</li>
+          <li>Мониторинг платформы</li>
+        </ol>
+      ),
       color: rating.upTo500,
     },
   ];
@@ -112,7 +149,7 @@ const RoleInfo: React.FC = () => {
             >
               <StyledNestedPaperStack>
                 <Typography variant="h5">{role.title}</Typography>
-                <Typography variant="body2">{role.description}</Typography>
+                <StyledDescription>{role.description}</StyledDescription>
               </StyledNestedPaperStack>
             </StyledNestedPaper>
           ))}
