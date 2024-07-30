@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Paper, Stack, Typography } from "@mui/material";
+import { Box, Paper, Stack } from "@mui/material";
 import { CoPresentOutlined } from "@mui/icons-material";
 
 export const StyledPaperStack = styled(Stack)({
@@ -29,6 +29,7 @@ export const StyledCoPresentIcon = styled(CoPresentOutlined)(({ theme }) => ({
   },
 }));
 
-export const StyledDescriptionTypography = styled(Typography)({
+export const StyledDescription = styled(Box)({
   marginLeft: "15px",
+  fontSize: "0.73rem",
 });

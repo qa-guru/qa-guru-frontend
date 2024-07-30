@@ -11,7 +11,7 @@ import {
 } from "../info-system/info-system.styled";
 import {
   StyledCoPresentIcon,
-  StyledDescriptionTypography,
+  StyledDescription,
   StyledNestedPaper,
   StyledNestedPaperStack,
   StyledPaperStack,
@@ -149,9 +149,7 @@ const RoleInfo: React.FC = () => {
             >
               <StyledNestedPaperStack>
                 <Typography variant="h5">{role.title}</Typography>
-                <StyledDescriptionTypography variant="body2">
-                  {role.description}
-                </StyledDescriptionTypography>
+                <StyledDescription>{role.description}</StyledDescription>
               </StyledNestedPaperStack>
             </StyledNestedPaper>
           ))}
