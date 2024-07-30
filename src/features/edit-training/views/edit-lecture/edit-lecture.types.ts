@@ -1,3 +1,5 @@
+import { FieldValues } from "react-hook-form";
+
 import {
   InputMaybe,
   LectureHomeWorkQuery,
@@ -6,7 +8,6 @@ import {
   Scalars,
   UpdateLectureMutationFn,
 } from "api/graphql/generated/graphql";
-import { FieldValues } from "react-hook-form";
 
 export interface IEditLecture {
   updateLecture: UpdateLectureMutationFn;

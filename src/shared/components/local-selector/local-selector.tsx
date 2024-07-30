@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { type SelectChangeEvent } from "@mui/material/Select";
-import { ReactComponent as RussiaIcon } from "assets/icons/russia.svg";
-import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
 import { ListItemIcon, ListItemText } from "@mui/material";
 import LanguageIcon from "@mui/icons-material/Language";
+
+import { ReactComponent as RussiaIcon } from "assets/icons/russia.svg";
+import { ReactComponent as EnglishIcon } from "assets/icons/english.svg";
 
 import {
   StyledFormControl,

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Container, Stack, Typography } from "@mui/material";
+
 import { useRatingColor, useRoleAccess } from "shared/hooks";
 import MediaLinks from "shared/components/media-links/media-links";
 import KanbanProfileStudent from "shared/features/kanban-profile-student/views/kanban";

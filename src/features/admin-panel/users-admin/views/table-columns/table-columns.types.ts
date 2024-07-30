@@ -1,4 +1,5 @@
 import { type ApolloQueryResult } from "@apollo/client";
+
 import { UsersQuery } from "api/graphql/generated/graphql";
 
 export interface ITableColumns {

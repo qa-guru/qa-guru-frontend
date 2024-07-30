@@ -1,4 +1,5 @@
 import { FC, useRef } from "react";
+
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import SendButtons from "shared/components/send-buttons";

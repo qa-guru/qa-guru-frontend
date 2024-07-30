@@ -1,12 +1,13 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
+import { useReactiveVar } from "@apollo/client";
+import { userIdVar } from "cache";
+
 import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
 import { formatId } from "shared/helpers";
-import { useReactiveVar } from "@apollo/client";
-import { userIdVar } from "cache";
 
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";

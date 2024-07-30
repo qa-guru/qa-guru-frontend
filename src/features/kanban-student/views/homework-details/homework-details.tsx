@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Stack, Typography, useTheme } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 import StatusText from "shared/components/status-text";
 import LectureHomework from "shared/features/lecture-homework";
 import { TextView } from "shared/components/text-editor";

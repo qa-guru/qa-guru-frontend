@@ -1,4 +1,7 @@
 import { FC, useMemo } from "react";
+import { userIdVar } from "cache";
+import { useReactiveVar } from "@apollo/client";
+
 import {
   Order,
   StudentHomeWorkSortField,
@@ -8,8 +11,6 @@ import {
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useDynamicCardLimit } from "shared/hooks";
-import { userIdVar } from "cache";
-import { useReactiveVar } from "@apollo/client";
 
 import Board from "../../views/board";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";

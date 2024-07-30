@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { useDrop } from "react-dnd";
 import { useModal } from "react-modal-hook";
-import { Maybe } from "api/graphql/generated/graphql";
-import { CardType } from "features/kanban/views/column/column.types";
 import { Dialog, DialogActions, Typography } from "@mui/material";
+
+import { CardType } from "features/kanban/views/column/column.types";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import {
   StyledButton,

@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   LectureDocument,
   LectureHomeWorkDocument,
@@ -8,7 +10,6 @@ import {
   useLectureQuery,
   useUpdateLectureMutation,
 } from "api/graphql/generated/graphql";
-import { useParams } from "react-router-dom";
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { FETCH_POLICY } from "shared/constants";

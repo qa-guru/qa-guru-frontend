@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { CardActionArea, Container, Grid, Typography } from "@mui/material";
+
 import CustomLink from "shared/components/custom-link";
 
 import { ITrainingLectures } from "./training-lectures.types";

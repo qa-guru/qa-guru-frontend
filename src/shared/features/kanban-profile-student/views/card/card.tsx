@@ -1,11 +1,12 @@
 import { ComponentType, FC } from "react";
 import { Dialog, Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
+import { useModal } from "react-modal-hook";
+
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
-import { useModal } from "react-modal-hook";
 import HomeworkItem from "shared/features/homework-item";
 import Comments from "shared/features/comments";
 import CommentsPagination from "shared/features/comments-pagination";

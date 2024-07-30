@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
+
 import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";

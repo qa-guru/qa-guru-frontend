@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { useTheme } from "@mui/material/styles";
+
 import useCardDrop from "shared/hooks/use-card-drop";
 import ColumnContent from "shared/components/column-content/column-content";
-import { useTheme } from "@mui/material/styles";
 import { isColumnHighlight } from "shared/helpers";
 
 import { IColumn } from "./column.types";

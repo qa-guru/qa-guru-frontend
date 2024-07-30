@@ -2,6 +2,7 @@ import type { PopperProps } from "@mui/material";
 import { useState, type ReactNode } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import FormatColorBar from "../icons/format-color-bar";

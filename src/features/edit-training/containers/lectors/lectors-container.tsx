@@ -1,12 +1,13 @@
+import { FC, useCallback, useState } from "react";
+import { debounce } from "lodash";
+import { Control } from "react-hook-form";
+
 import {
   Order,
   UserRole,
   UserSortField,
   useUsersQuery,
 } from "api/graphql/generated/graphql";
-import { FC, useCallback, useState } from "react";
-import { debounce } from "lodash";
-import { Control } from "react-hook-form";
 import { FETCH_POLICY } from "shared/constants";
 
 import SelectLectors from "../../views/select-lectors";

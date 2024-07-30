@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+
 import { UserRatingDto } from "api/graphql/generated/graphql";
 import UserRow from "shared/components/user-row";
 import { formatDate } from "shared/helpers";

@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { type Table, flexRender } from "@tanstack/react-table";
-import { TrainingDto } from "api/graphql/generated/graphql";
 import { TableBody } from "@mui/material";
+
+import { TrainingDto } from "api/graphql/generated/graphql";
 
 import {
   StyledTable,

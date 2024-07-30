@@ -1,7 +1,8 @@
 import { FC } from "react";
+
+import { KanbanLecture } from "features/kanban-lecture";
 import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/container";
-import { KanbanLecture } from "features/kanban-lecture";
 import BlurredHomework from "shared/components/blurred/blurred-homework";
 
 import HomeworksViewSwitcher from "../homeworks-view-switcher";

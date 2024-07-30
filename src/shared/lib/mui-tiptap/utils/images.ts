@@ -1,4 +1,5 @@
 import type { Editor, JSONContent } from "@tiptap/core";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 export type ImageNodeAttributes = {

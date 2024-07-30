@@ -1,4 +1,5 @@
 import { FC, useContext } from "react";
+
 import { useTrainingLecturesQuery } from "api/graphql/generated/graphql";
 
 import { ITrainingLecturesContainer } from "./training-lectures-container.types";

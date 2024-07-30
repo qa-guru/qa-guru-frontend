@@ -1,9 +1,10 @@
 import { ComponentType, FC } from "react";
 import { Typography } from "@mui/material";
 import { format, parseISO } from "date-fns";
-import UserRow from "shared/components/user-row";
+
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
+import UserRow from "shared/components/user-row";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 
 import {

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import TrainingUploadService from "api/rest/training-upload-service";
 import { enqueueSnackbar } from "notistack";
-import { Maybe } from "api/graphql/generated/graphql";
 import { client } from "api";
+
+import TrainingUploadService from "api/rest/training-upload-service";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { RESPONSE_STATUS } from "../constants";
 

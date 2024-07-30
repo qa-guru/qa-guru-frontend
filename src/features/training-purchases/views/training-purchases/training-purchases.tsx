@@ -1,5 +1,6 @@
 import { FC, MouseEvent, useState } from "react";
 import { Container, Grid, Popover, Tooltip, Typography } from "@mui/material";
+
 import UserRow from "shared/components/user-row";
 import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";

@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import { Controller } from "react-hook-form";
+
 import UserRow from "shared/components/user-row";
 
 import { ISelectLectors } from "./select-lectors.types";

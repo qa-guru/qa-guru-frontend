@@ -1,8 +1,9 @@
 import { useRef, useState, MouseEvent } from "react";
-import { MenuButton, useRichTextEditorContext } from "shared/lib/mui-tiptap";
 import EmojiPicker, { type EmojiClickData } from "emoji-picker-react";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { Popover, useTheme } from "@mui/material";
+
+import { MenuButton, useRichTextEditorContext } from "shared/lib/mui-tiptap";
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { MenuButtonProps } from "./menu-button";

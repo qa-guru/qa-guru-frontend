@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
+
 import { ReactComponent as WorkIcon } from "assets/icons/work-field.svg";
 import { formatDate } from "shared/helpers";
 

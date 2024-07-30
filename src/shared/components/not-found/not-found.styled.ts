@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { Button, Stack, Typography } from "@mui/material";
+
 import { ReactComponent as LensImage } from "assets/images/lens.svg";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({

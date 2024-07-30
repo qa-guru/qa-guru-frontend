@@ -4,6 +4,7 @@ import { NodeViewWrapper } from "@tiptap/react";
 import throttle from "lodash/throttle";
 import { useMemo, useRef } from "react";
 import { makeStyles } from "tss-react/mui";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { ResizableImageResizer } from "./resizable-image-resizer";

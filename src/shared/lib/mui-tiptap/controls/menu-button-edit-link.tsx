@@ -1,5 +1,6 @@
 import Link from "@mui/icons-material/Link";
 import { useRef } from "react";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { useRichTextEditorContext } from "../context";

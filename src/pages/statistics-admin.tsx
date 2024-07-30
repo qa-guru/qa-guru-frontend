@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import StatisticsAdmin from "features/admin-panel/statistics-admin";
 
 const StatisticsAdminPage: FC = () => {

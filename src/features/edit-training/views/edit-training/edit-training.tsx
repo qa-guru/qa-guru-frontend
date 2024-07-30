@@ -1,13 +1,14 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { InputText } from "shared/components/form";
-import { UserRole } from "api/graphql/generated/graphql";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { client } from "api";
 import { Clear } from "@mui/icons-material";
 import SaveIcon from "@mui/icons-material/Save";
+
+import { UserRole } from "api/graphql/generated/graphql";
+import { InputText } from "shared/components/form";
 
 import TrainingUpload from "../training-upload";
 import { SelectLectors } from "../../containers";

@@ -1,5 +1,6 @@
-import UserRow from "shared/components/user-row";
 import { FC, useRef, useState } from "react";
+
+import UserRow from "shared/components/user-row";
 import { CommentEditor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import SendButtons from "shared/components/send-buttons";

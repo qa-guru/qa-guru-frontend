@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useTheme } from "@mui/material/styles";
+
 import ColumnContent from "shared/components/column-content/column-content";
 
 import { IColumn } from "./column.types";

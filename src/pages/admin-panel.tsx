@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import AdminPanel from "features/admin-panel";
 
 const AdminPanelPage: FC = () => {

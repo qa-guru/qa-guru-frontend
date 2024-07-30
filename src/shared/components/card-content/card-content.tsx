@@ -1,5 +1,6 @@
 import { ComponentType, FC } from "react";
 import { Typography } from "@mui/material";
+
 import { ReactComponent as MentorIcon } from "assets/icons/mentor.svg";
 import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import UserRow from "shared/components/user-row";

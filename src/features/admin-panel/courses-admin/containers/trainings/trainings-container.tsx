@@ -1,9 +1,10 @@
+import { FC } from "react";
+
 import {
   Order,
   TrainingSortField,
   useTrainingsQuery,
 } from "api/graphql/generated/graphql";
-import { FC } from "react";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import Spinner from "shared/components/spinners/app-spinner";
 import { FETCH_POLICY } from "shared/constants";

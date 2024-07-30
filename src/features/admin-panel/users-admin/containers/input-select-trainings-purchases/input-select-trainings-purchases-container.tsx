@@ -1,4 +1,7 @@
 import { FC } from "react";
+import { CircularProgress } from "@mui/material";
+
+import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
   Maybe,
   Order,
@@ -8,8 +11,6 @@ import {
   useTrainingsQuery,
   useUpdateUserTrainingPurchaseMutation,
 } from "api/graphql/generated/graphql";
-import NoDataErrorMessage from "shared/components/no-data-error-message";
-import { CircularProgress } from "@mui/material";
 
 import InputSelectTrainingsPurchases from "../../views/input-select-trainings-purchases";
 

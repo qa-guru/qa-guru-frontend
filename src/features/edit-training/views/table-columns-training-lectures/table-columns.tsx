@@ -1,10 +1,11 @@
 import { type CellContext, type ColumnDef } from "@tanstack/react-table";
-import { Maybe, TrainingLectureDto } from "api/graphql/generated/graphql";
 import { FC, useMemo } from "react";
 import { IconButton, Typography } from "@mui/material";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import { useResponsive } from "shared/hooks";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import { useResponsive } from "shared/hooks";
+import { Maybe, TrainingLectureDto } from "api/graphql/generated/graphql";
 import { formatDate } from "shared/helpers";
 import UserRow from "shared/components/user-row";
 

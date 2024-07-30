@@ -1,15 +1,16 @@
 import { IconButton, Typography } from "@mui/material";
+import { FC, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Edit, Check } from "@mui/icons-material";
+import { enqueueSnackbar } from "notistack";
+
+import { InputChip } from "shared/components/form";
+import { formatRole } from "shared/helpers";
 import {
   Maybe,
   UpdateRoleMutationFn,
   UserRole,
 } from "api/graphql/generated/graphql";
-import { FC, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { InputChip } from "shared/components/form";
-import { formatRole } from "shared/helpers";
-import { Edit, Check } from "@mui/icons-material";
-import { enqueueSnackbar } from "notistack";
 
 import {
   StyledBox,

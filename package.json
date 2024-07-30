@@ -132,7 +132,7 @@
     "click-to-react-component": "^1.1.0",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-sonarjs": "^0.19.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",

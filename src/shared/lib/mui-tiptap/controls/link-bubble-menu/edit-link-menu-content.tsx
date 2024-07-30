@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+
 import { Maybe } from "api/graphql/generated/graphql";
 import { useOutsideClick } from "shared/hooks";
 

@@ -1,4 +1,5 @@
 import { type ApolloQueryResult } from "@apollo/client";
+
 import {
   TrainingLecturesQuery,
   TrainingsQuery,

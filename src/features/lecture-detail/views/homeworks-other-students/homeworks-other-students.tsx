@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { Stack } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 import HomeworkItem from "shared/features/homework-item";
 import { QUERY_DEFAULTS } from "shared/constants";
 import ContentNotFound from "shared/components/content-not-found";
-import { ReactComponent as HomeworksNotFound } from "assets/images/homework-not-found.svg";
 
 import { IHomeworksOtherStudents } from "./homeworks-other-students.types";
 import {

@@ -1,7 +1,8 @@
-import { UserRole, Maybe } from "api/graphql/generated/graphql";
-import { useRoleAccess } from "shared/hooks";
 import { userIdVar } from "cache";
 import { useReactiveVar } from "@apollo/client";
+
+import { UserRole, Maybe } from "api/graphql/generated/graphql";
+import { useRoleAccess } from "shared/hooks";
 
 import { STATUS_COLUMN } from "../constants";
 

@@ -6,8 +6,9 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Delete } from "@mui/icons-material";
 import { useModal } from "react-modal-hook";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { IDeleteTraining } from "./delete-training.types";
@@ -77,7 +78,7 @@ const DeleteTraining: FC<IDeleteTraining> = ({
   };
 
   const renderLoading = () => <CircularProgress size={20} />;
-  const renderDeleteIcon = () => <DeleteIcon fontSize="small" color="error" />;
+  const renderDeleteIcon = () => <Delete fontSize="small" color="error" />;
 
   return (
     <IconButton onClick={handleOpen}>

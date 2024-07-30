@@ -1,5 +1,6 @@
 import { type ApolloQueryResult } from "@apollo/client";
 import { type ColumnDef, type Table } from "@tanstack/react-table";
+
 import {
   Maybe,
   TrainingDto,

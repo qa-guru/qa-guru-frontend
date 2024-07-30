@@ -1,5 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+
 import { Header } from "features/header";
 import Footer from "shared/components/footer";
 import { useResponsive } from "shared/hooks";

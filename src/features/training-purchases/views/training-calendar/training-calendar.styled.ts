@@ -1,6 +1,7 @@
-import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 import { styled } from "@mui/system";
 import { Paper } from "@mui/material";
+
+import { ReactComponent as StudentIcon } from "assets/icons/student.svg";
 
 export const StyledSchoolIcon = styled(StudentIcon)(({ theme }) => ({
   color: theme.palette.app.primary,

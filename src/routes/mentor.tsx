@@ -1,4 +1,5 @@
 import { Route } from "react-router-dom";
+
 import { KanbanHomeworkDetailsFullPage, KanbanPage } from "pages/kanban";
 import Profile from "pages/profile";
 import TopUsersPage from "pages/top-users";
