@@ -5,6 +5,7 @@ import {
   type HeaderContext,
 } from "@tanstack/react-table";
 import { Typography } from "@mui/material";
+
 import { UserDto } from "api/graphql/generated/graphql";
 import { formatDate, formatRole } from "shared/helpers";
 import UserRow from "shared/components/user-row";

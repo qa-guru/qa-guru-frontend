@@ -26,6 +26,11 @@ const useStyles = makeStyles({ name: { RichTextContent } })((theme) => {
         ...getEditorStyles(theme),
         '&[contenteditable="true"]': {
           fontSize: "16px",
+          height: "100%",
+          minHeight: "130px",
+          [theme.breakpoints.down("sm")]: {
+            minHeight: "50px",
+          },
         },
         "& input": {
           fontSize: "16px",

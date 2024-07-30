@@ -2,12 +2,13 @@ import { ChangeEvent, FC } from "react";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ImageIcon from "@mui/icons-material/Image";
-import AvatarCustom from "shared/components/avatar-custom";
 import { CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { useAvatarDelete, useAvatarUpload, useResponsive } from "shared/hooks";
 import { useReactiveVar } from "@apollo/client";
 import { userIdVar } from "cache";
+
+import { useAvatarDelete, useAvatarUpload, useResponsive } from "shared/hooks";
+import AvatarCustom from "shared/components/avatar-custom";
 
 import { IAvatarUpload } from "./avatar-upload.types";
 import {

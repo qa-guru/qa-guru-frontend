@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useDrag } from "react-dnd";
+
 import { useDragEffect, useResponsive } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
 import CardContent from "shared/components/card-content";

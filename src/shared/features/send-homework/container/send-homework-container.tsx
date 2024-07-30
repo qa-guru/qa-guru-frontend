@@ -1,11 +1,12 @@
 import { FC } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   HomeWorkByLectureAndTrainingDocument,
   HomeWorkByLectureAndTrainingQuery,
   Maybe,
   useSendHomeWorkToCheckMutation,
 } from "api/graphql/generated/graphql";
-import { useParams } from "react-router-dom";
 
 import SendHomework from "../view";
 

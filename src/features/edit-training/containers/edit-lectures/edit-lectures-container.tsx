@@ -1,7 +1,8 @@
-import { useTrainingLecturesQuery } from "api/graphql/generated/graphql";
 import { FC } from "react";
-import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useParams } from "react-router-dom";
+
+import { useTrainingLecturesQuery } from "api/graphql/generated/graphql";
+import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { AppSpinner } from "shared/components/spinners";
 import { FETCH_POLICY } from "shared/constants";
 

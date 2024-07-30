@@ -1,3 +1,8 @@
+import { FC, ReactNode, createContext, useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
+
+import AuthService from "api/rest/auth-service";
 import {
   UserCreateInput,
   useCheckResetPasswordTokenLazyQuery,
@@ -5,10 +10,6 @@ import {
   useResetPasswordMutation,
   useSetPasswordMutation,
 } from "api/graphql/generated/graphql";
-import AuthService from "api/rest/auth-service";
-import { FC, ReactNode, createContext, useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useSnackbar } from "notistack";
 
 import { RESPONSE_STATUS, ROUTES } from "../constants";
 

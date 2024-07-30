@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { Box, Button, Paper, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+
 import { ReactComponent as Logo } from "assets/icons/logo.svg";
 
 export const StyledSelectorWrapper = styled(Box)(({ theme }) => ({

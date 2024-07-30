@@ -1,9 +1,10 @@
+import { MouseEvent } from "react";
+
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
   Maybe,
 } from "api/graphql/generated/graphql";
-import { MouseEvent } from "react";
 
 export interface IColumnItem {
   id: string;

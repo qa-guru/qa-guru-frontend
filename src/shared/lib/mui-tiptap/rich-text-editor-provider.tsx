@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import type { Editor } from "@tiptap/react";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import { RichTextEditorContext } from "./context";

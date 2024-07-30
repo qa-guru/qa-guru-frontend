@@ -1,13 +1,14 @@
-import { Stack } from "@mui/material";
 import { FC } from "react";
+import { useSnackbar } from "notistack";
+import { LoadingButton } from "@mui/lab";
+import { Stack } from "@mui/material";
+import { Add } from "@mui/icons-material";
+
 import { app } from "theme/colors";
-import AddIcon from "@mui/icons-material/Add";
 import {
   TechStack,
   UpdateTrainingMutationFn,
 } from "api/graphql/generated/graphql";
-import { useSnackbar } from "notistack";
-import { LoadingButton } from "@mui/lab";
 import { generateUniqueId } from "shared/helpers";
 
 interface ICreateTrainingButton {
@@ -49,7 +50,7 @@ const СreateTrainingButton: FC<ICreateTrainingButton> = ({
         onClick={handleCreateCourse}
         sx={{ color: app.white }}
         variant="contained"
-        startIcon={<AddIcon />}
+        startIcon={<Add />}
         loading={loading}
       >
         Новый курс

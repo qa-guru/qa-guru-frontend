@@ -2,8 +2,9 @@ import { FC, MouseEvent, useEffect, useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Box, Step } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
+
+import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { STATES } from "shared/constants";
 
 import { IMobileBoard } from "./mobile-board.types";

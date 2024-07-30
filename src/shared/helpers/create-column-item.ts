@@ -1,10 +1,10 @@
+import { IColumnItem } from "features/kanban/views/column/column.types";
 import {
   StudentHomeWorkDto,
   StudentHomeWorkStatus,
 } from "api/graphql/generated/graphql";
 import { IExtendedCard } from "shared/hooks/use-card-drop/use-card-drop.types";
 import { getAllowedColumns } from "shared/helpers";
-import { IColumnItem } from "features/kanban/views/column/column.types";
 
 export const createColumnItem = (
   id: string,

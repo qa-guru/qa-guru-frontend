@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Divider, Stack, Typography } from "@mui/material";
+
 import { INDEX_OFFSET } from "shared/constants";
 
 import { ILectureDescription } from "./lecture-description.types";

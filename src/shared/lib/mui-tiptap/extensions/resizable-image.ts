@@ -5,6 +5,7 @@ import {
 } from "@tiptap/core";
 import { Image, type ImageOptions } from "@tiptap/extension-image";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import ResizableImageComponent from "./resizable-image-component";

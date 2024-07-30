@@ -1,4 +1,5 @@
 import { type Theme, type SxProps, useTheme } from "@mui/material/styles";
+
 import { lightTheme } from "theme/constans";
 
 type GetColumnStylesFunction = (totalElements: number) => SxProps<Theme> | null;

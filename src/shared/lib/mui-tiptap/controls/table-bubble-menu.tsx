@@ -2,6 +2,7 @@ import { findParentNodeClosestToPos, posToDOMRect } from "@tiptap/core";
 import { useMemo } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import ControlledBubbleMenu, {

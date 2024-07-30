@@ -1,5 +1,6 @@
 import type { SuggestionOptions, SuggestionProps } from "@tiptap/suggestion";
 import { RefObject } from "react";
+
 import { RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Maybe } from "api/graphql/generated/graphql";
 

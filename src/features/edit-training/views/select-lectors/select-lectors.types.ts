@@ -1,6 +1,7 @@
 import { Control } from "react-hook-form";
-import { UsersQuery } from "api/graphql/generated/graphql";
 import { DebouncedFunc } from "lodash";
+
+import { UsersQuery } from "api/graphql/generated/graphql";
 
 export interface ISelectLectors {
   control: Control;

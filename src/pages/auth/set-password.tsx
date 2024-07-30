@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { SetNewPassword } from "features/authorization";
 
 const SetPasswordPage: FC = () => {

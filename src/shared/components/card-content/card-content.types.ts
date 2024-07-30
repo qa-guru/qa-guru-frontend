@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
 import { type ConnectDragSource } from "react-dnd";
+
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 
 export interface ICardContent {

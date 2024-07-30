@@ -1,6 +1,7 @@
 import type { Editor } from "@tiptap/core";
 import debounce from "lodash/debounce";
 import { useEffect, useMemo, useState } from "react";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 export type UseDebouncedFocusOptions = {

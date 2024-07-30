@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { userIdVar } from "cache";
+
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useUserQuery } from "api/graphql/generated/graphql";
 import { FETCH_POLICY } from "shared/constants";
-import { userIdVar } from "cache";
 
 import Profile from "../../views/profile";
 

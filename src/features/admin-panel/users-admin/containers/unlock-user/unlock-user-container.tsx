@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   Maybe,
   Order,
@@ -6,7 +8,6 @@ import {
   UsersQuery,
   useUnlockUserMutation,
 } from "api/graphql/generated/graphql";
-import { FC } from "react";
 
 import { useTableAdminFilter } from "../../context/admin-table-context";
 import UnlockUser from "../../views/unlock-user";

@@ -1,5 +1,6 @@
-import { Login } from "features/authorization";
 import { FC } from "react";
+
+import { Login } from "features/authorization";
 
 const LoginPage: FC = () => {
   return <Login />;

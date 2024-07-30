@@ -1,8 +1,9 @@
 import { useState } from "react";
-import AvatarUploadService from "api/rest/avatar-upload-service";
 import { enqueueSnackbar } from "notistack";
-import { Maybe } from "api/graphql/generated/graphql";
 import { client } from "api";
+
+import AvatarUploadService from "api/rest/avatar-upload-service";
+import { Maybe } from "api/graphql/generated/graphql";
 
 import { RESPONSE_STATUS } from "../constants";
 

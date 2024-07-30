@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useMemo } from "react";
 import { createCustomTheme, themeSettingsTypes } from "theme";
 import { ThemeProvider } from "@mui/material";
+
 import { useLocalStorage } from "shared/hooks";
 
 import { THEMES } from "../../theme/constans";

@@ -1,5 +1,6 @@
 /// <reference types="@tiptap/extension-text-style" />
 import { Extension } from "@tiptap/core";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 export type FontSizeAttrs = {

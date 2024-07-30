@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { FormControl } from "@mui/material";
+
 import { RichTextReadOnly } from "shared/lib/mui-tiptap";
 import { Maybe } from "api/graphql/generated/graphql";
-import { FormControl } from "@mui/material";
 
 import useExtensions from "../hooks/use-extensions";
 

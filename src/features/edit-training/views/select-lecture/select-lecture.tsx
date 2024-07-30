@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import { Clear, FormatAlignLeft } from "@mui/icons-material";
-import { useResponsive } from "shared/hooks";
 import { useModal } from "react-modal-hook";
 import {
   CircularProgress,
@@ -8,12 +7,14 @@ import {
   DialogContent,
   IconButton,
 } from "@mui/material";
-import { LectureDto, Maybe } from "api/graphql/generated/graphql";
 import {
   getCoreRowModel,
   type Table,
   useReactTable,
 } from "@tanstack/react-table";
+
+import { LectureDto, Maybe } from "api/graphql/generated/graphql";
+import { useResponsive } from "shared/hooks";
 
 import MobileTable from "../mobile-table";
 import DesktopTable from "../desktop-table";

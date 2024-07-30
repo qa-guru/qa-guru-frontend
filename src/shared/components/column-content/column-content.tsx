@@ -1,9 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import { Button, CircularProgress } from "@mui/material";
+import { type SxProps } from "@mui/material/styles";
+
 import { useResponsive } from "shared/hooks";
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { formatStatus } from "shared/helpers";
-import { type SxProps } from "@mui/material/styles";
 
 import {
   StyledBoxWrapper,

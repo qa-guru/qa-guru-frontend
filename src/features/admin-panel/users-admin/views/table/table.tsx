@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { CircularProgress } from "@mui/material";
+
+import { ReactComponent as UsersNotFound } from "assets/images/user-not-found.svg";
 import { UserDto } from "api/graphql/generated/graphql";
 import { useResponsive } from "shared/hooks";
 import ContentNotFound from "shared/components/content-not-found";
-import { ReactComponent as UsersNotFound } from "assets/images/user-not-found.svg";
 
 import { ITable } from "./table.types";
 import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";

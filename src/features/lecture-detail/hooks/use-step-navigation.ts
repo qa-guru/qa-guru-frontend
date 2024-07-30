@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
-import { Maybe, TrainingLectureDto } from "api/graphql/generated/graphql";
 import { useNavigate, useParams } from "react-router-dom";
+
+import { Maybe, TrainingLectureDto } from "api/graphql/generated/graphql";
 import { useResponsive } from "shared/hooks";
 
 export const useStepNavigation = (

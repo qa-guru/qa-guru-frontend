@@ -1,6 +1,7 @@
-import { useTrainingLecturesQuery } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import { useParams } from "react-router-dom";
+
+import { useTrainingLecturesQuery } from "api/graphql/generated/graphql";
 import { FETCH_POLICY } from "shared/constants";
 
 import Stepper from "../../views/stepper";

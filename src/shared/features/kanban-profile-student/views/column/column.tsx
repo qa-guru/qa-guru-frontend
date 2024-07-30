@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+
 import { StudentHomeWorkDto } from "api/graphql/generated/graphql";
 import { useResponsive } from "shared/hooks";
 import { HOMEWORKS_QUERY_DEFAULTS } from "shared/constants";

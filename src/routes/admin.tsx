@@ -1,4 +1,5 @@
 import { Route } from "react-router-dom";
+
 import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";

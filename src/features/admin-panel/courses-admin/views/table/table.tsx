@@ -1,13 +1,14 @@
 import { FC, useEffect, useState } from "react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { TrainingDto } from "api/graphql/generated/graphql";
 import { CircularProgress } from "@mui/material";
+
+import { TrainingDto } from "api/graphql/generated/graphql";
 import { useResponsive } from "shared/hooks";
 
-import { ITable } from "./table.types";
-import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";
 import DesktopTable from "../desktop-table";
 import MobileTable from "../mobile-table";
+import { ITable } from "./table.types";
+import { StyledBox, StyledInfiniteScroll, StyledPaper } from "./table.styled";
 
 const renderLoader = () => (
   <StyledBox>

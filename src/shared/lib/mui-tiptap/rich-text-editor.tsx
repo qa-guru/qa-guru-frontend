@@ -7,6 +7,7 @@ import {
   type DependencyList,
 } from "react";
 import type { Except, SetRequired } from "type-fest";
+
 import { Maybe } from "api/graphql/generated/graphql";
 
 import RichTextEditorProvider from "./rich-text-editor-provider";

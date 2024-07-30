@@ -1,7 +1,8 @@
 import { FC, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
-import { useParams } from "react-router-dom";
 import SendButtons from "shared/components/send-buttons";
 
 import { ISendHomeWork } from "./send-homework.types";

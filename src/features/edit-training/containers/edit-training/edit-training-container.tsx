@@ -1,11 +1,12 @@
+import { FC } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   useTrainingQuery,
   useUpdateTrainingMutation,
 } from "api/graphql/generated/graphql";
-import { FC } from "react";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { AppSpinner } from "shared/components/spinners";
-import { useParams } from "react-router-dom";
 import { FETCH_POLICY } from "shared/constants";
 
 import EditTraining from "../../views/edit-training";

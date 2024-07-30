@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { makeStyles } from "tss-react/mui";
 
 import FieldContainer from "./field-container";
@@ -18,9 +19,9 @@ export type RichTextFieldProps = {
 
   disabled?: boolean;
 
-  footer?: React.ReactNode;
+  footer?: ReactNode;
 
-  controls?: React.ReactNode;
+  controls?: ReactNode;
 
   disableDebounceRenderControls?: boolean;
   classes?: Partial<RichTextFieldClasses>;
@@ -65,12 +66,7 @@ const useStyles = makeStyles<void, "menuBar" | "menuBarContent" | "content">({
 
     menuBar: {},
     menuBarContent: {},
-    content: {
-      minHeight: "130px",
-      [theme.breakpoints.down("sm")]: {
-        minHeight: "50px",
-      },
-    },
+    content: {},
   };
 });
 

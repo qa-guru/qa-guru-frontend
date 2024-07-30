@@ -1,4 +1,6 @@
 import { FC, useMemo } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   Order,
   StudentHomeWorkSortField,
@@ -6,7 +8,6 @@ import {
   useHomeworksQuery,
 } from "api/graphql/generated/graphql";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
-import { useParams } from "react-router-dom";
 import { useDynamicCardLimit } from "shared/hooks";
 import SkeletonKanban from "shared/components/skeletons/skeleton-kanban";
 

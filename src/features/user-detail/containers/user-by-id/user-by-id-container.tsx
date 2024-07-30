@@ -1,6 +1,7 @@
-import { useUserByIdQuery } from "api/graphql/generated/graphql";
 import { FC } from "react";
 import { Navigate, useParams } from "react-router-dom";
+
+import { useUserByIdQuery } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import { FETCH_POLICY } from "shared/constants";
 

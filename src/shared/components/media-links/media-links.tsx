@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Maybe, UserDto } from "api/graphql/generated/graphql";
+
 import { ReactComponent as StackOverflowIcon } from "assets/icons/stack-overflow.svg";
 import { ReactComponent as GitHubIcon } from "assets/icons/git-hub.svg";
 import { ReactComponent as LinkedInIcon } from "assets/icons/linked-in.svg";
@@ -10,6 +10,7 @@ import { ReactComponent as GitHubIconSecondary } from "assets/icons/git-hub-seco
 import { ReactComponent as LinkedInIconSecondary } from "assets/icons/linked-in-secondary.svg";
 import { ReactComponent as TelegramIconSecondary } from "assets/icons/telegram-secondary.svg";
 import { ReactComponent as WebSiteIconSecondary } from "assets/icons/website-secondary.svg";
+import { Maybe, UserDto } from "api/graphql/generated/graphql";
 import CustomLink from "shared/components/custom-link";
 
 import { StyledIconStack } from "./media-links.styled";

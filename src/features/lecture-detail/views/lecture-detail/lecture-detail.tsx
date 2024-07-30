@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
-import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 import { Container } from "@mui/material";
+
+import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
 
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
