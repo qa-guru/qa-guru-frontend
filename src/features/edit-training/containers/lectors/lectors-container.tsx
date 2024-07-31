@@ -1,5 +1,6 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Control } from "react-hook-form";
+import debounce from "lodash/debounce";
 
 import {
   Order,
@@ -21,7 +22,7 @@ interface ILectorsContainer {
 const UsersContainer: FC<ILectorsContainer> = ({ control, name, role }) => {
   const [filterName, setFilterName] = useState("");
 
-  const { data, loading } = useUsersQuery({
+  const { data, loading, refetch } = useUsersQuery({
     variables: {
       offset: 0,
       limit: 150,
@@ -34,15 +35,22 @@ const UsersContainer: FC<ILectorsContainer> = ({ control, name, role }) => {
     fetchPolicy: FETCH_POLICY.NETWORK_ONLY,
   });
 
-  const handleSearch = useCallback((searchValue: string) => {
-    setFilterName(searchValue);
-  }, []);
+  const debouncedSearch = useCallback(
+    debounce((searchValue) => {
+      setFilterName(searchValue);
+    }, 200),
+    []
+  );
+
+  useEffect(() => {
+    refetch();
+  }, [filterName, refetch]);
 
   return (
     <SelectLectors
       data={data}
       control={control}
-      onSearchChange={handleSearch}
+      onSearchChange={debouncedSearch}
       loading={loading}
       name={name}
     />
