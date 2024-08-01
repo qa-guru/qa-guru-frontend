@@ -1,6 +1,6 @@
-import { FC, useCallback, useState } from "react";
-import { debounce } from "lodash";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Control } from "react-hook-form";
+import debounce from "lodash/debounce";
 
 import {
   Order,
@@ -38,10 +38,13 @@ const UsersContainer: FC<ILectorsContainer> = ({ control, name, role }) => {
   const debouncedSearch = useCallback(
     debounce((searchValue) => {
       setFilterName(searchValue);
-      refetch();
-    }, 300),
+    }, 200),
     []
   );
+
+  useEffect(() => {
+    refetch();
+  }, [filterName, refetch]);
 
   return (
     <SelectLectors
