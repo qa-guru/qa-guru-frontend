@@ -28,7 +28,13 @@ const UserSettings: FC<IUserSettings> = ({ id, user, locked }) => {
 
   const [showModal, hideModal] = useModal(
     ({ in: open }) => (
-      <Dialog open={open} onClose={hideModal} fullWidth scroll="body">
+      <Dialog
+        open={open}
+        onClose={hideModal}
+        scroll="body"
+        fullWidth
+        maxWidth="md"
+      >
         <StyledWrapper>
           <StyledClearIcon onClick={hideModal} fontSize="small" />
           <StyledDialogContent>
