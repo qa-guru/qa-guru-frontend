@@ -1,5 +1,6 @@
 import Link from "@mui/icons-material/Link";
 import { useRef } from "react";
+import { type PopoverOrigin } from "@mui/material";
 
 import { Maybe } from "api/graphql/generated/graphql";
 
@@ -11,6 +12,17 @@ export type MenuButtonEditLinkProps = Partial<MenuButtonProps>;
 export default function MenuButtonEditLink(props: MenuButtonEditLinkProps) {
   const editor = useRichTextEditorContext();
   const buttonRef = useRef<Maybe<HTMLButtonElement>>(null);
+
+  const anchorOrigin: PopoverOrigin = {
+    vertical: "bottom",
+    horizontal: "center",
+  };
+
+  const transformOrigin: PopoverOrigin = {
+    vertical: "top",
+    horizontal: "center",
+  };
+
   return (
     <MenuButton
       buttonRef={buttonRef}
@@ -22,7 +34,10 @@ export default function MenuButtonEditLink(props: MenuButtonEditLinkProps) {
       onClick={() =>
         editor?.commands.openLinkBubbleMenu({
           anchorEl: buttonRef.current,
-          placement: "bottom",
+          placement: {
+            anchorOrigin,
+            transformOrigin,
+          },
         })
       }
       {...props}
