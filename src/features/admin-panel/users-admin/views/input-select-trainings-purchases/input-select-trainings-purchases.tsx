@@ -4,6 +4,7 @@ import {
   CircularProgress,
   FormControl,
   TextField,
+  Tooltip,
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 
@@ -113,12 +114,13 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
               return (
                 <>
                   {visibleTags.map((option, index) => (
-                    <StyledChip
-                      {...getTagProps({ index })}
-                      key={option.id}
-                      label={option.name}
-                      size="small"
-                    />
+                    <Tooltip title={option.name} key={option.id}>
+                      <StyledChip
+                        {...getTagProps({ index })}
+                        label={option.name}
+                        size="small"
+                      />
+                    </Tooltip>
                   ))}
                   {hiddenTagCount > 0 && (
                     <StyledChip label={`+${hiddenTagCount}`} size="small" />
@@ -127,9 +129,11 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
               );
             }}
             renderOption={(props, option) => (
-              <li {...props} key={option.id}>
-                <StyledOptionChip variant="outlined" label={option.name} />
-              </li>
+              <Tooltip title={option.name} key={option.id}>
+                <li {...props}>
+                  <StyledOptionChip variant="outlined" label={option.name} />
+                </li>
+              </Tooltip>
             )}
             loading={loadingUpdateUserTrainingPurchase}
             loadingText="Загрузка..."

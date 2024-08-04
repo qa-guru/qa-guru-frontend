@@ -73,11 +73,6 @@ const routePatterns = [
   },
   { path: "/top-users", name: "Топ 50", icon: <Star fontSize="small" /> },
   {
-    path: "/",
-    name: "Курсы",
-    icon: <School fontSize="small" />,
-  },
-  {
     path: "/edit-training/:trainingId",
     name: "Редактирование курса",
     icon: <Edit fontSize="small" />,
