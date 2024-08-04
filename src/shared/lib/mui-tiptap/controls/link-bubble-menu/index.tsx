@@ -52,12 +52,16 @@ export default function LinkBubbleMenu({
 
   const menuState = handlerStorage.state;
 
+  const handleClose = () => {
+    editor.commands.closeLinkBubbleMenu();
+  };
+
   let linkMenuContent = null;
   if (menuState === LinkMenuState.VIEW_LINK_DETAILS) {
     linkMenuContent = (
       <ViewLinkMenuContent
         editor={editor}
-        onCancel={editor.commands.closeLinkBubbleMenu}
+        onCancel={handleClose}
         onEdit={editor.commands.editLinkInBubbleMenu}
         onRemove={() => {
           editor
@@ -74,7 +78,7 @@ export default function LinkBubbleMenu({
     linkMenuContent = (
       <EditLinkMenuContent
         editor={editor}
-        onCancel={editor.commands.closeLinkBubbleMenu}
+        onCancel={handleClose}
         onSave={({ text, link }) => {
           editor
             .chain()
@@ -110,6 +114,7 @@ export default function LinkBubbleMenu({
   return (
     <ControlledBubbleMenu
       editor={editor}
+      onClose={handleClose}
       open={menuState !== LinkMenuState.HIDDEN}
       {...handlerStorage.bubbleMenuOptions}
       {...controlledBubbleMenuProps}
