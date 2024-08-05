@@ -1,6 +1,6 @@
-/// <reference types="@tiptap/extension-link" />
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+import { useEffect } from "react";
 
 import ControlledBubbleMenu, {
   type ControlledBubbleMenuProps,
@@ -38,6 +38,12 @@ export default function LinkBubbleMenu({
   const { classes } = useStyles();
   const editor = useRichTextEditorContext();
 
+  useEffect(() => {
+    if (editor?.isEditable && "linkBubbleMenuHandler" in editor.storage) {
+      handleClose();
+    }
+  }, [location.pathname, editor]);
+
   if (!editor?.isEditable) {
     return null;
   }
@@ -52,12 +58,16 @@ export default function LinkBubbleMenu({
 
   const menuState = handlerStorage.state;
 
+  const handleClose = () => {
+    editor.commands.closeLinkBubbleMenu();
+  };
+
   let linkMenuContent = null;
   if (menuState === LinkMenuState.VIEW_LINK_DETAILS) {
     linkMenuContent = (
       <ViewLinkMenuContent
         editor={editor}
-        onCancel={editor.commands.closeLinkBubbleMenu}
+        onCancel={handleClose}
         onEdit={editor.commands.editLinkInBubbleMenu}
         onRemove={() => {
           editor
@@ -74,11 +84,10 @@ export default function LinkBubbleMenu({
     linkMenuContent = (
       <EditLinkMenuContent
         editor={editor}
-        onCancel={editor.commands.closeLinkBubbleMenu}
+        onCancel={handleClose}
         onSave={({ text, link }) => {
           editor
             .chain()
-
             .extendMarkRange("link")
             .insertContent({
               type: "text",
@@ -92,11 +101,9 @@ export default function LinkBubbleMenu({
               ],
               text,
             })
-
             .setLink({
               href: link,
             })
-
             .focus()
             .run();
 
@@ -110,6 +117,7 @@ export default function LinkBubbleMenu({
   return (
     <ControlledBubbleMenu
       editor={editor}
+      onClose={handleClose}
       open={menuState !== LinkMenuState.HIDDEN}
       {...handlerStorage.bubbleMenuOptions}
       {...controlledBubbleMenuProps}

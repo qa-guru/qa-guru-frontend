@@ -2,6 +2,7 @@ import { findParentNodeClosestToPos, posToDOMRect } from "@tiptap/core";
 import { useMemo } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+import { type PopoverVirtualElement } from "@mui/material";
 
 import { Maybe } from "api/graphql/generated/graphql";
 
@@ -19,14 +20,12 @@ import DebounceRender, {
 
 export type TableBubbleMenuProps = {
   disableDebounce?: boolean;
-
   DebounceProps?: Except<DebounceRenderProps, "children">;
-
   labels?: TableMenuControlsProps["labels"];
 } & Partial<Except<ControlledBubbleMenuProps, "open" | "editor" | "children">>;
 
 const useStyles = makeStyles({
-  name: { TableBubbleMenu },
+  name: "TableBubbleMenu",
 })((theme) => ({
   controls: {
     maxWidth: "90vw",
@@ -90,14 +89,17 @@ export default function TableBubbleMenu({
     <ControlledBubbleMenu
       editor={editor}
       open={isEditorFocusedDebounced && editor.isActive("table")}
-      anchorEl={bubbleMenuAnchorEl}
-      placement="top-start"
+      anchorEl={bubbleMenuAnchorEl as PopoverVirtualElement}
+      placement={{
+        anchorOrigin: { vertical: "top", horizontal: "left" },
+        transformOrigin: { vertical: "bottom", horizontal: "left" },
+      }}
       fallbackPlacements={[
-        "bottom-start",
-        "top",
-        "bottom",
-        "top-end",
-        "bottom-end",
+        { vertical: "bottom", horizontal: "left" },
+        { vertical: "top", horizontal: "center" },
+        { vertical: "bottom", horizontal: "center" },
+        { vertical: "top", horizontal: "right" },
+        { vertical: "bottom", horizontal: "right" },
       ]}
       flipPadding={{ top: 35, left: 8, right: 8, bottom: -Infinity }}
       {...controlledBubbleMenuProps}
