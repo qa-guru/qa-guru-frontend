@@ -1,6 +1,6 @@
-/// <reference types="@tiptap/extension-link" />
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
+import { useEffect } from "react";
 
 import ControlledBubbleMenu, {
   type ControlledBubbleMenuProps,
@@ -37,6 +37,12 @@ export default function LinkBubbleMenu({
 }: LinkBubbleMenuProps) {
   const { classes } = useStyles();
   const editor = useRichTextEditorContext();
+
+  useEffect(() => {
+    if (editor?.isEditable && "linkBubbleMenuHandler" in editor.storage) {
+      handleClose();
+    }
+  }, [location.pathname, editor]);
 
   if (!editor?.isEditable) {
     return null;
@@ -82,7 +88,6 @@ export default function LinkBubbleMenu({
         onSave={({ text, link }) => {
           editor
             .chain()
-
             .extendMarkRange("link")
             .insertContent({
               type: "text",
@@ -96,11 +101,9 @@ export default function LinkBubbleMenu({
               ],
               text,
             })
-
             .setLink({
               href: link,
             })
-
             .focus()
             .run();
 
