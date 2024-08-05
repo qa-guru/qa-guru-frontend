@@ -2,18 +2,18 @@ import { ReactNode, useCallback } from "react";
 import {
   Fade,
   Paper,
-  Popover,
-  useTheme,
   type PaperProps,
+  Popover,
   type PopoverProps,
   type PopoverVirtualElement,
+  useTheme,
 } from "@mui/material";
-import { isNodeSelection, posToDOMRect, type Editor } from "@tiptap/core";
+import { type Editor, isNodeSelection, posToDOMRect } from "@tiptap/core";
 import { makeStyles } from "tss-react/mui";
 
 import { Maybe } from "api/graphql/generated/graphql";
 
-import { Z_INDEXES, getUtilityClasses } from "../styles";
+import { getUtilityClasses, Z_INDEXES } from "../styles";
 
 export type ControlledBubbleMenuClasses = ReturnType<
   typeof useStyles
