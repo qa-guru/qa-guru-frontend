@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Typography } from "@mui/material";
 import { useReactiveVar } from "@apollo/client";
+
 import { userIdVar } from "cache";
 
 import { IUserName } from "./user-name.types";

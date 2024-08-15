@@ -145,6 +145,14 @@
             "group": "external"
           },
           {
+            "pattern": "theme",
+            "group": "internal"
+          },
+          {
+            "pattern": "cache",
+            "group": "internal"
+          },
+          {
             "pattern": "{api,assets,features,pages,shared,theme}/**",
             "group": "internal"
           }

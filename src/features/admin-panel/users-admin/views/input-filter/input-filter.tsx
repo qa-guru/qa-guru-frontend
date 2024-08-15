@@ -20,7 +20,7 @@ import {
 import RoleSelection from "../role-selection";
 
 const filterLabels = {
-  firstName: "имя",
+  name: "имя",
   email: "email",
 };
 
@@ -28,7 +28,7 @@ type FilterKey = keyof typeof filterLabels;
 
 const InputFilter: FC = () => {
   const { setFilter } = useTableAdminFilter();
-  const [activeFilter, setActiveFilter] = useState<FilterKey>("firstName");
+  const [activeFilter, setActiveFilter] = useState<FilterKey>("name");
 
   const { control, watch, reset, resetField } = useForm({
     defaultValues: {
@@ -78,8 +78,8 @@ const InputFilter: FC = () => {
                 <InputAdornment position="start">
                   <StyledIconsStack>
                     <StyledIconInputButton
-                      isActive={activeFilter === "firstName"}
-                      onClick={() => handleFilterChange("firstName")}
+                      isActive={activeFilter === "name"}
+                      onClick={() => handleFilterChange("name")}
                     >
                       <Tooltip title="Имя">
                         <Person fontSize="small" />

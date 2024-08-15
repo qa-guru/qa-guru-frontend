@@ -29,7 +29,7 @@ const UsersContainer: FC<ILectorsContainer> = ({ control, name, role }) => {
       sort: { field: UserSortField.Email, order: Order.Desc },
       filter: {
         role,
-        firstName: filterName,
+        name: filterName,
       },
     },
     fetchPolicy: FETCH_POLICY.NETWORK_ONLY,

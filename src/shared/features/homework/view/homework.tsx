@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useModal } from "react-modal-hook";
 import { Dialog, Box } from "@mui/material";
 
@@ -7,8 +7,8 @@ import Comments from "shared/features/comments";
 import CommentsLimited from "shared/features/comments-limited";
 import CommentsPagination from "shared/features/comments-pagination";
 import HomeworkItem from "shared/features/homework-item";
+import { MIN_COMMENTS_TO_SHOW_BUTTON } from "shared/constants";
 
-import { IHomework } from "./homework.types";
 import {
   StyledButton,
   StyledClearIcon,
@@ -17,10 +17,13 @@ import {
   StyledPaper,
   StyledIconBox,
 } from "./homework.styled";
+import { IHomework } from "./homework.types";
 
 const Homework: FC<IHomework> = (props) => {
   const { dataHomeWorkByLectureAndTraining, hideMentorAndStudent } = props;
   const { isMobile } = useResponsive();
+
+  const [totalElements, setTotalElements] = useState<number>(0);
 
   const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog
@@ -63,14 +66,16 @@ const Homework: FC<IHomework> = (props) => {
       {dataHomeWorkByLectureAndTraining?.id && (
         <>
           <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
-            <CommentsLimited />
+            <CommentsLimited setTotalElements={setTotalElements} />
           </Comments>
 
-          <Box>
-            <StyledButton variant="contained" onClick={showModalAndSetUrl}>
-              Показать другие комментарии
-            </StyledButton>
-          </Box>
+          {totalElements > MIN_COMMENTS_TO_SHOW_BUTTON && (
+            <Box>
+              <StyledButton variant="contained" onClick={showModalAndSetUrl}>
+                Показать другие комментарии
+              </StyledButton>
+            </Box>
+          )}
         </>
       )}
     </StyledPaper>

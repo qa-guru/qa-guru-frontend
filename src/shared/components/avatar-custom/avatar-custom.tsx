@@ -1,8 +1,9 @@
 import { FC } from "react";
 import Avatar from "@mui/material/Avatar";
 import { useTheme } from "@mui/system";
-import { userIdVar } from "cache";
 import { useReactiveVar } from "@apollo/client";
+
+import { userIdVar } from "cache";
 
 import { IAvatarCustom } from "./avatar-custom.types";
 import { StyledTypography } from "./avatar-custom.styled";

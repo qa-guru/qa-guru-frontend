@@ -1,7 +1,7 @@
 import { useReactiveVar } from "@apollo/client";
-import { userRolesVar } from "cache";
 import { useMemo } from "react";
 
+import { userRolesVar } from "cache";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 
 interface UseRoleAccessProps {

@@ -62,8 +62,6 @@ const InputSelectTrainingsPurchases: FC<IInputSelectTrainingsPurchases> = ({
   const handleSelectChange = (trainings: ITrainingOption[]) => {
     setValue("trainings", trainings);
 
-    console.log("trainings", trainings);
-
     updateUserTrainingPurchase({
       variables: {
         tariffCodes: trainings?.map(({ code }) => code!),

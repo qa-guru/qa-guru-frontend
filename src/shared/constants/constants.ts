@@ -75,3 +75,5 @@ export const FETCH_POLICY: Record<string, WatchQueryFetchPolicy> = {
   NETWORK_ONLY: "network-only",
   CACHE_AND_NETWORK: "cache-and-network",
 };
+
+export const MIN_COMMENTS_TO_SHOW_BUTTON = 3;

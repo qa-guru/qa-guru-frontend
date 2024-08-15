@@ -1,8 +1,8 @@
 import { ApolloClient, HttpLink, ApolloLink, Observable } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import fetch from "cross-fetch";
-import { cache } from "cache";
 
+import { cache } from "cache";
 import AuthService from "api/rest/auth-service";
 import { FETCH_POLICY } from "shared/constants";
 

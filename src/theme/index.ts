@@ -11,6 +11,11 @@ export type themeSettingsTypes = {
   responsiveFontSizes?: boolean;
 };
 
+export const initialSettings: themeSettingsTypes = {
+  theme: THEMES.LIGHT,
+  responsiveFontSizes: true,
+};
+
 const baseOptions = {
   typography: {
     fontFamily: "'Montserrat', sans-serif",

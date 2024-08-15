@@ -1,8 +1,8 @@
 import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
-import { userRolesVar } from "cache";
 
+import { userRolesVar } from "cache";
 import NotFoundPage from "pages/not-found";
 import {
   LoginPage,
