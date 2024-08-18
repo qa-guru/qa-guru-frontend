@@ -59,7 +59,7 @@ const ModalHomeworksOtherStudents: FC<IModalHomeworksOtherStudents> = ({
         <CommentsTotalElements />
       </Comments>
       <StyledButton variant="contained" onClick={handleShowModal}>
-        Показать
+        Открыть
       </StyledButton>
     </StyledStack>
   );

@@ -1,7 +1,8 @@
 import { type Theme, type SxProps, useTheme } from "@mui/material/styles";
 import { alpha } from "@mui/material";
+import { useReactiveVar } from "@apollo/client";
 
-import { lightTheme } from "theme/constans";
+import { lightThemeVar } from "cache";
 import { isColumnHighlight } from "shared/helpers";
 
 import { IDraggingState } from "../views/board/board.types";
@@ -22,11 +23,12 @@ export const getColumnStyles: GetColumnStylesFunction = (
   isOver
 ) => {
   const theme = useTheme();
+  const lightTheme = useReactiveVar(lightThemeVar);
   let styles;
 
   const style = {
     emptyColumn: {
-      backgroundColor: lightTheme(theme)
+      backgroundColor: lightTheme
         ? theme.palette.app.lightGray
         : theme.palette.app.secondary,
       borderRadius: "10px",

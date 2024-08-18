@@ -5,8 +5,8 @@ import ImageIcon from "@mui/icons-material/Image";
 import { CircularProgress, Stack } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useReactiveVar } from "@apollo/client";
-import { userIdVar } from "cache";
 
+import { userIdVar } from "cache";
 import { useAvatarDelete, useAvatarUpload, useResponsive } from "shared/hooks";
 import AvatarCustom from "shared/components/avatar-custom";
 

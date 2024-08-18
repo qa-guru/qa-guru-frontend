@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
+import { useReactiveVar } from "@apollo/client";
 
+import { lightThemeVar } from "cache";
 import { IPages } from "features/header/types";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import ThemeSelector from "shared/components/theme-selector";
-import { useSettings } from "shared/hooks";
 import CustomLink from "shared/components/custom-link";
 
 import { useRoleFilterPages } from "../../hooks/use-role-filter-pages";
@@ -93,8 +94,7 @@ const configMobilePages: IPages[] = [
 
 const Header: FC = () => {
   const [anchorElNav, setAnchorElNav] = useState<Maybe<HTMLElement>>(null);
-  const { settings } = useSettings();
-  const lightTheme = settings.theme === "light";
+  const lightTheme = useReactiveVar(lightThemeVar);
 
   const pages = useRoleFilterPages(configPages);
   const mobilePages = useRoleFilterPages(configMobilePages);

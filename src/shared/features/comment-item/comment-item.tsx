@@ -2,11 +2,11 @@ import { FC, useState } from "react";
 import { Button, Stack, Typography } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useReactiveVar } from "@apollo/client";
-import { userIdVar } from "cache";
 
+import { userIdVar } from "cache";
 import UserRow from "shared/components/user-row";
 import { TextView } from "shared/components/text-editor";
-import { useComment } from "shared/context/comment-context";
+import { useComment } from "shared/hooks/use-comment";
 import { formatDate } from "shared/helpers";
 import AnswerComment from "shared/features/answer-comment/container";
 import DeleteComment from "shared/features/delete-comment/container";
