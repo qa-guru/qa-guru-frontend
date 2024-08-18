@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { userIdVar } from "cache";
 
+import { userIdVar } from "cache";
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useUserQuery } from "api/graphql/generated/graphql";

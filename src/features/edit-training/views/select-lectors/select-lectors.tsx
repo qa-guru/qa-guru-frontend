@@ -21,27 +21,34 @@ const SelectLectors: FC<ISelectLectors> = ({
 }) => {
   const items = data?.users?.items || [];
 
+  const lectorOptions =
+    items?.map((item) => ({
+      ...item,
+      name: `${item?.firstName} ${item?.lastName}`,
+    })) || [];
+
   return (
     <FormControl fullWidth>
       <Controller
         name={name}
         control={control}
-        render={({ field: { onChange, value = [] } }) => (
+        render={({ field: { value, onChange } }) => (
           <Autocomplete
             multiple
-            options={items}
-            getOptionLabel={(option) => option.firstName}
+            options={lectorOptions}
+            getOptionLabel={(option) => option.name}
             isOptionEqualToValue={(option, value) => option.id === value.id}
             value={value || []}
             onInputChange={(_, newInputValue) => onSearchChange(newInputValue)}
             onChange={(_, newValue) => {
               onChange(newValue);
             }}
+            disablePortal
             renderInput={(params) => (
               <TextField
                 {...params}
                 variant="outlined"
-                placeholder="Начните вводить имя..."
+                placeholder="Выберите преподавателя"
                 InputProps={{
                   ...params.InputProps,
                   endAdornment: (

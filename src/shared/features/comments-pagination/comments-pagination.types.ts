@@ -14,4 +14,5 @@ export interface ICommentsPagination {
       }
     ) => { commentsHomeWorkByHomeWork: { items: Comment[] } };
   }) => void;
+  totalElements?: number;
 }

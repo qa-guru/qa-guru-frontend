@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { themeSettingsTypes } from "theme";
 
 export const useLocalStorage = (

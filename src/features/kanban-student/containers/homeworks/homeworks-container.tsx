@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
-import { userIdVar } from "cache";
 import { useReactiveVar } from "@apollo/client";
 
+import { userIdVar } from "cache";
 import {
   Order,
   StudentHomeWorkSortField,

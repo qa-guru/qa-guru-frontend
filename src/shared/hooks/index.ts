@@ -6,5 +6,5 @@ export { useOutsideClick } from "./use-outside-click";
 export { useRatingColor } from "./use-rating-color";
 export { useResponsive } from "./use-responsive";
 export { useRoleAccess } from "./use-role-access";
-export { useSettings } from "./use-settings";
+export { useSettings } from "./use-theme";
 export { useDragEffect } from "./use-drag-effect";

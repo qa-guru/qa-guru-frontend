@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { useSnackbar } from "notistack";
 import { useReactiveVar } from "@apollo/client";
-import { userIdVar } from "cache";
 
+import { userIdVar } from "cache";
 import { IDraggingState } from "features/kanban-mentor/views/board/board.types";
 import { STATUS_COLUMN } from "features/kanban-mentor/constants";
 import { useRoleAccess } from "shared/hooks/index";

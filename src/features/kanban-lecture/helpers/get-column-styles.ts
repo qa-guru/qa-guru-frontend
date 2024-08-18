@@ -1,16 +1,19 @@
 import { type SxProps, type Theme, useTheme } from "@mui/material/styles";
+import { useReactiveVar } from "@apollo/client";
 
-import { lightTheme } from "theme/constans";
+import { lightThemeVar } from "cache";
 
 type GetColumnStylesFunction = (totalElements: number) => SxProps<Theme> | null;
 
 export const getColumnStyles: GetColumnStylesFunction = (totalElements) => {
   const theme = useTheme();
+  const lightTheme = useReactiveVar(lightThemeVar);
+
   let styles;
 
   const style = {
     emptyColumn: {
-      backgroundColor: lightTheme(theme)
+      backgroundColor: lightTheme
         ? theme.palette.app.lightGray
         : theme.palette.app.secondary,
       borderRadius: "10px",
