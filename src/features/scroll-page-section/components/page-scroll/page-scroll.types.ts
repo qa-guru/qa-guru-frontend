@@ -1,4 +1,4 @@
-import { IStep } from "../Steps/Steps.types";
+import { IStep } from "../steps/steps.types";
 
 export interface IIcon {
   title: string;

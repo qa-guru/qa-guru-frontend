@@ -18,6 +18,7 @@ import {
 } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import Layout from "shared/components/layout";
+import ScrollPageSectionPage from "pages/scroll-page-section";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -166,6 +167,11 @@ const Routing: FC<IRoutnig> = () => {
               <NotFoundPage />
             </Layout>
           }
+        />
+        <Route
+          key="scroll-page-section"
+          path="/scroll-page-section"
+          element={<ScrollPageSectionPage />}
         />
       </Routes>
     </ErrorBoundary>

@@ -5,8 +5,8 @@ import {
   ColorlibConnector,
   ColorlibStepIconRoot,
   StyledLabel,
-} from "./Steps.styled";
-import { ISteps } from "./Steps.types";
+} from "./steps.styled";
+import { ISteps } from "./steps.types";
 import { ImageDictionary } from "../../hooks/useLoadedImages";
 
 interface CustomStepIconProps extends StepIconProps {
