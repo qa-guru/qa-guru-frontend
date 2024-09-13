@@ -11,7 +11,6 @@ import { ReactComponent as LogoWhite } from "assets/icons/logo-white.svg";
 export const StyledGrid = styled(Grid)({
   marginTop: 0,
   marginBottom: "20px",
-  justifyContent: "space-between",
   position: "relative",
 });
 
