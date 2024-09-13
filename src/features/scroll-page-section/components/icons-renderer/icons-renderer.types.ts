@@ -1,4 +1,4 @@
-import { IIcon } from "../PageScroll/PageScroll.types";
+import { IIcon } from "../page-scroll/page-scroll.types";
 import { ImageDictionary } from "../../hooks/useLoadedImages";
 
 export interface IIconsRenderer {

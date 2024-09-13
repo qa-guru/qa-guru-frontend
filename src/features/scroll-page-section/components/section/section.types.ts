@@ -1,4 +1,4 @@
-import { ISection, TypeScroll } from "../PageScroll/PageScroll.types";
+import { ISection, TypeScroll } from "../page-scroll/page-scroll.types";
 
 export interface ISectionProp {
   sections: ISection[];

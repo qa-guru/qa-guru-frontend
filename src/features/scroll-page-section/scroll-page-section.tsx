@@ -1,4 +1,4 @@
-import PageScroll from "./components/PageScroll";
+import PageScroll from "./components/page-scroll";
 import iconsStackData from "./json/icons-stack.json";
 // eslint-disable-next-line import/extensions
 import "./index.css";

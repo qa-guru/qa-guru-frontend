@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperEvent from "swiper";
 import { Mousewheel } from "swiper/modules";
 
-import { ISectionProp } from "./Section.types";
-import CardComponent from "../CardComponent";
+import { ISectionProp } from "./section.types";
+import CardComponent from "../card-component";
 
 import "swiper/css";
 
@@ -30,7 +30,7 @@ const Section: React.FC<ISectionProp> = ({
       onSlideChange={handleSectionSlideChange}
     >
       {sections.map((section, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide key={index} style={{ padding: "0 10px" }}>
           <CardComponent section={section} />
         </SwiperSlide>
       ))}
