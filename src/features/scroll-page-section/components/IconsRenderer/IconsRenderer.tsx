@@ -12,8 +12,8 @@ const IconsRenderer: React.FC<IIconsRenderer> = ({ icons, loadedIcons }) => {
           key={index}
           sx={style.iconWrapper}
           style={{
-            backgroundColor: icon.colored ? "#1f1e1e" : "black",
-            border: icon.colored ? "1px dashed gray" : "1px solid black",
+            backgroundColor: icon.colored ? "#1f1e1e" : "white",
+            border: icon.colored ? "1px dashed gray" : "1px solid white",
           }}
         >
           <img
