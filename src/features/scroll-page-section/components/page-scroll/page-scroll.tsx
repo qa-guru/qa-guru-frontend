@@ -4,11 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import SwiperEvent from "swiper";
 
-import { IDataIconsStack } from "./PageScroll.types";
+import { IDataIconsStack } from "./page-scroll.types";
 import { style } from "./styles";
-import IconsRenderer from "../IconsRenderer";
-import Section from "../Section";
-import Steps from "../Steps";
+import IconsRenderer from "../icons-renderer";
+import Section from "../section";
+import Steps from "../steps";
 import { useLoadedImages } from "../../hooks/useLoadedImages";
 
 const iconImports = import.meta.glob("../../assets/icons/*.svg");

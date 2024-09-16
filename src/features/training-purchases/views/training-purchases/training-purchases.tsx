@@ -25,7 +25,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState<Maybe<HTMLElement>>(null);
   const [openMentorsById, setOpenMentorsById] = useState<string | null>(null);
 
-  const gridMdValue = trainingPurchases?.length! >= 3 ? 4 : 6;
+  const gridValue = trainingPurchases?.length! >= 3 ? 4 : 6;
 
   // const [openCalendarById, setOpenCalendarById] = useState<string | null>(null);
   // const calendarRefs = useRef<{ [key: string]: RefObject<HTMLElement> }>({});
@@ -110,7 +110,7 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
           const [firstMentor, ...otherMentors] = mentors || [];
 
           return (
-            <Grid item key={id} xs={12} md={gridMdValue}>
+            <Grid item key={id} xs={12} md={6} lg={gridValue}>
               <StyledCardActionArea>
                 <StyledPaper>
                   <StyledImgBox>{renderCourseImage(picture)}</StyledImgBox>

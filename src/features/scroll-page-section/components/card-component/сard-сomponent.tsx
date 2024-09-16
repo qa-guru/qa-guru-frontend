@@ -2,11 +2,10 @@ import React from "react";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 
 import { style } from "./styles";
-import { ICardComponent } from "./CardComponent.types";
+import { ICardComponent } from "./card-component.types";
 import { useLoadedImages } from "../../hooks/useLoadedImages";
 
 const imgImports = import.meta.glob("../../assets/img/*.{jpeg,png}");
-
 const CardComponent: React.FC<ICardComponent> = ({ section }) => {
   const loadedIcons = useLoadedImages(imgImports);
 

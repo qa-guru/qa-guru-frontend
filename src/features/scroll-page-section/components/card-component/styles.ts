@@ -2,8 +2,6 @@ export const style = {
   centeredContent: {
     display: "flex",
     flexDirection: "column",
-    color: "white",
-    backgroundColor: "black",
     width: "100%",
   },
   imgMain: {
