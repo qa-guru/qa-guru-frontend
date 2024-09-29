@@ -11,14 +11,11 @@ import {
   SetPasswordPage,
   SignUpPage,
 } from "pages/auth";
-import {
-  Maybe,
-  UserRole,
-  useUserRolesQuery,
-} from "api/graphql/generated/graphql";
+import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import Layout from "shared/components/layout";
 import ScrollPageSectionPage from "pages/scroll-page-section";
+import { useAuth } from "features/authorization/context/auth-context";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -34,13 +31,17 @@ interface IRoutnig {
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
-  const isAuth = localStorage.getItem("isAuth");
+  const { isLoading, isAuth } = useAuth();
 
-  if (isAuth) {
-    return <Navigate to="/" replace />;
+  if (isLoading) {
+    return <AppSpinner />;
   }
 
-  return <Layout isLogging>{children}</Layout>;
+  if (!isAuth) {
+    return <Navigate to="/authorization" replace />;
+  }
+
+  return <>{children}</>;
 };
 
 export const roleRoutes: { [key in UserRole]?: ReactElement[] } = {
@@ -63,28 +64,6 @@ export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
   return Array.from(routesSet);
 };
 
-export const useUserRoutes = () => {
-  const location = useLocation();
-  const isAuthPage =
-    location.pathname === "/authorization" ||
-    location.pathname === "/signup" ||
-    location.pathname === "/reset" ||
-    location.pathname === "/reset/token" ||
-    location.pathname === "/reset/password";
-
-  const { data, loading } = useUserRolesQuery({
-    skip: isAuthPage,
-    onCompleted: (data) => {
-      userRolesVar(data?.user?.roles);
-    },
-  });
-
-  const roles = data?.user?.roles ?? [];
-  const usersRoutes = getUserRoutes(roles);
-
-  return { usersRoutes, loading };
-};
-
 const Routing: FC<IRoutnig> = () => {
   const location = useLocation();
   const [errorBoundaryKey, setErrorBoundaryKey] = useState<string>(
@@ -95,9 +74,11 @@ const Routing: FC<IRoutnig> = () => {
     setErrorBoundaryKey(location.pathname);
   }, [location]);
 
-  const { usersRoutes, loading } = useUserRoutes();
+  const userRoles = userRolesVar();
+  const usersRoutes = getUserRoutes(userRoles);
+  const { isLoading } = useAuth();
 
-  if (loading) {
+  if (isLoading) {
     return <AppSpinner />;
   }
 
@@ -111,7 +92,14 @@ const Routing: FC<IRoutnig> = () => {
       }
     >
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           {usersRoutes?.map((route) => (
             <Route
               key={route.key}
@@ -120,46 +108,11 @@ const Routing: FC<IRoutnig> = () => {
             />
           ))}
         </Route>
-        <Route
-          path="/authorization"
-          element={
-            <ProtectedRoute>
-              <LoginPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <ProtectedRoute>
-              <SignUpPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/reset"
-          element={
-            <ProtectedRoute>
-              <ResetPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/reset/token"
-          element={
-            <ProtectedRoute>
-              <ConfirmTokenPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/reset/password"
-          element={
-            <ProtectedRoute>
-              <SetPasswordPage />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/authorization" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/reset" element={<ResetPage />} />
+        <Route path="/reset/token" element={<ConfirmTokenPage />} />
+        <Route path="/reset/password" element={<SetPasswordPage />} />
         <Route
           path="*"
           element={
