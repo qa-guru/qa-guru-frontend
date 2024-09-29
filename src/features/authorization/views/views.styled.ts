@@ -25,7 +25,7 @@ export const StyledWrapper = styled(Stack)(({ theme }) => ({
   top: 0,
   bottom: "60px",
   width: "100%",
-  height: "calc(100dvh - 60px)",
+  height: "100dvh",
 }));
 
 export const StyledLogo = styled(Logo)(({ theme }) => ({
@@ -76,7 +76,7 @@ export const StyledSignupWrapper = styled(Stack)(({ theme }) => ({
   top: 0,
   bottom: "60px",
   width: "100%",
-  minHeight: "calc(100dvh - 60px)",
+  minHeight: "100dvh",
   [theme.breakpoints.down(1380)]: {
     position: "inherit",
   },
