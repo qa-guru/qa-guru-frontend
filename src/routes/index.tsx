@@ -31,11 +31,7 @@ interface IRoutnig {
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
-  const { isLoading, isAuth } = useAuth();
-
-  if (isLoading) {
-    return <AppSpinner />;
-  }
+  const isAuth = localStorage.getItem("isAuth");
 
   if (!isAuth) {
     return <Navigate to="/authorization" replace />;
@@ -74,9 +70,9 @@ const Routing: FC<IRoutnig> = () => {
     setErrorBoundaryKey(location.pathname);
   }, [location]);
 
+  const { isLoading } = useAuth();
   const userRoles = userRolesVar();
   const usersRoutes = getUserRoutes(userRoles);
-  const { isLoading } = useAuth();
 
   if (isLoading) {
     return <AppSpinner />;
@@ -108,11 +104,46 @@ const Routing: FC<IRoutnig> = () => {
             />
           ))}
         </Route>
-        <Route path="/authorization" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/reset" element={<ResetPage />} />
-        <Route path="/reset/token" element={<ConfirmTokenPage />} />
-        <Route path="/reset/password" element={<SetPasswordPage />} />
+        <Route
+          path="/authorization"
+          element={
+            <Layout isLogging>
+              <LoginPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Layout isLogging>
+              <SignUpPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reset"
+          element={
+            <Layout isLogging>
+              <ResetPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reset/token"
+          element={
+            <Layout isLogging>
+              <ConfirmTokenPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reset/password"
+          element={
+            <Layout isLogging>
+              <SetPasswordPage />
+            </Layout>
+          }
+        />
         <Route
           path="*"
           element={

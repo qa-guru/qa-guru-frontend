@@ -1,11 +1,4 @@
-import {
-  FC,
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { FC, ReactNode, createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -34,7 +27,6 @@ interface AuthContextType {
   resetPassword: (email: string) => Promise<void>;
   setNewPassword: (newPassword: string) => Promise<void>;
   confirmToken: (token: string) => Promise<void>;
-  isAuth: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -45,7 +37,6 @@ const AuthContext = createContext<AuthContextType>({
   resetPassword: async () => {},
   setNewPassword: async () => {},
   confirmToken: async () => {},
-  isAuth: false,
 });
 
 export const useAuth = () => {
@@ -58,7 +49,6 @@ export const useAuth = () => {
 
 export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isAuth, setIsAuth] = useState<boolean>(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const location = useLocation();
@@ -69,33 +59,13 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   const [checkToken] = useCheckResetPasswordTokenLazyQuery();
 
   const { loading: rolesLoading } = useUserRolesQuery({
-    skip: !isAuth,
+    skip: !(localStorage.getItem("isAuth") === "true"),
     onCompleted: (data) => {
       userRolesVar(data?.user?.roles);
     },
   });
 
-  useEffect(() => {
-    const checkAuth = () => {
-      const auth = localStorage.getItem("isAuth");
-
-      if (auth) {
-        setIsAuth(true);
-      } else {
-        setIsAuth(false);
-      }
-
-      setIsLoading(false);
-    };
-
-    checkAuth();
-  }, []);
-
-  useEffect(() => {
-    if (!rolesLoading && !isLoading) {
-      setIsLoading(false);
-    }
-  }, [rolesLoading, isLoading]);
+  const loading = isLoading || rolesLoading;
 
   const login = async (username: string, password: string) => {
     setIsLoading(true);
@@ -103,7 +73,6 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           localStorage.setItem("isAuth", "true");
-          setIsAuth(true);
           setIsLoading(false);
           navigate(ROUTES.HOME);
         } else {
@@ -130,7 +99,6 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           localStorage.removeItem("isAuth");
-          setIsAuth(false);
           setIsLoading(false);
           navigate(ROUTES.AUTHORIZATION);
         } else {
@@ -240,8 +208,7 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        isAuth,
-        isLoading,
+        isLoading: loading,
         login,
         logout,
         signup,
