@@ -24,8 +24,6 @@ const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
   const { uploadHomeworkFile } = useHomeworkFileUpload();
   const { enqueueSnackbar } = useSnackbar();
 
-  const baseUrl = import.meta.env.VITE_APP_ENDPOINT;
-
   const handleNewImageFiles = useCallback(
     async (files: File[], insertPosition?: number): Promise<void> => {
       if (!rteRef.current?.editor || !homeWorkId) {
@@ -38,7 +36,7 @@ const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
             const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
 
             if (uploadedFile) {
-              const serverUrl = `${baseUrl}/homework/${homeWorkId}/file/${uploadedFile.id}`;
+              const serverUrl = `/homework/${homeWorkId}/file/${uploadedFile.id}`;
 
               return {
                 src: serverUrl,
