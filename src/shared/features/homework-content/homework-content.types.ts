@@ -7,5 +7,5 @@ export interface IHomeworkContent {
   answer?: Maybe<string>;
   openHomeWorkEdit: boolean;
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
-  id?: Maybe<string>;
+  homeWorkId?: Maybe<string>;
 }

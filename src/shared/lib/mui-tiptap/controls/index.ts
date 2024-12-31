@@ -143,3 +143,4 @@ export {
 } from "./link-bubble-menu";
 export { default as MenuButtonYoutube } from "./menu-button-youtube";
 export { default as MenuButtonEmoji } from "./menu-button-emoji";
+export { default as MenuButtonFileUpload } from "./menu-button-file-upload";

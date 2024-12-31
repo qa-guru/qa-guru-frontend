@@ -7,7 +7,7 @@ import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
 import { EditorMenuControls } from "./ui";
-import { fileListToImageFiles } from "../utils/fileListToImageFiles";
+import { fileListToImageFiles } from "../utils/file-list-to-image-files";
 import useExtensions from "../hooks/use-extensions";
 import { ITextEditor } from "../types";
 

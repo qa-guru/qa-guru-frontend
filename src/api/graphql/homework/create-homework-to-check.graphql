@@ -1,5 +1,13 @@
-query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
-  homeWorkByLectureAndTraining(lectureId: $lectureId, trainingId: $trainingId) {
+mutation createHomeWorkToCheck(
+  $lectureId: ID!
+  $content: String!
+  $trainingId: ID!
+) {
+  createHomeWorkToCheck(
+    lectureId: $lectureId
+    content: $content
+    trainingId: $trainingId
+  ) {
     id
     lecture {
       id

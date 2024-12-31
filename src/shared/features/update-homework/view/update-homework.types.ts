@@ -7,5 +7,5 @@ export interface IUpdateHomeWork {
   updateHomework: UpdateHomeworkMutationFn;
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   answer?: Maybe<string>;
-  id?: Maybe<string>;
+  homeWorkId?: Maybe<string>;
 }

@@ -26,7 +26,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     mentor,
     student,
     answer,
-    id,
+    id: homeWorkId,
   } = dataHomeWorkByLectureAndTraining || {};
 
   const currentUserId = useReactiveVar(userIdVar);
@@ -77,7 +77,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
           answer={answer}
           openHomeWorkEdit={openHomeWorkEdit}
           setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-          id={id}
+          homeWorkId={homeWorkId}
         />
       </StyledHomeworkContentBox>
 

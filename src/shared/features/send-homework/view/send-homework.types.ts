@@ -1,6 +1,10 @@
-import { SendHomeWorkToCheckMutationFn } from "api/graphql/generated/graphql";
+import {
+  CreateHomeWorkToCheckMutationFn,
+  Maybe,
+} from "api/graphql/generated/graphql";
 
 export interface ISendHomeWork {
-  sendHomeWorkToCheck: SendHomeWorkToCheckMutationFn;
+  createHomeWorkToCheck: CreateHomeWorkToCheckMutationFn;
   loading: boolean;
+  homeWorkId?: Maybe<string>;
 }
