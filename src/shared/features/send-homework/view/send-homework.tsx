@@ -9,7 +9,7 @@ import { ISendHomeWork } from "./send-homework.types";
 import { StyledBox, StyledFormHelperText } from "./send-homework.styled";
 
 const SendHomework: FC<ISendHomeWork> = (props) => {
-  const { sendHomeWorkToCheck, loading } = props;
+  const { createHomeWorkToCheck, loading, homeWorkId } = props;
   const { lectureId, trainingId } = useParams();
   const [error, setError] = useState("");
   const rteRef = useRef<RichTextEditorRef>(null);
@@ -19,10 +19,10 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
 
     if (content.trim() !== "" && content.trim() !== "<p></p>") {
       try {
-        sendHomeWorkToCheck({
+        createHomeWorkToCheck({
           variables: {
-            trainingId: trainingId!,
             lectureId: lectureId!,
+            trainingId: trainingId!,
             content: rteRef.current?.editor?.getHTML() ?? "",
           },
         });
@@ -39,7 +39,7 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
   return (
     <form>
       <StyledBox>
-        <Editor rteRef={rteRef} />
+        <Editor rteRef={rteRef} homeWorkId={homeWorkId} />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
       <SendButtons onReply={handleSendHomeWork} loading={loading} />

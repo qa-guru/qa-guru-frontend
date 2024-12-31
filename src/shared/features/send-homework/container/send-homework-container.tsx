@@ -5,41 +5,49 @@ import {
   HomeWorkByLectureAndTrainingDocument,
   HomeWorkByLectureAndTrainingQuery,
   Maybe,
-  useSendHomeWorkToCheckMutation,
+  useCreateHomeWorkToCheckMutation,
 } from "api/graphql/generated/graphql";
 
 import SendHomework from "../view";
 
-const SendHomeworkContainer: FC = () => {
+const SendHomeworkContainer: FC<{ homeWorkId?: Maybe<string> }> = ({
+  homeWorkId,
+}) => {
   const { lectureId, trainingId } = useParams();
 
-  const [sendHomeWorkToCheck, { loading }] = useSendHomeWorkToCheckMutation({
-    update: (cache, { data }) => {
-      const newSendHomeWorkToCheck = data?.sendHomeWorkToCheck;
+  const [createHomeWorkToCheck, { loading }] = useCreateHomeWorkToCheckMutation(
+    {
+      update: (cache, { data }) => {
+        const newCreateHomeWorkToCheck = data?.createHomeWorkToCheck;
 
-      const existingHomeWorkByLectureAndTraining: Maybe<HomeWorkByLectureAndTrainingQuery> =
-        cache.readQuery({
+        const existingHomeWorkByLectureAndTraining: Maybe<HomeWorkByLectureAndTrainingQuery> =
+          cache.readQuery({
+            query: HomeWorkByLectureAndTrainingDocument,
+            variables: { lectureId: lectureId!, trainingId: trainingId! },
+          });
+
+        const updatedHomeWorkByLectureAndTraining = {
+          homeWorkByLectureAndTraining: {
+            ...existingHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining,
+            answer: newCreateHomeWorkToCheck?.answer,
+          },
+        };
+
+        cache.writeQuery({
           query: HomeWorkByLectureAndTrainingDocument,
           variables: { lectureId: lectureId!, trainingId: trainingId! },
+          data: updatedHomeWorkByLectureAndTraining,
         });
-
-      const updatedHomeWorkByLectureAndTraining = {
-        homeWorkByLectureAndTraining: {
-          ...existingHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining,
-          answer: newSendHomeWorkToCheck?.answer,
-        },
-      };
-
-      cache.writeQuery({
-        query: HomeWorkByLectureAndTrainingDocument,
-        variables: { lectureId: lectureId!, trainingId: trainingId! },
-        data: updatedHomeWorkByLectureAndTraining,
-      });
-    },
-  });
+      },
+    }
+  );
 
   return (
-    <SendHomework loading={loading} sendHomeWorkToCheck={sendHomeWorkToCheck} />
+    <SendHomework
+      loading={loading}
+      createHomeWorkToCheck={createHomeWorkToCheck}
+      homeWorkId={homeWorkId}
+    />
   );
 };
 

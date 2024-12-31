@@ -22,4 +22,5 @@ export type SuggestionListProps = SuggestionProps<MentionSuggestion>;
 export interface ITextEditor {
   rteRef: RefObject<RichTextEditorRef>;
   content?: Maybe<string>;
+  homeWorkId?: Maybe<string>;
 }

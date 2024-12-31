@@ -13,6 +13,7 @@ export default ({ mode }: any) => {
     "^/refreshtoken": process.env.VITE_APP_ENDPOINT,
     "^/upload/avatar": process.env.VITE_APP_ENDPOINT,
     "^/upload/training/.*": process.env.VITE_APP_ENDPOINT,
+    "^/homework/.*": process.env.VITE_APP_ENDPOINT,
   };
 
   return defineConfig({

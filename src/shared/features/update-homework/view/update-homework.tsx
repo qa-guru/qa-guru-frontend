@@ -8,14 +8,15 @@ import { IUpdateHomeWork } from "./update-homework.types";
 import { StyledBox, StyledWrapper } from "./update-homework.styled";
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
-  const { loading, updateHomework, setOpenHomeWorkEdit, answer, id } = props;
+  const { loading, updateHomework, setOpenHomeWorkEdit, answer, homeWorkId } =
+    props;
   const rteRef = useRef<RichTextEditorRef>(null);
 
   const handleUpdateHomework = () => {
-    if (rteRef && id) {
+    if (rteRef && homeWorkId) {
       updateHomework({
         variables: {
-          id,
+          id: homeWorkId,
           content: rteRef.current?.editor?.getHTML() ?? "",
         },
         onCompleted: () => {
@@ -29,7 +30,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     <form>
       <StyledWrapper>
         <StyledBox>
-          <Editor content={answer} rteRef={rteRef} />
+          <Editor content={answer} rteRef={rteRef} homeWorkId={homeWorkId} />
           <SendButtons
             onReply={handleUpdateHomework}
             onCancel={() => setOpenHomeWorkEdit(false)}
