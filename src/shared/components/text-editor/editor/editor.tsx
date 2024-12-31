@@ -2,113 +2,163 @@ import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
+import { useSnackbar } from "notistack";
 
-// import { insertImages } from "shared/lib/mui-tiptap/utils";
+import { insertFiles, insertImages } from "shared/lib/mui-tiptap/utils";
 import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
 import { EditorMenuControls } from "./ui";
 import { ITextEditor } from "../types";
 import useExtensions from "../hooks/use-extensions";
-import { fileListToImageFiles } from "../utils/fileListToImageFiles";
+import { fileListToImageFiles } from "../utils/file-list-to-image-files";
+import { useHomeworkFileUpload } from "../hooks/use-homework-file-upload";
 
-const Editor: FC<ITextEditor> = ({ rteRef, content }) => {
+const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
   });
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
 
-  // const handleNewImageFiles = useCallback(
-  //   (files: File[], insertPosition?: number): void => {
-  //     if (!rteRef.current?.editor) {
-  //       return;
-  //     }
+  const { uploadHomeworkFile } = useHomeworkFileUpload();
+  const { enqueueSnackbar } = useSnackbar();
 
-  //     const attributesForImageFiles = files.map((file) => ({
-  //       src: URL.createObjectURL(file),
-  //       alt: file.name,
-  //     }));
+  const handleNewImageFiles = useCallback(
+    async (files: File[], insertPosition?: number): Promise<void> => {
+      if (!rteRef.current?.editor || !homeWorkId) {
+        return;
+      }
 
-  //     insertImages({
-  //       images: attributesForImageFiles,
-  //       editor: rteRef.current.editor,
-  //       position: insertPosition,
-  //     });
-  //   },
-  //   []
-  // );
+      const attributesForImageFiles = await Promise.all(
+        files.map(async (file) => {
+          try {
+            const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
 
-  // const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
-  //   useCallback(
-  //     (view, event, _slice, _moved) => {
-  //       if (!(event instanceof DragEvent) || !event.dataTransfer) {
-  //         return false;
-  //       }
+            if (uploadedFile) {
+              const serverUrl = `/homework/${homeWorkId}/file/${uploadedFile.id}`;
 
-  //       const imageFiles = fileListToImageFiles(event.dataTransfer.files);
-  //       if (imageFiles.length > 0) {
-  //         const insertPosition = view.posAtCoords({
-  //           left: event.clientX,
-  //           top: event.clientY,
-  //         })?.pos;
+              return {
+                src: serverUrl,
+                alt: uploadedFile.fileName,
+              };
+            }
+          } catch {
+            enqueueSnackbar(`Не удалось загрузить файл: ${file.name}`, {
+              variant: "error",
+            });
+          }
 
-  //         handleNewImageFiles(imageFiles, insertPosition);
+          return {
+            src: "",
+            alt: file.name,
+          };
+        })
+      );
 
-  //         event.preventDefault();
-  //         return true;
-  //       }
+      insertImages({
+        images: attributesForImageFiles.filter((img) => img.src),
+        editor: rteRef.current.editor,
+        position: insertPosition,
+      });
+    },
+    [rteRef, homeWorkId, uploadHomeworkFile]
+  );
 
-  //       return false;
-  //     },
-  //     [handleNewImageFiles]
-  //   );
+  const handleNewFiles = useCallback(
+    async (files: File[], insertPosition?: number): Promise<void> => {
+      if (!rteRef.current?.editor || !homeWorkId) {
+        return;
+      }
 
-  // const handlePaste: NonNullable<EditorOptions["editorProps"]["handlePaste"]> =
-  //   useCallback(
-  //     (_view, event, _slice) => {
-  //       if (!event.clipboardData) {
-  //         return false;
-  //       }
+      const attributesForFiles = await Promise.all(
+        files.map(async (file) => {
+          try {
+            const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
 
-  //       const pastedImageFiles = fileListToImageFiles(
-  //         event.clipboardData.files
-  //       );
-  //       if (pastedImageFiles.length > 0) {
-  //         handleNewImageFiles(pastedImageFiles);
+            if (uploadedFile) {
+              const serverUrl = `/homework/${homeWorkId}/file/${uploadedFile.id}`;
 
-  //         return true;
-  //       }
+              return {
+                href: serverUrl,
+                fileName: uploadedFile.fileName,
+              };
+            }
+          } catch {
+            enqueueSnackbar(`Не удалось загрузить файл: ${file.name}`, {
+              variant: "error",
+            });
+          }
 
-  //       return false;
-  //     },
-  //     [handleNewImageFiles]
-  //   );
+          return {
+            href: "",
+            fileName: file.name,
+          };
+        })
+      );
+
+      insertFiles({
+        files: attributesForFiles.filter((file) => file.href),
+        editor: rteRef.current.editor,
+        position: insertPosition,
+      });
+    },
+    [rteRef, homeWorkId, uploadHomeworkFile, enqueueSnackbar]
+  );
 
   const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
-    useCallback((view, event, _slice, _moved) => {
-      if (!(event instanceof DragEvent) || !event.dataTransfer) {
-        return false;
-      }
+    useCallback(
+      (view, event, _slice, _moved) => {
+        if (!(event instanceof DragEvent) || !event.dataTransfer) {
+          return false;
+        }
 
-      const imageFiles = fileListToImageFiles(event.dataTransfer.files);
-      if (imageFiles.length > 0) {
+        const imageFiles = fileListToImageFiles(event.dataTransfer.files);
+        const files = Array.from(event.dataTransfer.files);
+
+        if (imageFiles.length > 0) {
+          const insertPosition = view.posAtCoords({
+            left: event.clientX,
+            top: event.clientY,
+          })?.pos;
+
+          handleNewImageFiles(imageFiles, insertPosition);
+        } else if (files.length > 0) {
+          const insertPosition = view.posAtCoords({
+            left: event.clientX,
+            top: event.clientY,
+          })?.pos;
+
+          handleNewFiles(files, insertPosition);
+        }
+
         event.preventDefault();
         return true;
-      }
-
-      return false;
-    }, []);
+      },
+      [handleNewImageFiles, handleNewFiles]
+    );
 
   const handlePaste: NonNullable<EditorOptions["editorProps"]["handlePaste"]> =
-    useCallback((_view, event, _slice) => {
-      if (!event.clipboardData) {
-        return false;
-      }
+    useCallback(
+      (_view, event, _slice) => {
+        if (!event.clipboardData) {
+          return false;
+        }
+        const pastedFiles = Array.from(event.clipboardData.files);
+        const pastedImageFiles = fileListToImageFiles(
+          event.clipboardData.files
+        );
 
-      const pastedImageFiles = fileListToImageFiles(event.clipboardData.files);
-      return pastedImageFiles.length > 0;
-    }, []);
+        if (pastedImageFiles.length > 0) {
+          handleNewImageFiles(pastedImageFiles);
+        } else if (pastedFiles.length > 0) {
+          handleNewFiles(pastedFiles);
+        }
+
+        return false;
+      },
+      [handleNewImageFiles, handleNewFiles]
+    );
 
   return (
     <>
@@ -130,7 +180,13 @@ const Editor: FC<ITextEditor> = ({ rteRef, content }) => {
             handleDrop,
             handlePaste,
           }}
-          renderControls={() => <EditorMenuControls />}
+          renderControls={() => (
+            <EditorMenuControls
+              homeWorkId={homeWorkId}
+              onUploadImageFiles={handleNewImageFiles}
+              onUploadFiles={handleNewFiles}
+            />
+          )}
           RichTextFieldProps={{
             variant: "outlined",
             MenuBarProps: {

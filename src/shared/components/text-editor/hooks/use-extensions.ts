@@ -45,6 +45,21 @@ import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
 
 import { mentionSuggestionOptions } from "../utils/mention-suggestion-options";
 
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    file: {
+      /**
+       * Adds a file node to the editor
+       */
+      setFile: (attrs: { href: string; fileName: string }) => ReturnType;
+    };
+  }
+}
+
+export interface FileNodeOptions {
+  HTMLAttributes: Record<string, any>;
+}
+
 const lowlight = createLowlight(common);
 
 const Iframe = Node.create({
@@ -90,6 +105,59 @@ const Iframe = Node.create({
   },
 });
 
+export const FileNode = Node.create<FileNodeOptions>({
+  name: "file",
+
+  group: "inline",
+  inline: true,
+  atom: true,
+
+  addAttributes() {
+    return {
+      href: {
+        default: null,
+      },
+      fileName: {
+        default: null,
+      },
+    };
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: "a[data-file]",
+      },
+    ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "a",
+      mergeAttributes(HTMLAttributes, {
+        "data-file": "",
+        href: HTMLAttributes.href,
+        download: HTMLAttributes.fileName,
+        target: "_blank",
+      }),
+      HTMLAttributes.fileName || "Download file",
+    ];
+  },
+
+  addCommands() {
+    return {
+      setFile:
+        (options) =>
+        ({ commands }) => {
+          return commands.insertContent({
+            type: this.name,
+            attrs: options,
+          });
+        },
+    };
+  },
+});
+
 export type UseExtensionsOptions = {
   placeholder?: string;
 };
@@ -116,6 +184,10 @@ const CustomYoutube = Youtube.extend({
   },
 });
 
+const CustomParagraph = Paragraph.extend({
+  content: "inline*", // Поддержка всех inline-узлов, включая file
+});
+
 export default function useExtensions({
   placeholder,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
@@ -136,7 +208,7 @@ export default function useExtensions({
       HardBreak,
       ListItem,
       OrderedList,
-      Paragraph,
+      CustomParagraph,
       CustomSubscript,
       CustomSuperscript,
       Text,
@@ -193,6 +265,8 @@ export default function useExtensions({
       }),
 
       History,
+
+      FileNode,
     ];
   }, [placeholder]);
 }

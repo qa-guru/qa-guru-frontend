@@ -7,7 +7,8 @@ import SendHomeworkItem from "shared/features/send-homework/container";
 import { IHomeworkContent } from "./homework-content.types";
 
 const HomeworkContent: FC<IHomeworkContent> = (props) => {
-  const { status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, id } = props;
+  const { status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, homeWorkId } =
+    props;
   let homeworkContent;
 
   if (status && !openHomeWorkEdit) {
@@ -17,11 +18,11 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
       <UpdateHomeworkItem
         answer={answer}
         setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-        id={id}
+        homeWorkId={homeWorkId}
       />
     );
   } else {
-    homeworkContent = <SendHomeworkItem />;
+    homeworkContent = <SendHomeworkItem homeWorkId={homeWorkId} />;
   }
 
   return <>{homeworkContent}</>;

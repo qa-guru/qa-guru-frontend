@@ -6,3 +6,8 @@ export const AVATAR_DELETE_URI = import.meta.env.VITE_AVATAR_DELETE_URI;
 export const TRAINING_UPLOAD_URI = import.meta.env.VITE_TRAINING_UPLOAD_URI;
 export const TRAINING_DELETE_URI = import.meta.env.VITE_TRAINING_DELETE_URI;
 export const REFRESH_TOKEN_URI = import.meta.env.VITE_REFRESH_TOKEN;
+export const HOMEWORK_FILE_UPLOAD_URI = import.meta.env
+  .VITE_HOMEWORK_FILE_UPLOAD_URI;
+export const HOMEWORK_FILE_GET_URI = import.meta.env.VITE_HOMEWORK_FILE_GET_URI;
+export const HOMEWORK_FILE_DELETE_URI = import.meta.env
+  .VITE_HOMEWORK_FILE_DELETE_URI;

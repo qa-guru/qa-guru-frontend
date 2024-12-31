@@ -7,3 +7,4 @@ export * from "./images";
 export { getModShortcutKey, isMac, isTouchDevice } from "./platform";
 export { default as slugify } from "./slugify";
 export { default as truncateMiddle } from "./truncateMiddle";
+export * from "./files";

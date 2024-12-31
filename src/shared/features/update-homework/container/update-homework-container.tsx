@@ -14,7 +14,7 @@ import UpdateHomework from "../view";
 const UpdateHomeworkContainer: FC<IUpdateHomeworkContainer> = ({
   setOpenHomeWorkEdit,
   answer,
-  id,
+  homeWorkId,
 }) => {
   const { lectureId, trainingId } = useParams();
 
@@ -49,7 +49,7 @@ const UpdateHomeworkContainer: FC<IUpdateHomeworkContainer> = ({
       loading={loading}
       updateHomework={updateHomework}
       answer={answer}
-      id={id}
+      homeWorkId={homeWorkId}
     />
   );
 };

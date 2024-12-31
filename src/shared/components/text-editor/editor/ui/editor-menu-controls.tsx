@@ -10,7 +10,7 @@ import {
   MenuButtonEditLink,
   MenuButtonHighlightColor,
   MenuButtonHorizontalRule,
-  // MenuButtonImageUpload,
+  MenuButtonImageUpload,
   MenuButtonIndent,
   MenuButtonItalic,
   MenuButtonOrderedList,
@@ -32,9 +32,20 @@ import {
   MenuSelectTextAlign,
   MenuButtonYoutube,
   MenuButtonEmoji,
+  MenuButtonFileUpload,
 } from "shared/lib/mui-tiptap/controls";
+import { Maybe } from "api/graphql/generated/graphql";
 
-export default function EditorMenuControls() {
+interface EditorMenuControlsProps {
+  homeWorkId?: Maybe<string>;
+  onUploadImageFiles: (files: File[]) => Promise<any>;
+  onUploadFiles: (files: File[]) => Promise<any>;
+}
+
+export default function EditorMenuControls({
+  onUploadImageFiles,
+  onUploadFiles,
+}: EditorMenuControlsProps) {
   const theme = useTheme();
 
   return (
@@ -134,14 +145,14 @@ export default function EditorMenuControls() {
 
       <MenuDivider />
 
-      {/* <MenuButtonImageUpload
-        onUploadFiles={(files) =>
-          files.map((file) => ({
-            src: URL.createObjectURL(file),
-            alt: file.name,
-          }))
-        }
-      /> */}
+      <MenuButtonImageUpload
+        onUploadFiles={onUploadImageFiles}
+        tooltipLabel="Upload images"
+      />
+      <MenuButtonFileUpload
+        onUploadFiles={onUploadFiles}
+        tooltipLabel="Upload files"
+      />
 
       <MenuDivider />
 
