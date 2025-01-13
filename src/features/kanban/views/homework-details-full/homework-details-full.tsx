@@ -8,6 +8,8 @@ import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
 import { formatId } from "shared/helpers";
+import { useRoleAccess } from "shared/hooks";
+import { UserRole } from "api/graphql/generated/graphql";
 
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
@@ -27,10 +29,14 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
     id,
   } = data?.homeWork!;
 
+  const hasAdminRoleAcces = useRoleAccess({
+    allowedRoles: [UserRole.Admin],
+  });
+
   const currentUserId = useReactiveVar(userIdVar);
   const isCurrentMentor = currentUserId === mentor?.id;
   const hasNoMentor = mentor?.id === undefined;
-  const showSelect = isCurrentMentor || hasNoMentor;
+  const showSelect = hasAdminRoleAcces || isCurrentMentor || hasNoMentor;
 
   return (
     <Container>

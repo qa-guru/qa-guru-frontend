@@ -32,6 +32,10 @@ export const useDragEffect = ({
     allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
   });
 
+  const hasAdminRoleAcces = useRoleAccess({
+    allowedRoles: [UserRole.Admin],
+  });
+
   const currentUserId = useReactiveVar(userIdVar);
   const mentorId = card.mentor?.id;
 
@@ -54,7 +58,11 @@ export const useDragEffect = ({
       return;
     }
 
-    if (currentUserId !== mentorId && (isFromInReview || isFromNotApproved)) {
+    if (
+      !hasAdminRoleAcces &&
+      currentUserId !== mentorId &&
+      (isFromInReview || isFromNotApproved)
+    ) {
       enqueueSnackbar("Вы не можете поменять статус чужой домашней работы");
       return;
     }
@@ -76,5 +84,6 @@ export const useDragEffect = ({
     mentorId,
     enqueueSnackbar,
     setDraggingState,
+    hasAdminRoleAcces,
   ]);
 };
