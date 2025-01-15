@@ -188,6 +188,20 @@ const CustomParagraph = Paragraph.extend({
   content: "inline*", // Поддержка всех inline-узлов, включая file
 });
 
+const CustomResizableImage = ResizableImage.extend({
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      width: {
+        default: "300px",
+      },
+      height: {
+        default: "auto",
+      },
+    };
+  },
+});
+
 export default function useExtensions({
   placeholder,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
@@ -238,7 +252,7 @@ export default function useExtensions({
       Highlight.configure({ multicolor: true }),
       HorizontalRule,
 
-      ResizableImage.configure({
+      CustomResizableImage.configure({
         allowBase64: true,
       }),
 
