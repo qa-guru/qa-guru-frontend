@@ -3,7 +3,9 @@ import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
 import { useSnackbar } from "notistack";
+import { HOMEWORK_FILE_GET_URI } from "config";
 
+import { createUrlWithParams } from "shared/utils";
 import { insertFiles, insertImages } from "shared/lib/mui-tiptap/utils";
 import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
@@ -24,8 +26,6 @@ const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
   const { uploadHomeworkFile } = useHomeworkFileUpload();
   const { enqueueSnackbar } = useSnackbar();
 
-  const baseUrl = import.meta.env.VITE_APP_ENDPOINT;
-
   const handleNewImageFiles = useCallback(
     async (files: File[], insertPosition?: number): Promise<void> => {
       if (!rteRef.current?.editor || !homeWorkId) {
@@ -38,7 +38,10 @@ const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
             const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
 
             if (uploadedFile) {
-              const serverUrl = `${baseUrl}/homework/${homeWorkId}/file/${uploadedFile.id}`;
+              const serverUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
+                homeWorkId,
+                fileId: uploadedFile.id,
+              });
 
               return {
                 src: serverUrl,
@@ -79,7 +82,10 @@ const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
             const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
 
             if (uploadedFile) {
-              const serverUrl = `/homework/${homeWorkId}/file/${uploadedFile.id}`;
+              const serverUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
+                homeWorkId,
+                fileId: uploadedFile.id,
+              });
 
               return {
                 href: serverUrl,

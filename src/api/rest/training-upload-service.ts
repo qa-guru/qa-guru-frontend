@@ -1,5 +1,7 @@
 import axios, { type AxiosResponse } from "axios";
 
+import { createUrlWithParams } from "shared/utils";
+
 import { TRAINING_DELETE_URI, TRAINING_UPLOAD_URI } from "../../config";
 
 export interface TrainingUploadResponse {
@@ -15,7 +17,9 @@ export default class TrainingUploadService {
 
     formData.append("file", file);
 
-    const uploadUrl = TRAINING_UPLOAD_URI.replace(":id", trainingId);
+    const uploadUrl = createUrlWithParams(TRAINING_UPLOAD_URI, {
+      id: trainingId,
+    });
 
     return axios({
       method: "POST",
@@ -26,7 +30,10 @@ export default class TrainingUploadService {
   }
 
   static delete(trainingId: string): Promise<AxiosResponse<void>> {
-    const deleteUrl = TRAINING_DELETE_URI.replace(":id", trainingId);
+    const deleteUrl = createUrlWithParams(TRAINING_DELETE_URI, {
+      id: trainingId,
+    });
+
     return axios({
       method: "DELETE",
       url: deleteUrl,

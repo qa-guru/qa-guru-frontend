@@ -16,6 +16,10 @@ export const getUpdatedAllowedColumns = (
     allowedRoles: [UserRole.Mentor, UserRole.Lector, UserRole.Admin],
   });
 
+  const hasAdminRoleAcces = useRoleAccess({
+    allowedRoles: [UserRole.Admin],
+  });
+
   if (!hasDraggAccess) {
     return [];
   }
@@ -27,17 +31,17 @@ export const getUpdatedAllowedColumns = (
       allowedColumns = [STATUS_COLUMN.IN_REVIEW];
       break;
     case STATUS_COLUMN.IN_REVIEW:
-      if (currentUserId === mentorId) {
+      if (hasAdminRoleAcces || currentUserId === mentorId) {
         allowedColumns = [STATUS_COLUMN.APPROVED, STATUS_COLUMN.NOT_APPROVED];
       }
       break;
     case STATUS_COLUMN.APPROVED:
-      if (currentUserId === mentorId) {
+      if (hasAdminRoleAcces || currentUserId === mentorId) {
         allowedColumns = [];
       }
       break;
     case STATUS_COLUMN.NOT_APPROVED:
-      if (currentUserId === mentorId) {
+      if (hasAdminRoleAcces || currentUserId === mentorId) {
         allowedColumns = [STATUS_COLUMN.APPROVED];
       }
       break;
