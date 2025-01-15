@@ -5,6 +5,8 @@ import {
   HOMEWORK_FILE_UPLOAD_URI,
 } from "config";
 
+import { createUrlWithParams } from "shared/utils";
+
 export interface HomeworkFileResponse {
   id: string;
   fileName: string;
@@ -21,11 +23,9 @@ export default class HomeworkFileService {
     const formData = new FormData();
     formData.append("file", file);
 
-    const uploadFileUrl = HOMEWORK_FILE_UPLOAD_URI.replace(
-      // eslint-disable-next-line sonarjs/no-duplicate-string
-      ":homeWorkId",
-      homeWorkId
-    );
+    const uploadFileUrl = createUrlWithParams(HOMEWORK_FILE_UPLOAD_URI, {
+      homeWorkId,
+    });
 
     return axios({
       method: "POST",
@@ -39,10 +39,10 @@ export default class HomeworkFileService {
     homeWorkId: string,
     fileId: string
   ): Promise<AxiosResponse<Blob>> {
-    const getFileUrl = HOMEWORK_FILE_GET_URI.replace(
-      ":homeWorkId",
-      homeWorkId
-    ).replace(":fileId", fileId);
+    const getFileUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
+      homeWorkId,
+      fileId,
+    });
 
     return axios({
       method: "GET",
@@ -52,10 +52,9 @@ export default class HomeworkFileService {
   }
 
   static deleteFile(homeWorkId: string): Promise<AxiosResponse<void>> {
-    const deleteUrl = HOMEWORK_FILE_DELETE_URI.replace(
-      ":homeWorkId",
-      homeWorkId
-    );
+    const deleteUrl = createUrlWithParams(HOMEWORK_FILE_DELETE_URI, {
+      homeWorkId,
+    });
 
     return axios({
       method: "DELETE",
