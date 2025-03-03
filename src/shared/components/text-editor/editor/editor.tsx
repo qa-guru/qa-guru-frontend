@@ -2,10 +2,7 @@ import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
-import { useSnackbar } from "notistack";
-import { HOMEWORK_FILE_GET_URI } from "config";
 
-import { createUrlWithParams } from "shared/utils";
 import { insertFiles, insertImages } from "shared/lib/mui-tiptap/utils";
 import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
@@ -14,104 +11,73 @@ import { EditorMenuControls } from "./ui";
 import { ITextEditor } from "../types";
 import useExtensions from "../hooks/use-extensions";
 import { fileListToImageFiles } from "../utils/file-list-to-image-files";
-import { useHomeworkFileUpload } from "../hooks/use-homework-file-upload";
 
-const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
+const Editor: FC<ITextEditor> = ({
+  rteRef,
+  content,
+  setPendingFiles,
+  source,
+}) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
   });
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
 
-  const { uploadHomeworkFile } = useHomeworkFileUpload();
-  const { enqueueSnackbar } = useSnackbar();
-
   const handleNewImageFiles = useCallback(
-    async (files: File[], insertPosition?: number): Promise<void> => {
-      if (!rteRef.current?.editor || !homeWorkId) {
-        return;
-      }
+    (files: File[], insertPosition?: number): void => {
+      if (!rteRef.current?.editor) return;
 
-      const attributesForImageFiles = await Promise.all(
-        files.map(async (file) => {
-          try {
-            const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
+      const filesWithUrl = files.map((file) => ({
+        file,
+        localUrl: URL.createObjectURL(file),
+        source,
+      }));
 
-            if (uploadedFile) {
-              const serverUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
-                homeWorkId,
-                fileId: uploadedFile.id,
-              });
+      setPendingFiles?.((prev) => [...prev, ...filesWithUrl]);
 
-              return {
-                src: serverUrl,
-                alt: uploadedFile.fileName,
-              };
-            }
-          } catch {
-            enqueueSnackbar(`Не удалось загрузить файл: ${file.name}`, {
-              variant: "error",
-            });
-          }
-
-          return {
-            src: "",
-            alt: file.name,
-          };
+      const attributesForImageFiles = filesWithUrl.map(
+        ({ file, localUrl }) => ({
+          src: localUrl,
+          alt: file.name,
         })
       );
 
       insertImages({
-        images: attributesForImageFiles.filter((img) => img.src),
+        images: attributesForImageFiles,
         editor: rteRef.current.editor,
         position: insertPosition,
       });
     },
-    [rteRef, homeWorkId, uploadHomeworkFile]
+    [rteRef, setPendingFiles]
   );
 
   const handleNewFiles = useCallback(
-    async (files: File[], insertPosition?: number): Promise<void> => {
-      if (!rteRef.current?.editor || !homeWorkId) {
+    (files: File[], insertPosition?: number): void => {
+      if (!rteRef.current?.editor) {
         return;
       }
 
-      const attributesForFiles = await Promise.all(
-        files.map(async (file) => {
-          try {
-            const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
+      const filesWithUrl = files.map((file) => ({
+        file,
+        localUrl: URL.createObjectURL(file),
+        source,
+      }));
 
-            if (uploadedFile) {
-              const serverUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
-                homeWorkId,
-                fileId: uploadedFile.id,
-              });
+      setPendingFiles?.((prev) => [...prev, ...filesWithUrl]);
 
-              return {
-                href: serverUrl,
-                fileName: uploadedFile.fileName,
-              };
-            }
-          } catch {
-            enqueueSnackbar(`Не удалось загрузить файл: ${file.name}`, {
-              variant: "error",
-            });
-          }
-
-          return {
-            href: "",
-            fileName: file.name,
-          };
-        })
-      );
+      const attributesForFiles = filesWithUrl.map(({ localUrl, file }) => ({
+        href: localUrl,
+        fileName: file.name,
+      }));
 
       insertFiles({
-        files: attributesForFiles.filter((file) => file.href),
+        files: attributesForFiles,
         editor: rteRef.current.editor,
         position: insertPosition,
       });
     },
-    [rteRef, homeWorkId, uploadHomeworkFile, enqueueSnackbar]
+    [rteRef, setPendingFiles]
   );
 
   const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
@@ -190,7 +156,6 @@ const Editor: FC<ITextEditor> = ({ rteRef, content, homeWorkId }) => {
           }}
           renderControls={() => (
             <EditorMenuControls
-              homeWorkId={homeWorkId}
               onUploadImageFiles={handleNewImageFiles}
               onUploadFiles={handleNewFiles}
             />

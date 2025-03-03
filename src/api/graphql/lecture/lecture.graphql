@@ -14,5 +14,13 @@ query lecture($id: ID!) {
     subject
     description
     content
+    files {
+      id
+      homeWork
+      creationDate
+      fileName
+      contentType
+      size
+    }
   }
 }
