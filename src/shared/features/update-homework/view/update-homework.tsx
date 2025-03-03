@@ -6,6 +6,7 @@ import { Editor } from "shared/components/text-editor";
 import SendButtons from "shared/components/send-buttons";
 import { createUrlWithParams } from "shared/utils";
 import { useHomeworkFileUpload } from "shared/hooks";
+import { PendingFile } from "shared/components/text-editor/types";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import {
@@ -13,7 +14,6 @@ import {
   StyledFormHelperText,
   StyledWrapper,
 } from "./update-homework.styled";
-import { PendingFile } from "shared/components/text-editor/types";
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, homeWorkId } =

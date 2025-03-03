@@ -4,6 +4,7 @@ import {
   LECTURE_FILE_GET_URI,
   LECTURE_FILE_DELETE_URI,
 } from "config";
+
 import { createUrlWithParams } from "shared/utils";
 
 export interface LectureFileResponse {

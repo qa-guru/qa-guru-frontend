@@ -12,6 +12,10 @@ import { RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { UserRole } from "api/graphql/generated/graphql";
 import { PendingFile } from "shared/components/text-editor/types";
 import { createUrlWithParams } from "shared/utils";
+import {
+  useLectureFileUpload,
+  useLectureHomeworkFileUpload,
+} from "shared/hooks";
 
 import { SelectLectors } from "../../containers";
 import {
@@ -25,10 +29,6 @@ import {
 } from "./edit-lecture.styled";
 import { IEditLecture, LectureInput } from "./edit-lecture.types";
 import EditDescription from "../edit-description";
-import {
-  useLectureFileUpload,
-  useLectureHomeworkFileUpload,
-} from "shared/hooks";
 
 const EditLecture: FC<IEditLecture> = ({
   dataLecture,
