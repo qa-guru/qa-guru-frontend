@@ -6,17 +6,16 @@ import {
   HomeWorkByLectureAndTrainingQuery,
   Maybe,
   useCreateHomeWorkToCheckMutation,
+  useUpdateHomeworkMutation,
 } from "api/graphql/generated/graphql";
 
 import SendHomework from "../view";
 
-const SendHomeworkContainer: FC<{ homeWorkId?: Maybe<string> }> = ({
-  homeWorkId,
-}) => {
+const SendHomeworkContainer: FC = () => {
   const { lectureId, trainingId } = useParams();
 
-  const [createHomeWorkToCheck, { loading }] = useCreateHomeWorkToCheckMutation(
-    {
+  const [createHomeWorkToCheck, { loading: loadingCreateHomeWorkToCheck }] =
+    useCreateHomeWorkToCheckMutation({
       update: (cache, { data }) => {
         const newCreateHomeWorkToCheck = data?.createHomeWorkToCheck;
 
@@ -29,7 +28,7 @@ const SendHomeworkContainer: FC<{ homeWorkId?: Maybe<string> }> = ({
         const updatedHomeWorkByLectureAndTraining = {
           homeWorkByLectureAndTraining: {
             ...existingHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining,
-            answer: newCreateHomeWorkToCheck?.answer,
+            ...newCreateHomeWorkToCheck,
           },
         };
 
@@ -39,14 +38,40 @@ const SendHomeworkContainer: FC<{ homeWorkId?: Maybe<string> }> = ({
           data: updatedHomeWorkByLectureAndTraining,
         });
       },
-    }
-  );
+    });
+
+  const [updateHomework, { loading: loadingUpdateHomework }] =
+    useUpdateHomeworkMutation({
+      update: (cache, { data }) => {
+        const newUpdateHomework = data?.updateHomeWork;
+
+        const existingHomeWorkByLectureAndTraining: Maybe<HomeWorkByLectureAndTrainingQuery> =
+          cache.readQuery({
+            query: HomeWorkByLectureAndTrainingDocument,
+            variables: { lectureId: lectureId!, trainingId: trainingId! },
+          });
+
+        const updatedHomeWorkByLectureAndTraining = {
+          homeWorkByLectureAndTraining: {
+            ...existingHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining,
+            ...newUpdateHomework,
+          },
+        };
+
+        cache.writeQuery({
+          query: HomeWorkByLectureAndTrainingDocument,
+          variables: { lectureId: lectureId!, trainingId: trainingId! },
+          data: updatedHomeWorkByLectureAndTraining,
+        });
+      },
+    });
 
   return (
     <SendHomework
-      loading={loading}
+      loadingCreateHomeWorkToCheck={loadingCreateHomeWorkToCheck}
+      loadingUpdateHomework={loadingUpdateHomework}
       createHomeWorkToCheck={createHomeWorkToCheck}
-      homeWorkId={homeWorkId}
+      updateHomework={updateHomework}
     />
   );
 };

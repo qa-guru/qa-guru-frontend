@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { TextView } from "shared/components/text-editor";
 import UpdateHomeworkItem from "shared/features/update-homework/container";
-import SendHomeworkItem from "shared/features/send-homework/container";
+import CreateHomeworkItem from "shared/features/send-homework/container";
 
 import { IHomeworkContent } from "./homework-content.types";
 
@@ -22,7 +22,7 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
       />
     );
   } else {
-    homeworkContent = <SendHomeworkItem homeWorkId={homeWorkId} />;
+    homeworkContent = <CreateHomeworkItem />;
   }
 
   return <>{homeworkContent}</>;

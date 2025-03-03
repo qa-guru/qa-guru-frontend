@@ -17,6 +17,7 @@ mutation createHomeWorkToCheck(
     answer
     status
     training {
+      id
       techStack
     }
     student {
