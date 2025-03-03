@@ -41,7 +41,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     <form>
       <StyledStack>
         <StyledBox>
-          <CommentEditor content={content} rteRef={rteRef} />
+          <CommentEditor content={content} rteRef={rteRef} source="comment" />
           {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
           <SendButtons
             onReply={handleUpdateComment}

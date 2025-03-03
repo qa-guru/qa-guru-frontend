@@ -9,10 +9,16 @@ export type MentionSuggestion = {
   mentionLabel: string;
 };
 
+export type FileSourceType =
+  | "lectureHomework"
+  | "lecture"
+  | "studentHomework"
+  | "comment";
+
 export type PendingFile = {
   file: File;
   localUrl: string;
-  source: "lectureHomework" | "lecture" | "studentHomework";
+  source: FileSourceType;
 };
 
 export type SuggestionListRef = {
@@ -29,5 +35,5 @@ export interface ITextEditor {
   rteRef: RefObject<RichTextEditorRef>;
   content?: Maybe<string>;
   setPendingFiles?: React.Dispatch<React.SetStateAction<PendingFile[]>>;
-  source: "lectureHomework" | "lecture" | "studentHomework";
+  source: FileSourceType;
 }

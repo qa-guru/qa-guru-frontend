@@ -36,7 +36,7 @@ const SendComment: FC<ISendComment> = (props) => {
   return (
     <form>
       <StyledBox>
-        <CommentEditor rteRef={rteRef} />
+        <CommentEditor rteRef={rteRef} source="comment" />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
       <SendButtons onReply={handleSendComment} loading={loading} hideCancel />
