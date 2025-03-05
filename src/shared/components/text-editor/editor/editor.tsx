@@ -17,6 +17,7 @@ const Editor: FC<ITextEditor> = ({
   content,
   setPendingFiles,
   source,
+  deleteHomeworkFile,
 }) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
@@ -134,6 +135,16 @@ const Editor: FC<ITextEditor> = ({
       [handleNewImageFiles, handleNewFiles]
     );
 
+  const handleKeyDown = useCallback(
+    (view: any, event: { key: string }) => {
+      // console.log("keydown event", event.key);
+      // if (event.key === "Backspace" || event.key === "Delete") {
+      // }
+      return false;
+    },
+    [deleteHomeworkFile]
+  );
+
   return (
     <>
       <Box
@@ -153,6 +164,9 @@ const Editor: FC<ITextEditor> = ({
           editorProps={{
             handleDrop,
             handlePaste,
+            handleDOMEvents: {
+              keydown: handleKeyDown,
+            },
           }}
           renderControls={() => (
             <EditorMenuControls

@@ -51,9 +51,13 @@ export default class HomeworkFileService {
     });
   }
 
-  static deleteFile(homeWorkId: string): Promise<AxiosResponse<void>> {
+  static deleteFile(
+    homeWorkId: string,
+    fileId: string
+  ): Promise<AxiosResponse<void>> {
     const deleteUrl = createUrlWithParams(HOMEWORK_FILE_DELETE_URI, {
       homeWorkId,
+      fileId,
     });
 
     return axios({

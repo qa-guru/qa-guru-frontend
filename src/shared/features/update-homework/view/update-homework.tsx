@@ -5,7 +5,7 @@ import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import SendButtons from "shared/components/send-buttons";
 import { createUrlWithParams } from "shared/utils";
-import { useHomeworkFileUpload } from "shared/hooks";
+import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
 
 import { IUpdateHomeWork } from "./update-homework.types";
@@ -23,6 +23,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
   const [error, setError] = useState("");
   const { uploadHomeworkFile } = useHomeworkFileUpload();
+  const { deleteHomeworkFile } = useHomeworkFileDelete();
 
   const handleUpdateHomework = async () => {
     if (!rteRef.current?.editor || !homeWorkId) return;
@@ -74,6 +75,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
             rteRef={rteRef}
             setPendingFiles={setPendingFiles}
             source="studentHomework"
+            deleteHomeworkFile={deleteHomeworkFile}
           />
           {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
 
