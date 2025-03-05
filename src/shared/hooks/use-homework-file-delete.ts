@@ -9,12 +9,12 @@ export const useHomeworkFileDelete = () => {
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
-  const deleteHomeworkFile = async (homeWorkId: string) => {
+  const deleteHomeworkFile = async (homeWorkId: string, fileId: string) => {
     setDeleting(true);
     setError(null);
 
     try {
-      const response = await HomeworkFileService.deleteFile(homeWorkId);
+      const response = await HomeworkFileService.deleteFile(homeWorkId, fileId);
 
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setDeleting(false);
