@@ -18,6 +18,7 @@ import {
   useLectureHomeworkFileDelete,
   useLectureHomeworkFileUpload,
 } from "shared/hooks";
+import { extractFileId } from "shared/helpers";
 
 import { SelectLectors } from "../../containers";
 import {
@@ -31,7 +32,6 @@ import {
 } from "./edit-lecture.styled";
 import { IEditLecture, LectureInput } from "./edit-lecture.types";
 import EditDescription from "../edit-description";
-import { extractFileId } from "shared/helpers";
 
 const EditLecture: FC<IEditLecture> = ({
   dataLecture,
