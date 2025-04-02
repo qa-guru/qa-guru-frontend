@@ -1,8 +1,7 @@
 import axios, { type AxiosResponse } from "axios";
+import { TRAINING_DELETE_URI, TRAINING_UPLOAD_URI } from "config";
 
 import { createUrlWithParams } from "shared/utils";
-
-import { TRAINING_DELETE_URI, TRAINING_UPLOAD_URI } from "../../config";
 
 export interface TrainingUploadResponse {
   file: string | File;

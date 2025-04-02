@@ -2,10 +2,12 @@ import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
+import { EditorView } from "@tiptap/pm/view";
 
 import { insertFiles, insertImages } from "shared/lib/mui-tiptap/utils";
 import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
+import { extractFileId } from "shared/helpers";
 
 import { EditorMenuControls } from "./ui";
 import { ITextEditor } from "../types";
@@ -17,7 +19,7 @@ const Editor: FC<ITextEditor> = ({
   content,
   setPendingFiles,
   source,
-  deleteHomeworkFile,
+  handleDeleteFile,
 }) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
@@ -136,13 +138,22 @@ const Editor: FC<ITextEditor> = ({
     );
 
   const handleKeyDown = useCallback(
-    (view: any, event: { key: string }) => {
-      // console.log("keydown event", event.key);
-      // if (event.key === "Backspace" || event.key === "Delete") {
-      // }
+    (view: EditorView, event: { key: string }) => {
+      if (event.key === "Backspace" || event.key === "Delete") {
+        const content = rteRef.current?.editor?.getHTML();
+
+        if (content) {
+          const fileIds = extractFileId(content);
+
+          if (fileIds.length > 0) {
+            handleDeleteFile?.(content);
+          }
+        }
+      }
+
       return false;
     },
-    [deleteHomeworkFile]
+    [handleDeleteFile]
   );
 
   return (
