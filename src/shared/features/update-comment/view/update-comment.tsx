@@ -1,9 +1,17 @@
 import { FC, useRef, useState } from "react";
+import { HOMEWORK_COMMENT_FILE_GET_URI } from "config";
 
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { CommentEditor } from "shared/components/text-editor";
 import SendButtons from "shared/components/send-buttons";
 import { useComment } from "shared/hooks/use-comment";
+import {
+  useHomeworkCommentFileDelete,
+  useHomeworkCommentFileUpload,
+} from "shared/hooks";
+import { PendingFile } from "shared/components/text-editor/types";
+import { createUrlWithParams } from "shared/utils";
+import { extractFileId } from "shared/helpers";
 
 import { IUpdateComment } from "./update-comment.types";
 import {
@@ -16,24 +24,58 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
   const { loading, updateComment, commentId, content } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
+  const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const { uploadHomeworkCommentFile } = useHomeworkCommentFileUpload();
   const { setSelectedComment } = useComment();
+  const { deleteHomeworkCommentFile } = useHomeworkCommentFileDelete();
 
-  const handleUpdateComment = () => {
-    const content = rteRef.current?.editor?.getHTML() ?? "";
+  const handleUpdateComment = async () => {
+    if (!rteRef.current?.editor || !commentId) return;
 
-    if (commentId && content.trim() !== "" && content.trim() !== "<p></p>") {
-      updateComment({
-        variables: {
-          id: commentId,
-          content: rteRef.current?.editor?.getHTML() ?? "",
-        },
+    let content = rteRef.current.editor.getHTML().trim();
+    if (!content || content === "<p></p>") {
+      setError("Введите текст");
+      return;
+    }
+
+    try {
+      const uploadPromises = pendingFiles.map(async ({ file, localUrl }) => {
+        const uploadedFile = await uploadHomeworkCommentFile(file, commentId);
+
+        const realUrl = createUrlWithParams(HOMEWORK_COMMENT_FILE_GET_URI, {
+          commentId,
+          fileId: uploadedFile?.id!,
+        });
+
+        return { localUrl, realUrl };
+      });
+
+      const results = await Promise.all(uploadPromises);
+
+      results.forEach(({ localUrl, realUrl }) => {
+        content = content.replaceAll(localUrl, realUrl);
+      });
+      await updateComment({
+        variables: { id: commentId, content },
         onCompleted: () => {
           setSelectedComment(null);
+          setPendingFiles([]);
+          setError("");
+          rteRef.current?.editor?.commands.clearContent();
         },
       });
-      setError("");
-    } else {
-      setError("Введите текст");
+    } catch (err) {
+      setError("Произошла ошибка при редактировании комментария");
+    }
+  };
+
+  const handleDeleteFile = async (content: string) => {
+    const fileIds = extractFileId(content);
+
+    for (const fileId of fileIds) {
+      if (commentId) {
+        await deleteHomeworkCommentFile(commentId, fileId);
+      }
     }
   };
 
@@ -41,7 +83,13 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     <form>
       <StyledStack>
         <StyledBox>
-          <CommentEditor content={content} rteRef={rteRef} source="comment" />
+          <CommentEditor
+            content={content}
+            setPendingFiles={setPendingFiles}
+            handleDeleteFile={handleDeleteFile}
+            rteRef={rteRef}
+            source="comment"
+          />
           {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
           <SendButtons
             onReply={handleUpdateComment}

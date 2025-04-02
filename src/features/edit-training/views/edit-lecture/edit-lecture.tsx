@@ -4,7 +4,7 @@ import { FC, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Clear, Save } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { LECTURE_FILE_GET_URI } from "config";
+import { LECTURE_FILE_GET_URI, LECTURE_HOMEWORK_FILE_GET_URI } from "config";
 
 import { InputText } from "shared/components/form";
 import { Editor } from "shared/components/text-editor";
@@ -13,9 +13,12 @@ import { UserRole } from "api/graphql/generated/graphql";
 import { PendingFile } from "shared/components/text-editor/types";
 import { createUrlWithParams } from "shared/utils";
 import {
+  useLectureFileDelete,
   useLectureFileUpload,
+  useLectureHomeworkFileDelete,
   useLectureHomeworkFileUpload,
 } from "shared/hooks";
+import { extractFileId } from "shared/helpers";
 
 import { SelectLectors } from "../../containers";
 import {
@@ -42,6 +45,8 @@ const EditLecture: FC<IEditLecture> = ({
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
   const { uploadLectureFile } = useLectureFileUpload();
   const { uploadLectureHomeworkFile } = useLectureHomeworkFileUpload();
+  const { deleteLectureFile } = useLectureFileDelete();
+  const { deleteLectureHomeworkFile } = useLectureHomeworkFileDelete();
 
   const [description, setDescription] = useState(
     dataLecture?.lecture?.description!
@@ -92,7 +97,7 @@ const EditLecture: FC<IEditLecture> = ({
         const uploadedFile = await uploadLectureHomeworkFile(file, lectureId);
         return {
           localUrl,
-          realUrl: createUrlWithParams(LECTURE_FILE_GET_URI, {
+          realUrl: createUrlWithParams(LECTURE_HOMEWORK_FILE_GET_URI, {
             lectureId,
             fileId: uploadedFile?.id!,
           }),
@@ -153,6 +158,26 @@ const EditLecture: FC<IEditLecture> = ({
     })();
   };
 
+  const handleDeleteLectureFiles = async (content: string) => {
+    const fileIds = extractFileId(content);
+
+    for (const fileId of fileIds) {
+      if (lectureId) {
+        await deleteLectureFile(lectureId, fileId);
+      }
+    }
+  };
+
+  const handleDeleteHomeworkFiles = async (content: string) => {
+    const fileIds = extractFileId(content);
+
+    for (const fileId of fileIds) {
+      if (lectureId) {
+        await deleteLectureHomeworkFile(lectureId, fileId);
+      }
+    }
+  };
+
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -190,6 +215,7 @@ const EditLecture: FC<IEditLecture> = ({
                 rteRef={rteRefContent}
                 setPendingFiles={setPendingFiles}
                 source="lecture"
+                handleDeleteFile={handleDeleteLectureFiles}
               />
             </StyledInfoStack>
           </StyledPaper>
@@ -201,6 +227,7 @@ const EditLecture: FC<IEditLecture> = ({
                 rteRef={rteRefContentHomeWork}
                 setPendingFiles={setPendingFiles}
                 source="lectureHomework"
+                handleDeleteFile={handleDeleteHomeworkFiles}
               />
             </StyledInfoStack>
           </StyledPaper>

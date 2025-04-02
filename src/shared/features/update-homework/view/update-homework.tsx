@@ -7,6 +7,7 @@ import SendButtons from "shared/components/send-buttons";
 import { createUrlWithParams } from "shared/utils";
 import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
+import { extractFileId } from "shared/helpers";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import {
@@ -66,6 +67,16 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     }
   };
 
+  const handleDeleteFile = async (content: string) => {
+    const fileIds = extractFileId(content);
+
+    for (const fileId of fileIds) {
+      if (homeWorkId) {
+        await deleteHomeworkFile(homeWorkId, fileId);
+      }
+    }
+  };
+
   return (
     <form>
       <StyledWrapper>
@@ -75,7 +86,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
             rteRef={rteRef}
             setPendingFiles={setPendingFiles}
             source="studentHomework"
-            deleteHomeworkFile={deleteHomeworkFile}
+            handleDeleteFile={handleDeleteFile}
           />
           {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
 

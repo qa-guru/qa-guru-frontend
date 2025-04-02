@@ -2,6 +2,8 @@ import {
   MenuButtonCodeBlock,
   MenuButtonEditLink,
   MenuButtonEmoji,
+  MenuButtonFileUpload,
+  MenuButtonImageUpload,
   MenuButtonRedo,
   MenuButtonUndo,
   MenuButtonYoutube,
@@ -9,8 +11,18 @@ import {
   MenuDivider,
 } from "shared/lib/mui-tiptap/controls";
 import { useResponsive } from "shared/hooks";
+import { Maybe } from "api/graphql/generated/graphql";
 
-export default function EditorMenuControls() {
+interface EditorMenuControlsProps {
+  homeWorkId?: Maybe<string>;
+  onUploadImageFiles: (files: File[]) => any;
+  onUploadFiles: (files: File[]) => any;
+}
+
+export default function EditorMenuControls({
+  onUploadImageFiles,
+  onUploadFiles,
+}: EditorMenuControlsProps) {
   const { isDesktop } = useResponsive();
 
   return (
@@ -28,6 +40,15 @@ export default function EditorMenuControls() {
       <MenuButtonYoutube />
 
       <MenuDivider />
+
+      <MenuButtonImageUpload
+        onUploadFiles={onUploadImageFiles}
+        tooltipLabel="Upload images"
+      />
+      <MenuButtonFileUpload
+        onUploadFiles={onUploadFiles}
+        tooltipLabel="Upload files"
+      />
 
       <MenuButtonEmoji />
 

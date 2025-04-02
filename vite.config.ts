@@ -15,9 +15,10 @@ export default ({ mode }: any) => {
     "^/refreshtoken": API_URL,
     "^/upload/avatar": API_URL,
     "^/upload/training/.*": API_URL,
-    "^/homework/student/homework/.*": API_URL,
     "^/lecture/.*": API_URL,
-    "^/lecture/homework/.*": API_URL,
+    "^/student/homework/.*": API_URL,
+    "^/lecture/.*/homework/.*": API_URL,
+    "^/homework/comment/.*": API_URL,
   };
 
   return defineConfig({
