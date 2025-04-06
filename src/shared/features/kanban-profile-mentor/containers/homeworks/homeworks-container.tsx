@@ -41,7 +41,7 @@ const HomeworksContainer: FC = () => {
         field: StudentHomeWorkSortField.CreationDate,
         order: Order.Desc,
       },
-      filter: { status: StudentHomeWorkStatus.New },
+      filter: { status: StudentHomeWorkStatus.Review },
     },
   });
 

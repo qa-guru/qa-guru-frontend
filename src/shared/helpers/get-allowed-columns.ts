@@ -6,7 +6,7 @@ export const getAllowedColumns = (title: StudentHomeWorkStatus) => {
   let allowedColumns: string[] = [];
 
   switch (title) {
-    case StudentHomeWorkStatus.New:
+    case StudentHomeWorkStatus.Review:
       allowedColumns = [STATUS_COLUMN.IN_REVIEW];
       break;
     case StudentHomeWorkStatus.InReview:

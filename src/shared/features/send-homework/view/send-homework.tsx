@@ -15,7 +15,9 @@ import { StyledBox, StyledFormHelperText } from "./send-homework.styled";
 const SendHomework: FC<ISendHomeWork> = (props) => {
   const {
     createHomeWorkToCheck,
+    sendHomeWorkToCheck,
     loadingCreateHomeWorkToCheck,
+    loadingSendHomeWorkToCheck,
     loadingUpdateHomework,
     updateHomework,
   } = props;
@@ -75,6 +77,12 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
             },
           });
 
+          await sendHomeWorkToCheck({
+            variables: {
+              homeWorkId,
+            },
+          });
+
           setPendingFiles([]);
           setError("");
           rteRef.current?.editor?.commands.clearContent();
@@ -97,7 +105,11 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
 
         <SendButtons
           onReply={handleSendHomeWork}
-          loading={loadingCreateHomeWorkToCheck || loadingUpdateHomework}
+          loading={
+            loadingCreateHomeWorkToCheck ||
+            loadingUpdateHomework ||
+            loadingSendHomeWorkToCheck
+          }
         />
       </StyledBox>
     </form>

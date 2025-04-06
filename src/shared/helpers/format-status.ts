@@ -4,7 +4,7 @@ export const formatStatus = (status: string) => {
       return "Принято";
     case "IN_REVIEW":
       return "На проверке";
-    case "NEW":
+    case "REVIEW":
       return "Новые";
     case "NOT_APPROVED":
       return "Не принято";

@@ -6,6 +6,7 @@ import {
   HomeWorkByLectureAndTrainingQuery,
   Maybe,
   useCreateHomeWorkToCheckMutation,
+  useSendHomeWorkToCheckMutation,
   useUpdateHomeworkMutation,
 } from "api/graphql/generated/graphql";
 
@@ -66,11 +67,16 @@ const SendHomeworkContainer: FC = () => {
       },
     });
 
+  const [sendHomeWorkToCheck, { loading: loadingSendHomeWorkToCheck }] =
+    useSendHomeWorkToCheckMutation();
+
   return (
     <SendHomework
       loadingCreateHomeWorkToCheck={loadingCreateHomeWorkToCheck}
       loadingUpdateHomework={loadingUpdateHomework}
+      loadingSendHomeWorkToCheck={loadingSendHomeWorkToCheck}
       createHomeWorkToCheck={createHomeWorkToCheck}
+      sendHomeWorkToCheck={sendHomeWorkToCheck}
       updateHomework={updateHomework}
     />
   );

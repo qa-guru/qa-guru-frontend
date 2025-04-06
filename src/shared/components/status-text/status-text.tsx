@@ -20,7 +20,7 @@ const StatusText: FC<IStatusText> = ({ status }) => {
   let statusText;
 
   switch (status) {
-    case StudentHomeWorkStatus.New:
+    case StudentHomeWorkStatus.Review:
       icon = <Clock />;
       statusText = "Новые";
       break;

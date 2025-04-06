@@ -46,8 +46,7 @@ const useUpdateHomeworkStatus = () => {
           },
           filter: {
             ...filterObject,
-            status: StudentHomeWorkStatus.New,
-            mentorId: undefined,
+            status: StudentHomeWorkStatus.Review,
           },
         },
       });
@@ -83,7 +82,7 @@ const useUpdateHomeworkStatus = () => {
           },
           filter: {
             ...filterObject,
-            status: StudentHomeWorkStatus.New,
+            status: StudentHomeWorkStatus.Review,
             mentorId: undefined,
           },
         },

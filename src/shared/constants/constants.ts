@@ -47,7 +47,7 @@ export const HOMEWORKS_QUERY_DEFAULTS = {
 
 export const STATES = [
   {
-    value: "NEW",
+    value: "REVIEW",
     Icon: Clock,
     text: "Новые",
   },
