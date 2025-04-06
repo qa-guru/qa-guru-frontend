@@ -1,0 +1,44 @@
+mutation sendHomeWorkToCheck($homeWorkId: ID!) {
+  sendHomeWorkToCheck(homeWorkId: $homeWorkId) {
+    id
+    lecture {
+      id
+      subject
+      description
+      contentHomeWork
+    }
+    training {
+      techStack
+    }
+    answer
+    student {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    mentor {
+      id
+      firstName
+      avatar
+      lastName
+      rating {
+        rating
+      }
+    }
+    filesHomeWork {
+      id
+      creationDate
+      fileName
+      contentType
+      size
+    }
+    creationDate
+    updateDate
+    startCheckingDate
+    endCheckingDate
+  }
+}

@@ -14,7 +14,7 @@ export interface IMobileBoard {
 
 export const states = [
   {
-    value: "NEW",
+    value: "REVIEW",
     Icon: Clock,
     text: "Новые",
   },

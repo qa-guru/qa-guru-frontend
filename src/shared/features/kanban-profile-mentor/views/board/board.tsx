@@ -35,7 +35,7 @@ const Board: FC<IBoard> = ({
     setColumns([
       createColumnItem(
         STATUS_COLUMN.NEW,
-        StudentHomeWorkStatus.New,
+        StudentHomeWorkStatus.Review,
         newItems as StudentHomeWorkDto[],
         newTotalElements
       ),

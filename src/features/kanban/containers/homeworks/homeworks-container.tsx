@@ -43,8 +43,7 @@ const HomeworksContainer: FC = () => {
       },
       filter: {
         ...filterObject,
-        status: StudentHomeWorkStatus.New,
-        mentorId: undefined,
+        status: StudentHomeWorkStatus.Review,
       },
     },
   });
