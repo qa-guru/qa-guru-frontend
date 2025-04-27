@@ -172,12 +172,11 @@ const EditLecture: FC<IEditLecture> = ({
       navigate("/");
     })();
   };
-
-  const handleDeleteLectureFile = async (fileId: string) => {
+  const handleDeleteLectureFile = (fileId: string) => {
     setDeletedLectureFileIds((prev) => [...prev, fileId]);
   };
 
-  const handleDeleteHomeworkFile = async (fileId: string) => {
+  const handleDeleteHomeworkFile = (fileId: string) => {
     setDeletedHomeworkFileIds((prev) => [...prev, fileId]);
   };
 

@@ -72,7 +72,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     }
   };
 
-  const handleDeleteFile = async (fileId: string) => {
+  const handleDeleteFile = (fileId: string) => {
     if (fileId.startsWith("blob:")) {
       setPendingFiles((prev) =>
         prev.filter((pending) => pending.localUrl !== fileId)
