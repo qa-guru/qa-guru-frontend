@@ -21,7 +21,7 @@ export const FileDeletionTracker = Extension.create<{
         key: new PluginKey("file-deletion-tracker"),
         appendTransaction(transactions, oldState, newState) {
           const docChanged = transactions.some((tr) => tr.docChanged);
-          if (!docChanged) return;
+          if (!docChanged) return null;
 
           const oldFileIds = collectFileIds(oldState.doc);
           const newFileIds = collectFileIds(newState.doc);
@@ -36,7 +36,7 @@ export const FileDeletionTracker = Extension.create<{
             });
           }
 
-          return undefined;
+          return null;
         },
       }),
     ];

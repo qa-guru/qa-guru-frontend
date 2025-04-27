@@ -36,5 +36,5 @@ export interface ITextEditor {
   content?: Maybe<string>;
   setPendingFiles?: React.Dispatch<React.SetStateAction<PendingFile[]>>;
   source: FileSourceType;
-  handleDeleteFile?: (fileId: string) => Promise<void>;
+  handleDeleteFile?: (fileId: string) => void;
 }
