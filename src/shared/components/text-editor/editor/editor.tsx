@@ -2,12 +2,10 @@ import { Lock, LockOpen, TextFields } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
-import { EditorView } from "@tiptap/pm/view";
 
 import { insertFiles, insertImages } from "shared/lib/mui-tiptap/utils";
 import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
-import { extractFileId } from "shared/helpers";
 
 import { EditorMenuControls } from "./ui";
 import { ITextEditor } from "../types";
@@ -23,7 +21,11 @@ const Editor: FC<ITextEditor> = ({
 }) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
+    onFileDelete: async (fileId: string) => {
+      await handleDeleteFile?.(fileId);
+    },
   });
+
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
 
@@ -137,25 +139,6 @@ const Editor: FC<ITextEditor> = ({
       [handleNewImageFiles, handleNewFiles]
     );
 
-  const handleKeyDown = useCallback(
-    (view: EditorView, event: { key: string }) => {
-      if (event.key === "Backspace" || event.key === "Delete") {
-        const content = rteRef.current?.editor?.getHTML();
-
-        if (content) {
-          const fileIds = extractFileId(content);
-
-          if (fileIds.length > 0) {
-            handleDeleteFile?.(content);
-          }
-        }
-      }
-
-      return false;
-    },
-    [handleDeleteFile]
-  );
-
   return (
     <>
       <Box
@@ -175,9 +158,6 @@ const Editor: FC<ITextEditor> = ({
           editorProps={{
             handleDrop,
             handlePaste,
-            handleDOMEvents: {
-              keydown: handleKeyDown,
-            },
           }}
           renderControls={() => (
             <EditorMenuControls

@@ -5,7 +5,7 @@ import { HOMEWORK_FILE_GET_URI } from "config";
 import { createUrlWithParams } from "shared/utils";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
-import { useHomeworkFileUpload } from "shared/hooks";
+import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
 import SendButtons from "shared/components/send-buttons";
 
@@ -25,7 +25,9 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
 
   const rteRef = useRef<RichTextEditorRef>(null);
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
   const { uploadHomeworkFile } = useHomeworkFileUpload();
+  const { deleteHomeworkFile } = useHomeworkFileDelete();
   const [error, setError] = useState("");
 
   const handleSendHomeWork = () => {
@@ -77,6 +79,10 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
             },
           });
 
+          for (const id of deletedFileIds) {
+            await deleteHomeworkFile(homeWorkId, id);
+          }
+
           await sendHomeWorkToCheck({
             variables: {
               homeWorkId,
@@ -84,6 +90,7 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
           });
 
           setPendingFiles([]);
+          setDeletedFileIds([]);
           setError("");
           rteRef.current?.editor?.commands.clearContent();
         },
@@ -93,12 +100,23 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
     }
   };
 
+  const handleDeleteFile = async (fileId: string) => {
+    if (fileId.startsWith("blob:")) {
+      setPendingFiles((prev) =>
+        prev.filter((pending) => pending.localUrl !== fileId)
+      );
+    } else {
+      setDeletedFileIds((prev) => [...prev, fileId]);
+    }
+  };
+
   return (
     <form>
       <StyledBox>
         <Editor
           rteRef={rteRef}
           setPendingFiles={setPendingFiles}
+          handleDeleteFile={handleDeleteFile}
           source="studentHomework"
         />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}

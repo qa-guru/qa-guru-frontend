@@ -18,7 +18,6 @@ import {
   useLectureHomeworkFileDelete,
   useLectureHomeworkFileUpload,
 } from "shared/hooks";
-import { extractFileId } from "shared/helpers";
 
 import { SelectLectors } from "../../containers";
 import {
@@ -43,6 +42,13 @@ const EditLecture: FC<IEditLecture> = ({
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [deletedLectureFileIds, setDeletedLectureFileIds] = useState<string[]>(
+    []
+  );
+  const [deletedHomeworkFileIds, setDeletedHomeworkFileIds] = useState<
+    string[]
+  >([]);
+
   const { uploadLectureFile } = useLectureFileUpload();
   const { uploadLectureHomeworkFile } = useLectureHomeworkFileUpload();
   const { deleteLectureFile } = useLectureFileDelete();
@@ -130,7 +136,14 @@ const EditLecture: FC<IEditLecture> = ({
       variables: {
         input: submissionData,
       },
-      onCompleted: () => {
+      onCompleted: async () => {
+        for (const fileId of deletedLectureFileIds) {
+          await deleteLectureFile(lectureId, fileId);
+        }
+        for (const fileId of deletedHomeworkFileIds) {
+          await deleteLectureHomeworkFile(lectureId, fileId);
+        }
+
         enqueueSnackbar("Урок обновлен", { variant: "success" });
       },
       onError: () => {
@@ -142,6 +155,8 @@ const EditLecture: FC<IEditLecture> = ({
     });
 
     setPendingFiles([]);
+    setDeletedLectureFileIds([]);
+    setDeletedHomeworkFileIds([]);
     rteRefContent.current?.editor?.commands.clearContent();
     rteRefContentHomeWork.current?.editor?.commands.clearContent();
   };
@@ -158,24 +173,12 @@ const EditLecture: FC<IEditLecture> = ({
     })();
   };
 
-  const handleDeleteLectureFiles = async (content: string) => {
-    const fileIds = extractFileId(content);
-
-    for (const fileId of fileIds) {
-      if (lectureId) {
-        await deleteLectureFile(lectureId, fileId);
-      }
-    }
+  const handleDeleteLectureFile = async (fileId: string) => {
+    setDeletedLectureFileIds((prev) => [...prev, fileId]);
   };
 
-  const handleDeleteHomeworkFiles = async (content: string) => {
-    const fileIds = extractFileId(content);
-
-    for (const fileId of fileIds) {
-      if (lectureId) {
-        await deleteLectureHomeworkFile(lectureId, fileId);
-      }
-    }
+  const handleDeleteHomeworkFile = async (fileId: string) => {
+    setDeletedHomeworkFileIds((prev) => [...prev, fileId]);
   };
 
   return (
@@ -215,7 +218,7 @@ const EditLecture: FC<IEditLecture> = ({
                 rteRef={rteRefContent}
                 setPendingFiles={setPendingFiles}
                 source="lecture"
-                handleDeleteFile={handleDeleteLectureFiles}
+                handleDeleteFile={handleDeleteLectureFile}
               />
             </StyledInfoStack>
           </StyledPaper>
@@ -227,7 +230,7 @@ const EditLecture: FC<IEditLecture> = ({
                 rteRef={rteRefContentHomeWork}
                 setPendingFiles={setPendingFiles}
                 source="lectureHomework"
-                handleDeleteFile={handleDeleteHomeworkFiles}
+                handleDeleteFile={handleDeleteHomeworkFile}
               />
             </StyledInfoStack>
           </StyledPaper>

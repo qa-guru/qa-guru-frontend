@@ -5,7 +5,10 @@ import { CommentEditor } from "shared/components/text-editor";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import SendButtons from "shared/components/send-buttons";
 import { PendingFile } from "shared/components/text-editor/types";
-import { useHomeworkCommentFileUpload } from "shared/hooks";
+import {
+  useHomeworkCommentFileDelete,
+  useHomeworkCommentFileUpload,
+} from "shared/hooks";
 import { createUrlWithParams } from "shared/utils";
 
 import { ISendComment } from "./send-comment.types";
@@ -21,7 +24,9 @@ const SendComment: FC<ISendComment> = (props) => {
   } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
   const { uploadHomeworkCommentFile } = useHomeworkCommentFileUpload();
+  const { deleteHomeworkCommentFile } = useHomeworkCommentFileDelete();
   const [error, setError] = useState("");
 
   const handleSendComment = async () => {
@@ -78,6 +83,10 @@ const SendComment: FC<ISendComment> = (props) => {
             },
           });
 
+          for (const fileId of deletedFileIds) {
+            await deleteHomeworkCommentFile(commentId, fileId);
+          }
+
           setPendingFiles([]);
           setError("");
           rteRef.current?.editor?.commands.clearContent();
@@ -88,6 +97,16 @@ const SendComment: FC<ISendComment> = (props) => {
     }
   };
 
+  const handleDeleteFile = async (fileId: string) => {
+    if (fileId.startsWith("blob:")) {
+      setPendingFiles((prev) =>
+        prev.filter((pending) => pending.localUrl !== fileId)
+      );
+    } else {
+      setDeletedFileIds((prev) => [...prev, fileId]);
+    }
+  };
+
   return (
     <form>
       <StyledBox>
@@ -95,6 +114,7 @@ const SendComment: FC<ISendComment> = (props) => {
           rteRef={rteRef}
           source="comment"
           setPendingFiles={setPendingFiles}
+          handleDeleteFile={handleDeleteFile}
         />
         {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
       </StyledBox>
