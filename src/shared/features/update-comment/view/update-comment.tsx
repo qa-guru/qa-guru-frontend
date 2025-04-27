@@ -11,7 +11,6 @@ import {
 } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
 import { createUrlWithParams } from "shared/utils";
-import { extractFileId } from "shared/helpers";
 
 import { IUpdateComment } from "./update-comment.types";
 import {
@@ -25,6 +24,7 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
   const { uploadHomeworkCommentFile } = useHomeworkCommentFileUpload();
   const { setSelectedComment } = useComment();
   const { deleteHomeworkCommentFile } = useHomeworkCommentFileDelete();
@@ -57,9 +57,13 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
       });
       await updateComment({
         variables: { id: commentId, content },
-        onCompleted: () => {
+        onCompleted: async () => {
+          for (const fileId of deletedFileIds) {
+            await deleteHomeworkCommentFile(commentId, fileId);
+          }
           setSelectedComment(null);
           setPendingFiles([]);
+          setDeletedFileIds([]);
           setError("");
           rteRef.current?.editor?.commands.clearContent();
         },
@@ -69,13 +73,14 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
     }
   };
 
-  const handleDeleteFile = async (content: string) => {
-    const fileIds = extractFileId(content);
-
-    for (const fileId of fileIds) {
-      if (commentId) {
-        await deleteHomeworkCommentFile(commentId, fileId);
-      }
+  const handleDeleteFile = async (fileId: string) => {
+    if (fileId.startsWith("blob:")) {
+      setPendingFiles((prev) =>
+        prev.filter((pending) => pending.localUrl !== fileId)
+      );
+    } else {
+      // серверный файл — добавить в список на удаление
+      setDeletedFileIds((prev) => [...prev, fileId]);
     }
   };
 

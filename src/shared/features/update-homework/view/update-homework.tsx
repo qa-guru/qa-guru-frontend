@@ -7,7 +7,6 @@ import SendButtons from "shared/components/send-buttons";
 import { createUrlWithParams } from "shared/utils";
 import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
-import { extractFileId } from "shared/helpers";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import {
@@ -22,6 +21,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const rteRef = useRef<RichTextEditorRef>(null);
 
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
   const [error, setError] = useState("");
   const { uploadHomeworkFile } = useHomeworkFileUpload();
   const { deleteHomeworkFile } = useHomeworkFileDelete();
@@ -55,25 +55,30 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
 
       await updateHomework({
         variables: { id: homeWorkId, content },
-        onCompleted: () => {
-          setOpenHomeWorkEdit(false);
-          setPendingFiles([]);
-          setError("");
-          rteRef.current?.editor?.commands.clearContent();
-        },
       });
+
+      for (const id of deletedFileIds) {
+        await deleteHomeworkFile(homeWorkId, id);
+      }
+
+      setOpenHomeWorkEdit(false);
+      setPendingFiles([]);
+      setDeletedFileIds([]);
+      setError("");
+      rteRef.current?.editor?.commands.clearContent();
     } catch (err) {
+      console.error(err);
       setError("Произошла ошибка при редактировании д/з.");
     }
   };
 
-  const handleDeleteFile = async (content: string) => {
-    const fileIds = extractFileId(content);
-
-    for (const fileId of fileIds) {
-      if (homeWorkId) {
-        await deleteHomeworkFile(homeWorkId, fileId);
-      }
+  const handleDeleteFile = async (fileId: string) => {
+    if (fileId.startsWith("blob:")) {
+      setPendingFiles((prev) =>
+        prev.filter((pending) => pending.localUrl !== fileId)
+      );
+    } else {
+      setDeletedFileIds((prev) => [...prev, fileId]);
     }
   };
 

@@ -42,6 +42,7 @@ import {
   ResizableImage,
 } from "shared/lib/mui-tiptap/extensions";
 import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
+import { FileDeletionTracker } from "shared/lib/mui-tiptap/extensions/file-deletion-tracker";
 
 import { mentionSuggestionOptions } from "../utils/mention-suggestion-options";
 
@@ -160,6 +161,7 @@ export const FileNode = Node.create<FileNodeOptions>({
 
 export type UseExtensionsOptions = {
   placeholder?: string;
+  onFileDelete?: (fileId: string) => void;
 };
 
 const CustomLinkExtension = Link.extend({
@@ -204,6 +206,7 @@ const CustomResizableImage = ResizableImage.extend({
 
 export default function useExtensions({
   placeholder,
+  onFileDelete,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
   return useMemo(() => {
     return [
@@ -281,6 +284,9 @@ export default function useExtensions({
       History,
 
       FileNode,
+      FileDeletionTracker.configure({
+        onFileDelete,
+      }),
     ];
-  }, [placeholder]);
+  }, [placeholder, onFileDelete]);
 }

@@ -7,4 +7,3 @@ export { isColumnHighlight } from "./is-column-highlight";
 export { getUpdatedAllowedColumns } from "./get-updated-allowed-columns";
 export { getAllowedColumns } from "./get-allowed-columns";
 export { generateUniqueId } from "./generate-unique-id";
-export { extractFileId } from "./extract-file-id";
