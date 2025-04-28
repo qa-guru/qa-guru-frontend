@@ -1,6 +1,7 @@
 import { FC, ReactNode, createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { client } from "api";
 
 import { userRolesVar } from "cache";
 import AuthService from "api/rest/auth-service";
@@ -96,9 +97,10 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   const logout = async () => {
     setIsLoading(true);
     await AuthService.logout()
-      .then((response) => {
+      .then(async (response) => {
         if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
           localStorage.removeItem("isAuth");
+          await client.clearStore();
           setIsLoading(false);
           navigate(ROUTES.AUTHORIZATION);
         } else {

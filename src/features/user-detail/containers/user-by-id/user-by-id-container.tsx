@@ -14,7 +14,7 @@ const UserByIdContainer: FC = () => {
     variables: {
       id: userId,
     },
-    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+    fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     onError: () => {
       return <Navigate to="/404" />;
     },

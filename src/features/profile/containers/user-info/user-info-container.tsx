@@ -9,7 +9,7 @@ import UserInfo from "../../views/user-info";
 
 const UserInfoContainer: FC = () => {
   const { loading, data } = useUserQuery({
-    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+    fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
   });
 
   if (loading) return <AppSpinner />;

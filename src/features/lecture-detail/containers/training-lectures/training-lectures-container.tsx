@@ -10,7 +10,7 @@ const TrainingLecturesContainer: FC = () => {
   const { trainingId } = useParams();
   const { data: dataTrainingLectures } = useTrainingLecturesQuery({
     variables: { id: trainingId! },
-    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+    fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
   });
 
   return <Stepper dataTrainingLectures={dataTrainingLectures} />;
