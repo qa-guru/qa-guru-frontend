@@ -13,7 +13,7 @@ const UserContainer: FC = () => {
     onCompleted: (data) => {
       userIdVar(data?.user?.id);
     },
-    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+    fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
   });
 
   if (loading) return <AppSpinner />;
