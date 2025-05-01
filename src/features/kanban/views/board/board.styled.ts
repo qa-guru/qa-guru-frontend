@@ -1,17 +1,14 @@
 import { Box, Button, Stack, StepLabel, Stepper } from "@mui/material";
 import { styled } from "@mui/system";
 
-import { UI_CONSTANTS } from "../../constants";
-
-interface IColumnBox {
-  showHomeworkDetails: boolean;
-  isUpLg: boolean;
-}
-
-export const StyledWrapper = styled(Box)({
-  display: "flex",
-  minWidth: "100%",
-});
+export const StyledWrapper = styled(Box)<{ showHomeworkDetails: boolean }>(
+  ({ showHomeworkDetails }) => ({
+    display: "grid",
+    gridTemplateColumns: showHomeworkDetails ? "65% 1fr" : "100%",
+    width: "100%",
+    height: "100vh",
+  })
+);
 
 export const StyledStack = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
@@ -52,12 +49,7 @@ export const StyledStepperButton = styled(Button)({
   minWidth: "5px",
 });
 
-export const StyledColumnBox = styled(Box, {
-  shouldForwardProp: (prop) =>
-    !["showHomeworkDetails", "isUpLg"].includes(prop as string),
-})<IColumnBox>(({ showHomeworkDetails, isUpLg }) => ({
-  width:
-    showHomeworkDetails && isUpLg
-      ? UI_CONSTANTS.MIN_COLUMN_WIDTH
-      : UI_CONSTANTS.MAX_COLUMN_WIDTH,
-}));
+export const StyledColumnBox = styled(Box)({
+  height: "100%",
+  overflow: "auto",
+});
