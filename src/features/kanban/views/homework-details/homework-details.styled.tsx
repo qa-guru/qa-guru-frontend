@@ -10,17 +10,18 @@ import {
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export const StyledHomeworkDetails = styled(Box)(({ theme }) => ({
-  position: "relative",
-  maxWidth: "33vw",
+  height: "100%",
+  overflowY: "auto",
   backgroundColor: alpha(theme.palette.app.secondary, 0.2),
-  marginLeft: "10px",
+  display: "flex",
+  flexDirection: "column",
+  marginTop: "15px",
 }));
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-  marginTop: "20px",
   padding: "35px 25px",
-  maxHeight: "calc(100vh - 217px)",
-  overflowY: "scroll",
+  overflowY: "auto",
+  flex: 1,
   backgroundColor: theme.palette.app.lightGrey,
 }));
 

@@ -16,11 +16,6 @@ export const STANDARD_QUERY_DEFAULTS = {
   LIMIT: 100,
 };
 
-export const UI_CONSTANTS = {
-  MIN_COLUMN_WIDTH: "65%",
-  MAX_COLUMN_WIDTH: "100%",
-};
-
 export const ROUTES = {
   KANBAN: "/kanban",
 };

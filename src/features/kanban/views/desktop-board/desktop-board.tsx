@@ -64,10 +64,10 @@ const DesktopBoard: FC<IDesktopBoard> = ({
     );
 
   return (
-    <StyledWrapper>
+    <StyledWrapper showHomeworkDetails={showHomeworkDetails}>
       <StyledColumnBox
-        showHomeworkDetails={showHomeworkDetails}
-        isUpLg={isLargeDesktop}
+      // showHomeworkDetails={showHomeworkDetails}
+      // isUpLg={isLargeDesktop}
       >
         <StyledStack>
           {columns?.map((column, index) => (
