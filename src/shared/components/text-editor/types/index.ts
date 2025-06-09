@@ -18,7 +18,7 @@ export type FileSourceType =
 export type PendingFile = {
   file: File;
   localUrl: string;
-  source: FileSourceType;
+  source?: FileSourceType;
 };
 
 export type SuggestionListRef = {

@@ -2,7 +2,7 @@ import { FC, useRef, useState } from "react";
 import { HOMEWORK_COMMENT_FILE_GET_URI } from "config";
 
 import { CommentEditor } from "shared/components/text-editor";
-import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { collectFileIds, type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import SendButtons from "shared/components/send-buttons";
 import { PendingFile } from "shared/components/text-editor/types";
 import {
@@ -10,6 +10,8 @@ import {
   useHomeworkCommentFileUpload,
 } from "shared/hooks";
 import { createUrlWithParams } from "shared/utils";
+import { findNodeByUrl } from "shared/lib/mui-tiptap/utils/find-node-by-url";
+import { blobUrlToFile } from "shared/lib/mui-tiptap/utils/blob-url-to-file";
 
 import { ISendComment } from "./send-comment.types";
 import { StyledBox, StyledFormHelperText } from "./send-comment.styled";
@@ -22,6 +24,7 @@ const SendComment: FC<ISendComment> = (props) => {
     homeworkId,
     updateComment,
   } = props;
+
   const rteRef = useRef<RichTextEditorRef>(null);
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
   const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
@@ -30,10 +33,11 @@ const SendComment: FC<ISendComment> = (props) => {
   const [error, setError] = useState("");
 
   const handleSendComment = async () => {
-    if (!rteRef.current?.editor) return;
+    const editor = rteRef.current?.editor;
+    if (!editor || !homeworkId) return;
 
-    let content = rteRef.current.editor.getHTML().trim();
-    if (!content || content === "<p></p>") {
+    let html = editor.getHTML().trim();
+    if (!html || html === "<p></p>") {
       setError("Введите текст");
       return;
     }
@@ -41,58 +45,78 @@ const SendComment: FC<ISendComment> = (props) => {
     try {
       await sendComment({
         variables: {
-          homeWorkId: homeworkId!,
-          content,
+          homeWorkId: homeworkId,
+          content: html,
         },
         onCompleted: async (response) => {
           const commentId = response?.sendComment?.id;
+          if (!commentId) return;
 
-          if (!commentId) {
-            return;
-          }
+          const contentBlobUrls = Array.from(
+            html.matchAll(/(blob:[^"'\s>]+)/g)
+          ).map((match) => match[1]);
 
-          const uploadPromises = pendingFiles.map(
-            async ({ file, localUrl }) => {
-              const uploadedFile = await uploadHomeworkCommentFile(
-                file,
-                commentId
-              );
+          const recoveredBlobs = contentBlobUrls
+            .filter((url) => !pendingFiles.find((f) => f.localUrl === url))
+            .map((url) => {
+              const node = findNodeByUrl(editor.state.doc, url);
+              const fileName = node?.fileName || "recovered_file";
+              return { file: blobUrlToFile(url, fileName), localUrl: url };
+            });
 
+          const resolvedRecoveredFiles = await Promise.all(
+            recoveredBlobs.map(async ({ file, localUrl }) => ({
+              localUrl,
+              file: await file,
+            }))
+          );
+
+          const allFilesToUpload = [...pendingFiles, ...resolvedRecoveredFiles];
+
+          const uploadResults = await Promise.all(
+            allFilesToUpload.map(async ({ file, localUrl }) => {
+              const uploaded = await uploadHomeworkCommentFile(file, commentId);
               const realUrl = createUrlWithParams(
                 HOMEWORK_COMMENT_FILE_GET_URI,
                 {
                   commentId,
-                  fileId: uploadedFile?.id!,
+                  fileId: uploaded?.id!,
                 }
               );
 
               return { localUrl, realUrl };
-            }
+            })
           );
 
-          const results = await Promise.all(uploadPromises);
-
-          results.forEach(({ localUrl, realUrl }) => {
-            content = content.replaceAll(localUrl, realUrl);
+          uploadResults.forEach(({ localUrl, realUrl }) => {
+            html = html.replaceAll(localUrl, realUrl);
           });
 
           await updateComment({
             variables: {
               id: commentId,
-              content,
+              content: html,
             },
           });
 
-          for (const fileId of deletedFileIds) {
-            await deleteHomeworkCommentFile(commentId, fileId);
+          const contentNode = editor.state.doc;
+          const currentFileIds = collectFileIds(contentNode);
+          const stillDeleted = deletedFileIds.filter(
+            (id) => !currentFileIds.includes(id)
+          );
+
+          for (const id of stillDeleted) {
+            await deleteHomeworkCommentFile(commentId, id);
           }
 
           setPendingFiles([]);
+          setDeletedFileIds([]);
           setError("");
-          rteRef.current?.editor?.commands.clearContent();
+          editor.commands.clearContent();
         },
       });
     } catch (error) {
+      console.error(error);
       setError("Произошла ошибка при отправке комментария.");
     }
   };
