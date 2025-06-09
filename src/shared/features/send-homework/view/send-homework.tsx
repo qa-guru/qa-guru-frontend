@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import { HOMEWORK_FILE_GET_URI } from "config";
 
 import { createUrlWithParams } from "shared/utils";
-import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { collectFileIds, type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
 import SendButtons from "shared/components/send-buttons";
+import { findNodeByUrl } from "shared/lib/mui-tiptap/utils/find-node-by-url";
+import { blobUrlToFile } from "shared/lib/mui-tiptap/utils/blob-url-to-file";
 
 import { ISendHomeWork } from "./send-homework.types";
 import { StyledBox, StyledFormHelperText } from "./send-homework.styled";
@@ -48,12 +50,33 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
         },
         onCompleted: async (response) => {
           const homeWorkId = response?.createHomeWorkToCheck?.id;
+          if (!homeWorkId) return;
 
-          if (!homeWorkId) {
-            return;
-          }
+          const editor = rteRef.current?.editor;
+          if (!editor) return;
 
-          const uploadPromises = pendingFiles.map(
+          const contentBlobUrls = Array.from(
+            content.matchAll(/(blob:[^"'\s>]+)/g)
+          ).map((match) => match[1]);
+
+          const recoveredBlobs = contentBlobUrls
+            .filter((url) => !pendingFiles.find((f) => f.localUrl === url))
+            .map((url) => {
+              const node = findNodeByUrl(editor.state.doc, url);
+              const fileName = node?.fileName || "recovered_file";
+              return { file: blobUrlToFile(url, fileName), localUrl: url };
+            });
+
+          const resolvedRecoveredFiles = await Promise.all(
+            recoveredBlobs.map(async ({ file, localUrl }) => ({
+              localUrl,
+              file: await file,
+            }))
+          );
+
+          const allFilesToUpload = [...pendingFiles, ...resolvedRecoveredFiles];
+
+          const uploadPromises = allFilesToUpload.map(
             async ({ file, localUrl }) => {
               const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
 
@@ -79,23 +102,28 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
             },
           });
 
-          for (const id of deletedFileIds) {
+          const contentNode = editor.state.doc;
+          const currentFileIds = collectFileIds(contentNode);
+          const stillDeleted = deletedFileIds.filter(
+            (id) => !currentFileIds.includes(id)
+          );
+
+          for (const id of stillDeleted) {
             await deleteHomeworkFile(homeWorkId, id);
           }
 
           await sendHomeWorkToCheck({
-            variables: {
-              homeWorkId,
-            },
+            variables: { homeWorkId },
           });
 
           setPendingFiles([]);
           setDeletedFileIds([]);
           setError("");
-          rteRef.current?.editor?.commands.clearContent();
+          editor.commands.clearContent();
         },
       });
     } catch (error) {
+      console.error(error);
       setError("Произошла ошибка при отправке д/з.");
     }
   };

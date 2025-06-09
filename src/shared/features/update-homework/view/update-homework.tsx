@@ -5,8 +5,11 @@ import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import SendButtons from "shared/components/send-buttons";
 import { createUrlWithParams } from "shared/utils";
-import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
-import { PendingFile } from "shared/components/text-editor/types";
+import {
+  useHomeworkFileDelete,
+  useHomeworkFileUpload,
+  useRichTextFileManager,
+} from "shared/hooks";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import {
@@ -19,66 +22,67 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
   const { loading, updateHomework, setOpenHomeWorkEdit, answer, homeWorkId } =
     props;
   const rteRef = useRef<RichTextEditorRef>(null);
-
-  const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
-  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
   const [error, setError] = useState("");
   const { uploadHomeworkFile } = useHomeworkFileUpload();
   const { deleteHomeworkFile } = useHomeworkFileDelete();
 
-  const handleUpdateHomework = async () => {
-    if (!rteRef.current?.editor || !homeWorkId) return;
+  const {
+    pendingFiles,
+    setPendingFiles,
+    deleteFile: handleDeleteFile,
+    extractBlobUrls,
+    recoverMissingFiles,
+    uploadAllFiles,
+    removeDeletedFiles,
+    resetState,
+  } = useRichTextFileManager({
+    upload: async (file, homeWorkId) => {
+      const result = await uploadHomeworkFile(file, homeWorkId);
+      if (!result?.id) throw new Error("Upload failed or missing file ID");
+      return { id: result.id };
+    },
+    remove: async (homeWorkId, fileId) => {
+      const result = await deleteHomeworkFile(homeWorkId, fileId);
+      if (result === null) throw new Error("Deletion failed");
+    },
+    fileUrlBuilder: (fileId, homeWorkId) =>
+      createUrlWithParams(HOMEWORK_FILE_GET_URI, { homeWorkId, fileId }),
+    getEntityId: () => homeWorkId!,
+  });
 
-    let content = rteRef.current.editor.getHTML().trim();
+  const handleUpdateHomework = async () => {
+    const editor = rteRef.current?.editor;
+    if (!editor || !homeWorkId) return;
+
+    let content = editor.getHTML().trim();
     if (!content || content === "<p></p>") {
       setError("Введите текст");
       return;
     }
 
     try {
-      const uploadPromises = pendingFiles.map(async ({ file, localUrl }) => {
-        const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
+      const blobUrls = extractBlobUrls(content);
+      const recoveredFiles = await recoverMissingFiles(
+        blobUrls,
+        editor.state.doc
+      );
+      const allFiles = [...pendingFiles, ...recoveredFiles];
 
-        const realUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
-          homeWorkId,
-          fileId: uploadedFile?.id!,
-        });
-
-        return { localUrl, realUrl };
-      });
-
-      const results = await Promise.all(uploadPromises);
-
-      results.forEach(({ localUrl, realUrl }) => {
-        content = content.replaceAll(localUrl, realUrl);
-      });
+      content = await uploadAllFiles(allFiles, content);
 
       await updateHomework({
         variables: { id: homeWorkId, content },
       });
 
-      for (const id of deletedFileIds) {
-        await deleteHomeworkFile(homeWorkId, id);
-      }
+      await removeDeletedFiles(editor.state.doc);
 
       setOpenHomeWorkEdit(false);
-      setPendingFiles([]);
-      setDeletedFileIds([]);
+      resetState();
       setError("");
-      rteRef.current?.editor?.commands.clearContent();
+      editor.commands.clearContent();
     } catch (err) {
       console.error(err);
       setError("Произошла ошибка при редактировании д/з.");
-    }
-  };
-
-  const handleDeleteFile = (fileId: string) => {
-    if (fileId.startsWith("blob:")) {
-      setPendingFiles((prev) =>
-        prev.filter((pending) => pending.localUrl !== fileId)
-      );
-    } else {
-      setDeletedFileIds((prev) => [...prev, fileId]);
     }
   };
 

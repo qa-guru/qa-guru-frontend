@@ -8,8 +8,8 @@ import { useComment } from "shared/hooks/use-comment";
 import {
   useHomeworkCommentFileDelete,
   useHomeworkCommentFileUpload,
+  useRichTextFileManager,
 } from "shared/hooks";
-import { PendingFile } from "shared/components/text-editor/types";
 import { createUrlWithParams } from "shared/utils";
 
 import { IUpdateComment } from "./update-comment.types";
@@ -23,64 +23,71 @@ const UpdateComment: FC<IUpdateComment> = (props) => {
   const { loading, updateComment, commentId, content } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [error, setError] = useState("");
-  const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
-  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
   const { uploadHomeworkCommentFile } = useHomeworkCommentFileUpload();
-  const { setSelectedComment } = useComment();
   const { deleteHomeworkCommentFile } = useHomeworkCommentFileDelete();
+  const { setSelectedComment } = useComment();
+
+  const {
+    pendingFiles,
+    setPendingFiles,
+    deleteFile: handleDeleteFile,
+    extractBlobUrls,
+    recoverMissingFiles,
+    uploadAllFiles,
+    removeDeletedFiles,
+    resetState,
+  } = useRichTextFileManager({
+    upload: async (file, commentId) => {
+      const result = await uploadHomeworkCommentFile(file, commentId);
+      if (!result?.id) throw new Error("Upload failed");
+      return { id: result.id };
+    },
+    remove: async (commentId, fileId) => {
+      const result = await deleteHomeworkCommentFile(commentId, fileId);
+      if (result === null) throw new Error("Delete failed");
+    },
+    fileUrlBuilder: (fileId, commentId) =>
+      createUrlWithParams(HOMEWORK_COMMENT_FILE_GET_URI, {
+        commentId,
+        fileId,
+      }),
+    getEntityId: () => commentId!,
+  });
 
   const handleUpdateComment = async () => {
-    if (!rteRef.current?.editor || !commentId) return;
+    const editor = rteRef.current?.editor;
+    if (!editor || !commentId) return;
 
-    let content = rteRef.current.editor.getHTML().trim();
-    if (!content || content === "<p></p>") {
+    let html = editor.getHTML().trim();
+    if (!html || html === "<p></p>") {
       setError("Введите текст");
       return;
     }
 
     try {
-      const uploadPromises = pendingFiles.map(async ({ file, localUrl }) => {
-        const uploadedFile = await uploadHomeworkCommentFile(file, commentId);
+      const blobUrls = extractBlobUrls(html);
+      const recoveredFiles = await recoverMissingFiles(
+        blobUrls,
+        editor.state.doc
+      );
+      const allFiles = [...pendingFiles, ...recoveredFiles];
 
-        const realUrl = createUrlWithParams(HOMEWORK_COMMENT_FILE_GET_URI, {
-          commentId,
-          fileId: uploadedFile?.id!,
-        });
+      html = await uploadAllFiles(allFiles, html);
 
-        return { localUrl, realUrl };
-      });
-
-      const results = await Promise.all(uploadPromises);
-
-      results.forEach(({ localUrl, realUrl }) => {
-        content = content.replaceAll(localUrl, realUrl);
-      });
       await updateComment({
-        variables: { id: commentId, content },
+        variables: { id: commentId, content: html },
         onCompleted: async () => {
-          for (const fileId of deletedFileIds) {
-            await deleteHomeworkCommentFile(commentId, fileId);
-          }
+          await removeDeletedFiles(editor.state.doc);
+
           setSelectedComment(null);
-          setPendingFiles([]);
-          setDeletedFileIds([]);
+          resetState();
           setError("");
-          rteRef.current?.editor?.commands.clearContent();
+          editor.commands.clearContent();
         },
       });
     } catch (err) {
+      console.error(err);
       setError("Произошла ошибка при редактировании комментария");
-    }
-  };
-
-  const handleDeleteFile = (fileId: string) => {
-    if (fileId.startsWith("blob:")) {
-      setPendingFiles((prev) =>
-        prev.filter((pending) => pending.localUrl !== fileId)
-      );
-    } else {
-      // серверный файл — добавить в список на удаление
-      setDeletedFileIds((prev) => [...prev, fileId]);
     }
   };
 

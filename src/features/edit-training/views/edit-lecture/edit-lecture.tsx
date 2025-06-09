@@ -8,7 +8,12 @@ import { LECTURE_FILE_GET_URI, LECTURE_HOMEWORK_FILE_GET_URI } from "config";
 
 import { InputText } from "shared/components/form";
 import { Editor } from "shared/components/text-editor";
-import { RichTextEditorRef } from "shared/lib/mui-tiptap";
+import {
+  blobUrlToFile,
+  collectFileIds,
+  findNodeByUrl,
+  RichTextEditorRef,
+} from "shared/lib/mui-tiptap";
 import { UserRole } from "api/graphql/generated/graphql";
 import { PendingFile } from "shared/components/text-editor/types";
 import { createUrlWithParams } from "shared/utils";
@@ -66,63 +71,97 @@ const EditLecture: FC<IEditLecture> = ({
 
   const onSubmit: SubmitHandler<LectureInput> = async (data) => {
     const { speakers, ...restData } = data;
+    const emails = speakers?.map((s) => s?.email);
+    if (!lectureId) return;
 
-    const emails = speakers?.map((speaker) => speaker?.email);
+    let content = rteRefContent.current?.editor?.getHTML().trim() || "";
+    let contentHomework =
+      rteRefContentHomeWork.current?.editor?.getHTML().trim() || "";
 
-    let content = rteRefContent.current?.editor?.getHTML().trim();
-    let contentHomework = rteRefContentHomeWork.current?.editor
-      ?.getHTML()
-      .trim();
+    const editorContent = rteRefContent.current?.editor!;
+    const editorHomework = rteRefContentHomeWork.current?.editor!;
 
-    if (!lectureId) {
-      return;
-    }
+    const contentBlobUrls = Array.from(
+      content.matchAll(/(blob:[^"'\s>]+)/g)
+    ).map((m) => m[1]);
+    const homeworkBlobUrls = Array.from(
+      contentHomework.matchAll(/(blob:[^"'\s>]+)/g)
+    ).map((m) => m[1]);
 
-    const lectureFiles = pendingFiles.filter(
-      (file) => file.source === "lecture"
+    const recoveredLecture = await Promise.all(
+      contentBlobUrls
+        .filter((url) => !pendingFiles.find((f) => f.localUrl === url))
+        .map(async (url) => {
+          const node = findNodeByUrl(editorContent.state.doc, url);
+          const fileName = node?.fileName || "recovered_file";
+          const file = await blobUrlToFile(url, fileName);
+          return { file, localUrl: url, source: "lecture" as const };
+        })
     );
-    const homeworkFiles = pendingFiles.filter(
-      (file) => file.source === "lectureHomework"
+
+    const recoveredHomework = await Promise.all(
+      homeworkBlobUrls
+        .filter((url) => !pendingFiles.find((f) => f.localUrl === url))
+        .map(async (url) => {
+          const node = findNodeByUrl(editorHomework.state.doc, url);
+          const fileName = node?.fileName || "recovered_file";
+          const file = await blobUrlToFile(url, fileName);
+          return { file, localUrl: url, source: "lectureHomework" as const };
+        })
     );
 
-    const lectureUploadPromises = lectureFiles.map(
-      async ({ file, localUrl }) => {
-        const uploadedFile = await uploadLectureFile(file, lectureId);
+    const allFiles = [
+      ...pendingFiles,
+      ...recoveredLecture,
+      ...recoveredHomework,
+    ];
+    const lectureFiles = allFiles.filter((f) => f.source === "lecture");
+    const homeworkFiles = allFiles.filter(
+      (f) => f.source === "lectureHomework"
+    );
+
+    const uploadedLectureFiles = await Promise.all(
+      lectureFiles.map(async ({ file, localUrl }) => {
+        const uploaded = await uploadLectureFile(file, lectureId);
         return {
           localUrl,
           realUrl: createUrlWithParams(LECTURE_FILE_GET_URI, {
             lectureId,
-            fileId: uploadedFile?.id!,
+            fileId: uploaded?.id!,
           }),
         };
-      }
+      })
     );
 
-    const lectureHomeworkUploadPromises = homeworkFiles.map(
-      async ({ file, localUrl }) => {
-        const uploadedFile = await uploadLectureHomeworkFile(file, lectureId);
+    const uploadedHomeworkFiles = await Promise.all(
+      homeworkFiles.map(async ({ file, localUrl }) => {
+        const uploaded = await uploadLectureHomeworkFile(file, lectureId);
         return {
           localUrl,
           realUrl: createUrlWithParams(LECTURE_HOMEWORK_FILE_GET_URI, {
             lectureId,
-            fileId: uploadedFile?.id!,
+            fileId: uploaded?.id!,
           }),
         };
-      }
-    );
-
-    const uploadedLectureFiles = await Promise.all(lectureUploadPromises);
-    const uploadedLectureHomeworkFiles = await Promise.all(
-      lectureHomeworkUploadPromises
+      })
     );
 
     uploadedLectureFiles.forEach(({ localUrl, realUrl }) => {
-      content = content?.replaceAll(localUrl, realUrl);
+      content = content.replaceAll(localUrl, realUrl);
     });
 
-    uploadedLectureHomeworkFiles.forEach(({ localUrl, realUrl }) => {
-      contentHomework = contentHomework?.replaceAll(localUrl, realUrl);
+    uploadedHomeworkFiles.forEach(({ localUrl, realUrl }) => {
+      contentHomework = contentHomework.replaceAll(localUrl, realUrl);
     });
+
+    const contentNode = rteRefContent.current?.editor?.state.doc;
+    const contentHomeworkNode =
+      rteRefContentHomeWork.current?.editor?.state.doc;
+
+    const currentFileIds = [
+      ...collectFileIds(contentNode!),
+      ...collectFileIds(contentHomeworkNode!),
+    ];
 
     const submissionData = {
       ...restData,
@@ -133,24 +172,24 @@ const EditLecture: FC<IEditLecture> = ({
     };
 
     await updateLecture({
-      variables: {
-        input: submissionData,
-      },
+      variables: { input: submissionData },
       onCompleted: async () => {
         for (const fileId of deletedLectureFileIds) {
-          await deleteLectureFile(lectureId, fileId);
+          if (!currentFileIds.includes(fileId)) {
+            await deleteLectureFile(lectureId, fileId);
+          }
         }
+
         for (const fileId of deletedHomeworkFileIds) {
-          await deleteLectureHomeworkFile(lectureId, fileId);
+          if (!currentFileIds.includes(fileId)) {
+            await deleteLectureHomeworkFile(lectureId, fileId);
+          }
         }
 
         enqueueSnackbar("Урок обновлен", { variant: "success" });
       },
       onError: () => {
-        enqueueSnackbar(
-          "Не удалось обновить данные. Пожалуйста, попробуйте снова",
-          { variant: "error" }
-        );
+        enqueueSnackbar("Ошибка при обновлении", { variant: "error" });
       },
     });
 
