@@ -212,11 +212,11 @@ const EditLecture: FC<IEditLecture> = ({
     })();
   };
   const handleDeleteLectureFile = (fileId: string) => {
-    setDeletedLectureFileIds((prev) => [...prev, fileId]);
+    setDeletedLectureFileIds((prev) => Array.from(new Set([...prev, fileId])));
   };
 
   const handleDeleteHomeworkFile = (fileId: string) => {
-    setDeletedHomeworkFileIds((prev) => [...prev, fileId]);
+    setDeletedHomeworkFileIds((prev) => Array.from(new Set([...prev, fileId])));
   };
 
   return (

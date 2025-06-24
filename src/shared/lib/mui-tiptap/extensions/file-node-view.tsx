@@ -14,7 +14,15 @@ export default function FileNodeView({ node, deleteNode }: any) {
   const theme = useTheme();
 
   return (
-    <NodeViewWrapper as="div">
+    <NodeViewWrapper
+      as="span"
+      style={{
+        display: "inline-block",
+        verticalAlign: "bottom",
+        maxWidth: "100%",
+        margin: 0,
+      }}
+    >
       <Paper
         elevation={1}
         sx={{
@@ -25,11 +33,13 @@ export default function FileNodeView({ node, deleteNode }: any) {
           borderRadius: 2,
           px: 2,
           py: 1,
-          maxWidth: 340,
+          maxWidth: "100%",
           boxShadow:
             theme.palette.mode === "dark"
               ? "0 1px 3px rgba(0,0,0,0.6)"
               : "0 1px 2px rgba(0,0,0,0.1)",
+          verticalAlign: "bottom",
+          margin: 0,
         }}
       >
         <Tooltip title="Скачать">
@@ -54,6 +64,7 @@ export default function FileNodeView({ node, deleteNode }: any) {
             flex: 1,
             fontWeight: 500,
             fontSize: 14,
+            minWidth: 0,
           }}
           title={fileName}
         >

@@ -82,7 +82,7 @@ export function useRichTextFileManager({
     if (fileId.startsWith("blob:")) {
       setPendingFiles((prev) => prev.filter((f) => f.localUrl !== fileId));
     } else {
-      setDeletedFileIds((prev) => [...prev, fileId]);
+      setDeletedFileIds((prev) => Array.from(new Set([...prev, fileId])));
     }
   };
 
