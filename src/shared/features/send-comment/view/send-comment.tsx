@@ -127,7 +127,7 @@ const SendComment: FC<ISendComment> = (props) => {
         prev.filter((pending) => pending.localUrl !== fileId)
       );
     } else {
-      setDeletedFileIds((prev) => [...prev, fileId]);
+      setDeletedFileIds((prev) => Array.from(new Set([...prev, fileId])));
     }
   };
 
