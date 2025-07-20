@@ -3,7 +3,7 @@ import "dotenv/config";
 
 const config: CodegenConfig = {
   schema: [
-    // `${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI}`, // Серверная схема
+    `${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI}`,
     "src/api/schema.graphql",
   ],
   documents: ["src/**/*.graphql"],

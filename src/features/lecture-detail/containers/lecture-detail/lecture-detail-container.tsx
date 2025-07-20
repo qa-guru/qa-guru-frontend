@@ -36,16 +36,17 @@ const LectureDetailContainer: FC = () => {
       fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     });
 
-  if (
-    loadingLecture ||
-    loadingLectureHomeWork ||
-    loadingTrainingLectures ||
-    !tariffHomework
-  )
+  if (loadingLecture || loadingTrainingLectures) {
     return <AppSpinner />;
+  }
 
-  if (!dataLecture || !lectureId || !dataTrainingLectures)
+  if (tariffHomework && loadingLectureHomeWork) {
+    return <AppSpinner />;
+  }
+
+  if (!dataLecture || !lectureId || !dataTrainingLectures) {
     return <NoDataErrorMessage />;
+  }
 
   return (
     <LectureDetail
