@@ -24,7 +24,7 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
     currentStatus?: Maybe<StudentHomeWorkStatus>
   ) => {
     switch (currentStatus) {
-      case StudentHomeWorkStatus.New:
+      case StudentHomeWorkStatus.Review:
         return [StudentHomeWorkStatus.InReview];
       case StudentHomeWorkStatus.InReview:
         return [

@@ -1,20 +1,26 @@
 import { useState } from "react";
 import { enqueueSnackbar } from "notistack";
 
-import HomeworkFileService from "api/rest/homework-file-service";
+import LectureHomeworkFileService from "api/rest/lecture-homework-file-service";
 import { Maybe } from "api/graphql/generated/graphql";
 import { RESPONSE_STATUS } from "shared/constants";
 
-export const useHomeworkFileDelete = () => {
+export const useLectureHomeworkFileDelete = () => {
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
-  const deleteHomeworkFile = async (homeWorkId: string) => {
+  const deleteLectureHomeworkFile = async (
+    homeWorkId: string,
+    fileId: string
+  ) => {
     setDeleting(true);
     setError(null);
 
     try {
-      const response = await HomeworkFileService.deleteFile(homeWorkId);
+      const response = await LectureHomeworkFileService.deleteFile(
+        homeWorkId,
+        fileId
+      );
 
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setDeleting(false);
@@ -35,5 +41,5 @@ export const useHomeworkFileDelete = () => {
     }
   };
 
-  return { deleteHomeworkFile, deleting, error };
+  return { deleteLectureHomeworkFile, deleting, error };
 };

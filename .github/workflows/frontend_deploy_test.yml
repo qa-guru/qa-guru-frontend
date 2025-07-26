@@ -33,3 +33,12 @@ jobs:
         run:
           #            rm -rf /var/www/app.qa.guru/html/*
           cp -r dist/* /var/www/app-stage.qa.guru/html/
+
+  runtest_jenkins:
+    runs-on: stage-runner
+    needs: yarn-and-node
+    steps:
+      - name: jenkins
+        run: curl -X POST "https://jenkins.autotests.cloud/buildByToken/buildWithParameters?job=qa-guru-app-tests&token=$TOKEN&TAG=UI"
+        env:
+          TOKEN: ${{ secrets.JENKINS_TOKEN }}

@@ -31,6 +31,7 @@ import { TextAlign } from "@tiptap/extension-text-align";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
 import { Youtube } from "@tiptap/extension-youtube";
+import { ReactNodeViewRenderer } from "@tiptap/react";
 import { CodeBlockLowlight } from "@tiptap/extension-code-block-lowlight";
 import { useMemo } from "react";
 import { common, createLowlight } from "lowlight";
@@ -42,6 +43,8 @@ import {
   ResizableImage,
 } from "shared/lib/mui-tiptap/extensions";
 import { HeadingWithAnchor } from "shared/lib/mui-tiptap/hooks";
+import { FileDeletionTracker } from "shared/lib/mui-tiptap/extensions/file-deletion-tracker";
+import FileNodeView from "shared/lib/mui-tiptap/extensions/file-node-view";
 
 import { mentionSuggestionOptions } from "../utils/mention-suggestion-options";
 
@@ -105,7 +108,7 @@ const Iframe = Node.create({
   },
 });
 
-export const FileNode = Node.create<FileNodeOptions>({
+export const FileNode = Node.create({
   name: "file",
 
   group: "inline",
@@ -126,40 +129,49 @@ export const FileNode = Node.create<FileNodeOptions>({
   parseHTML() {
     return [
       {
-        tag: "a[data-file]",
+        tag: "file-node",
+        getAttrs: (el) => {
+          if (!(el instanceof HTMLElement)) return false;
+
+          return {
+            href: el.getAttribute("href"),
+            fileName: el.getAttribute("fileName") || el.textContent,
+          };
+        },
       },
     ];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      "a",
+      "file-node",
       mergeAttributes(HTMLAttributes, {
-        "data-file": "",
-        href: HTMLAttributes.href,
-        download: HTMLAttributes.fileName,
-        target: "_blank",
+        "data-file-node": "true",
       }),
-      HTMLAttributes.fileName || "Download file",
     ];
   },
 
   addCommands() {
     return {
       setFile:
-        (options) =>
+        (attrs) =>
         ({ commands }) => {
           return commands.insertContent({
             type: this.name,
-            attrs: options,
+            attrs,
           });
         },
     };
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(FileNodeView);
   },
 });
 
 export type UseExtensionsOptions = {
   placeholder?: string;
+  onFileDelete?: (fileId: string) => void;
 };
 
 const CustomLinkExtension = Link.extend({
@@ -188,8 +200,23 @@ const CustomParagraph = Paragraph.extend({
   content: "inline*", // Поддержка всех inline-узлов, включая file
 });
 
+const CustomResizableImage = ResizableImage.extend({
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      width: {
+        default: "300px",
+      },
+      height: {
+        default: "auto",
+      },
+    };
+  },
+});
+
 export default function useExtensions({
   placeholder,
+  onFileDelete,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
   return useMemo(() => {
     return [
@@ -238,7 +265,7 @@ export default function useExtensions({
       Highlight.configure({ multicolor: true }),
       HorizontalRule,
 
-      ResizableImage.configure({
+      CustomResizableImage.configure({
         allowBase64: true,
       }),
 
@@ -267,6 +294,9 @@ export default function useExtensions({
       History,
 
       FileNode,
+      FileDeletionTracker.configure({
+        onFileDelete,
+      }),
     ];
-  }, [placeholder]);
+  }, [placeholder, onFileDelete]);
 }

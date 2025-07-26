@@ -4,13 +4,13 @@ mutation sendHomeWorkToCheck($homeWorkId: ID!) {
     lecture {
       id
       subject
+      description
       contentHomeWork
     }
-    answer
-    status
     training {
       techStack
     }
+    answer
     student {
       id
       firstName
@@ -29,7 +29,15 @@ mutation sendHomeWorkToCheck($homeWorkId: ID!) {
         rating
       }
     }
+    filesHomeWork {
+      id
+      creationDate
+      fileName
+      contentType
+      size
+    }
     creationDate
+    updateDate
     startCheckingDate
     endCheckingDate
   }

@@ -3,7 +3,12 @@ import { Box, Stack } from "@mui/material";
 import type { EditorOptions } from "@tiptap/core";
 import { FC, useCallback, useState } from "react";
 
-import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
+import {
+  insertFiles,
+  insertImages,
+  LinkBubbleMenu,
+  RichTextEditor,
+} from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
 import { EditorMenuControls } from "./ui";
@@ -11,9 +16,18 @@ import { fileListToImageFiles } from "../utils/file-list-to-image-files";
 import useExtensions from "../hooks/use-extensions";
 import { ITextEditor } from "../types";
 
-const CommentEditor: FC<ITextEditor> = ({ rteRef, content }) => {
+const CommentEditor: FC<ITextEditor> = ({
+  rteRef,
+  content,
+  setPendingFiles,
+  source,
+  handleDeleteFile,
+}) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
+    onFileDelete: async (fileId: string) => {
+      await handleDeleteFile?.(fileId);
+    },
   });
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
@@ -43,6 +57,62 @@ const CommentEditor: FC<ITextEditor> = ({ rteRef, content }) => {
       return pastedImageFiles.length > 0;
     }, []);
 
+  const handleNewImageFiles = useCallback(
+    (files: File[], insertPosition?: number): void => {
+      if (!rteRef.current?.editor) return;
+
+      const filesWithUrl = files.map((file) => ({
+        file,
+        localUrl: URL.createObjectURL(file),
+        source,
+      }));
+
+      setPendingFiles?.((prev) => [...prev, ...filesWithUrl]);
+
+      const attributesForImageFiles = filesWithUrl.map(
+        ({ file, localUrl }) => ({
+          src: localUrl,
+          alt: file.name,
+        })
+      );
+
+      insertImages({
+        images: attributesForImageFiles,
+        editor: rteRef.current.editor,
+        position: insertPosition,
+      });
+    },
+    [rteRef, setPendingFiles]
+  );
+
+  const handleNewFiles = useCallback(
+    (files: File[], insertPosition?: number): void => {
+      if (!rteRef.current?.editor) {
+        return;
+      }
+
+      const filesWithUrl = files.map((file) => ({
+        file,
+        localUrl: URL.createObjectURL(file),
+        source,
+      }));
+
+      setPendingFiles?.((prev) => [...prev, ...filesWithUrl]);
+
+      const attributesForFiles = filesWithUrl.map(({ localUrl, file }) => ({
+        href: localUrl,
+        fileName: file.name,
+      }));
+
+      insertFiles({
+        files: attributesForFiles,
+        editor: rteRef.current.editor,
+        position: insertPosition,
+      });
+    },
+    [rteRef, setPendingFiles]
+  );
+
   return (
     <>
       <Box
@@ -63,7 +133,12 @@ const CommentEditor: FC<ITextEditor> = ({ rteRef, content }) => {
             handleDrop,
             handlePaste,
           }}
-          renderControls={() => <EditorMenuControls />}
+          renderControls={() => (
+            <EditorMenuControls
+              onUploadImageFiles={handleNewImageFiles}
+              onUploadFiles={handleNewFiles}
+            />
+          )}
           RichTextFieldProps={{
             variant: "outlined",
             MenuBarProps: {

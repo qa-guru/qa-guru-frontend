@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Button, Stack, Box } from "@mui/material";
+import { Button, Stack, Box, FormHelperText } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 export const StyledWrapper = styled(Stack)(({ theme }) => ({
@@ -28,4 +28,10 @@ export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
 
 export const StyledCancelButton = styled(Button)(({ theme }) => ({
   color: theme.palette.app.black,
+}));
+
+export const StyledFormHelperText = styled(FormHelperText)(({ theme }) => ({
+  position: "absolute",
+  color: theme.palette.app.red,
+  margin: "5px 5px 0",
 }));

@@ -21,6 +21,8 @@ const InputPhone = <T extends FieldValues>({
           <Autocomplete
             options={countries}
             freeSolo
+            inputValue={value}
+            onInputChange={(_, newInputValue) => onChange(newInputValue)}
             getOptionLabel={(option) => {
               if (typeof option === "string") {
                 return option;
@@ -41,12 +43,7 @@ const InputPhone = <T extends FieldValues>({
             )}
             renderInput={(params) => (
               <TextField
-                value={value}
-                onChange={onChange}
                 {...params}
-                inputProps={{
-                  ...params.inputProps,
-                }}
                 label={label}
                 placeholder={placeholder}
                 InputLabelProps={InputLabelProps}

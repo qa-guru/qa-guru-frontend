@@ -1,0 +1,819 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+directive @javaType(name: String!) on SCALAR
+
+"Mutation root"
+type Mutation {
+  """
+  user section
+  """
+  createUser(input: UserCreateInput!): UserDto
+  updateUser(input: UserUpdateInput!): UserDto
+  updateRole(id: ID!, roles: [UserRole]): UserDto
+  lockUser(id: ID!): Void
+  unlockUser(id: ID!): Void
+  changePassword(newPassword: String!, oldPassword: String!): Void
+  changePasswordByUserId(userId: ID!, password: String!): Void
+  resetPassword(email: String!): Void
+  setPassword(token: String!, newPassword: String!): Void
+  createSkill(name: String!): SkillDto
+  updateSkill(id: ID!, name: String!): SkillDto
+  deleteSkill(id: ID!): Void
+
+  """
+  lecture section
+  """
+  updateLecture(input: LectureInput!): LectureInfoDto
+  deleteLecture(id: ID!): Void
+  """
+  lecture home work level section
+  """
+  updateLectureHomeWorkLevel(
+    input: LectureHomeWorkLevelInput!
+  ): LectureHomeWorkLevelDto
+  deleteLectureHomeWorkLevel(id: ID!): Void
+  """
+  training purchase section
+  """
+  updateTrainingPurchase(input: TrainingPurchaseInput!): TrainingPurchaseDto
+  updateUserTrainingPurchase(
+    userEmail: String!
+    tariffCodes: [String]!
+  ): [TrainingPurchaseDto]
+  """
+  training tariff
+  """
+  updateTrainingTariff(input: TrainingTariffInput!): TrainingTariffDto
+  deleteTrainingTariff(id: ID!): Void
+  """
+  training section
+  """
+  updateTraining(input: TrainingInput!): TrainingDto
+  deleteTraining(id: ID!): Void
+  """
+  training lecture
+  """
+  updateTrainingLecture(id: ID!, lectureIds: [ID!]): [TrainingLectureDto]
+  """
+  studentHomeWork section
+  """
+  createHomeWorkToCheck(
+    lectureId: ID!
+    trainingId: ID!
+    content: String!
+  ): StudentHomeWorkDto
+  sendHomeWorkToCheck(homeWorkId: ID): StudentHomeWorkDto
+  updateHomeWork(id: ID!, content: String!): StudentHomeWorkDto
+  deleteHomeWork(id: ID!): Void
+  takeForReview(homeWorkId: ID!): StudentHomeWorkDto
+  approved(homeWorkId: ID!): StudentHomeWorkDto
+  notApproved(homeWorkId: ID!): StudentHomeWorkDto
+  resetState(homeWorkId: ID!): StudentHomeWorkDto
+  """
+  student TestAttempt section
+  """
+  startTest(lectureId: ID!, trainingId: ID!): TestAttemptShortDto
+  sendTestAnswer(
+    questionId: ID!
+    attemptId: ID!
+    testAnswerIds: [ID]!
+  ): TestAttemptDto
+  sendTestAnswerToReview(attemptId: ID!): StudentHomeWorkDto
+  """
+  commentHomeWork section
+  """
+  sendComment(homeWorkId: ID!, content: String!): CommentHomeWorkDto
+  answerComment(parentID: ID!, content: String!): CommentHomeWorkDto
+  updateComment(id: ID!, content: String!): CommentHomeWorkDto
+  deleteComment(id: ID!): Void
+  likeComment(id: ID!): CommentHomeWorkDto
+  """
+  test lecture section
+  """
+  updateTestQuestion(input: TestQuestionInput!): TestQuestionDto
+  deleteTestQuestion(id: ID!): Void
+  updateTestGroup(input: TestGroupInput!): TestGroupDto
+  deleteTestGroup(id: ID!): Void
+  updateTestAnswer(input: TestAnswerInput!): TestAnswerDto
+  deleteTestAnswer(id: ID!): Void
+}
+
+"Query root"
+type Query {
+  """
+  user section
+  """
+  user: UserDto
+  userById(id: ID): UserDto
+  userRoles: [UserRoleDto]
+  users(
+    offset: Int!
+    limit: Int!
+    sort: UserSort
+    filter: UsersFilter
+  ): UsersDto
+  usersRating(offset: Int!, limit: Int!, sort: UserSort): UsersRatingDto
+  mentors(offset: Int!, limit: Int!, sort: UserSort): UsersDto
+  checkResetPasswordToken(token: String!): Void
+  skills(
+    offset: Int!
+    limit: Int!
+    sort: SkillSort
+    filter: SkillFilter
+  ): SkillsDto
+  """
+  lecture section
+  """
+  lecture(id: ID): LectureInfoShortDto
+  lectureHomeWork(lectureId: ID): String
+  lectureTest(lectureId: ID): TestGroupNameDto
+  lectures(offset: Int!, limit: Int!, sort: LectureSort): LecturesDto
+  """
+  lecture home work level section
+  """
+  lectureHomeWorkLevel(id: ID!): LectureHomeWorkLevelDto
+  lectureHomeWorkLevels: [LectureHomeWorkLevelDto]
+  """
+  purchase section
+  """
+  trainingPurchases: [TrainingPurchaseDto]
+  trainingPurchasesByUserId(userId: ID!): [TrainingPurchaseDto]
+  """
+  training tariff
+  """
+  trainingTariffs(
+    offset: Int!
+    limit: Int!
+    sort: TrainingTariffSort
+  ): TrainingTariffsDto
+  """
+  training section
+  """
+  training(id: ID!): TrainingDto
+  trainingsByMentor(offset: Int!, limit: Int!, sort: TrainingSort): TrainingsDto
+  trainings(offset: Int!, limit: Int!, sort: TrainingSort): TrainingsDto
+  """
+  training lecture
+  """
+  trainingLectures(id: ID!): [TrainingLectureDto]
+  """
+  studentHomeWork section
+  """
+  homeWork(id: ID!): StudentHomeWorkDto
+  homeWorkByStudentAndLectureAndTraining(
+    studentId: ID!
+    lectureId: ID!
+    trainingId: ID!
+  ): StudentHomeWorkDto
+  homeWorkByLectureAndTraining(
+    lectureId: ID!
+    trainingId: ID!
+  ): StudentHomeWorkDto
+  homeWorks(
+    offset: Int!
+    limit: Int!
+    sort: StudentHomeWorkSort
+    filter: StudentHomeWorkFilter
+  ): StudentHomeWorksDto
+  homeWorksByLectureId(
+    offset: Int!
+    limit: Int!
+    sort: StudentHomeWorkSort
+    filter: HomeWorksFilter
+    lectureId: ID!
+  ): StudentHomeWorksDto
+  homeWorksByStatus(
+    offset: Int!
+    limit: Int!
+    sort: StudentHomeWorkSort
+    status: StudentHomeWorkStatus!
+  ): StudentHomeWorksDto
+  """
+  student TestAttempt section
+  """
+  testAttempts(lectureId: ID!, trainingId: ID!): [TestAttemptShortDto]
+  testAttempt(id: ID!): TestAttemptDto
+  testAttemptQuestions(attemptId: ID!): [TestAttemptQuestionResultDto]
+  """
+  commentHomeWork section
+  """
+  commentHomeWorkById(id: ID!): CommentHomeWorksDto
+  commentsHomeWorkByHomeWork(
+    offset: Int!
+    limit: Int!
+    sort: CommentHomeWorkSort
+    homeWorkId: ID!
+  ): CommentHomeWorksDto
+  """
+  statistics section
+  """
+  trainingsHomeWorksStatistic(id: ID): [TrainingHomeWorksStatisticDto]
+  homeWorksStatistic(id: ID): [HomeWorksStatisticDto]
+  """
+  rating
+  """
+  rating: RatingDto
+  ratingByUser(id: ID): RatingDto
+  """
+  test lecture section
+  """
+  testTestGroups: [TestGroupShortDto]
+  testTestGroupsById(id: ID): TestGroupDto
+  testQuestions: [TestQuestionDto]
+  testAnswerByQuestion(questionId: ID): [TestAnswerDto]
+}
+
+type TrainingPurchaseDto {
+  id: ID
+  user: UserDto!
+  trainingTariff: TrainingTariffDto!
+}
+
+input TrainingPurchaseInput {
+  id: ID
+  userEmail: String
+  trainingTariffCode: String
+}
+
+input TrainingTariffInput {
+  id: ID
+  name: String!
+  code: String!
+  price: Float
+  homeWork: Boolean
+  trainingName: String!
+  description: String
+}
+
+type TrainingTariffDto {
+  id: ID
+  name: String
+  code: String
+  price: Float
+  homeWork: Boolean
+  training: TrainingDto
+  description: String
+}
+
+type TrainingDto {
+  id: ID!
+  name: String!
+  description: String
+  content: String
+  techStack: TechStack!
+  picture: String
+  mentors: [UserDto]
+  tariffs: [TrainingTariffDto]
+}
+
+input TrainingInput {
+  id: ID
+  name: String
+  description: String
+  content: String
+  techStack: TechStack!
+  mentors: [String]
+}
+
+input TrainingLectureInput {
+  lecture: ID!
+  lastLecture: ID
+  locking: Boolean
+}
+
+type TrainingLectureDto {
+  id: ID
+  number: Int
+  lecture: LectureDto
+  lastLecture: LectureDto
+  locking: Boolean
+}
+
+input LectureInput {
+  id: ID
+  homeWorkLevelCode: String
+  subject: String
+  description: [String]
+  testGroupId: ID
+  content: String
+  contentHomeWork: String
+  speakers: [String]
+}
+
+type LectureInfoDto {
+  id: ID
+  homeWorkLevel: LectureHomeWorkLevelDto
+  subject: String
+  description: [String]
+  content: String
+  contentHomeWork: String
+  testGroup: TestGroupDto
+  files: [LectureFilesDto]
+  speakers: [UserDto]
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
+}
+
+type LectureInfoShortDto {
+  id: ID
+  homeWorkLevel: LectureHomeWorkLevelDto
+  subject: String
+  description: [String]
+  content: String
+  testGroup: TestGroupDto
+  files: [LectureFilesDto]
+  speakers: [UserDto]
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
+}
+
+type LectureDto {
+  id: ID
+  homeWorkLevel: LectureHomeWorkLevelDto
+  subject: String
+  testGroup: TestGroupNameDto
+  description: [String]
+  speakers: [UserDto]
+  creationDate: LocalDateTime
+  modificationDate: LocalDateTime
+}
+
+type LectureHomeWorkLevelDto {
+  id: ID
+  code: String
+  description: String
+  estimate: Int
+}
+
+input LectureHomeWorkLevelInput {
+  id: ID
+  code: String
+  description: String
+  estimate: Int
+}
+
+type LecturesDto {
+  items: [LectureDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type StudentHomeWorkDto {
+  id: ID
+  lecture: LectureInfoDto
+  training: TrainingDto
+  status: StudentHomeWorkStatus
+  answer: String
+  testAttempts: [TestAttemptDto]
+  student: UserDto
+  mentor: UserDto
+  filesHomeWork: [StudentHomeWorkFilesDto]
+  creationDate: LocalDateTime
+  updateDate: LocalDateTime
+  startCheckingDate: LocalDateTime
+  endCheckingDate: LocalDateTime
+}
+
+type StudentHomeWorkFilesDto {
+  id: ID
+  creationDate: LocalDateTime
+  fileName: String
+  contentType: String
+  size: Long
+}
+
+type LectureFilesDto {
+  id: ID
+  homeWork: Boolean
+  creationDate: LocalDateTime
+  fileName: String
+  contentType: String
+  size: Long
+}
+
+type StudentHomeWorksDto {
+  items: [StudentHomeWorkDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type CommentHomeWorksDto {
+  items: [CommentHomeWorkDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type CommentHomeWorkDto {
+  id: ID
+  homeWork: StudentHomeWorkDto
+  creator: UserDto
+  content: String
+  filesComment: [CommentHomeWorkFilesDto]
+  likes: Long
+  userLike: Boolean
+  children: [CommentHomeWorkDto]
+  creationDate: LocalDateTime
+}
+
+type CommentHomeWorkFilesDto {
+  id: ID
+  creationDate: LocalDateTime
+  fileName: String
+  contentType: String
+  size: Long
+}
+
+type TrainingsDto {
+  items: [TrainingDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type TrainingTariffsDto {
+  items: [TrainingTariffDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type ContentFileDto {
+  id: ID
+  size: Long
+  type: String
+  name: String
+  fileLocation: String
+}
+
+input UserCreateInput {
+  id: ID
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+  middleName: String
+  phoneNumber: String
+}
+
+input UserUpdateInput {
+  id: ID
+  email: String!
+  firstName: String!
+  lastName: String!
+  middleName: String
+  phoneNumber: String
+  vkId: String
+  git: String
+  telegram: String
+  stackOverflow: String
+  linkedin: String
+  website: String
+  skills: [ID]
+}
+
+type UserDto {
+  id: ID
+  email: String
+  firstName: String
+  lastName: String
+  middleName: String
+  phoneNumber: String
+  rating: RatingUserDto
+  vkId: String
+  git: String
+  telegram: String
+  stackOverflow: String
+  linkedin: String
+  website: String
+  avatar: String
+  skills: [SkillDto]
+  roles: [UserRole]
+  locked: Boolean
+  creationDate: LocalDateTime
+  confirmationDate: LocalDateTime
+  updateDate: LocalDateTime
+}
+
+type SkillDto {
+  id: ID
+  name: String
+}
+
+type UserRatingDto {
+  id: ID
+  firstName: String
+  lastName: String
+  middleName: String
+  avatar: String
+  creationDate: LocalDateTime
+  rating: RatingUserDto
+}
+
+type UserRoleDto {
+  name: String
+  description: String
+}
+
+type UsersDto {
+  items: [UserDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type SkillsDto {
+  items: [SkillDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+input UsersFilter {
+  email: String
+  name: String
+  phoneNumber: String
+  role: UserRole
+}
+
+input SkillFilter {
+  name: String
+}
+
+type UsersRatingDto {
+  items: [UserRatingDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+type TrainingHomeWorksStatisticDto {
+  training: TrainingDto
+  homeworks: [HomeWorksStatisticDto]
+}
+
+type HomeWorksStatisticDto {
+  status: StudentHomeWorkStatus
+  count: Long
+}
+
+type RatingUserDto {
+  rating: Long
+}
+
+type RatingDto {
+  rating: Long
+  products: [RatingProductsDto]
+}
+
+type RatingProductsDto {
+  training: TrainingDto
+  roles: [RatingProductsByUserRoleDto]
+}
+
+type RatingProductsByUserRoleDto {
+  role: UserRoleDto
+  rating: Long
+  types: [RatingProductsByRatingTypeDto]
+}
+
+type RatingProductsByRatingTypeDto {
+  type: RatingTypeDto
+  rating: Long
+}
+
+type TestGroupNameDto {
+  id: ID
+  testName: String
+}
+
+type TestGroupDto {
+  id: ID
+  testName: String
+  successThreshold: Int
+  testQuestions: [TestQuestionDto]
+}
+
+type TestGroupShortDto {
+  id: ID
+  testName: String
+  successThreshold: Int
+}
+
+input TestGroupInput {
+  id: ID
+  testName: String
+  successThreshold: Int
+  testQuestions: [TestQuestionInput]
+}
+
+type TestQuestionDto {
+  id: ID
+  text: String
+  testAnswers: [TestAnswerShortDto]
+}
+input TestQuestionInput {
+  id: ID
+  text: String
+}
+
+type TestAnswerDto {
+  id: ID
+  text: String
+  correct: Boolean
+}
+
+type TestAnswerShortDto {
+  id: ID
+  text: String
+}
+
+input TestAnswerInput {
+  id: ID
+  text: String
+  correct: Boolean
+  testQuestion: TestQuestionInput
+}
+
+type TestAttemptShortDto {
+  id: ID
+  startTime: LocalDateTime
+  endTime: LocalDateTime
+  successfulCount: Int
+  errorsCount: Int
+  result: Boolean
+}
+
+type TestAttemptDto {
+  id: ID
+  startTime: LocalDateTime
+  endTime: LocalDateTime
+  successfulCount: Int
+  errorsCount: Int
+  result: Boolean
+  testAttemptQuestionResults: [TestAttemptQuestionResultDto]
+}
+
+type TestAttemptQuestionResultDto {
+  testQuestion: TestQuestionDto
+  result: Boolean
+  testAnswerResults: [TestAnswerResultsDto]
+}
+
+type TestAnswerResultsDto {
+  testAnswer: TestAnswerShortDto
+  result: Boolean
+  answer: Boolean
+}
+
+type TestQuestionInfoDto {
+  testQuestion: TestQuestionDto
+  result: Boolean
+}
+
+type RatingTypeDto {
+  name: String
+  description: String
+}
+
+input UserSort {
+  field: UserSortField
+  order: Order
+}
+
+input SkillSort {
+  field: SkillSortField
+  order: Order
+}
+
+enum TechStack {
+  JAVA
+  PYTHON
+}
+
+enum UserRole {
+  ADMIN
+  STUDENT
+  MENTOR
+  LECTOR
+}
+
+enum Order {
+  ASC
+  DESC
+}
+
+enum UserSortField {
+  LAST_NAME
+  PHONE
+  EMAIL
+  RATING
+}
+
+enum SkillSortField {
+  NAME
+}
+
+enum StudentHomeWorkStatus {
+  NEW
+  REVIEW
+  IN_REVIEW
+  APPROVED
+  NOT_APPROVED
+}
+
+input LectureSort {
+  field: LectureSortField
+  order: Order
+}
+
+input StudentHomeWorkFilter {
+  status: StudentHomeWorkStatus
+  trainingId: ID
+  lectureId: ID
+  mentorId: ID
+  studentId: ID
+  creationDateFrom: LocalDateTime
+  creationDateTo: LocalDateTime
+}
+
+input HomeWorksFilter {
+  status: StudentHomeWorkStatus
+}
+
+input StudentHomeWorkSort {
+  field: StudentHomeWorkSortField
+  order: Order
+}
+
+input CommentHomeWorkSort {
+  field: CommentHomeWorkSortField
+  order: Order
+}
+
+input TrainingSort {
+  field: TrainingSortField
+  order: Order
+}
+
+input TrainingTariffSort {
+  field: TrainingTariffField
+  order: Order
+}
+
+enum LectureSortField {
+  SUBJECT
+  CREATION_DATE
+}
+
+enum StudentHomeWorkSortField {
+  LECTOR
+  STUDENT
+  STATE
+  CREATION_DATE
+  START_CHECKING_DATE
+  END_CHECKING_DATE
+}
+
+enum CommentHomeWorkSortField {
+  CREATOR
+  CREATION_DATE
+}
+
+enum TrainingSortField {
+  NAME
+  CREATION_DATE
+}
+
+enum TrainingTariffField {
+  NAME
+  CODE
+  CREATION_DATE
+}
+
+scalar BigDecimal @javaType(name: "java.math.BigDecimal")
+
+scalar BigInteger @javaType(name: "java.math.BigInteger")
+
+scalar Date @javaType(name: "java.time.LocalDate")
+
+scalar DateTime @javaType(name: "java.time.OffsetDateTime")
+
+scalar LocalDateTime @javaType(name: "java.time.LocalDateTime")
+
+scalar LocalTime @javaType(name: "java.time.LocalTime")
+
+scalar Long @javaType(name: "java.lang.Long")
+
+scalar Time @javaType(name: "java.time.OffsetTime")
+
+scalar Timestamp @javaType(name: "java.util.Date")
+
+scalar Url @javaType(name: "java.net.URL")
+
+scalar Void @javaType(name: "java.lang.Void")

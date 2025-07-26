@@ -8,3 +8,6 @@ export { getModShortcutKey, isMac, isTouchDevice } from "./platform";
 export { default as slugify } from "./slugify";
 export { default as truncateMiddle } from "./truncateMiddle";
 export * from "./files";
+export { default as collectFileIds } from "./collect-file-ids";
+export { blobUrlToFile } from "./blob-url-to-file";
+export { findNodeByUrl } from "./find-node-by-url";

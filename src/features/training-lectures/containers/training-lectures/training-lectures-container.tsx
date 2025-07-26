@@ -17,11 +17,11 @@ const TrainingLecturesContainer: FC = () => {
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
-      fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+      fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     });
   const { data: dataTraining, loading: loadingTraining } = useTrainingQuery({
     variables: { id: trainingId! },
-    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+    fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
   });
 
   if (loadingTrainingLectures || loadingTraining) return <AppSpinner />;

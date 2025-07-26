@@ -11,7 +11,7 @@ export interface IStatusSelect {
 
 export const states = [
   {
-    value: "NEW",
+    value: "REVIEW",
     Icon: Clock,
     text: "Новые",
   },

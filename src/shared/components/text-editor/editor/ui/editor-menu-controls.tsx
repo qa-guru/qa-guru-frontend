@@ -38,8 +38,8 @@ import { Maybe } from "api/graphql/generated/graphql";
 
 interface EditorMenuControlsProps {
   homeWorkId?: Maybe<string>;
-  onUploadImageFiles: (files: File[]) => Promise<any>;
-  onUploadFiles: (files: File[]) => Promise<any>;
+  onUploadImageFiles: (files: File[]) => any;
+  onUploadFiles: (files: File[]) => any;
 }
 
 export default function EditorMenuControls({

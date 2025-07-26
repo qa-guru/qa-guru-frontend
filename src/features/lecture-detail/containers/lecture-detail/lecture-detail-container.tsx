@@ -20,32 +20,33 @@ const LectureDetailContainer: FC = () => {
 
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
     variables: { id: lectureId! },
-    fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+    fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
   });
 
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
-      fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+      fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     });
 
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
       variables: { lectureId: lectureId! },
       skip: !tariffHomework,
-      fetchPolicy: FETCH_POLICY.CACHE_FIRST,
+      fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     });
 
-  if (
-    loadingLecture ||
-    loadingLectureHomeWork ||
-    loadingTrainingLectures ||
-    !tariffHomework
-  )
+  if (loadingLecture || loadingTrainingLectures) {
     return <AppSpinner />;
+  }
 
-  if (!dataLecture || !lectureId || !dataTrainingLectures)
+  if (tariffHomework && loadingLectureHomeWork) {
+    return <AppSpinner />;
+  }
+
+  if (!dataLecture || !lectureId || !dataTrainingLectures) {
     return <NoDataErrorMessage />;
+  }
 
   return (
     <LectureDetail

@@ -1,6 +1,5 @@
 import axios, { type AxiosResponse } from "axios";
-
-import { AVATAR_UPLOAD_URI, AVATAR_DELETE_URI } from "../../config";
+import { AVATAR_DELETE_URI, AVATAR_UPLOAD_URI } from "config";
 
 export interface AvatarUploadResponse {
   file: string | File;

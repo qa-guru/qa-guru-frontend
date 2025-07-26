@@ -6,14 +6,19 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default ({ mode }: any) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
+  const API_URL = process.env.VITE_APP_ENDPOINT;
+
   const proxyConfig = {
-    "^/graphql": process.env.VITE_APP_ENDPOINT,
-    "^/login": process.env.VITE_APP_ENDPOINT,
-    "^/logout": process.env.VITE_APP_ENDPOINT,
-    "^/refreshtoken": process.env.VITE_APP_ENDPOINT,
-    "^/upload/avatar": process.env.VITE_APP_ENDPOINT,
-    "^/upload/training/.*": process.env.VITE_APP_ENDPOINT,
-    "^/homework/.*": process.env.VITE_APP_ENDPOINT,
+    "^/graphql": API_URL,
+    "^/login": API_URL,
+    "^/logout": API_URL,
+    "^/refreshtoken": API_URL,
+    "^/upload/avatar": API_URL,
+    "^/upload/training/.*": API_URL,
+    "^/lecture/.*": API_URL,
+    "^/student/homework/.*": API_URL,
+    "^/lecture/.*/homework/.*": API_URL,
+    "^/homework/comment/.*": API_URL,
   };
 
   return defineConfig({

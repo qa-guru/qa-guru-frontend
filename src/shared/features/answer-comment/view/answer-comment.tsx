@@ -50,7 +50,7 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
       <StyledCommentBox>
         <form>
           <StyledBox>
-            <CommentEditor rteRef={rteRef} />
+            <CommentEditor rteRef={rteRef} source="comment" />
             {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
           </StyledBox>
           <SendButtons

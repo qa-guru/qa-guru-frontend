@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
 import { LoadingButton } from "@mui/lab";
-import { Stack, Box, FormHelperText } from "@mui/material";
+import { Stack, Box, FormHelperText, IconButton } from "@mui/material";
 
 export const StyledBox = styled(Box)({
   width: "100%",
@@ -20,4 +20,8 @@ export const StyledFormHelperText = styled(FormHelperText)(({ theme }) => ({
 export const StyledStack = styled(Stack)({
   flexDirection: "column",
   alignItems: "flex-end",
+});
+
+export const StyledIconButton = styled(IconButton)({
+  padding: "10px 4px",
 });

@@ -9,6 +9,7 @@ mutation updateHomework($id: ID!, $content: String!) {
     answer
     status
     training {
+      id
       techStack
     }
     student {
@@ -28,6 +29,13 @@ mutation updateHomework($id: ID!, $content: String!) {
       rating {
         rating
       }
+    }
+    filesHomeWork {
+      id
+      creationDate
+      fileName
+      contentType
+      size
     }
     creationDate
     startCheckingDate

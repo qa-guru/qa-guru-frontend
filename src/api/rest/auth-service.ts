@@ -1,7 +1,6 @@
 import axios, { type AxiosResponse } from "axios";
+import { LOGIN_URI, LOGOUT_URI, REFRESH_TOKEN_URI } from "config";
 import qs from "qs";
-
-import { LOGIN_URI, LOGOUT_URI, REFRESH_TOKEN_URI } from "../../config";
 
 export interface LoginResponse {
   username: string;

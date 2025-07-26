@@ -2,7 +2,10 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 import "dotenv/config";
 
 const config: CodegenConfig = {
-  schema: `${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI}`,
+  schema: [
+    `${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI}`,
+    "src/api/schema.graphql",
+  ],
   documents: ["src/**/*.graphql"],
   generates: {
     "src/api/graphql/generated/graphql.tsx": {
