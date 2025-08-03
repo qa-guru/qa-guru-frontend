@@ -146,7 +146,7 @@ const EditProfile: FC<IEditProfile> = ({ user, updateUser }) => {
               <StyledInputStack>
                 <InputText
                   control={control}
-                  name="linkedIn"
+                  name="linkedin"
                   placeholder="Cсылка на linkedIn"
                   label="LinkedIn"
                   errors={errors}
