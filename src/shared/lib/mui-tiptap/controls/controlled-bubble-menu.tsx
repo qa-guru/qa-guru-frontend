@@ -1,12 +1,10 @@
 import { ReactNode, useCallback } from "react";
 import {
-  Fade,
   Paper,
   type PaperProps,
   Popover,
   type PopoverProps,
   type PopoverVirtualElement,
-  useTheme,
 } from "@mui/material";
 import { type Editor, isNodeSelection, posToDOMRect } from "@tiptap/core";
 import { makeStyles } from "tss-react/mui";
@@ -77,7 +75,6 @@ export default function ControlledBubbleMenu({
   const { classes, cx } = useStyles(undefined, {
     props: { classes: overrideClasses },
   });
-  const theme = useTheme();
 
   const defaultAnchorEl = useCallback((): VirtualElement => {
     const { ranges } = editor.state.selection;
@@ -119,24 +116,18 @@ export default function ControlledBubbleMenu({
       }}
       transformOrigin={{ vertical: "top", horizontal: "left" }}
       className={cx(controlledBubbleMenuClasses.root, classes.root, className)}
-      transitionDuration={{
-        enter: theme.transitions.duration.enteringScreen,
-        exit: 0,
-      }}
     >
-      <Fade in={open}>
-        <Paper
-          elevation={7}
-          {...PaperProps}
-          className={cx(
-            controlledBubbleMenuClasses.paper,
-            classes.paper,
-            PaperProps?.className
-          )}
-        >
-          {children}
-        </Paper>
-      </Fade>
+      <Paper
+        elevation={7}
+        {...PaperProps}
+        className={cx(
+          controlledBubbleMenuClasses.paper,
+          classes.paper,
+          PaperProps?.className
+        )}
+      >
+        {children}
+      </Paper>
     </Popover>
   );
 }
