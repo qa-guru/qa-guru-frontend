@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes } from "@mui/material";
+import { createTheme, responsiveFontSizes, ThemeOptions } from "@mui/material";
 import merge from "lodash/merge";
 
 import components from "./components";
@@ -16,7 +16,7 @@ export const initialSettings: themeSettingsTypes = {
   responsiveFontSizes: true,
 };
 
-const baseOptions = {
+const baseOptions: ThemeOptions = {
   typography: {
     fontFamily: "'Montserrat', sans-serif",
     h1: {
@@ -56,20 +56,32 @@ const baseOptions = {
 };
 
 export const createCustomTheme = (settings: themeSettingsTypes) => {
-  let themeOptions: object = themesOptions[settings.theme];
+  // Валидируем настройки
+  if (!settings || typeof settings.theme !== "string") {
+    settings = { ...initialSettings };
+  }
+
+  let themeOptions: ThemeOptions = themesOptions[
+    settings.theme
+  ] as unknown as ThemeOptions;
 
   if (!themeOptions) {
-    themeOptions = themesOptions[THEMES.LIGHT];
+    themeOptions = themesOptions[THEMES.LIGHT] as unknown as ThemeOptions;
   }
 
-  const mergedThemeOptions = merge({}, baseOptions, themeOptions);
+  try {
+    const mergedThemeOptions = merge({}, baseOptions, themeOptions);
 
-  let theme = createTheme(mergedThemeOptions);
+    let theme = createTheme(mergedThemeOptions);
 
-  theme.components = components(theme);
-  if (settings.responsiveFontSizes) {
-    theme = responsiveFontSizes(theme);
+    theme.components = components(theme);
+    if (settings.responsiveFontSizes !== false) {
+      theme = responsiveFontSizes(theme);
+    }
+
+    return theme;
+  } catch (error) {
+    // Возвращаем базовую светлую тему в случае ошибки
+    return createTheme(themesOptions[THEMES.LIGHT] as unknown as ThemeOptions);
   }
-
-  return theme;
 };
