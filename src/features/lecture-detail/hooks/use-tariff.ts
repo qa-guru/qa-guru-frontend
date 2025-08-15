@@ -10,12 +10,14 @@ const useTariff = ({ trainingId }: ITariffHook) => {
   const { data } = useTrainingPurchasesQuery();
 
   const tariffHomework = useMemo(() => {
-    return (
-      data?.trainingPurchases?.some(
-        (item) =>
-          item?.trainingTariff.training?.id === trainingId &&
-          item?.trainingTariff.homeWork
-      ) ?? false
+    if (!trainingId || !data?.trainingPurchases) {
+      return false;
+    }
+
+    return data.trainingPurchases.some(
+      (item) =>
+        item?.trainingTariff.training?.id === trainingId &&
+        item?.trainingTariff.homeWork
     );
   }, [data, trainingId]);
 

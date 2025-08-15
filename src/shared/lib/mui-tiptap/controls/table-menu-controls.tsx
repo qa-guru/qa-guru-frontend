@@ -1,5 +1,6 @@
 import FormatColorFill from "@mui/icons-material/FormatColorFill";
 import GridOff from "@mui/icons-material/GridOff";
+import Close from "@mui/icons-material/Close";
 
 import MenuDivider from "./menu-divider";
 import { useRichTextEditorContext } from "../context";
@@ -18,6 +19,7 @@ import LayoutColumnFill from "../icons/layout-column-fill";
 
 export type TableMenuControlsProps = {
   className?: string;
+  onClose?: () => void;
 
   labels?: {
     insertColumnBefore?: string;
@@ -38,6 +40,7 @@ export type TableMenuControlsProps = {
 export default function TableMenuControls({
   className,
   labels,
+  onClose,
 }: TableMenuControlsProps) {
   const editor = useRichTextEditorContext();
   return (
@@ -133,6 +136,21 @@ export default function TableMenuControls({
         IconComponent={GridOff}
         onClick={() => editor?.chain().focus().deleteTable().run()}
         disabled={!editor?.can().deleteTable()}
+      />
+
+      <MenuDivider />
+
+      <MenuButton
+        tooltipLabel="Close"
+        IconComponent={Close}
+        onClick={() => {
+          if (onClose) {
+            onClose();
+          } else {
+            editor?.commands.blur();
+          }
+        }}
+        disabled={!editor?.isEditable}
       />
     </MenuControlsContainer>
   );

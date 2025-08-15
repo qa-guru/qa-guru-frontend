@@ -8,10 +8,7 @@ export const withContext = (component: () => ReactNode) => {
   return function WithContextComponent() {
     const { settings } = useSettings();
 
-    const theme = createCustomTheme({
-      theme: settings.theme,
-      responsiveFontSizes: settings.responsiveFontSizes,
-    });
+    const theme = createCustomTheme(settings);
 
     return <ThemeProvider theme={theme}>{component()}</ThemeProvider>;
   };

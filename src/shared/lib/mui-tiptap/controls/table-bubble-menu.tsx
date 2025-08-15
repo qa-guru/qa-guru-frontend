@@ -1,5 +1,5 @@
 import { findParentNodeClosestToPos, posToDOMRect } from "@tiptap/core";
-import { useMemo } from "react";
+import { useMemo, useCallback, useEffect, useState } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
 import { type PopoverVirtualElement } from "@mui/material";
@@ -13,14 +13,8 @@ import { useRichTextEditorContext } from "../context";
 import TableMenuControls, {
   type TableMenuControlsProps,
 } from "./table-menu-controls";
-import useDebouncedFocus from "../hooks/use-debounced-focus";
-import DebounceRender, {
-  type DebounceRenderProps,
-} from "../utils/debounce-render";
 
 export type TableBubbleMenuProps = {
-  disableDebounce?: boolean;
-  DebounceProps?: Except<DebounceRenderProps, "children">;
   labels?: TableMenuControlsProps["labels"];
 } & Partial<Except<ControlledBubbleMenuProps, "open" | "editor" | "children">>;
 
@@ -34,15 +28,12 @@ const useStyles = makeStyles({
 }));
 
 export default function TableBubbleMenu({
-  disableDebounce = false,
-  DebounceProps,
   labels,
   ...controlledBubbleMenuProps
 }: TableBubbleMenuProps) {
   const editor = useRichTextEditorContext();
   const { classes } = useStyles();
-
-  const isEditorFocusedDebounced = useDebouncedFocus({ editor });
+  const [isManuallyHidden, setIsManuallyHidden] = useState(false);
 
   const bubbleMenuAnchorEl = useMemo(
     () =>
@@ -61,7 +52,7 @@ export default function TableBubbleMenu({
                   nearestTableParent.pos
                 ) as Maybe<HTMLElement | undefined>;
 
-                const tableDomNode = wrapperDomNode?.querySelector("admin");
+                const tableDomNode = wrapperDomNode?.querySelector("table");
                 if (tableDomNode) {
                   return tableDomNode.getBoundingClientRect();
                 }
@@ -77,18 +68,52 @@ export default function TableBubbleMenu({
     [editor]
   );
 
+  const handleClose = useCallback(() => {
+    setIsManuallyHidden(true);
+    if (editor) {
+      editor.commands.blur();
+    }
+  }, [editor]);
+
+  useEffect(() => {
+    if (!editor?.isActive("table")) {
+      setIsManuallyHidden(false);
+    }
+  }, [editor?.isActive("table")]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && editor?.isActive("table")) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [editor, handleClose]);
+
   if (!editor?.isEditable) {
     return null;
   }
 
   const controls = (
-    <TableMenuControls className={classes.controls} labels={labels} />
+    <TableMenuControls
+      className={classes.controls}
+      labels={labels}
+      onClose={handleClose}
+    />
   );
+
+  // Логика показа меню - активная таблица и не скрыто вручную
+  const shouldShowMenu = editor.isActive("table") && !isManuallyHidden;
 
   return (
     <ControlledBubbleMenu
       editor={editor}
-      open={isEditorFocusedDebounced && editor.isActive("table")}
+      open={shouldShowMenu}
+      onClose={handleClose}
       anchorEl={bubbleMenuAnchorEl as PopoverVirtualElement}
       placement={{
         anchorOrigin: { vertical: "top", horizontal: "left" },
@@ -104,11 +129,7 @@ export default function TableBubbleMenu({
       flipPadding={{ top: 35, left: 8, right: 8, bottom: -Infinity }}
       {...controlledBubbleMenuProps}
     >
-      {disableDebounce ? (
-        controls
-      ) : (
-        <DebounceRender {...DebounceProps}>{controls}</DebounceRender>
-      )}
+      {controls}
     </ControlledBubbleMenu>
   );
 }
