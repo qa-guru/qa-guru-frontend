@@ -13,6 +13,7 @@ import {
   KanbanStudentHomeworkDetailsFullPage,
 } from "pages/kanban-student";
 import InfoSystemPage from "pages/info-system";
+import TestPage from "pages/test";
 
 const StudentRoutes = [
   <Route key="/" path="/" element={<HomePage />} />,
@@ -26,6 +27,7 @@ const StudentRoutes = [
     path="/training/:trainingId/:lectureId/:modalId?"
     element={<LectureDetailPage />}
   />,
+  <Route key="test" path="/test" element={<TestPage />} />,
   <Route
     key="kanban-student"
     path="/kanban-student"

@@ -11,6 +11,7 @@ import { useResponsive } from "shared/hooks";
 import UsersAdmin from "./users-admin";
 import CourseAdmin from "./courses-admin";
 import StatisticsAdmin from "./statistics-admin/statistics-admin";
+import TestsAdmin from "./tests-admin";
 import { StyledTabPanel, StyledTypography } from "./admin-panel.styled";
 
 const AdminPanel: FC = () => {
@@ -36,6 +37,12 @@ const AdminPanel: FC = () => {
       value: "3",
       path: "/statistics",
       component: StatisticsAdmin,
+    },
+    {
+      label: "Тесты",
+      value: "4",
+      path: "/tests",
+      component: TestsAdmin,
     },
   ];
 

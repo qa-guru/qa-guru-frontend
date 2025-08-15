@@ -29,8 +29,8 @@ interface UserAnswer {
 }
 
 const TestContainer: FC = () => {
-  // const { testId } = useParams<{ testId: string }>();
-  const testId = "3";
+  // Для тестирования используем захардкоженный ID
+  const testId = "5";
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [isCompleted, setIsCompleted] = useState(false);
   const [score, setScore] = useState(0);
@@ -41,8 +41,9 @@ const TestContainer: FC = () => {
   const [allLoadedAnswers, setAllLoadedAnswers] = useState<TestAnswer[]>([]);
   const [answersLoading, setAnswersLoading] = useState(false);
 
+  // Получаем детали тестовой группы
   const { data: testData, loading: testLoading } = useTestTestGroupsByIdQuery({
-    variables: { id: testId ?? "" },
+    variables: { id: testId },
   });
 
   const [getTestAnswers] = useLazyQuery(TestAnswerByQuestionDocument);

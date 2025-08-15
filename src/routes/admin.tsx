@@ -20,6 +20,8 @@ import {
   KanbanStudentPage,
 } from "pages/kanban-student";
 import InfoSystemPage from "pages/info-system";
+import TestPage from "pages/test";
+import CreateTestPage from "pages/create-test";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<AdminPanelPage />} />,
@@ -28,6 +30,13 @@ const AdminRoutes = [
     key="statistics-admin"
     path="/statistics"
     element={<AdminPanelPage />}
+  />,
+  <Route key="tests-admin" path="/tests" element={<AdminPanelPage />} />,
+  <Route key="create-test" path="/tests/create" element={<CreateTestPage />} />,
+  <Route
+    key="edit-test"
+    path="/tests/edit/:testId"
+    element={<CreateTestPage />}
   />,
   <Route
     key="training-lectures"
@@ -89,6 +98,7 @@ const AdminRoutes = [
     element={<EditLecturePage />}
   />,
   <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
+  <Route key="test" path="/test" element={<TestPage />} />,
 ];
 
 export default AdminRoutes;

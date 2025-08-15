@@ -1,0 +1,6 @@
+query lectureTest($lectureId: ID) {
+  lectureTest(lectureId: $lectureId) {
+    id
+    testName
+  }
+}
