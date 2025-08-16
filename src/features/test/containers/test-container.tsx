@@ -28,9 +28,25 @@ interface UserAnswer {
   answerId: string;
 }
 
-const TestContainer: FC = () => {
-  // Для тестирования используем захардкоженный ID
-  const testId = "5";
+interface TestContainerProps {
+  testId: string;
+  trainingId: string;
+  lectureId: string;
+}
+
+const TestContainer: FC<TestContainerProps> = ({
+  testId,
+  trainingId,
+  lectureId,
+}) => {
+  // Отладочная информация
+  console.log("🔍 TestContainer Debug Info:", {
+    testId,
+    trainingId,
+    lectureId,
+  });
+
+  // Убираем захардкоженный testId
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [isCompleted, setIsCompleted] = useState(false);
   const [score, setScore] = useState(0);
@@ -166,6 +182,8 @@ const TestContainer: FC = () => {
       currentQuestionIndex={currentQuestionIndex}
       totalQuestions={testQuestions.length}
       isCurrentQuestionAnswered={isCurrentQuestionAnswered}
+      trainingId={trainingId}
+      lectureId={lectureId}
       onAnswerSelect={handleAnswerSelect}
       onNextQuestion={handleNextQuestion}
       onSubmitTest={handleSubmitTest}

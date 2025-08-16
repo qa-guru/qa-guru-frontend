@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -43,6 +44,8 @@ interface TestViewProps {
   currentQuestionIndex: number;
   totalQuestions: number;
   isCurrentQuestionAnswered: boolean;
+  trainingId?: string;
+  lectureId?: string;
   onAnswerSelect: (questionId: string, answerId: string) => void;
   onNextQuestion: () => void;
   onSubmitTest: () => void;
@@ -58,10 +61,20 @@ const TestView: FC<TestViewProps> = ({
   currentQuestionIndex,
   totalQuestions,
   isCurrentQuestionAnswered,
+  trainingId,
+  lectureId,
   onAnswerSelect,
   onNextQuestion,
   onSubmitTest,
 }) => {
+  const navigate = useNavigate();
+
+  const handleBackToLecture = () => {
+    if (trainingId && lectureId) {
+      navigate(`/training/${trainingId}/${lectureId}`);
+    }
+  };
+
   const getUserAnswerForQuestion = (questionId: string) => {
     return userAnswers.find((ua) => ua.questionId === questionId)?.answerId;
   };
@@ -91,6 +104,16 @@ const TestView: FC<TestViewProps> = ({
             <Typography variant="body2" color="text.secondary">
               Проходной балл: {successThreshold}
             </Typography>
+
+            {trainingId && lectureId && (
+              <Button
+                variant="outlined"
+                onClick={handleBackToLecture}
+                sx={{ mt: 2 }}
+              >
+                Вернуться к лекции
+              </Button>
+            )}
           </CardContent>
         </Card>
       </Box>
@@ -105,6 +128,24 @@ const TestView: FC<TestViewProps> = ({
       <Typography variant="h4" gutterBottom>
         {testData.testName}
       </Typography>
+
+      {trainingId && lectureId && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
+          <Typography variant="body2" color="text.secondary">
+            Курс ID: {trainingId} | Лекция ID: {lectureId}
+          </Typography>
+          <Button variant="outlined" size="small" onClick={handleBackToLecture}>
+            Вернуться к лекции
+          </Button>
+        </Box>
+      )}
 
       <Box sx={{ mb: 3 }}>
         <Typography variant="body2" color="text.secondary" gutterBottom>

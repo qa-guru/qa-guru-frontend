@@ -98,7 +98,11 @@ const AdminRoutes = [
     element={<EditLecturePage />}
   />,
   <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
-  <Route key="test" path="/test" element={<TestPage />} />,
+  <Route
+    key="test"
+    path="/test/:testId/:trainingId/:lectureId"
+    element={<TestPage />}
+  />,
 ];
 
 export default AdminRoutes;

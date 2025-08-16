@@ -27,7 +27,11 @@ const StudentRoutes = [
     path="/training/:trainingId/:lectureId/:modalId?"
     element={<LectureDetailPage />}
   />,
-  <Route key="test" path="/test" element={<TestPage />} />,
+  <Route
+    key="test"
+    path="/test/:testId/:trainingId/:lectureId"
+    element={<TestPage />}
+  />,
   <Route
     key="kanban-student"
     path="/kanban-student"
