@@ -23,4 +23,5 @@ export type LectureInput = {
   id?: InputMaybe<Scalars["ID"]>;
   speakers?: InputMaybe<Array<InputMaybe<FieldValues>>>;
   subject?: InputMaybe<Scalars["String"]>;
+  testGroupId?: InputMaybe<Scalars["ID"]>;
 };

@@ -1,0 +1,29 @@
+query testAttempt($id: ID!) {
+  testAttempt(id: $id) {
+    id
+    startTime
+    endTime
+    successfulCount
+    errorsCount
+    result
+    testAttemptQuestionResults {
+      testQuestion {
+        id
+        text
+        testAnswers {
+          id
+          text
+        }
+      }
+      result
+      testAnswerResults {
+        testAnswer {
+          id
+          text
+        }
+        result
+        answer
+      }
+    }
+  }
+}

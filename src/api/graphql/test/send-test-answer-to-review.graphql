@@ -1,0 +1,34 @@
+mutation sendTestAnswerToReview($attemptId: ID!) {
+  sendTestAnswerToReview(attemptId: $attemptId) {
+    id
+    status
+    answer
+    lecture {
+      id
+      subject
+    }
+    training {
+      id
+      name
+    }
+    student {
+      id
+      firstName
+      lastName
+    }
+    mentor {
+      id
+      firstName
+      lastName
+    }
+    creationDate
+    testAttempts {
+      id
+      startTime
+      endTime
+      result
+      successfulCount
+      errorsCount
+    }
+  }
+}

@@ -24,7 +24,7 @@ import {
   useLectureHomeworkFileUpload,
 } from "shared/hooks";
 
-import { SelectLectors } from "../../containers";
+import { SelectLectors, SelectTests } from "../../containers";
 import {
   StyledButtonsStack,
   StyledContinueButton,
@@ -42,7 +42,13 @@ const EditLecture: FC<IEditLecture> = ({
   updateLecture,
   dataLectureHomework,
 }) => {
-  const { id: lectureId, subject, speakers, content } = dataLecture.lecture!;
+  const {
+    id: lectureId,
+    subject,
+    speakers,
+    content,
+    testGroup,
+  } = dataLecture.lecture!;
   const contentHomework = dataLectureHomework.lectureHomeWork;
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
@@ -66,7 +72,13 @@ const EditLecture: FC<IEditLecture> = ({
   const rteRefContentHomeWork = useRef<RichTextEditorRef>(null);
 
   const { handleSubmit, control } = useForm({
-    defaultValues: { id: lectureId, subject, description, speakers },
+    defaultValues: {
+      id: lectureId,
+      subject,
+      description,
+      speakers,
+      testGroupId: testGroup?.id || "",
+    },
   });
 
   const onSubmit: SubmitHandler<LectureInput> = async (data) => {
@@ -245,6 +257,16 @@ const EditLecture: FC<IEditLecture> = ({
                 name="speakers"
                 control={control}
                 role={UserRole.Lector}
+              />
+            </StyledInfoStack>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Тест для лекции</Typography>
+              <SelectTests
+                name="testGroupId"
+                control={control}
+                helperText="Выберите тест, который будет доступен студентам после изучения материалов лекции"
               />
             </StyledInfoStack>
           </StyledPaper>

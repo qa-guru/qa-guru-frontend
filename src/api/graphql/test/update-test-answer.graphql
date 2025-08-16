@@ -1,0 +1,7 @@
+mutation updateTestAnswer($input: TestAnswerInput!) {
+  updateTestAnswer(input: $input) {
+    id
+    text
+    correct
+  }
+}
