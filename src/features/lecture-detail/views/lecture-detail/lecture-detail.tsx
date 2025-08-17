@@ -11,6 +11,7 @@ import LectureContent from "../lecture-content";
 import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
 import StepperButtons from "../stepper-buttons";
 import HomeworkSection from "../homework-section";
+import LectureTestSection from "../lecture-test-section";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
   const {
@@ -20,10 +21,12 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
     tariffHomework,
     trainingId,
   } = props;
-  const { subject, description, speakers, content } = dataLecture.lecture || {};
+  const { subject, description, speakers, content, testGroup } =
+    dataLecture.lecture || {};
   const lectureHomeWork = dataLectureHomework?.lectureHomeWork;
 
   const hasHomework = !!lectureHomeWork;
+  const hasTest = !!testGroup;
 
   const [view, setView] = useState("kanban");
 
@@ -41,6 +44,15 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
       />
     );
 
+  const renderTest = () =>
+    hasTest && (
+      <LectureTestSection
+        testGroup={testGroup}
+        trainingId={trainingId}
+        lectureId={dataLecture.lecture?.id || undefined}
+      />
+    );
+
   return (
     <HomeworksFormProvider>
       <Container>
@@ -48,6 +60,7 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
         <LectureDescription description={description} />
         <LectureSpeakers speakers={speakers} />
         <LectureContent content={content} />
+        {renderTest()}
         {!tariffHomework ? <BlurredHomework /> : renderHomework()}
         <StepperButtons
           dataTrainingLectures={dataTrainingLectures}

@@ -195,7 +195,13 @@ type Query {
   student TestAttempt section
   """
   testAttempts(lectureId: ID!, trainingId: ID!): [TestAttemptShortDto]
+  testAttemptsAll(
+    offset: Int!
+    limit: Int!
+    sort: TestAttemptSort
+  ): TestAttemptsDto
   testAttempt(id: ID!): TestAttemptDto
+  testAttemptForAdmin(id: ID!): TestAttemptDto
   testAttemptQuestions(attemptId: ID!): [TestAttemptQuestionResultDto]
   """
   commentHomeWork section
@@ -657,6 +663,26 @@ type TestAttemptDto {
   errorsCount: Int
   result: Boolean
   testAttemptQuestionResults: [TestAttemptQuestionResultDto]
+}
+
+type TestAttemptsDto {
+  items: [TestAttemptShortDto]
+  offset: Int
+  limit: Int
+  totalElements: Long
+}
+
+input TestAttemptSort {
+  field: TestAttemptSortField
+  order: Order
+}
+
+enum TestAttemptSortField {
+  START_TIME
+  END_TIME
+  SUCCESSFUL_COUNT
+  ERRORS_COUNT
+  RESULT
 }
 
 type TestAttemptQuestionResultDto {
