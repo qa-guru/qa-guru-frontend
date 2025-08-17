@@ -261,7 +261,7 @@ const TestAttemptDetail: FC = () => {
                                 gap: 1,
                               }}
                             >
-                              {questionResult.testAnswerResults?.map(
+                              {questionResult!.testAnswerResults?.map(
                                 (answerResult) => (
                                   <Chip
                                     key={answerResult?.testAnswer?.id}
@@ -282,7 +282,7 @@ const TestAttemptDetail: FC = () => {
                                 gap: 1,
                               }}
                             >
-                              {questionResult.testAnswerResults?.map(
+                              {questionResult!.testAnswerResults?.map(
                                 (answerResult) => (
                                   <Chip
                                     key={answerResult?.testAnswer?.id}
@@ -302,12 +302,12 @@ const TestAttemptDetail: FC = () => {
                           <TableCell>
                             <Chip
                               label={
-                                questionResult.result
+                                questionResult!.result
                                   ? "Правильно"
                                   : "Неправильно"
                               }
                               color={
-                                questionResult.result ? "success" : "error"
+                                questionResult!.result ? "success" : "error"
                               }
                               size="small"
                             />
