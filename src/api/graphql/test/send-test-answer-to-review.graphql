@@ -4,20 +4,16 @@ mutation sendTestAnswerToReview($attemptId: ID!) {
     status
     answer
     lecture {
-      id
       subject
     }
     training {
-      id
       name
     }
     student {
-      id
       firstName
       lastName
     }
     mentor {
-      id
       firstName
       lastName
     }
@@ -27,8 +23,6 @@ mutation sendTestAnswerToReview($attemptId: ID!) {
       startTime
       endTime
       result
-      successfulCount
-      errorsCount
     }
   }
 }

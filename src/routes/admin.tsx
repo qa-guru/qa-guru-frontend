@@ -1,13 +1,8 @@
 import { Route } from "react-router-dom";
 
-import { KanbanPage, KanbanHomeworkDetailsFullPage } from "pages/kanban";
-import LectureDetailPage from "pages/lecture-detail";
-import TrainingLecturesPage from "pages/training-lectures";
-import Profile from "pages/profile";
 import AdminPanelPage from "pages/admin-panel";
 import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
-import EditProfilePage from "pages/edit-profile";
 import EditTrainingPage from "pages/edit-training";
 import EditLecturesPage from "pages/edit-lectures";
 import EditLecturePage from "pages/edit-lecture";
@@ -22,6 +17,10 @@ import {
 import InfoSystemPage from "pages/info-system";
 import TestPage from "pages/test";
 import CreateTestPage from "pages/create-test";
+import TestAttemptsListPage from "pages/test-attempts-list";
+import TestAttemptDetailPage from "pages/test-attempt-detail";
+import TrainingLecturesPage from "pages/training-lectures";
+import LectureDetailPage from "pages/lecture-detail";
 
 const AdminRoutes = [
   <Route key="/" path="/" element={<AdminPanelPage />} />,
@@ -39,6 +38,16 @@ const AdminRoutes = [
     element={<CreateTestPage />}
   />,
   <Route
+    key="test-attempts-list"
+    path="/test-attempts"
+    element={<TestAttemptsListPage />}
+  />,
+  <Route
+    key="test-attempt-detail"
+    path="/test-attempts/:attemptId"
+    element={<TestAttemptDetailPage />}
+  />,
+  <Route
     key="training-lectures"
     path="/training/:trainingId"
     element={<TrainingLecturesPage />}
@@ -48,7 +57,6 @@ const AdminRoutes = [
     path="/training/:trainingId/:lectureId"
     element={<LectureDetailPage />}
   />,
-  <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
   <Route
     key="kanban-mentor"
     path="/kanban-mentor"
@@ -68,17 +76,6 @@ const AdminRoutes = [
     key="kanban-student-homework-description"
     path="/kanban-student/:lectureId"
     element={<KanbanStudentHomeworkDetailsFullPage />}
-  />,
-  <Route
-    key="kanban-homework-description"
-    path="/kanban/:lectureId"
-    element={<KanbanHomeworkDetailsFullPage />}
-  />,
-  <Route key="profile" path="/profile" element={<Profile />} />,
-  <Route
-    key="profile-edit"
-    path="/profile/edit"
-    element={<EditProfilePage />}
   />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,

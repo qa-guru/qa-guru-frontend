@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -15,6 +15,7 @@ import {
   Add as AddIcon,
   Edit as EditIcon,
   Delete as DeleteIcon,
+  Assessment as AssessmentIcon,
 } from "@mui/icons-material";
 
 import {
@@ -57,8 +58,6 @@ const TestsAdmin: FC = () => {
   if (loading) return <AppSpinner />;
   if (error) return <NoDataErrorMessage />;
 
-  const tests = testsData?.testTestGroups || [];
-
   return (
     <Box>
       <Box
@@ -69,37 +68,28 @@ const TestsAdmin: FC = () => {
           mb: 3,
         }}
       >
-        <Typography variant="h4">Управление тестами</Typography>
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          onClick={handleCreateTest}
-        >
-          Создать тест
-        </Button>
+        <Typography variant="h4">Тесты</Typography>
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Button
+            variant="outlined"
+            startIcon={<AssessmentIcon />}
+            onClick={() => navigate("/test-attempts")}
+          >
+            Результаты тестирования
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={handleCreateTest}
+          >
+            Создать тест
+          </Button>
+        </Box>
       </Box>
 
-      {tests.length === 0 ? (
-        <Card>
-          <CardContent sx={{ textAlign: "center", py: 6 }}>
-            <Typography variant="h6" color="text.secondary" gutterBottom>
-              Тестов пока нет
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              Создайте первый тест для начала работы
-            </Typography>
-            <Button
-              variant="contained"
-              startIcon={<AddIcon />}
-              onClick={handleCreateTest}
-            >
-              Создать первый тест
-            </Button>
-          </CardContent>
-        </Card>
-      ) : (
+      {testsData?.testTestGroups && testsData.testTestGroups.length > 0 ? (
         <Grid container spacing={3}>
-          {tests.map((test) => (
+          {testsData.testTestGroups.map((test) => (
             <Grid item xs={12} md={6} lg={4} key={test?.id}>
               <Card>
                 <CardContent>
@@ -144,7 +134,11 @@ const TestsAdmin: FC = () => {
                     />
                   </Box>
 
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 2 }}
+                  >
                     ID: {test?.id}
                   </Typography>
                 </CardContent>
@@ -152,6 +146,24 @@ const TestsAdmin: FC = () => {
             </Grid>
           ))}
         </Grid>
+      ) : (
+        <Card>
+          <CardContent sx={{ textAlign: "center", py: 6 }}>
+            <Typography variant="h6" color="text.secondary" gutterBottom>
+              Тестов пока нет
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              Создайте первый тест для начала работы
+            </Typography>
+            <Button
+              variant="contained"
+              startIcon={<AddIcon />}
+              onClick={handleCreateTest}
+            >
+              Создать первый тест
+            </Button>
+          </CardContent>
+        </Card>
       )}
 
       <Fab

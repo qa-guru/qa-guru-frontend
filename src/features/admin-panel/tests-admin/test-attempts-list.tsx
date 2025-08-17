@@ -1,0 +1,343 @@
+import React, { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Chip,
+  IconButton,
+  Tooltip,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+  Pagination,
+} from "@mui/material";
+import {
+  Visibility as VisibilityIcon,
+  Refresh as RefreshIcon,
+  Search as SearchIcon,
+  Sort as SortIcon,
+} from "@mui/icons-material";
+
+import {
+  useTestAttemptsAllQuery,
+  TestAttemptSort,
+} from "api/graphql/generated/graphql";
+import { AppSpinner } from "shared/components/spinners";
+import NoDataErrorMessage from "shared/components/no-data-error-message";
+
+const TestAttemptsList: FC = () => {
+  const navigate = useNavigate();
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(20);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortField, setSortField] =
+    useState<keyof TestAttemptSort>("START_TIME");
+  const [sortOrder, setSortOrder] = useState<"ASC" | "DESC">("DESC");
+
+  const {
+    data: attemptsData,
+    loading,
+    error,
+    refetch,
+  } = useTestAttemptsAllQuery({
+    variables: {
+      offset: page * pageSize,
+      limit: pageSize,
+      sort: {
+        field: sortField,
+        order: sortOrder,
+      },
+    },
+  });
+
+  const handleViewAttempt = (attemptId: string) => {
+    navigate(`/test-attempts/${attemptId}`);
+  };
+
+  const handleRefresh = () => {
+    refetch();
+  };
+
+  const handlePageChange = (_: React.ChangeEvent<unknown>, newPage: number) => {
+    setPage(newPage - 1);
+  };
+
+  const handlePageSizeChange = (event: SelectChangeEvent<number>) => {
+    const newSize = Number(event.target.value);
+    setPageSize(newSize);
+    setPage(0);
+  };
+
+  const handleSortChange = (field: keyof TestAttemptSort) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === "ASC" ? "DESC" : "ASC");
+    } else {
+      setSortField(field);
+      setSortOrder("DESC");
+    }
+  };
+
+  const filteredAttempts =
+    attemptsData?.testAttemptsAll?.items?.filter((attempt) => {
+      if (!attempt) return false;
+
+      // Фильтр по поиску (можно добавить поиск по ID попытки)
+      if (searchTerm && !attempt.id?.includes(searchTerm)) return false;
+
+      return true;
+    }) || [];
+
+  const getStatusChip = (attempt: any) => {
+    if (!attempt.result && !attempt.endTime) {
+      return <Chip label="В процессе" color="warning" size="small" />;
+    } else if (attempt.result) {
+      return <Chip label="Пройден" color="success" size="small" />;
+    } else {
+      return <Chip label="Не пройден" color="error" size="small" />;
+    }
+  };
+
+  const formatDate = (dateString: string | null | undefined) => {
+    if (!dateString) return "Не завершен";
+    return new Date(dateString).toLocaleString("ru-RU");
+  };
+
+  const getScorePercentage = (attempt: any) => {
+    const total = (attempt.successfulCount || 0) + (attempt.errorsCount || 0);
+    if (total === 0) return 0;
+    return Math.round(((attempt.successfulCount || 0) / total) * 100);
+  };
+
+  if (loading) return <AppSpinner />;
+  if (error) return <NoDataErrorMessage />;
+
+  const pagination = attemptsData?.testAttemptsAll;
+  const totalPages = pagination
+    ? Math.ceil(pagination.totalElements / pageSize)
+    : 0;
+  const currentPage = page + 1;
+
+  return (
+    <Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 3,
+        }}
+      >
+        <Typography variant="h4">Результаты тестирования</Typography>
+        <Button
+          variant="outlined"
+          startIcon={<RefreshIcon />}
+          onClick={handleRefresh}
+        >
+          Обновить
+        </Button>
+      </Box>
+
+      {/* Фильтры и поиск */}
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} md={4}>
+              <TextField
+                fullWidth
+                label="Поиск по ID попытки"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <SearchIcon sx={{ mr: 1, color: "text.secondary" }} />
+                  ),
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <FormControl fullWidth>
+                <InputLabel>Сортировка</InputLabel>
+                <Select
+                  value={sortField}
+                  label="Сортировка"
+                  onChange={(e) =>
+                    handleSortChange(e.target.value as keyof TestAttemptSort)
+                  }
+                >
+                  <MenuItem value="START_TIME">По времени начала</MenuItem>
+                  <MenuItem value="END_TIME">По времени завершения</MenuItem>
+                  <MenuItem value="SUCCESSFUL_COUNT">
+                    По правильным ответам
+                  </MenuItem>
+                  <MenuItem value="ERRORS_COUNT">По ошибкам</MenuItem>
+                  <MenuItem value="RESULT">По результату</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <SortIcon color="action" />
+                <Typography variant="body2" color="text.secondary">
+                  {sortOrder === "ASC" ? "По возрастанию" : "По убыванию"}
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+
+      {/* Статистика */}
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={3}>
+              <Typography variant="body2" color="text.secondary">
+                Всего попыток:
+              </Typography>
+              <Typography variant="h6">
+                {pagination?.totalElements || 0}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Typography variant="body2" color="text.secondary">
+                Страница:
+              </Typography>
+              <Typography variant="h6">
+                {currentPage} из {totalPages}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Typography variant="body2" color="text.secondary">
+                Размер страницы:
+              </Typography>
+              <Typography variant="h6">{pageSize}</Typography>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Typography variant="body2" color="text.secondary">
+                Показано:
+              </Typography>
+              <Typography variant="h6">{filteredAttempts.length}</Typography>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+
+      {/* Таблица попыток */}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID попытки</TableCell>
+              <TableCell>Время начала</TableCell>
+              <TableCell>Время завершения</TableCell>
+              <TableCell>Правильных ответов</TableCell>
+              <TableCell>Ошибок</TableCell>
+              <TableCell>Процент</TableCell>
+              <TableCell>Результат</TableCell>
+              <TableCell>Статус</TableCell>
+              <TableCell>Действия</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredAttempts.map((attempt) => {
+              if (!attempt) return null;
+
+              return (
+                <TableRow key={attempt.id} hover>
+                  <TableCell>{attempt.id}</TableCell>
+                  <TableCell>
+                    {attempt.startTime ? formatDate(attempt.startTime) : "-"}
+                  </TableCell>
+                  <TableCell>
+                    {attempt.endTime ? formatDate(attempt.endTime) : "-"}
+                  </TableCell>
+                  <TableCell>
+                    <Chip
+                      label={attempt.successfulCount || 0}
+                      color="success"
+                      variant="outlined"
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Chip
+                      label={attempt.errorsCount || 0}
+                      color="error"
+                      variant="outlined"
+                      size="small"
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2" fontWeight="medium">
+                      {getScorePercentage(attempt)}%
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    {attempt.result !== null ? (
+                      <Chip
+                        label={attempt.result ? "Да" : "Нет"}
+                        color={attempt.result ? "success" : "error"}
+                        size="small"
+                      />
+                    ) : (
+                      <Chip label="Не определен" color="default" size="small" />
+                    )}
+                  </TableCell>
+                  <TableCell>{getStatusChip(attempt)}</TableCell>
+                  <TableCell>
+                    <Tooltip title="Просмотреть детали">
+                      <IconButton
+                        color="primary"
+                        onClick={() => handleViewAttempt(attempt.id!)}
+                      >
+                        <VisibilityIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* Пагинация */}
+      {pagination && (
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+            color="primary"
+            showFirstButton
+            showLastButton
+          />
+        </Box>
+      )}
+
+      {filteredAttempts.length === 0 && (
+        <Box sx={{ textAlign: "center", py: 4 }}>
+          <Typography variant="body1" color="text.secondary">
+            Попытки тестирования не найдены
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+export default TestAttemptsList;

@@ -46,7 +46,8 @@ interface TestViewProps {
   isCurrentQuestionAnswered: boolean;
   trainingId?: string;
   lectureId?: string;
-  onAnswerSelect: (questionId: string, answerId: string) => void;
+  testStarted: boolean;
+  onAnswerSelect: (answerId: string) => void;
   onNextQuestion: () => void;
   onSubmitTest: () => void;
 }
@@ -63,6 +64,7 @@ const TestView: FC<TestViewProps> = ({
   isCurrentQuestionAnswered,
   trainingId,
   lectureId,
+  testStarted,
   onAnswerSelect,
   onNextQuestion,
   onSubmitTest,
@@ -91,7 +93,27 @@ const TestView: FC<TestViewProps> = ({
     successThreshold,
     scorePercentage: scorePercentage.toFixed(1) + "%",
     isPassed,
+    testStarted,
   });
+
+  // Показываем загрузку, если тест еще не начат
+  if (!testStarted) {
+    return (
+      <Box sx={{ maxWidth: 800, margin: "0 auto", padding: 2 }}>
+        <Card>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              Подготовка к тесту...
+            </Typography>
+            <LinearProgress />
+            <Typography variant="body1" sx={{ mt: 2 }}>
+              Инициализация теста...
+            </Typography>
+          </CardContent>
+        </Card>
+      </Box>
+    );
+  }
 
   if (isCompleted) {
     return (
@@ -177,9 +199,7 @@ const TestView: FC<TestViewProps> = ({
           <FormControl component="fieldset">
             <RadioGroup
               value={selectedAnswer || ""}
-              onChange={(e) =>
-                onAnswerSelect(currentQuestion.id, e.target.value)
-              }
+              onChange={(e) => onAnswerSelect(e.target.value)}
             >
               {testAnswers.map((answer) => (
                 <FormControlLabel

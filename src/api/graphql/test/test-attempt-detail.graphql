@@ -1,5 +1,5 @@
-query testAttempt($id: ID!) {
-  testAttempt(id: $id) {
+query testAttemptDetail($id: ID!) {
+  testAttemptForAdmin(id: $id) {
     id
     startTime
     endTime
