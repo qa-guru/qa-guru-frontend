@@ -151,6 +151,16 @@ const TestContainer: FC<TestContainerProps> = ({
       }
     });
 
+    const scorePercentage = (correctAnswers / testQuestions.length) * 100;
+
+    console.log("🔍 Test Result Debug:", {
+      correctAnswers,
+      totalQuestions: testQuestions.length,
+      scorePercentage: scorePercentage.toFixed(1) + "%",
+      userAnswers: userAnswers.length,
+      allLoadedAnswers: allLoadedAnswers.length,
+    });
+
     setScore(correctAnswers);
     setIsCompleted(true);
   };

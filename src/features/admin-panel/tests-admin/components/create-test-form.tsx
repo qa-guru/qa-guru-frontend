@@ -23,7 +23,10 @@ import {
   QuestionAnswer as QuestionIcon,
 } from "@mui/icons-material";
 
-import { TestGroupDto } from "api/graphql/generated/graphql";
+import {
+  TestGroupDto,
+  useTestAnswerByQuestionLazyQuery,
+} from "api/graphql/generated/graphql";
 
 import { QuestionForm } from "../types";
 
@@ -51,33 +54,56 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
     false
   );
 
+  const [getTestAnswers] = useTestAnswerByQuestionLazyQuery();
+
   // Загружаем данные существующего теста для редактирования
   useEffect(() => {
     if (existingTest) {
       setTestName(existingTest.testName || "");
       setSuccessThreshold(existingTest.successThreshold || 70);
 
-      const loadedQuestions: QuestionForm[] =
-        existingTest.testQuestions?.map((q, index) => ({
-          id: q?.id || "",
-          text: q?.text || "",
-          answers: q?.testAnswers?.map((a) => ({
-            id: a?.id || "",
-            text: a?.text || "",
-            correct: false, // В схеме нет поля correct для TestAnswerShortDto, будем получать отдельно
-          })) || [
-            { text: "", correct: true },
-            { text: "", correct: false },
-          ],
-        })) || [];
+      // Загружаем вопросы и ответы с правильностью
+      const loadQuestionsWithAnswers = async () => {
+        const loadedQuestions: QuestionForm[] = [];
 
-      setQuestions(loadedQuestions);
-      // Открываем первый вопрос по умолчанию
-      if (loadedQuestions.length > 0) {
-        setExpandedQuestion(`question-0`);
-      }
+        for (const question of existingTest.testQuestions || []) {
+          if (!question?.id) continue;
+
+          // Получаем полную информацию об ответах для каждого вопроса
+          const { data: answersData } = await getTestAnswers({
+            variables: { questionId: question.id },
+          });
+
+          const answers =
+            answersData?.testAnswerByQuestion?.map((a) => ({
+              id: a?.id || "",
+              text: a?.text || "",
+              correct: a?.correct || false,
+            })) || [];
+
+          loadedQuestions.push({
+            id: question.id,
+            text: question.text || "",
+            answers:
+              answers.length > 0
+                ? answers
+                : [
+                    { text: "", correct: true },
+                    { text: "", correct: false },
+                  ],
+          });
+        }
+
+        setQuestions(loadedQuestions);
+        // Открываем первый вопрос по умолчанию
+        if (loadedQuestions.length > 0) {
+          setExpandedQuestion(`question-0`);
+        }
+      };
+
+      loadQuestionsWithAnswers();
     }
-  }, [existingTest]);
+  }, [existingTest, getTestAnswers]);
 
   const addQuestion = () => {
     const newQuestionIndex = questions.length;

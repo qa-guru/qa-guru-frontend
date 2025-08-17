@@ -81,7 +81,17 @@ const TestView: FC<TestViewProps> = ({
 
   const successThreshold = testData.successThreshold ?? 0;
   const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-  const isPassed = score >= successThreshold;
+  const scorePercentage = (score / totalQuestions) * 100;
+  const isPassed = scorePercentage >= successThreshold;
+
+  // Отладочная информация
+  console.log("🔍 TestView Debug:", {
+    score,
+    totalQuestions,
+    successThreshold,
+    scorePercentage: scorePercentage.toFixed(1) + "%",
+    isPassed,
+  });
 
   if (isCompleted) {
     return (
@@ -94,15 +104,19 @@ const TestView: FC<TestViewProps> = ({
 
             <Alert severity={isPassed ? "success" : "error"} sx={{ mb: 2 }}>
               {isPassed
-                ? `Поздравляем! Вы прошли тест с результатом ${score}/${totalQuestions}`
-                : `Тест не пройден. Результат: ${score}/${totalQuestions}. Требуется: ${successThreshold}`}
+                ? `Поздравляем! Вы прошли тест с результатом ${scorePercentage.toFixed(
+                    0
+                  )}% (${score}/${totalQuestions})`
+                : `Тест не пройден. Результат: ${scorePercentage.toFixed(
+                    0
+                  )}% (${score}/${totalQuestions}). Требуется: ${successThreshold}%`}
             </Alert>
 
             <Typography variant="body1">
               Правильных ответов: {score} из {totalQuestions}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Проходной балл: {successThreshold}
+              Проходной балл: {successThreshold}%
             </Typography>
 
             {trainingId && lectureId && (

@@ -26,7 +26,7 @@ import {
   useUpdateTestQuestionMutation,
   useUpdateTestAnswerMutation,
   TestGroupInput,
-  TestQuestionInput,
+  useTestAnswerByQuestionLazyQuery,
 } from "api/graphql/generated/graphql";
 
 import { QuestionForm } from "./types";
@@ -56,6 +56,7 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
     useUpdateTestGroupMutation();
   const [updateTestQuestion] = useUpdateTestQuestionMutation();
   const [updateTestAnswer] = useUpdateTestAnswerMutation();
+  const [getTestAnswers] = useTestAnswerByQuestionLazyQuery();
 
   // Загружаем данные существующего теста для редактирования
   useEffect(() => {
@@ -64,21 +65,38 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
       setTestName(test.testName || "");
       setSuccessThreshold(test.successThreshold || 70);
 
-      const loadedQuestions: QuestionForm[] =
-        test.testQuestions?.map((q) => ({
-          id: q?.id || "",
-          text: q?.text || "",
-          answers:
-            q?.testAnswers?.map((a) => ({
+      // Загружаем вопросы и ответы с правильностью
+      const loadQuestionsWithAnswers = async () => {
+        const loadedQuestions: QuestionForm[] = [];
+
+        for (const question of test.testQuestions || []) {
+          if (!question?.id) continue;
+
+          // Получаем полную информацию об ответах для каждого вопроса
+          const { data: answersData } = await getTestAnswers({
+            variables: { questionId: question.id },
+          });
+
+          const answers =
+            answersData?.testAnswerByQuestion?.map((a) => ({
               id: a?.id || "",
               text: a?.text || "",
-              correct: false, // В схеме нет поля correct для TestAnswerShortDto
-            })) || [],
-        })) || [];
+              correct: a?.correct || false,
+            })) || [];
 
-      setQuestions(loadedQuestions);
+          loadedQuestions.push({
+            id: question.id,
+            text: question.text || "",
+            answers: answers.length > 0 ? answers : [],
+          });
+        }
+
+        setQuestions(loadedQuestions);
+      };
+
+      loadQuestionsWithAnswers();
     }
-  }, [existingTestData]);
+  }, [existingTestData, getTestAnswers]);
 
   const addQuestion = () => {
     setQuestions([
@@ -187,7 +205,7 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
 
     try {
       // Сначала сохраняем вопросы и ответы
-      const savedQuestions: TestQuestionInput[] = [];
+      const savedQuestions: { id: string }[] = [];
 
       for (const question of questions) {
         // Сохраняем вопрос
