@@ -49,7 +49,7 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
       <LectureTestSection
         testGroup={testGroup}
         trainingId={trainingId}
-        lectureId={dataLecture.lecture?.id}
+        lectureId={dataLecture.lecture?.id || undefined}
       />
     );
 

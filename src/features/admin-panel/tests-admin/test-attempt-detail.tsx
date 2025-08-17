@@ -26,10 +26,7 @@ import {
   Schedule as ScheduleIcon,
 } from "@mui/icons-material";
 
-import {
-  useTestAttemptQuery,
-  useTestAttemptQuestionsQuery,
-} from "api/graphql/generated/graphql";
+import { useTestAttemptQuery } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 
@@ -46,21 +43,15 @@ const TestAttemptDetail: FC = () => {
     skip: !attemptId,
   });
 
-  const { data: questionsData, loading: questionsLoading } =
-    useTestAttemptQuestionsQuery({
-      variables: { attemptId: attemptId! },
-      skip: !attemptId,
-    });
-
   const handleGoBack = () => {
     navigate(-1);
   };
 
-  if (attemptLoading || questionsLoading) return <AppSpinner />;
+  if (attemptLoading || !attemptData?.testAttempt) return <AppSpinner />;
   if (attemptError || !attemptData?.testAttempt) return <NoDataErrorMessage />;
 
   const attempt = attemptData.testAttempt;
-  const questions = questionsData?.testAttemptQuestions || [];
+  const questions = attempt.testAttemptQuestionResults || [];
 
   const formatDate = (dateString: string | null | undefined) => {
     if (!dateString) return "Не завершен";
@@ -197,7 +188,7 @@ const TestAttemptDetail: FC = () => {
                   <Chip
                     label={attempt.successfulCount || 0}
                     color="success"
-                    size="large"
+                    size="medium"
                     sx={{ fontSize: "1.2rem", py: 1 }}
                   />
                 </Grid>
@@ -208,7 +199,7 @@ const TestAttemptDetail: FC = () => {
                   <Chip
                     label={attempt.errorsCount || 0}
                     color="error"
-                    size="large"
+                    size="medium"
                     sx={{ fontSize: "1.2rem", py: 1 }}
                   />
                 </Grid>
@@ -249,75 +240,81 @@ const TestAttemptDetail: FC = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {questions.map((questionResult, index) => {
-                    const question = questionResult.testQuestion;
-                    if (!question) return null;
+                  {questions
+                    .filter((questionResult) => questionResult !== null)
+                    .map((questionResult, index) => {
+                      const question = questionResult!.testQuestion;
+                      if (!question) return null;
 
-                    return (
-                      <TableRow key={index} hover>
-                        <TableCell>
-                          <Typography variant="body1" fontWeight="medium">
-                            {index + 1}. {question.text}
-                          </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 1,
-                            }}
-                          >
-                            {question.testAnswers?.map((answer) => (
-                              <Chip
-                                key={answer?.id}
-                                label={answer?.text}
-                                color={answer?.correct ? "success" : "default"}
-                                variant={
-                                  answer?.correct ? "filled" : "outlined"
-                                }
-                                size="small"
-                              />
-                            ))}
-                          </Box>
-                        </TableCell>
-                        <TableCell>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 1,
-                            }}
-                          >
-                            {questionResult.testAnswerResults?.map(
-                              (answerResult) => (
-                                <Chip
-                                  key={answerResult.testAnswer?.id}
-                                  label={answerResult.testAnswer?.text}
-                                  color={
-                                    answerResult.answer ? "primary" : "default"
-                                  }
-                                  variant="outlined"
-                                  size="small"
-                                />
-                              )
-                            )}
-                          </Box>
-                        </TableCell>
-                        <TableCell>
-                          <Chip
-                            label={
-                              questionResult.result
-                                ? "Правильно"
-                                : "Неправильно"
-                            }
-                            color={questionResult.result ? "success" : "error"}
-                            size="small"
-                          />
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                      return (
+                        <TableRow key={index} hover>
+                          <TableCell>
+                            <Typography variant="body1" fontWeight="medium">
+                              {index + 1}. {question.text}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 1,
+                              }}
+                            >
+                              {questionResult.testAnswerResults?.map(
+                                (answerResult) => (
+                                  <Chip
+                                    key={answerResult?.testAnswer?.id}
+                                    label={answerResult?.testAnswer?.text}
+                                    color="default"
+                                    variant="outlined"
+                                    size="small"
+                                  />
+                                )
+                              )}
+                            </Box>
+                          </TableCell>
+                          <TableCell>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: 1,
+                              }}
+                            >
+                              {questionResult.testAnswerResults?.map(
+                                (answerResult) => (
+                                  <Chip
+                                    key={answerResult?.testAnswer?.id}
+                                    label={answerResult?.testAnswer?.text}
+                                    color={
+                                      answerResult?.answer
+                                        ? "primary"
+                                        : "default"
+                                    }
+                                    variant="outlined"
+                                    size="small"
+                                  />
+                                )
+                              )}
+                            </Box>
+                          </TableCell>
+                          <TableCell>
+                            <Chip
+                              label={
+                                questionResult.result
+                                  ? "Правильно"
+                                  : "Неправильно"
+                              }
+                              color={
+                                questionResult.result ? "success" : "error"
+                              }
+                              size="small"
+                            />
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                 </TableBody>
               </Table>
             </TableContainer>

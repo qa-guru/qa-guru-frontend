@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { useLazyQuery } from "@apollo/client";
+import { useSearchParams } from "react-router-dom";
 
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
@@ -8,7 +9,7 @@ import {
   TestAnswerByQuestionDocument,
   useStartTestMutation,
   useSendTestAnswerMutation,
-  useSendTestAnswerToReviewMutation,
+  useTestAttemptQuery,
 } from "api/graphql/generated/graphql";
 
 import TestView from "../views/test-view";
@@ -42,12 +43,9 @@ const TestContainer: FC<TestContainerProps> = ({
   trainingId,
   lectureId,
 }) => {
-  // Отладочная информация
-  console.log("🔍 TestContainer Debug Info:", {
-    testId,
-    trainingId,
-    lectureId,
-  });
+  // Получаем attemptId из URL параметров
+  const [searchParams] = useSearchParams();
+  const attemptIdFromUrl = searchParams.get("attemptId");
 
   // Состояние теста
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
@@ -64,14 +62,23 @@ const TestContainer: FC<TestContainerProps> = ({
   const [testAttemptId, setTestAttemptId] = useState<string | null>(null);
   const [testStarted, setTestStarted] = useState(false);
 
-  // GraphQL мутации
+  // Состояние для уведомлений
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  // GraphQL мутации и запросы
   const [startTest] = useStartTestMutation();
   const [sendTestAnswer] = useSendTestAnswerMutation();
-  const [sendTestAnswerToReview] = useSendTestAnswerToReviewMutation();
 
   // Получаем детали тестовой группы
   const { data: testData, loading: testLoading } = useTestTestGroupsByIdQuery({
     variables: { id: testId },
+  });
+
+  // Получаем детали существующей попытки, если есть attemptId
+  const { data: attemptData, loading: attemptLoading } = useTestAttemptQuery({
+    variables: { id: attemptIdFromUrl! },
+    skip: !attemptIdFromUrl,
   });
 
   const [getTestAnswers] = useLazyQuery(TestAnswerByQuestionDocument);
@@ -88,11 +95,73 @@ const TestContainer: FC<TestContainerProps> = ({
     }
   }, [testData, testLoading, testStarted]);
 
+  // Восстанавливаем состояние из существующей попытки
+  useEffect(() => {
+    if (attemptData?.testAttempt && attemptIdFromUrl) {
+      const attempt = attemptData.testAttempt;
+
+      // Устанавливаем ID попытки
+      if (attempt.id) {
+        setTestAttemptId(attempt.id);
+      }
+      setTestStarted(true);
+
+      // Восстанавливаем счет
+      setScore(attempt.successfulCount || 0);
+
+      // Восстанавливаем ответы пользователя
+      if (attempt.testAttemptQuestionResults) {
+        const restoredAnswers: UserAnswer[] = [];
+        attempt.testAttemptQuestionResults.forEach((questionResult) => {
+          if (
+            questionResult &&
+            questionResult.testQuestion &&
+            questionResult.testAnswerResults
+          ) {
+            const question = questionResult.testQuestion;
+            questionResult.testAnswerResults.forEach((answerResult) => {
+              if (
+                answerResult &&
+                answerResult.testAnswer &&
+                answerResult.answer === true
+              ) {
+                if (question.id && answerResult.testAnswer.id) {
+                  restoredAnswers.push({
+                    questionId: question.id,
+                    answerId: answerResult.testAnswer.id,
+                  });
+                }
+              }
+            });
+          }
+        });
+        setUserAnswers(restoredAnswers);
+
+        // Определяем текущий вопрос (первый неотвеченный)
+        const answeredQuestionIds = new Set(
+          restoredAnswers.map((a) => a.questionId)
+        );
+        const nextQuestionIndex = testQuestions.findIndex(
+          (q) => q && q.id && !answeredQuestionIds.has(q.id)
+        );
+        if (nextQuestionIndex !== -1) {
+          setCurrentQuestionIndex(nextQuestionIndex);
+        }
+      }
+    }
+  }, [attemptData, attemptIdFromUrl]);
+
   // Обработчик начала теста
   const handleStartTest = async () => {
     try {
-      console.log("🚀 Начинаем тест для:", { lectureId, trainingId });
+      // Если есть attemptId в URL, продолжаем существующий тест
+      if (attemptIdFromUrl) {
+        setTestAttemptId(attemptIdFromUrl);
+        setTestStarted(true);
+        return;
+      }
 
+      // Иначе начинаем новый тест
       const { data } = await startTest({
         variables: {
           lectureId,
@@ -103,10 +172,19 @@ const TestContainer: FC<TestContainerProps> = ({
       if (data?.startTest?.id) {
         setTestAttemptId(data.startTest.id);
         setTestStarted(true);
-        console.log("✅ Тест начат, ID попытки:", data.startTest.id);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("❌ Ошибка при начале теста:", error);
+
+      // Если ошибка о незавершенном тесте, предлагаем продолжить
+      if (error.message?.includes("unfinished test")) {
+        setErrorMessage(
+          "⚠️ У вас есть незавершенная попытка тестирования. " +
+            "Вернитесь на страницу лекции и нажмите 'Продолжить тест'."
+        );
+      } else {
+        setErrorMessage(`❌ Ошибка при начале теста: ${error.message}`);
+      }
     }
   };
 
@@ -118,12 +196,6 @@ const TestContainer: FC<TestContainerProps> = ({
     }
 
     try {
-      console.log("📝 Отправляем ответ:", {
-        questionId,
-        answerIds,
-        testAttemptId,
-      });
-
       const { data } = await sendTestAnswer({
         variables: {
           questionId,
@@ -137,47 +209,24 @@ const TestContainer: FC<TestContainerProps> = ({
         const attempt = data.sendTestAnswer;
         setScore(attempt.successfulCount || 0);
 
-        // Если тест завершен
+        // Проверяем, завершился ли тест автоматически
         if (attempt.result !== null) {
           setIsCompleted(true);
-          console.log("🏁 Тест завершен, результат:", attempt.result);
-        }
 
-        console.log(
-          "✅ Ответ отправлен, обновленный счет:",
-          attempt.successfulCount
-        );
+          // Если тест пройден, показываем сообщение об успехе
+          if (attempt.result === true) {
+            setSuccessMessage("✅ Тест успешно завершен!");
+          } else {
+            setErrorMessage(
+              "❌ Тест не пройден - недостаточно правильных ответов"
+            );
+          }
+
+          
+        }
       }
     } catch (error) {
       console.error("❌ Ошибка при отправке ответа:", error);
-    }
-  };
-
-  // Обработчик завершения теста
-  const handleFinishTest = async () => {
-    if (!testAttemptId) {
-      console.error("❌ Нет ID попытки теста");
-      return;
-    }
-
-    try {
-      console.log("🏁 Завершаем тест, ID попытки:", testAttemptId);
-
-      const { data } = await sendTestAnswerToReview({
-        variables: {
-          attemptId: testAttemptId,
-        },
-      });
-
-      if (data?.sendTestAnswerToReview) {
-        console.log(
-          "✅ Тест отправлен на проверку:",
-          data.sendTestAnswerToReview
-        );
-        // Можно показать уведомление об успешной отправке
-      }
-    } catch (error) {
-      console.error("❌ Ошибка при завершении теста:", error);
     }
   };
 
@@ -276,8 +325,60 @@ const TestContainer: FC<TestContainerProps> = ({
     if (currentQuestionIndex < testQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Завершаем тест
-      await handleFinishTest();
+      // Это последний вопрос - НЕ завершаем тест автоматически
+      // Пользователь должен нажать кнопку "Завершить тест" отдельно
+    }
+  };
+
+  // Обработчик завершения теста
+  const handleFinishTest = async () => {
+    if (!testAttemptId) {
+      const errorMsg = "❌ Нет ID попытки теста";
+      console.error(errorMsg);
+      setErrorMessage(errorMsg);
+      return;
+    }
+
+    // Проверяем, что все вопросы отвечены
+    if (userAnswers.length < testQuestions.length) {
+      const errorMsg = `❌ Не все вопросы отвечены: ${userAnswers.length} из ${testQuestions.length}`;
+      console.error(errorMsg);
+      setErrorMessage(errorMsg);
+      return;
+    }
+
+    // Проверяем, достигнут ли порог прохождения
+    const successThreshold =
+      testData?.testTestGroupsById?.successThreshold ?? 0;
+    if (score < successThreshold) {
+      const errorMsg = `❌ Порог прохождения не достигнут: ${score} правильных ответов из ${successThreshold} требуемых. Тест не может быть завершен.`;
+      console.error(errorMsg);
+      setErrorMessage(errorMsg);
+      return;
+    }
+
+    try {
+      console.log("🏁 Завершаем тест, ID попытки:", testAttemptId);
+      console.log("📊 Статистика ответов:", {
+        всего: testQuestions.length,
+        отвечено: userAnswers.length,
+        правильных: score,
+        порог: successThreshold,
+        достигнут: score >= successThreshold,
+      });
+
+      // Тест завершается автоматически бэком при ответе на последний вопрос
+      // Здесь просто показываем успешное завершение
+      setIsCompleted(true);
+      setSuccessMessage("✅ Тест успешно завершен!");
+      setErrorMessage(null);
+    } catch (error: any) {
+      console.error("❌ Ошибка при завершении теста:", error);
+
+      const errorMsg = `❌ Ошибка при завершении теста: ${
+        error.message || "Неизвестная ошибка"
+      }`;
+      setErrorMessage(errorMsg);
     }
   };
 
@@ -298,26 +399,29 @@ const TestContainer: FC<TestContainerProps> = ({
   };
 
   return (
-    <TestView
-      testData={testData.testTestGroupsById!}
-      testAnswers={currentQuestionAnswers}
-      userAnswers={userAnswers}
-      isCompleted={isCompleted}
-      score={score}
-      currentQuestion={{
-        id: currentQuestion?.id || "",
-        text: currentQuestion?.text || "",
-      }}
-      currentQuestionIndex={currentQuestionIndex}
-      totalQuestions={testQuestions.length}
-      isCurrentQuestionAnswered={isCurrentQuestionAnswered}
-      trainingId={trainingId}
-      lectureId={lectureId}
-      testStarted={testStarted}
-      onAnswerSelect={handleAnswerSelect}
-      onNextQuestion={handleNextQuestion}
-      onSubmitTest={handleFinishTest}
-    />
+    <>
+      <TestView
+        testData={testData.testTestGroupsById!}
+        testAnswers={currentQuestionAnswers}
+        userAnswers={userAnswers}
+        isCompleted={isCompleted}
+        score={score}
+        currentQuestion={{
+          id: currentQuestion?.id || "",
+          text: currentQuestion?.text || "",
+        }}
+        currentQuestionIndex={currentQuestionIndex}
+        totalQuestions={testQuestions.length}
+        isCurrentQuestionAnswered={isCurrentQuestionAnswered}
+        trainingId={trainingId}
+        lectureId={lectureId}
+        testStarted={testStarted}
+        onAnswerSelect={handleAnswerSelect}
+        onNextQuestion={handleNextQuestion}
+        errorMessage={errorMessage}
+        successMessage={successMessage}
+      />
+    </>
   );
 };
 

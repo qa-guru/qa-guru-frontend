@@ -44,8 +44,7 @@ const TestAttemptsList: FC = () => {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortField, setSortField] =
-    useState<keyof TestAttemptSort>("START_TIME");
+  const [sortField, setSortField] = useState<any>("START_TIME");
   const [sortOrder, setSortOrder] = useState<"ASC" | "DESC">("DESC");
 
   const {
@@ -58,8 +57,8 @@ const TestAttemptsList: FC = () => {
       offset: page * pageSize,
       limit: pageSize,
       sort: {
-        field: sortField,
-        order: sortOrder,
+        field: sortField as any,
+        order: sortOrder as any,
       },
     },
   });
@@ -116,10 +115,13 @@ const TestAttemptsList: FC = () => {
     return new Date(dateString).toLocaleString("ru-RU");
   };
 
-  const getScorePercentage = (attempt: any) => {
-    const total = (attempt.successfulCount || 0) + (attempt.errorsCount || 0);
-    if (total === 0) return 0;
-    return Math.round(((attempt.successfulCount || 0) / total) * 100);
+  const getScoreDisplay = (attempt: any) => {
+    if (attempt.successfulCount === null || attempt.errorsCount === null) {
+      return "Тест не завершен";
+    }
+    const total = attempt.successfulCount + attempt.errorsCount;
+    if (total === 0) return "0 правильных ответов";
+    return `${attempt.successfulCount} из ${total} правильных ответов`;
   };
 
   if (loading) return <AppSpinner />;
@@ -246,7 +248,6 @@ const TestAttemptsList: FC = () => {
               <TableCell>Время завершения</TableCell>
               <TableCell>Правильных ответов</TableCell>
               <TableCell>Ошибок</TableCell>
-              <TableCell>Процент</TableCell>
               <TableCell>Результат</TableCell>
               <TableCell>Статус</TableCell>
               <TableCell>Действия</TableCell>
@@ -283,7 +284,7 @@ const TestAttemptsList: FC = () => {
                   </TableCell>
                   <TableCell>
                     <Typography variant="body2" fontWeight="medium">
-                      {getScorePercentage(attempt)}%
+                      {getScoreDisplay(attempt)}
                     </Typography>
                   </TableCell>
                   <TableCell>

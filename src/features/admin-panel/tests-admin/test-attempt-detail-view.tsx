@@ -52,8 +52,7 @@ const TestAttemptDetailView: FC = () => {
 
   const attempt = attemptData.testAttemptForAdmin;
 
-  const formatDate = (dateString: string | null | undefined) => {
-    if (!dateString) return "Не завершен";
+  const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleString("ru-RU");
   };
 
@@ -66,10 +65,12 @@ const TestAttemptDetailView: FC = () => {
     return `${diffMins} минут`;
   };
 
-  const getScorePercentage = () => {
+  const getScoreDisplay = () => {
+    if (!attemptData?.testAttemptForAdmin) return "Нет данных";
+    const attempt = attemptData.testAttemptForAdmin;
     const total = (attempt.successfulCount || 0) + (attempt.errorsCount || 0);
-    if (total === 0) return 0;
-    return Math.round(((attempt.successfulCount || 0) / total) * 100);
+    if (total === 0) return "0 правильных ответов";
+    return `${attempt.successfulCount} из ${total} правильных ответов`;
   };
 
   return (
@@ -202,12 +203,12 @@ const TestAttemptDetailView: FC = () => {
                     sx={{ fontSize: "1.2rem", py: 1 }}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="body2" color="text.secondary">
-                    Процент правильных ответов:
+                <Grid item xs={12} md={6}>
+                  <Typography variant="h6" gutterBottom>
+                    Результат теста:
                   </Typography>
                   <Typography variant="h4" color="primary">
-                    {getScorePercentage()}%
+                    {getScoreDisplay()}
                   </Typography>
                 </Grid>
               </Grid>

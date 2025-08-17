@@ -10,6 +10,11 @@ const TestPage: FC = () => {
     lectureId: string;
   }>();
 
+  // Проверяем, что все параметры присутствуют
+  if (!testId || !trainingId || !lectureId) {
+    return <div>Ошибка: отсутствуют необходимые параметры</div>;
+  }
+
   return (
     <TestContainer
       testId={testId}

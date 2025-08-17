@@ -49,7 +49,8 @@ interface TestViewProps {
   testStarted: boolean;
   onAnswerSelect: (answerId: string) => void;
   onNextQuestion: () => void;
-  onSubmitTest: () => void;
+  errorMessage?: string | null;
+  successMessage?: string | null;
 }
 
 const TestView: FC<TestViewProps> = ({
@@ -67,7 +68,8 @@ const TestView: FC<TestViewProps> = ({
   testStarted,
   onAnswerSelect,
   onNextQuestion,
-  onSubmitTest,
+  errorMessage,
+  successMessage,
 }) => {
   const navigate = useNavigate();
 
@@ -83,18 +85,10 @@ const TestView: FC<TestViewProps> = ({
 
   const successThreshold = testData.successThreshold ?? 0;
   const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-  const scorePercentage = (score / totalQuestions) * 100;
-  const isPassed = scorePercentage >= successThreshold;
 
-  // Отладочная информация
-  console.log("🔍 TestView Debug:", {
-    score,
-    totalQuestions,
-    successThreshold,
-    scorePercentage: scorePercentage.toFixed(1) + "%",
-    isPassed,
-    testStarted,
-  });
+  // Исправляем логику: successThreshold - это количество правильных ответов, а не процент
+  const isPassed = score >= successThreshold;
+  // Убираем scorePercentage - он больше не нужен
 
   // Показываем загрузку, если тест еще не начат
   if (!testStarted) {
@@ -126,19 +120,15 @@ const TestView: FC<TestViewProps> = ({
 
             <Alert severity={isPassed ? "success" : "error"} sx={{ mb: 2 }}>
               {isPassed
-                ? `Поздравляем! Вы прошли тест с результатом ${scorePercentage.toFixed(
-                    0
-                  )}% (${score}/${totalQuestions})`
-                : `Тест не пройден. Результат: ${scorePercentage.toFixed(
-                    0
-                  )}% (${score}/${totalQuestions}). Требуется: ${successThreshold}%`}
+                ? `Поздравляем! Вы прошли тест с результатом ${score} правильных ответов из ${totalQuestions}`
+                : `Тест не пройден. Результат: ${score} правильных ответов из ${totalQuestions}. Требуется: ${successThreshold} правильных ответов`}
             </Alert>
 
             <Typography variant="body1">
               Правильных ответов: {score} из {totalQuestions}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Проходной балл: {successThreshold}%
+              Проходной балл: {successThreshold} правильных ответов
             </Typography>
 
             {trainingId && lectureId && (
@@ -165,6 +155,19 @@ const TestView: FC<TestViewProps> = ({
         {testData.testName}
       </Typography>
 
+      {/* Отображение уведомлений */}
+      {errorMessage && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {errorMessage}
+        </Alert>
+      )}
+
+      {successMessage && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          {successMessage}
+        </Alert>
+      )}
+
       {trainingId && lectureId && (
         <Box
           sx={{
@@ -183,11 +186,20 @@ const TestView: FC<TestViewProps> = ({
         </Box>
       )}
 
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="body2" color="text.secondary" gutterBottom>
-          Вопрос {currentQuestionIndex + 1} из {totalQuestions}
+      {/* Показываем текущий прогресс */}
+      <Box sx={{ mb: 3, p: 2, bgcolor: "grey.50", borderRadius: 1 }}>
+        <Typography variant="body2" color="text.secondary">
+          <strong>Прогресс:</strong> {currentQuestionIndex + 1} из{" "}
+          {totalQuestions} вопросов
         </Typography>
-        <LinearProgress variant="determinate" value={progress} />
+        <Typography variant="body2" color="text.secondary">
+          <strong>Правильных ответов:</strong> {score} из {successThreshold}{" "}
+          необходимых
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          <strong>Статус:</strong>{" "}
+          {isPassed ? "✅ Тест пройден" : "❌ Тест не пройден"}
+        </Typography>
       </Box>
 
       <Card sx={{ mb: 3 }}>
@@ -228,7 +240,7 @@ const TestView: FC<TestViewProps> = ({
         <Button
           variant="contained"
           size="large"
-          onClick={isLastQuestion ? onSubmitTest : onNextQuestion}
+          onClick={onNextQuestion}
           disabled={!isCurrentQuestionAnswered}
         >
           {isLastQuestion ? "Завершить тест" : "Далее"}

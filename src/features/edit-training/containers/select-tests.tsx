@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Control , Controller } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 import {
   FormControl,
   InputLabel,
@@ -81,7 +81,7 @@ const SelectTests: FC<SelectTestsProps> = ({
                     {test?.testName}
                   </Typography>
                   <Chip
-                    label={`${test?.successThreshold}%`}
+                    label={`${test?.successThreshold} правильных ответов`}
                     size="small"
                     color="primary"
                     variant="outlined"

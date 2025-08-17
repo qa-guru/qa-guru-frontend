@@ -175,43 +175,19 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
     setQuestions(updatedQuestions);
   };
 
-  const validateForm = (): string | null => {
+  const validateForm = () => {
     if (!testName.trim()) {
       return "Название теста обязательно";
     }
-
-    if (successThreshold < 0 || successThreshold > 100) {
-      return "Проходной балл должен быть от 0 до 100%";
+    if (successThreshold < 1) {
+      return "Проходной балл должен быть не менее 1 правильного ответа";
     }
-
+    if (successThreshold > questions.length) {
+      return "Проходной балл не может быть больше количества вопросов";
+    }
     if (questions.length === 0) {
       return "Добавьте хотя бы один вопрос";
     }
-
-    for (let i = 0; i < questions.length; i++) {
-      const question = questions[i];
-      if (!question.text.trim()) {
-        return `Текст вопроса ${i + 1} не может быть пустым`;
-      }
-
-      if (question.answers.length < 2) {
-        return `В вопросе ${i + 1} должно быть минимум 2 варианта ответа`;
-      }
-
-      const correctAnswers = question.answers.filter((a) => a.correct);
-      if (correctAnswers.length === 0) {
-        return `В вопросе ${i + 1} должен быть хотя бы один правильный ответ`;
-      }
-
-      for (let j = 0; j < question.answers.length; j++) {
-        if (!question.answers[j].text.trim()) {
-          return `Текст ответа ${j + 1} в вопросе ${
-            i + 1
-          } не может быть пустым`;
-        }
-      }
-    }
-
     return null;
   };
 
@@ -253,15 +229,14 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
-                fullWidth
-                label="Проходной балл (%)"
                 type="number"
+                label="Проходной балл (количество правильных ответов)"
                 value={successThreshold}
                 onChange={(e) => setSuccessThreshold(Number(e.target.value))}
-                required
-                disabled={isLoading}
-                inputProps={{ min: 0, max: 100 }}
-                helperText="Минимальный процент правильных ответов для прохождения"
+                fullWidth
+                margin="normal"
+                helperText="Минимальное количество правильных ответов для прохождения теста"
+                inputProps={{ min: 1, max: questions.length }}
               />
             </Grid>
           </Grid>

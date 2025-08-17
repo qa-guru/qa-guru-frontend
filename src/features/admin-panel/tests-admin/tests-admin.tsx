@@ -127,7 +127,7 @@ const TestsAdmin: FC = () => {
                       Проходной балл:
                     </Typography>
                     <Chip
-                      label={`${test?.successThreshold}%`}
+                      label={`${test?.successThreshold} правильных ответов`}
                       size="small"
                       color="primary"
                       sx={{ ml: 1 }}
