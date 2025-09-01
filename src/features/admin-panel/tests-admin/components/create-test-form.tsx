@@ -56,20 +56,17 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
 
   const [getTestAnswers] = useTestAnswerByQuestionLazyQuery();
 
-  // Загружаем данные существующего теста для редактирования
   useEffect(() => {
     if (existingTest) {
       setTestName(existingTest.testName || "");
       setSuccessThreshold(existingTest.successThreshold || 70);
 
-      // Загружаем вопросы и ответы с правильностью
       const loadQuestionsWithAnswers = async () => {
         const loadedQuestions: QuestionForm[] = [];
 
         for (const question of existingTest.testQuestions || []) {
           if (!question?.id) continue;
 
-          // Получаем полную информацию об ответах для каждого вопроса
           const { data: answersData } = await getTestAnswers({
             variables: { questionId: question.id },
           });
@@ -95,7 +92,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
         }
 
         setQuestions(loadedQuestions);
-        // Открываем первый вопрос по умолчанию
         if (loadedQuestions.length > 0) {
           setExpandedQuestion(`question-0`);
         }
@@ -124,7 +120,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
     );
     setQuestions(updatedQuestions);
 
-    // Если удаляем активный вопрос, открываем предыдущий или следующий
     if (expandedQuestion === `question-${questionIndex}`) {
       if (updatedQuestions.length > 0) {
         const newIndex = questionIndex > 0 ? questionIndex - 1 : 0;
@@ -194,7 +189,7 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
   const handleSave = () => {
     const validationError = validateForm();
     if (validationError) {
-      alert(validationError); // Можно заменить на более красивое уведомление
+      alert(validationError);
       return;
     }
 
@@ -208,7 +203,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
 
   return (
     <Box>
-      {/* Основная информация о тесте */}
       <Card sx={{ mb: 4 }}>
         <CardHeader
           title="Основная информация"
@@ -243,7 +237,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
         </CardContent>
       </Card>
 
-      {/* Секция вопросов */}
       <Card>
         <CardHeader
           title={
@@ -467,7 +460,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
         </CardContent>
       </Card>
 
-      {/* Кнопки действий */}
       <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2, mt: 4 }}>
         <Button onClick={onCancel} disabled={isLoading} size="large">
           Отмена

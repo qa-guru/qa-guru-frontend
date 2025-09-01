@@ -58,21 +58,18 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
   const [updateTestAnswer] = useUpdateTestAnswerMutation();
   const [getTestAnswers] = useTestAnswerByQuestionLazyQuery();
 
-  // Загружаем данные существующего теста для редактирования
   useEffect(() => {
     if (existingTestData?.testTestGroupsById) {
       const test = existingTestData.testTestGroupsById;
       setTestName(test.testName || "");
       setSuccessThreshold(test.successThreshold || 70);
 
-      // Загружаем вопросы и ответы с правильностью
       const loadQuestionsWithAnswers = async () => {
         const loadedQuestions: QuestionForm[] = [];
 
         for (const question of test.testQuestions || []) {
           if (!question?.id) continue;
 
-          // Получаем полную информацию об ответах для каждого вопроса
           const { data: answersData } = await getTestAnswers({
             variables: { questionId: question.id },
           });
@@ -204,11 +201,9 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
     if (!validateForm()) return;
 
     try {
-      // Сначала сохраняем вопросы и ответы
       const savedQuestions: { id: string }[] = [];
 
       for (const question of questions) {
-        // Сохраняем вопрос
         const questionResult = await updateTestQuestion({
           variables: {
             input: {
@@ -221,7 +216,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
         const questionId = questionResult.data?.updateTestQuestion?.id;
         if (!questionId) throw new Error("Не удалось сохранить вопрос");
 
-        // Сохраняем ответы для этого вопроса
         for (const answer of question.answers) {
           await updateTestAnswer({
             variables: {
@@ -238,7 +232,6 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
         savedQuestions.push({ id: questionId });
       }
 
-      // Затем сохраняем тестовую группу
       const testGroupInput: TestGroupInput = {
         id: testId || undefined,
         testName,

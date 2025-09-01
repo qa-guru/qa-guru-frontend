@@ -37,7 +37,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
   const navigate = useNavigate();
   const [completedAttempt, setCompletedAttempt] = useState<any>(null);
 
-  // Проверяем попытки тестирования для этой лекции
   const {
     data: attemptsData,
     loading: attemptsLoading,
@@ -50,12 +49,10 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
     skip: !lectureId || !trainingId,
   });
 
-  // Ищем завершенную успешную попытку
   useEffect(() => {
     if (attemptsData?.testAttempts) {
-      // Сортируем попытки по времени начала (новые сначала)
       const sortedAttempts = attemptsData.testAttempts
-        .filter((attempt) => attempt && attempt.endTime !== null) // Только завершенные
+        .filter((attempt) => attempt && attempt.endTime !== null)
         .sort((a, b) => {
           if (!a || !b) return 0;
           return (
@@ -63,27 +60,22 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
           );
         });
 
-      // Ищем последнюю успешную попытку
       const lastSuccessful = sortedAttempts.find(
         (attempt) => attempt && attempt.result === true
       );
 
-      // Если нет успешных, ищем последнюю неуспешную
       const lastUnsuccessful = !lastSuccessful
         ? sortedAttempts.find((attempt) => attempt && attempt.result === false)
         : null;
 
-      // Устанавливаем попытку для отображения
       setCompletedAttempt(lastSuccessful || lastUnsuccessful || null);
     }
   }, [attemptsData]);
 
-  // Проверяем, есть ли незавершенная попытка
   const hasUnfinishedAttempt = attemptsData?.testAttempts?.some(
     (attempt) => attempt && attempt.result === null && attempt.endTime === null
   );
 
-  // Определяем статус теста для отображения
   const getTestStatus = () => {
     if (completedAttempt) {
       if (completedAttempt.result === true) {
@@ -111,7 +103,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
   const testStatus = getTestStatus();
 
   const handleStartTest = () => {
-    // Проверяем наличие всех необходимых параметров
     if (!testGroup?.id || !trainingId || !lectureId) {
       console.error("Missing required parameters for test navigation:", {
         testId: testGroup?.id,
@@ -121,7 +112,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
       return;
     }
 
-    // Если есть незавершенная попытка, продолжаем её
     if (hasUnfinishedAttempt) {
       const unfinishedAttempt = attemptsData?.testAttempts?.find(
         (attempt) =>
@@ -129,7 +119,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
       );
 
       if (unfinishedAttempt) {
-        // Переходим на страницу теста с ID незавершенной попытки
         navigate(
           `/test/${testGroup.id}/${trainingId}/${lectureId}?attemptId=${unfinishedAttempt.id}`
         );
@@ -137,7 +126,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
       }
     }
 
-    // Иначе начинаем новый тест
     navigate(`/test/${testGroup.id}/${trainingId}/${lectureId}`);
   };
 
@@ -145,7 +133,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
     return new Date(dateString).toLocaleString("ru-RU");
   };
 
-  // Если тест уже пройден, показываем результат
   if (testStatus) {
     return (
       <Box sx={{ my: 4 }}>
@@ -185,13 +172,28 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
               </Stack>
             </Box>
 
-            <Alert severity={testStatus.color} sx={{ mb: 3 }}>
+            <Alert
+              severity={testStatus.color}
+              sx={{
+                mb: 3,
+                bgcolor: "background.paper",
+                border: 1,
+                borderColor: "divider",
+              }}
+            >
               <Typography variant="body2">{testStatus.message}</Typography>
             </Alert>
 
-            {/* Показываем предупреждение о незавершенных попытках */}
             {hasUnfinishedAttempt && (
-              <Alert severity="warning" sx={{ mb: 3 }}>
+              <Alert
+                severity="warning"
+                sx={{
+                  mb: 3,
+                  bgcolor: "background.paper",
+                  border: 1,
+                  borderColor: "divider",
+                }}
+              >
                 <Typography variant="body2">
                   ⚠️ У вас есть незавершенная попытка тестирования.
                 </Typography>
@@ -202,40 +204,46 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
               <Typography variant="h6" gutterBottom>
                 Результат тестирования:
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 <strong>Время начала:</strong>{" "}
                 {formatDate(completedAttempt.startTime)}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 <strong>Время завершения:</strong>{" "}
                 {formatDate(completedAttempt.endTime)}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 <strong>Правильных ответов:</strong>{" "}
                 {completedAttempt.successfulCount} из{" "}
                 {testGroup.testQuestions?.length || 0}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.primary">
                 <strong>Ошибок:</strong> {completedAttempt.errorsCount}
               </Typography>
 
-              {/* Показываем статистику по всем попыткам */}
               {attemptsData?.testAttempts &&
                 attemptsData.testAttempts.length > 1 && (
                   <Box
-                    sx={{ mt: 2, p: 2, bgcolor: "grey.50", borderRadius: 1 }}
+                    sx={{
+                      mt: 2,
+                      p: 2,
+                      bgcolor: "background.paper",
+                      border: 1,
+                      borderColor: "divider",
+                      borderRadius: 1,
+                    }}
                   >
                     <Typography
                       variant="body2"
-                      color="text.secondary"
+                      color="text.primary"
                       gutterBottom
                     >
                       <strong>Статистика по всем попыткам:</strong>
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       Всего попыток: {attemptsData.testAttempts.length}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       Успешных:{" "}
                       {
                         attemptsData.testAttempts.filter(
@@ -243,7 +251,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
                         ).length
                       }
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary">
                       Неуспешных:{" "}
                       {
                         attemptsData.testAttempts.filter(
@@ -252,7 +260,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
                       }
                     </Typography>
                     {hasUnfinishedAttempt && (
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" color="text.primary">
                         Незавершенных:{" "}
                         {
                           attemptsData.testAttempts.filter(
@@ -288,7 +296,6 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
     );
   }
 
-  // Если тест не пройден, показываем стандартный интерфейс
   return (
     <Box sx={{ my: 4 }}>
       <Typography
@@ -321,9 +328,16 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
             </Stack>
           </Box>
 
-          {/* Показываем ошибку, если есть */}
           {attemptsError && (
-            <Alert severity="error" sx={{ mb: 3 }}>
+            <Alert
+              severity="error"
+              sx={{
+                mb: 3,
+                bgcolor: "background.paper",
+                border: 1,
+                borderColor: "divider",
+              }}
+            >
               <Typography variant="body2">
                 Ошибка при загрузке попыток тестирования:{" "}
                 {attemptsError.message}
@@ -331,18 +345,32 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
             </Alert>
           )}
 
-          {/* Показываем загрузку */}
           {attemptsLoading && (
-            <Alert severity="info" sx={{ mb: 3 }}>
+            <Alert
+              severity="info"
+              sx={{
+                mb: 3,
+                bgcolor: "background.paper",
+                border: 1,
+                borderColor: "divider",
+              }}
+            >
               <Typography variant="body2">
                 Загрузка информации о попытках тестирования...
               </Typography>
             </Alert>
           )}
 
-          {/* Показываем основную информацию */}
           {!attemptsLoading && !attemptsError && (
-            <Alert severity="info" sx={{ mb: 3 }}>
+            <Alert
+              severity="info"
+              sx={{
+                mb: 3,
+                bgcolor: "background.paper",
+                border: 1,
+                borderColor: "divider",
+              }}
+            >
               <Typography variant="body2">
                 {hasUnfinishedAttempt
                   ? "У вас есть незавершенная попытка тестирования."

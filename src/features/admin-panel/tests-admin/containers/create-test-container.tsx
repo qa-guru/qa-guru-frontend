@@ -36,7 +36,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  // Загружаем существующий тест для редактирования
   const {
     data: existingTestData,
     loading: loadingTest,
@@ -64,11 +63,9 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
       setError(null);
       setSuccess(null);
 
-      // Сначала сохраняем вопросы и ответы
       const savedQuestions = [];
 
       for (const question of questions) {
-        // Сохраняем вопрос
         const questionResult = await updateTestQuestion({
           variables: {
             input: {
@@ -81,7 +78,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
         const questionId = questionResult.data?.updateTestQuestion?.id;
         if (!questionId) throw new Error("Не удалось сохранить вопрос");
 
-        // Сохраняем ответы для этого вопроса
         for (const answer of question.answers) {
           await updateTestAnswer({
             variables: {
@@ -98,7 +94,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
         savedQuestions.push({ id: questionId });
       }
 
-      // Затем сохраняем тестовую группу
       const testGroupInput: TestGroupInput = {
         id: testId || undefined,
         testName,
@@ -118,7 +113,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
         setSuccess(`Тест успешно создан! ID: ${savedTestId}`);
       }
 
-      // Через 2 секунды перенаправляем обратно к списку тестов
       setTimeout(() => {
         navigate("/tests");
       }, 2000);
@@ -138,7 +132,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
   return (
     <Container maxWidth="lg">
       <Box sx={{ py: 3 }}>
-        {/* Breadcrumbs и навигация */}
         <Box sx={{ mb: 3 }}>
           <Breadcrumbs>
             <Link
@@ -155,7 +148,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
           </Breadcrumbs>
         </Box>
 
-        {/* Заголовок страницы */}
         <Box
           sx={{
             display: "flex",
@@ -178,7 +170,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
           </Typography>
         </Box>
 
-        {/* Сообщения об ошибках и успехе */}
         {error && (
           <Alert severity="error" sx={{ mb: 3 }}>
             {error}
@@ -191,7 +182,6 @@ const CreateTestContainer: FC<CreateTestContainerProps> = ({ testId }) => {
           </Alert>
         )}
 
-        {/* Форма создания/редактирования */}
         <Paper sx={{ p: 3 }}>
           <CreateTestForm
             existingTest={existingTest}

@@ -16,7 +16,6 @@ import {
 
 import { TestGroupDto } from "api/graphql/generated/graphql";
 
-// Типы (дублируем из контейнера, потом вынесем в отдельный файл)
 interface TestQuestion {
   id: string;
   text: string;
@@ -84,13 +83,9 @@ const TestView: FC<TestViewProps> = ({
   };
 
   const successThreshold = testData.successThreshold ?? 0;
-  const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
 
-  // Исправляем логику: successThreshold - это количество правильных ответов, а не процент
   const isPassed = score >= successThreshold;
-  // Убираем scorePercentage - он больше не нужен
 
-  // Показываем загрузку, если тест еще не начат
   if (!testStarted) {
     return (
       <Box sx={{ maxWidth: 800, margin: "0 auto", padding: 2 }}>
@@ -155,7 +150,6 @@ const TestView: FC<TestViewProps> = ({
         {testData.testName}
       </Typography>
 
-      {/* Отображение уведомлений */}
       {errorMessage && (
         <Alert severity="error" sx={{ mb: 2 }}>
           {errorMessage}
@@ -186,7 +180,6 @@ const TestView: FC<TestViewProps> = ({
         </Box>
       )}
 
-      {/* Показываем текущий прогресс */}
       <Box sx={{ mb: 3, p: 2, bgcolor: "grey.50", borderRadius: 1 }}>
         <Typography variant="body2" color="text.secondary">
           <strong>Прогресс:</strong> {currentQuestionIndex + 1} из{" "}

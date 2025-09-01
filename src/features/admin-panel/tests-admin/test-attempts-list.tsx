@@ -94,7 +94,6 @@ const TestAttemptsList: FC = () => {
     attemptsData?.testAttemptsAll?.items?.filter((attempt) => {
       if (!attempt) return false;
 
-      // Фильтр по поиску (можно добавить поиск по ID попытки)
       if (searchTerm && !attempt.id?.includes(searchTerm)) return false;
 
       return true;
@@ -153,7 +152,6 @@ const TestAttemptsList: FC = () => {
         </Button>
       </Box>
 
-      {/* Фильтры и поиск */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Grid container spacing={2} alignItems="center">
@@ -202,7 +200,6 @@ const TestAttemptsList: FC = () => {
         </CardContent>
       </Card>
 
-      {/* Статистика */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Grid container spacing={2}>
@@ -238,7 +235,6 @@ const TestAttemptsList: FC = () => {
         </CardContent>
       </Card>
 
-      {/* Таблица попыток */}
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -316,7 +312,6 @@ const TestAttemptsList: FC = () => {
         </Table>
       </TableContainer>
 
-      {/* Пагинация */}
       {pagination && (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
           <Pagination
