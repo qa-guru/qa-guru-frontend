@@ -1,0 +1,10 @@
+query testQuestions {
+  testQuestions {
+    id
+    text
+    testAnswers {
+      id
+      text
+    }
+  }
+}

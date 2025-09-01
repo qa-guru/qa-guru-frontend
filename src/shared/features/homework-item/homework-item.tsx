@@ -5,6 +5,7 @@ import { useReactiveVar } from "@apollo/client";
 import { userIdVar } from "cache";
 import StatusText from "shared/components/status-text";
 import UserRow from "shared/components/user-row";
+import LectureTestSection from "features/lecture-detail/views/lecture-test-section";
 
 import { IHomeworkItem } from "./homework-item.types";
 import {
@@ -18,7 +19,13 @@ import HomeworkContent from "../homework-content";
 import ButtonEdit from "../../components/button-edit";
 
 const HomeworkItem: FC<IHomeworkItem> = (props) => {
-  const { dataHomeWorkByLectureAndTraining, hideMentorAndStudent } = props;
+  const {
+    dataHomeWorkByLectureAndTraining,
+    hideMentorAndStudent,
+    testGroup,
+    trainingId,
+    lectureId,
+  } = props;
   const {
     status,
     startCheckingDate,
@@ -70,6 +77,15 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
         {renderStatusAndMentor()}
       </StyledWrapper>
       <Divider />
+
+      {testGroup && (
+        <LectureTestSection
+          testGroup={testGroup}
+          trainingId={trainingId}
+          lectureId={lectureId}
+        />
+      )}
+
       {renderStudent()}
       <StyledHomeworkContentBox>
         <HomeworkContent
@@ -78,6 +94,9 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
           openHomeWorkEdit={openHomeWorkEdit}
           setOpenHomeWorkEdit={setOpenHomeWorkEdit}
           homeWorkId={homeWorkId}
+          testGroup={testGroup}
+          trainingId={trainingId}
+          lectureId={lectureId}
         />
       </StyledHomeworkContentBox>
 

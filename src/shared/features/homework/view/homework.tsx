@@ -20,7 +20,13 @@ import {
 import { IHomework } from "./homework.types";
 
 const Homework: FC<IHomework> = (props) => {
-  const { dataHomeWorkByLectureAndTraining, hideMentorAndStudent } = props;
+  const {
+    dataHomeWorkByLectureAndTraining,
+    hideMentorAndStudent,
+    testGroup,
+    trainingId,
+    lectureId,
+  } = props;
   const { isMobile } = useResponsive();
 
   const [totalElements, setTotalElements] = useState<number>(0);
@@ -40,6 +46,9 @@ const Homework: FC<IHomework> = (props) => {
         <StyledModalBox>
           <HomeworkItem
             dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
+            testGroup={testGroup}
+            trainingId={trainingId}
+            lectureId={lectureId}
           />
           <Comments homeworkId={dataHomeWorkByLectureAndTraining?.id}>
             <CommentsPagination />
@@ -62,6 +71,9 @@ const Homework: FC<IHomework> = (props) => {
       <HomeworkItem
         dataHomeWorkByLectureAndTraining={dataHomeWorkByLectureAndTraining}
         hideMentorAndStudent={hideMentorAndStudent}
+        testGroup={testGroup}
+        trainingId={trainingId}
+        lectureId={lectureId}
       />
       {dataHomeWorkByLectureAndTraining?.id && (
         <>

@@ -1,0 +1,9 @@
+mutation startTest($lectureId: ID!, $trainingId: ID!) {
+  startTest(lectureId: $lectureId, trainingId: $trainingId) {
+    id
+    startTime
+    successfulCount
+    errorsCount
+    result
+  }
+}

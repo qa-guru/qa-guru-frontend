@@ -1,0 +1,15 @@
+query testTestGroupsById($id: ID) {
+  testTestGroupsById(id: $id) {
+    id
+    testName
+    successThreshold
+    testQuestions {
+      id
+      text
+      testAnswers {
+        id
+        text
+      }
+    }
+  }
+}

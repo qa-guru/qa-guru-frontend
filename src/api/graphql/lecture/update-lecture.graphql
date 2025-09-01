@@ -5,6 +5,11 @@ mutation updateLecture($input: LectureInput!) {
     description
     content
     contentHomeWork
+    testGroup {
+      id
+      testName
+      successThreshold
+    }
     speakers {
       id
       firstName

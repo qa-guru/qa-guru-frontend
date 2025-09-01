@@ -20,7 +20,8 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
     tariffHomework,
     trainingId,
   } = props;
-  const { subject, description, speakers, content } = dataLecture.lecture || {};
+  const { subject, description, speakers, content, testGroup } =
+    dataLecture.lecture || {};
   const lectureHomeWork = dataLectureHomework?.lectureHomeWork;
 
   const hasHomework = !!lectureHomeWork;
@@ -38,6 +39,9 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
         view={view}
         onKanbanView={handleKanbanView}
         onListView={handleListView}
+        testGroup={testGroup || undefined}
+        trainingId={trainingId}
+        lectureId={dataLecture.lecture?.id || undefined}
       />
     );
 

@@ -7,14 +7,27 @@ import { AppSpinner } from "shared/components/spinners";
 
 import Homework from "../view";
 
-const HomeworkContainer: FC = () => {
-  const { lectureId, trainingId } = useParams();
+interface HomeworkContainerProps {
+  testGroup?: any;
+  trainingId?: string;
+  lectureId?: string;
+}
+
+const HomeworkContainer: FC<HomeworkContainerProps> = ({
+  testGroup,
+  trainingId,
+  lectureId,
+}) => {
+  const params = useParams();
+  const currentLectureId = lectureId || params.lectureId;
+  const currentTrainingId = trainingId || params.trainingId;
 
   const {
     data: dataHomeWorkByLectureAndTraining,
     loading: loadingHomeWorkByLectureAndTraining,
   } = useHomeWorkByLectureAndTrainingQuery({
-    variables: { lectureId: lectureId!, trainingId: trainingId! },
+    variables: { lectureId: currentLectureId!, trainingId: currentTrainingId! },
+    skip: !currentLectureId || !currentTrainingId,
   });
 
   if (loadingHomeWorkByLectureAndTraining) return <AppSpinner />;
@@ -25,6 +38,9 @@ const HomeworkContainer: FC = () => {
       dataHomeWorkByLectureAndTraining={
         dataHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining
       }
+      testGroup={testGroup}
+      trainingId={currentTrainingId}
+      lectureId={currentLectureId}
     />
   );
 };

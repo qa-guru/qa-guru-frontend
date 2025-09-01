@@ -7,8 +7,16 @@ import CreateHomeworkItem from "shared/features/send-homework/container";
 import { IHomeworkContent } from "./homework-content.types";
 
 const HomeworkContent: FC<IHomeworkContent> = (props) => {
-  const { status, answer, openHomeWorkEdit, setOpenHomeWorkEdit, homeWorkId } =
-    props;
+  const {
+    status,
+    answer,
+    openHomeWorkEdit,
+    setOpenHomeWorkEdit,
+    homeWorkId,
+    testGroup,
+    trainingId,
+    lectureId,
+  } = props;
   let homeworkContent;
 
   if (status && !openHomeWorkEdit) {
@@ -22,7 +30,13 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
       />
     );
   } else {
-    homeworkContent = <CreateHomeworkItem />;
+    homeworkContent = (
+      <CreateHomeworkItem
+        testGroup={testGroup}
+        trainingId={trainingId}
+        lectureId={lectureId}
+      />
+    );
   }
 
   return <>{homeworkContent}</>;

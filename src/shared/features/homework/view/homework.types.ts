@@ -1,11 +1,11 @@
-import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { TestGroupDto , StudentHomeWorkStatus, Maybe } from "api/graphql/generated/graphql";
 
 export interface IHomework {
   dataHomeWorkByLectureAndTraining?: {
     __typename?: "StudentHomeWorkDto";
     id?: string | null;
-    answer?: string | null;
-    status?: StudentHomeWorkStatus | null;
+    answer?: Maybe<string>;
+    status?: Maybe<StudentHomeWorkStatus>;
     creationDate?: any | null;
     startCheckingDate?: any | null;
     endCheckingDate?: any | null;
@@ -35,4 +35,7 @@ export interface IHomework {
     } | null;
   } | null;
   hideMentorAndStudent?: boolean;
+  testGroup?: TestGroupDto;
+  trainingId?: string;
+  lectureId?: string;
 }

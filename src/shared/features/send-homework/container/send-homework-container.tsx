@@ -2,18 +2,30 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 
 import {
-  HomeWorkByLectureAndTrainingDocument,
-  HomeWorkByLectureAndTrainingQuery,
-  Maybe,
   useCreateHomeWorkToCheckMutation,
-  useSendHomeWorkToCheckMutation,
   useUpdateHomeworkMutation,
+  useSendHomeWorkToCheckMutation,
+  HomeWorkByLectureAndTrainingDocument,
+  Maybe,
+  HomeWorkByLectureAndTrainingQuery,
 } from "api/graphql/generated/graphql";
 
 import SendHomework from "../view";
 
-const SendHomeworkContainer: FC = () => {
-  const { lectureId, trainingId } = useParams();
+interface SendHomeworkContainerProps {
+  testGroup?: any;
+  trainingId?: string;
+  lectureId?: string;
+}
+
+const SendHomeworkContainer: FC<SendHomeworkContainerProps> = ({
+  testGroup,
+  trainingId,
+  lectureId,
+}) => {
+  const params = useParams();
+  const currentLectureId = lectureId || params.lectureId;
+  const currentTrainingId = trainingId || params.trainingId;
 
   const [createHomeWorkToCheck, { loading: loadingCreateHomeWorkToCheck }] =
     useCreateHomeWorkToCheckMutation({
@@ -23,7 +35,10 @@ const SendHomeworkContainer: FC = () => {
         const existingHomeWorkByLectureAndTraining: Maybe<HomeWorkByLectureAndTrainingQuery> =
           cache.readQuery({
             query: HomeWorkByLectureAndTrainingDocument,
-            variables: { lectureId: lectureId!, trainingId: trainingId! },
+            variables: {
+              lectureId: currentLectureId!,
+              trainingId: currentTrainingId!,
+            },
           });
 
         const updatedHomeWorkByLectureAndTraining = {
@@ -35,7 +50,10 @@ const SendHomeworkContainer: FC = () => {
 
         cache.writeQuery({
           query: HomeWorkByLectureAndTrainingDocument,
-          variables: { lectureId: lectureId!, trainingId: trainingId! },
+          variables: {
+            lectureId: currentLectureId!,
+            trainingId: currentTrainingId!,
+          },
           data: updatedHomeWorkByLectureAndTraining,
         });
       },
@@ -49,7 +67,10 @@ const SendHomeworkContainer: FC = () => {
         const existingHomeWorkByLectureAndTraining: Maybe<HomeWorkByLectureAndTrainingQuery> =
           cache.readQuery({
             query: HomeWorkByLectureAndTrainingDocument,
-            variables: { lectureId: lectureId!, trainingId: trainingId! },
+            variables: {
+              lectureId: currentLectureId!,
+              trainingId: currentTrainingId!,
+            },
           });
 
         const updatedHomeWorkByLectureAndTraining = {
@@ -61,7 +82,10 @@ const SendHomeworkContainer: FC = () => {
 
         cache.writeQuery({
           query: HomeWorkByLectureAndTrainingDocument,
-          variables: { lectureId: lectureId!, trainingId: trainingId! },
+          variables: {
+            lectureId: currentLectureId!,
+            trainingId: currentTrainingId!,
+          },
           data: updatedHomeWorkByLectureAndTraining,
         });
       },
@@ -78,6 +102,9 @@ const SendHomeworkContainer: FC = () => {
       createHomeWorkToCheck={createHomeWorkToCheck}
       sendHomeWorkToCheck={sendHomeWorkToCheck}
       updateHomework={updateHomework}
+      testGroup={testGroup}
+      trainingId={currentTrainingId}
+      lectureId={currentLectureId}
     />
   );
 };

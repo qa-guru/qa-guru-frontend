@@ -15,6 +15,7 @@ const SendButtons: FC<ISendButtons> = ({
   onCancel,
   hideCancel,
   loading,
+  disabled,
 }) => {
   const { isMobileOrTablet } = useResponsive();
 
@@ -34,7 +35,7 @@ const SendButtons: FC<ISendButtons> = ({
 
   const renderSendButton = () =>
     isMobileOrTablet ? (
-      <StyledIconButton onClick={onReply}>
+      <StyledIconButton onClick={onReply} disabled={disabled}>
         <Send color="primary" fontSize="small" />
       </StyledIconButton>
     ) : (
@@ -42,6 +43,7 @@ const SendButtons: FC<ISendButtons> = ({
         variant="contained"
         onClick={onReply}
         loading={loading}
+        disabled={disabled}
       >
         Отправить
       </StyledLoadingButton>

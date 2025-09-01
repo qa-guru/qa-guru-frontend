@@ -1,4 +1,7 @@
-import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import {
+  StudentHomeWorkStatus,
+  TestGroupDto,
+} from "api/graphql/generated/graphql";
 
 export interface IHomeworkItem {
   dataHomeWorkByLectureAndTraining?: {
@@ -35,4 +38,7 @@ export interface IHomeworkItem {
     } | null;
   } | null;
   hideMentorAndStudent?: boolean;
+  testGroup?: TestGroupDto;
+  trainingId?: string;
+  lectureId?: string;
 }

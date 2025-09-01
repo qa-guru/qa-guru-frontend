@@ -3,6 +3,7 @@ import {
   Maybe,
   SendHomeWorkToCheckMutationFn,
   UpdateCommentMutationFn,
+  TestGroupDto,
 } from "api/graphql/generated/graphql";
 
 export interface ISendHomeWork {
@@ -13,4 +14,7 @@ export interface ISendHomeWork {
   loadingUpdateHomework: boolean;
   loadingSendHomeWorkToCheck: boolean;
   homeWorkId?: Maybe<string>;
+  testGroup?: TestGroupDto;
+  trainingId?: string;
+  lectureId?: string;
 }

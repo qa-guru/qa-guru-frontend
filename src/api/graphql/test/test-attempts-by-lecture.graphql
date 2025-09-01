@@ -1,0 +1,10 @@
+query testAttemptsByLecture($lectureId: ID!, $trainingId: ID!) {
+  testAttempts(lectureId: $lectureId, trainingId: $trainingId) {
+    id
+    startTime
+    endTime
+    successfulCount
+    errorsCount
+    result
+  }
+}

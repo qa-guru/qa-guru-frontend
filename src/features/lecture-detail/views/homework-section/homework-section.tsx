@@ -15,6 +15,9 @@ const HomeworkSection: FC<IHomeworkSection> = ({
   view,
   onKanbanView,
   onListView,
+  testGroup,
+  trainingId,
+  lectureId,
 }) => {
   const hasHomework = lectureHomeWork?.length > 0;
 
@@ -30,7 +33,11 @@ const HomeworkSection: FC<IHomeworkSection> = ({
   const homework = (
     <>
       <LectureHomework lectureHomeWork={lectureHomeWork} />
-      <Homework />
+      <Homework
+        testGroup={testGroup}
+        trainingId={trainingId}
+        lectureId={lectureId}
+      />
       <HomeworksViewSwitcher
         onKanbanView={onKanbanView}
         onListView={onListView}

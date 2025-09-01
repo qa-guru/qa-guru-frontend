@@ -1,0 +1,33 @@
+mutation sendTestAnswer(
+  $questionId: ID!
+  $attemptId: ID!
+  $testAnswerIds: [ID]!
+) {
+  sendTestAnswer(
+    questionId: $questionId
+    attemptId: $attemptId
+    testAnswerIds: $testAnswerIds
+  ) {
+    id
+    startTime
+    endTime
+    successfulCount
+    errorsCount
+    result
+    testAttemptQuestionResults {
+      testQuestion {
+        id
+        text
+      }
+      result
+      testAnswerResults {
+        testAnswer {
+          id
+          text
+        }
+        result
+        answer
+      }
+    }
+  }
+}
