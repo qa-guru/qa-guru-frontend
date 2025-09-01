@@ -64,9 +64,6 @@ const SelectTests: FC<SelectTestsProps> = ({
             onChange={(e) => field.onChange(e.target.value)}
             displayEmpty
           >
-            <MenuItem value="">
-              <em>Без теста</em>
-            </MenuItem>
             {tests.map((test) => (
               <MenuItem key={test?.id} value={test?.id || ""}>
                 <Box

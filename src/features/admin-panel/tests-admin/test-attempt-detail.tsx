@@ -75,7 +75,6 @@ const TestAttemptDetail: FC = () => {
 
   return (
     <Box>
-      {/* Хлебные крошки */}
       <Breadcrumbs sx={{ mb: 3 }}>
         <Link
           component="button"
@@ -88,7 +87,6 @@ const TestAttemptDetail: FC = () => {
         <Typography color="text.primary">Попытка {attempt.id}</Typography>
       </Breadcrumbs>
 
-      {/* Заголовок */}
       <Box
         sx={{
           display: "flex",
@@ -109,7 +107,6 @@ const TestAttemptDetail: FC = () => {
         </Button>
       </Box>
 
-      {/* Основная информация о попытке */}
       <Grid container spacing={3} sx={{ mb: 3 }}>
         <Grid item xs={12} md={6}>
           <Card>

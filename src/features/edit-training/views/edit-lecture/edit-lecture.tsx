@@ -262,16 +262,6 @@ const EditLecture: FC<IEditLecture> = ({
           </StyledPaper>
           <StyledPaper>
             <StyledInfoStack>
-              <Typography variant="h3">Тест для лекции</Typography>
-              <SelectTests
-                name="testGroupId"
-                control={control}
-                helperText="Выберите тест, который будет доступен студентам после изучения материалов лекции"
-              />
-            </StyledInfoStack>
-          </StyledPaper>
-          <StyledPaper>
-            <StyledInfoStack>
               <Typography variant="h3">Материалы урока</Typography>
               <Editor
                 content={content}
@@ -291,6 +281,16 @@ const EditLecture: FC<IEditLecture> = ({
                 setPendingFiles={setPendingFiles}
                 source="lectureHomework"
                 handleDeleteFile={handleDeleteHomeworkFile}
+              />
+            </StyledInfoStack>
+          </StyledPaper>
+          <StyledPaper>
+            <StyledInfoStack>
+              <Typography variant="h3">Тест для лекции</Typography>
+              <SelectTests
+                name="testGroupId"
+                control={control}
+                helperText="Выберите тест, который будет доступен студентам после изучения материалов лекции"
               />
             </StyledInfoStack>
           </StyledPaper>
