@@ -7,31 +7,14 @@ import {
   CardContent,
   FormControl,
   FormControlLabel,
-  Radio,
-  RadioGroup,
+  Checkbox,
   Typography,
   Alert,
   LinearProgress,
 } from "@mui/material";
 
 import { TestGroupDto } from "api/graphql/generated/graphql";
-
-interface TestQuestion {
-  id: string;
-  text: string;
-}
-
-interface TestAnswer {
-  id: string;
-  text: string;
-  correct: boolean;
-  testQuestion: TestQuestion;
-}
-
-interface UserAnswer {
-  questionId: string;
-  answerId: string;
-}
+import { TestQuestion, TestAnswer, UserAnswer } from "../types";
 
 interface TestViewProps {
   testData: TestGroupDto;
@@ -46,7 +29,7 @@ interface TestViewProps {
   trainingId?: string;
   lectureId?: string;
   testStarted: boolean;
-  onAnswerSelect: (answerId: string) => void;
+  onAnswerSelect: (answerId: string, isSelected: boolean) => void;
   onNextQuestion: () => void;
   errorMessage?: string | null;
   successMessage?: string | null;
@@ -79,7 +62,9 @@ const TestView: FC<TestViewProps> = ({
   };
 
   const getUserAnswerForQuestion = (questionId: string) => {
-    return userAnswers.find((ua) => ua.questionId === questionId)?.answerId;
+    return (
+      userAnswers.find((ua) => ua.questionId === questionId)?.answerIds || []
+    );
   };
 
   const successThreshold = testData.successThreshold ?? 0;
@@ -107,24 +92,45 @@ const TestView: FC<TestViewProps> = ({
   if (isCompleted) {
     return (
       <Box sx={{ maxWidth: 800, margin: "0 auto", padding: 2 }}>
-        <Card>
+        <Card sx={{ bgcolor: "background.paper" }}>
           <CardContent>
-            <Typography variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom color="text.primary">
               Тест завершён!
             </Typography>
 
-            <Alert severity={isPassed ? "success" : "error"} sx={{ mb: 2 }}>
+            <Alert
+              severity={isPassed ? "success" : "error"}
+              sx={{
+                mb: 2,
+                bgcolor: isPassed ? "success.light" : "error.light",
+                color: isPassed ? "success.contrastText" : "error.contrastText",
+                "& .MuiAlert-icon": {
+                  color: isPassed ? "success.main" : "error.main",
+                },
+              }}
+            >
               {isPassed
                 ? `Поздравляем! Вы прошли тест с результатом ${score} правильных ответов из ${totalQuestions}`
                 : `Тест не пройден. Результат: ${score} правильных ответов из ${totalQuestions}. Требуется: ${successThreshold} правильных ответов`}
             </Alert>
 
-            <Typography variant="body1">
-              Правильных ответов: {score} из {totalQuestions}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Проходной балл: {successThreshold} правильных ответов
-            </Typography>
+            <Box
+              sx={{
+                p: 2,
+                bgcolor: "background.default",
+                border: 1,
+                borderColor: "divider",
+                borderRadius: 1,
+                mb: 2,
+              }}
+            >
+              <Typography variant="body1" color="text.primary">
+                Правильных ответов: {score} из {totalQuestions}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Проходной балл: {successThreshold} правильных ответов
+              </Typography>
+            </Box>
 
             {trainingId && lectureId && (
               <Button
@@ -141,7 +147,7 @@ const TestView: FC<TestViewProps> = ({
     );
   }
 
-  const selectedAnswer = getUserAnswerForQuestion(currentQuestion.id);
+  const selectedAnswers = getUserAnswerForQuestion(currentQuestion.id);
   const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
 
   return (
@@ -166,30 +172,36 @@ const TestView: FC<TestViewProps> = ({
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             alignItems: "center",
             mb: 2,
           }}
         >
-          <Typography variant="body2" color="text.secondary">
-            Курс ID: {trainingId} | Лекция ID: {lectureId}
-          </Typography>
           <Button variant="outlined" size="small" onClick={handleBackToLecture}>
             Вернуться к лекции
           </Button>
         </Box>
       )}
 
-      <Box sx={{ mb: 3, p: 2, bgcolor: "grey.50", borderRadius: 1 }}>
-        <Typography variant="body2" color="text.secondary">
+      <Box
+        sx={{
+          mb: 3,
+          p: 2,
+          bgcolor: "background.paper",
+          border: 1,
+          borderColor: "divider",
+          borderRadius: 1,
+        }}
+      >
+        <Typography variant="body2" color="text.primary">
           <strong>Прогресс:</strong> {currentQuestionIndex + 1} из{" "}
           {totalQuestions} вопросов
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.primary">
           <strong>Правильных ответов:</strong> {score} из {successThreshold}{" "}
           необходимых
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.primary">
           <strong>Статус:</strong>{" "}
           {isPassed ? "✅ Тест пройден" : "❌ Тест не пройден"}
         </Typography>
@@ -202,19 +214,20 @@ const TestView: FC<TestViewProps> = ({
           </Typography>
 
           <FormControl component="fieldset">
-            <RadioGroup
-              value={selectedAnswer || ""}
-              onChange={(e) => onAnswerSelect(e.target.value)}
-            >
-              {testAnswers.map((answer) => (
-                <FormControlLabel
-                  key={answer.id}
-                  value={answer.id}
-                  control={<Radio />}
-                  label={answer.text}
-                />
-              ))}
-            </RadioGroup>
+            {testAnswers.map((answer) => (
+              <FormControlLabel
+                key={answer.id}
+                control={
+                  <Checkbox
+                    checked={selectedAnswers.includes(answer.id)}
+                    onChange={(e) =>
+                      onAnswerSelect(answer.id, e.target.checked)
+                    }
+                  />
+                }
+                label={answer.text}
+              />
+            ))}
           </FormControl>
         </CardContent>
       </Card>
@@ -226,8 +239,9 @@ const TestView: FC<TestViewProps> = ({
           alignItems: "center",
         }}
       >
-        <Typography variant="body2" color="text.secondary">
-          {userAnswers.length} из {totalQuestions} вопросов отвечено
+        <Typography variant="body2" color="text.primary">
+          {userAnswers.filter((answer) => answer.answerIds.length > 0).length}{" "}
+          из {totalQuestions} вопросов отвечено
         </Typography>
 
         <Button

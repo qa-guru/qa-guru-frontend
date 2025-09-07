@@ -13,23 +13,7 @@ import {
 } from "api/graphql/generated/graphql";
 
 import TestView from "../views/test-view";
-
-interface TestQuestion {
-  id: string;
-  text: string;
-}
-
-interface TestAnswer {
-  id: string;
-  text: string;
-  correct: boolean;
-  testQuestion: TestQuestion;
-}
-
-interface UserAnswer {
-  questionId: string;
-  answerId: string;
-}
+import { TestAnswer, UserAnswer } from "../types";
 
 interface TestContainerProps {
   testId: string;
@@ -112,10 +96,20 @@ const TestContainer: FC<TestContainerProps> = ({
                 answerResult.answer === true
               ) {
                 if (question.id && answerResult.testAnswer.id) {
-                  restoredAnswers.push({
-                    questionId: question.id,
-                    answerId: answerResult.testAnswer.id,
-                  });
+                  const existingAnswerIndex = restoredAnswers.findIndex(
+                    (answer) => answer.questionId === question.id
+                  );
+
+                  if (existingAnswerIndex >= 0) {
+                    restoredAnswers[existingAnswerIndex].answerIds.push(
+                      answerResult.testAnswer.id
+                    );
+                  } else {
+                    restoredAnswers.push({
+                      questionId: question.id,
+                      answerIds: [answerResult.testAnswer.id],
+                    });
+                  }
                 }
               }
             });
@@ -256,7 +250,7 @@ const TestContainer: FC<TestContainerProps> = ({
     fetchCurrentAnswers();
   }, [currentQuestion, getTestAnswers]);
 
-  const handleAnswerSelect = (answerId: string) => {
+  const handleAnswerSelect = (answerId: string, isSelected: boolean) => {
     if (!currentQuestion?.id) return;
 
     const existingAnswerIndex = userAnswers.findIndex(
@@ -265,15 +259,27 @@ const TestContainer: FC<TestContainerProps> = ({
 
     if (existingAnswerIndex >= 0) {
       const updatedAnswers = [...userAnswers];
-      updatedAnswers[existingAnswerIndex] = {
-        questionId: currentQuestion.id,
-        answerId,
-      };
+      const currentAnswerIds = updatedAnswers[existingAnswerIndex].answerIds;
+
+      if (isSelected) {
+        if (!currentAnswerIds.includes(answerId)) {
+          updatedAnswers[existingAnswerIndex] = {
+            questionId: currentQuestion.id,
+            answerIds: [...currentAnswerIds, answerId],
+          };
+        }
+      } else {
+        updatedAnswers[existingAnswerIndex] = {
+          questionId: currentQuestion.id,
+          answerIds: currentAnswerIds.filter((id) => id !== answerId),
+        };
+      }
+
       setUserAnswers(updatedAnswers);
-    } else {
+    } else if (isSelected) {
       setUserAnswers([
         ...userAnswers,
-        { questionId: currentQuestion.id, answerId },
+        { questionId: currentQuestion.id, answerIds: [answerId] },
       ]);
     }
   };
@@ -285,76 +291,24 @@ const TestContainer: FC<TestContainerProps> = ({
       (answer) => answer.questionId === currentQuestion.id
     );
 
-    if (currentAnswer) {
-      await handleSendAnswer(currentQuestion.id, [currentAnswer.answerId]);
+    if (currentAnswer && currentAnswer.answerIds.length > 0) {
+      await handleSendAnswer(currentQuestion.id, currentAnswer.answerIds);
     }
 
     if (currentQuestionIndex < testQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-    }
-  };
-
-  const handleFinishTest = async () => {
-    if (!testAttemptId) {
-      const errorMsg = "❌ Нет ID попытки теста";
-      console.error(errorMsg);
-      setErrorMessage(errorMsg);
-      return;
-    }
-
-    if (userAnswers.length < testQuestions.length) {
-      const errorMsg = `❌ Не все вопросы отвечены: ${userAnswers.length} из ${testQuestions.length}`;
-      console.error(errorMsg);
-      setErrorMessage(errorMsg);
-      return;
-    }
-
-    const successThreshold =
-      testData?.testTestGroupsById?.successThreshold ?? 0;
-    if (score < successThreshold) {
-      const errorMsg = `❌ Порог прохождения не достигнут: ${score} правильных ответов из ${successThreshold} требуемых. Тест не может быть завершен.`;
-      console.error(errorMsg);
-      setErrorMessage(errorMsg);
-      return;
-    }
-
-    try {
-      console.log("🏁 Завершаем тест, ID попытки:", testAttemptId);
-      console.log("📊 Статистика ответов:", {
-        всего: testQuestions.length,
-        отвечено: userAnswers.length,
-        правильных: score,
-        порог: successThreshold,
-        достигнут: score >= successThreshold,
-      });
-
-      setIsCompleted(true);
-      setSuccessMessage("✅ Тест успешно завершен!");
-      setErrorMessage(null);
-    } catch (error: any) {
-      console.error("❌ Ошибка при завершении теста:", error);
-
-      const errorMsg = `❌ Ошибка при завершении теста: ${
-        error.message || "Неизвестная ошибка"
-      }`;
-      setErrorMessage(errorMsg);
     }
   };
 
   const currentAnswer = userAnswers.find(
     (ua) => ua.questionId === currentQuestion?.id
   );
-  const isCurrentQuestionAnswered = !!currentAnswer;
+  const isCurrentQuestionAnswered =
+    !!currentAnswer && currentAnswer.answerIds.length > 0;
 
   if (testLoading || answersLoading) return <AppSpinner />;
   if (!testData?.testTestGroupsById || !currentQuestion)
     return <NoDataErrorMessage />;
-
-  const typedCurrentQuestion: TestQuestion = {
-    id: currentQuestion.id!,
-    text: currentQuestion.text!,
-  };
 
   return (
     <>
