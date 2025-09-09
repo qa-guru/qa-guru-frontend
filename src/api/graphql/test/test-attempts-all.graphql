@@ -7,6 +7,10 @@ query testAttemptsAll($offset: Int!, $limit: Int!, $sort: TestAttemptSort) {
       successfulCount
       errorsCount
       result
+      studentName
+      trainingName
+      lectureSubject
+      testGroupName
     }
     offset
     limit

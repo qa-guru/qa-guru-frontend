@@ -653,6 +653,10 @@ type TestAttemptShortDto {
   successfulCount: Int
   errorsCount: Int
   result: Boolean
+  studentName: String
+  trainingName: String
+  lectureSubject: String
+  testGroupName: String
 }
 
 type TestAttemptDto {
@@ -663,6 +667,10 @@ type TestAttemptDto {
   errorsCount: Int
   result: Boolean
   testAttemptQuestionResults: [TestAttemptQuestionResultDto]
+  student: UserDto
+  training: TrainingDto
+  lecture: LectureInfoDto
+  testGroup: TestGroupDto
 }
 
 type TestAttemptsDto {

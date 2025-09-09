@@ -7,7 +7,6 @@ import {
   CardContent,
   Typography,
   Grid,
-  Fab,
   IconButton,
   Chip,
 } from "@mui/material";
@@ -81,6 +80,7 @@ const TestsAdmin: FC = () => {
             variant="contained"
             startIcon={<AddIcon />}
             onClick={handleCreateTest}
+            sx={{ color: "white" }}
           >
             Создать тест
           </Button>
@@ -130,7 +130,12 @@ const TestsAdmin: FC = () => {
                       label={`${test?.successThreshold} правильных ответов`}
                       size="small"
                       color="primary"
-                      sx={{ ml: 1 }}
+                      sx={{
+                        ml: 1,
+                        "& .MuiChip-label": {
+                          color: "white",
+                        },
+                      }}
                     />
                   </Box>
 
@@ -159,25 +164,13 @@ const TestsAdmin: FC = () => {
               variant="contained"
               startIcon={<AddIcon />}
               onClick={handleCreateTest}
+              sx={{ color: "white" }}
             >
               Создать первый тест
             </Button>
           </CardContent>
         </Card>
       )}
-
-      <Fab
-        color="primary"
-        aria-label="add"
-        onClick={handleCreateTest}
-        sx={{
-          position: "fixed",
-          bottom: 16,
-          right: 16,
-        }}
-      >
-        <AddIcon />
-      </Fab>
     </Box>
   );
 };

@@ -24,12 +24,17 @@ import {
   MenuItem,
   SelectChangeEvent,
   Pagination,
+  Avatar,
+  Stack,
 } from "@mui/material";
 import {
   Visibility as VisibilityIcon,
   Refresh as RefreshIcon,
   Search as SearchIcon,
   Sort as SortIcon,
+  Person as PersonIcon,
+  School as SchoolIcon,
+  Book as BookIcon,
 } from "@mui/icons-material";
 
 import {
@@ -94,7 +99,16 @@ const TestAttemptsList: FC = () => {
     attemptsData?.testAttemptsAll?.items?.filter((attempt) => {
       if (!attempt) return false;
 
-      if (searchTerm && !attempt.id?.includes(searchTerm)) return false;
+      if (searchTerm) {
+        const searchLower = searchTerm.toLowerCase();
+        return (
+          attempt.id?.toLowerCase().includes(searchLower) ||
+          attempt.studentName?.toLowerCase().includes(searchLower) ||
+          attempt.trainingName?.toLowerCase().includes(searchLower) ||
+          attempt.lectureSubject?.toLowerCase().includes(searchLower) ||
+          attempt.testGroupName?.toLowerCase().includes(searchLower)
+        );
+      }
 
       return true;
     }) || [];
@@ -158,7 +172,7 @@ const TestAttemptsList: FC = () => {
             <Grid item xs={12} md={4}>
               <TextField
                 fullWidth
-                label="Поиск по ID попытки"
+                label="Поиск по студенту, курсу или лекции"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 InputProps={{
@@ -239,11 +253,12 @@ const TestAttemptsList: FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID попытки</TableCell>
+              <TableCell>Студент</TableCell>
+              <TableCell>Курс</TableCell>
+              <TableCell>Лекция</TableCell>
+              <TableCell>Тест</TableCell>
               <TableCell>Время начала</TableCell>
               <TableCell>Время завершения</TableCell>
-              <TableCell>Правильных ответов</TableCell>
-              <TableCell>Ошибок</TableCell>
               <TableCell>Результат</TableCell>
               <TableCell>Статус</TableCell>
               <TableCell>Действия</TableCell>
@@ -255,7 +270,57 @@ const TestAttemptsList: FC = () => {
 
               return (
                 <TableRow key={attempt.id} hover>
-                  <TableCell>{attempt.id}</TableCell>
+                  <TableCell>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <Avatar sx={{ width: 32, height: 32 }}>
+                        <PersonIcon />
+                      </Avatar>
+                      <Box>
+                        <Typography variant="body2" fontWeight="medium">
+                          {attempt.studentName}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          Студент
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </TableCell>
+                  <TableCell>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <SchoolIcon color="primary" />
+                      <Box>
+                        <Typography variant="body2" fontWeight="medium">
+                          {attempt.trainingName}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          Курс
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </TableCell>
+                  <TableCell>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <BookIcon color="secondary" />
+                      <Box>
+                        <Typography variant="body2" fontWeight="medium">
+                          {attempt.lectureSubject}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          Лекция
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </TableCell>
+                  <TableCell>
+                    <Box>
+                      <Typography variant="body2" fontWeight="medium">
+                        {attempt.testGroupName}
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        Тест
+                      </Typography>
+                    </Box>
+                  </TableCell>
                   <TableCell>
                     {attempt.startTime ? formatDate(attempt.startTime) : "-"}
                   </TableCell>
@@ -263,25 +328,25 @@ const TestAttemptsList: FC = () => {
                     {attempt.endTime ? formatDate(attempt.endTime) : "-"}
                   </TableCell>
                   <TableCell>
-                    <Chip
-                      label={attempt.successfulCount || 0}
-                      color="success"
-                      variant="outlined"
-                      size="small"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Chip
-                      label={attempt.errorsCount || 0}
-                      color="error"
-                      variant="outlined"
-                      size="small"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="body2" fontWeight="medium">
-                      {getScoreDisplay(attempt)}
-                    </Typography>
+                    <Box>
+                      <Typography variant="body2" fontWeight="medium">
+                        {getScoreDisplay(attempt)}
+                      </Typography>
+                      <Box sx={{ display: "flex", gap: 0.5, mt: 0.5 }}>
+                        <Chip
+                          label={attempt.successfulCount || 0}
+                          color="success"
+                          variant="outlined"
+                          size="small"
+                        />
+                        <Chip
+                          label={attempt.errorsCount || 0}
+                          color="error"
+                          variant="outlined"
+                          size="small"
+                        />
+                      </Box>
+                    </Box>
                   </TableCell>
                   <TableCell>
                     {attempt.result !== null ? (
