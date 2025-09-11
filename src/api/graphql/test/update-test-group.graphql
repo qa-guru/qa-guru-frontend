@@ -1,0 +1,15 @@
+mutation updateTestGroup($input: TestGroupInput!) {
+  updateTestGroup(input: $input) {
+    id
+    testName
+    successThreshold
+    testQuestions {
+      id
+      text
+      testAnswers {
+        id
+        text
+      }
+    }
+  }
+}

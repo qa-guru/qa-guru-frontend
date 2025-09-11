@@ -1,0 +1,7 @@
+query testTestGroups {
+  testTestGroups {
+    id
+    testName
+    successThreshold
+  }
+}

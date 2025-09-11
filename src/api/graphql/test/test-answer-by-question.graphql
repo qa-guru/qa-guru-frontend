@@ -1,0 +1,7 @@
+query testAnswerByQuestion($questionId: ID) {
+  testAnswerByQuestion(questionId: $questionId) {
+    id
+    text
+    correct
+  }
+}

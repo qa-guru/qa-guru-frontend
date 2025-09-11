@@ -1,0 +1,19 @@
+query testAttemptsAll($offset: Int!, $limit: Int!, $sort: TestAttemptSort) {
+  testAttemptsAll(offset: $offset, limit: $limit, sort: $sort) {
+    items {
+      id
+      startTime
+      endTime
+      successfulCount
+      errorsCount
+      result
+      studentName
+      trainingName
+      lectureSubject
+      testGroupName
+    }
+    offset
+    limit
+    totalElements
+  }
+}
