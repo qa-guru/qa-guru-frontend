@@ -116,6 +116,12 @@ const EditTraining: FC<IEditTraining> = ({ data, updateTraining }) => {
             >
               Сохранить
             </StyledSaveButton>
+            <Button
+              variant="outlined"
+              onClick={() => navigate(`${location.pathname}/lecture-schedule`)}
+            >
+              Расписание
+            </Button>
             <StyledContinueButton variant="contained" onClick={handleContinue}>
               Продолжить
               <StyledArrowForwardIosIcon />

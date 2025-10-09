@@ -1,6 +1,10 @@
 query trainingLectures($id: ID!) {
   trainingLectures(id: $id) {
     id
+    number
+    locking
+    availableFrom
+    isAvailable
     lecture {
       id
       subject

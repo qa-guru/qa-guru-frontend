@@ -19,9 +19,36 @@ const StepperButtons: FC<IStepperButtons> = ({
     (lecture) => lecture?.lecture?.id === lectureId
   );
 
-  const isAtFirstLecture = activeStep === 0;
   const isAtLastLecture = activeStep === lectures.length - 1;
-  const canGoToNextLecture = activeStep < lectures.length - 1;
+
+  const isLectureAccessible = (index: number) => {
+    const lecture = lectures[index];
+    return lecture && !lecture.locking && lecture.isAvailable;
+  };
+
+  const findNextAccessibleLecture = () => {
+    for (let i = activeStep + 1; i < lectures.length; i++) {
+      if (isLectureAccessible(i)) {
+        return i;
+      }
+    }
+    return -1;
+  };
+
+  const findPreviousAccessibleLecture = () => {
+    for (let i = activeStep - 1; i >= 0; i--) {
+      if (isLectureAccessible(i)) {
+        return i;
+      }
+    }
+    return -1;
+  };
+
+  const nextAccessibleIndex = findNextAccessibleLecture();
+  const previousAccessibleIndex = findPreviousAccessibleLecture();
+
+  const canGoToNextLecture = nextAccessibleIndex !== -1;
+  const canGoToPreviousLecture = previousAccessibleIndex !== -1;
 
   const handleNavigation = (step: number) => {
     const lecture = lectures[step]?.lecture;
@@ -31,14 +58,14 @@ const StepperButtons: FC<IStepperButtons> = ({
   };
 
   const goToPreviousLecture = () => {
-    if (activeStep && activeStep > 0) {
-      handleNavigation(activeStep - 1);
+    if (previousAccessibleIndex !== -1) {
+      handleNavigation(previousAccessibleIndex);
     }
   };
 
   const goToNextLecture = () => {
-    if (activeStep !== undefined && activeStep < lectures.length - 1) {
-      handleNavigation(activeStep + 1);
+    if (nextAccessibleIndex !== -1) {
+      handleNavigation(nextAccessibleIndex);
     }
   };
 
@@ -50,7 +77,7 @@ const StepperButtons: FC<IStepperButtons> = ({
     <StyledBox>
       <Button
         onClick={goToPreviousLecture}
-        disabled={isAtFirstLecture}
+        disabled={!canGoToPreviousLecture}
         variant="contained"
         color="secondary"
       >
