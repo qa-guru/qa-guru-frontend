@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { useParams } from "react-router-dom";
+import { FC, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
@@ -15,6 +16,8 @@ import useTariff from "../../hooks/use-tariff";
 
 const LectureDetailContainer: FC = () => {
   const { lectureId, trainingId } = useParams();
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const { tariffHomework } = useTariff({ trainingId });
 
@@ -35,6 +38,24 @@ const LectureDetailContainer: FC = () => {
       skip: !tariffHomework,
       fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
     });
+
+  useEffect(() => {
+    if (dataTrainingLectures?.trainingLectures && lectureId) {
+      const currentLecture = dataTrainingLectures.trainingLectures.find(
+        (tl) => tl?.lecture?.id === lectureId
+      );
+
+      if (currentLecture) {
+        const isLocked = currentLecture.locking;
+        const {isAvailable} = currentLecture;
+
+        if (isLocked || !isAvailable) {
+          enqueueSnackbar("Этот урок пока недоступен", { variant: "warning" });
+          navigate(`/training/${trainingId}`);
+        }
+      }
+    }
+  }, [dataTrainingLectures, lectureId, navigate, trainingId, enqueueSnackbar]);
 
   if (loadingLecture || loadingTrainingLectures) {
     return <AppSpinner />;

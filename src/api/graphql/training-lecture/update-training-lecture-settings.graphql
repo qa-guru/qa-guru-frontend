@@ -1,0 +1,16 @@
+mutation updateTrainingLectureSettings(
+  $id: ID!
+  $input: TrainingLectureInput!
+) {
+  updateTrainingLectureSettings(id: $id, input: $input) {
+    id
+    number
+    locking
+    availableFrom
+    isAvailable
+    lecture {
+      id
+      subject
+    }
+  }
+}

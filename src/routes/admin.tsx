@@ -6,6 +6,7 @@ import UserDetail from "pages/user-detail";
 import EditTrainingPage from "pages/edit-training";
 import EditLecturesPage from "pages/edit-lectures";
 import EditLecturePage from "pages/edit-lecture";
+import LectureSchedulePage from "pages/lecture-schedule";
 import { KanbanPage } from "pages/kanban";
 import {
   KanbanMentorHomeworkDetailsFullPage,
@@ -95,6 +96,11 @@ const AdminRoutes = [
     key="edit-lecture"
     path="/edit-training/:trainingId/edit-lectures/:lectureId"
     element={<EditLecturePage />}
+  />,
+  <Route
+    key="lecture-schedule"
+    path="/edit-training/:trainingId/lecture-schedule"
+    element={<LectureSchedulePage />}
   />,
   <Route key="info-system" path="/info-system" element={<InfoSystemPage />} />,
   <Route
