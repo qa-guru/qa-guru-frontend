@@ -57,6 +57,10 @@ type Mutation {
   training lecture
   """
   updateTrainingLecture(id: ID!, lectureIds: [ID!]): [TrainingLectureDto]
+  updateTrainingLectureSettings(
+    id: ID!
+    input: TrainingLectureInput!
+  ): TrainingLectureDto
   """
   studentHomeWork section
   """
@@ -288,6 +292,7 @@ input TrainingLectureInput {
   lecture: ID!
   lastLecture: ID
   locking: Boolean
+  availableFrom: LocalDateTime
 }
 
 type TrainingLectureDto {
@@ -296,6 +301,8 @@ type TrainingLectureDto {
   lecture: LectureDto
   lastLecture: LectureDto
   locking: Boolean
+  availableFrom: LocalDateTime
+  isAvailable: Boolean
 }
 
 input LectureInput {
