@@ -32,5 +32,21 @@ query homeWork($homeWorkId: ID!) {
     creationDate
     startCheckingDate
     endCheckingDate
+    contourHandle
+    contourCheckVerdict
+    contourCheckComment
+    contourCheckedAt
+    contourEvidence {
+      found
+      handle
+      contourStatus
+      githubUrl
+      githubSlug
+      jenkinsUrl
+      jenkinsJob
+      lastBuild
+      testopsUrl
+      allureUrl
+    }
   }
 }

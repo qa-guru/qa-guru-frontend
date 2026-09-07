@@ -76,6 +76,7 @@ type Mutation {
   approved(homeWorkId: ID!): StudentHomeWorkDto
   notApproved(homeWorkId: ID!): StudentHomeWorkDto
   resetState(homeWorkId: ID!): StudentHomeWorkDto
+  checkHomeWorkByContour(homeWorkId: ID!): StudentHomeWorkDto
   """
   student TestAttempt section
   """
@@ -389,6 +390,11 @@ type StudentHomeWorkDto {
   updateDate: LocalDateTime
   startCheckingDate: LocalDateTime
   endCheckingDate: LocalDateTime
+  contourHandle: String
+  contourCheckVerdict: ContourCheckVerdict
+  contourCheckComment: String
+  contourCheckedAt: LocalDateTime
+  contourEvidence: ContourEvidenceDto
 }
 
 type StudentHomeWorkFilesDto {
@@ -397,6 +403,19 @@ type StudentHomeWorkFilesDto {
   fileName: String
   contentType: String
   size: Long
+}
+
+type ContourEvidenceDto {
+  found: Boolean
+  handle: String
+  contourStatus: String
+  githubUrl: String
+  githubSlug: String
+  jenkinsUrl: String
+  jenkinsJob: String
+  lastBuild: String
+  testopsUrl: String
+  allureUrl: String
 }
 
 type LectureFilesDto {
@@ -766,6 +785,14 @@ enum StudentHomeWorkStatus {
   IN_REVIEW
   APPROVED
   NOT_APPROVED
+}
+
+enum ContourCheckVerdict {
+  NONE
+  REJECTED
+  PENDING_MENTOR
+  WAITING_CONTOUR
+  INDEX_UNAVAILABLE
 }
 
 input LectureSort {

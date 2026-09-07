@@ -4,6 +4,7 @@ import { Container, Typography } from "@mui/material";
 import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/view";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
+import ContourVerdictPanel from "shared/components/contour-verdict";
 import { formatId } from "shared/helpers";
 
 import StatusSelect from "../../views/status-select";
@@ -40,6 +41,13 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
         />
       </StyledInfoBox>
       <StatusSelect currentStatus={status} homeworkId={id} />
+      <ContourVerdictPanel
+        homeworkId={id}
+        verdict={homeWork?.contourCheckVerdict}
+        comment={homeWork?.contourCheckComment}
+        evidence={homeWork?.contourEvidence}
+        canRecheck
+      />
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledInfoBox>
         <Homework

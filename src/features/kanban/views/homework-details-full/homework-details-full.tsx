@@ -7,6 +7,7 @@ import LectureHomework from "shared/features/lecture-homework";
 import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
+import ContourVerdictPanel from "shared/components/contour-verdict";
 import { formatId } from "shared/helpers";
 import { useRoleAccess } from "shared/hooks";
 import { UserRole } from "api/graphql/generated/graphql";
@@ -58,6 +59,13 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
       ) : (
         <StatusText status={status} />
       )}
+      <ContourVerdictPanel
+        homeworkId={id}
+        verdict={homeWork?.contourCheckVerdict}
+        comment={homeWork?.contourCheckComment}
+        evidence={homeWork?.contourEvidence}
+        canRecheck={showSelect}
+      />
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledInfoBox>
         <Homework
