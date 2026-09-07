@@ -16,6 +16,7 @@ import { AppSpinner } from "shared/components/spinners";
 import Layout from "shared/components/layout";
 import ScrollPageSectionPage from "pages/scroll-page-section";
 import CabinetPreviewPage from "pages/cabinet-preview";
+import { getProvisioningAccessToken } from "api/rest/provisioning-token";
 import { useAuth } from "features/authorization/context/auth-context";
 
 import StudentRoutes from "./student";
@@ -31,10 +32,35 @@ interface IRoutnig {
   roles?: Maybe<Maybe<UserRole>[]>;
 }
 
+function applyDevCabinetHatch(): boolean {
+  if (!import.meta.env.DEV) {
+    return false;
+  }
+
+  const fromQuery =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("access_token")
+      : null;
+  const token = getProvisioningAccessToken() || fromQuery;
+
+  if (!token) {
+    return false;
+  }
+
+  const current = userRolesVar();
+
+  if (!current || current.length === 0) {
+    userRolesVar([UserRole.Student]);
+  }
+
+  return true;
+}
+
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
   const isAuth = localStorage.getItem("isAuth");
+  const hatch = applyDevCabinetHatch();
 
-  if (!isAuth) {
+  if (!isAuth && !hatch) {
     return <Navigate to="/authorization" replace />;
   }
 
@@ -72,6 +98,7 @@ const Routing: FC<IRoutnig> = () => {
   }, [location]);
 
   const { isLoading } = useAuth();
+  applyDevCabinetHatch();
   const userRoles = userRolesVar();
   const usersRoutes = getUserRoutes(userRoles);
 

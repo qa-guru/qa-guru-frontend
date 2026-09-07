@@ -51,6 +51,8 @@ const CabinetPreviewPage: FC = () => {
             },
           });
         }}
+        onIssueContour={() => undefined}
+        issuing={false}
       />
     </Container>
   );
