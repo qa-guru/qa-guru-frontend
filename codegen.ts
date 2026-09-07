@@ -3,8 +3,10 @@ import "dotenv/config";
 
 const config: CodegenConfig = {
   schema: [
-    `${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI}`,
     "src/api/schema.graphql",
+    ...(process.env.CODEGEN_REMOTE_SCHEMA === "1" && process.env.APP_ENDPOINT
+      ? [`${process.env.APP_ENDPOINT}${process.env.GRAPHQL_URI || "/graphql"}`]
+      : []),
   ],
   documents: ["src/**/*.graphql"],
   generates: {
