@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
+import { vitrineHref } from "./constants";
 import { OwnerView } from "./types";
 import { stripForbidden, vitrineSlice } from "./visibility";
 
@@ -60,6 +61,22 @@ describe("vitrineSlice", () => {
     assert.ok(slice?.github);
     assert.equal("email" in slice.github, false);
     assert.equal(slice.github.slug, "alice-app-tests");
+  });
+});
+
+describe("vitrineHref", () => {
+  it("stand: relative API proxy → provisioning host /u/{handle}", () => {
+    assert.equal(
+      vitrineHref("qgp5cli", "/provisioning", "http://127.0.0.1:8088"),
+      "http://127.0.0.1:8088/u/qgp5cli"
+    );
+  });
+
+  it("prod: absolute provisioning URI, not learn and not apex", () => {
+    assert.equal(
+      vitrineHref("Alice", "https://provisioning.qa.guru/", "http://127.0.0.1:8088"),
+      "https://provisioning.qa.guru/u/Alice"
+    );
   });
 });
 

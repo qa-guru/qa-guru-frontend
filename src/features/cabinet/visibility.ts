@@ -44,7 +44,7 @@ export function typeVisible(
 
 /**
  * Anonymous vitrine slice: profile ∧ type. Closed keys omitted.
- * Same rule as provisioning `GET /api/u/{handle}` (P8 is the page, not this).
+ * Same rule as provisioning `GET /api/u/{handle}`. HTML page is `GET /u/{handle}` on the provisioning host.
  */
 export function vitrineSlice(owner: OwnerView): VitrineSlice | null {
   if (!owner.visibility?.profilePublic) {

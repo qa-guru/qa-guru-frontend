@@ -11,7 +11,7 @@ const closedTypes = Object.fromEntries(
 ) as OwnerView["visibility"]["types"];
 
 const FIXTURE: OwnerView = {
-  handle: "alice",
+  handle: "qgp5cli",
   visibility: { profilePublic: false, types: closedTypes },
   github: {
     org: "autotests-cloud",

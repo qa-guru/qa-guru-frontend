@@ -29,6 +29,22 @@ export const ARTIFACT_LABELS: Record<ArtifactTypeKey, string> = {
 
 export const CABINET_PATH = "/cabinet";
 
+/** HTML vitrine lives on the provisioning host (`GET /u/{handle}`), not on learn. */
+export function vitrineHref(
+  handle: string,
+  provisioningUri: string = "/provisioning",
+  provisioningEndpoint: string = "http://127.0.0.1:8088"
+): string {
+  const encoded = encodeURIComponent(handle);
+  const apiBase = provisioningUri.replace(/\/$/, "");
+
+  if (/^https?:\/\//i.test(apiBase)) {
+    return `${apiBase}/u/${encoded}`;
+  }
+
+  return `${provisioningEndpoint.replace(/\/$/, "")}/u/${encoded}`;
+}
+
 export const FORBIDDEN_KEYS = [
   "password",
   "email",

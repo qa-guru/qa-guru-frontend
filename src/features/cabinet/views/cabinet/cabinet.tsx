@@ -2,15 +2,19 @@ import { ChangeEvent, FC } from "react";
 import {
   Button,
   FormControlLabel,
+  Link,
   Stack,
   Switch,
   Typography,
 } from "@mui/material";
 
+import { PROVISIONING_URI } from "config";
+
 import {
   ARTIFACT_LABELS,
   ARTIFACT_TYPES,
   ArtifactTypeKey,
+  vitrineHref,
 } from "../../constants";
 import { ArtifactPayload } from "../../types";
 import { typeVisible } from "../../visibility";
@@ -60,13 +64,26 @@ const Cabinet: FC<ICabinet> = (props) => {
   };
 
   const indexed = ARTIFACT_TYPES.filter((type) => owner[type]);
+  const href = vitrineHref(
+    owner.handle,
+    PROVISIONING_URI,
+    import.meta.env.VITE_PROVISIONING_ENDPOINT || "http://127.0.0.1:8088"
+  );
 
   return (
     <Stack gap={2}>
       <Typography variant="h4">Кабинет контура</Typography>
       <Typography variant="body2" color="text.secondary">
         Handle <strong>{owner.handle}</strong>. Флаги те же, что у витрины{" "}
-        <code>/u/{owner.handle}</code> (страница витрины — не это окно).
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="cabinet-vitrine-link"
+        >
+          /u/{owner.handle}
+        </Link>
+        .
       </Typography>
       <StyledPaper>
         <Typography variant="h6" gutterBottom>
@@ -164,9 +181,18 @@ const Cabinet: FC<ICabinet> = (props) => {
         })}
       </StyledPaper>
       <StyledPaper>
-        <Typography variant="h6" gutterBottom>
-          Предпросмотр витрины
-        </Typography>
+        <StyledFlagRow>
+          <Typography variant="h6">Предпросмотр витрины</Typography>
+          <Button
+            component="a"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="cabinet-vitrine-open"
+          >
+            Открыть витрину
+          </Button>
+        </StyledFlagRow>
         {preview === null ? (
           <Typography variant="body2">
             Аноним не увидит профиль (мастер выключен).
