@@ -26,6 +26,12 @@ describe("vitrineSlice", () => {
   it("profile ∧ type — same flags as GET /api/u/{handle}", () => {
     const owner: OwnerView = {
       ...aliceClosed,
+      contour: {
+        status: "ready",
+        courseId: "etalon",
+        template: "etalon",
+        quota: { used: 1, limit: 1 },
+      },
       visibility: {
         profilePublic: true,
         types: { github: true, jenkins: false, testops: false },
@@ -40,6 +46,7 @@ describe("vitrineSlice", () => {
     assert.equal(slice.testops, undefined);
     assert.equal("visibility" in slice, false);
     assert.equal("email" in slice, false);
+    assert.equal("contour" in slice, false);
   });
 
   it("strips forbidden keys from preview JSON", () => {

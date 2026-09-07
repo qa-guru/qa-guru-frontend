@@ -29,8 +29,8 @@ const CabinetStatus: FC<ICabinetStatus> = ({ loading, error, hasOwner }) => {
   if (error === "not-found") {
     return (
       <Alert severity="warning">
-        Контур ещё не в реестре. Выдача — отдельное окно, кнопки «поднять
-        проект» здесь нет.
+        Контур ещё не в реестре. Кнопка «Поднять проект» появляется после
+        успешного <code>GET /api/me</code> (пустой срез для нового логина).
       </Alert>
     );
   }

@@ -9,4 +9,6 @@ export interface ICabinet {
   preview: VitrineSlice | null;
   onToggleMaster: (profilePublic: boolean) => void;
   onToggleType: (type: ArtifactTypeKey, on: boolean) => void;
+  onIssueContour: () => void;
+  issuing?: boolean;
 }

@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 import { PROVISIONING_URI } from "config";
 import { getProvisioningAccessToken } from "api/rest/provisioning-token";
 
-import { OwnerView, VisibilityUpdate } from "./types";
+import { OwnerView, VisibilityUpdate, ContourStatus } from "./types";
 
 export class ProvisioningHttpError extends Error {
   status: number;
@@ -44,6 +44,25 @@ export default class ProvisioningService {
       const response = await axios.get<OwnerView>(meUrl(), {
         headers: authHeaders(),
       });
+
+      return response.data;
+    } catch (error) {
+      return rethrow(error);
+    }
+  }
+
+  static async issueContour(): Promise<ContourStatus> {
+    try {
+      const response = await axios.post<ContourStatus>(
+        `${meUrl()}/contours`,
+        { courseId: "etalon" },
+        {
+          headers: {
+            ...authHeaders(),
+            "content-type": "application/json",
+          },
+        }
+      );
 
       return response.data;
     } catch (error) {

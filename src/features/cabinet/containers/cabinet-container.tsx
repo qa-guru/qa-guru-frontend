@@ -29,8 +29,12 @@ const CabinetContainer: FC = () => {
   const [error, setError] = useState<CabinetLoadError | null>(null);
   const [owner, setOwner] = useState<OwnerView | null>(null);
 
-  const load = useCallback(async () => {
-    setLoading(true);
+  const [issuing, setIssuing] = useState(false);
+
+  const load = useCallback(async (opts?: { silent?: boolean }) => {
+    if (!opts?.silent) {
+      setLoading(true);
+    }
 
     try {
       const data = await ProvisioningService.getMe();
@@ -45,13 +49,28 @@ const CabinetContainer: FC = () => {
           : "network"
       );
     } finally {
-      setLoading(false);
+      if (!opts?.silent) {
+        setLoading(false);
+      }
     }
   }, []);
 
   useEffect(() => {
     load();
   }, [load]);
+
+  useEffect(() => {
+    const status = owner?.contour?.status;
+    if (status !== "queued" && status !== "running") {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      load({ silent: true });
+    }, 2000);
+
+    return () => window.clearInterval(timer);
+  }, [load, owner?.contour?.status]);
 
   const persist = async (next: OwnerView, rollback: OwnerView | null) => {
     setSaving(true);
@@ -73,6 +92,28 @@ const CabinetContainer: FC = () => {
       }
     } finally {
       setSaving(false);
+    }
+  };
+
+  const onIssueContour = async () => {
+    setIssuing(true);
+
+    try {
+      await ProvisioningService.issueContour();
+      await load();
+    } catch (caught) {
+      if (caught instanceof ProvisioningHttpError && caught.status === 409) {
+        enqueueSnackbar("Квота: один активный контур на курс", { variant: "warning" });
+        await load();
+      } else {
+        enqueueSnackbar("Не удалось выдать контур", { variant: "error" });
+      }
+
+      if (caught instanceof ProvisioningHttpError && caught.status === 401) {
+        setError("unauthorized");
+      }
+    } finally {
+      setIssuing(false);
     }
   };
 
@@ -117,6 +158,8 @@ const CabinetContainer: FC = () => {
         preview={owner ? vitrineSlice(owner) : null}
         onToggleMaster={onToggleMaster}
         onToggleType={onToggleType}
+        onIssueContour={onIssueContour}
+        issuing={issuing}
       />
     </Container>
   );

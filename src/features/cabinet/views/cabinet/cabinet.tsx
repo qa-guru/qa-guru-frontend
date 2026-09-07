@@ -1,5 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import {
+  Button,
   FormControlLabel,
   Stack,
   Switch,
@@ -28,8 +29,17 @@ function payloadLines(payload: ArtifactPayload): string[] {
 }
 
 const Cabinet: FC<ICabinet> = (props) => {
-  const { loading, saving, error, owner, preview, onToggleMaster, onToggleType } =
-    props;
+  const {
+    loading,
+    saving,
+    error,
+    owner,
+    preview,
+    onToggleMaster,
+    onToggleType,
+    onIssueContour,
+    issuing,
+  } = props;
 
   const status = (
     <CabinetStatus loading={loading} error={error} hasOwner={Boolean(owner)} />
@@ -58,6 +68,37 @@ const Cabinet: FC<ICabinet> = (props) => {
         Handle <strong>{owner.handle}</strong>. Флаги те же, что у витрины{" "}
         <code>/u/{owner.handle}</code> (страница витрины — не это окно).
       </Typography>
+      <StyledPaper>
+        <Typography variant="h6" gutterBottom>
+          Контур etalon
+        </Typography>
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+          Шаблон autotests-cloud/{owner.handle}-app-tests · квота{" "}
+          {owner.contour?.quota?.used ?? 0}/{owner.contour?.quota?.limit ?? 1}{" "}
+          на курс. Staff может выдать за ученика с API.
+        </Typography>
+        <Typography variant="body2" gutterBottom>
+          Статус: <strong>{owner.contour?.status ?? "none"}</strong>
+          {owner.contour?.error ? ` — ${owner.contour.error}` : ""}
+        </Typography>
+        <Button
+          variant="contained"
+          disabled={
+            saving ||
+            issuing ||
+            owner.contour?.status === "ready" ||
+            owner.contour?.status === "queued" ||
+            owner.contour?.status === "running"
+          }
+          onClick={onIssueContour}
+        >
+          {owner.contour?.status === "ready"
+            ? "Контур выдан"
+            : issuing || owner.contour?.status === "queued" || owner.contour?.status === "running"
+              ? "Выдаём…"
+              : "Поднять проект"}
+        </Button>
+      </StyledPaper>
       <StyledPaper>
         <StyledFlagRow>
           <Typography variant="h6">Публичный профиль</Typography>
