@@ -15,6 +15,7 @@ import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import Layout from "shared/components/layout";
 import ScrollPageSectionPage from "pages/scroll-page-section";
+import CabinetPreviewPage from "pages/cabinet-preview";
 import { useAuth } from "features/authorization/context/auth-context";
 
 import StudentRoutes from "./student";
@@ -157,6 +158,17 @@ const Routing: FC<IRoutnig> = () => {
           path="/scroll-page-section"
           element={<ScrollPageSectionPage />}
         />
+        {import.meta.env.DEV && (
+          <Route
+            key="cabinet-preview"
+            path="/cabinet-preview"
+            element={
+              <Layout isLogging>
+                <CabinetPreviewPage />
+              </Layout>
+            }
+          />
+        )}
       </Routes>
     </ErrorBoundary>
   );

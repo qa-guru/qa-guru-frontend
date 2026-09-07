@@ -1,0 +1,68 @@
+import axios, { AxiosError } from "axios";
+
+import { PROVISIONING_URI } from "config";
+import { getProvisioningAccessToken } from "api/rest/provisioning-token";
+
+import { OwnerView, VisibilityUpdate } from "./types";
+
+export class ProvisioningHttpError extends Error {
+  status: number;
+
+  constructor(status: number) {
+    super(`provisioning ${status}`);
+    this.status = status;
+  }
+}
+
+function authHeaders(): Record<string, string> {
+  const token = getProvisioningAccessToken();
+
+  if (!token) {
+    return {};
+  }
+
+  return { Authorization: `Bearer ${token}` };
+}
+
+function rethrow(error: unknown): never {
+  if (axios.isAxiosError(error)) {
+    const status = (error as AxiosError).response?.status ?? 0;
+
+    throw new ProvisioningHttpError(status || 0);
+  }
+
+  throw new ProvisioningHttpError(0);
+}
+
+function meUrl(): string {
+  return `${PROVISIONING_URI.replace(/\/$/, "")}/api/me`;
+}
+
+export default class ProvisioningService {
+  static async getMe(): Promise<OwnerView> {
+    try {
+      const response = await axios.get<OwnerView>(meUrl(), {
+        headers: authHeaders(),
+      });
+
+      return response.data;
+    } catch (error) {
+      return rethrow(error);
+    }
+  }
+
+  static async updateVisibility(body: VisibilityUpdate): Promise<OwnerView> {
+    try {
+      const response = await axios.put<OwnerView>(`${meUrl()}/visibility`, body, {
+        headers: {
+          ...authHeaders(),
+          "content-type": "application/json",
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      return rethrow(error);
+    }
+  }
+}

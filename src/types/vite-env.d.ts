@@ -3,6 +3,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_GRAPHQL_URI: string;
+  readonly VITE_PROVISIONING_URI?: string;
+  readonly VITE_PROVISIONING_ENDPOINT?: string;
   readonly VITE_LOGIN_URI: string;
   readonly VITE_LOGOUT_URI: string;
   readonly VITE_AVATAR_UPLOAD_URI: string;

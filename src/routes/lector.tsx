@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom";
 
 import { KanbanHomeworkDetailsFullPage, KanbanPage } from "pages/kanban";
+import CabinetPage from "pages/cabinet";
 import Profile from "pages/profile";
 import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
@@ -28,6 +29,7 @@ const LectorRoutes = [
     path="/kanban-mentor/:lectureId"
     element={<KanbanMentorHomeworkDetailsFullPage />}
   />,
+  <Route key="cabinet" path="/cabinet" element={<CabinetPage />} />,
   <Route key="profile" path="/profile" element={<Profile />} />,
   <Route
     key="profile-edit"

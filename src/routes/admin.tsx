@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 
+import CabinetPage from "pages/cabinet";
 import AdminPanelPage from "pages/admin-panel";
 import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
@@ -81,6 +82,7 @@ const AdminRoutes = [
     element={<KanbanStudentHomeworkDetailsFullPage />}
   />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
+  <Route key="cabinet" path="/cabinet" element={<CabinetPage />} />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
   <Route
     key="edit-training"

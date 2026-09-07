@@ -1,4 +1,6 @@
 export const GRAPHQL_URI = import.meta.env.VITE_GRAPHQL_URI;
+export const PROVISIONING_URI =
+  import.meta.env.VITE_PROVISIONING_URI || "/provisioning";
 export const LOGIN_URI = import.meta.env.VITE_LOGIN_URI;
 export const LOGOUT_URI = import.meta.env.VITE_LOGOUT_URI;
 export const AVATAR_UPLOAD_URI = import.meta.env.VITE_AVATAR_UPLOAD_URI;

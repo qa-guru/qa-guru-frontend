@@ -4,6 +4,7 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonIcon from "@mui/icons-material/Person";
 import {
   Group,
+  Hub,
   Leaderboard,
   School,
   SpaceDashboard,
@@ -38,6 +39,12 @@ const Profile: FC<IProfile> = (props) => {
       icon: <PersonIcon />,
       url: "/profile",
       id: 0,
+    },
+    {
+      title: "Кабинет",
+      icon: <Hub />,
+      url: "/cabinet",
+      id: 5,
     },
   ];
 

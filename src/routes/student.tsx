@@ -4,6 +4,7 @@ import HomePage from "pages/home";
 import { KanbanHomeworkDetailsFullPage } from "pages/kanban";
 import LectureDetailPage from "pages/lecture-detail";
 import TrainingLecturesPage from "pages/training-lectures";
+import CabinetPage from "pages/cabinet";
 import Profile from "pages/profile";
 import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
@@ -47,6 +48,7 @@ const StudentRoutes = [
     path="/kanban-student/:lectureId"
     element={<KanbanStudentHomeworkDetailsFullPage />}
   />,
+  <Route key="cabinet" path="/cabinet" element={<CabinetPage />} />,
   <Route key="profile" path="/profile" element={<Profile />} />,
   <Route
     key="profile-edit"

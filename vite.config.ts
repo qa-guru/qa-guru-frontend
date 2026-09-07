@@ -7,8 +7,15 @@ export default ({ mode }: any) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   const API_URL = process.env.VITE_APP_ENDPOINT;
+  const PROVISIONING_URL =
+    process.env.VITE_PROVISIONING_ENDPOINT || "http://127.0.0.1:8088";
 
   const proxyConfig = {
+    "^/provisioning": {
+      target: PROVISIONING_URL,
+      changeOrigin: true,
+      rewrite: (path: string) => path.replace(/^\/provisioning/, ""),
+    },
     "^/graphql": API_URL,
     "^/login": API_URL,
     "^/logout": API_URL,
@@ -26,6 +33,10 @@ export default ({ mode }: any) => {
       proxy: proxyConfig,
       host: true,
     },
-    plugins: [react(), svgr(), tsconfigPaths()],
+    plugins: [
+      react(),
+      svgr(),
+      tsconfigPaths({ root: process.cwd(), ignoreConfigErrors: true }),
+    ],
   });
 };
