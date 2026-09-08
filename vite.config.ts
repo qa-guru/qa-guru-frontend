@@ -9,6 +9,7 @@ export default ({ mode }: any) => {
   const API_URL = process.env.VITE_APP_ENDPOINT;
   const PROVISIONING_URL =
     process.env.VITE_PROVISIONING_ENDPOINT || "http://127.0.0.1:8088";
+  const BFF_URL = process.env.VITE_BFF_ENDPOINT || "http://127.0.0.1:3042";
 
   const proxyConfig = {
     "^/provisioning": {
@@ -16,10 +17,12 @@ export default ({ mode }: any) => {
       changeOrigin: true,
       rewrite: (path: string) => path.replace(/^\/provisioning/, ""),
     },
+    "^/auth": { target: BFF_URL, changeOrigin: true },
+    "^/oauth2": { target: BFF_URL, changeOrigin: true },
     "^/graphql": API_URL,
-    "^/login": API_URL,
-    "^/logout": API_URL,
-    "^/refreshtoken": API_URL,
+    "^/login": { target: BFF_URL, changeOrigin: true },
+    "^/logout": { target: BFF_URL, changeOrigin: true },
+    "^/refreshtoken": { target: BFF_URL, changeOrigin: true },
     "^/upload/avatar": API_URL,
     "^/upload/training/.*": API_URL,
     "^/lecture/.*": API_URL,

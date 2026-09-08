@@ -30,10 +30,8 @@ const errorLink = onError(
                 });
               })
               .catch((error) => {
-                AuthService.logout().then(() => {
-                  localStorage.removeItem("isAuth");
-                  window.location.href = "/authorization";
-                });
+                localStorage.removeItem("isAuth");
+                window.location.href = "/login";
                 observer.error(error);
               });
           });

@@ -1,13 +1,10 @@
 import { FC, useEffect } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-import { InputText } from "shared/components/form";
 import ThemeSelector from "shared/components/theme-selector";
+import { OIDC_LOGIN_URI } from "config";
 
-import { ILogin, ILoginForm } from "./login.types";
+import { ILogin } from "./login.types";
 import {
   StyledBottomStack,
   StyledButton,
@@ -18,12 +15,13 @@ import {
   StyledWrapper,
   StyledSelectorWrapper,
 } from "../views.styled";
-import InputPassword from "../input-password";
 import { ROUTES } from "../../constants";
+import { useAuth } from "../../context/auth-context";
 
 const Login: FC<ILogin> = (props) => {
-  const { isLoading, login } = props;
+  const { isLoading } = props;
   const navigate = useNavigate();
+  const { session } = useAuth();
 
   const routeRegister = () => {
     navigate(ROUTES.SIGNUP);
@@ -33,45 +31,11 @@ const Login: FC<ILogin> = (props) => {
     navigate(ROUTES.RESET);
   };
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<ILoginForm>({
-    defaultValues: {
-      username: "",
-      password: "",
-    },
-    resolver: yupResolver(
-      yup.object().shape({
-        username: yup
-          .string()
-          .lowercase()
-          .email("Некорректный e-mail")
-          .required("Введите e-mail")
-          .trim(),
-        password: yup.string().required("Введите пароль").trim(),
-      })
-    ),
-  });
-
-  const doLogin: SubmitHandler<ILoginForm> = async (data) => {
-    await login(data.username, data.password);
-  };
-
-  const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSubmit(doLogin)();
-    }
-  };
-
   useEffect(() => {
-    document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [handleKeyPress]);
+    if (session) {
+      navigate(ROUTES.HOME, { replace: true });
+    }
+  }, [session, navigate]);
 
   return (
     <StyledWrapper>
@@ -80,34 +44,16 @@ const Login: FC<ILogin> = (props) => {
       </StyledSelectorWrapper>
       <StyledLogo />
       <StyledPaper>
-        <form>
-          <StyledStack>
-            <InputText
-              control={control}
-              name="username"
-              placeholder="Введите E-mail"
-              label="E-mail"
-              InputLabelProps={{ shrink: true }}
-              autoComplete="username"
-              errors={errors}
-            />
-            <InputPassword
-              control={control}
-              name="password"
-              placeholder="Введите пароль"
-              label="Пароль"
-              InputLabelProps={{ shrink: true }}
-              errors={errors}
-            />
-            <StyledLoadingButton
-              onClick={handleSubmit(doLogin)}
-              loading={isLoading}
-              variant="contained"
-            >
-              Войти
-            </StyledLoadingButton>
-          </StyledStack>
-        </form>
+        <StyledStack>
+          <StyledLoadingButton
+            id="login-oidc"
+            href={OIDC_LOGIN_URI}
+            loading={isLoading}
+            variant="contained"
+          >
+            Войти через Keycloak
+          </StyledLoadingButton>
+        </StyledStack>
         <StyledBottomStack>
           <StyledButton variant="text" onClick={roureReset}>
             Восстановить пароль

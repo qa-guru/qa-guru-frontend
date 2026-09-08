@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-import { PROVISIONING_URI } from "config";
+import { PROVISIONING_API } from "config";
 import { getProvisioningAccessToken } from "api/rest/provisioning-token";
 
 import { OwnerView, VisibilityUpdate, ContourStatus } from "./types";
@@ -35,7 +35,7 @@ function rethrow(error: unknown): never {
 }
 
 function meUrl(): string {
-  return `${PROVISIONING_URI.replace(/\/$/, "")}/api/me`;
+  return `${PROVISIONING_API.replace(/\/$/, "")}/api/me`;
 }
 
 export default class ProvisioningService {
@@ -43,6 +43,7 @@ export default class ProvisioningService {
     try {
       const response = await axios.get<OwnerView>(meUrl(), {
         headers: authHeaders(),
+        withCredentials: true,
       });
 
       return response.data;
@@ -61,6 +62,7 @@ export default class ProvisioningService {
             ...authHeaders(),
             "content-type": "application/json",
           },
+          withCredentials: true,
         }
       );
 
@@ -77,6 +79,7 @@ export default class ProvisioningService {
           ...authHeaders(),
           "content-type": "application/json",
         },
+        withCredentials: true,
       });
 
       return response.data;

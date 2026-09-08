@@ -19,9 +19,14 @@ const CabinetStatus: FC<ICabinetStatus> = ({ loading, error, hasOwner }) => {
   if (error === "unauthorized") {
     return (
       <Alert severity="info">
-        Кабинет читает provisioning <code>/api/me</code> по JWT IdP (handle =
-        preferred_username). Токен не кладём в localStorage. На стенде:{" "}
-        <code>?access_token=</code>
+        Кабинет читает provisioning <code>/api/me</code> по JWT IdP (cookie
+        BFF, не localStorage).
+        {import.meta.env.DEV ? (
+          <>
+            {" "}
+            На стенде: <code>?access_token=</code>
+          </>
+        ) : null}
       </Alert>
     );
   }

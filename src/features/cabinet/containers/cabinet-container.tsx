@@ -2,6 +2,8 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { useSnackbar } from "notistack";
 
+import { useAuth } from "features/authorization/context/auth-context";
+
 import { ArtifactTypeKey } from "../constants";
 import ProvisioningService, {
   ProvisioningHttpError,
@@ -24,6 +26,7 @@ function errorFromStatus(status: number): CabinetLoadError {
 
 const CabinetContainer: FC = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const { session } = useAuth();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<CabinetLoadError | null>(null);
@@ -32,6 +35,13 @@ const CabinetContainer: FC = () => {
   const [issuing, setIssuing] = useState(false);
 
   const load = useCallback(async (opts?: { silent?: boolean }) => {
+    if (session && session.role !== "student") {
+      setOwner(null);
+      setError(null);
+      setLoading(false);
+      return;
+    }
+
     if (!opts?.silent) {
       setLoading(true);
     }
@@ -53,11 +63,11 @@ const CabinetContainer: FC = () => {
         setLoading(false);
       }
     }
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     load();
-  }, [load]);
+  }, [load, session?.role]);
 
   useEffect(() => {
     const status = owner?.contour?.status;
@@ -156,6 +166,7 @@ const CabinetContainer: FC = () => {
         error={error}
         owner={owner}
         preview={owner ? vitrineSlice(owner) : null}
+        session={session}
         onToggleMaster={onToggleMaster}
         onToggleType={onToggleType}
         onIssueContour={onIssueContour}

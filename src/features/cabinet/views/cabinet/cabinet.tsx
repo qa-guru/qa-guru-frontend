@@ -32,6 +32,39 @@ function payloadLines(payload: ArtifactPayload): string[] {
   });
 }
 
+const StaffCabinet: FC<{ username: string }> = ({ username }) => (
+  <Stack gap={2} id="view-staff">
+    <Typography variant="h4">Кабинет сотрудника</Typography>
+    <Typography variant="body2" color="text.secondary">
+      {username} · /staff. Потоки, выдача, доступ менторов. Не кабинет ученика.
+    </Typography>
+    <StyledPaper>
+      <Typography variant="h6" gutterBottom>
+        Штаб школы
+      </Typography>
+      <Typography variant="body2">
+        Выдача контура за ученика — API provisioning, не эта форма. Курсы
+        ученика здесь не показываем.
+      </Typography>
+    </StyledPaper>
+  </Stack>
+);
+
+const MentorCabinet: FC<{ username: string }> = ({ username }) => (
+  <Stack gap={2} id="view-mentor">
+    <Typography variant="h4">Проверка ДЗ</Typography>
+    <Typography variant="body2" color="text.secondary">
+      {username} · /mentors. Очередь работ потока. Без админки школы.
+    </Typography>
+    <StyledPaper>
+      <Typography variant="body2">
+        Канбан ментора — в меню. Контур ученика и флаги витрины здесь не
+        крутятся.
+      </Typography>
+    </StyledPaper>
+  </Stack>
+);
+
 const Cabinet: FC<ICabinet> = (props) => {
   const {
     loading,
@@ -39,18 +72,27 @@ const Cabinet: FC<ICabinet> = (props) => {
     error,
     owner,
     preview,
+    session,
     onToggleMaster,
     onToggleType,
     onIssueContour,
     issuing,
   } = props;
 
+  if (session?.role === "staff") {
+    return <StaffCabinet username={session.username} />;
+  }
+
+  if (session?.role === "mentor") {
+    return <MentorCabinet username={session.username} />;
+  }
+
   const status = (
     <CabinetStatus loading={loading} error={error} hasOwner={Boolean(owner)} />
   );
 
   if (loading || error || !owner) {
-    return status;
+    return <Stack id="view-student">{status}</Stack>;
   }
 
   const handleMaster = (event: ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +113,7 @@ const Cabinet: FC<ICabinet> = (props) => {
   );
 
   return (
-    <Stack gap={2}>
+    <Stack gap={2} id="view-student">
       <Typography variant="h4">Кабинет контура</Typography>
       <Typography variant="body2" color="text.secondary">
         Handle <strong>{owner.handle}</strong>. Флаги те же, что у витрины{" "}
@@ -111,9 +153,11 @@ const Cabinet: FC<ICabinet> = (props) => {
         >
           {owner.contour?.status === "ready"
             ? "Контур выдан"
-            : issuing || owner.contour?.status === "queued" || owner.contour?.status === "running"
-              ? "Выдаём…"
-              : "Поднять проект"}
+            : issuing ||
+              owner.contour?.status === "queued" ||
+              owner.contour?.status === "running"
+            ? "Выдаём…"
+            : "Поднять проект"}
         </Button>
       </StyledPaper>
       <StyledPaper>

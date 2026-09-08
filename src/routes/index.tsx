@@ -1,6 +1,7 @@
 import { ErrorBoundary } from "react-error-boundary";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
+import { useReactiveVar } from "@apollo/client";
 
 import { userRolesVar } from "cache";
 import NotFoundPage from "pages/not-found";
@@ -17,6 +18,7 @@ import Layout from "shared/components/layout";
 import ScrollPageSectionPage from "pages/scroll-page-section";
 import CabinetPreviewPage from "pages/cabinet-preview";
 import { getProvisioningAccessToken } from "api/rest/provisioning-token";
+import { userRolesFromIdp } from "api/rest/idp-user-roles";
 import { useAuth } from "features/authorization/context/auth-context";
 
 import StudentRoutes from "./student";
@@ -50,17 +52,21 @@ function applyDevCabinetHatch(): boolean {
   const current = userRolesVar();
 
   if (!current || current.length === 0) {
-    userRolesVar([UserRole.Student]);
+    userRolesVar(userRolesFromIdp("student"));
   }
 
   return true;
 }
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
-  const isAuth = localStorage.getItem("isAuth");
+  const { session, isLoading } = useAuth();
   const hatch = applyDevCabinetHatch();
 
-  if (!isAuth && !hatch) {
+  if (isLoading) {
+    return <AppSpinner />;
+  }
+
+  if (!session && !hatch) {
     return <Navigate to="/authorization" replace />;
   }
 
@@ -97,10 +103,14 @@ const Routing: FC<IRoutnig> = () => {
     setErrorBoundaryKey(location.pathname);
   }, [location]);
 
-  const { isLoading } = useAuth();
+  const { isLoading, session } = useAuth();
   applyDevCabinetHatch();
-  const userRoles = userRolesVar();
-  const usersRoutes = getUserRoutes(userRoles);
+  const userRoles = useReactiveVar(userRolesVar);
+  const usersRoutes = getUserRoutes(
+    userRoles && userRoles.length > 0
+      ? userRoles
+      : userRolesFromIdp(session?.role || null)
+  );
 
   if (isLoading) {
     return <AppSpinner />;

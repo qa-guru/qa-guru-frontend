@@ -1,4 +1,5 @@
 import { ArtifactTypeKey } from "../../constants";
+import { AuthSession } from "api/rest/idp-roles";
 import { CabinetLoadError, OwnerView, VitrineSlice } from "../../types";
 
 export interface ICabinet {
@@ -7,6 +8,7 @@ export interface ICabinet {
   error: CabinetLoadError | null;
   owner: OwnerView | null;
   preview: VitrineSlice | null;
+  session?: AuthSession | null;
   onToggleMaster: (profilePublic: boolean) => void;
   onToggleType: (type: ArtifactTypeKey, on: boolean) => void;
   onIssueContour: () => void;
