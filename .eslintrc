@@ -185,6 +185,14 @@
         "import/newline-after-import": "off",
         "max-lines": "off"
       }
+    },
+    {
+      "files": ["**/*.test.ts"],
+      "rules": {
+        "import/extensions": "off",
+        "import/order": "off",
+        "sonarjs/no-duplicate-string": "off"
+      }
     }
   ]
 }

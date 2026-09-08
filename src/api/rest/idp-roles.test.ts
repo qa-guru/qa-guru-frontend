@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { roleOf } from "./idp-roles.ts";
+import { roleOf } from "./idp-roles";
 
 describe("roleOf", () => {
   it("staff beats mentors and students", () => {

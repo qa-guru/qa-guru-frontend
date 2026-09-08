@@ -4,28 +4,24 @@ on:
     branches:
       - develop
 jobs:
-  checkout:
-    runs-on: stage-runner
-
-    steps:
-      - uses: actions/checkout@v4
-
   yarn-and-node:
     runs-on: stage-runner
-    needs: checkout
+    env:
+      HUSKY: "0"
     steps:
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - name: Use Node.js 26
+        uses: actions/setup-node@v6
         with:
-          node-version: 18.x
+          node-version: 26
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install
       - name: Run build
         uses: borales/actions-yarn@v4
         with:
-          cmd: build # will run `yarn build` command
+          cmd: build
       - name: Deploy step 1
         run: rm -rf /var/www/app-stage.qa.guru/html/*
       #            cp -r dist/* /var/www/app.qa.guru/html/

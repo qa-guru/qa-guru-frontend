@@ -88,7 +88,7 @@
     "build-storybook": "build-storybook",
     "husky": "husky install",
     "codegen": "graphql-code-generator --config codegen.ts",
-    "test": "vitest",
+    "test": "tsx --test src/**/*.test.ts",
     "prettier": "pretty-quick",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "depcheck": "depcheck . --ignore-pattern=\"!package.json\""
@@ -139,6 +139,7 @@
     "jsdom": "^22.0.0",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3",
+    "tsx": "^4.23.13",
     "typescript": "^5.0.4",
     "vite": "^4.0.4"
   }

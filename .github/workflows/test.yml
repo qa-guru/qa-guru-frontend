@@ -1,0 +1,26 @@
+name: test
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: "0"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Lint component tests
+        run: yarn eslint "src/**/*.test.ts"
+      - name: Component tests
+        run: yarn test
+      - name: Build
+        run: yarn build
