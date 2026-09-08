@@ -1,17 +1,11 @@
 import { ErrorBoundary } from "react-error-boundary";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
 import { useReactiveVar } from "@apollo/client";
 
 import { userRolesVar } from "cache";
 import NotFoundPage from "pages/not-found";
-import {
-  LoginPage,
-  ConfirmTokenPage,
-  ResetPage,
-  SetPasswordPage,
-  SignUpPage,
-} from "pages/auth";
+import { LoginPage } from "pages/auth";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import { AppSpinner } from "shared/components/spinners";
 import Layout from "shared/components/layout";
@@ -20,6 +14,7 @@ import CabinetPreviewPage from "pages/cabinet-preview";
 import { getProvisioningAccessToken } from "api/rest/provisioning-token";
 import { userRolesFromIdp } from "api/rest/idp-user-roles";
 import { useAuth } from "features/authorization/context/auth-context";
+import { redirectToIdp } from "features/authorization/views/login/login";
 
 import StudentRoutes from "./student";
 import MentorRoutes from "./mentor";
@@ -58,6 +53,14 @@ function applyDevCabinetHatch(): boolean {
   return true;
 }
 
+const RedirectToIdp: FC = () => {
+  useEffect(() => {
+    redirectToIdp();
+  }, []);
+
+  return <AppSpinner />;
+};
+
 const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
   const { session, isLoading } = useAuth();
   const hatch = applyDevCabinetHatch();
@@ -67,7 +70,7 @@ const ProtectedRoute: FC<IProtectedRoute> = ({ children }) => {
   }
 
   if (!session && !hatch) {
-    return <Navigate to="/authorization" replace />;
+    return <RedirectToIdp />;
   }
 
   return <>{children}</>;
@@ -154,7 +157,7 @@ const Routing: FC<IRoutnig> = () => {
           path="/signup"
           element={
             <Layout isLogging>
-              <SignUpPage />
+              <LoginPage />
             </Layout>
           }
         />
@@ -162,7 +165,7 @@ const Routing: FC<IRoutnig> = () => {
           path="/reset"
           element={
             <Layout isLogging>
-              <ResetPage />
+              <LoginPage />
             </Layout>
           }
         />
@@ -170,7 +173,7 @@ const Routing: FC<IRoutnig> = () => {
           path="/reset/token"
           element={
             <Layout isLogging>
-              <ConfirmTokenPage />
+              <LoginPage />
             </Layout>
           }
         />
@@ -178,7 +181,7 @@ const Routing: FC<IRoutnig> = () => {
           path="/reset/password"
           element={
             <Layout isLogging>
-              <SetPasswordPage />
+              <LoginPage />
             </Layout>
           }
         />
