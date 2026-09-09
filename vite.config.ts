@@ -23,7 +23,6 @@ export default ({ mode }: any) => {
     "^/graphql": API_URL,
     "^/login": { target: BFF_URL, changeOrigin: true },
     "^/logout": { target: BFF_URL, changeOrigin: true },
-    "^/refreshtoken": { target: BFF_URL, changeOrigin: true },
     "^/upload/avatar": API_URL,
     "^/upload/training/.*": API_URL,
     "^/lecture/.*": API_URL,

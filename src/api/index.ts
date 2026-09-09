@@ -1,12 +1,11 @@
-import { ApolloClient, HttpLink, ApolloLink, Observable } from "@apollo/client";
+import { ApolloClient, HttpLink, ApolloLink } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import fetch from "cross-fetch";
 
 import { cache } from "cache";
-import AuthService from "api/rest/auth-service";
 import { FETCH_POLICY } from "shared/constants";
 
-import { GRAPHQL_URI } from "../config";
+import { GRAPHQL_URI, OIDC_LOGIN_URI } from "../config";
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_URI,
@@ -14,36 +13,20 @@ const httpLink = new HttpLink({
   credentials: "include",
 });
 
-const errorLink = onError(
-  // eslint-disable-next-line consistent-return
-  ({ graphQLErrors, networkError, operation, forward }) => {
-    if (graphQLErrors) {
-      for (const err of graphQLErrors) {
-        if (err.extensions.classification === "UNAUTHORIZED") {
-          return new Observable((observer) => {
-            AuthService.refreshToken()
-              .then(() => {
-                forward(operation).subscribe({
-                  next: observer.next.bind(observer),
-                  error: observer.error.bind(observer),
-                  complete: observer.complete.bind(observer),
-                });
-              })
-              .catch((error) => {
-                localStorage.removeItem("isAuth");
-                window.location.href = "/login";
-                observer.error(error);
-              });
-          });
-        }
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    for (const err of graphQLErrors) {
+      if (err.extensions?.classification === "UNAUTHORIZED") {
+        window.location.assign(OIDC_LOGIN_URI);
+        return;
       }
     }
-
-    if (networkError) {
-      console.log(`[Network error]: ${networkError}`);
-    }
   }
-);
+
+  if (networkError) {
+    console.log(`[Network error]: ${networkError}`);
+  }
+});
 
 const client = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),

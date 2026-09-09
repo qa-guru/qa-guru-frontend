@@ -75,7 +75,6 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
 
   const logout = async () => {
     setIsLoading(true);
-    localStorage.removeItem("isAuth");
     userRolesVar([]);
     setSession(null);
     await client.clearStore();
