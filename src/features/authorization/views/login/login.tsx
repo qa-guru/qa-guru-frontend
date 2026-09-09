@@ -1,8 +1,8 @@
 import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { OIDC_LOGIN_URI } from "config";
 
 import { AppSpinner } from "shared/components/spinners";
-import { OIDC_LOGIN_URI } from "config";
 
 import { ROUTES } from "../../constants";
 import { useAuth } from "../../context/auth-context";

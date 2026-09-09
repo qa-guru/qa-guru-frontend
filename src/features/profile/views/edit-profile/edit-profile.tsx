@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { useSnackbar } from "notistack";
 
 import { InputPhone, InputText } from "shared/components/form";

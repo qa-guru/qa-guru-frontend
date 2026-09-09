@@ -21,9 +21,8 @@ function consumeDevTokenFromQuery(): string | undefined {
   setProvisioningAccessToken(fromQuery);
   params.delete("access_token");
   const search = params.toString();
-  const next = `${window.location.pathname}${search ? `?${search}` : ""}${
-    window.location.hash
-  }`;
+  const query = search ? `?${search}` : "";
+  const next = `${window.location.pathname}${query}${window.location.hash}`;
 
   window.history.replaceState({}, "", next);
 

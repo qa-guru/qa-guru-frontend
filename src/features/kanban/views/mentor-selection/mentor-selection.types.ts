@@ -1,4 +1,4 @@
-import { Control } from "react-hook-form";
+import type { Control } from "react-hook-form";
 
 import { Maybe, MentorsQuery } from "api/graphql/generated/graphql";
 

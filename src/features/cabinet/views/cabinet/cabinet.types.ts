@@ -1,5 +1,6 @@
-import { ArtifactTypeKey } from "../../constants";
 import { AuthSession } from "api/rest/idp-roles";
+
+import { ArtifactTypeKey } from "../../constants";
 import { CabinetLoadError, OwnerView, VitrineSlice } from "../../types";
 
 export interface ICabinet {

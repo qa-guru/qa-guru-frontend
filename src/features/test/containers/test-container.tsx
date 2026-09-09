@@ -93,23 +93,23 @@ const TestContainer: FC<TestContainerProps> = ({
               if (
                 answerResult &&
                 answerResult.testAnswer &&
-                answerResult.answer === true
+                answerResult.answer === true &&
+                question.id &&
+                answerResult.testAnswer.id
               ) {
-                if (question.id && answerResult.testAnswer.id) {
-                  const existingAnswerIndex = restoredAnswers.findIndex(
-                    (answer) => answer.questionId === question.id
-                  );
+                const existingAnswerIndex = restoredAnswers.findIndex(
+                  (answer) => answer.questionId === question.id
+                );
 
-                  if (existingAnswerIndex >= 0) {
-                    restoredAnswers[existingAnswerIndex].answerIds.push(
-                      answerResult.testAnswer.id
-                    );
-                  } else {
-                    restoredAnswers.push({
-                      questionId: question.id,
-                      answerIds: [answerResult.testAnswer.id],
-                    });
-                  }
+                if (existingAnswerIndex >= 0) {
+                  restoredAnswers[existingAnswerIndex].answerIds.push(
+                    answerResult.testAnswer.id
+                  );
+                } else {
+                  restoredAnswers.push({
+                    questionId: question.id,
+                    answerIds: [answerResult.testAnswer.id],
+                  });
                 }
               }
             });

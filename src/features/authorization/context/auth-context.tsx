@@ -1,12 +1,12 @@
 import { FC, ReactNode, createContext, useContext, useEffect, useState } from "react";
 import { useReactiveVar } from "@apollo/client";
 import { client } from "api";
+import { OIDC_LOGIN_URI } from "config";
 
 import { userRolesVar } from "cache";
 import { fetchAuthSession } from "api/rest/auth-session";
 import { AuthSession } from "api/rest/idp-roles";
 import { userRolesFromIdp } from "api/rest/idp-user-roles";
-import { OIDC_LOGIN_URI } from "config";
 
 interface IAuthProvider {
   children: ReactNode;

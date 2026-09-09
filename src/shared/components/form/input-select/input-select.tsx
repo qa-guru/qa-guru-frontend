@@ -1,4 +1,4 @@
-import { Controller, FieldValues } from "react-hook-form";
+import { Controller, type FieldValues } from "react-hook-form";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import { type SelectChangeEvent } from "@mui/material/Select";
 

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -9,6 +9,10 @@ import {
   Grid,
   IconButton,
   Chip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
 import {
   Add as AddIcon,
@@ -26,6 +30,7 @@ import NoDataErrorMessage from "shared/components/no-data-error-message";
 
 const TestsAdmin: FC = () => {
   const navigate = useNavigate();
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   const { data: testsData, loading, error, refetch } = useTestTestGroupsQuery();
   const [deleteTestGroup] = useDeleteTestGroupMutation({
@@ -42,15 +47,19 @@ const TestsAdmin: FC = () => {
     navigate(`/tests/edit/${testId}`);
   };
 
-  const handleDeleteTest = async (testId: string) => {
-    if (window.confirm("Вы уверены, что хотите удалить этот тест?")) {
-      try {
-        await deleteTestGroup({
-          variables: { id: testId },
-        });
-      } catch (error) {
-        console.error("Ошибка при удалении теста:", error);
-      }
+  const confirmDeleteTest = async () => {
+    if (!pendingDeleteId) {
+      return;
+    }
+
+    try {
+      await deleteTestGroup({
+        variables: { id: pendingDeleteId },
+      });
+    } catch (error) {
+      console.error("Ошибка при удалении теста:", error);
+    } finally {
+      setPendingDeleteId(null);
     }
   };
 
@@ -114,7 +123,7 @@ const TestsAdmin: FC = () => {
                       </IconButton>
                       <IconButton
                         size="small"
-                        onClick={() => handleDeleteTest(test?.id!)}
+                        onClick={() => setPendingDeleteId(test?.id ?? null)}
                         color="error"
                       >
                         <DeleteIcon />
@@ -171,6 +180,22 @@ const TestsAdmin: FC = () => {
           </CardContent>
         </Card>
       )}
+      <Dialog
+        open={Boolean(pendingDeleteId)}
+        onClose={() => setPendingDeleteId(null)}
+        maxWidth="xs"
+      >
+        <DialogTitle>Удалить тест?</DialogTitle>
+        <DialogContent>
+          <Typography>Вы уверены, что хотите удалить этот тест?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setPendingDeleteId(null)}>Нет</Button>
+          <Button color="error" variant="contained" onClick={confirmDeleteTest}>
+            Да
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

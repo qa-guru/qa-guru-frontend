@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Control, Controller } from "react-hook-form";
+import { type Control, Controller } from "react-hook-form";
 import {
   FormControl,
   InputLabel,

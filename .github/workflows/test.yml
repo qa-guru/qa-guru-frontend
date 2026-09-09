@@ -18,8 +18,8 @@ jobs:
           cache: yarn
       - name: Install
         run: yarn install --frozen-lockfile
-      - name: Lint component tests
-        run: yarn eslint "src/**/*.test.ts"
+      - name: Lint
+        run: yarn lint
       - name: Component tests
         run: yarn test
       - name: Build

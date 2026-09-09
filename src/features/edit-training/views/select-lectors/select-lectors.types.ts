@@ -1,4 +1,4 @@
-import { Control } from "react-hook-form";
+import type { Control } from "react-hook-form";
 
 import { UsersQuery } from "api/graphql/generated/graphql";
 

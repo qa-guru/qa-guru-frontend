@@ -7,7 +7,7 @@ import {
   OutlinedInput,
   Chip,
 } from "@mui/material";
-import { Controller, FieldValues } from "react-hook-form";
+import { Controller, type FieldValues } from "react-hook-form";
 
 import { IFormInputChip } from "./input-chip.types";
 import { StyledBox } from "./input-chip.styled";

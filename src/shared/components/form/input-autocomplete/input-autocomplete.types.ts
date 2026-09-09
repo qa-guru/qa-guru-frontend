@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from "react";
-import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
+import type { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
 
 import { Maybe } from "api/graphql/generated/graphql";
 

@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import { Control } from "react-hook-form";
+import type { Control } from "react-hook-form";
 import debounce from "lodash/debounce";
 
 import {

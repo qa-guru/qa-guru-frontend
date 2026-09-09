@@ -22,7 +22,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  SelectChangeEvent,
+  type SelectChangeEvent,
   Pagination,
   Avatar,
   Stack,

@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { FC, useRef, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { Clear, Save } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { LECTURE_FILE_GET_URI, LECTURE_HOMEWORK_FILE_GET_URI } from "config";

@@ -1,9 +1,9 @@
 import { InputHTMLAttributes, KeyboardEvent } from "react";
-import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
-import {
-  type TextFieldPropsSizeOverrides,
-  type InputProps,
-  type InputLabelProps,
+import type { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
+import type {
+  TextFieldPropsSizeOverrides,
+  InputProps,
+  InputLabelProps,
 } from "@mui/material";
 import { OverridableStringUnion } from "@mui/types";
 

@@ -2,7 +2,7 @@ import { findParentNodeClosestToPos, posToDOMRect } from "@tiptap/core";
 import { useMemo, useCallback, useEffect, useState } from "react";
 import { makeStyles } from "tss-react/mui";
 import type { Except } from "type-fest";
-import { type PopoverVirtualElement } from "@mui/material";
+import type { PopoverVirtualElement } from "@mui/material";
 
 import { Maybe } from "api/graphql/generated/graphql";
 

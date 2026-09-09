@@ -1,6 +1,6 @@
-import axios, { AxiosError } from "axios";
-
+import axios, { AxiosError, isAxiosError } from "axios";
 import { PROVISIONING_API } from "config";
+
 import { getProvisioningAccessToken } from "api/rest/provisioning-token";
 
 import { OwnerView, VisibilityUpdate, ContourStatus } from "./types";
@@ -25,7 +25,7 @@ function authHeaders(): Record<string, string> {
 }
 
 function rethrow(error: unknown): never {
-  if (axios.isAxiosError(error)) {
+  if (isAxiosError(error)) {
     const status = (error as AxiosError).response?.status ?? 0;
 
     throw new ProvisioningHttpError(status || 0);

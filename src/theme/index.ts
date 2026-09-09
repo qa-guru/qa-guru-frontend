@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes, ThemeOptions } from "@mui/material";
+import { createTheme, responsiveFontSizes, type ThemeOptions } from "@mui/material";
 import merge from "lodash/merge";
 
 import components from "./components";

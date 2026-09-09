@@ -29,6 +29,13 @@ interface LectureTestSectionProps {
   lectureId?: string;
 }
 
+const PAPER_ALERT_SX = {
+  mb: 3,
+  bgcolor: "background.paper",
+  border: 1,
+  borderColor: "divider",
+};
+
 const LectureTestSection: FC<LectureTestSectionProps> = ({
   testGroup,
   trainingId,
@@ -174,12 +181,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
 
             <Alert
               severity={testStatus.color}
-              sx={{
-                mb: 3,
-                bgcolor: "background.paper",
-                border: 1,
-                borderColor: "divider",
-              }}
+              sx={PAPER_ALERT_SX}
             >
               <Typography variant="body2">{testStatus.message}</Typography>
             </Alert>
@@ -187,12 +189,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
             {hasUnfinishedAttempt && (
               <Alert
                 severity="warning"
-                sx={{
-                  mb: 3,
-                  bgcolor: "background.paper",
-                  border: 1,
-                  borderColor: "divider",
-                }}
+                sx={PAPER_ALERT_SX}
               >
                 <Typography variant="body2">
                   ⚠️ У вас есть незавершенная попытка тестирования.
@@ -331,12 +328,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
           {attemptsError && (
             <Alert
               severity="error"
-              sx={{
-                mb: 3,
-                bgcolor: "background.paper",
-                border: 1,
-                borderColor: "divider",
-              }}
+              sx={PAPER_ALERT_SX}
             >
               <Typography variant="body2">
                 Ошибка при загрузке попыток тестирования:{" "}
@@ -348,12 +340,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
           {attemptsLoading && (
             <Alert
               severity="info"
-              sx={{
-                mb: 3,
-                bgcolor: "background.paper",
-                border: 1,
-                borderColor: "divider",
-              }}
+              sx={PAPER_ALERT_SX}
             >
               <Typography variant="body2">
                 Загрузка информации о попытках тестирования...
@@ -364,12 +351,7 @@ const LectureTestSection: FC<LectureTestSectionProps> = ({
           {!attemptsLoading && !attemptsError && (
             <Alert
               severity="info"
-              sx={{
-                mb: 3,
-                bgcolor: "background.paper",
-                border: 1,
-                borderColor: "divider",
-              }}
+              sx={PAPER_ALERT_SX}
             >
               <Typography variant="body2">
                 {hasUnfinishedAttempt

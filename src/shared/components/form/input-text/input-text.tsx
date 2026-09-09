@@ -1,4 +1,4 @@
-import { Controller, FieldValues } from "react-hook-form";
+import { Controller, type FieldValues } from "react-hook-form";
 import { FormControl, TextField } from "@mui/material";
 
 import { IFormInputText } from "./input-text.types";

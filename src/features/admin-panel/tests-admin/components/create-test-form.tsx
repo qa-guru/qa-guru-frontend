@@ -15,6 +15,7 @@ import {
   CardContent,
   CardHeader,
   Chip,
+  Alert,
 } from "@mui/material";
 import {
   ExpandMore as ExpandMoreIcon,
@@ -53,6 +54,7 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
   const [expandedQuestion, setExpandedQuestion] = useState<string | false>(
     false
   );
+  const [formError, setFormError] = useState<string | null>(null);
 
   const [getTestAnswers] = useTestAnswerByQuestionLazyQuery();
 
@@ -189,10 +191,11 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
   const handleSave = () => {
     const validationError = validateForm();
     if (validationError) {
-      alert(validationError);
+      setFormError(validationError);
       return;
     }
 
+    setFormError(null);
     onSave(testName, successThreshold, questions);
   };
 
@@ -203,6 +206,11 @@ const CreateTestForm: FC<CreateTestFormProps> = ({
 
   return (
     <Box>
+      {formError && (
+        <Alert severity="error" sx={{ mb: 2 }} onClose={() => setFormError(null)}>
+          {formError}
+        </Alert>
+      )}
       <Card sx={{ mb: 4 }}>
         <CardHeader
           title="Основная информация"

@@ -1,6 +1,6 @@
 import Link from "@mui/icons-material/Link";
 import { useRef } from "react";
-import { type PopoverOrigin } from "@mui/material";
+import type { PopoverOrigin } from "@mui/material";
 
 import { Maybe } from "api/graphql/generated/graphql";
 

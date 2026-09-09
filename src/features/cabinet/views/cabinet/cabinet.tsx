@@ -7,7 +7,6 @@ import {
   Switch,
   Typography,
 } from "@mui/material";
-
 import { PROVISIONING_URI } from "config";
 
 import {
@@ -16,7 +15,7 @@ import {
   ArtifactTypeKey,
   vitrineHref,
 } from "../../constants";
-import { ArtifactPayload } from "../../types";
+import { ArtifactPayload, OwnerView } from "../../types";
 import { typeVisible } from "../../visibility";
 import { ICabinet } from "./cabinet.types";
 import { StyledFlagRow, StyledPaper, StyledPreview } from "./cabinet.styled";
@@ -65,35 +64,20 @@ const MentorCabinet: FC<{ username: string }> = ({ username }) => (
   </Stack>
 );
 
-const Cabinet: FC<ICabinet> = (props) => {
+type StudentCabinetProps = Omit<ICabinet, "session" | "owner" | "loading" | "error"> & {
+  owner: OwnerView;
+};
+
+const StudentCabinet: FC<StudentCabinetProps> = (props) => {
   const {
-    loading,
     saving,
-    error,
     owner,
     preview,
-    session,
     onToggleMaster,
     onToggleType,
     onIssueContour,
     issuing,
   } = props;
-
-  if (session?.role === "staff") {
-    return <StaffCabinet username={session.username} />;
-  }
-
-  if (session?.role === "mentor") {
-    return <MentorCabinet username={session.username} />;
-  }
-
-  const status = (
-    <CabinetStatus loading={loading} error={error} hasOwner={Boolean(owner)} />
-  );
-
-  if (loading || error || !owner) {
-    return <Stack id="view-student">{status}</Stack>;
-  }
 
   const handleMaster = (event: ChangeEvent<HTMLInputElement>) => {
     onToggleMaster(event.target.checked);
@@ -246,6 +230,53 @@ const Cabinet: FC<ICabinet> = (props) => {
         )}
       </StyledPaper>
     </Stack>
+  );
+};
+
+const Cabinet: FC<ICabinet> = (props) => {
+  const {
+    loading,
+    saving,
+    error,
+    owner,
+    preview,
+    session,
+    onToggleMaster,
+    onToggleType,
+    onIssueContour,
+    issuing,
+  } = props;
+
+  if (session?.role === "staff") {
+    return <StaffCabinet username={session.username} />;
+  }
+
+  if (session?.role === "mentor") {
+    return <MentorCabinet username={session.username} />;
+  }
+
+  if (loading || error || !owner) {
+    return (
+      <Stack id="view-student">
+        <CabinetStatus
+          loading={loading}
+          error={error}
+          hasOwner={Boolean(owner)}
+        />
+      </Stack>
+    );
+  }
+
+  return (
+    <StudentCabinet
+      saving={saving}
+      owner={owner}
+      preview={preview}
+      onToggleMaster={onToggleMaster}
+      onToggleType={onToggleType}
+      onIssueContour={onIssueContour}
+      issuing={issuing}
+    />
   );
 };
 
