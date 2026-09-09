@@ -17,7 +17,8 @@ export default ({ mode }: any) => {
       changeOrigin: true,
       rewrite: (path: string) => path.replace(/^\/provisioning/, ""),
     },
-    "^/auth": { target: BFF_URL, changeOrigin: true },
+    // SPA `/authorization` is LoginPage; BFF lives under `/auth/session`.
+    "^/auth/": { target: BFF_URL, changeOrigin: true },
     "^/oauth2": { target: BFF_URL, changeOrigin: true },
     "^/graphql": API_URL,
     "^/login": { target: BFF_URL, changeOrigin: true },

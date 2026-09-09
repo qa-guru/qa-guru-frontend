@@ -15,10 +15,6 @@ type Mutation {
   updateRole(id: ID!, roles: [UserRole]): UserDto
   lockUser(id: ID!): Void
   unlockUser(id: ID!): Void
-  changePassword(newPassword: String!, oldPassword: String!): Void
-  changePasswordByUserId(userId: ID!, password: String!): Void
-  resetPassword(email: String!): Void
-  setPassword(token: String!, newPassword: String!): Void
   createSkill(name: String!): SkillDto
   updateSkill(id: ID!, name: String!): SkillDto
   deleteSkill(id: ID!): Void
@@ -122,7 +118,6 @@ type Query {
   ): UsersDto
   usersRating(offset: Int!, limit: Int!, sort: UserSort): UsersRatingDto
   mentors(offset: Int!, limit: Int!, sort: UserSort): UsersDto
-  checkResetPasswordToken(token: String!): Void
   skills(
     offset: Int!
     limit: Int!
@@ -486,7 +481,6 @@ type ContentFileDto {
 input UserCreateInput {
   id: ID
   email: String!
-  password: String!
   firstName: String!
   lastName: String!
   middleName: String
