@@ -12,9 +12,15 @@ import {
   Schedule as ScheduleIcon,
   LockOpen as LockOpenIcon,
 } from "@mui/icons-material";
-import dayjs from "dayjs";
 
 import CustomLink from "shared/components/custom-link";
+import {
+  isLectureAccessible,
+  lectureGateKind,
+  lectureListChipLabel,
+  lectureListFooter,
+  LectureScheduleSlot,
+} from "shared/helpers";
 
 import { ITrainingLectures } from "./training-lectures.types";
 import {
@@ -28,6 +34,29 @@ import {
 } from "./training-lectures.styled";
 import { INDEX_OFFSET } from "../../constants";
 
+const LectureStatusChip: FC<{ slot?: LectureScheduleSlot | null }> = ({
+  slot,
+}) => {
+  const kind = lectureGateKind(slot);
+  const label = lectureListChipLabel(slot);
+
+  if (kind === "locked") {
+    return (
+      <Chip icon={<LockIcon />} label={label} color="error" size="small" />
+    );
+  }
+
+  if (kind === "scheduled") {
+    return (
+      <Chip icon={<ScheduleIcon />} label={label} color="warning" size="small" />
+    );
+  }
+
+  return (
+    <Chip icon={<LockOpenIcon />} label={label} color="success" size="small" />
+  );
+};
+
 const TrainingLectures: FC<ITrainingLectures> = (props) => {
   const { dataTrainingLectures, trainingId, dataTraining } = props;
   const { trainingLectures } = dataTrainingLectures;
@@ -37,85 +66,20 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
     <Container>
       <Typography variant="h2">{name}</Typography>
       <StyledGridContainer container>
-        {trainingLectures?.map((item, index) => {
+        {trainingLectures?.map((item) => {
           const { id, subject, description } = item?.lecture || {};
-          const { locking, availableFrom, isAvailable } = item || {};
-
-          const formatDate = (date: string | null | undefined) => {
-            if (!date) return "";
-            return dayjs(date).format("DD.MM.YYYY HH:mm");
-          };
-
-          const getStatusChip = () => {
-            if (locking) {
-              return (
-                <Chip
-                  icon={<LockIcon />}
-                  label="Урок заблокирован"
-                  color="error"
-                  size="small"
-                />
-              );
-            }
-            if (!isAvailable && availableFrom) {
-              return (
-                <Chip
-                  icon={<ScheduleIcon />}
-                  label={`Доступен с ${formatDate(availableFrom)}`}
-                  color="warning"
-                  size="small"
-                />
-              );
-            }
-            return (
-              <Chip
-                icon={<LockOpenIcon />}
-                label="Доступен"
-                color="success"
-                size="small"
-              />
-            );
-          };
-
-          const isLessonAccessible = !locking && isAvailable;
+          const accessible = isLectureAccessible(item);
 
           return (
             <Grid item xs={12} key={id}>
-              <CardActionArea disabled={!isLessonAccessible}>
-                {isLessonAccessible ? (
-                  <CustomLink path={`/training/${trainingId}/${id}`}>
-                    <StyledPaper>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "flex-start",
-                          mb: 1,
-                        }}
-                      >
-                        <Typography variant="h4">{subject}</Typography>
-                        {getStatusChip()}
-                      </Box>
-                      <StyledWrapper>
-                        {description?.map((desc, index) => (
-                          <StyledStack key={index}>
-                            <StyledTypography variant="subtitle2">
-                              {index + INDEX_OFFSET}
-                            </StyledTypography>
-                            <Typography variant="subtitle1">{desc}</Typography>
-                          </StyledStack>
-                        ))}
-                      </StyledWrapper>
-                      <StyledBox>
-                        <StyledSubtitle variant="body2">
-                          Продолжить
-                        </StyledSubtitle>
-                      </StyledBox>
-                    </StyledPaper>
-                  </CustomLink>
-                ) : (
+              <CardActionArea>
+                <CustomLink path={`/training/${trainingId}/${id}`}>
                   <StyledPaper
-                    sx={{ opacity: 0.6, cursor: "not-allowed !important" }}
+                    sx={
+                      accessible
+                        ? undefined
+                        : { opacity: 0.6 }
+                    }
                   >
                     <Box
                       sx={{
@@ -126,7 +90,7 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
                       }}
                     >
                       <Typography variant="h4">{subject}</Typography>
-                      {getStatusChip()}
+                      <LectureStatusChip slot={item} />
                     </Box>
                     <StyledWrapper>
                       {description?.map((desc, index) => (
@@ -140,11 +104,11 @@ const TrainingLectures: FC<ITrainingLectures> = (props) => {
                     </StyledWrapper>
                     <StyledBox>
                       <StyledSubtitle variant="body2">
-                        {locking ? "Урок недоступен" : "Скоро откроется"}
+                        {lectureListFooter(item)}
                       </StyledSubtitle>
                     </StyledBox>
                   </StyledPaper>
-                )}
+                </CustomLink>
               </CardActionArea>
             </Grid>
           );

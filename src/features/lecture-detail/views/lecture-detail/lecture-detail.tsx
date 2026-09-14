@@ -2,12 +2,14 @@ import { FC, useState } from "react";
 import { Container } from "@mui/material";
 
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
+import { shouldShowLectureGate } from "shared/helpers";
 
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
 import LectureDescription from "../lecture-description";
 import LectureSpeakers from "../lecture-speakers";
 import LectureContent from "../lecture-content";
+import LectureGate from "../lecture-gate";
 import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
 import StepperButtons from "../stepper-buttons";
 import HomeworkSection from "../homework-section";
@@ -20,9 +22,13 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
     tariffHomework,
     trainingId,
   } = props;
-  const { subject, description, speakers, content, testGroup } =
+  const { id: lectureId, subject, description, speakers, content, testGroup } =
     dataLecture.lecture || {};
   const lectureHomeWork = dataLectureHomework?.lectureHomeWork;
+  const scheduleSlot = dataTrainingLectures.trainingLectures?.find(
+    (trainingLecture) => trainingLecture?.lecture?.id === lectureId
+  );
+  const showGate = shouldShowLectureGate(scheduleSlot, content);
 
   const hasHomework = !!lectureHomeWork;
 
@@ -45,14 +51,26 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
       />
     );
 
+  const renderMaterials = () => {
+    if (showGate) {
+      return <LectureGate slot={scheduleSlot} />;
+    }
+
+    return (
+      <>
+        <LectureContent content={content} />
+        {!tariffHomework ? <BlurredHomework /> : renderHomework()}
+      </>
+    );
+  };
+
   return (
     <HomeworksFormProvider>
       <Container>
         <LectureTitle title={subject} />
         <LectureDescription description={description} />
         <LectureSpeakers speakers={speakers} />
-        <LectureContent content={content} />
-        {!tariffHomework ? <BlurredHomework /> : renderHomework()}
+        {renderMaterials()}
         <StepperButtons
           dataTrainingLectures={dataTrainingLectures}
           trainingId={trainingId}

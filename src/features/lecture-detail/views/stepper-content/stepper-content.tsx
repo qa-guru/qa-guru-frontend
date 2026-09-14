@@ -4,6 +4,7 @@ import { SchoolRounded, Lock } from "@mui/icons-material";
 import { useNavigate, useParams } from "react-router-dom";
 
 import CustomLink from "shared/components/custom-link";
+import { isLectureAccessible, lectureListChipLabel } from "shared/helpers";
 import { useResponsive } from "shared/hooks";
 
 import {
@@ -28,14 +29,11 @@ const StepperContent: FC<IStepperContent> = ({
   const handleNext = () => changeStep(1);
   const handleFinish = () => navigate("/");
 
-  const isLectureAccessible = (index: number) => {
-    const lecture = lectures?.[index];
-    return lecture && !lecture.locking && lecture.isAvailable;
-  };
+  const lectureAt = (index: number) => lectures?.[index];
 
   const renderStepButtons = (index: number, isLastStep: boolean) => {
-    const canGoBack = index > 0 && isLectureAccessible(index - 1);
-    const canGoNext = !isLastStep && isLectureAccessible(index + 1);
+    const canGoBack = index > 0 && isLectureAccessible(lectureAt(index - 1));
+    const canGoNext = !isLastStep && isLectureAccessible(lectureAt(index + 1));
 
     return (
       <StyledButtonBox>
@@ -76,28 +74,36 @@ const StepperContent: FC<IStepperContent> = ({
       {lectures?.map((item, index) => {
         const { id, subject, description } = item?.lecture || {};
         const isLastStep = index === lectures.length - 1;
-        const isAccessible = isLectureAccessible(index);
+        const isAccessible = isLectureAccessible(item);
 
         return (
           <StyledStep key={id} id={`step-${index}`}>
-            {isAccessible ? (
-              <CustomLink path={`/training/${trainingId}/${id}`}>
-                <StepLabel icon={<SchoolRounded fontSize="small" />}>
-                  <Typography variant="caption">{subject}</Typography>
-                </StepLabel>
-              </CustomLink>
-            ) : (
+            <CustomLink path={`/training/${trainingId}/${id}`}>
               <StepLabel
-                icon={<Lock fontSize="small" />}
-                sx={{ opacity: 0.6, cursor: "not-allowed" }}
+                icon={
+                  isAccessible ? (
+                    <SchoolRounded fontSize="small" />
+                  ) : (
+                    <Lock fontSize="small" />
+                  )
+                }
+                sx={isAccessible ? undefined : { opacity: 0.6 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                  <Typography variant="caption" color="text.secondary">
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+                  <Typography
+                    variant="caption"
+                    color={isAccessible ? undefined : "text.secondary"}
+                  >
                     {subject}
                   </Typography>
+                  {!isAccessible && (
+                    <Typography variant="caption" color="text.secondary">
+                      {lectureListChipLabel(item)}
+                    </Typography>
+                  )}
                 </Box>
               </StepLabel>
-            )}
+            </CustomLink>
             {isDesktop && (
               <StepContent>
                 <Typography variant="caption">{description}</Typography>

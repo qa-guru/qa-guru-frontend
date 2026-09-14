@@ -1,4 +1,16 @@
 export { formatDate } from "./format-date";
+export {
+  formatLectureAvailableFrom,
+  hasLectureBody,
+  isLectureAccessible,
+  lectureCardBody,
+  lectureCardTitle,
+  lectureGateKind,
+  lectureListChipLabel,
+  lectureListFooter,
+  shouldShowLectureGate,
+} from "./lecture-availability";
+export type { LectureGateKind, LectureScheduleSlot } from "./lecture-availability";
 export { formatRole } from "./format-role";
 export { formatId } from "./format-id";
 export { formatStatus } from "./format-status";

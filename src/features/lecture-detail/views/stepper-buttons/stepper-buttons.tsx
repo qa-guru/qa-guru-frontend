@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import { Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { isLectureAccessible } from "shared/helpers";
+
 import { IStepperButtons } from "./stepper-buttons.types";
 import { StyledBox, StyledButton } from "./stepper-buttons.styled";
 
@@ -21,14 +23,9 @@ const StepperButtons: FC<IStepperButtons> = ({
 
   const isAtLastLecture = activeStep === lectures.length - 1;
 
-  const isLectureAccessible = (index: number) => {
-    const lecture = lectures[index];
-    return lecture && !lecture.locking && lecture.isAvailable;
-  };
-
   const findNextAccessibleLecture = () => {
     for (let i = activeStep + 1; i < lectures.length; i++) {
-      if (isLectureAccessible(i)) {
+      if (isLectureAccessible(lectures[i])) {
         return i;
       }
     }
@@ -37,7 +34,7 @@ const StepperButtons: FC<IStepperButtons> = ({
 
   const findPreviousAccessibleLecture = () => {
     for (let i = activeStep - 1; i >= 0; i--) {
-      if (isLectureAccessible(i)) {
+      if (isLectureAccessible(lectures[i])) {
         return i;
       }
     }

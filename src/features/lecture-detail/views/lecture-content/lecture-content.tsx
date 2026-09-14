@@ -16,7 +16,7 @@ const LectureContent: FC<ILectureContent> = ({ content }) => {
       <StyledTypography variant="h5">Материалы урока</StyledTypography>
       <Divider />
       <StyledStack>
-        <TextView content={content} />;
+        <TextView content={content} />
       </StyledStack>
     </StyledPaper>
   );
