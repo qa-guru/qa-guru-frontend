@@ -9,8 +9,13 @@ import {
   StyledStack,
   StyledTypography,
 } from "./lecture-content.styled";
+import LectureFiles from "../lecture-files";
 
-const LectureContent: FC<ILectureContent> = ({ content }) => {
+const LectureContent: FC<ILectureContent> = ({
+  content,
+  lectureId,
+  files,
+}) => {
   return (
     <StyledPaper>
       <StyledTypography variant="h5">Материалы урока</StyledTypography>
@@ -18,6 +23,7 @@ const LectureContent: FC<ILectureContent> = ({ content }) => {
       <StyledStack>
         <TextView content={content} />
       </StyledStack>
+      <LectureFiles lectureId={lectureId} files={files} title="Файлы" />
     </StyledPaper>
   );
 };

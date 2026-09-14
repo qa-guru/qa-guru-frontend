@@ -1,4 +1,5 @@
 import { TestGroupDto } from "api/graphql/generated/graphql";
+import { LectureAttachmentWithId } from "shared/helpers";
 
 export interface IHomeworkSection {
   lectureHomeWork: string;
@@ -8,4 +9,5 @@ export interface IHomeworkSection {
   testGroup?: TestGroupDto;
   trainingId?: string;
   lectureId?: string;
+  files?: LectureAttachmentWithId[];
 }

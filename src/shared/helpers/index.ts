@@ -11,6 +11,15 @@ export {
   shouldShowLectureGate,
 } from "./lecture-availability";
 export type { LectureGateKind, LectureScheduleSlot } from "./lecture-availability";
+export {
+  lectureCardAttachments,
+  lectureFileGetKind,
+} from "./lecture-files";
+export type {
+  LectureAttachment,
+  LectureAttachmentWithId,
+  LectureFileGetKind,
+} from "./lecture-files";
 export { formatRole } from "./format-role";
 export { formatId } from "./format-id";
 export { formatStatus } from "./format-status";

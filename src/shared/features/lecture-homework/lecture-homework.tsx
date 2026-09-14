@@ -9,12 +9,16 @@ import {
   StyledTypography,
 } from "./lecture-homework.styled";
 
-const LectureHomework: FC<ILectureHomework> = ({ lectureHomeWork }) => {
+const LectureHomework: FC<ILectureHomework> = ({
+  lectureHomeWork,
+  children,
+}) => {
   return (
     <StyledPaper>
       <StyledTypography variant="h5">Домашнее задание</StyledTypography>
       <StyledStack>
-        <TextView content={lectureHomeWork} />;
+        <TextView content={lectureHomeWork} />
+        {children}
       </StyledStack>
     </StyledPaper>
   );

@@ -2,7 +2,10 @@ import { FC, useState } from "react";
 import { Container } from "@mui/material";
 
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
-import { shouldShowLectureGate } from "shared/helpers";
+import {
+  lectureCardAttachments,
+  shouldShowLectureGate,
+} from "shared/helpers";
 
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
@@ -13,6 +16,7 @@ import LectureGate from "../lecture-gate";
 import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
 import StepperButtons from "../stepper-buttons";
 import HomeworkSection from "../homework-section";
+import LectureFiles from "../lecture-files";
 
 const LectureDetail: FC<ILectureDetail> = (props) => {
   const {
@@ -22,13 +26,31 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
     tariffHomework,
     trainingId,
   } = props;
-  const { id: lectureId, subject, description, speakers, content, testGroup } =
-    dataLecture.lecture || {};
+  const {
+    id: lectureId,
+    subject,
+    description,
+    speakers,
+    content,
+    testGroup,
+    files,
+  } = dataLecture.lecture || {};
   const lectureHomeWork = dataLectureHomework?.lectureHomeWork;
   const scheduleSlot = dataTrainingLectures.trainingLectures?.find(
     (trainingLecture) => trainingLecture?.lecture?.id === lectureId
   );
   const showGate = shouldShowLectureGate(scheduleSlot, content);
+  const materialFiles = lectureCardAttachments({
+    gated: showGate,
+    files,
+    homeWork: false,
+  });
+  const homeworkFiles = lectureCardAttachments({
+    gated: showGate,
+    files,
+    homeWork: true,
+    allowHomework: tariffHomework,
+  });
 
   const hasHomework = !!lectureHomeWork;
 
@@ -37,19 +59,35 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
   const handleKanbanView = () => setView("kanban");
   const handleListView = () => setView("list");
 
-  const renderHomework = () =>
-    tariffHomework &&
-    hasHomework && (
-      <HomeworkSection
-        lectureHomeWork={lectureHomeWork}
-        view={view}
-        onKanbanView={handleKanbanView}
-        onListView={handleListView}
-        testGroup={testGroup || undefined}
-        trainingId={trainingId}
-        lectureId={dataLecture.lecture?.id || undefined}
+  const renderHomework = () => {
+    if (!tariffHomework) {
+      return <BlurredHomework />;
+    }
+
+    if (hasHomework) {
+      return (
+        <HomeworkSection
+          lectureHomeWork={lectureHomeWork}
+          view={view}
+          onKanbanView={handleKanbanView}
+          onListView={handleListView}
+          testGroup={testGroup || undefined}
+          trainingId={trainingId}
+          lectureId={lectureId || undefined}
+          files={homeworkFiles}
+        />
+      );
+    }
+
+    return (
+      <LectureFiles
+        lectureId={lectureId || undefined}
+        files={homeworkFiles}
+        title="Файлы домашнего задания"
+        standalone
       />
     );
+  };
 
   const renderMaterials = () => {
     if (showGate) {
@@ -58,8 +96,12 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
 
     return (
       <>
-        <LectureContent content={content} />
-        {!tariffHomework ? <BlurredHomework /> : renderHomework()}
+        <LectureContent
+          content={content}
+          lectureId={lectureId || undefined}
+          files={materialFiles}
+        />
+        {renderHomework()}
       </>
     );
   };

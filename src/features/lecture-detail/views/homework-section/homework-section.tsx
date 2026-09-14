@@ -7,6 +7,7 @@ import BlurredHomework from "shared/components/blurred/blurred-homework";
 
 import HomeworksViewSwitcher from "../homeworks-view-switcher";
 import HomeworksOtherStudentsForm from "../homeworks-other-students-form";
+import LectureFiles from "../lecture-files";
 import { HomeworksOtherStudents } from "../../containers";
 import { IHomeworkSection } from "./homework-section.types";
 
@@ -18,6 +19,7 @@ const HomeworkSection: FC<IHomeworkSection> = ({
   testGroup,
   trainingId,
   lectureId,
+  files,
 }) => {
   const hasHomework = lectureHomeWork?.length > 0;
 
@@ -32,7 +34,13 @@ const HomeworkSection: FC<IHomeworkSection> = ({
 
   const homework = (
     <>
-      <LectureHomework lectureHomeWork={lectureHomeWork} />
+      <LectureHomework lectureHomeWork={lectureHomeWork}>
+        <LectureFiles
+          lectureId={lectureId}
+          files={files}
+          title="Файлы домашнего задания"
+        />
+      </LectureHomework>
       <Homework
         testGroup={testGroup}
         trainingId={trainingId}
