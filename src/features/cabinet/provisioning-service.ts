@@ -3,14 +3,17 @@ import { PROVISIONING_API } from "config";
 
 import { getProvisioningAccessToken } from "api/rest/provisioning-token";
 
+import { httpErrorText, staffIssueBody, StaffIssueInput, STAFF_CONTOURS_PATH } from "./staff-issue";
 import { OwnerView, VisibilityUpdate, ContourStatus } from "./types";
 
 export class ProvisioningHttpError extends Error {
   status: number;
+  body: unknown;
 
-  constructor(status: number) {
-    super(`provisioning ${status}`);
+  constructor(status: number, body?: unknown, message?: string) {
+    super(message ?? `provisioning ${status}`);
     this.status = status;
+    this.body = body;
   }
 }
 
@@ -24,18 +27,32 @@ function authHeaders(): Record<string, string> {
   return { Authorization: `Bearer ${token}` };
 }
 
+const JSON_HEADERS = {
+  "content-type": "application/json",
+} as const;
+
 function rethrow(error: unknown): never {
   if (isAxiosError(error)) {
-    const status = (error as AxiosError).response?.status ?? 0;
+    const axiosError = error as AxiosError;
+    const status = axiosError.response?.status ?? 0;
+    const data = axiosError.response?.data;
 
-    throw new ProvisioningHttpError(status || 0);
+    throw new ProvisioningHttpError(
+      status || 0,
+      data,
+      httpErrorText(status || 0, data)
+    );
   }
 
   throw new ProvisioningHttpError(0);
 }
 
+function apiUrl(path: string): string {
+  return `${PROVISIONING_API.replace(/\/$/, "")}${path}`;
+}
+
 function meUrl(): string {
-  return `${PROVISIONING_API.replace(/\/$/, "")}/api/me`;
+  return apiUrl("/api/me");
 }
 
 export default class ProvisioningService {
@@ -60,7 +77,29 @@ export default class ProvisioningService {
         {
           headers: {
             ...authHeaders(),
-            "content-type": "application/json",
+            ...JSON_HEADERS,
+          },
+          withCredentials: true,
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rethrow(error);
+    }
+  }
+
+  static async issueStaffContour(
+    input: StaffIssueInput
+  ): Promise<ContourStatus> {
+    try {
+      const response = await axios.post<ContourStatus>(
+        apiUrl(STAFF_CONTOURS_PATH),
+        staffIssueBody(input),
+        {
+          headers: {
+            ...authHeaders(),
+            ...JSON_HEADERS,
           },
           withCredentials: true,
         }
@@ -77,7 +116,7 @@ export default class ProvisioningService {
       const response = await axios.put<OwnerView>(`${meUrl()}/visibility`, body, {
         headers: {
           ...authHeaders(),
-          "content-type": "application/json",
+          ...JSON_HEADERS,
         },
         withCredentials: true,
       });

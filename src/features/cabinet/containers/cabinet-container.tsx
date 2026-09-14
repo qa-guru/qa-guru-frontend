@@ -8,7 +8,8 @@ import { ArtifactTypeKey } from "../constants";
 import ProvisioningService, {
   ProvisioningHttpError,
 } from "../provisioning-service";
-import { CabinetLoadError, OwnerView } from "../types";
+import { StaffIssueInput } from "../staff-issue";
+import { CabinetLoadError, ContourStatus, OwnerView } from "../types";
 import { vitrineSlice } from "../visibility";
 import Cabinet from "../views/cabinet";
 
@@ -33,6 +34,9 @@ const CabinetContainer: FC = () => {
   const [owner, setOwner] = useState<OwnerView | null>(null);
 
   const [issuing, setIssuing] = useState(false);
+  const [staffIssuing, setStaffIssuing] = useState(false);
+  const [staffIssue, setStaffIssue] = useState<ContourStatus | null>(null);
+  const [staffIssueError, setStaffIssueError] = useState<string | null>(null);
 
   const load = useCallback(async (opts?: { silent?: boolean }) => {
     if (session && session.role !== "student") {
@@ -127,6 +131,31 @@ const CabinetContainer: FC = () => {
     }
   };
 
+  const onStaffIssueContour = async (input: StaffIssueInput) => {
+    setStaffIssuing(true);
+    setStaffIssueError(null);
+
+    try {
+      const job = await ProvisioningService.issueStaffContour(input);
+
+      setStaffIssue(job);
+    } catch (caught) {
+      setStaffIssue(null);
+
+      if (caught instanceof ProvisioningHttpError) {
+        setStaffIssueError(caught.message);
+
+        if (caught.status === 401) {
+          setError("unauthorized");
+        }
+      } else {
+        setStaffIssueError("Не удалось выдать контур");
+      }
+    } finally {
+      setStaffIssuing(false);
+    }
+  };
+
   const onToggleMaster = (profilePublic: boolean) => {
     if (!owner) {
       return;
@@ -171,6 +200,10 @@ const CabinetContainer: FC = () => {
         onToggleType={onToggleType}
         onIssueContour={onIssueContour}
         issuing={issuing}
+        onStaffIssueContour={onStaffIssueContour}
+        staffIssuing={staffIssuing}
+        staffIssueError={staffIssueError}
+        staffIssue={staffIssue}
       />
     </Container>
   );

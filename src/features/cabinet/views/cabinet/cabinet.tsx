@@ -20,6 +20,7 @@ import { typeVisible } from "../../visibility";
 import { ICabinet } from "./cabinet.types";
 import { StyledFlagRow, StyledPaper, StyledPreview } from "./cabinet.styled";
 import CabinetStatus from "./cabinet-status";
+import StaffIssueForm, { StaffIssueFormProps } from "./staff-issue-form";
 
 function payloadLines(payload: ArtifactPayload): string[] {
   return Object.entries(payload).map(([key, value]) => {
@@ -31,25 +32,19 @@ function payloadLines(payload: ArtifactPayload): string[] {
   });
 }
 
-const StaffCabinet: FC<{ username: string }> = ({ username }) => (
+type StaffViewProps = { username: string } & StaffIssueFormProps;
+
+const StaffCabinet: FC<StaffViewProps> = ({ username, ...issue }) => (
   <Stack gap={2} id="view-staff">
     <Typography variant="h4">Кабинет сотрудника</Typography>
     <Typography variant="body2" color="text.secondary">
       {username} · /staff. Потоки, выдача, доступ менторов. Не кабинет ученика.
     </Typography>
-    <StyledPaper>
-      <Typography variant="h6" gutterBottom>
-        Штаб школы
-      </Typography>
-      <Typography variant="body2">
-        Выдача контура за ученика — API provisioning, не эта форма. Курсы
-        ученика здесь не показываем.
-      </Typography>
-    </StyledPaper>
+    <StaffIssueForm {...issue} />
   </Stack>
 );
 
-const MentorCabinet: FC<{ username: string }> = ({ username }) => (
+const MentorCabinet: FC<StaffViewProps> = ({ username, ...issue }) => (
   <Stack gap={2} id="view-mentor">
     <Typography variant="h4">Проверка ДЗ</Typography>
     <Typography variant="body2" color="text.secondary">
@@ -57,10 +52,10 @@ const MentorCabinet: FC<{ username: string }> = ({ username }) => (
     </Typography>
     <StyledPaper>
       <Typography variant="body2">
-        Канбан ментора — в меню. Контур ученика и флаги витрины здесь не
-        крутятся.
+        Канбан ментора — в меню. Флаги витрины ученика здесь не крутятся.
       </Typography>
     </StyledPaper>
+    <StaffIssueForm {...issue} />
   </Stack>
 );
 
@@ -245,14 +240,25 @@ const Cabinet: FC<ICabinet> = (props) => {
     onToggleType,
     onIssueContour,
     issuing,
+    onStaffIssueContour,
+    staffIssuing,
+    staffIssueError,
+    staffIssue,
   } = props;
 
+  const staffForm: StaffIssueFormProps = {
+    issuing: staffIssuing,
+    error: staffIssueError,
+    result: staffIssue,
+    onSubmit: onStaffIssueContour ?? (() => undefined),
+  };
+
   if (session?.role === "staff") {
-    return <StaffCabinet username={session.username} />;
+    return <StaffCabinet username={session.username} {...staffForm} />;
   }
 
   if (session?.role === "mentor") {
-    return <MentorCabinet username={session.username} />;
+    return <MentorCabinet username={session.username} {...staffForm} />;
   }
 
   if (loading || error || !owner) {

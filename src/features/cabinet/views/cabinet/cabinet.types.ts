@@ -1,7 +1,13 @@
 import { AuthSession } from "api/rest/idp-roles";
 
 import { ArtifactTypeKey } from "../../constants";
-import { CabinetLoadError, OwnerView, VitrineSlice } from "../../types";
+import { StaffIssueInput } from "../../staff-issue";
+import {
+  CabinetLoadError,
+  ContourStatus,
+  OwnerView,
+  VitrineSlice,
+} from "../../types";
 
 export interface ICabinet {
   loading: boolean;
@@ -14,4 +20,8 @@ export interface ICabinet {
   onToggleType: (type: ArtifactTypeKey, on: boolean) => void;
   onIssueContour: () => void;
   issuing?: boolean;
+  onStaffIssueContour?: (input: StaffIssueInput) => void;
+  staffIssuing?: boolean;
+  staffIssueError?: string | null;
+  staffIssue?: ContourStatus | null;
 }
