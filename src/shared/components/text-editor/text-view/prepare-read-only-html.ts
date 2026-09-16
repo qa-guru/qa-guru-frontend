@@ -1,5 +1,6 @@
 import {
   classifyVideoSrc,
+  escapeHtmlAttr,
   type VideoHost,
   unescapeHtmlAttr,
   videoEmbedTag,
@@ -7,8 +8,8 @@ import {
 
 const FILES_TABLE_RE =
   /<table\b[^>]*\bfiles-table\b[^>]*>[\s\S]*?<\/table>/gi;
-const MIME_ICON_IMG_RE =
-  /<img\b[^>]*\/public\/mimetypes\/[^"'>\s]*-icon-[^"'>\s]*\.png[^>]*>/gi;
+const FILE_SIZE_RE =
+  /^\d+(?:[.,]\d+)?\s*(?:КБ|МБ|ГБ|Б|KB|MB|GB|B|байт)$/i;
 const IFRAME_RE = /<iframe\b[^>]*>(?:\s*<\/iframe>)?/gi;
 const LT_BLOCK_OPEN_RE = /<div\b[^>]*\blt-block(?!-)[^>]*>/gi;
 
@@ -27,14 +28,18 @@ type Replacement = {
   html: string;
 };
 
-function stripFilesTableMimeIcons(html: string): string {
-  return html.replace(FILES_TABLE_RE, (tableHtml) =>
-    tableHtml.replace(MIME_ICON_IMG_RE, "")
-  );
+function escapeHtmlText(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
-function iframeSrc(tag: string): string | null {
-  const match = /\bsrc\s*=\s*("([^"]*)"|'([^']*)')/i.exec(tag);
+function quotedAttr(tag: string, name: string): string | null {
+  const match = new RegExp(
+    `\\b${name}\\s*=\\s*("([^"]*)"|'([^']*)')`,
+    "i"
+  ).exec(tag);
 
   if (!match) {
     return null;
@@ -44,6 +49,133 @@ function iframeSrc(tag: string): string | null {
   const decoded = unescapeHtmlAttr(raw).trim();
 
   return decoded || null;
+}
+
+function iframeSrc(tag: string): string | null {
+  return quotedAttr(tag, "src");
+}
+
+function cellText(html: string): string {
+  return unescapeHtmlAttr(
+    html
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&#160;/gi, " ")
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isHttpHref(href: string): boolean {
+  try {
+    const { protocol } = new URL(href);
+
+    return protocol === "http:" || protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function tableCells(rowHtml: string): string[] {
+  const cells: string[] = [];
+  const cellRe = /<(td|th)\b[^>]*>([\s\S]*?)<\/\1>/gi;
+  let match = cellRe.exec(rowHtml);
+
+  while (match) {
+    cells.push(match[2]);
+    match = cellRe.exec(rowHtml);
+  }
+
+  return cells;
+}
+
+function firstFileAnchor(
+  rowHtml: string
+): { href: string; name: string } | null {
+  const anchorRe = /<a\b[^>]*>[\s\S]*?<\/a>/gi;
+  let match = anchorRe.exec(rowHtml);
+
+  while (match) {
+    const href = quotedAttr(match[0], "href");
+    const name = cellText(match[0]);
+
+    if (href && isHttpHref(href)) {
+      return { href, name };
+    }
+
+    match = anchorRe.exec(rowHtml);
+  }
+
+  return null;
+}
+
+function fileNameFromRow(cells: string[], linkedName: string): string {
+  if (linkedName) {
+    return linkedName;
+  }
+
+  for (const cell of cells) {
+    const text = cellText(cell);
+
+    if (text && !FILE_SIZE_RE.test(text)) {
+      return text;
+    }
+  }
+
+  return "Файл";
+}
+
+function fileSizeFromRow(cells: string[]): string {
+  for (const cell of cells) {
+    const text = cellText(cell);
+
+    if (FILE_SIZE_RE.test(text)) {
+      return text;
+    }
+  }
+
+  return "";
+}
+
+function fileRowToItem(rowHtml: string): string | null {
+  const file = firstFileAnchor(rowHtml);
+
+  if (!file) {
+    return null;
+  }
+
+  const cells = tableCells(rowHtml);
+  const name = escapeHtmlText(fileNameFromRow(cells, file.name));
+  const size = fileSizeFromRow(cells);
+  const sizeHtml = size ? ` ${escapeHtmlText(size)}` : "";
+
+  return `<li>${name}${sizeHtml} <a href="${escapeHtmlAttr(file.href)}">Скачать</a></li>`;
+}
+
+function filesTableToList(tableHtml: string): string {
+  const items: string[] = [];
+  const rowRe = /<tr\b[^>]*>[\s\S]*?<\/tr>/gi;
+  let match = rowRe.exec(tableHtml);
+
+  while (match) {
+    const item = fileRowToItem(match[0]);
+
+    if (item) {
+      items.push(item);
+    }
+
+    match = rowRe.exec(tableHtml);
+  }
+
+  if (items.length === 0) {
+    return "";
+  }
+
+  return `<ul>${items.join("")}</ul>`;
+}
+
+function rewriteFilesTables(html: string): string {
+  return html.replace(FILES_TABLE_RE, filesTableToList);
 }
 
 function findIframes(html: string): IframeHit[] {
@@ -308,6 +440,6 @@ function mergeAdjacentVideoIframes(html: string): string {
 
 export function prepareReadOnlyHtml(html: string): string {
   return mergeAdjacentVideoIframes(
-    stripFilesTableMimeIcons(html).replace(/>\/n</g, "><").replace(/\/n/g, "<br>")
+    rewriteFilesTables(html).replace(/>\/n</g, "><").replace(/\/n/g, "<br>")
   );
 }

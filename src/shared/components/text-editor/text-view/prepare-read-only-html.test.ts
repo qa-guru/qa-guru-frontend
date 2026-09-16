@@ -71,14 +71,16 @@ describe("prepareReadOnlyHtml", () => {
     );
   });
 
-  it("removes files-table mime icons and keeps the download link", () => {
+  it("turns files-table into a download list, not a TipTap table", () => {
     const prepared = prepareReadOnlyHtml(FILES_TABLE);
 
+    assert.equal(prepared.includes("<table"), false);
+    assert.equal(prepared.includes("<td"), false);
     assert.equal(prepared.includes("<img"), false);
     assert.equal(prepared.includes("/public/mimetypes/"), false);
-    assert.match(
+    assert.equal(
       prepared,
-      /<a href="https:\/\/fs23\.getcourse\.ru\/fileservice\/file\/download\/a\.txt"> Логи чата\.txt <\/a>/
+      '<ul><li>Логи чата.txt 4 КБ <a href="https://fs23.getcourse.ru/fileservice/file/download/a.txt">Скачать</a></li></ul>'
     );
   });
 
@@ -189,7 +191,12 @@ describe("prepareReadOnlyHtml", () => {
 
     assert.equal(prepared.includes("/n"), false);
     assert.equal(prepared.includes("/public/mimetypes/"), false);
+    assert.equal(prepared.includes("<table"), false);
     assert.equal(embedCount(prepared), 1);
     assert.match(prepared, /Логи чата\.txt/);
+    assert.match(
+      prepared,
+      /href="https:\/\/fs23\.getcourse\.ru\/fileservice\/file\/download\/a\.txt"/
+    );
   });
 });
