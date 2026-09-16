@@ -63,11 +63,12 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   const currentUserId = useReactiveVar(userIdVar);
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
+  const avatarSrc = img ? `data:image/png;base64, ${img}` : undefined;
 
   const renderLink = () => (
     <CustomLink path={profilePath} opacity="0.7">
       <Avatar
-        src={`data:image/png;base64, ${img}` || ""}
+        src={avatarSrc}
         variant="rounded"
         sx={{ width, height, ...stringAvatar(fullName).sx }}
         alt="Avatar"
@@ -81,7 +82,7 @@ const AvatarCustom: FC<IAvatarCustom> = ({
 
   const renderAvatar = () => (
     <Avatar
-      src={`data:image/png;base64, ${img}`}
+      src={avatarSrc}
       variant="rounded"
       sx={{ width, height, ...stringAvatar(fullName).sx }}
     >
