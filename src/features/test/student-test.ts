@@ -193,3 +193,8 @@ export function studentSelectedAnswers(
 
   return restored;
 }
+
+/** Pass/fail and score-vs-threshold belong on the completed screen only (F6). */
+export function showAttemptPassFail(isCompleted: boolean): boolean {
+  return Boolean(isCompleted);
+}

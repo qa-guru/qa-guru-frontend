@@ -199,14 +199,6 @@ const TestView: FC<TestViewProps> = ({
           <strong>Прогресс:</strong> {currentQuestionIndex + 1} из{" "}
           {totalQuestions} вопросов
         </Typography>
-        <Typography variant="body2" color="text.primary">
-          <strong>Правильных ответов:</strong> {score} из {successThreshold}{" "}
-          необходимых
-        </Typography>
-        <Typography variant="body2" color="text.primary">
-          <strong>Статус:</strong>{" "}
-          {isPassed ? "✅ Тест пройден" : "❌ Тест не пройден"}
-        </Typography>
       </Box>
 
       <Card sx={{ mb: 3 }}>

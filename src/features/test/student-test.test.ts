@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 import {
   isGraphqlAccessDenied,
   isStudentTestDumpOperation,
+  showAttemptPassFail,
   studentSelectedAnswers,
   studentTestQuestions,
 } from "./student-test";
@@ -120,6 +121,16 @@ describe("studentTestQuestions", () => {
 
     assert.equal(questions[0].id, "q1");
     assert.equal("correct" in questions[0].answers[0], false);
+  });
+});
+
+describe("showAttemptPassFail", () => {
+  it("hides pass/fail while the attempt is in progress", () => {
+    assert.equal(showAttemptPassFail(false), false);
+  });
+
+  it("allows pass/fail after the attempt is completed", () => {
+    assert.equal(showAttemptPassFail(true), true);
   });
 });
 
