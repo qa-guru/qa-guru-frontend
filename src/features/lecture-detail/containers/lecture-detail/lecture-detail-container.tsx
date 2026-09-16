@@ -4,13 +4,14 @@ import { Container } from "@mui/material";
 
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
+import CatalogMissing from "shared/components/catalog-missing";
 import {
   useLectureHomeWorkQuery,
   useLectureQuery,
   useTrainingLecturesQuery,
 } from "api/graphql/generated/graphql";
 import { FETCH_POLICY } from "shared/constants";
-import { isLectureAccessible } from "shared/helpers";
+import { isLectureAccessible, isLectureEntityMissing } from "shared/helpers";
 
 import LectureDetail from "../../views/lecture-detail";
 import LectureGate from "../../views/lecture-gate";
@@ -57,6 +58,10 @@ const LectureDetailContainer: FC = () => {
 
   if (!lectureId || !dataTrainingLectures) {
     return <NoDataErrorMessage />;
+  }
+
+  if (isLectureEntityMissing(dataLecture?.lecture, scheduleSlot)) {
+    return <CatalogMissing kind="lecture" />;
   }
 
   if (!dataLecture?.lecture) {

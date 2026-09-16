@@ -1,4 +1,12 @@
+export {
+  catalogEntityMissingLabel,
+  isLectureEntityMissing,
+  isTrainingEntityMissing,
+} from "./catalog-entity";
+export type { CatalogEntityKind } from "./catalog-entity";
 export { formatDate } from "./format-date";
+export { isGraphqlNotFound } from "./graphql-error";
+export type { GraphqlLikeError } from "./graphql-error";
 export {
   formatLectureAvailableFrom,
   hasLectureBody,
