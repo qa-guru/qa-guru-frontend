@@ -13,7 +13,10 @@ interface TextViewProps {
 }
 
 const TextView: FC<TextViewProps> = ({ content }) => {
-  const extensions = useExtensions({ hideFileNodeView: true });
+  const extensions = useExtensions({
+    hideFileNodeView: true,
+    readOnlyVideo: true,
+  });
   const prepared =
     typeof content === "string" ? prepareReadOnlyHtml(content) : content;
 

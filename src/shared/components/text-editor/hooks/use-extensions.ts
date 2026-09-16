@@ -47,6 +47,7 @@ import { FileDeletionTracker } from "shared/lib/mui-tiptap/extensions/file-delet
 import FileNodeView from "shared/lib/mui-tiptap/extensions/file-node-view";
 
 import { mentionSuggestionOptions } from "../utils/mention-suggestion-options";
+import VideoEmbed from "../text-view/video-embed-node";
 
 declare module "@tiptap/core" {
   interface Commands<ReturnType> {
@@ -189,6 +190,7 @@ export type UseExtensionsOptions = {
   placeholder?: string;
   onFileDelete?: (fileId: string) => void;
   hideFileNodeView?: boolean;
+  readOnlyVideo?: boolean;
 };
 
 const CustomLinkExtension = Link.extend({
@@ -235,6 +237,7 @@ export default function useExtensions({
   placeholder,
   onFileDelete,
   hideFileNodeView = false,
+  readOnlyVideo = false,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
   return useMemo(() => {
     return [
@@ -302,7 +305,7 @@ export default function useExtensions({
         placeholder,
       }),
 
-      Iframe,
+      ...(readOnlyVideo ? [VideoEmbed] : [Iframe]),
 
       CustomYoutube.configure({
         inline: false,
@@ -318,5 +321,5 @@ export default function useExtensions({
         onFileDelete,
       }),
     ];
-  }, [placeholder, onFileDelete, hideFileNodeView]);
+  }, [placeholder, onFileDelete, hideFileNodeView, readOnlyVideo]);
 }
