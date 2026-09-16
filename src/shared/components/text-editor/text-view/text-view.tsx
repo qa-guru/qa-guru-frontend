@@ -12,7 +12,7 @@ interface TextViewProps {
 }
 
 const TextView: FC<TextViewProps> = ({ content }) => {
-  const extensions = useExtensions();
+  const extensions = useExtensions({ hideFileNodeView: true });
 
   return (
     <FormControl sx={{ wordBreak: "break-word" }}>

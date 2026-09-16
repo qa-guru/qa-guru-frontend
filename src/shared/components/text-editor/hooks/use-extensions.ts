@@ -61,6 +61,7 @@ declare module "@tiptap/core" {
 
 export interface FileNodeOptions {
   HTMLAttributes: Record<string, any>;
+  showChip: boolean;
 }
 
 const lowlight = createLowlight(common);
@@ -108,12 +109,19 @@ const Iframe = Node.create({
   },
 });
 
-export const FileNode = Node.create({
+export const FileNode = Node.create<FileNodeOptions>({
   name: "file",
 
   group: "inline",
   inline: true,
   atom: true,
+
+  addOptions() {
+    return {
+      HTMLAttributes: {},
+      showChip: true,
+    };
+  },
 
   addAttributes() {
     return {
@@ -165,6 +173,14 @@ export const FileNode = Node.create({
   },
 
   addNodeView() {
+    if (!this.options.showChip) {
+      return () => {
+        const dom = document.createElement("span");
+
+        return { dom };
+      };
+    }
+
     return ReactNodeViewRenderer(FileNodeView);
   },
 });
@@ -172,6 +188,7 @@ export const FileNode = Node.create({
 export type UseExtensionsOptions = {
   placeholder?: string;
   onFileDelete?: (fileId: string) => void;
+  hideFileNodeView?: boolean;
 };
 
 const CustomLinkExtension = Link.extend({
@@ -217,6 +234,7 @@ const CustomResizableImage = ResizableImage.extend({
 export default function useExtensions({
   placeholder,
   onFileDelete,
+  hideFileNodeView = false,
 }: UseExtensionsOptions = {}): EditorOptions["extensions"] {
   return useMemo(() => {
     return [
@@ -293,10 +311,12 @@ export default function useExtensions({
 
       History,
 
-      FileNode,
+      FileNode.configure({
+        showChip: !hideFileNodeView,
+      }),
       FileDeletionTracker.configure({
         onFileDelete,
       }),
     ];
-  }, [placeholder, onFileDelete]);
+  }, [placeholder, onFileDelete, hideFileNodeView]);
 }
