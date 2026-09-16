@@ -21,20 +21,22 @@ import {
 import { IUserDetail } from "./user-detail.types";
 
 const UserDetail: FC<IUserDetail> = ({ data }) => {
-  const { rating, firstName, lastName, creationDate, roles } = data?.userById!;
-
   const user = data?.userById;
-  const ratingColor = useRatingColor(rating?.rating);
+  const ratingColor = useRatingColor(user?.rating?.rating);
 
   const hasStudentKanbanAccess = useRoleAccess({
-    roles,
+    roles: user?.roles,
     allowedRoles: [UserRole.Student],
   });
 
   const hasMentorKanbanAccess = useRoleAccess({
-    roles,
+    roles: user?.roles,
     allowedRoles: [UserRole.Mentor, UserRole.Lector],
   });
+
+  if (!user) return null;
+
+  const { rating, firstName, lastName, creationDate } = user;
 
   return (
     <Container>

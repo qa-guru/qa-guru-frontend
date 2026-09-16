@@ -13,7 +13,7 @@ const UserInfoContainer: FC = () => {
   });
 
   if (loading) return <AppSpinner />;
-  if (!data) return <NoDataErrorMessage />;
+  if (!data?.user) return <NoDataErrorMessage />;
 
   return <UserInfo data={data} />;
 };

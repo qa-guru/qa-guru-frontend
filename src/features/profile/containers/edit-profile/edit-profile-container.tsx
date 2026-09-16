@@ -14,7 +14,7 @@ const EditProfileContainer: FC = () => {
   const [updateUser, { loading: loadingUpdateUser }] = useUpdateUserMutation();
 
   if (loadingUser || loadingUpdateUser) return <AppSpinner />;
-  if (!data) return <NoDataErrorMessage />;
+  if (!data?.user) return <NoDataErrorMessage />;
 
   return <EditProfile user={data.user} updateUser={updateUser} />;
 };

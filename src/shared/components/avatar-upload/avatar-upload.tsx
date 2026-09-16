@@ -20,13 +20,14 @@ import {
 } from "./avatar-upload.styled";
 
 const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
-  const { avatar, firstName, lastName } = user!;
   const { isMobileOrTablet } = useResponsive();
-
   const { uploadAvatar, uploading } = useAvatarUpload();
   const { deleteAvatar, deleting } = useAvatarDelete();
-
   const currentUserId = useReactiveVar(userIdVar);
+
+  if (!user) return null;
+
+  const { avatar, firstName, lastName } = user;
   const fullName = `${firstName} ${lastName}`;
   const isCurrentUser = user?.id === currentUserId;
 

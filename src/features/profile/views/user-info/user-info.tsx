@@ -22,13 +22,14 @@ import {
 } from "./user-info.styled";
 
 const UserInfo: FC<IUserInfo> = ({ data }) => {
-  const { firstName, rating, lastName, creationDate } = data.user!;
-
-  const user = data?.user;
-  const ratingColor = useRatingColor(rating?.rating);
-
   const navigate = useNavigate();
+  const user = data?.user;
+  const ratingColor = useRatingColor(user?.rating?.rating);
   const routeEdit = () => navigate("/profile/edit");
+
+  if (!user) return null;
+
+  const { firstName, rating, lastName, creationDate } = user;
 
   return (
     <StyledPaper>
