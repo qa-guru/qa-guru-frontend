@@ -6,7 +6,6 @@ export interface TestQuestion {
 export interface TestAnswer {
   id: string;
   text: string;
-  correct: boolean;
   testQuestion: TestQuestion;
 }
 

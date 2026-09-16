@@ -1,0 +1,21 @@
+query testAttemptQuestions($attemptId: ID!) {
+  testAttemptQuestions(attemptId: $attemptId) {
+    result
+    testQuestion {
+      id
+      text
+      testAnswers {
+        id
+        text
+      }
+    }
+    testAnswerResults {
+      answer
+      result
+      testAnswer {
+        id
+        text
+      }
+    }
+  }
+}

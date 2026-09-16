@@ -1,19 +1,24 @@
-import { FC, useState, useEffect } from "react";
-import { useLazyQuery } from "@apollo/client";
+import { FC, useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Alert, Box } from "@mui/material";
 
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
 import {
-  useTestTestGroupsByIdQuery,
-  TestAnswerByQuestionDocument,
   useStartTestMutation,
   useSendTestAnswerMutation,
   useTestAttemptQuery,
+  useTestAttemptQuestionsQuery,
 } from "api/graphql/generated/graphql";
+import LectureGate from "features/lecture-detail/views/lecture-gate";
 
 import TestView from "../views/test-view";
-import { TestAnswer, UserAnswer } from "../types";
+import { UserAnswer } from "../types";
+import {
+  isGraphqlAccessDenied,
+  studentSelectedAnswers,
+  studentTestQuestions,
+} from "../student-test";
 
 interface TestContainerProps {
   testId: string;
@@ -21,8 +26,33 @@ interface TestContainerProps {
   lectureId: string;
 }
 
+function startAttemptFailure(error: unknown): {
+  denied: boolean;
+  message: string | null;
+} {
+  if (isGraphqlAccessDenied(error as { message?: string })) {
+    return { denied: true, message: null };
+  }
+
+  const message =
+    error instanceof Error ? error.message : String(error ?? "");
+
+  if (message.includes("unfinished test")) {
+    return {
+      denied: false,
+      message:
+        "⚠️ У вас есть незавершенная попытка тестирования. " +
+        "Вернитесь на страницу лекции и нажмите 'Продолжить тест'.",
+    };
+  }
+
+  return {
+    denied: false,
+    message: `❌ Ошибка при начале теста: ${message}`,
+  };
+}
+
 const TestContainer: FC<TestContainerProps> = ({
-  testId,
   trainingId,
   lectureId,
 }) => {
@@ -30,142 +60,119 @@ const TestContainer: FC<TestContainerProps> = ({
   const attemptIdFromUrl = searchParams.get("attemptId");
 
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
+  const [answersRestored, setAnswersRestored] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState<
-    TestAnswer[]
-  >([]);
-  const [allLoadedAnswers, setAllLoadedAnswers] = useState<TestAnswer[]>([]);
-  const [answersLoading, setAnswersLoading] = useState(false);
-
-  const [testAttemptId, setTestAttemptId] = useState<string | null>(null);
-  const [testStarted, setTestStarted] = useState(false);
-
+  const [testAttemptId, setTestAttemptId] = useState<string | null>(
+    attemptIdFromUrl
+  );
+  const [denied, setDenied] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const startRequested = useRef(Boolean(attemptIdFromUrl));
 
-  const [startTest] = useStartTestMutation();
+  const [startTest, { loading: startLoading }] = useStartTestMutation();
   const [sendTestAnswer] = useSendTestAnswerMutation();
 
-  const { data: testData, loading: testLoading } = useTestTestGroupsByIdQuery({
-    variables: { id: testId },
+  const {
+    data: attemptData,
+    loading: attemptLoading,
+    error: attemptError,
+  } = useTestAttemptQuery({
+    variables: { id: testAttemptId! },
+    skip: !testAttemptId,
   });
 
-  const { data: attemptData, loading: attemptLoading } = useTestAttemptQuery({
-    variables: { id: attemptIdFromUrl! },
-    skip: !attemptIdFromUrl,
+  const {
+    data: questionsData,
+    loading: questionsLoading,
+    error: questionsError,
+  } = useTestAttemptQuestionsQuery({
+    variables: { attemptId: testAttemptId! },
+    skip: !testAttemptId,
   });
 
-  const [getTestAnswers] = useLazyQuery(TestAnswerByQuestionDocument);
-
-  const testQuestions =
-    testData?.testTestGroupsById?.testQuestions?.filter((q) => q != null) ?? [];
-  const currentQuestion = testQuestions[currentQuestionIndex];
-
   useEffect(() => {
-    if (!testStarted && testData?.testTestGroupsById && !testLoading) {
-      handleStartTest();
-    }
-  }, [testData, testLoading, testStarted]);
+    let cancelled = false;
 
-  useEffect(() => {
-    if (attemptData?.testAttempt && attemptIdFromUrl) {
-      const attempt = attemptData.testAttempt;
+    if (!testAttemptId && !denied && !startRequested.current) {
+      startRequested.current = true;
 
-      if (attempt.id) {
-        setTestAttemptId(attempt.id);
-      }
-      setTestStarted(true);
-
-      setScore(attempt.successfulCount || 0);
-
-      if (attempt.testAttemptQuestionResults) {
-        const restoredAnswers: UserAnswer[] = [];
-        attempt.testAttemptQuestionResults.forEach((questionResult) => {
-          if (
-            questionResult &&
-            questionResult.testQuestion &&
-            questionResult.testAnswerResults
-          ) {
-            const question = questionResult.testQuestion;
-            questionResult.testAnswerResults.forEach((answerResult) => {
-              if (
-                answerResult &&
-                answerResult.testAnswer &&
-                answerResult.answer === true &&
-                question.id &&
-                answerResult.testAnswer.id
-              ) {
-                const existingAnswerIndex = restoredAnswers.findIndex(
-                  (answer) => answer.questionId === question.id
-                );
-
-                if (existingAnswerIndex >= 0) {
-                  restoredAnswers[existingAnswerIndex].answerIds.push(
-                    answerResult.testAnswer.id
-                  );
-                } else {
-                  restoredAnswers.push({
-                    questionId: question.id,
-                    answerIds: [answerResult.testAnswer.id],
-                  });
-                }
-              }
-            });
-          }
-        });
-        setUserAnswers(restoredAnswers);
-
-        const answeredQuestionIds = new Set(
-          restoredAnswers.map((a) => a.questionId)
-        );
-        const nextQuestionIndex = testQuestions.findIndex(
-          (q) => q && q.id && !answeredQuestionIds.has(q.id)
-        );
-        if (nextQuestionIndex !== -1) {
-          setCurrentQuestionIndex(nextQuestionIndex);
-        }
-      }
-    }
-  }, [attemptData, attemptIdFromUrl]);
-
-  const handleStartTest = async () => {
-    try {
-      if (attemptIdFromUrl) {
-        setTestAttemptId(attemptIdFromUrl);
-        setTestStarted(true);
-        return;
-      }
-
-      const { data } = await startTest({
+      startTest({
         variables: {
           lectureId,
           trainingId,
         },
-      });
+      })
+        .then(({ data }) => {
+          if (!cancelled && data?.startTest?.id) {
+            setTestAttemptId(data.startTest.id);
+          }
+        })
+        .catch((error: unknown) => {
+          if (cancelled) {
+            return;
+          }
 
-      if (data?.startTest?.id) {
-        setTestAttemptId(data.startTest.id);
-        setTestStarted(true);
-      }
-    } catch (error: any) {
-      console.error("❌ Ошибка при начале теста:", error);
+          const failure = startAttemptFailure(error);
 
-      if (error.message?.includes("unfinished test")) {
-        setErrorMessage(
-          "⚠️ У вас есть незавершенная попытка тестирования. " +
-            "Вернитесь на страницу лекции и нажмите 'Продолжить тест'."
-        );
-      } else {
-        setErrorMessage(`❌ Ошибка при начале теста: ${error.message}`);
+          if (failure.denied) {
+            setDenied(true);
+            return;
+          }
+
+          setErrorMessage(failure.message);
+        });
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [denied, lectureId, startTest, testAttemptId, trainingId]);
+
+  useEffect(() => {
+    if (answersRestored || (!questionsData && !attemptData)) {
+      return;
+    }
+
+    const restored = studentSelectedAnswers(
+      questionsData?.testAttemptQuestions
+    );
+    const questions = studentTestQuestions({
+      attemptQuestions: questionsData?.testAttemptQuestions,
+      testGroupQuestions: attemptData?.testAttempt?.testGroup?.testQuestions,
+    });
+
+    if (restored.length) {
+      setUserAnswers(restored);
+      const answeredQuestionIds = new Set(
+        restored.map((answer) => answer.questionId)
+      );
+      const nextQuestionIndex = questions.findIndex(
+        (question) => !answeredQuestionIds.has(question.id)
+      );
+
+      if (nextQuestionIndex !== -1) {
+        setCurrentQuestionIndex(nextQuestionIndex);
       }
     }
-  };
+
+    const attempt = attemptData?.testAttempt;
+
+    if (attempt) {
+      setScore(attempt.successfulCount || 0);
+
+      if (attempt.result !== null && attempt.result !== undefined) {
+        setIsCompleted(true);
+      }
+    }
+
+    setAnswersRestored(true);
+  }, [answersRestored, attemptData, questionsData]);
 
   const handleSendAnswer = async (questionId: string, answerIds: string[]) => {
     if (!testAttemptId) {
-      console.error("❌ Нет ID попытки теста");
       return;
     }
 
@@ -199,59 +206,16 @@ const TestContainer: FC<TestContainerProps> = ({
     }
   };
 
-  useEffect(() => {
-    if (!currentQuestion?.id) return;
-
-    const existingAnswers = allLoadedAnswers.filter(
-      (answer) => answer.testQuestion.id === currentQuestion.id
-    );
-
-    if (existingAnswers.length > 0) {
-      setCurrentQuestionAnswers(existingAnswers);
-      return;
-    }
-
-    setAnswersLoading(true);
-    setCurrentQuestionAnswers([]);
-
-    const fetchCurrentAnswers = async () => {
-      try {
-        const { data } = await getTestAnswers({
-          variables: { questionId: currentQuestion.id },
-        });
-
-        if (data?.testAnswerByQuestion) {
-          const answers = data.testAnswerByQuestion
-            .filter((answer: any) => answer != null)
-            .map((answer: any) => ({
-              id: answer.id!,
-              text: answer.text!,
-              correct: answer.correct!,
-              testQuestion: {
-                id: currentQuestion.id!,
-                text: currentQuestion.text!,
-              },
-            }));
-
-          setCurrentQuestionAnswers(answers);
-          setAllLoadedAnswers((prev) => [...prev, ...answers]);
-        }
-      } catch (error) {
-        console.error(
-          "Error fetching answers for question:",
-          currentQuestion.id,
-          error
-        );
-      } finally {
-        setAnswersLoading(false);
-      }
-    };
-
-    fetchCurrentAnswers();
-  }, [currentQuestion, getTestAnswers]);
+  const questions = studentTestQuestions({
+    attemptQuestions: questionsData?.testAttemptQuestions,
+    testGroupQuestions: attemptData?.testAttempt?.testGroup?.testQuestions,
+  });
+  const currentQuestion = questions[currentQuestionIndex];
 
   const handleAnswerSelect = (answerId: string, isSelected: boolean) => {
-    if (!currentQuestion?.id) return;
+    if (!currentQuestion?.id) {
+      return;
+    }
 
     const existingAnswerIndex = userAnswers.findIndex(
       (answer) => answer.questionId === currentQuestion.id
@@ -285,7 +249,9 @@ const TestContainer: FC<TestContainerProps> = ({
   };
 
   const handleNextQuestion = async () => {
-    if (!currentQuestion?.id) return;
+    if (!currentQuestion?.id) {
+      return;
+    }
 
     const currentAnswer = userAnswers.find(
       (answer) => answer.questionId === currentQuestion.id
@@ -295,45 +261,76 @@ const TestContainer: FC<TestContainerProps> = ({
       await handleSendAnswer(currentQuestion.id, currentAnswer.answerIds);
     }
 
-    if (currentQuestionIndex < testQuestions.length - 1) {
+    if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
 
   const currentAnswer = userAnswers.find(
-    (ua) => ua.questionId === currentQuestion?.id
+    (userAnswer) => userAnswer.questionId === currentQuestion?.id
   );
   const isCurrentQuestionAnswered =
     !!currentAnswer && currentAnswer.answerIds.length > 0;
+  const accessDenied =
+    denied ||
+    isGraphqlAccessDenied(attemptError) ||
+    isGraphqlAccessDenied(questionsError);
 
-  if (testLoading || answersLoading) return <AppSpinner />;
-  if (!testData?.testTestGroupsById || !currentQuestion)
+  if (accessDenied) {
+    return <LectureGate lectureMissing />;
+  }
+
+  if (startLoading || attemptLoading || questionsLoading) {
+    return <AppSpinner />;
+  }
+
+  if (errorMessage && !testAttemptId) {
+    return (
+      <Box sx={{ maxWidth: 800, margin: "0 auto", padding: 2 }}>
+        <Alert severity="error">{errorMessage}</Alert>
+      </Box>
+    );
+  }
+
+  if (!currentQuestion) {
     return <NoDataErrorMessage />;
+  }
+
+  const testGroup = attemptData?.testAttempt?.testGroup;
+  const currentQuestionAnswers = currentQuestion.answers.map((answer) => ({
+    id: answer.id,
+    text: answer.text,
+    testQuestion: {
+      id: currentQuestion.id,
+      text: currentQuestion.text,
+    },
+  }));
 
   return (
-    <>
-      <TestView
-        testData={testData.testTestGroupsById!}
-        testAnswers={currentQuestionAnswers}
-        userAnswers={userAnswers}
-        isCompleted={isCompleted}
-        score={score}
-        currentQuestion={{
-          id: currentQuestion?.id || "",
-          text: currentQuestion?.text || "",
-        }}
-        currentQuestionIndex={currentQuestionIndex}
-        totalQuestions={testQuestions.length}
-        isCurrentQuestionAnswered={isCurrentQuestionAnswered}
-        trainingId={trainingId}
-        lectureId={lectureId}
-        testStarted={testStarted}
-        onAnswerSelect={handleAnswerSelect}
-        onNextQuestion={handleNextQuestion}
-        errorMessage={errorMessage}
-        successMessage={successMessage}
-      />
-    </>
+    <TestView
+      testData={{
+        testName: testGroup?.testName ?? "",
+        successThreshold: testGroup?.successThreshold ?? 0,
+      }}
+      testAnswers={currentQuestionAnswers}
+      userAnswers={userAnswers}
+      isCompleted={isCompleted}
+      score={score}
+      currentQuestion={{
+        id: currentQuestion.id,
+        text: currentQuestion.text,
+      }}
+      currentQuestionIndex={currentQuestionIndex}
+      totalQuestions={questions.length}
+      isCurrentQuestionAnswered={isCurrentQuestionAnswered}
+      trainingId={trainingId}
+      lectureId={lectureId}
+      testStarted={Boolean(testAttemptId)}
+      onAnswerSelect={handleAnswerSelect}
+      onNextQuestion={handleNextQuestion}
+      errorMessage={errorMessage}
+      successMessage={successMessage}
+    />
   );
 };
 

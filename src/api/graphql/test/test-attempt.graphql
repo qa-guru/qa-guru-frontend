@@ -6,6 +6,19 @@ query testAttempt($id: ID!) {
     successfulCount
     errorsCount
     result
+    testGroup {
+      id
+      testName
+      successThreshold
+      testQuestions {
+        id
+        text
+        testAnswers {
+          id
+          text
+        }
+      }
+    }
     testAttemptQuestionResults {
       testQuestion {
         id

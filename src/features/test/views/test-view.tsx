@@ -13,12 +13,13 @@ import {
   LinearProgress,
 } from "@mui/material";
 
-import { TestGroupDto } from "api/graphql/generated/graphql";
-
 import { TestQuestion, TestAnswer, UserAnswer } from "../types";
 
 interface TestViewProps {
-  testData: TestGroupDto;
+  testData: {
+    testName?: string | null;
+    successThreshold?: number | null;
+  };
   testAnswers: TestAnswer[];
   userAnswers: UserAnswer[];
   isCompleted: boolean;
