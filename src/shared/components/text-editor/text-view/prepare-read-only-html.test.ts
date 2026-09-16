@@ -109,6 +109,7 @@ describe("prepareReadOnlyHtml", () => {
     );
     assert.equal(prepared.includes("ltBlock2230418175"), false);
     assert.equal(prepared.includes("ltBlock2230418173"), true);
+    assert.equal(/class="[^"]*videoWrapper/.test(prepared), false);
   });
 
   it("does not glue every video in the lecture into one player", () => {

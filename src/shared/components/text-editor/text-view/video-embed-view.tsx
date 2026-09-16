@@ -1,6 +1,6 @@
 import { NodeViewWrapper } from "@tiptap/react";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { useCallback, useSyncExternalStore } from "react";
+import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { useCallback, useState } from "react";
 
 import {
   allowedVideoSrc,
@@ -9,7 +9,6 @@ import {
 } from "./video-src";
 
 const STORAGE_PREFIX = "qaguru.videoHost:";
-const listeners = new Set<() => void>();
 
 function documentStorageKey(): string {
   if (typeof window === "undefined") {
@@ -17,26 +16,6 @@ function documentStorageKey(): string {
   }
 
   return `${STORAGE_PREFIX}${window.location.pathname}`;
-}
-
-function emitVideoHostPref(): void {
-  listeners.forEach((listener) => listener());
-}
-
-function subscribeVideoHostPref(listener: () => void): () => void {
-  listeners.add(listener);
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", listener);
-  }
-
-  return () => {
-    listeners.delete(listener);
-
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", listener);
-    }
-  };
 }
 
 function readVideoHostPref(): VideoHost | null {
@@ -58,15 +37,15 @@ function readVideoHostPref(): VideoHost | null {
 }
 
 function writeVideoHostPref(host: VideoHost): void {
-  if (typeof window !== "undefined") {
-    try {
-      window.localStorage.setItem(documentStorageKey(), host);
-    } catch {
-      // private mode / quota
-    }
+  if (typeof window === "undefined") {
+    return;
   }
 
-  emitVideoHostPref();
+  try {
+    window.localStorage.setItem(documentStorageKey(), host);
+  } catch {
+    // private mode / quota
+  }
 }
 
 function srcForHost(
@@ -97,13 +76,11 @@ interface VideoEmbedViewProps {
 function VideoEmbedView({ node }: VideoEmbedViewProps) {
   const youtube = allowedVideoSrc(node.attrs.youtube);
   const rutube = allowedVideoSrc(node.attrs.rutube);
-  const pref = useSyncExternalStore(
-    subscribeVideoHostPref,
-    readVideoHostPref,
-    () => null
+  const [host, setHost] = useState<VideoHost | null>(() =>
+    resolveVideoHost(youtube, rutube, readVideoHostPref())
   );
-  const host = resolveVideoHost(youtube, rutube, pref);
   const src = srcForHost(host, youtube, rutube);
+  const showSwitch = Boolean(youtube && rutube);
 
   const handleChange = useCallback(
     (_event: unknown, next: VideoHost | null) => {
@@ -119,43 +96,55 @@ function VideoEmbedView({ node }: VideoEmbedViewProps) {
         return;
       }
 
+      setHost(next);
       writeVideoHostPref(next);
     },
     [youtube, rutube]
   );
 
   return (
-    <NodeViewWrapper
-      as="div"
-      className="iframe-container"
-      contentEditable={false}
-    >
-      {youtube || rutube ? (
-        <ToggleButtonGroup
-          exclusive
-          size="small"
-          value={host}
-          onChange={handleChange}
-          onMouseDown={(event) => event.preventDefault()}
-          aria-label="Источник видео"
-          sx={{ mb: 1, maxWidth: 640 }}
-        >
-          {youtube ? (
+    <NodeViewWrapper as="div" contentEditable={false}>
+      <Box sx={{ maxWidth: 640, my: 1 }}>
+        {showSwitch ? (
+          <ToggleButtonGroup
+            exclusive
+            size="small"
+            value={host}
+            onChange={handleChange}
+            onMouseDown={(event) => event.preventDefault()}
+            aria-label="Источник видео"
+            sx={{ mb: 1 }}
+          >
             <ToggleButton value="youtube">YouTube</ToggleButton>
-          ) : null}
-          {rutube ? <ToggleButton value="rutube">Rutube</ToggleButton> : null}
-        </ToggleButtonGroup>
-      ) : null}
-      {src ? (
-        <iframe
-          key={src}
-          src={src}
-          title={host === "rutube" ? "Rutube" : "YouTube"}
-          frameBorder={0}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      ) : null}
+            <ToggleButton value="rutube">Rutube</ToggleButton>
+          </ToggleButtonGroup>
+        ) : null}
+        {src ? (
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              aspectRatio: "16 / 9",
+              bgcolor: "common.black",
+            }}
+          >
+            <iframe
+              key={src}
+              src={src}
+              title={host === "rutube" ? "Rutube" : "YouTube"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                border: 0,
+              }}
+            />
+          </Box>
+        ) : null}
+      </Box>
     </NodeViewWrapper>
   );
 }

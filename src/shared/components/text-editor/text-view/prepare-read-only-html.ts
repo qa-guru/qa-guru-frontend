@@ -285,6 +285,13 @@ function stripEmptyLtBlocks(html: string): string {
   return html.replace(/<div\b[^>]*\blt-block(?!-)[^>]*>\s*<\/div>/gi, "");
 }
 
+function unwrapVideoWrappers(html: string): string {
+  return html.replace(
+    /<div\b[^>]*\bvideoWrapper\b[^>]*>\s*(<video-embed\b[^>]*>\s*<\/video-embed>)\s*<\/div>/gi,
+    "$1"
+  );
+}
+
 function mergeAdjacentVideoIframes(html: string): string {
   const hits = findIframes(html);
 
@@ -293,7 +300,9 @@ function mergeAdjacentVideoIframes(html: string): string {
   }
 
   return stripEmptyLtBlocks(
-    applyReplacements(html, collectReplacements(html, hits))
+    unwrapVideoWrappers(
+      applyReplacements(html, collectReplacements(html, hits))
+    )
   );
 }
 
