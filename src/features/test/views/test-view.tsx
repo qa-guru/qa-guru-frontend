@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 
 import { TestQuestion, TestAnswer, UserAnswer } from "../types";
+import { showAttemptPassFail } from "../student-test";
 
 interface TestViewProps {
   testData: {
@@ -91,7 +92,7 @@ const TestView: FC<TestViewProps> = ({
     );
   }
 
-  if (isCompleted) {
+  if (showAttemptPassFail(isCompleted)) {
     return (
       <Box sx={{ maxWidth: 800, margin: "0 auto", padding: 2 }}>
         <Card sx={{ bgcolor: "background.paper" }}>
