@@ -14,6 +14,7 @@ import {
   lectureGateTitle,
   lectureGateBody,
   shouldShowLectureGate,
+  shouldSkipLectureHomework,
 } from "./lecture-availability";
 
 describe("lectureGateKind", () => {
@@ -155,5 +156,40 @@ describe("lectureQueryFailureKind", () => {
 
     assert.equal(lectureQueryFailureKind(slot), "scheduled");
     assert.match(lectureGateTitle(slot, true), /^Урок откроется /);
+  });
+});
+
+describe("shouldSkipLectureHomework", () => {
+  it("does not fetch homework on an F1 denied lecture", () => {
+    assert.equal(
+      shouldSkipLectureHomework(
+        true,
+        null,
+        { locking: false, isAvailable: true }
+      ),
+      true
+    );
+  });
+
+  it("fetches homework for a live purchased lecture", () => {
+    assert.equal(
+      shouldSkipLectureHomework(
+        true,
+        { id: "1" },
+        { locking: false, isAvailable: true }
+      ),
+      false
+    );
+  });
+
+  it("skips homework on a locked slot even when the DTO exists", () => {
+    assert.equal(
+      shouldSkipLectureHomework(
+        true,
+        { id: "1" },
+        { locking: true, isAvailable: false }
+      ),
+      true
+    );
   });
 });

@@ -2,7 +2,6 @@ import { FC } from "react";
 
 import { userIdVar } from "cache";
 import { AppSpinner } from "shared/components/spinners";
-import NoDataErrorMessage from "shared/components/no-data-error-message";
 import { useUserQuery } from "api/graphql/generated/graphql";
 import { FETCH_POLICY } from "shared/constants";
 
@@ -14,10 +13,11 @@ const UserContainer: FC = () => {
       userIdVar(data?.user?.id);
     },
     fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
+    errorPolicy: "all",
   });
 
-  if (loading) return <AppSpinner />;
-  if (!data) return <NoDataErrorMessage />;
+  if (loading && !data) return <AppSpinner />;
+  if (!data) return null;
 
   return <Profile data={data} />;
 };

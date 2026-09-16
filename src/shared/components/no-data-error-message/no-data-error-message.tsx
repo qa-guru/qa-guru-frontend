@@ -20,7 +20,7 @@ const NoDataErrorMessage: FC = () => {
     navigate("/");
   };
 
-  const [showModal] = useModal(({ in: open }) => (
+  const [showModal, hideModal] = useModal(({ in: open }) => (
     <Dialog open={open}>
       <DialogTitle>Упс что-то пошло не так...</DialogTitle>
       <StyledIconStack>
@@ -36,7 +36,11 @@ const NoDataErrorMessage: FC = () => {
 
   useEffect(() => {
     showModal();
-  }, [showModal]);
+
+    return () => {
+      hideModal();
+    };
+  }, [showModal, hideModal]);
 
   return <StyledBackdropError open={true} />;
 };

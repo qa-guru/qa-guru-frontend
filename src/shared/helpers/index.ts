@@ -20,6 +20,7 @@ export {
   lectureListFooter,
   lectureQueryFailureKind,
   shouldShowLectureGate,
+  shouldSkipLectureHomework,
 } from "./lecture-availability";
 export type { LectureGateKind, LectureScheduleSlot } from "./lecture-availability";
 export {

@@ -180,3 +180,15 @@ export function shouldShowLectureGate(
     !hasLectureBody(content)
   );
 }
+
+export function shouldSkipLectureHomework(
+  tariffHomework: boolean,
+  lecture: unknown,
+  slot?: LectureScheduleSlot | null
+): boolean {
+  return (
+    !tariffHomework ||
+    lecture == null ||
+    (slot != null && !isLectureAccessible(slot))
+  );
+}

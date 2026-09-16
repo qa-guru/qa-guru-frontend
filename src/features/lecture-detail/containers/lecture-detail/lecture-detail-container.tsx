@@ -11,7 +11,7 @@ import {
   useTrainingLecturesQuery,
 } from "api/graphql/generated/graphql";
 import { FETCH_POLICY } from "shared/constants";
-import { isLectureAccessible, isLectureEntityMissing } from "shared/helpers";
+import { isLectureEntityMissing, shouldSkipLectureHomework } from "shared/helpers";
 
 import LectureDetail from "../../views/lecture-detail";
 import LectureGate from "../../views/lecture-gate";
@@ -32,20 +32,24 @@ const LectureDetailContainer: FC = () => {
     useTrainingLecturesQuery({
       variables: { id: trainingId! },
       fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
+      errorPolicy: "all",
     });
 
   const scheduleSlot = dataTrainingLectures?.trainingLectures?.find(
     (trainingLecture) => trainingLecture?.lecture?.id === lectureId
   );
-  const skipHomework =
-    !tariffHomework ||
-    (scheduleSlot != null && !isLectureAccessible(scheduleSlot));
+  const skipHomework = shouldSkipLectureHomework(
+    tariffHomework,
+    dataLecture?.lecture,
+    scheduleSlot
+  );
 
   const { data: dataLectureHomework, loading: loadingLectureHomeWork } =
     useLectureHomeWorkQuery({
       variables: { lectureId: lectureId! },
       skip: skipHomework,
       fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
+      errorPolicy: "all",
     });
 
   if (loadingLecture || loadingTrainingLectures) {
@@ -54,10 +58,6 @@ const LectureDetailContainer: FC = () => {
 
   if (tariffHomework && loadingLectureHomeWork && !skipHomework) {
     return <AppSpinner />;
-  }
-
-  if (!lectureId || !dataTrainingLectures) {
-    return <NoDataErrorMessage />;
   }
 
   if (isLectureEntityMissing(dataLecture?.lecture, scheduleSlot)) {
@@ -70,6 +70,10 @@ const LectureDetailContainer: FC = () => {
         <LectureGate slot={scheduleSlot} lectureMissing />
       </Container>
     );
+  }
+
+  if (!lectureId || !dataTrainingLectures) {
+    return <NoDataErrorMessage />;
   }
 
   return (
