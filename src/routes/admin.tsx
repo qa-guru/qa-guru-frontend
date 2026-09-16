@@ -1,9 +1,11 @@
 import { Route } from "react-router-dom";
 
 import CabinetPage from "pages/cabinet";
+import Profile from "pages/profile";
 import AdminPanelPage from "pages/admin-panel";
 import TopUsersPage from "pages/top-users";
 import UserDetail from "pages/user-detail";
+import EditProfilePage from "pages/edit-profile";
 import EditTrainingPage from "pages/edit-training";
 import EditLecturesPage from "pages/edit-lectures";
 import EditLecturePage from "pages/edit-lecture";
@@ -83,6 +85,12 @@ const AdminRoutes = [
   />,
   <Route key="top-users" path="/top-users" element={<TopUsersPage />} />,
   <Route key="cabinet" path="/cabinet" element={<CabinetPage />} />,
+  <Route key="profile" path="/profile" element={<Profile />} />,
+  <Route
+    key="profile-edit"
+    path="/profile/edit"
+    element={<EditProfilePage />}
+  />,
   <Route key="users-detail" path="/:userId" element={<UserDetail />} />,
   <Route
     key="edit-training"
