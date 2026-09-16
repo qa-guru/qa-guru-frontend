@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import { IUserRow } from "./user-row.types";
 import { StyledBox, StyledStack, StyledWrapperStack } from "./user-row.styled";
 import AvatarCustom from "../avatar-custom";
-import { formatRole } from "../../helpers";
+import { formatRole, formatUserFullName } from "../../helpers";
 import Rating from "../rating/rating";
 import UserName from "./user-name/user-name";
 import UserDate from "./user-date/user-date";
@@ -30,12 +30,19 @@ const UserRow: FC<IUserRow> = (props) => {
     hasLink,
   } = props;
 
-  const fullName = user
-    ? `${user.firstName} ${user.lastName}`
-    : `${firstName} ${lastName}`;
+  const fullName = formatUserFullName({ user, firstName, lastName });
+  const hasName = fullName.length > 0;
+  const hasPerson = user != null || hasName;
+  const hasAvatar = !hideAvatar && hasPerson;
+  const hasRoles = !hideRoles && Boolean(roles?.length);
+  const hasMeta = Boolean(email) || Boolean(date) || hasRoles;
+
+  if (!hasName && !hasAvatar && !hasMeta && !Icon) {
+    return null;
+  }
 
   const renderAvatar = () =>
-    !hideAvatar && (
+    hasAvatar && (
       <AvatarCustom
         fullName={fullName}
         width={width}
@@ -47,7 +54,8 @@ const UserRow: FC<IUserRow> = (props) => {
     );
 
   const renderFullName = () =>
-    !hideFullName && (
+    !hideFullName &&
+    hasName && (
       <UserName
         fullName={fullName}
         userId={userId}

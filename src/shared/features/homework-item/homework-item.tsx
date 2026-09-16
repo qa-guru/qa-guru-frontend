@@ -48,7 +48,8 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
         <StatusText status={status} />
         <StyledStack>
           {status &&
-            ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) && (
+            ["NOT_APPROVED", "APPROVED", "IN_REVIEW"].includes(status) &&
+            mentor && (
               <StyledBox>
                 <UserRow
                   user={mentor}

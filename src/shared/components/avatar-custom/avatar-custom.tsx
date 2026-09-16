@@ -5,6 +5,7 @@ import { useReactiveVar } from "@apollo/client";
 
 import { userIdVar } from "cache";
 
+import { formatUserInitials } from "../../helpers";
 import { IAvatarCustom } from "./avatar-custom.types";
 import { StyledTypography } from "./avatar-custom.styled";
 import CustomLink from "../custom-link";
@@ -46,7 +47,7 @@ function stringAvatar(name: string) {
     sx: {
       backgroundColor: stringToColor(name),
     },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    children: formatUserInitials(name),
   };
 }
 

@@ -115,13 +115,15 @@ const TrainingPurchases: FC<ITrainings> = ({ data }) => {
                 <StyledPaper>
                   <StyledImgBox>{renderCourseImage(picture)}</StyledImgBox>
                   <StyledUserRowStack>
-                    <UserRow
-                      user={firstMentor}
-                      userId={firstMentor?.id}
-                      width="35px"
-                      height="35px"
-                      hasLink
-                    />
+                    {firstMentor && (
+                      <UserRow
+                        user={firstMentor}
+                        userId={firstMentor?.id}
+                        width="35px"
+                        height="35px"
+                        hasLink
+                      />
+                    )}
                     <Tooltip title="Преподаватели">
                       <StyledAvatarGroup
                         total={otherMentors?.length}

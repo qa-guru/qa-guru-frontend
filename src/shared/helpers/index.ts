@@ -24,6 +24,8 @@ export type {
   LectureFileGetKind,
 } from "./lecture-files";
 export { formatRole } from "./format-role";
+export { formatUserFullName, formatUserInitials } from "./format-user-name";
+export type { FormatUserFullNameInput } from "./format-user-name";
 export { formatId } from "./format-id";
 export { formatStatus } from "./format-status";
 export { createColumnItem } from "./create-column-item";
