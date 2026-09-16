@@ -149,7 +149,7 @@ function fileRowToItem(rowHtml: string): string | null {
   const size = fileSizeFromRow(cells);
   const sizeHtml = size ? ` ${escapeHtmlText(size)}` : "";
 
-  return `<li>${name}${sizeHtml} <a href="${escapeHtmlAttr(file.href)}">Скачать</a></li>`;
+  return `<li><a href="${escapeHtmlAttr(file.href)}">${name}</a>${sizeHtml}</li>`;
 }
 
 function filesTableToList(tableHtml: string): string {

@@ -80,7 +80,7 @@ describe("prepareReadOnlyHtml", () => {
     assert.equal(prepared.includes("/public/mimetypes/"), false);
     assert.equal(
       prepared,
-      '<ul><li>Логи чата.txt 4 КБ <a href="https://fs23.getcourse.ru/fileservice/file/download/a.txt">Скачать</a></li></ul>'
+      '<ul><li><a href="https://fs23.getcourse.ru/fileservice/file/download/a.txt">Логи чата.txt</a> 4 КБ</li></ul>'
     );
   });
 
