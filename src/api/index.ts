@@ -17,6 +17,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
       if (err.extensions?.classification === "UNAUTHORIZED") {
+        if (err.message === "Access Denied") {
+          continue;
+        }
         window.location.assign(OIDC_LOGIN_URI);
         return;
       }

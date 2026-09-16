@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
+import { Container } from "@mui/material";
 
 import { AppSpinner } from "shared/components/spinners";
 import NoDataErrorMessage from "shared/components/no-data-error-message";
@@ -12,6 +13,7 @@ import { FETCH_POLICY } from "shared/constants";
 import { isLectureAccessible } from "shared/helpers";
 
 import LectureDetail from "../../views/lecture-detail";
+import LectureGate from "../../views/lecture-gate";
 import useTariff from "../../hooks/use-tariff";
 
 const LectureDetailContainer: FC = () => {
@@ -22,6 +24,7 @@ const LectureDetailContainer: FC = () => {
   const { data: dataLecture, loading: loadingLecture } = useLectureQuery({
     variables: { id: lectureId! },
     fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,
+    errorPolicy: "all",
   });
 
   const { data: dataTrainingLectures, loading: loadingTrainingLectures } =
@@ -52,8 +55,16 @@ const LectureDetailContainer: FC = () => {
     return <AppSpinner />;
   }
 
-  if (!dataLecture || !lectureId || !dataTrainingLectures) {
+  if (!lectureId || !dataTrainingLectures) {
     return <NoDataErrorMessage />;
+  }
+
+  if (!dataLecture?.lecture) {
+    return (
+      <Container>
+        <LectureGate slot={scheduleSlot} lectureMissing />
+      </Container>
+    );
   }
 
   return (

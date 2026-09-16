@@ -6,7 +6,7 @@ export type LectureScheduleSlot = {
   isAvailable?: boolean | null;
 };
 
-export type LectureGateKind = "open" | "locked" | "scheduled";
+export type LectureGateKind = "open" | "locked" | "scheduled" | "denied";
 
 const DATE_FORMAT = "DD.MM.YYYY HH:mm";
 
@@ -82,6 +82,18 @@ export function lectureListFooter(slot?: LectureScheduleSlot | null): string {
   return "Продолжить";
 }
 
+export function lectureQueryFailureKind(
+  slot?: LectureScheduleSlot | null
+): Exclude<LectureGateKind, "open"> {
+  const kind = lectureGateKind(slot);
+
+  if (kind === "locked" || kind === "scheduled") {
+    return kind;
+  }
+
+  return "denied";
+}
+
 export function lectureCardTitle(slot?: LectureScheduleSlot | null): string {
   const kind = lectureGateKind(slot);
 
@@ -110,6 +122,36 @@ export function lectureCardBody(slot?: LectureScheduleSlot | null): string {
   }
 
   return "";
+}
+
+export function lectureGateTitle(
+  slot?: LectureScheduleSlot | null,
+  lectureMissing?: boolean
+): string {
+  const kind = lectureMissing
+    ? lectureQueryFailureKind(slot)
+    : lectureGateKind(slot);
+
+  if (kind === "denied") {
+    return "Нет доступа к уроку";
+  }
+
+  return lectureCardTitle(slot);
+}
+
+export function lectureGateBody(
+  slot?: LectureScheduleSlot | null,
+  lectureMissing?: boolean
+): string {
+  const kind = lectureMissing
+    ? lectureQueryFailureKind(slot)
+    : lectureGateKind(slot);
+
+  if (kind === "denied") {
+    return "Материалы и домашнее задание скрыты: нет покупки курса или урок закрыт. Это не ошибка загрузки.";
+  }
+
+  return lectureCardBody(slot);
 }
 
 export function hasLectureBody(content: unknown): boolean {

@@ -3,17 +3,20 @@ import { Alert, AlertTitle } from "@mui/material";
 import { Lock as LockIcon, Schedule as ScheduleIcon } from "@mui/icons-material";
 
 import {
-  lectureCardBody,
-  lectureCardTitle,
+  lectureGateBody,
   lectureGateKind,
+  lectureGateTitle,
+  lectureQueryFailureKind,
 } from "shared/helpers";
 
 import { ILectureGate } from "./lecture-gate.types";
 import { StyledPaper } from "./lecture-gate.styled";
 
-const LectureGate: FC<ILectureGate> = ({ slot }) => {
-  const kind = lectureGateKind(slot);
-  const locked = kind === "locked";
+const LectureGate: FC<ILectureGate> = ({ slot, lectureMissing }) => {
+  const kind = lectureMissing
+    ? lectureQueryFailureKind(slot)
+    : lectureGateKind(slot);
+  const locked = kind === "locked" || kind === "denied";
 
   return (
     <StyledPaper>
@@ -21,8 +24,8 @@ const LectureGate: FC<ILectureGate> = ({ slot }) => {
         severity={locked ? "warning" : "info"}
         icon={locked ? <LockIcon /> : <ScheduleIcon />}
       >
-        <AlertTitle>{lectureCardTitle(slot)}</AlertTitle>
-        {lectureCardBody(slot)}
+        <AlertTitle>{lectureGateTitle(slot, lectureMissing)}</AlertTitle>
+        {lectureGateBody(slot, lectureMissing)}
       </Alert>
     </StyledPaper>
   );

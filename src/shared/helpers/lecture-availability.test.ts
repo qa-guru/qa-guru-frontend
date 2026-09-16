@@ -10,6 +10,9 @@ import {
   lectureGateKind,
   lectureListChipLabel,
   lectureListFooter,
+  lectureQueryFailureKind,
+  lectureGateTitle,
+  lectureGateBody,
   shouldShowLectureGate,
 } from "./lecture-availability";
 
@@ -122,5 +125,35 @@ describe("shouldShowLectureGate", () => {
       false
     );
     assert.equal(hasLectureBody(null), false);
+  });
+});
+
+describe("lectureQueryFailureKind", () => {
+  it("open slot without lecture DTO is denied, not Упс", () => {
+    assert.equal(
+      lectureQueryFailureKind({ locking: false, isAvailable: true }),
+      "denied"
+    );
+    assert.equal(lectureGateTitle({ locking: false, isAvailable: true }, true), "Нет доступа к уроку");
+    assert.match(lectureGateBody({ locking: false, isAvailable: true }, true), /не ошибка загрузки/);
+  });
+
+  it("locked slot keeps F1 copy when lecture query fails", () => {
+    const slot = { locking: true, isAvailable: false };
+
+    assert.equal(lectureQueryFailureKind(slot), "locked");
+    assert.equal(lectureGateTitle(slot, true), "Урок заблокирован");
+    assert.match(lectureGateBody(slot, true), /не ошибка загрузки/);
+  });
+
+  it("scheduled slot keeps F1 copy when lecture query fails", () => {
+    const slot = {
+      locking: false,
+      isAvailable: false,
+      availableFrom: "2026-10-01T10:00:00",
+    };
+
+    assert.equal(lectureQueryFailureKind(slot), "scheduled");
+    assert.match(lectureGateTitle(slot, true), /^Урок откроется /);
   });
 });

@@ -5,9 +5,12 @@ export {
   isLectureAccessible,
   lectureCardBody,
   lectureCardTitle,
+  lectureGateBody,
   lectureGateKind,
+  lectureGateTitle,
   lectureListChipLabel,
   lectureListFooter,
+  lectureQueryFailureKind,
   shouldShowLectureGate,
 } from "./lecture-availability";
 export type { LectureGateKind, LectureScheduleSlot } from "./lecture-availability";
