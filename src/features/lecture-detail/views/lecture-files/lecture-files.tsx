@@ -1,10 +1,5 @@
 import { FC } from "react";
-import {
-  IconButton,
-  ListItem,
-  ListItemText,
-  Tooltip,
-} from "@mui/material";
+import { IconButton, ListItemText, Tooltip } from "@mui/material";
 import { Download as DownloadIcon } from "@mui/icons-material";
 
 import { lectureFileGetKind } from "shared/helpers";
@@ -13,6 +8,7 @@ import { useLectureFileGet } from "shared/hooks";
 import { ILectureFiles } from "./lecture-files.types";
 import {
   StyledList,
+  StyledListItem,
   StyledPaper,
   StyledTitle,
 } from "./lecture-files.styled";
@@ -58,35 +54,40 @@ const LectureFiles: FC<ILectureFiles> = ({
 
   const list = (
     <>
-      {title ? (
-        <StyledTitle variant="subtitle1">{title}</StyledTitle>
-      ) : null}
+      {title ? <StyledTitle variant="subtitle1">{title}</StyledTitle> : null}
       <StyledList disablePadding>
         {files.map((file) => {
           const fileName = file.fileName || "Файл";
 
           return (
-            <ListItem
+            <StyledListItem
               key={file.id}
-              secondaryAction={
-                <Tooltip title="Скачать">
-                  <span>
-                    <IconButton
-                      edge="end"
-                      aria-label={`Скачать ${fileName}`}
-                      disabled={loading}
-                      onClick={() => {
-                        handleDownload(file.id, fileName, file.homeWork);
-                      }}
-                    >
-                      <DownloadIcon />
-                    </IconButton>
-                  </span>
-                </Tooltip>
-              }
+              onClick={() => {
+                if (!loading) handleDownload(file.id, fileName, file.homeWork);
+              }}
             >
-              <ListItemText primary={fileName} />
-            </ListItem>
+              <Tooltip title="Скачать">
+                <span>
+                  <IconButton
+                    aria-label={`Скачать ${fileName}`}
+                    disabled={loading}
+                    size="small"
+                    sx={{ p: 0.25, color: "primary.main" }}
+                  >
+                    <DownloadIcon fontSize="small" />
+                  </IconButton>
+                </span>
+              </Tooltip>
+              <ListItemText
+                primary={fileName}
+                primaryTypographyProps={{
+                  variant: "body2",
+                  fontSize: 13,
+                  noWrap: true,
+                  title: fileName,
+                }}
+              />
+            </StyledListItem>
           );
         })}
       </StyledList>

@@ -17,10 +17,10 @@ export default function FileNodeView({ node, deleteNode }: any) {
     <NodeViewWrapper
       as="span"
       style={{
-        display: "inline-block",
-        verticalAlign: "bottom",
-        maxWidth: "100%",
-        margin: 0,
+        display: "inline-flex",
+        verticalAlign: "middle",
+        maxWidth: "calc(100% - 8px)",
+        margin: "4px",
       }}
     >
       <Paper
@@ -30,15 +30,15 @@ export default function FileNodeView({ node, deleteNode }: any) {
           alignItems: "center",
           bgcolor: theme.palette.mode === "dark" ? "#3a3b3c" : "#f0f2f5",
           color: theme.palette.text.primary,
-          borderRadius: 2,
-          px: 2,
-          py: 1,
+          borderRadius: 1.5,
+          px: 1,
+          py: 0.5,
           maxWidth: "100%",
           boxShadow:
             theme.palette.mode === "dark"
               ? "0 1px 3px rgba(0,0,0,0.6)"
               : "0 1px 2px rgba(0,0,0,0.1)",
-          verticalAlign: "bottom",
+          verticalAlign: "middle",
           margin: 0,
         }}
       >
@@ -49,7 +49,8 @@ export default function FileNodeView({ node, deleteNode }: any) {
             rel="noopener noreferrer"
             size="small"
             sx={{
-              mr: 1,
+              mr: 0.5,
+              p: 0.25,
               color: theme.palette.primary.main,
             }}
           >
@@ -62,8 +63,8 @@ export default function FileNodeView({ node, deleteNode }: any) {
           noWrap
           sx={{
             flex: 1,
-            fontWeight: 500,
-            fontSize: 14,
+            fontWeight: 400,
+            fontSize: 13,
             minWidth: 0,
           }}
           title={fileName}
@@ -76,7 +77,8 @@ export default function FileNodeView({ node, deleteNode }: any) {
             size="small"
             onClick={deleteNode}
             sx={{
-              ml: 1,
+              ml: 0.5,
+              p: 0.25,
               color: theme.palette.grey[500],
               "&:hover": {
                 color: theme.palette.error.main,
