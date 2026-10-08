@@ -38,6 +38,7 @@ mutation updateHomework($id: ID!, $content: String!) {
       size
     }
     creationDate
+    updateDate
     startCheckingDate
     endCheckingDate
   }

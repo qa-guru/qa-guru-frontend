@@ -88,7 +88,7 @@
     "build-storybook": "build-storybook",
     "husky": "husky install",
     "codegen": "graphql-code-generator --config codegen.ts",
-    "test": "tsx --test src/**/*.test.ts",
+    "test": "tsx --import ./test-setup/register-asset-stubs.mjs --test src/**/*.test.ts",
     "prettier": "pretty-quick",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "depcheck": "depcheck . --ignore-pattern=\"!package.json\""

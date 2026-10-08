@@ -9,6 +9,7 @@ import CustomLink from "shared/components/custom-link";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
 import { formatId } from "shared/helpers";
 
+import HomeworkAdvisoryDraft from "../homework-advisory-draft";
 import { IHomeworkDescription } from "./homework-details.types";
 import {
   StyledBox,
@@ -73,6 +74,10 @@ const HomeworkDetails: FC<IHomeworkDescription> = ({ card, onClose }) => {
         <StyledStatusContentBox>
           <StatusText status={status} />
         </StyledStatusContentBox>
+        <HomeworkAdvisoryDraft
+          homeworkId={id}
+          sourceUpdatedAt={card.updateDate}
+        />
         <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
         <StyledPaper>
           <StyledTitle variant="h5">Ответ на задание</StyledTitle>

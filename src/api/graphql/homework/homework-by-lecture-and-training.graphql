@@ -38,6 +38,7 @@ query homeWorkByLectureAndTraining($lectureId: ID!, $trainingId: ID!) {
       size
     }
     creationDate
+    updateDate
     startCheckingDate
     endCheckingDate
   }

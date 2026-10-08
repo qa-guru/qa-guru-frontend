@@ -11,6 +11,7 @@ import ContourVerdictPanel from "shared/components/contour-verdict";
 import { formatId } from "shared/helpers";
 import { useRoleAccess } from "shared/hooks";
 import { UserRole } from "api/graphql/generated/graphql";
+import HomeworkAdvisoryDraft from "features/kanban-mentor/views/homework-advisory-draft";
 
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
@@ -65,6 +66,10 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
         comment={homeWork?.contourCheckComment}
         evidence={homeWork?.contourEvidence}
         canRecheck={showSelect}
+      />
+      <HomeworkAdvisoryDraft
+        homeworkId={id}
+        sourceUpdatedAt={homeWork?.updateDate}
       />
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledInfoBox>

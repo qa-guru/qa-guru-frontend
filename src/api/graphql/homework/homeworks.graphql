@@ -38,6 +38,7 @@ query homeworks(
         }
       }
       creationDate
+      updateDate
       startCheckingDate
       endCheckingDate
     }

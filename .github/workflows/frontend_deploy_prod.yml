@@ -3,11 +3,29 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [deploy, rollback]
+        default: deploy
+        required: true
+      source_run:
+        type: string
+      source_attempt:
+        type: string
+      source_revision:
+        type: string
+      archive_sha256:
+        type: string
+concurrency:
+  group: learn-frontend-production
+  cancel-in-progress: false
 jobs:
   yarn-and-node:
     runs-on: prod-runner
     env:
-      HUSKY: "0"
+      WEB_ROOT: /var/www/learn.qa.guru/html
     steps:
       - uses: actions/checkout@v7
       - name: Use Node.js 26
@@ -15,14 +33,111 @@ jobs:
         with:
           node-version: 26
       - name: Run install
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.mode != 'rollback' }}
         uses: borales/actions-yarn@v4
         with:
-          cmd: install
+          cmd: install --frozen-lockfile
       - name: Run build
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.mode != 'rollback' }}
         uses: borales/actions-yarn@v4
         with:
           cmd: build
+      - name: Snapshot the actual replacement boundary
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.mode != 'rollback' }}
+        run: |
+          ls -ld "$WEB_ROOT" "$RUNNER_TEMP"
+          node --input-type=module <<'JS'
+          import { lstatSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+          import { join } from 'node:path';
+          import { createHash } from 'node:crypto';
+          import { execFileSync } from 'node:child_process';
+          const root = process.env.WEB_ROOT;
+          if (root !== '/var/www/learn.qa.guru/html' || !lstatSync(root).isDirectory() || lstatSync(root).isSymbolicLink()) throw new Error('BLOCKED: web-root identity');
+          const files = {};
+          const walk = (dir, relative = '') => {
+            for (const name of readdirSync(dir)) {
+              if (!relative && name.startsWith('.')) continue;
+              if (/[\r\n]/.test(name)) throw new Error('BLOCKED: unsupported archive filename');
+              const path = join(dir, name), key = relative ? `${relative}/${name}` : name, info = lstatSync(path);
+              if (info.isSymbolicLink()) throw new Error('BLOCKED: web-root symlink requires explicit restore semantics');
+              if (info.isDirectory()) walk(path, key);
+              else if (info.isFile()) files[key] = createHash('sha256').update(readFileSync(path)).digest('hex');
+              else throw new Error('BLOCKED: non-regular web-root entry');
+            }
+          };
+          walk(root);
+          const names = readdirSync(root).filter(name => !name.startsWith('.'));
+          if (!names.length || !files['index.html']) throw new Error('BLOCKED: no actual frontend to retain');
+          const archive = join(process.env.RUNNER_TEMP, 'web-root-before.tar');
+          execFileSync('tar', ['-C', root, '-cpf', archive, '--', ...names]);
+          const sha256 = createHash('sha256').update(readFileSync(archive)).digest('hex');
+          writeFileSync(join(process.env.RUNNER_TEMP, 'web-root-before.json'), JSON.stringify({ site: 'learn', root, producerRevision: process.env.GITHUB_SHA, runId: process.env.GITHUB_RUN_ID, attempt: process.env.GITHUB_RUN_ATTEMPT, sha256, files }, null, 2));
+          console.log(`retained frontend archive sha256=${sha256}; files=${Object.keys(files).length}`);
+          JS
+      - uses: actions/upload-artifact@v7
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.mode != 'rollback' }}
+        with:
+          name: learn-webroot-before-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/web-root-before.tar
+            ${{ runner.temp }}/web-root-before.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Validate the approved restore artifact
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'rollback' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN: ${{ inputs.source_run }}
+          SOURCE_ATTEMPT: ${{ inputs.source_attempt }}
+          SOURCE_REVISION: ${{ inputs.source_revision }}
+          EXPECTED_ARCHIVE: ${{ inputs.archive_sha256 }}
+        run: |
+          [[ "$SOURCE_RUN" =~ ^[0-9]+$ ]] && [[ "$SOURCE_ATTEMPT" =~ ^[0-9]+$ ]]
+          [[ "$SOURCE_REVISION" =~ ^[a-f0-9]{40}$ ]] && [[ "$EXPECTED_ARCHIVE" =~ ^[a-f0-9]{64}$ ]]
+          ls -ld "$RUNNER_TEMP" "$WEB_ROOT"
+          gh run view "$SOURCE_RUN" --repo qa-guru/qa-guru-frontend --json headSha,workflowName > "$RUNNER_TEMP/restore-producer.json"
+          mkdir "$RUNNER_TEMP/learn-restore"
+          gh run download "$SOURCE_RUN" --repo qa-guru/qa-guru-frontend --name "learn-webroot-before-$SOURCE_RUN-$SOURCE_ATTEMPT" --dir "$RUNNER_TEMP/learn-restore"
+          node --input-type=module <<'JS'
+          import { lstatSync, readdirSync, readFileSync, mkdirSync } from 'node:fs';
+          import { join } from 'node:path';
+          import { createHash } from 'node:crypto';
+          import { execFileSync } from 'node:child_process';
+          const producer = JSON.parse(readFileSync(join(process.env.RUNNER_TEMP, 'restore-producer.json')));
+          const base = join(process.env.RUNNER_TEMP, 'learn-restore'), manifest = JSON.parse(readFileSync(join(base, 'web-root-before.json'))), archive = join(base, 'web-root-before.tar');
+          if (producer.headSha !== process.env.SOURCE_REVISION || producer.workflowName !== 'frontend_deploy_prod' || manifest.producerRevision !== process.env.SOURCE_REVISION || manifest.runId !== process.env.SOURCE_RUN || manifest.attempt !== process.env.SOURCE_ATTEMPT || manifest.site !== 'learn' || manifest.root !== process.env.WEB_ROOT || manifest.sha256 !== process.env.EXPECTED_ARCHIVE || createHash('sha256').update(readFileSync(archive)).digest('hex') !== manifest.sha256) throw new Error('BLOCKED: restore artifact identity/checksum');
+          if (!lstatSync(process.env.WEB_ROOT).isDirectory() || lstatSync(process.env.WEB_ROOT).isSymbolicLink()) throw new Error('BLOCKED: restore root identity');
+          const listing = execFileSync('tar', ['-tf', archive], { encoding: 'utf8' }).trim().split('\n');
+          for (const path of listing) if (!path || path.startsWith('/') || path.split('/').includes('..') || path.startsWith('.')) throw new Error('BLOCKED: archive path');
+          const types = execFileSync('tar', ['-tvf', archive], { encoding: 'utf8' }).trim().split('\n');
+          if (types.some(line => !['-', 'd'].includes(line[0]))) throw new Error('BLOCKED: archive link or special entry');
+          const staging = join(base, 'verified');
+          mkdirSync(staging);
+          execFileSync('tar', ['-C', staging, '-xpf', archive]);
+          const files = {};
+          const walk = (dir, relative = '') => {
+            for (const name of readdirSync(dir)) {
+              const path = join(dir, name), key = relative ? `${relative}/${name}` : name, info = lstatSync(path);
+              if (info.isSymbolicLink()) throw new Error('BLOCKED: staged symlink');
+              if (info.isDirectory()) walk(path, key);
+              else if (info.isFile()) files[key] = createHash('sha256').update(readFileSync(path)).digest('hex');
+              else throw new Error('BLOCKED: staged special entry');
+            }
+          };
+          walk(staging);
+          const normalized = value => JSON.stringify(Object.entries(value).sort(([a], [b]) => a.localeCompare(b)));
+          if (!manifest.files?.['index.html'] || normalized(files) !== normalized(manifest.files)) throw new Error('BLOCKED: staged file manifest');
+          console.log('verified actual pre-release frontend artifact');
+          JS
       - name: Deploy step 1
         run: rm -rf /var/www/learn.qa.guru/html/*
       - name: Deploy step 2
-        run: cp -r dist/* /var/www/learn.qa.guru/html/
+        env:
+          MODE: ${{ inputs.mode || 'deploy' }}
+        run: |
+          if [ "$MODE" = rollback ]; then
+            tar -C /var/www/learn.qa.guru/html -xpf "$RUNNER_TEMP/learn-restore/web-root-before.tar"
+          else
+            cp -r dist/* /var/www/learn.qa.guru/html/
+          fi
+          test -s /var/www/learn.qa.guru/html/index.html

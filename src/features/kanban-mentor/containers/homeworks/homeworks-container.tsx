@@ -1,8 +1,9 @@
-import { FC, useMemo } from "react";
-import { useReactiveVar } from "@apollo/client";
+import { FC, useEffect, useMemo } from "react";
+import { useApolloClient, useReactiveVar } from "@apollo/client";
 
 import { userIdVar } from "cache";
 import {
+  HomeworksDocument,
   Order,
   StudentHomeWorkSortField,
   StudentHomeWorkStatus,
@@ -15,8 +16,24 @@ import { useDynamicCardLimit } from "shared/hooks";
 import Board from "../../views/board";
 import { HOMEWORKS_QUERY_DEFAULTS } from "../../constants";
 
+const refreshOptions = {
+  fetchPolicy: "cache-and-network" as const,
+  pollInterval: 15_000,
+};
+
 const HomeworksContainer: FC = () => {
+  const client = useApolloClient();
   const dynamicLimit = useDynamicCardLimit();
+
+  useEffect(() => {
+    const refresh = () => {
+      client
+        .refetchQueries({ include: [HomeworksDocument] })
+        .catch(() => undefined);
+    };
+    window.addEventListener("focus", refresh);
+    return () => window.removeEventListener("focus", refresh);
+  }, [client]);
   const currentUserId = useReactiveVar(userIdVar);
 
   const filterObject = useMemo(() => {
@@ -30,6 +47,7 @@ const HomeworksContainer: FC = () => {
     loading: newLoading,
     fetchMore: fetchMoreNew,
   } = useHomeworksQuery({
+    ...refreshOptions,
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -46,6 +64,7 @@ const HomeworksContainer: FC = () => {
     loading: inReviewLoading,
     fetchMore: fetchMoreInReview,
   } = useHomeworksQuery({
+    ...refreshOptions,
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -62,6 +81,7 @@ const HomeworksContainer: FC = () => {
     loading: approvedLoading,
     fetchMore: fetchMoreApproved,
   } = useHomeworksQuery({
+    ...refreshOptions,
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -78,6 +98,7 @@ const HomeworksContainer: FC = () => {
     loading: notApprovedLoading,
     fetchMore: fetchMoreNotApproved,
   } = useHomeworksQuery({
+    ...refreshOptions,
     variables: {
       offset: HOMEWORKS_QUERY_DEFAULTS.OFFSET,
       limit: dynamicLimit,
@@ -89,11 +110,16 @@ const HomeworksContainer: FC = () => {
     },
   });
 
-  if (newLoading || inReviewLoading || approvedLoading || notApprovedLoading)
-    return <AppSpinner />;
-
-  if (!newData || !inReviewData || !approvedData || !notApprovedData)
-    return <NoDataErrorMessage />;
+  if (!newData || !inReviewData || !approvedData || !notApprovedData) {
+    return newLoading ||
+      inReviewLoading ||
+      approvedLoading ||
+      notApprovedLoading ? (
+      <AppSpinner />
+    ) : (
+      <NoDataErrorMessage />
+    );
+  }
 
   return (
     <Board

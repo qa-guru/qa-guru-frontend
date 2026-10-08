@@ -24,8 +24,9 @@ const DesktopBoard: FC<IDesktopBoard> = ({
 }) => {
   const [showHomeworkDetails, setShowHomeworkDetails] = useState(false);
   const [activeCardId, setActiveCardId] = useState<Maybe<string>>(null);
-  const [selectedCard, setSelectedCard] =
-    useState<Maybe<StudentHomeWorkDto>>(null);
+  const selectedCard = columns
+    .flatMap((column) => column.cards || [])
+    .find((card) => card.id === activeCardId);
   const { isLargeDesktop } = useResponsive();
 
   const navigate = useNavigate();
@@ -37,7 +38,6 @@ const DesktopBoard: FC<IDesktopBoard> = ({
     const isModifierKey = event.metaKey || event.ctrlKey || event.shiftKey;
     if (isLargeDesktop && !isModifierKey) {
       const isSameCard = card.id === activeCardId;
-      setSelectedCard(isSameCard ? null : card);
       setActiveCardId(isSameCard ? null : card.id!);
       setShowHomeworkDetails(!isSameCard);
     } else if (!isModifierKey) {
@@ -46,7 +46,6 @@ const DesktopBoard: FC<IDesktopBoard> = ({
   };
 
   const handleHomeworkDetailsClose = () => {
-    setSelectedCard(null);
     setShowHomeworkDetails(false);
     setActiveCardId(null);
   };

@@ -13,28 +13,37 @@ const httpLink = new HttpLink({
   credentials: "include",
 });
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    for (const err of graphQLErrors) {
-      if (err.extensions?.classification === "UNAUTHORIZED") {
-        if (err.message === "Access Denied") {
-          continue;
+const PRIVATE_ADVISORY_OPERATIONS = [
+  "homeWorkAdvisoryDraft",
+  "saveHomeWorkAdvisoryDraft",
+];
+
+export const errorLink = onError(
+  ({ operation, graphQLErrors, networkError }) => {
+    if (PRIVATE_ADVISORY_OPERATIONS.includes(operation.operationName)) return;
+
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions?.classification === "UNAUTHORIZED") {
+          if (err.message === "Access Denied") {
+            continue;
+          }
+          window.location.assign(OIDC_LOGIN_URI);
+          return;
         }
-        window.location.assign(OIDC_LOGIN_URI);
-        return;
       }
     }
-  }
 
-  if (networkError) {
-    console.log(`[Network error]: ${networkError}`);
+    if (networkError) {
+      console.log(`[Network error]: ${networkError}`);
+    }
   }
-});
+);
 
 const client = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),
   cache,
-  connectToDevTools: import.meta.env.MODE === "development",
+  connectToDevTools: import.meta.env?.MODE === "development",
   defaultOptions: {
     watchQuery: {
       fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,

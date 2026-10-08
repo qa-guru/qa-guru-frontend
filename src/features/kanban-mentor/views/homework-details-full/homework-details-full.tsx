@@ -7,6 +7,7 @@ import HomeworkBaseInfo from "shared/components/homework-base-info";
 import ContourVerdictPanel from "shared/components/contour-verdict";
 import { formatId } from "shared/helpers";
 
+import HomeworkAdvisoryDraft from "../homework-advisory-draft";
 import StatusSelect from "../../views/status-select";
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
 import { StyledInfoBox, StyledTitle } from "./homework-details-full.styled";
@@ -47,6 +48,10 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
         comment={homeWork?.contourCheckComment}
         evidence={homeWork?.contourEvidence}
         canRecheck
+      />
+      <HomeworkAdvisoryDraft
+        homeworkId={id}
+        sourceUpdatedAt={homeWork?.updateDate}
       />
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledInfoBox>
