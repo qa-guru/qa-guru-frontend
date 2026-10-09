@@ -63,7 +63,8 @@ const AvatarCustom: FC<IAvatarCustom> = ({
   const currentUserId = useReactiveVar(userIdVar);
   const isCurrentUser = userId === currentUserId;
   const profilePath = isCurrentUser ? "/profile" : `/${userId}`;
-  const avatarSrc = img ? `data:image/png;base64, ${img}` : undefined;
+  const avatarSrc =
+    img && img !== "undefined" ? `data:image/png;base64, ${img}` : undefined;
 
   const renderLink = () => (
     <CustomLink path={profilePath} opacity="0.7">

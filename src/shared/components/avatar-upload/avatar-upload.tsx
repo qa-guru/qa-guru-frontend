@@ -7,6 +7,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import { useReactiveVar } from "@apollo/client";
 
 import { userIdVar } from "cache";
+import { formatUserFullName } from "shared/helpers";
 import { useAvatarDelete, useAvatarUpload, useResponsive } from "shared/hooks";
 import AvatarCustom from "shared/components/avatar-custom";
 
@@ -27,8 +28,8 @@ const AvatarUpload: FC<IAvatarUpload> = ({ user, edit }) => {
 
   if (!user) return null;
 
-  const { avatar, firstName, lastName } = user;
-  const fullName = `${firstName} ${lastName}`;
+  const { avatar } = user;
+  const fullName = formatUserFullName({ user });
   const isCurrentUser = user?.id === currentUserId;
 
   const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
