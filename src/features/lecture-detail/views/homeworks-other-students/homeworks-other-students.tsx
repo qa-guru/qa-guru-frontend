@@ -45,6 +45,7 @@ const HomeworksOtherStudents: FC<IHomeworksOtherStudents> = (props) => {
               ...(prev?.homeWorksByLectureId?.items || []),
               ...(fetchMoreResult?.homeWorksByLectureId?.items || []),
             ],
+            totalElements: fetchMoreResult.homeWorksByLectureId?.totalElements,
           },
         };
       },

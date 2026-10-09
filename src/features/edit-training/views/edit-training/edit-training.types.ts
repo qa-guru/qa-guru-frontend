@@ -14,10 +14,10 @@ export interface IEditTraining {
 }
 
 export type TrainingInput = {
-  content?: InputMaybe<Scalars["String"]>;
-  description?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["ID"]>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
   mentors?: InputMaybe<Array<InputMaybe<FieldValues>>>;
-  name?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   techStack: TechStack;
 };

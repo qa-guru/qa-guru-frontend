@@ -44,7 +44,7 @@ export const errorLink = onError(
 const client = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),
   cache,
-  connectToDevTools: import.meta.env?.MODE === "development",
+  devtools: { enabled: import.meta.env?.MODE === "development" },
   defaultOptions: {
     watchQuery: {
       fetchPolicy: FETCH_POLICY.CACHE_AND_NETWORK,

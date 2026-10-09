@@ -9,15 +9,21 @@ const config: CodegenConfig = {
       : []),
   ],
   documents: ["src/**/*.graphql"],
+  config: {
+    defaultScalarType: "any",
+  },
   generates: {
+    "src/api/graphql/generated/types.ts": {
+      plugins: ["typescript"],
+    },
     "src/api/graphql/generated/graphql.tsx": {
       plugins: [
-        "typescript",
+        { add: { content: "export * from './types';" } },
         "typescript-operations",
         "typescript-react-apollo",
       ],
       config: {
-        withComponent: true,
+        importSchemaTypesFrom: "src/api/graphql/generated/types",
       },
     },
   },

@@ -43,6 +43,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
               ...(prev?.trainings?.items || []),
               ...(fetchMoreResult?.trainings?.items || []),
             ],
+            totalElements: fetchMoreResult.trainings?.totalElements,
           },
         };
       },

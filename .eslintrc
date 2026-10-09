@@ -4,6 +4,7 @@
     "node": true,
     "jest": true
   },
+  "ignorePatterns": ["src/api/graphql/generated/"],
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",

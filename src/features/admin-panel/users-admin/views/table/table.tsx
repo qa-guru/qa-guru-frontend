@@ -50,6 +50,7 @@ const TableAdmin: FC<ITable> = ({ data, columns, fetchMore }) => {
               ...(prev?.users?.items || []),
               ...(fetchMoreResult?.users?.items || []),
             ],
+            totalElements: fetchMoreResult.users?.totalElements,
           },
         };
       },

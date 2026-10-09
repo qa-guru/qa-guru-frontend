@@ -2,13 +2,13 @@ import {
   CreateHomeWorkToCheckMutationFn,
   Maybe,
   SendHomeWorkToCheckMutationFn,
-  UpdateCommentMutationFn,
+  UpdateHomeworkMutationFn,
   TestGroupDto,
 } from "api/graphql/generated/graphql";
 
 export interface ISendHomeWork {
   createHomeWorkToCheck: CreateHomeWorkToCheckMutationFn;
-  updateHomework: UpdateCommentMutationFn;
+  updateHomework: UpdateHomeworkMutationFn;
   sendHomeWorkToCheck: SendHomeWorkToCheckMutationFn;
   loadingCreateHomeWorkToCheck: boolean;
   loadingUpdateHomework: boolean;

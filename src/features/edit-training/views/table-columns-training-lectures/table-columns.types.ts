@@ -1,21 +1,21 @@
-import { type ApolloQueryResult } from "@apollo/client";
-
 import {
-  TrainingLecturesQuery,
-  TrainingsQuery,
-} from "api/graphql/generated/graphql";
+  type ApolloQueryResult,
+  type FetchMoreQueryOptions,
+} from "@apollo/client";
+
+import { TrainingLecturesQuery } from "api/graphql/generated/graphql";
 
 export interface ITableColumns {
   data: TrainingLecturesQuery;
-  fetchMore: (options: {
-    variables: { offset?: number; limit?: number };
-    updateQuery: (
-      prev: TrainingsQuery,
-      {
-        fetchMoreResult,
-      }: {
-        fetchMoreResult: TrainingsQuery;
-      }
-    ) => TrainingsQuery;
-  }) => Promise<ApolloQueryResult<TrainingsQuery>>;
+  fetchMore: (
+    options: FetchMoreQueryOptions<
+      Record<string, unknown>,
+      TrainingLecturesQuery
+    > & {
+      updateQuery?: (
+        prev: TrainingLecturesQuery,
+        options: { fetchMoreResult?: TrainingLecturesQuery }
+      ) => TrainingLecturesQuery;
+    }
+  ) => Promise<ApolloQueryResult<TrainingLecturesQuery>>;
 }

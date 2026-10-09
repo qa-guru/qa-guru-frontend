@@ -181,11 +181,14 @@ const isAccessDenied = (error: ApolloError) =>
   (error.networkError as { statusCode?: number } | null)?.statusCode === 403 ||
   error.graphQLErrors.some(
     ({ extensions, message }) =>
-      [extensions.classification, extensions.errorType, extensions.code].some(
-        (code) =>
-          ["FORBIDDEN", "UNAUTHORIZED", "ACCESS_DENIED"].includes(
-            String(code).toUpperCase()
-          )
+      [
+        extensions?.classification,
+        extensions?.errorType,
+        extensions?.code,
+      ].some((code) =>
+        ["FORBIDDEN", "UNAUTHORIZED", "ACCESS_DENIED"].includes(
+          String(code).toUpperCase()
+        )
       ) || message === "Access Denied"
   );
 

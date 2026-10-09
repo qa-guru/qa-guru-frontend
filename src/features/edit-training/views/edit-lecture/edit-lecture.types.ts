@@ -18,10 +18,10 @@ export interface IEditLecture {
 export type LectureInput = {
   content?: Maybe<string>;
   contentHomeWork?: Maybe<string>;
-  description?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  homeWorkLevelCode?: InputMaybe<Scalars["String"]>;
-  id?: InputMaybe<Scalars["ID"]>;
+  description?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  homeWorkLevelCode?: InputMaybe<Scalars["String"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
   speakers?: InputMaybe<Array<InputMaybe<FieldValues>>>;
-  subject?: InputMaybe<Scalars["String"]>;
-  testGroupId?: InputMaybe<Scalars["ID"]>;
+  subject?: InputMaybe<Scalars["String"]["input"]>;
+  testGroupId?: InputMaybe<Scalars["ID"]["input"]>;
 };

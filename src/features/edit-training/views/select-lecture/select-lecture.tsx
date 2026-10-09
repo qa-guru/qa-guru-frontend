@@ -148,6 +148,7 @@ const SelectLecture: FC<ISelectLecture> = ({ data, fetchMore, columns }) => {
               ...(prev?.lectures?.items || []),
               ...(fetchMoreResult?.lectures?.items || []),
             ],
+            totalElements: fetchMoreResult.lectures?.totalElements,
           },
         };
       },
