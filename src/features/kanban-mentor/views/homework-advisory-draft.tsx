@@ -441,7 +441,17 @@ const AdvisoryBody: FC<BodyProps> = ({
 };
 
 const AdvisoryAuditList: FC<{ homeworkId: string }> = ({ homeworkId }) => {
-  const [expanded, setExpanded] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState<ReadonlySet<number>>(new Set());
+  const toggleEntry = (index: number) =>
+    setExpanded((current) => {
+      const next = new Set(current);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
   const { data, loading, error } = useQuery<AuditQuery, { homeWorkId: string }>(
     HomeWorkAdvisoryDraftAuditDocument,
     {
@@ -477,12 +487,10 @@ const AdvisoryAuditList: FC<{ homeworkId: string }> = ({ homeworkId }) => {
           <Button
             size="small"
             variant="text"
-            onClick={() =>
-              setExpanded((current) => (current === index ? null : index))
-            }
-            aria-expanded={expanded === index}
+            onClick={() => toggleEntry(index)}
+            aria-expanded={expanded.has(index)}
             endIcon={
-              expanded === index ? <ExpandLessIcon /> : <ExpandMoreIcon />
+              expanded.has(index) ? <ExpandLessIcon /> : <ExpandMoreIcon />
             }
             sx={{
               px: 0,
@@ -501,8 +509,8 @@ const AdvisoryAuditList: FC<{ homeworkId: string }> = ({ homeworkId }) => {
             {" · версия "}
             {entry.boundSourceRevision}
           </Button>
-          <Collapse in={expanded === index}>
-            {expanded === index && (
+          <Collapse in={expanded.has(index)}>
+            {expanded.has(index) && (
               <Typography
                 component="pre"
                 variant="body2"

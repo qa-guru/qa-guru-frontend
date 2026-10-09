@@ -226,6 +226,20 @@ describe("private homework advisory audit trail", () => {
       null
     );
 
+    const otherToggle = within(list).getByRole("button", {
+      name: /Заменено · NOT_VERIFIED/,
+    });
+    fireEvent.click(otherToggle);
+    assert.ok(within(list).getByText("Synthetic saved snapshot text"));
+    assert.ok(within(list).getByText("Synthetic replaced snapshot text"));
+
+    fireEvent.click(otherToggle);
+    assert.ok(within(list).getByText("Synthetic saved snapshot text"));
+    assert.equal(
+      within(list).queryByText("Synthetic replaced snapshot text"),
+      null
+    );
+
     fireEvent.click(toggle);
     assert.equal(
       within(list).queryByText("Synthetic saved snapshot text"),
