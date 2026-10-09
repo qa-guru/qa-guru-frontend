@@ -1,7 +1,8 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import {
   Box,
   FormControl,
+  FormHelperText,
   InputLabel,
   MenuItem,
   Select,
@@ -15,15 +16,26 @@ import { STATES } from "shared/constants";
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
 import { IStatusSelect } from "./status-select.types";
 import { StyledIcon, StyledStack } from "./status-select.styled";
+import ReturnForReworkDialog from "./return-for-rework-dialog";
 
 const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
   const [status, setStatus] = useState(currentStatus);
-  const { takeForReview, approved, notApproved } = useUpdateHomeworkStatus();
+  const [reworkOpen, setReworkOpen] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
+  const { takeForReview, approved } = useUpdateHomeworkStatus();
+  const generationRef = useRef(0);
 
-  const getAvailableStatuses = (
-    currentStatus?: Maybe<StudentHomeWorkStatus>
-  ) => {
-    switch (currentStatus) {
+  useEffect(() => {
+    generationRef.current += 1;
+    setStatus(currentStatus);
+    setReworkOpen(false);
+    setPending(false);
+    setActionError(null);
+  }, [currentStatus, homeworkId]);
+
+  const getAvailableStatuses = (status?: Maybe<StudentHomeWorkStatus>) => {
+    switch (status) {
       case StudentHomeWorkStatus.Review:
         return [StudentHomeWorkStatus.InReview];
       case StudentHomeWorkStatus.InReview:
@@ -45,28 +57,55 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
     event: SelectChangeEvent<StudentHomeWorkStatus>
   ) => {
     const newStatus = event.target.value as StudentHomeWorkStatus;
-    setStatus(newStatus);
+    setActionError(null);
 
-    switch (newStatus) {
-      case StudentHomeWorkStatus.InReview:
-        await takeForReview({ variables: { homeworkId: homeworkId! } });
-        break;
-      case StudentHomeWorkStatus.Approved:
-        await approved({ variables: { homeWorkId: homeworkId! } });
-        break;
-      case StudentHomeWorkStatus.NotApproved:
-        await notApproved({ variables: { homeWorkId: homeworkId! } });
-        break;
-      default:
-        break;
+    if (newStatus === StudentHomeWorkStatus.NotApproved) {
+      setReworkOpen(true);
+      return;
     }
+
+    const generation = generationRef.current;
+    setPending(true);
+    try {
+      switch (newStatus) {
+        case StudentHomeWorkStatus.InReview:
+          await takeForReview({ variables: { homeworkId: homeworkId! } });
+          break;
+        case StudentHomeWorkStatus.Approved:
+          await approved({ variables: { homeWorkId: homeworkId! } });
+          break;
+        default:
+          return;
+      }
+
+      if (generation !== generationRef.current) return;
+      setStatus(newStatus);
+    } catch (error) {
+      if (generation !== generationRef.current) return;
+      console.error(error);
+      setActionError(
+        "Не удалось обновить статус. Проверьте актуальные данные."
+      );
+    } finally {
+      if (generation === generationRef.current) setPending(false);
+    }
+  };
+
+  const handleReworkDone = (newStatus: StudentHomeWorkStatus) => {
+    setStatus(newStatus);
+    setReworkOpen(false);
   };
 
   return (
     <FormControl fullWidth size="small">
       <Box>
         <InputLabel>Статус</InputLabel>
-        <Select value={status!} label="Статус" onChange={updateStatus}>
+        <Select
+          value={status!}
+          label="Статус"
+          onChange={updateStatus}
+          disabled={pending}
+        >
           {STATES.map(({ value, Icon, text }) => (
             <MenuItem
               key={value}
@@ -82,7 +121,15 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
             </MenuItem>
           ))}
         </Select>
+        {actionError && <FormHelperText error>{actionError}</FormHelperText>}
       </Box>
+      <ReturnForReworkDialog
+        homeworkId={homeworkId}
+        open={reworkOpen}
+        initialContent={null}
+        onClose={() => setReworkOpen(false)}
+        onDone={handleReworkDone}
+      />
     </FormControl>
   );
 };

@@ -1,42 +1,35 @@
-import { FC, useRef, useState } from "react";
+import { FC, useCallback } from "react";
 
+import { SendCommentMutationFn } from "api/graphql/generated/graphql";
 import UserRow from "shared/components/user-row";
-import { CommentEditor } from "shared/components/text-editor";
-import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
-import SendButtons from "shared/components/send-buttons";
+import SendComment from "shared/features/send-comment/view";
+import useSendHomeworkComment from "shared/features/send-comment/use-send-homework-comment";
 
-import {
-  StyledBox,
-  StyledCommentBox,
-  StyledCommentStack,
-  StyledFormHelperText,
-} from "./answer-comment.styled";
+import { StyledCommentBox, StyledCommentStack } from "./answer-comment.styled";
 import { IAnswerComment } from "./answer-comment.types";
 
 const AnswerComment: FC<IAnswerComment> = (props) => {
   const { answerComment, loading, commentId, dataUser, onReplySuccess } = props;
-  const rteRef = useRef<RichTextEditorRef>(null);
-  const [error, setError] = useState("");
-
-  const handleAnswerComment = async () => {
-    const content = rteRef.current?.editor?.getHTML() ?? "";
-
-    if (commentId && content.trim() !== "" && content.trim() !== "<p></p>") {
-      try {
-        await answerComment({
-          variables: { parentID: commentId, content },
-        }).then(() => {
-          if (onReplySuccess) onReplySuccess();
-        });
-        setError("");
-        rteRef.current?.editor?.commands.clearContent();
-      } catch (error) {
-        setError("Произошла ошибка при отправке комментария.");
-      }
-    } else {
-      setError("Введите текст");
-    }
-  };
+  const sendReply = useCallback<SendCommentMutationFn>(
+    async (options) => {
+      if (!commentId) throw new Error("Reply parent is required");
+      const result = await answerComment({
+        variables: {
+          parentID: commentId,
+          content: options?.variables?.content ?? "",
+        },
+      });
+      return {
+        ...result,
+        data: { sendComment: result.data?.answerComment ?? null },
+      };
+    },
+    [answerComment, commentId]
+  );
+  const { submit, loading: submitting } = useSendHomeworkComment(undefined, {
+    scope: commentId ? `reply:${commentId}` : null,
+    sendComment: sendReply,
+  });
 
   return (
     <StyledCommentStack>
@@ -48,17 +41,14 @@ const AnswerComment: FC<IAnswerComment> = (props) => {
         hasLink
       />
       <StyledCommentBox>
-        <form>
-          <StyledBox>
-            <CommentEditor rteRef={rteRef} source="comment" />
-            {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
-          </StyledBox>
-          <SendButtons
-            onReply={handleAnswerComment}
-            onCancel={onReplySuccess}
-            loading={loading}
-          />
-        </form>
+        <SendComment
+          key={commentId}
+          submitComment={submit}
+          loading={loading || submitting}
+          onSuccess={onReplySuccess}
+          onCancel={onReplySuccess}
+          hideCancel={false}
+        />
       </StyledCommentBox>
     </StyledCommentStack>
   );

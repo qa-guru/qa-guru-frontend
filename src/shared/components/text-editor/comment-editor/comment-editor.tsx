@@ -1,20 +1,35 @@
-import { Lock, LockOpen, TextFields } from "@mui/icons-material";
-import { Box, Stack } from "@mui/material";
-import type { EditorOptions } from "@tiptap/core";
-import { FC, useCallback, useState } from "react";
-
 import {
-  insertFiles,
-  insertImages,
-  LinkBubbleMenu,
-  RichTextEditor,
-} from "shared/lib/mui-tiptap";
+  AttachFile,
+  DeleteOutline,
+  InsertDriveFileOutlined,
+  Lock,
+  LockOpen,
+  TextFields,
+} from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  Stack,
+  Typography,
+} from "@mui/material";
+import type { EditorOptions } from "@tiptap/core";
+import { FC, useCallback, useMemo, useRef, useState } from "react";
+
+import { LinkBubbleMenu, RichTextEditor } from "shared/lib/mui-tiptap";
 import { TableBubbleMenu, MenuButton } from "shared/lib/mui-tiptap/controls";
 
 import { EditorMenuControls } from "./ui";
 import { fileListToImageFiles } from "../utils/file-list-to-image-files";
 import useExtensions from "../hooks/use-extensions";
 import { ITextEditor } from "../types";
+import {
+  commentAttachmentId,
+  formatAttachmentSize,
+  splitCommentAttachments,
+} from "../text-view/prepare-read-only-html";
 
 const CommentEditor: FC<ITextEditor> = ({
   rteRef,
@@ -22,6 +37,9 @@ const CommentEditor: FC<ITextEditor> = ({
   setPendingFiles,
   source,
   handleDeleteFile,
+  attachments = [],
+  setAttachments,
+  disabled = false,
 }) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
@@ -31,6 +49,12 @@ const CommentEditor: FC<ITextEditor> = ({
   });
   const [isEditable, setIsEditable] = useState(true);
   const [showMenuBar, setShowMenuBar] = useState(true);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const body = useMemo(
+    () => splitCommentAttachments(content ?? "").content,
+    [content]
+  );
+  const locked = disabled || !isEditable;
 
   const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
     useCallback((view, event, _slice, _moved) => {
@@ -58,8 +82,8 @@ const CommentEditor: FC<ITextEditor> = ({
     }, []);
 
   const handleNewImageFiles = useCallback(
-    (files: File[], insertPosition?: number): void => {
-      if (!rteRef.current?.editor) return;
+    (files: File[]) => {
+      if (!rteRef.current?.editor) return [];
 
       const filesWithUrl = files.map((file) => ({
         file,
@@ -69,53 +93,44 @@ const CommentEditor: FC<ITextEditor> = ({
 
       setPendingFiles?.((prev) => [...prev, ...filesWithUrl]);
 
-      const attributesForImageFiles = filesWithUrl.map(
-        ({ file, localUrl }) => ({
-          src: localUrl,
-          alt: file.name,
-        })
-      );
-
-      insertImages({
-        images: attributesForImageFiles,
-        editor: rteRef.current.editor,
-        position: insertPosition,
-      });
+      return filesWithUrl.map(({ file, localUrl }) => ({
+        src: localUrl,
+        alt: file.name,
+      }));
     },
     [rteRef, setPendingFiles]
   );
 
-  const handleNewFiles = useCallback(
-    (files: File[], insertPosition?: number): void => {
-      if (!rteRef.current?.editor) {
-        return;
-      }
-
-      const filesWithUrl = files.map((file) => ({
-        file,
-        localUrl: URL.createObjectURL(file),
-        source,
-      }));
-
-      setPendingFiles?.((prev) => [...prev, ...filesWithUrl]);
-
-      const attributesForFiles = filesWithUrl.map(({ localUrl, file }) => ({
+  const handleNewFiles = (files: File[]) => {
+    if (locked || !setAttachments || !setPendingFiles) return;
+    const filesWithUrl = files.map((file) => ({
+      file,
+      localUrl: URL.createObjectURL(file),
+      source,
+    }));
+    setPendingFiles((prev) => [...prev, ...filesWithUrl]);
+    setAttachments((prev) => [
+      ...prev,
+      ...filesWithUrl.map(({ file, localUrl }) => ({
         href: localUrl,
         fileName: file.name,
-      }));
+        size: file.size,
+      })),
+    ]);
+  };
 
-      insertFiles({
-        files: attributesForFiles,
-        editor: rteRef.current.editor,
-        position: insertPosition,
-      });
-    },
-    [rteRef, setPendingFiles]
-  );
+  const removeAttachment = (href: string) => {
+    if (locked) return;
+    setAttachments?.((prev) => prev.filter((file) => file.href !== href));
+    const fileId = commentAttachmentId(href);
+    if (fileId) handleDeleteFile?.(fileId);
+  };
 
   return (
     <>
       <Box
+        role="group"
+        aria-label="Текст комментария"
         sx={{
           "& .ProseMirror": {
             "& h1, & h2, & h3, & h4, & h5, & h6": {
@@ -127,17 +142,14 @@ const CommentEditor: FC<ITextEditor> = ({
         <RichTextEditor
           ref={rteRef}
           extensions={extensions}
-          editable={isEditable}
-          content={content}
+          editable={!locked}
+          content={body}
           editorProps={{
             handleDrop,
             handlePaste,
           }}
           renderControls={() => (
-            <EditorMenuControls
-              onUploadImageFiles={handleNewImageFiles}
-              onUploadFiles={handleNewFiles}
-            />
+            <EditorMenuControls onUploadImageFiles={handleNewImageFiles} />
           )}
           RichTextFieldProps={{
             variant: "outlined",
@@ -179,6 +191,7 @@ const CommentEditor: FC<ITextEditor> = ({
                   size="small"
                   onClick={() => setIsEditable((currentState) => !currentState)}
                   selected={!isEditable}
+                  disabled={disabled}
                   IconComponent={isEditable ? Lock : LockOpen}
                 />
               </Stack>
@@ -193,6 +206,70 @@ const CommentEditor: FC<ITextEditor> = ({
           )}
         </RichTextEditor>
       </Box>
+      <Stack
+        component="section"
+        aria-label="Вложения"
+        spacing={0.5}
+        sx={{ mt: 1 }}
+      >
+        <Box>
+          <Button
+            size="small"
+            startIcon={<AttachFile />}
+            onClick={() => fileInputRef.current?.click()}
+            disabled={locked || !setAttachments || !setPendingFiles}
+          >
+            Прикрепить файл
+          </Button>
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            hidden
+            disabled={locked}
+            onChange={(event) => {
+              handleNewFiles(Array.from(event.target.files ?? []));
+              event.target.value = "";
+            }}
+          />
+        </Box>
+        {attachments.length > 0 && (
+          <List dense disablePadding aria-label="Прикреплённые файлы">
+            {attachments.map(({ href, fileName, size }) => (
+              <ListItem
+                key={href}
+                sx={{ px: 0, pr: 6, gap: 1, minWidth: 0 }}
+                secondaryAction={
+                  <IconButton
+                    aria-label={`Удалить ${fileName}`}
+                    size="small"
+                    disabled={locked}
+                    onClick={() => removeAttachment(href)}
+                  >
+                    <DeleteOutline fontSize="small" />
+                  </IconButton>
+                }
+              >
+                <InsertDriveFileOutlined
+                  color="primary"
+                  fontSize="small"
+                  sx={{ flexShrink: 0 }}
+                />
+                <Box sx={{ minWidth: 0, flex: 1 }}>
+                  <Typography variant="body2" noWrap title={fileName}>
+                    {fileName}
+                  </Typography>
+                  {size !== undefined && (
+                    <Typography variant="caption" color="text.secondary">
+                      {formatAttachmentSize(size)}
+                    </Typography>
+                  )}
+                </Box>
+              </ListItem>
+            ))}
+          </List>
+        )}
+      </Stack>
     </>
   );
 };

@@ -21,6 +21,12 @@ export type PendingFile = {
   source?: FileSourceType;
 };
 
+export interface CommentAttachment {
+  href: string;
+  fileName: string;
+  size?: number;
+}
+
 export type SuggestionListRef = {
   onKeyDown: NonNullable<
     ReturnType<
@@ -37,4 +43,7 @@ export interface ITextEditor {
   setPendingFiles?: React.Dispatch<React.SetStateAction<PendingFile[]>>;
   source: FileSourceType;
   handleDeleteFile?: (fileId: string) => void;
+  attachments?: CommentAttachment[];
+  setAttachments?: React.Dispatch<React.SetStateAction<CommentAttachment[]>>;
+  disabled?: boolean;
 }

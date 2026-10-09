@@ -1,8 +1,9 @@
+import type { ComponentProps } from "react";
+
 import {
   MenuButtonCodeBlock,
   MenuButtonEditLink,
   MenuButtonEmoji,
-  MenuButtonFileUpload,
   MenuButtonImageUpload,
   MenuButtonRedo,
   MenuButtonUndo,
@@ -15,13 +16,13 @@ import { Maybe } from "api/graphql/generated/graphql";
 
 interface EditorMenuControlsProps {
   homeWorkId?: Maybe<string>;
-  onUploadImageFiles: (files: File[]) => any;
-  onUploadFiles: (files: File[]) => any;
+  onUploadImageFiles: ComponentProps<
+    typeof MenuButtonImageUpload
+  >["onUploadFiles"];
 }
 
 export default function EditorMenuControls({
   onUploadImageFiles,
-  onUploadFiles,
 }: EditorMenuControlsProps) {
   const { isDesktop } = useResponsive();
 
@@ -44,10 +45,6 @@ export default function EditorMenuControls({
       <MenuButtonImageUpload
         onUploadFiles={onUploadImageFiles}
         tooltipLabel="Upload images"
-      />
-      <MenuButtonFileUpload
-        onUploadFiles={onUploadFiles}
-        tooltipLabel="Upload files"
       />
 
       <MenuButtonEmoji />

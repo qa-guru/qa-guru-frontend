@@ -12,7 +12,9 @@ import MenuButtonAddFile, {
 
 export interface MenuButtonFileUploadProps
   extends SetOptional<MenuButtonAddFileProps, "onClick"> {
-  onUploadFiles: (files: File[]) => Promise<FileNodeAttributes[]>;
+  onUploadFiles: (
+    files: File[]
+  ) => FileNodeAttributes[] | Promise<FileNodeAttributes[]>;
   insertFiles?: ({
     files,
     editor,

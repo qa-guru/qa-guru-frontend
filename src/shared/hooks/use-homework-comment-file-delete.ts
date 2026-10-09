@@ -24,10 +24,7 @@ export const useHomeworkCommentFileDelete = () => {
 
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setDeleting(false);
-        enqueueSnackbar(`Файл успешно удален`, {
-          variant: "success",
-        });
-        return response.data;
+        return true;
       } else {
         setDeleting(false);
         enqueueSnackbar(`Не удалось удалить файл`);

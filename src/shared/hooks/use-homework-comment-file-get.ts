@@ -18,9 +18,6 @@ export const useHomeworkCommentFileGet = () => {
         fileId
       );
       setLoading(false);
-      enqueueSnackbar(`Файл успешно загружен`, {
-        variant: "success",
-      });
       return response.data;
     } catch (err) {
       setError(err as Error);

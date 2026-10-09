@@ -1,3 +1,4 @@
+import type { CommentAttachment } from "../types";
 import {
   classifyVideoSrc,
   escapeHtmlAttr,
@@ -6,12 +7,18 @@ import {
   videoEmbedTag,
 } from "./video-src";
 
-const FILES_TABLE_RE =
-  /<table\b[^>]*\bfiles-table\b[^>]*>[\s\S]*?<\/table>/gi;
-const FILE_SIZE_RE =
-  /^\d+(?:[.,]\d+)?\s*(?:КБ|МБ|ГБ|Б|KB|MB|GB|B|байт)$/i;
+const FILES_TABLE_RE = /<table\b[^>]*\bfiles-table\b[^>]*>[\s\S]*?<\/table>/gi;
+const FILE_SIZE_RE = /^\d+(?:[.,]\d+)?\s*(?:КБ|МБ|ГБ|Б|KB|MB|GB|B|байт)$/i;
 const IFRAME_RE = /<iframe\b[^>]*>(?:\s*<\/iframe>)?/gi;
 const LT_BLOCK_OPEN_RE = /<div\b[^>]*\blt-block(?!-)[^>]*>/gi;
+
+const ATTRIBUTE_ENTITIES: Record<string, string> = {
+  "&amp;": "&",
+  "&quot;": '"',
+  "&#39;": "'",
+  "&lt;": "<",
+  "&gt;": ">",
+};
 
 type IframeHost = VideoHost | "other";
 
@@ -35,7 +42,7 @@ function escapeHtmlText(value: string): string {
     .replace(/>/g, "&gt;");
 }
 
-function quotedAttr(tag: string, name: string): string | null {
+function quotedAttr(tag: string, name: string, trim = true): string | null {
   const match = new RegExp(
     `\\b${name}\\s*=\\s*("([^"]*)"|'([^']*)')`,
     "i"
@@ -46,7 +53,11 @@ function quotedAttr(tag: string, name: string): string | null {
   }
 
   const raw = match[2] ?? match[3] ?? "";
-  const decoded = unescapeHtmlAttr(raw).trim();
+  const value = raw.replace(
+    /&(?:amp|quot|#39|lt|gt);/g,
+    (entity) => ATTRIBUTE_ENTITIES[entity]
+  );
+  const decoded = trim ? value.trim() : value;
 
   return decoded || null;
 }
@@ -74,6 +85,106 @@ function isHttpHref(href: string): boolean {
   } catch {
     return false;
   }
+}
+
+const FILE_NODE_RE = /<file-node\b[^>]*>[\s\S]*?<\/file-node>/gi;
+
+function isAttachmentHref(href: string): boolean {
+  return (
+    Array.from(href).every(
+      (character) => character.charCodeAt(0) > 32 && character !== "\\"
+    ) &&
+    ((href.startsWith("/") && !href.startsWith("//")) || isHttpHref(href))
+  );
+}
+
+export function commentAttachmentId(href: string): string | null {
+  if (href.startsWith("blob:")) return href;
+  return isAttachmentHref(href)
+    ? href.match(/\/file\/([^/?#]+)/)?.[1] ?? null
+    : null;
+}
+
+export function formatAttachmentSize(size: number): string {
+  if (size < 1024) return `${size} Б`;
+  const units = ["КБ", "МБ", "ГБ"];
+  const power = Math.min(
+    Math.floor(Math.log(size) / Math.log(1024)),
+    units.length
+  );
+  return `${new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 1 }).format(
+    size / 1024 ** power
+  )} ${units[power - 1]}`;
+}
+
+export function splitCommentAttachments(html: string): {
+  content: string;
+  attachments: CommentAttachment[];
+} {
+  const attachments: CommentAttachment[] = [];
+  const seen = new Set<string>();
+  for (const match of html.matchAll(FILE_NODE_RE)) {
+    const href = quotedAttr(match[0], "href") ?? "";
+    if (href && seen.has(href)) continue;
+    seen.add(href);
+    const rawSize = quotedAttr(match[0], "data-file-size");
+    const size = rawSize === null ? undefined : Number(rawSize);
+    attachments.push({
+      href,
+      fileName: quotedAttr(match[0], "fileName", false) ?? "Файл",
+      ...(size !== undefined && Number.isSafeInteger(size) && size >= 0
+        ? { size }
+        : {}),
+    });
+  }
+  const content = html
+    .replace(/<p\b[^>]*>[\s\S]*?<\/p>/gi, (paragraph) => {
+      const body = paragraph.replace(FILE_NODE_RE, "");
+      return /<file-node\b/i.test(paragraph) &&
+        /^<p\b[^>]*>\s*<\/p>$/i.test(body)
+        ? ""
+        : body;
+    })
+    .replace(FILE_NODE_RE, "");
+  return { content, attachments };
+}
+
+export function serializeCommentContent(
+  html: string,
+  attachments?: CommentAttachment[]
+): string {
+  const parts = splitCommentAttachments(html);
+  const seen = new Set<string>();
+  const files = (attachments ?? parts.attachments)
+    .filter(({ href }) => {
+      if (!href || seen.has(href)) return false;
+      seen.add(href);
+      return true;
+    })
+    .map(({ href, fileName, size }) => {
+      const sizeAttr =
+        size !== undefined && Number.isSafeInteger(size) && size >= 0
+          ? ` data-file-size="${size}"`
+          : "";
+      return `<p><file-node href="${escapeHtmlAttr(
+        href
+      )}" fileName="${escapeHtmlAttr(fileName)}"${sizeAttr}></file-node></p>`;
+    })
+    .join("");
+  return parts.content.trim() + files;
+}
+
+function readOnlyAttachments(attachments: CommentAttachment[]): string {
+  if (!attachments.length) return "";
+  const items = attachments.map(({ href, fileName, size }) => {
+    const name = escapeHtmlText(fileName);
+    const link = isAttachmentHref(href)
+      ? `<a href="${escapeHtmlAttr(href)}">${name}</a>`
+      : name;
+    const sizeText = size === undefined ? "" : ` ${formatAttachmentSize(size)}`;
+    return `<li>${link}${sizeText}</li>`;
+  });
+  return `<p><strong>Вложения</strong></p><ul>${items.join("")}</ul>`;
 }
 
 function tableCells(rowHtml: string): string[] {
@@ -149,7 +260,9 @@ function fileRowToItem(rowHtml: string): string | null {
   const size = fileSizeFromRow(cells);
   const sizeHtml = size ? ` ${escapeHtmlText(size)}` : "";
 
-  return `<li><a href="${escapeHtmlAttr(file.href)}">${name}</a>${sizeHtml}</li>`;
+  return `<li><a href="${escapeHtmlAttr(
+    file.href
+  )}">${name}</a>${sizeHtml}</li>`;
 }
 
 function filesTableToList(tableHtml: string): string {
@@ -403,11 +516,15 @@ function collectReplacements(html: string, hits: IframeHit[]): Replacement[] {
 }
 
 function applyReplacements(html: string, replacements: Replacement[]): string {
-  const ordered = [...replacements].sort((left, right) => right.start - left.start);
+  const ordered = [...replacements].sort(
+    (left, right) => right.start - left.start
+  );
   let result = html;
 
   for (const item of ordered) {
-    result = `${result.slice(0, item.start)}${item.html}${result.slice(item.end)}`;
+    result = `${result.slice(0, item.start)}${item.html}${result.slice(
+      item.end
+    )}`;
   }
 
   return result;
@@ -439,7 +556,12 @@ function mergeAdjacentVideoIframes(html: string): string {
 }
 
 export function prepareReadOnlyHtml(html: string): string {
-  return mergeAdjacentVideoIframes(
-    rewriteFilesTables(html).replace(/>\/n</g, "><").replace(/\/n/g, "<br>")
+  const parts = splitCommentAttachments(html);
+  return (
+    mergeAdjacentVideoIframes(
+      rewriteFilesTables(parts.content)
+        .replace(/>\/n</g, "><")
+        .replace(/\/n/g, "<br>")
+    ) + readOnlyAttachments(parts.attachments)
   );
 }

@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
-import { prepareReadOnlyHtml } from "./prepare-read-only-html";
+import {
+  prepareReadOnlyHtml,
+  serializeCommentContent,
+  splitCommentAttachments,
+} from "./prepare-read-only-html";
 
 const FILES_TABLE = `<table class="table files-table">
   <tbody>
@@ -58,10 +62,7 @@ describe("prepareReadOnlyHtml", () => {
   });
 
   it("turns leftover /n into br, including comments without markup", () => {
-    assert.equal(
-      prepareReadOnlyHtml("1) foo/n2) bar"),
-      "1) foo<br>2) bar"
-    );
+    assert.equal(prepareReadOnlyHtml("1) foo/n2) bar"), "1) foo<br>2) bar");
   });
 
   it("does not invent breaks when the string has no /n", () => {
@@ -84,6 +85,97 @@ describe("prepareReadOnlyHtml", () => {
     );
   });
 
+  it("exposes a saved comment attachment as a read-only download link", () => {
+    assert.equal(
+      prepareReadOnlyHtml(
+        '<p>feedback <file-node href="/homework/comment/c1/file/f1" fileName="feedback.txt" data-file-node="true"></file-node></p>'
+      ),
+      '<p>feedback </p><p><strong>Вложения</strong></p><ul><li><a href="/homework/comment/c1/file/f1">feedback.txt</a></li></ul>'
+    );
+  });
+
+  it("does not expose local or unsafe attachment URLs as download links", () => {
+    for (const href of [
+      "blob:local",
+      "javascript:invalid",
+      "data:text/plain,fixture",
+      "//other.invalid/file",
+      "/\\\\other.invalid/file",
+    ]) {
+      assert.equal(
+        prepareReadOnlyHtml(
+          `<p><file-node href="${href}" fileName="feedback.txt"></file-node></p>`
+        ),
+        "<p><strong>Вложения</strong></p><ul><li>feedback.txt</li></ul>"
+      );
+    }
+  });
+
+  it("escapes the attachment name and keeps HTTP download links", () => {
+    assert.equal(
+      prepareReadOnlyHtml(
+        '<file-node href="https://files.invalid/fixture?a=1&amp;b=2" fileName="&lt;notes&gt;&amp;.txt"></file-node>'
+      ),
+      '<p><strong>Вложения</strong></p><ul><li><a href="https://files.invalid/fixture?a=1&amp;b=2">&lt;notes&gt;&amp;.txt</a></li></ul>'
+    );
+  });
+
+  it("splits legacy inline file nodes without removing text, images or blank paragraphs", () => {
+    const parts = splitCommentAttachments(
+      '<p>before <file-node href="/homework/comment/c1/file/42" fileName="notes.txt" data-file-size="59"></file-node> after</p><p></p><p><img src="/image.png"></p>'
+    );
+    assert.equal(
+      parts.content,
+      '<p>before  after</p><p></p><p><img src="/image.png"></p>'
+    );
+    assert.deepEqual(parts.attachments, [
+      { href: "/homework/comment/c1/file/42", fileName: "notes.txt", size: 59 },
+    ]);
+  });
+
+  it("round-trips attachment order, names, sizes and separate serialized paragraphs", () => {
+    const attachments = [
+      { href: "blob:one", fileName: '<notes & "quotes">.txt', size: 59 },
+      { href: "/homework/comment/c1/file/43", fileName: "second.txt" },
+    ];
+    const serialized = serializeCommentContent("<p>feedback</p>", attachments);
+    assert.match(serialized, /^<p>feedback<\/p><p><file-node /);
+    assert.deepEqual(splitCommentAttachments(serialized), {
+      content: "<p>feedback</p>",
+      attachments,
+    });
+    assert.equal(serializeCommentContent(serialized, attachments), serialized);
+  });
+
+  it("preserves literal HTML entities and whitespace in attachment names", () => {
+    const attachments = [
+      { href: "blob:one", fileName: "  &lt;literal&gt; &amp;  ", size: 0 },
+    ];
+    const serialized = serializeCommentContent("<p>feedback</p>", attachments);
+    assert.deepEqual(
+      splitCommentAttachments(serialized).attachments,
+      attachments
+    );
+  });
+
+  it("allows explicitly removing all previously serialized attachments", () => {
+    assert.equal(
+      serializeCommentContent(
+        '<p>feedback</p><p><file-node href="/homework/comment/c1/file/42" fileName="notes.txt"></file-node></p>',
+        []
+      ),
+      "<p>feedback</p>"
+    );
+  });
+
+  it("keeps attachment size out of the text body and does not normalize its file name", () => {
+    const prepared = prepareReadOnlyHtml(
+      '<p>feedback</p><p><file-node href="/homework/comment/c1/file/42" fileName="log/n.txt" data-file-size="59"></file-node></p>'
+    );
+    assert.match(prepared, /^<p>feedback<\/p><p><strong>Вложения/);
+    assert.match(prepared, /log\/n\.txt<\/a> 59 Б/);
+  });
+
   it("keeps lesson images that are not files-table mime icons", () => {
     const lessonImg =
       '<p><img src="https://fs23.getcourse.ru/fileservice/file/download/photo.png"></p>';
@@ -93,7 +185,10 @@ describe("prepareReadOnlyHtml", () => {
 
   it("glues a lesson-151 pair in adjacent lt-blocks into one video-embed", () => {
     const html =
-      videoBlock("2230418173", iframeRutube("c28db69893ef25c46e0469769ccdefe1")) +
+      videoBlock(
+        "2230418173",
+        iframeRutube("c28db69893ef25c46e0469769ccdefe1")
+      ) +
       "/n" +
       videoBlock("2230418175", iframeYoutube("z-7lnp_gfBE"));
     const prepared = prepareReadOnlyHtml(html);
@@ -125,9 +220,15 @@ describe("prepareReadOnlyHtml", () => {
 
     assert.equal(embedCount(prepared), 2);
     assert.equal(prepared.includes("<iframe"), false);
-    assert.match(prepared, /rutube="https:\/\/rutube\.ru\/play\/embed\/aaa\/\?p=token"/);
+    assert.match(
+      prepared,
+      /rutube="https:\/\/rutube\.ru\/play\/embed\/aaa\/\?p=token"/
+    );
     assert.match(prepared, /youtube="https:\/\/www\.youtube\.com\/embed\/bbb"/);
-    assert.match(prepared, /rutube="https:\/\/rutube\.ru\/play\/embed\/ccc\/\?p=token"/);
+    assert.match(
+      prepared,
+      /rutube="https:\/\/rutube\.ru\/play\/embed\/ccc\/\?p=token"/
+    );
     assert.match(prepared, /youtube="https:\/\/www\.youtube\.com\/embed\/ddd"/);
   });
 
@@ -147,7 +248,10 @@ describe("prepareReadOnlyHtml", () => {
   });
 
   it("wraps lone rutube without a youtube button attr", () => {
-    const html = videoBlock("301", iframeRutube("f340c73920e89fc20f7a0c4ac4e2c6ab"));
+    const html = videoBlock(
+      "301",
+      iframeRutube("f340c73920e89fc20f7a0c4ac4e2c6ab")
+    );
     const prepared = prepareReadOnlyHtml(html);
 
     assert.equal(embedCount(prepared), 1);
@@ -172,7 +276,8 @@ describe("prepareReadOnlyHtml", () => {
   });
 
   it("does not mount a foreign iframe src", () => {
-    const html = '<p><iframe src="https://player.vimeo.com/video/123"></iframe></p>';
+    const html =
+      '<p><iframe src="https://player.vimeo.com/video/123"></iframe></p>';
     const prepared = prepareReadOnlyHtml(html);
 
     assert.equal(prepared.includes("iframe"), false);

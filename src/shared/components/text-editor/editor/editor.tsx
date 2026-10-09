@@ -18,6 +18,7 @@ const Editor: FC<ITextEditor> = ({
   setPendingFiles,
   source,
   handleDeleteFile,
+  disabled = false,
 }) => {
   const extensions = useExtensions({
     placeholder: "Введите текст...",
@@ -31,7 +32,7 @@ const Editor: FC<ITextEditor> = ({
 
   const handleNewImageFiles = useCallback(
     (files: File[], insertPosition?: number): void => {
-      if (!rteRef.current?.editor) return;
+      if (!rteRef.current?.editor || disabled) return;
 
       const filesWithUrl = files.map((file) => ({
         file,
@@ -54,12 +55,12 @@ const Editor: FC<ITextEditor> = ({
         position: insertPosition,
       });
     },
-    [rteRef, setPendingFiles]
+    [rteRef, setPendingFiles, source, disabled]
   );
 
   const handleNewFiles = useCallback(
     (files: File[], insertPosition?: number): void => {
-      if (!rteRef.current?.editor) {
+      if (!rteRef.current?.editor || disabled) {
         return;
       }
 
@@ -82,7 +83,7 @@ const Editor: FC<ITextEditor> = ({
         position: insertPosition,
       });
     },
-    [rteRef, setPendingFiles]
+    [rteRef, setPendingFiles, source, disabled]
   );
 
   const handleDrop: NonNullable<EditorOptions["editorProps"]["handleDrop"]> =
@@ -153,7 +154,7 @@ const Editor: FC<ITextEditor> = ({
         <RichTextEditor
           ref={rteRef}
           extensions={extensions}
-          editable={isEditable}
+          editable={isEditable && !disabled}
           content={content}
           editorProps={{
             handleDrop,
@@ -161,8 +162,14 @@ const Editor: FC<ITextEditor> = ({
           }}
           renderControls={() => (
             <EditorMenuControls
-              onUploadImageFiles={handleNewImageFiles}
-              onUploadFiles={handleNewFiles}
+              onUploadImageFiles={(files) => {
+                handleNewImageFiles(files);
+                return [];
+              }}
+              onUploadFiles={(files) => {
+                handleNewFiles(files);
+                return [];
+              }}
             />
           )}
           RichTextFieldProps={{

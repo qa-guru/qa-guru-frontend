@@ -21,9 +21,6 @@ export const useHomeworkCommentFileUpload = () => {
 
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
         setUploading(false);
-        enqueueSnackbar(`Файл успешно загружен`, {
-          variant: "success",
-        });
         return response.data;
       } else {
         setUploading(false);
