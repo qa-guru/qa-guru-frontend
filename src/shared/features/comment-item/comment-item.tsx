@@ -4,9 +4,11 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useReactiveVar } from "@apollo/client";
 
 import { userIdVar } from "cache";
+import { UserRole } from "api/graphql/generated/graphql";
 import UserRow from "shared/components/user-row";
 import { TextView } from "shared/components/text-editor";
 import { useComment } from "shared/hooks/use-comment";
+import { useRoleAccess } from "shared/hooks";
 import { formatDate } from "shared/helpers";
 import AnswerComment from "shared/features/answer-comment/container";
 import DeleteComment from "shared/features/delete-comment/container";
@@ -58,18 +60,25 @@ const CommentItem: FC<ICommentItem> = ({
 
   const currentUserId = useReactiveVar(userIdVar);
   const editAccess = currentUserId === creator?.id;
+  const deleteAccess = useRoleAccess({
+    allowedRoles: [UserRole.Student, UserRole.Admin],
+  });
   const isSelected = selectedComment === id;
 
   const renderEditIcon = () =>
     !isSelected &&
     editAccess && (
-      <StyledIconButton onClick={() => setSelectedComment(commentId)}>
+      <StyledIconButton
+        aria-label="Редактировать комментарий"
+        onClick={() => setSelectedComment(commentId)}
+      >
         <StyledEditIcon />
       </StyledIconButton>
     );
 
   const renderDeleteComment = () =>
-    editAccess && <DeleteComment id={id} homeworkId={homeworkId} />;
+    editAccess &&
+    deleteAccess && <DeleteComment id={id} homeworkId={homeworkId} />;
 
   const renderThread = () =>
     openThreads && (
@@ -126,7 +135,10 @@ const CommentItem: FC<ICommentItem> = ({
             </Typography>
             {renderEditIcon()}
             {renderDeleteComment()}
-            <StyledIconButton onClick={handleReplyClick}>
+            <StyledIconButton
+              aria-label="Ответить на комментарий"
+              onClick={handleReplyClick}
+            >
               <StyledReplyIcon color="primary" />
             </StyledIconButton>
           </StyledBottomStack>

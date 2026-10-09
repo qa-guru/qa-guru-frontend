@@ -22,7 +22,7 @@ const StatusText: FC<IStatusText> = ({ status }) => {
   switch (status) {
     case StudentHomeWorkStatus.Review:
       icon = <Clock />;
-      statusText = "Новые";
+      statusText = "Отправлено на проверку";
       break;
     case StudentHomeWorkStatus.InReview:
       icon = <Search />;

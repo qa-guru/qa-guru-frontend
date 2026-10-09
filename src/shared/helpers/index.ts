@@ -5,8 +5,12 @@ export {
 } from "./catalog-entity";
 export type { CatalogEntityKind } from "./catalog-entity";
 export { formatDate } from "./format-date";
-export { isGraphqlNotFound } from "./graphql-error";
+export {
+  isGraphqlInvalidHomeworkState,
+  isGraphqlNotFound,
+} from "./graphql-error";
 export type { GraphqlLikeError } from "./graphql-error";
+export { isHomeworkStudentEditable } from "./homework-status";
 export {
   formatLectureAvailableFrom,
   hasLectureBody,
@@ -22,11 +26,11 @@ export {
   shouldShowLectureGate,
   shouldSkipLectureHomework,
 } from "./lecture-availability";
-export type { LectureGateKind, LectureScheduleSlot } from "./lecture-availability";
-export {
-  lectureCardAttachments,
-  lectureFileGetKind,
-} from "./lecture-files";
+export type {
+  LectureGateKind,
+  LectureScheduleSlot,
+} from "./lecture-availability";
+export { lectureCardAttachments, lectureFileGetKind } from "./lecture-files";
 export type {
   LectureAttachment,
   LectureAttachmentWithId,

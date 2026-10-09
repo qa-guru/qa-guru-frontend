@@ -11,6 +11,7 @@ mutation sendHomeWorkToCheck($homeWorkId: ID!) {
       techStack
     }
     answer
+    status
     student {
       id
       firstName

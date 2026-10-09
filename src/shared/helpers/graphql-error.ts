@@ -8,9 +8,7 @@ export type GraphqlLikeError = {
   graphQLErrors?: ReadonlyArray<GraphqlErrorItem | null> | null;
 };
 
-function graphQlItems(
-  error?: GraphqlLikeError | null
-): GraphqlErrorItem[] {
+function graphQlItems(error?: GraphqlLikeError | null): GraphqlErrorItem[] {
   return (error?.graphQLErrors ?? []).filter(
     (item): item is GraphqlErrorItem => item != null
   );
@@ -23,9 +21,7 @@ function classificationOf(item: GraphqlErrorItem): string {
   return typeof value === "string" ? value.toUpperCase() : "";
 }
 
-export function isGraphqlNotFound(
-  error?: GraphqlLikeError | null
-): boolean {
+export function isGraphqlNotFound(error?: GraphqlLikeError | null): boolean {
   if (!error) {
     return false;
   }
@@ -39,4 +35,14 @@ export function isGraphqlNotFound(
   const chunks = [error.message, ...items.map((item) => item.message)];
 
   return chunks.some((message) => /not found/i.test(message ?? ""));
+}
+
+export function isGraphqlInvalidHomeworkState(
+  error?: GraphqlLikeError | null
+): boolean {
+  return graphQlItems(error).some(
+    (item) =>
+      classificationOf(item) === "BAD_REQUEST" &&
+      /invalid homework state/i.test(item.message ?? "")
+  );
 }

@@ -1,109 +1,129 @@
-import { FC, useRef, useState } from "react";
-import { HOMEWORK_FILE_GET_URI } from "config";
+import { FC, useEffect, useRef, useState } from "react";
+import { Alert } from "@mui/material";
 
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
-import SendButtons from "shared/components/send-buttons";
-import { createUrlWithParams } from "shared/utils";
-import {
-  useHomeworkFileDelete,
-  useHomeworkFileUpload,
-  useRichTextFileManager,
-} from "shared/hooks";
+import type { PendingFile } from "shared/components/text-editor/types";
 
 import { IUpdateHomeWork } from "./update-homework.types";
 import {
   StyledBox,
-  StyledFormHelperText,
+  StyledCancelButton,
+  StyledLoadingButton,
+  StyledStack,
   StyledWrapper,
 } from "./update-homework.styled";
+import useHomeworkRevision from "../use-homework-revision";
 
 const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
-  const { loading, updateHomework, setOpenHomeWorkEdit, answer, homeWorkId } =
-    props;
-  const rteRef = useRef<RichTextEditorRef>(null);
-  const [error, setError] = useState("");
-  const { uploadHomeworkFile } = useHomeworkFileUpload();
-  const { deleteHomeworkFile } = useHomeworkFileDelete();
-
   const {
-    pendingFiles,
-    setPendingFiles,
-    deleteFile: handleDeleteFile,
-    extractBlobUrls,
-    recoverMissingFiles,
-    uploadAllFiles,
-    removeDeletedFiles,
-    resetState,
-  } = useRichTextFileManager({
-    upload: async (file, homeWorkId) => {
-      const result = await uploadHomeworkFile(file, homeWorkId);
-      if (!result?.id) throw new Error("Upload failed or missing file ID");
-      return { id: result.id };
+    loading,
+    updateHomework,
+    sendHomeWorkToCheck,
+    setOpenHomeWorkEdit,
+    answer,
+    homeWorkId,
+    resubmit = false,
+    submitLabel,
+    refreshHomework,
+  } = props;
+  const rteRef = useRef<RichTextEditorRef>(null);
+  const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
+  const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
+  const revision = useHomeworkRevision(
+    homeWorkId,
+    {
+      updateHomework,
+      sendHomeWorkToCheck,
     },
-    remove: async (homeWorkId, fileId) => {
-      const result = await deleteHomeworkFile(homeWorkId, fileId);
-      if (result === null) throw new Error("Deletion failed");
-    },
-    fileUrlBuilder: (fileId, homeWorkId) =>
-      createUrlWithParams(HOMEWORK_FILE_GET_URI, { homeWorkId, fileId }),
-    getEntityId: () => homeWorkId!,
-  });
+    refreshHomework
+  );
+  const busy = loading || revision.loading;
+
+  useEffect(() => {
+    setPendingFiles([]);
+    setDeletedFileIds([]);
+  }, [homeWorkId]);
 
   const handleUpdateHomework = async () => {
     const editor = rteRef.current?.editor;
-    if (!editor || !homeWorkId) return;
+    if (!editor || !homeWorkId || busy) return;
+    const result = await revision.submit({
+      editor,
+      pendingFiles,
+      deletedFileIds,
+      resubmit,
+    });
+    if (result) setOpenHomeWorkEdit(false);
+  };
 
-    let content = editor.getHTML().trim();
-    if (!content || content === "<p></p>") {
-      setError("Введите текст");
-      return;
-    }
-
-    try {
-      const blobUrls = extractBlobUrls(content);
-      const recoveredFiles = await recoverMissingFiles(
-        blobUrls,
-        editor.state.doc
+  const handleDeleteFile = (fileId: string) => {
+    if (fileId.startsWith("blob:")) {
+      setPendingFiles((previous) =>
+        previous.filter((file) => file.localUrl !== fileId)
       );
-      const allFiles = [...pendingFiles, ...recoveredFiles];
-
-      content = await uploadAllFiles(allFiles, content);
-
-      await updateHomework({
-        variables: { id: homeWorkId, content },
-      });
-
-      await removeDeletedFiles(editor.state.doc);
-
-      setOpenHomeWorkEdit(false);
-      resetState();
-      setError("");
-      editor.commands.clearContent();
-    } catch (err) {
-      console.error(err);
-      setError("Произошла ошибка при редактировании д/з.");
+    } else {
+      setDeletedFileIds((previous) =>
+        Array.from(new Set([...previous, fileId]))
+      );
     }
   };
 
+  const buttonLabel = resubmit
+    ? submitLabel ?? "Отправить повторно"
+    : "Сохранить";
+
   return (
-    <form>
+    <form
+      aria-label="Исправление ответа"
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleUpdateHomework();
+      }}
+    >
       <StyledWrapper>
         <StyledBox>
           <Editor
+            key={homeWorkId}
             content={answer}
             rteRef={rteRef}
             setPendingFiles={setPendingFiles}
             source="studentHomework"
             handleDeleteFile={handleDeleteFile}
+            disabled={busy}
           />
-          {error && <StyledFormHelperText>{error}</StyledFormHelperText>}
-
-          <SendButtons
-            onReply={handleUpdateHomework}
-            onCancel={() => setOpenHomeWorkEdit(false)}
-            loading={loading}
-          />
+          {resubmit && (
+            <Alert severity="info" sx={{ mt: 2 }}>
+              Сначала сохраним исправленный ответ, затем отправим его на
+              проверку. Окончательное решение принимает ментор.
+            </Alert>
+          )}
+          {revision.error && (
+            <Alert
+              severity={revision.saved ? "warning" : "error"}
+              sx={{ mt: 2 }}
+            >
+              {revision.error}
+            </Alert>
+          )}
+          <StyledStack>
+            <StyledCancelButton
+              variant="contained"
+              color="secondary"
+              disabled={busy}
+              onClick={() => setOpenHomeWorkEdit(false)}
+            >
+              Отменить
+            </StyledCancelButton>
+            <StyledLoadingButton
+              type="submit"
+              variant="contained"
+              loading={busy}
+              disabled={busy}
+            >
+              {revision.error && resubmit ? "Повторить отправку" : buttonLabel}
+            </StyledLoadingButton>
+          </StyledStack>
         </StyledBox>
       </StyledWrapper>
     </form>

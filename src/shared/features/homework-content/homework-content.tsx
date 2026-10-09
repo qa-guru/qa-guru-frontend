@@ -3,6 +3,7 @@ import { FC } from "react";
 import { TextView } from "shared/components/text-editor";
 import UpdateHomeworkItem from "shared/features/update-homework/container";
 import CreateHomeworkItem from "shared/features/send-homework/container";
+import { isHomeworkStudentEditable } from "shared/helpers";
 
 import { IHomeworkContent } from "./homework-content.types";
 
@@ -19,14 +20,18 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
   } = props;
   let homeworkContent;
 
-  if (status && !openHomeWorkEdit) {
+  if (status && (!openHomeWorkEdit || !isHomeworkStudentEditable(status))) {
     homeworkContent = <TextView content={answer} />;
-  } else if (status && openHomeWorkEdit) {
+  } else if (isHomeworkStudentEditable(status)) {
     homeworkContent = (
       <UpdateHomeworkItem
         answer={answer}
         setOpenHomeWorkEdit={setOpenHomeWorkEdit}
         homeWorkId={homeWorkId}
+        resubmit
+        submitLabel={
+          status === "NOT_APPROVED" ? "Отправить повторно" : "Отправить"
+        }
       />
     );
   } else {

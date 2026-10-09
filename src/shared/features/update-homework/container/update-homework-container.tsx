@@ -1,11 +1,9 @@
-import { FC } from "react";
-import { useParams } from "react-router-dom";
+import { FC, useCallback } from "react";
+import { useApolloClient } from "@apollo/client";
 
 import {
-  HomeWorkByLectureAndTrainingDocument,
-  HomeWorkByLectureAndTrainingQuery,
-  Maybe,
   useUpdateHomeworkMutation,
+  useSendHomeWorkToCheckMutation,
 } from "api/graphql/generated/graphql";
 
 import { IUpdateHomeworkContainer } from "./update-homework-container.types";
@@ -15,41 +13,47 @@ const UpdateHomeworkContainer: FC<IUpdateHomeworkContainer> = ({
   setOpenHomeWorkEdit,
   answer,
   homeWorkId,
+  resubmit,
+  submitLabel,
 }) => {
-  const { lectureId, trainingId } = useParams();
+  const client = useApolloClient();
+  const [updateHomework, { loading: saving }] = useUpdateHomeworkMutation();
+  const [sendHomeWorkToCheck, { loading: submitting }] =
+    useSendHomeWorkToCheckMutation({
+      refetchQueries: ({ data }) =>
+        data?.sendHomeWorkToCheck?.id === homeWorkId
+          ? Array.from(client.getObservableQueries().values())
+              .filter((query) => query.queryName === "homeworks")
+              .map((query) => ({
+                query: query.options.query,
+                variables: query.options.variables,
+              }))
+          : [],
+    });
 
-  const [updateHomework, { loading }] = useUpdateHomeworkMutation({
-    update: (cache, { data }) => {
-      const newUpdateHomework = data?.updateHomeWork;
-
-      const existingHomeWorkByLectureAndTraining: Maybe<HomeWorkByLectureAndTrainingQuery> =
-        cache.readQuery({
-          query: HomeWorkByLectureAndTrainingDocument,
-          variables: { lectureId: lectureId!, trainingId: trainingId! },
-        });
-
-      const updatedHomeWorkByLectureAndTraining = {
-        homeWorkByLectureAndTraining: {
-          ...existingHomeWorkByLectureAndTraining?.homeWorkByLectureAndTraining,
-          answer: newUpdateHomework?.answer,
-        },
-      };
-
-      cache.writeQuery({
-        query: HomeWorkByLectureAndTrainingDocument,
-        variables: { lectureId: lectureId!, trainingId: trainingId! },
-        data: updatedHomeWorkByLectureAndTraining,
-      });
-    },
-  });
+  const refreshHomework = useCallback(() => {
+    client.getObservableQueries().forEach((query) => {
+      if (
+        ["homeWork", "homeWorkByLectureAndTraining", "homeworks"].includes(
+          query.queryName ?? ""
+        )
+      ) {
+        query.refetch();
+      }
+    });
+  }, [client]);
 
   return (
     <UpdateHomework
       setOpenHomeWorkEdit={setOpenHomeWorkEdit}
-      loading={loading}
+      loading={saving || submitting}
       updateHomework={updateHomework}
+      sendHomeWorkToCheck={sendHomeWorkToCheck}
       answer={answer}
       homeWorkId={homeWorkId}
+      resubmit={resubmit}
+      submitLabel={submitLabel}
+      refreshHomework={refreshHomework}
     />
   );
 };

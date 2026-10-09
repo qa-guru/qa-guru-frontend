@@ -5,7 +5,10 @@ import HomeworkFileService from "api/rest/homework-file-service";
 import { Maybe } from "api/graphql/generated/graphql";
 import { RESPONSE_STATUS } from "shared/constants";
 
-export const useHomeworkFileDelete = () => {
+export const useHomeworkFileDelete = (
+  options: { propagateErrors?: boolean } = {}
+) => {
+  const { propagateErrors = false } = options;
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
@@ -15,22 +18,20 @@ export const useHomeworkFileDelete = () => {
 
     try {
       const response = await HomeworkFileService.deleteFile(homeWorkId, fileId);
+      setDeleting(false);
 
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-        setDeleting(false);
-        enqueueSnackbar(`Файл успешно удален`, {
-          variant: "success",
-        });
         return response.data;
-      } else {
-        setDeleting(false);
-        enqueueSnackbar(`Не удалось удалить файл`);
-        return null;
       }
+
+      throw Object.assign(new Error("Homework file delete failed"), {
+        response,
+      });
     } catch (err) {
       setError(err as Error);
       enqueueSnackbar(`Не удалось удалить файл`);
       setDeleting(false);
+      if (propagateErrors) throw err;
       return null;
     }
   };

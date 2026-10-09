@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Divider, Typography } from "@mui/material";
 import { useReactiveVar } from "@apollo/client";
 
@@ -30,6 +30,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     status,
     startCheckingDate,
     endCheckingDate,
+    updateDate,
     mentor,
     student,
     answer,
@@ -40,7 +41,15 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
   const [openHomeWorkEdit, setOpenHomeWorkEdit] = useState<boolean>(false);
   const editAccess = currentUserId === student?.id;
 
-  const date = status === "IN_REVIEW" ? startCheckingDate : endCheckingDate;
+  useEffect(() => {
+    setOpenHomeWorkEdit(false);
+  }, [homeWorkId]);
+
+  const date = (() => {
+    if (status === "IN_REVIEW") return startCheckingDate;
+    if (status === "REVIEW" || status === "NEW") return updateDate;
+    return endCheckingDate;
+  })();
 
   const renderStatusAndMentor = () =>
     !hideMentorAndStudent && (

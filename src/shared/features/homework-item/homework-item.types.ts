@@ -10,6 +10,7 @@ export interface IHomeworkItem {
     answer?: string | null;
     status?: StudentHomeWorkStatus | null;
     creationDate?: any | null;
+    updateDate?: any | null;
     startCheckingDate?: any | null;
     endCheckingDate?: any | null;
     lecture?: {

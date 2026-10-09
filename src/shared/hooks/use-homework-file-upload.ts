@@ -5,7 +5,10 @@ import { Maybe } from "api/graphql/generated/graphql";
 import HomeworkFileService from "api/rest/homework-file-service";
 import { RESPONSE_STATUS } from "shared/constants";
 
-export const useHomeworkFileUpload = () => {
+export const useHomeworkFileUpload = (
+  options: { propagateErrors?: boolean } = {}
+) => {
+  const { propagateErrors = false } = options;
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<Maybe<Error>>(null);
 
@@ -15,22 +18,20 @@ export const useHomeworkFileUpload = () => {
 
     try {
       const response = await HomeworkFileService.uploadFile(homeWorkId, file);
+      setUploading(false);
 
       if (response.status === RESPONSE_STATUS.SUCCESSFUL) {
-        setUploading(false);
-        enqueueSnackbar(`Файл успешно загружен`, {
-          variant: "success",
-        });
         return response.data;
-      } else {
-        setUploading(false);
-        enqueueSnackbar(`Не удалось загрузить файл`);
-        return null;
       }
+
+      throw Object.assign(new Error("Homework file upload failed"), {
+        response,
+      });
     } catch (err) {
       setError(err as Error);
       enqueueSnackbar(`Не удалось загрузить файл`);
       setUploading(false);
+      if (propagateErrors) throw err;
       return null;
     }
   };

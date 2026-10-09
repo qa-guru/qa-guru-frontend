@@ -6,4 +6,6 @@ export interface IUpdateHomeworkContainer {
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   answer?: Maybe<string>;
   homeWorkId?: Maybe<string>;
+  resubmit?: boolean;
+  submitLabel?: string;
 }
