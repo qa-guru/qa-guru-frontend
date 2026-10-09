@@ -19,4 +19,3 @@ export { useLectureHomeworkFileDelete } from "./use-lecture-homework-file-delete
 export { useHomeworkCommentFileGet } from "./use-homework-comment-file-get";
 export { useHomeworkCommentFileUpload } from "./use-homework-comment-file-upload";
 export { useHomeworkCommentFileDelete } from "./use-homework-comment-file-delete";
-export { useRichTextFileManager } from "./use-rich-text-file-manager";
