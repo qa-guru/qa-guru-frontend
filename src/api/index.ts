@@ -16,6 +16,7 @@ const httpLink = new HttpLink({
 const PRIVATE_ADVISORY_OPERATIONS = [
   "homeWorkAdvisoryDraft",
   "saveHomeWorkAdvisoryDraft",
+  "homeWorkAdvisoryDraftAudit",
 ];
 
 export const errorLink = onError(

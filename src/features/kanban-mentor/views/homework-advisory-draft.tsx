@@ -10,6 +10,7 @@ import {
   Alert,
   Box,
   Button,
+  Collapse,
   FormControl,
   InputLabel,
   MenuItem,
@@ -19,10 +20,14 @@ import {
   Typography,
   type SelectChangeEvent,
 } from "@mui/material";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { format, parseISO } from "date-fns";
 
 import { userIdVar, userRolesVar } from "cache";
 import { Maybe, UserRole } from "api/graphql/generated/graphql";
 import { useRoleAccess } from "shared/hooks/use-role-access";
+import { formatUserFullName } from "shared/helpers";
 
 export const HomeWorkAdvisoryDraftDocument = gql`
   query homeWorkAdvisoryDraft($homeWorkId: ID!) {
@@ -74,6 +79,22 @@ export const SaveHomeWorkAdvisoryDraftDocument = gql`
   }
 `;
 
+export const HomeWorkAdvisoryDraftAuditDocument = gql`
+  query homeWorkAdvisoryDraftAudit($homeWorkId: ID!) {
+    homeWorkAdvisoryDraftAudit(homeWorkId: $homeWorkId) {
+      event
+      marker
+      boundSourceRevision
+      createdAt
+      author {
+        id
+        firstName
+        lastName
+      }
+    }
+  }
+`;
+
 type SourceRevision = string | number;
 type AdvisoryMarker = "SOURCE_CONFIRMED" | "SOURCE_PARTIAL" | "NOT_VERIFIED";
 type AdvisoryDraft = {
@@ -100,6 +121,19 @@ type SaveVariables = {
   content: string;
   baseSourceRevision: SourceRevision;
 };
+type AuditAuthor = {
+  id: string | null;
+  firstName: string | null;
+  lastName: string | null;
+};
+type AuditEntry = {
+  event: string;
+  marker: string;
+  boundSourceRevision: SourceRevision;
+  createdAt: string | null;
+  author: AuditAuthor;
+};
+type AuditQuery = { homeWorkAdvisoryDraftAudit: AuditEntry[] | null };
 type EditingState = {
   homeworkId: string;
   authorId: string;
@@ -118,6 +152,17 @@ const API_ERROR =
 const SAVE_ERROR =
   "Не сохранено. Проверьте текст и версию сдачи, затем повторите.";
 const DENIED_ERROR = "Нет доступа к черновику этой сдачи";
+const AUDIT_TITLE = "История заметок";
+const AUDIT_LOADING = "Загрузка истории…";
+const AUDIT_ERROR =
+  "Не удалось загрузить историю. API недоступен или вернул ошибку.";
+const AUDIT_DENIED = "Нет доступа к истории этой сдачи";
+const AUDIT_EMPTY = "Записей пока нет";
+const AUDIT_DATE_FORMAT = "dd.MM.yyyy | HH:mm";
+const AUDIT_EVENT_LABELS: Record<string, string> = {
+  SAVED: "Сохранено",
+  REPLACED: "Заменено",
+};
 const EDIT_ACTION = "Редактировать приватный черновик";
 const SAVE_ACTION = "Сохранить приватный черновик";
 const REFRESH_ACTION = "Обновить контекст";
@@ -162,6 +207,37 @@ const hasValidMetadata = (
           typeof result.draft.id === "string" &&
           isRevision(result.draft.boundSourceRevision))
   );
+
+const hasValidAuditEntries = (
+  result?: AuditEntry[] | null
+): result is AuditEntry[] =>
+  Array.isArray(result) &&
+  result.every(
+    (entry) =>
+      entry &&
+      typeof entry.event === "string" &&
+      typeof entry.marker === "string" &&
+      isRevision(entry.boundSourceRevision) &&
+      (entry.createdAt === null || typeof entry.createdAt === "string") &&
+      entry.author !== null &&
+      typeof entry.author === "object"
+  );
+
+const formatAuditAuthor = (author: AuditAuthor): string =>
+  formatUserFullName({
+    firstName: author.firstName,
+    lastName: author.lastName,
+  }) ||
+  author.id ||
+  "—";
+
+const formatAuditDate = (value: string | null): string => {
+  if (!value) return "—";
+  const parsed = parseISO(value);
+  return Number.isNaN(parsed.getTime())
+    ? "—"
+    : format(parsed, AUDIT_DATE_FORMAT);
+};
 
 const validateEditing = (value: EditingState): string | null => {
   if (!isMarker(value.marker)) return "Выберите категорию evidence";
@@ -361,6 +437,75 @@ const AdvisoryBody: FC<BodyProps> = ({
   );
 };
 
+const AdvisoryAuditList: FC<{ homeworkId: string }> = ({ homeworkId }) => {
+  const { data, loading, error } = useQuery<AuditQuery, { homeWorkId: string }>(
+    HomeWorkAdvisoryDraftAuditDocument,
+    {
+      variables: { homeWorkId: homeworkId },
+      fetchPolicy: "no-cache",
+      errorPolicy: "none",
+      notifyOnNetworkStatusChange: true,
+      context: { queryDeduplication: false },
+    }
+  );
+  const entries = data?.homeWorkAdvisoryDraftAudit;
+
+  if (loading) {
+    return <Typography role="status">{AUDIT_LOADING}</Typography>;
+  }
+  if (error) {
+    return (
+      <Alert severity="error">
+        {isAccessDenied(error) ? AUDIT_DENIED : AUDIT_ERROR}
+      </Alert>
+    );
+  }
+  if (!hasValidAuditEntries(entries)) {
+    return <Alert severity="error">{AUDIT_ERROR}</Alert>;
+  }
+  if (entries.length === 0) {
+    return <Typography variant="body2">{AUDIT_EMPTY}</Typography>;
+  }
+  return (
+    <Stack component="ul" spacing={0.5} sx={{ m: 0, pl: 2 }}>
+      {entries.map((entry, index) => (
+        <Typography component="li" variant="body2" key={index}>
+          {AUDIT_EVENT_LABELS[entry.event] ?? entry.event}
+          {" · "}
+          {entry.marker}
+          {" · "}
+          {formatAuditAuthor(entry.author)}
+          {" · "}
+          {formatAuditDate(entry.createdAt)}
+          {" · версия "}
+          {entry.boundSourceRevision}
+        </Typography>
+      ))}
+    </Stack>
+  );
+};
+
+const AdvisoryAuditSection: FC<{ homeworkId: string }> = ({ homeworkId }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <Box sx={{ mt: 1 }}>
+      <Button
+        size="small"
+        variant="text"
+        onClick={() => setOpen((current) => !current)}
+        aria-expanded={open}
+        endIcon={open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        sx={{ px: 0 }}
+      >
+        {AUDIT_TITLE}
+      </Button>
+      <Collapse in={open}>
+        {open && <AdvisoryAuditList homeworkId={homeworkId} />}
+      </Collapse>
+    </Box>
+  );
+};
+
 const AdvisoryQueryBlock: FC<{ homeworkId: string }> = ({ homeworkId }) => {
   const userId = useReactiveVar(userIdVar);
   const { data, loading, error } = useQuery<
@@ -517,6 +662,7 @@ const AdvisoryQueryBlock: FC<{ homeworkId: string }> = ({ homeworkId }) => {
         Marker — категория evidence, не оценка и не рекомендация зачёта.
       </Typography>
       {renderContent()}
+      <AdvisoryAuditSection homeworkId={homeworkId} />
     </Box>
   );
 };
