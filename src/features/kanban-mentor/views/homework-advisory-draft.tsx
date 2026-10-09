@@ -84,6 +84,7 @@ export const HomeWorkAdvisoryDraftAuditDocument = gql`
     homeWorkAdvisoryDraftAudit(homeWorkId: $homeWorkId) {
       event
       marker
+      content
       boundSourceRevision
       createdAt
       author {
@@ -129,6 +130,7 @@ type AuditAuthor = {
 type AuditEntry = {
   event: string;
   marker: string;
+  content: string;
   boundSourceRevision: SourceRevision;
   createdAt: string | null;
   author: AuditAuthor;
@@ -217,6 +219,7 @@ const hasValidAuditEntries = (
       entry &&
       typeof entry.event === "string" &&
       typeof entry.marker === "string" &&
+      typeof entry.content === "string" &&
       isRevision(entry.boundSourceRevision) &&
       (entry.createdAt === null || typeof entry.createdAt === "string") &&
       entry.author !== null &&
@@ -438,6 +441,7 @@ const AdvisoryBody: FC<BodyProps> = ({
 };
 
 const AdvisoryAuditList: FC<{ homeworkId: string }> = ({ homeworkId }) => {
+  const [expanded, setExpanded] = useState<number | null>(null);
   const { data, loading, error } = useQuery<AuditQuery, { homeWorkId: string }>(
     HomeWorkAdvisoryDraftAuditDocument,
     {
@@ -469,17 +473,52 @@ const AdvisoryAuditList: FC<{ homeworkId: string }> = ({ homeworkId }) => {
   return (
     <Stack component="ul" spacing={0.5} sx={{ m: 0, pl: 2 }}>
       {entries.map((entry, index) => (
-        <Typography component="li" variant="body2" key={index}>
-          {AUDIT_EVENT_LABELS[entry.event] ?? entry.event}
-          {" · "}
-          {entry.marker}
-          {" · "}
-          {formatAuditAuthor(entry.author)}
-          {" · "}
-          {formatAuditDate(entry.createdAt)}
-          {" · версия "}
-          {entry.boundSourceRevision}
-        </Typography>
+        <Box component="li" key={index}>
+          <Button
+            size="small"
+            variant="text"
+            onClick={() =>
+              setExpanded((current) => (current === index ? null : index))
+            }
+            aria-expanded={expanded === index}
+            endIcon={
+              expanded === index ? <ExpandLessIcon /> : <ExpandMoreIcon />
+            }
+            sx={{
+              px: 0,
+              textTransform: "none",
+              color: "text.primary",
+              fontWeight: "inherit",
+            }}
+          >
+            {AUDIT_EVENT_LABELS[entry.event] ?? entry.event}
+            {" · "}
+            {entry.marker}
+            {" · "}
+            {formatAuditAuthor(entry.author)}
+            {" · "}
+            {formatAuditDate(entry.createdAt)}
+            {" · версия "}
+            {entry.boundSourceRevision}
+          </Button>
+          <Collapse in={expanded === index}>
+            {expanded === index && (
+              <Typography
+                component="pre"
+                variant="body2"
+                sx={{
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "anywhere",
+                  fontFamily: "inherit",
+                  m: 0,
+                  pl: 2,
+                }}
+              >
+                {entry.content}
+              </Typography>
+            )}
+          </Collapse>
+        </Box>
       ))}
     </Stack>
   );

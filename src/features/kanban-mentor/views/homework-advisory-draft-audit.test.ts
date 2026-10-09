@@ -56,6 +56,7 @@ const entries = () => [
   {
     event: "SAVED",
     marker: "SOURCE_CONFIRMED",
+    content: "Synthetic saved snapshot text",
     boundSourceRevision: 2,
     createdAt: "2026-10-06T10:00:00",
     author: { id: "mentor-1", firstName: "Synthetic", lastName: "Mentor" },
@@ -63,6 +64,7 @@ const entries = () => [
   {
     event: "REPLACED",
     marker: "NOT_VERIFIED",
+    content: "Synthetic replaced snapshot text",
     boundSourceRevision: 3,
     createdAt: "2026-10-07T09:30:00",
     author: { id: "lector-1", firstName: null, lastName: null },
@@ -175,7 +177,7 @@ describe("private homework advisory audit trail", () => {
     await expandHistory();
     const audit = await auditRequest(view);
     assert.deepEqual(audit.operation.variables, { homeWorkId: "hw1" });
-    assert.ok(!/\bcontent\b/.test(print(audit.operation.query)));
+    assert.ok(/\bcontent\b/.test(print(audit.operation.query)));
     assert.ok(within(region()).getByText("Загрузка истории…"));
 
     await audit.reply({ data: { homeWorkAdvisoryDraftAudit: entries() } });
@@ -198,6 +200,36 @@ describe("private homework advisory audit trail", () => {
             definition.operation === "query"
         )
       )
+    );
+  });
+
+  it("reveals an entry snapshot only while expanded", async () => {
+    const view = setup();
+    await view.replyDraft();
+    await expandHistory();
+    await (
+      await auditRequest(view)
+    ).reply({ data: { homeWorkAdvisoryDraftAudit: entries() } });
+    const list = within(region()).getByRole("list");
+    const toggle = within(list).getByRole("button", {
+      name: /Сохранено · SOURCE_CONFIRMED/,
+    });
+    assert.equal(
+      within(list).queryByText("Synthetic saved snapshot text"),
+      null
+    );
+
+    fireEvent.click(toggle);
+    assert.ok(within(list).getByText("Synthetic saved snapshot text"));
+    assert.equal(
+      within(list).queryByText("Synthetic replaced snapshot text"),
+      null
+    );
+
+    fireEvent.click(toggle);
+    assert.equal(
+      within(list).queryByText("Synthetic saved snapshot text"),
+      null
     );
   });
 
