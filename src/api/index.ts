@@ -5,7 +5,7 @@ import fetch from "cross-fetch";
 import { cache } from "cache";
 import { FETCH_POLICY } from "shared/constants";
 
-import { GRAPHQL_URI, OIDC_LOGIN_URI } from "../config";
+import { AUTH_SESSION_URI, GRAPHQL_URI, OIDC_LOGIN_URI } from "../config";
 
 const httpLink = new HttpLink({
   uri: GRAPHQL_URI,
@@ -19,6 +19,32 @@ const PRIVATE_ADVISORY_OPERATIONS = [
   "homeWorkAdvisoryDraftAudit",
 ];
 
+let sessionCheck: Promise<boolean> | null = null;
+
+function sessionIsDead(): Promise<boolean> {
+  sessionCheck ??= fetch(AUTH_SESSION_URI, { credentials: "include" })
+    .then((response) => response.status === 401)
+    .catch(() => false)
+    .finally(() => {
+      sessionCheck = null;
+    });
+  return sessionCheck;
+}
+
+function redirectToIdpOnDeadSession() {
+  sessionIsDead().then((dead) => {
+    if (dead) window.location.assign(OIDC_LOGIN_URI);
+  });
+}
+
+function handleUnauthorized(message?: string) {
+  if (message === "Access Denied") {
+    redirectToIdpOnDeadSession();
+    return;
+  }
+  window.location.assign(OIDC_LOGIN_URI);
+}
+
 export const errorLink = onError(
   ({ operation, graphQLErrors, networkError }) => {
     if (PRIVATE_ADVISORY_OPERATIONS.includes(operation.operationName)) return;
@@ -26,10 +52,7 @@ export const errorLink = onError(
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
         if (err.extensions?.classification === "UNAUTHORIZED") {
-          if (err.message === "Access Denied") {
-            continue;
-          }
-          window.location.assign(OIDC_LOGIN_URI);
+          handleUnauthorized(err.message);
           return;
         }
       }
