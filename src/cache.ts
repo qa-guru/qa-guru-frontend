@@ -24,6 +24,7 @@ const loadSettingsFromStorage = (): themeSettingsTypes => {
 export const userIdVar = makeVar<Maybe<string>>(null);
 export const userRolesVar = makeVar<Maybe<Maybe<UserRole>[]>>([]);
 export const commentVar = makeVar<Maybe<string | undefined>>(null);
+export const sessionRecoveryVar = makeVar<boolean>(false);
 
 // Инициализируем настройки из localStorage
 const savedSettings = loadSettingsFromStorage();

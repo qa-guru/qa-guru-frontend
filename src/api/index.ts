@@ -3,7 +3,7 @@ import { onError } from "@apollo/client/link/error";
 import { RetryLink } from "@apollo/client/link/retry";
 import fetch from "cross-fetch";
 
-import { cache } from "cache";
+import { cache, sessionRecoveryVar } from "cache";
 import { FETCH_POLICY } from "shared/constants";
 
 import { AUTH_SESSION_URI, GRAPHQL_URI, OIDC_LOGIN_URI } from "../config";
@@ -33,8 +33,14 @@ function sessionIsDead(): Promise<boolean> {
 }
 
 function redirectToIdpOnDeadSession() {
+  sessionRecoveryVar(true);
+  setTimeout(() => sessionRecoveryVar(false), 10000);
   sessionIsDead().then((dead) => {
-    if (dead) window.location.assign(OIDC_LOGIN_URI);
+    if (dead) {
+      window.location.assign(OIDC_LOGIN_URI);
+    } else {
+      sessionRecoveryVar(false);
+    }
   });
 }
 
