@@ -45,6 +45,7 @@ const RichTextEditor = forwardRef<RichTextEditorRef, RichTextEditorProps>(
     const editor = useEditor(
       {
         editable,
+        shouldRerenderOnTransaction: true,
         ...editorProps,
       },
       editorDependencies

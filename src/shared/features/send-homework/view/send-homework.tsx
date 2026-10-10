@@ -141,7 +141,7 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
           setPendingFiles([]);
           setDeletedFileIds([]);
           setError("");
-          editor.commands.clearContent();
+          editor.commands.clearContent(false);
         },
       });
     } catch (error) {

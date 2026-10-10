@@ -22,7 +22,7 @@ const ResizableImage = Image.extend<ResizableImageOptions>({
       isAllowedImgSrc: (src: Maybe<string>) => {
         return !!src;
       },
-    };
+    } as ResizableImageOptions;
   },
 
   addAttributes() {

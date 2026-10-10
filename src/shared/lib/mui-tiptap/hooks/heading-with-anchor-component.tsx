@@ -4,8 +4,7 @@ import {
   getTextSerializersFromSchema,
   type NodeViewProps,
 } from "@tiptap/core";
-import type { Heading, Level } from "@tiptap/extension-heading";
-import type { Node as ProseMirrorNode } from "@tiptap/pm/model";
+import type { Level } from "@tiptap/extension-heading";
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { useMemo } from "react";
 import { makeStyles } from "tss-react/mui";
@@ -15,15 +14,6 @@ import slugify from "../utils/slugify";
 
 export interface HeadingNodeAttributes extends Record<string, unknown> {
   level: Level;
-}
-
-interface HeadingNode extends ProseMirrorNode {
-  attrs: HeadingNodeAttributes;
-}
-
-interface Props extends NodeViewProps {
-  node: HeadingNode;
-  extension: typeof Heading;
 }
 
 const useStyles = makeStyles<void, "link">({
@@ -86,11 +76,12 @@ export default function HeadingWithAnchorComponent({
   editor,
   node,
   extension,
-}: Props) {
+}: NodeViewProps) {
   const { classes, cx } = useStyles();
 
-  const hasLevel = extension.options.levels.includes(node.attrs.level);
-  const level = hasLevel ? node.attrs.level : extension.options.levels[0];
+  const attrs = node.attrs as HeadingNodeAttributes;
+  const hasLevel = extension.options.levels.includes(attrs.level);
+  const level = hasLevel ? attrs.level : extension.options.levels[0];
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
 
   const textSerializers = useMemo(
@@ -109,7 +100,7 @@ export default function HeadingWithAnchorComponent({
       id={headingId}
       {...extension.options.HTMLAttributes}
       className={cx(headingWithAnchorComponentClasses.root, classes.root)}
-      style={{ textAlign: node.attrs.textAlign }}
+      style={{ textAlign: attrs.textAlign as string | undefined }}
     >
       <span
         className={cx(

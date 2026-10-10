@@ -11,7 +11,6 @@ const TableImproved = Table.extend({
             columnResizing({
               handleWidth: this.options.handleWidth,
               cellMinWidth: this.options.cellMinWidth,
-              // @ts-expect-error
               View: this.options.View,
               lastColumnResizable: this.options.lastColumnResizable,
             }),

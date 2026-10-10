@@ -13,7 +13,7 @@ const HeadingWithAnchor = Heading.extend<HeadingWithAnchorOptions>({
     return {
       ...this.parent?.(),
       scrollToAnchorOnMount: true,
-    };
+    } as HeadingWithAnchorOptions;
   },
 
   onCreate() {
@@ -43,8 +43,13 @@ export function scrollToCurrentHeadingAnchor(editor: Editor) {
   }
 
   const elementForHash = window.document.getElementById(elementId);
+  const editorElement = editor.options.element;
 
-  if (elementForHash && editor.options.element.contains(elementForHash)) {
+  if (
+    elementForHash &&
+    editorElement instanceof Element &&
+    editorElement.contains(elementForHash)
+  ) {
     elementForHash.scrollIntoView({
       behavior: "smooth",
       block: "start",

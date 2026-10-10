@@ -65,7 +65,7 @@ const SendComment: FC<ISendComment> = (props) => {
       setAttachments([]);
       setDeletedFileIds([]);
       setError("");
-      editor.commands.clearContent();
+      editor.commands.clearContent(false);
       onSuccess?.();
     } catch (error) {
       if (!mountedRef.current) return;

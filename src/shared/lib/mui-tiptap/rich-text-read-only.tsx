@@ -11,9 +11,19 @@ export type RichTextReadOnlyProps = SetRequired<
 >;
 
 function RichTextReadOnlyInternal(props: RichTextReadOnlyProps) {
+  const baseAttributes = props.editorProps?.attributes;
   const editor = useEditor({
     ...props,
     editable: false,
+    editorProps: {
+      ...props.editorProps,
+      attributes: (state) => ({
+        ...(typeof baseAttributes === "function"
+          ? baseAttributes(state)
+          : baseAttributes),
+        role: "none",
+      }),
+    },
   });
 
   const previousContent = useRef(props.content);
@@ -29,7 +39,7 @@ function RichTextReadOnlyInternal(props: RichTextReadOnlyProps) {
 
     queueMicrotask(() => {
       if (props.content !== undefined) {
-        editor.commands.setContent(props.content);
+        editor.commands.setContent(props.content, { emitUpdate: false });
       }
     });
   }, [props.content, editor]);

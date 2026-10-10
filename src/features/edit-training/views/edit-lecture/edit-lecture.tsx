@@ -208,8 +208,8 @@ const EditLecture: FC<IEditLecture> = ({
     setPendingFiles([]);
     setDeletedLectureFileIds([]);
     setDeletedHomeworkFileIds([]);
-    rteRefContent.current?.editor?.commands.clearContent();
-    rteRefContentHomeWork.current?.editor?.commands.clearContent();
+    rteRefContent.current?.editor?.commands.clearContent(false);
+    rteRefContentHomeWork.current?.editor?.commands.clearContent(false);
   };
 
   const handleBack = () => {

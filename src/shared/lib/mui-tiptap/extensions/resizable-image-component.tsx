@@ -1,5 +1,4 @@
 import type { NodeViewProps } from "@tiptap/core";
-import type { Node as ProseMirrorNode } from "@tiptap/pm/model";
 import { NodeViewWrapper } from "@tiptap/react";
 import throttle from "lodash/throttle";
 import { useMemo, useRef } from "react";
@@ -18,14 +17,6 @@ interface ImageNodeAttributes extends Record<string, unknown> {
 interface ResizableImageNodeAttributes extends ImageNodeAttributes {
   width: Maybe<string | number>;
   aspectRatio: Maybe<string>;
-}
-
-interface ResizableImageNode extends ProseMirrorNode {
-  attrs: ResizableImageNodeAttributes;
-}
-
-interface Props extends NodeViewProps {
-  node: ResizableImageNode;
 }
 
 const IMAGE_MINIMUM_WIDTH_PIXELS = 15;
@@ -54,9 +45,13 @@ const useStyles = makeStyles({ name: { ResizableImageComponent } })(
   })
 );
 
-function ResizableImageComponent({ node, selected, updateAttributes }: Props) {
+function ResizableImageComponent({
+  node,
+  selected,
+  updateAttributes,
+}: NodeViewProps) {
   const { classes, cx } = useStyles();
-  const { attrs } = node;
+  const attrs = node.attrs as ResizableImageNodeAttributes;
 
   const imageRef = useRef<Maybe<HTMLImageElement>>(null);
 
