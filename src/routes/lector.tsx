@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 
 import { KanbanHomeworkDetailsFullPage, KanbanPage } from "pages/kanban";
 import CabinetPage from "pages/cabinet";
@@ -13,6 +13,7 @@ import {
 import InfoSystemPage from "pages/info-system";
 
 const LectorRoutes = [
+  <Route key="home" path="/" element={<Navigate to="/kanban" replace />} />,
   <Route key="kanban" path="/kanban" element={<KanbanPage />} />,
   <Route
     key="kanban-mentor"

@@ -1,5 +1,6 @@
 import { ApolloClient, HttpLink, ApolloLink } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { RetryLink } from "@apollo/client/link/retry";
 import fetch from "cross-fetch";
 
 import { cache } from "cache";
@@ -64,8 +65,13 @@ export const errorLink = onError(
   }
 );
 
+const retryLink = new RetryLink({
+  attempts: { max: 3 },
+  delay: { initial: 300, max: 2000, jitter: true },
+});
+
 const client = new ApolloClient({
-  link: ApolloLink.from([errorLink, httpLink]),
+  link: ApolloLink.from([errorLink, retryLink, httpLink]),
   cache,
   devtools: { enabled: import.meta.env?.MODE === "development" },
   defaultOptions: {
