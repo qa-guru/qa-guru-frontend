@@ -66,13 +66,24 @@ export const errorLink = onError(
     }
 
     if (networkError) {
+      const status = (networkError as { statusCode?: number }).statusCode;
+      if (status === 401) {
+        redirectToIdpOnDeadSession();
+        return;
+      }
       console.log(`[Network error]: ${networkError}`);
     }
   }
 );
 
 const retryLink = new RetryLink({
-  attempts: { max: 3 },
+  attempts: {
+    max: 3,
+    retryIf(error) {
+      const status = (error as { statusCode?: number })?.statusCode;
+      return !status || status >= 500;
+    },
+  },
   delay: { initial: 300, max: 2000, jitter: true },
 });
 
