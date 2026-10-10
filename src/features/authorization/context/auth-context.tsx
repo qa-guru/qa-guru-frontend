@@ -1,4 +1,11 @@
-import { FC, ReactNode, createContext, useContext, useEffect, useState } from "react";
+import {
+  FC,
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useReactiveVar } from "@apollo/client";
 import { client } from "api";
 import { OIDC_LOGIN_URI } from "config";
@@ -42,7 +49,15 @@ export const AuthProvider: FC<IAuthProvider> = ({ children }) => {
   useEffect(() => {
     let cancelled = false;
 
-    fetchAuthSession()
+    const attempt = (triesLeft: number): Promise<AuthSession | null> =>
+      fetchAuthSession().catch((error) => {
+        if (triesLeft <= 1) throw error;
+        return new Promise<AuthSession | null>((resolve) =>
+          setTimeout(() => resolve(attempt(triesLeft - 1)), 800)
+        );
+      });
+
+    attempt(3)
       .then((next) => {
         if (cancelled) {
           return;

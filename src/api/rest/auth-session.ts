@@ -23,7 +23,7 @@ export async function fetchAuthSession(): Promise<AuthSession | null> {
   }
 
   if (!response.ok) {
-    return null;
+    throw new Error(`session check failed: ${response.status}`);
   }
 
   const body = (await response.json()) as SessionResponse;
