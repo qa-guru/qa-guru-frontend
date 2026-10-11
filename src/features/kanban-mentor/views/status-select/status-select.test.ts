@@ -15,6 +15,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { createCustomTheme, initialSettings } from "theme";
 import { StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { userIdVar } from "cache";
 
 import StatusSelect from "./status-select";
 import ReturnForReworkDialog from "./return-for-rework-dialog";
@@ -151,15 +152,52 @@ const openSelectAndPick = async (itemText: string) => {
 };
 
 describe("StatusSelect", () => {
-  afterEach(() => cleanup());
+  afterEach(() => {
+    cleanup();
+    userIdVar(null);
+  });
+
+  it("hides verdict options for a mentor who is not bound", async () => {
+    userIdVar("m2");
+    renderWithClient(
+      makeClient([], okResponders()),
+      h(StatusSelect, {
+        currentStatus: StudentHomeWorkStatus.NotApproved,
+        homeworkId: "hw1",
+        boundMentorId: "m1",
+      })
+    );
+
+    const combobox = await screen.findByRole("combobox");
+    assert.equal(combobox.getAttribute("aria-disabled"), "true");
+  });
+
+  it("keeps verdict options for the bound mentor", async () => {
+    userIdVar("m1");
+    renderWithClient(
+      makeClient([], okResponders()),
+      h(StatusSelect, {
+        currentStatus: StudentHomeWorkStatus.NotApproved,
+        homeworkId: "hw1",
+        boundMentorId: "m1",
+      })
+    );
+
+    const combobox = await screen.findByRole("combobox");
+    fireEvent.mouseDown(combobox);
+    const item = await screen.findByText("Принято");
+    assert.ok(item.closest("[aria-disabled]") === null);
+  });
 
   it("opens the feedback dialog instead of flipping the status immediately", async () => {
+    userIdVar("m1");
     const calls: string[] = [];
     renderWithClient(
       makeClient(calls, okResponders()),
       h(StatusSelect, {
         currentStatus: StudentHomeWorkStatus.InReview,
         homeworkId: "hw1",
+        boundMentorId: "m1",
       })
     );
 
@@ -171,12 +209,14 @@ describe("StatusSelect", () => {
   });
 
   it("cancels the rework dialog without sending anything", async () => {
+    userIdVar("m1");
     const calls: string[] = [];
     renderWithClient(
       makeClient(calls, okResponders()),
       h(StatusSelect, {
         currentStatus: StudentHomeWorkStatus.InReview,
         homeworkId: "hw1",
+        boundMentorId: "m1",
       })
     );
 
@@ -191,6 +231,7 @@ describe("StatusSelect", () => {
   });
 
   it("shows the new status only after the server confirms it", async () => {
+    userIdVar("m1");
     const calls: string[] = [];
     const respond: Responder = (operation) => {
       if (operation.operationName === "approved") {
@@ -203,6 +244,7 @@ describe("StatusSelect", () => {
       h(StatusSelect, {
         currentStatus: StudentHomeWorkStatus.InReview,
         homeworkId: "hw1",
+        boundMentorId: "m1",
       })
     );
 
@@ -215,6 +257,7 @@ describe("StatusSelect", () => {
   });
 
   it("ignores a late status response after switching homework", async () => {
+    userIdVar("m1");
     const calls: string[] = [];
     const respond: Responder = (operation) => {
       if (operation.operationName === "approved") {
@@ -228,6 +271,7 @@ describe("StatusSelect", () => {
       h(StatusSelect, {
         currentStatus: StudentHomeWorkStatus.InReview,
         homeworkId: "hw1",
+        boundMentorId: "m1",
       })
     );
 

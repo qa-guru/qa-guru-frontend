@@ -41,7 +41,11 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
           endCheckingDate={endCheckingDate}
         />
       </StyledInfoBox>
-      <StatusSelect currentStatus={status} homeworkId={id} />
+      <StatusSelect
+        currentStatus={status}
+        homeworkId={id}
+        boundMentorId={mentor?.id}
+      />
       <ContourVerdictPanel
         homeworkId={id}
         verdict={homeWork?.contourCheckVerdict}

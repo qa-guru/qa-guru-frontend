@@ -7,6 +7,7 @@ import { RedHighlightOffIcon } from "shared/components/status-text/status-text";
 export interface IStatusSelect {
   currentStatus?: Maybe<StudentHomeWorkStatus>;
   homeworkId?: Maybe<string>;
+  boundMentorId?: Maybe<string>;
 }
 
 export const states = [

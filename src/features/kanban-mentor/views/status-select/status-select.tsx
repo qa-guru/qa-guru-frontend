@@ -10,7 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 
+import { useReactiveVar } from "@apollo/client";
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
+import { userIdVar } from "cache";
 import { STATES } from "shared/constants";
 
 import useUpdateHomeworkStatus from "../../hooks/use-update-homework-status";
@@ -18,13 +20,18 @@ import { IStatusSelect } from "./status-select.types";
 import { StyledIcon, StyledStack } from "./status-select.styled";
 import ReturnForReworkDialog from "./return-for-rework-dialog";
 
-const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
+const StatusSelect: FC<IStatusSelect> = ({
+  currentStatus,
+  homeworkId,
+  boundMentorId,
+}) => {
   const [status, setStatus] = useState(currentStatus);
   const [reworkOpen, setReworkOpen] = useState(false);
   const [pending, setPending] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
   const { takeForReview, approved } = useUpdateHomeworkStatus();
   const generationRef = useRef(0);
+  const currentUserId = useReactiveVar(userIdVar);
 
   useEffect(() => {
     generationRef.current += 1;
@@ -34,17 +41,19 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
     setActionError(null);
   }, [currentStatus, homeworkId]);
 
+  const isBoundMentor =
+    !!boundMentorId && !!currentUserId && boundMentorId === currentUserId;
+
   const getAvailableStatuses = (status?: Maybe<StudentHomeWorkStatus>) => {
     switch (status) {
       case StudentHomeWorkStatus.Review:
         return [StudentHomeWorkStatus.InReview];
       case StudentHomeWorkStatus.InReview:
-        return [
-          StudentHomeWorkStatus.Approved,
-          StudentHomeWorkStatus.NotApproved,
-        ];
+        return isBoundMentor
+          ? [StudentHomeWorkStatus.Approved, StudentHomeWorkStatus.NotApproved]
+          : [];
       case StudentHomeWorkStatus.NotApproved:
-        return [StudentHomeWorkStatus.Approved];
+        return isBoundMentor ? [StudentHomeWorkStatus.Approved] : [];
       case StudentHomeWorkStatus.Approved:
       default:
         return [];
