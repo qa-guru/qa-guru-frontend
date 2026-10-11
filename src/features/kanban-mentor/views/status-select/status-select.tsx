@@ -9,8 +9,8 @@ import {
   type SelectChangeEvent,
   Typography,
 } from "@mui/material";
-
 import { useReactiveVar } from "@apollo/client";
+
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 import { userIdVar } from "cache";
 import { STATES } from "shared/constants";
