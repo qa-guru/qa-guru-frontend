@@ -32,7 +32,7 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
           StudentHomeWorkStatus.NotApproved,
         ];
       case StudentHomeWorkStatus.NotApproved:
-        return StudentHomeWorkStatus.Approved;
+        return [StudentHomeWorkStatus.Approved];
       case StudentHomeWorkStatus.Approved:
       default:
         return [];
@@ -66,7 +66,12 @@ const StatusSelect: FC<IStatusSelect> = ({ currentStatus, homeworkId }) => {
     <FormControl fullWidth size="small">
       <Box>
         <InputLabel>Статус</InputLabel>
-        <Select value={status!} label="Статус" onChange={updateStatus}>
+        <Select
+          value={status!}
+          label="Статус"
+          onChange={updateStatus}
+          disabled={availableStatuses.length === 0}
+        >
           {STATES.map(({ value, Icon, text }) => (
             <MenuItem
               key={value}
