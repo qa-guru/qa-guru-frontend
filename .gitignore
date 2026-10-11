@@ -28,3 +28,6 @@ yarn-error.log*
 
 # codegen
 /src/api/graphql/generated/
+test-setup/browser/artifacts/
+test-setup/browser/dist/
+__pycache__/
