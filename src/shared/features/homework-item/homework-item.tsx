@@ -5,7 +5,6 @@ import { useReactiveVar } from "@apollo/client";
 import { userIdVar } from "cache";
 import StatusText from "shared/components/status-text";
 import UserRow from "shared/components/user-row";
-import LectureTestSection from "features/lecture-detail/views/lecture-test-section";
 
 import { IHomeworkItem } from "./homework-item.types";
 import {
@@ -87,14 +86,6 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
         {renderStatusAndMentor()}
       </StyledWrapper>
       <Divider />
-
-      {testGroup && (
-        <LectureTestSection
-          testGroup={testGroup}
-          trainingId={trainingId}
-          lectureId={lectureId}
-        />
-      )}
 
       {renderStudent()}
       <StyledHomeworkContentBox>

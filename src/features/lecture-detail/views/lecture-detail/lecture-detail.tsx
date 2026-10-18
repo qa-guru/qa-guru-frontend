@@ -2,10 +2,7 @@ import { FC, useState } from "react";
 import { Container } from "@mui/material";
 
 import BlurredHomework from "shared/components/blurred/blurred-homework/blurred-homework";
-import {
-  lectureCardAttachments,
-  shouldShowLectureGate,
-} from "shared/helpers";
+import { lectureCardAttachments, shouldShowLectureGate } from "shared/helpers";
 
 import { ILectureDetail } from "./lecture-detail.types";
 import LectureTitle from "../lecture-title";
@@ -13,6 +10,7 @@ import LectureDescription from "../lecture-description";
 import LectureSpeakers from "../lecture-speakers";
 import LectureContent from "../lecture-content";
 import LectureGate from "../lecture-gate";
+import LectureTestSection from "../lecture-test-section";
 import { HomeworksFormProvider } from "../../context/homeworks-other-students-form-context";
 import StepperButtons from "../stepper-buttons";
 import HomeworkSection from "../homework-section";
@@ -101,6 +99,13 @@ const LectureDetail: FC<ILectureDetail> = (props) => {
           lectureId={lectureId || undefined}
           files={materialFiles}
         />
+        {testGroup && (
+          <LectureTestSection
+            testGroup={testGroup}
+            trainingId={trainingId}
+            lectureId={lectureId || undefined}
+          />
+        )}
         {renderHomework()}
       </>
     );
