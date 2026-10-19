@@ -3,6 +3,7 @@ import type { Editor } from "@tiptap/core";
 import {
   Maybe,
   StudentHomeWorkDto,
+  StudentHomeWorkFilesDto,
   StudentHomeWorkStatus,
   UpdateHomeworkMutationFn,
   SendHomeWorkToCheckMutationFn,
@@ -86,6 +87,7 @@ export interface HomeworkRevisionInput {
   pendingFiles: PendingFile[];
   deletedFileIds: string[];
   resubmit: boolean;
+  existingFiles?: Array<Maybe<StudentHomeWorkFilesDto>> | null;
 }
 
 const confirmHomework = (
@@ -121,12 +123,26 @@ const uploadRevisionFiles = async (
     if (!deps.isCurrent()) return null;
     if (receipt.uploadedFiles.some((file) => file.localUrl === localUrl))
       continue;
-    const file =
-      pending.get(localUrl) ??
-      (await blobUrlToFile(
+    const pendingFile = pending.get(localUrl);
+    const fileName = findNodeByUrl(doc, localUrl)?.fileName;
+    const existing = pendingFile
+      ? undefined
+      : input.existingFiles?.find(
+          (file) => file?.id && fileName && file.fileName === fileName
+        );
+    if (existing?.id) {
+      receipt.uploadedFiles.push({
         localUrl,
-        findNodeByUrl(doc, localUrl)?.fileName || "recovered_file"
-      ));
+        realUrl: createUrlWithParams(deps.homeworkFileGetUri, {
+          homeWorkId: input.homeworkId,
+          fileId: existing.id,
+        }),
+      });
+      continue;
+    }
+    const file =
+      pendingFile ??
+      (await blobUrlToFile(localUrl, fileName || "recovered_file"));
     if (!deps.isCurrent()) return null;
     const uploaded = await deps.uploadFile(file, input.homeworkId);
     if (typeof uploaded?.id !== "string" || !uploaded.id.trim()) {

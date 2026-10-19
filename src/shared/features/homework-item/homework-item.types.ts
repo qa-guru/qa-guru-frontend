@@ -1,5 +1,6 @@
 import {
   StudentHomeWorkStatus,
+  StudentHomeWorkFilesDto,
   TestGroupDto,
 } from "api/graphql/generated/graphql";
 
@@ -37,6 +38,7 @@ export interface IHomeworkItem {
       email?: string | null;
       rating?: { __typename?: "RatingUserDto"; rating?: any | null } | null;
     } | null;
+    filesHomeWork?: Array<StudentHomeWorkFilesDto | null> | null;
   } | null;
   hideMentorAndStudent?: boolean;
   testGroup?: TestGroupDto;

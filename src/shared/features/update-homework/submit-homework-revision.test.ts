@@ -282,6 +282,44 @@ describe("submitHomeworkRevision", () => {
     assert.ok(!fixture.receipt.saved?.html.includes("blob:"));
   });
 
+  it("resolves a stale blob URL to an existing homework file by name without upload", async () => {
+    const fixture = setup();
+    fixture.edit(
+      '<p>Answer <file-node href="blob:dead" fileName="solution.zip"></file-node></p>'
+    );
+    (
+      fixture.input.editor as never as {
+        state: { doc: { descendants: unknown } };
+      }
+    ).state.doc.descendants = (callback: (node: never) => void) => {
+      callback({
+        type: { name: "file" },
+        attrs: { href: "blob:dead", fileName: "solution.zip" },
+      } as never);
+      return true;
+    };
+    fixture.input.existingFiles = [{ id: "601", fileName: "solution.zip" }];
+    fixture.deps.uploadFile = () => {
+      throw new Error("dead blob must not be re-uploaded");
+    };
+    await fixture.run();
+    assert.deepEqual(fixture.operations(), ["save", "submit"]);
+    assert.ok(fixture.receipt.saved?.html.includes("/homework/hw1/file/601"));
+    assert.ok(!fixture.receipt.saved?.html.includes("blob:"));
+  });
+
+  it("re-uploads a pending file even when an existing file shares the name", async () => {
+    const fixture = setup();
+    addFile(fixture);
+    fixture.input.existingFiles = [{ id: "601", fileName: "answer.txt" }];
+    await fixture.run();
+    assert.deepEqual(fixture.operations(), ["upload", "save", "submit"]);
+    assert.ok(
+      fixture.receipt.saved?.html.includes("/homework/hw1/file/answer.txt")
+    );
+    assert.ok(!fixture.receipt.saved?.html.includes("/homework/hw1/file/601"));
+  });
+
   it("deletes only removed answer files and does not repeat confirmed deletions", async () => {
     const fixture = setup();
     fixture.input.deletedFileIds = ["student-file-1"];

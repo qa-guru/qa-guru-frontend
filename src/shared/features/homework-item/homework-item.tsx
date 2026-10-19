@@ -33,6 +33,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
     mentor,
     student,
     answer,
+    filesHomeWork,
     id: homeWorkId,
   } = dataHomeWorkByLectureAndTraining || {};
 
@@ -95,6 +96,7 @@ const HomeworkItem: FC<IHomeworkItem> = (props) => {
           openHomeWorkEdit={openHomeWorkEdit}
           setOpenHomeWorkEdit={setOpenHomeWorkEdit}
           homeWorkId={homeWorkId}
+          files={filesHomeWork}
           testGroup={testGroup}
           trainingId={trainingId}
           lectureId={lectureId}

@@ -4,6 +4,7 @@ import {
   UpdateHomeworkMutationFn,
   SendHomeWorkToCheckMutationFn,
   Maybe,
+  StudentHomeWorkFilesDto,
 } from "api/graphql/generated/graphql";
 
 export interface IUpdateHomeWork {
@@ -16,4 +17,5 @@ export interface IUpdateHomeWork {
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
   answer?: Maybe<string>;
   homeWorkId?: Maybe<string>;
+  existingFiles?: Array<Maybe<StudentHomeWorkFilesDto>> | null;
 }

@@ -14,6 +14,7 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
     openHomeWorkEdit,
     setOpenHomeWorkEdit,
     homeWorkId,
+    files,
     testGroup,
     trainingId,
     lectureId,
@@ -28,6 +29,7 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
         answer={answer}
         setOpenHomeWorkEdit={setOpenHomeWorkEdit}
         homeWorkId={homeWorkId}
+        existingFiles={files}
         resubmit
         submitLabel={
           status === "NOT_APPROVED" || status === "REVIEW"

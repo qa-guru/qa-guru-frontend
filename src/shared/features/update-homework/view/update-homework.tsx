@@ -26,6 +26,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
     resubmit = false,
     submitLabel,
     refreshHomework,
+    existingFiles,
   } = props;
   const rteRef = useRef<RichTextEditorRef>(null);
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
@@ -53,6 +54,7 @@ const UpdateHomework: FC<IUpdateHomeWork> = (props) => {
       pendingFiles,
       deletedFileIds,
       resubmit,
+      existingFiles,
     });
     if (result) setOpenHomeWorkEdit(false);
   };

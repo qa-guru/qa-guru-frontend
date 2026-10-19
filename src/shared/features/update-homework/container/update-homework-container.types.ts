@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { Maybe } from "api/graphql/generated/graphql";
+import { Maybe, StudentHomeWorkFilesDto } from "api/graphql/generated/graphql";
 
 export interface IUpdateHomeworkContainer {
   setOpenHomeWorkEdit: Dispatch<SetStateAction<boolean>>;
@@ -8,4 +8,5 @@ export interface IUpdateHomeworkContainer {
   homeWorkId?: Maybe<string>;
   resubmit?: boolean;
   submitLabel?: string;
+  existingFiles?: Array<Maybe<StudentHomeWorkFilesDto>> | null;
 }

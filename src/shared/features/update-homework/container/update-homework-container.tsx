@@ -15,6 +15,7 @@ const UpdateHomeworkContainer: FC<IUpdateHomeworkContainer> = ({
   homeWorkId,
   resubmit,
   submitLabel,
+  existingFiles,
 }) => {
   const client = useApolloClient();
   const [updateHomework, { loading: saving }] = useUpdateHomeworkMutation();
@@ -53,6 +54,7 @@ const UpdateHomeworkContainer: FC<IUpdateHomeworkContainer> = ({
       homeWorkId={homeWorkId}
       resubmit={resubmit}
       submitLabel={submitLabel}
+      existingFiles={existingFiles}
       refreshHomework={refreshHomework}
     />
   );

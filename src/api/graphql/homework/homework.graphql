@@ -29,6 +29,10 @@ query homeWork($homeWorkId: ID!) {
         rating
       }
     }
+    filesHomeWork {
+      id
+      fileName
+    }
     creationDate
     updateDate
     startCheckingDate
