@@ -92,7 +92,35 @@ const SendHomeworkContainer: FC<SendHomeworkContainerProps> = ({
     });
 
   const [sendHomeWorkToCheck, { loading: loadingSendHomeWorkToCheck }] =
-    useSendHomeWorkToCheckMutation();
+    useSendHomeWorkToCheckMutation({
+      update: (cache, { data }) => {
+        const sentHomeWork = data?.sendHomeWorkToCheck;
+        if (!sentHomeWork) return;
+
+        const existing: Maybe<HomeWorkByLectureAndTrainingQuery> =
+          cache.readQuery({
+            query: HomeWorkByLectureAndTrainingDocument,
+            variables: {
+              lectureId: currentLectureId!,
+              trainingId: currentTrainingId!,
+            },
+          });
+
+        cache.writeQuery({
+          query: HomeWorkByLectureAndTrainingDocument,
+          variables: {
+            lectureId: currentLectureId!,
+            trainingId: currentTrainingId!,
+          },
+          data: {
+            homeWorkByLectureAndTraining: {
+              ...existing?.homeWorkByLectureAndTraining,
+              ...sentHomeWork,
+            },
+          },
+        });
+      },
+    });
 
   return (
     <SendHomework

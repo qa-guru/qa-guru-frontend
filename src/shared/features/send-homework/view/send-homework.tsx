@@ -3,7 +3,9 @@ import type { Editor as TiptapEditor } from "@tiptap/core";
 import { useParams } from "react-router-dom";
 import { HOMEWORK_FILE_GET_URI } from "config";
 import { Alert, Typography } from "@mui/material";
+import { enqueueSnackbar } from "notistack";
 
+import { homeworkSubmitInFlightVar } from "cache";
 import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
@@ -70,13 +72,37 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
 
   const showSubmitError = (submitError: unknown) => {
     console.error(submitError);
-    if (mountedRef.current) setError(revisionErrorMessage(submitError));
+    const message = revisionErrorMessage(submitError);
+    if (mountedRef.current) setError(message);
+    // The form may already be unmounted by the create cache write — surface
+    // the failure globally so the chain never dies silently.
+    enqueueSnackbar(message, { variant: "error", autoHideDuration: 6000 });
   };
 
   // The create cache write flips the card to UpdateHomeworkItem, which
   // unmounts this form — the submit chain deliberately keeps running on the
-  // captured editor snapshot instead of silently dying mid-flight.
+  // captured editor snapshot instead of silently dying mid-flight. While it
+  // runs we flag the lecture as in-flight (HomeworkContent renders a progress
+  // state) and arm a beforeunload guard so a manual refresh can't kill the
+  // remaining upload/save/submit requests unnoticed.
   const submitCreatedRevision = (homeWorkId: string, editor: TiptapEditor) => {
+    const flightKey = `${currentTrainingId}:${currentLectureId}`;
+    const preventUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+    };
+    homeworkSubmitInFlightVar(
+      new Set([...homeworkSubmitInFlightVar(), flightKey])
+    );
+    window.addEventListener("beforeunload", preventUnload);
+    const landFlight = () => {
+      homeworkSubmitInFlightVar(
+        new Set(
+          [...homeworkSubmitInFlightVar()].filter((key) => key !== flightKey)
+        )
+      );
+      window.removeEventListener("beforeunload", preventUnload);
+    };
+
     const receipt: HomeworkRevisionReceipt = {
       homeworkId: homeWorkId,
       uploadedFiles: [],
@@ -108,7 +134,8 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
         setError("");
         rteRef.current?.editor?.commands.clearContent(false);
       })
-      .catch(showSubmitError);
+      .catch(showSubmitError)
+      .finally(landFlight);
   };
 
   const handleSendHomeWork = () => {

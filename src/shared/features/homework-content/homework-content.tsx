@@ -1,5 +1,9 @@
 import { FC } from "react";
+import { useReactiveVar } from "@apollo/client";
+import { Typography } from "@mui/material";
 
+import { homeworkSubmitInFlightVar } from "cache";
+import { AppSpinner } from "shared/components/spinners";
 import { TextView } from "shared/components/text-editor";
 import UpdateHomeworkItem from "shared/features/update-homework/container";
 import CreateHomeworkItem from "shared/features/send-homework/container";
@@ -19,9 +23,24 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
     trainingId,
     lectureId,
   } = props;
+  const inFlight = useReactiveVar(homeworkSubmitInFlightVar).has(
+    `${trainingId}:${lectureId}`
+  );
   let homeworkContent;
 
-  if (status && (!openHomeWorkEdit || !isHomeworkStudentEditable(status))) {
+  if (inFlight) {
+    homeworkContent = (
+      <>
+        <AppSpinner />
+        <Typography variant="body2" color="text.secondary" align="center">
+          Отправляем ответ на проверку — не закрывайте и не обновляйте страницу.
+        </Typography>
+      </>
+    );
+  } else if (
+    status &&
+    (!openHomeWorkEdit || !isHomeworkStudentEditable(status))
+  ) {
     homeworkContent = <TextView content={answer} />;
   } else if (isHomeworkStudentEditable(status)) {
     homeworkContent = (

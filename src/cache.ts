@@ -26,6 +26,14 @@ export const userRolesVar = makeVar<Maybe<Maybe<UserRole>[]>>([]);
 export const commentVar = makeVar<Maybe<string | undefined>>(null);
 export const sessionRecoveryVar = makeVar<boolean>(false);
 
+// Homeworks whose first-submit chain (upload -> save -> send) is running
+// detached after the create mutation unmounted the send form. Keyed by
+// "${trainingId}:${lectureId}"; HomeworkContent shows a progress state while
+// a key is present instead of silently flipping to the NEW-status card.
+export const homeworkSubmitInFlightVar = makeVar<ReadonlySet<string>>(
+  new Set()
+);
+
 // Инициализируем настройки из localStorage
 const savedSettings = loadSettingsFromStorage();
 export const settingsVar = makeVar<themeSettingsTypes>(savedSettings);
