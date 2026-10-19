@@ -106,13 +106,46 @@ const confirmHomework = (
   return { ...homework, id: homeworkId, answer: html, status: homework.status };
 };
 
+const realFileUrl = (
+  deps: HomeworkRevisionDeps,
+  homeworkId: string,
+  fileId: string
+) =>
+  createUrlWithParams(deps.homeworkFileGetUri, {
+    homeWorkId: homeworkId,
+    fileId,
+  });
+
+const resolveRevisionFile = async (
+  deps: HomeworkRevisionDeps,
+  input: HomeworkRevisionInput,
+  pendingFile: File | undefined,
+  localUrl: string
+): Promise<string> => {
+  const fileName = findNodeByUrl(input.editor.state.doc, localUrl)?.fileName;
+  const existing = pendingFile
+    ? undefined
+    : input.existingFiles?.find(
+        (file) => file?.id && fileName && file.fileName === fileName
+      );
+  if (existing?.id) return realFileUrl(deps, input.homeworkId, existing.id);
+  const file =
+    pendingFile ??
+    (await blobUrlToFile(localUrl, fileName || "recovered_file"));
+  if (!deps.isCurrent()) return "";
+  const uploaded = await deps.uploadFile(file, input.homeworkId);
+  if (typeof uploaded?.id !== "string" || !uploaded.id.trim()) {
+    throw new Error("Upload did not return a confirmed file id");
+  }
+  return realFileUrl(deps, input.homeworkId, uploaded.id);
+};
+
 const uploadRevisionFiles = async (
   deps: HomeworkRevisionDeps,
   input: HomeworkRevisionInput,
   receipt: HomeworkRevisionReceipt,
   html: string
 ): Promise<string | null> => {
-  const { doc } = input.editor.state;
   const pending = new Map(
     input.pendingFiles.map(({ localUrl, file }) => [localUrl, file])
   );
@@ -123,38 +156,14 @@ const uploadRevisionFiles = async (
     if (!deps.isCurrent()) return null;
     if (receipt.uploadedFiles.some((file) => file.localUrl === localUrl))
       continue;
-    const pendingFile = pending.get(localUrl);
-    const fileName = findNodeByUrl(doc, localUrl)?.fileName;
-    const existing = pendingFile
-      ? undefined
-      : input.existingFiles?.find(
-          (file) => file?.id && fileName && file.fileName === fileName
-        );
-    if (existing?.id) {
-      receipt.uploadedFiles.push({
-        localUrl,
-        realUrl: createUrlWithParams(deps.homeworkFileGetUri, {
-          homeWorkId: input.homeworkId,
-          fileId: existing.id,
-        }),
-      });
-      continue;
-    }
-    const file =
-      pendingFile ??
-      (await blobUrlToFile(localUrl, fileName || "recovered_file"));
+    const realUrl = await resolveRevisionFile(
+      deps,
+      input,
+      pending.get(localUrl),
+      localUrl
+    );
     if (!deps.isCurrent()) return null;
-    const uploaded = await deps.uploadFile(file, input.homeworkId);
-    if (typeof uploaded?.id !== "string" || !uploaded.id.trim()) {
-      throw new Error("Upload did not return a confirmed file id");
-    }
-    receipt.uploadedFiles.push({
-      localUrl,
-      realUrl: createUrlWithParams(deps.homeworkFileGetUri, {
-        homeWorkId: input.homeworkId,
-        fileId: uploaded.id,
-      }),
-    });
+    receipt.uploadedFiles.push({ localUrl, realUrl });
   }
   const urls = new Map(
     receipt.uploadedFiles.map(({ localUrl, realUrl }) => [localUrl, realUrl])
