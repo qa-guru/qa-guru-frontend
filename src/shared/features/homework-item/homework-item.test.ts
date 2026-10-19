@@ -66,12 +66,16 @@ describe("HomeworkItem status contract", () => {
     userIdVar(null);
   });
 
-  it("shows updateDate as the submission date for REVIEW", async () => {
+  it("shows updateDate as the submission date for REVIEW and stays resubmittable", async () => {
     await setup(StudentHomeWorkStatus.Review, { endCheckingDate: null });
     assert.ok(screen.getByText("04.10.2026 | 12:05"));
     assert.equal(screen.queryByText("04.10.2026 | 12:03"), null);
     assert.ok(screen.getByText("Отправлено на проверку"));
-    assert.equal(editButton(), null);
+    assert.ok(
+      screen.getByRole("button", {
+        name: "Исправить и отправить повторно",
+      })
+    );
     assert.equal(
       document.querySelectorAll('.ProseMirror[contenteditable="true"]').length,
       0

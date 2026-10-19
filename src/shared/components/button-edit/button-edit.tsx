@@ -15,7 +15,7 @@ const ButtonEdit: FC<IButtonEdit> = (props) => {
           variant="contained"
           onClick={() => setOpenHomeWorkEdit(true)}
         >
-          {status === "NOT_APPROVED"
+          {status === "NOT_APPROVED" || status === "REVIEW"
             ? "Исправить и отправить повторно"
             : "Редактировать"}
         </StyledButton>

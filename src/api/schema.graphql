@@ -73,6 +73,7 @@ type Mutation {
   notApproved(homeWorkId: ID!): StudentHomeWorkDto
   resetState(homeWorkId: ID!): StudentHomeWorkDto
   checkHomeWorkByContour(homeWorkId: ID!): StudentHomeWorkDto
+  g3RequestRun(homeWorkId: ID!): G3RunJobDto
   """
   student TestAttempt section
   """
@@ -191,6 +192,7 @@ type Query {
     sort: StudentHomeWorkSort
     status: StudentHomeWorkStatus!
   ): StudentHomeWorksDto
+  g3RunJobs(homeWorkId: ID!): [G3RunJobDto!]!
   """
   student TestAttempt section
   """
@@ -856,6 +858,40 @@ enum TrainingTariffField {
   NAME
   CODE
   CREATION_DATE
+}
+
+"""
+G3 live pilot queue entry — a worker-claimed run of the bound submission.
+Advisory only: it never writes homework status or contour verdicts.
+"""
+type G3RunJobDto {
+  id: ID
+  jobRef: String
+  homeWorkId: ID
+  studentId: ID
+  lectureId: ID
+  sourceRevision: Int
+  fileName: String
+  status: G3RunJobStatus
+  trigger: G3RunTrigger
+  evidenceReady: Boolean
+  error: String
+  createdAt: LocalDateTime
+  finishedAt: LocalDateTime
+}
+
+enum G3RunJobStatus {
+  QUEUED
+  CLAIMED
+  DONE
+  FAILED
+  CANCELLED
+}
+
+enum G3RunTrigger {
+  SUBMIT
+  STUDENT
+  STAFF
 }
 
 scalar BigDecimal @javaType(name: "java.math.BigDecimal")

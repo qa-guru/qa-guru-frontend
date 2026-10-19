@@ -30,7 +30,9 @@ const HomeworkContent: FC<IHomeworkContent> = (props) => {
         homeWorkId={homeWorkId}
         resubmit
         submitLabel={
-          status === "NOT_APPROVED" ? "Отправить повторно" : "Отправить"
+          status === "NOT_APPROVED" || status === "REVIEW"
+            ? "Отправить повторно"
+            : "Отправить"
         }
       />
     );

@@ -1,0 +1,17 @@
+mutation g3RequestRun($homeWorkId: ID!) {
+  g3RequestRun(homeWorkId: $homeWorkId) {
+    id
+    jobRef
+    homeWorkId
+    studentId
+    lectureId
+    sourceRevision
+    fileName
+    status
+    trigger
+    evidenceReady
+    error
+    createdAt
+    finishedAt
+  }
+}

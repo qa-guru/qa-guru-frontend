@@ -1,0 +1,17 @@
+query g3RunJobs($homeWorkId: ID!) {
+  g3RunJobs(homeWorkId: $homeWorkId) {
+    id
+    jobRef
+    homeWorkId
+    studentId
+    lectureId
+    sourceRevision
+    fileName
+    status
+    trigger
+    evidenceReady
+    error
+    createdAt
+    finishedAt
+  }
+}

@@ -6,6 +6,7 @@ import Homework from "shared/features/homework/view";
 import StatusText from "shared/components/status-text";
 import HomeworkBaseInfo from "shared/components/homework-base-info";
 import ContourVerdictPanel from "shared/components/contour-verdict";
+import G3RunPanel from "shared/components/g3-run-panel";
 import { formatId } from "shared/helpers";
 
 import { IHomeworkDescriptionFull } from "./homework-details-full.types";
@@ -47,6 +48,7 @@ const HomeworkDetailsFull: FC<IHomeworkDescriptionFull> = ({ data }) => {
         comment={homeWork?.contourCheckComment}
         evidence={homeWork?.contourEvidence}
       />
+      <G3RunPanel homeworkId={id} />
       <LectureHomework lectureHomeWork={lecture?.contentHomeWork} />
       <StyledInfoBox>
         <Homework

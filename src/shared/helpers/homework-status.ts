@@ -1,7 +1,11 @@
 import { Maybe, StudentHomeWorkStatus } from "api/graphql/generated/graphql";
 
 export const STUDENT_EDITABLE_HOMEWORK_STATUSES: ReadonlyArray<StudentHomeWorkStatus> =
-  [StudentHomeWorkStatus.New, StudentHomeWorkStatus.NotApproved];
+  [
+    StudentHomeWorkStatus.New,
+    StudentHomeWorkStatus.NotApproved,
+    StudentHomeWorkStatus.Review,
+  ];
 
 export const isHomeworkStudentEditable = (
   status?: Maybe<StudentHomeWorkStatus>
