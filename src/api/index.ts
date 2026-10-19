@@ -32,11 +32,46 @@ function sessionIsDead(): Promise<boolean> {
   return sessionCheck;
 }
 
+const POST_LOGIN_RETURN_KEY = "postLoginReturnTo";
+const POST_LOGIN_RETURN_TTL_MS = 10 * 60 * 1000;
+
+export function rememberPostLoginReturn() {
+  try {
+    const { pathname, search, hash } = window.location;
+    window.sessionStorage.setItem(
+      POST_LOGIN_RETURN_KEY,
+      JSON.stringify({ url: `${pathname}${search}${hash}`, at: Date.now() })
+    );
+  } catch {
+    // storage unavailable — bounce still works, just without the return
+  }
+}
+
+export function consumePostLoginReturn(): string | null {
+  try {
+    const raw = window.sessionStorage.getItem(POST_LOGIN_RETURN_KEY);
+    window.sessionStorage.removeItem(POST_LOGIN_RETURN_KEY);
+    if (!raw) return null;
+    const { url, at } = JSON.parse(raw);
+    if (
+      typeof url !== "string" ||
+      !url.startsWith("/") ||
+      typeof at !== "number" ||
+      Date.now() - at > POST_LOGIN_RETURN_TTL_MS
+    )
+      return null;
+    return url;
+  } catch {
+    return null;
+  }
+}
+
 function redirectToIdpOnDeadSession() {
   sessionRecoveryVar(true);
   setTimeout(() => sessionRecoveryVar(false), 10000);
   sessionIsDead().then((dead) => {
     if (dead) {
+      rememberPostLoginReturn();
       window.location.assign(OIDC_LOGIN_URI);
     } else {
       sessionRecoveryVar(false);
@@ -49,6 +84,7 @@ function handleUnauthorized(message?: string) {
     redirectToIdpOnDeadSession();
     return;
   }
+  rememberPostLoginReturn();
   window.location.assign(OIDC_LOGIN_URI);
 }
 

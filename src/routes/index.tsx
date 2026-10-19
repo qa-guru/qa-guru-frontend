@@ -1,7 +1,8 @@
 import { ErrorBoundary } from "react-error-boundary";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
 import { useReactiveVar } from "@apollo/client";
+import { consumePostLoginReturn } from "api";
 
 import { userRolesVar } from "cache";
 import NotFoundPage from "pages/not-found";
@@ -98,6 +99,7 @@ export const getUserRoutes = (userRoles: Maybe<Array<Maybe<UserRole>>>) => {
 
 const Routing: FC<IRoutnig> = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [errorBoundaryKey, setErrorBoundaryKey] = useState<string>(
     location.pathname
   );
@@ -107,6 +109,16 @@ const Routing: FC<IRoutnig> = () => {
   }, [location]);
 
   const { isLoading, session } = useAuth();
+
+  // After a forced OIDC bounce the app lands on the default page — restore
+  // the URL the user was actually on (saved before the redirect).
+  useEffect(() => {
+    if (isLoading || !session) return;
+    const returnTo = consumePostLoginReturn();
+    if (returnTo && returnTo !== `${location.pathname}${location.search}`) {
+      navigate(returnTo, { replace: true });
+    }
+  }, [isLoading, session]);
   applyDevCabinetHatch();
   const userRoles = useReactiveVar(userRolesVar);
   const usersRoutes = getUserRoutes(
