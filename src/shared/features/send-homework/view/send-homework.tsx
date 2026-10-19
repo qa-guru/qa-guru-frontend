@@ -1,17 +1,20 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
+import type { Editor as TiptapEditor } from "@tiptap/core";
 import { useParams } from "react-router-dom";
 import { HOMEWORK_FILE_GET_URI } from "config";
 import { Alert, Typography } from "@mui/material";
 
-import { createUrlWithParams } from "shared/utils";
-import { collectFileIds, type RichTextEditorRef } from "shared/lib/mui-tiptap";
+import { type RichTextEditorRef } from "shared/lib/mui-tiptap";
 import { Editor } from "shared/components/text-editor";
 import { useHomeworkFileDelete, useHomeworkFileUpload } from "shared/hooks";
 import { PendingFile } from "shared/components/text-editor/types";
 import SendButtons from "shared/components/send-buttons";
-import { findNodeByUrl } from "shared/lib/mui-tiptap/utils/find-node-by-url";
-import { blobUrlToFile } from "shared/lib/mui-tiptap/utils/blob-url-to-file";
 import { useTestAttemptsByLectureQuery } from "api/graphql/generated/graphql";
+import {
+  submitHomeworkRevision,
+  HomeworkRevisionReceipt,
+} from "shared/features/update-homework/submit-homework-revision";
+import { revisionErrorMessage } from "shared/features/update-homework/use-homework-revision";
 
 import { ISendHomeWork } from "./send-homework.types";
 import { StyledBox, StyledFormHelperText } from "./send-homework.styled";
@@ -35,9 +38,20 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
   const rteRef = useRef<RichTextEditorRef>(null);
   const [pendingFiles, setPendingFiles] = useState<PendingFile[]>([]);
   const [deletedFileIds, setDeletedFileIds] = useState<string[]>([]);
-  const { uploadHomeworkFile } = useHomeworkFileUpload();
-  const { deleteHomeworkFile } = useHomeworkFileDelete();
+  const { uploadHomeworkFile } = useHomeworkFileUpload({
+    propagateErrors: true,
+  });
+  const { deleteHomeworkFile } = useHomeworkFileDelete({
+    propagateErrors: true,
+  });
   const [error, setError] = useState("");
+  const mountedRef = useRef(true);
+  useEffect(
+    () => () => {
+      mountedRef.current = false;
+    },
+    []
+  );
 
   const { data: attemptsData, loading: attemptsLoading } =
     useTestAttemptsByLectureQuery({
@@ -54,100 +68,75 @@ const SendHomework: FC<ISendHomeWork> = (props) => {
 
   const canSubmitHomework = !testGroup || hasSuccessfulTestAttempt;
 
-  const handleSendHomeWork = () => {
-    if (!rteRef.current?.editor) return;
+  const showSubmitError = (submitError: unknown) => {
+    console.error(submitError);
+    if (mountedRef.current) setError(revisionErrorMessage(submitError));
+  };
 
-    let content = rteRef.current.editor.getHTML().trim();
+  // The create cache write flips the card to UpdateHomeworkItem, which
+  // unmounts this form — the submit chain deliberately keeps running on the
+  // captured editor snapshot instead of silently dying mid-flight.
+  const submitCreatedRevision = (homeWorkId: string, editor: TiptapEditor) => {
+    const receipt: HomeworkRevisionReceipt = {
+      homeworkId: homeWorkId,
+      uploadedFiles: [],
+      deletedFileIds: [],
+    };
+    submitHomeworkRevision(
+      {
+        updateHomework,
+        sendHomeWorkToCheck,
+        uploadFile: uploadHomeworkFile,
+        deleteFile: deleteHomeworkFile,
+        homeworkFileGetUri: HOMEWORK_FILE_GET_URI,
+        isCurrent: () => true,
+      },
+      {
+        homeworkId: homeWorkId,
+        editor,
+        pendingFiles,
+        deletedFileIds,
+        resubmit: true,
+        existingFiles: [],
+      },
+      receipt
+    )
+      .then((result) => {
+        if (!result || !mountedRef.current) return;
+        setPendingFiles([]);
+        setDeletedFileIds([]);
+        setError("");
+        rteRef.current?.editor?.commands.clearContent(false);
+      })
+      .catch(showSubmitError);
+  };
+
+  const handleSendHomeWork = () => {
+    const editor = rteRef.current?.editor;
+    if (!editor) return;
+
+    const content = editor.getHTML().trim();
     if (!content || content === "<p></p>") {
       setError("Введите текст");
       return;
     }
 
-    try {
-      createHomeWorkToCheck({
-        variables: {
-          lectureId: currentLectureId!,
-          trainingId: currentTrainingId!,
-          content,
-        },
-        onCompleted: async (response) => {
-          const homeWorkId = response?.createHomeWorkToCheck?.id;
-          if (!homeWorkId) return;
-
-          const editor = rteRef.current?.editor;
-          if (!editor) return;
-
-          const contentBlobUrls = Array.from(
-            content.matchAll(/(blob:[^"'\s>]+)/g)
-          ).map((match) => match[1]);
-
-          const recoveredBlobs = contentBlobUrls
-            .filter((url) => !pendingFiles.find((f) => f.localUrl === url))
-            .map((url) => {
-              const node = findNodeByUrl(editor.state.doc, url);
-              const fileName = node?.fileName || "recovered_file";
-              return { file: blobUrlToFile(url, fileName), localUrl: url };
-            });
-
-          const resolvedRecoveredFiles = await Promise.all(
-            recoveredBlobs.map(async ({ file, localUrl }) => ({
-              localUrl,
-              file: await file,
-            }))
-          );
-
-          const allFilesToUpload = [...pendingFiles, ...resolvedRecoveredFiles];
-
-          const uploadPromises = allFilesToUpload.map(
-            async ({ file, localUrl }) => {
-              const uploadedFile = await uploadHomeworkFile(file, homeWorkId);
-
-              const realUrl = createUrlWithParams(HOMEWORK_FILE_GET_URI, {
-                homeWorkId,
-                fileId: uploadedFile?.id!,
-              });
-
-              return { localUrl, realUrl };
-            }
-          );
-
-          const results = await Promise.all(uploadPromises);
-
-          results.forEach(({ localUrl, realUrl }) => {
-            content = content.replaceAll(localUrl, realUrl);
-          });
-
-          await updateHomework({
-            variables: {
-              id: homeWorkId,
-              content,
-            },
-          });
-
-          const contentNode = editor.state.doc;
-          const currentFileIds = collectFileIds(contentNode);
-          const stillDeleted = deletedFileIds.filter(
-            (id) => !currentFileIds.includes(id)
-          );
-
-          for (const id of stillDeleted) {
-            await deleteHomeworkFile(homeWorkId, id);
-          }
-
-          await sendHomeWorkToCheck({
-            variables: { homeWorkId },
-          });
-
-          setPendingFiles([]);
-          setDeletedFileIds([]);
-          setError("");
-          editor.commands.clearContent(false);
-        },
-      });
-    } catch (error) {
-      console.error(error);
-      setError("Произошла ошибка при отправке д/з.");
-    }
+    createHomeWorkToCheck({
+      variables: {
+        lectureId: currentLectureId!,
+        trainingId: currentTrainingId!,
+        content,
+      },
+      onError: () => showSubmitError(new Error("createHomeWorkToCheck failed")),
+      onCompleted: (response) => {
+        const homeWorkId = response?.createHomeWorkToCheck?.id;
+        if (!homeWorkId) {
+          showSubmitError(new Error("createHomeWorkToCheck returned no id"));
+          return;
+        }
+        submitCreatedRevision(homeWorkId, editor);
+      },
+    });
   };
 
   const handleDeleteFile = (fileId: string) => {

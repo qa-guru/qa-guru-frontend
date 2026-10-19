@@ -16,7 +16,7 @@ import {
   submitHomeworkRevision,
 } from "./submit-homework-revision";
 
-const revisionErrorMessage = (error: unknown) => {
+export const revisionErrorMessage = (error: unknown) => {
   if (error instanceof HomeworkRevisionError) {
     if (error.stage === "empty") return "Введите текст";
     if (error.reason === "state")
