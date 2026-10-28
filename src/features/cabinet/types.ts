@@ -11,6 +11,7 @@ export type OwnerView = {
   handle: string;
   visibility: VisibilityFlags;
   contour?: ContourStatus;
+  contours?: ContourStatus[];
 } & Partial<Record<ArtifactTypeKey, ArtifactPayload>>;
 
 export type VitrineSlice = {
@@ -27,7 +28,12 @@ export interface ContourQuota {
   limit: number;
 }
 
-export type ContourJobStatus = "none" | "queued" | "running" | "ready" | "failed";
+export type ContourJobStatus =
+  | "none"
+  | "queued"
+  | "running"
+  | "ready"
+  | "failed";
 
 export interface ContourStatus {
   id?: string;

@@ -34,48 +34,54 @@ const CabinetContainer: FC = () => {
   const [owner, setOwner] = useState<OwnerView | null>(null);
 
   const [issuing, setIssuing] = useState(false);
+  const [issuingCourseId, setIssuingCourseId] = useState<string | null>(null);
   const [staffIssuing, setStaffIssuing] = useState(false);
   const [staffIssue, setStaffIssue] = useState<ContourStatus | null>(null);
   const [staffIssueError, setStaffIssueError] = useState<string | null>(null);
 
-  const load = useCallback(async (opts?: { silent?: boolean }) => {
-    if (session && session.role !== "student") {
-      setOwner(null);
-      setError(null);
-      setLoading(false);
-      return;
-    }
-
-    if (!opts?.silent) {
-      setLoading(true);
-    }
-
-    try {
-      const data = await ProvisioningService.getMe();
-
-      setOwner(data);
-      setError(null);
-    } catch (caught) {
-      setOwner(null);
-      setError(
-        caught instanceof ProvisioningHttpError
-          ? errorFromStatus(caught.status)
-          : "network"
-      );
-    } finally {
-      if (!opts?.silent) {
+  const load = useCallback(
+    async (opts?: { silent?: boolean }) => {
+      if (session && session.role !== "student") {
+        setOwner(null);
+        setError(null);
         setLoading(false);
+        return;
       }
-    }
-  }, [session]);
+
+      if (!opts?.silent) {
+        setLoading(true);
+      }
+
+      try {
+        const data = await ProvisioningService.getMe();
+
+        setOwner(data);
+        setError(null);
+      } catch (caught) {
+        setOwner(null);
+        setError(
+          caught instanceof ProvisioningHttpError
+            ? errorFromStatus(caught.status)
+            : "network"
+        );
+      } finally {
+        if (!opts?.silent) {
+          setLoading(false);
+        }
+      }
+    },
+    [session]
+  );
 
   useEffect(() => {
     load();
   }, [load, session?.role]);
 
   useEffect(() => {
-    const status = owner?.contour?.status;
-    if (status !== "queued" && status !== "running") {
+    const pending = (owner?.contours ?? [owner?.contour]).some(
+      (contour) => contour?.status === "queued" || contour?.status === "running"
+    );
+    if (!pending) {
       return undefined;
     }
 
@@ -84,7 +90,7 @@ const CabinetContainer: FC = () => {
     }, 2000);
 
     return () => window.clearInterval(timer);
-  }, [load, owner?.contour?.status]);
+  }, [load, owner?.contours, owner?.contour]);
 
   const persist = async (next: OwnerView, rollback: OwnerView | null) => {
     setSaving(true);
@@ -109,15 +115,18 @@ const CabinetContainer: FC = () => {
     }
   };
 
-  const onIssueContour = async () => {
+  const onIssueContour = async (courseId?: string) => {
     setIssuing(true);
+    setIssuingCourseId(courseId?.trim() || "etalon");
 
     try {
-      await ProvisioningService.issueContour();
+      await ProvisioningService.issueContour(courseId);
       await load();
     } catch (caught) {
       if (caught instanceof ProvisioningHttpError && caught.status === 409) {
-        enqueueSnackbar("Квота: один активный контур на курс", { variant: "warning" });
+        enqueueSnackbar("Квота: контур активен или лимит исчерпан", {
+          variant: "warning",
+        });
         await load();
       } else {
         enqueueSnackbar("Не удалось выдать контур", { variant: "error" });
@@ -128,6 +137,7 @@ const CabinetContainer: FC = () => {
       }
     } finally {
       setIssuing(false);
+      setIssuingCourseId(null);
     }
   };
 
@@ -200,6 +210,7 @@ const CabinetContainer: FC = () => {
         onToggleType={onToggleType}
         onIssueContour={onIssueContour}
         issuing={issuing}
+        issuingCourseId={issuingCourseId}
         onStaffIssueContour={onStaffIssueContour}
         staffIssuing={staffIssuing}
         staffIssueError={staffIssueError}

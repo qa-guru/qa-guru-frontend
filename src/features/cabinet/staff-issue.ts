@@ -5,19 +5,20 @@ export const STAFF_CONTOURS_PATH = "/api/staff/contours";
 export type StaffIssueInput = {
   email: string;
   handle: string;
+  courseId?: string;
 };
 
 export type StaffIssueBody = {
   handle: string;
   email: string;
-  courseId: "etalon";
+  courseId: string;
 };
 
 export function staffIssueBody(input: StaffIssueInput): StaffIssueBody {
   return {
     handle: input.handle.trim(),
     email: input.email.trim(),
-    courseId: "etalon",
+    courseId: input.courseId?.trim() || "etalon",
   };
 }
 
@@ -51,7 +52,7 @@ export function httpErrorText(status: number, data: unknown): string {
   }
 
   if (status === 409) {
-    return "Квота: один активный контур на курс";
+    return "Квота: активный контур на метку или исчерпан лимит";
   }
 
   if (status === 403) {

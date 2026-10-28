@@ -23,6 +23,22 @@ describe("staffIssueBody", () => {
     assert.equal("accessToken" in body, false);
   });
 
+  it("passes a free-form contour label through, blank falls back to etalon", () => {
+    const labeled = staffIssueBody({
+      email: "nina@example.com",
+      handle: "nina",
+      courseId: " mul19-java ",
+    });
+    assert.equal(labeled.courseId, "mul19-java");
+
+    const blank = staffIssueBody({
+      email: "nina@example.com",
+      handle: "nina",
+      courseId: "  ",
+    });
+    assert.equal(blank.courseId, "etalon");
+  });
+
   it("does not copy a teacher email onto the student field", () => {
     const teacher = "teacher@qa.guru";
     const body = staffIssueBody({
@@ -54,7 +70,7 @@ describe("httpErrorText", () => {
   it("maps quota and forbidden without inventing job fields", () => {
     assert.equal(
       httpErrorText(409, null),
-      "Квота: один активный контур на курс"
+      "Квота: активный контур на метку или исчерпан лимит"
     );
     assert.equal(httpErrorText(403, undefined), "Нет права выдавать контур");
   });

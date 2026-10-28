@@ -20,10 +20,11 @@ const StaffIssueForm: FC<StaffIssueFormProps> = ({
 }) => {
   const [email, setEmail] = useState("");
   const [handle, setHandle] = useState("");
+  const [courseId, setCourseId] = useState("");
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({ email, handle });
+    onSubmit({ email, handle, courseId });
   };
 
   const blocked = issuing || !email.trim() || !handle.trim();
@@ -35,8 +36,8 @@ const StaffIssueForm: FC<StaffIssueFormProps> = ({
         Выдать контур ученику
       </Typography>
       <Typography variant="body2" color="text.secondary" gutterBottom>
-        POST /api/staff/contours. Email ученика в теле, не из JWT
-        преподавателя. Шаблон etalon, квота 1 активный / курс.
+        POST /api/staff/contours. Email ученика в теле, не из JWT преподавателя.
+        Шаблон etalon, квота 1 активный / метка контура.
       </Typography>
       <Stack gap={2} component="form" onSubmit={handleSubmit}>
         <TextField
@@ -58,6 +59,16 @@ const StaffIssueForm: FC<StaffIssueFormProps> = ({
           onChange={(event) => setHandle(event.target.value)}
           helperText="логин контура; API требует handle вместе с email"
           inputProps={{ "data-testid": "staff-issue-handle" }}
+        />
+        <TextField
+          label="Метка контура (courseId)"
+          name="courseId"
+          autoComplete="off"
+          value={courseId}
+          disabled={issuing}
+          onChange={(event) => setCourseId(event.target.value)}
+          helperText="необязательно; пусто → etalon"
+          inputProps={{ "data-testid": "staff-issue-course" }}
         />
         <Button
           type="submit"

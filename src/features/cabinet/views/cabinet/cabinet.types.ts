@@ -18,8 +18,9 @@ export interface ICabinet {
   session?: AuthSession | null;
   onToggleMaster: (profilePublic: boolean) => void;
   onToggleType: (type: ArtifactTypeKey, on: boolean) => void;
-  onIssueContour: () => void;
+  onIssueContour: (courseId?: string) => void;
   issuing?: boolean;
+  issuingCourseId?: string | null;
   onStaffIssueContour?: (input: StaffIssueInput) => void;
   staffIssuing?: boolean;
   staffIssueError?: string | null;

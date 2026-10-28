@@ -16,6 +16,28 @@ const closedTypes = Object.fromEntries(
 const FIXTURE: OwnerView = {
   handle: "qgp5cli",
   visibility: { profilePublic: false, types: closedTypes },
+  contour: {
+    status: "ready",
+    courseId: "etalon",
+    template: "etalon",
+    quota: { used: 2, limit: 5 },
+  },
+  contours: [
+    {
+      id: "b2",
+      status: "ready",
+      courseId: "mul19-java",
+      template: "etalon",
+      quota: { used: 1, limit: 1 },
+    },
+    {
+      id: "b1",
+      status: "ready",
+      courseId: "etalon",
+      template: "etalon",
+      quota: { used: 1, limit: 1 },
+    },
+  ],
   github: {
     org: "autotests-cloud",
     slug: "alice-app-tests",
@@ -83,7 +105,9 @@ const CabinetPreviewPage: FC = () => {
 
           if (!body.email.includes("@")) {
             setStaffIssue(null);
-            setStaffIssueError(httpErrorText(400, { message: "email required" }));
+            setStaffIssueError(
+              httpErrorText(400, { message: "email required" })
+            );
             return;
           }
 

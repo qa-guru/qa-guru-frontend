@@ -94,11 +94,13 @@ export default class ProvisioningService {
     }
   }
 
-  static async issueContour(): Promise<ContourStatus> {
+  static async issueContour(courseId?: string): Promise<ContourStatus> {
+    const label = courseId?.trim();
+
     try {
       const response = await http.post<ContourStatus>(
         `${meUrl()}/contours`,
-        { courseId: "etalon" },
+        label ? { courseId: label } : {},
         {
           headers: {
             ...authHeaders(),
